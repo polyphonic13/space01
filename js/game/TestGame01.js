@@ -6,14 +6,15 @@ TestGame01 = function()
      // These are assets we need for the game
     this.assetManager.addAssets("required",[
         {id:'space_bg',   url:'images/space_bg.png'},
-		{id:'planet1', url:'images/planet1.png'}
+		{id:'planet1', url:'images/planet1.png'},
+		{id: 'ship_interior', url:'images/ship_interior.png'}
       ]);
 
     // Set our default loading screen
     TGE.LoadingWindow = Loading;
 
     // Start the game off with the main menu screen
-    TGE.FirstGameWindow = Game;
+    TGE.FirstGameWindow = Menu;
 }
 
 TestGame01.prototype =

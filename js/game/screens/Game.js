@@ -9,14 +9,15 @@ Game = function(width,height)
     // Create a BG
     this.addBg();
 	this.addPlanet();
+	this.addInterior();
 	
 	var canvasDiv = document.getElementById("game_canvas");
 
 	// Create a stage for rendering
 	this.stage = new TGE.Stage(canvasDiv);
-	this.addEventListener("update", this.moveCamera.bind(this));
-console.log("\nTEST\n");
-console.log(this.stage);
+	// this.addEventListener("update", this.moveCamera.bind(this));
+	console.log("\nTEST\n");
+	console.log(this.stage);
 }
 
 Game.prototype =
@@ -37,7 +38,7 @@ Game.prototype =
 	addPlanet: function() {
 		var planet = new TGE.ParallaxPane().setup({
 			image: "planet1",
-			y: 0,
+			y: 50,
 			trackingSpeed: 0.7
 		});
 		// var planet = new TGE.Sprite().setup({
@@ -46,13 +47,22 @@ Game.prototype =
 		this.addChild(planet);
 	},
 	
+	addInterior: function() {
+		var interior = new TGE.Sprite().setup({
+			image: "ship_interior"
+		});
+		this.addChild(interior);
+        interior.x = this.percentageOfWidth(.5);
+        interior.y = this.height/2;
+	},
+	
 	moveCamera: function(event)
 	{
 		console.log('moveCamera, event.elapsedTime = ' + event.elapsedTime);
 		// var cameraLocation = TGE.Game.GetInstance().mCameraLocation;
 		// console.log(cameraLocation);
 		// 	  cameraLocation.x += event.elapsedTime*100;
-	  TGE.Game.GetInstance().mCameraLocation.x += event.elapsedTime*100;
+	  // TGE.Game.GetInstance().mCameraLocation.x += event.elapsedTime*100;
 	}
 }
 extend(Game,TGE.Window);
