@@ -74,7 +74,7 @@ Game.prototype =
 	
 	mouseMove: function(event) {
 		console.log('mouse moved');
-		TGE.Game.GetInstance().mCameraLocation.x += event.elapsedTime*100;
+		// TGE.Game.GetInstance().mCameraLocation.x += event.elapsedTime*100;
 	}
 }
 extend(Game,TGE.Window);
