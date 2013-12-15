@@ -1,4 +1,10 @@
-
+/*
+keycodes: 
+left 		37
+up 			38
+right 		39
+down 		40
+*/
 Game = function(width,height)
 {
     Game.superclass.constructor.apply(this,arguments);
@@ -18,6 +24,7 @@ Game = function(width,height)
 	// this.addEventListener("update", this.moveCamera.bind(this));
 	console.log("\nTEST\n");
 	console.log(this.stage);
+	this.addEventListener("mousemove", this.mouseMove.bind(this));
 }
 
 Game.prototype =
@@ -63,6 +70,11 @@ Game.prototype =
 		// console.log(cameraLocation);
 		// 	  cameraLocation.x += event.elapsedTime*100;
 	  // TGE.Game.GetInstance().mCameraLocation.x += event.elapsedTime*100;
+	},
+	
+	mouseMove: function(event) {
+		console.log('mouse moved');
+		TGE.Game.GetInstance().mCameraLocation.x += event.elapsedTime*100;
 	}
 }
 extend(Game,TGE.Window);
