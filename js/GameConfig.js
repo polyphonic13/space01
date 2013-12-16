@@ -3,7 +3,7 @@ var GameConfig = {
 
     PROD_ENV: false,
 
-    LOG_LEVEL: 3,   // NONE = 0
+    LOG_LEVEL: 4,   // NONE = 0
                     // ERROR = 1
                     // WARNING = 2
                     // INFO = 3
@@ -17,19 +17,23 @@ var GameConfig = {
     REORIENT_ID: 'wrong_orientation',
     PRELOADER_DIV: 'preloader',
 
-    CONSTRUCTOR: 'TestGame01',
+    // CONSTRUCTOR: 'TestGame01',
+	CONSTRUCTOR: 'KekeGame',
     SOURCE: [
-        "js/game/TestGame01.js",
-		"js/game/screens/Loading.js",
-        "js/game/screens/Menu.js",
-        // "js/game/screens/ShopScreen.js",
-        // "js/game/screens/PauseScreen.js",
-        // "js/game/screens/GameOver.js",
-        "js/game/screens/Game.js"
+		"js/game/KekeGame.js",
+		"js/game/keke/screens/Loading.js",
+		"js/game/keke/screens/Menu.js",
+		"js/game/keke/screens/Game.js"
+
+		// "js/game/TestGame01.js",
+		// "js/game/space01/screens/Loading.js",
+		 // "js/game/space01/screens/Menu.js",
+        // "js/game/space01/screens/Game.js"
     ],
 
     GAME_ID: 'example',
-    TITLE: 'Test Game 01',
+    // TITLE: 'Test Game 01',
+	TITLE: 'Keke vs. Caterpillars',
     HOST: 'http://games.tresensa.com',
     PATH: '/empty-game/',
     VERSION: '1.0.0',
