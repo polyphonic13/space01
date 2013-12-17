@@ -9,6 +9,13 @@ Game = function(width,height)
 {
     Game.superclass.constructor.apply(this,arguments);
 
+	this.controlKeys = {
+		LEFT: 37,
+		UP: 38,
+		RIGHT: 39,
+		DOWN: 40
+	};
+	
     // Background Color
   this.backgroundColor = "#B5EDFF"; // Blue.
 
@@ -25,6 +32,7 @@ Game = function(width,height)
 	console.log("\nTEST\n");
 	console.log(this.stage);0
 	// this.addEventListener("mousemove", this.mouseMove.bind(this));
+	this.addEventListener("keydown", this.keyDown.bind(this));
 }
 
 Game.prototype =
@@ -55,12 +63,12 @@ Game.prototype =
 	},
 	
 	addKeke: function() {
-		var keke = new TGE.Sprite().setup({
+		this.keke = new TGE.Sprite().setup({
 			image: "keke"
 		});
-		this.addChild(keke);
-        keke.x = this.percentageOfWidth(.5);
-        keke.y = this.height/2;
+		this.addChild(this.keke);
+        this.keke.x = this.percentageOfWidth(.5);
+        this.keke.y = this.height/2;
 	},
 	
 	moveCamera: function(event)
@@ -75,6 +83,38 @@ Game.prototype =
 	mouseMove: function(event) {
 		console.log('mouse moved');
 		// TGE.Game.GetInstance().mCameraLocation.x += event.elapsedTime*100;
+	},
+	
+	keyDown: function(event) {
+		switch(event.keyCode) {
+			case this.controlKeys.LEFT: 
+			console.log("left key down");
+			this.moveKeke("left");
+			break;
+			
+			case this.controlKeys.UP:
+			console.log("up key down");
+
+			break;
+			
+			case this.controlKeys.RIGHT: 
+			console.log("right key down");
+			this.moveKeke("right");
+			break;
+			
+			case this.controlKeys.DOWN:
+			console.log("down key down");
+			break;
+		}
+
+	},
+	
+	moveKeke: function(direction) {
+		var amount = -5;
+		if(direction == "right") {
+			amount = 5;
+		}
+		this.keke.x += amount;
 	}
 }
 extend(Game,TGE.Window);
