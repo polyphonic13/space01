@@ -19,19 +19,23 @@ var controls = {
 	},
 	canvas = $("#canvas")[0],
 	messageDiv = $("#message"),
+	kekeUrl = 'assets/images/keke_tiny.png',
+	kekeW = 20,
+	kekeH = 55,
+	keke,
 	previousCollisionId = '',
     ctx = canvas.getContext('2d'),
     width = 800,
     height = 500,
 	startLocation = {
 		x: 15,
-		y: height - 55
+		y: height - 110
 	},
     player = {
         x: startLocation.x,
         y: startLocation.y,
-        width: 10,
-        height: 25,
+        width: 20,
+        height: 55,
         speed: 2.5,
         velX: 0,
         velY: 0,
@@ -44,6 +48,7 @@ var controls = {
 	jumpKeyDepressed = false,
 	playing = true,
 	won = false;
+
 
 _initGame(); 
 
@@ -90,20 +95,20 @@ var boxes = [
 	{
 		id: 'platform03',
 	    x: 160,
-	    y: height - 120,
+	    y: height - 130,
 	    width: 80,
 	    height: 15
 	},
 	{
 		id: 'platform04',
 	    x: 240,
-	    y: height - 160,
+	    y: height - 175,
 	    width: 80,
 	    height: 15
 	},
 	{
 		id: 'platform05',
-	    x: 340,
+	    x: 370,
 	    y: height - 80,
 	    width: 80,
 	    height: 15
@@ -219,9 +224,14 @@ function update() {
     player.x += player.velX;
     player.y += player.velY;
 
+	var newKekeX = player.x;
+	var newKekeY = player.y;
+	
     ctx.fill();
-    ctx.fillStyle = 'aqua';
-    ctx.fillRect(player.x, player.y, player.width, player.height);
+    // ctx.fillStyle = 'aqua';
+    // ctx.fillRect(player.x, player.y, player.width, player.height);
+
+	ctx.drawImage(keke, player.x, player.y, kekeW, kekeH);
 
 	if(playing) {
 	    requestAnimationFrame(update);
@@ -279,6 +289,19 @@ function _wonGame() {
 	messageDiv.html('CONGRATULATIONS! You won. Press [r] to restart.');
 }
 
+function _addKeke() {
+	keke = new Image();
+	keke.onload = function() {
+		console.log('keke/onload');
+		console.log(ctx);
+		ctx.drawImage(keke, startLocation.x, startLocation.y, kekeW, kekeH);
+		update();
+	}
+	keke.src = kekeUrl;
+	console.log('keke = ');
+	console.log(keke);
+	
+}
 function _initGame() {
 	for(var key in keys) {
 		keys[key] = false;
@@ -317,11 +340,8 @@ $(document).keyup(function(e) {
 	}
 
 });
-/*
-window.addEventListener('load', function () {
-    update();
-});
-*/
+
 $(document).ready(function() {
-	update();
+	//update();
+	_addKeke();
 })
