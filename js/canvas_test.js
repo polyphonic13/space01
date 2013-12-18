@@ -20,9 +20,11 @@ var controls = {
 	canvas = $("#canvas")[0],
 	messageDiv = $("#message"),
 	kekeUrl = 'assets/images/keke_tiny.png',
+	kekeReverseUrl = "assets/images/keke_tiny_back.png",
 	kekeW = 20,
 	kekeH = 55,
 	keke,
+	kekeReverse,
 	previousCollisionId = '',
     ctx = canvas.getContext('2d'),
     width = 800,
@@ -45,7 +47,9 @@ var controls = {
     keys = [],
     friction = .5,
     gravity = 0.2,
+	previousVelX = 0;
 	jumpKeyDepressed = false,
+	facingForward = true,
 	playing = true,
 	won = false;
 
@@ -170,14 +174,18 @@ function update() {
             player.velY = -player.speed * 2;
         }
     }
+	previousVelX = player.velX;
+	
     if (keys[controls.RIGHT]) {
         // right arrow
         if (player.velX < player.speed) {
+			facingForward = true;
 			player.velX++;
 		}
 	}
 	if (keys[controls.LEFT]) {         // left arrow         
 		if (player.velX > -player.speed) {
+			facingForward = false;
     		player.velX--;
         }
     }
@@ -230,8 +238,13 @@ function update() {
     ctx.fill();
     // ctx.fillStyle = 'aqua';
     // ctx.fillRect(player.x, player.y, player.width, player.height);
-
-	ctx.drawImage(keke, player.x, player.y, kekeW, kekeH);
+//	console.log('player.velX = ' + player.velX + ', previousVelX = ' + previousVelX);
+	if(facingForward) {
+		ctx.drawImage(keke, player.x, player.y, kekeW, kekeH);
+		
+	} else {
+		ctx.drawImage(kekeReverse, player.x, player.y, kekeW, kekeH);
+	}
 
 	if(playing) {
 	    requestAnimationFrame(update);
@@ -291,6 +304,7 @@ function _wonGame() {
 
 function _addKeke() {
 	keke = new Image();
+	kekeReverse = new Image();
 	keke.onload = function() {
 		console.log('keke/onload');
 		console.log(ctx);
@@ -298,6 +312,7 @@ function _addKeke() {
 		update();
 	}
 	keke.src = kekeUrl;
+	kekeReverse.src = kekeReverseUrl;
 	console.log('keke = ');
 	console.log(keke);
 	
