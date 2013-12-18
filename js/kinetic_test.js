@@ -1,3 +1,4 @@
+
 var stage,
 	stageWidth = 800,
 	stageHeight = 500,
@@ -12,7 +13,7 @@ var stage,
 	previousCollisionId = '',
 	startLocation = {
 		x: stageWidth/2,
-		y: stageHeight - 135
+		y: stageHeight - 100
 	},
 	playerHolder,
     player = {
@@ -165,9 +166,10 @@ function init() {
 	
 	playerHolder = new Kinetic.Layer();
 	drawPlayer(playerHolder);
-	console.log('post drawPlayer, playerHolder =');
-	console.log(playerHolder);
+	trace('post drawPlayer, playerHolder =');
+	trace(playerHolder);
 	stage.add(playerHolder);
+	playerHolder.setPosition(player.x, player.y);
 	
 	$(window).keydown(function(e) {
 		keydownHandler(e);
@@ -175,6 +177,168 @@ function init() {
 	$(window).keyup(function(e) {
 		keyupHandler(e);
 	});
+	update();
+}
+
+function update() {
+	// trace('update');
+    if (keys[ControlKeys.UP] || keys[ControlKeys.SPACE]) {
+        // up arrow or space
+        if (!player.jumping && player.grounded && !jumpKeyDepressed) {
+            player.jumping = true;
+            player.grounded = false;
+			jumpKeyDepressed = true;
+            player.velY = -player.speed * 2;
+        }
+    }
+	previousVelX = player.velX;
+	
+    if (keys[ControlKeys.RIGHT]) {
+        // right arrow
+        if (player.velX < player.speed) {
+			facingForward = true;
+			player.velX++;
+		}
+		// startForwardAnimations();
+	} else {
+		// stopForwardAnimations();
+	}
+	
+	if (keys[ControlKeys.LEFT]) {         // left arrow         
+		if (player.velX > -player.speed) {
+			facingForward = false;
+    		player.velX--;
+        }
+		// startReverseAnimations();
+    } else {
+		// stopReverseAnimations();
+	}
+
+    player.grounded = false;
+	detectCollisions();
+	
+    if(player.grounded){
+         player.velY = 0;
+    } else {
+	    player.velY += gravity;
+	}
+
+    player.velX *= friction;
+	
+	// trace('player.velX = ' + player.velX + ', velY = ' + player.velY + ', player.grounded = ' + player.grounded);
+
+	var landAnim = new Kinetic.Animation(function(frame) {
+		platformHolder.move(player.velX/100, 0);
+	}, platformHolder);
+	landAnim.start();
+	
+	var playerAnim = new Kinetic.Animation(function(frame) {
+		playerHolder.move(0, player.velY/100);
+	}, playerHolder);
+	playerAnim.start();
+	
+	requestAnimFrame(update);
+}
+
+function detectCollisions() {
+	// trace('platformHolder.x = ' + platformHolder.attrs.x);
+	// trace('platformHolder.getAbsolutePosition = ');
+	// trace(platformHolder.getAbsolutePosition());
+	var holderPos = platformHolder.getAbsolutePosition()
+	var holderX = platformHolder.attrs.x;
+	var holderY = platformHolder.attrs.y;
+	var plat;
+	var playerPos = playerHolder.getAbsolutePosition();
+	var plyr = {
+		x: playerPos.x,
+		y: playerPos.y,
+		width: player.width,
+		height: player.height
+	};
+	var col;
+	for(var i = 0; i < platforms.length; i++) {
+		plat = platforms[i];
+		plat.x += holderPos.x; // adjust x of current platform by holder's x offset
+		plat.y += holderPos.y; // adjust y of current platform by holder's y offset
+
+		col = collisionCheck(plyr, plat);
+		if(!won) {
+			trace('col =');
+			trace(col);
+			trace('plat = ');
+			trace(plat);
+			trace('plyr = ');
+			trace(plyr);
+			// trace('playerHolder = ');
+			// trace(playerHolder);
+		}
+		updateByCollision(col);
+	}
+	
+	col = collisionCheck(plyr, walls[0]); // check for ground collision
+	updateByCollision(col);
+	if(col.id === 'floor') {
+		trace('COLLIDED WITH FLOOR!');
+	}
+	won = true;
+}
+
+function updateByCollision(col) {
+    if (col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
+        player.velX = 0;
+        player.jumping = false;
+	} else if (col.direction === Directions.BOTTOM) {
+        player.grounded = true;
+        player.jumping = false;
+		player.velY = 0;
+	} else if (col.direction === Directions.TOP) {
+        player.velY *= -1;
+    }
+	previousCollisionId = col.id;
+}
+function collisionCheck(shapeA, shapeB) {
+    // get the vectors to check against
+    var vX = (shapeA.x + (shapeA.width / 2)) - (shapeB.x + (shapeB.width / 2)),
+        vY = (shapeA.y + (shapeA.height / 2)) - (shapeB.y + (shapeB.height / 2)),
+        // add the half widths and half heights of the objects
+        hWidths = (shapeA.width / 2) + (shapeB.width / 2),
+        hHeights = (shapeA.height / 2) + (shapeB.height / 2),
+        collision = {
+			id: '',
+			direction: ''
+		};
+
+    // if the x and y vector are less than the half width or half height, they we must be inside the object, causing a collision
+    if (Math.abs(vX) < hWidths && Math.abs(vY) < hHeights) {         // figures out on which side we are colliding (top, bottom, left, or right)         
+	var oX = hWidths - Math.abs(vX),             
+	oY = hHeights - Math.abs(vY);
+	if (oX >= oY) {
+            if (vY > 0) {
+                collision.direction = Directions.TOP;
+                shapeA.y += oY;
+				collision.id = shapeB.id;
+            } else {
+                collision.direction = Directions.BOTTOM;
+                shapeA.y -= oY;
+				collision.id = shapeB.id;
+            }
+        } else {
+            if (vX > 0) {
+                collision.direction = Directions.LEFT;
+                shapeA.x += oX;
+				collision.id = shapeB.id;
+            } else {
+                collision.direction = Directions.RIGHT;
+                shapeA.x -= oX;
+				collision.id = shapeB.id;
+            }
+        }
+    }
+	if(!won) {
+		trace('collisionCheck\n\tshapeA = x/y: ' + shapeA.x + '/' + shapeA.y + ', w/h: ' + shapeA.width + '/' + shapeA.height + '\n\tshapeB = x/y: ' + shapeB.x + '/' + shapeB.y + ', w/h: ' + shapeB.width + '/' + shapeB.height);
+		trace('\tvX = ' + vX + ', vY = ' + vY + '\n\toX = ' + oX + ', oY = ' + oY + '\n\thWidths = ' + hWidths + ', hHeights = ' + hHeights);
+	}
+    return collision;
 }
 
 function addObjectsToLayer(layer, objects) {
@@ -207,17 +371,20 @@ function addObjectsToLayer(layer, objects) {
 function keydownHandler(e) {
 	switch(e.which) {
 		case ControlKeys.UP:
-		handleJump();
+		keys[ControlKeys.UPs] = true;
+		// handleJump();
 		break;
-		
+
 		case ControlKeys.LEFT:
-		playForwardAnimations();
+		keys[ControlKeys.LEFT] = true;
+		// startForwardAnimations();
 		break;
-		
+
 		case ControlKeys.RIGHT:
-		platReverseAnimations();
+		keys[ControlKeys.RIGHT] = true;
+		// startReverseAnimations();
 		break;
-		
+
 		default: 
 		break;
 	}
@@ -226,13 +393,19 @@ function keydownHandler(e) {
 function keyupHandler(e) {
 	switch(e.which) {
 		case ControlKeys.LEFT:
-		platformAnimations.forward.stop();
+		keys[ControlKeys.LEFT] = false;
+		// platformAnimations.forward.stop();
 		break;
-		
+
 		case ControlKeys.RIGHT:
-		platformAnimations.reverse.stop();
+		keys[ControlKeys.RIGHT] = false;
+		// platformAnimations.reverse.stop();
 		break;
-		
+
+		case ControlKeys.UP: 
+		keys[ControlKeys.UP] = false;
+		break; 
+
 		default:
 		break;
 	}
@@ -244,7 +417,7 @@ function handleJump() {
 	jumpKeyDepressed = true;
 	
 	player.velY = -player.speed * 2;
-	console.log('player velY = ' + player.velY);
+	trace('player velY = ' + player.velY);
 	var jump = new Kinetic.Animation(function(frame) {
 		playerHolder.move(0, player.velY);
 	}, playerHolder);
@@ -255,14 +428,24 @@ function handleJump() {
 	}, player.jumpTime);
 }
 
-function playForwardAnimations() {
+function startForwardAnimations() {
 	platformAnimations.forward.start();
 	currentPlaying = 'forward';
 }
 
-function platReverseAnimations() {
+function startReverseAnimations() {
 	platformAnimations.reverse.start();
 	currentPlaying = 'reverse';
+}
+
+function stopForwardAnimations() {
+	platformAnimations.forward.stop();
+	currentPlaying = '';
+}
+
+function stopReverseAnimations() {
+	platformAnimations.reverse.stop();
+	currentPlaying = '';
 }
 
 function createPlatformAnimations(layer) {
@@ -287,19 +470,19 @@ function drawPlayer(layer) {
     var imageObj = new Image();
     imageObj.onload = function() {
 		var playerImg = new Kinetic.Image({
-			x: player.x,
-			y: player.y,
+			x: 0,
+			y: 0,
 			image: imageObj,
 			width: player.width,
 			height: player.height
 		});
 		layer.add(playerImg);
 		layer.draw(); // layer has to have draw called each time there is a change
-		console.log('imageObj/onload');
+		trace('imageObj/onload');
     };
     imageObj.src = kekeUrl;
-	console.log('drawPlayer, imageObj =');
-	console.log(imageObj);
+	trace('drawPlayer, imageObj =');
+	trace(imageObj);
 }
 
 
