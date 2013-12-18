@@ -2,7 +2,7 @@
 var player,
 	wallHolder,
 	backgroundHolder,
-	hillsUrl = 'assets/images/hills01.png',
+	hillsUrl = 'assets/images/hills01_black.png',
 	backgroundAnimations = {
 		forward: null,
 		reverse: null
@@ -21,7 +21,7 @@ var player,
 	previousCollisionId = '',
 	startLocation = {
 		x: stageWidth/2,
-		y: stageHeight - 100
+		y: stageHeight - 200
 	},
 	playerHolder,
     player = {
@@ -50,32 +50,7 @@ var player,
 	jumpKeyDepressed = false,
 	facingForward = true,
 	playing = true,
-	won = false,
-	walls = [{
-		id: 'floor',
-	    x: 0,
-	    y: stageHeight - 10,
-	    width: stageWidth,
-	    height: 50,
-		stroke: 'orange',
-		fill: 'red'
-	},
-	// left wall
-	{
-		id: 'leftWall',
-	    x: 0,
-	    y: 0,
-	    width: 10,
-	    height: stageHeight
-	},
-	// right wall
-	{
-		id: 'rightWall',
-	    x: stageWidth - 10,
-	    y: 0,
-	    width: 50,
-	    height: stageHeight
-	}];
+	won = false;
 	
 	
 function init() {
@@ -86,13 +61,13 @@ function init() {
 	});
 
 	backgroundHolder = new Kinetic.Layer();
-	addImageToLayer(backgroundHolder, hillsUrl, 0, stageHeight - 256, 2048, 256);
+	addImageToLayer(backgroundHolder, hillsUrl, 0, stageHeight - 350, 2048, 256);
 	
 	wallHolder = new Kinetic.Layer();
 	addObjectsToLayer(wallHolder, walls);
 	
-	platformHolder = new Kinetic.Layer();
-	addObjectsToLayer(platformHolder, platforms);
+	// platformHolder = new Kinetic.Layer();
+	// addObjectsToLayer(platformHolder, platforms);
 	
  	playerHolder = new Kinetic.Layer();
 	addImageToLayer(playerHolder, kekeUrl, 0, 0, player.width, player.height);
@@ -160,7 +135,7 @@ function update() {
 	}
 
     player.grounded = false;
-//	detectCollisions();
+	detectCollisions();
 	
     if(player.grounded){
          player.velY = 0;
@@ -199,10 +174,10 @@ function detectCollisions() {
 	// trace('platformHolder.x = ' + platformHolder.attrs.x);
 	// trace('platformHolder.getAbsolutePosition = ');
 	// trace(platformHolder.getAbsolutePosition());
-	var holderPos = platformHolder.getAbsolutePosition()
-	var holderX = platformHolder.attrs.x;
-	var holderY = platformHolder.attrs.y;
-	var plat;
+	// var holderPos = platformHolder.getAbsolutePosition()
+	// var holderX = platformHolder.attrs.x;
+	// var holderY = platformHolder.attrs.y;
+	// var plat;
 	var playerPos = playerHolder.getAbsolutePosition();
 	var plyr = {
 		x: playerPos.x,
@@ -211,6 +186,7 @@ function detectCollisions() {
 		height: player.height
 	};
 	var col;
+	/*
 	for(var i = 0; i < platforms.length; i++) {
 		plat = platforms[i];
 		plat.x += holderPos.x; // adjust x of current platform by holder's x offset
@@ -229,7 +205,7 @@ function detectCollisions() {
 		}
 		updateByCollision(col);
 	}
-	
+	*/
 	col = collisionCheck(plyr, walls[0]); // check for ground collision
 	updateByCollision(col);
 	if(col.id === 'floor') {
@@ -251,6 +227,7 @@ function updateByCollision(col) {
     }
 	previousCollisionId = col.id;
 }
+
 function collisionCheck(shapeA, shapeB) {
     // get the vectors to check against
     var vX = (shapeA.x + (shapeA.width / 2)) - (shapeB.x + (shapeB.width / 2)),
