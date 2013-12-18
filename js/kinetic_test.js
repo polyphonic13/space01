@@ -1,4 +1,6 @@
 var stage,
+	stageWidth = 800,
+	stageHeight = 500,
 	player,
 	wallHolder,
 	platformHolder,
@@ -7,48 +9,32 @@ var stage,
 		reverse: null
 	},
 	currentPlaying = '',
-	controls = {
-		LEFT: 37,
-		RIGHT: 39,
-		UP: 38,
-		DOWN: 40,
-		SPACE: 32,
-		RESET: 82 // restart
-	},
-	directions = {
-		LEFT: 'l',
-		RIGHT: 'r',
-		TOP: 't',
-		BOTTOM: 'b'
-	},
-	messageDiv = $("#message"),
-	kekeUrl = 'assets/images/keke_tiny.png',
-	kekeReverseUrl = "assets/images/keke_tiny_back.png",
-	kekeW = 20,
-	kekeH = 55,
-	keke,
-	kekeReverse,
 	previousCollisionId = '',
-    stageWidth = 800,
-    stageHeight = 500,
 	startLocation = {
-		x: 15,
-		y: stageHeight - 110
+		x: stageWidth/2,
+		y: stageHeight - 135
 	},
+	playerHolder,
     player = {
         x: startLocation.x,
         y: startLocation.y,
         width: 20,
         height: 55,
         speed: 2.5,
+		jumpTime: 5,
         velX: 0,
         velY: 0,
         jumping: false,
         grounded: false
     },
-	playerHolder,
+	kekeUrl = 'assets/images/keke_tiny.png',
+	kekeReverseUrl = "assets/images/keke_tiny_back.png",
+	kekeW = 20,
+	kekeH = 55,
+	keke,
+	kekeReverse,
     keys = [],
-	moveSpeed = 20,
+	moveSpeed = 50,
     friction = .5,
     gravity = 0.2,
 	previousVelX = 0;
@@ -183,21 +169,11 @@ function init() {
 	console.log(playerHolder);
 	stage.add(playerHolder);
 	
-	var topLayer = $('#container');
 	$(window).keydown(function(e) {
 		keydownHandler(e);
 	});
 	$(window).keyup(function(e) {
 		keyupHandler(e);
-	});
-	stage.on("keydown", function(e) {
-		console.log('keydown event, key = ' + e.keycode);
-	});
-	stage.on("keyup", function(e) {
-		console.log('keyup event, key = ' + e.keycode);
-	});
-	stage.on("mouseover", function(e) {
-		console.log('mouseover event');
 	});
 }
 
@@ -230,14 +206,16 @@ function addObjectsToLayer(layer, objects) {
 
 function keydownHandler(e) {
 	switch(e.which) {
-		case controls.LEFT:
-			platformAnimations.forward.start();
-			currentPlaying = 'forward';
+		case ControlKeys.UP:
+		handleJump();
 		break;
 		
-		case controls.RIGHT:
-			platformAnimations.reverse.start();
-			currentPlaying = 'reverse';
+		case ControlKeys.LEFT:
+		playForwardAnimations();
+		break;
+		
+		case ControlKeys.RIGHT:
+		platReverseAnimations();
 		break;
 		
 		default: 
@@ -246,11 +224,45 @@ function keydownHandler(e) {
 }
 
 function keyupHandler(e) {
-	if(currentPlaying === 'forward') {
+	switch(e.which) {
+		case ControlKeys.LEFT:
 		platformAnimations.forward.stop();
-	} else if(currentPlaying === 'reverse') {
+		break;
+		
+		case ControlKeys.RIGHT:
 		platformAnimations.reverse.stop();
+		break;
+		
+		default:
+		break;
 	}
+}
+
+function handleJump() {
+    player.jumping = true;
+    player.grounded = false;
+	jumpKeyDepressed = true;
+	
+	player.velY = -player.speed * 2;
+	console.log('player velY = ' + player.velY);
+	var jump = new Kinetic.Animation(function(frame) {
+		playerHolder.move(0, player.velY);
+	}, playerHolder);
+
+	jump.start();
+	setTimeout(function() {
+		jump.stop();
+	}, player.jumpTime);
+}
+
+function playForwardAnimations() {
+	platformAnimations.forward.start();
+	currentPlaying = 'forward';
+}
+
+function platReverseAnimations() {
+	platformAnimations.reverse.start();
+	currentPlaying = 'reverse';
 }
 
 function createPlatformAnimations(layer) {
