@@ -61,7 +61,7 @@ function init() {
 	});
 
 	backgroundHolder = new Kinetic.Layer();
-	addImageToLayer(backgroundHolder, hillsUrl, 0, stageHeight - 350, 2048, 256);
+	addImageToLayer(backgroundHolder, hillsUrl, 0, stageHeight - 325, 2048, 256);
 	
 	wallHolder = new Kinetic.Layer();
 	addObjectsToLayer(wallHolder, walls);
@@ -78,7 +78,7 @@ function init() {
 	  x: 100,
 	  y: 50,
 	points: splinePoints,
-	  stroke: 'black',
+	  stroke: 'gray',
 		fill: 'red',
 	  tension: 0.5
 	});

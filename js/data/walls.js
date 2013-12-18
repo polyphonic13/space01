@@ -1,7 +1,7 @@
 var walls = [{
 	id: 'floor',
 	x: 0,
-	y: stageHeight - 100,
+	y: stageHeight - 75,
 	width: stageWidth,
 	height: 50
 },
