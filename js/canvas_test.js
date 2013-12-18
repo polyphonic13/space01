@@ -4,38 +4,34 @@
 })();
 
 var controls = {
-	LEFT: 37,
-	RIGHT: 39,
-	UP: 38,
-	DOWN: 40,
-	SPACE: 32,
-	RESET: 82 // restart
-};
-
-var directions = {
-	LEFT: 'l',
-	RIGHT: 'r',
-	TOP: 't',
-	BOTTOM: 'b'
-};
-
-var JUMP_DELAY_AMOUNT = 5; // five updates must past before next jump; eliminates hold of up/space key to continually jump.
-
-var canvas = document.getElementById('canvas'),
-	messagesDiv = document.getElementById('messages'),
+		LEFT: 37,
+		RIGHT: 39,
+		UP: 38,
+		DOWN: 40,
+		SPACE: 32,
+		RESET: 82 // restart
+	},
+	directions = {
+		LEFT: 'l',
+		RIGHT: 'r',
+		TOP: 't',
+		BOTTOM: 'b'
+	},
+	canvas = $("#canvas")[0],
+	messageDiv = $("#message"),
 	previousCollisionId = '',
     ctx = canvas.getContext('2d'),
     width = 800,
     height = 500,
 	startLocation = {
-		x: 10,
+		x: 15,
 		y: height - 55
 	},
     player = {
         x: startLocation.x,
         y: startLocation.y,
-        width: 5,
-        height: 15,
+        width: 10,
+        height: 25,
         speed: 2.5,
         velX: 0,
         velY: 0,
@@ -44,8 +40,7 @@ var canvas = document.getElementById('canvas'),
     },
     keys = [],
     friction = .5,
-    gravity = 0.25,
-	jumpDelay = 0,
+    gravity = 0.2,
 	jumpKeyDepressed = false,
 	playing = true,
 	won = false;
@@ -88,7 +83,7 @@ var boxes = [
 	{
 		id: 'platform02',
 	    x: 80,
-	    y: height - 80,
+	    y: height - 85,
 	    width: 100,
 	    height: 15
 	},
@@ -276,19 +271,19 @@ function collisionCheck(shapeA, shapeB) {
 
 function _death() {
 	console.log('died');
-	messagesDiv.innerHTML = '<p>GAME OVER! Press [r] to restart.</p>';
+	messageDiv.html('GAME OVER! Press [r] to restart.');
 }
 
 function _wonGame() {
 	console.log('won');
-	messagesDiv.innerHTML = '<p>CONGRATULATIONS! You won. Press [r] to restart.</p>';
+	messageDiv.html('CONGRATULATIONS! You won. Press [r] to restart.');
 }
 
 function _initGame() {
 	for(var key in keys) {
 		keys[key] = false;
 	}
-	messagesDiv.innerHTML = "Try to get to the other side without falling. Controls: arrow keys to move, and space to jump.";
+	messageDiv.html("Try to get to the other side without falling. Controls: arrow keys to move, and space to jump.");
 	playing = true;
 	won = false;
 	player.jumping = false;
@@ -302,7 +297,8 @@ function _restartGame() {
     requestAnimationFrame(update);
 }
 
-document.body.addEventListener('keydown', function (e) {
+// document.body.addEventListener('keydown', function (e) {
+	$(document).keydown(function(e) {
 	// console.log('keydown key code = ' + e.keyCode);
 	if(playing) {
 	    keys[e.keyCode] = true;
@@ -311,7 +307,8 @@ document.body.addEventListener('keydown', function (e) {
 	}
 });
 
-document.body.addEventListener('keyup', function (e) {
+// document.body.addEventListener('keyup', function (e) {
+$(document).keyup(function(e) {
 	if(playing) {
 		if(e.keyCode === controls.SPACE || e.keyCode === controls.UP) {
 			jumpKeyDepressed = false;
@@ -320,7 +317,11 @@ document.body.addEventListener('keyup', function (e) {
 	}
 
 });
-
+/*
 window.addEventListener('load', function () {
     update();
 });
+*/
+$(document).ready(function() {
+	update();
+})
