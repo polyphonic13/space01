@@ -1,14 +1,20 @@
 
-var stage,
-	stageWidth = 800,
-	stageHeight = 500,
-	player,
+var player,
 	wallHolder,
+	backgroundHolder,
+	hillsUrl = 'assets/images/hills01.png',
+	backgroundAnimations = {
+		forward: null,
+		reverse: null
+	},
+	bgMove = 250,
+	foregroundHolder,
 	platformHolder,
 	platformAnimations = {
 		forward: null,
 		reverse: null
 	},
+	platMove = 100,
 	currentPlaying = '',
 	previousCollisionId = '',
 	startLocation = {
@@ -67,85 +73,7 @@ var stage,
 	    y: 0,
 	    width: 50,
 	    height: stageHeight
-	}],
-	platforms = [
-		{
-			id: 'platform01',
-			x: 0,
-			y: stageHeight - 40,
-			width: 120,
-			height: 15
-		},
-		{
-			id: 'platform02',
-		    x: 80,
-		    y: stageHeight - 85,
-		    width: 100,
-		    height: 15
-		},
-		{
-			id: 'platform03',
-		    x: 160,
-		    y: stageHeight - 130,
-		    width: 80,
-		    height: 15
-		},
-		{
-			id: 'platform04',
-		    x: 240,
-		    y: stageHeight - 175,
-		    width: 80,
-		    height: 15
-		},
-		{
-			id: 'platform05',
-		    x: 370,
-		    y: stageHeight - 80,
-		    width: 80,
-		    height: 15
-		},
-		{
-			id: 'platform06',
-		    x: 440,
-		    y: stageHeight - 100,
-		    width: 40,
-		    height: 15
-		},
-		{
-			id: 'platform07',
-		    x: 500,
-		    y: stageHeight - 100,
-		    width: 40,
-		    height: 15
-		},
-		{
-			id: 'platform08',
-		    x: 560,
-		    y: stageHeight - 130,
-		    width: 40,
-		    height: 15
-		},
-		{
-			id: 'platform09',
-		    x: 620,
-		    y: stageHeight - 140,
-		    width: 40,
-		    height: 15
-		},
-		{
-			id: 'platform10',
-		    x: 680,
-		    y: stageHeight - 120,
-		    width: 40,
-		    height: 15
-		},
-		{
-			id: 'platform11',
-		    x: 750,
-		    y: stageHeight - 110,
-		    width: 40,
-		    height: 15
-		}];
+	}];
 	
 	
 function init() {
@@ -155,21 +83,24 @@ function init() {
 		height: stageHeight
 	});
 
+	backgroundHolder = new Kinetic.Layer();
+	addImageToLayer(backgroundHolder, hillsUrl, 0, stageHeight - 256, 2048, 256);
+	stage.add(backgroundHolder);
+	// createAnimations(backgroundHolder, backgroundAnimations, moveSpeed/2);
+	
 	wallHolder = new Kinetic.Layer();
 	addObjectsToLayer(wallHolder, walls);
 	stage.add(wallHolder);
 	
- 	platformHolder = new Kinetic.Layer();
-	addObjectsToLayer(platformHolder, platforms);
-	stage.add(platformHolder);
-	createPlatformAnimations(platformHolder);
-	
-	playerHolder = new Kinetic.Layer();
-	drawPlayer(playerHolder);
-	trace('post drawPlayer, playerHolder =');
-	trace(playerHolder);
+ 	playerHolder = new Kinetic.Layer();
+	addImageToLayer(playerHolder, kekeUrl, 0, 0, player.width, player.height);
 	stage.add(playerHolder);
 	playerHolder.setPosition(player.x, player.y);
+	
+	platformHolder = new Kinetic.Layer();
+	addObjectsToLayer(platformHolder, platforms);
+	stage.add(platformHolder);
+	// createAnimations(platformHolder, platformAnimations, moveSpeed);
 	
 	$(window).keydown(function(e) {
 		keydownHandler(e);
@@ -193,7 +124,7 @@ function update() {
     }
 	previousVelX = player.velX;
 	
-    if (keys[ControlKeys.RIGHT]) {
+    if (keys[ControlKeys.LEFT]) {
         // right arrow
         if (player.velX < player.speed) {
 			facingForward = true;
@@ -204,7 +135,7 @@ function update() {
 		// stopForwardAnimations();
 	}
 	
-	if (keys[ControlKeys.LEFT]) {         // left arrow         
+	if (keys[ControlKeys.RIGHT]) {         // left arrow         
 		if (player.velX > -player.speed) {
 			facingForward = false;
     		player.velX--;
@@ -215,7 +146,7 @@ function update() {
 	}
 
     player.grounded = false;
-	detectCollisions();
+//	detectCollisions();
 	
     if(player.grounded){
          player.velY = 0;
@@ -227,15 +158,20 @@ function update() {
 	
 	// trace('player.velX = ' + player.velX + ', velY = ' + player.velY + ', player.grounded = ' + player.grounded);
 
-	var landAnim = new Kinetic.Animation(function(frame) {
-		platformHolder.move(player.velX/100, 0);
+	var bgAnim = new Kinetic.Animation(function(frame) {
+		backgroundHolder.move(player.velX/bgMove, 0);
+	}, backgroundHolder);
+	bgAnim.start();
+
+	var platAnim = new Kinetic.Animation(function(frame) {
+		platformHolder.move(player.velX/platMove, 0);
 	}, platformHolder);
-	landAnim.start();
-	
-	var playerAnim = new Kinetic.Animation(function(frame) {
-		playerHolder.move(0, player.velY/100);
-	}, playerHolder);
-	playerAnim.start();
+	platAnim.start();
+
+	// var playerAnim = new Kinetic.Animation(function(frame) {
+	// 	playerHolder.move(0, player.velY/100);
+	// }, playerHolder);
+	// playerAnim.start();
 	
 	requestAnimFrame(update);
 }
@@ -278,7 +214,7 @@ function detectCollisions() {
 	col = collisionCheck(plyr, walls[0]); // check for ground collision
 	updateByCollision(col);
 	if(col.id === 'floor') {
-		trace('COLLIDED WITH FLOOR!');
+		// trace('COLLIDED WITH FLOOR!');
 	}
 	won = true;
 }
@@ -428,64 +364,57 @@ function handleJump() {
 	}, player.jumpTime);
 }
 
-function startForwardAnimations() {
-	platformAnimations.forward.start();
-	currentPlaying = 'forward';
-}
 
-function startReverseAnimations() {
-	platformAnimations.reverse.start();
-	currentPlaying = 'reverse';
-}
-
-function stopForwardAnimations() {
-	platformAnimations.forward.stop();
-	currentPlaying = '';
-}
-
-function stopReverseAnimations() {
-	platformAnimations.reverse.stop();
-	currentPlaying = '';
-}
-
-function createPlatformAnimations(layer) {
-	// var amplitude = 150;
-	//     // in ms
-	//     var period = 2000;
-    var velocity = moveSpeed;
-	var dist;
-	
-	platformAnimations.forward = new Kinetic.Animation(function(frame) {
-		dist = velocity * (frame.timeDiff / 1000);
-		layer.move(dist, 0);
-	}, layer);
-	platformAnimations.reverse = new Kinetic.Animation(function(frame) {
-		dist = -velocity * (frame.timeDiff / 1000);
-		layer.move(dist, 0);
-	}, layer);
-}
-
-function drawPlayer(layer) {
-
+function addImageToLayer(layer, imgUrl, x, y, w, h) {
     var imageObj = new Image();
     imageObj.onload = function() {
 		var playerImg = new Kinetic.Image({
-			x: 0,
-			y: 0,
+			x: x,
+			y: y,
 			image: imageObj,
-			width: player.width,
-			height: player.height
+			width: w,
+			height: h
 		});
 		layer.add(playerImg);
 		layer.draw(); // layer has to have draw called each time there is a change
 		trace('imageObj/onload');
     };
-    imageObj.src = kekeUrl;
-	trace('drawPlayer, imageObj =');
-	trace(imageObj);
+    imageObj.src = imgUrl;
+	
 }
 
 
 $(document).ready(function() {
 	init();
 });
+
+// collision algorithm: http://devmag.org.za/2009/04/13/basic-collision-detection-in-2d-part-1/
+
+// collision detection1 http://www.gamingthinktank.com/2013/07/11/collision-detection-using-bounding-rectangle-method-kineticjs-and-html5-canvas-tutorial/
+// collision detection2 http://stackoverflow.com/questions/14875119/html5-kineticjs-getintersection-function-implementation
+/*
+function checkCollide(pointX, pointY, objectx, objecty, objectw, objecth) { // pointX, pointY belong to one rectangle, while the object variables belong to another rectangle
+      var oTop = objecty;
+      var oLeft = objectx; 
+      var oRight = objectx+objectw;
+      var oBottom = objecty+objecth; 
+
+      if(pointX > oLeft && pointX < oRight){
+           if(pointY > oTop && pointY < oBottom ){
+                return 1;
+           }
+      }
+      else
+           return 0;
+ };
+
+var children = layer.getChildren();
+ for( var i=0; i<children.length; i++){  // for each single shape
+     for( var j=0; j<children.length; j++){ //check each other shape
+         if(i != j){ //skip if shape is the same
+            if(checkCollide(children[i].getX(), children[i].getY(), children[j].getX(), children[j].getY(), children[j].getWidth(), children[j].getHeight()))
+                alert('top left corner collided');
+         }
+     }
+ }
+*/
