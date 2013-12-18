@@ -15,6 +15,8 @@ var player,
 		reverse: null
 	},
 	platMove = 100,
+	splineHolder,
+	splineMove = 100,
 	currentPlaying = '',
 	previousCollisionId = '',
 	startLocation = {
@@ -85,22 +87,34 @@ function init() {
 
 	backgroundHolder = new Kinetic.Layer();
 	addImageToLayer(backgroundHolder, hillsUrl, 0, stageHeight - 256, 2048, 256);
-	stage.add(backgroundHolder);
-	// createAnimations(backgroundHolder, backgroundAnimations, moveSpeed/2);
 	
 	wallHolder = new Kinetic.Layer();
 	addObjectsToLayer(wallHolder, walls);
-	stage.add(wallHolder);
-	
- 	playerHolder = new Kinetic.Layer();
-	addImageToLayer(playerHolder, kekeUrl, 0, 0, player.width, player.height);
-	stage.add(playerHolder);
-	playerHolder.setPosition(player.x, player.y);
 	
 	platformHolder = new Kinetic.Layer();
 	addObjectsToLayer(platformHolder, platforms);
-	stage.add(platformHolder);
-	// createAnimations(platformHolder, platformAnimations, moveSpeed);
+	
+ 	playerHolder = new Kinetic.Layer();
+	addImageToLayer(playerHolder, kekeUrl, 0, 0, player.width, player.height);
+	playerHolder.setPosition(player.x, player.y);
+	
+	splineHolder = new Kinetic.Layer();
+	var spline = new Kinetic.Spline({
+	  x: 100,
+	  y: 50,
+	points: splinePoints,
+	  stroke: 'black',
+		fill: 'red',
+	  tension: 0.5
+	});
+	splineHolder.add(spline);
+	splineHolder.setPosition(0, 400);
+	
+	stage.add(backgroundHolder);
+	stage.add(wallHolder);
+	// stage.add(platformHolder);
+	stage.add(playerHolder);
+	stage.add(splineHolder);
 	
 	$(window).keydown(function(e) {
 		keydownHandler(e);
@@ -162,16 +176,21 @@ function update() {
 		backgroundHolder.move(player.velX/bgMove, 0);
 	}, backgroundHolder);
 	bgAnim.start();
+	
+	// var platAnim = new Kinetic.Animation(function(frame) {
+	// 	platformHolder.move(player.velX/platMove, 0);
+	// }, platformHolder);
+	// platAnim.start();
 
-	var platAnim = new Kinetic.Animation(function(frame) {
-		platformHolder.move(player.velX/platMove, 0);
-	}, platformHolder);
-	platAnim.start();
-
-	// var playerAnim = new Kinetic.Animation(function(frame) {
-	// 	playerHolder.move(0, player.velY/100);
-	// }, playerHolder);
-	// playerAnim.start();
+	var splineAnim = new Kinetic.Animation(function(frame) {
+		splineHolder.move(player.velX/splineMove, 0);
+	}, splineHolder);
+	splineAnim.start();
+	
+	var playerAnim = new Kinetic.Animation(function(frame) {
+		playerHolder.move(0, player.velY/100);
+	}, playerHolder);
+	playerAnim.start();
 	
 	requestAnimFrame(update);
 }
