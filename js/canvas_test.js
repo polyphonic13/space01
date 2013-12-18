@@ -3,12 +3,23 @@
     window.requestAnimationFrame = requestAnimationFrame;
 })();
 
+var controls = {
+	LEFT: 37,
+	RIGHT: 39,
+	UP: 38,
+	DOWN: 40,
+	SPACE: 32,
+	RESET: 82 // restart
+};
+
 var directions = {
 	LEFT: 'l',
 	RIGHT: 'r',
 	TOP: 't',
 	BOTTOM: 'b'
 };
+
+var JUMP_DELAY_AMOUNT = 5; // five updates must past before next jump; eliminates hold of up/space key to continually jump.
 
 var canvas = document.getElementById('canvas'),
 	messagesDiv = document.getElementById('messages'),
@@ -24,7 +35,7 @@ var canvas = document.getElementById('canvas'),
         x: startLocation.x,
         y: startLocation.y,
         width: 5,
-        height: 5,
+        height: 15,
         speed: 2.5,
         velX: 0,
         velY: 0,
@@ -34,9 +45,22 @@ var canvas = document.getElementById('canvas'),
     keys = [],
     friction = .5,
     gravity = 0.25,
-	playing = true;
+	jumpDelay = 0,
+	jumpKeyDepressed = false,
+	playing = true,
+	won = false;
+
+_initGame(); 
 
 var boxes = [
+	// floor
+	{
+		id: 'floor',
+	    x: 0,
+	    y: height - 10,
+	    width: width,
+	    height: 50
+	},
 	// left wall
 	{
 		id: 'leftWall',
@@ -44,14 +68,6 @@ var boxes = [
 	    y: 0,
 	    width: 10,
 	    height: height
-	},
-	// floor
-	{
-		id: 'floor',
-	    x: 0,
-	    y: height - 2,
-	    width: width,
-	    height: 50
 	},
 	// right wall
 	{
@@ -66,78 +82,78 @@ var boxes = [
 		id: 'platform01',
 		x: 0,
 		y: height - 40,
-		width: 80,
-		height: 40
+		width: 120,
+		height: 15
 	},
 	{
 		id: 'platform02',
 	    x: 80,
 	    y: height - 80,
-	    width: 80,
-	    height: 40
+	    width: 100,
+	    height: 15
 	},
 	{
 		id: 'platform03',
 	    x: 160,
 	    y: height - 120,
 	    width: 80,
-	    height: 40
+	    height: 15
 	},
 	{
 		id: 'platform04',
 	    x: 240,
 	    y: height - 160,
 	    width: 80,
-	    height: 40
+	    height: 15
 	},
 	{
 		id: 'platform05',
 	    x: 340,
 	    y: height - 80,
 	    width: 80,
-	    height: 40
+	    height: 15
 	},
 	{
 		id: 'platform06',
 	    x: 440,
 	    y: height - 100,
 	    width: 40,
-	    height: 40
+	    height: 15
 	},
 	{
 		id: 'platform07',
 	    x: 500,
 	    y: height - 100,
 	    width: 40,
-	    height: 40
+	    height: 15
 	},
 	{
 		id: 'platform08',
 	    x: 560,
 	    y: height - 130,
 	    width: 40,
-	    height: 40
+	    height: 15
 	},
 	{
 		id: 'platform09',
 	    x: 620,
 	    y: height - 140,
 	    width: 40,
-	    height: 40
+	    height: 15
 	},
 	{
 		id: 'platform10',
 	    x: 680,
 	    y: height - 120,
 	    width: 40,
-	    height: 40
+	    height: 15
 	},
 	{
 		id: 'platform11',
 	    x: 750,
 	    y: height - 110,
 	    width: 40,
-	    height: 40
+	    height: 15
 	}];
 
 canvas.width = width;
@@ -145,53 +161,48 @@ canvas.height = height;
 
 function update() {
     // check keys
-    if (keys[38] || keys[32]) {
+    if (keys[controls.UP] || keys[controls.SPACE]) {
         // up arrow or space
-        if (!player.jumping && player.grounded) {
+        if (!player.jumping && player.grounded && !jumpKeyDepressed) {
             player.jumping = true;
             player.grounded = false;
+			jumpKeyDepressed = true;
             player.velY = -player.speed * 2;
         }
     }
-    if (keys[39]) {
+    if (keys[controls.RIGHT]) {
         // right arrow
         if (player.velX < player.speed) {
 			player.velX++;
 		}
 	}
-	if (keys[37]) {         // left arrow         
+	if (keys[controls.LEFT]) {         // left arrow         
 		if (player.velX > -player.speed) {
     		player.velX--;
         }
     }
 
-	if(keys[82]) { // reset 
-		player.x = startLocation.x;
-        player.y = startLocation.y;
-	}
-
     player.velX *= friction;
     player.velY += gravity;
 
-    ctx.clearRect(0, 0, width, height);
-    ctx.fillStyle = 'black';
-    ctx.beginPath();
-
     player.grounded = false;
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.beginPath();
+	ctx.fillStyle = 'black';
+
     for (var i = 0; i < boxes.length; i++) {
+
         ctx.rect(boxes[i].x, boxes[i].y, boxes[i].width, boxes[i].height);
 
         var col = collisionCheck(player, boxes[i]);
-		if(col.id !== previousCollisionId) {
-			// console.log('post collision check, dir = ' + col.direction + ', id = ' + col.id);
-		}
+
         if (col.direction === directions.LEFT || col.direction === directions.RIGHT) {
+            player.velX = 0;
+            player.jumping = false;
 			if(col.id === 'rightWall') {
 				playing = false;
 				_wonGame();
-			} else {
-	            player.velX = 0;
-	            player.jumping = false;
 			}
         } else if (col.direction === directions.BOTTOM) {
             player.grounded = true;
@@ -214,7 +225,7 @@ function update() {
     player.y += player.velY;
 
     ctx.fill();
-    ctx.fillStyle = 'red';
+    ctx.fillStyle = 'aqua';
     ctx.fillRect(player.x, player.y, player.width, player.height);
 
 	if(playing) {
@@ -265,22 +276,49 @@ function collisionCheck(shapeA, shapeB) {
 
 function _death() {
 	console.log('died');
-	messages.html = '<p>YOU DIED, PRESS [R] TO TRY AGAIN</p>';
+	messagesDiv.innerHTML = '<p>GAME OVER! Press [r] to restart.</p>';
 }
 
 function _wonGame() {
 	console.log('won');
-	messages.html = '<p>CONGRATULATIONS! YOU WIN</p>';
+	messagesDiv.innerHTML = '<p>CONGRATULATIONS! You won. Press [r] to restart.</p>';
 }
 
+function _initGame() {
+	for(var key in keys) {
+		keys[key] = false;
+	}
+	messagesDiv.innerHTML = "Try to get to the other side without falling. Controls: arrow keys to move, and space to jump.";
+	playing = true;
+	won = false;
+	player.jumping = false;
+	player.grounded = false;
+	player.x = startLocation.x;
+	player.y = startLocation.y;
+}
+
+function _restartGame() {
+	_initGame();
+    requestAnimationFrame(update);
+}
 
 document.body.addEventListener('keydown', function (e) {
-//	console.log('keydown key code = ' + e.keyCode);
-    keys[e.keyCode] = true;
+	// console.log('keydown key code = ' + e.keyCode);
+	if(playing) {
+	    keys[e.keyCode] = true;
+	} else if(e.keyCode === controls.RESET) {
+		_restartGame();
+	}
 });
 
 document.body.addEventListener('keyup', function (e) {
-    keys[e.keyCode] = false;
+	if(playing) {
+		if(e.keyCode === controls.SPACE || e.keyCode === controls.UP) {
+			jumpKeyDepressed = false;
+		}
+	    keys[e.keyCode] = false;
+	}
+
 });
 
 window.addEventListener('load', function () {
