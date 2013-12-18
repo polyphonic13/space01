@@ -1,6 +1,12 @@
 var stage,
 	player,
+	wallHolder,
 	platformHolder,
+	platformAnimations = {
+		forward: null,
+		reverse: null
+	},
+	currentPlaying = '',
 	controls = {
 		LEFT: 37,
 		RIGHT: 39,
@@ -15,7 +21,6 @@ var stage,
 		TOP: 't',
 		BOTTOM: 'b'
 	},
-	canvas = $("#canvas")[0],
 	messageDiv = $("#message"),
 	kekeUrl = 'assets/images/keke_tiny.png',
 	kekeReverseUrl = "assets/images/keke_tiny_back.png",
@@ -43,6 +48,7 @@ var stage,
     },
 	playerHolder,
     keys = [],
+	moveSpeed = 20,
     friction = .5,
     gravity = 0.2,
 	previousVelX = 0;
@@ -50,34 +56,32 @@ var stage,
 	facingForward = true,
 	playing = true,
 	won = false,
+	walls = [{
+		id: 'floor',
+	    x: 0,
+	    y: stageHeight - 10,
+	    width: stageWidth,
+	    height: 50,
+		stroke: 'orange',
+		fill: 'red'
+	},
+	// left wall
+	{
+		id: 'leftWall',
+	    x: 0,
+	    y: 0,
+	    width: 10,
+	    height: stageHeight
+	},
+	// right wall
+	{
+		id: 'rightWall',
+	    x: stageWidth - 10,
+	    y: 0,
+	    width: 50,
+	    height: stageHeight
+	}],
 	platforms = [
-		// floor
-		{
-			id: 'floor',
-		    x: 0,
-		    y: stageHeight - 10,
-		    width: stageWidth,
-		    height: 50,
-			stroke: 'orange',
-			fill: 'red'
-		},
-		// left wall
-		{
-			id: 'leftWall',
-		    x: 0,
-		    y: 0,
-		    width: 10,
-		    height: stageHeight
-		},
-		// right wall
-		{
-			id: 'rightWall',
-		    x: stageWidth - 10,
-		    y: 0,
-		    width: 50,
-		    height: stageHeight
-		},
-		// platforms
 		{
 			id: 'platform01',
 			x: 0,
@@ -163,58 +167,107 @@ function init() {
 		width: stageWidth,
 		height: stageHeight
 	});
-/*
-    var layer = new Kinetic.Layer();
+
+	wallHolder = new Kinetic.Layer();
+	addObjectsToLayer(wallHolder, walls);
+	stage.add(wallHolder);
 	
-    var rect = new Kinetic.Rect({
-      x: player.x,
-      y: player.y,
-      width: player.width,
-      height: player.height,
-      fill: 'green',
-      stroke: 'black',
-      strokeWidth: 0
-    });
-
-    layer.add(rect);
-    stage.add(layer);
-*/
  	platformHolder = new Kinetic.Layer();
-	drawPlatforms(platformHolder);
+	addObjectsToLayer(platformHolder, platforms);
 	stage.add(platformHolder);
-
+	createPlatformAnimations(platformHolder);
+	
 	playerHolder = new Kinetic.Layer();
 	drawPlayer(playerHolder);
 	console.log('post drawPlayer, playerHolder =');
 	console.log(playerHolder);
 	stage.add(playerHolder);
+	
+	var topLayer = $('#container');
+	$(window).keydown(function(e) {
+		keydownHandler(e);
+	});
+	$(window).keyup(function(e) {
+		keyupHandler(e);
+	});
+	stage.on("keydown", function(e) {
+		console.log('keydown event, key = ' + e.keycode);
+	});
+	stage.on("keyup", function(e) {
+		console.log('keyup event, key = ' + e.keycode);
+	});
+	stage.on("mouseover", function(e) {
+		console.log('mouseover event');
+	});
 }
 
-function drawPlatforms(layer) {
+function addObjectsToLayer(layer, objects) {
 	var fill;
 	var stroke;
-	for(var i = 0; i < platforms.length; i++) {
-		if(platforms[i].fill) {
-			fill = platforms[i].fill;
+	for(var i = 0; i < objects.length; i++) {
+		if(objects[i].fill) {
+			fill = objects[i].fill;
 		} else {
 			fill = 'black';
 		}
-		if(platforms[i].stroke) {
-			stroke = platforms[i].stroke;
+		if(objects[i].stroke) {
+			stroke = objects[i].stroke;
 		} else {
 			stroke = 'black';
 		}
 		var rect = new Kinetic.Rect({
-			x: platforms[i].x,
-			y: platforms[i].y,
-			width: platforms[i].width,
-			height: platforms[i].height,
+			x: objects[i].x,
+			y: objects[i].y,
+			width: objects[i].width,
+			height: objects[i].height,
 			fill: fill,
 			stroke: stroke,
 			strokeWidth: 1
 		});
 		layer.add(rect);
 	}
+}
+
+function keydownHandler(e) {
+	switch(e.which) {
+		case controls.LEFT:
+			platformAnimations.forward.start();
+			currentPlaying = 'forward';
+		break;
+		
+		case controls.RIGHT:
+			platformAnimations.reverse.start();
+			currentPlaying = 'reverse';
+		break;
+		
+		default: 
+		break;
+	}
+}
+
+function keyupHandler(e) {
+	if(currentPlaying === 'forward') {
+		platformAnimations.forward.stop();
+	} else if(currentPlaying === 'reverse') {
+		platformAnimations.reverse.stop();
+	}
+}
+
+function createPlatformAnimations(layer) {
+	// var amplitude = 150;
+	//     // in ms
+	//     var period = 2000;
+    var velocity = moveSpeed;
+	var dist;
+	
+	platformAnimations.forward = new Kinetic.Animation(function(frame) {
+		dist = velocity * (frame.timeDiff / 1000);
+		layer.move(dist, 0);
+	}, layer);
+	platformAnimations.reverse = new Kinetic.Animation(function(frame) {
+		dist = -velocity * (frame.timeDiff / 1000);
+		layer.move(dist, 0);
+	}, layer);
 }
 
 function drawPlayer(layer) {
@@ -236,6 +289,8 @@ function drawPlayer(layer) {
 	console.log('drawPlayer, imageObj =');
 	console.log(imageObj);
 }
+
+
 $(document).ready(function() {
 	init();
 });
