@@ -12,9 +12,15 @@ var player,
 		startY: stageHeight - 325,
 		width: 2048,
 		height: 256,
-		speed: 250
+		// speed: 250
+		speed: 0.5
 	},
 	foregroundHolder,
+	foreground = {
+		startX: 0,
+		startY: stageHeight - 300,
+		speed: 1.5
+	},
 	platformHolder,
 	platformAnimations = {
 		forward: null,
@@ -165,33 +171,36 @@ function update() {
 	var bgPosition = backgroundHolder.getPosition();
 	var minX = -(background.startX);
 	if(bgPosition.x < minX) {
+		/*
 		var bgAnim = new Kinetic.Animation(function(frame) {
 			backgroundHolder.move(player.velX/background.speed, 0);
 		}, backgroundHolder);
 		bgAnim.start();
+		*/
+		animateLayer(backgroundHolder, player.velX * background.speed, 0);
 	}
-	// trace('bgPosiiton.x = ' + bgPosition.x + ', minX = ' + minX);
-	// var platAnim = new Kinetic.Animation(function(frame) {
-	// 	platformHolder.move(player.velX/platMove, 0);
-	// }, platformHolder);
-	// platAnim.start();
 
-	var splineAnim = new Kinetic.Animation(function(frame) {
-		splineHolder.move(player.velX/splineMove, 0);
-	}, splineHolder);
-	splineAnim.start();
+	// var splineAnim = new Kinetic.Animation(function(frame) {
+	// 	splineHolder.move(player.velX/splineMove, 0);
+	// }, splineHolder);
+	// splineAnim.start();
+	animateLayer(splineHolder, player.velX * foreground.speed, 0);
+	
+	// console.log(splineHolder.getPosition());
 	
 	// trace('player.velY = ' + player.velY);
 	var playerAnim = new Kinetic.Animation(function(frame) {
 		playerHolder.move(0, player.velY/100);
 	}, playerHolder);
 	playerAnim.start();
+
+	stage.draw();
 	
 	requestAnimFrame(update);
 }
 
 function animateLayer(layer, newX, newY) {
-	
+	layer.move(newX, newY);
 }
 
 function detectCollisions() {
