@@ -24,11 +24,11 @@ var player,
 	foregroundHolder,
 	foreground = {
 		images: [{
-			url: 'assets/images/tree01.png',
+			url: 'assets/images/trees_fore01.png',
 			x: 500,
-			y: -75,
-			width: 256,
-			height: 512
+			y: 20,
+			width: 1024,
+			height: 407
 		}],
 		startX: 0,
 		startY: stageConfig.height - 300,
@@ -56,7 +56,7 @@ var player,
         jumping: false,
         grounded: true
     },
-	kekeUrl = 'assets/images/keke.png',
+	kekeUrl = 'assets/images/keke_tiny.png',
 	kekeReverseUrl = "assets/images/keke_tiny_reverse.png",
 	kekeW = 20,
 	kekeH = 55,
@@ -89,29 +89,11 @@ function init() {
 	backgroundHolder2 = new Kinetic.Layer();
 	addImageToLayer(backgroundHolder2, background2.imgUrl, background2.startX, background2.startY, background2.width, background2.height);
 	
-	
-	// platformHolder = new Kinetic.Layer();
-	// addObjectsToLayer(platformHolder, platforms);
-	
  	playerHolder = new Kinetic.Layer();
 	addImageToLayer(playerHolder, kekeUrl, 0, 0, player.width, player.height);
 	// addImageToLayer(playerHolder, kekeReverseUrl, 0, 0, player.width, player.height);
 	
 	playerHolder.setPosition(player.x, player.y);
-	
-	/*
-	splineHolder = new Kinetic.Layer();
-	var spline = new Kinetic.Spline({
-	  x: 100,
-	  y: 50,
-	points: splinePoints,
-	  stroke: 'gray',
-		fill: 'red',
-	  tension: 0.5
-	});
-	splineHolder.add(spline);
-	splineHolder.setPosition(0, 400);
-	*/
 	
 	foregroundHolder = new Kinetic.Layer(); 
 	addImagesToLayer(foregroundHolder, foreground.images);
@@ -122,10 +104,8 @@ function init() {
 	stage.add(backgroundHolder1);
 	stage.add(backgroundHolder2);
 	stage.add(wallHolder);
-	// stage.add(platformHolder);
-	stage.add(playerHolder);
-	// stage.add(splineHolder);
 	stage.add(foregroundHolder);
+	stage.add(playerHolder);
 	
 	$(window).keydown(function(e) {
 		keydownHandler(e);
