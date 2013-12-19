@@ -121,3 +121,5 @@ var config = {
    friction: 0.5,
     gravity: 0.2
 };
+
+// pine: http://stackoverflow.com/questions/4511632/pseudo-code-for-pine-tree-point-per-point-generation-2d
