@@ -5,17 +5,17 @@ var player,
 	background1 = {
 		imgUrl: 'assets/images/hills01_grey.png',
 		startX: -200,
-		startY: stageConfig.height - 380,
+		startY: stageConfig.height - 330,
 		width: 2048,
 		height: 256,
 		// speed: 250
-		speed: 0.15
+		speed: 0.1
 	},
 	backgroundHolder2,
 	background2 = {
 		imgUrl: 'assets/images/hills02_grey.png',
 		startX: -200,
-		startY: stageConfig.height - 300,
+		startY: stageConfig.height - 320,
 		width: 2048,
 		height: 256,
 		// speed: 250
@@ -32,7 +32,7 @@ var player,
 		}],
 		startX: 0,
 		startY: stageConfig.height - 300,
-		speed: 1.5
+		speed: 2
 	},
 	platformHolder,
 	splineHolder,
