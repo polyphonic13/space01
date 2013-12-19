@@ -3,17 +3,17 @@ var player,
 	wallHolder,
 	backgroundHolder1,
 	background1 = {
-		imgUrl: 'assets/images/hills01_grey.png',
+		imgUrl: 'assets/images/hills04_grey.png',
 		startX: -200,
-		startY: stageConfig.height - 330,
+		startY: 0,
 		width: 2048,
-		height: 256,
+		height: 500,
 		// speed: 250
 		speed: 0.1
 	},
 	backgroundHolder2,
 	background2 = {
-		imgUrl: 'assets/images/hills02_grey.png',
+		imgUrl: 'assets/images/hills03_grey.png',
 		startX: -200,
 		startY: stageConfig.height - 320,
 		width: 2048,
@@ -32,7 +32,7 @@ var player,
 		}],
 		startX: 0,
 		startY: stageConfig.height - 300,
-		speed: 2
+		speed: 3
 	},
 	platformHolder,
 	splineHolder,
@@ -56,7 +56,7 @@ var player,
         jumping: false,
         grounded: true
     },
-	kekeUrl = 'assets/images/keke_tiny.png',
+	kekeUrl = 'assets/images/keke.png',
 	kekeReverseUrl = "assets/images/keke_tiny_reverse.png",
 	kekeW = 20,
 	kekeH = 55,
@@ -81,21 +81,7 @@ function init() {
 	});
 
 	var stageBgLayer = new Kinetic.Layer();
-	var stageBg = new Kinetic.Rect({
-		x: stageConfig.x,
-		y: stageConfig.h,
-		width: stageConfig.width,
-		height: stageConfig.height,
-		fillRGB: stageConfig.color
-	});
-	stageBgLayer.add(stageBg);
-	
-	var moonFilter = {
-        filter: Kinetic.Filters.Blur,
-        filterRadius: 100
-	}
 	addImageToLayer(stageBgLayer, 'assets/images/night_sky.png', 0, 0, stageConfig.width, stageConfig.height, 1);
-
 	stage.add(stageBgLayer);
 
 	backgroundHolder1 = new Kinetic.Layer();
@@ -109,7 +95,7 @@ function init() {
 	
  	playerHolder = new Kinetic.Layer();
 	addImageToLayer(playerHolder, kekeUrl, 0, 0, player.width, player.height);
-	addImageToLayer(playerHolder, kekeReverseUrl, 0, 0, player.width, player.height);
+	// addImageToLayer(playerHolder, kekeReverseUrl, 0, 0, player.width, player.height);
 	
 	playerHolder.setPosition(player.x, player.y);
 	
