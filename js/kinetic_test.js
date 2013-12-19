@@ -7,7 +7,13 @@ var player,
 		forward: null,
 		reverse: null
 	},
-	bgMove = 250,
+	background = {
+		startX: -200,
+		startY: stageHeight - 325,
+		width: 2048,
+		height: 256,
+		speed: 250
+	},
 	foregroundHolder,
 	platformHolder,
 	platformAnimations = {
@@ -21,7 +27,7 @@ var player,
 	previousCollisionId = '',
 	startLocation = {
 		x: stageWidth/2,
-		y: stageHeight - 200
+		y: stageHeight - 130
 	},
 	playerHolder,
     player = {
@@ -42,7 +48,7 @@ var player,
 	kekeH = 55,
 	keke,
 	kekeReverse,
-    keys = [],
+    keys = {},
 	moveSpeed = 50,
     friction = .5,
     gravity = 0.2,
@@ -60,8 +66,23 @@ function init() {
 		height: stageHeight
 	});
 
+	var stageBgLayer = new Kinetic.Layer();
+	var stageBg = new Kinetic.Rect({
+		x: 0,
+		y: 0,
+		width: stageWidth,
+		height: stageHeight,
+		fillRGB: {
+			r: 184,
+			g: 182,
+			b: 180
+		}
+	});
+	stageBgLayer.add(stageBg);
+	stage.add(stageBgLayer);
+	
 	backgroundHolder = new Kinetic.Layer();
-	addImageToLayer(backgroundHolder, hillsUrl, 0, stageHeight - 325, 2048, 256);
+	addImageToLayer(backgroundHolder, hillsUrl, background.startX, background.startY, background.width, background.height);
 	
 	wallHolder = new Kinetic.Layer();
 	addObjectsToLayer(wallHolder, walls);
@@ -109,7 +130,9 @@ function update() {
             player.grounded = false;
 			jumpKeyDepressed = true;
             player.velY = -player.speed * 2;
-        }
+			trace('passed jump conditional, velY = ' + player.velY);
+ 
+       }
     }
 	previousVelX = player.velX;
 	
@@ -134,24 +157,28 @@ function update() {
 		// stopReverseAnimations();
 	}
 
+	//     if(player.grounded){
+	//          player.velY = 0;
+	//     } else {
+	    // player.velY += gravity;
+	// }
+    player.velX *= friction;
+    player.velY += gravity;
+	
     player.grounded = false;
+
 	detectCollisions();
 	
-    if(player.grounded){
-         player.velY = 0;
-    } else {
-	    player.velY += gravity;
-	}
-
-    player.velX *= friction;
-	
 	// trace('player.velX = ' + player.velX + ', velY = ' + player.velY + ', player.grounded = ' + player.grounded);
-
-	var bgAnim = new Kinetic.Animation(function(frame) {
-		backgroundHolder.move(player.velX/bgMove, 0);
-	}, backgroundHolder);
-	bgAnim.start();
-	
+	var bgPosition = backgroundHolder.getPosition();
+	var minX = -(background.startX);
+	if(bgPosition.x < minX) {
+		var bgAnim = new Kinetic.Animation(function(frame) {
+			backgroundHolder.move(player.velX/background.speed, 0);
+		}, backgroundHolder);
+		bgAnim.start();
+	}
+	// trace('bgPosiiton.x = ' + bgPosition.x + ', minX = ' + minX);
 	// var platAnim = new Kinetic.Animation(function(frame) {
 	// 	platformHolder.move(player.velX/platMove, 0);
 	// }, platformHolder);
@@ -162,6 +189,7 @@ function update() {
 	}, splineHolder);
 	splineAnim.start();
 	
+	// trace('player.velY = ' + player.velY);
 	var playerAnim = new Kinetic.Animation(function(frame) {
 		playerHolder.move(0, player.velY/100);
 	}, playerHolder);
@@ -171,13 +199,7 @@ function update() {
 }
 
 function detectCollisions() {
-	// trace('platformHolder.x = ' + platformHolder.attrs.x);
-	// trace('platformHolder.getAbsolutePosition = ');
-	// trace(platformHolder.getAbsolutePosition());
-	// var holderPos = platformHolder.getAbsolutePosition()
-	// var holderX = platformHolder.attrs.x;
-	// var holderY = platformHolder.attrs.y;
-	// var plat;
+
 	var playerPos = playerHolder.getAbsolutePosition();
 	var plyr = {
 		x: playerPos.x,
@@ -186,46 +208,28 @@ function detectCollisions() {
 		height: player.height
 	};
 	var col;
-	/*
-	for(var i = 0; i < platforms.length; i++) {
-		plat = platforms[i];
-		plat.x += holderPos.x; // adjust x of current platform by holder's x offset
-		plat.y += holderPos.y; // adjust y of current platform by holder's y offset
 
-		col = collisionCheck(plyr, plat);
-		if(!won) {
-			trace('col =');
-			trace(col);
-			trace('plat = ');
-			trace(plat);
-			trace('plyr = ');
-			trace(plyr);
-			// trace('playerHolder = ');
-			// trace(playerHolder);
-		}
-		updateByCollision(col);
-	}
-	*/
 	col = collisionCheck(plyr, walls[0]); // check for ground collision
 	updateByCollision(col);
-	if(col.id === 'floor') {
-		// trace('COLLIDED WITH FLOOR!');
-	}
-	won = true;
+
 }
 
 function updateByCollision(col) {
+	// trace('updateByCollision, direction = ' + col.direction);
     if (col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
         player.velX = 0;
         player.jumping = false;
 	} else if (col.direction === Directions.BOTTOM) {
         player.grounded = true;
         player.jumping = false;
-		player.velY = 0;
 	} else if (col.direction === Directions.TOP) {
         player.velY *= -1;
     }
 	previousCollisionId = col.id;
+
+    if(player.grounded){
+         player.velY = 0;
+    }
 }
 
 function collisionCheck(shapeA, shapeB) {
@@ -266,10 +270,6 @@ function collisionCheck(shapeA, shapeB) {
             }
         }
     }
-	if(!won) {
-		trace('collisionCheck\n\tshapeA = x/y: ' + shapeA.x + '/' + shapeA.y + ', w/h: ' + shapeA.width + '/' + shapeA.height + '\n\tshapeB = x/y: ' + shapeB.x + '/' + shapeB.y + ', w/h: ' + shapeB.width + '/' + shapeB.height);
-		trace('\tvX = ' + vX + ', vY = ' + vY + '\n\toX = ' + oX + ', oY = ' + oY + '\n\thWidths = ' + hWidths + ', hHeights = ' + hHeights);
-	}
     return collision;
 }
 
@@ -300,10 +300,28 @@ function addObjectsToLayer(layer, objects) {
 	}
 }
 
+function addImageToLayer(layer, imgUrl, x, y, w, h) {
+    var imageObj = new Image();
+    imageObj.onload = function() {
+		var playerImg = new Kinetic.Image({
+			x: x,
+			y: y,
+			image: imageObj,
+			width: w,
+			height: h
+		});
+		layer.add(playerImg);
+		layer.draw(); // layer has to have draw called each time there is a change
+		trace('imageObj/onload');
+    };
+    imageObj.src = imgUrl;
+	
+}
+
 function keydownHandler(e) {
 	switch(e.which) {
 		case ControlKeys.UP:
-		keys[ControlKeys.UPs] = true;
+		keys[ControlKeys.UP] = true;
 		// handleJump();
 		break;
 
@@ -343,41 +361,6 @@ function keyupHandler(e) {
 	}
 }
 
-function handleJump() {
-    player.jumping = true;
-    player.grounded = false;
-	jumpKeyDepressed = true;
-	
-	player.velY = -player.speed * 2;
-	trace('player velY = ' + player.velY);
-	var jump = new Kinetic.Animation(function(frame) {
-		playerHolder.move(0, player.velY);
-	}, playerHolder);
-
-	jump.start();
-	setTimeout(function() {
-		jump.stop();
-	}, player.jumpTime);
-}
-
-
-function addImageToLayer(layer, imgUrl, x, y, w, h) {
-    var imageObj = new Image();
-    imageObj.onload = function() {
-		var playerImg = new Kinetic.Image({
-			x: x,
-			y: y,
-			image: imageObj,
-			width: w,
-			height: h
-		});
-		layer.add(playerImg);
-		layer.draw(); // layer has to have draw called each time there is a change
-		trace('imageObj/onload');
-    };
-    imageObj.src = imgUrl;
-	
-}
 
 
 $(document).ready(function() {
