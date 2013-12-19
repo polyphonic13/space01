@@ -1,39 +1,47 @@
 
 var player,
 	wallHolder,
-	backgroundHolder,
-	hillsUrl = 'assets/images/hills01_black.png',
-	backgroundAnimations = {
-		forward: null,
-		reverse: null
-	},
-	background = {
+	backgroundHolder1,
+	background1 = {
+		imgUrl: 'assets/images/hills01_grey.png',
 		startX: -200,
-		startY: stageHeight - 325,
+		startY: stageConfig.height - 380,
 		width: 2048,
 		height: 256,
 		// speed: 250
-		speed: 0.5
+		speed: 0.15
+	},
+	backgroundHolder2,
+	background2 = {
+		imgUrl: 'assets/images/hills02_grey.png',
+		startX: -200,
+		startY: stageConfig.height - 300,
+		width: 2048,
+		height: 256,
+		// speed: 250
+		speed: 0.3
 	},
 	foregroundHolder,
 	foreground = {
+		images: [{
+			url: 'assets/images/tree01.png',
+			x: 500,
+			y: -75,
+			width: 256,
+			height: 512
+		}],
 		startX: 0,
-		startY: stageHeight - 300,
+		startY: stageConfig.height - 300,
 		speed: 1.5
 	},
 	platformHolder,
-	platformAnimations = {
-		forward: null,
-		reverse: null
-	},
-	platMove = 100,
 	splineHolder,
 	splineMove = 100,
 	currentPlaying = '',
 	previousCollisionId = '',
 	startLocation = {
-		x: stageWidth/2,
-		y: stageHeight - 130
+		x: stageConfig.width/2,
+		y: stageConfig.height - 130
 	},
 	playerHolder,
     player = {
@@ -49,7 +57,7 @@ var player,
         grounded: true
     },
 	kekeUrl = 'assets/images/keke_tiny.png',
-	kekeReverseUrl = "assets/images/keke_tiny_back.png",
+	kekeReverseUrl = "assets/images/keke_tiny_reverse.png",
 	kekeW = 20,
 	kekeH = 55,
 	keke,
@@ -68,38 +76,44 @@ var player,
 function init() {
 	stage = new Kinetic.Stage({
 		container: 'container',
-		width: stageWidth,
-		height: stageHeight
+		width: stageConfig.width,
+		height: stageConfig.height
 	});
 
 	var stageBgLayer = new Kinetic.Layer();
 	var stageBg = new Kinetic.Rect({
-		x: 0,
-		y: 0,
-		width: stageWidth,
-		height: stageHeight,
-		fillRGB: {
-			r: 184,
-			g: 182,
-			b: 180
-		}
+		x: stageConfig.x,
+		y: stageConfig.h,
+		width: stageConfig.width,
+		height: stageConfig.height,
+		fillRGB: stageConfig.color
 	});
 	stageBgLayer.add(stageBg);
+	
+	var moonFilter = {
+        filter: Kinetic.Filters.Blur,
+        filterRadius: 100
+	}
+	addImageToLayer(stageBgLayer, 'assets/images/night_sky.png', 0, 0, stageConfig.width, stageConfig.height, 1);
+
 	stage.add(stageBgLayer);
+
+	backgroundHolder1 = new Kinetic.Layer();
+	addImageToLayer(backgroundHolder1, background1.imgUrl, background1.startX, background1.startY, background1.width, background1.height);
+	backgroundHolder2 = new Kinetic.Layer();
+	addImageToLayer(backgroundHolder2, background2.imgUrl, background2.startX, background2.startY, background2.width, background2.height);
 	
-	backgroundHolder = new Kinetic.Layer();
-	addImageToLayer(backgroundHolder, hillsUrl, background.startX, background.startY, background.width, background.height);
-	
-	wallHolder = new Kinetic.Layer();
-	addObjectsToLayer(wallHolder, walls);
 	
 	// platformHolder = new Kinetic.Layer();
 	// addObjectsToLayer(platformHolder, platforms);
 	
  	playerHolder = new Kinetic.Layer();
 	addImageToLayer(playerHolder, kekeUrl, 0, 0, player.width, player.height);
+	addImageToLayer(playerHolder, kekeReverseUrl, 0, 0, player.width, player.height);
+	
 	playerHolder.setPosition(player.x, player.y);
 	
+	/*
 	splineHolder = new Kinetic.Layer();
 	var spline = new Kinetic.Spline({
 	  x: 100,
@@ -111,12 +125,21 @@ function init() {
 	});
 	splineHolder.add(spline);
 	splineHolder.setPosition(0, 400);
+	*/
 	
-	stage.add(backgroundHolder);
+	foregroundHolder = new Kinetic.Layer(); 
+	addImagesToLayer(foregroundHolder, foreground.images);
+	
+	wallHolder = new Kinetic.Layer();
+	addObjectsToLayer(wallHolder, walls);
+
+	stage.add(backgroundHolder1);
+	stage.add(backgroundHolder2);
 	stage.add(wallHolder);
 	// stage.add(platformHolder);
 	stage.add(playerHolder);
-	stage.add(splineHolder);
+	// stage.add(splineHolder);
+	stage.add(foregroundHolder);
 	
 	$(window).keydown(function(e) {
 		keydownHandler(e);
@@ -129,6 +152,32 @@ function init() {
 
 function update() {
 	// trace('update');
+	
+	checkKeyInput();
+	
+    player.velX *= friction;
+    player.velY += gravity;
+	
+    // player.grounded = false;
+
+	player.x += player.velX;
+	player.y += player.velY;
+	
+	detectCollisions();
+	
+	animateLayers();
+	
+	var playerAnim = new Kinetic.Animation(function(frame) {
+		playerHolder.move(0, player.velY/100);
+	}, playerHolder);
+	playerAnim.start();
+
+	stage.draw();
+	
+	requestAnimFrame(update);
+}
+
+function checkKeyInput() {
     if (keys[ControlKeys.UP] || keys[ControlKeys.SPACE]) {
         // up arrow or space
         if (!player.jumping && player.grounded && !jumpKeyDepressed) {
@@ -156,47 +205,13 @@ function update() {
     		player.velX--;
         }
 	}
+}
 
-    player.velX *= friction;
-    player.velY += gravity;
-	
-    // player.grounded = false;
-
-	player.x += player.velX;
-	player.y += player.velY;
-	
-	detectCollisions();
-	
-	// trace('player.velX = ' + player.velX + ', velY = ' + player.velY + ', player.grounded = ' + player.grounded);
-	var bgPosition = backgroundHolder.getPosition();
-	var minX = -(background.startX);
-	if(bgPosition.x < minX) {
-		/*
-		var bgAnim = new Kinetic.Animation(function(frame) {
-			backgroundHolder.move(player.velX/background.speed, 0);
-		}, backgroundHolder);
-		bgAnim.start();
-		*/
-		animateLayer(backgroundHolder, player.velX * background.speed, 0);
-	}
-
-	// var splineAnim = new Kinetic.Animation(function(frame) {
-	// 	splineHolder.move(player.velX/splineMove, 0);
-	// }, splineHolder);
-	// splineAnim.start();
-	animateLayer(splineHolder, player.velX * foreground.speed, 0);
-	
-	// console.log(splineHolder.getPosition());
-	
-	// trace('player.velY = ' + player.velY);
-	var playerAnim = new Kinetic.Animation(function(frame) {
-		playerHolder.move(0, player.velY/100);
-	}, playerHolder);
-	playerAnim.start();
-
-	stage.draw();
-	
-	requestAnimFrame(update);
+function animateLayers() {
+	animateLayer(backgroundHolder1, player.velX * background1.speed, 0);
+	animateLayer(backgroundHolder2, player.velX * background2.speed, 0);
+	// animateLayer(splineHolder, player.velX * foreground.speed, 0);
+	animateLayer(foregroundHolder, player.velX * foreground.speed, 0);
 }
 
 function animateLayer(layer, newX, newY) {
@@ -305,22 +320,59 @@ function addObjectsToLayer(layer, objects) {
 	}
 }
 
-function addImageToLayer(layer, imgUrl, x, y, w, h) {
+function addImageToLayer(layer, imgUrl, x, y, w, h, alpha, filter) {
+	var a = (typeof(alpha) !== 'undefined') ? alpha : 1;
     var imageObj = new Image();
+	
+	var imgConfig = {
+		x: x,
+		y: y,
+		width: w,
+		height: h,
+		opacity: a,
+		image: imageObj
+	};
+
+	if(typeof(filter) !== 'undefined') {
+		for(var key in filter) {
+			imgConfig[key] = filter[key];
+		}
+	}
+
     imageObj.onload = function() {
-		var playerImg = new Kinetic.Image({
-			x: x,
-			y: y,
-			image: imageObj,
-			width: w,
-			height: h
-		});
-		layer.add(playerImg);
+		var image = new Kinetic.Image(imgConfig);
+		layer.add(image);
 		layer.draw(); // layer has to have draw called each time there is a change
 		trace('imageObj/onload');
     };
     imageObj.src = imgUrl;
 	
+}
+
+function addImagesToLayer(layer, images) {
+	console.log('addImagesToLayer');
+	console.log(images);
+	for(var i = 0; i < images.length; i++) {
+		console.log('\timages url = ' + images[i].url);
+	    var imageObj = new Image();
+		var x = images[i].x;
+		var y = images[i].y;
+		var width = images[i].width;
+		var height = images[i].height;
+	    imageObj.onload = function() {
+			var image = new Kinetic.Image({
+				x: x,
+				y: y,
+				image: imageObj,
+				width: width,
+				height: height
+			});
+			layer.add(image);
+			layer.draw(); // layer has to have draw called each time there is a change
+			trace('imageObj/onload');
+	    };
+	    imageObj.src = images[i].url;
+	}
 }
 
 function keydownHandler(e) {

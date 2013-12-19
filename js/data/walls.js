@@ -1,22 +1,22 @@
 var walls = [{
 	id: 'floor',
 	x: 0,
-	y: stageHeight - 75,
-	width: stageWidth,
+	y: stageConfig.height - 75,
+	width: stageConfig.width,
 	height: 50
 },
 {
 	id: 'top',
 	x: 0,
 	y: 0,
-	width: stageWidth,
-	height: 50
+	width: stageConfig.width,
+	height: 10
 },
 {
 	id: 'bottom',
     x: 0,
-    y: stageHeight - 10,
-    width: stageWidth,
+    y: stageConfig.height - 40,
+    width: stageConfig.width,
     height: 50
 },
 {
@@ -24,12 +24,12 @@ var walls = [{
     x: 0,
     y: 0,
     width: 10,
-    height: stageHeight
+    height: stageConfig.height
 },
 {
 	id: 'rightWall',
-    x: stageWidth - 10,
+    x: stageConfig.width - 10,
     y: 0,
     width: 50,
-    height: stageHeight
+    height: stageConfig.height
 }];
