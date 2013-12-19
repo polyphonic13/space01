@@ -40,7 +40,7 @@ var player,
         velX: 0,
         velY: 0,
         jumping: false,
-        grounded: false
+        grounded: true
     },
 	kekeUrl = 'assets/images/keke_tiny.png',
 	kekeReverseUrl = "assets/images/keke_tiny_back.png",
@@ -142,9 +142,6 @@ function update() {
 			facingForward = true;
 			player.velX++;
 		}
-		// startForwardAnimations();
-	} else {
-		// stopForwardAnimations();
 	}
 	
 	if (keys[ControlKeys.RIGHT]) {         // left arrow         
@@ -152,21 +149,16 @@ function update() {
 			facingForward = false;
     		player.velX--;
         }
-		// startReverseAnimations();
-    } else {
-		// stopReverseAnimations();
 	}
 
-	//     if(player.grounded){
-	//          player.velY = 0;
-	//     } else {
-	    // player.velY += gravity;
-	// }
     player.velX *= friction;
     player.velY += gravity;
 	
-    player.grounded = false;
+    // player.grounded = false;
 
+	player.x += player.velX;
+	player.y += player.velY;
+	
 	detectCollisions();
 	
 	// trace('player.velX = ' + player.velX + ', velY = ' + player.velY + ', player.grounded = ' + player.grounded);
@@ -196,6 +188,10 @@ function update() {
 	playerAnim.start();
 	
 	requestAnimFrame(update);
+}
+
+function animateLayer(layer, newX, newY) {
+	
 }
 
 function detectCollisions() {
