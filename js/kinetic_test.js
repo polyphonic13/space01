@@ -1,5 +1,9 @@
 
 var player,
+	level = {
+		minX: 130,
+		maxX: -1024
+	},
 	wallHolder,
 	cloudsHolder1,
 	clouds = {
@@ -8,7 +12,7 @@ var player,
 		startY: 0,
 		width: 2048,
 		height: 490,
-		speed: 5
+		speed: 1
 	},
 	backgroundHolder1,
 	background1 = {
@@ -28,7 +32,7 @@ var player,
 		width: 2048,
 		height: 256,
 		// speed: 250
-		speed: 0.3
+		speed: 0.5
 	},
 	backgroundHolder3,
 	background3 = {
@@ -38,13 +42,13 @@ var player,
 		width: 2048,
 		height: 256,
 		// speed: 250
-		speed: 1
+		speed: 1.5
 	},
 	foregroundHolder,
 	foreground = {
 		images: [{
 			url: 'assets/images/trees_fore01.png',
-			x: -280,
+			x: -385,
 			y: -40,
 			width: 2048,
 			height: 500
@@ -66,6 +70,7 @@ var player,
     player = {
         x: startLocation.x,
         y: startLocation.y,
+		position: 0,
         width: 20,
         height: 55,
         speed: 2.5,
@@ -144,15 +149,6 @@ function init() {
 
 function update() {
 	// trace('update');
-	var cloudPos = cloudsHolder.getPosition();
-	trace('cloudPos.x = ' + cloudPos.x + ", (clouds.width - stageConfig.width) = " + (clouds.width - stageConfig.width));
-	if(cloudPos.x < (clouds.width - stageConfig.width)) {
-		animateLayer(cloudsHolder, cloudPos.x + clouds.speed, 0);
-	} else {
-		animateLayer(cloudsHolder, clouds.startX, 0)
-	}
-	stage.draw();
-	
 	checkKeyInput();
 	
     player.velX *= friction;
@@ -162,16 +158,26 @@ function update() {
 
 	player.x += player.velX;
 	player.y += player.velY;
+	trace('player.velX = ' + player.velX + ', player.position = ' + player.position + ', player.x = ' + player.x);
 	
 	detectCollisions();
-	
-	animateLayers();
-	
-	var playerAnim = new Kinetic.Animation(function(frame) {
-		playerHolder.move(0, player.velY/100);
-	}, playerHolder);
-	playerAnim.start();
 
+	if(player.position > level.minX) {
+		player.position = level.minX;
+	// } else if(player.position < level.maxX) {
+	// 	player.position = level.maxX;
+ 	} else {
+		player.position += player.velX; 
+		animateLayers();
+
+		var playerAnim = new Kinetic.Animation(function(frame) {
+			playerHolder.move(0, player.velY/100);
+		}, playerHolder);
+		playerAnim.start();
+	}
+
+	animateClouds();
+	
 	stage.draw();
 	
 	if(playing) {
@@ -217,6 +223,16 @@ function animateLayers() {
 
 function animateLayer(layer, newX, newY) {
 	layer.move(newX, newY);
+}
+
+function animateClouds() {
+	var cloudPos = cloudsHolder.getPosition();
+	trace('cloudPos.x = ' + -(cloudPos.x) + ', max = ' + (clouds.width - stageConfig.width));
+	if(-(cloudPos.x) < (clouds.width - stageConfig.width)) {
+		animateLayer(cloudsHolder, -(clouds.speed), 0);
+	} else {
+		cloudsHolder.setPosition(clouds.startX, 0);
+	}
 }
 
 function detectCollisions() {
