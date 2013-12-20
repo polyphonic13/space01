@@ -1,5 +1,6 @@
 
 var player,
+	joystick,
 	level = {
 		minX: 130,
 		maxX: -1024
@@ -94,7 +95,8 @@ var player,
 	jumpKeyDepressed = false,
 	facingForward = true,
 	playing = false,
-	won = false;
+	won = false,
+	imagesToLoad = 4;
 	
 	
 function init() {
@@ -129,6 +131,10 @@ function init() {
 	wallHolder = new Kinetic.Layer();
 	addObjectsToLayer(wallHolder, walls);
 	
+	var startY = stageConfig.height - 60;
+	joystick = new Joystick({ startY: startY });
+//	joystick.setPosition({ x: 0, y: startY });
+	
 	stage.add(cloudsHolder);
 	// stage.add(backgroundHolder1);
 	stage.add(backgroundHolder2);
@@ -136,6 +142,9 @@ function init() {
 	stage.add(foregroundHolder);
 	stage.add(playerHolder);
 	stage.add(wallHolder);
+	stage.add(joystick.getLayer());
+	
+	// stage.draw();
 	
 	$(window).keydown(function(e) {
 		keydownHandler(e);
@@ -149,7 +158,7 @@ function init() {
 
 function update() {
 	// trace('update');
-	checkKeyInput();
+	checkInput();
 	
     player.velX *= friction;
     player.velY += gravity;
@@ -158,7 +167,7 @@ function update() {
 
 	player.x += player.velX;
 	player.y += player.velY;
-	trace('player.velX = ' + player.velX + ', player.position = ' + player.position + ', player.x = ' + player.x);
+	// trace('player.velX = ' + player.velX + ', player.position = ' + player.position + ', player.x = ' + player.x);
 	
 	detectCollisions();
 
@@ -185,7 +194,7 @@ function update() {
 	}
 }
 
-function checkKeyInput() {
+function checkInput() {
 	    if (keys[ControlKeys.UP] || keys[ControlKeys.SPACE]) {
 	        // up arrow or space
 	        if (!player.jumping && player.grounded && !jumpKeyDepressed) {
@@ -197,8 +206,8 @@ function checkKeyInput() {
 	       }
 	    }
 		previousVelX = player.velX;
-
-	    if (keys[ControlKeys.LEFT]) {
+		// trace('checkInput, forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse() + ', rest = ' + joystick.getRest());
+	    if (keys[ControlKeys.LEFT] || joystick.getForward()) {
 	        // right arrow
 	        if (player.velX < player.speed) {
 				facingForward = true;
@@ -206,7 +215,7 @@ function checkKeyInput() {
 			}
 		}
 
-		if (keys[ControlKeys.RIGHT]) {         // left arrow         
+		if (keys[ControlKeys.RIGHT] || joystick.getReverse()) {         // left arrow         
 			if (player.velX > -player.speed) {
 				facingForward = false;
 	    		player.velX--;
@@ -227,7 +236,7 @@ function animateLayer(layer, newX, newY) {
 
 function animateClouds() {
 	var cloudPos = cloudsHolder.getPosition();
-	trace('cloudPos.x = ' + -(cloudPos.x) + ', max = ' + (clouds.width - stageConfig.width));
+	// trace('cloudPos.x = ' + -(cloudPos.x) + ', max = ' + (clouds.width - stageConfig.width));
 	if(-(cloudPos.x) < (clouds.width - stageConfig.width)) {
 		animateLayer(cloudsHolder, -(clouds.speed), 0);
 	} else {
