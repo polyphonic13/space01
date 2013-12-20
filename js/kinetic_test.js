@@ -25,10 +25,10 @@ var player,
 	foreground = {
 		images: [{
 			url: 'assets/images/trees_fore01.png',
-			x: 500,
-			y: 20,
+			x: 0,
+			y: -40,
 			width: 1024,
-			height: 407
+			height: 500
 		}],
 		startX: 0,
 		startY: stageConfig.height - 300,
@@ -103,9 +103,9 @@ function init() {
 
 	stage.add(backgroundHolder1);
 	stage.add(backgroundHolder2);
-	stage.add(wallHolder);
-	stage.add(foregroundHolder);
 	stage.add(playerHolder);
+	stage.add(foregroundHolder);
+	stage.add(wallHolder);
 	
 	$(window).keydown(function(e) {
 		keydownHandler(e);
