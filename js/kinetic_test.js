@@ -1,11 +1,20 @@
 
 var player,
 	wallHolder,
+	cloudsHolder1,
+	clouds = {
+		imgUrl: 'assets/images/clouds.png',
+		startX: 0,
+		startY: 0,
+		width: 2048,
+		height: 490,
+		speed: 0.3
+	},
 	backgroundHolder1,
 	background1 = {
 		imgUrl: 'assets/images/hills04_grey.png',
 		startX: -200,
-		startY: 0,
+		startY: -30,
 		width: 2048,
 		height: 500,
 		// speed: 250
@@ -14,12 +23,22 @@ var player,
 	backgroundHolder2,
 	background2 = {
 		imgUrl: 'assets/images/hills03_grey.png',
+		startX: -100,
+		startY: 50,
+		width: 2048,
+		height: 256,
+		// speed: 250
+		speed: 0.3
+	},
+	backgroundHolder3,
+	background3 = {
+		imgUrl: 'assets/images/trees_back01.png',
 		startX: -200,
 		startY: stageConfig.height - 320,
 		width: 2048,
 		height: 256,
 		// speed: 250
-		speed: 0.3
+		speed: 1
 	},
 	foregroundHolder,
 	foreground = {
@@ -29,19 +48,6 @@ var player,
 			y: -40,
 			width: 2048,
 			height: 500
-		}],
-		startX: 0,
-		startY: stageConfig.height - 300,
-		speed: 3
-	},
-	grassHolder,
-	grass = {
-		images: [{
-			url: 'assets/images/grass02.png',
-			x: -280,
-			y: 330,
-			width: 2048,
-			height: 128
 		}],
 		startX: 0,
 		startY: stageConfig.height - 300,
@@ -97,10 +103,14 @@ function init() {
 	addImageToLayer(stageBgLayer, 'assets/images/night_sky.png', 0, 0, stageConfig.width, stageConfig.height, 1);
 	stage.add(stageBgLayer);
 
+	cloudsHolder = new Kinetic.Layer();
+	addImageToLayer(cloudsHolder, clouds.imgUrl, clouds.startX, clouds.startY, clouds.width, clouds.height);
 	backgroundHolder1 = new Kinetic.Layer();
 	addImageToLayer(backgroundHolder1, background1.imgUrl, background1.startX, background1.startY, background1.width, background1.height);
 	backgroundHolder2 = new Kinetic.Layer();
 	addImageToLayer(backgroundHolder2, background2.imgUrl, background2.startX, background2.startY, background2.width, background2.height);
+	backgroundHolder3 = new Kinetic.Layer();
+	addImageToLayer(backgroundHolder3, background3.imgUrl, background3.startX, background3.startY, background3.width, background3.height);
 	
  	playerHolder = new Kinetic.Layer();
 	addImageToLayer(playerHolder, kekeUrl, 0, 0, player.width, player.height);
@@ -113,16 +123,14 @@ function init() {
 	
 	wallHolder = new Kinetic.Layer();
 	addObjectsToLayer(wallHolder, walls);
-
-	grassHolder = new Kinetic.Layer();
-	addImagesToLayer(grassHolder, grass.images);
 	
-	stage.add(backgroundHolder1);
+	stage.add(cloudsHolder);
+	// stage.add(backgroundHolder1);
 	stage.add(backgroundHolder2);
-	stage.add(playerHolder);
+	stage.add(backgroundHolder3);
 	stage.add(foregroundHolder);
+	stage.add(playerHolder);
 	stage.add(wallHolder);
-	stage.add(grassHolder);
 	
 	$(window).keydown(function(e) {
 		keydownHandler(e);
@@ -130,7 +138,8 @@ function init() {
 	$(window).keyup(function(e) {
 		keyupHandler(e);
 	});
-	// update();
+	playing = true;
+	update();
 }
 
 function update() {
@@ -192,11 +201,10 @@ function checkKeyInput() {
 }
 
 function animateLayers() {
-	animateLayer(backgroundHolder1, player.velX * background1.speed, 0);
+	// animateLayer(backgroundHolder1, player.velX * background1.speed, 0);
 	animateLayer(backgroundHolder2, player.velX * background2.speed, 0);
-	// animateLayer(splineHolder, player.velX * foreground.speed, 0);
+	animateLayer(backgroundHolder3, player.velX * background3.speed, 0);
 	animateLayer(foregroundHolder, player.velX * foreground.speed, 0);
-	animateLayer(grassHolder, player.velX * foreground.speed, 0);
 }
 
 function animateLayer(layer, newX, newY) {
