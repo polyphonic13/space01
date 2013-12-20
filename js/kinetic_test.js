@@ -34,6 +34,19 @@ var player,
 		startY: stageConfig.height - 300,
 		speed: 3
 	},
+	grassHolder,
+	grass = {
+		images: [{
+			url: 'assets/images/grass02.png',
+			x: -280,
+			y: 330,
+			width: 2048,
+			height: 128
+		}],
+		startX: 0,
+		startY: stageConfig.height - 300,
+		speed: 3
+	},
 	platformHolder,
 	splineHolder,
 	splineMove = 100,
@@ -101,11 +114,15 @@ function init() {
 	wallHolder = new Kinetic.Layer();
 	addObjectsToLayer(wallHolder, walls);
 
+	grassHolder = new Kinetic.Layer();
+	addImagesToLayer(grassHolder, grass.images);
+	
 	stage.add(backgroundHolder1);
 	stage.add(backgroundHolder2);
 	stage.add(playerHolder);
 	stage.add(foregroundHolder);
 	stage.add(wallHolder);
+	stage.add(grassHolder);
 	
 	$(window).keydown(function(e) {
 		keydownHandler(e);
@@ -154,7 +171,6 @@ function checkKeyInput() {
 				jumpKeyDepressed = true;
 	            player.velY = -player.speed * 2;
 				trace('passed jump conditional, velY = ' + player.velY);
-
 	       }
 	    }
 		previousVelX = player.velX;
@@ -180,6 +196,7 @@ function animateLayers() {
 	animateLayer(backgroundHolder2, player.velX * background2.speed, 0);
 	// animateLayer(splineHolder, player.velX * foreground.speed, 0);
 	animateLayer(foregroundHolder, player.velX * foreground.speed, 0);
+	animateLayer(grassHolder, player.velX * foreground.speed, 0);
 }
 
 function animateLayer(layer, newX, newY) {
