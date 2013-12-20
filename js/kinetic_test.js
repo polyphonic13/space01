@@ -25,9 +25,9 @@ var player,
 	foreground = {
 		images: [{
 			url: 'assets/images/trees_fore01.png',
-			x: 0,
+			x: -280,
 			y: -40,
-			width: 1024,
+			width: 2048,
 			height: 500
 		}],
 		startX: 0,
@@ -69,7 +69,7 @@ var player,
 	previousVelX = 0;
 	jumpKeyDepressed = false,
 	facingForward = true,
-	playing = true,
+	playing = false,
 	won = false;
 	
 	
@@ -113,7 +113,7 @@ function init() {
 	$(window).keyup(function(e) {
 		keyupHandler(e);
 	});
-	update();
+	// update();
 }
 
 function update() {
@@ -140,37 +140,39 @@ function update() {
 
 	stage.draw();
 	
-	requestAnimFrame(update);
+	if(playing) {
+		requestAnimFrame(update);
+	}
 }
 
 function checkKeyInput() {
-    if (keys[ControlKeys.UP] || keys[ControlKeys.SPACE]) {
-        // up arrow or space
-        if (!player.jumping && player.grounded && !jumpKeyDepressed) {
-            player.jumping = true;
-            player.grounded = false;
-			jumpKeyDepressed = true;
-            player.velY = -player.speed * 2;
-			trace('passed jump conditional, velY = ' + player.velY);
- 
-       }
-    }
-	previousVelX = player.velX;
-	
-    if (keys[ControlKeys.LEFT]) {
-        // right arrow
-        if (player.velX < player.speed) {
-			facingForward = true;
-			player.velX++;
+	    if (keys[ControlKeys.UP] || keys[ControlKeys.SPACE]) {
+	        // up arrow or space
+	        if (!player.jumping && player.grounded && !jumpKeyDepressed) {
+	            player.jumping = true;
+	            player.grounded = false;
+				jumpKeyDepressed = true;
+	            player.velY = -player.speed * 2;
+				trace('passed jump conditional, velY = ' + player.velY);
+
+	       }
+	    }
+		previousVelX = player.velX;
+
+	    if (keys[ControlKeys.LEFT]) {
+	        // right arrow
+	        if (player.velX < player.speed) {
+				facingForward = true;
+				player.velX++;
+			}
 		}
-	}
-	
-	if (keys[ControlKeys.RIGHT]) {         // left arrow         
-		if (player.velX > -player.speed) {
-			facingForward = false;
-    		player.velX--;
-        }
-	}
+
+		if (keys[ControlKeys.RIGHT]) {         // left arrow         
+			if (player.velX > -player.speed) {
+				facingForward = false;
+	    		player.velX--;
+	        }
+		}
 }
 
 function animateLayers() {
@@ -358,6 +360,14 @@ function keydownHandler(e) {
 		// startReverseAnimations();
 		break;
 
+		case ControlKeys.START:
+		start();
+		break;
+		
+		case ControlKeys.QUIT: 
+		if(playing) {
+			quit();
+		}
 		default: 
 		break;
 	}
@@ -384,7 +394,16 @@ function keyupHandler(e) {
 	}
 }
 
+function start() {
+	console.log('starting');
+	playing = true;
+	update();
+}
 
+function quit() {
+	console.log('quiting')
+;	playing = false;
+}
 
 $(document).ready(function() {
 	init();

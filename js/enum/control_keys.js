@@ -4,5 +4,7 @@ var ControlKeys = {
 	UP: 38,			// up arrow
 	DOWN: 40,		// down arrow
 	SPACE: 32,		// space bar
-	RESET: 82 		// r key
+	QUIT: 81,		// q
+ 	RESET: 82, 		// r
+	START: 83		// s
 }
