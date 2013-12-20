@@ -8,7 +8,7 @@ var player,
 		startY: 0,
 		width: 2048,
 		height: 490,
-		speed: 0.3
+		speed: 5
 	},
 	backgroundHolder1,
 	background1 = {
@@ -144,6 +144,14 @@ function init() {
 
 function update() {
 	// trace('update');
+	var cloudPos = cloudsHolder.getPosition();
+	trace('cloudPos.x = ' + cloudPos.x + ", (clouds.width - stageConfig.width) = " + (clouds.width - stageConfig.width));
+	if(cloudPos.x < (clouds.width - stageConfig.width)) {
+		animateLayer(cloudsHolder, cloudPos.x + clouds.speed, 0);
+	} else {
+		animateLayer(cloudsHolder, clouds.startX, 0)
+	}
+	stage.draw();
 	
 	checkKeyInput();
 	
