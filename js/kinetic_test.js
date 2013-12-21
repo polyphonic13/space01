@@ -48,7 +48,7 @@ var player,
 		}],
 		startX: 0,
 		startY: stageConfig.height - 300,
-		speed: 3
+		speed: 4
 	},
 	platformHolder,
 	splineHolder,
@@ -170,19 +170,20 @@ function update() {
     player.velX *= friction;
 	player.velY += gravity;
 	
-	trace('post checkInput, velY = ' + player.velY + ', jumping = ' + player.jumping + ', grounded = ' + player.grounded);
+	// trace('post checkInput, velY = ' + player.velY + ', jumping = ' + player.jumping + ', grounded = ' + player.grounded);
 	
 	player.grounded = false;
 	
 	detectCollisions();
 
-	trace('post detectCollisions, velY = ' + player.velY + ', jumping = ' + player.jumping + ', grounded = ' + player.grounded);
+	// trace('post detectCollisions, velY = ' + player.velY + ', jumping = ' + player.jumping + ', grounded = ' + player.grounded);
 	
     if(player.grounded && !player.jumping) {
          player.velY = 0;
     }
 
-	trace('about to animation, player.velY = ' + player.velY + ', jumping = ' + player.jumping + ', grounded = ' + player.grounded);
+	// trace('about to animation, player.velY = ' + player.velY + ', jumping = ' + player.jumping + ', grounded = ' + player.grounded);
+
 	// horizontal movement
 	// if(player.positionX > level.minX) {
 	// 	player.positionX = level.minX;
@@ -194,7 +195,7 @@ function update() {
 	// vertical movement
 	// trace('about to do vertical animation, player.velY = ' + player.velY);
 	// var playerAnim = new Kinetic.Animation(function(frame) {
-	// 	playerHolder.move(0, player.velY);
+	// 	playerHolder.move(0, player.velY * 0.01);
 	// }, playerHolder);
 	// playerAnim.start();
 	playerHolder.move(0, player.velY);
@@ -212,7 +213,7 @@ function checkInput() {
 		// trace('checkInput, keys[' + ControlKeys.UP + '] = ' + keys[ControlKeys.UP] + 'keys[' + ControlKeys.LEFT + '] = ' + keys[ControlKeys.LEFT] + 'keys[' + ControlKeys.RIGHT + '] = ' + keys[ControlKeys.RIGHT);
 	    if (keys[ControlKeys.UP]) {
 	        // up arrow or space
-			trace('ControlKeys.UP pressed, jumping = ' + player.jumping + ', grounded = ' + player.grounded);
+			// trace('ControlKeys.UP pressed, jumping = ' + player.jumping + ', grounded = ' + player.grounded);
 	        if (!player.jumping && player.grounded && !jumpKeyDepressed) {
 	        // if (!player.jumping && player.grounded) {
 	            player.jumping = true;
@@ -262,7 +263,7 @@ function detectCollisions() {
 		} else {
 	        player.grounded = true;
 	        player.jumping = false;
-			jumpKeyDepressed = false;
+			// jumpKeyDepressed = false;
 		}
 	} else if (col.direction === Directions.TOP) {
         player.velY *= -1;
@@ -483,7 +484,8 @@ function keyupHandler(e) {
 		// platformAnimations.reverse.stop();
 		break;
 
-		case ControlKeys.UP: 
+		case ControlKeys.UP:
+		console.log("ControlKeys.UP release");
 		keys[ControlKeys.UP] = false;
 		jumpKeyDepressed = false;
 		break; 
