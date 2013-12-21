@@ -16,6 +16,7 @@ var player,
 		height: 490,
 		speed: 1
 	},
+	scenery = [],
 	backgroundHolder2,
 	background2 = {
 		imgUrl: 'assets/images/hills03_grey.png',
@@ -65,7 +66,7 @@ var player,
 		position: 0,
         width: 20,
         height: 55,
-        speed: 2.5,
+        speed: 3,
 		jumpTime: 5,
         velX: 0,
         velY: 0,
@@ -115,8 +116,8 @@ function init() {
 	playerHolder.setPosition(player.x, player.y);
 	
 	foregroundHolder = new Kinetic.Layer(); 
-	// addImagesToLayer(foregroundHolder, foreground.images);
-	addImageToLayer(foregroundHolder, 'assets/images/striped_bg.png', -800, 0, 3200, stageConfig.height, 1);
+	addImagesToLayer(foregroundHolder, foreground.images);
+	// addImageToLayer(foregroundHolder, 'assets/images/striped_bg.png', -800, 0, 3200, stageConfig.height, 1);
 	
 	wallHolder = new Kinetic.Layer();
 	addObjectsToLayer(wallHolder, walls);
@@ -140,14 +141,17 @@ function init() {
 	// textLayer.add(joystickText);
 	
 	stage.add(cloudsHolder);
-	// stage.add(backgroundHolder2);
-	// stage.add(backgroundHolder3);
+	stage.add(backgroundHolder2);
+	stage.add(backgroundHolder3);
 	stage.add(foregroundHolder);
 	stage.add(playerHolder);
 	stage.add(wallHolder);
 	stage.add(joystick.getLayer());
 	stage.add(textLayer);
 	
+	scenery.push({ config: background2, layer: backgroundHolder2 });
+	scenery.push({ config: background3, layer: backgroundHolder3 });
+	scenery.push({ config: foreground, layer: foregroundHolder });
 	// stage.draw();
 	
 	$(window).keydown(function(e) {
@@ -195,11 +199,10 @@ function update() {
 	// playerAnim.start();
 	playerHolder.move(0, player.velY);
 
-	// animateClouds();
+	animateClouds();
 	
 	stage.draw();
 	
-
 	if(playing) {
 		requestAnimFrame(update);
 	}
@@ -213,6 +216,7 @@ function checkInput() {
 	        if (!player.jumping && player.grounded && !jumpKeyDepressed) {
 	        // if (!player.jumping && player.grounded) {
 	            player.jumping = true;
+				player.justJumped = true;
 	            player.grounded = false;
 				jumpKeyDepressed = true;
 	            player.velY = -player.speed * 2;
@@ -253,9 +257,13 @@ function detectCollisions() {
         player.velX = 0;
         player.jumping = false;
 	} else if (col.direction === Directions.BOTTOM) {
-        player.grounded = true;
-        player.jumping = false;
-		jumpKeyDepressed = false;
+		if(player.justJumped) {
+			player.justJumped = false;
+		} else {
+	        player.grounded = true;
+	        player.jumping = false;
+			jumpKeyDepressed = false;
+		}
 	} else if (col.direction === Directions.TOP) {
         player.velY *= -1;
     }
@@ -331,9 +339,9 @@ function collisionCheck(shapeA, shapeB) {
 }
 
 function animateLayers() {
-	// animateLayer(backgroundHolder2, player.velX * background2.speed, 0);
-	// animateLayer(backgroundHolder3, player.velX * background3.speed, 0);
-	animateLayer(foregroundHolder, player.velX * foreground.speed, 0);
+	for(var i = 0; i < scenery.length; i++) {
+		animateLayer(scenery[i].layer, (player.velX * scenery[i].config.speed), 0);
+	}
 }
 
 function animateLayer(layer, newX, newY) {
