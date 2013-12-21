@@ -1,13 +1,15 @@
+"use strict";
 
 var player,
 	joystick,
 	joystickText,
+	jumpButton,
 	level = {
 		minX: 130,
 		maxX: -1024
 	},
 	wallHolder,
-	cloudsLayer,
+	cloudsHolder,
 	clouds = {
 		imgUrl: 'assets/images/clouds.png',
 		startX: 0,
@@ -56,7 +58,7 @@ var player,
 	currentPlaying = '',
 	previousCollisionId = '',
 	startLocation = {
-		x: stageConfig.width/2,
+		x: stageConfig.width / 2,
 		y: stageConfig.height - 130
 	},
 	playerHolder,
@@ -82,16 +84,15 @@ var player,
 	kekeReverse,
     keys = {},
 	moveSpeed = 50,
-    friction = .5,
+    friction = 0.5,
     gravity = 0.2,
-	previousVelX = 0;
+	previousVelX = 0,
 	jumpKeyDepressed = false,
 	facingForward = true,
 	playing = false,
 	won = false,
 	imagesToLoad = 4;
-	
-	
+		
 function init() {
 	stage = new Kinetic.Stage({
 		container: 'container',
@@ -211,7 +212,8 @@ function update() {
 
 function checkInput() {
 		// trace('checkInput, keys[' + ControlKeys.UP + '] = ' + keys[ControlKeys.UP] + 'keys[' + ControlKeys.LEFT + '] = ' + keys[ControlKeys.LEFT] + 'keys[' + ControlKeys.RIGHT + '] = ' + keys[ControlKeys.RIGHT);
-	    if (keys[ControlKeys.UP]) {
+	    // if (keys[ControlKeys.UP] || jumpButton.getPressed()) {
+		if(keys[ControlKeys.UP]) {
 	        // up arrow or space
 			// trace('ControlKeys.UP pressed, jumping = ' + player.jumping + ', grounded = ' + player.grounded);
 	        if (!player.jumping && player.grounded && !jumpKeyDepressed) {
