@@ -70,6 +70,7 @@ var player,
         velX: 0,
         velY: 0,
         jumping: false,
+		justJumped: false,
         grounded: true
     },
 	kekeUrl = 'assets/images/keke_tiny.png',
@@ -128,15 +129,15 @@ function init() {
 	});
 	
 	var textLayer = new Kinetic.Layer();
-	joystickText = new Kinetic.Text({
-		x: 20,
-		y: 20,
-       text: 'joystick postiion: ',
-        fontSize: 18,
-        fontFamily: 'Calibri',
-        fill: 'white'
-	});
-	textLayer.add(joystickText);
+	// joystickText = new Kinetic.Text({
+	// 	x: 20,
+	// 	y: 20,
+	//        text: 'joystick postiion: ',
+	//         fontSize: 18,
+	//         fontFamily: 'Calibri',
+	//         fill: 'white'
+	// });
+	// textLayer.add(joystickText);
 	
 	stage.add(cloudsHolder);
 	// stage.add(backgroundHolder2);
@@ -173,16 +174,13 @@ function update() {
 
 	trace('post detectCollisions, velY = ' + player.velY + ', jumping = ' + player.jumping + ', grounded = ' + player.grounded);
 	
-    if(player.grounded){
+    if(player.grounded && !player.jumping) {
          player.velY = 0;
     }
 
-	player.x += player.velX;
-	player.y += player.velY;
-
 	trace('about to animation, player.velY = ' + player.velY + ', jumping = ' + player.jumping + ', grounded = ' + player.grounded);
 	// horizontal movement
-	// if(player.positionXX > level.minX) {
+	// if(player.positionX > level.minX) {
 	// 	player.positionX = level.minX;
 	//  	} else {
 		player.positionX += player.velX; 
@@ -191,15 +189,17 @@ function update() {
 
 	// vertical movement
 	// trace('about to do vertical animation, player.velY = ' + player.velY);
-	var playerAnim = new Kinetic.Animation(function(frame) {
-		playerHolder.move(0, player.velY/100);
-	}, playerHolder);
-	playerAnim.start();
-	
-	animateClouds();
+	// var playerAnim = new Kinetic.Animation(function(frame) {
+	// 	playerHolder.move(0, player.velY);
+	// }, playerHolder);
+	// playerAnim.start();
+	playerHolder.move(0, player.velY);
+
+	// animateClouds();
 	
 	stage.draw();
 	
+
 	if(playing) {
 		requestAnimFrame(update);
 	}
@@ -209,9 +209,9 @@ function checkInput() {
 		// trace('checkInput, keys[' + ControlKeys.UP + '] = ' + keys[ControlKeys.UP] + 'keys[' + ControlKeys.LEFT + '] = ' + keys[ControlKeys.LEFT] + 'keys[' + ControlKeys.RIGHT + '] = ' + keys[ControlKeys.RIGHT);
 	    if (keys[ControlKeys.UP]) {
 	        // up arrow or space
-//	        if (!player.jumping && player.grounded && !jumpKeyDepressed) {
 			trace('ControlKeys.UP pressed, jumping = ' + player.jumping + ', grounded = ' + player.grounded);
-	        if (!player.jumping && player.grounded) {
+	        if (!player.jumping && player.grounded && !jumpKeyDepressed) {
+	        // if (!player.jumping && player.grounded) {
 	            player.jumping = true;
 	            player.grounded = false;
 				jumpKeyDepressed = true;
@@ -235,7 +235,7 @@ function checkInput() {
 	    		player.velX--;
 	        }
 		}
-		joystickText.setText('joystick postion: ' + joystick.getX() + '/' + joystick.getY() + ', start: ' + joystick.getStartX() + '/' + joystick.getStartY() + ', forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse());
+		// joystickText.setText('joystick postion: ' + joystick.getX() + '/' + joystick.getY() + ', start: ' + joystick.getStartX() + '/' + joystick.getStartY() + ', forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse());
 }
 
 function detectCollisions() {
@@ -247,15 +247,7 @@ function detectCollisions() {
 		width: player.width,
 		height: player.height
 	};
-	var col = collisionCheck(plyr, walls[0]); // check for ground collision
-
-	/*
-	trace('col = ' + col);
-	if(col) {
-		player.grounded = true;
-		player.jumping = false;
-	}
-	*/
+	var col = collisionCheck(plyr, walls[0]); // check for floor collision
 
     if (col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
         player.velX = 0;
@@ -485,6 +477,7 @@ function keyupHandler(e) {
 
 		case ControlKeys.UP: 
 		keys[ControlKeys.UP] = false;
+		jumpKeyDepressed = false;
 		break; 
 
 		default:
