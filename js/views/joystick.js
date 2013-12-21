@@ -8,13 +8,17 @@ var Joystick = (function() {
 		startX: 60,
 		startY: 60,
 		lgRadius: 50,
-		lgFill: '#666666',
-		lgStroke: '#222222',
+		lgColor1: '#666666',
+		lgColor2: '#222222',
+		lgColor3: '#000000',
+		lgGradient: true,
 		lgStrokeWidth: 2,
-		smRadius: 25,
-		smFill: '#cccccc',
-		smStroke: '#222222',
-		smStrokeWidth: 2,
+		smRadius: 35,
+		smColor1: '#dddddd',
+		smColor2: '#aaaaaa',
+		smColor3: '#222222',
+		smGradient: false,
+		smStrokeWidth: 1,
 		xOnly: false,
 		yOnly: false
 	};
@@ -41,22 +45,36 @@ var Joystick = (function() {
 
 	function _buildViews() {
 		_layer = new Kinetic.Layer();
-
-		_lgCircle = new Kinetic.Circle({
+		
+		var lgCircleConfig = {
 			x: _model.startX,
 			y: _model.startY,
 			radius: _model.lgRadius,
-			fill: _model.lgFill,
-			stroke: _model.lgStroke,
+			stroke: _model.lgColor3,
 			strokeWidth: _model.lgStrokeWidth
-		});
+		};
 
-		_smCircle = new Kinetic.Circle({
+		if(_model.lgGradient) {
+			var lgGradientStops;
+			if(_model.lgGradientStops) {
+				lgGradientStops = _model.lgGradientStops;
+			} else {
+				lgGradientStops = [0, _model.lgColor3, .8, _model.lgColor1, 1, _model.lgColor2];
+			}
+			
+			lgCircleConfig.fillRadialGradientStartRadius = 0;
+			lgCircleConfig.fillRadialGradientEndRadius = _model.lgRadius;
+			lgCircleConfig.fillRadialGradientColorStops = lgGradientStops;
+		} else {
+			lgCircleConfig.fill = _model.lgColor1;
+		}
+
+
+		var smCircleConfig = {
 			x: _model.startX,
 			y: _model.startY,
 			radius: _model.smRadius,
-			fill: _model.smFill,
-			stroke: _model.smStroke,
+			stroke: _model.smColor3,
 			strokeWidth: _model.smStrokeWidth,
 			draggable: true,
 			dragBoundFunc: function(pos) {
@@ -77,7 +95,26 @@ var Joystick = (function() {
 					return pos;
 				}
 			}
-		});
+		};
+		
+		if(_model.smGradient) {
+			var smGradientStops;
+			if(_model.smGradientStops) {
+				smGradientStops = _model.smGradientStops;
+			} else {
+				smGradientStops = [0, _model.smColor2, .9, _model.smColor1, 1, _model.smColor2];
+			}
+			
+			smCircleConfig.fillRadialGradientStartRadius = 0;
+			smCircleConfig.fillRadialGradientEndRadius = _model.smRadius;
+			smCircleConfig.fillRadialGradientColorStops = smGradientStops;
+		} else {
+			smCircleConfig.fill = _model.smColor1;
+			
+		}
+
+		_lgCircle = new Kinetic.Circle(lgCircleConfig);
+		_smCircle = new Kinetic.Circle(smCircleConfig);
 
 		_layer.add(_lgCircle);
 		_layer.add(_smCircle);
@@ -115,7 +152,12 @@ var Joystick = (function() {
 	}
 
 	function _checkDirection(evt) {
-		if(evt.x > _model.startX) {
+		var pos = _smCircle.getPosition();
+		
+		_position.x = pos.x;
+		_position.y = pos.y;
+		
+		if(_position.x > _model.startX) {
 			console.log("FORWARD");
 			_states[JoystickStates.REVERSE] = true;
 			_states[JoystickStates.FORWARD] = false;
@@ -124,7 +166,7 @@ var Joystick = (function() {
 			_states[JoystickStates.FORWARD] = true;
 			_states[JoystickStates.REVERSE] = false;
 		}
-		if(evt.y > _model.startY) {
+		if(_position.y > _model.startY) {
 			_states[JoystickStates.DOWN] = true;
 			_states[JoystickStates.UP] = false;
 		} else {
@@ -178,5 +220,12 @@ var Joystick = (function() {
 		return _position.y;
 	};
 	
+	Joystick.prototype.getStartX = function() {
+		return _model.startX;
+	};
+	
+	Joystick.prototype.getStartY = function() {
+		return _model.startY;
+	}
 	return Joystick;
 })();

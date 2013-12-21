@@ -1,12 +1,13 @@
 
 var player,
 	joystick,
+	joystickText,
 	level = {
 		minX: 130,
 		maxX: -1024
 	},
 	wallHolder,
-	cloudsHolder1,
+	cloudsLayer,
 	clouds = {
 		imgUrl: 'assets/images/clouds.png',
 		startX: 0,
@@ -14,16 +15,6 @@ var player,
 		width: 2048,
 		height: 490,
 		speed: 1
-	},
-	backgroundHolder1,
-	background1 = {
-		imgUrl: 'assets/images/hills04_grey.png',
-		startX: -200,
-		startY: -30,
-		width: 2048,
-		height: 500,
-		// speed: 250
-		speed: 0.1
 	},
 	backgroundHolder2,
 	background2 = {
@@ -112,8 +103,6 @@ function init() {
 
 	cloudsHolder = new Kinetic.Layer();
 	addImageToLayer(cloudsHolder, clouds.imgUrl, clouds.startX, clouds.startY, clouds.width, clouds.height);
-	backgroundHolder1 = new Kinetic.Layer();
-	addImageToLayer(backgroundHolder1, background1.imgUrl, background1.startX, background1.startY, background1.width, background1.height);
 	backgroundHolder2 = new Kinetic.Layer();
 	addImageToLayer(backgroundHolder2, background2.imgUrl, background2.startX, background2.startY, background2.width, background2.height);
 	backgroundHolder3 = new Kinetic.Layer();
@@ -121,28 +110,42 @@ function init() {
 	
  	playerHolder = new Kinetic.Layer();
 	addImageToLayer(playerHolder, kekeUrl, 0, 0, player.width, player.height);
-	// addImageToLayer(playerHolder, kekeReverseUrl, 0, 0, player.width, player.height);
 	
 	playerHolder.setPosition(player.x, player.y);
 	
 	foregroundHolder = new Kinetic.Layer(); 
-	addImagesToLayer(foregroundHolder, foreground.images);
+	// addImagesToLayer(foregroundHolder, foreground.images);
+	addImageToLayer(foregroundHolder, 'assets/images/striped_bg.png', -800, 0, 3200, stageConfig.height, 1);
 	
 	wallHolder = new Kinetic.Layer();
 	addObjectsToLayer(wallHolder, walls);
 	
 	var startY = stageConfig.height - 60;
-	joystick = new Joystick({ startY: startY });
-//	joystick.setPosition({ x: 0, y: startY });
+	var startX = 80;
+	joystick = new Joystick({ 
+		startX: startX,
+		startY: startY 
+	});
+	
+	var textLayer = new Kinetic.Layer();
+	joystickText = new Kinetic.Text({
+		x: 20,
+		y: 20,
+       text: 'joystick postiion: ',
+        fontSize: 18,
+        fontFamily: 'Calibri',
+        fill: 'white'
+	});
+	textLayer.add(joystickText);
 	
 	stage.add(cloudsHolder);
-	// stage.add(backgroundHolder1);
-	stage.add(backgroundHolder2);
-	stage.add(backgroundHolder3);
+	// stage.add(backgroundHolder2);
+	// stage.add(backgroundHolder3);
 	stage.add(foregroundHolder);
 	stage.add(playerHolder);
 	stage.add(wallHolder);
 	stage.add(joystick.getLayer());
+	stage.add(textLayer);
 	
 	// stage.draw();
 	
@@ -157,34 +160,42 @@ function init() {
 }
 
 function update() {
-	// trace('update');
 	checkInput();
 	
     player.velX *= friction;
-    player.velY += gravity;
+	player.velY += gravity;
 	
-    // player.grounded = false;
-
-	player.x += player.velX;
-	player.y += player.velY;
-	// trace('player.velX = ' + player.velX + ', player.position = ' + player.position + ', player.x = ' + player.x);
+	trace('post checkInput, velY = ' + player.velY + ', jumping = ' + player.jumping + ', grounded = ' + player.grounded);
+	
+	player.grounded = false;
 	
 	detectCollisions();
 
-	if(player.position > level.minX) {
-		player.position = level.minX;
-	// } else if(player.position < level.maxX) {
-	// 	player.position = level.maxX;
- 	} else {
-		player.position += player.velX; 
+	trace('post detectCollisions, velY = ' + player.velY + ', jumping = ' + player.jumping + ', grounded = ' + player.grounded);
+	
+    if(player.grounded){
+         player.velY = 0;
+    }
+
+	player.x += player.velX;
+	player.y += player.velY;
+
+	trace('about to animation, player.velY = ' + player.velY + ', jumping = ' + player.jumping + ', grounded = ' + player.grounded);
+	// horizontal movement
+	// if(player.positionXX > level.minX) {
+	// 	player.positionX = level.minX;
+	//  	} else {
+		player.positionX += player.velX; 
 		animateLayers();
+	// }
 
-		var playerAnim = new Kinetic.Animation(function(frame) {
-			playerHolder.move(0, player.velY/100);
-		}, playerHolder);
-		playerAnim.start();
-	}
-
+	// vertical movement
+	// trace('about to do vertical animation, player.velY = ' + player.velY);
+	var playerAnim = new Kinetic.Animation(function(frame) {
+		playerHolder.move(0, player.velY/100);
+	}, playerHolder);
+	playerAnim.start();
+	
 	animateClouds();
 	
 	stage.draw();
@@ -195,14 +206,17 @@ function update() {
 }
 
 function checkInput() {
-	    if (keys[ControlKeys.UP] || keys[ControlKeys.SPACE]) {
+		// trace('checkInput, keys[' + ControlKeys.UP + '] = ' + keys[ControlKeys.UP] + 'keys[' + ControlKeys.LEFT + '] = ' + keys[ControlKeys.LEFT] + 'keys[' + ControlKeys.RIGHT + '] = ' + keys[ControlKeys.RIGHT);
+	    if (keys[ControlKeys.UP]) {
 	        // up arrow or space
-	        if (!player.jumping && player.grounded && !jumpKeyDepressed) {
+//	        if (!player.jumping && player.grounded && !jumpKeyDepressed) {
+			trace('ControlKeys.UP pressed, jumping = ' + player.jumping + ', grounded = ' + player.grounded);
+	        if (!player.jumping && player.grounded) {
 	            player.jumping = true;
 	            player.grounded = false;
 				jumpKeyDepressed = true;
 	            player.velY = -player.speed * 2;
-				trace('passed jump conditional, velY = ' + player.velY);
+				trace('\tpassed jump conditional, velY = ' + player.velY);
 	       }
 	    }
 		previousVelX = player.velX;
@@ -221,27 +235,7 @@ function checkInput() {
 	    		player.velX--;
 	        }
 		}
-}
-
-function animateLayers() {
-	// animateLayer(backgroundHolder1, player.velX * background1.speed, 0);
-	animateLayer(backgroundHolder2, player.velX * background2.speed, 0);
-	animateLayer(backgroundHolder3, player.velX * background3.speed, 0);
-	animateLayer(foregroundHolder, player.velX * foreground.speed, 0);
-}
-
-function animateLayer(layer, newX, newY) {
-	layer.move(newX, newY);
-}
-
-function animateClouds() {
-	var cloudPos = cloudsHolder.getPosition();
-	// trace('cloudPos.x = ' + -(cloudPos.x) + ', max = ' + (clouds.width - stageConfig.width));
-	if(-(cloudPos.x) < (clouds.width - stageConfig.width)) {
-		animateLayer(cloudsHolder, -(clouds.speed), 0);
-	} else {
-		cloudsHolder.setPosition(clouds.startX, 0);
-	}
+		joystickText.setText('joystick postion: ' + joystick.getX() + '/' + joystick.getY() + ', start: ' + joystick.getStartX() + '/' + joystick.getStartY() + ', forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse());
 }
 
 function detectCollisions() {
@@ -253,32 +247,33 @@ function detectCollisions() {
 		width: player.width,
 		height: player.height
 	};
-	var col;
+	var col = collisionCheck(plyr, walls[0]); // check for ground collision
 
-	col = collisionCheck(plyr, walls[0]); // check for ground collision
-	updateByCollision(col);
+	/*
+	trace('col = ' + col);
+	if(col) {
+		player.grounded = true;
+		player.jumping = false;
+	}
+	*/
 
-}
-
-function updateByCollision(col) {
-	// trace('updateByCollision, direction = ' + col.direction);
     if (col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
         player.velX = 0;
         player.jumping = false;
 	} else if (col.direction === Directions.BOTTOM) {
         player.grounded = true;
         player.jumping = false;
+		jumpKeyDepressed = false;
 	} else if (col.direction === Directions.TOP) {
         player.velY *= -1;
     }
-	previousCollisionId = col.id;
 
-    if(player.grounded){
-         player.velY = 0;
-    }
+	// previousCollisionId = col.id;
+	// trace('detectCollisions, player.grounded = ' + player.grounded + ', col.direction = ' + col.direction);
 }
 
 function collisionCheck(shapeA, shapeB) {
+
     // get the vectors to check against
     var vX = (shapeA.x + (shapeA.width / 2)) - (shapeB.x + (shapeB.width / 2)),
         vY = (shapeA.y + (shapeA.height / 2)) - (shapeB.y + (shapeB.height / 2)),
@@ -290,11 +285,13 @@ function collisionCheck(shapeA, shapeB) {
 			direction: ''
 		};
 
-    // if the x and y vector are less than the half width or half height, they we must be inside the object, causing a collision
+	// trace('collisionCheck\n\tvX = ' + vX + ', vY = ' + vY + '\n\thWidths = ' + hWidths + ', hHeights = ' + hHeights);
+   // if the x and y vector are less than the half width or half height, they we must be inside the object, causing a collision
     if (Math.abs(vX) < hWidths && Math.abs(vY) < hHeights) {         // figures out on which side we are colliding (top, bottom, left, or right)         
-	var oX = hWidths - Math.abs(vX),             
-	oY = hHeights - Math.abs(vY);
-	if (oX >= oY) {
+		var oX = hWidths - Math.abs(vX),             
+			oY = hHeights - Math.abs(vY);
+	
+		if (oX >= oY) {
             if (vY > 0) {
                 collision.direction = Directions.TOP;
                 shapeA.y += oY;
@@ -315,9 +312,52 @@ function collisionCheck(shapeA, shapeB) {
 				collision.id = shapeB.id;
             }
         }
+ 		// trace('\n\toX = ' + oX + ', oY = ' + oY);
     }
     return collision;
+
+	/*
+	// simple rectangle collision check:
+		var status = false;
+		var rec1Top = shapeA.y;
+		var rec1Bottom = shapeA.y + shapeA.height;
+		var rec1Left = shapeA.x;
+		var rec1Right = shapeA.x + shapeA.width;
+
+		var rec2Top = shapeB.y;
+		var rec2Bottom = shapeB.y + shapeB.width;
+		var rec2Left = shapeB.x;
+		var rec2Right = shapeB.x + shapeB.width;
+
+		if(!(rec1Bottom < rec2Top || rec1Top > rec2Bottom || rec1Left > rec2Right || rec1Right < rec2Left)) {
+			status = true;
+		}
+
+		return status;
+	*/	
+
 }
+
+function animateLayers() {
+	// animateLayer(backgroundHolder2, player.velX * background2.speed, 0);
+	// animateLayer(backgroundHolder3, player.velX * background3.speed, 0);
+	animateLayer(foregroundHolder, player.velX * foreground.speed, 0);
+}
+
+function animateLayer(layer, newX, newY) {
+	layer.move(newX, newY);
+}
+
+function animateClouds() {
+	var cloudPos = cloudsHolder.getPosition();
+	// trace('cloudPos.x = ' + -(cloudPos.x) + ', max = ' + (clouds.width - stageConfig.width));
+	if(-(cloudPos.x) < (clouds.width - stageConfig.width)) {
+		animateLayer(cloudsHolder, -(clouds.speed), 0);
+	} else {
+		cloudsHolder.setPosition(clouds.startX, 0);
+	}
+}
+
 
 function addObjectsToLayer(layer, objects) {
 	var fill;
