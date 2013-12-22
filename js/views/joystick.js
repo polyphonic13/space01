@@ -154,6 +154,7 @@ var Joystick = (function() {
 		_resetStates();
 		_smCircle.setPosition(_model.startX, _model.startY);
 		_model.layer.draw();
+		_model.layer.fire(JoystickStates.REST);
 	}
 
 	function _checkDirection(evt) {

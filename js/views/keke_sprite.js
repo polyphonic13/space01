@@ -7,6 +7,8 @@ var KekeSprite = (function() {
 		position: 0,
 	    width: 76,
 	    height: 128,
+		frameRate: 15,
+		index: 0,
 	    speed: 4,
 		jumpTime: 5,
 	    velX: 0,
@@ -14,7 +16,7 @@ var KekeSprite = (function() {
 	    jumping: false,
 		justJumped: false,
 	    grounded: true,
-		spriteSheet: 'assets/images/keke_character.png'
+		spriteSheet: 'assets/images/keke_character2.png'
 	};
 	
 	function KekeSprite(params) {
@@ -29,10 +31,10 @@ var KekeSprite = (function() {
 				x: _model.x,
 				y: _model.y,
 				image: imageObj,
-				animation: 'idle',
+				animation: 'idleR',
 				animations: kekeAnimations,
-				frameRate: 7,
-				index: 0
+				frameRate: _model.frameRate,
+				index: _model.index
 			});
 
 			_model.layer.add(_sprite);

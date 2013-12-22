@@ -139,6 +139,10 @@ function init() {
 		startY: joystickStartY
 	});
 	
+	controlsLayer.on(JoystickStates.REST, function() {
+		_onJoystickRest();
+	});
+	
 	var jumpBtnX = stageConfig.width - 80;
 	var jumpBtnY = stageConfig.height - 60;
 	jumpButton = new ControlButton({
@@ -157,38 +161,6 @@ function init() {
 	//         fill: 'white'
 	// });
 	// textLayer.add(joystickText);
-	/*
-	var temp = new Kinetic.Circle({
-		draggable: true,
-		radius: 30,
-		x: 100,
-		y: 100,
-		fill: '#ffffff',
-		stroke: '#cccccc',
-		dragBoundFunc: function(pos) {
-			var x = 100;  // your center point
-			var y = 100;  // your center point 
-			var radius = 30
-			var scale = radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2)); // distance formula ratio
-
-			if(scale < 1) {
-				return {
-				y: Math.round((pos.y - y) * scale + y),
-				x: Math.round((pos.x - x) * scale + x)
-				};
-			} else {
-				return pos;
-			}
-		}
-	});
-	temp.on('dragstart', function(evt) {
-		_onDragStart(evt);
-	});
-	temp.on('dragend', function(evt) {
-		_onDragEnd();
-	});
-	textLayer.add(temp);
-	*/
 	
 	stage.add(cloudsLayer);
 	stage.add(backgroundLayer2);
@@ -212,14 +184,6 @@ function init() {
 	});
 	playing = true;
 	update();
-}
-
-function _onDragStart(evt) {
-	console.log('temp DRAG START!');
-}
-
-function _onDragEnd(evt) {
-	console.log('temp DRAG END!');
 }
 
 function update() {
@@ -287,13 +251,12 @@ function checkInput() {
 	    if (keys[ControlKeys.LEFT] || joystick.getForward()) {
 			// trace('left key or joystick forward');
 	        // right arrow
+	
 	        if (player.velX < player.speed) {
 				player.velX++;
-				if(keke.getCurrentAnimation() !== 'run') {
-					keke.playAnimation('run');
+				if(keke.getCurrentAnimation() !== 'runL') {
+					keke.playAnimation('runL');
 				}
-			} else {
-				keke.playAnimation('idle');
 			}
 			facingForward = true;
 		}
@@ -302,11 +265,9 @@ function checkInput() {
 			// trace('right key or joystick reverse');
 			if (player.velX > -player.speed) {
 	    		player.velX--;
-				if(keke.getCurrentAnimation() !== 'run') {
-					keke.playAnimation('run');
+				if(keke.getCurrentAnimation() !== 'runR') {
+					keke.playAnimation('runR');
 				}
-			} else {
-				keke.playAnimation('idle');
 	        }
 			facingForward = false;
 		}
@@ -547,11 +508,13 @@ function keyupHandler(e) {
 	switch(e.which) {
 		case ControlKeys.LEFT:
 		keys[ControlKeys.LEFT] = false;
+		keke.playAnimation('idleL');
 		// platformAnimations.forward.stop();
 		break;
 
 		case ControlKeys.RIGHT:
 		keys[ControlKeys.RIGHT] = false;
+		keke.playAnimation('idleR');
 		// platformAnimations.reverse.stop();
 		break;
 
@@ -564,6 +527,11 @@ function keyupHandler(e) {
 		default:
 		break;
 	}
+}
+
+function _onJoystickRest() {
+	trace('_onJoystickRest');
+	keke.playAnimation('idleR');
 }
 
 function start() {
