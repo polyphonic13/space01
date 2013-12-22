@@ -17,7 +17,7 @@ var Joystick = (function() {
 		smColor1: '#999999',
 		smColor2: '#aaaaaa',
 		smColor3: '#222222',
-		smGradient: false,
+		smGradient: true,
 		smStrokeWidth: 1,
 		xOnly: false,
 		yOnly: false,

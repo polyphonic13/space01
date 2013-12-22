@@ -1,10 +1,11 @@
-"use strict";
+//"use strict";
 
 var player,
 	controlsLayer,
 	joystick,
 	joystickText,
 	jumpButton,
+	quitButton,
 	level = {
 		minX: 130,
 		maxX: -1024
@@ -136,13 +137,12 @@ function init() {
 	
 	var jumpBtnX = stageConfig.width - 80;
 	var jumpBtnY = stageConfig.height - 60;
-	/*
 	jumpButton = new ControlButton({
 		layer: controlsLayer,
 		x: jumpBtnX,
 		y: jumpBtnY
 	});
-	*/
+
 	var textLayer = new Kinetic.Layer();
 	// joystickText = new Kinetic.Text({
 	// 	x: 20,
@@ -153,6 +153,38 @@ function init() {
 	//         fill: 'white'
 	// });
 	// textLayer.add(joystickText);
+	/*
+	var temp = new Kinetic.Circle({
+		draggable: true,
+		radius: 30,
+		x: 100,
+		y: 100,
+		fill: '#ffffff',
+		stroke: '#cccccc',
+		dragBoundFunc: function(pos) {
+			var x = 100;  // your center point
+			var y = 100;  // your center point 
+			var radius = 30
+			var scale = radius / Math.sqrt(Math.pow(pos.x - x, 2) + Math.pow(pos.y - y, 2)); // distance formula ratio
+
+			if(scale < 1) {
+				return {
+				y: Math.round((pos.y - y) * scale + y),
+				x: Math.round((pos.x - x) * scale + x)
+				};
+			} else {
+				return pos;
+			}
+		}
+	});
+	temp.on('dragstart', function(evt) {
+		_onDragStart(evt);
+	});
+	temp.on('dragend', function(evt) {
+		_onDragEnd();
+	});
+	textLayer.add(temp);
+	*/
 	
 	stage.add(cloudsHolder);
 	stage.add(backgroundHolder2);
@@ -176,6 +208,14 @@ function init() {
 	});
 	playing = true;
 	update();
+}
+
+function _onDragStart(evt) {
+	console.log('temp DRAG START!');
+}
+
+function _onDragEnd(evt) {
+	console.log('temp DRAG END!');
 }
 
 function update() {
@@ -238,20 +278,22 @@ function checkInput() {
 			// jumpButton.setWasPressed(false);
 	    }
 		previousVelX = player.velX;
-		// trace('checkInput, forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse() + ', rest = ' + joystick.getRest());
+//		trace('checkInput, forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse() + ', rest = ' + joystick.getRest());
 	    if (keys[ControlKeys.LEFT] || joystick.getForward()) {
+			trace('left key or joystick forward');
 	        // right arrow
 	        if (player.velX < player.speed) {
-				facingForward = true;
 				player.velX++;
 			}
+			facingForward = true;
 		}
 
 		if (keys[ControlKeys.RIGHT] || joystick.getReverse()) {         // left arrow         
+			trace('right key or joystick reverse');
 			if (player.velX > -player.speed) {
-				facingForward = false;
 	    		player.velX--;
 	        }
+			facingForward = false;
 		}
 		// joystickText.setText('joystick postion: ' + joystick.getX() + '/' + joystick.getY() + ', start: ' + joystick.getStartX() + '/' + joystick.getStartY() + ', forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse());
 }
