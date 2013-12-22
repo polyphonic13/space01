@@ -14,15 +14,15 @@ var Joystick = (function() {
 		lgGradient: true,
 		lgStrokeWidth: 2,
 		smRadius: 35,
-		smColor1: '#dddddd',
+		smColor1: '#999999',
 		smColor2: '#aaaaaa',
 		smColor3: '#222222',
 		smGradient: false,
 		smStrokeWidth: 1,
 		xOnly: false,
-		yOnly: false
+		yOnly: false,
+		layer: null
 	};
-	var _layer; 
 	var _lgCircle;
 	var _smCircle;
 	
@@ -44,7 +44,12 @@ var Joystick = (function() {
 	}
 
 	function _buildViews() {
-		_layer = new Kinetic.Layer();
+		if(!_model.layer) {
+			_model.layer = new Kinetic.Layer({
+				width: _model.lgRadius,
+				height: _model.lgRaduis
+			});
+		}
 		
 		var lgCircleConfig = {
 			x: _model.startX,
@@ -116,8 +121,8 @@ var Joystick = (function() {
 		_lgCircle = new Kinetic.Circle(lgCircleConfig);
 		_smCircle = new Kinetic.Circle(smCircleConfig);
 
-		_layer.add(_lgCircle);
-		_layer.add(_smCircle);
+		_model.layer.add(_lgCircle);
+		_model.layer.add(_smCircle);
 	}
 	
 	function _addListeners() {
@@ -148,7 +153,7 @@ var Joystick = (function() {
 		console.log('_onDragEnd');
 		_resetStates();
 		_smCircle.setPosition(_model.startX, _model.startY);
-		_layer.draw();
+		_model.layer.draw();
 	}
 
 	function _checkDirection(evt) {
@@ -176,12 +181,12 @@ var Joystick = (function() {
 	}
 	
 	Joystick.prototype.getLayer = function() {
-		return _layer;
+		return _model.layer;
 	};
 
 	Joystick.prototype.setPosition = function(pos) {
-		_layer.setPosition(pos);
-		_layer.draw();
+		_model.layer.setPosition(pos);
+		_model.layer.draw();
 	};
 	
 	Joystick.prototype.getStates = function() {

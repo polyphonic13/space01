@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width"/>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v4.7.4.min.js"></script>
+    <script defer="defer">
+      function writeMessage(message) {
+        text.setText(message);
+        layer.draw();
+      }
+      
+      var stage = new Kinetic.Stage({
+        container: 'container',
+        width: 578,
+        height: 200
+      });
+      
+      var layer = new Kinetic.Layer();
+
+      var text = new Kinetic.Text({
+        x: 10,
+        y: 10,
+        fontFamily: 'Calibri',
+        fontSize: 24,
+        text: '',
+        fill: 'black'
+      });
+
+      var numEvents = 0;
+
+      var circle = new Kinetic.Circle({
+        x: stage.getWidth() / 2,
+        y: stage.getHeight() / 2 + 10,
+        radius: 70,
+        fill: 'red',
+        stroke: 'black',
+        strokeWidth: 4
+      });
+
+      /*
+       * mousedown and touchstart are desktop and
+       * mobile equivalents so they are often times
+       * used together
+       */
+      circle.on('mousedown touchstart', function() {
+        writeMessage('Mousedown or touchstart');
+      });
+      /*
+       * mouseup and touchend are desktop and
+       * mobile equivalents so they are often times
+       * used together
+       */
+      circle.on('mouseup touchend', function() {
+        writeMessage('Mouseup or touchend');
+      });
+
+      layer.add(circle);
+      layer.add(text);
+      stage.add(layer);
+
+    </script>
+  </body>
+</html>

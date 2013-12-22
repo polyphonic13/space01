@@ -1,6 +1,7 @@
 "use strict";
 
 var player,
+	controlsLayer,
 	joystick,
 	joystickText,
 	jumpButton,
@@ -68,7 +69,7 @@ var player,
 		position: 0,
         width: 20,
         height: 55,
-        speed: 3,
+        speed: 4,
 		jumpTime: 5,
         velX: 0,
         velY: 0,
@@ -85,7 +86,7 @@ var player,
     keys = {},
 	moveSpeed = 50,
     friction = 0.5,
-    gravity = 0.2,
+    gravity = 0.5,
 	previousVelX = 0,
 	jumpKeyDepressed = false,
 	facingForward = true,
@@ -123,13 +124,25 @@ function init() {
 	wallHolder = new Kinetic.Layer();
 	addObjectsToLayer(wallHolder, walls);
 	
-	var startY = stageConfig.height - 60;
-	var startX = 80;
+	controlsLayer = new Kinetic.Layer();
+	
+	var joystickStartX = 80;
+	var joystickStartY = stageConfig.height - 60;
 	joystick = new Joystick({ 
-		startX: startX,
-		startY: startY 
+		layer: controlsLayer,
+		startX: joystickStartX,
+		startY: joystickStartY
 	});
 	
+	var jumpBtnX = stageConfig.width - 80;
+	var jumpBtnY = stageConfig.height - 60;
+	/*
+	jumpButton = new ControlButton({
+		layer: controlsLayer,
+		x: jumpBtnX,
+		y: jumpBtnY
+	});
+	*/
 	var textLayer = new Kinetic.Layer();
 	// joystickText = new Kinetic.Text({
 	// 	x: 20,
@@ -147,7 +160,7 @@ function init() {
 	stage.add(foregroundHolder);
 	stage.add(playerHolder);
 	stage.add(wallHolder);
-	stage.add(joystick.getLayer());
+	stage.add(controlsLayer);
 	stage.add(textLayer);
 	
 	scenery.push({ config: background2, layer: backgroundHolder2 });
@@ -211,11 +224,8 @@ function update() {
 }
 
 function checkInput() {
-		// trace('checkInput, keys[' + ControlKeys.UP + '] = ' + keys[ControlKeys.UP] + 'keys[' + ControlKeys.LEFT + '] = ' + keys[ControlKeys.LEFT] + 'keys[' + ControlKeys.RIGHT + '] = ' + keys[ControlKeys.RIGHT);
-	    // if (keys[ControlKeys.UP] || jumpButton.getPressed()) {
-		if(keys[ControlKeys.UP]) {
+	    if (keys[ControlKeys.UP]){// || jumpButton.getWasPressed()) {
 	        // up arrow or space
-			// trace('ControlKeys.UP pressed, jumping = ' + player.jumping + ', grounded = ' + player.grounded);
 	        if (!player.jumping && player.grounded && !jumpKeyDepressed) {
 	        // if (!player.jumping && player.grounded) {
 	            player.jumping = true;
@@ -225,6 +235,7 @@ function checkInput() {
 	            player.velY = -player.speed * 2;
 				trace('\tpassed jump conditional, velY = ' + player.velY);
 	       }
+			// jumpButton.setWasPressed(false);
 	    }
 		previousVelX = player.velX;
 		// trace('checkInput, forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse() + ', rest = ' + joystick.getRest());
@@ -265,7 +276,7 @@ function detectCollisions() {
 		} else {
 	        player.grounded = true;
 	        player.jumping = false;
-			// jumpKeyDepressed = false;
+			jumpKeyDepressed = false;
 		}
 	} else if (col.direction === Directions.TOP) {
         player.velY *= -1;
