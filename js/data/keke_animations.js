@@ -11,6 +11,18 @@ var kekeAnimations = {
 		width: 76,
 		height: 128
 	}],
+	jumpR: [{
+		x: 152,
+		y: 0,
+		width: 76,
+		height: 128
+	}],
+	jumpL: [{
+		x: 228,
+		y: 0,
+		width: 76,
+		height: 128
+	}],
 	runR: [{
 		x: 0,
 		y: 128,

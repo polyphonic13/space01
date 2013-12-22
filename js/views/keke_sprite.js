@@ -3,7 +3,7 @@ var KekeSprite = (function() {
 	var _currentAnimation;
 	var _model = {
 	    x: stageConfig.width / 2,
-	    y: stageConfig.height - 256,
+	    y: stageConfig.height - 200,
 		position: 0,
 	    width: 76,
 	    height: 128,
@@ -46,7 +46,7 @@ var KekeSprite = (function() {
 	}
 
 	KekeSprite.prototype.playAnimation = function(name) {
-		trace('KekeSprite/playAnimation, name = ' + name);
+		// trace('KekeSprite/playAnimation, name = ' + name);
 		if(_sprite) {
 			_sprite.setAnimation(name);
 		}

@@ -242,6 +242,7 @@ function checkInput() {
 	            player.grounded = false;
 				jumpKeyDepressed = true;
 	            player.velY = -player.speed * 2;
+				keke.playAnimation('jumpR');
 				trace('\tpassed jump conditional, velY = ' + player.velY);
 	       }
 			// jumpButton.setWasPressed(false);
@@ -254,8 +255,12 @@ function checkInput() {
 	
 	        if (player.velX < player.speed) {
 				player.velX++;
-				if(keke.getCurrentAnimation() !== 'runL') {
-					keke.playAnimation('runL');
+				if(!player.jumping) {
+					if(keke.getCurrentAnimation() !== 'runL') {
+						keke.playAnimation('runL');
+					}
+				} else {
+					keke.playAnimation('jumpL');
 				}
 			}
 			facingForward = true;
@@ -265,8 +270,12 @@ function checkInput() {
 			// trace('right key or joystick reverse');
 			if (player.velX > -player.speed) {
 	    		player.velX--;
-				if(keke.getCurrentAnimation() !== 'runR') {
-					keke.playAnimation('runR');
+				if(!player.jumping) {
+					if(keke.getCurrentAnimation() !== 'runR') {
+						keke.playAnimation('runR');
+					}
+				} else {
+					keke.playAnimation('jumpR');
 				}
 	        }
 			facingForward = false;
