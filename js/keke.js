@@ -1,6 +1,7 @@
-//"use strict";
+"use strict";
 
 var player,
+	keke,
 	controlsLayer,
 	joystick,
 	joystickText,
@@ -10,8 +11,8 @@ var player,
 		minX: 130,
 		maxX: -1024
 	},
-	wallHolder,
-	cloudsHolder,
+	wallLayer,
+	cloudsLayer,
 	clouds = {
 		imgUrl: 'assets/images/clouds.png',
 		startX: 0,
@@ -21,7 +22,7 @@ var player,
 		speed: 1
 	},
 	scenery = [],
-	backgroundHolder2,
+	backgroundLayer2,
 	background2 = {
 		imgUrl: 'assets/images/hills03_grey.png',
 		startX: -100,
@@ -31,7 +32,7 @@ var player,
 		// speed: 250
 		speed: 0.5
 	},
-	backgroundHolder3,
+	backgroundLayer3,
 	background3 = {
 		imgUrl: 'assets/images/trees_back01.png',
 		startX: -200,
@@ -41,7 +42,7 @@ var player,
 		// speed: 250
 		speed: 1.5
 	},
-	foregroundHolder,
+	foregroundLayer,
 	foreground = {
 		images: [{
 			url: 'assets/images/trees_fore01.png',
@@ -54,8 +55,8 @@ var player,
 		startY: stageConfig.height - 300,
 		speed: 4
 	},
-	platformHolder,
-	splineHolder,
+	platformLayer,
+	splineLayer,
 	splineMove = 100,
 	currentPlaying = '',
 	previousCollisionId = '',
@@ -63,12 +64,12 @@ var player,
 		x: stageConfig.width / 2,
 		y: stageConfig.height - 256
 	},
-	playerHolder,
+	playerLayer,
     player = {
         x: startLocation.x,
         y: startLocation.y,
 		position: 0,
-        width: 56,
+        width: 76,
         height: 128,
         speed: 4,
 		jumpTime: 5,
@@ -106,24 +107,27 @@ function init() {
 	addImageToLayer(stageBgLayer, 'assets/images/night_sky.png', 0, 0, stageConfig.width, stageConfig.height, 1);
 	stage.add(stageBgLayer);
 
-	cloudsHolder = new Kinetic.Layer();
-	addImageToLayer(cloudsHolder, clouds.imgUrl, clouds.startX, clouds.startY, clouds.width, clouds.height);
-	backgroundHolder2 = new Kinetic.Layer();
-	addImageToLayer(backgroundHolder2, background2.imgUrl, background2.startX, background2.startY, background2.width, background2.height);
-	backgroundHolder3 = new Kinetic.Layer();
-	addImageToLayer(backgroundHolder3, background3.imgUrl, background3.startX, background3.startY, background3.width, background3.height);
+	cloudsLayer = new Kinetic.Layer();
+	addImageToLayer(cloudsLayer, clouds.imgUrl, clouds.startX, clouds.startY, clouds.width, clouds.height);
+	backgroundLayer2 = new Kinetic.Layer();
+	addImageToLayer(backgroundLayer2, background2.imgUrl, background2.startX, background2.startY, background2.width, background2.height);
+	backgroundLayer3 = new Kinetic.Layer();
+	addImageToLayer(backgroundLayer3, background3.imgUrl, background3.startX, background3.startY, background3.width, background3.height);
 	
- 	playerHolder = new Kinetic.Layer();
-	addImageToLayer(playerHolder, kekeUrl, 0, 0, player.width, player.height);
+	foregroundLayer = new Kinetic.Layer(); 
+	addImagesToLayer(foregroundLayer, foreground.images);
+	// addImageToLayer(foregroundLayer, 'assets/images/striped_bg.png', -800, 0, 3200, stageConfig.height, 1);
 	
-	playerHolder.setPosition(player.x, player.y);
+ 	playerLayer = new Kinetic.Layer();
+	keke = new KekeSprite({
+		layer: playerLayer
+	});
 	
-	foregroundHolder = new Kinetic.Layer(); 
-	addImagesToLayer(foregroundHolder, foreground.images);
-	// addImageToLayer(foregroundHolder, 'assets/images/striped_bg.png', -800, 0, 3200, stageConfig.height, 1);
+	// addImageToLayer(playerLayer, kekeUrl, 0, 0, player.width, player.height);
+	// playerLayer.setPosition(player.x, player.y);
 	
-	wallHolder = new Kinetic.Layer();
-	addObjectsToLayer(wallHolder, walls);
+	wallLayer = new Kinetic.Layer();
+	addObjectsToLayer(wallLayer, walls);
 	
 	controlsLayer = new Kinetic.Layer();
 	
@@ -186,18 +190,18 @@ function init() {
 	textLayer.add(temp);
 	*/
 	
-	stage.add(cloudsHolder);
-	stage.add(backgroundHolder2);
-	stage.add(backgroundHolder3);
-	stage.add(foregroundHolder);
-	stage.add(playerHolder);
-	stage.add(wallHolder);
+	stage.add(cloudsLayer);
+	stage.add(backgroundLayer2);
+	stage.add(backgroundLayer3);
+	stage.add(foregroundLayer);
+	stage.add(playerLayer);
+	stage.add(wallLayer);
 	stage.add(controlsLayer);
 	stage.add(textLayer);
 	
-	scenery.push({ config: background2, layer: backgroundHolder2 });
-	scenery.push({ config: background3, layer: backgroundHolder3 });
-	scenery.push({ config: foreground, layer: foregroundHolder });
+	scenery.push({ config: background2, layer: backgroundLayer2 });
+	scenery.push({ config: background3, layer: backgroundLayer3 });
+	scenery.push({ config: foreground, layer: foregroundLayer });
 	// stage.draw();
 	
 	$(window).keydown(function(e) {
@@ -249,10 +253,11 @@ function update() {
 	// vertical movement
 	// trace('about to do vertical animation, player.velY = ' + player.velY);
 	// var playerAnim = new Kinetic.Animation(function(frame) {
-	// 	playerHolder.move(0, player.velY * 0.01);
-	// }, playerHolder);
+	// 	playerLayer.move(0, player.velY * 0.01);
+	// }, playerLayer);
 	// playerAnim.start();
-	playerHolder.move(0, player.velY);
+
+	// playerLayer.move(0, player.velY);
 
 	animateClouds();
 	
@@ -280,18 +285,28 @@ function checkInput() {
 		previousVelX = player.velX;
 //		trace('checkInput, forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse() + ', rest = ' + joystick.getRest());
 	    if (keys[ControlKeys.LEFT] || joystick.getForward()) {
-			trace('left key or joystick forward');
+			// trace('left key or joystick forward');
 	        // right arrow
 	        if (player.velX < player.speed) {
 				player.velX++;
+				if(keke.getCurrentAnimation() !== 'run') {
+					keke.playAnimation('run');
+				}
+			} else {
+				keke.playAnimation('idle');
 			}
 			facingForward = true;
 		}
 
 		if (keys[ControlKeys.RIGHT] || joystick.getReverse()) {         // left arrow         
-			trace('right key or joystick reverse');
+			// trace('right key or joystick reverse');
 			if (player.velX > -player.speed) {
 	    		player.velX--;
+				if(keke.getCurrentAnimation() !== 'run') {
+					keke.playAnimation('run');
+				}
+			} else {
+				keke.playAnimation('idle');
 	        }
 			facingForward = false;
 		}
@@ -300,7 +315,8 @@ function checkInput() {
 
 function detectCollisions() {
 
-	var playerPos = playerHolder.getAbsolutePosition();
+	var playerPos = playerLayer.getAbsolutePosition();
+	// trace('playerPos x/y = ' + playerPos.x + '/' + playerPos.y);
 	var plyr = {
 		x: playerPos.x,
 		y: playerPos.y,
@@ -342,7 +358,7 @@ function collisionCheck(shapeA, shapeB) {
 		};
 
 	// trace('collisionCheck\n\tvX = ' + vX + ', vY = ' + vY + '\n\thWidths = ' + hWidths + ', hHeights = ' + hHeights);
-   // if the x and y vector are less than the half width or half height, they we must be inside the object, causing a collision
+	// if the x and y vector are less than the half width or half height, they we must be inside the object, causing a collision
     if (Math.abs(vX) < hWidths && Math.abs(vY) < hHeights) {         // figures out on which side we are colliding (top, bottom, left, or right)         
 		var oX = hWidths - Math.abs(vX),             
 			oY = hHeights - Math.abs(vY);
@@ -405,12 +421,12 @@ function animateLayer(layer, newX, newY) {
 }
 
 function animateClouds() {
-	var cloudPos = cloudsHolder.getPosition();
+	var cloudPos = cloudsLayer.getPosition();
 	// trace('cloudPos.x = ' + -(cloudPos.x) + ', max = ' + (clouds.width - stageConfig.width));
 	if(-(cloudPos.x) < (clouds.width - stageConfig.width)) {
-		animateLayer(cloudsHolder, -(clouds.speed), 0);
+		animateLayer(cloudsLayer, -(clouds.speed), 0);
 	} else {
-		cloudsHolder.setPosition(clouds.startX, 0);
+		cloudsLayer.setPosition(clouds.startX, 0);
 	}
 }
 
