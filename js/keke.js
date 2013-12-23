@@ -216,11 +216,6 @@ function update() {
 
 	// vertical movement
 	// trace('about to do vertical animation, player.velY = ' + player.velY);
-	// var playerAnim = new Kinetic.Animation(function(frame) {
-	// 	playerLayer.move(0, player.velY * 0.01);
-	// }, playerLayer);
-	// playerAnim.start();
-
 	// playerLayer.move(0, player.velY);
 
 	animateClouds();
@@ -236,7 +231,6 @@ function checkInput() {
 	    if (keys[ControlKeys.UP]){// || jumpButton.getWasPressed()) {
 	        // up arrow or space
 	        if (!player.jumping && player.grounded && !jumpKeyDepressed) {
-	        // if (!player.jumping && player.grounded) {
 	            player.jumping = true;
 				player.justJumped = true;
 	            player.grounded = false;
