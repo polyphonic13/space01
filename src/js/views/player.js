@@ -74,6 +74,10 @@ var Player = (function() {
 			_model.justJumped = val;
 		});
 	}
+	
+	Player.prototype.setStage = function(stage) {
+		stage.add(_model.layer);
+	};
 
 	Player.prototype.getModel = function() {
 		return _model;

@@ -1,42 +1,17 @@
 var SpritePlayer = (function() {
 	Utils.inherits(SpritePlayer, Player);
 	
-	var config = {
-		x: 0,
-		y: 0,
-		position: 0,
-	    width: 76,
-	    height: 128,
-	    speed: 4,
-		jumpTime: 5,
-	    velX: 0,
-	    velY: 0,
-	    jumping: false,
-		justJumped: false,
-	    grounded: true,
-		sprite: {
-			url: 'images/keke_character2.png',
-			x: 0,
-			y: 0,
-			index: 0,
-			frameRate: 15
-		}
-	};
-
+	var _config = {};
 	var _sprite;
 	var _currentAnimation;
 	var _model;
 	
 	// CONSTRUCTOR
 	function SpritePlayer(params) {
-		trace('SpritePlayer/constructor');
-		config = Utils.extend(config, params);
-		SpritePlayer._super.constructor.call(this, config);
+		config = Utils.extend(_config, params);
+		SpritePlayer._super.constructor.call(this, _config);
 
 		_model = this.constructor._super.getModel.call(this);
-		trace('\t_model =');
-		trace(_model);
-
 		_buildViews();
 	}
 

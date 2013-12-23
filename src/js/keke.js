@@ -59,11 +59,6 @@ var keke,
 	splineMove = 100,
 	currentPlaying = '',
 	previousCollisionId = '',
-	startLocation = {
-		x: stageConfig.width / 2,
-		y: stageConfig.height - 256
-		// y: stageConfig.height - 205
-	},
 	keke,
     keys = {},
 	moveSpeed = 50,
@@ -77,31 +72,38 @@ var keke,
 	imagesToLoad = 4;
 		
 function init() {
+	// STAGE
 	stage = new Kinetic.Stage({
 		container: 'container',
 		width: stageConfig.width,
 		height: stageConfig.height
 	});
 
+	// STATIC BACKGROUND
 	var stageBgLayer = new Kinetic.Layer();
 	addImageToLayer(stageBgLayer, 'images/night_sky.png', 0, 0, stageConfig.width, stageConfig.height, 1);
 	stage.add(stageBgLayer);
 
+	// CLOUDS
 	cloudsLayer = new Kinetic.Layer();
 	addImageToLayer(cloudsLayer, clouds.imgUrl, clouds.startX, clouds.startY, clouds.width, clouds.height);
+	
+	// MOVING BACKGROUNDS
 	backgroundLayer2 = new Kinetic.Layer();
 	addImageToLayer(backgroundLayer2, background2.imgUrl, background2.startX, background2.startY, background2.width, background2.height);
 	backgroundLayer3 = new Kinetic.Layer();
 	addImageToLayer(backgroundLayer3, background3.imgUrl, background3.startX, background3.startY, background3.width, background3.height);
-	
 	foregroundLayer = new Kinetic.Layer(); 
 	addImagesToLayer(foregroundLayer, foreground.images);
 	
-	keke = new SpritePlayer(startLocation);
+	// PLAYER
+	keke = new SpritePlayer(gameConfig.player);
 	
+	// STATIC OUTER WALLS
 	wallLayer = new Kinetic.Layer();
 	addObjectsToLayer(wallLayer, walls);
 	
+	// CONTROLS
 	controlsLayer = new Kinetic.Layer();
 	
 	var joystickStartX = 80;
@@ -139,7 +141,9 @@ function init() {
 	stage.add(backgroundLayer2);
 	stage.add(backgroundLayer3);
 	stage.add(foregroundLayer);
-	stage.add(keke.layer);
+
+	keke.setStage(stage);
+	
 	stage.add(wallLayer);
 	stage.add(controlsLayer);
 	stage.add(textLayer);

@@ -1,4 +1,4 @@
-var config = {
+var gameConfig = {
 	stageFrame: [
 	{
 		id: 'top',
@@ -107,16 +107,25 @@ var config = {
 		speed: 5
 	}],
  	player: {
-		images: {
-			forward: 'images/keke.png',
-			reverse: 'images/keke_tiny_reverse.png'
-		},
-        x: 400,
-        y: 370,
-        width: 20,
-        height: 55,
-        speed: 2.5,
-		jumpTime: 5
+		x: stageConfig.width / 2,
+		y: stageConfig.height - 256,
+		position: 0,
+	    width: 76,
+	    height: 128,
+	    speed: 4,
+		jumpTime: 5,
+	    velX: 0,
+	    velY: 0,
+	    jumping: false,
+		justJumped: false,
+	    grounded: true,
+		sprite: {
+			url: 'images/keke_character2.png',
+			x: 0,
+			y: 0,
+			index: 0,
+			frameRate: 15
+		}
     },
    friction: 0.5,
     gravity: 0.2
