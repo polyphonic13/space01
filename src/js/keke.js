@@ -243,7 +243,7 @@ function checkInput() {
 					animationToPlay = 'jumpR';
 				} else {
 					// keke.playAnimation('jumpL');
-					animationToPlayer = 'jumpL';
+					animationToPlay = 'jumpL';
 				}
 				trace('\tpassed jump conditional, velY = ' + keke.velY);
 	       }
