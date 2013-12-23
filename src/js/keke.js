@@ -14,7 +14,7 @@ var player,
 	wallLayer,
 	cloudsLayer,
 	clouds = {
-		imgUrl: 'assets/images/clouds.png',
+		imgUrl: 'images/clouds.png',
 		startX: 0,
 		startY: 0,
 		width: 2048,
@@ -24,7 +24,7 @@ var player,
 	scenery = [],
 	backgroundLayer2,
 	background2 = {
-		imgUrl: 'assets/images/hills03_grey.png',
+		imgUrl: 'images/hills03_grey.png',
 		startX: -100,
 		startY: 50,
 		width: 2048,
@@ -34,7 +34,7 @@ var player,
 	},
 	backgroundLayer3,
 	background3 = {
-		imgUrl: 'assets/images/trees_back01.png',
+		imgUrl: 'images/trees_back01.png',
 		startX: -200,
 		startY: stageConfig.height - 320,
 		width: 2048,
@@ -45,7 +45,7 @@ var player,
 	foregroundLayer,
 	foreground = {
 		images: [{
-			url: 'assets/images/trees_fore01.png',
+			url: 'images/trees_fore01.png',
 			x: -385,
 			y: -40,
 			width: 2048,
@@ -79,8 +79,8 @@ var player,
 		justJumped: false,
         grounded: true
     },
-	kekeUrl = 'assets/images/keke_cell.png',
-	kekeReverseUrl = "assets/images/keke_tiny_reverse.png",
+	kekeUrl = 'images/keke_cell.png',
+	kekeReverseUrl = "images/keke_tiny_reverse.png",
 	kekeW = 56,
 	kekeH = 128,
 	keke,
@@ -104,7 +104,7 @@ function init() {
 	});
 
 	var stageBgLayer = new Kinetic.Layer();
-	addImageToLayer(stageBgLayer, 'assets/images/night_sky.png', 0, 0, stageConfig.width, stageConfig.height, 1);
+	addImageToLayer(stageBgLayer, 'images/night_sky.png', 0, 0, stageConfig.width, stageConfig.height, 1);
 	stage.add(stageBgLayer);
 
 	cloudsLayer = new Kinetic.Layer();

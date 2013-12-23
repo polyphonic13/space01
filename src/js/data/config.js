@@ -32,7 +32,7 @@ var config = {
 	backLayers: [{
 		id: 'farMountains',
 		images: [{
-			url: 'assets/images/hills04_grey.png',
+			url: 'images/hills04_grey.png',
 			x: -200,
 			y: 0,
 			width: 2048,
@@ -47,7 +47,7 @@ var config = {
 	{
 		id: 'nearHills',
 		images: [{
-			url: 'assets/images/hills03_grey.png',
+			url: 'images/hills03_grey.png',
 			x: -200,
 			y: 270,
 			width: 2048,
@@ -62,7 +62,7 @@ var config = {
 	{
 		id: 'treeLine',
 		images: [{
-			imgUrl: 'assets/images/tree01.png',
+			imgUrl: 'images/tree01.png',
 			x: 500,
 			y: -75,
 			width: 256,
@@ -78,7 +78,7 @@ var config = {
 	foreLayers: [{
 		id: 'trees',
 		images: [{
-			imgUrl: 'assets/images/tree01.png',
+			imgUrl: 'images/tree01.png',
 			x: 0,
 			y: 0,
 			width: 256,
@@ -93,13 +93,13 @@ var config = {
 	{
 		id: 'trees',
 		images: [{
-			imgUrl: 'assets/images/tree01.png',
+			imgUrl: 'images/tree01.png',
 			x: 0,
 			y: 0,
 			width: 256,
 			height: 512
 		}],
-		imgUrl: 'assets/images/tree01.png',
+		imgUrl: 'images/tree01.png',
 		x: 0,
 		y: 0,
 		width: 256,
@@ -108,8 +108,8 @@ var config = {
 	}],
  	player: {
 		images: {
-			forward: 'assets/images/keke.png',
-			reverse: 'assets/images/keke_tiny_reverse.png'
+			forward: 'images/keke.png',
+			reverse: 'images/keke_tiny_reverse.png'
 		},
         x: 400,
         y: 370,

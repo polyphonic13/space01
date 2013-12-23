@@ -18,7 +18,7 @@ var KekeSprite = (function() {
 	    jumping: false,
 		justJumped: false,
 	    grounded: true,
-		spriteSheet: 'assets/images/keke_character2.png'
+		spriteSheet: 'images/keke_character2.png'
 	};
 	
 	function KekeSprite(params) {
