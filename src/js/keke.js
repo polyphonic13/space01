@@ -116,10 +116,7 @@ function init() {
 	foregroundLayer = new Kinetic.Layer(); 
 	addImagesToLayer(foregroundLayer, foreground.images);
 	
- 	var playerLayer = new Kinetic.Layer();
-	keke = new KekeSprite({
-		layer: playerLayer
-	});
+	keke = new KekeSprite();
 	trace('about to set keke.layer position, x/y = ' + player.x + '/' + player.y);
 	keke.layer.setPosition(player.x, player.y);
 	trace('keke layer = ');
@@ -192,19 +189,19 @@ function update() {
     player.velX *= friction;
 	player.velY += gravity;
 	
-	// trace('post checkInput, velY = ' + player.velY + ', jumping = ' + player.jumping + ', grounded = ' + player.grounded);
+	// trace('post checkInput, velY = ' + player.velY + ', jumping = ' + keke.jumping + ', grounded = ' + keke.grounded);
 	
-	player.grounded = false;
+	keke.grounded = false;
 	
 	detectCollisions();
 
-	// trace('post detectCollisions, velY = ' + player.velY + ', jumping = ' + player.jumping + ', grounded = ' + player.grounded);
+	// trace('post detectCollisions, velY = ' + player.velY + ', jumping = ' + keke.jumping + ', grounded = ' + keke.grounded);
 	
-    if(player.grounded && !player.jumping) {
+    if(keke.grounded && !keke.jumping) {
          player.velY = 0;
     }
 
-	// trace('about to animation, player.velY = ' + player.velY + ', jumping = ' + player.jumping + ', grounded = ' + player.grounded);
+	// trace('about to animation, player.velY = ' + player.velY + ', jumping = ' + keke.jumping + ', grounded = ' + keke.grounded);
 
 	// horizontal movement
 	// if(player.positionX > level.minX) {
@@ -230,10 +227,10 @@ function update() {
 function checkInput() {
 	    if (keys[ControlKeys.UP] || jumpButton.getWasPressed()) {
 	        // up arrow or space
-	        if (!player.jumping && player.grounded && !jumpKeyDepressed) {
-	            player.jumping = true;
-				player.justJumped = true;
-	            player.grounded = false;
+	        if (!keke.jumping && keke.grounded && !jumpKeyDepressed) {
+	            keke.jumping = true;
+				keke.justJumped = true;
+	            keke.grounded = false;
 				jumpKeyDepressed = true;
 	            player.velY = -player.speed * 2;
 				if(facingForward) {
@@ -253,7 +250,7 @@ function checkInput() {
 	
 	        if (player.velX < player.speed) {
 				player.velX++;
-				if(!player.jumping) {
+				if(!keke.jumping) {
 					if(keke.getCurrentAnimation() !== 'runL') {
 						keke.playAnimation('runL');
 					}
@@ -266,7 +263,7 @@ function checkInput() {
 			trace('right key or joystick reverse');
 			if (player.velX > -player.speed) {
 	    		player.velX--;
-				if(!player.jumping) {
+				if(!keke.jumping) {
 					if(keke.getCurrentAnimation() !== 'runR') {
 						keke.playAnimation('runR');
 					}
@@ -275,7 +272,7 @@ function checkInput() {
 				}
 	        }
 			facingForward = false;
-		} else if(!player.jumping) {
+		} else if(!keke.jumping) {
 			// trace('not moving and not jumping, facingForward = ' + facingForward);
 			if(facingForward) {
 				keke.playAnimation('idleL');
@@ -300,13 +297,13 @@ function detectCollisions() {
 
     if (col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
         player.velX = 0;
-        player.jumping = false;
+        keke.jumping = false;
 	} else if (col.direction === Directions.BOTTOM) {
-		if(player.justJumped) {
-			player.justJumped = false;
+		if(keke.justJumped) {
+			keke.justJumped = false;
 		} else {
-	        player.grounded = true;
-	        player.jumping = false;
+	        keke.grounded = true;
+	        keke.jumping = false;
 			jumpKeyDepressed = false;
 		}
 	} else if (col.direction === Directions.TOP) {
@@ -314,7 +311,7 @@ function detectCollisions() {
     }
 
 	// previousCollisionId = col.id;
-	// trace('detectCollisions, player.grounded = ' + player.grounded + ', col.direction = ' + col.direction);
+	// trace('detectCollisions, keke.grounded = ' + keke.grounded + ', col.direction = ' + col.direction);
 }
 
 function collisionCheck(shapeA, shapeB) {
