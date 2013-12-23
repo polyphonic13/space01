@@ -116,15 +116,13 @@ function init() {
 	
 	foregroundLayer = new Kinetic.Layer(); 
 	addImagesToLayer(foregroundLayer, foreground.images);
-	// addImageToLayer(foregroundLayer, 'assets/images/striped_bg.png', -800, 0, 3200, stageConfig.height, 1);
 	
  	playerLayer = new Kinetic.Layer();
 	keke = new KekeSprite({
 		layer: playerLayer
 	});
-	
-	// addImageToLayer(playerLayer, kekeUrl, 0, 0, player.width, player.height);
-	// playerLayer.setPosition(player.x, player.y);
+	trace('about to set playerLayer position, x/y = ' + player.x + '/' + player.y);
+	playerLayer.setPosition(player.x, player.y);
 	
 	wallLayer = new Kinetic.Layer();
 	addObjectsToLayer(wallLayer, walls);
@@ -216,7 +214,7 @@ function update() {
 
 	// vertical movement
 	// trace('about to do vertical animation, player.velY = ' + player.velY);
-	// playerLayer.move(0, player.velY);
+	playerLayer.move(0, player.velY);
 
 	animateClouds();
 	

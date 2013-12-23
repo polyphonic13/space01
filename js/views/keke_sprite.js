@@ -2,8 +2,10 @@ var KekeSprite = (function() {
 	var _sprite;
 	var _currentAnimation;
 	var _model = {
-	    x: stageConfig.width / 2,
-	    y: stageConfig.height - 200,
+	    // x: stageConfig.width / 2,
+	    // y: stageConfig.height - 200,
+		x: 0,
+		y: 0,
 		position: 0,
 	    width: 76,
 	    height: 128,
@@ -20,6 +22,7 @@ var KekeSprite = (function() {
 	};
 	
 	function KekeSprite(params) {
+		trace('KekeSprite/constructor');
 		_model = Utils.extend(_model, params);
 		_buildViews();
 	}

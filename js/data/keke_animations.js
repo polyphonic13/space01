@@ -12,13 +12,13 @@ var kekeAnimations = {
 		height: 128
 	}],
 	jumpR: [{
-		x: 152,
+		x: 304,
 		y: 0,
 		width: 76,
 		height: 128
 	}],
 	jumpL: [{
-		x: 228,
+		x: 380,
 		y: 0,
 		width: 76,
 		height: 128
