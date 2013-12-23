@@ -1,14 +1,15 @@
 "use strict";
 
 var keke,
+	animationToPlay,
 	controlsLayer,
 	joystick,
 	joystickText,
 	jumpButton,
 	quitButton,
 	level = {
-		minX: 130,
-		maxX: -1024
+		minX: 86,
+		maxX: -1697
 	},
 	wallLayer,
 	cloudsLayer,
@@ -67,13 +68,8 @@ var keke,
 		speed: 3
 	},
 	platformLayer,
-	splineLayer,
-	splineMove = 100,
-	currentPlaying = '',
 	previousCollisionId = '',
-	keke,
     keys = {},
-	moveSpeed = 50,
     friction = 0.5,
     gravity = 0.5,
 	previousVelX = 0,
@@ -205,7 +201,19 @@ function update() {
 
 	// TODO: test for bounds of game before moving
 	// horizontal movement
-	animateLayers();
+	keke.position += keke.velX;
+	if(keke.position < level.minX && keke.position > level.maxX) {
+		// trace('keke.position = ' + keke.position);
+		keke.playAnimation(animationToPlay);
+		animateLayers();
+	} else {
+		trace('bounds reached');
+		if(keke.facingForward) {
+			keke.playAnimation('idleR');
+		} else {
+			keke.playAnimation('idleL');
+		}
+	}
 
 
 	// vertical movement
@@ -231,9 +239,11 @@ function checkInput() {
 				jumpKeyDepressed = true;
 	            keke.velY = -keke.speed * 2;
 				if(keke.facingForward) {
-					keke.playAnimation('jumpR');
+					// keke.playAnimation('jumpR');
+					animationToPlay = 'jumpR';
 				} else {
-					keke.playAnimation('jumpL');
+					// keke.playAnimation('jumpL');
+					animationToPlayer = 'jumpL';
 				}
 				trace('\tpassed jump conditional, velY = ' + keke.velY);
 	       }
@@ -248,10 +258,12 @@ function checkInput() {
 				keke.velX++;
 				if(!keke.jumping) {
 					if(keke.getCurrentAnimation() !== 'runL') {
-						keke.playAnimation('runL');
+						// keke.playAnimation('runL');
+						animationToPlay = 'runL';
 					}
 				} else {
-					keke.playAnimation('jumpL');
+					// keke.playAnimation('jumpL');
+					animationToPlay = 'jumpL';
 				}
 			}
 			keke.facingForward = false;
@@ -260,18 +272,22 @@ function checkInput() {
 	    		keke.velX--;
 				if(!keke.jumping) {
 					if(keke.getCurrentAnimation() !== 'runR') {
-						keke.playAnimation('runR');
+						// keke.playAnimation('runR');
+						animationToPlay = 'runR';
 					}
 				} else {
-					keke.playAnimation('jumpR');
+					// keke.playAnimation('jumpR');
+					animationToPlay = 'jumpR';
 				}
 	        }
 			keke.facingForward = true;
 		} else if(!keke.jumping) {
 			if(keke.facingForward) {
-				keke.playAnimation('idleR');
+				// keke.playAnimation('idleR');
+				animationToPlay = 'idleR';
 			} else {
-				keke.playAnimation('idleL');
+				// keke.playAnimation('idleL');
+				animationToPlay = 'idleL';
 			}
 		}
 		// joystickText.setText('joystick postion: ' + joystick.getX() + '/' + joystick.getY() + ', start: ' + joystick.getStartX() + '/' + joystick.getStartY() + ', forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse());
@@ -347,10 +363,6 @@ function collisionCheck(shapeA, shapeB) {
 
 function animateLayers() {
 	for(var i = 0; i < scenery.length; i++) {
-		if(i == 2) {
-			var pos = scenery[i].layer.getAbsolutePosition();
-			// trace('foregroundTrees1, pos.x = ' + Math.floor(pos.x) + ', width/stage adjusted = ' + (scenery[i].config.width - stageConfig.width));
-		}
 		animateLayer(scenery[i].layer, (keke.velX * scenery[i].config.speed), 0);
 	}
 }
@@ -458,14 +470,14 @@ function keyupHandler(e) {
 	switch(e.which) {
 		case ControlKeys.LEFT:
 		keys[ControlKeys.LEFT] = false;
-		keke.playAnimation('idleL');
-		// platformAnimations.forward.stop();
+		// keke.playAnimation('idleL');
+		animationToPlay = 'idleL';
 		break;
 
 		case ControlKeys.RIGHT:
 		keys[ControlKeys.RIGHT] = false;
-		keke.playAnimation('idleR');
-		// platformAnimations.reverse.stop();
+		// keke.playAnimation('idleR');
+		animationToPlay = 'idleR';
 		break;
 
 		case ControlKeys.UP:
@@ -482,9 +494,11 @@ function keyupHandler(e) {
 function _onJoystickRest() {
 	trace('_onJoystickRest');
 	if(keke.facingForward) {
-		keke.playAnimation('idleR');
+		// keke.playAnimation('idleR');
+		animationToPlay = 'idleR';
 	} else {
-		keke.playAnimation('idleL');
+		// keke.playAnimation('idleL');
+		animationToPlay = 'idleL';
 	}
 }
 

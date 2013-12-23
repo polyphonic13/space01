@@ -13,6 +13,12 @@ var Player = (function() {
 		this.__defineSetter__("layer", function(val) {
 			_model.layer = val;
 		});
+		this.__defineGetter__("position", function() {
+			return _model.position;
+		});
+		this.__defineSetter__("position", function(val) {
+			_model.position = val;
+		});
 		this.__defineGetter__("x", function() {
 			return _model.x;
 		});
