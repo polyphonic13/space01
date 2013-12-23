@@ -1,4 +1,4 @@
-var Player = (function() {
+var SpritePlayer = (function() {
 	var _sprite;
 	var _currentAnimation;
 	var _model = {
@@ -26,8 +26,8 @@ var Player = (function() {
 	};
 	
 	// CONSTRUCTOR
-	function Player(params) {
-		trace('Player/constructor');
+	function SpritePlayer(params) {
+		trace('SpritePlayer/constructor');
 		_model = Utils.extend(_model, params);
 		_model.layer = new Kinetic.Layer();
 		
@@ -37,7 +37,7 @@ var Player = (function() {
 	}
 
 	// PUBLIC INTERFACE
-	Player.prototype = {
+	SpritePlayer.prototype = {
 		get layer() {
 			return _model.layer;
 		},
@@ -106,7 +106,7 @@ var Player = (function() {
 		}
 	};
 	
-	Player.prototype.getHitArea = function() {
+	SpritePlayer.prototype.getHitArea = function() {
 		var pos = _model.layer.getAbsolutePosition();
 		var hitArea = {
 			x: pos.x,
@@ -117,23 +117,23 @@ var Player = (function() {
 		return hitArea;
 	};
 	
-	Player.prototype.setPosition = function(params) {
+	SpritePlayer.prototype.setPosition = function(params) {
 		_model.layer.setPosition(params);
 	};
 	
-	Player.prototype.move = function(x, y) {
+	SpritePlayer.prototype.move = function(x, y) {
 		_model.layer.move(x, y);
 	};
 	
-	Player.prototype.playAnimation = function(name) {
-		// trace('Player/playAnimation, name = ' + name);
+	SpritePlayer.prototype.playAnimation = function(name) {
+		// trace('SpritePlayer/playAnimation, name = ' + name);
 		if(_sprite) {
 			_sprite.setAnimation(name);
 		}
 		_currentAnimation = name;
 	};
 
-	Player.prototype.getCurrentAnimation = function() {
+	SpritePlayer.prototype.getCurrentAnimation = function() {
 		return _currentAnimation;
 	};
 	
@@ -159,5 +159,5 @@ var Player = (function() {
 		imageObj.src = _model.sprite.url;
 	}
 
-	return Player;	
+	return SpritePlayer;	
 })();

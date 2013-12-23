@@ -97,7 +97,7 @@ function init() {
 	foregroundLayer = new Kinetic.Layer(); 
 	addImagesToLayer(foregroundLayer, foreground.images);
 	
-	keke = new Player(startLocation);
+	keke = new SpritePlayer(startLocation);
 	
 	wallLayer = new Kinetic.Layer();
 	addObjectsToLayer(wallLayer, walls);
@@ -344,7 +344,6 @@ function animateClouds() {
 	}
 }
 
-
 function addObjectsToLayer(layer, objects) {
 	var fill;
 	var stroke;
@@ -402,10 +401,10 @@ function addImageToLayer(layer, imgUrl, x, y, w, h, alpha, filter) {
 }
 
 function addImagesToLayer(layer, images) {
-	console.log('addImagesToLayer');
-	console.log(images);
+	trace('addImagesToLayer');
+	trace(images);
 	for(var i = 0; i < images.length; i++) {
-		console.log('\timages url = ' + images[i].url);
+		trace('\timages url = ' + images[i].url);
 	    var imageObj = new Image();
 		var x = images[i].x;
 		var y = images[i].y;
@@ -472,7 +471,7 @@ function keyupHandler(e) {
 		break;
 
 		case ControlKeys.UP:
-		console.log("ControlKeys.UP release");
+		trace("ControlKeys.UP release");
 		keys[ControlKeys.UP] = false;
 		jumpKeyDepressed = false;
 		break; 
@@ -492,13 +491,13 @@ function _onJoystickRest() {
 }
 
 function start() {
-	console.log('starting');
+	trace('starting');
 	playing = true;
 	update();
 }
 
 function quit() {
-	console.log('quiting')
+	trace('quiting')
 ;	playing = false;
 }
 
