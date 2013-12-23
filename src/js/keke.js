@@ -21,25 +21,25 @@ var keke,
 		speed: 1
 	},
 	scenery = [],
-	backgroundLayer2,
-	background2 = {
+	backgroundLayer1,
+	background1 = {
 		imgUrl: 'images/hills03_grey.png',
 		startX: -100,
 		startY: 50,
 		width: 2048,
 		height: 256,
 		// speed: 250
-		speed: 0.5
+		speed: 0.25
 	},
-	backgroundLayer3,
-	background3 = {
+	backgroundLayer2,
+	background2 = {
 		imgUrl: 'images/trees_back01.png',
 		startX: -200,
 		startY: stageConfig.height - 320,
 		width: 2048,
 		height: 256,
 		// speed: 250
-		speed: 1.5
+		speed: .75
 	},
 	foregroundLayer,
 	foreground = {
@@ -52,7 +52,7 @@ var keke,
 		}],
 		startX: 0,
 		startY: stageConfig.height - 300,
-		speed: 4
+		speed: 3
 	},
 	platformLayer,
 	splineLayer,
@@ -88,10 +88,10 @@ function init() {
 	addImageToLayer(cloudsLayer, clouds.imgUrl, clouds.startX, clouds.startY, clouds.width, clouds.height);
 	
 	// MOVING BACKGROUNDS
+	backgroundLayer1 = new Kinetic.Layer();
+	addImageToLayer(backgroundLayer1, background1.imgUrl, background1.startX, background1.startY, background1.width, background1.height);
 	backgroundLayer2 = new Kinetic.Layer();
 	addImageToLayer(backgroundLayer2, background2.imgUrl, background2.startX, background2.startY, background2.width, background2.height);
-	backgroundLayer3 = new Kinetic.Layer();
-	addImageToLayer(backgroundLayer3, background3.imgUrl, background3.startX, background3.startY, background3.width, background3.height);
 	foregroundLayer = new Kinetic.Layer(); 
 	addImagesToLayer(foregroundLayer, foreground.images);
 	
@@ -137,8 +137,8 @@ function init() {
 	// textLayer.add(joystickText);
 	
 	stage.add(cloudsLayer);
+	stage.add(backgroundLayer1);
 	stage.add(backgroundLayer2);
-	stage.add(backgroundLayer3);
 	stage.add(foregroundLayer);
 
 	keke.setStage(stage);
@@ -147,8 +147,8 @@ function init() {
 	stage.add(controlsLayer);
 	stage.add(textLayer);
 	
+	scenery.push({ config: background1, layer: backgroundLayer1 });
 	scenery.push({ config: background2, layer: backgroundLayer2 });
-	scenery.push({ config: background3, layer: backgroundLayer3 });
 	scenery.push({ config: foreground, layer: foregroundLayer });
 	// stage.draw();
 	
