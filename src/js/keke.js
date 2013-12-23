@@ -116,12 +116,8 @@ function init() {
 	foregroundLayer = new Kinetic.Layer(); 
 	addImagesToLayer(foregroundLayer, foreground.images);
 	
-	keke = new KekeSprite();
-	trace('about to set keke.layer position, x/y = ' + player.x + '/' + player.y);
+	keke = new Player();
 	keke.layer.setPosition(player.x, player.y);
-	trace('keke layer = ');
-	trace(keke.layer);
-	trace(keke._model);
 	
 	wallLayer = new Kinetic.Layer();
 	addObjectsToLayer(wallLayer, walls);
@@ -186,34 +182,34 @@ function init() {
 function update() {
 	checkInput();
 	
-    player.velX *= friction;
-	player.velY += gravity;
+    keke.velX *= friction;
+	keke.velY += gravity;
 	
-	// trace('post checkInput, velY = ' + player.velY + ', jumping = ' + keke.jumping + ', grounded = ' + keke.grounded);
+	// trace('post checkInput, velY = ' + keke.velY + ', jumping = ' + keke.jumping + ', grounded = ' + keke.grounded);
 	
 	keke.grounded = false;
 	
 	detectCollisions();
 
-	// trace('post detectCollisions, velY = ' + player.velY + ', jumping = ' + keke.jumping + ', grounded = ' + keke.grounded);
+	// trace('post detectCollisions, velY = ' + keke.velY + ', jumping = ' + keke.jumping + ', grounded = ' + keke.grounded);
 	
     if(keke.grounded && !keke.jumping) {
-         player.velY = 0;
+         keke.velY = 0;
     }
 
-	// trace('about to animation, player.velY = ' + player.velY + ', jumping = ' + keke.jumping + ', grounded = ' + keke.grounded);
+	// trace('about to animation, keke.velY = ' + keke.velY + ', jumping = ' + keke.jumping + ', grounded = ' + keke.grounded);
 
 	// horizontal movement
 	// if(player.positionX > level.minX) {
 	// 	player.positionX = level.minX;
 	//  	} else {
-		player.positionX += player.velX; 
+		player.positionX += keke.velX; 
 		animateLayers();
 	// }
 
 	// vertical movement
-	// trace('about to do vertical animation, player.velY = ' + player.velY);
-	keke.layer.move(0, player.velY);
+	// trace('about to do vertical animation, keke.velY = ' + keke.velY);
+	keke.layer.move(0, keke.velY);
 
 	animateClouds();
 	
@@ -232,24 +228,24 @@ function checkInput() {
 				keke.justJumped = true;
 	            keke.grounded = false;
 				jumpKeyDepressed = true;
-	            player.velY = -player.speed * 2;
+	            keke.velY = -keke.speed * 2;
 				if(facingForward) {
 					keke.playAnimation('jumpL');
 				} else {
 					keke.playAnimation('jumpR');
 				}
-				trace('\tpassed jump conditional, velY = ' + player.velY);
+				trace('\tpassed jump conditional, velY = ' + keke.velY);
 	       }
 			jumpButton.setWasPressed(false);
 	    }
-		previousVelX = player.velX;
+		previousVelX = keke.velX;
 //		trace('checkInput, forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse() + ', rest = ' + joystick.getRest());
 	    if (keys[ControlKeys.LEFT] || joystick.getForward()) {
 			trace('left key or joystick forward');
 	        // right arrow
 	
-	        if (player.velX < player.speed) {
-				player.velX++;
+	        if (keke.velX < keke.speed) {
+				keke.velX++;
 				if(!keke.jumping) {
 					if(keke.getCurrentAnimation() !== 'runL') {
 						keke.playAnimation('runL');
@@ -261,8 +257,8 @@ function checkInput() {
 			facingForward = true;
 		} else if (keys[ControlKeys.RIGHT] || joystick.getReverse()) {         // left arrow         
 			trace('right key or joystick reverse');
-			if (player.velX > -player.speed) {
-	    		player.velX--;
+			if (keke.velX > -keke.speed) {
+	    		keke.velX--;
 				if(!keke.jumping) {
 					if(keke.getCurrentAnimation() !== 'runR') {
 						keke.playAnimation('runR');
@@ -290,13 +286,13 @@ function detectCollisions() {
 	var plyr = {
 		x: playerPos.x,
 		y: playerPos.y,
-		width: player.width,
-		height: player.height
+		width: keke.width,
+		height: keke.height
 	};
 	var col = collisionCheck(plyr, walls[0]); // check for floor collision
 
     if (col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
-        player.velX = 0;
+        keke.velX = 0;
         keke.jumping = false;
 	} else if (col.direction === Directions.BOTTOM) {
 		if(keke.justJumped) {
@@ -307,7 +303,7 @@ function detectCollisions() {
 			jumpKeyDepressed = false;
 		}
 	} else if (col.direction === Directions.TOP) {
-        player.velY *= -1;
+        keke.velY *= -1;
     }
 
 	// previousCollisionId = col.id;
@@ -361,7 +357,7 @@ function collisionCheck(shapeA, shapeB) {
 
 function animateLayers() {
 	for(var i = 0; i < scenery.length; i++) {
-		animateLayer(scenery[i].layer, (player.velX * scenery[i].config.speed), 0);
+		animateLayer(scenery[i].layer, (keke.velX * scenery[i].config.speed), 0);
 	}
 }
 

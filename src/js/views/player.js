@@ -1,4 +1,4 @@
-var KekeSprite = (function() {
+var Player = (function() {
 	var _sprite;
 	var _currentAnimation;
 	var _model = {
@@ -18,12 +18,16 @@ var KekeSprite = (function() {
 	    jumping: false,
 		justJumped: false,
 	    grounded: true,
-		spriteSheet: 'images/keke_character2.png'
+		sprite: {
+			url: 'images/keke_character2.png',
+			x: 0,
+			y: 0
+		}
 	};
 	
 	// CONSTRUCTOR
-	function KekeSprite(params) {
-		trace('KekeSprite/constructor');
+	function Player(params) {
+		trace('Player/constructor');
 		_model = Utils.extend(_model, params);
 		_model.layer = new Kinetic.Layer();
 		
@@ -31,7 +35,7 @@ var KekeSprite = (function() {
 	}
 
 	// PUBLIC INTERFACE
-	KekeSprite.prototype = {
+	Player.prototype = {
 		get layer() {
 			return _model.layer;
 		},
@@ -55,18 +59,48 @@ var KekeSprite = (function() {
 		},
 		set justJumped(val) {
 			_model.justJumped = val;
+		},
+		get width() {
+			return _model.width;
+		},
+		set width(val) {
+			_model.width = val;
+		},
+		get height() {
+			return _model.height;
+		},
+		set height(val) {
+			_model.height = val;
+		},
+		get velX() {
+			return _model.velX;
+		},
+		set velX(val) {
+			_model.velX = val;
+		},
+		get velY() {
+			return _model.velY;
+		},
+		set velY(val) {
+			_model.velY = val;
+		},
+		get speed() {
+			return _model.speed;
+		},
+		set speed(val) {
+			_model.speed = val;
 		}
 	};
 	
-	KekeSprite.prototype.playAnimation = function(name) {
-		// trace('KekeSprite/playAnimation, name = ' + name);
+	Player.prototype.playAnimation = function(name) {
+		// trace('Player/playAnimation, name = ' + name);
 		if(_sprite) {
 			_sprite.setAnimation(name);
 		}
 		_currentAnimation = name;
 	};
 
-	KekeSprite.prototype.getCurrentAnimation = function() {
+	Player.prototype.getCurrentAnimation = function() {
 		return _currentAnimation;
 	};
 	
@@ -75,8 +109,8 @@ var KekeSprite = (function() {
 		var imageObj = new Image();
 		imageObj.onload = function() {
 			_sprite = new Kinetic.Sprite({
-				x: _model.x,
-				y: _model.y,
+				x: _model.sprite.x,
+				y: _model.sprite.y,
 				image: imageObj,
 				animation: 'idleR',
 				animations: kekeAnimations,
@@ -89,8 +123,8 @@ var KekeSprite = (function() {
 			// start sprite animation
 			_sprite.start();
 		};
-		imageObj.src = _model.spriteSheet;
+		imageObj.src = _model.sprite.url;
 	}
 
-	return KekeSprite;	
+	return Player;	
 })();
