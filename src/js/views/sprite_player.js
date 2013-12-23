@@ -3,7 +3,8 @@ var SpritePlayer = (function() {
 	
 	var _config = {};
 	var _sprite;
-	var _currentAnimation;
+	var _facingForward = true;
+	var _currentAnimation = '';
 	var _model;
 	
 	// CONSTRUCTOR
@@ -13,6 +14,13 @@ var SpritePlayer = (function() {
 
 		_model = this.constructor._super.getModel.call(this);
 		_buildViews();
+		
+		this.__defineGetter__("facingForward", function() {
+			return _facingForward;
+		});
+		this.__defineSetter__("facingForward", function(val) {
+			_facingForward = val;
+		});
 	}
 
 	SpritePlayer.prototype.playAnimation = function(name) {

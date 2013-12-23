@@ -66,7 +66,6 @@ var keke,
     gravity = 0.5,
 	previousVelX = 0,
 	jumpKeyDepressed = false,
-	facingForward = true,
 	playing = false,
 	won = false,
 	imagesToLoad = 4;
@@ -164,6 +163,7 @@ function init() {
 }
 
 function update() {
+	// trace('keke.facingForward = ' + keke.facingForward);
 	checkInput();
 	
     keke.velX *= friction;
@@ -210,10 +210,10 @@ function checkInput() {
 	            keke.grounded = false;
 				jumpKeyDepressed = true;
 	            keke.velY = -keke.speed * 2;
-				if(facingForward) {
-					keke.playAnimation('jumpL');
-				} else {
+				if(keke.facingForward) {
 					keke.playAnimation('jumpR');
+				} else {
+					keke.playAnimation('jumpL');
 				}
 				trace('\tpassed jump conditional, velY = ' + keke.velY);
 	       }
@@ -222,7 +222,6 @@ function checkInput() {
 		previousVelX = keke.velX;
 //		trace('checkInput, forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse() + ', rest = ' + joystick.getRest());
 	    if (keys[ControlKeys.LEFT] || joystick.getForward()) {
-			trace('left key or joystick forward');
 	        // right arrow
 	
 	        if (keke.velX < keke.speed) {
@@ -235,9 +234,8 @@ function checkInput() {
 					keke.playAnimation('jumpL');
 				}
 			}
-			facingForward = true;
+			keke.facingForward = false;
 		} else if (keys[ControlKeys.RIGHT] || joystick.getReverse()) {         // left arrow         
-			trace('right key or joystick reverse');
 			if (keke.velX > -keke.speed) {
 	    		keke.velX--;
 				if(!keke.jumping) {
@@ -248,13 +246,12 @@ function checkInput() {
 					keke.playAnimation('jumpR');
 				}
 	        }
-			facingForward = false;
+			keke.facingForward = true;
 		} else if(!keke.jumping) {
-			// trace('not moving and not jumping, facingForward = ' + facingForward);
-			if(facingForward) {
-				keke.playAnimation('idleL');
-			} else {
+			if(keke.facingForward) {
 				keke.playAnimation('idleR');
+			} else {
+				keke.playAnimation('idleL');
 			}
 		}
 		// joystickText.setText('joystick postion: ' + joystick.getX() + '/' + joystick.getY() + ', start: ' + joystick.getStartX() + '/' + joystick.getStartY() + ', forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse());
@@ -482,7 +479,7 @@ function keyupHandler(e) {
 
 function _onJoystickRest() {
 	trace('_onJoystickRest');
-	if(facingForward) {
+	if(keke.facingForward) {
 		keke.playAnimation('idleR');
 	} else {
 		keke.playAnimation('idleL');
