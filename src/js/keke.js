@@ -64,7 +64,6 @@ var player,
 		x: stageConfig.width / 2,
 		y: stageConfig.height - 256
 	},
-	playerLayer,
     player = {
         x: startLocation.x,
         y: startLocation.y,
@@ -117,12 +116,15 @@ function init() {
 	foregroundLayer = new Kinetic.Layer(); 
 	addImagesToLayer(foregroundLayer, foreground.images);
 	
- 	playerLayer = new Kinetic.Layer();
+ 	var playerLayer = new Kinetic.Layer();
 	keke = new KekeSprite({
 		layer: playerLayer
 	});
-	trace('about to set playerLayer position, x/y = ' + player.x + '/' + player.y);
-	playerLayer.setPosition(player.x, player.y);
+	trace('about to set keke.layer position, x/y = ' + player.x + '/' + player.y);
+	keke.layer.setPosition(player.x, player.y);
+	trace('keke layer = ');
+	trace(keke.layer);
+	trace(keke._model);
 	
 	wallLayer = new Kinetic.Layer();
 	addObjectsToLayer(wallLayer, walls);
@@ -164,7 +166,7 @@ function init() {
 	stage.add(backgroundLayer2);
 	stage.add(backgroundLayer3);
 	stage.add(foregroundLayer);
-	stage.add(playerLayer);
+	stage.add(keke.layer);
 	stage.add(wallLayer);
 	stage.add(controlsLayer);
 	stage.add(textLayer);
@@ -214,7 +216,7 @@ function update() {
 
 	// vertical movement
 	// trace('about to do vertical animation, player.velY = ' + player.velY);
-	playerLayer.move(0, player.velY);
+	keke.layer.move(0, player.velY);
 
 	animateClouds();
 	
@@ -286,7 +288,7 @@ function checkInput() {
 
 function detectCollisions() {
 
-	var playerPos = playerLayer.getAbsolutePosition();
+	var playerPos = keke.layer.getAbsolutePosition();
 	// trace('playerPos x/y = ' + playerPos.x + '/' + playerPos.y);
 	var plyr = {
 		x: playerPos.x,
