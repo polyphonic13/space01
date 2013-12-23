@@ -1,7 +1,6 @@
 "use strict";
 
-var player,
-	keke,
+var keke,
 	controlsLayer,
 	joystick,
 	joystickText,
@@ -63,27 +62,9 @@ var player,
 	startLocation = {
 		x: stageConfig.width / 2,
 		y: stageConfig.height - 256
+		// y: stageConfig.height - 205
 	},
-    player = {
-        x: startLocation.x,
-        y: startLocation.y,
-		position: 0,
-        width: 76,
-        height: 128,
-        speed: 4,
-		jumpTime: 5,
-        velX: 0,
-        velY: 0,
-        jumping: false,
-		justJumped: false,
-        grounded: true
-    },
-	kekeUrl = 'images/keke_cell.png',
-	kekeReverseUrl = "images/keke_tiny_reverse.png",
-	kekeW = 56,
-	kekeH = 128,
 	keke,
-	kekeReverse,
     keys = {},
 	moveSpeed = 50,
     friction = 0.5,
@@ -116,8 +97,7 @@ function init() {
 	foregroundLayer = new Kinetic.Layer(); 
 	addImagesToLayer(foregroundLayer, foreground.images);
 	
-	keke = new Player();
-	keke.layer.setPosition(player.x, player.y);
+	keke = new Player(startLocation);
 	
 	wallLayer = new Kinetic.Layer();
 	addObjectsToLayer(wallLayer, walls);
@@ -199,18 +179,15 @@ function update() {
 
 	// trace('about to animation, keke.velY = ' + keke.velY + ', jumping = ' + keke.jumping + ', grounded = ' + keke.grounded);
 
+	// TODO: test for bounds of game before moving
 	// horizontal movement
-	// if(player.positionX > level.minX) {
-	// 	player.positionX = level.minX;
-	//  	} else {
-		player.positionX += keke.velX; 
-		animateLayers();
-	// }
+	animateLayers();
+
 
 	// vertical movement
 	// trace('about to do vertical animation, keke.velY = ' + keke.velY);
-	keke.layer.move(0, keke.velY);
-
+	keke.move(0, keke.velY);
+	
 	animateClouds();
 	
 	stage.draw();
@@ -281,15 +258,7 @@ function checkInput() {
 
 function detectCollisions() {
 
-	var playerPos = keke.layer.getAbsolutePosition();
-	// trace('playerPos x/y = ' + playerPos.x + '/' + playerPos.y);
-	var plyr = {
-		x: playerPos.x,
-		y: playerPos.y,
-		width: keke.width,
-		height: keke.height
-	};
-	var col = collisionCheck(plyr, walls[0]); // check for floor collision
+	var col = collisionCheck(keke.getHitArea(), walls[0]); // check for floor collision
 
     if (col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
         keke.velX = 0;

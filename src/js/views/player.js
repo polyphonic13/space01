@@ -31,6 +31,8 @@ var Player = (function() {
 		_model = Utils.extend(_model, params);
 		_model.layer = new Kinetic.Layer();
 		
+		_model.layer.setPosition({ x: _model.x, y: _model.y });
+
 		_buildViews();
 	}
 
@@ -42,23 +44,17 @@ var Player = (function() {
 		set layer(val) {
 			_model.layer = val;
 		},
-		get grounded() {
-			return _model.grounded;
+		get x() {
+			return _model.x;
 		},
-		set grounded(val) {
-			_model.grounded = val;
+		set x(val) {
+			_model.x = val;
 		},
-		get jumping() {
-			return _model.jumping;
+		get y() {
+			return _model.y;
 		},
-		set jumping(val) {
-			_model.jumping = val;
-		},
-		get justJumped() {
-			return _model.justJumped;
-		},
-		set justJumped(val) {
-			_model.justJumped = val;
+		set y(val) {
+			_model.y = val;
 		},
 		get width() {
 			return _model.width;
@@ -89,7 +85,44 @@ var Player = (function() {
 		},
 		set speed(val) {
 			_model.speed = val;
+		},
+		get grounded() {
+			return _model.grounded;
+		},
+		set grounded(val) {
+			_model.grounded = val;
+		},
+		get jumping() {
+			return _model.jumping;
+		},
+		set jumping(val) {
+			_model.jumping = val;
+		},
+		get justJumped() {
+			return _model.justJumped;
+		},
+		set justJumped(val) {
+			_model.justJumped = val;
 		}
+	};
+	
+	Player.prototype.getHitArea = function() {
+		var pos = _model.layer.getAbsolutePosition();
+		var hitArea = {
+			x: pos.x,
+			y: pos.y,
+			width: _model.width,
+			height: _model.height
+		};
+		return hitArea;
+	};
+	
+	Player.prototype.setPosition = function(params) {
+		_model.layer.setPosition(params);
+	};
+	
+	Player.prototype.move = function(x, y) {
+		_model.layer.move(x, y);
 	};
 	
 	Player.prototype.playAnimation = function(name) {
