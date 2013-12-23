@@ -1,15 +1,31 @@
 set -e
 
-DREAMHOST_SERVER="phds@dhaka.dreamhost.com"
-DREAMHOST_PATH="home/phds/polyworksgames.com"
+USER="phds"
+DREAMHOST_SERVER="dhaka.dreamhost.com"
+SSH_PATH="home/phds"
+POLYWORKS_DIR="polyworksgames.com"
 TO_COPY=$1
+DEST_DIR=$2
+
+ssh -o "StrictHostKeyChecking no" $USER@$DREAMHOST_SERVER << ENDHERE
+	cd $POLYWORKS_DIR
+	ls -l
+	if [ ! -d "$DEST_DIR" ]; then
+	  # Control will enter here if $DIRECTORY doesn't exist.
+		echo "making new dir $DEST_DIR"
+		mkdir $DEST_DIR
+	fi	
+	exit
+	
+ENDHERE
+
 
 if [[ -d $TO_COPY ]]; then
     echo "$TO_COPY is a directory"
-	scp -r $TO_COPY phds@dhaka.dreamhost.com:/home/phds/polyworksgames.com/$2
+	scp -r $TO_COPY $USER@$DREAMHOST_SERVER:/$SSH_PATH/$POLYWORKS_DIR/$DEST_DIR/
 elif [[ -f $TO_COPY ]]; then
     echo "$TO_COPY is a file"
-	scp $TO_COPY phds@dhaka.dreamhost.com:/home/phds/polyworksgames.com/$2
+	scp $TO_COPY $USER@$DREAMHOST_SERVER:/$SSH_PATH/$POLYWORKS_DIR/$DEST_DIR/
 else
     echo "$TO_COPY is not valid"
     exit 1
