@@ -48,6 +48,15 @@ var KekeSprite = (function() {
 		imageObj.src = _model.spriteSheet;
 	}
 
+	KekeSprite.prototype = {
+		get layer() {
+			return _model.layer;
+		},
+		set layer(val) {
+			_model.layer = val;
+		}
+	};
+	
 	KekeSprite.prototype.playAnimation = function(name) {
 		// trace('KekeSprite/playAnimation, name = ' + name);
 		if(_sprite) {

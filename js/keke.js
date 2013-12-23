@@ -226,7 +226,7 @@ function update() {
 }
 
 function checkInput() {
-	    if (keys[ControlKeys.UP]){// || jumpButton.getWasPressed()) {
+	    if (keys[ControlKeys.UP] || jumpButton.getWasPressed()) {
 	        // up arrow or space
 	        if (!player.jumping && player.grounded && !jumpKeyDepressed) {
 	            player.jumping = true;
@@ -234,15 +234,19 @@ function checkInput() {
 	            player.grounded = false;
 				jumpKeyDepressed = true;
 	            player.velY = -player.speed * 2;
-				keke.playAnimation('jumpR');
+				if(facingForward) {
+					keke.playAnimation('jumpL');
+				} else {
+					keke.playAnimation('jumpR');
+				}
 				trace('\tpassed jump conditional, velY = ' + player.velY);
 	       }
-			// jumpButton.setWasPressed(false);
+			jumpButton.setWasPressed(false);
 	    }
 		previousVelX = player.velX;
 //		trace('checkInput, forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse() + ', rest = ' + joystick.getRest());
 	    if (keys[ControlKeys.LEFT] || joystick.getForward()) {
-			// trace('left key or joystick forward');
+			trace('left key or joystick forward');
 	        // right arrow
 	
 	        if (player.velX < player.speed) {
@@ -256,10 +260,8 @@ function checkInput() {
 				}
 			}
 			facingForward = true;
-		}
-
-		if (keys[ControlKeys.RIGHT] || joystick.getReverse()) {         // left arrow         
-			// trace('right key or joystick reverse');
+		} else if (keys[ControlKeys.RIGHT] || joystick.getReverse()) {         // left arrow         
+			trace('right key or joystick reverse');
 			if (player.velX > -player.speed) {
 	    		player.velX--;
 				if(!player.jumping) {
@@ -271,6 +273,13 @@ function checkInput() {
 				}
 	        }
 			facingForward = false;
+		} else if(!player.jumping) {
+			// trace('not moving and not jumping, facingForward = ' + facingForward);
+			if(facingForward) {
+				keke.playAnimation('idleL');
+			} else {
+				keke.playAnimation('idleR');
+			}
 		}
 		// joystickText.setText('joystick postion: ' + joystick.getX() + '/' + joystick.getY() + ', start: ' + joystick.getStartX() + '/' + joystick.getStartY() + ', forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse());
 }
@@ -349,27 +358,6 @@ function collisionCheck(shapeA, shapeB) {
  		// trace('\n\toX = ' + oX + ', oY = ' + oY);
     }
     return collision;
-
-	/*
-	// simple rectangle collision check:
-		var status = false;
-		var rec1Top = shapeA.y;
-		var rec1Bottom = shapeA.y + shapeA.height;
-		var rec1Left = shapeA.x;
-		var rec1Right = shapeA.x + shapeA.width;
-
-		var rec2Top = shapeB.y;
-		var rec2Bottom = shapeB.y + shapeB.width;
-		var rec2Left = shapeB.x;
-		var rec2Right = shapeB.x + shapeB.width;
-
-		if(!(rec1Bottom < rec2Top || rec1Top > rec2Bottom || rec1Left > rec2Right || rec1Right < rec2Left)) {
-			status = true;
-		}
-
-		return status;
-	*/	
-
 }
 
 function animateLayers() {
@@ -532,7 +520,11 @@ function keyupHandler(e) {
 
 function _onJoystickRest() {
 	trace('_onJoystickRest');
-	keke.playAnimation('idleR');
+	if(facingForward) {
+		keke.playAnimation('idleR');
+	} else {
+		keke.playAnimation('idleL');
+	}
 }
 
 function start() {
