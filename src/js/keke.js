@@ -21,37 +21,49 @@ var keke,
 		speed: 1
 	},
 	scenery = [],
-	backgroundLayer1,
-	background1 = {
+	mountainsLayer,
+	mountains = {
 		imgUrl: 'images/hills03_grey.png',
 		startX: -100,
 		startY: 50,
 		width: 2048,
 		height: 256,
-		// speed: 250
-		speed: 0.25
+		speed: 0.3
 	},
-	backgroundLayer2,
-	background2 = {
+	backgroundTreesLayer,
+	backgroundTrees = {
 		imgUrl: 'images/trees_back01.png',
-		startX: -200,
+		startX: -64,
 		startY: stageConfig.height - 320,
 		width: 2048,
 		height: 256,
-		// speed: 250
-		speed: .75
+		speed: 0.7
 	},
-	foregroundLayer,
-	foreground = {
-		images: [{
-			url: 'images/trees_fore01.png',
-			x: -385,
-			y: -40,
-			width: 2048,
-			height: 500
-		}],
-		startX: 0,
-		startY: stageConfig.height - 300,
+	foregroundTreesLayer1,
+	foregroundTrees1 = {
+		imgUrl: 'images/trees_fore01.png',
+		startX: -256,
+		startY: -40,
+		width: 2048,
+		height: 500,
+		speed: 3
+	},
+	foregroundTreesLayer2,
+	foregroundTrees2 = {
+		imgUrl: 'images/trees_fore01.png',
+		startX: 1792,
+		startY: -40,
+		width: 2048,
+		height: 500,
+		speed: 3
+	},
+	foregroundTreesLayer3,
+	foregroundTrees3 = {
+		imgUrl: 'images/trees_fore01.png',
+		startX: 3840,
+		startY: -40,
+		width: 2048,
+		height: 500,
 		speed: 3
 	},
 	platformLayer,
@@ -88,12 +100,16 @@ function init() {
 	addImageToLayer(cloudsLayer, clouds.imgUrl, clouds.startX, clouds.startY, clouds.width, clouds.height);
 	
 	// MOVING BACKGROUNDS
-	backgroundLayer1 = new Kinetic.Layer();
-	addImageToLayer(backgroundLayer1, background1.imgUrl, background1.startX, background1.startY, background1.width, background1.height);
-	backgroundLayer2 = new Kinetic.Layer();
-	addImageToLayer(backgroundLayer2, background2.imgUrl, background2.startX, background2.startY, background2.width, background2.height);
-	foregroundLayer = new Kinetic.Layer(); 
-	addImagesToLayer(foregroundLayer, foreground.images);
+	mountainsLayer = new Kinetic.Layer();
+	addImageToLayer(mountainsLayer, mountains.imgUrl, mountains.startX, mountains.startY, mountains.width, mountains.height);
+	backgroundTreesLayer = new Kinetic.Layer();
+	addImageToLayer(backgroundTreesLayer, backgroundTrees.imgUrl, backgroundTrees.startX, backgroundTrees.startY, backgroundTrees.width, backgroundTrees.height);
+	foregroundTreesLayer1 = new Kinetic.Layer(); 
+	addImageToLayer(foregroundTreesLayer1, foregroundTrees1.imgUrl, foregroundTrees1.startX, foregroundTrees1.startY, foregroundTrees1.width, foregroundTrees1.height);
+	foregroundTreesLayer2 = new Kinetic.Layer(); 
+	addImageToLayer(foregroundTreesLayer2, foregroundTrees2.imgUrl, foregroundTrees2.startX, foregroundTrees2.startY, foregroundTrees2.width, foregroundTrees2.height);
+	foregroundTreesLayer3 = new Kinetic.Layer(); 
+	addImageToLayer(foregroundTreesLayer3, foregroundTrees3.imgUrl, foregroundTrees3.startX, foregroundTrees3.startY, foregroundTrees3.width, foregroundTrees3.height);
 	
 	// PLAYER
 	keke = new SpritePlayer(gameConfig.player);
@@ -137,9 +153,11 @@ function init() {
 	// textLayer.add(joystickText);
 	
 	stage.add(cloudsLayer);
-	stage.add(backgroundLayer1);
-	stage.add(backgroundLayer2);
-	stage.add(foregroundLayer);
+	stage.add(mountainsLayer);
+	stage.add(backgroundTreesLayer);
+	stage.add(foregroundTreesLayer1);
+	stage.add(foregroundTreesLayer2);
+	stage.add(foregroundTreesLayer3);
 
 	keke.setStage(stage);
 	
@@ -147,9 +165,11 @@ function init() {
 	stage.add(controlsLayer);
 	stage.add(textLayer);
 	
-	scenery.push({ config: background1, layer: backgroundLayer1 });
-	scenery.push({ config: background2, layer: backgroundLayer2 });
-	scenery.push({ config: foreground, layer: foregroundLayer });
+	scenery.push({ config: mountains, layer: mountainsLayer });
+	scenery.push({ config: backgroundTrees, layer: backgroundTreesLayer });
+	scenery.push({ config: foregroundTrees1, layer: foregroundTreesLayer1 });
+	scenery.push({ config: foregroundTrees2, layer: foregroundTreesLayer2 });
+	scenery.push({ config: foregroundTrees3, layer: foregroundTreesLayer3 });
 	// stage.draw();
 	
 	$(window).keydown(function(e) {
@@ -327,6 +347,10 @@ function collisionCheck(shapeA, shapeB) {
 
 function animateLayers() {
 	for(var i = 0; i < scenery.length; i++) {
+		if(i == 2) {
+			var pos = scenery[i].layer.getAbsolutePosition();
+			// trace('foregroundTrees1, pos.x = ' + Math.floor(pos.x) + ', width/stage adjusted = ' + (scenery[i].config.width - stageConfig.width));
+		}
 		animateLayer(scenery[i].layer, (keke.velX * scenery[i].config.speed), 0);
 	}
 }
@@ -398,28 +422,6 @@ function addImageToLayer(layer, imgUrl, x, y, w, h, alpha, filter) {
     };
     imageObj.src = imgUrl;
 	
-}
-
-function addImagesToLayer(layer, images) {
-	for(var i = 0; i < images.length; i++) {
-	    var imageObj = new Image();
-		var x = images[i].x;
-		var y = images[i].y;
-		var width = images[i].width;
-		var height = images[i].height;
-	    imageObj.onload = function() {
-			var image = new Kinetic.Image({
-				x: x,
-				y: y,
-				image: imageObj,
-				width: width,
-				height: height
-			});
-			layer.add(image);
-			layer.draw(); // layer has to have draw called each time there is a change
-	    };
-	    imageObj.src = images[i].url;
-	}
 }
 
 function keydownHandler(e) {
