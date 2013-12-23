@@ -394,17 +394,13 @@ function addImageToLayer(layer, imgUrl, x, y, w, h, alpha, filter) {
 		var image = new Kinetic.Image(imgConfig);
 		layer.add(image);
 		layer.draw(); // layer has to have draw called each time there is a change
-		trace('imageObj/onload');
     };
     imageObj.src = imgUrl;
 	
 }
 
 function addImagesToLayer(layer, images) {
-	trace('addImagesToLayer');
-	trace(images);
 	for(var i = 0; i < images.length; i++) {
-		trace('\timages url = ' + images[i].url);
 	    var imageObj = new Image();
 		var x = images[i].x;
 		var y = images[i].y;
@@ -420,7 +416,6 @@ function addImagesToLayer(layer, images) {
 			});
 			layer.add(image);
 			layer.draw(); // layer has to have draw called each time there is a change
-			trace('imageObj/onload');
 	    };
 	    imageObj.src = images[i].url;
 	}

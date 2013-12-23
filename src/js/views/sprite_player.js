@@ -1,16 +1,12 @@
 var SpritePlayer = (function() {
-	var _sprite;
-	var _currentAnimation;
-	var _model = {
-	    // x: stageConfig.width / 2,
-	    // y: stageConfig.height - 200,
+	Utils.inherits(SpritePlayer, Player);
+	
+	var config = {
 		x: 0,
 		y: 0,
 		position: 0,
 	    width: 76,
 	    height: 128,
-		frameRate: 15,
-		index: 0,
 	    speed: 4,
 		jumpTime: 5,
 	    velX: 0,
@@ -21,110 +17,29 @@ var SpritePlayer = (function() {
 		sprite: {
 			url: 'images/keke_character2.png',
 			x: 0,
-			y: 0
+			y: 0,
+			index: 0,
+			frameRate: 15
 		}
 	};
+
+	var _sprite;
+	var _currentAnimation;
+	var _model;
 	
 	// CONSTRUCTOR
 	function SpritePlayer(params) {
 		trace('SpritePlayer/constructor');
-		_model = Utils.extend(_model, params);
-		_model.layer = new Kinetic.Layer();
-		
-		_model.layer.setPosition({ x: _model.x, y: _model.y });
+		config = Utils.extend(config, params);
+		SpritePlayer._super.constructor.call(this, config);
+
+		_model = this.constructor._super.getModel.call(this);
+		trace('\t_model =');
+		trace(_model);
 
 		_buildViews();
 	}
 
-	// PUBLIC INTERFACE
-	SpritePlayer.prototype = {
-		get layer() {
-			return _model.layer;
-		},
-		set layer(val) {
-			_model.layer = val;
-		},
-		get x() {
-			return _model.x;
-		},
-		set x(val) {
-			_model.x = val;
-		},
-		get y() {
-			return _model.y;
-		},
-		set y(val) {
-			_model.y = val;
-		},
-		get width() {
-			return _model.width;
-		},
-		set width(val) {
-			_model.width = val;
-		},
-		get height() {
-			return _model.height;
-		},
-		set height(val) {
-			_model.height = val;
-		},
-		get velX() {
-			return _model.velX;
-		},
-		set velX(val) {
-			_model.velX = val;
-		},
-		get velY() {
-			return _model.velY;
-		},
-		set velY(val) {
-			_model.velY = val;
-		},
-		get speed() {
-			return _model.speed;
-		},
-		set speed(val) {
-			_model.speed = val;
-		},
-		get grounded() {
-			return _model.grounded;
-		},
-		set grounded(val) {
-			_model.grounded = val;
-		},
-		get jumping() {
-			return _model.jumping;
-		},
-		set jumping(val) {
-			_model.jumping = val;
-		},
-		get justJumped() {
-			return _model.justJumped;
-		},
-		set justJumped(val) {
-			_model.justJumped = val;
-		}
-	};
-	
-	SpritePlayer.prototype.getHitArea = function() {
-		var pos = _model.layer.getAbsolutePosition();
-		var hitArea = {
-			x: pos.x,
-			y: pos.y,
-			width: _model.width,
-			height: _model.height
-		};
-		return hitArea;
-	};
-	
-	SpritePlayer.prototype.setPosition = function(params) {
-		_model.layer.setPosition(params);
-	};
-	
-	SpritePlayer.prototype.move = function(x, y) {
-		_model.layer.move(x, y);
-	};
-	
 	SpritePlayer.prototype.playAnimation = function(name) {
 		// trace('SpritePlayer/playAnimation, name = ' + name);
 		if(_sprite) {
@@ -147,8 +62,8 @@ var SpritePlayer = (function() {
 				image: imageObj,
 				animation: 'idleR',
 				animations: kekeAnimations,
-				frameRate: _model.frameRate,
-				index: _model.index
+				frameRate: _model.sprite.frameRate,
+				index: _model.sprite.index
 			});
 
 			_model.layer.add(_sprite);
