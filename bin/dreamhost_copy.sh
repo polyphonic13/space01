@@ -16,6 +16,8 @@ ssh -o "StrictHostKeyChecking no" $USER@$DREAMHOST_SERVER << ENDHERE
 	  # Control will enter here if $DIRECTORY doesn't exist.
 		echo "MAKING NEW DIR $DEST_DIR"
 		mkdir $DEST_DIR
+	else
+		echo "$DEST_DIR EXISTS"
 	fi	
 	exit
 	

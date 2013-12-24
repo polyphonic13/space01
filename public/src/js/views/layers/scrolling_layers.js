@@ -26,7 +26,9 @@ var ScrollingLayers = (function() {
 	};
 	
 	ScrollingLayers.prototype.moveByVelocity = function(velX, velY) {
+		// trace('ScrollingLayers/moveByVelocity');
 		for(var i = 0; i < this.collection.length; i++) {
+			// trace('\tabout to move ' + this.collection[i].id);
 			this.collection[i].moveByVelocity(velX, velY);
 		}
 	};

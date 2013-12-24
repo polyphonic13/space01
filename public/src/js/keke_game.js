@@ -115,18 +115,24 @@ function update() {
 
 	// horizontal movement
 	keke.position += keke.velX;
+	keke.velX = (Math.floor(keke.velX*1000))/1000;
+	// trace('keke.velX = ' + keke.velX);
 	if(keke.position < gameConfig.level.minX && keke.position > gameConfig.level.maxX) {
 		// trace('keke.position = ' + keke.position);
-		keke.playAnimation(animationToPlay);
-		playerMovementLayers.moveByVelocity(keke.velX, 0);
+		if(keke.velX !== 0) {
+			playerMovementLayers.moveByVelocity(keke.velX, 0);
+		} else {
+			trace('no movement');
+		}
 	} else {
 		trace('bounds reached');
 		if(keke.facingForward) {
-			keke.playAnimation('idleR');
+			animationToPlay = 'idleR';
 		} else {
-			keke.playAnimation('idleL');
+			animationToPlay = 'idleL';
 		}
 	}
+	keke.playAnimation(animationToPlay);
 
 	// vertical movement
 	keke.move(0, keke.velY);

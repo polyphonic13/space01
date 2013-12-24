@@ -46,7 +46,7 @@ var gameConfig = {
 			stroke: '#123456'
 		}]
 	},
-	scrollingLayers: [{
+	scrollingLayers: [/*{
 		id: 'clouds1',
 		imgUrl: 'images/clouds.png',
 		x: 0,
@@ -63,7 +63,7 @@ var gameConfig = {
 		width: 2048,
 		height: 490,
 		speed: -1
-	}],
+	}*/],
 	playerMovementLayers: [{
 		id: 'mountains',
 		imgUrl: 'images/hills03_grey.png',
