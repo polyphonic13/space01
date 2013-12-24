@@ -1,4 +1,4 @@
-var config = {
+var gameConfig = {
 	stageBg: {
 		imgUrl: 'images/night_sky.png',
 		x: 0,
@@ -6,35 +6,46 @@ var config = {
 		width: stageConfig.width,
 		height: stageConfig.height
 	},
-	stageFrame: [
-	{
-		id: 'top',
-		x: 0,
-		y: 0,
-		width: stageConfig.width,
-		height: 10
+	stageFrame: {
+		rects: [{
+			id: 'top',
+			x: 0,
+			y: 0,
+			width: stageConfig.width,
+			height: 10
+		},
+		{
+			id: 'bottom',
+		    x: 0,
+		    y: stageConfig.height - 40,
+		    width: stageConfig.width,
+		    height: 50
+		},
+		{
+			id: 'left',
+		    x: 0,
+		    y: 0,
+		    width: 10,
+		    height: stageConfig.height
+		},
+		{
+			id: 'right',
+		    x: stageConfig.width - 10,
+		    y: 0,
+		    width: 50,
+		    height: stageConfig.height
+		}]
 	},
-	{
-		id: 'bottom',
-	    x: 0,
-	    y: stageConfig.height - 40,
-	    width: stageConfig.width,
-	    height: 50
+	ground: {
+		rects: [{
+			id: 'floor',
+			x: 0,
+			y: stageConfig.height - 75,
+			width: stageConfig.width,
+			height: 50,
+			stroke: '#123456'
+		}]
 	},
-	{
-		id: 'left',
-	    x: 0,
-	    y: 0,
-	    width: 10,
-	    height: stageConfig.height
-	},
-	{
-		id: 'right',
-	    x: stageConfig.width - 10,
-	    y: 0,
-	    width: 50,
-	    height: stageConfig.height
-	}],
 	scrollingLayers: [{
 		id: 'clouds1',
 		imgUrl: 'images/clouds.png',
@@ -118,8 +129,10 @@ var config = {
 			frameRate: 14
 		}
     },
-   friction: 0.5,
-    gravity: 0.2
+	level: {
+		minX: 86,
+		maxX: -1697
+	},
+	friction: 0.5,
+	gravity: 0.2
 };
-
-// pine: http://stackoverflow.com/questions/4511632/pseudo-code-for-pine-tree-point-per-point-generation-2d

@@ -1,6 +1,7 @@
 "use strict";
 
 var keke,
+	ground,
 	animationToPlay,
 	playerMovementLayers,
 	controlsLayer,
@@ -8,11 +9,6 @@ var keke,
 	joystickText,
 	jumpButton,
 	quitButton,
-	level = {
-		minX: 86,
-		maxX: -1697
-	},
-	wallLayer,
 	scrollingLayers,
 	platformLayer,
 	previousCollisionId = '',
@@ -22,8 +18,7 @@ var keke,
 	previousVelX = 0,
 	jumpKeyDepressed = false,
 	playing = false,
-	won = false,
-	imagesToLoad = 4;
+	won = false
 		
 function init() {
 	// STAGE
@@ -33,15 +28,11 @@ function init() {
 		height: stageConfig.height
 	});
 
-	// STATIC BACKGROUND
+	// STAGE BACKGROUND
 	var stageBgLayer = new Kinetic.Layer();
-	var stageBgImage = new ImageLayer(config.stageBg);
+	var stageBgImage = new ImageLayer(gameConfig.stageBg);
 	stageBgImage.setStage(stage);
 
-	// STATIC OUTER WALLS
-	wallLayer = new Kinetic.Layer();
-	addObjectsToLayer(wallLayer, walls);
-	
 	// CONTROLS
 	controlsLayer = new Kinetic.Layer();
 	
@@ -76,23 +67,28 @@ function init() {
 	// });
 	// textLayer.add(joystickText);
 
-	scrollingLayers = new ScrollingLayers(config.scrollingLayers);
+	scrollingLayers = new ScrollingLayers(gameConfig.scrollingLayers);
 	scrollingLayers.setStage(stage);
 
 	// PLAYER MOVEMENT BG LAYERS
-	playerMovementLayers = new ScrollingLayers(config.playerMovementLayers);
+	playerMovementLayers = new ScrollingLayers(gameConfig.playerMovementLayers);
 	playerMovementLayers.setStage(stage);
 	
+	// GROUND
+	ground = new RectsLayer(gameConfig.ground);
+	ground.setStage(stage);
+	
 	// PLAYER
-	keke = new SpritePlayer(config.player);
+	keke = new SpritePlayer(gameConfig.player);
 	keke.setStage(stage);
 	
-	stage.add(wallLayer);
+	// STAGE FRAME
+	var stageFrame = new RectsLayer(gameConfig.stageFrame);
+	stageFrame.setStage(stage);
+	
 	stage.add(controlsLayer);
 	stage.add(textLayer);
 
-	// stage.draw();
-	
 	$(window).keydown(function(e) {
 		keydownHandler(e);
 	});
@@ -104,29 +100,22 @@ function init() {
 }
 
 function update() {
-	// trace('keke.facingForward = ' + keke.facingForward);
 	checkInput();
 	
     keke.velX *= friction;
 	keke.velY += gravity;
 	
-	// trace('post checkInput, velY = ' + keke.velY + ', jumping = ' + keke.jumping + ', grounded = ' + keke.grounded);
-	
 	keke.grounded = false;
 	
 	detectCollisions();
-
-	// trace('post detectCollisions, velY = ' + keke.velY + ', jumping = ' + keke.jumping + ', grounded = ' + keke.grounded);
 	
     if(keke.grounded && !keke.jumping) {
          keke.velY = 0;
     }
 
-	// trace('about to animation, keke.velY = ' + keke.velY + ', jumping = ' + keke.jumping + ', grounded = ' + keke.grounded);
-
 	// horizontal movement
 	keke.position += keke.velX;
-	if(keke.position < level.minX && keke.position > level.maxX) {
+	if(keke.position < gameConfig.level.minX && keke.position > gameConfig.level.maxX) {
 		// trace('keke.position = ' + keke.position);
 		keke.playAnimation(animationToPlay);
 		playerMovementLayers.moveByVelocity(keke.velX, 0);
@@ -139,12 +128,11 @@ function update() {
 		}
 	}
 
-
 	// vertical movement
-	// trace('about to do vertical animation, keke.velY = ' + keke.velY);
 	keke.move(0, keke.velY);
-	
-	moveScrollingLayers();
+
+	// layer movement
+	scrollingLayers.moveX();
 	
 	stage.draw();
 	
@@ -163,10 +151,8 @@ function checkInput() {
 				jumpKeyDepressed = true;
 	            keke.velY = -keke.speed * 2;
 				if(keke.facingForward) {
-					// keke.playAnimation('jumpR');
 					animationToPlay = 'jumpR';
 				} else {
-					// keke.playAnimation('jumpL');
 					animationToPlay = 'jumpL';
 				}
 				trace('\tpassed jump conditional, velY = ' + keke.velY);
@@ -182,11 +168,9 @@ function checkInput() {
 				keke.velX++;
 				if(!keke.jumping) {
 					if(keke.getCurrentAnimation() !== 'runL') {
-						// keke.playAnimation('runL');
 						animationToPlay = 'runL';
 					}
 				} else {
-					// keke.playAnimation('jumpL');
 					animationToPlay = 'jumpL';
 				}
 			}
@@ -196,21 +180,17 @@ function checkInput() {
 	    		keke.velX--;
 				if(!keke.jumping) {
 					if(keke.getCurrentAnimation() !== 'runR') {
-						// keke.playAnimation('runR');
 						animationToPlay = 'runR';
 					}
 				} else {
-					// keke.playAnimation('jumpR');
 					animationToPlay = 'jumpR';
 				}
 	        }
 			keke.facingForward = true;
 		} else if(!keke.jumping) {
 			if(keke.facingForward) {
-				// keke.playAnimation('idleR');
 				animationToPlay = 'idleR';
 			} else {
-				// keke.playAnimation('idleL');
 				animationToPlay = 'idleL';
 			}
 		}
@@ -219,7 +199,7 @@ function checkInput() {
 
 function detectCollisions() {
 
-	var col = collisionCheck(keke.getHitArea(), walls[0]); // check for floor collision
+	var col = collisionCheck(keke.getHitArea(), ground.collection[0].attrs); // check for floor collision
 
     if (col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
         keke.velX = 0;
@@ -241,7 +221,6 @@ function detectCollisions() {
 }
 
 function collisionCheck(shapeA, shapeB) {
-
     // get the vectors to check against
     var vX = (shapeA.x + (shapeA.width / 2)) - (shapeB.x + (shapeB.width / 2)),
         vY = (shapeA.y + (shapeA.height / 2)) - (shapeB.y + (shapeB.height / 2)),
@@ -285,52 +264,18 @@ function collisionCheck(shapeA, shapeB) {
     return collision;
 }
 
-function moveScrollingLayers() {
-	scrollingLayers.moveX();
-}
-
-function addObjectsToLayer(layer, objects) {
-	var fill;
-	var stroke;
-	for(var i = 0; i < objects.length; i++) {
-		if(objects[i].fill) {
-			fill = objects[i].fill;
-		} else {
-			fill = 'black';
-		}
-		if(objects[i].stroke) {
-			stroke = objects[i].stroke;
-		} else {
-			stroke = 'black';
-		}
-		var rect = new Kinetic.Rect({
-			x: objects[i].x,
-			y: objects[i].y,
-			width: objects[i].width,
-			height: objects[i].height,
-			fill: fill,
-			stroke: stroke,
-			strokeWidth: 1
-		});
-		layer.add(rect);
-	}
-}
-
 function keydownHandler(e) {
 	switch(e.which) {
 		case ControlKeys.UP:
 		keys[ControlKeys.UP] = true;
-		// handleJump();
 		break;
 
 		case ControlKeys.LEFT:
 		keys[ControlKeys.LEFT] = true;
-		// startForwardAnimations();
 		break;
 
 		case ControlKeys.RIGHT:
 		keys[ControlKeys.RIGHT] = true;
-		// startReverseAnimations();
 		break;
 
 		case ControlKeys.START:
@@ -350,13 +295,11 @@ function keyupHandler(e) {
 	switch(e.which) {
 		case ControlKeys.LEFT:
 		keys[ControlKeys.LEFT] = false;
-		// keke.playAnimation('idleL');
 		animationToPlay = 'idleL';
 		break;
 
 		case ControlKeys.RIGHT:
 		keys[ControlKeys.RIGHT] = false;
-		// keke.playAnimation('idleR');
 		animationToPlay = 'idleR';
 		break;
 
@@ -374,10 +317,8 @@ function keyupHandler(e) {
 function _onJoystickRest() {
 	trace('_onJoystickRest');
 	if(keke.facingForward) {
-		// keke.playAnimation('idleR');
 		animationToPlay = 'idleR';
 	} else {
-		// keke.playAnimation('idleL');
 		animationToPlay = 'idleL';
 	}
 }
@@ -394,37 +335,5 @@ function quit() {
 }
 
 $(document).ready(function() {
-	trace('KekeGame document ready');
 	init();
 });
-
-// collision algorithm: http://devmag.org.za/2009/04/13/basic-collision-detection-in-2d-part-1/
-
-// collision detection1 http://www.gamingthinktank.com/2013/07/11/collision-detection-using-bounding-rectangle-method-kineticjs-and-html5-canvas-tutorial/
-// collision detection2 http://stackoverflow.com/questions/14875119/html5-kineticjs-getintersection-function-implementation
-/*
-function checkCollide(pointX, pointY, objectx, objecty, objectw, objecth) { // pointX, pointY belong to one rectangle, while the object variables belong to another rectangle
-      var oTop = objecty;
-      var oLeft = objectx; 
-      var oRight = objectx+objectw;
-      var oBottom = objecty+objecth; 
-
-      if(pointX > oLeft && pointX < oRight){
-           if(pointY > oTop && pointY < oBottom ){
-                return 1;
-           }
-      }
-      else
-           return 0;
- };
-
-var children = layer.getChildren();
- for( var i=0; i<children.length; i++){  // for each single shape
-     for( var j=0; j<children.length; j++){ //check each other shape
-         if(i != j){ //skip if shape is the same
-            if(checkCollide(children[i].getX(), children[i].getY(), children[j].getX(), children[j].getY(), children[j].getWidth(), children[j].getHeight()))
-                alert('top left corner collided');
-         }
-     }
- }
-*/
