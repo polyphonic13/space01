@@ -9,7 +9,7 @@ var ScrollingLayer = (function() {
 		params.opacity = _opacity;
 		ScrollingLayer._super.constructor.call(_this, params);
 		_buildViews();
-		
+		this.model.layer.setPosition(this.model.x, this.model.y);
 		this.__defineGetter__('id', function() {
 			return this.model.id;
 		});

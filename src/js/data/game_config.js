@@ -40,7 +40,7 @@ var gameConfig = {
 	{
 		id: 'backgroundTrees',
 		imgUrl: 'images/trees_back01.png',
-		x: 0,
+		x: -64,
 		y: 80,
 		width: 2048,
 		height: 350,
