@@ -1,4 +1,11 @@
 var gameConfig = {
+	stageBg: {
+		imgUrl: 'images/night_sky.png',
+		x: 0,
+		y: 0,
+		width: stageConfig.width,
+		height: stageConfig.height
+	},
 	stageFrame: [
 	{
 		id: 'top',

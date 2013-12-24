@@ -35,8 +35,8 @@ function init() {
 
 	// STATIC BACKGROUND
 	var stageBgLayer = new Kinetic.Layer();
-	addImageToLayer(stageBgLayer, 'images/night_sky.png', 0, 0, stageConfig.width, stageConfig.height, 1);
-	stage.add(stageBgLayer);
+	var stageBgImage = new ImageLayer(gameConfig.stageBg);
+	stageBgImage.setStage(stage);
 
 	// STATIC OUTER WALLS
 	wallLayer = new Kinetic.Layer();
@@ -316,22 +316,22 @@ function addObjectsToLayer(layer, objects) {
 	}
 }
 
-function addImageToLayer(layer, imgUrl, x, y, w, h, alpha, filter) {
-	var a = (typeof(alpha) !== 'undefined') ? alpha : 1;
+function addImageToLayer(params) {
+	var o = (params.opacity) ? params.opacity : 1;
     var imageObj = new Image();
 	
 	var imgConfig = {
-		x: x,
-		y: y,
-		width: w,
-		height: h,
-		opacity: a,
+		x: params.x,
+		y: params.y,
+		width: params.width,
+		height: params.height,
+		opacity: o,
 		image: imageObj
 	};
 
-	if(typeof(filter) !== 'undefined') {
-		for(var key in filter) {
-			imgConfig[key] = filter[key];
+	if(typeof(params.filter) !== 'undefined') {
+		for(var key in params.filter) {
+			imgConfig[key] = params.filter[key];
 		}
 	}
 
@@ -340,7 +340,7 @@ function addImageToLayer(layer, imgUrl, x, y, w, h, alpha, filter) {
 		layer.add(image);
 		layer.draw(); // layer has to have draw called each time there is a change
     };
-    imageObj.src = imgUrl;
+    imageObj.src = params.imgUrl;
 	
 }
 
