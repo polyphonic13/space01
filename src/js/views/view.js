@@ -4,62 +4,59 @@ var View = (function() {
 	
 	function View(params) {
 		_this = this;
-		_this.model = params;
+		this.model = params;
 
-		trace('View/Constructor, model = ');
-		trace(_this.model);
-		
-		_this.model.layer = new Kinetic.Layer();
-		_this.model.stage.add(_this.model.layer);
+		this.model.layer = new Kinetic.Layer();
+		this.model.stage.add(this.model.layer);
 
-		_this.__defineGetter__("layer", function() {
-			return _this.model.layer;
+		this.__defineGetter__("layer", function() {
+			return this.model.layer;
 		});
-		_this.__defineSetter__("layer", function(val) {
-			_this.model.layer = val;
+		this.__defineSetter__("layer", function(val) {
+			this.model.layer = val;
 		});
-		_this.__defineGetter__("position", function() {
-			return _this.model.position;
+		this.__defineGetter__("position", function() {
+			return this.model.position;
 		});
-		_this.__defineSetter__("position", function(val) {
-			_this.model.position = val;
+		this.__defineSetter__("position", function(val) {
+			this.model.position = val;
 		});
-		_this.__defineGetter__("x", function() {
-			return _this.model.x;
+		this.__defineGetter__("x", function() {
+			return this.model.x;
 		});
-		_this.__defineSetter__("x", function(val) {
-			_this.model.x = val;
+		this.__defineSetter__("x", function(val) {
+			this.model.x = val;
 		});
-		_this.__defineGetter__("y", function() {
-			return _this.model.y;
+		this.__defineGetter__("y", function() {
+			return this.model.y;
 		});
-		_this.__defineSetter__("y", function(val) {
-			_this.model.y = val;
+		this.__defineSetter__("y", function(val) {
+			this.model.y = val;
 		});
-		_this.__defineGetter__("width", function() {
-			return _this.model.width;
+		this.__defineGetter__("width", function() {
+			return this.model.width;
 		});
-		_this.__defineSetter__("width", function(val) {
-			_this.model.width = val;
+		this.__defineSetter__("width", function(val) {
+			this.model.width = val;
 		});
-		_this.__defineGetter__("height", function() {
-			return _this.model.height;
+		this.__defineGetter__("height", function() {
+			return this.model.height;
 		});
-		_this.__defineSetter__("height", function(val) {
-			_this.model.height = val;
+		this.__defineSetter__("height", function(val) {
+			this.model.height = val;
 		});
 	}
 	
 	View.prototype.getModel = function() {
-		return _this.model;
+		return this.model;
 	};
 
 	View.prototype.setPosition = function(params) {
-		_this.model.layer.setPosition(params);
+		this.model.layer.setPosition(params);
 	};
 	
 	View.prototype.move = function(x, y) {
-		_this.model.layer.move(x, y);
+		this.model.layer.move(x, y);
 	};
 	
 	return View;

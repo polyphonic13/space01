@@ -2,51 +2,48 @@ var ScrollingLayer = (function() {
 	Utils.inherits(ScrollingLayer, View);
 	
 	var _this;
-	var _config = {
-		opacity: 1
-	};
+	var _opacity = 1;
 	
 	function ScrollingLayer(params) {
 		_this = this;
-		_config = Utils.extend(_config, params);
-		ScrollingLayer._super.constructor.call(_this, _config);
+		params.opacity = _opacity;
+		ScrollingLayer._super.constructor.call(_this, params);
 		_buildViews();
 		
-		trace('ScrollingLayer['+_this.model.id+']/constructor');
-		trace(_this.model);
+		this.__defineGetter__('id', function() {
+			return this.model.id;
+		});
 	}
 	
 	ScrollingLayer.prototype.move = function(velX, velY) {
-		trace('ScollingLayer['+_this.model.id+']/move, speed = ' + _this.model.speed);
-		_this.model.layer.move((velX * _this.model.speed), (velY * _this.model.speed));
+		// trace('ScollingLayer['+this.model.id+']/move, speed = ' + this.model.speed);
+		this.model.layer.move((velX * this.model.speed), (velY * this.model.speed));
 	};
 	
 	function _buildViews() {
 	    var imageObj = new Image();
-
+		var _model = _this.model;
 		var imgConfig = {
-			// x: _this.model.x,
-			// y: _this.model.y,
 			x: 0,
 			y: 0,
-			width: _this.model.width,
-			height: _this.model.height,
-			opacity: _this.model.opacity,
+			width: _model.width,
+			height: _model.height,
+			opacity: _model.opacity,
 			image: imageObj
 		};
 
-		if(_this.model.filter) {
-			for(var key in _this.model.filter) {
-				imgConfig[key] = _this.model.filter[key];
+		if(_model.filter) {
+			for(var key in _model.filter) {
+				imgConfig[key] = _model.filter[key];
 			}
 		}
 
 	    imageObj.onload = function() {
 			var image = new Kinetic.Image(imgConfig);
-			_this.model.layer.add(image);
-			_this.model.layer.draw(); // layer has to have draw called each time there is a change
+			_model.layer.add(image);
+			_model.layer.draw(); // layer has to have draw called each time there is a change
 	    };
-	    imageObj.src = _this.model.imgUrl;
+	    imageObj.src = _model.imgUrl;
 	}
 
 	return ScrollingLayer;

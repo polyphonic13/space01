@@ -234,7 +234,7 @@ function update() {
 	stage.draw();
 	
 	if(playing) {
-		// requestAnimFrame(update);
+		requestAnimFrame(update);
 	}
 }
 

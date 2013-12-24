@@ -4,13 +4,8 @@ var ScrollingLayers = (function() {
 	function ScrollingLayers(params) {
 
 		for(var i = 0; i < params.length; i++) {
-			var layer = new ScrollingLayer(params[i]);
-			trace('layer = ');
-			trace(layer);
-			_collection.push(layer);
+			_collection.push(new ScrollingLayer(params[i]));
 		}
-		trace('ScrollingLayers/constructor, post add, layers = ');
-		trace(_collection);
 	}
 	
 	ScrollingLayers.prototype.move = function(velX, velY) {
