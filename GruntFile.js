@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
 		pkg: grunt.file.readJSON('package.json'),
 
-		srcDir: 'src',
+		srcDir: 'public/src',
 		deployDir: 'public/deploy',
 
 /////// CONCAT 
@@ -56,7 +56,7 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/views/image_layer.js',
 					'<%= srcDir %>/js/views/scrolling_layer.js',
 					'<%= srcDir %>/js/views/scrolling_layers.js',
-					'<%= srcDir %>/js/keke_game/keke_game.js'
+					'<%= srcDir %>/js/keke_game.js'
 				],
 				dest: '<%= deployDir %>/js/keke_game.js'
 			}
@@ -84,18 +84,11 @@ module.exports = function(grunt) {
 /////// COPYING
 		copy: {
 			// task docs: https://github.com/gruntjs/grunt-contrib-copy
-			// playerIframe: {
-			// 	src: [ '<%= srcDir %>/sm_player_iframe.html' ],
-			// 	dest: '<%= deployDir %>/sm_player_iframe.html'
-			// },
+			html: {
+				src: [ '<%= srcDir %>/index.html' ],
+				dest: '<%= deployDir %>/index.html'
+			},
 
-			// html: {
-			// 	expand: true,
-			// 	cwd: 'src/',
-			// 	src: [ '**/*.html' ],
-			// 	dest: '<%= deployDiv %>/'
-			// }, 
-			
 			images: {
 				files: [{
 					expand: true,
@@ -118,7 +111,7 @@ module.exports = function(grunt) {
 		connect: {
 			// docs: https://github.com/iammerrick/grunt-connect
 			devel: {
-				port: 8000,
+				port: 9999,
 				base: 'public',
 				keepAlive: true
 			}

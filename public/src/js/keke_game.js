@@ -394,6 +394,7 @@ function quit() {
 }
 
 $(document).ready(function() {
+	trace('KekeGame document ready');
 	init();
 });
 
