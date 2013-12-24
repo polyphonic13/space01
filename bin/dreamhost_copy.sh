@@ -9,10 +9,12 @@ DEST_DIR=$2
 
 ssh -o "StrictHostKeyChecking no" $USER@$DREAMHOST_SERVER << ENDHERE
 	cd $POLYWORKS_DIR
+	echo "CONTENTS OF POLWORKS DIR: "
 	ls -l
+	echo "TESTING FOR EXISTENCE OF $DEST_DIR"
 	if [ ! -d "$DEST_DIR" ]; then
 	  # Control will enter here if $DIRECTORY doesn't exist.
-		echo "making new dir $DEST_DIR"
+		echo "MAKING NEW DIR $DEST_DIR"
 		mkdir $DEST_DIR
 	fi	
 	exit
@@ -33,4 +35,4 @@ fi
 
 # tar cf - $1 | ssh $DREAMHOST_SERVER "tar xf - -C $DREAMHOST_PATH/"
 
-exit 0
+# exit 0

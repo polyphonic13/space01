@@ -304,7 +304,6 @@ function keyupHandler(e) {
 		break;
 
 		case ControlKeys.UP:
-		trace("ControlKeys.UP release");
 		keys[ControlKeys.UP] = false;
 		jumpKeyDepressed = false;
 		break; 
@@ -330,8 +329,10 @@ function start() {
 }
 
 function quit() {
-	trace('quiting')
-;	playing = false;
+	trace('quiting');
+	playing = false;
+	window.keyup = null;
+	window.keydown = null;
 }
 
 $(document).ready(function() {
