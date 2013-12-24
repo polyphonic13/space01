@@ -7,7 +7,9 @@ var View = (function() {
 		this.model = params;
 
 		this.model.layer = new Kinetic.Layer();
-		this.model.stage.add(this.model.layer);
+		if(this.model.stage) {
+			this.model.stage.add(this.model.layer);
+		}
 
 		this.__defineGetter__("layer", function() {
 			return this.model.layer;
@@ -57,6 +59,11 @@ var View = (function() {
 	
 	View.prototype.move = function(x, y) {
 		this.model.layer.move(x, y);
+	};
+	
+	View.prototype.setStage = function(stage) {
+		this.model.stage = stage;
+		stage.add(this.model.layer);
 	};
 	
 	return View;

@@ -2,7 +2,7 @@
 
 var keke,
 	animationToPlay,
-	scrollingLayers,
+	playerMovementLayers,
 	controlsLayer,
 	joystick,
 	joystickText,
@@ -13,61 +13,7 @@ var keke,
 		maxX: -1697
 	},
 	wallLayer,
-	cloudsLayer,
-	clouds = {
-		imgUrl: 'images/clouds.png',
-		startX: 0,
-		startY: 0,
-		width: 2048,
-		height: 490,
-		speed: 1
-	},
-	scenery = [],
-	mountainsLayer,
-	mountains = {
-		imgUrl: 'images/hills03_grey.png',
-		startX: -100,
-		startY: 50,
-		width: 2048,
-		height: 256,
-		speed: 0.3
-	},
-	backgroundTreesLayer,
-	backgroundTrees = {
-		imgUrl: 'images/trees_back01.png',
-		startX: -64,
-		startY: 80,
-		width: 2048,
-		height: 350,
-		speed: 0.7
-	},
-	foregroundTreesLayer1,
-	foregroundTrees1 = {
-		imgUrl: 'images/trees_fore01.png',
-		startX: -256,
-		startY: -40,
-		width: 2048,
-		height: 500,
-		speed: 3
-	},
-	foregroundTreesLayer2,
-	foregroundTrees2 = {
-		imgUrl: 'images/trees_fore01.png',
-		startX: 1792,
-		startY: -40,
-		width: 2048,
-		height: 500,
-		speed: 3
-	},
-	foregroundTreesLayer3,
-	foregroundTrees3 = {
-		imgUrl: 'images/trees_fore01.png',
-		startX: 3840,
-		startY: -40,
-		width: 2048,
-		height: 500,
-		speed: 3
-	},
+	scrollingLayers,
 	platformLayer,
 	previousCollisionId = '',
     keys = {},
@@ -91,24 +37,6 @@ function init() {
 	var stageBgLayer = new Kinetic.Layer();
 	addImageToLayer(stageBgLayer, 'images/night_sky.png', 0, 0, stageConfig.width, stageConfig.height, 1);
 	stage.add(stageBgLayer);
-
-	// CLOUDS
-	cloudsLayer = new Kinetic.Layer();
-	addImageToLayer(cloudsLayer, clouds.imgUrl, clouds.startX, clouds.startY, clouds.width, clouds.height);
-	
-	// MOVING BACKGROUNDS
-	/*
-	mountainsLayer = new Kinetic.Layer();
-	addImageToLayer(mountainsLayer, mountains.imgUrl, mountains.startX, mountains.startY, mountains.width, mountains.height);
-	backgroundTreesLayer = new Kinetic.Layer();
-	addImageToLayer(backgroundTreesLayer, backgroundTrees.imgUrl, backgroundTrees.startX, backgroundTrees.startY, backgroundTrees.width, backgroundTrees.height);
-	foregroundTreesLayer1 = new Kinetic.Layer(); 
-	addImageToLayer(foregroundTreesLayer1, foregroundTrees1.imgUrl, foregroundTrees1.startX, foregroundTrees1.startY, foregroundTrees1.width, foregroundTrees1.height);
-	foregroundTreesLayer2 = new Kinetic.Layer(); 
-	addImageToLayer(foregroundTreesLayer2, foregroundTrees2.imgUrl, foregroundTrees2.startX, foregroundTrees2.startY, foregroundTrees2.width, foregroundTrees2.height);
-	foregroundTreesLayer3 = new Kinetic.Layer(); 
-	addImageToLayer(foregroundTreesLayer3, foregroundTrees3.imgUrl, foregroundTrees3.startX, foregroundTrees3.startY, foregroundTrees3.width, foregroundTrees3.height);
-	*/
 
 	// STATIC OUTER WALLS
 	wallLayer = new Kinetic.Layer();
@@ -147,33 +75,22 @@ function init() {
 	//         fill: 'white'
 	// });
 	// textLayer.add(joystickText);
-	
-	stage.add(cloudsLayer);
-	/*
-	stage.add(mountainsLayer);
-	stage.add(backgroundTreesLayer);
-	stage.add(foregroundTreesLayer1);
-	stage.add(foregroundTreesLayer2);
-	stage.add(foregroundTreesLayer3);
-	*/
-	for(var i = 0; i < gameConfig.scrollingLayers.length; i++) {
-		gameConfig.scrollingLayers[i].stage = stage;
-	}
+
 	scrollingLayers = new ScrollingLayers(gameConfig.scrollingLayers);
+	scrollingLayers.setStage(stage);
+
+	// PLAYER MOVEMENT BG LAYERS
+	playerMovementLayers = new ScrollingLayers(gameConfig.playerMovementLayers);
+	playerMovementLayers.setStage(stage);
+	
 	// PLAYER
-	gameConfig.player.stage = stage;
 	keke = new SpritePlayer(gameConfig.player);
+	keke.setStage(stage);
 	
 	stage.add(wallLayer);
 	stage.add(controlsLayer);
 	stage.add(textLayer);
-	/*
-	scenery.push({ config: mountains, layer: mountainsLayer });
-	scenery.push({ config: backgroundTrees, layer: backgroundTreesLayer });
-	scenery.push({ config: foregroundTrees1, layer: foregroundTreesLayer1 });
-	scenery.push({ config: foregroundTrees2, layer: foregroundTreesLayer2 });
-	scenery.push({ config: foregroundTrees3, layer: foregroundTreesLayer3 });
-	*/
+
 	// stage.draw();
 	
 	$(window).keydown(function(e) {
@@ -207,14 +124,12 @@ function update() {
 
 	// trace('about to animation, keke.velY = ' + keke.velY + ', jumping = ' + keke.jumping + ', grounded = ' + keke.grounded);
 
-	// TODO: test for bounds of game before moving
 	// horizontal movement
 	keke.position += keke.velX;
 	if(keke.position < level.minX && keke.position > level.maxX) {
 		// trace('keke.position = ' + keke.position);
 		keke.playAnimation(animationToPlay);
-		//animateLayers();
-		scrollingLayers.move(keke.velX, 0);
+		playerMovementLayers.moveByVelocity(keke.velX, 0);
 	} else {
 		trace('bounds reached');
 		if(keke.facingForward) {
@@ -229,7 +144,7 @@ function update() {
 	// trace('about to do vertical animation, keke.velY = ' + keke.velY);
 	keke.move(0, keke.velY);
 	
-	animateClouds();
+	moveScrollingLayers();
 	
 	stage.draw();
 	
@@ -370,24 +285,8 @@ function collisionCheck(shapeA, shapeB) {
     return collision;
 }
 
-function animateLayers() {
-	for(var i = 0; i < scenery.length; i++) {
-		animateLayer(scenery[i].layer, (keke.velX * scenery[i].config.speed), 0);
-	}
-}
-
-function animateLayer(layer, newX, newY) {
-	layer.move(newX, newY);
-}
-
-function animateClouds() {
-	var cloudPos = cloudsLayer.getPosition();
-	// trace('cloudPos.x = ' + -(cloudPos.x) + ', max = ' + (clouds.width - stageConfig.width));
-	if(-(cloudPos.x) < (clouds.width - stageConfig.width)) {
-		animateLayer(cloudsLayer, -(clouds.speed), 0);
-	} else {
-		cloudsLayer.setPosition(clouds.startX, 0);
-	}
+function moveScrollingLayers() {
+	scrollingLayers.moveX();
 }
 
 function addObjectsToLayer(layer, objects) {

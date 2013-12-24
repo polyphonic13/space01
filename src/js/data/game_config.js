@@ -29,6 +29,24 @@ var gameConfig = {
 	    height: stageConfig.height
 	}],
 	scrollingLayers: [{
+		id: 'clouds1',
+		imgUrl: 'images/clouds.png',
+		x: 0,
+		y: 0,
+		width: 2048,
+		height: 490,
+		speed: -1
+	},
+	{
+		id: 'clouds2',
+		imgUrl: 'images/clouds.png',
+		x: 2048,
+		y: 0,
+		width: 2048,
+		height: 490,
+		speed: -1
+	}],
+	playerMovementLayers: [{
 		id: 'mountains',
 		imgUrl: 'images/hills03_grey.png',
 		x: -100,

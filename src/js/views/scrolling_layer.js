@@ -15,7 +15,15 @@ var ScrollingLayer = (function() {
 		});
 	}
 	
-	ScrollingLayer.prototype.move = function(velX, velY) {
+	ScrollingLayer.prototype.moveX = function() {
+		this.model.layer.move(this.model.speed, 0);
+	};
+	
+	ScrollingLayer.prototype.moveY = function() {
+		this.model.layer.move(0, this.model.speed);
+	};
+	
+	ScrollingLayer.prototype.moveByVelocity = function(velX, velY) {
 		// trace('ScollingLayer['+this.model.id+']/move, speed = ' + this.model.speed);
 		this.model.layer.move((velX * this.model.speed), (velY * this.model.speed));
 	};
