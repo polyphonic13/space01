@@ -1,4 +1,4 @@
-var gameConfig = {
+var config = {
 	stageBg: {
 		imgUrl: 'images/night_sky.png',
 		x: 0,
