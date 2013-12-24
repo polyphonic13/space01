@@ -19,6 +19,10 @@ var RectsLayer = (function() {
 		});
 	}
 
+	RectsLayer.prototype.moveByVelocity = function(velX, velY) {
+		this.model.layer.move((velX * this.model.speed), (velY * this.model.speed));
+	};
+	
 	function _buildViews() {
 		var layer = _this.model.layer;
 		var rects = _this.model.rects;

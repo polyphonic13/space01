@@ -37,13 +37,22 @@ var gameConfig = {
 		}]
 	},
 	ground: {
+		speed: 3,
 		rects: [{
-			id: 'floor',
+			id: 'floor1',
 			x: 0,
 			y: stageConfig.height - 75,
-			width: stageConfig.width,
+			width: 600,
 			height: 50,
-			stroke: '#123456'
+			fill: '#123456'
+		},
+		{
+			id: 'floor1',
+			x: 600,
+			y: stageConfig.height - 100,
+			width: 600,
+			height: 50,
+			fill: '#123456'
 		}]
 	},
 	scrollingLayers: [/*{
@@ -64,7 +73,7 @@ var gameConfig = {
 		height: 490,
 		speed: -1
 	}*/],
-	playerMovementLayers: [{
+	playerMovementLayers: [/*{
 		id: 'mountains',
 		imgUrl: 'images/hills03_grey.png',
 		x: -100,
@@ -108,7 +117,7 @@ var gameConfig = {
 		width: 2048,
 		height: 500,
 		speed: 3
-	}],
+	}*/],
  	player: {
 		x: stageConfig.width / 2,
 		y: stageConfig.height - 256,

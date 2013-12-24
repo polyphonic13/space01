@@ -38,6 +38,7 @@ module.exports = function(grunt) {
 				},
 				src: [
 					'<%= srcDir %>/js/utils/logger.js',
+					'<%= srcDir %>/js/utils/kinetic_pixel_ratio_modifier.js',
 					'<%= srcDir %>/js/utils/request_animation_frame.js',
 					'<%= srcDir %>/js/utils/utils.js',
 					'<%= srcDir %>/js/data/keke_animations.js',

@@ -127,7 +127,7 @@ var Joystick = (function() {
 	
 	function _addListeners() {
 		_smCircle.on('dragstart', function(evt) {
-			console.log('DRAG START!');
+			trace('DRAG START!');
 			_onDragStart(evt);
 		});
 		_smCircle.on('dragmove', function(evt) {
@@ -139,18 +139,18 @@ var Joystick = (function() {
 	}
 
 	function _onDragStart(evt) {
-		// console.log('_onDragStart, x/y = ' + evt.x + '/' + evt.y);
+		// trace('_onDragStart, x/y = ' + evt.x + '/' + evt.y);
 		_states[JoystickStates.REST] = false;
 		_checkDirection(evt);
 	}
 
 	function _onDragMove(evt) {
-		// console.log('_onDragMove, x/y = ' + evt.x + '/' + evt.y);
+		// trace('_onDragMove, x/y = ' + evt.x + '/' + evt.y);
 		_checkDirection(evt);
 	}
 
 	function _onDragEnd(evt) {
-		console.log('_onDragEnd');
+		trace('_onDragEnd');
 		_resetStates();
 		_smCircle.setPosition(_model.startX, _model.startY);
 		_model.layer.draw();
@@ -164,19 +164,25 @@ var Joystick = (function() {
 		_position.y = pos.y;
 		
 		if(_position.x > _model.startX) {
-			console.log("FORWARD");
+			// trace("FORWARD");
 			_states[JoystickStates.REVERSE] = true;
 			_states[JoystickStates.FORWARD] = false;
 		} else {
-			console.log("REVERSE");
+			// trace("REVERSE");
 			_states[JoystickStates.FORWARD] = true;
 			_states[JoystickStates.REVERSE] = false;
 		}
-		if(_position.y > _model.startY) {
+		// trace('y = ' + _position.y + ', startY = ' + _model.startY);
+		if(_position.y > (_model.startY + 20)) {
+			// trace("DOWN");
 			_states[JoystickStates.DOWN] = true;
 			_states[JoystickStates.UP] = false;
-		} else {
+		} else if(_position.y < (_model.startY - 20)){
+			// trace("UP");
 			_states[JoystickStates.UP] = true;
+			_states[JoystickStates.DOWN] = false;
+		} else {
+			_states[JoystickStates.UP] = false;
 			_states[JoystickStates.DOWN] = false;
 		}
 	}

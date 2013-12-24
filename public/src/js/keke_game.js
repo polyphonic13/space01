@@ -48,6 +48,7 @@ function init() {
 		_onJoystickRest();
 	});
 	
+	/*
 	var jumpBtnX = stageConfig.width - 80;
 	var jumpBtnY = stageConfig.height - 60;
 	jumpButton = new ControlButton({
@@ -55,7 +56,8 @@ function init() {
 		x: jumpBtnX,
 		y: jumpBtnY
 	});
-
+	*/
+	
 	var textLayer = new Kinetic.Layer();
 	// joystickText = new Kinetic.Text({
 	// 	x: 20,
@@ -120,9 +122,10 @@ function update() {
 	if(keke.position < gameConfig.level.minX && keke.position > gameConfig.level.maxX) {
 		// trace('keke.position = ' + keke.position);
 		if(keke.velX !== 0) {
-			playerMovementLayers.moveByVelocity(keke.velX, 0);
+			// playerMovementLayers.moveByVelocity(keke.velX, 0);
+			ground.moveByVelocity(keke.velX, 0);
 		} else {
-			trace('no movement');
+			// trace('no movement');
 		}
 	} else {
 		trace('bounds reached');
@@ -148,7 +151,8 @@ function update() {
 }
 
 function checkInput() {
-	    if (keys[ControlKeys.UP] || jumpButton.getWasPressed()) {
+	    // if (keys[ControlKeys.UP] || jumpButton.getWasPressed() || joystick.getUp()) {
+	    if (keys[ControlKeys.UP] || joystick.getUp()) {
 	        // up arrow or space
 	        if (!keke.jumping && keke.grounded && !jumpKeyDepressed) {
 	            keke.jumping = true;
@@ -163,7 +167,7 @@ function checkInput() {
 				}
 				trace('\tpassed jump conditional, velY = ' + keke.velY);
 	       }
-			jumpButton.setWasPressed(false);
+			// jumpButton.setWasPressed(false);
 	    }
 		previousVelX = keke.velX;
 //		trace('checkInput, forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse() + ', rest = ' + joystick.getRest());
@@ -205,22 +209,37 @@ function checkInput() {
 
 function detectCollisions() {
 
-	var col = collisionCheck(keke.getHitArea(), ground.collection[0].attrs); // check for floor collision
-
-    if (col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
-        keke.velX = 0;
-        keke.jumping = false;
-	} else if (col.direction === Directions.BOTTOM) {
-		if(keke.justJumped) {
-			keke.justJumped = false;
-		} else {
-	        keke.grounded = true;
-	        keke.jumping = false;
-			jumpKeyDepressed = false;
+	var groundObjs = ground.collection;
+	var rect;
+	var rectPos;
+	
+	for(var i = 0; i < groundObjs.length; i++) {
+		// trace('groundObjs['+i+'].attrs = ');
+		// trace(groundObjs[i].attrs);
+		rectPos = groundObjs[i].getAbsolutePosition();
+		rect = {
+			x: rectPos.x,
+			y: rectPos.y,
+			width: groundObjs[i].attrs.width,
+			height: groundObjs[i].attrs.height
 		}
-	} else if (col.direction === Directions.TOP) {
-        keke.velY *= -1;
-    }
+		var col = collisionCheck(keke.getHitArea(), rect); // check for floor collision
+
+	    if (col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
+	        keke.velX = 0;
+	        keke.jumping = false;
+		} else if (col.direction === Directions.BOTTOM) {
+			if(keke.justJumped) {
+				keke.justJumped = false;
+			} else {
+		        keke.grounded = true;
+		        keke.jumping = false;
+				jumpKeyDepressed = false;
+			}
+		} else if (col.direction === Directions.TOP) {
+	        keke.velY *= -1;
+	    }
+	}
 
 	// previousCollisionId = col.id;
 	// trace('detectCollisions, keke.grounded = ' + keke.grounded + ', col.direction = ' + col.direction);
