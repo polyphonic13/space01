@@ -28,83 +28,50 @@ var gameConfig = {
 	    width: 50,
 	    height: stageConfig.height
 	}],
-	// layers display behing player
-	backLayers: [{
-		id: 'farMountains',
-		images: [{
-			url: 'images/hills04_grey.png',
-			x: -200,
-			y: 0,
-			width: 2048,
-			height: 512
-		}],
-		x: -200,
-		y: 0,
-		width: 2048,
-		height: 512,
-		speed: 0.1
-	},
-	{
-		id: 'nearHills',
-		images: [{
-			url: 'images/hills03_grey.png',
-			x: -200,
-			y: 270,
-			width: 2048,
-			height: 256
-		}],
-		x: -200,
-		y: 270,
+	scrollingLayers: [{
+		id: 'mountains',
+		imgUrl: 'images/hills03_grey.png',
+		startX: -100,
+		startY: 50,
 		width: 2048,
 		height: 256,
 		speed: 0.3
 	},
 	{
-		id: 'treeLine',
-		images: [{
-			imgUrl: 'images/tree01.png',
-			x: 500,
-			y: -75,
-			width: 256,
-			height: 512,
-		}],
-		x: 500,
-		y: -75,
-		width: 256,
-		height: 512,
-		speed: 3
-	}],
-	// layers displayed on top of player
-	foreLayers: [{
-		id: 'trees',
-		images: [{
-			imgUrl: 'images/tree01.png',
-			x: 0,
-			y: 0,
-			width: 256,
-			height: 512
-		}],
-		x: 0,
-		y: 0,
-		width: 256,
-		height: 512,
-		speed: 4.5
+		id: 'backgroundTrees',
+		imgUrl: 'images/trees_back01.png',
+		startX: -64,
+		startY: 80,
+		width: 2048,
+		height: 350,
+		speed: 0.7
 	},
 	{
-		id: 'trees',
-		images: [{
-			imgUrl: 'images/tree01.png',
-			x: 0,
-			y: 0,
-			width: 256,
-			height: 512
-		}],
-		imgUrl: 'images/tree01.png',
-		x: 0,
-		y: 0,
-		width: 256,
-		height: 512,
-		speed: 5
+		id: 'foregroundTrees1',
+		imgUrl: 'images/trees_fore01.png',
+		startX: -256,
+		startY: -40,
+		width: 2048,
+		height: 500,
+		speed: 3
+	},
+	{
+		id: 'foregroundTrees2',
+		imgUrl: 'images/trees_fore01.png',
+		startX: 1792,
+		startY: -40,
+		width: 2048,
+		height: 500,
+		speed: 3
+	},
+	{
+		id: 'foregroundTrees3',
+		imgUrl: 'images/trees_fore01.png',
+		startX: 3840,
+		startY: -40,
+		width: 2048,
+		height: 500,
+		speed: 3
 	}],
  	player: {
 		x: stageConfig.width / 2,
@@ -123,7 +90,7 @@ var gameConfig = {
 			x: 0,
 			y: 0,
 			index: 0,
-			frameRate: 15
+			frameRate: 14
 		}
     },
    friction: 0.5,

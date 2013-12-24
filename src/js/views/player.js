@@ -1,48 +1,15 @@
 var Player = (function() {
-
+	Utils.inherits(Player, View);
+	
+	var _config = {};
 	var _model = {};
 	
 	function Player(params) {
-		_model = Utils.extend(_model, params);
-		_model.layer = new Kinetic.Layer();
-		_model.layer.setPosition({ x: _model.x, y: _model.y });
+		_config = Utils.extend(_config, params);
+		Player._super.constructor.call(this, _config);
 
-		this.__defineGetter__("layer", function() {
-			return _model.layer;
-		});
-		this.__defineSetter__("layer", function(val) {
-			_model.layer = val;
-		});
-		this.__defineGetter__("position", function() {
-			return _model.position;
-		});
-		this.__defineSetter__("position", function(val) {
-			_model.position = val;
-		});
-		this.__defineGetter__("x", function() {
-			return _model.x;
-		});
-		this.__defineSetter__("x", function(val) {
-			_model.x = val;
-		});
-		this.__defineGetter__("y", function() {
-			return _model.y;
-		});
-		this.__defineSetter__("y", function(val) {
-			_model.y = val;
-		});
-		this.__defineGetter__("width", function() {
-			return _model.width;
-		});
-		this.__defineSetter__("width", function(val) {
-			_model.width = val;
-		});
-		this.__defineGetter__("height", function() {
-			return _model.height;
-		});
-		this.__defineSetter__("height", function(val) {
-			_model.height = val;
-		});
+		_model = this.constructor._super.getModel.call(this);
+
 		this.__defineGetter__("velX", function() {
 			return _model.velX;
 		});
@@ -80,22 +47,6 @@ var Player = (function() {
 			_model.justJumped = val;
 		});
 	}
-	
-	Player.prototype.setStage = function(stage) {
-		stage.add(_model.layer);
-	};
-
-	Player.prototype.getModel = function() {
-		return _model;
-	};
-
-	Player.prototype.setPosition = function(params) {
-		_model.layer.setPosition(params);
-	};
-	
-	Player.prototype.move = function(x, y) {
-		_model.layer.move(x, y);
-	};
 	
 	Player.prototype.getHitArea = function() {
 		var pos = _model.layer.getAbsolutePosition();

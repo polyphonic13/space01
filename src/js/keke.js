@@ -35,9 +35,9 @@ var keke,
 	backgroundTrees = {
 		imgUrl: 'images/trees_back01.png',
 		startX: -64,
-		startY: stageConfig.height - 320,
+		startY: 80,
 		width: 2048,
-		height: 256,
+		height: 350,
 		speed: 0.7
 	},
 	foregroundTreesLayer1,
@@ -107,8 +107,6 @@ function init() {
 	foregroundTreesLayer3 = new Kinetic.Layer(); 
 	addImageToLayer(foregroundTreesLayer3, foregroundTrees3.imgUrl, foregroundTrees3.startX, foregroundTrees3.startY, foregroundTrees3.width, foregroundTrees3.height);
 	
-	// PLAYER
-	keke = new SpritePlayer(gameConfig.player);
 	
 	// STATIC OUTER WALLS
 	wallLayer = new Kinetic.Layer();
@@ -155,7 +153,9 @@ function init() {
 	stage.add(foregroundTreesLayer2);
 	stage.add(foregroundTreesLayer3);
 
-	keke.setStage(stage);
+	// PLAYER
+	gameConfig.player.stage = stage;
+	keke = new SpritePlayer(gameConfig.player);
 	
 	stage.add(wallLayer);
 	stage.add(controlsLayer);

@@ -13,6 +13,7 @@ var SpritePlayer = (function() {
 		SpritePlayer._super.constructor.call(this, _config);
 
 		_model = this.constructor._super.getModel.call(this);
+
 		_buildViews();
 		
 		this.__defineGetter__("facingForward", function() {
