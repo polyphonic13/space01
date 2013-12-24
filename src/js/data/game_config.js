@@ -31,8 +31,8 @@ var gameConfig = {
 	scrollingLayers: [{
 		id: 'mountains',
 		imgUrl: 'images/hills03_grey.png',
-		startX: -100,
-		startY: 50,
+		x: -100,
+		y: 50,
 		width: 2048,
 		height: 256,
 		speed: 0.3
@@ -40,8 +40,8 @@ var gameConfig = {
 	{
 		id: 'backgroundTrees',
 		imgUrl: 'images/trees_back01.png',
-		startX: -64,
-		startY: 80,
+		x: -64,
+		y: 80,
 		width: 2048,
 		height: 350,
 		speed: 0.7
@@ -49,8 +49,8 @@ var gameConfig = {
 	{
 		id: 'foregroundTrees1',
 		imgUrl: 'images/trees_fore01.png',
-		startX: -256,
-		startY: -40,
+		x: -256,
+		y: -40,
 		width: 2048,
 		height: 500,
 		speed: 3
@@ -58,8 +58,8 @@ var gameConfig = {
 	{
 		id: 'foregroundTrees2',
 		imgUrl: 'images/trees_fore01.png',
-		startX: 1792,
-		startY: -40,
+		x: 1792,
+		y: -40,
 		width: 2048,
 		height: 500,
 		speed: 3
@@ -67,8 +67,8 @@ var gameConfig = {
 	{
 		id: 'foregroundTrees3',
 		imgUrl: 'images/trees_fore01.png',
-		startX: 3840,
-		startY: -40,
+		x: 3840,
+		y: -200,
 		width: 2048,
 		height: 500,
 		speed: 3

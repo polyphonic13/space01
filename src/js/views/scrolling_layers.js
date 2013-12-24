@@ -1,16 +1,21 @@
-Polyworks.views.ScrollingLayers = (function() {
-	var _layers = [];
+var ScrollingLayers = (function() {
+	var _collection = [];
 	
 	function ScrollingLayers(params) {
-		
+
 		for(var i = 0; i < params.length; i++) {
-			_layers.push(new ScrollingLayer(params[i]));
+			var layer = new ScrollingLayer(params[i]);
+			trace('layer = ');
+			trace(layer);
+			_collection.push(layer);
 		}
+		trace('ScrollingLayers/constructor, post add, layers = ');
+		trace(_collection);
 	}
 	
 	ScrollingLayers.prototype.move = function(velX, velY) {
-		for(var i = 0; i < _layers.length; i++) {
-			_layers[i].move(velX, velY);
+		for(var i = 0; i < _collection.length; i++) {
+			_collection[i].move(velX, velY);
 		}
 	};
 	

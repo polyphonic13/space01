@@ -2,6 +2,7 @@
 
 var keke,
 	animationToPlay,
+	scrollingLayers,
 	controlsLayer,
 	joystick,
 	joystickText,
@@ -96,6 +97,7 @@ function init() {
 	addImageToLayer(cloudsLayer, clouds.imgUrl, clouds.startX, clouds.startY, clouds.width, clouds.height);
 	
 	// MOVING BACKGROUNDS
+	/*
 	mountainsLayer = new Kinetic.Layer();
 	addImageToLayer(mountainsLayer, mountains.imgUrl, mountains.startX, mountains.startY, mountains.width, mountains.height);
 	backgroundTreesLayer = new Kinetic.Layer();
@@ -106,8 +108,8 @@ function init() {
 	addImageToLayer(foregroundTreesLayer2, foregroundTrees2.imgUrl, foregroundTrees2.startX, foregroundTrees2.startY, foregroundTrees2.width, foregroundTrees2.height);
 	foregroundTreesLayer3 = new Kinetic.Layer(); 
 	addImageToLayer(foregroundTreesLayer3, foregroundTrees3.imgUrl, foregroundTrees3.startX, foregroundTrees3.startY, foregroundTrees3.width, foregroundTrees3.height);
-	
-	
+	*/
+
 	// STATIC OUTER WALLS
 	wallLayer = new Kinetic.Layer();
 	addObjectsToLayer(wallLayer, walls);
@@ -147,12 +149,17 @@ function init() {
 	// textLayer.add(joystickText);
 	
 	stage.add(cloudsLayer);
+	/*
 	stage.add(mountainsLayer);
 	stage.add(backgroundTreesLayer);
 	stage.add(foregroundTreesLayer1);
 	stage.add(foregroundTreesLayer2);
 	stage.add(foregroundTreesLayer3);
-
+	*/
+	for(var i = 0; i < gameConfig.scrollingLayers.length; i++) {
+		gameConfig.scrollingLayers[i].stage = stage;
+	}
+	scrollingLayers = new ScrollingLayers(gameConfig.scrollingLayers);
 	// PLAYER
 	gameConfig.player.stage = stage;
 	keke = new SpritePlayer(gameConfig.player);
@@ -160,12 +167,13 @@ function init() {
 	stage.add(wallLayer);
 	stage.add(controlsLayer);
 	stage.add(textLayer);
-	
+	/*
 	scenery.push({ config: mountains, layer: mountainsLayer });
 	scenery.push({ config: backgroundTrees, layer: backgroundTreesLayer });
 	scenery.push({ config: foregroundTrees1, layer: foregroundTreesLayer1 });
 	scenery.push({ config: foregroundTrees2, layer: foregroundTreesLayer2 });
 	scenery.push({ config: foregroundTrees3, layer: foregroundTreesLayer3 });
+	*/
 	// stage.draw();
 	
 	$(window).keydown(function(e) {
@@ -205,7 +213,8 @@ function update() {
 	if(keke.position < level.minX && keke.position > level.maxX) {
 		// trace('keke.position = ' + keke.position);
 		keke.playAnimation(animationToPlay);
-		animateLayers();
+		//animateLayers();
+		scrollingLayers.move(keke.velX, 0);
 	} else {
 		trace('bounds reached');
 		if(keke.facingForward) {
@@ -225,7 +234,7 @@ function update() {
 	stage.draw();
 	
 	if(playing) {
-		requestAnimFrame(update);
+		// requestAnimFrame(update);
 	}
 }
 
