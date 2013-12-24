@@ -42,20 +42,28 @@ var gameConfig = {
 			id: 'floor1',
 			x: 0,
 			y: stageConfig.height - 75,
-			width: 600,
+			width: 2048,
 			height: 50,
 			fill: '#123456'
 		},
 		{
-			id: 'floor1',
-			x: 600,
-			y: stageConfig.height - 100,
-			width: 600,
+			id: 'floor2',
+			x: 2047,
+			y: stageConfig.height - 75,
+			width: 2048,
+			height: 50,
+			fill: '#123456'
+		},
+		{
+			id: 'floor3',
+			x: 4094,
+			y: stageConfig.height - 75,
+			width: 2048,
 			height: 50,
 			fill: '#123456'
 		}]
 	},
-	scrollingLayers: [/*{
+	scrollingLayers: [{
 		id: 'clouds1',
 		imgUrl: 'images/clouds.png',
 		x: 0,
@@ -72,8 +80,8 @@ var gameConfig = {
 		width: 2048,
 		height: 490,
 		speed: -1
-	}*/],
-	playerMovementLayers: [/*{
+	}],
+	playerMovementLayers: [{
 		id: 'mountains',
 		imgUrl: 'images/hills03_grey.png',
 		x: -100,
@@ -113,11 +121,11 @@ var gameConfig = {
 		id: 'foregroundTrees3',
 		imgUrl: 'images/trees_fore01.png',
 		x: 3840,
-		y: -200,
+		y: -40,
 		width: 2048,
 		height: 500,
 		speed: 3
-	}*/],
+	}],
  	player: {
 		x: stageConfig.width / 2,
 		y: stageConfig.height - 256,

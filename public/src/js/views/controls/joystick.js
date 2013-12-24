@@ -163,13 +163,17 @@ var Joystick = (function() {
 		_position.x = pos.x;
 		_position.y = pos.y;
 		
-		if(_position.x > _model.startX) {
+		if(_position.x > (_model.startX + 10)) {
 			// trace("FORWARD");
 			_states[JoystickStates.REVERSE] = true;
 			_states[JoystickStates.FORWARD] = false;
-		} else {
+		} else if(_position.x < (_model.startX - 10)) {
 			// trace("REVERSE");
 			_states[JoystickStates.FORWARD] = true;
+			_states[JoystickStates.REVERSE] = false;
+		} else {
+			// trace("REVERSE");
+			_states[JoystickStates.FORWARD] = false;
 			_states[JoystickStates.REVERSE] = false;
 		}
 		// trace('y = ' + _position.y + ', startY = ' + _model.startY);

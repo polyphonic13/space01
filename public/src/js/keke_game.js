@@ -69,16 +69,16 @@ function init() {
 	// });
 	// textLayer.add(joystickText);
 
-	scrollingLayers = new ScrollingLayers(gameConfig.scrollingLayers);
-	scrollingLayers.setStage(stage);
+	// scrollingLayers = new ScrollingLayers(gameConfig.scrollingLayers);
+	// scrollingLayers.setStage(stage);
 
-	// PLAYER MOVEMENT BG LAYERS
-	playerMovementLayers = new ScrollingLayers(gameConfig.playerMovementLayers);
-	playerMovementLayers.setStage(stage);
-	
 	// GROUND
 	ground = new RectsLayer(gameConfig.ground);
 	ground.setStage(stage);
+	
+	// PLAYER MOVEMENT BG LAYERS
+	playerMovementLayers = new ScrollingLayers(gameConfig.playerMovementLayers);
+	playerMovementLayers.setStage(stage);
 	
 	// PLAYER
 	keke = new SpritePlayer(gameConfig.player);
@@ -122,8 +122,8 @@ function update() {
 	if(keke.position < gameConfig.level.minX && keke.position > gameConfig.level.maxX) {
 		// trace('keke.position = ' + keke.position);
 		if(keke.velX !== 0) {
-			// playerMovementLayers.moveByVelocity(keke.velX, 0);
 			ground.moveByVelocity(keke.velX, 0);
+			playerMovementLayers.moveByVelocity(keke.velX, 0);
 		} else {
 			// trace('no movement');
 		}
@@ -141,7 +141,7 @@ function update() {
 	keke.move(0, keke.velY);
 
 	// layer movement
-	scrollingLayers.moveX();
+	// scrollingLayers.moveX();
 	
 	stage.draw();
 	

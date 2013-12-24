@@ -5,10 +5,10 @@ var stage,
 		// width: document.documentElement.clientWidth,
 		// height: document.documentElement.clientHeight,
 		width: 800,
-		height: 500,
+		height: 441,
 		color: {
 			r: 62,
 			g: 62,
 			b: 62
 		}
-	}
+	};
