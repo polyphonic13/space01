@@ -34,13 +34,13 @@ function init() {
 	// scrollingLayers = new ScrollingLayers(gameConfig.scrollingLayers);
 	// scrollingLayers.setStage(stage);
 
-	// GROUND
-	ground = new RectsLayer(gameConfig.ground);
-	ground.setStage(stage);
-	
 	// PLAYER MOVEMENT BG LAYERS
 	playerMovementLayers = new ScrollingLayers(gameConfig.playerMovementLayers);
 	playerMovementLayers.setStage(stage);
+	
+	// GROUND
+	ground = new RectsLayer(gameConfig.ground);
+	ground.setStage(stage);
 	
 	// PLAYER
 	keke = new SpritePlayer(gameConfig.player);
@@ -51,41 +51,6 @@ function init() {
 	stageFrame.setStage(stage);
 	
 	// CONTROLS
-	/*
-	controlsLayer = new Kinetic.Layer({
-		// clip: [0, 0, stage.width/2, stage.height]
-	});
-
-	var joystickStartX = 80;
-	var joystickStartY = stageConfig.height - 60;
-	joystick = new HorizontalControls({ 
-		layer: controlsLayer,
-		startX: joystickStartX,
-		startY: joystickStartY
-	});
-	// joystick.setStage(stage);
-	
-	var jumpButtonLayer = new Kinetic.Layer({
-		clip: [stage.width/2, 0, stage.width/2, stage.height]
-	});
-	var jumpBtnX = stageConfig.width - 80;
-	var jumpBtnY = stageConfig.height - 60;
-	jumpButton = new ControlButton({
-		layer: controlsLayer,
-		x: jumpBtnX,
-		y: jumpBtnY
-	});
-
-	controlsLayer.on('mousedown touchstart', function(evt) {
-		_onControlsDown(evt);
-	});
-	
-	controlsLayer.on('mouseup touchend', function(evt) {
-		_onControlsUp(evt);
-	});
-	
-	stage.add(controlsLayer);
-	*/
 	controls = new ControlLayer(gameConfig.controls);
 	controls.setStage(stage);
 	

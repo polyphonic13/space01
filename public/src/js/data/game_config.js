@@ -4,7 +4,8 @@ var gameConfig = {
 		x: 0,
 		y: 0,
 		width: stageConfig.width,
-		height: stageConfig.height
+		// height: stageConfig.height
+		height: 500
 	},
 	stageFrame: {
 		rects: [{
@@ -36,34 +37,6 @@ var gameConfig = {
 		    height: stageConfig.height
 		}]
 	},
-	ground: {
-		// speed: 3,
-		speed: 6,
-		rects: [{
-			id: 'floor1',
-			x: 0,
-			y: stageConfig.height - 75,
-			width: 2048,
-			height: 50,
-			fill: '#123456'
-		},
-		{
-			id: 'floor2',
-			x: 2047,
-			y: stageConfig.height - 75,
-			width: 2048,
-			height: 50,
-			fill: '#123456'
-		},
-		{
-			id: 'floor3',
-			x: 4094,
-			y: stageConfig.height - 75,
-			width: 2048,
-			height: 50,
-			fill: '#123456'
-		}]
-	},
 	scrollingLayers: [{
 		id: 'clouds1',
 		imgUrl: 'images/clouds.png',
@@ -86,9 +59,11 @@ var gameConfig = {
 		id: 'mountains',
 		imgUrl: 'images/hills03_grey.png',
 		x: -100,
-		y: 50,
+		// y: 50,
+		y: 30,
 		width: 2048,
-		height: 256,
+		// height: 256,
+		height: stageConfig.height - 200,
 		// speed: 0.3
 		speed: 1
 	},
@@ -98,20 +73,34 @@ var gameConfig = {
 		x: -64,
 		y: 80,
 		width: 2048,
-		height: 350,
+		// height: 350,
+		height: stageConfig.height - 150,
 		// speed: 0.7
 		speed: 2
-/*	},
+	},
 	{
-		id: 'foregroundTrees1',
-		imgUrl: 'images/trees_fore01.png',
-		x: -256,
-		y: -40,
+		id: 'grass01',
+		imgUrl: 'images/grass01.png',
+		// x: -256,
+		x: 0,
+		y: stageConfig.height - 120,
 		width: 2048,
-		height: 500,
+		height: 82,
 		// speed: 3
 		speed: 6
 	},
+	{
+		id: 'grass01',
+		imgUrl: 'images/grass01.png',
+		// x: -256,
+		x: 2048,
+		y: stageConfig.height - 170,
+		width: 2048,
+		height: 82,
+		// speed: 3
+		speed: 6
+	
+/*	},
 	{
 		id: 'foregroundTrees2',
 		imgUrl: 'images/trees_fore01.png',
@@ -132,6 +121,34 @@ var gameConfig = {
 		// speed: 3
 		speed: 6
 */	}],
+	ground: {
+		// speed: 3,
+		speed: 6,
+		rects: [{
+			id: 'floor1',
+			x: 0,
+			y: stageConfig.height - 75,
+			width: 2048,
+			height: 50,
+			fill: '#000000'
+		},
+		{
+			id: 'floor2',
+			x: 2047,
+			y: stageConfig.height - 125,
+			width: 2048,
+			height: 150,
+			fill: '#000000'
+		},
+		{
+			id: 'floor3',
+			x: 4094,
+			y: stageConfig.height - 75,
+			width: 2048,
+			height: 150,
+			fill: '#000000'
+		}]
+	},
  	player: {
 		x: stageConfig.width / 2,
 		y: stageConfig.height - 256,
@@ -168,10 +185,10 @@ var gameConfig = {
 			id: 'forwardButton',
 			type: 'Wedge',
 			x: 200,
-			y: stageConfig.height - 70,
+			y: stageConfig.height - 50,
 			radius: 70,
 			angleDeg: 45,
-			fill: '#cccccc',
+			fill: '#666666',
 			stroke: 'black',
 			strokeWidth: 4,
 			rotationDeg: 160
@@ -180,10 +197,10 @@ var gameConfig = {
 			id: 'reverseButton',
 			type: 'Wedge',
 			x: 20,
-			y: stageConfig.height - 70,
+			y: stageConfig.height - 50,
 			radius: 70,
 			angleDeg: 45,
-			fill: '#cccccc',
+			fill: '#666666',
 			stroke: 'black',
 			strokeWidth: 4,
 			rotationDeg: -25
@@ -191,12 +208,12 @@ var gameConfig = {
 		{
 			id: 'jumpButton',
 			type: 'Circle',
-			x: stageConfig.width - 80,
-			y: stageConfig.height - 70,
+			x: stageConfig.width - 60,
+			y: stageConfig.height - 60,
 			radius: 40,
-			fill: '#aaaaaa',
+			fill: '#666666',
 			stroke: '#000000',
-			strokeWidth: 2
+			strokeWidth: 4
 		}],
 		hitRegions: {
 			invisibleHitArea: {
