@@ -37,7 +37,8 @@ var gameConfig = {
 		}]
 	},
 	ground: {
-		speed: 3,
+		// speed: 3,
+		speed: 6,
 		rects: [{
 			id: 'floor1',
 			x: 0,
@@ -106,7 +107,8 @@ var gameConfig = {
 		y: -40,
 		width: 2048,
 		height: 500,
-		speed: 3
+		// speed: 3
+		speed: 6
 	},
 	{
 		id: 'foregroundTrees2',
@@ -115,7 +117,8 @@ var gameConfig = {
 		y: -40,
 		width: 2048,
 		height: 500,
-		speed: 3
+		// speed: 3
+		speed: 6
 	},
 	{
 		id: 'foregroundTrees3',
@@ -124,7 +127,8 @@ var gameConfig = {
 		y: -40,
 		width: 2048,
 		height: 500,
-		speed: 3
+		// speed: 3
+		speed: 6
 	}],
  	player: {
 		x: stageConfig.width / 2,
@@ -151,5 +155,6 @@ var gameConfig = {
 		maxX: -1697
 	},
 	friction: 0.5,
-	gravity: 0.2
+	// gravity: 0.2
+	gravity: 1
 };

@@ -1,6 +1,9 @@
 "use strict";
 
-var keke,
+var ticker,
+	tickerTime = 500,
+	fps = 64,
+	keke,
 	ground,
 	animationToPlay,
 	playerMovementLayers,
@@ -13,9 +16,6 @@ var keke,
 	platformLayer,
 	previousCollisionId = '',
     keys = {},
-    friction = 0.5,
-    gravity = 0.5,
-	previousVelX = 0,
 	jumpKeyDepressed = false,
 	playing = false,
 	won = false
@@ -34,8 +34,11 @@ function init() {
 	stageBgImage.setStage(stage);
 
 	// CONTROLS
-	controlsLayer = new Kinetic.Layer();
+	controlsLayer = new Kinetic.Layer({
+		clip: [0, 0, stage.width/2, stage.height]
+	});
 	
+	/*
 	var joystickStartX = 80;
 	var joystickStartY = stageConfig.height - 60;
 	joystick = new Joystick({ 
@@ -47,16 +50,8 @@ function init() {
 	controlsLayer.on(JoystickStates.REST, function() {
 		_onJoystickRest();
 	});
-	
-	/*
-	var jumpBtnX = stageConfig.width - 80;
-	var jumpBtnY = stageConfig.height - 60;
-	jumpButton = new ControlButton({
-		layer: controlsLayer,
-		x: jumpBtnX,
-		y: jumpBtnY
-	});
 	*/
+
 	
 	var textLayer = new Kinetic.Layer();
 	// joystickText = new Kinetic.Text({
@@ -88,7 +83,28 @@ function init() {
 	var stageFrame = new RectsLayer(gameConfig.stageFrame);
 	stageFrame.setStage(stage);
 	
-	stage.add(controlsLayer);
+	var joystickStartX = 80;
+	var joystickStartY = stageConfig.height - 60;
+	joystick = new HorizontalControls({ 
+		layer: controlsLayer,
+		startX: joystickStartX,
+		startY: joystickStartY
+	});
+	joystick.setStage(stage);
+	
+	var jumpButtonLayer = new Kinetic.Layer({
+		clip: [stage.width/2, 0, stage.width/2, stage.height]
+	});
+	var jumpBtnX = stageConfig.width - 80;
+	var jumpBtnY = stageConfig.height - 60;
+	jumpButton = new ControlButton({
+		layer: jumpButtonLayer,
+		x: jumpBtnX,
+		y: jumpBtnY
+	});
+
+	// stage.add(controlsLayer);
+	stage.add(jumpButtonLayer);
 	stage.add(textLayer);
 
 	$(window).keydown(function(e) {
@@ -104,8 +120,8 @@ function init() {
 function update() {
 	checkInput();
 	
-    keke.velX *= friction;
-	keke.velY += gravity;
+    keke.velX *= gameConfig.friction;
+	keke.velY += gameConfig.gravity;
 	
 	keke.grounded = false;
 	
@@ -146,13 +162,17 @@ function update() {
 	stage.draw();
 	
 	if(playing) {
-		requestAnimFrame(update);
+		setTimeout(function() {
+			requestAnimFrame(update);
+		}, 1000 / fps);
 	}
+	// ticker = window.setInterval(update, tickerTime);
 }
 
 function checkInput() {
+	    if (keys[ControlKeys.UP] || jumpButton.getWasPressed()) {
 	    // if (keys[ControlKeys.UP] || jumpButton.getWasPressed() || joystick.getUp()) {
-	    if (keys[ControlKeys.UP] || joystick.getUp()) {
+	    // if (keys[ControlKeys.UP] || joystick.getUp()) {
 	        // up arrow or space
 	        if (!keke.jumping && keke.grounded && !jumpKeyDepressed) {
 	            keke.jumping = true;
@@ -167,9 +187,8 @@ function checkInput() {
 				}
 				trace('\tpassed jump conditional, velY = ' + keke.velY);
 	       }
-			// jumpButton.setWasPressed(false);
+			jumpButton.setWasPressed(false);
 	    }
-		previousVelX = keke.velX;
 //		trace('checkInput, forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse() + ', rest = ' + joystick.getRest());
 	    if (keys[ControlKeys.LEFT] || joystick.getForward()) {
 	        // right arrow
@@ -355,6 +374,7 @@ function start() {
 
 function quit() {
 	trace('quiting');
+	// window.clearInterval(ticker);
 	playing = false;
 	window.keyup = null;
 	window.keydown = null;
