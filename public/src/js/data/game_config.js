@@ -89,7 +89,8 @@ var gameConfig = {
 		y: 50,
 		width: 2048,
 		height: 256,
-		speed: 0.3
+		// speed: 0.3
+		speed: 1
 	},
 	{
 		id: 'backgroundTrees',
@@ -98,8 +99,9 @@ var gameConfig = {
 		y: 80,
 		width: 2048,
 		height: 350,
-		speed: 0.7
-	},
+		// speed: 0.7
+		speed: 2
+/*	},
 	{
 		id: 'foregroundTrees1',
 		imgUrl: 'images/trees_fore01.png',
@@ -129,7 +131,7 @@ var gameConfig = {
 		height: 500,
 		// speed: 3
 		speed: 6
-	}],
+*/	}],
  	player: {
 		x: stageConfig.width / 2,
 		y: stageConfig.height - 256,
@@ -150,11 +152,67 @@ var gameConfig = {
 			frameRate: 14
 		}
     },
+	controls: {
+		views: [{
+			id: 'forwardButton',
+			type: 'Wedge',
+			x: 200,
+			y: stageConfig.height - 70,
+			radius: 70,
+			angleDeg: 60,
+			fill: '#cccccc',
+			stroke: 'black',
+			strokeWidth: 4,
+			rotationDeg: 150
+		},
+		{
+			id: 'reverseButton',
+			type: 'Wedge',
+			x: 20,
+			y: stageConfig.height - 70,
+			radius: 70,
+			angleDeg: 60,
+			fill: '#cccccc',
+			stroke: 'black',
+			strokeWidth: 4,
+			rotationDeg: -30
+		},
+		{
+			id: 'jumpButton',
+			type: 'Circle',
+			x: stageConfig.width - 80,
+			y: stageConfig.height - 70,
+			radius: 40,
+			fill: '#aaaaaa',
+			stroke: '#000000',
+			strokeWidth: 2
+		}],
+		hitRegions: {
+			forwardButton: {
+				x: 200, 
+				y: (stageConfig.height - 70), 
+				width: 270, 
+				height: stageConfig.height
+			},
+			reverseButton: {
+				x: 20, 
+				y: (stageConfig.height - 70), 
+				width: 90, 
+				height: stageConfig.height
+			},
+			jumpButton: {
+				x: (stageConfig.width - 80), 
+				y: (stageConfig.height - 70), 
+				width: stageConfig.width, 
+				height: stageConfig.height
+			}
+		}
+	},
 	level: {
 		minX: 86,
 		maxX: -1697
 	},
 	friction: 0.5,
 	// gravity: 0.2
-	gravity: 1
+	gravity: 0.5
 };

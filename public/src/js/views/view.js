@@ -6,9 +6,11 @@ var View = (function() {
 		_this = this;
 		this.model = params;
 
-		this.model.layer = new Kinetic.Layer();
-		if(this.model.stage) {
-			this.model.stage.add(this.model.layer);
+		if(!this.model.layer) {
+			this.model.layer = new Kinetic.Layer();
+			if(this.model.stage) {
+				this.model.stage.add(this.model.layer);
+			}
 		}
 
 		this.__defineGetter__("layer", function() {

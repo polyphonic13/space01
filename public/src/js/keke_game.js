@@ -7,10 +7,8 @@ var ticker,
 	ground,
 	animationToPlay,
 	playerMovementLayers,
+	controls,
 	controlsLayer,
-	joystick,
-	joystickText,
-	jumpButton,
 	quitButton,
 	scrollingLayers,
 	platformLayer,
@@ -33,37 +31,6 @@ function init() {
 	var stageBgImage = new ImageLayer(gameConfig.stageBg);
 	stageBgImage.setStage(stage);
 
-	// CONTROLS
-	controlsLayer = new Kinetic.Layer({
-		clip: [0, 0, stage.width/2, stage.height]
-	});
-	
-	/*
-	var joystickStartX = 80;
-	var joystickStartY = stageConfig.height - 60;
-	joystick = new Joystick({ 
-		layer: controlsLayer,
-		startX: joystickStartX,
-		startY: joystickStartY
-	});
-	
-	controlsLayer.on(JoystickStates.REST, function() {
-		_onJoystickRest();
-	});
-	*/
-
-	
-	var textLayer = new Kinetic.Layer();
-	// joystickText = new Kinetic.Text({
-	// 	x: 20,
-	// 	y: 20,
-	//        text: 'joystick postiion: ',
-	//         fontSize: 18,
-	//         fontFamily: 'Calibri',
-	//         fill: 'white'
-	// });
-	// textLayer.add(joystickText);
-
 	// scrollingLayers = new ScrollingLayers(gameConfig.scrollingLayers);
 	// scrollingLayers.setStage(stage);
 
@@ -83,6 +50,12 @@ function init() {
 	var stageFrame = new RectsLayer(gameConfig.stageFrame);
 	stageFrame.setStage(stage);
 	
+	// CONTROLS
+	/*
+	controlsLayer = new Kinetic.Layer({
+		// clip: [0, 0, stage.width/2, stage.height]
+	});
+
 	var joystickStartX = 80;
 	var joystickStartY = stageConfig.height - 60;
 	joystick = new HorizontalControls({ 
@@ -90,7 +63,7 @@ function init() {
 		startX: joystickStartX,
 		startY: joystickStartY
 	});
-	joystick.setStage(stage);
+	// joystick.setStage(stage);
 	
 	var jumpButtonLayer = new Kinetic.Layer({
 		clip: [stage.width/2, 0, stage.width/2, stage.height]
@@ -98,15 +71,24 @@ function init() {
 	var jumpBtnX = stageConfig.width - 80;
 	var jumpBtnY = stageConfig.height - 60;
 	jumpButton = new ControlButton({
-		layer: jumpButtonLayer,
+		layer: controlsLayer,
 		x: jumpBtnX,
 		y: jumpBtnY
 	});
 
-	// stage.add(controlsLayer);
-	stage.add(jumpButtonLayer);
-	stage.add(textLayer);
-
+	controlsLayer.on('mousedown touchstart', function(evt) {
+		_onControlsDown(evt);
+	});
+	
+	controlsLayer.on('mouseup touchend', function(evt) {
+		_onControlsUp(evt);
+	});
+	
+	stage.add(controlsLayer);
+	*/
+	controls = new ControlLayer(gameConfig.controls);
+	controls.setStage(stage);
+	
 	$(window).keydown(function(e) {
 		keydownHandler(e);
 	});
@@ -170,9 +152,10 @@ function update() {
 }
 
 function checkInput() {
-	    if (keys[ControlKeys.UP] || jumpButton.getWasPressed()) {
+	    // if (keys[ControlKeys.UP] || jumpButton.getWasPressed()) {
 	    // if (keys[ControlKeys.UP] || jumpButton.getWasPressed() || joystick.getUp()) {
 	    // if (keys[ControlKeys.UP] || joystick.getUp()) {
+	    if (keys[ControlKeys.UP] || controls.getJumped()) {
 	        // up arrow or space
 	        if (!keke.jumping && keke.grounded && !jumpKeyDepressed) {
 	            keke.jumping = true;
@@ -187,10 +170,11 @@ function checkInput() {
 				}
 				trace('\tpassed jump conditional, velY = ' + keke.velY);
 	       }
-			jumpButton.setWasPressed(false);
+			// jumpButton.setWasPressed(false);
 	    }
 //		trace('checkInput, forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse() + ', rest = ' + joystick.getRest());
-	    if (keys[ControlKeys.LEFT] || joystick.getForward()) {
+	    // if (keys[ControlKeys.LEFT] || joystick.getReverse()) {
+	    if (keys[ControlKeys.LEFT] || controls.getReverse()) {
 	        // right arrow
 	
 	        if (keke.velX < keke.speed) {
@@ -204,7 +188,8 @@ function checkInput() {
 				}
 			}
 			keke.facingForward = false;
-		} else if (keys[ControlKeys.RIGHT] || joystick.getReverse()) {         // left arrow         
+		// } else if (keys[ControlKeys.RIGHT] || joystick.getForward()) {         // left arrow         
+		} else if (keys[ControlKeys.RIGHT] || controls.getForward()) {         // left arrow         
 			if (keke.velX > -keke.speed) {
 	    		keke.velX--;
 				if(!keke.jumping) {

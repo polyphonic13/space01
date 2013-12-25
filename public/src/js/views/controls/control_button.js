@@ -16,43 +16,9 @@ var ControlButton = (function() {
 	function ControlButton(params) {
 		_model = Utils.extend(_model, params);
 		_buildViews();
-		_addListeners();
+		// _addListeners();
 	}
 
-	function _buildViews() {
-		if(!_model.layer) {
-			_model.layer = new Kinetic.Layer({
-				width: _model.radius,
-				height: _model.radius
-			});
-		}
-		
-		_circle = new Kinetic.Circle(_model);
-    }
-
-	function _addListeners() {
-		_circle.on('mousedown touchstart', function() {
-			_onPressed();
-		});
-		
-		_circle.on('mouseup touchend', function() {
-			_onReleased();
-		});
-		
-		_model.layer.add(_circle);
-	}
-	
-	function _onPressed() {
-		trace('ControlButton/_onPressed');
-		_pressed = true;
-		_wasPressed = true;
-	}
-	
-	function _onReleased() {
-		trace('ControlButton/_onReleased');
-		_pressed = false;
-	}
-	
 	ControlButton.prototype.getLayer = function() {
 		return _model.layer;
 	};
@@ -68,6 +34,42 @@ var ControlButton = (function() {
 	ControlButton.prototype.setWasPressed = function(pressed) {
 		_wasPressed = pressed;
 	};
+	
+	function _buildViews() {
+		if(!_model.layer) {
+			_model.layer = new Kinetic.Layer({
+				width: _model.radius,
+				height: _model.radius
+			});
+		}
+		
+		_circle = new Kinetic.Circle(_model);
+		_model.layer.add(_circle);
+    }
+
+	function _addListeners() {
+		_circle.on('mousedown touchstart', function(evt) {
+			_onPressed(evt);
+		});
+		
+		_circle.on('mouseup touchend', function(evt) {
+			_onReleased(evt);
+		});
+		
+	}
+	
+	function _onPressed(evt) {
+		trace('ControlButton/_onPressed');
+		trace(evt);
+		_pressed = true;
+		_wasPressed = true;
+	}
+	
+	function _onReleased(evt) {
+		trace('ControlButton/_onReleased');
+		trace(evt);
+		_pressed = false;
+	}
 	
 	return ControlButton;
 })();
