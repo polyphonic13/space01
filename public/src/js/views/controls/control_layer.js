@@ -20,6 +20,10 @@ var ControlLayer = (function() {
 		stage.add(this.model.layer);
 	};
 	
+	ControlLayer.prototype.getPressedButtons = function() {
+		return _pressedButtons;
+	};
+	
 	ControlLayer.prototype.getForward = function() {
 		return _pressedButtons['forwardButton'];
 	};
@@ -55,9 +59,22 @@ var ControlLayer = (function() {
 		trace('ControlLayer/_onPressed');
 		trace(evt);
 		var hits = _checkHitRegions(evt);
+		trace('\tpost check hit regions, hits = ');
+		trace(hits);
 		for(var key in hits) {
-			_pressedButtons[key] = hits[key];
+			trace('hits['+key+'] = ' + hits[key]);
+			if(hits[key]) {
+				_pressedButtons[key] = true;
+				// do not allow for both forward and reverse to be true at the same time:
+				if(key == 'forwardButton') {
+					_pressedButtons['reverseButton'] = false;
+				} else if(key === 'reverseButton') {
+					_pressedButtons['forwardButton'] = false;
+				}
+			}
+			// _pressedButtons[key] = hits[key];
 		}
+		trace('POST PRESS, _pressedButtons = ');
 		trace(_pressedButtons);
 	}
 	
@@ -66,11 +83,26 @@ var ControlLayer = (function() {
 		trace(evt);
 		var hits = _checkHitRegions(evt);
 		var hit;
+		var noButtons = true;
 		for(var key in hits) {
 			if(hits[key]) {
 				_pressedButtons[key] = false;
+				noButtons = false;
+				// do not allow for both forward and reverse to be true at the same time:
+				if(key == 'forwardButton') {
+					_pressedButtons['reverseButton'] = false;
+				} else if(key === 'reverseButton') {
+					_pressedButtons['forwardButton'] = false;
+				}
 			}
 		}
+		if(noButtons) {
+			// a release was triggered off of the defined button areas (turn every button off)
+			for(var key in _pressedButtons) {
+				_pressedButtons[key] = false;
+			}
+		}
+		trace('POST RELEASE, _pressedButtons = ');
 		trace(_pressedButtons);
 	}
 	
@@ -85,25 +117,33 @@ var ControlLayer = (function() {
 		return hits;
 	}
 
+	function _resetPressedButtons() {
+		for(var key in _pressedButtons) {
+			_pressedButtons[key] = false;
+		}
+	}
+	
 	function _checkHitRegion(pos, hitRegion) {
 		// if x/y of pos (hit/touch) is within x/y/width/height bounds of region, a hit happened
 		var xHit = (pos.x > hitRegion.x && pos.x < hitRegion.width) ? true : false;
 		var yHit = (pos.y > hitRegion.y && pos.y < hitRegion.height) ? true : false;
 		var hit = (xHit && yHit) ? true : false;
-		trace('_checkHitRegion\n\tpos: ' + pos.x + '/' + pos.y + '\n\thitRegion: ' + hitRegion.x + '/' + hitRegion.y + ', ' + hitRegion.width + '/' + hitRegion.height + '\n\txHit = ' + xHit + ', yHit = ' + yHit + ', hit = ' + hit);
+		trace('_checkHitRegion\n\t\tpos: ' + pos.x + '/' + pos.y + '\n\t\thitRegion: ' + hitRegion.x + '/' + hitRegion.y + ', ' + hitRegion.width + '/' + hitRegion.height + '\n\t\txHit = ' + xHit + ', yHit = ' + yHit + ', hit = ' + hit);
 		return hit;
 	}
 	
 	function _getEventPosition(evt) {
 		var pos = {};
-		if(evt.targetTouches && evt.targetTouches.length > 0) {
-			trace('there are target touches');
+		if(evt.changedTouches && evt.changedTouches.length > 0) {
+			// trace('there are changedTouches');
 			pos = {
-				x: evt.targetTouches[0].clientX,
-				y: evt.targetTouches[0].clientY
+				// x: evt.targetTouches[0].clientX,
+				// y: evt.targetTouches[0].clientY
+				x: evt.changedTouches[0].clientX,
+				y: evt.changedTouches[0].clientY
 			}
 		} else {
-			trace('no target touches');
+			// trace('no target touches');
 			pos = {
 				x: evt.x,
 				y: evt.y

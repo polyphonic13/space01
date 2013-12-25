@@ -154,16 +154,27 @@ var gameConfig = {
     },
 	controls: {
 		views: [{
+			id: 'invisibleHitArea',
+			type: 'Rect',
+			x: 0,
+			y: 0,
+			width: stageConfig.width,
+			height: stageConfig.height,
+			stroke: '#000000',
+			fill: '#123456',
+			opacity: 0
+		},
+		{
 			id: 'forwardButton',
 			type: 'Wedge',
 			x: 200,
 			y: stageConfig.height - 70,
 			radius: 70,
-			angleDeg: 60,
+			angleDeg: 45,
 			fill: '#cccccc',
 			stroke: 'black',
 			strokeWidth: 4,
-			rotationDeg: 150
+			rotationDeg: 160
 		},
 		{
 			id: 'reverseButton',
@@ -171,11 +182,11 @@ var gameConfig = {
 			x: 20,
 			y: stageConfig.height - 70,
 			radius: 70,
-			angleDeg: 60,
+			angleDeg: 45,
 			fill: '#cccccc',
 			stroke: 'black',
 			strokeWidth: 4,
-			rotationDeg: -30
+			rotationDeg: -25
 		},
 		{
 			id: 'jumpButton',
@@ -188,8 +199,14 @@ var gameConfig = {
 			strokeWidth: 2
 		}],
 		hitRegions: {
+			invisibleHitArea: {
+				x: 0,
+				y: 0,
+				width: stageConfig.width,
+				height: stageConfig.height
+			},
 			forwardButton: {
-				x: 200, 
+				x: 150, 
 				y: (stageConfig.height - 70), 
 				width: 270, 
 				height: stageConfig.height
@@ -201,7 +218,7 @@ var gameConfig = {
 				height: stageConfig.height
 			},
 			jumpButton: {
-				x: (stageConfig.width - 80), 
+				x: (stageConfig.width - 100), 
 				y: (stageConfig.height - 70), 
 				width: stageConfig.width, 
 				height: stageConfig.height
