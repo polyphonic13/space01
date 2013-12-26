@@ -197,39 +197,66 @@ var gameConfig = {
 			opacity: 0
 		},
 		{
-			id: 'forwardButton',
-			type: 'Wedge',
-			x: 200,
-			y: stageConfig.height - 50,
-			radius: 70,
-			angleDeg: 45,
-			fill: '#666666',
-			stroke: 'black',
-			strokeWidth: 4,
-			rotationDeg: 160
+			id: 'reverseButton',
+			type: 'Image',
+			imgUrl: 'images/arrow_left.png',
+			x: 20,
+			y: stageConfig.height - 40,
+			width: 30,
+			height: 30
 		},
 		{
-			id: 'reverseButton',
-			type: 'Wedge',
-			x: 20,
-			y: stageConfig.height - 50,
-			radius: 70,
-			angleDeg: 45,
-			fill: '#666666',
-			stroke: 'black',
-			strokeWidth: 4,
-			rotationDeg: -25
+			id: 'forwardButton',
+			type: 'Image',
+			imgUrl: 'images/arrow_right.png',
+			x: 70,
+			y: stageConfig.height - 40,
+			width: 30,
+			height: 30
 		},
 		{
 			id: 'jumpButton',
-			type: 'Circle',
+			type: 'Image',
+			imgUrl: 'images/arrow_up.png',
 			x: stageConfig.width - 60,
-			y: stageConfig.height - 60,
-			radius: 40,
-			fill: '#666666',
-			stroke: '#000000',
-			strokeWidth: 4
+			y: stageConfig.height - 40,
+			width: 30,
+			height: 30
 		}],
+				// {
+		// 	id: 'forwardButton',
+		// 	type: 'Wedge',
+		// 	x: 200,
+		// 	y: stageConfig.height - 50,
+		// 	radius: 70,
+		// 	angleDeg: 45,
+		// 	fill: '#666666',
+		// 	stroke: 'black',
+		// 	strokeWidth: 4,
+		// 	rotationDeg: 160
+		// },
+		// {
+		// 	id: 'reverseButton',
+		// 	type: 'Wedge',
+		// 	x: 20,
+		// 	y: stageConfig.height - 50,
+		// 	radius: 70,
+		// 	angleDeg: 45,
+		// 	fill: '#666666',
+		// 	stroke: 'black',
+		// 	strokeWidth: 4,
+		// 	rotationDeg: -25
+		// },
+		// {
+		// 	id: 'jumpButton',
+		// 	type: 'Circle',
+		// 	x: stageConfig.width - 60,
+		// 	y: stageConfig.height - 60,
+		// 	radius: 40,
+		// 	fill: '#666666',
+		// 	stroke: '#000000',
+		// 	strokeWidth: 4
+		// }],
 		hitRegions: {
 			invisibleHitArea: {
 				x: 0,
@@ -237,24 +264,42 @@ var gameConfig = {
 				width: stageConfig.width,
 				height: stageConfig.height
 			},
-			forwardButton: {
-				x: 150, 
-				y: (stageConfig.height - 70), 
-				width: 270, 
-				height: stageConfig.height
-			},
 			reverseButton: {
 				x: 20, 
-				y: (stageConfig.height - 70), 
-				width: 90, 
+				y: (stageConfig.height - 40), 
+				width: 50, 
+				height: stageConfig.height
+			},
+			forwardButton: {
+				x: 70, 
+				y: (stageConfig.height - 40), 
+				width: 120, 
 				height: stageConfig.height
 			},
 			jumpButton: {
-				x: (stageConfig.width - 100), 
-				y: (stageConfig.height - 70), 
+				x: (stageConfig.width - 60), 
+				y: (stageConfig.height - 40), 
 				width: stageConfig.width, 
 				height: stageConfig.height
 			}
+			// forwardButton: {
+			// 	x: 150, 
+			// 	y: (stageConfig.height - 70), 
+			// 	width: 270, 
+			// 	height: stageConfig.height
+			// },
+			// reverseButton: {
+			// 	x: 20, 
+			// 	y: (stageConfig.height - 70), 
+			// 	width: 90, 
+			// 	height: stageConfig.height
+			// },
+			// jumpButton: {
+			// 	x: (stageConfig.width - 100), 
+			// 	y: (stageConfig.height - 70), 
+			// 	width: stageConfig.width, 
+			// 	height: stageConfig.height
+			// }
 		}
 	},
 	level: {
