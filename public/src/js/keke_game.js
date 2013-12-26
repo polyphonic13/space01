@@ -121,6 +121,9 @@ function update() {
 }
 
 function checkInput() {
+	if(controls.getPause()) {
+		quit();
+	} else {
 	    if (keys[ControlKeys.UP] || controls.getJumped()) {
 	        // up arrow or space
 	        if (!keke.jumping && keke.grounded && !jumpKeyDepressed) {
@@ -138,10 +141,9 @@ function checkInput() {
 	       }
 			// jumpButton.setWasPressed(false);
 	    }
-//		trace('checkInput, forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse() + ', rest = ' + joystick.getRest());
 	    if (keys[ControlKeys.LEFT] || controls.getReverse()) {
 	        // right arrow
-	
+
 	        if (keke.velX < keke.speed) {
 				keke.velX++;
 				if(!keke.jumping) {
@@ -172,6 +174,7 @@ function checkInput() {
 				animationToPlay = 'idleL';
 			}
 		}
+	}
  }
 
 function detectCollisions() {

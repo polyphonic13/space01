@@ -24,6 +24,10 @@ var ControlLayer = (function() {
 		return _pressedButtons;
 	};
 	
+	ControlLayer.prototype.getPause = function() {
+		return _pressedButtons['pauseButton'];
+	};
+	
 	ControlLayer.prototype.getForward = function() {
 		return _pressedButtons['forwardButton'];
 	};
@@ -137,6 +141,7 @@ var ControlLayer = (function() {
 		// loop through all controls' hit regions, checking against position of event hit
 		for(var key in hitRegions) {
 			hits[key] = _checkHitRegion(pos, hitRegions[key]);
+			trace('hits['+key+'] = ' + hits[key]);
 		}
 		return hits;
 	}
@@ -149,10 +154,10 @@ var ControlLayer = (function() {
 	
 	function _checkHitRegion(pos, hitRegion) {
 		// if x/y of pos (hit/touch) is within x/y/width/height bounds of region, a hit happened
-		var xHit = (pos.x > hitRegion.x && pos.x < hitRegion.width) ? true : false;
-		var yHit = (pos.y > hitRegion.y && pos.y < hitRegion.height) ? true : false;
+		var xHit = (pos.x > hitRegion.x && pos.x < (hitRegion.x + hitRegion.width)) ? true : false;
+		var yHit = (pos.y > hitRegion.y && pos.y < (hitRegion.y + hitRegion.height)) ? true : false;
 		var hit = (xHit && yHit) ? true : false;
-		// trace('_checkHitRegion\n\t\tpos: ' + pos.x + '/' + pos.y + '\n\t\thitRegion: ' + hitRegion.x + '/' + hitRegion.y + ', ' + hitRegion.width + '/' + hitRegion.height + '\n\t\txHit = ' + xHit + ', yHit = ' + yHit + ', hit = ' + hit);
+		// trace('_checkHitRegion\n\t\tpos: ' + pos.x + '/' + pos.y + '\n\t\thitRegion: horizontal = ' + hitRegion.x + '/' + (hitRegion.x + hitRegion.width) + ', vertical = ' + hitRegion.y + '/' + (hitRegion.y + hitRegion.height) + '\n\t\txHit = ' + xHit + ', yHit = ' + yHit + ', hit = ' + hit);
 		return hit;
 	}
 	

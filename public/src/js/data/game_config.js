@@ -216,7 +216,7 @@ var gameConfig = {
 	},
  	player: {
 		x: stageConfig.width / 2,
-		y: stageConfig.height - 256,
+		y: stageConfig.height - 200,
 		position: 0,
 	    width: 76,
 	    height: 128,
@@ -252,8 +252,8 @@ var gameConfig = {
 			imgUrl: 'images/arrow_left.png',
 			x: 20,
 			y: stageConfig.height - 40,
-			width: 30,
-			height: 30
+			width: 32,
+			height: 32
 		},
 		{
 			id: 'forwardButton',
@@ -261,8 +261,17 @@ var gameConfig = {
 			imgUrl: 'images/arrow_right.png',
 			x: 70,
 			y: stageConfig.height - 40,
-			width: 30,
-			height: 30
+			width: 32,
+			height: 32
+		},
+		{
+			id: 'pauseButton',
+			type: 'Image',
+			imgUrl: 'images/pause_btn.png',
+			x: stageConfig.width - 110,
+			y: stageConfig.height - 40,
+			width: 32,
+			height: 32
 		},
 		{
 			id: 'jumpButton',
@@ -270,8 +279,8 @@ var gameConfig = {
 			imgUrl: 'images/arrow_up.png',
 			x: stageConfig.width - 60,
 			y: stageConfig.height - 40,
-			width: 30,
-			height: 30
+			width: 32,
+			height: 32
 		}],
 		hitRegions: {
 			invisibleHitArea: {
@@ -284,19 +293,25 @@ var gameConfig = {
 				x: 20, 
 				y: (stageConfig.height - 40), 
 				width: 50, 
-				height: stageConfig.height
+				height: 50
 			},
 			forwardButton: {
 				x: 70, 
 				y: (stageConfig.height - 40), 
-				width: 120, 
-				height: stageConfig.height
+				width: 40, 
+				height: 50
+			},
+			pauseButton: {
+				x: (stageConfig.width - 110), 
+				y: (stageConfig.height - 40), 
+				width: 40, 
+				height: 50
 			},
 			jumpButton: {
 				x: (stageConfig.width - 60), 
 				y: (stageConfig.height - 40), 
-				width: stageConfig.width, 
-				height: stageConfig.height
+				width: 40, 
+				height: 50
 			}
 		}
 	},
