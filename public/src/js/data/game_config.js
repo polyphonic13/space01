@@ -80,6 +80,26 @@ var gameConfig = {
 		// speed: 0.7
 		speed: 1.33
 	},
+	{
+		id: 'foregroundTrees2',
+		imgUrl: 'images/trees_fore01.png',
+		x: 0,
+		y: stageConfig.height - 550,
+		width: 2048,
+		height: 500,
+		// speed: 3
+		speed: 5
+	},
+	{
+		id: 'foregroundTrees3',
+		imgUrl: 'images/trees_fore01.png',
+		x: 2048,
+		y: stageConfig.height - 550,
+		width: 2048,
+		height: 500,
+		// speed: 3
+		speed: 5
+	},
 	// {
 	// 	id: 'grass01',
 	// 	imgUrl: 'images/grass01.png',
@@ -146,26 +166,6 @@ var gameConfig = {
 		height: 200,
 		speed: 6
 	
-	},
-	{
-		id: 'foregroundTrees2',
-		imgUrl: 'images/trees_fore01.png',
-		x: 0,
-		y: stageConfig.height - 550,
-		width: 2048,
-		height: 500,
-		// speed: 3
-		speed: 6
-	},
-	{
-		id: 'foregroundTrees3',
-		imgUrl: 'images/trees_fore01.png',
-		x: 2048,
-		y: stageConfig.height - 550,
-		width: 2048,
-		height: 500,
-		// speed: 3
-		speed: 6
 	}],
 	ground: {
 		// speed: 3,
