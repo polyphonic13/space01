@@ -28,6 +28,18 @@ function init() {
 
 	// STAGE BACKGROUND
 	var stageBgLayer = new Kinetic.Layer();
+	var stageBgColor = new Kinetic.Rect({
+		x: 0,
+		y: 0,
+		width: stageConfig.width,
+		height: stageConfig.height,
+		fill: '#000000',
+		stroke: '#000000',
+		strokeWidth: 1
+	});
+	stageBgLayer.add(stageBgColor);
+	stage.add(stageBgLayer);
+	
 	var stageBgImage = new ImageLayer(gameConfig.stageBg);
 	stageBgImage.setStage(stage);
 
