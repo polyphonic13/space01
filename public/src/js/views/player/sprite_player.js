@@ -23,6 +23,10 @@ var SpritePlayer = (function() {
 		});
 	}
 
+	SpritePlayer.prototype.stop = function() {
+		_sprite.stop();
+	};
+	
 	SpritePlayer.prototype.playAnimation = function(name) {
 		if(_sprite) {
 			if(name !== _currentAnimation) {

@@ -3,6 +3,7 @@
 var ticker,
 	tickerTime = 500,
 	fps = 64,
+	menuLayer,
 	keke,
 	ground,
 	animationToPlay,
@@ -273,7 +274,7 @@ function keydownHandler(e) {
 		break;
 
 		case ControlKeys.START:
-		start();
+		restart();
 		break;
 		
 		case ControlKeys.QUIT: 
@@ -316,8 +317,9 @@ function _onJoystickRest() {
 	}
 }
 
-function start() {
+function restart() {
 	trace('starting');
+	removeMenuScreen();
 	playing = true;
 	update();
 }
@@ -325,9 +327,80 @@ function start() {
 function quit() {
 	trace('quiting');
 	// window.clearInterval(ticker);
+	keke.stop();
 	playing = false;
 	window.keyup = null;
 	window.keydown = null;
+	addMenuScreen();
+}
+
+function addMenuScreen() {
+
+	menuLayer = new Kinetic.Layer();
+	var bg = new Kinetic.Rect({
+		x: 10,
+		y: 10,
+		width: stageConfig.width - 20,
+		height: stageConfig.height - 20,
+		stroke: '#000000',
+		strokeWidth: 1,
+		fill: '#ffffff',
+		opacity: 0.5
+	});
+	
+	var gameOverText = new Kinetic.Text({
+		x: 0,
+		y: stage.getHeight() / 3,
+		width: stage.getWidth(),
+		text: 'Game Over',
+		align: 'center',
+		fontSize: 56,
+		fontFamily: 'Calibri',
+		fill: '#000000'
+	});
+	
+	var restartButtonGroup = new Kinetic.Group({});
+	
+	var restartButton = new Kinetic.Rect({
+		x: 50,
+		y: (stage.getHeight() / 3) * 2,
+		width: stageConfig.width - 100,
+		height: 68,
+		stroke: '#000000',
+		strokeWidth: 1,
+		fill: '#123456'
+	});
+	
+	var restartText = new Kinetic.Text({
+		x: 0,
+		y: (stage.getHeight() / 3) * 2,
+		width: stage.getWidth(),
+		text: 'Restart',
+		align: 'center',
+		fontSize: 48,
+		fontFamily: 'Calibri',
+		fill: '#ffffff'
+	});	
+	
+	restartButtonGroup.on("mousedown touchstart", function(evt) {
+		restart();
+	});
+	
+	menuLayer.add(bg);
+	menuLayer.add(gameOverText);
+	restartButtonGroup.add(restartButton);
+	restartButtonGroup.add(restartText);
+	menuLayer.add(restartButtonGroup);
+	
+	if(stage) {
+		stage.add(menuLayer);
+//		stage.add(restartButtonLayer);
+	}
+}
+
+function removeMenuScreen() {
+	menuLayer.remove();
+	menuLayer = null;
 }
 
 $(document).ready(function() {
