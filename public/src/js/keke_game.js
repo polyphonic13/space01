@@ -121,9 +121,6 @@ function update() {
 }
 
 function checkInput() {
-	    // if (keys[ControlKeys.UP] || jumpButton.getWasPressed()) {
-	    // if (keys[ControlKeys.UP] || jumpButton.getWasPressed() || joystick.getUp()) {
-	    // if (keys[ControlKeys.UP] || joystick.getUp()) {
 	    if (keys[ControlKeys.UP] || controls.getJumped()) {
 	        // up arrow or space
 	        if (!keke.jumping && keke.grounded && !jumpKeyDepressed) {
@@ -142,7 +139,6 @@ function checkInput() {
 			// jumpButton.setWasPressed(false);
 	    }
 //		trace('checkInput, forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse() + ', rest = ' + joystick.getRest());
-	    // if (keys[ControlKeys.LEFT] || joystick.getReverse()) {
 	    if (keys[ControlKeys.LEFT] || controls.getReverse()) {
 	        // right arrow
 	
@@ -157,7 +153,6 @@ function checkInput() {
 				}
 			}
 			keke.facingForward = false;
-		// } else if (keys[ControlKeys.RIGHT] || joystick.getForward()) {         // left arrow         
 		} else if (keys[ControlKeys.RIGHT] || controls.getForward()) {         // left arrow         
 			if (keke.velX > -keke.speed) {
 	    		keke.velX--;
@@ -177,8 +172,7 @@ function checkInput() {
 				animationToPlay = 'idleL';
 			}
 		}
-		// joystickText.setText('joystick postion: ' + joystick.getX() + '/' + joystick.getY() + ', start: ' + joystick.getStartX() + '/' + joystick.getStartY() + ', forward = ' + joystick.getForward() + ', reverse = ' + joystick.getReverse());
-}
+ }
 
 function detectCollisions() {
 
@@ -214,7 +208,6 @@ function detectCollisions() {
 	    }
 	}
 
-	// previousCollisionId = col.id;
 	// trace('detectCollisions, keke.grounded = ' + keke.grounded + ', col.direction = ' + col.direction);
 }
 
@@ -235,7 +228,7 @@ function collisionCheck(shapeA, shapeB) {
     if (Math.abs(vX) < hWidths && Math.abs(vY) < hHeights) {         // figures out on which side we are colliding (top, bottom, left, or right)         
 		var oX = hWidths - Math.abs(vX),             
 			oY = hHeights - Math.abs(vY);
-	
+		// trace('oX = ' + oX + ', oY = ' + oY);
 		if (oX >= oY) {
             if (vY > 0) {
                 collision.direction = Directions.TOP;

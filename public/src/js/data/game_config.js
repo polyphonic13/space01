@@ -106,16 +106,8 @@ var gameConfig = {
 	// 	speed: 5
 	}],
 	ground: {
-		// speed: 3,
 		speed: 6,
-		rects: [// {
-		// 			id: 'floor1',
-		// 			x: -48,
-		// 			y: stageConfig.height - 60,
-		// 			width: 2048,
-		// 			height: 50,
-		// 			fill: '#000000'
-		// 		},
+		rects: [
 		{
 			id: 'floor1a',
 			x: -48,
@@ -124,12 +116,11 @@ var gameConfig = {
 			height: 50,
 			fill: '#000000',
 			image: {
-				id: 'grass01a',
-				imgUrl: 'images/grass01a.png',
+				imgUrl: 'images/grass01_beginning.png',
 				x: -48,
-				y: stageConfig.height - 121,
+				y: stageConfig.height - 510,
 				width: 512,
-				height: 74
+				height: 463
 			}
 		},
 		{
@@ -138,85 +129,89 @@ var gameConfig = {
 			y: stageConfig.height - 60,
 			width: 512,
 			height: 50,
-			fill: '#000000',
+			fill: 'black',
 			image: {
-				id: 'grass01b',
-				imgUrl: 'images/grass01b.png',
+				imgUrl: 'images/grass01f.png',
 				x: 464,
-				y: stageConfig.height - 121,
+				y: stageConfig.height - 161,
 				width: 512,
-				height: 74,
+				height: 114,
 				speed: 6
 			}
 		},
 		{
+			id: 'floor2b_flame',
+			x: 976,
+			y: stageConfig.height - 60,
+			width: 130,
+			height: 50,
+			fill: 'red'
+		},
+		{
 			id: 'floor1c',
-			x: 1056,
+			x: 1106,
 			y: stageConfig.height - 60,
 			width: 512,
 			height: 50,
 			fill: '#000000',
 			image: {
-				id: 'grass01c',
-				imgUrl: 'images/grass01c.png',
-				x: 1056,
-				y: stageConfig.height - 121,
+				imgUrl: 'images/grass01g.png',
+				x: 1106,
+				y: stageConfig.height - 157,
 				width: 512,
-				height: 74,
-				speed: 6
+				height: 110
 			}
 		},
 		{
 			id: 'floor1d',
-			x: 1568,
+			x: 1618,
 			y: stageConfig.height - 60,
 			width: 512,
 			height: 50,
 			fill: '#000000',
 			image: {
-				id: 'grass01d',
-				imgUrl: 'images/grass01d.png',
-				x: 1568,
+				imgUrl: 'images/grass01h.png',
+				x: 1618,
 				y: stageConfig.height - 171,
 				width: 512,
 				height: 124,
 				speed: 6
 			}
-		},
-		{
-			id: 'floor2',
-			x: 2060,
-			y: stageConfig.height - 110,
-			width: 2048,
-			height: 150,
-			fill: '#000000',
-			image: {
-				id: 'grass02',
-				imgUrl: 'images/grass01.png',
-				x: 2060,
-				y: stageConfig.height - 305,
-				width: 2048,
-				height: 200,
-				speed: 6
-			}
-		},
-		{
-			id: 'floor3',
-			x: 41088,
-			y: stageConfig.height - 170,
-			width: 2048,
-			height: 200,
-			fill: '#000000',
-			image: {
-				id: 'grass03',
-				imgUrl: 'images/grass01.png',
-				// x: -256,
-				x: 4108,
-				y: stageConfig.height - 355,
-				width: 2048,
-				height: 200,
-				speed: 6
-			}
+		// },
+		// {
+		// 	id: 'floor2',
+		// 	x: 2060,
+		// 	y: stageConfig.height - 110,
+		// 	width: 2048,
+		// 	height: 150,
+		// 	fill: '#000000',
+		// 	image: {
+		// 		id: 'grass02',
+		// 		imgUrl: 'images/grass01.png',
+		// 		x: 2060,
+		// 		y: stageConfig.height - 305,
+		// 		width: 2048,
+		// 		height: 200,
+		// 		speed: 6
+		// 	}
+		// },
+		// {
+		// 	id: 'floor3',
+		// 	x: 41088,
+		// 	y: stageConfig.height - 170,
+		// 	width: 2048,
+		// 	height: 200,
+		// 	fill: '#000000',
+		// 	image: {
+		// 		id: 'grass03',
+		// 		imgUrl: 'images/grass01.png',
+		// 		// x: -256,
+		// 		x: 4108,
+		// 		y: stageConfig.height - 355,
+		// 		width: 2048,
+		// 		height: 200,
+		// 		speed: 6
+		// 	}
 		}]
 	},
  	player: {
@@ -278,40 +273,6 @@ var gameConfig = {
 			width: 30,
 			height: 30
 		}],
-				// {
-		// 	id: 'forwardButton',
-		// 	type: 'Wedge',
-		// 	x: 200,
-		// 	y: stageConfig.height - 50,
-		// 	radius: 70,
-		// 	angleDeg: 45,
-		// 	fill: '#666666',
-		// 	stroke: 'black',
-		// 	strokeWidth: 4,
-		// 	rotationDeg: 160
-		// },
-		// {
-		// 	id: 'reverseButton',
-		// 	type: 'Wedge',
-		// 	x: 20,
-		// 	y: stageConfig.height - 50,
-		// 	radius: 70,
-		// 	angleDeg: 45,
-		// 	fill: '#666666',
-		// 	stroke: 'black',
-		// 	strokeWidth: 4,
-		// 	rotationDeg: -25
-		// },
-		// {
-		// 	id: 'jumpButton',
-		// 	type: 'Circle',
-		// 	x: stageConfig.width - 60,
-		// 	y: stageConfig.height - 60,
-		// 	radius: 40,
-		// 	fill: '#666666',
-		// 	stroke: '#000000',
-		// 	strokeWidth: 4
-		// }],
 		hitRegions: {
 			invisibleHitArea: {
 				x: 0,
@@ -337,31 +298,12 @@ var gameConfig = {
 				width: stageConfig.width, 
 				height: stageConfig.height
 			}
-			// forwardButton: {
-			// 	x: 150, 
-			// 	y: (stageConfig.height - 70), 
-			// 	width: 270, 
-			// 	height: stageConfig.height
-			// },
-			// reverseButton: {
-			// 	x: 20, 
-			// 	y: (stageConfig.height - 70), 
-			// 	width: 90, 
-			// 	height: stageConfig.height
-			// },
-			// jumpButton: {
-			// 	x: (stageConfig.width - 100), 
-			// 	y: (stageConfig.height - 70), 
-			// 	width: stageConfig.width, 
-			// 	height: stageConfig.height
-			// }
 		}
 	},
 	level: {
-		minX: 10,
+		minX: 5,
 		maxX: -863
 	},
 	friction: 0.5,
-	// gravity: 0.2
 	gravity: 0.67
 };
