@@ -49,9 +49,34 @@ var RectsLayer = (function() {
 				strokeWidth: 1
 			});
 			layer.add(rect);
+			
+			if(rects[i].image) {
+				_addImage(rects[i].image);
+			}
 			_this.collection.push(rect);
 		}
 	}
 
+	function _addImage(params) {
+	    var imageObj = new Image();
+		var _model = _this.model;
+		
+		var imgConfig = {
+			x: params.x,
+			y: params.y,
+			width: params.width,
+			height: params.height,
+			image: imageObj
+		};
+
+	    imageObj.onload = function() {
+			var image = new Kinetic.Image(imgConfig);
+			_model.layer.add(image);
+			_model.layer.draw(); // layer has to have draw called each time there is a change
+	    };
+	    imageObj.src = params.imgUrl;
+		
+	}
+	
 	return RectsLayer;
 })();
