@@ -83,7 +83,7 @@ function update() {
 	keke.velX = (Math.floor(keke.velX*1000))/1000;
 	// trace('keke.velX = ' + keke.velX);
 	if(keke.position < gameConfig.level.minX && keke.position > gameConfig.level.maxX) {
-		// trace('keke.position = ' + keke.position);
+		// trace('keke.position = ' + keke.position + ', level.min = ' + gameConfig.level.minX + ', max = ' + gameConfig.level.maxX);
 		if(keke.velX !== 0) {
 			ground.moveByVelocity(keke.velX, 0);
 			playerMovementLayers.moveByVelocity(keke.velX, 0);
@@ -133,7 +133,7 @@ function checkInput() {
 				} else {
 					animationToPlay = 'jumpL';
 				}
-				trace('\tpassed jump conditional, velY = ' + keke.velY);
+				// trace('\tpassed jump conditional, velY = ' + keke.velY);
 	       }
 			// jumpButton.setWasPressed(false);
 	    }

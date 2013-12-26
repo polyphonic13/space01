@@ -1,11 +1,12 @@
 var gameConfig = {
 	stageBg: {
-		imgUrl: 'images/night_sky.png',
+		imgUrl: 'images/night_sky.jpg',
 		x: 0,
 		y: 0,
 		width: stageConfig.width,
 		// height: stageConfig.height
-		height: 500
+		// height: 500
+		height: (stageConfig.width * 0.625)
 	},
 	stageFrame: {
 		rects: [{
@@ -18,9 +19,9 @@ var gameConfig = {
 		{
 			id: 'bottom',
 		    x: 0,
-		    y: stageConfig.height - 40,
+		    y: stageConfig.height - 10,
 		    width: stageConfig.width,
-		    height: 50
+		    height: 10
 		},
 		{
 			id: 'left',
@@ -58,34 +59,37 @@ var gameConfig = {
 	playerMovementLayers: [{
 		id: 'mountains',
 		imgUrl: 'images/hills03_grey.png',
-		x: -100,
+		x: 0,
 		// y: 50,
 		y: 30,
 		width: 2048,
 		// height: 256,
-		height: stageConfig.height - 200,
+		// height: stageConfig.height - 200,
+		height: (stageConfig.width * 0.625),
 		// speed: 0.3
-		speed: 1
+		speed: 0.67
 	},
 	{
 		id: 'backgroundTrees',
 		imgUrl: 'images/trees_back01.png',
-		x: -64,
-		y: 80,
+		x: -5,
+		// y: 80,
+		y: 200,
 		width: 2048,
 		// height: 350,
-		height: stageConfig.height - 150,
+		// height: stageConfig.height - 150,
+		height: (stageConfig.width * 0.625),
 		// speed: 0.7
-		speed: 2
+		speed: 1.33
 	},
 	{
 		id: 'grass01',
 		imgUrl: 'images/grass01.png',
 		// x: -256,
-		x: 0,
-		y: stageConfig.height - 120,
+		x: -48,
+		y: stageConfig.height - 205,
 		width: 2048,
-		height: 82,
+		height: 200,
 		// speed: 3
 		speed: 6
 	},
@@ -93,10 +97,21 @@ var gameConfig = {
 		id: 'grass01',
 		imgUrl: 'images/grass01.png',
 		// x: -256,
-		x: 2048,
-		y: stageConfig.height - 170,
+		x: 2000,
+		y: stageConfig.height - 255,
 		width: 2048,
-		height: 82,
+		height: 200,
+		// speed: 3
+		speed: 6
+	},
+	{
+		id: 'grass01',
+		imgUrl: 'images/grass01.png',
+		// x: -256,
+		x: 4048,
+		y: stageConfig.height - 305,
+		width: 2048,
+		height: 200,
 		// speed: 3
 		speed: 6
 	
@@ -126,24 +141,24 @@ var gameConfig = {
 		speed: 6,
 		rects: [{
 			id: 'floor1',
-			x: 0,
-			y: stageConfig.height - 75,
+			x: -48,
+			y: stageConfig.height - 10,
 			width: 2048,
 			height: 50,
 			fill: '#000000'
 		},
 		{
 			id: 'floor2',
-			x: 2047,
-			y: stageConfig.height - 125,
+			x: 2000,
+			y: stageConfig.height - 60,
 			width: 2048,
 			height: 150,
 			fill: '#000000'
 		},
 		{
 			id: 'floor3',
-			x: 4094,
-			y: stageConfig.height - 75,
+			x: 4048,
+			y: stageConfig.height - 110,
 			width: 2048,
 			height: 150,
 			fill: '#000000'
@@ -243,8 +258,8 @@ var gameConfig = {
 		}
 	},
 	level: {
-		minX: 86,
-		maxX: -1697
+		minX: 10,
+		maxX: -863
 	},
 	friction: 0.5,
 	// gravity: 0.2
