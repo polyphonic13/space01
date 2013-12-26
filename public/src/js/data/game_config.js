@@ -73,12 +73,10 @@ var gameConfig = {
 		id: 'backgroundTrees',
 		imgUrl: 'images/trees_back01.png',
 		x: -5,
-		// y: 80,
-		y: 200,
+		y: 80,
 		width: 2048,
 		// height: 350,
-		// height: stageConfig.height - 150,
-		height: (stageConfig.width * 0.625),
+		height: stageConfig.height - 150,
 		// speed: 0.7
 		speed: 1.33
 	},
@@ -87,17 +85,6 @@ var gameConfig = {
 		imgUrl: 'images/grass01.png',
 		// x: -256,
 		x: -48,
-		y: stageConfig.height - 205,
-		width: 2048,
-		height: 200,
-		// speed: 3
-		speed: 6
-	},
-	{
-		id: 'grass01',
-		imgUrl: 'images/grass01.png',
-		// x: -256,
-		x: 2000,
 		y: stageConfig.height - 255,
 		width: 2048,
 		height: 200,
@@ -108,8 +95,19 @@ var gameConfig = {
 		id: 'grass01',
 		imgUrl: 'images/grass01.png',
 		// x: -256,
-		x: 4048,
+		x: 2000,
 		y: stageConfig.height - 305,
+		width: 2048,
+		height: 200,
+		// speed: 3
+		speed: 6
+	},
+	{
+		id: 'grass01',
+		imgUrl: 'images/grass01.png',
+		// x: -256,
+		x: 4048,
+		y: stageConfig.height - 355,
 		width: 2048,
 		height: 200,
 		// speed: 3
@@ -142,7 +140,7 @@ var gameConfig = {
 		rects: [{
 			id: 'floor1',
 			x: -48,
-			y: stageConfig.height - 10,
+			y: stageConfig.height - 60,
 			width: 2048,
 			height: 50,
 			fill: '#000000'
@@ -150,7 +148,7 @@ var gameConfig = {
 		{
 			id: 'floor2',
 			x: 2000,
-			y: stageConfig.height - 60,
+			y: stageConfig.height - 110,
 			width: 2048,
 			height: 150,
 			fill: '#000000'
@@ -158,9 +156,9 @@ var gameConfig = {
 		{
 			id: 'floor3',
 			x: 4048,
-			y: stageConfig.height - 110,
+			y: stageConfig.height - 170,
 			width: 2048,
-			height: 150,
+			height: 200,
 			fill: '#000000'
 		}]
 	},
@@ -308,5 +306,5 @@ var gameConfig = {
 	},
 	friction: 0.5,
 	// gravity: 0.2
-	gravity: 0.5
+	gravity: 0.67
 };
