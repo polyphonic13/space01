@@ -4,6 +4,7 @@ var ticker,
 	tickerTime = 500,
 	fps = 64,
 	menuLayer,
+	gameLevelContainer,
 	keke,
 	ground,
 	animationToPlay,
@@ -34,30 +35,39 @@ function init() {
 	stage.add(stageBgLayer);
 	
 	var stageBgImage = new ImageLayer(gameConfig.stageBg);
-	stageBgImage.setStage(stage);
+	stageBgImage.setParent(stage);
+	
+	startGame();
+}
 
+function startGame() { 
+	
+	trace('start game');
 	// scrollingLayers = new ScrollingLayers(gameConfig.scrollingLayers);
-	// scrollingLayers.setStage(stage);
+	// scrollingLayers.setParent(stage);
+	// gameLevelContainer = new Kinetic.Container();
 
 	// PLAYER MOVEMENT BG LAYERS
 	playerMovementLayers = new ScrollingLayers(gameConfig.playerMovementLayers);
-	playerMovementLayers.setStage(stage);
+	playerMovementLayers.setParent(stage);
 	
 	// GROUND
 	ground = new RectsLayer(gameConfig.ground);
-	ground.setStage(stage);
+	ground.setParent(stage);
 	
 	// PLAYER
 	keke = new SpritePlayer(gameConfig.player);
-	keke.setStage(stage);
+	keke.setParent(stage);
 	
 	// STAGE FRAME
 	var stageFrame = new RectsLayer(gameConfig.stageFrame);
-	stageFrame.setStage(stage);
+	stageFrame.setParent(stage);
 	
 	// CONTROLS
 	controls = new ControlLayer(gameConfig.controls);
-	controls.setStage(stage);
+	controls.setParent(stage);
+	
+	// stage.add(gameLevelContainer);
 	
 	$(window).keydown(function(e) {
 		keydownHandler(e);
@@ -114,7 +124,7 @@ function update() {
 	stage.draw();
 	
 	if(playing) {
-		setTimeout(function() {
+		ticker = setTimeout(function() {
 			requestAnimFrame(update);
 		}, 1000 / fps);
 	}
@@ -311,17 +321,30 @@ function keyupHandler(e) {
 function restart() {
 	trace('starting');
 	removeMenuScreen();
-	playing = true;
-	keke.start();
-	update();
+	// keke.start();
+	// update();
+	startGame();
 }
 
 function quit() {
 	trace('quiting');
-	// window.clearInterval(ticker);
-	keke.stop();
-	controls.reset();
+	window.clearTimeout(ticker);
 	playing = false;
+
+	keke.stop();
+	keke.remove();
+	keke = null;
+	
+	controls.reset();
+	controls.remove();
+	controls = null;
+	
+	ground.remove();
+	ground = null;
+	
+	playerMovementLayers.remove();
+	playerMovementLayers = null;
+	
 	window.keyup = null;
 	window.keydown = null;
 	addMenuScreen();
@@ -383,11 +406,10 @@ function addMenuScreen() {
 	menuLayer.add(gameOverText);
 	restartButtonGroup.add(restartButton);
 	restartButtonGroup.add(restartText);
-	// menuLayer.add(restartButtonGroup);
+	menuLayer.add(restartButtonGroup);
 	
 	if(stage) {
 		stage.add(menuLayer);
-//		stage.add(restartButtonLayer);
 	}
 }
 

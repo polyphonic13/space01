@@ -7,9 +7,9 @@ var ScrollingLayers = (function() {
 		}
 	}
 
-	ScrollingLayers.prototype.setStage = function(stage) {
+	ScrollingLayers.prototype.setParent = function(stage) {
 		for(var i = 0; i < this.collection.length; i++) {
-			this.collection[i].setStage(stage);
+			this.collection[i].setParent(stage);
 		}
 	};
 	
@@ -30,6 +30,12 @@ var ScrollingLayers = (function() {
 		for(var i = 0; i < this.collection.length; i++) {
 			// trace('\tabout to move ' + this.collection[i].id);
 			this.collection[i].moveByVelocity(velX, velY);
+		}
+	};
+	
+	ScrollingLayers.prototype.remove = function() {
+		for(var i = 0; i < this.collection.length; i++) {
+			this.collection[i].remove();
 		}
 	};
 	

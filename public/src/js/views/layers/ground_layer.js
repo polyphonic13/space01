@@ -23,6 +23,10 @@ var RectsLayer = (function() {
 		this.model.layer.move((velX * this.model.speed), (velY * this.model.speed));
 	};
 	
+	RectsLayer.prototype.remove = function() {
+		this.model.layer.remove();
+	};
+	
 	function _buildViews() {
 		var layer = _this.model.layer;
 		var rects = _this.model.rects;

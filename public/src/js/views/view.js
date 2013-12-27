@@ -8,8 +8,8 @@ var View = (function() {
 
 		if(!this.model.layer) {
 			this.model.layer = new Kinetic.Layer();
-			if(this.model.stage) {
-				this.model.stage.add(this.model.layer);
+			if(this.model.parent) {
+				this.model.parent.add(this.model.layer);
 			}
 		}
 
@@ -63,9 +63,13 @@ var View = (function() {
 		this.model.layer.move(x, y);
 	};
 	
-	View.prototype.setStage = function(stage) {
-		this.model.stage = stage;
-		stage.add(this.model.layer);
+	View.prototype.setParent = function(parent) {
+		this.model.parent = parent;
+		parent.add(this.model.layer);
+	};
+	
+	View.prototype.remove = function() {
+		this.model.layer.remove();
 	};
 	
 	return View;

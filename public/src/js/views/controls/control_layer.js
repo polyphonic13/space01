@@ -15,7 +15,7 @@ var ControlLayer = (function() {
 		_addListeners();
 	}
 	
-	ControlLayer.prototype.setStage = function(stage) {
+	ControlLayer.prototype.setParent = function(stage) {
 		this.model.stage = stage;
 		stage.add(this.model.layer);
 	};
@@ -42,6 +42,10 @@ var ControlLayer = (function() {
 	
 	ControlLayer.prototype.getJumped = function() {
 		return _pressedButtons['jumpButton'];
+	};
+	
+	ControlLayer.prototype.remove = function() {
+		_this.model.layer.remove();
 	};
 	
 	function _buildViews() {
