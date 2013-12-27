@@ -9,8 +9,12 @@ var Enemy = (function() {
 		Enemy._super.constructor.call(this, params);
 		trace('Enemy['+this.model.id+']/constructor, setting position to ' + this.model.x + '/' + this.model.y);
 		trace(this.model);
-		
+		this.model.viewObjs = [];
 		this.buildViews();
+		
+		if(this.model.movement) {
+			this.setUpAnimation(this.model.movement);
+		}
 		
 		this.model.layer.setPosition(this.model.x, this.model.y);
 		trace('\tenemy.health = ' + this.model.health + ', damage = ' + this.model.damage);
@@ -40,7 +44,8 @@ var Enemy = (function() {
 	}
 	
 	Enemy.prototype.getAbsolutePosition = function() {
-		return this.model.layer.getAbsolutePosition();
+		// return this.model.layer.getAbsolutePosition();
+		return this.model.viewObjs[0].getAbsolutePosition();
 	};
 	
 	Enemy.prototype.moveByVelocity = function(velX, velY) {
@@ -50,6 +55,9 @@ var Enemy = (function() {
 	Enemy.prototype.die = function() {
 		trace('killed enemy['+this.model.id+'], this.model.layer = ');
 		trace(this.model.layer);
+		if(this.anim) {
+			this.anim.stop();
+		}
 		this.model.layer.remove();
 		this.model.alive = false;
 	};
@@ -58,15 +66,37 @@ var Enemy = (function() {
 		this.model.layer.remove();
 	};
 	
+	Enemy.prototype.setUpAnimation = function(params) {
+		trace('Enemy/setUpAnimation, views =');
+		trace(this.model.viewObjs);
+		var viewObjs = this.model.viewObjs;
+		var layer = this.model.layer;
+		var centerX = this.model.width / 2;
+		this.anim = new Kinetic.Animation(function(frame) {
+			for(var key in viewObjs) {
+				viewObjs[key].setX(params.amplitude * Math.sin(frame.time * 2 * Math.PI / params.period) + centerX);
+			}
+			// layer.setX(params.amplitude * Math.sin(frame.time * 2 * Math.PI / params.period) + centerX);
+		}, layer);
+
+		this.anim.start();
+		
+	};
+	
 	Enemy.prototype.buildViews = function() {
 		var views = this.model.views
 		var view;
+		trace('Enemy/buildViews, this position = ');
+		trace(this.model.layer.getAbsolutePosition());
 		for(var i = 0; i < views.length; i++) {
+			trace('\tviews['+i+'] = ');
+			trace(views[i]);
 			if(views[i].type === 'Image') {
 				_buildImageView(views[i]);
 			} else {
 				view = new Kinetic[views[i].type](views[i]);
 				this.model.layer.add(view);
+				this.model.viewObjs.push(view);
 			}
 		}
 	}
@@ -86,6 +116,7 @@ var Enemy = (function() {
 	    imageObj.onload = function() {
 			var image = new Kinetic.Image(imgConfig);
 			_model.layer.add(image);
+			_model.viewObjs.push(image);
 			_model.layer.draw(); // layer has to have draw called each time there is a change
 	    };
 	    imageObj.src = params.imgUrl;

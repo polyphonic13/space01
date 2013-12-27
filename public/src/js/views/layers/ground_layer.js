@@ -4,8 +4,8 @@ var GroundLayer = (function() {
 	var _this;
 	
 	function GroundLayer(params) {
-		trace('GroundLayer, params =');
-		trace(params);
+		// trace('GroundLayer, params =');
+		// trace(params);
 		_this = this;
 		GroundLayer._super.constructor.call(this, params);
 

@@ -10,23 +10,16 @@ var Enemies = (function() {
 		for(var key in params) {
 			this.collection[key] = new Enemy(params[key], key);
 		}
+		trace('\tend of Enemies constructor, collection = ');
+		trace(this.collection);
 	}
 
 	Enemies.prototype.setParent = function(stage) {
-		for(var i = 0; i < this.collection.length; i++) {
-			this.collection[i].setParent(stage);
-		}
-	};
-	
-	Enemies.prototype.moveX = function() {
-		for(var i = 0; i < this.collection.length; i++) {
-			this.collection[i].moveX();
-		}
-	};
-	
-	Enemies.prototype.moveY = function() {
-		for(var i = 0; i < this.collection.length; i++) {
-			this.collection[i].moveY();
+		// for(var i = 0; i < this.collection.length; i++) {
+		// 	this.collection[i].setParent(stage);
+		// }
+		for(var key in this.collection) {
+			this.collection[key].setParent(stage);
 		}
 	};
 	

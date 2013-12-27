@@ -235,6 +235,10 @@ var gameConfig = {
 				stroke: 'black',
 				strokeWidth: 1
 			}],
+			movement: {
+		      amplitude: 100,
+		      period: 5000
+			},
 			speed: 6,
 			damage: -3,
 			health: 5,
@@ -255,6 +259,10 @@ var gameConfig = {
 				stroke: 'black',
 				strokeWidth: 1
 			}],
+			movement: {
+		      amplitude: 150,
+		      period: 5000
+			},
 			speed: 6,
 			damage: -5,
 			health: 10,

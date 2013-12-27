@@ -412,7 +412,7 @@ function quit(message) {
 }
 
 function addMenuScreen(message) {
-	var menuText = (typeof(message) !== 'undefined') ? message : 'paused';
+	var menuText = (typeof(message) !== 'undefined') ? message : 'quit';
 	
 	menuLayer = new Kinetic.Layer();
 	var bg = new Kinetic.Rect({
