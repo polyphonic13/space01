@@ -20,6 +20,10 @@ var ControlLayer = (function() {
 		stage.add(this.model.layer);
 	};
 	
+	ControlLayer.prototype.reset = function() {
+		_resetPressedButtons();
+	};
+	
 	ControlLayer.prototype.getPressedButtons = function() {
 		return _pressedButtons;
 	};
@@ -141,7 +145,7 @@ var ControlLayer = (function() {
 		// loop through all controls' hit regions, checking against position of event hit
 		for(var key in hitRegions) {
 			hits[key] = _checkHitRegion(pos, hitRegions[key]);
-			trace('hits['+key+'] = ' + hits[key]);
+			// trace('hits['+key+'] = ' + hits[key]);
 		}
 		return hits;
 	}

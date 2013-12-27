@@ -27,6 +27,10 @@ var SpritePlayer = (function() {
 		_sprite.stop();
 	};
 	
+	SpritePlayer.prototype.start = function() {
+		_sprite.start();
+	};
+	
 	SpritePlayer.prototype.playAnimation = function(name) {
 		if(_sprite) {
 			if(name !== _currentAnimation) {

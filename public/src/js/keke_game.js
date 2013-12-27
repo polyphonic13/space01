@@ -308,19 +308,11 @@ function keyupHandler(e) {
 	}
 }
 
-function _onJoystickRest() {
-	trace('_onJoystickRest');
-	if(keke.facingForward) {
-		animationToPlay = 'idleR';
-	} else {
-		animationToPlay = 'idleL';
-	}
-}
-
 function restart() {
 	trace('starting');
 	removeMenuScreen();
 	playing = true;
+	keke.start();
 	update();
 }
 
@@ -328,6 +320,7 @@ function quit() {
 	trace('quiting');
 	// window.clearInterval(ticker);
 	keke.stop();
+	controls.reset();
 	playing = false;
 	window.keyup = null;
 	window.keydown = null;
@@ -390,7 +383,7 @@ function addMenuScreen() {
 	menuLayer.add(gameOverText);
 	restartButtonGroup.add(restartButton);
 	restartButtonGroup.add(restartText);
-	menuLayer.add(restartButtonGroup);
+	// menuLayer.add(restartButtonGroup);
 	
 	if(stage) {
 		stage.add(menuLayer);
