@@ -24,7 +24,9 @@ var SpritePlayer = (function() {
 	}
 
 	SpritePlayer.prototype.stop = function() {
-		_sprite.stop();
+		if(typeof(_sprite) !== 'undefined') {
+			_sprite.stop();
+		}
 	};
 	
 	SpritePlayer.prototype.start = function() {

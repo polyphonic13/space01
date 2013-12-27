@@ -80,55 +80,58 @@ function startGame() {
 }
 
 function update() {
-	checkInput();
-	
-    keke.velX *= gameConfig.friction;
-	keke.velY += gameConfig.gravity;
-	
-	keke.grounded = false;
-	
-	detectCollisions();
-	
-    if(keke.grounded && !keke.jumping) {
-         keke.velY = 0;
-    }
+	if(keke.health > 0 && playing) {
+		checkInput();
 
-	// horizontal movement
-	keke.position += keke.velX;
-	keke.velX = (Math.floor(keke.velX*1000))/1000;
-	// trace('keke.velX = ' + keke.velX);
-	if(keke.position < gameConfig.level.minX && keke.position > gameConfig.level.maxX) {
-		// trace('keke.position = ' + keke.position + ', level.min = ' + gameConfig.level.minX + ', max = ' + gameConfig.level.maxX);
-		if(keke.velX !== 0) {
-			ground.moveByVelocity(keke.velX, 0);
-			playerMovementLayers.moveByVelocity(keke.velX, 0);
+	    keke.velX *= gameConfig.friction;
+		keke.velY += gameConfig.gravity;
+
+		keke.grounded = false;
+
+		detectCollisions();
+
+	    if(keke.grounded && !keke.jumping) {
+	         keke.velY = 0;
+	    }
+
+		// horizontal movement
+		keke.position += keke.velX;
+		keke.velX = (Math.floor(keke.velX*1000))/1000;
+		// trace('keke.velX = ' + keke.velX);
+		if(keke.position < gameConfig.level.minX && keke.position > gameConfig.level.maxX) {
+			// trace('keke.position = ' + keke.position + ', level.min = ' + gameConfig.level.minX + ', max = ' + gameConfig.level.maxX);
+			if(keke.velX !== 0) {
+				ground.moveByVelocity(keke.velX, 0);
+				playerMovementLayers.moveByVelocity(keke.velX, 0);
+			} else {
+				// trace('no movement');
+			}
 		} else {
-			// trace('no movement');
+			trace('bounds reached');
+			if(keke.facingForward) {
+				animationToPlay = 'idleR';
+			} else {
+				animationToPlay = 'idleL';
+			}
+		}
+		keke.playAnimation(animationToPlay);
+
+		// vertical movement
+		keke.move(0, keke.velY);
+
+		// layer movement
+		// scrollingLayers.moveX();
+
+		stage.draw();
+
+		if(playing) {
+			ticker = setTimeout(function() {
+				requestAnimFrame(update);
+			}, 1000 / fps);
 		}
 	} else {
-		trace('bounds reached');
-		if(keke.facingForward) {
-			animationToPlay = 'idleR';
-		} else {
-			animationToPlay = 'idleL';
-		}
+		quit('keke died!');
 	}
-	keke.playAnimation(animationToPlay);
-
-	// vertical movement
-	keke.move(0, keke.velY);
-
-	// layer movement
-	// scrollingLayers.moveX();
-	
-	stage.draw();
-	
-	if(playing) {
-		ticker = setTimeout(function() {
-			requestAnimFrame(update);
-		}, 1000 / fps);
-	}
-	// ticker = window.setInterval(update, tickerTime);
 }
 
 function checkInput() {
@@ -326,32 +329,33 @@ function restart() {
 	startGame();
 }
 
-function quit() {
+function quit(message) {
 	trace('quiting');
 	window.clearTimeout(ticker);
 	playing = false;
 
 	keke.stop();
 	keke.remove();
-	keke = null;
+	// keke = null;
 	
 	controls.reset();
 	controls.remove();
-	controls = null;
+	// controls = null;
 	
 	ground.remove();
-	ground = null;
+	// ground = null;
 	
 	playerMovementLayers.remove();
-	playerMovementLayers = null;
+	// playerMovementLayers = null;
 	
 	window.keyup = null;
 	window.keydown = null;
-	addMenuScreen();
+	addMenuScreen(message);
 }
 
-function addMenuScreen() {
-
+function addMenuScreen(message) {
+	var menuText = (typeof(message) !== 'undefined') ? message : 'paused';
+	
 	menuLayer = new Kinetic.Layer();
 	var bg = new Kinetic.Rect({
 		x: 10,
@@ -368,7 +372,7 @@ function addMenuScreen() {
 		x: 0,
 		y: stage.getHeight() / 3,
 		width: stage.getWidth(),
-		text: 'Game Over',
+		text: menuText,
 		align: 'center',
 		fontSize: 56,
 		fontFamily: 'Calibri',
@@ -406,7 +410,7 @@ function addMenuScreen() {
 	menuLayer.add(gameOverText);
 	restartButtonGroup.add(restartButton);
 	restartButtonGroup.add(restartText);
-	menuLayer.add(restartButtonGroup);
+	// menuLayer.add(restartButtonGroup);
 	
 	if(stage) {
 		stage.add(menuLayer);

@@ -140,12 +140,13 @@ var gameConfig = {
 			}
 		},
 		{
-			id: 'floor2b_flame',
+			id: 'floor1b_flame',
 			x: 976,
 			y: stageConfig.height - 60,
 			width: 130,
 			height: 50,
-			fill: 'red'
+			fill: 'red',
+			damage: 1
 		},
 		{
 			id: 'floor1c',
@@ -232,7 +233,8 @@ var gameConfig = {
 			y: 0,
 			index: 0,
 			frameRate: 14
-		}
+		},
+		health: 10
     },
 	controls: {
 		views: [{
