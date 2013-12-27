@@ -251,14 +251,15 @@ function detectCollisions() {
 	var enemy;
 	var enemyPos;
 	
-	for(var j = 0; j < enemyObjs.length; j++) {
-		if(enemyObjs[j].alive) {
-			enemyPos = enemyObjs[j].getAbsolutePosition();
+	// for(var j = 0; j < enemyObjs.length; j++) {
+	for(var key in enemyObjs) {
+		if(enemyObjs[key].alive) {
+			enemyPos = enemyObjs[key].getAbsolutePosition();
 			enemy = {
 				x: enemyPos.x,
 				y: enemyPos.y,
-				width: enemyObjs[j].width,
-				height: enemyObjs[j].height
+				width: enemyObjs[key].width,
+				height: enemyObjs[key].height
 			};
 			// trace('enemy: ');
 			// trace(enemy);
@@ -267,13 +268,13 @@ function detectCollisions() {
 			// trace('\tcol.direction = ' + col.direction);
 
 			if(col.direction === Directions.BOTTOM) {
-				enemyObjs[j].health += keke.damage;
-				// enemyObjs[j].setHealth(keke.damage);
-				trace('enemy bottom collision, enemy health = ' + enemyObjs[j].health + ', keke.damage = ' + keke.damage);
+				enemyObjs[key].health += keke.damage;
+				// enemyObjs[key].setHealth(keke.damage);
+				trace('enemy bottom collision, enemy health = ' + enemyObjs[key].health + ', keke.damage = ' + keke.damage);
 				// keke.velY = 0;
 			} else if(col.direction === Directions.TOP || col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
-				keke.health += enemyObjs[j].damage;
-				trace('enemy top/left/right collision, enemy damgae = ' + enemyObjs[j].damage);
+				keke.health += enemyObjs[key].damage;
+				trace('enemy top/left/right collision, enemy damgae = ' + enemyObjs[key].damage);
 				// keke.velX = 0;
 			}
 		}

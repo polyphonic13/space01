@@ -219,48 +219,48 @@ var gameConfig = {
 		// 	}
 		}]
 	},
-	enemies: [{
-		id: 'caterpillar01',
-		x: 800,
-		y: stageConfig.height - 120,
-		width: 120,
-		height: 30,
-		views: [{
-			type: 'Rect',
-			x: 0,
-			y: 0,
+	enemies: {
+		caterpillar01: {
+			x: 800,
+			y: stageConfig.height - 120,
 			width: 120,
 			height: 30,
-			fill: '#009933',
-			stroke: 'black',
-			strokeWidth: 1
-		}],
-		speed: 6,
-		damage: -3,
-		health: 5,
-		alive: true
+			views: [{
+				type: 'Rect',
+				x: 0,
+				y: 0,
+				width: 120,
+				height: 30,
+				fill: '#009933',
+				stroke: 'black',
+				strokeWidth: 1
+			}],
+			speed: 6,
+			damage: -3,
+			health: 5,
+			alive: true
+		},
+		caterpillar02: {
+			x: 1500,
+			y: stageConfig.height - 120,
+			width: 120,
+			height: 30,
+			views: [{
+				type: 'Rect',
+				x: 0,
+				y: 0,
+				width: 120,
+				height: 30,
+				fill: '#339933',
+				stroke: 'black',
+				strokeWidth: 1
+			}],
+			speed: 6,
+			damage: -5,
+			health: 10,
+			alive: true
+		}
 	},
-	{
-		id: 'caterpillar02',
-		x: 1500,
-		y: stageConfig.height - 120,
-		width: 120,
-		height: 30,
-		views: [{
-			type: 'Rect',
-			x: 0,
-			y: 0,
-			width: 120,
-			height: 30,
-			fill: '#339933',
-			stroke: 'black',
-			strokeWidth: 1
-		}],
-		speed: 6,
-		damage: -5,
-		health: 10,
-		alive: true
-	}],
  	player: {
 		x: stageConfig.width / 2,
 		y: stageConfig.height - 200,

@@ -3,8 +3,9 @@ var Enemy = (function() {
 
 	var _this;
 	
-	function Enemy(params) {
+	function Enemy(params, id) {
 		_this = this;
+		params.id = id;
 		Enemy._super.constructor.call(this, params);
 		trace('Enemy['+this.model.id+']/constructor, setting position to ' + this.model.x + '/' + this.model.y);
 		trace(this.model);
