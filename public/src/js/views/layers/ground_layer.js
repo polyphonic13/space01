@@ -1,13 +1,13 @@
-var RectsLayer = (function() {
-	Utils.inherits(RectsLayer, View);
+var GroundLayer = (function() {
+	Utils.inherits(GroundLayer, View);
 	
 	var _this;
 	
-	function RectsLayer(params) {
-		trace('RectsLayer, params =');
+	function GroundLayer(params) {
+		trace('GroundLayer, params =');
 		trace(params);
 		_this = this;
-		RectsLayer._super.constructor.call(this, params);
+		GroundLayer._super.constructor.call(this, params);
 
 		this.collection = [];
 		_buildViews();
@@ -19,25 +19,21 @@ var RectsLayer = (function() {
 		});
 	}
 
-	RectsLayer.prototype.moveByVelocity = function(velX, velY) {
+	GroundLayer.prototype.moveByVelocity = function(velX, velY) {
 		this.model.layer.move((velX * this.model.speed), (velY * this.model.speed));
 	};
 	
-	RectsLayer.prototype.remove = function() {
+	GroundLayer.prototype.remove = function() {
 		this.model.layer.remove();
 	};
 	
 	function _buildViews() {
 		var layer = _this.model.layer;
 		var rects = _this.model.rects;
-		var fill;
 		var stroke;
+		var section;
+		
 		for(var i = 0; i < rects.length; i++) {
-			if(rects[i].fill) {
-				fill = rects[i].fill;
-			} else {
-				fill = 'black';
-			}
 			if(rects[i].stroke) {
 				stroke = rects[i].stroke;
 			} else {
@@ -48,7 +44,7 @@ var RectsLayer = (function() {
 				y: rects[i].y,
 				width: rects[i].width,
 				height: rects[i].height,
-				fill: fill,
+				fill: rects[i].fill,
 				stroke: stroke,
 				strokeWidth: 1
 			});
@@ -57,7 +53,13 @@ var RectsLayer = (function() {
 			if(rects[i].image) {
 				_addImage(rects[i].image);
 			}
-			_this.collection.push(rect);
+			trace('GroundLayer/_buildViews, section['+i+'] = ');
+			trace(section);
+			section = {
+				rect: rect,
+				config: rects[i]
+			};
+			_this.collection.push(section);
 		}
 	}
 
@@ -82,5 +84,5 @@ var RectsLayer = (function() {
 		
 	}
 	
-	return RectsLayer;
+	return GroundLayer;
 })();

@@ -6,6 +6,7 @@ var ticker,
 	menuLayer,
 	gameLevelContainer,
 	keke,
+	lifeMeter,
 	ground,
 	animationToPlay,
 	playerMovementLayers,
@@ -52,15 +53,20 @@ function startGame() {
 	playerMovementLayers.setParent(stage);
 	
 	// GROUND
-	ground = new RectsLayer(gameConfig.ground);
+	ground = new GroundLayer(gameConfig.ground);
 	ground.setParent(stage);
 	
 	// PLAYER
 	keke = new SpritePlayer(gameConfig.player);
 	keke.setParent(stage);
 	
+	// LIFE METER
+	lifeMeter = new LifeMeter(gameConfig.lifeMeter);
+	lifeMeter.setHealth(keke.health);
+	lifeMeter.setParent(stage);
+
 	// STAGE FRAME
-	var stageFrame = new RectsLayer(gameConfig.stageFrame);
+	var stageFrame = new GroundLayer(gameConfig.stageFrame);
 	stageFrame.setParent(stage);
 	
 	// CONTROLS
@@ -136,7 +142,7 @@ function update() {
 
 function checkInput() {
 	if(controls.getPause()) {
-		quit();
+		quit('quit');
 	} else {
 	    if (keys[ControlKeys.UP] || controls.getJumped()) {
 	        // up arrow or space
@@ -200,12 +206,12 @@ function detectCollisions() {
 	for(var i = 0; i < groundObjs.length; i++) {
 		// trace('groundObjs['+i+'].attrs = ');
 		// trace(groundObjs[i].attrs);
-		rectPos = groundObjs[i].getAbsolutePosition();
+		rectPos = groundObjs[i].rect.getAbsolutePosition();
 		rect = {
 			x: rectPos.x,
 			y: rectPos.y,
-			width: groundObjs[i].attrs.width,
-			height: groundObjs[i].attrs.height
+			width: groundObjs[i].rect.attrs.width,
+			height: groundObjs[i].rect.attrs.height
 		}
 		var col = collisionCheck(keke.getHitArea(), rect); // check for floor collision
 
@@ -223,6 +229,15 @@ function detectCollisions() {
 		} else if (col.direction === Directions.TOP) {
 	        keke.velY *= -1;
 	    }
+	
+		if(col.direction !== '') {
+			// trace('groundObjs['+i+'].damage = ' + groundObjs[i].damage);
+			if(groundObjs[i].config.damage) {
+				trace('something damaging was hit');
+				keke.health += groundObjs[i].config.damage;
+				lifeMeter.setHealth(keke.health);
+			}
+		}
 	}
 
 	// trace('detectCollisions, keke.grounded = ' + keke.grounded + ', col.direction = ' + col.direction);
@@ -341,6 +356,8 @@ function quit(message) {
 	controls.reset();
 	controls.remove();
 	// controls = null;
+	
+	lifeMeter.remove();
 	
 	ground.remove();
 	// ground = null;

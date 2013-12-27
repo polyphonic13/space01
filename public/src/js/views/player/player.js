@@ -9,10 +9,7 @@ var Player = (function() {
 		_config = Utils.extend(_config, params);
 		Player._super.constructor.call(_this, _config);
 		_this.model.layer.setPosition({ x: _this.model.x, y: _this.model.y });
-		trace('Player/constructor, _model =');
-		trace(_this.model);
-		trace('params =');
-		trace(params);
+
 		_this.__defineGetter__("health", function() {
 			return _this.model.health;
 		});

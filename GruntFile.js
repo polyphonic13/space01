@@ -56,10 +56,8 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/views/layers/scrolling_layers.js',
 					'<%= srcDir %>/js/views/player/player.js',
 					'<%= srcDir %>/js/views/player/sprite_player.js',
+					'<%= srcDir %>/js/views/player/life_meter.js',
 					'<%= srcDir %>/js/views/controls/control_layer.js',
-					'<%= srcDir %>/js/views/controls/control_button.js',
-					'<%= srcDir %>/js/views/controls/horizontal_controls.js',
-					'<%= srcDir %>/js/views/controls/joystick.js',
 					'<%= srcDir %>/js/keke_game.js'
 				],
 				dest: '<%= deployDir %>/js/keke_game.js'

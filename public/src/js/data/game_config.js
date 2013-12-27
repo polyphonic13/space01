@@ -129,7 +129,7 @@ var gameConfig = {
 			y: stageConfig.height - 60,
 			width: 512,
 			height: 50,
-			fill: 'black',
+			fill: '#000000',
 			image: {
 				imgUrl: 'images/grass01f.png',
 				x: 464,
@@ -142,22 +142,22 @@ var gameConfig = {
 		{
 			id: 'floor1b_flame',
 			x: 976,
-			y: stageConfig.height - 60,
-			width: 130,
+			y: stageConfig.height - 55,
+			width: 100,
 			height: 50,
 			fill: 'red',
-			damage: 1
+			damage: -3
 		},
 		{
 			id: 'floor1c',
-			x: 1106,
+			x: 1076,
 			y: stageConfig.height - 60,
 			width: 512,
 			height: 50,
 			fill: '#000000',
 			image: {
 				imgUrl: 'images/grass01g.png',
-				x: 1106,
+				x: 1076,
 				y: stageConfig.height - 157,
 				width: 512,
 				height: 110
@@ -165,14 +165,14 @@ var gameConfig = {
 		},
 		{
 			id: 'floor1d',
-			x: 1618,
+			x: 1588,
 			y: stageConfig.height - 60,
 			width: 512,
 			height: 50,
 			fill: '#000000',
 			image: {
 				imgUrl: 'images/grass01h.png',
-				x: 1618,
+				x: 1588,
 				y: stageConfig.height - 171,
 				width: 512,
 				height: 124,
@@ -234,8 +234,33 @@ var gameConfig = {
 			index: 0,
 			frameRate: 14
 		},
-		health: 10
+		health: 100
     },
+	lifeMeter: {
+		x: 150,
+		y: stageConfig.height - 40,
+		width: 100,
+		height: 32,
+		views: [{
+			type: 'Image',
+			imgUrl: 'images/heart.png',
+			x: 0,
+			y: 0,
+			width: 32,
+			height: 32
+		},
+		{
+			type: 'Text',
+			x: 35,
+			y: 0,
+			width: 68,
+			height: 32,
+			align: 'left',
+			fontSize: 24,
+			fontFamily: 'Arial',
+			fill: '#ffffff'
+		}]
+	},
 	controls: {
 		views: [{
 			id: 'invisibleHitArea',
