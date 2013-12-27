@@ -13,7 +13,11 @@ var LifeMeter = (function() {
 	}
 	
 	LifeMeter.prototype.setHealth = function(health) {
-		_healthText.setText(health);
+		if(health >= 0) {
+			_healthText.setText(health);
+		} else {
+			_healthText.setText(0);
+		}
 	}
 	
 	function _buildViews() {

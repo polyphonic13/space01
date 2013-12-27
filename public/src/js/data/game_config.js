@@ -23,28 +23,32 @@ var gameConfig = {
 			x: 0,
 			y: 0,
 			width: stageConfig.width,
-			height: 10
+			height: 10,
+			fill: '#000000'
 		},
 		{
 			id: 'bottom',
 		    x: 0,
 		    y: stageConfig.height - 10,
 		    width: stageConfig.width,
-		    height: 10
+		    height: 10,
+			fill: '#000000'
 		},
 		{
 			id: 'left',
 		    x: 0,
 		    y: 0,
 		    width: 10,
-		    height: stageConfig.height
+		    height: stageConfig.height,
+			fill: '#000000'
 		},
 		{
 			id: 'right',
 		    x: stageConfig.width - 10,
 		    y: 0,
 		    width: 50,
-		    height: stageConfig.height
+		    height: stageConfig.height,
+			fill: '#000000'
 		}]
 	},
 	scrollingLayers: [{
@@ -143,21 +147,21 @@ var gameConfig = {
 			id: 'floor1b_flame',
 			x: 976,
 			y: stageConfig.height - 55,
-			width: 100,
+			width: 110,
 			height: 50,
 			fill: 'red',
 			damage: -3
 		},
 		{
 			id: 'floor1c',
-			x: 1076,
+			x: 1086,
 			y: stageConfig.height - 60,
 			width: 512,
 			height: 50,
 			fill: '#000000',
 			image: {
 				imgUrl: 'images/grass01g.png',
-				x: 1076,
+				x: 1086,
 				y: stageConfig.height - 157,
 				width: 512,
 				height: 110
@@ -165,14 +169,14 @@ var gameConfig = {
 		},
 		{
 			id: 'floor1d',
-			x: 1588,
+			x: 1598,
 			y: stageConfig.height - 60,
 			width: 512,
 			height: 50,
 			fill: '#000000',
 			image: {
 				imgUrl: 'images/grass01h.png',
-				x: 1588,
+				x: 1598,
 				y: stageConfig.height - 171,
 				width: 512,
 				height: 124,
@@ -237,7 +241,7 @@ var gameConfig = {
 		health: 100
     },
 	lifeMeter: {
-		x: 150,
+		x: 130,
 		y: stageConfig.height - 40,
 		width: 100,
 		height: 32,
@@ -252,11 +256,11 @@ var gameConfig = {
 		{
 			type: 'Text',
 			x: 35,
-			y: 0,
+			y: 10,
 			width: 68,
 			height: 32,
 			align: 'left',
-			fontSize: 24,
+			fontSize: 18,
 			fontFamily: 'Arial',
 			fill: '#ffffff'
 		}]
@@ -295,8 +299,10 @@ var gameConfig = {
 			id: 'pauseButton',
 			type: 'Image',
 			imgUrl: 'images/pause_btn.png',
-			x: stageConfig.width - 110,
-			y: stageConfig.height - 40,
+			// x: stageConfig.width - 110,
+			// y: stageConfig.height - 40,
+			x: 20,
+			y: 20,
 			width: 32,
 			height: 32
 		},
@@ -329,8 +335,10 @@ var gameConfig = {
 				height: 50
 			},
 			pauseButton: {
-				x: (stageConfig.width - 110), 
-				y: (stageConfig.height - 40), 
+				// x: (stageConfig.width - 110), 
+				// y: (stageConfig.height - 40), 
+				x: 15,
+				y: 15,
 				width: 40, 
 				height: 50
 			},
