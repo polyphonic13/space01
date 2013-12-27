@@ -237,12 +237,13 @@ var gameConfig = {
 		}],
 		speed: 6,
 		damage: -3,
-		health: 5
+		health: 5,
+		alive: true
 	},
 	{
 		id: 'caterpillar02',
 		x: 1500,
-		y: stageConfig.height - 150,
+		y: stageConfig.height - 110,
 		width: 120,
 		height: 30,
 		views: [{
@@ -255,9 +256,10 @@ var gameConfig = {
 			stroke: 'black',
 			strokeWidth: 1
 		}],
-		speed: 10,
+		speed: 6,
 		damage: -5,
-		health: 10
+		health: 10,
+		alive: true
 	}],
  	player: {
 		x: stageConfig.width / 2,

@@ -14,6 +14,11 @@ var Enemy = (function() {
 		this.model.layer.setPosition(this.model.x, this.model.y);
 		trace('\tenemy.health = ' + this.model.health + ', damage = ' + this.model.damage);
 		
+		this.__defineGetter__('alive', function() {
+			// trace('Enemy/get health: ' + this.model.health);
+			return this.model.alive;
+		});
+		
 		this.__defineGetter__('health', function() {
 			// trace('Enemy/get health: ' + this.model.health);
 			return this.model.health;
@@ -45,6 +50,7 @@ var Enemy = (function() {
 		trace('killed enemy['+this.model.id+'], this.model.layer = ');
 		trace(this.model.layer);
 		this.model.layer.remove();
+		this.model.alive = false;
 	};
 	
 	Enemy.prototype.remove = function() {
