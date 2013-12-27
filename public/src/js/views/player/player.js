@@ -17,6 +17,10 @@ var Player = (function() {
 			_this.model.health = val;
 		});
 
+		_this.__defineGetter__("damage", function() {
+			return _this.model.damage;
+		});
+
 		_this.__defineGetter__("velX", function() {
 			return _this.model.velX;
 		});

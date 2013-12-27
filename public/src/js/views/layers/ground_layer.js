@@ -53,8 +53,8 @@ var GroundLayer = (function() {
 			if(rects[i].image) {
 				_addImage(rects[i].image);
 			}
-			trace('GroundLayer/_buildViews, section['+i+'] = ');
-			trace(section);
+			// trace('GroundLayer/_buildViews, section['+i+'] = ');
+			// trace(section);
 			section = {
 				rect: rect,
 				config: rects[i]

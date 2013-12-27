@@ -7,6 +7,7 @@ var ticker,
 	gameLevelContainer,
 	keke,
 	lifeMeter,
+	enemies,
 	ground,
 	animationToPlay,
 	playerMovementLayers,
@@ -65,6 +66,10 @@ function startGame() {
 	lifeMeter.setHealth(keke.health);
 	lifeMeter.setParent(stage);
 
+	// ENEMIES
+	enemies = new Enemies(gameConfig.enemies);
+	enemies.setParent(stage);
+	
 	// STAGE FRAME
 	var stageFrame = new GroundLayer(gameConfig.stageFrame);
 	stageFrame.setParent(stage);
@@ -108,6 +113,8 @@ function update() {
 			// trace('keke.position = ' + keke.position + ', level.min = ' + gameConfig.level.minX + ', max = ' + gameConfig.level.maxX);
 			if(keke.velX !== 0) {
 				ground.moveByVelocity(keke.velX, 0);
+				enemies.moveByVelocity(keke.velX, 0);
+
 				playerMovementLayers.moveByVelocity(keke.velX, 0);
 			} else {
 				// trace('no movement');
@@ -240,6 +247,35 @@ function detectCollisions() {
 		}
 	}
 
+	var enemyObjs = enemies.collection;
+	var enemy;
+	var enemyPos;
+	
+	for(var j = 0; j < enemyObjs.length; j++) {
+		enemyPos = enemyObjs[j].getAbsolutePosition();
+		enemy = {
+			x: enemyPos.x,
+			y: enemyPos.y,
+			width: enemyObjs[j].width,
+			height: enemyObjs[j].height
+		};
+		// trace('enemy: ');
+		// trace(enemy);
+		
+		var col = collisionCheck(keke.getHitArea(), enemy); // check for enemy collision
+		// trace('\tcol.direction = ' + col.direction);
+		
+		if(col.direction === Directions.BOTTOM) {
+			enemyObjs[j].health += keke.damage;
+			// enemyObjs[j].setHealth(keke.damage);
+			trace('enemy bottom collision, enemy health = ' + enemyObjs[j].health + ', keke.damage = ' + keke.damage);
+			// keke.velY = 0;
+		} else if(col.direction === Directions.TOP || col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
+			keke.health += enemyObjs[j].damage;
+			trace('enemy top/left/right collision, enemy damgae = ' + enemyObjs[j].damage);
+			// keke.velX = 0;
+		}
+	}
 	// trace('detectCollisions, keke.grounded = ' + keke.grounded + ', col.direction = ' + col.direction);
 }
 
@@ -352,6 +388,8 @@ function quit(message) {
 	keke.stop();
 	keke.remove();
 	// keke = null;
+	
+	enemies.remove();
 	
 	controls.reset();
 	controls.remove();
