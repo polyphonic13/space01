@@ -46,6 +46,7 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/data/game_config.js',
 					'<%= srcDir %>/js/enum/control_keys.js',
 					'<%= srcDir %>/js/enum/directions.js',
+					'<%= srcDir %>/js/enum/joystick_states.js',
 					'<%= srcDir %>/js/events/events.js',
 					'<%= srcDir %>/js/views/view.js',
 					'<%= srcDir %>/js/views/layers/ground_layer.js',
@@ -58,6 +59,7 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/views/player/sprite_player.js',
 					'<%= srcDir %>/js/views/player/life_meter.js',
 					'<%= srcDir %>/js/views/controls/control_layer.js',
+					'<%= srcDir %>/js/views/controls/joystick.js',
 					'<%= srcDir %>/js/keke_game.js'
 				],
 				dest: '<%= deployDir %>/js/keke_game.js'

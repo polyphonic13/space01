@@ -118,6 +118,8 @@ var gameConfig = {
 			y: stageConfig.height - 60,
 			width: 512,
 			height: 50,
+			// fill: 'green',
+
 			fill: '#000000',
 			image: {
 				imgUrl: 'images/grass01_beginning.png',
@@ -126,6 +128,7 @@ var gameConfig = {
 				width: 512,
 				height: 463
 			}
+
 		},
 		{
 			id: 'floor1b',
@@ -133,6 +136,8 @@ var gameConfig = {
 			y: stageConfig.height - 60,
 			width: 512,
 			height: 50,
+			// fill: 'green'
+
 			fill: '#000000',
 			image: {
 				imgUrl: 'images/grass01f.png',
@@ -142,6 +147,7 @@ var gameConfig = {
 				height: 114,
 				speed: 6
 			}
+
 		},
 		{
 			id: 'floor1b_flame',
@@ -158,6 +164,8 @@ var gameConfig = {
 			y: stageConfig.height - 60,
 			width: 512,
 			height: 50,
+			// fill: 'green',
+
 			fill: '#000000',
 			image: {
 				imgUrl: 'images/grass01g.png',
@@ -166,6 +174,7 @@ var gameConfig = {
 				width: 512,
 				height: 110
 			}
+
 		},
 		{
 			id: 'floor1d',
@@ -173,6 +182,8 @@ var gameConfig = {
 			y: stageConfig.height - 60,
 			width: 512,
 			height: 50,
+			// fill: 'green'
+
 			fill: '#000000',
 			image: {
 				imgUrl: 'images/grass01h.png',
@@ -180,8 +191,8 @@ var gameConfig = {
 				y: stageConfig.height - 171,
 				width: 512,
 				height: 124,
-				speed: 6
 			}
+
 		// },
 		// {
 		// 	id: 'floor2',
@@ -292,7 +303,7 @@ var gameConfig = {
 		health: 100
     },
 	lifeMeter: {
-		x: 130,
+		x: 140,
 		y: stageConfig.height - 40,
 		width: 100,
 		height: 32,

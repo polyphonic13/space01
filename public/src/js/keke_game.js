@@ -50,8 +50,8 @@ function startGame() {
 	// gameLevelContainer = new Kinetic.Container();
 
 	// PLAYER MOVEMENT BG LAYERS
-	playerMovementLayers = new ScrollingLayers(gameConfig.playerMovementLayers);
-	playerMovementLayers.setStage(stage);
+	// playerMovementLayers = new ScrollingLayers(gameConfig.playerMovementLayers);
+	// playerMovementLayers.setStage(stage);
 	
 	// GROUND
 	ground = new GroundLayer(gameConfig.ground);
@@ -71,11 +71,12 @@ function startGame() {
 	enemies.setStage(stage);
 	
 	// STAGE FRAME
-	var stageFrame = new GroundLayer(gameConfig.stageFrame);
-	stageFrame.setStage(stage);
+	// var stageFrame = new GroundLayer(gameConfig.stageFrame);
+	// stageFrame.setStage(stage);
 	
 	// CONTROLS
-	controls = new ControlLayer(gameConfig.controls);
+	// controls = new ControlLayer(gameConfig.controls);
+	controls = new Joystick();
 	controls.setStage(stage);
 	
 	// stage.add(gameLevelContainer);
@@ -115,7 +116,7 @@ function update() {
 				ground.moveByVelocity(keke.velX, 0);
 				enemies.moveByVelocity(keke.velX, 0);
 
-				playerMovementLayers.moveByVelocity(keke.velX, 0);
+				// playerMovementLayers.moveByVelocity(keke.velX, 0);
 			} else {
 				// trace('no movement');
 			}
@@ -403,7 +404,7 @@ function quit(message) {
 	ground.remove();
 	// ground = null;
 	
-	playerMovementLayers.remove();
+	// playerMovementLayers.remove();
 	// playerMovementLayers = null;
 	
 	window.keyup = null;

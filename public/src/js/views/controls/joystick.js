@@ -5,8 +5,10 @@ var Joystick = (function() {
 		y: 0
 	};
 	var _model = {
-		startX: 60,
-		startY: 60,
+		// startX: 60,
+		// startY: 60,
+		startX: 70,
+		startY: stageConfig.height - 70,
 		lgRadius: 50,
 		lgColor1: '#666666',
 		lgColor2: '#222222',
@@ -29,9 +31,14 @@ var Joystick = (function() {
 	function Joystick(params) {
 		// save config params for later use
 		_model = Utils.extend(_model, params);
+		if(!_model.layer) {
+			_model.layer = new Kinetic.Layer();
+		}
 		_resetStates();
 		_buildViews();
 		_addListeners();
+		
+		// _model.layer.setPosition(5, stageConfig.height - 120);
 	}
 	
 	function _resetStates() {
@@ -165,12 +172,12 @@ var Joystick = (function() {
 		
 		if(_position.x > (_model.startX + 10)) {
 			// trace("FORWARD");
-			_states[JoystickStates.REVERSE] = true;
-			_states[JoystickStates.FORWARD] = false;
+			_states[JoystickStates.REVERSE] = false;
+			_states[JoystickStates.FORWARD] = true;
 		} else if(_position.x < (_model.startX - 10)) {
 			// trace("REVERSE");
-			_states[JoystickStates.FORWARD] = true;
-			_states[JoystickStates.REVERSE] = false;
+			_states[JoystickStates.FORWARD] = false;
+			_states[JoystickStates.REVERSE] = true;
 		} else {
 			// trace("REVERSE");
 			_states[JoystickStates.FORWARD] = false;
@@ -216,12 +223,16 @@ var Joystick = (function() {
 		return _states[JoystickStates.REVERSE];
 	};
 	
-	Joystick.prototype.getUp = function() {
+	Joystick.prototype.getJumped = function() {
 		return _states[JoystickStates.UP];
 	};
 	
 	Joystick.prototype.getDown = function() {
 		return _states[JoystickStates.DOWN];
+	};
+	
+	Joystick.prototype.getPause = function() {
+		return false;
 	};
 	
 	Joystick.prototype.getPosition = function() {
@@ -242,6 +253,19 @@ var Joystick = (function() {
 	
 	Joystick.prototype.getStartY = function() {
 		return _model.startY;
-	}
+	};
+	
+	Joystick.prototype.setStage = function(stage) {
+		stage.add(_model.layer);
+	};
+	
+	Joystick.prototype.reset = function() {
+
+	};
+
+	Joystick.prototype.remove = function() {
+
+	};
+
 	return Joystick;
 })();
