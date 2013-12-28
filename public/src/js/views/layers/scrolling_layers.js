@@ -7,9 +7,9 @@ var ScrollingLayers = (function() {
 		}
 	}
 
-	ScrollingLayers.prototype.setParent = function(stage) {
+	ScrollingLayers.prototype.setStage = function(stage) {
 		for(var i = 0; i < this.collection.length; i++) {
-			this.collection[i].setParent(stage);
+			this.collection[i].setStage(stage);
 		}
 	};
 	

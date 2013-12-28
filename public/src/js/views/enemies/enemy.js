@@ -3,12 +3,12 @@ var Enemy = (function() {
 
 	var _this;
 	
-	function Enemy(params, id) {
+	function Enemy(params, id, holder) {
 		_this = this;
+		this.holder = holder;
 		params.id = id;
 		Enemy._super.constructor.call(this, params);
-		trace('Enemy['+this.model.id+']/constructor, setting position to ' + this.model.x + '/' + this.model.y);
-		trace(this.model);
+
 		this.model.viewObjs = [];
 		this.buildViews();
 		
@@ -17,7 +17,6 @@ var Enemy = (function() {
 		}
 		
 		this.model.layer.setPosition(this.model.x, this.model.y);
-		trace('\tenemy.health = ' + this.model.health + ', damage = ' + this.model.damage);
 		
 		this.__defineGetter__('alive', function() {
 			// trace('Enemy/get health: ' + this.model.health);
@@ -30,7 +29,6 @@ var Enemy = (function() {
 		});
 		
 		this.__defineSetter__('health', function(val) {
-			trace('Enemy/set health: ' + this.model.health);
 			this.model.health = val;
 			if(this.model.health <= 0) {
 				this.die();
@@ -44,7 +42,6 @@ var Enemy = (function() {
 	}
 	
 	Enemy.prototype.getAbsolutePosition = function() {
-		// return this.model.layer.getAbsolutePosition();
 		return this.model.viewObjs[0].getAbsolutePosition();
 	};
 	
@@ -58,6 +55,7 @@ var Enemy = (function() {
 		if(this.anim) {
 			this.anim.stop();
 		}
+		this.holder.enemyDied(this.model.id);
 		this.model.layer.remove();
 		this.model.alive = false;
 	};

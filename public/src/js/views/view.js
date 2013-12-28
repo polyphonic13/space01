@@ -63,7 +63,7 @@ var View = (function() {
 		this.model.layer.move(x, y);
 	};
 	
-	View.prototype.setParent = function(parent) {
+	View.prototype.setStage = function(parent) {
 		this.model.parent = parent;
 		parent.add(this.model.layer);
 	};

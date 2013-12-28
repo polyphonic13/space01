@@ -37,7 +37,7 @@ function init() {
 	stage.add(stageBgLayer);
 	
 	var stageBgImage = new ImageLayer(gameConfig.stageBg);
-	stageBgImage.setParent(stage);
+	stageBgImage.setStage(stage);
 	
 	startGame();
 }
@@ -46,37 +46,37 @@ function startGame() {
 	
 	trace('start game');
 	// scrollingLayers = new ScrollingLayers(gameConfig.scrollingLayers);
-	// scrollingLayers.setParent(stage);
+	// scrollingLayers.setStage(stage);
 	// gameLevelContainer = new Kinetic.Container();
 
 	// PLAYER MOVEMENT BG LAYERS
 	playerMovementLayers = new ScrollingLayers(gameConfig.playerMovementLayers);
-	playerMovementLayers.setParent(stage);
+	playerMovementLayers.setStage(stage);
 	
 	// GROUND
 	ground = new GroundLayer(gameConfig.ground);
-	ground.setParent(stage);
+	ground.setStage(stage);
 	
 	// PLAYER
 	keke = new SpritePlayer(gameConfig.player);
-	keke.setParent(stage);
+	keke.setStage(stage);
 	
 	// LIFE METER
 	lifeMeter = new LifeMeter(gameConfig.lifeMeter);
 	lifeMeter.setHealth(keke.health);
-	lifeMeter.setParent(stage);
+	lifeMeter.setStage(stage);
 
 	// ENEMIES
 	enemies = new Enemies(gameConfig.enemies);
-	enemies.setParent(stage);
+	enemies.setStage(stage);
 	
 	// STAGE FRAME
 	var stageFrame = new GroundLayer(gameConfig.stageFrame);
-	stageFrame.setParent(stage);
+	stageFrame.setStage(stage);
 	
 	// CONTROLS
 	controls = new ControlLayer(gameConfig.controls);
-	controls.setParent(stage);
+	controls.setStage(stage);
 	
 	// stage.add(gameLevelContainer);
 	
@@ -264,17 +264,17 @@ function detectCollisions() {
 			// trace('enemy: ');
 			// trace(enemy);
 
-			var col = collisionCheck(keke.getHitArea(), enemy); // check for enemy collision
+			// var col = collisionCheck(keke.getHitArea(), enemy); // check for enemy collision
+			var col = collisionCheck(enemy, keke.getHitArea());
 			// trace('\tcol.direction = ' + col.direction);
 
-			if(col.direction === Directions.BOTTOM) {
-				enemyObjs[key].health += keke.damage;
-				// enemyObjs[key].setHealth(keke.damage);
+			if(col.direction === Directions.TOP) {
 				trace('enemy bottom collision, enemy health = ' + enemyObjs[key].health + ', keke.damage = ' + keke.damage);
-				// keke.velY = 0;
-			} else if(col.direction === Directions.TOP || col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
+				enemyObjs[key].health += keke.damage;
+				keke.velY = 0;
+			} else if(col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
 				keke.health += enemyObjs[key].damage;
-				trace('enemy top/left/right collision, enemy damgae = ' + enemyObjs[key].damage);
+				trace('enemy top/left/right collision, enemy damage = ' + enemyObjs[key].damage + ', keke.health = ' + keke.health);
 				// keke.velX = 0;
 			}
 		}

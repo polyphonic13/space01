@@ -7,19 +7,21 @@ var Enemies = (function() {
 		// 	this.collection.push(new Enemy(params[i]));
 		// }
 		this.collection = {};
+		var enemy;
 		for(var key in params) {
-			this.collection[key] = new Enemy(params[key], key);
+			enemy = new Enemy(params[key], key, this);
+			this.collection[key] = enemy;
 		}
 		trace('\tend of Enemies constructor, collection = ');
 		trace(this.collection);
 	}
 
-	Enemies.prototype.setParent = function(stage) {
+	Enemies.prototype.setStage = function(stage) {
 		// for(var i = 0; i < this.collection.length; i++) {
-		// 	this.collection[i].setParent(stage);
+		// 	this.collection[i].setStage(stage);
 		// }
 		for(var key in this.collection) {
-			this.collection[key].setParent(stage);
+			this.collection[key].setStage(stage);
 		}
 	};
 	
@@ -43,6 +45,10 @@ var Enemies = (function() {
 		}
 	};
 	
+	Enemies.prototype.enemyDied = function(id) {
+		trace('Enemies/enemyDied, id = ' + id);
+		delete this.collection[id];
+	};
 	
 	return Enemies;
 })();

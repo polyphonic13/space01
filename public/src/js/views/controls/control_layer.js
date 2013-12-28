@@ -15,7 +15,7 @@ var ControlLayer = (function() {
 		_addListeners();
 	}
 	
-	ControlLayer.prototype.setParent = function(stage) {
+	ControlLayer.prototype.setStage = function(stage) {
 		this.model.stage = stage;
 		stage.add(this.model.layer);
 	};
