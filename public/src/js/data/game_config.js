@@ -233,7 +233,7 @@ var gameConfig = {
 	enemies: {
 		caterpillar01: {
 			x: 800,
-			y: stageConfig.height - 120,
+			y: stageConfig.height - 100,
 			width: 120,
 			height: 30,
 			views: [{
