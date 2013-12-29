@@ -9,13 +9,14 @@ var gameConfig = {
 		strokeWidth: 1
 	},
 	stageBg: {
-		imgUrl: 'images/night_sky.jpg',
+		// imgUrl: 'images/night_sky.jpg',
+		imgUrl: 'images/flat_background.jpg',
 		x: 0,
 		y: 0,
 		width: stageConfig.width,
-		// height: stageConfig.height
+		height: stageConfig.height,
 		// height: 500
-		height: (stageConfig.width * 0.625)
+		// height: (stageConfig.width * 0.625)
 	},
 	stageFrame: {
 		rects: [{
@@ -116,42 +117,41 @@ var gameConfig = {
 			id: 'floor1a',
 			x: -48,
 			y: stageConfig.height - 60,
-			width: 512,
+			width: 1024,
 			height: 50,
 			// fill: 'green',
 
 			fill: '#000000',
 			image: {
-				imgUrl: 'images/grass01_beginning.png',
+				imgUrl: 'images/grass01a.png',
 				x: -48,
 				y: stageConfig.height - 510,
-				width: 512,
+				width: 1024,
 				height: 463
 			}
+
 
 		},
 		{
 			id: 'floor1b',
-			x: 464,
+			x: 976,
 			y: stageConfig.height - 60,
-			width: 512,
+			width: 1024,
 			height: 50,
 			// fill: 'green'
-
+		
 			fill: '#000000',
 			image: {
-				imgUrl: 'images/grass01f.png',
-				x: 464,
-				y: stageConfig.height - 161,
-				width: 512,
-				height: 114,
-				speed: 6
+				imgUrl: 'images/grass01b.png',
+				x: 976,
+				y: stageConfig.height - 171,
+				width: 1024,
+				height: 124
 			}
-
 		},
 		{
 			id: 'floor1b_flame',
-			x: 976,
+			x: 2000,
 			y: stageConfig.height - 55,
 			width: 110,
 			height: 50,
@@ -160,74 +160,39 @@ var gameConfig = {
 		},
 		{
 			id: 'floor1c',
-			x: 1086,
+			x: 2110,
 			y: stageConfig.height - 60,
 			width: 512,
 			height: 50,
 			// fill: 'green',
-
+		
 			fill: '#000000',
 			image: {
 				imgUrl: 'images/grass01g.png',
-				x: 1086,
+				x: 2110,
 				y: stageConfig.height - 157,
 				width: 512,
 				height: 110
 			}
-
+		
 		},
 		{
 			id: 'floor1d',
-			x: 1598,
+			x: 2622,
 			y: stageConfig.height - 60,
 			width: 512,
 			height: 50,
 			// fill: 'green'
-
+		
 			fill: '#000000',
 			image: {
 				imgUrl: 'images/grass01h.png',
-				x: 1598,
+				x: 2622,
 				y: stageConfig.height - 171,
 				width: 512,
 				height: 124,
 			}
 
-		// },
-		// {
-		// 	id: 'floor2',
-		// 	x: 2060,
-		// 	y: stageConfig.height - 110,
-		// 	width: 2048,
-		// 	height: 150,
-		// 	fill: '#000000',
-		// 	image: {
-		// 		id: 'grass02',
-		// 		imgUrl: 'images/grass01.png',
-		// 		x: 2060,
-		// 		y: stageConfig.height - 305,
-		// 		width: 2048,
-		// 		height: 200,
-		// 		speed: 6
-		// 	}
-		// },
-		// {
-		// 	id: 'floor3',
-		// 	x: 41088,
-		// 	y: stageConfig.height - 170,
-		// 	width: 2048,
-		// 	height: 200,
-		// 	fill: '#000000',
-		// 	image: {
-		// 		id: 'grass03',
-		// 		imgUrl: 'images/grass01.png',
-		// 		// x: -256,
-		// 		x: 4108,
-		// 		y: stageConfig.height - 355,
-		// 		width: 2048,
-		// 		height: 200,
-		// 		speed: 6
-		// 	}
 		}]
 	},
 	enemies: {

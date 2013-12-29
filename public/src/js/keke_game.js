@@ -50,8 +50,8 @@ function startGame() {
 	// gameLevelContainer = new Kinetic.Container();
 
 	// PLAYER MOVEMENT BG LAYERS
-	playerMovementLayers = new ScrollingLayers(gameConfig.playerMovementLayers);
-	playerMovementLayers.setStage(stage);
+	// playerMovementLayers = new ScrollingLayers(gameConfig.playerMovementLayers);
+	// playerMovementLayers.setStage(stage);
 	
 	// GROUND
 	ground = new GroundLayer(gameConfig.ground);
