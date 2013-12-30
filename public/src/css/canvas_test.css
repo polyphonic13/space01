@@ -29,11 +29,27 @@ canvas {
 
 #message {
 	position: absolute;
-	top: 500px;
-	left: 0px;
+	left: 4px;
 	padding: 2px;
 	width: 796px;
 	height: 30px;
 	background: #cccccc;
 	border: 2px solid black;
+	
+	z-index: 5;
+}
+
+#controlDiv {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 800px;
+	height: 500px;
+	
+	z-index: 6;
+}
+
+.controlBtn {
+	position: absolute;
+	z-index: 7;
 }

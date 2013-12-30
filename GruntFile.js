@@ -66,12 +66,13 @@ module.exports = function(grunt) {
 			},
 			canvas_test: {
 				options: {
-					banner: "(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- KEKE_GAME.JS v<%= pkg.version %> created: <%= grunt.template.today(\"isoDateTime\") %>')})();\n"
+					banner: "(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- CANVAS_TEST.JS v<%= pkg.version %> created: <%= grunt.template.today(\"isoDateTime\") %>')})();\n"
 				},
 				src: [
-					'<%= srcDir %>/js/views/utils/logger.js',
-					'<%= srcDir %>/js/views/utils/image_manager.js',
-					'<%= srcDir %>/js/views/canvas_test2.js',
+					'<%= srcDir %>/js/utils/logger.js',
+					'<%= srcDir %>/js/utils/image_manager.js',
+					'<%= srcDir %>/js/views/controls/controls.js',
+					'<%= srcDir %>/js/canvas_test2.js',
 				],
 				dest: '<%= deployDir %>/js/canvas_test2.js'
 			}

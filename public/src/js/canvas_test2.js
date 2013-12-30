@@ -31,20 +31,23 @@ var controlKeys = {
 		src: 'images/keke_tiny_back.png'
 	},
 	{
-		id: 'reverseButton',
+		id: 'reverse',
 		src: 'images/arrow_left.png'
 	},
 	{
-		id: 'forwardButton',
+		id: 'forward',
 		src: 'images/arrow_right.png'
 	},
 	{
-		id: 'jumpButton',
+		id: 'jump',
 		src: 'images/arrow_up.png'
 	}],
 	imageManager,
+	top = 34,
+	width = document.documentElement.clientWidth - 10,
+    height = document.documentElement.clientHeight - 50,
 	cvsBackground = $("#background")[0],
-	cvsGround = $("#ground")[0],
+	cvsGround = $('#ground')[0],
 	cvsPlayer = $('#player')[0],
 	cvsControls = $('#controls')[0],
     ctxBackground = cvsBackground.getContext('2d'),
@@ -52,18 +55,11 @@ var controlKeys = {
 	ctxPlayer = cvsPlayer.getContext('2d'),
 	ctxControls = cvsControls.getContext('2d'),
 	messageDiv = $("#message"),
-	kekeUrl = 'images/keke_tiny.png',
-	kekeReverseUrl = "images/keke_tiny_back.png",
-	kekeW = 20,
-	kekeH = 55,
-	keke,
-	kekeReverse,
+	controlDiv = $("#controlDiv"),
 	previousCollisionId = '',
-    width = 800,
-    height = 500,
 	startLocation = {
 		x: 15,
-		y: height - 110
+		y: height - 210
 	},
     player = {
         x: startLocation.x,
@@ -80,6 +76,33 @@ var controlKeys = {
 		x: startLocation.x,
 		y: startLocation.y
 	},
+	controlButtons = {
+		reverse: {
+			id: 'reverse',
+			x: 20,
+			y: document.documentElement.clientHeight - 100,
+			width: 35,
+			height: 35,
+			pressed: false
+		},
+		forward: {
+			id: 'forward',
+			x: 75,
+			y: document.documentElement.clientHeight - 100,
+			width: 35,
+			height: 35,
+			pressed: false
+		},
+		jump: {
+			id: 'jump',
+			x: document.documentElement.clientWidth - 60,
+			y: document.documentElement.clientHeight - 100,
+			width: 35,
+			height: 35,
+			pressed: false
+		}
+	},
+	controls,
     keys = [],
     friction = .5,
     gravity = 0.2,
@@ -90,16 +113,14 @@ var controlKeys = {
 	won = false;
 
 
-_initGame(); 
-
 var boxes = [
 	// floor
 	{
 		id: 'floor',
 	    x: 0,
-	    y: height - 10,
+	    y: height - 60,
 	    width: width,
-	    height: 50,
+	    height: 60,
 		fill: 'red'
 	},
 	// left wall
@@ -124,7 +145,7 @@ var boxes = [
 	{
 		id: 'platform01',
 		x: 0,
-		y: height - 40,
+		y: height - 90,
 		width: 120,
 		height: 15,
 		fill: 'black'
@@ -132,7 +153,7 @@ var boxes = [
 	{
 		id: 'platform02',
 	    x: 80,
-	    y: height - 85,
+	    y: height - 135,
 	    width: 100,
 	    height: 15,
 		fill: 'black'
@@ -140,7 +161,7 @@ var boxes = [
 	{
 		id: 'platform03',
 	    x: 160,
-	    y: height - 130,
+	    y: height - 180,
 	    width: 80,
 	    height: 15,
 		fill: 'black'
@@ -148,7 +169,7 @@ var boxes = [
 	{
 		id: 'platform04',
 	    x: 240,
-	    y: height - 175,
+	    y: height - 225,
 	    width: 80,
 	    height: 15,
 		fill: 'black'
@@ -156,7 +177,7 @@ var boxes = [
 	{
 		id: 'platform05',
 	    x: 370,
-	    y: height - 80,
+	    y: height - 130,
 	    width: 80,
 	    height: 15,
 		fill: 'black'
@@ -164,7 +185,7 @@ var boxes = [
 	{
 		id: 'platform06',
 	    x: 440,
-	    y: height - 100,
+	    y: height - 150,
 	    width: 40,
 	    height: 15,
 		fill: 'black'
@@ -172,7 +193,7 @@ var boxes = [
 	{
 		id: 'platform07',
 	    x: 500,
-	    y: height - 100,
+	    y: height - 150,
 	    width: 40,
 	    height: 15,
 		fill: 'black'
@@ -180,7 +201,7 @@ var boxes = [
 	{
 		id: 'platform08',
 	    x: 560,
-	    y: height - 130,
+	    y: height - 180,
 	    width: 40,
 	    height: 15,
 		fill: 'black'
@@ -188,7 +209,7 @@ var boxes = [
 	{
 		id: 'platform09',
 	    x: 620,
-	    y: height - 140,
+	    y: height - 190,
 	    width: 40,
 	    height: 15,
 		fill: 'black'
@@ -196,7 +217,7 @@ var boxes = [
 	{
 		id: 'platform10',
 	    x: 680,
-	    y: height - 120,
+	    y: height - 170,
 	    width: 40,
 	    height: 15,
 		fill: 'black'
@@ -204,7 +225,7 @@ var boxes = [
 	{
 		id: 'platform11',
 	    x: 750,
-	    y: height - 110,
+	    y: height - 160,
 	    width: 40,
 	    height: 15,
 		fill: 'black'
@@ -215,9 +236,14 @@ cvsBackground.height = cvsGround.height = cvsPlayer.height = cvsControls.height 
 
 function update() {
     // check keys
-    if (keys[controlKeys.UP] || keys[controlKeys.SPACE]) {
+    if (keys[controlKeys.UP] || keys[controlKeys.SPACE] || controls.getJumping()) {
+		trace('THERE WAS A JUMP, jumping = ' + player.jumping + ', grounded = ' + player.grounded);
+		if(controls.getJumping()) {
+			controls.setJumping(false);
+		}
         // up arrow or space
-        if (!player.jumping && player.grounded && !jumpKeyDepressed) {
+        // if (!player.jumping && player.grounded && !jumpKeyDepressed) {
+        if (!player.jumping && player.grounded) {
             player.jumping = true;
             player.grounded = false;
 			jumpKeyDepressed = true;
@@ -226,14 +252,14 @@ function update() {
     }
 	previousVelX = player.velX;
 	
-    if (keys[controlKeys.RIGHT]) {
+    if (keys[controlKeys.RIGHT] || controls.getForward()) {
         // right arrow
         if (player.velX < player.speed) {
 			facingForward = true;
 			player.velX++;
 		}
 	}
-	if (keys[controlKeys.LEFT]) {         // left arrow         
+	if (keys[controlKeys.LEFT] || controls.getReverse()) {         // left arrow         
 		if (player.velX > -player.speed) {
 			facingForward = false;
     		player.velX--;
@@ -260,6 +286,7 @@ function update() {
 				_wonGame();
 			}
         } else if (col.direction === directions.BOTTOM) {
+	// trace('HIT SOMETHING ON THE BOTTOM');
             player.grounded = true;
             player.jumping = false;
 			if(col.id === 'floor') {
@@ -287,11 +314,11 @@ function update() {
 //	trace('player.velX = ' + player.velX + ', previousVelX = ' + previousVelX);
 	// only redraw when player has moved
 	if(player.x !== previousLocation.x || player.y !== previousLocation.y) {
-		ctxPlayer.clearRect((previousLocation.x-1), (previousLocation.y-1), (kekeW+2), (kekeH+2));
+		ctxPlayer.clearRect((previousLocation.x-1), (previousLocation.y-1), (player.width+2), (player.height+2));
 		if(facingForward) {
-			ctxPlayer.drawImage(imageManager.images['kekeForward'], player.x, player.y, kekeW, kekeH);
+			ctxPlayer.drawImage(imageManager.images['kekeForward'], player.x, player.y, player.width, player.height);
 		} else {
-			ctxPlayer.drawImage(imageManager.images['kekeReverse'], player.x, player.y, kekeW, kekeH);
+			ctxPlayer.drawImage(imageManager.images['kekeReverse'], player.x, player.y, player.width, player.height);
 		}
 
 	}
@@ -368,14 +395,21 @@ function _addGround() {
     for (var i = 0; i < boxes.length; i++) {
 	    ctxGround.beginPath();
 		ctxGround.fillStyle = boxes[i].fill;
-		// trace('boxe[' + i + '].fill = ' + boxes[i].fill);
+		// trace('boxes[' + i + '].fill = ' + boxes[i].fill);
         ctxGround.rect(boxes[i].x, boxes[i].y, boxes[i].width, boxes[i].height);
 	    ctxGround.fill();
     }
 }
 
 function _addKeke() {
-	ctxPlayer.drawImage(imageManager.images['kekeForward'], startLocation.x, startLocation.y, kekeW, kekeH);
+	ctxPlayer.drawImage(imageManager.images['kekeForward'], startLocation.x, startLocation.y, player.width, player.height);
+}
+
+function _addControls() {
+	controls = new Controls(controlButtons);
+	controls.setImages(imageManager, cvsControls);
+	// controls.addControls(controlDiv);
+	controls.addControls(ctxControls);
 }
 
 function _initGame() {
@@ -399,11 +433,18 @@ function _restartGame() {
 function _allImagesLoaded() {
 	trace('_allImagesLoaded, imageManager = ');
 	trace(imageManager);
+	// var msgY = document.documentElement.clientWidth - 30 + 'px'
+	// trace('document.documentElement.clientWidth - 30 = ' + msgY);
+	// messageDiv.attr({ top: msgY });
 	_addBackground();
 	_addGround();
 	_addKeke();
+	_addControls();
 	update();
 }
+
+_initGame(); 
+
 
 // document.body.addEventListener('keydown', function (e) {
 	$(document).keydown(function(e) {
@@ -435,3 +476,4 @@ $(document).ready(function() {
 	//update();
 	imageManager = new ImageManager(images, _allImagesLoaded);
 });
+
