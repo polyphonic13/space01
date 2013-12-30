@@ -9,7 +9,8 @@ var controlKeys = {
 		UP: 38,
 		DOWN: 40,
 		SPACE: 32,
-		RESET: 82 // restart
+		RESET: 82, // restart,
+		QUIT: 81
 	},
 	directions = {
 		LEFT: 'l',
@@ -17,9 +18,36 @@ var controlKeys = {
 		TOP: 't',
 		BOTTOM: 'b'
 	},
+	images = [{
+		id: 'bg',
+		src: 'images/flat_background800x500.jpg'
+	},
+	{
+		id: 'kekeForward',
+		src: 'images/keke_tiny.png'
+	},
+	{
+		id: 'kekeReverse',
+		src: 'images/keke_tiny_back.png'
+	},
+	{
+		id: 'reverseButton',
+		src: 'images/arrow_left.png'
+	},
+	{
+		id: 'forwardButton',
+		src: 'images/arrow_right.png'
+	},
+	{
+		id: 'jumpButton',
+		src: 'images/arrow_up.png'
+	}],
+	imageManager,
+	cvsBackground = $("#background")[0],
 	cvsGround = $("#ground")[0],
 	cvsPlayer = $('#player')[0],
 	cvsControls = $('#controls')[0],
+    ctxBackground = cvsBackground.getContext('2d'),
     ctxGround = cvsGround.getContext('2d'),
 	ctxPlayer = cvsPlayer.getContext('2d'),
 	ctxControls = cvsControls.getContext('2d'),
@@ -48,6 +76,10 @@ var controlKeys = {
         jumping: false,
         grounded: false
     },
+	previousLocation = {
+		x: startLocation.x,
+		y: startLocation.y
+	},
     keys = [],
     friction = .5,
     gravity = 0.2,
@@ -67,7 +99,8 @@ var boxes = [
 	    x: 0,
 	    y: height - 10,
 	    width: width,
-	    height: 50
+	    height: 50,
+		fill: 'red'
 	},
 	// left wall
 	{
@@ -75,7 +108,8 @@ var boxes = [
 	    x: 0,
 	    y: 0,
 	    width: 10,
-	    height: height
+	    height: height,
+		fill: 'black'
 	},
 	// right wall
 	{
@@ -83,7 +117,8 @@ var boxes = [
 	    x: width - 10,
 	    y: 0,
 	    width: 50,
-	    height: height
+	    height: height,
+		fill: 'black'
 	},
 	// platforms
 	{
@@ -91,81 +126,92 @@ var boxes = [
 		x: 0,
 		y: height - 40,
 		width: 120,
-		height: 15
+		height: 15,
+		fill: 'black'
 	},
 	{
 		id: 'platform02',
 	    x: 80,
 	    y: height - 85,
 	    width: 100,
-	    height: 15
+	    height: 15,
+		fill: 'black'
 	},
 	{
 		id: 'platform03',
 	    x: 160,
 	    y: height - 130,
 	    width: 80,
-	    height: 15
+	    height: 15,
+		fill: 'black'
 	},
 	{
 		id: 'platform04',
 	    x: 240,
 	    y: height - 175,
 	    width: 80,
-	    height: 15
+	    height: 15,
+		fill: 'black'
 	},
 	{
 		id: 'platform05',
 	    x: 370,
 	    y: height - 80,
 	    width: 80,
-	    height: 15
+	    height: 15,
+		fill: 'black'
 	},
 	{
 		id: 'platform06',
 	    x: 440,
 	    y: height - 100,
 	    width: 40,
-	    height: 15
+	    height: 15,
+		fill: 'black'
 	},
 	{
 		id: 'platform07',
 	    x: 500,
 	    y: height - 100,
 	    width: 40,
-	    height: 15
+	    height: 15,
+		fill: 'black'
 	},
 	{
 		id: 'platform08',
 	    x: 560,
 	    y: height - 130,
 	    width: 40,
-	    height: 15
+	    height: 15,
+		fill: 'black'
 	},
 	{
 		id: 'platform09',
 	    x: 620,
 	    y: height - 140,
 	    width: 40,
-	    height: 15
+	    height: 15,
+		fill: 'black'
 	},
 	{
 		id: 'platform10',
 	    x: 680,
 	    y: height - 120,
 	    width: 40,
-	    height: 15
+	    height: 15,
+		fill: 'black'
 	},
 	{
 		id: 'platform11',
 	    x: 750,
 	    y: height - 110,
 	    width: 40,
-	    height: 15
+	    height: 15,
+		fill: 'black'
 	}];
 
-cvsGround.width = cvsPlayer.width = cvsControls.width = width;
-cvsGround.height = cvsPlayer.height = cvsControls.height = height;
+cvsBackground.width = cvsGround.width = cvsPlayer.width = cvsControls.width = width;
+cvsBackground.height = cvsGround.height = cvsPlayer.height = cvsControls.height = height;
 
 function update() {
     // check keys
@@ -199,13 +245,10 @@ function update() {
 
     player.grounded = false;
 
-    ctxGround.clearRect(0, 0, width, height);
-    ctxGround.beginPath();
-	ctxGround.fillStyle = 'black';
 
     for (var i = 0; i < boxes.length; i++) {
 
-        ctxGround.rect(boxes[i].x, boxes[i].y, boxes[i].width, boxes[i].height);
+        // ctxGround.rect(boxes[i].x, boxes[i].y, boxes[i].width, boxes[i].height);
 
         var col = collisionCheck(player, boxes[i]);
 
@@ -239,17 +282,24 @@ function update() {
 	var newKekeX = player.x;
 	var newKekeY = player.y;
 	
-    ctxGround.fill();
     // ctxGround.fillStyle = 'aqua';
     // ctxGround.fillRect(player.x, player.y, player.width, player.height);
-//	console.log('player.velX = ' + player.velX + ', previousVelX = ' + previousVelX);
-	if(facingForward) {
-		ctxPlayer.drawImage(keke, player.x, player.y, kekeW, kekeH);
-		
-	} else {
-		ctxPlayer.drawImage(kekeReverse, player.x, player.y, kekeW, kekeH);
+//	trace('player.velX = ' + player.velX + ', previousVelX = ' + previousVelX);
+	// only redraw when player has moved
+	if(player.x !== previousLocation.x || player.y !== previousLocation.y) {
+		ctxPlayer.clearRect((previousLocation.x-1), (previousLocation.y-1), (kekeW+2), (kekeH+2));
+		if(facingForward) {
+			ctxPlayer.drawImage(imageManager.images['kekeForward'], player.x, player.y, kekeW, kekeH);
+		} else {
+			ctxPlayer.drawImage(imageManager.images['kekeReverse'], player.x, player.y, kekeW, kekeH);
+		}
+
 	}
 
+
+	previousLocation.x = player.x;
+	previousLocation.y = player.y;
+	
 	if(playing) {
 	    requestAnimationFrame(update);
 	}
@@ -297,30 +347,37 @@ function collisionCheck(shapeA, shapeB) {
 }
 
 function _death() {
-	console.log('died');
+	trace('died');
+	playing = false;
 	messageDiv.html('GAME OVER! Press [r] to restart.');
 }
 
 function _wonGame() {
-	console.log('won');
+	trace('won');
+	playing = false;
 	messageDiv.html('CONGRATULATIONS! You won. Press [r] to restart.');
 }
 
-function _addKeke() {
-	keke = new Image();
-	kekeReverse = new Image();
-	keke.onload = function() {
-		console.log('keke/onload');
-		console.log(ctxGround);
-		ctxGround.drawImage(keke, startLocation.x, startLocation.y, kekeW, kekeH);
-		update();
-	}
-	keke.src = kekeUrl;
-	kekeReverse.src = kekeReverseUrl;
-	console.log('keke = ');
-	console.log(keke);
-	
+function _addBackground() {
+	ctxBackground.drawImage(imageManager.images['bg'], 0, 0, cvsBackground.width, cvsBackground.height);
 }
+
+function _addGround() {
+	ctxGround.clearRect(0, 0, width, height);
+
+    for (var i = 0; i < boxes.length; i++) {
+	    ctxGround.beginPath();
+		ctxGround.fillStyle = boxes[i].fill;
+		// trace('boxe[' + i + '].fill = ' + boxes[i].fill);
+        ctxGround.rect(boxes[i].x, boxes[i].y, boxes[i].width, boxes[i].height);
+	    ctxGround.fill();
+    }
+}
+
+function _addKeke() {
+	ctxPlayer.drawImage(imageManager.images['kekeForward'], startLocation.x, startLocation.y, kekeW, kekeH);
+}
+
 function _initGame() {
 	for(var key in keys) {
 		keys[key] = false;
@@ -339,13 +396,27 @@ function _restartGame() {
     requestAnimationFrame(update);
 }
 
+function _allImagesLoaded() {
+	trace('_allImagesLoaded, imageManager = ');
+	trace(imageManager);
+	_addBackground();
+	_addGround();
+	_addKeke();
+	update();
+}
+
 // document.body.addEventListener('keydown', function (e) {
 	$(document).keydown(function(e) {
-	// console.log('keydown key code = ' + e.keyCode);
-	if(playing) {
-	    keys[e.keyCode] = true;
-	} else if(e.keyCode === controlKeys.RESET) {
-		_restartGame();
+	// trace('keydown key code = ' + e.keyCode);
+	if(e.keyCode === controlKeys.QUIT) {
+		messageDiv.html("Quit Game");
+		playing = false;
+	} else {
+		if(playing) {
+		    keys[e.keyCode] = true;
+		} else if(e.keyCode === controlKeys.RESET) {
+			_restartGame();
+		}
 	}
 });
 
@@ -362,5 +433,5 @@ $(document).keyup(function(e) {
 
 $(document).ready(function() {
 	//update();
-	_addKeke();
-})
+	imageManager = new ImageManager(images, _allImagesLoaded);
+});
