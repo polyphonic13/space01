@@ -191,6 +191,22 @@ var gameConfig = {
 		
 		},
 		{
+			id: 'tree01',
+			x: 2310,
+			y: stageConfig.height - 143,
+			width: 220,
+			height: 5,
+			fill: '#000000',
+			image: {
+				imgUrl: 'images/tree01.png',
+				x: 2290,
+				y: stageConfig.height - 530,
+				width: 256,
+				height: 452
+				
+			}
+		},
+		{
 			id: 'floor1e',
 			x: 2622,
 			y: stageConfig.height - 100,
