@@ -80,7 +80,7 @@ var GroundLayer = (function() {
 			_model.layer.add(image);
 			_model.layer.draw(); // layer has to have draw called each time there is a change
 	    };
-	    imageObj.src = params.imgUrl;
+	    imageObj.src = params.src;
 		
 	}
 	

@@ -59,6 +59,7 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/views/player/sprite_player.js',
 					'<%= srcDir %>/js/views/player/life_meter.js',
 					'<%= srcDir %>/js/views/controls/control_layer.js',
+					'<%= srcDir %>/js/views/controls/control_button.js',
 					'<%= srcDir %>/js/views/controls/joystick.js',
 					'<%= srcDir %>/js/keke_game.js'
 				],

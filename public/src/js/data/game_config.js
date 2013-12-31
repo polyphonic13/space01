@@ -9,8 +9,8 @@ var gameConfig = {
 		strokeWidth: 1
 	},
 	stageBg: {
-		// imgUrl: 'images/night_sky.jpg',
-		imgUrl: 'images/flat_background.jpg',
+		// src: 'images/night_sky.jpg',
+		src: 'images/flat_background.jpg',
 		x: 0,
 		y: 0,
 		width: stageConfig.width,
@@ -54,7 +54,7 @@ var gameConfig = {
 	},
 	scrollingLayers: [{
 		id: 'clouds1',
-		imgUrl: 'images/clouds.png',
+		src: 'images/clouds.png',
 		x: 0,
 		y: 0,
 		width: 2048,
@@ -63,7 +63,7 @@ var gameConfig = {
 	},
 	{
 		id: 'clouds2',
-		imgUrl: 'images/clouds.png',
+		src: 'images/clouds.png',
 		x: 2048,
 		y: 0,
 		width: 2048,
@@ -72,7 +72,7 @@ var gameConfig = {
 	}],
 	playerMovementLayers: [{
 		id: 'mountains',
-		imgUrl: 'images/hills03_grey.png',
+		src: 'images/hills03_grey.png',
 		x: 0,
 		// y: 50,
 		y: 30,
@@ -84,7 +84,7 @@ var gameConfig = {
 	},
 	{
 		id: 'backgroundTrees',
-		imgUrl: 'images/trees_back01.png',
+		src: 'images/trees_back01.png',
 		x: -5,
 		y: 80,
 		width: 2048,
@@ -94,7 +94,7 @@ var gameConfig = {
 	// },
 	// {
 	// 	id: 'foregroundTrees2',
-	// 	imgUrl: 'images/trees_fore01.png',
+	// 	src: 'images/trees_fore01.png',
 	// 	x: 0,
 	// 	y: stageConfig.height - 550,
 	// 	width: 2048,
@@ -103,7 +103,7 @@ var gameConfig = {
 	// },
 	// {
 	// 	id: 'foregroundTrees3',
-	// 	imgUrl: 'images/trees_fore01.png',
+	// 	src: 'images/trees_fore01.png',
 	// 	x: 2048,
 	// 	y: stageConfig.height - 550,
 	// 	width: 2048,
@@ -124,7 +124,7 @@ var gameConfig = {
 
 			fill: '#000000',
 			image: {
-				imgUrl: 'images/grass01a.png',
+				src: 'images/grass01a.png',
 				x: -48,
 				y: stageConfig.height - 510,
 				width: 1024,
@@ -140,7 +140,7 @@ var gameConfig = {
 			height: 5,
 			fill: '#000000',
 			image: {
-				imgUrl: 'images/tree01.png',
+				src: 'images/tree01.png',
 				x: 1390,
 				y: stageConfig.height - 530,
 				width: 256,
@@ -159,7 +159,7 @@ var gameConfig = {
 		
 			fill: '#000000',
 			image: {
-				imgUrl: 'images/grass01b.png',
+				src: 'images/grass01b.png',
 				x: 976,
 				y: stageConfig.height - 191,
 				width: 1024,
@@ -168,7 +168,7 @@ var gameConfig = {
 		},
 		{
 			id: 'floor1b_flame',
-			direction: 'horizontal',
+			direction: 'both',
 			x: 2000,
 			y: stageConfig.height - 55,
 			width: 110,
@@ -187,7 +187,7 @@ var gameConfig = {
 		
 			fill: '#000000',
 			image: {
-				imgUrl: 'images/grass01g.png',
+				src: 'images/grass01g.png',
 				x: 2110,
 				y: stageConfig.height - 177,
 				width: 512,
@@ -204,7 +204,7 @@ var gameConfig = {
 			height: 5,
 			fill: '#000000',
 			image: {
-				imgUrl: 'images/tree02.png',
+				src: 'images/tree02.png',
 				x: 2290,
 				y: stageConfig.height - 530,
 				width: 269,
@@ -216,12 +216,12 @@ var gameConfig = {
 			id: 'tree03',
 			direction: 'horizontal',
 			x: 2630,
-			y: stageConfig.height - 200,
-			width: 220,
+			y: stageConfig.height - 220,
+			width: 210,
 			height: 5,
 			fill: '#000000',
 			image: {
-				imgUrl: 'images/tree03.png',
+				src: 'images/tree03.png',
 				x: 2590,
 				y: stageConfig.height - 580,
 				width: 290,
@@ -240,7 +240,7 @@ var gameConfig = {
 		
 			fill: '#000000',
 			image: {
-				imgUrl: 'images/grass01h.png',
+				src: 'images/grass01h.png',
 				x: 2622,
 				y: stageConfig.height - 211,
 				width: 512,
@@ -352,7 +352,7 @@ var gameConfig = {
 		height: 32,
 		views: [{
 			type: 'Image',
-			imgUrl: 'images/heart.png',
+			src: 'images/heart.png',
 			x: 0,
 			y: 0,
 			width: 32,
@@ -371,6 +371,14 @@ var gameConfig = {
 		}]
 	},
 	controls: {
+		id: 'quitButton',
+		type: 'Image',
+		src: 'images/quit_button.png',
+		x: 10,
+		y: 10,
+		width: 35,
+		height: 35
+		/*
 		views: [{
 			id: 'invisibleHitArea',
 			type: 'Rect',
@@ -385,7 +393,7 @@ var gameConfig = {
 		{
 			id: 'reverseButton',
 			type: 'Image',
-			imgUrl: 'images/arrow_left.png',
+			src: 'images/arrow_left.png',
 			x: 20,
 			y: stageConfig.height - 40,
 			width: 32,
@@ -394,7 +402,7 @@ var gameConfig = {
 		{
 			id: 'forwardButton',
 			type: 'Image',
-			imgUrl: 'images/arrow_right.png',
+			src: 'images/arrow_right.png',
 			x: 70,
 			y: stageConfig.height - 40,
 			width: 32,
@@ -403,7 +411,7 @@ var gameConfig = {
 		{
 			id: 'pauseButton',
 			type: 'Image',
-			imgUrl: 'images/pause_btn.png',
+			src: 'images/pause_btn.png',
 			// x: stageConfig.width - 110,
 			// y: stageConfig.height - 40,
 			x: 20,
@@ -414,7 +422,7 @@ var gameConfig = {
 		{
 			id: 'jumpButton',
 			type: 'Image',
-			imgUrl: 'images/arrow_up.png',
+			src: 'images/arrow_up.png',
 			x: stageConfig.width - 60,
 			y: stageConfig.height - 40,
 			width: 32,
@@ -454,6 +462,7 @@ var gameConfig = {
 				height: 50
 			}
 		}
+		*/
 	},
 	level: {
 		minX: 5,

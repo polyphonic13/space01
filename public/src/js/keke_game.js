@@ -78,6 +78,8 @@ function startGame() {
 	// controls = new ControlLayer(gameConfig.controls);
 	controls = new Joystick();
 	controls.setStage(stage);
+	quitButton = new ControlButton(gameConfig.controls);
+	quitButton.setStage(stage); 
 	
 	// stage.add(gameLevelContainer);
 	
@@ -151,7 +153,7 @@ function update() {
 }
 
 function checkInput() {
-	if(controls.getQuit()) {
+	if(quitButton.getWasPressed()) {
 		quit('quit');
 	} else {
 	    if (keys[ControlKeys.UP] || controls.getJumped()) {
@@ -231,7 +233,7 @@ function detectCollisions() {
 		} else if(direction === 'vertical') {
 			col = verticalCollisionCheck(keke.getHitArea(), rect);
 		} else {
-			col = collisionCheck(keke.getHitArea(), rect); // check for floor collision
+			col = collisionCheck(keke.getHitArea(), rect);
 		}
 
 	    if (col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
@@ -269,7 +271,7 @@ function detectCollisions() {
 			enemyPos = enemyObjs[key].getAbsolutePosition();
 			// only test nearby enemies for collision
 			if(enemyPos.x < (kekeHitArea.x + 100) && enemyPos.x > -(kekeHitArea.x + 100)) { 
-				trace('enemyPos = ' + enemyPos.x + '/' + enemyPos.y + ', keke = ' + kekeHitArea.x + '/' + kekeHitArea.y);
+				// trace('enemyPos = ' + enemyPos.x + '/' + enemyPos.y + ', keke = ' + kekeHitArea.x + '/' + kekeHitArea.y);
 				enemy = {
 					x: enemyPos.x,
 					y: enemyPos.y,
@@ -460,21 +462,17 @@ function quit(message) {
 
 	keke.stop();
 	keke.remove();
-	// keke = null;
 	
 	enemies.remove();
 	
 	controls.reset();
 	controls.remove();
-	// controls = null;
+	
+	quitButton.remove();
 	
 	lifeMeter.remove();
 	
 	ground.remove();
-	// ground = null;
-	
-	// playerMovementLayers.remove();
-	// playerMovementLayers = null;
 	
 	window.keyup = null;
 	window.keydown = null;

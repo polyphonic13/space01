@@ -117,7 +117,7 @@ var Enemy = (function() {
 			_model.viewObjs.push(image);
 			_model.layer.draw(); // layer has to have draw called each time there is a change
 	    };
-	    imageObj.src = params.imgUrl;
+	    imageObj.src = params.src;
 	}
 	
 	return Enemy;

@@ -1,6 +1,7 @@
 var ControlButton = (function() {
 	
 	var _model = {
+		type: 'Circle',
 		x: 0,
 		y: 0,
 		radius: 40,
@@ -16,11 +17,15 @@ var ControlButton = (function() {
 	function ControlButton(params) {
 		_model = Utils.extend(_model, params);
 		_buildViews();
-		// _addListeners();
 	}
 
 	ControlButton.prototype.getLayer = function() {
 		return _model.layer;
+	};
+	
+	ControlButton.prototype.setStage = function(stage) {
+		_model.stage = stage;
+		stage.add(_model.layer);
 	};
 	
 	ControlButton.prototype.getPressed = function() {
@@ -31,8 +36,12 @@ var ControlButton = (function() {
 		return _wasPressed;
 	};
 	
-	ControlButton.prototype.setWasPressed = function(pressed) {
-		_wasPressed = pressed;
+	ControlButton.prototype.setWasPressed = function(val) {
+		_wasPressed = val;
+	};
+	
+	ControlButton.prototype.remove = function() {
+		_model.layer.remove();
 	};
 	
 	function _buildViews() {
@@ -43,16 +52,43 @@ var ControlButton = (function() {
 			});
 		}
 		
-		_circle = new Kinetic.Circle(_model);
-		_model.layer.add(_circle);
+		if(_model.type === 'Image') {
+			_buildImageView(_model);
+		} else {
+			_circle = new Kinetic.Circle(_model);
+			_model.layer.add(_circle);
+			_model.view = _circle;
+			_addListeners();
+		}
     }
 
+	function _buildImageView(params) {
+	    var imageObj = new Image();
+		
+		var imgConfig = {
+			x: params.x,
+			y: params.y,
+			width: params.width,
+			height: params.height,
+			image: imageObj
+		};
+
+	    imageObj.onload = function() {
+			var image = new Kinetic.Image(imgConfig);
+			_model.layer.add(image);
+			_model.layer.draw(); // layer has to have draw called each time there is a change
+			_model.view = image;
+			_addListeners();
+	    };
+	    imageObj.src = params.src;
+	}
+	
 	function _addListeners() {
-		_circle.on('mousedown touchstart', function(evt) {
+		_model.view.on('mousedown touchstart', function(evt) {
 			_onPressed(evt);
 		});
 		
-		_circle.on('mouseup touchend', function(evt) {
+		_model.view.on('mouseup touchend', function(evt) {
 			_onReleased(evt);
 		});
 		

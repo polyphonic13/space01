@@ -41,7 +41,7 @@ var ImageLayer = (function() {
 			_model.layer.add(image);
 			_model.layer.draw(); // layer has to have draw called each time there is a change
 	    };
-	    imageObj.src = _model.imgUrl;
+	    imageObj.src = _model.src;
 	}
 
 	return ImageLayer;
