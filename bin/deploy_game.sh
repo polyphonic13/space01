@@ -100,12 +100,12 @@ if([ "$REMOVE_DEPLOY" = 1 ])
 	remove_deploy_dir
 fi
 
-# if([ "$SKIP_GRUNT" = 0 ])
-# 	then 
-# 	run_grunt_tasks
-# else
-# 	make_temp_dir_and_copy_files_to_server
-# fi
+if([ "$SKIP_GRUNT" = 0 ])
+	then 
+	run_grunt_tasks
+else
+	make_temp_dir_and_copy_files_to_server
+fi
 
 if([ "$COMMIT_TARGET_BRANCH" != "" ])
 	then
