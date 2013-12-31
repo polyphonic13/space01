@@ -53,6 +53,10 @@ var gameConfig = {
 		src: 'images/caterpillar01a.png'
 	},
 	{
+		id: 'candyCane01',
+		src: 'images/candy_cane01.png'
+	},
+	{
 		id: 'keke',
 		src: 'images/keke_character2.png'
 	},
@@ -404,6 +408,40 @@ var gameConfig = {
 			alive: true
 		}
 		
+	},
+	bonuses: {
+		candyCane01: {
+			x: 500,
+			y: stageConfig.height - 120,
+			width: 23,
+			height: 56,
+			views: [{
+				type: 'Image',
+				x: 0,
+				y: 0,
+				width: 23,
+				height: 56,
+				src: 'candyCane01'
+			}],
+			boost: 5,
+			collected: false
+		},
+		candyCane02: {
+			x: 500,
+			y: stageConfig.height - 120,
+			width: 23,
+			height: 56,
+			views: [{
+				type: 'Image',
+				x: 0,
+				y: 0,
+				width: 23,
+				height: 56,
+				src: 'candyCane01'
+			}],
+			boost: 5,
+			collected: false
+		}
 	},
  	player: {
 		x: stageConfig.width / 2,

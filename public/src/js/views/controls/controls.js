@@ -44,9 +44,9 @@ var Controls = (function() {
 	};
 	
 	function _addViews(views) {
-		trace('Controls/_addViews');
+		// trace('Controls/_addViews');
 		for(var key in views) {
-			trace('\tviews['+key+'].type = ' + views[key].type);
+			// trace('\tviews['+key+'].type = ' + views[key].type);
 			_views[views[key].id] = new ControlTypes[views[key].type](views[key]);
 		}
 	}

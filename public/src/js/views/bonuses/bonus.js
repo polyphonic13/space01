@@ -1,13 +1,14 @@
-var Enemy = (function() {
-	Utils.inherits(Enemy, View);
+var Bonus = (function() {
+	Utils.inherits(Bonus, View);
 
 	var _this;
 	
-	function Enemy(params, id, holder) {
+	function Bonus(params, id, holder) {
+		trace('Bonus/constructor');
 		_this = this;
 		this.holder = holder;
 		params.id = id;
-		Enemy._super.constructor.call(this, params);
+		Bonus._super.constructor.call(this, params);
 
 		this.model.viewObjs = [];
 		this.buildViews();
@@ -18,54 +19,42 @@ var Enemy = (function() {
 		
 		this.model.layer.setPosition(this.model.x, this.model.y);
 		
-		this.__defineGetter__('alive', function() {
-			// trace('Enemy/get health: ' + this.model.health);
-			return this.model.alive;
+		this.__defineGetter__('collected', function() {
+			// trace('Bonus/get health: ' + this.model.health);
+			return this.model.collected;
 		});
 		
-		this.__defineGetter__('health', function() {
-			// trace('Enemy/get health: ' + this.model.health);
-			return this.model.health;
-		});
-		
-		this.__defineSetter__('health', function(val) {
-			this.model.health = val;
-			if(this.model.health <= 0) {
-				this.die();
-			}
-		});
-
-		this.__defineGetter__('damage', function() {
-			return this.model.damage;
+		this.__defineGetter__('boost', function() {
+			return this.model.boost;
 		});
 		
 	}
 	
-	Enemy.prototype.getAbsolutePosition = function() {
+	Bonus.prototype.getAbsolutePosition = function() {
 		return this.model.viewObjs[0].getAbsolutePosition();
 	};
 	
-	Enemy.prototype.moveByVelocity = function(velX, velY) {
+	Bonus.prototype.moveByVelocity = function(velX, velY) {
 		this.model.layer.move((velX * this.model.speed), (velY * this.model.speed));
 	};
 
-	Enemy.prototype.die = function() {
-		trace('killed enemy['+this.model.id+'], this.model.layer = ');
+	Bonus.prototype.collect = function() {
+		trace('collected bonus['+this.model.id+'], this.model.layer = ');
 		trace(this.model.layer);
 		if(this.anim) {
 			this.anim.stop();
 		}
-		this.holder.enemyDied(this.model.id);
+		this.holder.bonusCollected(this.model.id);
 		this.model.layer.remove();
-		this.model.alive = false;
+		this.model.collected = true;
 	};
 	
-	Enemy.prototype.remove = function() {
+	Bonus.prototype.remove = function() {
 		this.model.layer.remove();
 	};
 	
-	Enemy.prototype.setUpAnimation = function(params) {
-		// trace('Enemy/setUpAnimation, views =');
+	Bonus.prototype.setUpAnimation = function(params) {
+		// trace('Bonus/setUpAnimation, views =');
 		// trace(this.model.viewObjs);
 		var viewObjs = this.model.viewObjs;
 		var layer = this.model.layer;
@@ -81,14 +70,15 @@ var Enemy = (function() {
 		
 	};
 	
-	Enemy.prototype.buildViews = function() {
+	Bonus.prototype.buildViews = function() {
 		var views = this.model.views
 		var view;
-		// trace('Enemy/buildViews, this position = ');
+		// trace('Bonus/buildViews, this position = ');
 		// trace(this.model.layer.getAbsolutePosition());
+		trace('Bonus/buildViews');
 		for(var i = 0; i < views.length; i++) {
-			// trace('\tviews['+i+'] = ');
-			// trace(views[i]);
+			trace('\tviews['+i+'] = ');
+			trace(views[i]);
 			if(views[i].type === 'Image') {
 				this.model.viewObjs.push(this.addImage(views[i], this.model));
 			} else {
@@ -99,5 +89,5 @@ var Enemy = (function() {
 		}
 	}
 	
-	return Enemy;
+	return Bonus;
 })();

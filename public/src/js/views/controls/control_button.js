@@ -15,7 +15,7 @@ var ControlButton = (function() {
 	var _wasPressed = false;
 	
 	function ControlButton(params) {
-		trace('ControlButton/constructor');
+		// trace('ControlButton/constructor');
 		_model = Utils.extend(_model, params);
 		_buildViews();
 	}
@@ -65,7 +65,7 @@ var ControlButton = (function() {
 
 	function _buildImageView(params) {
 	    // var imageObj = new Image();
-		trace('ControlButton/_buildImageView, image = ');
+		// trace('ControlButton/_buildImageView, image = ');
 		trace(imageManager.getImage(params.src));
 		
 		var image = new Kinetic.Image({

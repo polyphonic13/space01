@@ -9,6 +9,7 @@ var ticker,
 	keke,
 	lifeMeter,
 	enemies,
+	bonuses,
 	ground,
 	animationToPlay,
 	playerMovementLayers,
@@ -70,6 +71,9 @@ function startGame() {
 	enemies = new Enemies(gameConfig.enemies);
 	enemies.setStage(stage);
 	
+	bonuses = new Bonuses(gameConfig.bonuses);
+	bonuses.setStage(stage);
+	
 	// CONTROLS
 	controls = new Controls(gameConfig.controls);
 	controls.setStage(stage);
@@ -111,7 +115,7 @@ function update() {
 			if(keke.velX !== 0) {
 				ground.moveByVelocity(keke.velX, 0);
 				enemies.moveByVelocity(keke.velX, 0);
-
+				bonuses.moveByVelocity(keke.velX, 0);
 				// playerMovementLayers.moveByVelocity(keke.velX, 0);
 			} else {
 				// trace('no movement');
@@ -469,6 +473,8 @@ function quit(message) {
 	keke.remove();
 	
 	enemies.remove();
+	
+	bonuses.remove();
 	
 	controls.remove();
 	
