@@ -505,6 +505,7 @@ function quit(message) {
 	playing = false;
 	var stats = {};
 
+	stats.health = keke.health;
 	keke.stop();
 	keke.remove();
 
@@ -537,7 +538,7 @@ function addMenuScreen(message, stats) {
 		stroke: '#000000',
 		strokeWidth: 1,
 		fill: '#ffffff',
-		opacity: 0.5
+		opacity: 0.75
 	});
 	
 	var gameOverText = new Kinetic.Text({
@@ -587,15 +588,29 @@ function addMenuScreen(message, stats) {
 	if(typeof(stats) !== 'undefined') {
 		trace('stats = ');
 		trace(stats);
-		var statsMsg = 'Statistics:\nBugs squashed = ' + stats.enemies.killed + '/' + stats.enemies.total + '\nBonuses collected = ' + stats.bonuses.collected + '/' + stats.bonuses.total;
+		var healthPoints = stats.health * 500;
+		var killPoints = stats.enemies.killed * 1000;
+		var bonusPoints = stats.bonuses.collected * 2000;
+		var totalPoints = healthPoints + killPoints + bonusPoints;
 		
+		var statsMsg = 'Statistics:'
+			+ '\n\nBugs squashed = ' + stats.enemies.killed + '/' + stats.enemies.total 
+			+ '\nBonuses collected = ' + stats.bonuses.collected + '/' + stats.bonuses.total
+			+ '\n\nHealth bonus = ' + healthPoints
+			+ '\nKills = ' + killPoints
+			+ '\nBonuses = ' + bonusPoints
+			+ '\nTotal = ' + totalPoints;
+		
+		if(totalPoints === 63000) {
+			statsMsg += '\n\nPERFECT SCORE!';
+		}
 		var statsText = new Kinetic.Text({
-			x: 0,
-			y: stage.getHeight() / 3 + 200,
-			width: stage.getWidth(),
+			x: 50,
+			y: stage.getHeight() / 3 + 100,
+			width: stage.getWidth() - 100,
 			text: statsMsg,
-			align: 'center',
-			fontSize: 28,
+			align: 'right',
+			fontSize: 18,
 			fontFamily: 'Calibri',
 			fill: '#000000'
 		});

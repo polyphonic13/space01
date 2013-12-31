@@ -382,7 +382,7 @@ var gameConfig = {
 			alive: true
 		},
 		caterpillar04: {
-			x: 2500,
+			x: 2300,
 			y: stageConfig.height - 120,
 			width: 142,
 			height: 30,
