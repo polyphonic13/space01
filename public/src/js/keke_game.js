@@ -209,23 +209,23 @@ function checkInput() {
 
 function detectCollisions() {
 
-	var groundObjs = ground.collection;
+	var grounds = ground.collection;
 	var rect;
 	var rectPos;
 	
-	for(var i = 0; i < groundObjs.length; i++) {
-		// trace('groundObjs['+i+'].attrs = ');
-		// trace(groundObjs[i].attrs);
-		rectPos = groundObjs[i].rect.getAbsolutePosition();
+	for(var i = 0; i < grounds.length; i++) {
+		// trace('grounds['+i+'].attrs = ');
+		// trace(grounds[i].attrs);
+		rectPos = grounds[i].rect.getAbsolutePosition();
 		rect = {
 			x: rectPos.x,
 			y: rectPos.y,
-			width: groundObjs[i].rect.attrs.width,
-			height: groundObjs[i].rect.attrs.height
+			width: grounds[i].rect.attrs.width,
+			height: grounds[i].rect.attrs.height
 		}
 		
 		var col;
-		var direction = groundObjs[i].config.direction;
+		var direction = grounds[i].config.direction;
 		if(direction === 'horizontal') {
 			col = horizontalCollisionCheck(keke.getHitArea(), rect);
 		} else if(direction === 'vertical') {
@@ -250,10 +250,10 @@ function detectCollisions() {
 	    }
 	
 		if(col.direction !== '') {
-			// trace('groundObjs['+i+'].damage = ' + groundObjs[i].damage);
-			if(groundObjs[i].config.damage) {
+			// trace('grounds['+i+'].damage = ' + grounds[i].damage);
+			if(grounds[i].config.damage) {
 				trace('something damaging was hit');
-				keke.health += groundObjs[i].config.damage;
+				keke.health += grounds[i].config.damage;
 			}
 		}
 	}

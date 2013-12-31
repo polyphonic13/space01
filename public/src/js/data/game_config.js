@@ -196,7 +196,7 @@ var gameConfig = {
 		
 		},
 		{
-			id: 'tree01',
+			id: 'tree02',
 			direction: 'horizontal',
 			x: 2310,
 			y: stageConfig.height - 143,
@@ -204,11 +204,28 @@ var gameConfig = {
 			height: 5,
 			fill: '#000000',
 			image: {
-				imgUrl: 'images/tree01.png',
+				imgUrl: 'images/tree02.png',
 				x: 2290,
 				y: stageConfig.height - 530,
-				width: 256,
-				height: 452
+				width: 269,
+				height: 476
+				
+			}
+		},
+		{
+			id: 'tree03',
+			direction: 'horizontal',
+			x: 2610,
+			y: stageConfig.height - 200,
+			width: 220,
+			height: 5,
+			fill: '#000000',
+			image: {
+				imgUrl: 'images/tree03.png',
+				x: 2590,
+				y: stageConfig.height - 580,
+				width: 290,
+				height: 480
 				
 			}
 		},
