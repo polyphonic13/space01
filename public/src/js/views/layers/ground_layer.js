@@ -7,6 +7,11 @@ var GroundLayer = (function() {
 		// trace('GroundLayer, params =');
 		// trace(params);
 		_this = this;
+		
+		params.layer = new Kinetic.Layer({
+			clearBeforeUpdate: false
+		});
+		
 		GroundLayer._super.constructor.call(this, params);
 
 		this.collection = [];

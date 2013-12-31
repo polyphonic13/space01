@@ -214,7 +214,10 @@ function checkInput() {
  }
 
 function detectCollisions() {
+	var kekeHitArea = keke.getHitArea();
+	var col;
 
+	// GROUND COLLISIONS
 	var grounds = ground.collection;
 	var rect;
 	var rectPos;
@@ -223,51 +226,55 @@ function detectCollisions() {
 		// trace('grounds['+i+'].attrs = ');
 		// trace(grounds[i].attrs);
 		rectPos = grounds[i].rect.getAbsolutePosition();
-		rect = {
-			x: rectPos.x,
-			y: rectPos.y,
-			width: grounds[i].rect.attrs.width,
-			height: grounds[i].rect.attrs.height
-		}
-		
-		var col;
-		var direction = grounds[i].config.direction;
-		if(direction === 'horizontal') {
-			col = horizontalCollisionCheck(keke.getHitArea(), rect);
-		} else if(direction === 'vertical') {
-			col = verticalCollisionCheck(keke.getHitArea(), rect);
-		} else {
-			col = collisionCheck(keke.getHitArea(), rect);
-		}
-
-	    if (col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
-	        keke.velX = 0;
-	        keke.jumping = false;
-		} else if (col.direction === Directions.BOTTOM) {
-			if(keke.justJumped) {
-				keke.justJumped = false;
-			} else {
-		        keke.grounded = true;
-		        keke.jumping = false;
-				jumpKeyDepressed = false;
+		// trace('grounds['+i+']');
+		// trace('\trectPos.x = ' + rectPos.x + ', kekeHiteArea.x + 100 = ' + (kekeHitArea.x + 100));
+		// only test nearby ground for collision
+		if(rectPos.x < (kekeHitArea.x + kekeHitArea.width + 100) && rectPos.x > -(kekeHitArea.x + kekeHitArea.width + 100)) { 
+			rect = {
+				x: rectPos.x,
+				y: rectPos.y,
+				width: grounds[i].rect.attrs.width,
+				height: grounds[i].rect.attrs.height
 			}
-		} else if (col.direction === Directions.TOP) {
-	        keke.velY *= -1;
-	    }
+		
+			var direction = grounds[i].config.direction;
+			if(direction === 'horizontal') {
+				col = horizontalCollisionCheck(kekeHitArea, rect);
+			} else if(direction === 'vertical') {
+				col = verticalCollisionCheck(kekeHitArea, rect);
+			} else {
+				col = collisionCheck(kekeHitArea, rect);
+			}
+
+		    if (col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
+		        keke.velX = 0;
+		        keke.jumping = false;
+			} else if (col.direction === Directions.BOTTOM) {
+				if(keke.justJumped) {
+					keke.justJumped = false;
+				} else {
+			        keke.grounded = true;
+			        keke.jumping = false;
+					jumpKeyDepressed = false;
+				}
+			} else if (col.direction === Directions.TOP) {
+		        // keke.velY *= -1;
+		    }
 	
-		if(col.direction !== '') {
-			// trace('grounds['+i+'].damage = ' + grounds[i].damage);
-			if(grounds[i].config.damage) {
-				trace('something damaging was hit');
-				keke.health += grounds[i].config.damage;
+			if(col.direction !== '') {
+				// trace('grounds['+i+'].damage = ' + grounds[i].damage);
+				if(grounds[i].config.damage) {
+					trace('something damaging was hit');
+					keke.health += grounds[i].config.damage;
+				}
 			}
 		}
 	}
 
+	// ENEMY COLLISIONS
 	var enemyObjs = enemies.collection;
 	var enemy;
 	var enemyPos;
-	var kekeHitArea = keke.getHitArea();
 	
 	// for(var j = 0; j < enemyObjs.length; j++) {
 	for(var key in enemyObjs) {
@@ -285,7 +292,7 @@ function detectCollisions() {
 				// trace('enemy: ');
 				// trace(enemy);
 
-				var col = collisionCheck(enemy, kekeHitArea);
+				col = collisionCheck(enemy, kekeHitArea);
 				var enemyVerticalCenter = (enemyPos.y + (enemyObjs[key].height/2));
 				var kekeBottom = (kekeHitArea.y + kekeHitArea.height);
 				// trace('\tcol.direction = ' + col.direction + '\n\tenemy v center = ' + enemyVerticalCenter + ', keke bottom = ' + kekeBottom);

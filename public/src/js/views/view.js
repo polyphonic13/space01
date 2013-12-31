@@ -6,6 +6,9 @@ var View = (function() {
 		_this = this;
 		this.model = params;
 
+		trace('View/constructor, layer = ');
+		trace(this.model.layer);
+		
 		if(!this.model.layer) {
 			this.model.layer = new Kinetic.Layer();
 			if(this.model.parent) {
