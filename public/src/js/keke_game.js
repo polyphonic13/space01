@@ -261,32 +261,37 @@ function detectCollisions() {
 	var enemyObjs = enemies.collection;
 	var enemy;
 	var enemyPos;
+	var kekeHitArea = keke.getHitArea();
 	
 	// for(var j = 0; j < enemyObjs.length; j++) {
 	for(var key in enemyObjs) {
 		if(enemyObjs[key].alive) {
 			enemyPos = enemyObjs[key].getAbsolutePosition();
-			enemy = {
-				x: enemyPos.x,
-				y: enemyPos.y,
-				width: enemyObjs[key].width,
-				height: enemyObjs[key].height
-			};
-			// trace('enemy: ');
-			// trace(enemy);
+			// only test nearby enemies for collision
+			if(enemyPos.x < (kekeHitArea.x + 100) && enemyPos.x > -(kekeHitArea.x + 100)) { 
+				trace('enemyPos = ' + enemyPos.x + '/' + enemyPos.y + ', keke = ' + kekeHitArea.x + '/' + kekeHitArea.y);
+				enemy = {
+					x: enemyPos.x,
+					y: enemyPos.y,
+					width: enemyObjs[key].width,
+					height: enemyObjs[key].height
+				};
+				// trace('enemy: ');
+				// trace(enemy);
 
-			// var col = collisionCheck(keke.getHitArea(), enemy); // check for enemy collision
-			var col = collisionCheck(enemy, keke.getHitArea());
-			// trace('\tcol.direction = ' + col.direction);
+				// var col = collisionCheck(keke.getHitArea(), enemy); // check for enemy collision
+				var col = collisionCheck(enemy, kekeHitArea);
+				// trace('\tcol.direction = ' + col.direction);
 
-			if(col.direction === Directions.TOP) {
-				trace('enemy bottom collision, enemy health = ' + enemyObjs[key].health + ', keke.damage = ' + keke.damage);
-				enemyObjs[key].health += keke.damage;
-				keke.velY = 0;
-			} else if(col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
-				keke.health += enemyObjs[key].damage;
-				trace('enemy top/left/right collision, enemy damage = ' + enemyObjs[key].damage + ', keke.health = ' + keke.health);
-				// keke.velX = 0;
+				if(col.direction === Directions.TOP) {
+					trace('enemy bottom collision, enemy health = ' + enemyObjs[key].health + ', keke.damage = ' + keke.damage);
+					enemyObjs[key].health += keke.damage;
+					keke.velY = 0;
+				} else if(col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
+					keke.health += enemyObjs[key].damage;
+					trace('enemy top/left/right collision, enemy damage = ' + enemyObjs[key].damage + ', keke.health = ' + keke.health);
+					// keke.velX = 0;
+				}
 			}
 		}
 	}

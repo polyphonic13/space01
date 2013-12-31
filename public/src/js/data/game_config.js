@@ -297,30 +297,30 @@ var gameConfig = {
 			damage: -5,
 			health: 10,
 			alive: true
-		},
-		caterpillar03: {
-			x: 2000,
-			y: stageConfig.height - 300,
-			width: 180,
-			height: 30,
-			views: [{
-				type: 'Rect',
-				x: 0,
-				y: 0,
-				width: 120,
-				height: 30,
-				fill: '#339933',
-				stroke: 'black',
-				strokeWidth: 1
-			}],
-			movement: {
-		      amplitude: 150,
-		      period: 5000
-			},
-			speed: 2,
-			damage: -5,
-			health: 10,
-			alive: true
+		// },
+		// caterpillar03: {
+		// 	x: 2000,
+		// 	y: stageConfig.height - 300,
+		// 	width: 180,
+		// 	height: 30,
+		// 	views: [{
+		// 		type: 'Rect',
+		// 		x: 0,
+		// 		y: 0,
+		// 		width: 120,
+		// 		height: 30,
+		// 		fill: '#339933',
+		// 		stroke: 'black',
+		// 		strokeWidth: 1
+		// 	}],
+		// 	movement: {
+		//       amplitude: 150,
+		//       period: 5000
+		// 	},
+		// 	speed: 2,
+		// 	damage: -5,
+		// 	health: 10,
+		// 	alive: true
 		}
 	},
  	player: {
@@ -457,7 +457,7 @@ var gameConfig = {
 	},
 	level: {
 		minX: 5,
-		maxX: -389
+		maxX: -589
 	},
 	friction: 0.5,
 	gravity: 0.67
