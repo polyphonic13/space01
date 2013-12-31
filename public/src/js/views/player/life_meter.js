@@ -34,23 +34,25 @@ var LifeMeter = (function() {
 	}
 	
 	function _buildImageView(params) {
-	    var imageObj = new Image();
+	    // var imageObj = new Image();
 		var _model = _this.model;
 		
-		var imgConfig = {
+		var image = new Kinetic.Image({
 			x: params.x,
 			y: params.y,
 			width: params.width,
 			height: params.height,
-			image: imageObj
-		};
-
-	    imageObj.onload = function() {
-			var image = new Kinetic.Image(imgConfig);
-			_model.layer.add(image);
-			_model.layer.draw(); // layer has to have draw called each time there is a change
-	    };
-	    imageObj.src = params.src;
+			image: imageManager.getImage(params.src)
+		});
+		_model.layer.add(image);
+		_model.layer.draw();
+		
+			// 	    imageObj.onload = function() {
+			// var image = new Kinetic.Image(imgConfig);
+			// _model.layer.add(image);
+			// _model.layer.draw(); // layer has to have draw called each time there is a change
+			// 	    };
+			// 	    imageObj.src = params.src;
 	}
 	
 	return LifeMeter;

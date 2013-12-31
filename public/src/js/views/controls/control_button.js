@@ -15,6 +15,7 @@ var ControlButton = (function() {
 	var _wasPressed = false;
 	
 	function ControlButton(params) {
+		trace('ControlButton/constructor');
 		_model = Utils.extend(_model, params);
 		_buildViews();
 	}
@@ -51,36 +52,33 @@ var ControlButton = (function() {
 				height: _model.radius
 			});
 		}
-		
-		if(_model.type === 'Image') {
+		// trace('_model.type = ' + _model.type);
+		// if(_model.type === 'Image') {
 			_buildImageView(_model);
-		} else {
-			_circle = new Kinetic.Circle(_model);
-			_model.layer.add(_circle);
-			_model.view = _circle;
-			_addListeners();
-		}
+		// } else {
+		// 	_circle = new Kinetic.Circle(_model);
+		// 	_model.layer.add(_circle);
+		// 	_model.view = _circle;
+		// 	_addListeners();
+		// }
     }
 
 	function _buildImageView(params) {
-	    var imageObj = new Image();
+	    // var imageObj = new Image();
+		trace('ControlButton/_buildImageView, image = ');
+		trace(imageManager.getImage(params.src));
 		
-		var imgConfig = {
+		var image = new Kinetic.Image({
 			x: params.x,
 			y: params.y,
 			width: params.width,
 			height: params.height,
-			image: imageObj
-		};
-
-	    imageObj.onload = function() {
-			var image = new Kinetic.Image(imgConfig);
-			_model.layer.add(image);
-			_model.layer.draw(); // layer has to have draw called each time there is a change
-			_model.view = image;
-			_addListeners();
-	    };
-	    imageObj.src = params.src;
+			image: imageManager.getImage(params.src)
+		});
+		_model.layer.add(image);
+		_model.layer.draw(); // layer has to have draw called each time there is a change
+		_model.view = image;
+		_addListeners();
 	}
 	
 	function _addListeners() {

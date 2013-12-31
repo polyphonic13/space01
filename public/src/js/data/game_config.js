@@ -8,49 +8,63 @@ var gameConfig = {
 		stroke: '#000000',
 		strokeWidth: 1
 	},
+	images: [{
+		id: 'stageBg',
+		src: 'images/flat_background.jpg'
+	},
+	{
+		id: 'grassO1a',
+		src: 'images/grass01a.png'
+	},
+	{
+		id: 'tree01',
+		src: 'images/tree01.png'
+	},
+	{
+		id: 'grass01b',
+		src: 'images/grass01b.png'
+	},
+	{
+		id: 'grass01g',
+		src: 'images/grass01g.png'
+	},
+	{
+		id: 'tree02',
+		src: 'images/tree02.png'
+	},
+	{
+		id: 'tree03',
+		src: 'images/tree03.png'
+	},
+	{
+		id: 'grass01h',
+		src: 'images/grass01h.png'
+	},
+	{
+		id: 'keke',
+		src: 'images/keke_character2.png'
+	},
+	{
+		id: 'heart',
+		src: 'images/heart.png'
+	},
+	{
+		id: 'quitButton',
+		src: 'images/quit_button.png'
+	},
+	{
+		id: 'joystickSmCircle',
+		src: 'images/joystick_sm_circle.png'
+	}],
 	stageBg: {
 		// src: 'images/night_sky.jpg',
-		src: 'images/flat_background.jpg',
+		src: 'stageBg',
 		x: 0,
 		y: 0,
 		width: stageConfig.width,
 		height: stageConfig.height,
 		// height: 500
 		// height: (stageConfig.width * 0.625)
-	},
-	stageFrame: {
-		rects: [{
-			id: 'top',
-			x: 0,
-			y: 0,
-			width: stageConfig.width,
-			height: 10,
-			fill: '#000000'
-		},
-		{
-			id: 'bottom',
-		    x: 0,
-		    y: stageConfig.height - 10,
-		    width: stageConfig.width,
-		    height: 10,
-			fill: '#000000'
-		},
-		{
-			id: 'left',
-		    x: 0,
-		    y: 0,
-		    width: 10,
-		    height: stageConfig.height,
-			fill: '#000000'
-		},
-		{
-			id: 'right',
-		    x: stageConfig.width - 10,
-		    y: 0,
-		    width: 50,
-		    height: stageConfig.height,
-			fill: '#000000'
-		}]
 	},
 	scrollingLayers: [{
 		id: 'clouds1',
@@ -124,7 +138,7 @@ var gameConfig = {
 
 			fill: '#000000',
 			image: {
-				src: 'images/grass01a.png',
+				src: 'grassO1a',
 				x: -48,
 				y: stageConfig.height - 510,
 				width: 1024,
@@ -140,7 +154,7 @@ var gameConfig = {
 			height: 5,
 			fill: '#000000',
 			image: {
-				src: 'images/tree01.png',
+				src: 'tree01',
 				x: 1390,
 				y: stageConfig.height - 530,
 				width: 256,
@@ -159,7 +173,7 @@ var gameConfig = {
 		
 			fill: '#000000',
 			image: {
-				src: 'images/grass01b.png',
+				src: 'grass01b',
 				x: 976,
 				y: stageConfig.height - 191,
 				width: 1024,
@@ -187,7 +201,7 @@ var gameConfig = {
 		
 			fill: '#000000',
 			image: {
-				src: 'images/grass01g.png',
+				src: 'grass01g',
 				x: 2110,
 				y: stageConfig.height - 177,
 				width: 512,
@@ -204,7 +218,7 @@ var gameConfig = {
 			height: 5,
 			fill: '#000000',
 			image: {
-				src: 'images/tree02.png',
+				src: 'tree02',
 				x: 2290,
 				y: stageConfig.height - 530,
 				width: 269,
@@ -221,7 +235,7 @@ var gameConfig = {
 			height: 5,
 			fill: '#000000',
 			image: {
-				src: 'images/tree03.png',
+				src: 'tree03',
 				x: 2590,
 				y: stageConfig.height - 580,
 				width: 290,
@@ -240,7 +254,7 @@ var gameConfig = {
 		
 			fill: '#000000',
 			image: {
-				src: 'images/grass01h.png',
+				src: 'grass01h',
 				x: 2622,
 				y: stageConfig.height - 211,
 				width: 512,
@@ -336,7 +350,7 @@ var gameConfig = {
 		justJumped: false,
 	    grounded: true,
 		sprite: {
-			url: 'images/keke_character2.png',
+			src: 'keke',
 			x: 0,
 			y: 0,
 			index: 0,
@@ -352,7 +366,7 @@ var gameConfig = {
 		height: 32,
 		views: [{
 			type: 'Image',
-			src: 'images/heart.png',
+			src: 'heart',
 			x: 0,
 			y: 0,
 			width: 32,
@@ -371,98 +385,19 @@ var gameConfig = {
 		}]
 	},
 	controls: {
-		id: 'quitButton',
-		type: 'Image',
-		src: 'images/quit_button.png',
-		x: 10,
-		y: 10,
-		width: 35,
-		height: 35
-		/*
 		views: [{
-			id: 'invisibleHitArea',
-			type: 'Rect',
-			x: 0,
-			y: 0,
-			width: stageConfig.width,
-			height: stageConfig.height,
-			stroke: '#000000',
-			fill: '#123456',
-			opacity: 0
+			id: 'joystick',
+			type: 'joystick'
 		},
 		{
-			id: 'reverseButton',
-			type: 'Image',
-			src: 'images/arrow_left.png',
-			x: 20,
-			y: stageConfig.height - 40,
-			width: 32,
-			height: 32
-		},
-		{
-			id: 'forwardButton',
-			type: 'Image',
-			src: 'images/arrow_right.png',
-			x: 70,
-			y: stageConfig.height - 40,
-			width: 32,
-			height: 32
-		},
-		{
-			id: 'pauseButton',
-			type: 'Image',
-			src: 'images/pause_btn.png',
-			// x: stageConfig.width - 110,
-			// y: stageConfig.height - 40,
-			x: 20,
-			y: 20,
-			width: 32,
-			height: 32
-		},
-		{
-			id: 'jumpButton',
-			type: 'Image',
-			src: 'images/arrow_up.png',
-			x: stageConfig.width - 60,
-			y: stageConfig.height - 40,
-			width: 32,
-			height: 32
-		}],
-		hitRegions: {
-			invisibleHitArea: {
-				x: 0,
-				y: 0,
-				width: stageConfig.width,
-				height: stageConfig.height
-			},
-			reverseButton: {
-				x: 20, 
-				y: (stageConfig.height - 40), 
-				width: 50, 
-				height: 50
-			},
-			forwardButton: {
-				x: 70, 
-				y: (stageConfig.height - 40), 
-				width: 40, 
-				height: 50
-			},
-			pauseButton: {
-				// x: (stageConfig.width - 110), 
-				// y: (stageConfig.height - 40), 
-				x: 15,
-				y: 15,
-				width: 40, 
-				height: 50
-			},
-			jumpButton: {
-				x: (stageConfig.width - 60), 
-				y: (stageConfig.height - 40), 
-				width: 40, 
-				height: 50
-			}
-		}
-		*/
+			id: 'quitButton',
+			type: 'controlButton',
+			src: 'quitButton',
+			x: 10,
+			y: 10,
+			width: 35,
+			height: 35
+		}]
 	},
 	level: {
 		minX: 5,

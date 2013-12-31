@@ -18,6 +18,9 @@ var ControlLayer = (function() {
 	ControlLayer.prototype.setStage = function(stage) {
 		this.model.stage = stage;
 		stage.add(this.model.layer);
+		if(this.model.joystick) {
+			this.model.joystick.setStage(stage);
+		}
 	};
 	
 	ControlLayer.prototype.reset = function() {
@@ -52,7 +55,9 @@ var ControlLayer = (function() {
 		var views = _this.model.views
 		var view;
 		for(var i = 0; i < views.length; i++) {
-			if(views[i].type === 'Image') {
+			if(views[i].type === 'Joystick') {
+				_this.model.joystick = new Joystick();
+			} else if(views[i].type === 'Image') {
 				_buildImageView(views[i]);
 			} else {
 				view = new Kinetic[views[i].type](views[i]);

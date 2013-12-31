@@ -3,6 +3,7 @@
 var ticker,
 	tickerTime = 500,
 	fps = 60,
+	imageManager,
 	menuLayer,
 	gameLevelContainer,
 	keke,
@@ -24,6 +25,12 @@ var ticker,
 		
 function init() {
 	// STAGE
+	imageManager = new ImageManager(gameConfig.images, _onImagesLoaded);
+}
+
+function _onImagesLoaded() {
+	trace('_onImagesLoaded');
+	
 	stage = new Kinetic.Stage({
 		container: 'container',
 		width: stageConfig.width,
@@ -70,16 +77,9 @@ function startGame() {
 	enemies = new Enemies(gameConfig.enemies);
 	enemies.setStage(stage);
 	
-	// STAGE FRAME
-	// var stageFrame = new GroundLayer(gameConfig.stageFrame);
-	// stageFrame.setStage(stage);
-	
 	// CONTROLS
-	// controls = new ControlLayer(gameConfig.controls);
-	controls = new Joystick();
+	controls = new Controls(gameConfig.controls);
 	controls.setStage(stage);
-	quitButton = new ControlButton(gameConfig.controls);
-	quitButton.setStage(stage); 
 	
 	// stage.add(gameLevelContainer);
 	
@@ -157,7 +157,7 @@ function update() {
 }
 
 function checkInput() {
-	if(quitButton.getWasPressed()) {
+	if(controls.getWasPressed('quitButton')) {
 		quit('quit');
 	} else {
 	    if (keys[ControlKeys.UP] || controls.getJumped()) {
@@ -469,10 +469,7 @@ function quit(message) {
 	
 	enemies.remove();
 	
-	controls.reset();
 	controls.remove();
-	
-	quitButton.remove();
 	
 	lifeMeter.remove();
 	

@@ -48,6 +48,24 @@ var SpritePlayer = (function() {
 	
 	// PRIVATE METHODS
 	function _buildViews() {
+		// trace('SpritePlayer/_buildViews, sprite = ');
+		// trace(imageManager.getImage(_this.model.sprite.src));
+		
+		_sprite = new Kinetic.Sprite({
+			x: _this.model.sprite.x,
+			y: _this.model.sprite.y,
+			image: imageManager.getImage(_this.model.sprite.src),
+			animation: 'idleR',
+			animations: kekeAnimations,
+			frameRage: _this.model.sprite.frameRate,
+			index: _this.model.sprite.index
+		});
+		_this.model.layer.add(_sprite);
+
+		// start sprite animation
+		_sprite.start();
+
+		/*
 		var imageObj = new Image();
 		imageObj.onload = function() {
 			_sprite = new Kinetic.Sprite({
@@ -66,6 +84,7 @@ var SpritePlayer = (function() {
 			_sprite.start();
 		};
 		imageObj.src = _this.model.sprite.url;
+		*/
 	}
 
 	return SpritePlayer;	

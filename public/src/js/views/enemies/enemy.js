@@ -65,8 +65,8 @@ var Enemy = (function() {
 	};
 	
 	Enemy.prototype.setUpAnimation = function(params) {
-		trace('Enemy/setUpAnimation, views =');
-		trace(this.model.viewObjs);
+		// trace('Enemy/setUpAnimation, views =');
+		// trace(this.model.viewObjs);
 		var viewObjs = this.model.viewObjs;
 		var layer = this.model.layer;
 		var centerX = this.model.width / 2;
@@ -84,8 +84,8 @@ var Enemy = (function() {
 	Enemy.prototype.buildViews = function() {
 		var views = this.model.views
 		var view;
-		trace('Enemy/buildViews, this position = ');
-		trace(this.model.layer.getAbsolutePosition());
+		// trace('Enemy/buildViews, this position = ');
+		// trace(this.model.layer.getAbsolutePosition());
 		for(var i = 0; i < views.length; i++) {
 			trace('\tviews['+i+'] = ');
 			trace(views[i]);

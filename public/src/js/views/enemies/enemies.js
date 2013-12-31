@@ -1,11 +1,7 @@
 var Enemies = (function() {
 	
 	function Enemies(params) {
-		trace('Enemies/constructor');
-		// this.collection = [];
-		// for(var i = 0; i < params.length; i++) {
-		// 	this.collection.push(new Enemy(params[i]));
-		// }
+		// trace('Enemies/constructor');
 		this.collection = {};
 		var enemy;
 		for(var key in params) {
@@ -17,9 +13,6 @@ var Enemies = (function() {
 	}
 
 	Enemies.prototype.setStage = function(stage) {
-		// for(var i = 0; i < this.collection.length; i++) {
-		// 	this.collection[i].setStage(stage);
-		// }
 		for(var key in this.collection) {
 			this.collection[key].setStage(stage);
 		}
@@ -27,19 +20,12 @@ var Enemies = (function() {
 	
 	Enemies.prototype.moveByVelocity = function(velX, velY) {
 		// trace('Enemies/moveByVelocity');
-		// for(var i = 0; i < this.collection.length; i++) {
-		// 	// trace('\tabout to move ' + this.collection[i].id);
-		// 	this.collection[i].moveByVelocity(velX, velY);
-		// }
 		for(var key in this.collection) {
 			this.collection[key].moveByVelocity(velX, velY);
 		}
 	};
 	
 	Enemies.prototype.remove = function() {
-		// for(var i = 0; i < this.collection.length; i++) {
-		// 	this.collection[i].remove();
-		// }
 		for(var key in this.collection) {
 			this.collection[key].remove();
 		}

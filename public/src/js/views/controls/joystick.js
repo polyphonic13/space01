@@ -24,7 +24,7 @@ var Joystick = (function() {
 		smColor1: '#999999',
 		smColor2: '#aaaaaa',
 		smColor3: '#222222',
-		smImgUrl: 'images/joystick_sm_circle.png',
+		smImgUrl: 'joystickSmCircle',
 		smGradient: true,
 		smStrokeWidth: 1,
 		xOnly: false,
@@ -46,6 +46,67 @@ var Joystick = (function() {
 		// _model.layer.setPosition(5, stageConfig.height - 120);
 	}
 	
+	Joystick.prototype.getLayer = function() {
+		return _model.layer;
+	};
+
+	Joystick.prototype.setPosition = function(pos) {
+		_model.layer.setPosition(pos);
+		_model.layer.draw();
+	};
+	
+	Joystick.prototype.getStates = function() {
+		return _states;
+	};
+	
+	Joystick.prototype.getRest = function() {
+		return _states[JoystickStates.REST];
+	};
+	
+	Joystick.prototype.getForward = function() {
+		return _states[JoystickStates.FORWARD];
+	};
+	
+	Joystick.prototype.getReverse = function() {
+		return _states[JoystickStates.REVERSE];
+	};
+	
+	Joystick.prototype.getJumped = function() {
+		return _states[JoystickStates.UP];
+	};
+	
+	Joystick.prototype.getDown = function() {
+		return _states[JoystickStates.DOWN];
+	};
+	
+	Joystick.prototype.getPosition = function() {
+		return _position;
+	};
+	
+	Joystick.prototype.getX = function() {
+		return _position.x;
+	};
+	
+	Joystick.prototype.getY = function() {
+		return _position.y;
+	};
+	
+	Joystick.prototype.getStartX = function() {
+		return _model.startX;
+	};
+	
+	Joystick.prototype.getStartY = function() {
+		return _model.startY;
+	};
+	
+	Joystick.prototype.setStage = function(stage) {
+		stage.add(_model.layer);
+	};
+	
+	Joystick.prototype.remove = function() {
+		_model.layer.remove();
+	};
+
 	function _resetStates() {
 		for(var key in JoystickStates) {
 			_states[JoystickStates[key]] = false;
@@ -117,43 +178,19 @@ var Joystick = (function() {
 			}
 		};
 		
-		/*
-		if(_model.smGradient) {
-			var smGradientStops;
-			if(_model.smGradientStops) {
-				smGradientStops = _model.smGradientStops;
-			} else {
-				smGradientStops = [0, _model.smColor2, .9, _model.smColor1, 1, _model.smColor2];
-			}
-			
-			smCircleConfig.fillRadialGradientStartRadius = 0;
-			smCircleConfig.fillRadialGradientEndRadius = _model.smRadius;
-			smCircleConfig.fillRadialGradientColorStops = smGradientStops;
-		} else {
-			smCircleConfig.fill = _model.smColor1;
-			
-		}
-		*/
-		
 		_lgCircle = new Kinetic.Circle(lgCircleConfig);
+		_model.layer.add(_lgCircle);
 
 	    var imageObj = new Image();
-		smCircleConfig.image = imageObj;
+		smCircleConfig.image = imageManager.getImage(_model.smImgUrl);
 
-	    imageObj.onload = function() {
-			var image = new Kinetic.Image(smCircleConfig);
-			_model.layer.add(image);
-			_smCircle = image;
-			_model.layer.draw(); // layer has to have draw called each time there is a change
-			_addListeners();
-			
-	    };
-	    imageObj.src = _model.smImgUrl;
+		var image = new Kinetic.Image(smCircleConfig);
+		_model.layer.add(image);
+		_smCircle = image;
+		_model.layer.draw(); // layer has to have draw called each time there is a change
+		_addListeners();
+		
 
-		// _smCircle = new Kinetic.Circle(smCircleConfig);
-
-		_model.layer.add(_lgCircle);
-		// _model.layer.add(_smCircle);
 	}
 	
 	function _addListeners() {
@@ -222,74 +259,6 @@ var Joystick = (function() {
 		}
 	}
 	
-	Joystick.prototype.getLayer = function() {
-		return _model.layer;
-	};
-
-	Joystick.prototype.setPosition = function(pos) {
-		_model.layer.setPosition(pos);
-		_model.layer.draw();
-	};
-	
-	Joystick.prototype.getStates = function() {
-		return _states;
-	};
-	
-	Joystick.prototype.getRest = function() {
-		return _states[JoystickStates.REST];
-	};
-	
-	Joystick.prototype.getForward = function() {
-		return _states[JoystickStates.FORWARD];
-	};
-	
-	Joystick.prototype.getReverse = function() {
-		return _states[JoystickStates.REVERSE];
-	};
-	
-	Joystick.prototype.getJumped = function() {
-		return _states[JoystickStates.UP];
-	};
-	
-	Joystick.prototype.getDown = function() {
-		return _states[JoystickStates.DOWN];
-	};
-	
-	Joystick.prototype.getQuit = function() {
-		return false;
-	};
-	
-	Joystick.prototype.getPosition = function() {
-		return _position;
-	};
-	
-	Joystick.prototype.getX = function() {
-		return _position.x;
-	};
-	
-	Joystick.prototype.getY = function() {
-		return _position.y;
-	};
-	
-	Joystick.prototype.getStartX = function() {
-		return _model.startX;
-	};
-	
-	Joystick.prototype.getStartY = function() {
-		return _model.startY;
-	};
-	
-	Joystick.prototype.setStage = function(stage) {
-		stage.add(_model.layer);
-	};
-	
-	Joystick.prototype.reset = function() {
-
-	};
-
-	Joystick.prototype.remove = function() {
-		_model.layer.remove();
-	};
 
 	return Joystick;
 })();
