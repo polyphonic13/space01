@@ -466,7 +466,8 @@ var gameConfig = {
 	},
 	level: {
 		minX: 5,
-		maxX: -589
+		// maxX: -389
+		maxX: -439
 	},
 	friction: 0.5,
 	gravity: 0.67

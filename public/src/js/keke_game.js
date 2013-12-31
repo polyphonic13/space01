@@ -125,10 +125,14 @@ function update() {
 			}
 		} else {
 			trace('bounds reached');
-			if(keke.facingForward) {
-				animationToPlay = 'idleR';
+			if(keke.position <= gameConfig.level.maxX) {
+				quit('level cleared');
 			} else {
-				animationToPlay = 'idleL';
+				if(keke.facingForward) {
+					animationToPlay = 'idleR';
+				} else {
+					animationToPlay = 'idleL';
+				}
 			}
 		}
 		keke.playAnimation(animationToPlay);
