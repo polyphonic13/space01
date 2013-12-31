@@ -230,6 +230,7 @@ function detectCollisions() {
 		// trace('\trectPos.x = ' + rectPos.x + ', kekeHiteArea.x + 100 = ' + (kekeHitArea.x + 100));
 		// only test nearby ground for collision
 		if(rectPos.x < (kekeHitArea.x + kekeHitArea.width + 100) && rectPos.x > -(kekeHitArea.x + kekeHitArea.width + 100)) { 
+			trace('rectPos['+i+'].x = ' + rectPos.x + ', keke = ' + (kekeHitArea.x + kekeHitArea.width + 100));
 			rect = {
 				x: rectPos.x,
 				y: rectPos.y,
