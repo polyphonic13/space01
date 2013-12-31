@@ -131,10 +131,10 @@ var gameConfig = {
 			}
 		},
 		{
-			id: 'floor1d',
-			x: 1400,
-			y: stageConfig.height - 140,
-			width: 240,
+			id: 'tree01',
+			x: 1410,
+			y: stageConfig.height - 143,
+			width: 220,
 			height: 5,
 			fill: '#000000',
 			image: {
