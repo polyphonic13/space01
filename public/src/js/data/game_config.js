@@ -13,6 +13,10 @@ var gameConfig = {
 		src: 'images/flat_background.jpg'
 	},
 	{
+		id: 'moon',
+		src: 'images/moon.png'
+	},
+	{
 		id: 'grassO1a',
 		src: 'images/grass01a.png'
 	},
@@ -69,6 +73,32 @@ var gameConfig = {
 		height: stageConfig.height,
 		// height: 500
 		// height: (stageConfig.width * 0.625)
+	},
+	level: {
+		minX: 5,
+		// maxX: -389,
+		maxX: -439,
+		fill: '#000000',
+		stroke: '#000000',
+		strokeWidth: 2,
+		views: [{
+			id: 'night_sky',
+			type: 'Image',
+			x: 0,
+			y: 0,
+			width: stageConfig.width,
+			height: stageConfig.height,
+			src: 'stageBg'
+		},
+		{
+			id: 'moon',
+			type: 'Image',
+			x: stageConfig.width - 256,
+			y: 0,
+			width: 256,
+			height: 247,
+			src: 'moon'
+		}]
 	},
 	scrollingLayers: [{
 		id: 'clouds1',
@@ -409,11 +439,6 @@ var gameConfig = {
 			width: 35,
 			height: 35
 		}]
-	},
-	level: {
-		minX: 5,
-		// maxX: -389
-		maxX: -439
 	},
 	friction: 0.5,
 	gravity: 0.67

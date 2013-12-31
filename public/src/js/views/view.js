@@ -72,5 +72,18 @@ var View = (function() {
 		this.model.layer.remove();
 	};
 	
+	View.prototype.addImage = function(params, model) {
+
+		var image = new Kinetic.Image({
+			x: params.x,
+			y: params.y,
+			width: params.width,
+			height: params.height,
+			image: imageManager.getImage(params.src)
+		});
+		model.layer.add(image);
+		model.layer.draw(); // layer has to have draw called each time there is a change
+	};
+	
 	return View;
 })();

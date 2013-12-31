@@ -38,6 +38,7 @@ function _onImagesLoaded() {
 	});
 
 	// STAGE BACKGROUND
+	/*
 	var stageBgLayer = new Kinetic.Layer();
 	var stageBgColor = new Kinetic.Rect(gameConfig.stageBgColor);
 	stageBgLayer.add(stageBgColor);
@@ -45,13 +46,15 @@ function _onImagesLoaded() {
 	
 	var stageBgImage = new ImageLayer(gameConfig.stageBg);
 	stageBgImage.setStage(stage);
-	
+	*/
 	startGame();
 }
 
 function startGame() { 
 	
 	trace('start game');
+	var levelLayer = new LevelLayer(gameConfig.level);
+	levelLayer.setStage(stage);
 	// scrollingLayers = new ScrollingLayers(gameConfig.scrollingLayers);
 	// scrollingLayers.setStage(stage);
 	// gameLevelContainer = new Kinetic.Container();

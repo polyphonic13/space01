@@ -50,6 +50,7 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/enum/joystick_states.js',
 					'<%= srcDir %>/js/events/events.js',
 					'<%= srcDir %>/js/views/view.js',
+					'<%= srcDir %>/js/views/layers/level_layer.js',
 					'<%= srcDir %>/js/views/layers/ground_layer.js',
 					'<%= srcDir %>/js/views/layers/image_layer.js',
 					'<%= srcDir %>/js/views/layers/scrolling_layer.js',

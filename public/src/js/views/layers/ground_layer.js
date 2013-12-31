@@ -56,7 +56,7 @@ var GroundLayer = (function() {
 			layer.add(rect);
 			
 			if(rects[i].image) {
-				_addImage(rects[i].image);
+				_this.addImage(rects[i].image, _this.model);
 			}
 			// trace('GroundLayer/_buildViews, section['+i+'] = ');
 			// trace(section);
@@ -68,19 +68,6 @@ var GroundLayer = (function() {
 		}
 	}
 
-	function _addImage(params) {
-		var _model = _this.model;
-
-		var image = new Kinetic.Image({
-			x: params.x,
-			y: params.y,
-			width: params.width,
-			height: params.height,
-			image: imageManager.getImage(params.src)
-		});
-		_model.layer.add(image);
-		_model.layer.draw(); // layer has to have draw called each time there is a change
-	}
 	
 	return GroundLayer;
 })();

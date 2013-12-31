@@ -7,7 +7,7 @@ var ImageLayer = (function() {
 		_this = this;
 		ImageLayer._super.constructor.call(this, params);
 		
-		_buildViews();
+		this.addImage(_this.model, _this.model);
 		this.model.layer.setPosition(this.model.x, this.model.y);
 
 		this.__defineGetter__('id', function() {
@@ -16,21 +16,21 @@ var ImageLayer = (function() {
 		});
 	}
 	
-	function _buildViews() {
-		var _model = _this.model;
-		
-		var image = new Kinetic.Image({
-			x: 0,
-			y: 0,
-			width: _model.width,
-			height: _model.height,
-			opacity: _model.opacity,
-			image: imageManager.getImage(_model.src)
-		});
-
-		_model.layer.add(image);
-		_model.layer.draw(); // layer has to have draw called each time there is a change
-	}
+	// function _buildViews() {
+	// 	var _model = _this.model;
+	// 	
+	// 	var image = new Kinetic.Image({
+	// 		x: 0,
+	// 		y: 0,
+	// 		width: _model.width,
+	// 		height: _model.height,
+	// 		opacity: _model.opacity,
+	// 		image: imageManager.getImage(_model.src)
+	// 	});
+	// 
+	// 	_model.layer.add(image);
+	// 	_model.layer.draw(); // layer has to have draw called each time there is a change
+	// }
 
 	return ImageLayer;
 })();
