@@ -61,7 +61,7 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/views/player/life_meter.js',
 					'<%= srcDir %>/js/views/controls/control_button.js',
 					'<%= srcDir %>/js/views/controls/joystick.js',
-					'<%= srcDir %>/js/views/enum/control_types.js',
+					'<%= srcDir %>/js/enum/control_types.js',
 					'<%= srcDir %>/js/views/controls/controls.js',
 					'<%= srcDir %>/js/keke_game.js'
 				],
