@@ -122,7 +122,7 @@ var gameConfig = {
 			height: 50,
 			// fill: 'green',
 
-			fill: '#003300',
+			fill: '#000000',
 			image: {
 				imgUrl: 'images/grass01a.png',
 				x: -48,
@@ -138,7 +138,7 @@ var gameConfig = {
 			y: stageConfig.height - 143,
 			width: 220,
 			height: 5,
-			fill: '#003300',
+			fill: '#000000',
 			image: {
 				imgUrl: 'images/tree01.png',
 				x: 1390,
@@ -215,7 +215,7 @@ var gameConfig = {
 		{
 			id: 'tree03',
 			direction: 'horizontal',
-			x: 2610,
+			x: 2630,
 			y: stageConfig.height - 200,
 			width: 220,
 			height: 5,
