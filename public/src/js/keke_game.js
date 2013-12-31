@@ -125,6 +125,7 @@ function update() {
 		} else {
 			trace('bounds reached');
 			if(keke.position <= gameConfig.level.maxX) {
+				gameConfig.level.cleared = true;
 				quit('level cleared');
 			} else {
 				if(keke.facingForward) {
@@ -505,6 +506,12 @@ function quit(message) {
 	playing = false;
 	var stats = {};
 
+	if(gameConfig.level.cleared) {
+		stats.levelPoints = gameConfig.level.points
+	} else {
+		stats.levelPoints = 0;
+	};
+	
 	stats.health = keke.health;
 	keke.stop();
 	keke.remove();
@@ -591,7 +598,7 @@ function addMenuScreen(message, stats) {
 		var healthPoints = stats.health * 500;
 		var killPoints = stats.enemies.killed * 1000;
 		var bonusPoints = stats.bonuses.collected * 2000;
-		var totalPoints = healthPoints + killPoints + bonusPoints;
+		var totalPoints = healthPoints + killPoints + bonusPoints + stats.levelPoints;
 		
 		var statsMsg = 'Statistics:'
 			+ '\n\nBugs squashed = ' + stats.enemies.killed + '/' + stats.enemies.total 
@@ -599,9 +606,10 @@ function addMenuScreen(message, stats) {
 			+ '\n\nHealth bonus = ' + healthPoints
 			+ '\nKills = ' + killPoints
 			+ '\nBonuses = ' + bonusPoints
+			+ '\nLevel = ' + stats.levelPoints
 			+ '\nTotal = ' + totalPoints;
 		
-		if(totalPoints === 63000) {
+		if(totalPoints === gameConfig.level.perfectPoints) {
 			statsMsg += '\n\nPERFECT SCORE!';
 		}
 		var statsText = new Kinetic.Text({

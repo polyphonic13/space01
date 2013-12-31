@@ -73,6 +73,9 @@ var gameConfig = {
 		src: 'images/joystick_sm_circle.png'
 	}],
 	level: {
+		points: 50000,
+		perfectPoints: 113000,
+		cleared: false,
 		minX: 5,
 		// maxX: -389,
 		maxX: -455,
