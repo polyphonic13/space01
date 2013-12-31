@@ -223,7 +223,16 @@ function detectCollisions() {
 			width: groundObjs[i].rect.attrs.width,
 			height: groundObjs[i].rect.attrs.height
 		}
-		var col = collisionCheck(keke.getHitArea(), rect); // check for floor collision
+		
+		var col;
+		var direction = groundObjs[i].config.direction;
+		if(direction === 'horizontal') {
+			col = horizontalCollisionCheck(keke.getHitArea(), rect);
+		} else if(direction === 'vertical') {
+			col = verticalCollisionCheck(keke.getHitArea(), rect);
+		} else {
+			col = collisionCheck(keke.getHitArea(), rect); // check for floor collision
+		}
 
 	    if (col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
 	        keke.velX = 0;
@@ -282,6 +291,74 @@ function detectCollisions() {
 		}
 	}
 	// trace('detectCollisions, keke.grounded = ' + keke.grounded + ', col.direction = ' + col.direction);
+}
+
+function horizontalCollisionCheck(shapeA, shapeB) {
+    // get the vectors to check against
+    var vX = (shapeA.x + (shapeA.width / 2)) - (shapeB.x + (shapeB.width / 2)),
+        vY = (shapeA.y + (shapeA.height / 2)) - (shapeB.y + (shapeB.height / 2)),
+        // add the half widths and half heights of the objects
+        hWidths = (shapeA.width / 2) + (shapeB.width / 2),
+        hHeights = (shapeA.height / 2) + (shapeB.height / 2),
+        collision = {
+			id: '',
+			direction: ''
+		};
+
+	// trace('horizontalCollisionCheck\n\tvX = ' + vX + ', vY = ' + vY + '\n\thWidths = ' + hWidths + ', hHeights = ' + hHeights);
+	// if the x and y vector are less than the half width or half height, they we must be inside the object, causing a collision
+    if (Math.abs(vX) < hWidths && Math.abs(vY) < hHeights) {         // figures out on which side we are colliding (top, bottom, left, or right)         
+		var oX = hWidths - Math.abs(vX),             
+			oY = hHeights - Math.abs(vY);
+		// trace('oX = ' + oX + ', oY = ' + oY);
+		if (oX >= oY) {
+            if (vY > 0) {
+                collision.direction = Directions.TOP;
+                shapeA.y += oY;
+				collision.id = shapeB.id;
+            } else {
+                collision.direction = Directions.BOTTOM;
+                shapeA.y -= oY;
+				collision.id = shapeB.id;
+            }
+        }
+ 		// trace('\n\toX = ' + oX + ', oY = ' + oY);
+    }
+    return collision;
+}
+
+function verticalCollisionCheck(shapeA, shapeB) {
+    // get the vectors to check against
+    var vX = (shapeA.x + (shapeA.width / 2)) - (shapeB.x + (shapeB.width / 2)),
+        vY = (shapeA.y + (shapeA.height / 2)) - (shapeB.y + (shapeB.height / 2)),
+        // add the half widths and half heights of the objects
+        hWidths = (shapeA.width / 2) + (shapeB.width / 2),
+        hHeights = (shapeA.height / 2) + (shapeB.height / 2),
+        collision = {
+			id: '',
+			direction: ''
+		};
+
+	// trace('collisionCheck\n\tvX = ' + vX + ', vY = ' + vY + '\n\thWidths = ' + hWidths + ', hHeights = ' + hHeights);
+	// if the x and y vector are less than the half width or half height, they we must be inside the object, causing a collision
+    if (Math.abs(vX) < hWidths && Math.abs(vY) < hHeights) {         // figures out on which side we are colliding (top, bottom, left, or right)         
+		var oX = hWidths - Math.abs(vX),             
+			oY = hHeights - Math.abs(vY);
+		// trace('oX = ' + oX + ', oY = ' + oY);
+		if (oY >= oX) {
+            if (vX > 0) {
+                collision.direction = Directions.LEFT;
+                shapeA.x += oX;
+				collision.id = shapeB.id;
+            } else {
+                collision.direction = Directions.RIGHT;
+                shapeA.x -= oX;
+				collision.id = shapeB.id;
+            }
+        }
+ 		// trace('\n\toX = ' + oX + ', oY = ' + oY);
+    }
+    return collision;
 }
 
 function collisionCheck(shapeA, shapeB) {

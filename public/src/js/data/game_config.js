@@ -115,13 +115,14 @@ var gameConfig = {
 		rects: [
 		{
 			id: 'floor1a',
+			direction: 'horizontal',
 			x: -48,
 			y: stageConfig.height - 60,
 			width: 1024,
 			height: 50,
 			// fill: 'green',
 
-			fill: '#000000',
+			fill: '#003300',
 			image: {
 				imgUrl: 'images/grass01a.png',
 				x: -48,
@@ -132,11 +133,12 @@ var gameConfig = {
 		},
 		{
 			id: 'tree01',
+			direction: 'horizontal',
 			x: 1410,
 			y: stageConfig.height - 143,
 			width: 220,
 			height: 5,
-			fill: '#000000',
+			fill: '#003300',
 			image: {
 				imgUrl: 'images/tree01.png',
 				x: 1390,
@@ -148,6 +150,7 @@ var gameConfig = {
 		},
 		{
 			id: 'floor1b',
+			direction: 'both',
 			x: 976,
 			y: stageConfig.height - 80,
 			width: 1024,
@@ -165,6 +168,7 @@ var gameConfig = {
 		},
 		{
 			id: 'floor1b_flame',
+			direction: 'horizontal',
 			x: 2000,
 			y: stageConfig.height - 55,
 			width: 110,
@@ -174,6 +178,7 @@ var gameConfig = {
 		},
 		{
 			id: 'floor1c',
+			direction: 'horizontal',
 			x: 2110,
 			y: stageConfig.height - 80,
 			width: 512,
@@ -192,6 +197,7 @@ var gameConfig = {
 		},
 		{
 			id: 'tree01',
+			direction: 'horizontal',
 			x: 2310,
 			y: stageConfig.height - 143,
 			width: 220,
@@ -208,6 +214,7 @@ var gameConfig = {
 		},
 		{
 			id: 'floor1e',
+			direction: 'horizontal',
 			x: 2622,
 			y: stageConfig.height - 100,
 			width: 512,
