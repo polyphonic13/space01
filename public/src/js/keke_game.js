@@ -226,17 +226,17 @@ function detectCollisions() {
 		// trace('grounds['+i+'].attrs = ');
 		// trace(grounds[i].attrs);
 		rectPos = grounds[i].rect.getAbsolutePosition();
+		rect = {
+			x: rectPos.x,
+			y: rectPos.y,
+			width: grounds[i].rect.attrs.width,
+			height: grounds[i].rect.attrs.height
+		}
 		// trace('grounds['+i+']');
 		// trace('\trectPos.x = ' + rectPos.x + ', kekeHiteArea.x + 100 = ' + (kekeHitArea.x + 100));
 		// only test nearby ground for collision
-		if(rectPos.x < (kekeHitArea.x + kekeHitArea.width + 100) && rectPos.x > -(kekeHitArea.x + kekeHitArea.width + 100)) { 
-			trace('rectPos['+i+'].x = ' + rectPos.x + ', keke = ' + (kekeHitArea.x + kekeHitArea.width + 100));
-			rect = {
-				x: rectPos.x,
-				y: rectPos.y,
-				width: grounds[i].rect.attrs.width,
-				height: grounds[i].rect.attrs.height
-			}
+		if(rect.x < (kekeHitArea.x + kekeHitArea.width + 100) && rect.x > -((rect.width/2) + stageConfig.width)) { 
+			// trace('rectPos['+i+'].x = ' + rect.x + ', -width/2 + 100 = ' + (-((rect.width/2 )+ stageConfig.width)) + ', keke = ' + (kekeHitArea.x + kekeHitArea.width + 100));
 		
 			var direction = grounds[i].config.direction;
 			if(direction === 'horizontal') {
