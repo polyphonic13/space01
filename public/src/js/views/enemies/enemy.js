@@ -90,7 +90,8 @@ var Enemy = (function() {
 			trace('\tviews['+i+'] = ');
 			trace(views[i]);
 			if(views[i].type === 'Image') {
-				_buildImageView(views[i]);
+				// _buildImageView(views[i]);
+				this.model.viewObjs.push(this.addImage(views[i], this.model));
 			} else {
 				view = new Kinetic[views[i].type](views[i]);
 				this.model.layer.add(view);

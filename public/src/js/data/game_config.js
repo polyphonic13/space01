@@ -49,6 +49,10 @@ var gameConfig = {
 		src: 'images/grass01h.png'
 	},
 	{
+		id: 'caterpillar01a',
+		src: 'images/caterpillar01a.png'
+	},
+	{
 		id: 'keke',
 		src: 'images/keke_character2.png'
 	},
@@ -296,19 +300,47 @@ var gameConfig = {
 	},
 	enemies: {
 		caterpillar01: {
-			x: 800,
+			x: 600,
 			y: stageConfig.height - 100,
-			width: 120,
+			width: 142,
 			height: 30,
 			views: [{
-				type: 'Rect',
+				// type: 'Rect',
+				type: 'Image',
 				x: 0,
 				y: 0,
-				width: 120,
+				width: 142,
 				height: 30,
-				fill: '#009933',
-				stroke: 'black',
-				strokeWidth: 1
+				// fill: '#009933',
+				// stroke: 'black',
+				// strokeWidth: 1
+				src: 'caterpillar01a'
+			}],
+			// movement: {
+			// 		      amplitude: 100,
+			// 		      period: 5000
+			// },
+			speed: 6,
+			damage: -3,
+			health: 5,
+			alive: true
+		},
+		caterpillar02: {
+			x: 950,
+			y: stageConfig.height - 120,
+			width: 142,
+			height: 30,
+			views: [{
+				// type: 'Rect',
+				type: 'Image',
+				x: 0,
+				y: 0,
+				width: 142,
+				height: 30,
+				// fill: '#009933',
+				// stroke: 'black',
+				// strokeWidth: 1
+				src: 'caterpillar01a'
 			}],
 			movement: {
 		      amplitude: 100,
@@ -319,20 +351,22 @@ var gameConfig = {
 			health: 5,
 			alive: true
 		},
-		caterpillar02: {
+		caterpillar03: {
 			x: 1400,
 			y: stageConfig.height - 120,
-			width: 120,
+			width: 142,
 			height: 30,
 			views: [{
-				type: 'Rect',
+				// type: 'Rect',
+				type: 'Image',
 				x: 0,
 				y: 0,
-				width: 120,
+				width: 142,
 				height: 30,
-				fill: '#339933',
-				stroke: 'black',
-				strokeWidth: 1
+				// fill: '#339933',
+				// stroke: 'black',
+				// strokeWidth: 1
+				src: 'caterpillar01a'
 			}],
 			movement: {
 		      amplitude: 150,
@@ -342,31 +376,34 @@ var gameConfig = {
 			damage: -5,
 			health: 10,
 			alive: true
-		// },
-		// caterpillar03: {
-		// 	x: 2000,
-		// 	y: stageConfig.height - 300,
-		// 	width: 180,
-		// 	height: 30,
-		// 	views: [{
-		// 		type: 'Rect',
-		// 		x: 0,
-		// 		y: 0,
-		// 		width: 120,
-		// 		height: 30,
-		// 		fill: '#339933',
-		// 		stroke: 'black',
-		// 		strokeWidth: 1
-		// 	}],
-		// 	movement: {
-		//       amplitude: 150,
-		//       period: 5000
-		// 	},
-		// 	speed: 2,
-		// 	damage: -5,
-		// 	health: 10,
-		// 	alive: true
+		},
+		caterpillar04: {
+			x: 2500,
+			y: stageConfig.height - 120,
+			width: 142,
+			height: 30,
+			views: [{
+				// type: 'Rect',
+				type: 'Image',
+				x: 0,
+				y: 0,
+				width: 142,
+				height: 30,
+				// fill: '#339933',
+				// stroke: 'black',
+				// strokeWidth: 1
+				src: 'caterpillar01a'
+			}],
+			movement: {
+		      amplitude: 100,
+		      period: 5000
+			},
+			speed: 6,
+			damage: -5,
+			health: 10,
+			alive: true
 		}
+		
 	},
  	player: {
 		x: stageConfig.width / 2,

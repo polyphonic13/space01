@@ -83,6 +83,8 @@ var View = (function() {
 		});
 		model.layer.add(image);
 		model.layer.draw(); // layer has to have draw called each time there is a change
+		
+		return image;
 	};
 	
 	return View;
