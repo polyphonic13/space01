@@ -28,8 +28,8 @@ var ControlLayer = (function() {
 		return _pressedButtons;
 	};
 	
-	ControlLayer.prototype.getPause = function() {
-		return _pressedButtons['pauseButton'];
+	ControlLayer.prototype.getQuit = function() {
+		return _pressedButtons['quitButton'];
 	};
 	
 	ControlLayer.prototype.getForward = function() {

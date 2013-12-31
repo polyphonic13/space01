@@ -2,7 +2,7 @@
 
 var ticker,
 	tickerTime = 500,
-	fps = 64,
+	fps = 60,
 	menuLayer,
 	gameLevelContainer,
 	keke,
@@ -109,6 +109,7 @@ function update() {
 		// horizontal movement
 		keke.position += keke.velX;
 		keke.velX = (Math.floor(keke.velX*1000))/1000;
+		// trace('keke.position = ' + keke.position);
 		// trace('keke.velX = ' + keke.velX);
 		if(keke.position < gameConfig.level.minX && keke.position > gameConfig.level.maxX) {
 			// trace('keke.position = ' + keke.position + ', level.min = ' + gameConfig.level.minX + ', max = ' + gameConfig.level.maxX);
@@ -150,7 +151,7 @@ function update() {
 }
 
 function checkInput() {
-	if(controls.getPause()) {
+	if(controls.getQuit()) {
 		quit('quit');
 	} else {
 	    if (keys[ControlKeys.UP] || controls.getJumped()) {

@@ -7,18 +7,24 @@ var Joystick = (function() {
 	var _model = {
 		// startX: 60,
 		// startY: 60,
-		startX: 70,
-		startY: stageConfig.height - 70,
+		startX: 40,
+		startY: stageConfig.height - 95,
 		lgRadius: 50,
-		lgColor1: '#666666',
-		lgColor2: '#222222',
-		lgColor3: '#000000',
+		// lgColor1: '#666666',
+		// lgColor2: '#222222',
+		lgColor1: '#88efff',
+		lgColor2: '#000000',
+		lgColor3: '#5595ff',
+		// lgColor3: '#000000',
 		lgGradient: true,
 		lgStrokeWidth: 2,
 		smRadius: 35,
+		smWidth: 70,
+		smHeight: 70,
 		smColor1: '#999999',
 		smColor2: '#aaaaaa',
 		smColor3: '#222222',
+		smImgUrl: 'images/joystick_sm_circle.png',
 		smGradient: true,
 		smStrokeWidth: 1,
 		xOnly: false,
@@ -36,7 +42,6 @@ var Joystick = (function() {
 		}
 		_resetStates();
 		_buildViews();
-		_addListeners();
 		
 		// _model.layer.setPosition(5, stageConfig.height - 120);
 	}
@@ -59,10 +64,11 @@ var Joystick = (function() {
 		}
 		
 		var lgCircleConfig = {
-			x: _model.startX,
-			y: _model.startY,
+			x: _model.startX + 35,
+			y: _model.startY + 35,
 			radius: _model.lgRadius,
-			stroke: _model.lgColor3,
+			// stroke: _model.lgColor3,
+			stroke: _model.lgColor2,
 			strokeWidth: _model.lgStrokeWidth
 		};
 
@@ -85,9 +91,11 @@ var Joystick = (function() {
 		var smCircleConfig = {
 			x: _model.startX,
 			y: _model.startY,
-			radius: _model.smRadius,
-			stroke: _model.smColor3,
-			strokeWidth: _model.smStrokeWidth,
+			width: _model.smWidth,
+			height: _model.smHeight,
+			// radius: _model.smRadius,
+			// stroke: _model.smColor3,
+			// strokeWidth: _model.smStrokeWidth,
 			draggable: true,
 			dragBoundFunc: function(pos) {
 				var x = _model.startX;  // your center point
@@ -100,8 +108,8 @@ var Joystick = (function() {
 
 				if(scale < 1) {
 					return {
-					y: Math.round((pos.y - y) * yScale + y),
-					x: Math.round((pos.x - x) * xScale + x)
+						y: Math.round((pos.y - y) * yScale + y),
+						x: Math.round((pos.x - x) * xScale + x)
 					};
 				} else {
 					return pos;
@@ -109,6 +117,7 @@ var Joystick = (function() {
 			}
 		};
 		
+		/*
 		if(_model.smGradient) {
 			var smGradientStops;
 			if(_model.smGradientStops) {
@@ -124,12 +133,27 @@ var Joystick = (function() {
 			smCircleConfig.fill = _model.smColor1;
 			
 		}
-
+		*/
+		
 		_lgCircle = new Kinetic.Circle(lgCircleConfig);
-		_smCircle = new Kinetic.Circle(smCircleConfig);
+
+	    var imageObj = new Image();
+		smCircleConfig.image = imageObj;
+
+	    imageObj.onload = function() {
+			var image = new Kinetic.Image(smCircleConfig);
+			_model.layer.add(image);
+			_smCircle = image;
+			_model.layer.draw(); // layer has to have draw called each time there is a change
+			_addListeners();
+			
+	    };
+	    imageObj.src = _model.smImgUrl;
+
+		// _smCircle = new Kinetic.Circle(smCircleConfig);
 
 		_model.layer.add(_lgCircle);
-		_model.layer.add(_smCircle);
+		// _model.layer.add(_smCircle);
 	}
 	
 	function _addListeners() {
@@ -231,7 +255,7 @@ var Joystick = (function() {
 		return _states[JoystickStates.DOWN];
 	};
 	
-	Joystick.prototype.getPause = function() {
+	Joystick.prototype.getQuit = function() {
 		return false;
 	};
 	
@@ -264,7 +288,7 @@ var Joystick = (function() {
 	};
 
 	Joystick.prototype.remove = function() {
-
+		_model.layer.remove();
 	};
 
 	return Joystick;

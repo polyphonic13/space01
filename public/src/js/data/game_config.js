@@ -129,13 +129,27 @@ var gameConfig = {
 				width: 1024,
 				height: 463
 			}
-
-
+		},
+		{
+			id: 'floor1d',
+			x: 1400,
+			y: stageConfig.height - 140,
+			width: 240,
+			height: 5,
+			fill: '#000000',
+			image: {
+				imgUrl: 'images/tree01.png',
+				x: 1390,
+				y: stageConfig.height - 530,
+				width: 256,
+				height: 452
+				
+			}
 		},
 		{
 			id: 'floor1b',
 			x: 976,
-			y: stageConfig.height - 60,
+			y: stageConfig.height - 80,
 			width: 1024,
 			height: 50,
 			// fill: 'green'
@@ -144,7 +158,7 @@ var gameConfig = {
 			image: {
 				imgUrl: 'images/grass01b.png',
 				x: 976,
-				y: stageConfig.height - 171,
+				y: stageConfig.height - 191,
 				width: 1024,
 				height: 124
 			}
@@ -161,25 +175,25 @@ var gameConfig = {
 		{
 			id: 'floor1c',
 			x: 2110,
-			y: stageConfig.height - 60,
+			y: stageConfig.height - 80,
 			width: 512,
-			height: 50,
+			height: 500,
 			// fill: 'green',
 		
 			fill: '#000000',
 			image: {
 				imgUrl: 'images/grass01g.png',
 				x: 2110,
-				y: stageConfig.height - 157,
+				y: stageConfig.height - 177,
 				width: 512,
 				height: 110
 			}
 		
 		},
 		{
-			id: 'floor1d',
+			id: 'floor1e',
 			x: 2622,
-			y: stageConfig.height - 60,
+			y: stageConfig.height - 100,
 			width: 512,
 			height: 50,
 			// fill: 'green'
@@ -188,7 +202,7 @@ var gameConfig = {
 			image: {
 				imgUrl: 'images/grass01h.png',
 				x: 2622,
-				y: stageConfig.height - 171,
+				y: stageConfig.height - 211,
 				width: 512,
 				height: 124,
 			}
@@ -221,7 +235,7 @@ var gameConfig = {
 			alive: true
 		},
 		caterpillar02: {
-			x: 1500,
+			x: 1400,
 			y: stageConfig.height - 120,
 			width: 120,
 			height: 30,
@@ -240,6 +254,30 @@ var gameConfig = {
 		      period: 5000
 			},
 			speed: 6,
+			damage: -5,
+			health: 10,
+			alive: true
+		},
+		caterpillar03: {
+			x: 2000,
+			y: stageConfig.height - 300,
+			width: 180,
+			height: 30,
+			views: [{
+				type: 'Rect',
+				x: 0,
+				y: 0,
+				width: 120,
+				height: 30,
+				fill: '#339933',
+				stroke: 'black',
+				strokeWidth: 1
+			}],
+			movement: {
+		      amplitude: 150,
+		      period: 5000
+			},
+			speed: 2,
 			damage: -5,
 			health: 10,
 			alive: true
@@ -379,7 +417,7 @@ var gameConfig = {
 	},
 	level: {
 		minX: 5,
-		maxX: -863
+		maxX: -389
 	},
 	friction: 0.5,
 	gravity: 0.67
