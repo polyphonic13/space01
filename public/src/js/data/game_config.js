@@ -64,16 +64,6 @@ var gameConfig = {
 		id: 'joystickSmCircle',
 		src: 'images/joystick_sm_circle.png'
 	}],
-	stageBg: {
-		// src: 'images/night_sky.jpg',
-		src: 'stageBg',
-		x: 0,
-		y: 0,
-		width: stageConfig.width,
-		height: stageConfig.height,
-		// height: 500
-		// height: (stageConfig.width * 0.625)
-	},
 	level: {
 		minX: 5,
 		// maxX: -389,
@@ -93,10 +83,10 @@ var gameConfig = {
 		{
 			id: 'moon',
 			type: 'Image',
-			x: stageConfig.width - 256,
+			x: (stageConfig.height > 300) ? stageConfig.width - 256 : stageConfig.width - (256/2),
 			y: 0,
-			width: 256,
-			height: 247,
+			width: (stageConfig.height > 300) ? 256 : 256/2,
+			height: (stageConfig.height > 300) ? 247 : 256/2,
 			src: 'moon'
 		}]
 	},
@@ -167,7 +157,7 @@ var gameConfig = {
 			x: -48,
 			y: stageConfig.height - 60,
 			width: 1024,
-			height: 50,
+			height: 100,
 			// fill: 'green',
 			fill: '#000000',
 			image: {
@@ -291,7 +281,7 @@ var gameConfig = {
 			x: 2622,
 			y: stageConfig.height - 100,
 			width: 512,
-			height: 50,
+			height: 100,
 			// fill: 'green',
 			fill: '#000000',
 			image: {

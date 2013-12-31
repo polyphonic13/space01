@@ -13,3 +13,5 @@ var stage,
 			b: 62
 		}
 	};
+	
+	trace('stageConfig.width = ' + stageConfig.width + ', height = ' + stageConfig.height);

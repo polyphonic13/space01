@@ -37,16 +37,6 @@ function _onImagesLoaded() {
 		height: stageConfig.height
 	});
 
-	// STAGE BACKGROUND
-	/*
-	var stageBgLayer = new Kinetic.Layer();
-	var stageBgColor = new Kinetic.Rect(gameConfig.stageBgColor);
-	stageBgLayer.add(stageBgColor);
-	stage.add(stageBgLayer);
-	
-	var stageBgImage = new ImageLayer(gameConfig.stageBg);
-	stageBgImage.setStage(stage);
-	*/
 	startGame();
 }
 
