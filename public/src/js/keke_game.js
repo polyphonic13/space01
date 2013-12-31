@@ -21,6 +21,8 @@ var ticker,
 	previousCollisionId = '',
     keys = {},
 	jumpKeyDepressed = false,
+	bugsKilled = 0,
+	bonusesCollected = 0,
 	playing = false,
 	won = false
 		
@@ -501,12 +503,15 @@ function quit(message) {
 	trace('quiting');
 	window.clearTimeout(ticker);
 	playing = false;
+	var stats = {};
 
 	keke.stop();
 	keke.remove();
-	
+
+	stats.enemies = enemies.getStats();
 	enemies.remove();
 	
+	stats.bonuses = bonuses.getStats();
 	bonuses.remove();
 	
 	controls.remove();
@@ -517,12 +522,12 @@ function quit(message) {
 	
 	window.keyup = null;
 	window.keydown = null;
-	addMenuScreen(message);
+	addMenuScreen(message, stats);
 }
 
-function addMenuScreen(message) {
+function addMenuScreen(message, stats) {
 	var menuText = (typeof(message) !== 'undefined') ? message : 'quit';
-	
+
 	menuLayer = new Kinetic.Layer();
 	var bg = new Kinetic.Rect({
 		x: 10,
@@ -578,6 +583,26 @@ function addMenuScreen(message) {
 	restartButtonGroup.add(restartButton);
 	restartButtonGroup.add(restartText);
 	// menuLayer.add(restartButtonGroup);
+	
+	if(typeof(stats) !== 'undefined') {
+		trace('stats = ');
+		trace(stats);
+		var statsMsg = 'Statistics:\nBugs squashed = ' + stats.enemies.killed + '/' + stats.enemies.total + '\nBonuses collected = ' + stats.bonuses.collected + '/' + stats.bonuses.total;
+		
+		var statsText = new Kinetic.Text({
+			x: 0,
+			y: stage.getHeight() / 3 + 200,
+			width: stage.getWidth(),
+			text: statsMsg,
+			align: 'center',
+			fontSize: 28,
+			fontFamily: 'Calibri',
+			fill: '#000000'
+		});
+		
+		menuLayer.add(statsText);
+	}
+	
 	
 	if(stage) {
 		stage.add(menuLayer);

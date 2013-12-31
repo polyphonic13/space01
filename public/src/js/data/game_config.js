@@ -75,7 +75,7 @@ var gameConfig = {
 	level: {
 		minX: 5,
 		// maxX: -389,
-		maxX: -439,
+		maxX: -455,
 		fill: '#000000',
 		stroke: '#000000',
 		strokeWidth: 2,
@@ -428,7 +428,7 @@ var gameConfig = {
 			collected: false
 		},
 		candyCane02: {
-			x: 2800,
+			x: 2750,
 			y: stageConfig.height - 380,
 			width: 23,
 			height: 56,
