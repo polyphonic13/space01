@@ -411,8 +411,8 @@ var gameConfig = {
 	},
 	bonuses: {
 		candyCane01: {
-			x: 500,
-			y: stageConfig.height - 120,
+			x: 1500,
+			y: stageConfig.height - 300,
 			width: 23,
 			height: 56,
 			views: [{
@@ -423,12 +423,13 @@ var gameConfig = {
 				height: 56,
 				src: 'candyCane01'
 			}],
+			speed: 6,
 			boost: 5,
 			collected: false
 		},
 		candyCane02: {
-			x: 500,
-			y: stageConfig.height - 120,
+			x: 2800,
+			y: stageConfig.height - 380,
 			width: 23,
 			height: 56,
 			views: [{
@@ -439,6 +440,7 @@ var gameConfig = {
 				height: 56,
 				src: 'candyCane01'
 			}],
+			speed: 6,
 			boost: 5,
 			collected: false
 		}

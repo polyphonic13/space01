@@ -307,6 +307,39 @@ function detectCollisions() {
 			}
 		}
 	}
+	// BONUS COLLISIONS
+	var bonusObjs = bonuses.collection;
+	var bonus;
+	var bonusPos;
+
+	// for(var j = 0; j < bonusObjs.length; j++) {
+	for(var key in bonusObjs) {
+		if(!bonusObjs[key].collected) {
+			bonusPos = bonusObjs[key].getAbsolutePosition();
+			// only test nearby bonuses for collision
+			if(bonusPos.x < (kekeHitArea.x + 100) && bonusPos.x > -(kekeHitArea.x + 100)) { 
+				// trace('bonusPos = ' + bonusPos.x + '/' + bonusPos.y + ', keke = ' + kekeHitArea.x + '/' + kekeHitArea.y);
+				bonus = {
+					x: bonusPos.x,
+					y: bonusPos.y,
+					width: bonusObjs[key].width,
+					height: bonusObjs[key].height
+				};
+				// trace('bonus: ');
+				// trace(bonus);
+
+				col = collisionCheck(bonus, kekeHitArea);
+				var bonusVerticalCenter = (bonusPos.y + (bonusObjs[key].height/2));
+				var kekeBottom = (kekeHitArea.y + kekeHitArea.height);
+				// trace('\tcol.direction = ' + col.direction + '\n\tbonus v center = ' + bonusVerticalCenter + ', keke bottom = ' + kekeBottom);
+
+				if(col.direction !== '') {
+					keke.health += bonusObjs[key].boost;
+					bonusObjs[key].collect();
+				}
+			}
+		}
+	}
 	// trace('detectCollisions, keke.grounded = ' + keke.grounded + ', col.direction = ' + col.direction);
 }
 
