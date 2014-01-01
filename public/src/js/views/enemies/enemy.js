@@ -12,10 +12,6 @@ var Enemy = (function() {
 		this.model.viewObjs = {};
 		this.buildViews();
 		
-		if(this.model.movement) {
-			this.setUpAnimation(this.model.movement);
-		}
-		
 		this.model.layer.setPosition(this.model.x, this.model.y);
 		
 		this.__defineGetter__('alive', function() {
@@ -65,23 +61,6 @@ var Enemy = (function() {
 		this.model.layer.remove();
 	};
 	
-	Enemy.prototype.setUpAnimation = function(params) {
-		// trace('Enemy/setUpAnimation, views =');
-		// trace(this.model.viewObjs);
-		var viewObjs = this.model.viewObjs;
-		var layer = this.model.layer;
-		var centerX = this.model.width / 2;
-		this.anim = new Kinetic.Animation(function(frame) {
-			for(var key in viewObjs) {
-				viewObjs[key].setX(params.amplitude * Math.sin(frame.time * 2 * Math.PI / params.period) + centerX);
-			}
-			// layer.setX(params.amplitude * Math.sin(frame.time * 2 * Math.PI / params.period) + centerX);
-		}, layer);
-
-		this.anim.start();
-		
-	};
-	
 	Enemy.prototype.buildViews = function() {
 		var views = this.model.views
 		var view;
@@ -101,8 +80,6 @@ var Enemy = (function() {
 				this.model.viewObjs.push(view);
 			}
 		}
-		trace('after caterpillar views built, viewObjs = ');
-		trace(this.model.viewObjs);
 	}
 	
 	return Enemy;

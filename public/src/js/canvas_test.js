@@ -53,7 +53,7 @@ var controlKeys = {
     gravity = 0.2,
 	previousVelX = 0;
 	jumpKeyDepressed = false,
-	facingForward = true,
+	facingRight = true,
 	playing = true,
 	won = false;
 
@@ -183,13 +183,13 @@ function update() {
     if (keys[controlKeys.RIGHT]) {
         // right arrow
         if (player.velX < player.speed) {
-			facingForward = true;
+			facingRight = true;
 			player.velX++;
 		}
 	}
 	if (keys[controlKeys.LEFT]) {         // left arrow         
 		if (player.velX > -player.speed) {
-			facingForward = false;
+			facingRight = false;
     		player.velX--;
         }
     }
@@ -243,7 +243,7 @@ function update() {
     // ctxGround.fillStyle = 'aqua';
     // ctxGround.fillRect(player.x, player.y, player.width, player.height);
 //	console.log('player.velX = ' + player.velX + ', previousVelX = ' + previousVelX);
-	if(facingForward) {
+	if(facingRight) {
 		ctxPlayer.drawImage(keke, player.x, player.y, kekeW, kekeH);
 		
 	} else {

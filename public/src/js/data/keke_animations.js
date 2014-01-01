@@ -1,17 +1,17 @@
 var kekeAnimations = {
-	idleR: [{
+	idleRight: [{
 		x: 0,
 		y: 0,
 		width: 76,
 		height: 128
 	}],
-	idleL: [{
+	idleLeft: [{
 		x: 76,
 		y: 0,
 		width: 76,
 		height: 128
 	}],
-	jumpR: [/*{
+	jumpRight: [/*{
 		x: 304,
 		y: 0,
 		width: 76,
@@ -23,13 +23,13 @@ var kekeAnimations = {
 		width: 76,
 		height: 128
 	}],
-	jumpL: [{
+	jumpLeft: [{
 		x: 228,
 		y: 384,
 		width: 76,
 		height: 128
 	}],
-	runR: [{
+	runRight: [{
 		x: 0,
 		y: 128,
 		width: 76,
@@ -101,7 +101,7 @@ var kekeAnimations = {
 		width: 76,
 		height: 128
 	}],
-	runL: [{
+	runLeft: [{
 		x: 0,
 		y: 384,
 		width: 76,

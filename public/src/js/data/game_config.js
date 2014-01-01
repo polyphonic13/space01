@@ -224,7 +224,7 @@ var gameConfig = {
 			x: 2000,
 			y: stageConfig.height - 65,
 			width: 120,
-			height: 50,
+			height: 100,
 			// fill: 'red',
 			fill: '#000000',
 			damage: -3,

@@ -128,11 +128,7 @@ function update() {
 				gameConfig.level.cleared = true;
 				quit('level cleared');
 			} else {
-				if(keke.facingForward) {
-					animationToPlay = 'idleR';
-				} else {
-					animationToPlay = 'idleL';
-				}
+				animationToPlay = 'idle';
 			}
 		}
 		keke.playAnimation(animationToPlay);
@@ -168,11 +164,7 @@ function checkInput() {
 	            keke.grounded = false;
 				jumpKeyDepressed = true;
 	            keke.velY = -keke.speed * 2;
-				if(keke.facingForward) {
-					animationToPlay = 'jumpR';
-				} else {
-					animationToPlay = 'jumpL';
-				}
+				animationToPlay = 'jump';
 				// trace('\tpassed jump conditional, velY = ' + keke.velY);
 	       }
 			// jumpButton.setWasPressed(false);
@@ -183,32 +175,24 @@ function checkInput() {
 	        if (keke.velX < keke.speed) {
 				keke.velX++;
 				if(!keke.jumping) {
-					if(keke.getCurrentAnimation() !== 'runL') {
-						animationToPlay = 'runL';
-					}
+					animationToPlay = 'run';
 				} else {
-					animationToPlay = 'jumpL';
+					animationToPlay = 'jump';
 				}
 			}
-			keke.facingForward = false;
+			keke.direction = Directions.LEFT
 		} else if (keys[ControlKeys.RIGHT] || controls.getForward()) {         // left arrow         
 			if (keke.velX > -keke.speed) {
 	    		keke.velX--;
 				if(!keke.jumping) {
-					if(keke.getCurrentAnimation() !== 'runR') {
-						animationToPlay = 'runR';
-					}
+					animationToPlay = 'run';
 				} else {
-					animationToPlay = 'jumpR';
+					animationToPlay = 'jump';
 				}
 	        }
-			keke.facingForward = true;
+			keke.direction = Directions.RIGHT;
 		} else if(!keke.jumping) {
-			if(keke.facingForward) {
-				animationToPlay = 'idleR';
-			} else {
-				animationToPlay = 'idleL';
-			}
+			animationToPlay = 'idle';
 		}
 	}
  }
@@ -247,27 +231,27 @@ function detectCollisions() {
 				col = collisionCheck(kekeHitArea, rect);
 			}
 
-		    if (col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
-		        keke.velX = 0;
-		        keke.jumping = false;
-			} else if (col.direction === Directions.BOTTOM) {
-				if(keke.justJumped) {
-					keke.justJumped = false;
-				} else {
-			        keke.grounded = true;
-			        keke.jumping = false;
-					jumpKeyDepressed = false;
-				}
-			} else if (col.direction === Directions.TOP) {
-		        // keke.velY *= -1;
-		    }
-	
 			if(col.direction !== '') {
 				// trace('grounds['+i+'].damage = ' + grounds[i].damage);
 				if(grounds[i].config.damage) {
 					trace('something damaging was hit');
 					keke.health += grounds[i].config.damage;
 				}
+			    if (col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
+			        keke.velX = 0;
+			        keke.jumping = false;
+				} else if (col.direction === Directions.BOTTOM) {
+					if(keke.justJumped) {
+						keke.justJumped = false;
+					} else {
+				        keke.grounded = true;
+				        keke.jumping = false;
+						jumpKeyDepressed = false;
+					}
+				} else if (col.direction === Directions.TOP) {
+			        // keke.velY *= -1;
+			    }
+				// break; // stop loop, something was hit
 			}
 		}
 	}
@@ -294,18 +278,22 @@ function detectCollisions() {
 				// trace(enemy);
 
 				col = collisionCheck(enemy, kekeHitArea);
-				var enemyVerticalCenter = (enemyPos.y + (enemyObjs[key].height/2));
-				var kekeBottom = (kekeHitArea.y + kekeHitArea.height);
-				// trace('\tcol.direction = ' + col.direction + '\n\tenemy v center = ' + enemyVerticalCenter + ', keke bottom = ' + kekeBottom);
+				
+				if(col.direction !== '') {
+					var enemyVerticalCenter = (enemyPos.y + (enemyObjs[key].height/2));
+					var kekeBottom = (kekeHitArea.y + kekeHitArea.height);
+					// trace('\tcol.direction = ' + col.direction + '\n\tenemy v center = ' + enemyVerticalCenter + ', keke bottom = ' + kekeBottom);
 
-				if(col.direction === Directions.TOP && (kekeBottom < enemyVerticalCenter)) {
-					trace('enemy bottom collision, enemy health = ' + enemyObjs[key].health + ', keke.damage = ' + keke.damage);
-					enemyObjs[key].health += keke.damage;
-					keke.velY = 0;
-				} else if(col.direction === Directions.LEFT || col.direction === Directions.RIGHT || col.direction === Directions.BOTTOM) {
-					keke.health += enemyObjs[key].damage;
-					trace('enemy top/left/right collision, enemy damage = ' + enemyObjs[key].damage + ', keke.health = ' + keke.health);
-					// keke.velX = 0;
+					if(col.direction === Directions.TOP && (kekeBottom < enemyVerticalCenter)) {
+						trace('enemy bottom collision, enemy health = ' + enemyObjs[key].health + ', keke.damage = ' + keke.damage);
+						enemyObjs[key].health += keke.damage;
+						keke.velY = 0;
+					} else if(col.direction === Directions.LEFT || col.direction === Directions.RIGHT || col.direction === Directions.BOTTOM) {
+						keke.health += enemyObjs[key].damage;
+						trace('enemy top/left/right collision, enemy damage = ' + enemyObjs[key].damage + ', keke.health = ' + keke.health);
+						// keke.velX = 0;
+					}
+					break;
 				}
 			}
 		}
@@ -474,12 +462,14 @@ function keyupHandler(e) {
 	switch(e.which) {
 		case ControlKeys.LEFT:
 		keys[ControlKeys.LEFT] = false;
-		animationToPlay = 'idleL';
+		keke.direction = Directions.LEFT;
+		animationToPlay = 'idle';
 		break;
 
 		case ControlKeys.RIGHT:
 		keys[ControlKeys.RIGHT] = false;
-		animationToPlay = 'idleR';
+		keke.direction = Directions.RIGHT;
+		animationToPlay = 'idle';
 		break;
 
 		case ControlKeys.UP:

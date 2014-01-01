@@ -1,8 +1,8 @@
 var Directions = {
-	LEFT: 'left',
-	RIGHT: 'right',
-	UP: 'up',
-	DOWN: 'down',
-	TOP: 'top',
-	BOTTOM: 'bottom'
+	LEFT: 'Left',
+	RIGHT: 'Right',
+	UP: 'Up',
+	DOWN: 'Down',
+	TOP: 'Top',
+	BOTTOM: 'Bottom'
 };
