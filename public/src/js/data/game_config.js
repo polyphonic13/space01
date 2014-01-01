@@ -49,12 +49,8 @@ var gameConfig = {
 		src: 'images/grass01h.png'
 	},
 	{
-		id: 'caterpillar01a_l',
-		src: 'images/caterpillar01a_l.png'
-	},
-	{
-		id: 'caterpillar01a_r',
-		src: 'images/caterpillar01a_r.png'
+		id: 'caterpillar01a',
+		src: 'images/caterpillar01a.png'
 	},
 	{
 		id: 'candyCane01',
@@ -311,97 +307,80 @@ var gameConfig = {
 	},
 	enemies: {
 		caterpillar01: {
+			type: 'SpriteEnemy',
 			x: 600,
 			y: stageConfig.height - 100,
 			width: 142,
 			height: 30,
-			views: [{
-				id: 'left',
-				type: 'Image',
+			sprite: {
+				src: 'caterpillar01a',
 				x: 0,
 				y: 0,
-				width: 142,
-				height: 30,
-				src: 'caterpillar01a_l'
+				index: 0,
+				frameRate: 14
 			},
-			{
-				id: 'right',
-				type: 'Image',
-				x: 0,
-				y: 0,
-				width: 142,
-				height: 30,
-				src: 'caterpillar01a_r'
-			}],
-			movement: {
-		      amplitude: 25,
-		      period: 5000
-			},
+			defaultAnimation: 'idleLeft',
+			animations: caterpillarAnimations,
 			speed: 6,
 			damage: -3,
 			health: 5,
 			alive: true
 		},
 		caterpillar02: {
+			type: 'SpriteEnemy',
 			x: 950,
 			y: stageConfig.height - 120,
 			width: 142,
 			height: 30,
-			views: [{
-				id: 'left',
-				type: 'Image',
+			sprite: {
+				src: 'caterpillar01a',
 				x: 0,
 				y: 0,
-				width: 142,
-				height: 30,
-				src: 'caterpillar01a_l'
-			}],
-			movement: {
-		      amplitude: 100,
-		      period: 5000
+				index: 0,
+				frameRate: 14
 			},
+			defaultAnimation: 'idleLeft',
+			animations: caterpillarAnimations,
 			speed: 6,
 			damage: -3,
 			health: 5,
 			alive: true
 		},
 		caterpillar03: {
+			type: 'SpriteEnemy',
 			x: 1400,
 			y: stageConfig.height - 120,
 			width: 142,
 			height: 30,
-			views: [{
-				id: 'left',
-				type: 'Image',
+			sprite: {
+				src: 'caterpillar01a',
 				x: 0,
 				y: 0,
-				width: 142,
-				height: 30,
-				src: 'caterpillar01a_l'
-			}],
-			movement: {
-		      amplitude: 150,
-		      period: 5000
+				index: 0,
+				frameRate: 14
 			},
+			defaultAnimation: 'idleLeft',
+			animations: caterpillarAnimations,
 			speed: 6,
 			damage: -5,
 			health: 10,
 			alive: true
 		},
 		caterpillar04: {
+			type: 'SpriteEnemy',
 			x: 2300,
 			y: stageConfig.height - 120,
 			width: 142,
 			height: 30,
-			views: [{
-				id: 'left',
-				type: 'Image',
+			sprite: {
+				src: 'caterpillar01a',
 				x: 0,
 				y: 0,
-				width: 142,
-				height: 30,
-				src: 'caterpillar01a_l'
-			}],
+				index: 0,
+				frameRate: 14
+			},
+			defaultAnimation: 'idleLeft',
+			animations: caterpillarAnimations,
 			movement: {
 		      amplitude: 100,
 		      period: 5000

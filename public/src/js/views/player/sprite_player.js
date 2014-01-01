@@ -11,7 +11,7 @@ var SpritePlayer = (function() {
 		config = Utils.extend(_config, params);
 		SpritePlayer._super.constructor.call(_this, _config);
 
-		_buildViews();
+		this.buildViews();
 		this.direction = Directions.RIGHT;
 	}
 
@@ -22,7 +22,9 @@ var SpritePlayer = (function() {
 	};
 	
 	SpritePlayer.prototype.start = function() {
-		_sprite.start();
+		if(typeof(_sprite) !== 'undefined') {
+			_sprite.start();
+		}
 	};
 	
 	SpritePlayer.prototype.playAnimation = function(name) {
@@ -37,21 +39,10 @@ var SpritePlayer = (function() {
 	};
 
 	// PRIVATE METHODS
-	function _buildViews() {
+	SpritePlayer.prototype.buildViews = function() {
 		// trace('SpritePlayer/_buildViews, sprite = ');
 		// trace(imageManager.getImage(_this.model.sprite.src));
-		
-		_sprite = new Kinetic.Sprite({
-			x: _this.model.sprite.x,
-			y: _this.model.sprite.y,
-			image: imageManager.getImage(_this.model.sprite.src),
-			animation: _this.model.defaultAnimation,
-			animations: _this.model.animations,
-			frameRage: _this.model.sprite.frameRate,
-			index: _this.model.sprite.index
-		});
-		_this.model.layer.add(_sprite);
-
+		_sprite = SpriteCreator.addToModel(_this.model);
 		_sprite.start();
 	}
 

@@ -7,7 +7,22 @@ var Enemies = (function() {
 		this.count = 0;
 		var enemy;
 		for(var key in params) {
-			enemy = new Enemy(params[key], key, this);
+			params[key].holder = this;
+			params[key].id = key;
+			switch(params[key].type) {
+				case 'AnimatedEnemy':
+					enemy = new AnimatedEnemy(params[key]);
+				break;
+				
+				case 'SpriteEnemy':
+					enemy = new SpriteEnemy(params[key]);
+				break;
+				
+				default: 
+					trace('WARNING, enemy['+key+'].type = ' + params[key].type);
+					enemy = new Enemy(params[key]);
+				break;
+			}
 			this.collection[key] = enemy;
 			this.count++;
 		}
