@@ -308,7 +308,7 @@ var gameConfig = {
 	enemies: {
 		caterpillar01: {
 			type: EnemyTypes.MOVING_SPRITE,
-			x: 600,
+			x: 800,
 			y: stageConfig.height - 100,
 			width: 142,
 			height: 30,
@@ -319,15 +319,9 @@ var gameConfig = {
 				index: 0,
 				frameRate: 5
 			},
-			// movement: {
-			// 	type: MovementTypes.BASIC_X,
-			// 	velocity: -50
-			// },
 			movement: {
-				type: MovementTypes.SINE_X,
-				centerX: (142/2),
-				amplitude: 150,
-				period: 10000
+				type: MovementTypes.BASIC_X,
+				velocity: -50
 			},
 			defaultDirection: Directions.LEFT,
 			defaultAnimation: 'idleLeft',
@@ -338,8 +332,8 @@ var gameConfig = {
 			alive: true
 		},
 		caterpillar02: {
-			type: EnemyTypes.SPRITE,
-			x: 950,
+			type: EnemyTypes.MOVING_SPRITE,
+			x: 1200,
 			y: stageConfig.height - 120,
 			width: 142,
 			height: 30,
@@ -349,6 +343,10 @@ var gameConfig = {
 				y: 0,
 				index: 0,
 				frameRate: 5
+			},
+			movement: {
+				type: MovementTypes.BASIC_X,
+				velocity: -25
 			},
 			defaultDirection: Directions.LEFT,
 			defaultAnimation: 'idleLeft',
@@ -377,8 +375,8 @@ var gameConfig = {
 				amplitude: 150,
 				period: 10000
 			},
-			defaultDirection: Directions.LEFT,
-			defaultAnimation: 'idleLeft',
+			defaultDirection: Directions.RIGHT,
+			defaultAnimation: 'idleRight',
 			animations: caterpillarAnimations,
 			speed: 6,
 			damage: -5,
