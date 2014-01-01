@@ -603,8 +603,9 @@ function addMenuScreen(message, stats) {
 		var statsMsg = 'Statistics:'
 			+ '\n\nBugs squashed = ' + stats.enemies.killed + '/' + stats.enemies.total 
 			+ '\nBonuses collected = ' + stats.bonuses.collected + '/' + stats.bonuses.total
-			+ '\n\nHealth bonus = ' + healthPoints
-			+ '\nKills = ' + killPoints
+			+ '\n\nPoints:'
+			+ '\nHealth bonus = ' + healthPoints
+			+ '\nEnemies = ' + killPoints
 			+ '\nBonuses = ' + bonusPoints
 			+ '\nLevel = ' + stats.levelPoints
 			+ '\nTotal = ' + totalPoints;

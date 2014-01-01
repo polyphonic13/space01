@@ -406,8 +406,8 @@ var gameConfig = {
 		      period: 5000
 			},
 			speed: 6,
-			damage: -5,
-			health: 10,
+			damage: -10,
+			health: 50,
 			alive: true
 		}
 		
