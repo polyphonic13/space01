@@ -550,7 +550,7 @@ function addMenuScreen(message, stats) {
 	
 	var gameOverText = new Kinetic.Text({
 		x: 0,
-		y: stage.getHeight() / 4,
+		y: (stage.getHeight() / 4) - 30,
 		width: stage.getWidth(),
 		text: menuText,
 		align: 'center',
@@ -619,7 +619,7 @@ function addMenuScreen(message, stats) {
 			width: stage.getWidth() - 100,
 			text: statsMsg,
 			align: 'right',
-			fontSize: 18,
+			fontSize: 16,
 			fontFamily: 'Calibri',
 			fill: '#000000'
 		});
