@@ -52,22 +52,10 @@ var ControlButton = (function() {
 				height: _model.radius
 			});
 		}
-		// trace('_model.type = ' + _model.type);
-		// if(_model.type === 'Image') {
-			_buildImageView(_model);
-		// } else {
-		// 	_circle = new Kinetic.Circle(_model);
-		// 	_model.layer.add(_circle);
-		// 	_model.view = _circle;
-		// 	_addListeners();
-		// }
+		_buildImageView(_model);
     }
 
 	function _buildImageView(params) {
-	    // var imageObj = new Image();
-		// trace('ControlButton/_buildImageView, image = ');
-		trace(imageManager.getImage(params.src));
-		
 		var image = new Kinetic.Image({
 			x: params.x,
 			y: params.y,

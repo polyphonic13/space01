@@ -10,12 +10,16 @@ var Enemies = (function() {
 			params[key].holder = this;
 			params[key].id = key;
 			switch(params[key].type) {
-				case 'AnimatedEnemy':
+				case EnemyTypes.ANIMATED:
 					enemy = new AnimatedEnemy(params[key]);
 				break;
 				
-				case 'SpriteEnemy':
+				case EnemyTypes.SPRITE:
 					enemy = new SpriteEnemy(params[key]);
+				break;
+				
+				case EnemyTypes.MOVING_SPRITE:
+					enemy = new MovingSpriteEnemy(params[key]);
 				break;
 				
 				default: 
@@ -26,8 +30,8 @@ var Enemies = (function() {
 			this.collection[key] = enemy;
 			this.count++;
 		}
-		trace('\tend of Enemies constructor, collection = ');
-		trace(this.collection);
+		// trace('\tend of Enemies constructor, collection = ');
+		// trace(this.collection);
 	}
 
 	Enemies.prototype.setStage = function(stage) {

@@ -11,8 +11,8 @@ var Bonuses = (function() {
 			this.collection[key] = bonus;
 			this.count++;
 		}
-		trace('\tend of Bonuses constructor, collection = ');
-		trace(this.collection);
+		// trace('\tend of Bonuses constructor, collection = ');
+		// trace(this.collection);
 	}
 
 	Bonuses.prototype.setStage = function(stage) {

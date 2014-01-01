@@ -14,7 +14,7 @@ var SpriteEnemy = (function() {
 
 	SpriteEnemy.prototype.update = function(params) {
 		var pos = (params.pos) ? params.pos : this.model.layer.getAbsolutePosition();
-		if(Utils.isOnStage(pos)) {
+		if(Utils.isInView(pos)) {
 			this.updateAnimation(true);
 		} else {
 			this.updateAnimation(false);
@@ -22,24 +22,21 @@ var SpriteEnemy = (function() {
 		SpriteEnemy._super.update.call(this, params);
 	};
 	
-	SpriteEnemy.prototype.updateAnimation = function(val) {
+	SpriteEnemy.prototype.updateAnimation = function(inView) {
 		if(typeof(this.sprite) !== 'undefined') {
-			if(val) {
-				// this.sprite.start();
+			if(inView) {
 				this.playAnimation('walk');
 			} else {
 				this.sprite.stop();
 			}
 		}
-		SpriteEnemy._super.setInView.call(this, val);
+		SpriteEnemy._super.setInView.call(this, inView);
 	};
 	
 	SpriteEnemy.prototype.playAnimation = function(name) {
 		if(typeof(this.sprite) !== 'undefined') {
 			var animationName = name + this.direction;
 			if(animationName !== this.currentAnimation) {
-				trace('SpriteEnemy['+this.model.id+']/playAnimation, name = ' + name + ', animationName = ' + animationName + ', frameRate = ' + this.sprite.getFrameRate() + '\t_sprite = ');
-				trace(this.sprite);
 				this.sprite.setAnimation(animationName);
 				this.sprite.start();
 			}
@@ -58,10 +55,18 @@ var SpriteEnemy = (function() {
 		// trace('SpritePlayer/_buildViews, sprite = ');
 		// trace(imageManager.getImage(_this.model.sprite.src));
 		this.sprite = SpriteCreator.addToModel(_this.model);
-
-		// this.playAnimation('idle');
-		// this.sprite.start();
 		this.sprite.stop();
+	};
+
+	SpriteEnemy.prototype.getHitArea = function() {
+		var pos = this.sprite.getAbsolutePosition();
+		var hitArea = {
+			x: pos.x,
+			y: pos.y,
+			width: this.model.width,
+			height: this.model.height
+		};
+		return hitArea;
 	};
 
 	return SpriteEnemy

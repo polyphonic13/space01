@@ -4,7 +4,7 @@ var Bonus = (function() {
 	var _this;
 	
 	function Bonus(params, id, holder) {
-		trace('Bonus/constructor');
+		// trace('Bonus/constructor');
 		_this = this;
 		this.holder = holder;
 		params.id = id;
@@ -69,12 +69,8 @@ var Bonus = (function() {
 	Bonus.prototype.buildViews = function() {
 		var views = this.model.views
 		var view;
-		// trace('Bonus/buildViews, this position = ');
-		// trace(this.model.layer.getAbsolutePosition());
-		trace('Bonus/buildViews');
+
 		for(var i = 0; i < views.length; i++) {
-			trace('\tviews['+i+'] = ');
-			trace(views[i]);
 			if(views[i].type === 'Image') {
 				this.model.viewObjs.push(this.addImage(views[i], this.model));
 			} else {
