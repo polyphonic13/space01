@@ -2,29 +2,48 @@ var SpriteEnemy = (function() {
 	Utils.inherits(SpriteEnemy, Enemy);
 	
 	var _this; 
-	var _sprite; 
+	// var this.sprite; 
 	
 	function SpriteEnemy(params) {
 		_this = this;
 		SpriteEnemy._super.constructor.call(this, params);
 
+		this.direction = this.model.defaultDirection;
 		this.buildViews();
 	}
 
+	SpriteEnemy.prototype.update = function(params) {
+		
+	};
+	
 	SpriteEnemy.prototype.setInView = function(val) {
-		if(typeof(_sprite) !== 'undefined') {
+		if(typeof(this.sprite) !== 'undefined') {
 			if(val) {
-				_sprite.start();
+				// this.sprite.start();
+				this.playAnimation('walk');
 			} else {
-				_sprite.stop();
+				this.sprite.stop();
 			}
 		}
 		SpriteEnemy._super.setInView.call(this, val);
 	};
 	
+	SpriteEnemy.prototype.playAnimation = function(name) {
+		if(typeof(this.sprite) !== 'undefined') {
+			var animationName = name + this.direction;
+			if(animationName !== this.currentAnimation) {
+				trace('SpriteEnemy['+this.model.id+']/playAnimation, name = ' + name + ', animationName = ' + animationName + ', frameRate = ' + this.sprite.getFrameRate() + '\t_sprite = ');
+				trace(this.sprite);
+				this.sprite.setAnimation(animationName);
+				this.sprite.start();
+			}
+			this.currentAnimation = animationName;
+		}
+	};
+	
 	SpriteEnemy.prototype.die = function() {
-		if(typeof(_sprite) !== 'undefined') {
-			_sprite.stop();
+		if(typeof(this.sprite) !== 'undefined') {
+			this.sprite.stop();
 		}
 		SpriteEnemy._super.die.call(this);
 	};
@@ -32,9 +51,11 @@ var SpriteEnemy = (function() {
 	SpriteEnemy.prototype.buildViews = function() {
 		// trace('SpritePlayer/_buildViews, sprite = ');
 		// trace(imageManager.getImage(_this.model.sprite.src));
-		_sprite = SpriteCreator.addToModel(_this.model);
+		this.sprite = SpriteCreator.addToModel(_this.model);
 
-		// _sprite.start();
+		// this.playAnimation('idle');
+		// this.sprite.start();
+		this.sprite.stop();
 	};
 
 	return SpriteEnemy

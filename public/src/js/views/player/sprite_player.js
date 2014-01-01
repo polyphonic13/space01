@@ -11,8 +11,8 @@ var SpritePlayer = (function() {
 		config = Utils.extend(_config, params);
 		SpritePlayer._super.constructor.call(_this, _config);
 
+		this.direction = this.model.defaultDirection;
 		this.buildViews();
-		this.direction = Directions.RIGHT;
 	}
 
 	SpritePlayer.prototype.stop = function() {
@@ -28,9 +28,9 @@ var SpritePlayer = (function() {
 	};
 	
 	SpritePlayer.prototype.playAnimation = function(name) {
-		if(_sprite) {
+		if(typeof(_sprite) !== 'undefined') {
 			var animationName = name + this.direction;
-			// trace('SpritePlayer/playAnimation, name = ' + name + ', animationName = ' + animationName);
+			// trace('SpritePlayer/playAnimation, name = ' + name + ', animationName = ' + animationName + ', frameRate = ' + _sprite.getFrameRate());
 			if(animationName !== this.currentAnimation) {
 				_sprite.setAnimation(animationName);
 			}
@@ -43,6 +43,7 @@ var SpritePlayer = (function() {
 		// trace('SpritePlayer/_buildViews, sprite = ');
 		// trace(imageManager.getImage(_this.model.sprite.src));
 		_sprite = SpriteCreator.addToModel(_this.model);
+
 		_sprite.start();
 	}
 

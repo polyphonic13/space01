@@ -2,7 +2,7 @@ var SpriteCreator = (function() {
 	var spriteCreator = {};
 	
 	spriteCreator.addToModel = function(model) {
-		
+		// trace('SpriteCreator/addToModel, frameRate = ' + model.sprite.frameRate);
 		var sprite = new Kinetic.Sprite({
 			x: model.sprite.x,
 			y: model.sprite.y,
@@ -13,6 +13,7 @@ var SpriteCreator = (function() {
 			index: model.sprite.index
 		});
 		model.layer.add(sprite);
+		sprite.setFrameRate(model.sprite.frameRate);
 		
 		return sprite;
 	};

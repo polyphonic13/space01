@@ -91,5 +91,16 @@ var View = (function() {
 		return image;
 	};
 	
+	View.prototype.getHitArea = function() {
+		var pos = this.model.layer.getAbsolutePosition();
+		var hitArea = {
+			x: pos.x,
+			y: pos.y,
+			width: this.model.width,
+			height: this.model.height
+		};
+		return hitArea;
+	};
+	
 	return View;
 })();

@@ -264,20 +264,22 @@ function detectCollisions() {
 	// for(var j = 0; j < enemyObjs.length; j++) {
 	for(var key in enemyObjs) {
 		if(enemyObjs[key].alive) {
-			enemyPos = enemyObjs[key].getAbsolutePosition();
+			// enemyPos = enemyObjs[key].getAbsolutePosition();
+			enemyPos = enemyObjs[key].getHitArea();
+
+			if(enemyPos.x > 0 && enemyPos.x < stageConfig.width) {
+				enemyObjs[key].setInView(true);
+			} else {
+				enemyObjs[key].setInView(false);
+			}
 			// only test nearby enemies for collision
 			if(enemyPos.x < (kekeHitArea.x + 100) && enemyPos.x > -(kekeHitArea.x + 100)) { 
+				// enemy is near
 				// trace('enemyPos = ' + enemyPos.x + '/' + enemyPos.y + ', keke = ' + kekeHitArea.x + '/' + kekeHitArea.y);
-				enemy = {
-					x: enemyPos.x,
-					y: enemyPos.y,
-					width: enemyObjs[key].width,
-					height: enemyObjs[key].height
-				};
 				// trace('enemy: ');
 				// trace(enemy);
 
-				col = collisionCheck(enemy, kekeHitArea);
+				col = collisionCheck(enemyPos, kekeHitArea);
 				
 				if(col.direction !== '') {
 					var enemyVerticalCenter = (enemyPos.y + (enemyObjs[key].height/2));

@@ -59,16 +59,5 @@ var Player = (function() {
 		});
 	}
 	
-	Player.prototype.getHitArea = function() {
-		var pos = _this.model.layer.getAbsolutePosition();
-		var hitArea = {
-			x: pos.x,
-			y: pos.y,
-			width: _this.model.width,
-			height: _this.model.height
-		};
-		return hitArea;
-	};
-	
 	return Player;
 })();

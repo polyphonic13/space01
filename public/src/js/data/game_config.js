@@ -50,7 +50,7 @@ var gameConfig = {
 	},
 	{
 		id: 'caterpillar01a',
-		src: 'images/caterpillar01a.png'
+		src: 'images/caterpillar01a_sprite.png'
 	},
 	{
 		id: 'candyCane01',
@@ -317,8 +317,9 @@ var gameConfig = {
 				x: 0,
 				y: 0,
 				index: 0,
-				frameRate: 14
+				frameRate: 5
 			},
+			defaultDirection: Directions.LEFT,
 			defaultAnimation: 'idleLeft',
 			animations: caterpillarAnimations,
 			speed: 6,
@@ -337,8 +338,9 @@ var gameConfig = {
 				x: 0,
 				y: 0,
 				index: 0,
-				frameRate: 14
+				frameRate: 5
 			},
+			defaultDirection: Directions.LEFT,
 			defaultAnimation: 'idleLeft',
 			animations: caterpillarAnimations,
 			speed: 6,
@@ -357,8 +359,9 @@ var gameConfig = {
 				x: 0,
 				y: 0,
 				index: 0,
-				frameRate: 14
+				frameRate: 5
 			},
+			defaultDirection: Directions.LEFT,
 			defaultAnimation: 'idleLeft',
 			animations: caterpillarAnimations,
 			speed: 6,
@@ -377,8 +380,9 @@ var gameConfig = {
 				x: 0,
 				y: 0,
 				index: 0,
-				frameRate: 14
+				frameRate: 5
 			},
+			defaultDirection: Directions.LEFT,
 			defaultAnimation: 'idleLeft',
 			animations: caterpillarAnimations,
 			movement: {
@@ -447,6 +451,7 @@ var gameConfig = {
 			index: 0,
 			frameRate: 14
 		},
+		defaultDirection: Directions.RIGHT,
 		defaultAnimation: 'idleRight',
 		animations: kekeAnimations,
 		damage: -5,
