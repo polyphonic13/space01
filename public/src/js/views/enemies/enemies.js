@@ -60,7 +60,7 @@ var Enemies = (function() {
 	};
 	
 	Enemies.prototype.enemyDied = function(id) {
-		trace('Enemies/enemyDied, id = ' + id);
+		// trace('Enemies/enemyDied, id = ' + id);
 		this.killed++;
 		delete this.collection[id];
 	};

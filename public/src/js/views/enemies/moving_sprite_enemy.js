@@ -4,50 +4,68 @@ var MovingSpriteEnemy = (function() {
 	var _this;
 	
 	function MovingSpriteEnemy(params) {
-		trace('MovingSpriteEnemy/constructor');
+		// trace('MovingSpriteEnemy/constructor');
 		_this = this;
 		MovingSpriteEnemy._super.constructor.call(this, params);
-		trace('\tpost super constructor, sprite = ');
-		trace(this.sprite);
-		this.setUpAnimation(this.model);
+		// trace('\tpost super constructor, sprite = ');
+		// trace(this.sprite);
+		this.addAnimation(this.model);
 	}
 	
 	MovingSpriteEnemy.prototype.update = function(params) {
-		var pos = (params.pos) ? params.pos : this.model.layer.getAbsolutePosition();
-		if(Utils.isInView(pos)) {
-			this.updateMovement(true);
-		} else {
-			this.updateMovement(false);
-		}
 		MovingSpriteEnemy._super.update.call(this, params);
+		this.updateMovement();
 	};
 	
-	MovingSpriteEnemy.prototype.updateMovement = function(inView) {
-		if(inView) {
+	MovingSpriteEnemy.prototype.updateMovement = function() {
+		if(this.inView) {
 			this.anim.start();
+			this.checkDirectionChange();
 		} else {
 			this.anim.stop();
 		}
 	};
 	
-	MovingSpriteEnemy.prototype.setUpAnimation = function(params) {
-		trace('MovingSpriteEnemy/setUpAnimation');
+	MovingSpriteEnemy.prototype.checkDirectionChange = function() {
+		var pos = this.getHitArea();
+		if(pos.x < this.previousX) {
+			this.changeType = 'descending';
+		} else if(pos.x > this.previousX) {
+			this.changeType = 'ascending';
+		}
+		
+		if(this.changeType !== this.previousChangeType) {
+			// the direction of movement has changed
+			this.directionChange(this.changeType);
+		}
+		
+		this.previousChangeType = this.changeType;
+		this.previousX = pos.x;
+	};
+	
+	MovingSpriteEnemy.prototype.addAnimation = function(params) {
+		// trace('MovingSpriteEnemy/addAnimation');
 		var animConfig = params.movement;
 		animConfig.layer = this.model.layer;
 		animConfig.target = this.sprite;
 		this.anim = new MovementAnimation(animConfig);
-/*
-		var layer = this.model.layer;
-		var centerX = this.model.width / 2;
-		var sprite = this.sprite;
-		
-		this.anim = new Kinetic.Animation(function(frame) {
-			sprite.setX(params.movement.amplitude * Math.sin(frame.time * 2 * Math.PI / params.movement.period) + centerX);
-			// var dist = params.movement.velocity * (frame.timeDiff / 1000);
-			// sprite.move(dist, 0);
-		}, layer);
-*/
 	};
 
+	MovingSpriteEnemy.prototype.directionChange = function(direction) {
+		// trace('MovingSpriteEnemy['+this.model.id+']/animationChange');
+		if(direction === 'descending') {
+			this.setDirection(Directions.LEFT);
+		} else if(direction === 'ascending') {
+			this.setDirection(Directions.RIGHT);
+		}
+	};
+	
+	MovingSpriteEnemy.prototype.remove = function() {
+		// trace('MovingSpriteEnemy['+this.model.id+']/remove, this.anim = ');
+		// trace(this.anim);
+		this.anim.stop();
+		MovingSpriteEnemy._super.remove.call(this);
+	};
+	
 	return MovingSpriteEnemy;
 })();

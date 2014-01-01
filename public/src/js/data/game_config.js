@@ -319,9 +319,15 @@ var gameConfig = {
 				index: 0,
 				frameRate: 5
 			},
+			// movement: {
+			// 	type: MovementTypes.BASIC_X,
+			// 	velocity: -50
+			// },
 			movement: {
-				type: MovementTypes.BASIC_X,
-				velocity: -50
+				type: MovementTypes.SINE_X,
+				centerX: (142/2),
+				amplitude: 150,
+				period: 10000
 			},
 			defaultDirection: Directions.LEFT,
 			defaultAnimation: 'idleLeft',

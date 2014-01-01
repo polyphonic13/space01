@@ -14,4 +14,4 @@ var stage,
 		}
 	};
 	
-	trace('stageConfig.width = ' + stageConfig.width + ', height = ' + stageConfig.height);
+	// trace('stageConfig.width = ' + stageConfig.width + ', height = ' + stageConfig.height);

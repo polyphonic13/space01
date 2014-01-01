@@ -44,7 +44,7 @@ Enemy.prototype.setUpAnimation = function(params) {
 		// layer.setX(params.amplitude * Math.sin(frame.time * 2 * Math.PI / params.period) + centerX);
 		
 		var dist = (_this.model.speed*100) * (frame.timeDiff / 1000);
-		trace('dist = ' + dist);
+		// trace('dist = ' + dist);
 		_this.model.layer.move(dist, 0);
 	}, layer);
 

@@ -10,7 +10,7 @@ var HorizontalControls = (function() {
 	var _reverseWedge;
 	
 	function HorizontalControls(params) {
-		trace('HorizontalControls/constructor');
+		// trace('HorizontalControls/constructor');
 		_this = this;
 		HorizontalControls._super.constructor.call(this, params);
 		
@@ -53,9 +53,9 @@ var HorizontalControls = (function() {
 	}
 	
 	function _addListeners() {
-		trace('horizontal controls listeners, buttons = ');
-		trace(_forwardWedge);
-		trace(_reverseWedge);
+		// trace('horizontal controls listeners, buttons = ');
+		// trace(_forwardWedge);
+		// trace(_reverseWedge);
 		_forwardWedge.on('mousedown touchstart', function(evt) {
 			_onForwardPressed(evt);
 		});
@@ -76,13 +76,13 @@ var HorizontalControls = (function() {
 	function _getEventPosition(evt) {
 		var pos = {};
 		if(evt.targetTouches && evt.targetTouches.length > 0) {
-			trace('there are target touches');
+			// trace('there are target touches');
 			pos = {
 				x: evt.targetTouches[0].clientX,
 				y: evt.targetTouches[0].clientY
 			}
 		} else {
-			trace('no target touches');
+			// trace('no target touches');
 			pos = {
 				x: evt.x,
 				y: evt.y
@@ -92,8 +92,8 @@ var HorizontalControls = (function() {
 	}
 	
 	function _onForwardPressed(evt) {
-		trace('HorizontalControls/_onForwardPressed');
-		trace(evt);
+		// trace('HorizontalControls/_onForwardPressed');
+		// trace(evt);
 		_forwardPressed = true;
 		_reversePressed = false;
 		var pos = _getEventPosition(evt);
@@ -106,9 +106,9 @@ var HorizontalControls = (function() {
 	}
 	
 	function _onForwardReleased(evt) {
-		trace('HorizontalControls/_onForwardReleased');
-		trace(evt);
-		trace(_previousForwardTouch);
+		// trace('HorizontalControls/_onForwardReleased');
+		// trace(evt);
+		// trace(_previousForwardTouch);
 		if(evt.x === _previousForwardTouch.x && evt.y === _previousForwardTouch.y) {
 		// if(evt.targetNode === _previousForwardTouch.targetNode) {
 			_forwardPressed = false;
@@ -116,8 +116,8 @@ var HorizontalControls = (function() {
 	}
 	
 	function _onReversedPressed(evt) {
-		trace('HorizontalControls/_onReversedPressed');
-		trace(evt);
+		// trace('HorizontalControls/_onReversedPressed');
+		// trace(evt);
 		_reversePressed = true;
 		_forwardPressed = false;
 		var pos = _getEventPosition(evt);
@@ -130,9 +130,9 @@ var HorizontalControls = (function() {
 	}
 	
 	function _onReverseReleased(evt) {
-		trace('HorizontalControls/_onReleased');
-		trace(evt);
-		trace(_previousReverseTouch);
+		// trace('HorizontalControls/_onReleased');
+		// trace(evt);
+		// trace(_previousReverseTouch);
 		if(evt.x === _previousReverseTouch.x && evt.y === _previousReverseTouch.y) {
 		// if(evt.targetNode === _previousReverseTouch.targetNode) {
 			_reversePressed = false;

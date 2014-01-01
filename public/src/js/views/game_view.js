@@ -31,7 +31,7 @@ var GameView = (function(){
 			var image = new Kinetic.Image(imageConfig);
 			this.layer.add(image);
 			this.layer.draw(); // layer has to have draw called each time there is a change
-			trace('imageObj/onload');
+			// trace('imageObj/onload');
 	    };
 	    imageObj.src = params.url;
 	}

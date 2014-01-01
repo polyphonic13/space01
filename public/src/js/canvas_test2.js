@@ -237,7 +237,7 @@ cvsBackground.height = cvsGround.height = cvsPlayer.height = cvsControls.height 
 function update() {
     // check keys
     if (keys[controlKeys.UP] || keys[controlKeys.SPACE] || controls.getJumping()) {
-		trace('THERE WAS A JUMP, jumping = ' + player.jumping + ', grounded = ' + player.grounded);
+		// trace('THERE WAS A JUMP, jumping = ' + player.jumping + ', grounded = ' + player.grounded);
 		if(controls.getJumping()) {
 			controls.setJumping(false);
 		}
@@ -311,7 +311,7 @@ function update() {
 	
     // ctxGround.fillStyle = 'aqua';
     // ctxGround.fillRect(player.x, player.y, player.width, player.height);
-//	trace('player.velX = ' + player.velX + ', previousVelX = ' + previousVelX);
+//	// trace('player.velX = ' + player.velX + ', previousVelX = ' + previousVelX);
 	// only redraw when player has moved
 	if(player.x !== previousLocation.x || player.y !== previousLocation.y) {
 		ctxPlayer.clearRect((previousLocation.x-1), (previousLocation.y-1), (player.width+2), (player.height+2));
@@ -374,13 +374,13 @@ function collisionCheck(shapeA, shapeB) {
 }
 
 function _death() {
-	trace('died');
+	// trace('died');
 	playing = false;
 	messageDiv.html('GAME OVER! Press [r] to restart.');
 }
 
 function _wonGame() {
-	trace('won');
+	// trace('won');
 	playing = false;
 	messageDiv.html('CONGRATULATIONS! You won. Press [r] to restart.');
 }
@@ -431,8 +431,8 @@ function _restartGame() {
 }
 
 function _allImagesLoaded() {
-	trace('_allImagesLoaded, imageManager = ');
-	trace(imageManager);
+	// trace('_allImagesLoaded, imageManager = ');
+	// trace(imageManager);
 	// var msgY = document.documentElement.clientWidth - 30 + 'px'
 	// trace('document.documentElement.clientWidth - 30 = ' + msgY);
 	// messageDiv.attr({ top: msgY });

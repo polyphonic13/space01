@@ -35,8 +35,8 @@ var Bonus = (function() {
 	};
 	
 	Bonus.prototype.collect = function() {
-		trace('collected bonus['+this.model.id+'], this.model.layer = ');
-		trace(this.model.layer);
+		// trace('collected bonus['+this.model.id+'], this.model.layer = ');
+		// trace(this.model.layer);
 		if(this.anim) {
 			this.anim.stop();
 		}

@@ -1,4 +1,4 @@
-trace('modifying kineticjs pixel ratio to hard-code to 1');
+// trace('modifying kineticjs pixel ratio to hard-code to 1');
 _ref = ["HitCanvas", "SceneCanvas", "Canvas"];
 for (_i = 0, _len = _ref.length; _i < _len; _i++) {
   className = _ref[_i];

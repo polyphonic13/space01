@@ -74,12 +74,12 @@ var Critters = (function() {
 				default:
 				break;
 			}
-			trace('Critter, bug['+i+'] = ');
-			trace(bug);
+			// trace('Critter, bug['+i+'] = ');
+			// trace(bug);
 			_collection.push(bug);
 		}
-		trace('Completed Critters Constructor, _collection = ');
-		trace(_collection);
+		// trace('Completed Critters Constructor, _collection = ');
+		// trace(_collection);
 		
 		this.__defineGetter__('collection', function() {
 			return _collection;
@@ -89,10 +89,10 @@ var Critters = (function() {
 	return Critters;
 })();
 
-trace('About to make critters');
+// trace('About to make critters');
 var critters = new Critters(config.bugs);
-trace('done making critters');
+// trace('done making critters');
 var collection = critters.collection;
 for(var i = 0; i < collection.length; i++) {
-	trace('\tcollection['+i+'].speed = ' + collection[i].speed);
+	// trace('\tcollection['+i+'].speed = ' + collection[i].speed);
 }

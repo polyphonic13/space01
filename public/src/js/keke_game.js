@@ -32,7 +32,7 @@ function init() {
 }
 
 function _onImagesLoaded() {
-	trace('_onImagesLoaded');
+	// trace('_onImagesLoaded');
 	
 	stage = new Kinetic.Stage({
 		container: 'container',
@@ -45,7 +45,7 @@ function _onImagesLoaded() {
 
 function startGame() { 
 	
-	trace('start game');
+	// trace('start game');
 	var levelLayer = new LevelLayer(gameConfig.level);
 	levelLayer.setStage(stage);
 	// scrollingLayers = new ScrollingLayers(gameConfig.scrollingLayers);
@@ -123,7 +123,7 @@ function update() {
 				// trace('no movement');
 			}
 		} else {
-			trace('bounds reached');
+			// trace('bounds reached');
 			if(keke.position <= gameConfig.level.maxX) {
 				gameConfig.level.cleared = true;
 				quit('level cleared');
@@ -477,7 +477,7 @@ function keyupHandler(e) {
 }
 
 function restart() {
-	trace('starting');
+	// trace('starting');
 	removeMenuScreen();
 	// keke.start();
 	// update();
@@ -485,7 +485,7 @@ function restart() {
 }
 
 function quit(message) {
-	trace('quiting');
+	// trace('quiting');
 	window.clearTimeout(ticker);
 	playing = false;
 	var stats = {};
@@ -577,8 +577,8 @@ function addMenuScreen(message, stats) {
 	// menuLayer.add(restartButtonGroup);
 	
 	if(typeof(stats) !== 'undefined') {
-		trace('stats = ');
-		trace(stats);
+		// trace('stats = ');
+		// trace(stats);
 		var healthPoints = stats.health * 500;
 		var killPoints = stats.enemies.killed * 1000;
 		var bonusPoints = stats.bonuses.collected * 2000;

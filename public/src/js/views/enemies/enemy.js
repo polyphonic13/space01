@@ -39,20 +39,17 @@ var Enemy = (function() {
 		return this.model.layer.getAbsolutePosition();
 	};
 	
-	Enemy.prototype.setInView = function(val) {
-		this.inView = val;
-	};
-	
 	Enemy.prototype.update = function(params) {
-		/*
-		if(params.move) {
-			this.moveByVelocity(params.move);
+		var pos = (params.pos) ? params.pos : this.model.layer.getAbsolutePosition();
+		if(Utils.isInView(pos)) {
+			this.inView = true;
+		} else {
+			this.inView = false;
 		}
-		*/
 	};
 	
 	Enemy.prototype.die = function() {
-		trace('Enemy['+this.model.id+']/die');
+		// trace('Enemy['+this.model.id+']/die');
 		this.model.holder.enemyDied(this.model.id);
 		this.model.layer.remove();
 		this.model.alive = false;

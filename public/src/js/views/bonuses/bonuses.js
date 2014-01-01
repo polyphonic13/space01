@@ -35,7 +35,7 @@ var Bonuses = (function() {
 	};
 	
 	Bonuses.prototype.bonusCollected = function(id) {
-		trace('Bonuses/bonusCollected, id = ' + id);
+		// trace('Bonuses/bonusCollected, id = ' + id);
 		this.collected++;
 		delete this.collection[id];
 	};

@@ -10,7 +10,7 @@ var MovementAnimation = (function() {
 		var layer = params.layer;
 		var animation;
 		var method;
-		var formula; 
+		var formula = null; 
 		
 		animation = new Kinetic.Animation(function(frame) {
 			switch(params.type) {
@@ -19,7 +19,7 @@ var MovementAnimation = (function() {
 					formula = {
 						x: params.velocity * (frame.timeDiff / 1000),
 						y: 0
-					}
+					};
 				break;
 
 				case MovementTypes.BASIC_Y:
@@ -27,17 +27,17 @@ var MovementAnimation = (function() {
 					formula = {
 						x: 0,
 						y: params.velocity * (frame.timeDiff / 1000)
-					}
+					};
 				break;
 
 				case MovementTypes.SINE_X:
 					method = methods.SET_X;
-					formula = params.amplitude * Math.sin(frame.time * 2 * Math.PI / params.period) + params.centerX
+					formula = params.amplitude * Math.sin(frame.time * 2 * Math.PI / params.period) + params.centerX;
 				break;
 
 				case MovementTypes.SINE_Y:
 					method = methods.SET_Y;
-					formula = params.amplitude * Math.sin(frame.time * 2 * Math.PI / params.period) + params.centerY
+					formula = params.amplitude * Math.sin(frame.time * 2 * Math.PI / params.period) + params.centerY;
 				break;
 
 				default:

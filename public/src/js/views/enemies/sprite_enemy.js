@@ -9,34 +9,39 @@ var SpriteEnemy = (function() {
 		SpriteEnemy._super.constructor.call(this, params);
 
 		this.direction = this.model.defaultDirection;
+		this.inView = false;
 		this.buildViews();
 	}
 
 	SpriteEnemy.prototype.update = function(params) {
-		var pos = (params.pos) ? params.pos : this.model.layer.getAbsolutePosition();
-		if(Utils.isInView(pos)) {
-			this.updateAnimation(true);
-		} else {
-			this.updateAnimation(false);
-		}
 		SpriteEnemy._super.update.call(this, params);
+		this.updateAnimation();
 	};
 	
-	SpriteEnemy.prototype.updateAnimation = function(inView) {
+	SpriteEnemy.prototype.setDirection = function(direction) {
+		// trace('SpriteEnemy['+this.model.id+']/setDirection, direction = ' + direction + ', this.direction = ' + this.direction);
+		if(this.direction !== direction) {
+			this.direction = direction;
+			this.updateAnimation();
+		}
+	};
+	
+	SpriteEnemy.prototype.updateAnimation = function() {
 		if(typeof(this.sprite) !== 'undefined') {
-			if(inView) {
+			if(this.inView) {
 				this.playAnimation('walk');
 			} else {
 				this.sprite.stop();
 			}
 		}
-		SpriteEnemy._super.setInView.call(this, inView);
 	};
 	
 	SpriteEnemy.prototype.playAnimation = function(name) {
 		if(typeof(this.sprite) !== 'undefined') {
 			var animationName = name + this.direction;
 			if(animationName !== this.currentAnimation) {
+				// trace('SpriteEnemy/playAnimation, animationName = ' + animationName + ', this.currentAnimation = ' + this.currentAnimation);
+				this.sprite.stop();
 				this.sprite.setAnimation(animationName);
 				this.sprite.start();
 			}
@@ -69,5 +74,10 @@ var SpriteEnemy = (function() {
 		return hitArea;
 	};
 
+	SpriteEnemy.prototype.remove = function() {
+		this.sprite.stop();
+		SpriteEnemy._super.remove.call(this);
+	};
+	
 	return SpriteEnemy
 })();

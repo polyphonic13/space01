@@ -195,7 +195,7 @@ var Joystick = (function() {
 	
 	function _addListeners() {
 		_smCircle.on('dragstart', function(evt) {
-			trace('DRAG START!');
+			// trace('DRAG START!');
 			_onDragStart(evt);
 		});
 		_smCircle.on('dragmove', function(evt) {
@@ -218,7 +218,7 @@ var Joystick = (function() {
 	}
 
 	function _onDragEnd(evt) {
-		trace('_onDragEnd');
+		// trace('_onDragEnd');
 		_resetStates();
 		_smCircle.setPosition(_model.startX, _model.startY);
 		_model.layer.draw();

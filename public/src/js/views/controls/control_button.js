@@ -81,15 +81,15 @@ var ControlButton = (function() {
 	}
 	
 	function _onPressed(evt) {
-		trace('ControlButton/_onPressed');
-		trace(evt);
+		// trace('ControlButton/_onPressed');
+		// trace(evt);
 		_pressed = true;
 		_wasPressed = true;
 	}
 	
 	function _onReleased(evt) {
-		trace('ControlButton/_onReleased');
-		trace(evt);
+		// trace('ControlButton/_onReleased');
+		// trace(evt);
 		_pressed = false;
 	}
 	
