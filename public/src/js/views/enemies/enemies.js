@@ -36,6 +36,12 @@ var Enemies = (function() {
 		}
 	};
 	
+	Enemies.prototype.update = function(params) {
+		for(var key in this.collection) {
+			this.collection[key].update(params);
+		}
+	};
+	
 	Enemies.prototype.moveByVelocity = function(velX, velY) {
 		// trace('Enemies/moveByVelocity');
 		for(var key in this.collection) {

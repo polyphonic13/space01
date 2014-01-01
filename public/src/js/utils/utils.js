@@ -46,5 +46,13 @@ var Utils = (function() {
 	    c.prototype = new f();
 	};
 
+	gameUtils.isOnStage = function(pos) {
+		if(pos.x > 0 && pos.x < stageConfig.width && pos.y > 0 && pos.y < stageConfig.height) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+	
 	return gameUtils;
 }());

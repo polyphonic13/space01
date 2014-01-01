@@ -136,6 +136,7 @@ function update() {
 		// vertical movement
 		keke.move(0, keke.velY);
 
+		enemies.update({});
 		// layer movement
 		// scrollingLayers.moveX();
 
@@ -267,11 +268,6 @@ function detectCollisions() {
 			// enemyPos = enemyObjs[key].getAbsolutePosition();
 			enemyPos = enemyObjs[key].getHitArea();
 
-			if(enemyPos.x > 0 && enemyPos.x < stageConfig.width) {
-				enemyObjs[key].setInView(true);
-			} else {
-				enemyObjs[key].setInView(false);
-			}
 			// only test nearby enemies for collision
 			if(enemyPos.x < (kekeHitArea.x + 100) && enemyPos.x > -(kekeHitArea.x + 100)) { 
 				// enemy is near

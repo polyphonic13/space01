@@ -13,10 +13,16 @@ var SpriteEnemy = (function() {
 	}
 
 	SpriteEnemy.prototype.update = function(params) {
-		
+		var pos = (params.pos) ? params.pos : this.model.layer.getAbsolutePosition();
+		if(Utils.isOnStage(pos)) {
+			this.updateAnimation(true);
+		} else {
+			this.updateAnimation(false);
+		}
+		SpriteEnemy._super.update.call(this, params);
 	};
 	
-	SpriteEnemy.prototype.setInView = function(val) {
+	SpriteEnemy.prototype.updateAnimation = function(val) {
 		if(typeof(this.sprite) !== 'undefined') {
 			if(val) {
 				// this.sprite.start();

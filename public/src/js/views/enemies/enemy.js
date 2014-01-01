@@ -43,6 +43,14 @@ var Enemy = (function() {
 		this.inView = val;
 	};
 	
+	Enemy.prototype.update = function(params) {
+		/*
+		if(params.move) {
+			this.moveByVelocity(params.move);
+		}
+		*/
+	};
+	
 	Enemy.prototype.die = function() {
 		trace('Enemy['+this.model.id+']/die');
 		this.model.holder.enemyDied(this.model.id);
