@@ -24,10 +24,6 @@ var GroundLayer = (function() {
 		});
 	}
 
-	GroundLayer.prototype.moveByVelocity = function(velX, velY) {
-		this.model.layer.move((velX * this.model.speed), (velY * this.model.speed));
-	};
-	
 	GroundLayer.prototype.remove = function() {
 		this.model.layer.remove();
 	};

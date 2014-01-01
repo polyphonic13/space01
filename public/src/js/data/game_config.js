@@ -276,7 +276,7 @@ var gameConfig = {
 			id: 'tree03',
 			direction: 'horizontal',
 			x: 2640,
-			y: stageConfig.height - 220,
+			y: stageConfig.height - 210,
 			width: 210,
 			height: 5,
 			// fill: 'green',
@@ -468,6 +468,8 @@ var gameConfig = {
 			index: 0,
 			frameRate: 14
 		},
+		defaultAnimation: 'idleRight',
+		animations: kekeAnimations,
 		damage: -5,
 		health: 100
     },

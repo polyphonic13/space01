@@ -42,16 +42,8 @@ var Enemy = (function() {
 		return this.model.layer.getAbsolutePosition();
 	};
 	
-	Enemy.prototype.moveByVelocity = function(velX, velY) {
-		this.model.layer.move((velX * this.model.speed), (velY * this.model.speed));
-	};
-
 	Enemy.prototype.die = function() {
-		trace('killed enemy['+this.model.id+'], this.model.layer = ');
-		trace(this.model.layer);
-		if(this.anim) {
-			this.anim.stop();
-		}
+		trace('Enemy['+this.model.id+']/die');
 		this.holder.enemyDied(this.model.id);
 		this.model.layer.remove();
 		this.model.alive = false;

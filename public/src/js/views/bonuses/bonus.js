@@ -34,10 +34,6 @@ var Bonus = (function() {
 		return this.model.viewObjs[0].getAbsolutePosition();
 	};
 	
-	Bonus.prototype.moveByVelocity = function(velX, velY) {
-		this.model.layer.move((velX * this.model.speed), (velY * this.model.speed));
-	};
-
 	Bonus.prototype.collect = function() {
 		trace('collected bonus['+this.model.id+'], this.model.layer = ');
 		trace(this.model.layer);

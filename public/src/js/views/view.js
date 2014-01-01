@@ -63,6 +63,10 @@ var View = (function() {
 		this.model.layer.move(x, y);
 	};
 	
+	View.prototype.moveByVelocity = function(velX, velY) {
+		this.model.layer.move((velX * this.model.speed), (velY * this.model.speed));
+	};
+	
 	View.prototype.setStage = function(parent) {
 		this.model.parent = parent;
 		parent.add(this.model.layer);

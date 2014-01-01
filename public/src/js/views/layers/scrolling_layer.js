@@ -13,9 +13,5 @@ var ScrollingLayer = (function() {
 		this.model.layer.move(0, this.model.speed);
 	};
 	
-	ScrollingLayer.prototype.moveByVelocity = function(velX, velY) {
-		this.model.layer.move((velX * this.model.speed), (velY * this.model.speed));
-	};
-	
 	return ScrollingLayer;
 })();

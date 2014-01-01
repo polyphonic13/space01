@@ -45,8 +45,8 @@ var SpritePlayer = (function() {
 			x: _this.model.sprite.x,
 			y: _this.model.sprite.y,
 			image: imageManager.getImage(_this.model.sprite.src),
-			animation: 'idleRight',
-			animations: kekeAnimations,
+			animation: _this.model.defaultAnimation,
+			animations: _this.model.animations,
 			frameRage: _this.model.sprite.frameRate,
 			index: _this.model.sprite.index
 		});

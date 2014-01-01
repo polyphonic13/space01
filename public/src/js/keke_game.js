@@ -445,10 +445,6 @@ function keydownHandler(e) {
 		keys[ControlKeys.RIGHT] = true;
 		break;
 
-		case ControlKeys.START:
-		restart();
-		break;
-		
 		case ControlKeys.QUIT: 
 		if(playing) {
 			quit();
