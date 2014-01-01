@@ -49,8 +49,12 @@ var gameConfig = {
 		src: 'images/grass01h.png'
 	},
 	{
-		id: 'caterpillar01a',
-		src: 'images/caterpillar01a.png'
+		id: 'caterpillar01a_l',
+		src: 'images/caterpillar01a_l.png'
+	},
+	{
+		id: 'caterpillar01a_r',
+		src: 'images/caterpillar01a_r.png'
 	},
 	{
 		id: 'candyCane01',
@@ -312,21 +316,27 @@ var gameConfig = {
 			width: 142,
 			height: 30,
 			views: [{
-				// type: 'Rect',
+				id: 'left',
 				type: 'Image',
 				x: 0,
 				y: 0,
 				width: 142,
 				height: 30,
-				// fill: '#009933',
-				// stroke: 'black',
-				// strokeWidth: 1
-				src: 'caterpillar01a'
+				src: 'caterpillar01a_l'
+			},
+			{
+				id: 'right',
+				type: 'Image',
+				x: 0,
+				y: 0,
+				width: 142,
+				height: 30,
+				src: 'caterpillar01a_r'
 			}],
-			// movement: {
-			// 		      amplitude: 100,
-			// 		      period: 5000
-			// },
+			movement: {
+		      amplitude: 25,
+		      period: 5000
+			},
 			speed: 6,
 			damage: -3,
 			health: 5,
@@ -338,16 +348,13 @@ var gameConfig = {
 			width: 142,
 			height: 30,
 			views: [{
-				// type: 'Rect',
+				id: 'left',
 				type: 'Image',
 				x: 0,
 				y: 0,
 				width: 142,
 				height: 30,
-				// fill: '#009933',
-				// stroke: 'black',
-				// strokeWidth: 1
-				src: 'caterpillar01a'
+				src: 'caterpillar01a_l'
 			}],
 			movement: {
 		      amplitude: 100,
@@ -364,16 +371,13 @@ var gameConfig = {
 			width: 142,
 			height: 30,
 			views: [{
-				// type: 'Rect',
+				id: 'left',
 				type: 'Image',
 				x: 0,
 				y: 0,
 				width: 142,
 				height: 30,
-				// fill: '#339933',
-				// stroke: 'black',
-				// strokeWidth: 1
-				src: 'caterpillar01a'
+				src: 'caterpillar01a_l'
 			}],
 			movement: {
 		      amplitude: 150,
@@ -390,16 +394,13 @@ var gameConfig = {
 			width: 142,
 			height: 30,
 			views: [{
-				// type: 'Rect',
+				id: 'left',
 				type: 'Image',
 				x: 0,
 				y: 0,
 				width: 142,
 				height: 30,
-				// fill: '#339933',
-				// stroke: 'black',
-				// strokeWidth: 1
-				src: 'caterpillar01a'
+				src: 'caterpillar01a_l'
 			}],
 			movement: {
 		      amplitude: 100,

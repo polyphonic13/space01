@@ -615,7 +615,7 @@ function addMenuScreen(message, stats) {
 		}
 		var statsText = new Kinetic.Text({
 			x: 50,
-			y: stage.getHeight() / 4 + 150,
+			y: stage.getHeight() / 4 + 100,
 			width: stage.getWidth() - 100,
 			text: statsMsg,
 			align: 'right',

@@ -9,7 +9,7 @@ var Enemy = (function() {
 		params.id = id;
 		Enemy._super.constructor.call(this, params);
 
-		this.model.viewObjs = [];
+		this.model.viewObjs = {};
 		this.buildViews();
 		
 		if(this.model.movement) {
@@ -42,7 +42,8 @@ var Enemy = (function() {
 	}
 	
 	Enemy.prototype.getAbsolutePosition = function() {
-		return this.model.viewObjs[0].getAbsolutePosition();
+		// return this.model.viewObjs[0].getAbsolutePosition();
+		return this.model.layer.getAbsolutePosition();
 	};
 	
 	Enemy.prototype.moveByVelocity = function(velX, velY) {
@@ -90,13 +91,18 @@ var Enemy = (function() {
 			// trace('\tviews['+i+'] = ');
 			// trace(views[i]);
 			if(views[i].type === 'Image') {
-				this.model.viewObjs.push(this.addImage(views[i], this.model));
+				var image = this.addImage(views[i], this.model);
+				// image.hide();
+				// this.model.viewObjs.push(image);
+				this.model.viewObjs[views[i].id] = image;
 			} else {
 				view = new Kinetic[views[i].type](views[i]);
 				this.model.layer.add(view);
 				this.model.viewObjs.push(view);
 			}
 		}
+		trace('after caterpillar views built, viewObjs = ');
+		trace(this.model.viewObjs);
 	}
 	
 	return Enemy;
