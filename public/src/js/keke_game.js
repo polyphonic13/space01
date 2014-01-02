@@ -4,6 +4,8 @@ var ticker,
 	tickerTime = 500,
 	fps = 60,
 	levelManager,
+	minX,
+	maxX,
 	imageManager,
 	menuLayer,
 	gameLevelContainer,
@@ -52,6 +54,8 @@ function startGame() {
 	levelManager.setStage(stage);
 	levelManager.init(gameConfig.levels);
 	
+	initCurrentLevel();
+
 	// PLAYER
 	// gameConfig.player.imageManager = imageManager;
 	keke = new SpritePlayer(gameConfig.player);
@@ -67,15 +71,20 @@ function startGame() {
 	// gameConfig.controls.imageManager = imageManager;
 	controls = new Controls(gameConfig.controls);
 	controls.setStage(stage);
+
+	initKeyboardInput();
 	
-	$(window).keydown(function(e) {
-		keydownHandler(e);
-	});
-	$(window).keyup(function(e) {
-		keyupHandler(e);
-	});
 	playing = true;
-	// update();
+	update();
+}
+
+function initCurrentLevel() {
+	var level = levelManager.getCurrentLevel();
+	ground = level.terrain;
+	enemies = level.enemies;
+	bonuses = level.bonuses;
+	minX = level.minX;
+	maxX = level.maxX;
 }
 
 function update() {
@@ -98,8 +107,7 @@ function update() {
 		keke.velX = (Math.floor(keke.velX*1000))/1000;
 		// trace('keke.position = ' + keke.position);
 		// trace('keke.velX = ' + keke.velX);
-		if(keke.position < gameConfig.level.minX && keke.position > gameConfig.level.maxX) {
-			// trace('keke.position = ' + keke.position + ', level.min = ' + gameConfig.level.minX + ', max = ' + gameConfig.level.maxX);
+		if(keke.position < minX && keke.position > maxX) {
 			if(keke.velX !== 0) {
 				ground.moveByVelocity(keke.velX, 0);
 				enemies.moveByVelocity(keke.velX, 0);
@@ -107,8 +115,8 @@ function update() {
 			}
 		} else {
 			// trace('bounds reached');
-			if(keke.position <= gameConfig.level.maxX) {
-				gameConfig.level.cleared = true;
+			if(keke.position <= maxX) {
+				levelManager.getCurrentLevel().cleared = true;
 				quit('level cleared');
 			} else {
 				animationToPlay = 'idle';
@@ -419,6 +427,15 @@ function getCollisionVectors(shapeA, shapeB) {
 	return collision;
 }
 
+function initKeyboardInput() {
+	window.onkeydown = function(e) {
+		keydownHandler(e);
+	};
+	window.onkeyup = function(e) {
+		keyupHandler(e);
+	};
+}
+
 function keydownHandler(e) {
 	switch(e.which) {
 		case ControlKeys.UP:
@@ -479,12 +496,6 @@ function quit(message) {
 	window.clearTimeout(ticker);
 	playing = false;
 	var stats = {};
-
-	if(gameConfig.level.cleared) {
-		stats.levelPoints = gameConfig.level.points
-	} else {
-		stats.levelPoints = 0;
-	};
 	
 	stats.health = keke.health;
 	keke.stop();
@@ -566,7 +577,15 @@ function addMenuScreen(message, stats) {
 	restartButtonGroup.add(restartText);
 	// menuLayer.add(restartButtonGroup);
 	
+
 	if(typeof(stats) !== 'undefined') {
+		var level = levelManager.getCurrentLevel();
+
+		if(level.cleared) {
+			stats.levelPoints = level.points
+		} else {
+			stats.levelPoints = 0;
+		};
 		// trace('stats = ');
 		// trace(stats);
 		var healthPoints = stats.health * 500;
@@ -584,7 +603,7 @@ function addMenuScreen(message, stats) {
 			+ '\nLevel = ' + stats.levelPoints
 			+ '\nTotal = ' + totalPoints;
 
-		if(totalPoints === gameConfig.level.perfectPoints) {
+		if(totalPoints === level.perfectPoints) {
 			statsMsg += '\n\nPERFECT SCORE!';
 		}
 		var statsText = new Kinetic.Text({

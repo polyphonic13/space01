@@ -24,6 +24,30 @@
 		// BONUSES
 		this.bonuses = new Bonuses(this.model.bonuses);
 		this.bonuses.setStage(this.model.stage);
+
+		this.__defineGetter__('points', function() {
+			return this.model.points;
+		});
+
+		this.__defineGetter__('perfectPoints', function() {
+			return this.model.perfectPoints;
+		});
+
+		this.__defineGetter__('minX', function() {
+			return this.model.minX;
+		});
+
+		this.__defineGetter__('maxX', function() {
+			return this.model.maxX;
+		});
+
+		this.__defineGetter__('cleared', function() {
+			return this.model.cleared;
+		});
+
+		this.__defineSetter__('cleared', function(val) {
+			this.model.cleared = val;
+		});
 	}
 	
 	Level.prototype.moveByVelocity = function(velX, velY) {
