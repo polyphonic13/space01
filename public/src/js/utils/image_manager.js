@@ -8,7 +8,7 @@ var ImageManager = (function() {
 		this.model = images;
 		this.callback = callback;
 		this.images = {};
-		
+
 		for(var i = 0; i < images.length; i++) {
 			this.images[images[i].id] = new Image();
 			this.images[images[i].id].onload = function() {
@@ -28,7 +28,7 @@ var ImageManager = (function() {
 	}
 	
 	ImageManager.prototype.getImage = function(name) {
-		return this.images[name];
+		return _this.images[name];
 	};
 	
 	return ImageManager;

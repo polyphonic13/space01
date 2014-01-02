@@ -26,7 +26,7 @@ var ticker,
 	bonusesCollected = 0,
 	playing = false,
 	won = false
-		
+
 function init() {
 	// STAGE
 	imageManager = new ImageManager(gameConfig.images, _onImagesLoaded);
@@ -53,15 +53,18 @@ function startGame() {
 	levelManager.init(gameConfig.levels);
 	
 	// PLAYER
+	// gameConfig.player.imageManager = imageManager;
 	keke = new SpritePlayer(gameConfig.player);
 	keke.setStage(stage);
 	
 	// LIFE METER
+	// gameConfig.lifeMeter.imageManager = imageManager;
 	lifeMeter = new LifeMeter(gameConfig.lifeMeter);
 	lifeMeter.setHealth(keke.health);
 	lifeMeter.setStage(stage);
 
 	// CONTROLS
+	// gameConfig.controls.imageManager = imageManager;
 	controls = new Controls(gameConfig.controls);
 	controls.setStage(stage);
 	
@@ -570,7 +573,7 @@ function addMenuScreen(message, stats) {
 		var killPoints = stats.enemies.killed * 1000;
 		var bonusPoints = stats.bonuses.collected * 2000;
 		var totalPoints = healthPoints + killPoints + bonusPoints + stats.levelPoints;
-		
+
 		var statsMsg = 'Statistics:'
 			+ '\n\nBugs squashed = ' + stats.enemies.killed + '/' + stats.enemies.total 
 			+ '\nBonuses collected = ' + stats.bonuses.collected + '/' + stats.bonuses.total
@@ -580,7 +583,7 @@ function addMenuScreen(message, stats) {
 			+ '\nBonuses = ' + bonusPoints
 			+ '\nLevel = ' + stats.levelPoints
 			+ '\nTotal = ' + totalPoints;
-		
+
 		if(totalPoints === gameConfig.level.perfectPoints) {
 			statsMsg += '\n\nPERFECT SCORE!';
 		}
@@ -594,7 +597,7 @@ function addMenuScreen(message, stats) {
 			fontFamily: 'Calibri',
 			fill: '#000000'
 		});
-		
+
 		menuLayer.add(statsText);
 	}
 	

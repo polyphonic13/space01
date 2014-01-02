@@ -23,6 +23,58 @@ var gameConfig = {
 	{
 		id: 'joystickSmCircle',
 		src: 'images/joystick_sm_circle.png'
+	},
+	{
+		id: 'stageBg',
+		src: 'images/flat_background.jpg'
+	},
+	{
+		id: 'moon',
+		src: 'images/moon.png'
+	},
+	{
+		id: 'grassO1a',
+		src: 'images/grass01a.png'
+	},
+	{
+		id: 'tree01',
+		src: 'images/tree01.png'
+	},
+	{
+		id: 'grass01b',
+		src: 'images/grass01b.png'
+	},
+	{
+		id: 'thorns01',
+		src: 'images/thorns01.png'
+	},
+	{
+		id: 'grass01g',
+		src: 'images/grass01g.png'
+	},
+	{
+		id: 'tree02',
+		src: 'images/tree02.png'
+	},
+	{
+		id: 'tree03',
+		src: 'images/tree03.png'
+	},
+	{
+		id: 'tree04',
+		src: 'images/tree04.png'
+	},
+	{
+		id: 'grass01h',
+		src: 'images/grass01h.png'
+	},
+	{
+		id: 'caterpillar01a',
+		src: 'images/caterpillar01a_sprite.png'
+	},
+	{
+		id: 'candyCane01',
+		src: 'images/candy_cane01.png'
 	}],
 	levels: [{
 		points: 50000,
@@ -31,58 +83,6 @@ var gameConfig = {
 		minX: 5,
 		// maxX: -389,
 		maxX: -455,
-		images: [{
-			id: 'stageBg',
-			src: 'images/flat_background.jpg'
-		},
-		{
-			id: 'moon',
-			src: 'images/moon.png'
-		},
-		{
-			id: 'grassO1a',
-			src: 'images/grass01a.png'
-		},
-		{
-			id: 'tree01',
-			src: 'images/tree01.png'
-		},
-		{
-			id: 'grass01b',
-			src: 'images/grass01b.png'
-		},
-		{
-			id: 'thorns01',
-			src: 'images/thorns01.png'
-		},
-		{
-			id: 'grass01g',
-			src: 'images/grass01g.png'
-		},
-		{
-			id: 'tree02',
-			src: 'images/tree02.png'
-		},
-		{
-			id: 'tree03',
-			src: 'images/tree03.png'
-		},
-		{
-			id: 'tree04',
-			src: 'images/tree04.png'
-		},
-		{
-			id: 'grass01h',
-			src: 'images/grass01h.png'
-		},
-		{
-			id: 'caterpillar01a',
-			src: 'images/caterpillar01a_sprite.png'
-		},
-		{
-			id: 'candyCane01',
-			src: 'images/candy_cane01.png'
-		}],
 		background: {
 			fill: '#000000',
 			stroke: '#000000',
