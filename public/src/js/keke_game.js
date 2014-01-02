@@ -112,6 +112,9 @@ function update() {
 				ground.moveByVelocity(keke.velX, 0);
 				enemies.moveByVelocity(keke.velX, 0);
 				bonuses.moveByVelocity(keke.velX, 0);
+				ground.move(0, -keke.velY);
+				enemies.move(0, -keke.velY);
+				bonuses.move(0, -keke.velY);
 			}
 		} else {
 			// trace('bounds reached');

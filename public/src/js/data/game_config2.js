@@ -115,7 +115,7 @@ var gameConfig = {
 				x: -48,
 				y: stageConfig.height - 60,
 				width: 1024,
-				height: 100,
+				height: 500,
 				// fill: 'green',
 				fill: '#000000',
 				image: {
@@ -150,7 +150,7 @@ var gameConfig = {
 				x: 976,
 				y: stageConfig.height - 80,
 				width: 1024,
-				height: 50,
+				height: 500,
 				// fill: 'green',
 				fill: '#000000',
 				image: {
@@ -167,7 +167,7 @@ var gameConfig = {
 				x: 2000,
 				y: stageConfig.height - 65,
 				width: 120,
-				height: 100,
+				height: 300,
 				// fill: 'red',
 				fill: '#000000',
 				damage: -3,
@@ -257,7 +257,7 @@ var gameConfig = {
 				x: 2622,
 				y: stageConfig.height - 100,
 				width: 512,
-				height: 100,
+				height: 500,
 				// fill: 'green',
 				fill: '#000000',
 				image: {
@@ -445,7 +445,7 @@ var gameConfig = {
 	}],
  	player: {
 		x: stageConfig.width / 2,
-		y: stageConfig.height - 200,
+		y: stageConfig.height / 3,
 		position: 0,
 	    width: 76,
 	    height: 128,

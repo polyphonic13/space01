@@ -44,7 +44,6 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/utils/image_manager.js',
 					'<%= srcDir %>/js/utils/sprite_creator.js',
 					'<%= srcDir %>/js/utils/utils.js',
-					'<%= srcDir %>/js/enum/control_keys.js',
 					'<%= srcDir %>/js/enum/directions.js',
 					'<%= srcDir %>/js/enum/enemy_types.js',
 					'<%= srcDir %>/js/enum/movement_types.js',
@@ -52,6 +51,7 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/data/keke_animations.js',
 					'<%= srcDir %>/js/data/caterpillar_animations.js',
 					'<%= srcDir %>/js/data/game_config2.js',
+					'<%= srcDir %>/js/enum/control_keys.js',
 					'<%= srcDir %>/js/animation/movement_animation.js',
 					'<%= srcDir %>/js/views/view.js',
 					'<%= srcDir %>/js/views/layers/background_layer.js',
@@ -73,7 +73,9 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/views/controls/joystick.js',
 					'<%= srcDir %>/js/enum/control_types.js',
 					'<%= srcDir %>/js/views/controls/controls.js',
-					'<%= srcDir %>/js/keke_game.js'
+					'<%= srcDir %>/js/levels/level.js',
+					'<%= srcDir %>/js/levels/level_manager.js',
+					'<%= srcDir %>/js/keke_game.js',
 				],
 				dest: '<%= deployDir %>/js/keke_game.js'
 			},

@@ -21,6 +21,12 @@ var Bonuses = (function() {
 		}
 	};
 	
+	Bonuses.prototype.move = function(x, y) {
+		for(var key in this.collection) {
+			this.collection[key].move(x, y);
+		}
+	};
+	
 	Bonuses.prototype.moveByVelocity = function(velX, velY) {
 		// trace('Bonuses/moveByVelocity');
 		for(var key in this.collection) {

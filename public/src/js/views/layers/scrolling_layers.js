@@ -25,6 +25,12 @@ var ScrollingLayers = (function() {
 		}
 	};
 	
+	ScrollingLayers.prototype.move = function(x, y) {
+		for(var key in this.collection) {
+			this.collection[key].move(x, y);
+		}
+	};
+	
 	ScrollingLayers.prototype.moveByVelocity = function(velX, velY) {
 		// trace('ScrollingLayers/moveByVelocity');
 		for(var i = 0; i < this.collection.length; i++) {

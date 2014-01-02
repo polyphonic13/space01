@@ -49,6 +49,10 @@
 			this.model.cleared = val;
 		});
 	}
+
+	Level.prototype.move = function(x, y) {
+		
+	};
 	
 	Level.prototype.moveByVelocity = function(velX, velY) {
 
