@@ -3,6 +3,8 @@ var BackgroundLayer = (function() {
 	
 	var _this;
 	function BackgroundLayer(params) {
+		trace('BackgroundLayer/constructor');
+		trace(params);
 		_this = this;
 		BackgroundLayer._super.constructor.call(this, params);
 		
@@ -10,7 +12,7 @@ var BackgroundLayer = (function() {
 		var view;
 		for(var i = 0; i < views.length; i++) {
 			if(views[i].type === 'Image') {
-				this.addImage(views[i], _this.model);
+				this.addImage(views[i], this.model);
 			}
 		}
 	}

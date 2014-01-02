@@ -67,9 +67,9 @@ var View = (function() {
 		this.model.layer.move((velX * this.model.speed), (velY * this.model.speed));
 	};
 	
-	View.prototype.setStage = function(parent) {
-		this.model.parent = parent;
-		parent.add(this.model.layer);
+	View.prototype.setStage = function(stage) {
+		this.model.stage = stage;
+		stage.add(this.model.layer);
 	};
 	
 	View.prototype.remove = function() {
@@ -77,6 +77,10 @@ var View = (function() {
 	};
 	
 	View.prototype.addImage = function(params, model) {
+		trace('View/addImage, params = ');
+		trace(params);
+		trace('\tmodel = ');
+		trace(model);
 
 		var image = new Kinetic.Image({
 			x: params.x,
@@ -85,6 +89,8 @@ var View = (function() {
 			height: params.height,
 			image: imageManager.getImage(params.src)
 		});
+		trace('\timage = ');
+		trace(imageManager.getImage(params.src));
 		model.layer.add(image);
 		model.layer.draw(); // layer has to have draw called each time there is a change
 		

@@ -12,7 +12,9 @@ var LevelManager = (function() {
 	LevelManager.prototype.init = function(params) {
 		var level;
 		for(var i = 0; i < params.length; i++) {
-			level = new Level(params[0]);
+			params[i].id = i;
+			params[i].stage = this.stage;
+			level = new Level(params[i]);
 			this.collection.push(level);
 		}
 	};
