@@ -26,7 +26,7 @@ var gameConfig = {
 	},
 	{
 		id: 'stageBg',
-		src: 'images/flat_background.jpg'
+		src: 'images/flat_background2.jpg'
 	},
 	{
 		id: 'moon',
@@ -445,7 +445,7 @@ var gameConfig = {
 	}],
  	player: {
 		x: stageConfig.width / 2,
-		y: stageConfig.height / 3,
+		y: stageConfig.height / 2,
 		position: 0,
 	    width: 76,
 	    height: 128,
