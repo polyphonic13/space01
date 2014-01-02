@@ -125,7 +125,7 @@ function update() {
 		keke.playAnimation(animationToPlay);
 
 		// vertical movement
-		keke.move(0, keke.velY);
+		// keke.move(0, keke.velY);
 
 		enemies.update({});
 		// layer movement
