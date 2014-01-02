@@ -45,6 +45,10 @@ var gameConfig = {
 		src: 'images/tree03.png'
 	},
 	{
+		id: 'tree04',
+		src: 'images/tree04.png'
+	},
+	{
 		id: 'grass01h',
 		src: 'images/grass01h.png'
 	},
@@ -74,7 +78,7 @@ var gameConfig = {
 	}],
 	level: {
 		points: 50000,
-		perfectPoints: 113000,
+		perfectPoints: 114000,
 		cleared: false,
 		minX: 5,
 		// maxX: -389,
@@ -253,7 +257,7 @@ var gameConfig = {
 		{
 			id: 'tree02',
 			direction: 'horizontal',
-			x: 2320,
+			x: 2220,
 			y: stageConfig.height - 143,
 			width: 220,
 			height: 5,
@@ -261,7 +265,7 @@ var gameConfig = {
 			fill: '#000000',
 			image: {
 				src: 'tree02',
-				x: 2300,
+				x: 2200,
 				y: stageConfig.height - 530,
 				width: 269,
 				height: 476
@@ -271,7 +275,25 @@ var gameConfig = {
 		{
 			id: 'tree03',
 			direction: 'horizontal',
-			x: 2640,
+			x: 2460,
+			y: stageConfig.height - 175,
+			width: 210,
+			height: 5,
+			// fill: 'green',
+			fill: '#000000',
+			image: {
+				src: 'tree04',
+				x: 2430,
+				y: stageConfig.height - 540,
+				width: 290,
+				height: 480
+				
+			}
+		},
+		{
+			id: 'tree04',
+			direction: 'horizontal',
+			x: 2690,
 			y: stageConfig.height - 210,
 			width: 210,
 			height: 5,
@@ -279,7 +301,7 @@ var gameConfig = {
 			fill: '#000000',
 			image: {
 				src: 'tree03',
-				x: 2600,
+				x: 2660,
 				y: stageConfig.height - 580,
 				width: 290,
 				height: 480
@@ -379,13 +401,13 @@ var gameConfig = {
 			defaultAnimation: 'idleRight',
 			animations: caterpillarAnimations,
 			speed: 6,
-			damage: -5,
+			damage: -20,
 			health: 10,
 			alive: true
 		},
 		caterpillar04: {
 			type: EnemyTypes.MOVING_SPRITE,
-			x: 2300,
+			x: 2150,
 			y: stageConfig.height - 120,
 			width: 142,
 			height: 30,
@@ -402,13 +424,41 @@ var gameConfig = {
 			movement: {
 				type: MovementTypes.SINE_X,
 				centerX: (142/2),
-				amplitude: 200,
+				amplitude: 150,
 				period: 10000
 			},
 
 			speed: 6,
 			damage: -10,
 			health: 25,
+			alive: true
+		},
+		caterpillar05: {
+			type: EnemyTypes.MOVING_SPRITE,
+			x: 2670,
+			y: stageConfig.height - 220,
+			width: 142,
+			height: 30,
+			sprite: {
+				src: 'caterpillar01a',
+				x: 0,
+				y: 0,
+				index: 0,
+				frameRate: 5
+			},
+			defaultDirection: Directions.LEFT,
+			defaultAnimation: 'idleLeft',
+			animations: caterpillarAnimations,
+			movement: {
+				type: MovementTypes.SINE_X,
+				centerX: (142/2),
+				amplitude: 70,
+				period: 10000
+			},
+
+			speed: 6,
+			damage: -5,
+			health: 5,
 			alive: true
 		}
 		
