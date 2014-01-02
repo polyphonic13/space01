@@ -25,6 +25,12 @@ var gameConfig = {
 		src: 'images/joystick_sm_circle.png'
 	}],
 	levels: [{
+		points: 50000,
+		perfectPoints: 114000,
+		cleared: false,
+		minX: 5,
+		// maxX: -389,
+		maxX: -455,
 		images: [{
 			id: 'stageBg',
 			src: 'images/flat_background.jpg'
@@ -78,12 +84,6 @@ var gameConfig = {
 			src: 'images/candy_cane01.png'
 		}],
 		background: {
-			points: 50000,
-			perfectPoints: 114000,
-			cleared: false,
-			minX: 5,
-			// maxX: -389,
-			maxX: -455,
 			fill: '#000000',
 			stroke: '#000000',
 			strokeWidth: 2,
