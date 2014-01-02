@@ -309,7 +309,7 @@ var gameConfig = {
 		caterpillar01: {
 			type: EnemyTypes.MOVING_SPRITE,
 			x: 750,
-			y: stageConfig.height - 100,
+			y: stageConfig.height - 85,
 			width: 142,
 			height: 30,
 			sprite: {
@@ -334,7 +334,7 @@ var gameConfig = {
 		caterpillar02: {
 			type: EnemyTypes.MOVING_SPRITE,
 			x: 1200,
-			y: stageConfig.height - 120,
+			y: stageConfig.height - 110,
 			width: 142,
 			height: 30,
 			sprite: {
@@ -358,8 +358,8 @@ var gameConfig = {
 		},
 		caterpillar03: {
 			type: EnemyTypes.MOVING_SPRITE,
-			x: 1400,
-			y: stageConfig.height - 120,
+			x: 1380,
+			y: stageConfig.height - 170,
 			width: 142,
 			height: 30,
 			sprite: {
@@ -372,7 +372,7 @@ var gameConfig = {
 			movement: {
 				type: MovementTypes.SINE_X,
 				centerX: (142/2),
-				amplitude: 150,
+				amplitude: 80,
 				period: 10000
 			},
 			defaultDirection: Directions.RIGHT,
@@ -408,7 +408,7 @@ var gameConfig = {
 
 			speed: 6,
 			damage: -10,
-			health: 50,
+			health: 25,
 			alive: true
 		}
 		
