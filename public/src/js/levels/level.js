@@ -2,6 +2,8 @@
 	
 	function Level(params) {
 		this.completed = false;
+
+		this.imageManager = new ImageManager(params.images);
 		
 		// BACKGROUND
 		this.levelLayer = new BackgroundLayer(params.background);

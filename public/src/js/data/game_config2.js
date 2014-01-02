@@ -8,6 +8,22 @@ var gameConfig = {
 		stroke: '#000000',
 		strokeWidth: 1
 	},
+	images: [{
+		id: 'keke',
+		src: 'images/keke_character2.png'
+	},
+	{
+		id: 'heart',
+		src: 'images/heart.png'
+	},
+	{
+		id: 'quitButton',
+		src: 'images/quit_button.png'
+	},
+	{
+		id: 'joystickSmCircle',
+		src: 'images/joystick_sm_circle.png'
+	}],
 	levels: [{
 		images: [{
 			id: 'stageBg',
@@ -60,22 +76,6 @@ var gameConfig = {
 		{
 			id: 'candyCane01',
 			src: 'images/candy_cane01.png'
-		},
-		{
-			id: 'keke',
-			src: 'images/keke_character2.png'
-		},
-		{
-			id: 'heart',
-			src: 'images/heart.png'
-		},
-		{
-			id: 'quitButton',
-			src: 'images/quit_button.png'
-		},
-		{
-			id: 'joystickSmCircle',
-			src: 'images/joystick_sm_circle.png'
 		}],
 		background: {
 			points: 50000,
@@ -105,7 +105,7 @@ var gameConfig = {
 				height: (stageConfig.height > 300) ? 247 : 256/2,
 				src: 'moon'
 			}]
-		}
+		},
 		terrain: {
 			speed: 6,
 			rects: [

@@ -3,6 +3,7 @@
 var ticker,
 	tickerTime = 500,
 	fps = 60,
+	levelManager,
 	imageManager,
 	menuLayer,
 	gameLevelContainer,
@@ -71,7 +72,7 @@ function startGame() {
 		keyupHandler(e);
 	});
 	playing = true;
-	update();
+	// update();
 }
 
 function update() {
@@ -100,9 +101,6 @@ function update() {
 				ground.moveByVelocity(keke.velX, 0);
 				enemies.moveByVelocity(keke.velX, 0);
 				bonuses.moveByVelocity(keke.velX, 0);
-				// playerMovementLayers.moveByVelocity(keke.velX, 0);
-			} else {
-				// trace('no movement');
 			}
 		} else {
 			// trace('bounds reached');
