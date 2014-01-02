@@ -46,19 +46,10 @@ function _onImagesLoaded() {
 function startGame() { 
 	
 	// trace('start game');
-	var levelLayer = new LevelLayer(gameConfig.level);
-	levelLayer.setStage(stage);
-	// scrollingLayers = new ScrollingLayers(gameConfig.scrollingLayers);
-	// scrollingLayers.setStage(stage);
-	// gameLevelContainer = new Kinetic.Container();
-
-	// PLAYER MOVEMENT BG LAYERS
-	// playerMovementLayers = new ScrollingLayers(gameConfig.playerMovementLayers);
-	// playerMovementLayers.setStage(stage);
-	
-	// GROUND
-	ground = new GroundLayer(gameConfig.ground);
-	ground.setStage(stage);
+	// LEVELS
+	levelManager = new LevelManager();
+	levelManager.setStage(stage);
+	levelManager.init(gameConfig.levels);
 	
 	// PLAYER
 	keke = new SpritePlayer(gameConfig.player);
@@ -69,18 +60,9 @@ function startGame() {
 	lifeMeter.setHealth(keke.health);
 	lifeMeter.setStage(stage);
 
-	// ENEMIES
-	enemies = new Enemies(gameConfig.enemies);
-	enemies.setStage(stage);
-	
-	bonuses = new Bonuses(gameConfig.bonuses);
-	bonuses.setStage(stage);
-	
 	// CONTROLS
 	controls = new Controls(gameConfig.controls);
 	controls.setStage(stage);
-	
-	// stage.add(gameLevelContainer);
 	
 	$(window).keydown(function(e) {
 		keydownHandler(e);

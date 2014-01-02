@@ -1,10 +1,10 @@
-var LevelLayer = (function() {
-	Utils.inherits(LevelLayer, View);
+var BackgroundLayer = (function() {
+	Utils.inherits(BackgroundLayer, View);
 	
 	var _this;
-	function LevelLayer(params) {
+	function BackgroundLayer(params) {
 		_this = this;
-		LevelLayer._super.constructor.call(this, params);
+		BackgroundLayer._super.constructor.call(this, params);
 		
 		var views = params.views;
 		var view;
@@ -15,5 +15,5 @@ var LevelLayer = (function() {
 		}
 	}
 	
-	return LevelLayer;
+	return BackgroundLayer;
 })();

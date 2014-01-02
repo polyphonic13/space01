@@ -1,10 +1,10 @@
-var GroundLayer = (function() {
-	Utils.inherits(GroundLayer, View);
+var TerrainLayer = (function() {
+	Utils.inherits(TerrainLayer, View);
 	
 	var _this;
 	
-	function GroundLayer(params) {
-		// trace('GroundLayer, params =');
+	function TerrainLayer(params) {
+		// trace('TerrainLayer, params =');
 		// trace(params);
 		_this = this;
 		
@@ -12,7 +12,7 @@ var GroundLayer = (function() {
 			clearBeforeUpdate: false
 		});
 		
-		GroundLayer._super.constructor.call(this, params);
+		TerrainLayer._super.constructor.call(this, params);
 
 		this.collection = [];
 		_buildViews();
@@ -24,7 +24,7 @@ var GroundLayer = (function() {
 		});
 	}
 
-	GroundLayer.prototype.remove = function() {
+	TerrainLayer.prototype.remove = function() {
 		this.model.layer.remove();
 	};
 	
@@ -54,7 +54,7 @@ var GroundLayer = (function() {
 			if(rects[i].image) {
 				_this.addImage(rects[i].image, _this.model);
 			}
-			// trace('GroundLayer/_buildViews, section['+i+'] = ');
+			// trace('TerrainLayer/_buildViews, section['+i+'] = ');
 			// trace(section);
 			section = {
 				rect: rect,
@@ -65,5 +65,5 @@ var GroundLayer = (function() {
 	}
 
 	
-	return GroundLayer;
+	return TerrainLayer;
 })();
