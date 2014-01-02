@@ -308,7 +308,7 @@ var gameConfig = {
 	enemies: {
 		caterpillar01: {
 			type: EnemyTypes.MOVING_SPRITE,
-			x: 800,
+			x: 750,
 			y: stageConfig.height - 100,
 			width: 142,
 			height: 30,

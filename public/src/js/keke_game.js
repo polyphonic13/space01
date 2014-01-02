@@ -285,11 +285,18 @@ function detectCollisions() {
 					if(col.direction === Directions.TOP && (kekeBottom < enemyVerticalCenter)) {
 						trace('enemy bottom collision, enemy health = ' + enemyObjs[key].health + ', keke.damage = ' + keke.damage);
 						enemyObjs[key].health += keke.damage;
-						keke.velY = 0;
+						// keke.velY = 0;
+			            keke.velY = -keke.speed * 0.75;
 					} else if(col.direction === Directions.LEFT || col.direction === Directions.RIGHT || col.direction === Directions.BOTTOM) {
 						keke.health += enemyObjs[key].damage;
-						trace('enemy top/left/right collision, enemy damage = ' + enemyObjs[key].damage + ', keke.health = ' + keke.health);
+						trace('enemy top/left/right collision, enemy damage = ' + enemyObjs[key].damage + ', keke.health = ' + keke.health + ', keke.dir3ection = ' + keke.direction);
 						// keke.velX = 0;
+						// move player backwards, away from the enemy
+						if(keke.direction === Directions.RIGHT) {
+							keke.velX++;
+						} else {
+							keke.velX--;
+						}
 					}
 					break;
 				}
