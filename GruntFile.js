@@ -73,6 +73,7 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/views/controls/joystick.js',
 					'<%= srcDir %>/js/enum/control_types.js',
 					'<%= srcDir %>/js/views/controls/controls.js',
+					'<%= srcDir %>/js/views/controls/control_panel.js',
 					'<%= srcDir %>/js/levels/level.js',
 					'<%= srcDir %>/js/levels/level_manager.js',
 					'<%= srcDir %>/js/keke_game.js',

@@ -1,96 +1,66 @@
 var ControlButton = (function() {
+	Utils.inherits(ControlButton, View);
 	
-	var _model = {
-		type: 'Circle',
-		x: 0,
-		y: 0,
-		radius: 40,
-		fill: '#aaaaaa',
-		stroke: '#000000',
-		strokeWidth: 2,
-		layer: null
-	};
-	var _circle;
-	var _pressed = false; 
-	var _wasPressed = false;
-	
+	// var this.model = {
+	// 	type: 'Circle',
+	// 	x: 0,
+	// 	y: 0,
+	// 	radius: 40,
+	// 	fill: '#aaaaaa',
+	// 	stroke: '#000000',
+	// 	strokeWidth: 2,
+	// 	layer: null
+	// };
+	// var _circle;
 	function ControlButton(params) {
 		// trace('ControlButton/constructor');
-		_model = Utils.extend(_model, params);
+		// this.model = Utils.extend(this.model, params);
+		ControlButton._super.constructor.call(this, params);
+		this.pressed = false;
+		this.wasPressed = false;
+
 		_buildViews();
+		_addListeners();
 	}
 
-	ControlButton.prototype.getLayer = function() {
-		return _model.layer;
+	ControlButton.prototype.onPressed = function(evt) {
+		// trace('ControlButton/_onPressed');
+		// trace(evt);
+		this.pressed = true;
+		this.wasPressed = true;
+		this.triggerCallback({ type: 'pressed', value: this.model.id });
 	};
 	
-	ControlButton.prototype.setStage = function(stage) {
-		_model.stage = stage;
-		stage.add(_model.layer);
+	ControlButton.prototype.onReleased = function(evt) {
+		// trace('ControlButton/_onReleased');
+		// trace(evt);
+		this.pressed = false;
+		this.triggerCallback({ type: 'released', value: this.model.id });
 	};
 	
-	ControlButton.prototype.getPressed = function() {
-		return _pressed;
-	};
-	
-	ControlButton.prototype.getWasPressed = function() {
-		return _wasPressed;
-	};
-	
-	ControlButton.prototype.setWasPressed = function(val) {
-		_wasPressed = val;
+	ControlButton.prototype.triggerCallback = function(evt) {
+		if(this.model.eventCallback) {
+			this.model.eventCallback.call(this, evt);
+		}
 	};
 	
 	ControlButton.prototype.remove = function() {
-		_model.view.off('touchstart');
-		_model.view.off('touchend');
-		_model.layer.remove();
+		this.btn.off('mousedown touchstart');
+		this.btn.off('mouseup touchend');
+		this.model.layer.remove();
 	};
 	
 	function _buildViews() {
-		if(!_model.layer) {
-			_model.layer = new Kinetic.Layer({
-				width: _model.radius,
-				height: _model.radius
-			});
-		}
-		_buildImageView(_model);
+		this.btn = this.addImage(this.model.view, this.model);
     }
 
-	function _buildImageView(params) {
-		var image = new Kinetic.Image({
-			x: params.x,
-			y: params.y,
-			width: params.width,
-			height: params.height,
-			image: imageManager.getImage(params.src)
-		});
-		_model.layer.add(image);
-		_model.layer.draw(); // layer has to have draw called each time there is a change
-		_model.view = image;
-		_addListeners();
-	}
-	
 	function _addListeners() {
-		_model.view.on('mousedown touchstart', function(evt) {
-			_onPressed(evt);
+		this.btn.on('mousedown touchstart', function(evt) {
+			this.onPressed(evt);
 		});
-		_model.view.on('mouseup touchend', function(evt) {
-			_onReleased(evt);
+		this.btn.on('mouseup touchend', function(evt) {
+			this.onReleased(evt);
 		});
-	}
-	
-	function _onPressed(evt) {
-		// trace('ControlButton/_onPressed');
-		// trace(evt);
-		_pressed = true;
-		_wasPressed = true;
-	}
-	
-	function _onReleased(evt) {
-		// trace('ControlButton/_onReleased');
-		// trace(evt);
-		_pressed = false;
 	}
 	
 	return ControlButton;
