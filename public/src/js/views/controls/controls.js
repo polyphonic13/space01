@@ -5,13 +5,11 @@ var Controls = (function() {
 	
 	function Controls(params) {
 		_this = this;
-		_this.model = params;
-		
-		if(!_this.model.layer) {
-			_this.model.layer = new Kinetic.Layer();
-		}
-		
-		_addViews(_this.model.views);
+		this.model = params;
+		// ensure that control layer is a fresh, clean layer
+		this.model.layer = new Kinetic.Layer();
+
+		this.addViews(this.model.views);
 	}
 	
 	Controls.prototype.setStage = function(stage) {
@@ -33,23 +31,24 @@ var Controls = (function() {
 	};
 	
 	Controls.prototype.getWasPressed = function(btn) {
-		// return _views[btn].getWasPressed();
-		return false;
+		return _views[btn].getWasPressed();
+		// return false;
 	};
 	
 	Controls.prototype.remove = function() {
 		for(var key in _views) {
 			_views[key].remove();
 		}
-		_this.model.layer.remove();
+		this.model.layer.remove();
 	};
 	
-	function _addViews(views) {
+	Controls.prototype.addViews = function(views) {
 		// trace('Controls/_addViews');
 		for(var key in views) {
 			// trace('\tviews['+key+'].type = ' + views[key].type);
 			_views[views[key].id] = new ControlTypes[views[key].type](views[key]);
 		}
+
 	}
 	
 	return Controls;

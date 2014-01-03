@@ -119,11 +119,11 @@ var gameConfig = {
 				// fill: 'green',
 				fill: '#000000',
 				image: {
-					// src: 'grassO1a',
-					// x: -48,
-					// y: stageConfig.height - 510,
-					// width: 1024,
-					// height: 463
+					src: 'grassO1a',
+					x: -48,
+					y: stageConfig.height - 510,
+					width: 1024,
+					height: 463
 				}
 			},
 			{
@@ -136,12 +136,11 @@ var gameConfig = {
 				// fill: 'green',
 				fill: '#000000',
 				image: {
-					// src: 'tree01',
-					// x: 1390,
-					// y: stageConfig.height - 530,
-					// width: 256,
-					// height: 452
-					// 
+					src: 'tree01',
+					x: 1390,
+					y: stageConfig.height - 530,
+					width: 256,
+					height: 452
 				}
 			},
 			{
@@ -154,11 +153,11 @@ var gameConfig = {
 				// fill: 'green',
 				fill: '#000000',
 				image: {
-					// src: 'grass01b',
-					// x: 976,
-					// y: stageConfig.height - 191,
-					// width: 1024,
-					// height: 124
+					src: 'grass01b',
+					x: 976,
+					y: stageConfig.height - 191,
+					width: 1024,
+					height: 124
 				}
 			},
 			{
@@ -172,11 +171,11 @@ var gameConfig = {
 				fill: '#000000',
 				damage: -3,
 				image: {
-					// src: 'thorns01',
-					// x: 2000,
-					// y: stageConfig.height - 155,
-					// width: 120,
-					// height: 100
+					src: 'thorns01',
+					x: 2000,
+					y: stageConfig.height - 155,
+					width: 120,
+					height: 100
 				}
 			},
 			{
@@ -189,11 +188,11 @@ var gameConfig = {
 				// fill: 'green',
 				fill: '#000000',
 				image: {
-					// src: 'grass01g',
-					// x: 2120,
-					// y: stageConfig.height - 177,
-					// width: 512,
-					// height: 110
+					src: 'grass01g',
+					x: 2120,
+					y: stageConfig.height - 177,
+					width: 512,
+					height: 110
 				}
 
 			},
@@ -207,12 +206,11 @@ var gameConfig = {
 				// fill: 'green',
 				fill: '#000000',
 				image: {
-					// src: 'tree02',
-					// x: 2200,
-					// y: stageConfig.height - 530,
-					// width: 269,
-					// height: 476
-
+					src: 'tree02',
+					x: 2200,
+					y: stageConfig.height - 530,
+					width: 269,
+					height: 476
 				}
 			},
 			{
@@ -225,12 +223,11 @@ var gameConfig = {
 				// fill: 'green',
 				fill: '#000000',
 				image: {
-					// src: 'tree04',
-					// x: 2430,
-					// y: stageConfig.height - 540,
-					// width: 290,
-					// height: 480
-
+					src: 'tree04',
+					x: 2430,
+					y: stageConfig.height - 540,
+					width: 290,
+					height: 480
 				}
 			},
 			{
@@ -243,12 +240,11 @@ var gameConfig = {
 				// fill: 'green',
 				fill: '#000000',
 				image: {
-					// src: 'tree03',
-					// x: 2660,
-					// y: stageConfig.height - 580,
-					// width: 290,
-					// height: 480
-
+					src: 'tree03',
+					x: 2660,
+					y: stageConfig.height - 580,
+					width: 290,
+					height: 480
 				}
 			},
 			{
@@ -261,11 +257,11 @@ var gameConfig = {
 				// fill: 'green',
 				fill: '#000000',
 				image: {
-					// src: 'grass01h',
-					// x: 2622,
-					// y: stageConfig.height - 211,
-					// width: 512,
-					// height: 124,
+					src: 'grass01h',
+					x: 2622,
+					y: stageConfig.height - 211,
+					width: 512,
+					height: 124,
 				}
 
 			}]
@@ -494,19 +490,22 @@ var gameConfig = {
 		}]
 	},
 	controls: {
-		views: [
-		// {
-		// 	id: 'quitButton',
-		// 	type: 'controlButton',
-		// 	src: 'quitButton',
-		// 	x: 10,
-		// 	y: 10,
-		// 	width: 35,
-		// 	height: 35
-		// },
-		{
+		views: [{
 			id: 'joystick',
-			type: 'joystick'
+			type: 'joystick',
+			x: 0,
+			y: 0,
+			width: stageConfig.width,
+			height: stageConfig.height
+		},
+		{
+			id: 'quitButton',
+			type: 'controlButton',
+			src: 'quitButton',
+			x: 10,
+			y: 10,
+			width: 35,
+			height: 35
 		}]
 	},
 	friction: 0.5,

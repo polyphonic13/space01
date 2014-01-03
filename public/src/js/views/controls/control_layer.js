@@ -6,11 +6,10 @@ var ControlLayer = (function() {
 	function ControlLayer(params) {
 		_this = this;
 		_this.model = params;
-		
-		if(!_this.model.layer) {
-			_this.model.layer = new Kinetic.Layer();
-		}
-		
+
+		// ensure that control layer is a fresh, clean layer
+		_this.model.layer = new Kinetic.Layer();
+
 		_buildViews();
 		_addListeners();
 	}
@@ -52,8 +51,24 @@ var ControlLayer = (function() {
 	};
 	
 	function _buildViews() {
+		trace('ControlLayer/_buildViews');
 		var views = _this.model.views
 		var view;
+
+		// per this article:  http://stackoverflow.com/questions/12804710/android-4-html5-canvas-not-redrawing
+		var bg = new Kinetic.Rect({
+			x: 0,
+			y: 0,
+			width: stageConfig.width,
+			height: stageConfig.height,
+			fill: 'red',
+			stroke: 'red',
+			strokeWidth: 1,
+			opacity: 0.5,
+			draggable: false
+		});
+		_this.model.layer.add(bg); 
+
 		for(var i = 0; i < views.length; i++) {
 			if(views[i].type === 'Joystick') {
 				_this.model.joystick = new Joystick();

@@ -31,18 +31,17 @@ var Joystick = (function() {
 		yOnly: false,
 		layer: null
 	};
+	var _layerBg;
 	var _lgCircle;
 	var _smCircle;
 	
 	function Joystick(params) {
 		// save config params for later use
 		_model = Utils.extend(_model, params);
-		if(!_model.layer) {
-			_model.layer = new Kinetic.Layer();
-		}
+
 		_resetStates();
 		_buildViews();
-		
+
 		// _model.layer.setPosition(5, stageConfig.height - 120);
 	}
 	
@@ -101,9 +100,22 @@ var Joystick = (function() {
 	
 	Joystick.prototype.setStage = function(stage) {
 		stage.add(_model.layer);
+		_layerBg.setVisible(true);
+		_layerBg.setOpacity(0.001);
 	};
 	
 	Joystick.prototype.remove = function() {
+		_smCircle.off('dragstart');
+		_smCircle.off('dragmove');
+		_smCircle.off('dragend');
+		_smCircle.off('touchstart');
+		_smCircle.off('touchend');
+		_layerBg.off('dragstart');
+		_layerBg.off('dragmove');
+		_layerBg.off('dragend');
+		_layerBg.off('touchstart');
+		_layerBg.off('touchend');
+
 		_model.layer.remove();
 	};
 
@@ -117,20 +129,37 @@ var Joystick = (function() {
 	}
 
 	function _buildViews() {
-		if(!_model.layer) {
-			_model.layer = new Kinetic.Layer({
-				width: _model.lgRadius,
-				height: _model.lgRaduis
-			});
-		}
-		
+		_model.layer = new Kinetic.Layer({
+			x: _model.x,
+			y: _model.y,
+			width: _model.width,
+			height: _model.height
+		});
+
+		// per this article:  http://stackoverflow.com/questions/12804710/android-4-html5-canvas-not-redrawing		
+		_layerBg = new Kinetic.Rect({
+			x: 0,
+			y: 0,
+			width: stageConfig.width,
+			height: stageConfig.height,
+			fill: 'red',
+			stroke: 'red',
+			strokeWidth: 1,
+			// opacity: 0.1,
+			draggable: true
+		});
+		_layerBg.setVisible(false);
+		// _layerBg.setOpacity(0.1);
+		_model.layer.add(_layerBg); 
+
 		var lgCircleConfig = {
 			x: _model.startX + 35,
 			y: _model.startY + 35,
 			radius: _model.lgRadius,
 			// stroke: _model.lgColor3,
 			stroke: _model.lgColor2,
-			strokeWidth: _model.lgStrokeWidth
+			strokeWidth: _model.lgStrokeWidth,
+			draggable: false
 		};
 
 		if(_model.lgGradient) {
@@ -140,7 +169,7 @@ var Joystick = (function() {
 			} else {
 				lgGradientStops = [0, _model.lgColor3, .8, _model.lgColor1, 1, _model.lgColor2];
 			}
-			
+
 			lgCircleConfig.fillRadialGradientStartRadius = 0;
 			lgCircleConfig.fillRadialGradientEndRadius = _model.lgRadius;
 			lgCircleConfig.fillRadialGradientColorStops = lgGradientStops;
@@ -178,11 +207,9 @@ var Joystick = (function() {
 				}
 			}
 		};
-		
-		// _lgCircle = new Kinetic.Circle(lgCircleConfig);
-		// _model.layer.add(_lgCircle);
+		_lgCircle = new Kinetic.Circle(lgCircleConfig);
+		_model.layer.add(_lgCircle);
 
-	    // var imageObj = new Image();
 		smCircleConfig.image = imageManager.getImage(_model.smImgUrl);
 
 		var image = new Kinetic.Image(smCircleConfig);
@@ -190,94 +217,186 @@ var Joystick = (function() {
 		_smCircle = image;
 		_model.layer.draw(); // layer has to have draw called each time there is a change
 		_addListeners();
-		
-
 	}
 	
 	function _addListeners() {
-		// _smCircle.on('touchstart', function(evt) {
-		// 	_onTouchStart(evt);
-		// });
-		
 		_smCircle.on('dragstart', function(evt) {
-			_onDragStart(evt);
+			_onCircleDragStart(evt);
 		});
-		// _smCircle.on('dragenter', function(evt) {
-		// 	_onDragStart(evt);
-		// });
-		// _smCircle.on('drag', function(evt) {
-		// 	_onDragStart(evt);
-		// });
 		_smCircle.on('dragmove', function(evt) {
-			_onDragMove(evt);
+			_onCircleMove(evt);
 		});
 		_smCircle.on('dragend', function(evt) {
-			_onDragEnd();
+			_onCircleDragEnd(evt);
 		});
+		_smCircle.on('touchstart', function(evt) {
+			var pos = _smCircle.getPosition();
+			var size = _smCircle.getSize();
+			var xAxis = (size.width/2) + pos.x;
+			var yAxis = (size.height/2) + pos.y;
+			_onTouchStart(evt, xAxis, yAxis);
+		});
+
+		_smCircle.on('touchmove', function(evt) {
+			trace('_smCircle, touchmove, evt =');
+			trace(evt);
+			// _onTouchMove(evt);
+		})
+		_smCircle.on('touchend', function(evt) {
+			_onTouchEnd(evt);
+		});
+
+		// _layerBg.on('dragstart', function(evt) {
+		// 	_onLayerDragStart(evt);
+		// });
+		// _layerBg.on('dragmove', function(evt) {
+		// 	_onLayerDragMove(evt);
+		// });
+		// _layerBg.on('dragend', function(evt) {
+		// 	_onLayerDragEnd(evt);
+		// });
+		// _layerBg.on('touchstart', function(evt) {
+		// 	var xAxis = stageConfig.width/2;
+		// 	var yAxis = stageConfig.height/2;
+		// 	_onTouchStart(evt, xAxis, yAxis);
+		// });
+		// _layerBg.on('touchend', function(evt) {
+		// 	_onTouchEnd(evt);
+		// });
 	}
 
-	function _onTouchStart(evt) {
-		trace('_onTouchStart, x/y = ' + evt.x + '/' + evt.y);
+	function _onLayerDragStart(evt) {
+		trace('_onLayerDragStart, x/y = ' + evt.x + '/' + evt.y);
 		_states[JoystickStates.REST] = false;
-		_checkDirection(evt);
+		_checkDirection(evt, _layerBg, 0, 0);
 	}
-	
-	function _onDragStart(evt) {
-		trace('_onDragStart, x/y = ' + evt.x + '/' + evt.y);
+
+	function _onLayerDragMove(evt) {
+		trace('_onLayerDragMove, x/y = ' + evt.x + '/' + evt.y);
+		_checkDirection(evt, _layerBg, 0, 0);
+	}
+
+	function _onLayerDragEnd(evt) {
+		trace('_onLayerDragEnd');
+		_resetStates();
+		_layerBg.setPosition(0, 0);
+		_model.layer.draw();
+		_model.layer.fire(JoystickStates.REST);
+	}
+
+	function _onTouchStart(evt, xAxis, yAxis) {
+		trace('_onLayerTouchStart');
+		// trace(evt);
+		if(evt.changedTouches || evt.changedTouches.length >= 1) {
+			var changedTouches = evt.changedTouches[0];
+			trace('\tchangedTouches: x = ' + changedTouches.clientX + ', y = ' + changedTouches.clientY
+				+ '\n\txAxis = ' + xAxis + ', yAxis = ' + yAxis);
+			if(changedTouches.clientX > (xAxis + 10)) {
+				trace('\t\tMOVE RIGHT');
+				_states[JoystickStates.REVERSE] = false;
+				_states[JoystickStates.FORWARD] = true;
+			} else if(changedTouches.clientX < (xAxis - 5)) {
+				trace('\t\tMOVE LEFT');
+				_states[JoystickStates.FORWARD] = false;
+				_states[JoystickStates.REVERSE] = true;
+			} else {
+				trace('\t\tNO MOVEMENT');
+				_states[JoystickStates.FORWARD] = false;
+				_states[JoystickStates.REVERSE] = false;
+			}
+			if(changedTouches.clientY < (yAxis - 5)) {
+				trace('\t\tJUMP');
+				_states[JoystickStates.UP] = true;
+				_states[JoystickStates.DOWN] = false;
+			} else {
+				_states[JoystickStates.UP] = false;
+				_states[JoystickStates.DOWN] = false;
+			}
+		}
+	}
+
+	function _onSmCircleTouchStart(evt) {
+		trace('_onLayerTouchStart');
+		// trace(evt);
+		if(evt.changedTouches || evt.changedTouches.length >= 1) {
+			var changedTouches = evt.changedTouches[0];
+			trace('\tchangedTouches: x = ' + changedTouches.clientX + ', y = ' + changedTouches.clientY
+				+ '\n\tstage: width/2 = ' + stageConfig.width/2 + ', height/2 = ' + stageConfig.height/2);
+			if(changedTouches.clientX > stageConfig.width/2) {
+				trace('\t\tMOVE RIGHT');
+				_states[JoystickStates.REVERSE] = false;
+				_states[JoystickStates.FORWARD] = true;
+			} else if(changedTouches.clientX < stageConfig.width/2) {
+				trace('\t\tMOVE LEFT');
+				_states[JoystickStates.FORWARD] = false;
+				_states[JoystickStates.REVERSE] = true;
+			} else {
+				trace('\t\tNO MOVEMENT');
+				_states[JoystickStates.FORWARD] = false;
+				_states[JoystickStates.REVERSE] = false;
+			}
+			if(changedTouches.clientY < stageConfig.height/2) {
+				trace('\t\tJUMP');
+				_states[JoystickStates.UP] = true;
+				_states[JoystickStates.DOWN] = false;
+			} else {
+				_states[JoystickStates.UP] = false;
+				_states[JoystickStates.DOWN] = false;
+			}
+		}
+	}
+	function _onTouchEnd(evt) {
+		// trace('_onTouchEnd');
+		// trace(evt);
+		_resetStates();
+		_model.layer.fire(JoystickStates.REST);
+	}
+
+	function _onCircleDragStart(evt) {
+		trace('_onCircleDragStart, x/y = ' + evt.x + '/' + evt.y);
 		_states[JoystickStates.REST] = false;
-		_checkDirection(evt);
+		_checkDirection(evt, _smCircle, _model.startX, _model.startY);
 	}
 
-	function _onDragEnter(evt) {
-		trace('_onDragEnter, x/y = ' + evt.x + '/' + evt.y);
-		_states[JoystickStates.REST] = false;
-		_checkDirection(evt);
+	function _onCircleMove(evt) {
+		trace('_onCircleMove, x/y = ' + evt.x + '/' + evt.y);
+		_checkDirection(evt, _smCircle, _model.startX, _model.startY);
 	}
 
-	function _onDrag(evt) {
-		trace('_onDrag, x/y = ' + evt.x + '/' + evt.y);
-		_states[JoystickStates.REST] = false;
-		_checkDirection(evt);
-	}
-
-	function _onDragMove(evt) {
-		// trace('_onDragMove, x/y = ' + evt.x + '/' + evt.y);
-		_checkDirection(evt);
-	}
-
-	function _onDragEnd(evt) {
-		// trace('_onDragEnd');
+	function _onCircleDragEnd(evt) {
+		trace('_onCircleDragEnd');
 		_resetStates();
 		_smCircle.setPosition(_model.startX, _model.startY);
 		_model.layer.draw();
 		_model.layer.fire(JoystickStates.REST);
 	}
 
-	function _checkDirection(evt) {
-		var pos = _smCircle.getPosition();
-		
+	function _checkDirection(evt, obj, startX, startY) {
+		// var pos = _smCircle.getPosition();
+		var pos = obj.getPosition();
+
 		_position.x = pos.x;
 		_position.y = pos.y;
-		
-		if(_position.x > (_model.startX + 10)) {
-			// trace("FORWARD");
+
+		if(_position.x > (startX + 10)) {
+			// trace("RIGHT");
 			_states[JoystickStates.REVERSE] = false;
 			_states[JoystickStates.FORWARD] = true;
-		} else if(_position.x < (_model.startX - 10)) {
-			// trace("REVERSE");
+		} else if(_position.x < (startX - 10)) {
+			// trace("LEFT");
 			_states[JoystickStates.FORWARD] = false;
 			_states[JoystickStates.REVERSE] = true;
 		} else {
-			// trace("REVERSE");
+			// trace("NO MOVEMENT");
 			_states[JoystickStates.FORWARD] = false;
 			_states[JoystickStates.REVERSE] = false;
 		}
 		// trace('y = ' + _position.y + ', startY = ' + _model.startY);
-		if(_position.y > (_model.startY + 20)) {
+		if(_position.y > (startY + 20)) {
 			// trace("DOWN");
 			_states[JoystickStates.DOWN] = true;
 			_states[JoystickStates.UP] = false;
-		} else if(_position.y < (_model.startY - 20)){
+		} else if(_position.y < (startY - 20)){
 			// trace("UP");
 			_states[JoystickStates.UP] = true;
 			_states[JoystickStates.DOWN] = false;

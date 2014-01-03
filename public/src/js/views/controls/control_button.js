@@ -42,6 +42,8 @@ var ControlButton = (function() {
 	};
 	
 	ControlButton.prototype.remove = function() {
+		_model.view.off('touchstart');
+		_model.view.off('touchend');
 		_model.layer.remove();
 	};
 	
@@ -73,11 +75,9 @@ var ControlButton = (function() {
 		_model.view.on('mousedown touchstart', function(evt) {
 			_onPressed(evt);
 		});
-		
 		_model.view.on('mouseup touchend', function(evt) {
 			_onReleased(evt);
 		});
-		
 	}
 	
 	function _onPressed(evt) {
