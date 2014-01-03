@@ -33,7 +33,8 @@ var Controls = (function() {
 	};
 	
 	Controls.prototype.getWasPressed = function(btn) {
-		return _views[btn].getWasPressed();
+		// return _views[btn].getWasPressed();
+		return false;
 	};
 	
 	Controls.prototype.remove = function() {

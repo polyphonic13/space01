@@ -152,10 +152,11 @@ var Joystick = (function() {
 		var smCircleConfig = {
 			x: _model.startX,
 			y: _model.startY,
-			width: _model.smWidth,
+			width: _model.smWidth ,
 			height: _model.smHeight,
 			// radius: _model.smRadius,
 			// stroke: _model.smColor3,
+			// fill: 'black',
 			// strokeWidth: _model.smStrokeWidth,
 			draggable: true,
 			dragBoundFunc: function(pos) {
@@ -178,10 +179,10 @@ var Joystick = (function() {
 			}
 		};
 		
-		_lgCircle = new Kinetic.Circle(lgCircleConfig);
-		_model.layer.add(_lgCircle);
+		// _lgCircle = new Kinetic.Circle(lgCircleConfig);
+		// _model.layer.add(_lgCircle);
 
-	    var imageObj = new Image();
+	    // var imageObj = new Image();
 		smCircleConfig.image = imageManager.getImage(_model.smImgUrl);
 
 		var image = new Kinetic.Image(smCircleConfig);
@@ -194,10 +195,19 @@ var Joystick = (function() {
 	}
 	
 	function _addListeners() {
+		// _smCircle.on('touchstart', function(evt) {
+		// 	_onTouchStart(evt);
+		// });
+		
 		_smCircle.on('dragstart', function(evt) {
-			// trace('DRAG START!');
 			_onDragStart(evt);
 		});
+		// _smCircle.on('dragenter', function(evt) {
+		// 	_onDragStart(evt);
+		// });
+		// _smCircle.on('drag', function(evt) {
+		// 	_onDragStart(evt);
+		// });
 		_smCircle.on('dragmove', function(evt) {
 			_onDragMove(evt);
 		});
@@ -206,8 +216,26 @@ var Joystick = (function() {
 		});
 	}
 
+	function _onTouchStart(evt) {
+		trace('_onTouchStart, x/y = ' + evt.x + '/' + evt.y);
+		_states[JoystickStates.REST] = false;
+		_checkDirection(evt);
+	}
+	
 	function _onDragStart(evt) {
-		// trace('_onDragStart, x/y = ' + evt.x + '/' + evt.y);
+		trace('_onDragStart, x/y = ' + evt.x + '/' + evt.y);
+		_states[JoystickStates.REST] = false;
+		_checkDirection(evt);
+	}
+
+	function _onDragEnter(evt) {
+		trace('_onDragEnter, x/y = ' + evt.x + '/' + evt.y);
+		_states[JoystickStates.REST] = false;
+		_checkDirection(evt);
+	}
+
+	function _onDrag(evt) {
+		trace('_onDrag, x/y = ' + evt.x + '/' + evt.y);
 		_states[JoystickStates.REST] = false;
 		_checkDirection(evt);
 	}
