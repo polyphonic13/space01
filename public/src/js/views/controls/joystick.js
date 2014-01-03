@@ -109,11 +109,13 @@ var Joystick = (function() {
 		_smCircle.off('dragmove');
 		_smCircle.off('dragend');
 		_smCircle.off('touchstart');
+		_smCircle.off('touchmove');
 		_smCircle.off('touchend');
 		_layerBg.off('dragstart');
 		_layerBg.off('dragmove');
 		_layerBg.off('dragend');
 		_layerBg.off('touchstart');
+		_layerBg.off('touchmove');
 		_layerBg.off('touchend');
 
 		_model.layer.remove();
@@ -246,23 +248,26 @@ var Joystick = (function() {
 			_onTouchEnd(evt);
 		});
 
-		// _layerBg.on('dragstart', function(evt) {
-		// 	_onLayerDragStart(evt);
-		// });
-		// _layerBg.on('dragmove', function(evt) {
-		// 	_onLayerDragMove(evt);
-		// });
-		// _layerBg.on('dragend', function(evt) {
-		// 	_onLayerDragEnd(evt);
-		// });
-		// _layerBg.on('touchstart', function(evt) {
-		// 	var xAxis = stageConfig.width/2;
-		// 	var yAxis = stageConfig.height/2;
-		// 	_onTouchStart(evt, xAxis, yAxis);
-		// });
-		// _layerBg.on('touchend', function(evt) {
-		// 	_onTouchEnd(evt);
-		// });
+		_layerBg.on('dragstart', function(evt) {
+			_onLayerDragStart(evt);
+		});
+		_layerBg.on('dragmove', function(evt) {
+			_onLayerMove(evt);
+		});
+		_layerBg.on('dragend', function(evt) {
+			_onLayerDragEnd(evt);
+		});
+		_layerBg.on('touchstart', function(evt) {
+			var xAxis = stageConfig.width/2;
+			var yAxis = stageConfig.height/2;
+			_onTouchStart(evt, xAxis, yAxis);
+		});
+		_layerBg.on('touchmove', function(evt) {
+			_onLayerMove(evt);
+		});
+		_layerBg.on('touchend', function(evt) {
+			_onTouchEnd(evt);
+		});
 	}
 
 	function _onLayerDragStart(evt) {
@@ -271,8 +276,8 @@ var Joystick = (function() {
 		_checkDirection(evt, _layerBg, 0, 0);
 	}
 
-	function _onLayerDragMove(evt) {
-		trace('_onLayerDragMove, x/y = ' + evt.x + '/' + evt.y);
+	function _onLayerMove(evt) {
+		trace('_onLayerMove, x/y = ' + evt.x + '/' + evt.y);
 		_checkDirection(evt, _layerBg, 0, 0);
 	}
 
