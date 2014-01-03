@@ -112,9 +112,9 @@ function update() {
 				ground.moveByVelocity(keke.velX, 0);
 				enemies.moveByVelocity(keke.velX, 0);
 				bonuses.moveByVelocity(keke.velX, 0);
-				ground.move(0, -keke.velY);
-				enemies.move(0, -keke.velY);
-				bonuses.move(0, -keke.velY);
+				// ground.move(0, -keke.velY);
+				// enemies.move(0, -keke.velY);
+				// bonuses.move(0, -keke.velY);
 			}
 		} else {
 			// trace('bounds reached');
@@ -128,7 +128,7 @@ function update() {
 		keke.playAnimation(animationToPlay);
 
 		// vertical movement
-		// keke.move(0, keke.velY);
+		keke.move(0, keke.velY);
 
 		enemies.update({});
 		// layer movement

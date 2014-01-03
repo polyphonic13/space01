@@ -508,8 +508,6 @@ var gameConfig = {
 			height: 35
 		}]
 	},
-	// friction: -0.5,
-	// gravity: -0.67
 	friction: 0.5,
 	gravity: 0.67
 };
