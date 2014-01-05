@@ -82,6 +82,18 @@ function create() {
 	ledge = platforms.create(1100, (stage.height - 180), 'platform');
 	ledge.body.immovable = true;
 
+	var ledge = platforms.create(3100, (stage.height - 75), 'platform');
+	ledge.scale.setTo(0.5, 1);
+	ledge.body.immovable = true;
+
+	ledge = platforms.create(3300, (stage.height - 130), 'platform');
+	ledge.scale.setTo(0.5, 1);
+	ledge.body.immovable = true;
+
+	ledge = platforms.create(3500, (stage.height - 180), 'platform');
+	ledge.scale.setTo(0.5, 1);
+	ledge.body.immovable = true;
+
 
 	player = game.add.sprite((stage.width/2 - 76/2), (stage.height - 148), 'keke');
 	player.anchor.setTo(0.5, 0.5);
@@ -108,7 +120,7 @@ function create() {
     for (var i = 0; i < 28; i++)
     {
         //  Create a lollipop inside of the 'lollipops' group
-        var lollipop = lollipops.create((i+2) * 175, 0, 'lollipop');
+        var lollipop = lollipops.create((i+2) * 256, 0, 'lollipop');
 
         //  Let gravity do its thing
         lollipop.body.gravity.y = gravity;
@@ -125,6 +137,7 @@ function create() {
   // See https://github.com/austinhallock/html5-virtual-game-controller/ for examples.
 	GameController.init({
         left: {
+			position: { left: 75, bottom: 75 },
             type: 'joystick',
             joystick: {
                 touchStart: function() {
@@ -140,10 +153,10 @@ function create() {
             }
         },
         right: {
-			position: { left: stage.width - 10, top: stage.height - 50 },
+			position: { left: stage.width - 10, top: stage.height - 70 },
 	      buttons: [
 	        { 
-				radius: 18,
+				radius: 30,
 	            label: 'Quit',
 				fontSize: 9, 
 				touchStart: function() { 
@@ -259,17 +272,17 @@ function setPlayerAnimations() {
 			// player.frame = 3;
 			plyr.currentAnimation = 'jumpL';
 		}
-	} else if(!player.body.touching.down) {
-		trace('falling');
-		if(plyr.facingForward) {
-			// player.frame = 4;
-			player.frame = 9;
-			plyr.currentAnimation = 'fallingR';
-		} else {
-			// player.frame = 5;
-			player.frame = 24;
-			plyr.currentAnimation = 'fallingL';
-		}
+	// } else if(!player.body.touching.down) {
+	// 	trace('falling');
+	// 	if(plyr.facingForward) {
+	// 		// player.frame = 4;
+	// 		player.frame = 9;
+	// 		plyr.currentAnimation = 'fallingR';
+	// 	} else {
+	// 		// player.frame = 5;
+	// 		player.frame = 24;
+	// 		plyr.currentAnimation = 'fallingL';
+	// 	}
 	} else {
 		if(player.body.velocity.x > 0) {
 			if(plyr.currentAnimation !== 'runR') {
