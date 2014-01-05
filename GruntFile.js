@@ -39,6 +39,7 @@ module.exports = function(grunt) {
 				src: [
 					'<%= srcDir %>/js/third_party/gamecontroller.js',
 					'<%= srcDir %>/js/third_party/phaser.min.js',
+					'<%= srcDir %>/js/utils/logger.js',
 
 					'<%= srcDir %>/js/keke_game2.js',
 				],
@@ -123,7 +124,7 @@ module.exports = function(grunt) {
 			},
 
 			keke_game2: {
-				src: [ '<%= deployDir %/keke2/js/keke_game2.js' ],
+				src: [ '<%= deployDir %>/keke2/js/keke_game2.js' ],
 				dest: '<%= deployDir %>/keke2/js/keke_game2.min.js'
 			},
 			keke_game: {
