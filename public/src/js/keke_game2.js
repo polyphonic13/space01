@@ -32,6 +32,7 @@ var game = new Phaser.Game(stage.width, stage.height, Phaser.AUTO, '', { preload
 
 function preload() {
   game.load.image('sky', 'images/night_sky.jpg');
+  game.load.image('moon', 'images/moon.jpg');
   game.load.image('mountains', 'images/hills03_grey.png');
   game.load.image('treesBack', 'images/trees_back01.png');
   game.load.image('treesFore', 'images/trees_fore01.png');
@@ -47,7 +48,11 @@ function preload() {
 }
 
 function create() {
-	var sky = game.add.sprite(0, 0, 'sky');
+	var sky = game.add.sprite(stage.width - 350, 0, 'sky');
+	sky.width = stage.width;
+	sky.height = stage.height;
+	sky.fixedToCamera = true;
+	var moon = game.add.sprite(0, 0, 'moon');
 	sky.fixedToCamera = true;
 	
 	game.add.sprite(0, 0, 'mountains');
@@ -73,25 +78,25 @@ function create() {
 	ground.scale.setTo(8, 1);
   	ground.body.immovable = true;
 
-	var ledge = platforms.create(500, (stage.height - 75), 'platform');
+	var ledge = platforms.create(1500, (stage.height - 75), 'platform');
 	ledge.body.immovable = true;
 
-	ledge = platforms.create(800, (stage.height - 130), 'platform');
+	ledge = platforms.create(1800, (stage.height - 130), 'platform');
 	ledge.body.immovable = true;
 
-	ledge = platforms.create(1100, (stage.height - 180), 'platform');
+	ledge = platforms.create(2100, (stage.height - 180), 'platform');
 	ledge.body.immovable = true;
 
 	var ledge = platforms.create(3100, (stage.height - 75), 'platform');
-	ledge.scale.setTo(0.5, 1);
+	ledge.scale.setTo(0.7, 1);
 	ledge.body.immovable = true;
 
 	ledge = platforms.create(3300, (stage.height - 130), 'platform');
-	ledge.scale.setTo(0.5, 1);
+	ledge.scale.setTo(0.7, 1);
 	ledge.body.immovable = true;
 
 	ledge = platforms.create(3500, (stage.height - 180), 'platform');
-	ledge.scale.setTo(0.5, 1);
+	ledge.scale.setTo(0.7, 1);
 	ledge.body.immovable = true;
 
 
@@ -235,16 +240,16 @@ function checkGameInput() {
    // Check key states every frame.
    if (game.input.joystickLeft) {
 		var jl = game.input.joystickLeft;
-		if(jl.normalizedX > 0) {
+		if(jl.normalizedX > 0.1) {
 			player.body.velocity.x = plyr.speed;
 			plyr.facingForward = true;
-		} else if(jl.normalizedX < 0) {
+		} else if(jl.normalizedX < -0.1) {
 			player.body.velocity.x = -plyr.speed;
 			plyr.facingForward = false;
 		}
 
 		if(player.body.touching.down) {
-			if(jl.normalizedY > 0.5) {
+			if(jl.normalizedY > 0.2) {
 				player.body.velocity.y = -plyr.jumpHeight;
 				plyr.jumping = true;
 			}
@@ -272,17 +277,17 @@ function setPlayerAnimations() {
 			// player.frame = 3;
 			plyr.currentAnimation = 'jumpL';
 		}
-	// } else if(!player.body.touching.down) {
-	// 	trace('falling');
-	// 	if(plyr.facingForward) {
-	// 		// player.frame = 4;
-	// 		player.frame = 9;
-	// 		plyr.currentAnimation = 'fallingR';
-	// 	} else {
-	// 		// player.frame = 5;
-	// 		player.frame = 24;
-	// 		plyr.currentAnimation = 'fallingL';
-	// 	}
+	} else if(!player.body.touching.down) {
+		trace('falling');
+		if(plyr.facingForward) {
+			// player.frame = 4;
+			player.frame = 9;
+			plyr.currentAnimation = 'fallingR';
+		} else {
+			// player.frame = 5;
+			player.frame = 24;
+			plyr.currentAnimation = 'fallingL';
+		}
 	} else {
 		if(player.body.velocity.x > 0) {
 			if(plyr.currentAnimation !== 'runR') {
