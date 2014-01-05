@@ -6,8 +6,12 @@ var stage = {
 };
 var platforms;
 var cursors;
-var player;
-var playerConfig = {
+// phaser object
+var player; 
+// config object
+var plyr = {
+	width: 76,
+	height: 148,
 	bounce: 0.2,
 	speed: 150,
 	jumpHeight: 350,
@@ -69,22 +73,18 @@ function create() {
 	ground.scale.setTo(8, 1);
   	ground.body.immovable = true;
 
-  // var ground2 = platforms.create(2048, game.world.height - 200, 'grass2');
-  // ground2.body.immovable = true;
+	var ledge = platforms.create(500, (stage.height - 80), 'platform');
+	ledge.body.immovable = true;
 
-  //  Now let's create two ledges
-   var ledge = platforms.create(500, (stage.height - 80), 'platform');
-   ledge.body.immovable = true;
+	ledge = platforms.create(800, (stage.height - 130), 'platform');
+	ledge.body.immovable = true;
 
-   ledge = platforms.create(800, (stage.height - 130), 'platform');
-   ledge.body.immovable = true;
-
-   ledge = platforms.create(1100, (stage.height - 180), 'platform');
-   ledge.body.immovable = true;
+	ledge = platforms.create(1100, (stage.height - 180), 'platform');
+	ledge.body.immovable = true;
 
 
-  player = game.add.sprite((stage.width/2 - 76/2), (stage.height - 148), 'keke');
-  player.anchor.setTo(0.5, 0.5);
+	player = game.add.sprite((stage.width/2 - 76/2), (stage.height - 148), 'keke');
+	player.anchor.setTo(0.5, 0.5);
 
 	player.animations.add('idleR', [0], 14);
 	player.animations.add('idleL', [1], 14);
@@ -93,12 +93,13 @@ function create() {
 	player.animations.add('jumpR', [2], 14);
 	player.animations.add('jumpL', [3], 14);
 		
-	//  Player physics properties. Give the little guy a slight bounce.
-  player.body.bounce.y = playerConfig.bounce;
-  player.body.gravity.y = gravity;
-  player.body.collideWorldBounds = true;
-	
-  game.camera.follow(player, Phaser.Camera.FOLLOW_PLATFORMER);
+	//  Player physics properties.
+	player.body.setSize(30, plyr.height - 25, 0, 0); // bounding box
+	player.body.bounce.y = plyr.bounce;
+	player.body.gravity.y = gravity;
+	player.body.collideWorldBounds = true;
+
+	game.camera.follow(player, Phaser.Camera.FOLLOW_PLATFORMER);
 
     //  Finally some lollipops to collect
     lollipops = game.add.group();
@@ -117,11 +118,12 @@ function create() {
     }
 
 	// CONTROLS
- key1 = game.input.keyboard.addKey(Phaser.Keyboard.ONE);
-  key1.onDown.add(quit, this);
+	key1 = game.input.keyboard.addKey(Phaser.Keyboard.Q);
+	key1.onDown.add(quit, this);
 
   // Init game controller with left thumb stick
-   GameController.init({
+  // See https://github.com/austinhallock/html5-virtual-game-controller/ for examples.
+	GameController.init({
         left: {
             type: 'joystick',
             joystick: {
@@ -138,9 +140,6 @@ function create() {
             }
         },
         right: {
-            // We're not using anything on the right for this demo, but you can add buttons, etc.
-            // See https://github.com/austinhallock/html5-virtual-game-controller/ for examples.
-            // type: 'none'
 			position: { left: stage.width - 10, top: stage.height - 50 },
 	      buttons: [
 	        { 
@@ -172,71 +171,11 @@ function create() {
     scoreText = game.add.text(16, 16, 'Score: 0', { fontSize: '28px', fill: '#fff' });
 	guiConsole.add(scoreText);
 
-    // game.input.addPointer();
-    // game.input.addPointer();
-    // game.input.addPointer();
-    // game.input.addPointer();
- 	//    quitButton = game.add.button(stage.width - 50, stage.height - 50, 'quitButton', quit, this);
- 	//     quitButton.inputEnabled = true;
- 	// quitButton.input.pointerOver.id = 1;
- 	// quitButton = game.add.sprite(stage.width - 50, stage.height - 50, 'quitButton');
-    // quitButton.input.addPointer();
-	// quitButton.events.onInputDown.add(isTouchingButton, this);
-	// onInputOver
-	// onInputOut
-	// onInputDown
-	// onInputUp
-	// onDragStart
-	// onDragStop
-	// quitButton.input.start();
-	// guiConsole.add(quitButton);
-
-	// quitButton.events.onInputDown.add(isTouchingQuit, this);
-	// quitButton.events.onInputOver.add(isOverQuit, this);
-	// game.input.touch.callbackContext = this;
-	// game.input.touch.touchStartCallback = this.onTouchDown;
  }
 
-function isTouchingButton(button, pointer) {
-	trace('isTouchingButton');
-	trace(button);
-	trace(pointer);
-	quit();
-}
-
-function onTouchDown(event) {
-	trace('isTouchingQuit');
-	trace(event);
-	quit();
-}
-
-function isOverQuit(button, pointer) {
-	trace('isOverQuit');
-}
-
 function update() {
-	// if (quitButton.input.pointerOver()) {
-	// 	trace('quit button pointOver');
-	// }
-	//     game.debug.renderPointer(game.input.mousePointer);
-	//     game.debug.renderPointer(game.input.pointer1);
-	// 
-	// if (game.input.pointer1.isDown) {
-	// 	trace('pointer1 is down');
-	// }
-	// if(quitButton.input.activePointer.isDown) {
-	// 	trace('quit button activePointer is down');
-	// }
-	// if(game.input.activePointer.isDown) {
-	// 	trace('game activePointer is down');
-	// }
-	// if(quitButton.input.pointerDown(game.input.activePointer.id)) {
-	// 	trace('quit button pointer down');
-	// 	quit();
-	// } else {
-		checkCollisions();
-		checkGameInput();
-	// }
+	checkCollisions();
+	checkGameInput();
 }
 
 function checkCollisions() {
@@ -255,49 +194,49 @@ function checkGameInput() {
    if (cursors.left.isDown)
    {
        //  Move to the left
-       player.body.velocity.x = -playerConfig.speed;
+       player.body.velocity.x = -plyr.speed;
 
 		// trace('play run left');
 		//        player.animations.play('runL');
-			playerConfig.facingForward = false;
+			plyr.facingForward = false;
    }
    else if (cursors.right.isDown)
    {
        //  Move to the right
-       player.body.velocity.x = playerConfig.speed;
+       player.body.velocity.x = plyr.speed;
 
 		// trace('play run right');
        // player.animations.play('runR');
-			playerConfig.facingForward = true;
+			plyr.facingForward = true;
    }
 
    //  Allow the player to jump if they are touching the ground.
 	if (cursors.up.isDown && player.body.touching.down)
 	{
-		player.body.velocity.y = -playerConfig.jumpHeight;
-		playerConfig.jumping = true;
+		player.body.velocity.y = -plyr.jumpHeight;
+		plyr.jumping = true;
 	} else {
-		playerConfig.jumping = false;
+		plyr.jumping = false;
 	}
 
    // Check key states every frame.
    if (game.input.joystickLeft) {
 		var jl = game.input.joystickLeft;
 		if(jl.normalizedX > 0) {
-			player.body.velocity.x = playerConfig.speed;
-			playerConfig.facingForward = true;
+			player.body.velocity.x = plyr.speed;
+			plyr.facingForward = true;
 		} else if(jl.normalizedX < 0) {
-			player.body.velocity.x = -playerConfig.speed;
-			playerConfig.facingForward = false;
+			player.body.velocity.x = -plyr.speed;
+			plyr.facingForward = false;
 		}
 
 		if(player.body.touching.down) {
 			if(jl.normalizedY > 0.5) {
-				player.body.velocity.y = -playerConfig.jumpHeight;
-				playerConfig.jumping = true;
+				player.body.velocity.y = -plyr.jumpHeight;
+				plyr.jumping = true;
 			}
 		} else {
-			playerConfig.jumping = false;
+			plyr.jumping = false;
 			
 		}
    }
@@ -306,53 +245,53 @@ function checkGameInput() {
 
 function setPlayerAnimations() {
 	// trace('player vel x = ' + player.body.velocity.x);
-	if(playerConfig.jumping) {
+	if(plyr.jumping) {
 		trace('jumping');
 		// jumping
-		if(playerConfig.facingForward) {
+		if(plyr.facingForward) {
 			// player.animations.play('jumpR', 1, false);
 			player.frame = 9;
 			// player.frame = 2;
-			playerConfig.currentAnimation = 'jumpR';
+			plyr.currentAnimation = 'jumpR';
 		} else {
 			// player.animations.play('jumpL', 1, false);
 			player.frame = 24;
 			// player.frame = 3;
-			playerConfig.currentAnimation = 'jumpL';
+			plyr.currentAnimation = 'jumpL';
 		}
 	} else if(!player.body.touching.down) {
 		trace('falling');
-		if(playerConfig.facingForward) {
+		if(plyr.facingForward) {
 			// player.frame = 4;
 			player.frame = 9;
-			playerConfig.currentAnimation = 'fallingR';
+			plyr.currentAnimation = 'fallingR';
 		} else {
 			// player.frame = 5;
 			player.frame = 24;
-			playerConfig.currentAnimation = 'fallingL';
+			plyr.currentAnimation = 'fallingL';
 		}
 	} else {
 		if(player.body.velocity.x > 0) {
-			if(playerConfig.currentAnimation !== 'runR') {
+			if(plyr.currentAnimation !== 'runR') {
 		 		trace('play run right');
 				player.animations.play('runR', 10, true);
-				playerConfig.currentAnimation = 'runR';
-				playerConfig.facingForward = false;
+				plyr.currentAnimation = 'runR';
+				plyr.facingForward = false;
 			}
 		} else if(player.body.velocity.x < 0) {
-			if(playerConfig.currentAnimation !== 'runL') {
+			if(plyr.currentAnimation !== 'runL') {
 		 		trace('play run left');
 				player.animations.play('runL', 10, true);
-				playerConfig.currentAnimation = 'runL';
-				playerConfig.facingForward = false;
+				plyr.currentAnimation = 'runL';
+				plyr.facingForward = false;
 			}
 		} else if(player.body.velocity.x === 0) {
 			player.animations.stop();
-			if(playerConfig.facingForward) {
-				playerConfig.currentAnimation = 'idleR';
+			if(plyr.facingForward) {
+				plyr.currentAnimation = 'idleR';
 				player.frame = 0;
 			} else {
-				playerConfig.currentAnimation = 'idleL';
+				plyr.currentAnimation = 'idleL';
 				player.frame = 1;
 			}
 		}
