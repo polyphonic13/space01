@@ -4,6 +4,7 @@ var stage = {
 	width: document.documentElement.clientWidth,
 	height: document.documentElement.clientHeight
 };
+var gameOver = false;
 var platforms;
 var cursors;
 // phaser object
@@ -14,6 +15,8 @@ var plyr = {
 	height: 148,
 	bounce: 0.2,
 	speed: 150,
+	health: 100,
+	damage: 5,
 	jumpHeight: 350,
 	jumping: false,
 	justJumped: false,
@@ -23,7 +26,11 @@ var plyr = {
 
 var gravity = 15;
 
+var caterpillars;
+var enemies = {};
+
 var lollipops;
+
 var score = 0;
 var scoreText;
 
@@ -32,23 +39,38 @@ var quitButton;
 var game = new Phaser.Game(stage.width, stage.height, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
 function preload() {
-  game.load.image('sky', 'images/night_sky.jpg');
+	// images
+	game.load.image('sky', 'images/night_sky.jpg');
+	game.load.image('mountains', 'images/hills03_grey.png');
+	game.load.image('treesBack', 'images/trees_back01.png');
+	game.load.image('treesFore', 'images/trees_fore01.png');
+	game.load.image('platform', 'images/platform.png');
+	game.load.image('grass1', 'images/grass01.png');
+	game.load.image('grass2', 'images/grass02.png');
+	game.load.image('lollipop', 'images/lollipop.png');
+	game.load.image('quitButton', 'images/quit_button.png');
 
-  game.load.image('mountains', 'images/hills03_grey.png');
-  game.load.image('treesBack', 'images/trees_back01.png');
-  game.load.image('treesFore', 'images/trees_fore01.png');
-  game.load.image('platform', 'images/platform.png');
-  game.load.image('grass1', 'images/grass01.png');
-  game.load.image('grass2', 'images/grass02.png');
-  game.load.image('lollipop', 'images/lollipop.png');
-  game.load.image('quitButton', 'images/quit_button.png');
+	// spritesheets
+	game.load.spritesheet('caterpillar01', 'images/caterpillar01a_sprite.png', 104, 22, 12);
+	game.load.spritesheet('keke', 'images/keke_character2.png', 76, 128, 35);
 
-  game.load.spritesheet('keke', 'images/keke_character2.png', 76, 128, 35);
-
-  cursors = game.input.keyboard.createCursorKeys();
+	// keyboard buttons
+	cursors = game.input.keyboard.createCursorKeys();
 }
 
 function create() {
+	game.world.setBounds(0, 0, 4096, stage.height);
+
+	addScenery();
+	addTerrain();
+ 	addPlayer();
+	addCaterpillars();
+	addLollipops();
+	addControls();
+	addGui();
+}
+
+function addScenery() {
 	var sky = game.add.sprite(0, 0, 'sky');
 	sky.width = stage.width;
 	sky.height = stage.height;
@@ -64,48 +86,50 @@ function create() {
 	game.add.sprite(0, (stage.height - 200), 'grass1');
 	game.add.sprite(2048, (stage.height - 200), 'grass2');
 	
-  game.world.setBounds(0, 0, 4096, stage.height);
+}
 
-  //  The platforms group contains the ground and the 2 ledges we can jump on
-  platforms = game.add.group();
+function addTerrain() {
+	//  The platforms group contains the ground and the 2 ledges we can jump on
+	platforms = game.add.group();
 
 	var ground = platforms.create(0, game.world.height - 20, 'platform');
 	ground.scale.setTo(8, 1);
 	ground.body.immovable = true;
-  
+
 	ground = platforms.create(2048, game.world.height - 20, 'platform');
 	ground.scale.setTo(8, 1);
   	ground.body.immovable = true;
 
-	var ledge = platforms.create(1500, (stage.height - 75), 'platform');
+	var ledge = platforms.create(500, (stage.height - 75), 'platform');
 	ledge.body.immovable = true;
 
-	ledge = platforms.create(1800, (stage.height - 130), 'platform');
+	ledge = platforms.create(800, (stage.height - 130), 'platform');
 	ledge.body.immovable = true;
 
-	ledge = platforms.create(2100, (stage.height - 180), 'platform');
+	ledge = platforms.create(1100, (stage.height - 180), 'platform');
 	ledge.body.immovable = true;
 
 	var ledge = platforms.create(3100, (stage.height - 75), 'platform');
-	ledge.scale.setTo(0.7, 1);
+	ledge.scale.setTo(0.8, 1);
 	ledge.body.immovable = true;
 
 	ledge = platforms.create(3300, (stage.height - 130), 'platform');
-	ledge.scale.setTo(0.7, 1);
+	ledge.scale.setTo(0.8, 1);
 	ledge.body.immovable = true;
 
 	ledge = platforms.create(3500, (stage.height - 180), 'platform');
-	ledge.scale.setTo(0.7, 1);
+	ledge.scale.setTo(0.8, 1);
 	ledge.body.immovable = true;
+}
 
-
+function addPlayer() {
 	player = game.add.sprite((stage.width/2 - 76/2), (stage.height - 148), 'keke');
 	player.anchor.setTo(0.5, 0.5);
 
 	player.animations.add('idleR', [0], 14);
 	player.animations.add('idleL', [1], 14);
-	player.animations.add('runR', [7, 8, 9, 10, 11, 12, 14, 15, 16, 18, 19], 14);
-	player.animations.add('runL', [21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33], 14);
+	player.animations.add('runR', [7, 8, 9, 10, 11, 12, 14, 15, 16, 18, 19], 13);
+	player.animations.add('runL', [21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33], 13);
 	player.animations.add('jumpR', [2], 14);
 	player.animations.add('jumpL', [3], 14);
 		
@@ -114,31 +138,72 @@ function create() {
 	player.body.bounce.y = plyr.bounce;
 	player.body.gravity.y = gravity;
 	player.body.collideWorldBounds = true;
-
+	
 	game.camera.follow(player, Phaser.Camera.FOLLOW_PLATFORMER);
+}
 
-    //  Finally some lollipops to collect
-    lollipops = game.add.group();
+function addCaterpillars() {
+   caterpillars = game.add.group();
 
-    //  Here we'll create 12 of them evenly spaced apart
-    for (var i = 0; i < 28; i++)
-    {
+    for (var i = 0; i < 25; i++) {
         //  Create a lollipop inside of the 'lollipops' group
-        var lollipop = lollipops.create((i+2) * 256, 0, 'lollipop');
+		// if(i % 2) {
+	        var caterpillar = caterpillars.create((i+2) * 256, stage.height - 100, 'caterpillar01');
+			caterpillar.name = 'caterpillar' + i;
+			// caterpillar.body.setSize(142, 60, 0, -30); // bounding box
 
-        //  Let gravity do its thing
-        lollipop.body.gravity.y = gravity;
+	       //  Let gravity do its thing
+	       	caterpillar.body.gravity.y = gravity;
+			// caterpillar.body.immovable = true;
+			// caterpillar.body.customSeparateX = true;
+			// caterpillar.body.customSeparateY = true;
+	        //  This just gives each lollipop a slihtly random bounce value
+	        caterpillar.body.bounce.y = 0.15 + Math.random() * 0.2;
 
-        //  This just gives each lollipop a slightly random bounce value
-        lollipop.body.bounce.y = 0.15 + Math.random() * 0.2;
+			caterpillar.animations.add('walkL', [0, 2, 4, 6, 8, 10], 10);
+			caterpillar.animations.add('walkR', [1, 3, 5, 7, 9, 11], 10);
+	 		caterpillar.animations.play('walkL', 10, true);
+
+			var speed = 20000 + Math.random() * 100000;
+			console.log('caterpillar[' + i + '].speed = ' + speed);
+		    // tween = game.add.tween(caterpillar).to({ x: 0 }, speed, Phaser.Easing.Linear.None, true, 0, 1000, true)
+		
+			enemies[caterpillar.name] = {
+				gameObj: caterpillar,
+				tween: null,
+				speed: speed
+			};
+		// }
     }
 
+}
+
+function addLollipops() {
+	lollipops = game.add.group();
+
+    for (var i = 0; i < 28; i++) {
+		if(i % 3) {
+	        //  Create a lollipop inside of the 'lollipops' group
+	        var lollipop = lollipops.create((i+2) * 512, 0, 'lollipop');
+
+	        //  Let gravity do its thing
+	        lollipop.body.gravity.y = gravity;
+
+	        //  This just gives each lollipop a slightly random bounce value
+	        lollipop.body.bounce.y = 0.15 + Math.random() * 0.2;
+		}
+    }
+    
+}
+
+function addControls() {
 	// CONTROLS
 	key1 = game.input.keyboard.addKey(Phaser.Keyboard.Q);
 	key1.onDown.add(quit, this);
 
   // Init game controller with left thumb stick
   // See https://github.com/austinhallock/html5-virtual-game-controller/ for examples.
+
 	GameController.init({
         left: {
 			position: { left: 75, bottom: 75 },
@@ -202,24 +267,34 @@ function create() {
     $('canvas').last().css('z-index', 20);
     $('canvas').last().offset( $('canvas').first().offset() );
 
+}
+
+function addGui() {
    //  The score
 	var guiConsole = game.add.group(null);
-	// scoreText.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#fff' });
-    scoreText = game.add.text(16, 16, 'Score: 0', { fontSize: '28px', fill: '#fff' });
+    scoreText = game.add.text(16, 16, 'Score: 0', { fontSize: '12px', fill: '#ffffff' });
 	guiConsole.add(scoreText);
 
- }
+	healthText = game.add.text(16, 50, 'Health: ' + plyr.health, { fontSize: '12px', fill: '#ffffff' });
+	guiConsole.add(healthText);
+}
 
 function update() {
-	checkCollisions();
-	checkGameInput();
+	if(!gameOver) {
+		checkCollisions();
+		checkGameInput();
+		setPlayerAnimations();
+		updateEnemies();
+	}
 }
 
 function checkCollisions() {
 	
 	game.physics.collide(player, platforms);
 	game.physics.collide(lollipops, platforms);
+	game.physics.collide(caterpillars, platforms);
     game.physics.overlap(player, lollipops, collectLollipop, null, this);
+    game.physics.overlap(player, caterpillars, collideCaterpillar, null, this);
   
 }
 
@@ -278,38 +353,74 @@ function checkGameInput() {
 		// 	}
 		// }
 	}
+
 	if(player.body.touching.down && plyr.jumpButtonPressed && !plyr.justJumped) {
 		player.body.velocity.y = -plyr.jumpHeight;
 		plyr.jumping = true;
 		plyr.justJumped = true;
 		plyr.jumpButtonPressed = false;
 	}
-	setPlayerAnimations();
 }
 
 function resetJump() {
 	plyr.justJumped = false;
 }
 
+function collideCaterpillar(player, caterpillar) {
+	// trace('collideCaterpillar check, touching =');
+	// trace('caterpillar = ');
+	// trace(caterpillar);
+	// trace('player overlap x/y = ' + caterpillar.body.overlapX + '/' + caterpillar.body.overlapY);
+	// trace(caterpillar);
+	// trace(player.body.touching);
+	if(!player.body.touching.down) {
+		// trace('player bottom touching caterpillar top, player touching: ');
+		// trace(player.body.touching);
+		// trace('\tcaterpillar touching: ');
+		// trace(caterpillar.body.touching);
+		player.body.velocity.y = -plyr.jumpHeight/2;
+		playerJump();
+		// keke damages caterpillar
+		killCaterpillar(caterpillar);
+	} else {
+		// trace('caterpillar damage player, player touching');
+		// trace(player.body.touching);
+		// trace('\tcaterpillar touching');
+		// trace(caterpillar.body.touching);
+		// caterpillar damages keke
+		plyr.health -= 1;
+		healthText.content = 'Health: ' + plyr.health;
+		if(plyr.health <= 0) {
+			quit();
+		}
+	}
+
+}
+
+function killCaterpillar(caterpillar) {
+	caterpillar.kill();
+	
+	score += 50;
+	scoreText.content = 'Score: ' + score;
+}
+
+function collectLollipop (player, lollipop) {
+    
+    // Removes the lollipop from the screen
+    lollipop.kill();
+
+    //  Add and update the score
+    score += 10;
+    scoreText.content = 'Score: ' + score;
+
+	plyr.health += 5;
+	healthText.content = 'Health: ' + plyr.health;
+}
+
 function setPlayerAnimations() {
 	// trace('player vel x = ' + player.body.velocity.x);
 	if(plyr.jumping) {
-		// trace('jumping');
-		// jumping
-		if(plyr.facingForward) {
-			// trace('playing jump r animation');
-			// player.animations.play('jumpR', 1, false);
-			player.animations.stop();
-			player.frame = 9;
-			// player.frame = 2;
-			plyr.currentAnimation = 'jumpR';
-		} else {
-			// player.animations.play('jumpL', 1, false);
-			player.animations.stop();
-			player.frame = 24;
-			// player.frame = 3;
-			plyr.currentAnimation = 'jumpL';
-		}
+		playerJump();
 	// } else if(!player.body.touching.down) {
 	// 	trace('falling');
 	// 	if(plyr.facingForward) {
@@ -322,6 +433,7 @@ function setPlayerAnimations() {
 	// 		plyr.currentAnimation = 'fallingL';
 	// 	}
 	} else {
+		trace('setPlayerAnimations, player.body.touching.down = ' + player.body.touching.down);
 		if(player.body.velocity.x > 0 && player.body.touching.down) {
 			if(plyr.currentAnimation !== 'runR') {
 		 		trace('play run right');
@@ -351,18 +463,62 @@ function setPlayerAnimations() {
 	}
 }
 
-function collectLollipop (player, lollipop) {
-    
-    // Removes the lollipop from the screen
-    lollipop.kill();
-
-    //  Add and update the score
-    score += 10;
-    scoreText.content = 'Score: ' + score;
-
+function playerJump() {
+	trace('jumping');
+	// jumping
+	if(plyr.facingForward) {
+		// trace('playing jump r animation');
+		// player.animations.play('jumpR', 1, false);
+		player.animations.stop();
+		player.frame = 9;
+		// player.frame = 2;
+		plyr.currentAnimation = 'jumpR';
+	} else {
+		// player.animations.play('jumpL', 1, false);
+		player.animations.stop();
+		player.frame = 24;
+		// player.frame = 3;
+		plyr.currentAnimation = 'jumpL';
+	}
+	
 }
+
+function updateEnemies() {
+	for(var key in enemies) {
+		updateEnemy(enemies[key]);
+	}
+}
+
+function updateEnemy(enemy) {
+	if(!gameOver) {
+		if(enemy.gameObj.body.x > player.body.x + 50) {
+			enemy.gameObj.animations.play('walkL', 10, true);
+	 		enemy.tween = game.add.tween(enemy.gameObj).to({ x: 0 }, enemy.speed, Phaser.Easing.Linear.None, true, 0, 1000, true);
+		} else if(enemy.gameObj.body.x < player.body.x - 50){
+	 		enemy.gameObj.animations.play('walkR', 10, true);
+			enemy.tween = game.add.tween(enemy.gameObj).to({ x: stage.width }, enemy.speed, Phaser.Easing.Linear.None, true, 0, 1000, true);
+		} else {
+
+
+		}
+	}
+}
+
+
+function removeEnemies() {
+	for(var key in enemies) {
+		if(enemies[key].tween) {
+			enemies[key].tween.pause();
+		}
+		enemies[key].gameObj.destroy();
+		
+	}
+}
+
 function quit() {
 	trace('quit');
+	gameOver = true;
+	removeEnemies();
 	GameController.destroy();
 	game.destroy();
 }
