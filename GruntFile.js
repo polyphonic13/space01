@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 
 					'<%= srcDir %>/js/keke_game2.js',
 				],
-				dest: '<%= deployDir %>/js/keke_game2.js'
+				dest: '<%= deployDir %>/keke2/js/keke_game2.js'
 				
 			},
 			
@@ -92,7 +92,7 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/levels/level_manager.js',
 					'<%= srcDir %>/js/keke_game.js',
 				],
-				dest: '<%= deployDir %>/js/keke_game.js'
+				dest: '<%= deployDir %>/keke/js/keke_game.js'
 			},
 			canvas_test: {
 				options: {
@@ -104,7 +104,7 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/views/controls/controls.js',
 					'<%= srcDir %>/js/canvas_test2.js',
 				],
-				dest: '<%= deployDir %>/js/canvas_test2.js'
+				dest: '<%= deployDir %>/canvas_test/js/canvas_test2.js'
 			}
 			
 		},
@@ -122,51 +122,81 @@ module.exports = function(grunt) {
 				// report: 'min'
 			},
 
+			keke_game2: {
+				src: [ '<%= deployDir %/keke2/js/keke_game2.js' ],
+				dest: '<%= deployDir %>/keke2/js/keke_game2.min.js'
+			},
 			keke_game: {
-				src: [ '<%= deployDir %>/js/keke_game.js' ],
-				dest: '<%= deployDir %>/js/keke_game.min.js'
+				src: [ '<%= deployDir %>/keke/js/keke_game.js' ],
+				dest: '<%= deployDir %>/keke/js/keke_game.min.js'
 			},
 			canvas_test: {
-				src: [ '<%= deployDir %>/js/canvas_test2.js' ],
-				dest: '<%= deployDir %>/js/canvas_test2.min.js'
+				src: [ '<%= deployDir %>/canvas_test/js/canvas_test2.js' ],
+				dest: '<%= deployDir %>/canvas_test/js/canvas_test2.min.js'
 			}
 
 		},
 /////// COPYING
 		copy: {
 			// task docs: https://github.com/gruntjs/grunt-contrib-copy
-			keke_game2: {
+			keke_game2_html: {
 				src: [ '<%= srcDir %>/keke2_live.html' ],
-				dest: '<%= deployDir %>/index.html'
+				dest: '<%= deployDir %>/keke2/index.html'
 			},
-
-			keke_game: {
-				src: [ '<%= srcDir %>/keke_live.html' ],
-				dest: '<%= deployDir %>/index.html'
-			},
-
-			canvas_test: {
-				src: [ '<%= srcDir %>/canvas_test_deploy.html' ],
-				dest: '<%= deployDir %>/canvas_test_deploy.html'
-			},
-			
-			images: {
+			keke_game2_images: {
 				files: [{
 					expand: true,
 					cwd: '<%= srcDir %>/images/',
 					src: [ '**' ],
-					dest: '<%= deployDir %>/images/'
+					dest: '<%= deployDir %>/keke2/images/'
 				}]
 			},
 
- 			css: {
+ 			keke_game2_css: {
 				files: [{
 					expand: true, 
 					cwd: '<%= srcDir %>/css/',
 					src: [ '**' ],
-					dest: '<%= deployDir %>/css'
+					dest: '<%= deployDir %>/keke2/css'
+				}]
+			},
+
+			keke_game_html: {
+				src: [ '<%= srcDir %>/keke_live.html' ],
+				dest: '<%= deployDir %>/keke/index.html'
+			},
+			keke_game_images: {
+				files: [{
+					expand: true,
+					cwd: '<%= srcDir %>/images/',
+					src: [ '**' ],
+					dest: '<%= deployDir %>/keke/images'
+				}]
+			},
+
+ 			keke_game_css: {
+				files: [{
+					expand: true, 
+					cwd: '<%= srcDir %>/css/',
+					src: [ '**' ],
+					dest: '<%= deployDir %>/keke/css'
+				}]
+			},
+
+			canvas_test_html: {
+				src: [ '<%= srcDir %>/canvas_test_deploy.html' ],
+				dest: '<%= deployDir %>/canvas_test/index.html'
+			},
+
+ 			canvas_test_css: {
+				files: [{
+					expand: true, 
+					cwd: '<%= srcDir %>/css/',
+					src: [ '**' ],
+					dest: '<%= deployDir %>/canvas_test/css'
 				}]
 			}
+			
 		},
 /////// LOCAL SERVER
 		connect: {
@@ -185,8 +215,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-connect');
 	
 	grunt.registerTask('default', ['concat', 'uglify', 'copy']);
-	grunt.registerTask('keke', ['concat:keke_game', 'uglify:keke_game', 'copy:keke_game', 'copy:css', 'copy:images']);
-	grunt.registerTask('keke', ['concat:keke_game', 'uglify:keke_game', 'copy:keke_game', 'copy:css', 'copy:images']);
-	grunt.registerTask('canvas_test', ['concat:canvas_test', 'uglify:canvas_test', 'copy:canvas_test', 'copy:css', 'copy:images']);
+	grunt.registerTask('keke2', ['concat:keke_game2', 'uglify:keke_game2', 'copy:keke_game2_html', 'copy:keke_game2_images:files', 'copy:keke_game2_css:files']);
+	grunt.registerTask('keke', ['concat:keke_game', 'uglify:keke_game', 'copy:keke_game_html', 'copy:keke_game_images:files', 'copy:keke_game_css:files']);
+	grunt.registerTask('canvas_test', ['concat:canvas_test', 'uglify:canvas_test', 'copy:canvas_test_html', 'copy:canvas_test_css:files']);
 
 };

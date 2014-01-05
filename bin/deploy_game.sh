@@ -11,10 +11,9 @@ set -e
 REMOVE_DEPLOY=0
 SKIP_GRUNT=0
 TARGET_GRUNT_TASK=""
-COMMIT_TARGET_BRANCH=""
+TEMP_DIR=""
 PUBLIC_DIR="public"
 DEPLOY_DIR="deploy"
-TEMP_DIR="keke/"
 DEST_DIR="games"
 
 function remove_deploy_dir {
@@ -36,35 +35,32 @@ function run_grunt_tasks {
 }
 
 function make_temp_dir_and_copy_files_to_server {
-	cd $PUBLIC_DIR
-	echo "MAKING TEMP DIR"
-	cp -r $DEPLOY_DIR $TEMP_DIR
+	# cd $PUBLIC_DIR
+	# echo "MAKING TEMP DIR"
+	# cp -r $DEPLOY_DIR $TEMP_DIR
 
-	cd ../
-	echo "COPYING DEPLOY FILES"
-
-	dir_to_copy="$PUBLIC_DIR/$TEMP_DIR"
+	dir_to_copy="$PUBLIC_DIR/$DEPLOY_DIR/$TEMP_DIR"
 	. ./bin/dreamhost_copy.sh $dir_to_copy $DEST_DIR
 
-	echo "REMOVING TEMP DIR"
-	rm -r $PUBLIC_DIR/$TEMP_DIR
+	# echo "REMOVING TEMP DIR"
+	# rm -r $PUBLIC_DIR/$TEMP_DIR
 }
 
 function commit_to_target_git_branch {
+	git_branch=$(git symbolic-ref HEAD)
+	echo "THE CURRENT NIMITZ BRANCH IS $git_branch"
+	
 	echo "PLEASE ENTER GIT COMMIT MESSAGE:" 
 	read msg
 	
 	git add --all
 	git commit -am "${msg}"
-	git push origin $COMMIT_TARGET_BRANCH
-	echo "PUSHED GIT COMMIT TO $COMMIT_TARGET_BRANCH"
+	git push origin $git_branch
+	echo "PUSHED GIT COMMIT TO $git_branch"
 }
 
-while getopts "c:t:rg" opt; do
+while getopts "t:rgc" opt; do
 	case $opt in
-		c)
-			COMMIT_TARGET_BRANCH=$OPTARG
-			;;
 	    t)
 			TARGET_GRUNT_TASK=$OPTARG
 	    	;;
@@ -73,6 +69,9 @@ while getopts "c:t:rg" opt; do
 			;;
 		g) 
 			SKIP_GRUNT=1
+			;;
+		c)
+			COMMIT_GIT=1
 			;;
 	    \?)
 	    	printf "\nERROR: INVALID OPTION: -$OPTARG\n" >&2
@@ -92,12 +91,12 @@ if([ "$REMOVE_DEPLOY" = 1 -a "$SKIP_GRUNT" = 1 ])
 	exit 1
 fi
 
-if([ "$TARGET_GRUNT_TASK" EQ "" ]) 
+if([ "$TARGET_GRUNT_TASK" = "" ]) 
 	then
 	echo "ERROR: CAN NOT DEPLOY WITHOUT TARGET GRUNT TASK"
 	exit 1
 else 
-	$TEMP_DIR="$TARGET_GRUNT_TASK/"
+	TEMP_DIR="$TARGET_GRUNT_TASK/"
 fi
 
 echo "DEPLOYING GAME"
@@ -115,7 +114,7 @@ else
 	make_temp_dir_and_copy_files_to_server
 fi
 
-if([ "$COMMIT_TARGET_BRANCH" != "" ])
+if([ "$COMMIT_GIT" = 1 ])
 	then
 	commit_to_target_git_branch
 fi
