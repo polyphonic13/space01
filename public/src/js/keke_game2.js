@@ -73,7 +73,7 @@ function create() {
 	ground.scale.setTo(8, 1);
   	ground.body.immovable = true;
 
-	var ledge = platforms.create(500, (stage.height - 80), 'platform');
+	var ledge = platforms.create(500, (stage.height - 75), 'platform');
 	ledge.body.immovable = true;
 
 	ledge = platforms.create(800, (stage.height - 130), 'platform');
@@ -274,14 +274,14 @@ function setPlayerAnimations() {
 		if(player.body.velocity.x > 0) {
 			if(plyr.currentAnimation !== 'runR') {
 		 		trace('play run right');
-				player.animations.play('runR', 10, true);
+				player.animations.play('runR', 13, true);
 				plyr.currentAnimation = 'runR';
 				plyr.facingForward = false;
 			}
 		} else if(player.body.velocity.x < 0) {
 			if(plyr.currentAnimation !== 'runL') {
 		 		trace('play run left');
-				player.animations.play('runL', 10, true);
+				player.animations.play('runL', 13, true);
 				plyr.currentAnimation = 'runL';
 				plyr.facingForward = false;
 			}
