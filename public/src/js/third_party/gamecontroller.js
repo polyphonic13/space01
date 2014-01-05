@@ -1086,7 +1086,8 @@
 				var textShadowColor;
 				switch( this.backgroundColor )
 				{
-					case 'blue':
+					// reversed blue and red
+					case 'red':
 						gradient.addColorStop( 0, 'rgba(123, 181, 197, 0.6)' );
 						gradient.addColorStop( 1, '#105a78' );
 						textShadowColor = '#0A4861';
@@ -1096,7 +1097,7 @@
 						gradient.addColorStop( 1, '#107814' );
 						textShadowColor = '#085C0B';
 						break;
-					case 'red':
+					case 'blue': 
 						gradient.addColorStop( 0, 'rgba(165, 34, 34, 0.6)' );
 						gradient.addColorStop( 1, '#520101' );
 						textShadowColor = '#330000';
@@ -1117,8 +1118,9 @@
 					ctx.fillStyle = textShadowColor;
 				else	
 					// ctx.fillStyle = gradient;
-					ctx.fillStyle = '#666666';
-	
+					// ctx.fillStyle = '#666666';
+					ctx.fillStyle = "rgba(133, 133, 133, 0.5)";
+					
 				ctx.strokeStyle = textShadowColor;			
 		
 				ctx.beginPath();

@@ -92,6 +92,14 @@ if([ "$REMOVE_DEPLOY" = 1 -a "$SKIP_GRUNT" = 1 ])
 	exit 1
 fi
 
+if([ "$TARGET_GRUNT_TASK" EQ "" ]) 
+	then
+	echo "ERROR: CAN NOT DEPLOY WITHOUT TARGET GRUNT TASK"
+	exit 1
+else 
+	$TEMP_DIR="$TARGET_GRUNT_TASK/"
+fi
+
 echo "DEPLOYING GAME"
 
 

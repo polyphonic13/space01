@@ -16,6 +16,7 @@ var plyr = {
 	speed: 150,
 	jumpHeight: 350,
 	jumping: false,
+	justJumped: false,
 	currentAnimation: '',
 	facingForward: true
 };
@@ -109,7 +110,7 @@ function create() {
 	player.animations.add('jumpL', [3], 14);
 		
 	//  Player physics properties.
-	player.body.setSize(30, plyr.height - 25, 0, 0); // bounding box
+	// player.body.setSize(30, plyr.height - 25, 0, 0); // bounding box
 	player.body.bounce.y = plyr.bounce;
 	player.body.gravity.y = gravity;
 	player.body.collideWorldBounds = true;
@@ -156,20 +157,40 @@ function create() {
             }
         },
         right: {
-			position: { left: stage.width - 10, top: stage.height - 70 },
-	      buttons: [
-	        { 
-				radius: 30,
-	            label: 'Quit',
-				fontSize: 9, 
+			position: { left: stage.width - 130, top: stage.height - 130 },
+			buttons: [
+			{ 
+				radius: 50,
+				label: 'Quit',
+				fontSize: 18, 
+				offset: {
+					x: 0,
+					y: -(stage.height - 150)
+				},
 				touchStart: function() { 
-	                // do something 
-					trace('right controller button touchstart');
+					trace('right controller left button touchstart');
 					quit();
-	            } 
-	        }, 
-	        false, false, false
-	        ] 
+				} 
+			}, 
+			false,
+			{
+				radius: 50,
+				label: 'Jump',
+				fontSize: 18,
+				offset: {
+					x: 0,
+					y: 0
+				},
+				touchStart: function() {
+					trace('right controller right button touchstart');
+					plyr.jumpButtonPressed = true;
+				},
+				touchEnd: function() {
+					trace('right controller right button touchend');
+					plyr.justJumped = false;
+				}
+			}, 
+			false] 
         }
     });
     
@@ -226,17 +247,19 @@ function checkGameInput() {
 			plyr.facingForward = true;
    }
 
+	if(player.body.touching.down) {
+		plyr.jumping = false;
+	}
    //  Allow the player to jump if they are touching the ground.
-	if (cursors.up.isDown && player.body.touching.down)
-	{
+	if(cursors.up.isDown && player.body.touching.down && !plyr.justJumped) {
 		player.body.velocity.y = -plyr.jumpHeight;
 		plyr.jumping = true;
-	} else {
-		plyr.jumping = false;
+		plyr.justJumped = true;
+		setTimeout(resetJump, 1500);
 	}
 
    // Check key states every frame.
-   if (game.input.joystickLeft) {
+	if (game.input.joystickLeft) {
 		var jl = game.input.joystickLeft;
 		if(jl.normalizedX > 0.1) {
 			player.body.velocity.x = plyr.speed;
@@ -246,26 +269,35 @@ function checkGameInput() {
 			plyr.facingForward = false;
 		}
 
-		if(player.body.touching.down) {
-			if(jl.normalizedY > 0.2) {
-				player.body.velocity.y = -plyr.jumpHeight;
-				plyr.jumping = true;
-			}
-		} else {
-			plyr.jumping = false;
-			
-		}
-   }
- 	setPlayerAnimations();
+		// if(jl.normalizedY > 0.2) {
+		// 	if(player.body.touching.down && !plyr.justJumped) {
+		// 		player.body.velocity.y = -plyr.jumpHeight;
+		// 		plyr.jumping = true;
+		// 		plyr.justJumped = true;
+		// 		setTimeout(resetJump, 1000);
+		// 	}
+		// }
+	}
+	if(player.body.touching.down && plyr.jumpButtonPressed && !plyr.justJumped) {
+		player.body.velocity.y = -plyr.jumpHeight;
+		plyr.jumping = true;
+		plyr.justJumped = true;
+		plyr.jumpButtonPressed = false;
+	}
+	setPlayerAnimations();
+}
+
+function resetJump() {
+	plyr.justJumped = false;
 }
 
 function setPlayerAnimations() {
 	// trace('player vel x = ' + player.body.velocity.x);
 	if(plyr.jumping) {
-		trace('jumping');
+		// trace('jumping');
 		// jumping
 		if(plyr.facingForward) {
-			trace('playing jump r animation');
+			// trace('playing jump r animation');
 			// player.animations.play('jumpR', 1, false);
 			player.animations.stop();
 			player.frame = 9;
@@ -307,11 +339,13 @@ function setPlayerAnimations() {
 		} else if(player.body.velocity.x === 0) {
 			player.animations.stop();
 			if(plyr.facingForward) {
-				plyr.currentAnimation = 'idleR';
 				player.frame = 0;
+				player.animations.stop();
+				plyr.currentAnimation = 'idleR';
 			} else {
-				plyr.currentAnimation = 'idleL';
+				player.animations.stop();
 				player.frame = 1;
+				plyr.currentAnimation = 'idleL';
 			}
 		}
 	}

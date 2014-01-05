@@ -31,7 +31,21 @@ module.exports = function(grunt) {
 				nonull: true
 
 			},
+			
+			keke_game2: {
+				options: {
+					banner: "(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- KEKE_GAME.JS v<%= pkg.version %> created: <%= grunt.template.today(\"isoDateTime\") %>')})();\n"
+				},
+				src: [
+					'<%= srcDir %>/js/third_party/gamecontroller.js',
+					'<%= srcDir %>/js/third_party/phaser.min.js',
 
+					'<%= srcDir %>/js/keke_game2.js',
+				],
+				dest: '<%= deployDir %>/js/keke_game2.js'
+				
+			},
+			
 			keke_game: {
 				options: {
 					banner: "(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- KEKE_GAME.JS v<%= pkg.version %> created: <%= grunt.template.today(\"isoDateTime\") %>')})();\n"
@@ -121,8 +135,13 @@ module.exports = function(grunt) {
 /////// COPYING
 		copy: {
 			// task docs: https://github.com/gruntjs/grunt-contrib-copy
+			keke_game2: {
+				src: [ '<%= srcDir %>/keke2_live.html' ],
+				dest: '<%= deployDir %>/index.html'
+			},
+
 			keke_game: {
-				src: [ '<%= srcDir %>/index.html' ],
+				src: [ '<%= srcDir %>/keke_live.html' ],
 				dest: '<%= deployDir %>/index.html'
 			},
 
@@ -166,6 +185,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-connect');
 	
 	grunt.registerTask('default', ['concat', 'uglify', 'copy']);
+	grunt.registerTask('keke', ['concat:keke_game', 'uglify:keke_game', 'copy:keke_game', 'copy:css', 'copy:images']);
 	grunt.registerTask('keke', ['concat:keke_game', 'uglify:keke_game', 'copy:keke_game', 'copy:css', 'copy:images']);
 	grunt.registerTask('canvas_test', ['concat:canvas_test', 'uglify:canvas_test', 'copy:canvas_test', 'copy:css', 'copy:images']);
 
