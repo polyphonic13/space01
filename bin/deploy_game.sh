@@ -10,6 +10,7 @@ set -e
 
 REMOVE_DEPLOY=0
 SKIP_GRUNT=0
+SKIP_IMAGES=0
 TARGET_GRUNT_TASK=""
 TEMP_DIR=""
 PUBLIC_DIR="public"
@@ -30,6 +31,11 @@ function remove_deploy_dir {
 function run_grunt_tasks {
 	echo "RUNNING GRUNT, TASK = $TARGET_GRUNT_TASK"
 	grunt $TARGET_GRUNT_TASK
+
+	if([ "$SKIP_IMAGES" = 0 ])
+		then
+		grunt "$TARGET_GRUNT_TASK-images"
+	fi
 	
 	make_temp_dir_and_copy_files_to_server
 }
@@ -59,13 +65,16 @@ function commit_to_target_git_branch {
 	echo "PUSHED GIT COMMIT TO $git_branch"
 }
 
-while getopts "t:rgc" opt; do
+while getopts "t:rigc" opt; do
 	case $opt in
 	    t)
 			TARGET_GRUNT_TASK=$OPTARG
 	    	;;
 		r)
 			REMOVE_DEPLOY=1
+			;;
+		i)
+			SKIP_IMAGES=1
 			;;
 		g) 
 			SKIP_GRUNT=1
@@ -83,6 +92,11 @@ while getopts "t:rgc" opt; do
 	    	;;
   esac
 done
+
+if([ "$SKIP_IMAGES" = 1 ])
+	then
+	REMOVE_DEPLOY=1
+fi
 
 if([ "$REMOVE_DEPLOY" = 1 -a "$SKIP_GRUNT" = 1 ])
 	then 

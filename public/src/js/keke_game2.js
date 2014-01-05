@@ -145,10 +145,10 @@ function addPlayer() {
 function addCaterpillars() {
    caterpillars = game.add.group();
 
-    for (var i = 0; i < 25; i++) {
+    for (var i = 0; i < 10; i++) {
         //  Create a lollipop inside of the 'lollipops' group
 		// if(i % 2) {
-	        var caterpillar = caterpillars.create((i+2) * 256, stage.height - 100, 'caterpillar01');
+	        var caterpillar = caterpillars.create(((i+2) * 256) + 200, 0, 'caterpillar01');
 			caterpillar.name = 'caterpillar' + i;
 			// caterpillar.body.setSize(142, 60, 0, -30); // bounding box
 
@@ -157,23 +157,24 @@ function addCaterpillars() {
 			// caterpillar.body.immovable = true;
 			// caterpillar.body.customSeparateX = true;
 			// caterpillar.body.customSeparateY = true;
-	        //  This just gives each lollipop a slihtly random bounce value
 	        caterpillar.body.bounce.y = 0.15 + Math.random() * 0.2;
 
 			caterpillar.animations.add('walkL', [0, 2, 4, 6, 8, 10], 10);
 			caterpillar.animations.add('walkR', [1, 3, 5, 7, 9, 11], 10);
 	 		caterpillar.animations.play('walkL', 10, true);
 
-			var speed = 20000 + Math.random() * 100000;
-			console.log('caterpillar[' + i + '].speed = ' + speed);
+			// var speed = 20000 + Math.random() * 100000;
 		    // tween = game.add.tween(caterpillar).to({ x: 0 }, speed, Phaser.Easing.Linear.None, true, 0, 1000, true)
 		
 			enemies[caterpillar.name] = {
 				gameObj: caterpillar,
 				tween: null,
-				speed: speed
+				speed: 40000,
+				currentAnimation: 'walkL'
 			};
 		// }
+
+		// trace('caterpillar['+caterpillar.name+'] x/y = ' + caterpillar.body.screenX + '/' + caterpillar.body.screenY);
     }
 
 }
@@ -281,10 +282,10 @@ function addGui() {
 
 function update() {
 	if(!gameOver) {
+		updateEnemies();
 		checkCollisions();
 		checkGameInput();
 		setPlayerAnimations();
-		updateEnemies();
 	}
 }
 
@@ -299,66 +300,67 @@ function checkCollisions() {
 }
 
 function checkGameInput() {
+	if(!gameOver) {
+	 //  Reset the players velocity (movement)
+	   player.body.velocity.x = 0;
 
- //  Reset the players velocity (movement)
-   player.body.velocity.x = 0;
+	   if (cursors.left.isDown)
+	   {
+	       //  Move to the left
+	       player.body.velocity.x = -plyr.speed;
 
-   if (cursors.left.isDown)
-   {
-       //  Move to the left
-       player.body.velocity.x = -plyr.speed;
+			// trace('play run left');
+			//        player.animations.play('runL');
+				plyr.facingForward = false;
+	   }
+	   else if (cursors.right.isDown)
+	   {
+	       //  Move to the right
+	       player.body.velocity.x = plyr.speed;
 
-		// trace('play run left');
-		//        player.animations.play('runL');
-			plyr.facingForward = false;
-   }
-   else if (cursors.right.isDown)
-   {
-       //  Move to the right
-       player.body.velocity.x = plyr.speed;
+			// trace('play run right');
+	       // player.animations.play('runR');
+				plyr.facingForward = true;
+	   }
 
-		// trace('play run right');
-       // player.animations.play('runR');
-			plyr.facingForward = true;
-   }
-
-	if(player.body.touching.down) {
-		plyr.jumping = false;
-	}
-   //  Allow the player to jump if they are touching the ground.
-	if(cursors.up.isDown && player.body.touching.down && !plyr.justJumped) {
-		player.body.velocity.y = -plyr.jumpHeight;
-		plyr.jumping = true;
-		plyr.justJumped = true;
-		setTimeout(resetJump, 1500);
-	}
-
-   // Check key states every frame.
-	if (game.input.joystickLeft) {
-		var jl = game.input.joystickLeft;
-		if(jl.normalizedX > 0.1) {
-			player.body.velocity.x = plyr.speed;
-			plyr.facingForward = true;
-		} else if(jl.normalizedX < -0.1) {
-			player.body.velocity.x = -plyr.speed;
-			plyr.facingForward = false;
+		if(player.body.touching.down) {
+			plyr.jumping = false;
+		}
+	   //  Allow the player to jump if they are touching the ground.
+		if(cursors.up.isDown && player.body.touching.down && !plyr.justJumped) {
+			player.body.velocity.y = -plyr.jumpHeight;
+			plyr.jumping = true;
+			plyr.justJumped = true;
+			setTimeout(resetJump, 1500);
 		}
 
-		// if(jl.normalizedY > 0.2) {
-		// 	if(player.body.touching.down && !plyr.justJumped) {
-		// 		player.body.velocity.y = -plyr.jumpHeight;
-		// 		plyr.jumping = true;
-		// 		plyr.justJumped = true;
-		// 		setTimeout(resetJump, 1000);
-		// 	}
-		// }
-	}
+	   // Check key states every frame.
+		if (game.input.joystickLeft) {
+			var jl = game.input.joystickLeft;
+			if(jl.normalizedX > 0.1) {
+				player.body.velocity.x = plyr.speed;
+				plyr.facingForward = true;
+			} else if(jl.normalizedX < -0.1) {
+				player.body.velocity.x = -plyr.speed;
+				plyr.facingForward = false;
+			}
 
-	if(player.body.touching.down && plyr.jumpButtonPressed && !plyr.justJumped) {
-		player.body.velocity.y = -plyr.jumpHeight;
-		plyr.jumping = true;
-		plyr.justJumped = true;
-		plyr.jumpButtonPressed = false;
+			// if(jl.normalizedY > 0.2) {
+			// 	if(player.body.touching.down && !plyr.justJumped) {
+			// 		player.body.velocity.y = -plyr.jumpHeight;
+			// 		plyr.jumping = true;
+			// 		plyr.justJumped = true;
+			// 		setTimeout(resetJump, 1000);
+			// 	}
+			// }
+		}
+
+		if(player.body.touching.down && plyr.jumpButtonPressed && !plyr.justJumped) {
+			player.body.velocity.y = -plyr.jumpHeight;
+			plyr.jumping = true;
+			plyr.justJumped = true;
+			plyr.jumpButtonPressed = false;
+		}
 	}
 }
 
@@ -381,7 +383,7 @@ function collideCaterpillar(player, caterpillar) {
 		player.body.velocity.y = -plyr.jumpHeight/2;
 		playerJump();
 		// keke damages caterpillar
-		killCaterpillar(caterpillar);
+		killEnemy(caterpillar);
 	} else {
 		// trace('caterpillar damage player, player touching');
 		// trace(player.body.touching);
@@ -397,20 +399,13 @@ function collideCaterpillar(player, caterpillar) {
 
 }
 
-function killCaterpillar(caterpillar) {
-	caterpillar.kill();
-	
-	score += 50;
-	scoreText.content = 'Score: ' + score;
-}
-
 function collectLollipop (player, lollipop) {
     
     // Removes the lollipop from the screen
     lollipop.kill();
 
     //  Add and update the score
-    score += 10;
+    score += 100;
     scoreText.content = 'Score: ' + score;
 
 	plyr.health += 5;
@@ -433,7 +428,6 @@ function setPlayerAnimations() {
 	// 		plyr.currentAnimation = 'fallingL';
 	// 	}
 	} else {
-		trace('setPlayerAnimations, player.body.touching.down = ' + player.body.touching.down);
 		if(player.body.velocity.x > 0 && player.body.touching.down) {
 			if(plyr.currentAnimation !== 'runR') {
 		 		trace('play run right');
@@ -491,17 +485,40 @@ function updateEnemies() {
 
 function updateEnemy(enemy) {
 	if(!gameOver) {
-		if(enemy.gameObj.body.x > player.body.x + 50) {
-			enemy.gameObj.animations.play('walkL', 10, true);
-	 		enemy.tween = game.add.tween(enemy.gameObj).to({ x: 0 }, enemy.speed, Phaser.Easing.Linear.None, true, 0, 1000, true);
-		} else if(enemy.gameObj.body.x < player.body.x - 50){
-	 		enemy.gameObj.animations.play('walkR', 10, true);
-			enemy.tween = game.add.tween(enemy.gameObj).to({ x: stage.width }, enemy.speed, Phaser.Easing.Linear.None, true, 0, 1000, true);
-		} else {
-
-
+		trace('enemy['+enemy.gameObj.name+'].screenX = ' + enemy.gameObj.body.screenX);
+		var enemyX = enemy.gameObj.body.screenX;
+		var playerX = player.body.screenX;
+		// check for enemy on screen
+		if(enemyX < (playerX + stage.width/2) && enemyX > (playerX - stage.width/2)) {
+			
+			if(enemyX > (playerX + 1)) {
+				if(enemy.currentAnimation !== 'walkL') {
+					enemy.gameObj.animations.play('walkL', 10, true);
+					enemy.currentAnimation = 'walkL';
+				}
+		 		enemy.tween = game.add.tween(enemy.gameObj).to({ x: 0 }, enemy.speed, Phaser.Easing.Linear.None, true, 0, 1000, true);
+			} else if(enemyX < (playerX - 1 )){
+				if(enemy.currentAnimation !== 'walkR') {
+					enemy.gameObj.animations.play('walkR', 10, true);
+					enemy.currentAnimation = 'walkR';
+				}
+		 		enemy.gameObj.animations.play('walkR', 10, true);
+				enemy.tween = game.add.tween(enemy.gameObj).to({ x: player.body.x }, enemy.speed, Phaser.Easing.Linear.None, true, 0, 1000, true);
+			} else {
+				enemy.tween.pause();
+				enemy.gameObj.animations.stop();
+				enemy.gameObj.frame = 0
+				enemy.currentAnimation = '';
+			}
 		}
 	}
+}
+
+function killEnemy(caterpillar) {
+	caterpillar.kill();
+	
+	score += 500;
+	scoreText.content = 'Score: ' + score;
 }
 
 
@@ -510,7 +527,8 @@ function removeEnemies() {
 		if(enemies[key].tween) {
 			enemies[key].tween.pause();
 		}
-		enemies[key].gameObj.destroy();
+		enemies[key].gameObj.kill();
+		// enemies[key].gameObj.destroy();
 		
 	}
 }
