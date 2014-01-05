@@ -140,7 +140,7 @@
 				joystick: {
 					radius: 60,
 					touchMove: function( e ) {
-						console.log( e );
+						trace( e );
 					}
 				}
 			},
@@ -199,7 +199,7 @@
 				joystick: {
 					radius: 60,
 					touchMove: function( e ) {
-						console.log( e );
+						trace( e );
 					}
 				}
 			},
@@ -465,6 +465,17 @@
 			this.canvas.addEventListener( 'touchstart', touchStart, false );
 			
 			var touchEnd = function( e ) {			
+				trace('GameController, touchEnd, _this = ');
+				// trace(_this);
+				var joystick = _this.getJoystick();
+				trace(joystick.currentX + '/' + joystick.currentY);
+				joystick.resetPosition();
+				// trace(e);
+
+				// joystick.draw();
+				// joystick.x = 0;
+				// joystick.y = 0;
+
 				e.preventDefault();
 			
 				if( window.navigator.msPointerEnabled && e.pointerType == e.MSPOINTER_TYPE_TOUCH )
@@ -527,12 +538,18 @@
 		 */
 		addJoystick: function( options ) { //x, y, radius, backgroundColor, touchStart, touchEnd ) {
 			
-			var joystick = new TouchableJoystick( options );
+			// var joystick = new TouchableJoystick( options );
+			this.joystick = new TouchableJoystick( options );
 			
-			joystick.id = this.touchableAreas.push( joystick );
+			// joystick.id = this.touchableAreas.push( joystick );
+			this.joystick.id = this.touchableAreas.push( this.joystick );
 			this.touchableAreasCount++;
 			
 			this.boundingSet( options );
+		},
+		
+		getJoystick: function() {
+			return this.joystick;
 		},
 		
 		/**
@@ -822,6 +839,19 @@
 		renderWrapper: function() {
 			GameController.render();
 		},	
+		
+		destroy: function() {
+			// GameController.ctx.clearRect(0, 0, this.options.canvas.width, this.options.canvas.height);
+
+			if(this.canvas) {
+				var ctx = this.canvas.getContext('2d');
+				ctx.clearRect(0, 0, this.options.canvas.width, this.options.canvas.height)
+				this.canvas.parentNode.removeChild(this.canvas);
+				// document.getElementsByTagName( 'body' )[0].removeChild( this.canvas );
+			}
+			
+			window.cancelAnimationFrame(this);
+		}
 	}
 	
 	/**
@@ -1086,7 +1116,8 @@
 				if( this.active )			
 					ctx.fillStyle = textShadowColor;
 				else	
-					ctx.fillStyle = gradient;
+					// ctx.fillStyle = gradient;
+					ctx.fillStyle = '#666666';
 	
 				ctx.strokeStyle = textShadowColor;			
 		
@@ -1099,15 +1130,16 @@
 				if( this.label )
 				{
 					// Text Shadow
-					ctx.fillStyle = textShadowColor;
-					ctx.font = 'bold ' + ( this.fontSize || subCanvas.height * 0.35 ) + 'px Verdana';
-					ctx.textAlign = 'center';
-					ctx.textBaseline = 'middle';
-					ctx.fillText( this.label, subCanvas.height / 2 + 2, subCanvas.height / 2 + 2 );
+					// ctx.fillStyle = textShadowColor;
+					// // ctx.font = 'bold ' + ( this.fontSize || subCanvas.height * 0.35 ) + 'px Verdana';
+					// ctx.font = ( this.fontSize || subCanvas.height * 0.35 ) + 'px Arial';
+					// ctx.textAlign = 'center';
+					// ctx.textBaseline = 'middle';
+					// ctx.fillText( this.label, subCanvas.height / 2 + 2, subCanvas.height / 2 + 2 );
 		
 		
 					ctx.fillStyle = this.fontColor;
-					ctx.font = 'bold ' + ( this.fontSize || subCanvas.height * 0.35 ) + 'px Verdana';
+					ctx.font = ( this.fontSize || subCanvas.height * 0.35 ) + 'px Arial';
 					ctx.textAlign = 'center';
 					ctx.textBaseline = 'middle';
 					ctx.fillText( this.label, subCanvas.height / 2, subCanvas.height / 2 );
@@ -1134,6 +1166,10 @@
 				
 			this.currentX = this.currentX || this.x;
 			this.currentY = this.currentY || this.y;
+			this.startX = this.currentX; 
+			this.startY = this.currentY;
+			
+			trace('TouchableJoystick/constructor, current x/y = ' + this.currentX + '/' + this.currentY);
 		}
 		
 		TouchableJoystick.prototype.type = 'joystick';
@@ -1189,6 +1225,7 @@
 		};
 		
 		TouchableJoystick.prototype.draw = function() {
+			// trace('TouchableJoystick/draw, currentX = ' + this.currentX + ', currentY = ' + this.currentY);
 			if( ! this.id ) // wait until id is set
 				return false;
 				
@@ -1237,6 +1274,58 @@
 			GameController.ctx.drawImage( cached, this.currentX - this.radius, this.currentY - this.radius );
 			
 			
+		};
+		
+		TouchableJoystick.prototype.resetPosition = function() {
+			if( ! this.id ) // wait until id is set
+				return false;
+				
+			var cacheId = this.type + '' + this.id + '' + this.active;
+			var cached = GameController.cachedSprites[ cacheId ];
+			if( ! cached )
+			{
+				var subCanvas = document.createElement( 'canvas' );
+				this.stroke = this.stroke || 2;
+				subCanvas.width = subCanvas.height = 2 * ( this.radius + ( GameController.options.touchRadius ) + this.stroke );
+				
+				var ctx = subCanvas.getContext( '2d' );
+				ctx.lineWidth = this.stroke;
+				if( this.active ) // Direction currently being touched
+				{
+					var gradient = ctx.createRadialGradient( 0, 0, 1, 0, 0, this.radius );
+					gradient.addColorStop( 0, 'rgba( 200,200,200,.5 )' );
+					gradient.addColorStop( 1, 'rgba( 200,200,200,.9 )' );
+					ctx.strokeStyle = '#000';
+				}	
+				else
+				{
+					// STYLING FOR BUTTONS
+					var gradient = ctx.createRadialGradient( 0, 0, 1, 0, 0, this.radius );
+					gradient.addColorStop( 0, 'rgba( 200,200,200,.2 )' );
+					gradient.addColorStop( 1, 'rgba( 200,200,200,.4 )' );
+					ctx.strokeStyle = 'rgba( 0,0,0,.4 )';
+				}
+				ctx.fillStyle = gradient;
+				// Actual joystick part that is being moved
+				ctx.beginPath();
+				ctx.arc( this.radius, this.radius, this.radius, 0 , 2 * Math.PI, false );
+				ctx.fill();
+				ctx.stroke();
+				
+				cached = GameController.cachedSprites[ cacheId ] = subCanvas;
+			}
+			
+			// Draw the base that stays static
+			GameController.ctx.fillStyle = '#444';
+			GameController.ctx.beginPath();
+			GameController.ctx.arc( this.x, this.y, this.radius * 0.7, 0 , 2 * Math.PI, false );
+			GameController.ctx.fill();
+			GameController.ctx.stroke();
+			
+			GameController.ctx.drawImage( cached, this.startX - this.radius, this.startY - this.radius );
+			trace('this.currentX/Y = ' + this.currentX + '/' + this.currentY + ', startX/Y = ' + this.startX + '/' + this.startY);
+			this.currentX = this.startX;
+			this.currentY = this.startY;
 		};
 		
 		return TouchableJoystick;

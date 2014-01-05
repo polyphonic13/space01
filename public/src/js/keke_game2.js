@@ -1,8 +1,8 @@
 var stage = {
 	// width: 800,
 	// height: 500
-	width: document.documentElement.clientWidth - 10,
-	height: document.documentElement.clientHeight - 10
+	width: document.documentElement.clientWidth,
+	height: document.documentElement.clientHeight
 };
 var platforms;
 var cursors;
@@ -22,6 +22,8 @@ var lollipops;
 var score = 0;
 var scoreText;
 
+var quitButton;
+
 var game = new Phaser.Game(stage.width, stage.height, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
 function preload() {
@@ -33,6 +35,7 @@ function preload() {
   game.load.image('grass', 'images/grass01.png');
   game.load.image('grass2', 'images/grass01.png');
   game.load.image('lollipop', 'images/lollipop.png');
+  game.load.image('quitButton', 'images/quit_button.png');
 
   game.load.spritesheet('keke', 'images/keke_character2.png', 76, 128, 35);
 
@@ -126,13 +129,28 @@ function create() {
                 },
                 touchEnd: function() {
                     game.input.joystickLeft = null;
+					
                 }
             }
         },
         right: {
             // We're not using anything on the right for this demo, but you can add buttons, etc.
             // See https://github.com/austinhallock/html5-virtual-game-controller/ for examples.
-            type: 'none'
+            // type: 'none'
+			position: { left: stage.width - 10, top: stage.height - 50 },
+	      buttons: [
+	        { 
+				radius: 18,
+	            label: 'Quit',
+				fontSize: 9, 
+				touchStart: function() { 
+	                // do something 
+					trace('right controller button touchstart');
+					quit();
+	            } 
+	        }, 
+	        false, false, false
+	        ] 
         }
     });
     
@@ -145,17 +163,88 @@ function create() {
     $('canvas').last().offset( $('canvas').first().offset() );
 
    //  The score
-	var scoreBoard = game.add.group(null);
+	var guiConsole = game.add.group(null);
 	// scoreText.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#fff' });
     scoreText = game.add.text(16, 16, 'Score: 0', { fontSize: '28px', fill: '#fff' });
-	scoreBoard.add(scoreText);
+	guiConsole.add(scoreText);
+
+    // game.input.addPointer();
+    // game.input.addPointer();
+    // game.input.addPointer();
+    // game.input.addPointer();
+ 	//    quitButton = game.add.button(stage.width - 50, stage.height - 50, 'quitButton', quit, this);
+ 	//     quitButton.inputEnabled = true;
+ 	// quitButton.input.pointerOver.id = 1;
+ 	// quitButton = game.add.sprite(stage.width - 50, stage.height - 50, 'quitButton');
+    // quitButton.input.addPointer();
+	// quitButton.events.onInputDown.add(isTouchingButton, this);
+	// onInputOver
+	// onInputOut
+	// onInputDown
+	// onInputUp
+	// onDragStart
+	// onDragStop
+	// quitButton.input.start();
+	// guiConsole.add(quitButton);
+
+	// quitButton.events.onInputDown.add(isTouchingQuit, this);
+	// quitButton.events.onInputOver.add(isOverQuit, this);
+	// game.input.touch.callbackContext = this;
+	// game.input.touch.touchStartCallback = this.onTouchDown;
  }
 
-function update() {
+function isTouchingButton(button, pointer) {
+	trace('isTouchingButton');
+	trace(button);
+	trace(pointer);
+	quit();
+}
 
-  game.physics.collide(player, platforms);
-  game.physics.collide(lollipops, platforms);
- 
+function onTouchDown(event) {
+	trace('isTouchingQuit');
+	trace(event);
+	quit();
+}
+
+function isOverQuit(button, pointer) {
+	trace('isOverQuit');
+}
+
+function update() {
+	// if (quitButton.input.pointerOver()) {
+	// 	trace('quit button pointOver');
+	// }
+	//     game.debug.renderPointer(game.input.mousePointer);
+	//     game.debug.renderPointer(game.input.pointer1);
+	// 
+	// if (game.input.pointer1.isDown) {
+	// 	trace('pointer1 is down');
+	// }
+	// if(quitButton.input.activePointer.isDown) {
+	// 	trace('quit button activePointer is down');
+	// }
+	// if(game.input.activePointer.isDown) {
+	// 	trace('game activePointer is down');
+	// }
+	// if(quitButton.input.pointerDown(game.input.activePointer.id)) {
+	// 	trace('quit button pointer down');
+	// 	quit();
+	// } else {
+		checkCollisions();
+		checkGameInput();
+	// }
+}
+
+function checkCollisions() {
+	
+	game.physics.collide(player, platforms);
+	game.physics.collide(lollipops, platforms);
+    game.physics.overlap(player, lollipops, collectLollipop, null, this);
+  
+}
+
+function checkGameInput() {
+
  //  Reset the players velocity (movement)
    player.body.velocity.x = 0;
 
@@ -164,7 +253,7 @@ function update() {
        //  Move to the left
        player.body.velocity.x = -playerConfig.speed;
 
-		// console.log('play run left');
+		// trace('play run left');
 		//        player.animations.play('runL');
 			playerConfig.facingForward = false;
    }
@@ -173,11 +262,11 @@ function update() {
        //  Move to the right
        player.body.velocity.x = playerConfig.speed;
 
-		// console.log('play run right');
+		// trace('play run right');
        // player.animations.play('runR');
 			playerConfig.facingForward = true;
    }
-   
+
    //  Allow the player to jump if they are touching the ground.
 	if (cursors.up.isDown && player.body.touching.down)
 	{
@@ -197,7 +286,7 @@ function update() {
 			player.body.velocity.x = -playerConfig.speed;
 			playerConfig.facingForward = false;
 		}
-		
+
 		playerConfig.jumping = false;
 		if(player.body.touching.down) {
 			if(jl.normalizedY > 0.5) {
@@ -207,12 +296,10 @@ function update() {
 		}
    }
  	setPlayerAnimations();
-
-    game.physics.overlap(player, lollipops, collectLollipop, null, this);
 }
 
 function setPlayerAnimations() {
-	// console.log('player vel x = ' + player.body.velocity.x);
+	// trace('player vel x = ' + player.body.velocity.x);
 	if(playerConfig.jumping) {
 		// jumping
 		if(playerConfig.facingForward) {
@@ -229,14 +316,14 @@ function setPlayerAnimations() {
 	} else if(player.body.touching.down) {
 		if(player.body.velocity.x > 0) {
 			if(playerConfig.currentAnimation !== 'runR') {
-		 		console.log('play run right');
+		 		trace('play run right');
 				player.animations.play('runR', 15, true);
 				playerConfig.currentAnimation = 'runR';
 				playerConfig.facingForward = false;
 			}
 		} else if(player.body.velocity.x < 0) {
 			if(playerConfig.currentAnimation !== 'runL') {
-		 		console.log('play run left');
+		 		trace('play run left');
 				player.animations.play('runL', 15, true);
 				playerConfig.currentAnimation = 'runL';
 				playerConfig.facingForward = false;
@@ -265,6 +352,7 @@ function collectLollipop (player, lollipop) {
 
 }
 function quit() {
-	console.log('quit');
+	trace('quit');
+	GameController.destroy();
 	game.destroy();
 }
