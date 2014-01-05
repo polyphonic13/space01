@@ -32,8 +32,8 @@ function preload() {
   game.load.image('treesBack', 'images/trees_back01.png');
   game.load.image('treesFore', 'images/trees_fore01.png');
   game.load.image('platform', 'images/platform.png');
-  game.load.image('grass', 'images/grass01.png');
-  game.load.image('grass2', 'images/grass01.png');
+  game.load.image('grass1', 'images/grass01.png');
+  game.load.image('grass2', 'images/grass02.png');
   game.load.image('lollipop', 'images/lollipop.png');
   game.load.image('quitButton', 'images/quit_button.png');
 
@@ -52,19 +52,25 @@ function create() {
 	game.add.sprite(2048, 0, 'mountains');
 	game.add.sprite(2048, (stage.height - 490), 'treesBack');
 	game.add.sprite(2048, 0, 'treesFore');
+
+	game.add.sprite(0, (stage.height - 200), 'grass1');
+	game.add.sprite(2048, (stage.height - 200), 'grass2');
 	
   game.world.setBounds(0, 0, 4096, stage.height);
 
   //  The platforms group contains the ground and the 2 ledges we can jump on
   platforms = game.add.group();
 
-  var ground = platforms.create(0, game.world.height - 28, 'grass');
-  // ground.scale.setTo(1, 1);
-  ground.body.immovable = true;
+	var ground = platforms.create(0, game.world.height - 20, 'platform');
+	ground.scale.setTo(8, 1);
+	ground.body.immovable = true;
+  
+	ground = platforms.create(2048, game.world.height - 20, 'platform');
+	ground.scale.setTo(8, 1);
+  	ground.body.immovable = true;
 
-  var ground2 = platforms.create(2048, game.world.height - 56, 'grass2');
-  ground2.scale.setTo(1, 1);
-  ground2.body.immovable = true;
+  // var ground2 = platforms.create(2048, game.world.height - 200, 'grass2');
+  // ground2.body.immovable = true;
 
   //  Now let's create two ledges
    var ledge = platforms.create(500, (stage.height - 80), 'platform');
@@ -93,8 +99,6 @@ function create() {
   player.body.collideWorldBounds = true;
 	
   game.camera.follow(player, Phaser.Camera.FOLLOW_PLATFORMER);
-
-	game.add.sprite(0, (stage.height - 220), 'grass');
 
     //  Finally some lollipops to collect
     lollipops = game.add.group();
@@ -287,12 +291,14 @@ function checkGameInput() {
 			playerConfig.facingForward = false;
 		}
 
-		playerConfig.jumping = false;
 		if(player.body.touching.down) {
 			if(jl.normalizedY > 0.5) {
 				player.body.velocity.y = -playerConfig.jumpHeight;
 				playerConfig.jumping = true;
 			}
+		} else {
+			playerConfig.jumping = false;
+			
 		}
    }
  	setPlayerAnimations();
@@ -301,6 +307,7 @@ function checkGameInput() {
 function setPlayerAnimations() {
 	// trace('player vel x = ' + player.body.velocity.x);
 	if(playerConfig.jumping) {
+		trace('jumping');
 		// jumping
 		if(playerConfig.facingForward) {
 			// player.animations.play('jumpR', 1, false);
@@ -313,18 +320,29 @@ function setPlayerAnimations() {
 			// player.frame = 3;
 			playerConfig.currentAnimation = 'jumpL';
 		}
-	} else if(player.body.touching.down) {
+	} else if(!player.body.touching.down) {
+		trace('falling');
+		if(playerConfig.facingForward) {
+			// player.frame = 4;
+			player.frame = 9;
+			playerConfig.currentAnimation = 'fallingR';
+		} else {
+			// player.frame = 5;
+			player.frame = 24;
+			playerConfig.currentAnimation = 'fallingL';
+		}
+	} else {
 		if(player.body.velocity.x > 0) {
 			if(playerConfig.currentAnimation !== 'runR') {
 		 		trace('play run right');
-				player.animations.play('runR', 15, true);
+				player.animations.play('runR', 10, true);
 				playerConfig.currentAnimation = 'runR';
 				playerConfig.facingForward = false;
 			}
 		} else if(player.body.velocity.x < 0) {
 			if(playerConfig.currentAnimation !== 'runL') {
 		 		trace('play run left');
-				player.animations.play('runL', 15, true);
+				player.animations.play('runL', 10, true);
 				playerConfig.currentAnimation = 'runL';
 				playerConfig.facingForward = false;
 			}
