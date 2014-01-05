@@ -32,7 +32,7 @@ var game = new Phaser.Game(stage.width, stage.height, Phaser.AUTO, '', { preload
 
 function preload() {
   game.load.image('sky', 'images/night_sky.jpg');
-  game.load.image('moon', 'images/moon.jpg');
+
   game.load.image('mountains', 'images/hills03_grey.png');
   game.load.image('treesBack', 'images/trees_back01.png');
   game.load.image('treesFore', 'images/trees_fore01.png');
@@ -48,11 +48,9 @@ function preload() {
 }
 
 function create() {
-	var sky = game.add.sprite(stage.width - 350, 0, 'sky');
+	var sky = game.add.sprite(0, 0, 'sky');
 	sky.width = stage.width;
 	sky.height = stage.height;
-	sky.fixedToCamera = true;
-	var moon = game.add.sprite(0, 0, 'moon');
 	sky.fixedToCamera = true;
 	
 	game.add.sprite(0, 0, 'mountains');
@@ -267,36 +265,39 @@ function setPlayerAnimations() {
 		trace('jumping');
 		// jumping
 		if(plyr.facingForward) {
+			trace('playing jump r animation');
 			// player.animations.play('jumpR', 1, false);
+			player.animations.stop();
 			player.frame = 9;
 			// player.frame = 2;
 			plyr.currentAnimation = 'jumpR';
 		} else {
 			// player.animations.play('jumpL', 1, false);
+			player.animations.stop();
 			player.frame = 24;
 			// player.frame = 3;
 			plyr.currentAnimation = 'jumpL';
 		}
-	} else if(!player.body.touching.down) {
-		trace('falling');
-		if(plyr.facingForward) {
-			// player.frame = 4;
-			player.frame = 9;
-			plyr.currentAnimation = 'fallingR';
-		} else {
-			// player.frame = 5;
-			player.frame = 24;
-			plyr.currentAnimation = 'fallingL';
-		}
+	// } else if(!player.body.touching.down) {
+	// 	trace('falling');
+	// 	if(plyr.facingForward) {
+	// 		// player.frame = 4;
+	// 		player.frame = 9;
+	// 		plyr.currentAnimation = 'fallingR';
+	// 	} else {
+	// 		// player.frame = 5;
+	// 		player.frame = 24;
+	// 		plyr.currentAnimation = 'fallingL';
+	// 	}
 	} else {
-		if(player.body.velocity.x > 0) {
+		if(player.body.velocity.x > 0 && player.body.touching.down) {
 			if(plyr.currentAnimation !== 'runR') {
 		 		trace('play run right');
 				player.animations.play('runR', 13, true);
 				plyr.currentAnimation = 'runR';
 				plyr.facingForward = false;
 			}
-		} else if(player.body.velocity.x < 0) {
+		} else if(player.body.velocity.x < 0 && player.body.touching.down) {
 			if(plyr.currentAnimation !== 'runL') {
 		 		trace('play run left');
 				player.animations.play('runL', 13, true);
