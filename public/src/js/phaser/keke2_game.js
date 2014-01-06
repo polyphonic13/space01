@@ -108,7 +108,7 @@ function createPlayer() {
 	//  Player physics properties.
 	// player.body.setSize(30, config.player.height - 25, 0, 0); // bounding box
 	player.body.bounce.y = config.player.bounce;
-	player.body.config.world.gravity.y = config.world.gravity;
+	player.body.gravity.y = config.world.gravity;
 	player.body.collideWorldBounds = true;
 	
 	game.camera.follow(player, Phaser.Camera.FOLLOW_PLATFORMER);
@@ -135,7 +135,7 @@ function createEnemies(sector) {
 		enemy.name = enemies[i].type + '-' + i;
 		enemy.idx = i;
 		enemy.alive = true;
-		enemy.body.config.world.gravity.y = config.world.gravity;
+		enemy.body.gravity.y = config.world.gravity;
 		enemy.body.bounce.y = 0.15 + Math.random() * 0.2;
 		
 		var animations = enemies[i].animations;
@@ -162,7 +162,7 @@ function createBonuses(sector) {
 		bonus.idx = i;
 		bonus.alive = true;
 
-		bonus.body.config.world.gravity.y = config.world.gravity;
+		bonus.body.gravity.y = config.world.gravity;
 		bonus.body.bounce.y = 0.15 + Math.random() * 0.2;
 	}
 	sector.bonusGroup = group;
