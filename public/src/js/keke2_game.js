@@ -27,7 +27,10 @@ var plyr = {
 var gravity = 15;
 
 var caterpillars;
-var enemies = {};
+
+
+// var enemies = {
+// };
 
 var lollipops;
 
@@ -61,16 +64,15 @@ function preload() {
 function create() {
 	game.world.setBounds(0, 0, 4096, stage.height);
 
-	addScenery();
-	addTerrain();
- 	addPlayer();
-	addCaterpillars();
-	addLollipops();
-	addControls();
-	addGui();
+	createScenery();
+	createTerrain();
+ 	createPlayer();
+	createSectors();
+	createControls();
+	createGui();
 }
 
-function addScenery() {
+function createScenery() {
 	var sky = game.add.sprite(0, 0, 'sky');
 	sky.width = stage.width;
 	sky.height = stage.height;
@@ -88,7 +90,7 @@ function addScenery() {
 	
 }
 
-function addTerrain() {
+function createTerrain() {
 	//  The platforms group contains the ground and the 2 ledges we can jump on
 	platforms = game.add.group();
 
@@ -122,7 +124,7 @@ function addTerrain() {
 	ledge.body.immovable = true;
 }
 
-function addPlayer() {
+function createPlayer() {
 	player = game.add.sprite((stage.width/2 - 76/2), (stage.height - 148), 'keke');
 	player.anchor.setTo(0.5, 0.5);
 
@@ -142,62 +144,58 @@ function addPlayer() {
 	game.camera.follow(player, Phaser.Camera.FOLLOW_PLATFORMER);
 }
 
-function addCaterpillars() {
-   caterpillars = game.add.group();
+function createSectors() {
+	for(var i = 0; i < config.sectors.length; i++) {
+		createSector(config.sectors[i]);
+	}
+}
 
-    for (var i = 0; i < 10; i++) {
-        //  Create a lollipop inside of the 'lollipops' group
-		// if(i % 2) {
-	        var caterpillar = caterpillars.create(((i+2) * 256) + 200, 0, 'caterpillar01');
-			caterpillar.name = 'caterpillar' + i;
-			// caterpillar.body.setSize(142, 60, 0, -30); // bounding box
+function createSector(sector) {
+	addEnemies(sector);
+	addBonuses(sector);
+}
 
-	       //  Let gravity do its thing
-	       	caterpillar.body.gravity.y = gravity;
-			// caterpillar.body.immovable = true;
-			// caterpillar.body.customSeparateX = true;
-			// caterpillar.body.customSeparateY = true;
-	        caterpillar.body.bounce.y = 0.15 + Math.random() * 0.2;
-
-			caterpillar.animations.add('walkL', [0, 2, 4, 6, 8, 10], 10);
-			caterpillar.animations.add('walkR', [1, 3, 5, 7, 9, 11], 10);
-	 		caterpillar.animations.play('walkL', 10, true);
-
-			// var speed = 20000 + Math.random() * 100000;
-		    // tween = game.add.tween(caterpillar).to({ x: 0 }, speed, Phaser.Easing.Linear.None, true, 0, 1000, true)
+function addEnemies(sector) {
+	var group = game.add.group();
+	var enemies = sector.enemies;
+	var enemy;
+	
+	for(var i = 0; i < enemies.length; i++) {
+		enemy = group.create((enemies[i].start.x + sector.bounds.start), enemies[i].start.y, enemies[i].type);
+		enemy.name = enemies[i].type + i;
 		
-			enemies[caterpillar.name] = {
-				gameObj: caterpillar,
-				tween: null,
-				speed: 40000,
-				currentAnimation: 'walkL'
-			};
-		// }
-
-		// trace('caterpillar['+caterpillar.name+'] x/y = ' + caterpillar.body.screenX + '/' + caterpillar.body.screenY);
-    }
-
-}
-
-function addLollipops() {
-	lollipops = game.add.group();
-
-    for (var i = 0; i < 28; i++) {
-		if(i % 3) {
-	        //  Create a lollipop inside of the 'lollipops' group
-	        var lollipop = lollipops.create((i+2) * 512, 0, 'lollipop');
-
-	        //  Let gravity do its thing
-	        lollipop.body.gravity.y = gravity;
-
-	        //  This just gives each lollipop a slightly random bounce value
-	        lollipop.body.bounce.y = 0.15 + Math.random() * 0.2;
+		enemy.body.gravity.y = gravity;
+		enemy.body.bounce.y = 0.15 + Math.random() * 0.2;
+		
+		var animations = enemies[i].animations;
+		for(var j = 0; j < animations.length; j++) {
+			enemy.animations.add(animations[i].name, animations[i].keyFrames, animations[i].frameRate);
 		}
-    }
-    
+		enemy.animations.frame = 0;
+		enemies[i].gameObj = enemy;
+		// trace('sector['+sector.id+'].enemies['+i+'] = ');
+		// trace(sector.enemies[i].gameObj);
+	}
+	
+	sector.enemyGroup = group;
 }
 
-function addControls() {
+function addBonuses(sector) {
+	var group = game.add.group();
+	var bonuses = sector.bonuses;
+	var bonus;
+	
+	for(var i = 0; i < bonuses.length; i++) {
+		bonus = group.create((bonuses[i].start.x + sector.bounds.start), bonuses[i].start.y, bonuses[i].type);
+		bonus.name = bonuses[i].type + i;
+		
+		bonus.body.gravity.y = gravity;
+		bonus.body.bounce.y = 0.15 + Math.random() * 0.2;
+	}
+	sector.bonusGroup = group;
+}
+
+function createControls() {
 	// CONTROLS
 	key1 = game.input.keyboard.addKey(Phaser.Keyboard.Q);
 	key1.onDown.add(quit, this);
@@ -270,7 +268,7 @@ function addControls() {
 
 }
 
-function addGui() {
+function createGui() {
    //  The score
 	var guiConsole = game.add.group(null);
     scoreText = game.add.text(16, 16, 'Score: 0', { fontSize: '12px', fill: '#ffffff' });
@@ -282,66 +280,128 @@ function addGui() {
 
 function update() {
 	if(!gameOver) {
-		updateEnemies();
-		checkCollisions();
+		// sectorTest(player.body.screenX); // activate / deactivate sectors based on current player position
+		sectorTest(game.camera.x);
+		var sector = config.sectors[config.currentSector];
+		// trace('update, sector = ');
+		// trace(sector);
+		updateEnemies(sector.enemies);
+		checkCollisions(sector);
 		checkGameInput();
 		setPlayerAnimations();
 	}
 }
 
-function checkCollisions() {
+function sectorTest(x) {
+	// trace('sectorTest, x = ' + x + ', currentSector = ' + config.currentSector);
+	var sectors = config.sectors;
+	var bounds;
+	for(var i = 0; i < sectors.length; i++) {
+		bounds = sectors[i].bounds;
+		// trace('bounds['+i+'] start/end = ' + bounds.start + '/' + bounds.end + ', x = ' + x);
+		if(x > bounds.start && x < bounds.end) {
+			if(config.currentSector !== i) {
+				activateSector(sectors[i]);
+				config.currentSector = i;
+			}
+		} else {
+			sectors[i].active = false;
+		}
+	}
+}
+
+function activateSector(sector) {
+	trace('activateSector['+sector.id+'], created = ' + sector.created);
+	if(!sector.created) {
+		createSector(sector);
+	}
+	sector.active = true;
+}
+
+function updateEnemies(enemies) {
+	for(var i = 0; i < enemies.length; i++) {
+		updateEnemy(enemies[i]);
+	}
+}
+
+function updateEnemy(enemy) {
+	// trace('updateEnemy, enemy =');
+	// trace(enemy);
+	if(!gameOver) {
+		// trace('enemy['+enemy.gameObj.name+'].screenX = ' + enemy.gameObj.body.screenX);
+		var enemyX = enemy.gameObj.body.screenX;
+		var playerX = player.body.screenX;
+		// check for enemy on screen
+		if(enemyX < (playerX + stage.width/2) && enemyX > (playerX - stage.width/2)) {
+			// trace('enemy['+enemy.gameObj.name+'] activated');
+			if(enemyX > (playerX + 10)) {
+				if(enemy.currentAnimation !== 'walkL') {
+					enemy.gameObj.animations.play('walkL', 10, true);
+					enemy.currentAnimation = 'walkL';
+				}
+		 		// enemy.tween = game.add.tween(enemy.gameObj).to({ x: 0 }, enemy.speed, Phaser.Easing.Linear.None, true, 0, 1000, true);
+				enemy.gameObj.x -= enemy.speed;
+			} else if(enemyX < (playerX - 10)){
+				if(enemy.currentAnimation !== 'walkR') {
+					enemy.gameObj.animations.play('walkR', 10, true);
+					enemy.currentAnimation = 'walkR';
+				}
+		 		enemy.gameObj.animations.play('walkR', 10, true);
+				// enemy.tween = game.add.tween(enemy.gameObj).to({ x: player.body.x }, enemy.speed, Phaser.Easing.Linear.None, true, 0, 1000, true);
+				enemy.gameObj.x += enemy.speed;
+			} else {
+				// enemy.tween.pause();
+				enemy.gameObj.animations.stop();
+				enemy.gameObj.frame = 0
+				enemy.currentAnimation = '';
+			}
+		}
+	}
+}
+
+function checkCollisions(sector) {
 	
 	game.physics.collide(player, platforms);
-	game.physics.collide(lollipops, platforms);
-	game.physics.collide(caterpillars, platforms);
-    game.physics.overlap(player, lollipops, collectLollipop, null, this);
-    game.physics.overlap(player, caterpillars, collideCaterpillar, null, this);
+	game.physics.collide(sector.enemyGroup, platforms);
+	game.physics.collide(sector.bonusGroup, platforms);
+    game.physics.overlap(player, sector.enemyGroup, collectLollipop, null, this);
+    game.physics.overlap(player, sector.bonusGroup, collideCaterpillar, null, this);
   
 }
 
 function checkGameInput() {
 	if(!gameOver) {
 	 //  Reset the players velocity (movement)
-	   player.body.velocity.x = 0;
-
-	   if (cursors.left.isDown)
-	   {
-	       //  Move to the left
-	       player.body.velocity.x = -plyr.speed;
-
-			// trace('play run left');
-			//        player.animations.play('runL');
-				plyr.facingForward = false;
-	   }
-	   else if (cursors.right.isDown)
-	   {
-	       //  Move to the right
-	       player.body.velocity.x = plyr.speed;
-
-			// trace('play run right');
-	       // player.animations.play('runR');
-				plyr.facingForward = true;
-	   }
+		player.body.velocity.x = 0;
+		var velX = 0;
+		if (cursors.left.isDown) {
+			velX = -plyr.speed;
+			plyr.facingForward = false;
+		}
+		else if (cursors.right.isDown) {
+			velX = plyr.speed;
+			plyr.facingForward = true;
+		}
 
 		if(player.body.touching.down) {
 			plyr.jumping = false;
 		}
-	   //  Allow the player to jump if they are touching the ground.
+		//  Allow the player to jump if they are touching the ground.
 		if(cursors.up.isDown && player.body.touching.down && !plyr.justJumped) {
 			player.body.velocity.y = -plyr.jumpHeight;
 			plyr.jumping = true;
-			plyr.justJumped = true;
-			setTimeout(resetJump, 1500);
+			plyr.justJumped = false;
+			// setTimeout(resetJump, 1500);
 		}
 
-	   // Check key states every frame.
+		// Check key states every frame.
 		if (game.input.joystickLeft) {
 			var jl = game.input.joystickLeft;
 			if(jl.normalizedX > 0.1) {
-				player.body.velocity.x = plyr.speed;
+				velX = plyr.speed;
 				plyr.facingForward = true;
 			} else if(jl.normalizedX < -0.1) {
-				player.body.velocity.x = -plyr.speed;
+				velX = -plyr.speed;
 				plyr.facingForward = false;
 			}
 
@@ -361,6 +421,7 @@ function checkGameInput() {
 			plyr.justJumped = true;
 			plyr.jumpButtonPressed = false;
 		}
+		player.body.velocity.x = velX;
 	}
 }
 
@@ -458,7 +519,7 @@ function setPlayerAnimations() {
 }
 
 function playerJump() {
-	trace('jumping');
+	// trace('jumping');
 	// jumping
 	if(plyr.facingForward) {
 		// trace('playing jump r animation');
@@ -477,66 +538,19 @@ function playerJump() {
 	
 }
 
-function updateEnemies() {
-	for(var key in enemies) {
-		updateEnemy(enemies[key]);
-	}
-}
-
-function updateEnemy(enemy) {
-	if(!gameOver) {
-		trace('enemy['+enemy.gameObj.name+'].screenX = ' + enemy.gameObj.body.screenX);
-		var enemyX = enemy.gameObj.body.screenX;
-		var playerX = player.body.screenX;
-		// check for enemy on screen
-		if(enemyX < (playerX + stage.width/2) && enemyX > (playerX - stage.width/2)) {
-			
-			if(enemyX > (playerX + 1)) {
-				if(enemy.currentAnimation !== 'walkL') {
-					enemy.gameObj.animations.play('walkL', 10, true);
-					enemy.currentAnimation = 'walkL';
-				}
-		 		enemy.tween = game.add.tween(enemy.gameObj).to({ x: 0 }, enemy.speed, Phaser.Easing.Linear.None, true, 0, 1000, true);
-			} else if(enemyX < (playerX - 1 )){
-				if(enemy.currentAnimation !== 'walkR') {
-					enemy.gameObj.animations.play('walkR', 10, true);
-					enemy.currentAnimation = 'walkR';
-				}
-		 		enemy.gameObj.animations.play('walkR', 10, true);
-				enemy.tween = game.add.tween(enemy.gameObj).to({ x: player.body.x }, enemy.speed, Phaser.Easing.Linear.None, true, 0, 1000, true);
-			} else {
-				enemy.tween.pause();
-				enemy.gameObj.animations.stop();
-				enemy.gameObj.frame = 0
-				enemy.currentAnimation = '';
-			}
-		}
-	}
-}
-
-function killEnemy(caterpillar) {
-	caterpillar.kill();
+function killEnemy(enemy) {
+	trace('killEnemey, enemy = ');
+	trace(enemy);
+	enemy.kill();
 	
 	score += 500;
 	scoreText.content = 'Score: ' + score;
 }
 
-
-function removeEnemies() {
-	for(var key in enemies) {
-		if(enemies[key].tween) {
-			enemies[key].tween.pause();
-		}
-		enemies[key].gameObj.kill();
-		// enemies[key].gameObj.destroy();
-		
-	}
-}
-
 function quit() {
 	trace('quit');
 	gameOver = true;
-	removeEnemies();
+	// clearSectors();
 	GameController.destroy();
 	game.destroy();
 }
