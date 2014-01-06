@@ -26,7 +26,7 @@ var plyr = {
 
 var gravity = 15;
 
-var caterpillars;
+var enemys;
 
 
 // var enemies = {
@@ -151,11 +151,11 @@ function createSectors() {
 }
 
 function createSector(sector) {
-	addEnemies(sector);
-	addBonuses(sector);
+	createEnemies(sector);
+	createBonuses(sector);
 }
 
-function addEnemies(sector) {
+function createEnemies(sector) {
 	var group = game.add.group();
 	var enemies = sector.enemies;
 	var enemy;
@@ -180,7 +180,7 @@ function addEnemies(sector) {
 	sector.enemyGroup = group;
 }
 
-function addBonuses(sector) {
+function createBonuses(sector) {
 	var group = game.add.group();
 	var bonuses = sector.bonuses;
 	var bonus;
@@ -320,14 +320,15 @@ function activateSector(sector) {
 
 function updateEnemies(enemies) {
 	for(var i = 0; i < enemies.length; i++) {
-		updateEnemy(enemies[i]);
+		if(enemies[i].alive) {
+			updateEnemy(enemies[i]);
+		}
 	}
 }
 
 function updateEnemy(enemy) {
-	// trace('updateEnemy, enemy =');
-	// trace(enemy);
 	if(!gameOver) {
+		trace('updateEnemy, sector['+ config.currentSector + ']/enemy[' + enemy.id + ']');
 		// trace('enemy['+enemy.gameObj.name+'].screenX = ' + enemy.gameObj.body.screenX);
 		var enemyX = enemy.gameObj.body.screenX;
 		var playerX = player.body.screenX;
@@ -360,13 +361,67 @@ function updateEnemy(enemy) {
 }
 
 function checkCollisions(sector) {
-	
-	game.physics.collide(player, platforms);
-	game.physics.collide(sector.enemyGroup, platforms);
-	game.physics.collide(sector.bonusGroup, platforms);
-    game.physics.overlap(player, sector.enemyGroup, collectLollipop, null, this);
-    game.physics.overlap(player, sector.bonusGroup, collideCaterpillar, null, this);
-  
+	if(!gameOver) {
+		game.physics.collide(player, platforms);
+		// game.physics.collide(sector.enemyGroup, platforms);
+		// game.physics.collide(sector.bonusGroup, platforms);
+		//     game.physics.overlap(player, sector.enemyGroup, bonusCollision, null, this);
+		//     game.physics.overlap(player, sector.bonusGroup, enemyCollision, null, this);
+		var sector = config.sectors[config.currentSector];
+		checkObjectCollision(sector.enemies, enemyCollision);
+		checkObjectCollision(sector.bonuses, bonusCollision);
+	}
+}
+
+function checkObjectCollision(objects, callback) {
+	for(var i = 0; i < objects.length; i++) {
+		if(objects[i].alive) {
+			game.physics.collide(objects[i].gameObj, platforms);
+			game.physics.collide(player, objects[i].gameObj, callback, null, this);
+		}
+	}
+}
+function enemyCollision(player, enemy) {
+	// trace('enemyCollision check, touching =');
+	// trace('enemy = ');
+	// trace(enemy);
+	// trace('player overlap x/y = ' + enemy.body.overlapX + '/' + enemy.body.overlapY);
+	// trace(enemy);
+	// trace(player.body.touching);
+	if(!player.body.touching.down) {
+		// trace('player bottom touching enemy top, player touching: ');
+		// trace(player.body.touching);
+		// trace('\tenemy touching: ');
+		// trace(enemy.body.touching);
+		player.body.velocity.y = -plyr.jumpHeight/2;
+		playerJump();
+		// keke damages enemy
+		killEnemy(enemy);
+	} else {
+		// trace('enemy damage player, player touching');
+		// trace(player.body.touching);
+		// trace('\tenemy touching');
+		// trace(enemy.body.touching);
+		// enemy damages keke
+		plyr.health -= 1;
+		healthText.content = 'Health: ' + plyr.health;
+		if(plyr.health <= 0) {
+			quit();
+		}
+	}
+
+}
+
+function bonusCollision (player, bonus) {
+    
+    bonus.gameObj.kill();
+	bonus.alive = false;
+    //  Add and update the score
+    score += 100;
+    scoreText.content = 'Score: ' + score;
+
+	plyr.health += 5;
+	healthText.content = 'Health: ' + plyr.health;
 }
 
 function checkGameInput() {
@@ -427,50 +482,6 @@ function checkGameInput() {
 
 function resetJump() {
 	plyr.justJumped = false;
-}
-
-function collideCaterpillar(player, caterpillar) {
-	// trace('collideCaterpillar check, touching =');
-	// trace('caterpillar = ');
-	// trace(caterpillar);
-	// trace('player overlap x/y = ' + caterpillar.body.overlapX + '/' + caterpillar.body.overlapY);
-	// trace(caterpillar);
-	// trace(player.body.touching);
-	if(!player.body.touching.down) {
-		// trace('player bottom touching caterpillar top, player touching: ');
-		// trace(player.body.touching);
-		// trace('\tcaterpillar touching: ');
-		// trace(caterpillar.body.touching);
-		player.body.velocity.y = -plyr.jumpHeight/2;
-		playerJump();
-		// keke damages caterpillar
-		killEnemy(caterpillar);
-	} else {
-		// trace('caterpillar damage player, player touching');
-		// trace(player.body.touching);
-		// trace('\tcaterpillar touching');
-		// trace(caterpillar.body.touching);
-		// caterpillar damages keke
-		plyr.health -= 1;
-		healthText.content = 'Health: ' + plyr.health;
-		if(plyr.health <= 0) {
-			quit();
-		}
-	}
-
-}
-
-function collectLollipop (player, lollipop) {
-    
-    // Removes the lollipop from the screen
-    lollipop.kill();
-
-    //  Add and update the score
-    score += 100;
-    scoreText.content = 'Score: ' + score;
-
-	plyr.health += 5;
-	healthText.content = 'Health: ' + plyr.health;
 }
 
 function setPlayerAnimations() {
@@ -541,7 +552,8 @@ function playerJump() {
 function killEnemy(enemy) {
 	trace('killEnemey, enemy = ');
 	trace(enemy);
-	enemy.kill();
+	enemy.gameObj.kill();
+	enemy.alive = false;
 	
 	score += 500;
 	scoreText.content = 'Score: ' + score;

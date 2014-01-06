@@ -18,6 +18,7 @@ var config = {
 			speed: 1,
 			health: 5,
 			damage: 5,
+			alive: true,
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		},
@@ -28,8 +29,10 @@ var config = {
 				x: 1000,
 				y: 0
 			},
+			speed: 1,
 			health: 5,
 			damage: 5,
+			alive: true,
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		}],
@@ -40,7 +43,8 @@ var config = {
 				x: 750,
 				y: 0
 			},
-			health: 10
+			health: 10,
+			alive: true
 		}]
 	},
 	{
@@ -58,9 +62,10 @@ var config = {
 				x: 512,
 				y: 0
 			},
-			speed: 1, 
+			speed: 1,
 			health: 5,
 			damage: 5,
+			alive: true,
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		},
@@ -71,8 +76,10 @@ var config = {
 				x: 1000,
 				y: 0
 			},
+			speed: 1,
 			health: 5,
 			damage: 5,
+			alive: true,
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		}],
@@ -83,7 +90,8 @@ var config = {
 				x: 750,
 				y: 0
 			},
-			health: 10
+			health: 10,
+			alive: true
 		}]
 	},
 	{
@@ -101,9 +109,10 @@ var config = {
 				x: 512,
 				y: 0
 			},
-			speed: 1, 
+			speed: 1,
 			health: 5,
 			damage: 5,
+			alive: true,
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		},
@@ -114,8 +123,10 @@ var config = {
 				x: 1000,
 				y: 0
 			},
+			speed: 1,
 			health: 5,
 			damage: 5,
+			alive: true,
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		}],
@@ -126,7 +137,8 @@ var config = {
 				x: 750,
 				y: 0
 			},
-			health: 10
+			health: 10,
+			alive: true
 		}]
 	},
 	{
@@ -144,9 +156,10 @@ var config = {
 				x: 512,
 				y: 0
 			},
-			speed: 1, 
+			speed: 1,
 			health: 5,
 			damage: 5,
+			alive: true,
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		},
@@ -157,8 +170,10 @@ var config = {
 				x: 1000,
 				y: 0
 			},
+			speed: 1,
 			health: 5,
 			damage: 5,
+			alive: true,
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		}],
@@ -169,7 +184,8 @@ var config = {
 				x: 10,
 				y: 0
 			},
-			health: 10
+			health: 10,
+			alive: true
 		}]
 	}],
 	player: {
