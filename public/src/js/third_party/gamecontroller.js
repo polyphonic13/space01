@@ -140,7 +140,7 @@
 				joystick: {
 					radius: 60,
 					touchMove: function( e ) {
-						trace( e );
+						// trace( e );
 					}
 				}
 			},
@@ -199,7 +199,7 @@
 				joystick: {
 					radius: 60,
 					touchMove: function( e ) {
-						trace( e );
+						// trace( e );
 					}
 				}
 			},
@@ -315,10 +315,10 @@
 			this.ctx = this.canvas.getContext( '2d' );
 			
 			var _this = this;
-			window.addEventListener( 'resize', function() {
-				// Wait for any other events to finish
-				setTimeout( function() { GameController.resize.call( _this ); }, 1 );
-			} );
+			// window.addEventListener( 'resize', function() {
+			// 	// Wait for any other events to finish
+			// 	setTimeout( function() { GameController.resize.call( _this ); }, 1 );
+			// } );
 			
 			
 			// Set the touch events for this new canvas
@@ -465,12 +465,12 @@
 			this.canvas.addEventListener( 'touchstart', touchStart, false );
 			
 			var touchEnd = function( e ) {			
-				trace('GameController, touchEnd, _this = ');
-				// trace(_this);
+				// trace('GameController, touchEnd, _this = ');
+				// // trace(_this);
 				var joystick = _this.getJoystick();
-				trace(joystick.currentX + '/' + joystick.currentY);
+				// trace(joystick.currentX + '/' + joystick.currentY);
 				joystick.resetPosition();
-				// trace(e);
+				// // trace(e);
 
 				// joystick.draw();
 				// joystick.x = 0;
@@ -1171,7 +1171,7 @@
 			this.startX = this.currentX; 
 			this.startY = this.currentY;
 			
-			trace('TouchableJoystick/constructor, current x/y = ' + this.currentX + '/' + this.currentY);
+			// trace('TouchableJoystick/constructor, current x/y = ' + this.currentX + '/' + this.currentY);
 		}
 		
 		TouchableJoystick.prototype.type = 'joystick';
@@ -1227,7 +1227,7 @@
 		};
 		
 		TouchableJoystick.prototype.draw = function() {
-			// trace('TouchableJoystick/draw, currentX = ' + this.currentX + ', currentY = ' + this.currentY);
+			// // trace('TouchableJoystick/draw, currentX = ' + this.currentX + ', currentY = ' + this.currentY);
 			if( ! this.id ) // wait until id is set
 				return false;
 				
@@ -1325,7 +1325,7 @@
 			GameController.ctx.stroke();
 			
 			GameController.ctx.drawImage( cached, this.startX - this.radius, this.startY - this.radius );
-			trace('this.currentX/Y = ' + this.currentX + '/' + this.currentY + ', startX/Y = ' + this.startX + '/' + this.startY);
+			// trace('this.currentX/Y = ' + this.currentX + '/' + this.currentY + ', startX/Y = ' + this.startX + '/' + this.startY);
 			this.currentX = this.startX;
 			this.currentY = this.startY;
 		};

@@ -1,4 +1,9 @@
 var config = {
+	world: {
+		width: document.documentElement.clientWidth,
+		height: document.documentElement.clientHeight,
+		gravity: 15
+	},
 	currentSector: 0,
 	sectors: [{
 		id: 0,
@@ -16,8 +21,9 @@ var config = {
 				y: 0
 			},
 			speed: 1,
-			health: 5,
 			damage: 5,
+			health: 5,
+			score: 500,
 			alive: true,
 			currentAnimation: '',
 			animations: caterpillarAnimations
@@ -30,8 +36,9 @@ var config = {
 				y: 0
 			},
 			speed: 1,
-			health: 5,
 			damage: 5,
+			health: 5,
+			score: 500,
 			alive: true,
 			currentAnimation: '',
 			animations: caterpillarAnimations
@@ -43,6 +50,7 @@ var config = {
 				x: 750,
 				y: 0
 			},
+			score: 100,
 			health: 10,
 			alive: true
 		}]
@@ -63,8 +71,9 @@ var config = {
 				y: 0
 			},
 			speed: 1,
-			health: 5,
 			damage: 5,
+			health: 5,
+			score: 500,
 			alive: true,
 			currentAnimation: '',
 			animations: caterpillarAnimations
@@ -77,8 +86,9 @@ var config = {
 				y: 0
 			},
 			speed: 1,
-			health: 5,
 			damage: 5,
+			health: 5,
+			score: 500,
 			alive: true,
 			currentAnimation: '',
 			animations: caterpillarAnimations
@@ -90,6 +100,7 @@ var config = {
 				x: 750,
 				y: 0
 			},
+			score: 100,
 			health: 10,
 			alive: true
 		}]
@@ -110,8 +121,9 @@ var config = {
 				y: 0
 			},
 			speed: 1,
-			health: 5,
 			damage: 5,
+			health: 5,
+			score: 500,
 			alive: true,
 			currentAnimation: '',
 			animations: caterpillarAnimations
@@ -124,8 +136,9 @@ var config = {
 				y: 0
 			},
 			speed: 1,
-			health: 5,
 			damage: 5,
+			health: 5,
+			score: 500,
 			alive: true,
 			currentAnimation: '',
 			animations: caterpillarAnimations
@@ -137,6 +150,7 @@ var config = {
 				x: 750,
 				y: 0
 			},
+			score: 100,
 			health: 10,
 			alive: true
 		}]
@@ -157,8 +171,9 @@ var config = {
 				y: 0
 			},
 			speed: 1,
-			health: 5,
 			damage: 5,
+			health: 5,
+			score: 500,
 			alive: true,
 			currentAnimation: '',
 			animations: caterpillarAnimations
@@ -171,8 +186,9 @@ var config = {
 				y: 0
 			},
 			speed: 1,
-			health: 5,
 			damage: 5,
+			health: 5,
+			score: 500,
 			alive: true,
 			currentAnimation: '',
 			animations: caterpillarAnimations
@@ -184,6 +200,7 @@ var config = {
 				x: 10,
 				y: 0
 			},
+			score: 100,
 			health: 10,
 			alive: true
 		}]

@@ -1,45 +1,15 @@
-var stage = {
-	// width: 800,
-	// height: 500
-	width: document.documentElement.clientWidth,
-	height: document.documentElement.clientHeight
-};
 var gameOver = false;
 var platforms;
 var cursors;
 // phaser object
 var player; 
-// config object
-var plyr = {
-	width: 76,
-	height: 148,
-	bounce: 0.2,
-	speed: 150,
-	health: 100,
-	damage: 5,
-	jumpHeight: 350,
-	jumping: false,
-	justJumped: false,
-	currentAnimation: '',
-	facingForward: true
-};
-
-var gravity = 15;
-
-var enemys;
-
-
-// var enemies = {
-// };
-
-var lollipops;
 
 var score = 0;
 var scoreText;
 
 var quitButton;
 
-var game = new Phaser.Game(stage.width, stage.height, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(config.world.width, config.world.height, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
 function preload() {
 	// images
@@ -62,7 +32,7 @@ function preload() {
 }
 
 function create() {
-	game.world.setBounds(0, 0, 4096, stage.height);
+	game.world.setBounds(0, 0, 4096, config.world.height);
 
 	createScenery();
 	createTerrain();
@@ -74,19 +44,19 @@ function create() {
 
 function createScenery() {
 	var sky = game.add.sprite(0, 0, 'sky');
-	sky.width = stage.width;
-	sky.height = stage.height;
+	sky.width = config.world.width;
+	sky.height = config.world.height;
 	sky.fixedToCamera = true;
 	
 	game.add.sprite(0, 0, 'mountains');
-	game.add.sprite(0, (stage.height - 490), 'treesBack');
+	game.add.sprite(0, (config.world.height - 490), 'treesBack');
 	game.add.sprite(0, 0, 'treesFore');
 	game.add.sprite(2048, 0, 'mountains');
-	game.add.sprite(2048, (stage.height - 490), 'treesBack');
+	game.add.sprite(2048, (config.world.height - 490), 'treesBack');
 	game.add.sprite(2048, 0, 'treesFore');
 
-	game.add.sprite(0, (stage.height - 200), 'grass1');
-	game.add.sprite(2048, (stage.height - 200), 'grass2');
+	game.add.sprite(0, (config.world.height - 200), 'grass1');
+	game.add.sprite(2048, (config.world.height - 200), 'grass2');
 	
 }
 
@@ -102,30 +72,30 @@ function createTerrain() {
 	ground.scale.setTo(8, 1);
   	ground.body.immovable = true;
 
-	var ledge = platforms.create(500, (stage.height - 75), 'platform');
+	var ledge = platforms.create(500, (config.world.height - 75), 'platform');
 	ledge.body.immovable = true;
 
-	ledge = platforms.create(800, (stage.height - 130), 'platform');
+	ledge = platforms.create(800, (config.world.height - 130), 'platform');
 	ledge.body.immovable = true;
 
-	ledge = platforms.create(1100, (stage.height - 180), 'platform');
+	ledge = platforms.create(1100, (config.world.height - 180), 'platform');
 	ledge.body.immovable = true;
 
-	var ledge = platforms.create(3100, (stage.height - 75), 'platform');
+	var ledge = platforms.create(3100, (config.world.height - 75), 'platform');
 	ledge.scale.setTo(0.8, 1);
 	ledge.body.immovable = true;
 
-	ledge = platforms.create(3300, (stage.height - 130), 'platform');
+	ledge = platforms.create(3300, (config.world.height - 130), 'platform');
 	ledge.scale.setTo(0.8, 1);
 	ledge.body.immovable = true;
 
-	ledge = platforms.create(3500, (stage.height - 180), 'platform');
+	ledge = platforms.create(3500, (config.world.height - 180), 'platform');
 	ledge.scale.setTo(0.8, 1);
 	ledge.body.immovable = true;
 }
 
 function createPlayer() {
-	player = game.add.sprite((stage.width/2 - 76/2), (stage.height - 148), 'keke');
+	player = game.add.sprite((config.world.width/2 - 76/2), (config.world.height - 148), 'keke');
 	player.anchor.setTo(0.5, 0.5);
 
 	player.animations.add('idleR', [0], 14);
@@ -136,9 +106,9 @@ function createPlayer() {
 	player.animations.add('jumpL', [3], 14);
 		
 	//  Player physics properties.
-	// player.body.setSize(30, plyr.height - 25, 0, 0); // bounding box
-	player.body.bounce.y = plyr.bounce;
-	player.body.gravity.y = gravity;
+	// player.body.setSize(30, config.player.height - 25, 0, 0); // bounding box
+	player.body.bounce.y = config.player.bounce;
+	player.body.config.world.gravity.y = config.world.gravity;
 	player.body.collideWorldBounds = true;
 	
 	game.camera.follow(player, Phaser.Camera.FOLLOW_PLATFORMER);
@@ -162,9 +132,10 @@ function createEnemies(sector) {
 	
 	for(var i = 0; i < enemies.length; i++) {
 		enemy = group.create((enemies[i].start.x + sector.bounds.start), enemies[i].start.y, enemies[i].type);
-		enemy.name = enemies[i].type + i;
-		
-		enemy.body.gravity.y = gravity;
+		enemy.name = enemies[i].type + '-' + i;
+		enemy.idx = i;
+		enemy.alive = true;
+		enemy.body.config.world.gravity.y = config.world.gravity;
 		enemy.body.bounce.y = 0.15 + Math.random() * 0.2;
 		
 		var animations = enemies[i].animations;
@@ -188,8 +159,10 @@ function createBonuses(sector) {
 	for(var i = 0; i < bonuses.length; i++) {
 		bonus = group.create((bonuses[i].start.x + sector.bounds.start), bonuses[i].start.y, bonuses[i].type);
 		bonus.name = bonuses[i].type + i;
-		
-		bonus.body.gravity.y = gravity;
+		bonus.idx = i;
+		bonus.alive = true;
+
+		bonus.body.config.world.gravity.y = config.world.gravity;
 		bonus.body.bounce.y = 0.15 + Math.random() * 0.2;
 	}
 	sector.bonusGroup = group;
@@ -221,7 +194,7 @@ function createControls() {
             }
         },
         right: {
-			position: { left: stage.width - 130, top: stage.height - 130 },
+			position: { left: config.world.width - 130, top: config.world.height - 130 },
 			buttons: [
 			{ 
 				radius: 50,
@@ -229,7 +202,7 @@ function createControls() {
 				fontSize: 18, 
 				offset: {
 					x: 0,
-					y: -(stage.height - 150)
+					y: -(config.world.height - 150)
 				},
 				touchStart: function() { 
 					trace('right controller left button touchstart');
@@ -247,11 +220,11 @@ function createControls() {
 				},
 				touchStart: function() {
 					trace('right controller right button touchstart');
-					plyr.jumpButtonPressed = true;
+					config.player.jumpButtonPressed = true;
 				},
 				touchEnd: function() {
 					trace('right controller right button touchend');
-					plyr.justJumped = false;
+					config.player.justJumped = false;
 				}
 			}, 
 			false] 
@@ -274,7 +247,7 @@ function createGui() {
     scoreText = game.add.text(16, 16, 'Score: 0', { fontSize: '12px', fill: '#ffffff' });
 	guiConsole.add(scoreText);
 
-	healthText = game.add.text(16, 50, 'Health: ' + plyr.health, { fontSize: '12px', fill: '#ffffff' });
+	healthText = game.add.text(16, 50, 'Health: ' + config.player.health, { fontSize: '12px', fill: '#ffffff' });
 	guiConsole.add(healthText);
 }
 
@@ -320,7 +293,7 @@ function activateSector(sector) {
 
 function updateEnemies(enemies) {
 	for(var i = 0; i < enemies.length; i++) {
-		if(enemies[i].alive) {
+		if(enemies[i].gameObj.alive) {
 			updateEnemy(enemies[i]);
 		}
 	}
@@ -328,12 +301,12 @@ function updateEnemies(enemies) {
 
 function updateEnemy(enemy) {
 	if(!gameOver) {
-		trace('updateEnemy, sector['+ config.currentSector + ']/enemy[' + enemy.id + ']');
+		trace('updateEnemy, sector['+ config.currentSector + ']/enemy[' + enemy.id + '], alive = ' + enemy.gameObj.alive);
 		// trace('enemy['+enemy.gameObj.name+'].screenX = ' + enemy.gameObj.body.screenX);
 		var enemyX = enemy.gameObj.body.screenX;
 		var playerX = player.body.screenX;
 		// check for enemy on screen
-		if(enemyX < (playerX + stage.width/2) && enemyX > (playerX - stage.width/2)) {
+		if(enemyX < (playerX + config.world.width/2) && enemyX > (playerX - config.world.width/2)) {
 			// trace('enemy['+enemy.gameObj.name+'] activated');
 			if(enemyX > (playerX + 10)) {
 				if(enemy.currentAnimation !== 'walkL') {
@@ -375,16 +348,16 @@ function checkCollisions(sector) {
 
 function checkObjectCollision(objects, callback) {
 	for(var i = 0; i < objects.length; i++) {
-		if(objects[i].alive) {
+		if(objects[i].gameObj.alive) {
 			game.physics.collide(objects[i].gameObj, platforms);
 			game.physics.collide(player, objects[i].gameObj, callback, null, this);
 		}
 	}
 }
+
 function enemyCollision(player, enemy) {
-	// trace('enemyCollision check, touching =');
-	// trace('enemy = ');
-	// trace(enemy);
+	trace('enemyCollision');
+	trace(enemy);
 	// trace('player overlap x/y = ' + enemy.body.overlapX + '/' + enemy.body.overlapY);
 	// trace(enemy);
 	// trace(player.body.touching);
@@ -393,7 +366,7 @@ function enemyCollision(player, enemy) {
 		// trace(player.body.touching);
 		// trace('\tenemy touching: ');
 		// trace(enemy.body.touching);
-		player.body.velocity.y = -plyr.jumpHeight/2;
+		player.body.velocity.y = -config.player.jumpHeight/2;
 		playerJump();
 		// keke damages enemy
 		killEnemy(enemy);
@@ -403,25 +376,28 @@ function enemyCollision(player, enemy) {
 		// trace('\tenemy touching');
 		// trace(enemy.body.touching);
 		// enemy damages keke
-		plyr.health -= 1;
-		healthText.content = 'Health: ' + plyr.health;
-		if(plyr.health <= 0) {
+		config.player.health -= 1;
+		healthText.content = 'Health: ' + config.player.health;
+		if(config.player.health <= 0) {
 			quit();
 		}
 	}
 
 }
 
-function bonusCollision (player, bonus) {
-    
-    bonus.gameObj.kill();
-	bonus.alive = false;
-    //  Add and update the score
-    score += 100;
+function bonusCollision (player, gameObj) {
+
+	gameObj.alive = false;
+	gameObj.kill();
+	
+	var bonuses = getCurrentSectorProperty('bonuses');
+	var bonus = bonuses[gameObj.idx];
+	
+    score += bonus.score;
     scoreText.content = 'Score: ' + score;
 
-	plyr.health += 5;
-	healthText.content = 'Health: ' + plyr.health;
+	config.player.health += bonus.health;
+	healthText.content = 'Health: ' + config.player.health;
 }
 
 function checkGameInput() {
@@ -430,22 +406,22 @@ function checkGameInput() {
 		player.body.velocity.x = 0;
 		var velX = 0;
 		if (cursors.left.isDown) {
-			velX = -plyr.speed;
-			plyr.facingForward = false;
+			velX = -config.player.speed;
+			config.player.facingForward = false;
 		}
 		else if (cursors.right.isDown) {
-			velX = plyr.speed;
-			plyr.facingForward = true;
+			velX = config.player.speed;
+			config.player.facingForward = true;
 		}
 
 		if(player.body.touching.down) {
-			plyr.jumping = false;
+			config.player.jumping = false;
 		}
 		//  Allow the player to jump if they are touching the ground.
-		if(cursors.up.isDown && player.body.touching.down && !plyr.justJumped) {
-			player.body.velocity.y = -plyr.jumpHeight;
-			plyr.jumping = true;
-			plyr.justJumped = false;
+		if(cursors.up.isDown && player.body.touching.down && !config.player.justJumped) {
+			player.body.velocity.y = -config.player.jumpHeight;
+			config.player.jumping = true;
+			config.player.justJumped = false;
 			// setTimeout(resetJump, 1500);
 		}
 
@@ -453,77 +429,77 @@ function checkGameInput() {
 		if (game.input.joystickLeft) {
 			var jl = game.input.joystickLeft;
 			if(jl.normalizedX > 0.1) {
-				velX = plyr.speed;
-				plyr.facingForward = true;
+				velX = config.player.speed;
+				config.player.facingForward = true;
 			} else if(jl.normalizedX < -0.1) {
-				velX = -plyr.speed;
-				plyr.facingForward = false;
+				velX = -config.player.speed;
+				config.player.facingForward = false;
 			}
 
 			// if(jl.normalizedY > 0.2) {
-			// 	if(player.body.touching.down && !plyr.justJumped) {
-			// 		player.body.velocity.y = -plyr.jumpHeight;
-			// 		plyr.jumping = true;
-			// 		plyr.justJumped = true;
+			// 	if(player.body.touching.down && !config.player.justJumped) {
+			// 		player.body.velocity.y = -config.player.jumpHeight;
+			// 		config.player.jumping = true;
+			// 		config.player.justJumped = true;
 			// 		setTimeout(resetJump, 1000);
 			// 	}
 			// }
 		}
 
-		if(player.body.touching.down && plyr.jumpButtonPressed && !plyr.justJumped) {
-			player.body.velocity.y = -plyr.jumpHeight;
-			plyr.jumping = true;
-			plyr.justJumped = true;
-			plyr.jumpButtonPressed = false;
+		if(player.body.touching.down && config.player.jumpButtonPressed && !config.player.justJumped) {
+			player.body.velocity.y = -config.player.jumpHeight;
+			config.player.jumping = true;
+			config.player.justJumped = true;
+			config.player.jumpButtonPressed = false;
 		}
 		player.body.velocity.x = velX;
 	}
 }
 
 function resetJump() {
-	plyr.justJumped = false;
+	config.player.justJumped = false;
 }
 
 function setPlayerAnimations() {
 	// trace('player vel x = ' + player.body.velocity.x);
-	if(plyr.jumping) {
+	if(config.player.jumping) {
 		playerJump();
 	// } else if(!player.body.touching.down) {
 	// 	trace('falling');
-	// 	if(plyr.facingForward) {
+	// 	if(config.player.facingForward) {
 	// 		// player.frame = 4;
 	// 		player.frame = 9;
-	// 		plyr.currentAnimation = 'fallingR';
+	// 		config.player.currentAnimation = 'fallingR';
 	// 	} else {
 	// 		// player.frame = 5;
 	// 		player.frame = 24;
-	// 		plyr.currentAnimation = 'fallingL';
+	// 		config.player.currentAnimation = 'fallingL';
 	// 	}
 	} else {
 		if(player.body.velocity.x > 0 && player.body.touching.down) {
-			if(plyr.currentAnimation !== 'runR') {
+			if(config.player.currentAnimation !== 'runR') {
 		 		trace('play run right');
 				player.animations.play('runR', 13, true);
-				plyr.currentAnimation = 'runR';
-				plyr.facingForward = false;
+				config.player.currentAnimation = 'runR';
+				config.player.facingForward = false;
 			}
 		} else if(player.body.velocity.x < 0 && player.body.touching.down) {
-			if(plyr.currentAnimation !== 'runL') {
+			if(config.player.currentAnimation !== 'runL') {
 		 		trace('play run left');
 				player.animations.play('runL', 13, true);
-				plyr.currentAnimation = 'runL';
-				plyr.facingForward = false;
+				config.player.currentAnimation = 'runL';
+				config.player.facingForward = false;
 			}
 		} else if(player.body.velocity.x === 0) {
 			player.animations.stop();
-			if(plyr.facingForward) {
+			if(config.player.facingForward) {
 				player.frame = 0;
 				player.animations.stop();
-				plyr.currentAnimation = 'idleR';
+				config.player.currentAnimation = 'idleR';
 			} else {
 				player.animations.stop();
 				player.frame = 1;
-				plyr.currentAnimation = 'idleL';
+				config.player.currentAnimation = 'idleL';
 			}
 		}
 	}
@@ -532,19 +508,19 @@ function setPlayerAnimations() {
 function playerJump() {
 	// trace('jumping');
 	// jumping
-	if(plyr.facingForward) {
+	if(config.player.facingForward) {
 		// trace('playing jump r animation');
 		// player.animations.play('jumpR', 1, false);
 		player.animations.stop();
 		player.frame = 9;
 		// player.frame = 2;
-		plyr.currentAnimation = 'jumpR';
+		config.player.currentAnimation = 'jumpR';
 	} else {
 		// player.animations.play('jumpL', 1, false);
 		player.animations.stop();
 		player.frame = 24;
 		// player.frame = 3;
-		plyr.currentAnimation = 'jumpL';
+		config.player.currentAnimation = 'jumpL';
 	}
 	
 }
@@ -552,11 +528,18 @@ function playerJump() {
 function killEnemy(enemy) {
 	trace('killEnemey, enemy = ');
 	trace(enemy);
-	enemy.gameObj.kill();
 	enemy.alive = false;
+	enemy.kill();
 	
-	score += 500;
+	var enemies = getCurrentSectorProperty('enemies');
+	var enemy = enemies[gameObj.idx];
+
+	score += enemy.score;
 	scoreText.content = 'Score: ' + score;
+}
+
+function getCurrentSectorProperty(name) {
+	return config.sectors[config.currentSector][name];
 }
 
 function quit() {
