@@ -1,10 +1,24 @@
 var AnimatedEnemyView = (function() {
 	Utils.inherits(AnimatedEnemyView, AnimatedGroupView);
 	
-	function AnimatedEnemyView(params, group, idx) {
+	function AnimatedEnemyView(params, group, id) {
 		// trace('AnimatedEnemyView['+idx+']/constructor, params =');
 		// trace(params);
-		AnimatedEnemyView._super.constructor.call(this, params, group, idx);
+		AnimatedEnemyView._super.constructor.call(this, params, group, id);
+		this.init();
+		
+		this.__defineGetter__('score', function() {
+			return this.get('score');
+		});
+		this.__defineGetter__('damage', function() {
+			return this.get('damage');
+		});
+		this.__defineGetter__('health', function() {
+			return this.get('health');
+		});
+		this.__defineSetter__('health', function(val) {
+			this.set({ health: val });
+		});
 	}
 	
 	AnimatedEnemyView.prototype.update = function(params) {

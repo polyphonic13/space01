@@ -331,13 +331,12 @@ function bonusCollision (player, sprite) {
 	trace(sprite);
 	var bonus = sectorManager.activeSector.bonuses.collection[sprite.idx];
 	sprite.kill();
-	
 	bonus.active = false; 
 	
-    score += bonus.score;
+    score += bonus.get('score');
     scoreText.content = 'Score: ' + score;
 
-	config.player.health += bonus.health;
+	config.player.health += bonus.get('health');
 	healthText.content = 'Health: ' + config.player.health;
 }
 
@@ -475,10 +474,6 @@ function killEnemy(sprite) {
 	
 	score += enemy.score;
 	scoreText.content = 'Score: ' + score;
-}
-
-function getCurrentSectorProperty(name) {
-	return config.sectors[config.currentSector][name];
 }
 
 function quit() {

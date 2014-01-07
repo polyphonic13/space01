@@ -1,10 +1,10 @@
 var Sector = (function() {
+	Utils.inherits(Sector, Base);
 	
-	function Sector(params, idx) {
+	function Sector(params, id) {
 		// trace('Sector['+idx+']/constructor, params = ');
 		// trace(params);
-		this.model = params;
-		this.idx = idx; 
+		Sector._super.constructor.call(this, params, id);
 
 		this.enemies = new EnemyCollection(params.enemies);
 		this.enemies.init(AnimatedEnemyView);
@@ -13,14 +13,14 @@ var Sector = (function() {
 		this.bonuses.init(GroupView);
 
 		this.__defineGetter__('enemyGroup', function() {
-			return this.enemies.group;
+			return this.enemies.get('group');
 		});
 		this.__defineGetter__('bonusGroup', function() {
-			return this.bonuses.group;
+			return this.bonuses.get('group');
 		});
 
 		this.__defineGetter__('bounds', function() {
-			return this.model.bounds;
+			return this.get('bounds');
 		});
 
 		this.created = true;
