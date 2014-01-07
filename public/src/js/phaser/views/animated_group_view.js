@@ -1,9 +1,11 @@
 var AnimatedGroupView = (function() {
 	Utils.inherits(AnimatedGroupView, GroupView);
 	
+	var _this;
 	function AnimatedGroupView(params, group, id) {
 		// trace('AnimatedGroupView['+idx+']/constructor, params = ');
 		// trace(params);
+		_this = this;
 		AnimatedGroupView._super.constructor.call(this, params, group, id);
 
 		this.__defineGetter__('currentAnimation', function() {
@@ -16,11 +18,13 @@ var AnimatedGroupView = (function() {
 	}
 
 	AnimatedGroupView.prototype.init = function() {
-		// trace('\t\tAnimatedGroupView['+this.id+']/addAnimations');
+	// AnimatedGroupView.prototype.addAnimations = function() {
+		// trace('AnimatedGroupView['+this.id+']/init, this =');
+		// trace(this);
 		AnimatedGroupView._super.init();
 		
-		var animations = this.get('animations');
-		var sprite = this.sprite;
+		var animations = _this.model.animations;
+		var sprite = _this.sprite;
 		
 		for(var i = 0; i < animations.length; i++) {
 			// trace('\t\t\tanimations['+i+'].name = ' + animations[i].name + ', keyFrames = ' + animations[i].keyFrames + ', frameRate = ' + animations[i].frameRate + ', sprite =');
@@ -28,25 +32,25 @@ var AnimatedGroupView = (function() {
 			sprite.animations.add(animations[i].name, animations[i].keyFrames, animations[i].frameRate);
 		}
 
-		var defaultAnimation = this.model.get('defaultAnimation');
+		var defaultAnimation = this.model.defaultAnimation;
 		if(defaultAnimation) {
-			this.play();
-			this.model.set({ currentAnimation: defaultAnimation });
+			_this.play();
+			_this.model.currentAnimation = defaultAnimation;
 			
 		} else {
 			sprite.animations.frame = 0;
-			this.model.set({ currentAnimation: '' });
+			_this.model.currentAnimation = '';
 		}
-	}
+	};
 	
 	AnimatedGroupView.prototype.play = function(name) {
-		this.sprite.animations.play(name);
-		this.model.set({ currentAnimation: name });
+		_this.sprite.animations.play(name);
+		_this.set({ currentAnimation: name });
 	};
 	
 	AnimatedGroupView.prototype.stop = function() {
-		this.sprite.animations.stop();
-		this.model.set({ currentAnimation: '' });
+		_this.sprite.animations.stop();
+		_this.set({ currentAnimation: '' });
 	};
 
 	return AnimatedGroupView;

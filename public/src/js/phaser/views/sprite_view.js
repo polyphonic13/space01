@@ -7,7 +7,9 @@ var SpriteView = (function() {
 	}
 	
 	SpriteView.prototype.init = function() {
-		var sprite = game.add.sprite(this.model.x, this.model.y, this.model.type);
+		var sprite = game.add.sprite(_this.model.x, _this.model.y, _this.model.type);
+		sprite.name = _this.model.type + '-' + _this.id;
+		sprite.idx = _this.id;
 		this.sprite = sprite;
 	};
 

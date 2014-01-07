@@ -1,11 +1,12 @@
 var AnimatedEnemyView = (function() {
 	Utils.inherits(AnimatedEnemyView, AnimatedGroupView);
 	
+	var _this;
 	function AnimatedEnemyView(params, group, id) {
 		// trace('AnimatedEnemyView['+idx+']/constructor, params =');
 		// trace(params);
+		_this = this;
 		AnimatedEnemyView._super.constructor.call(this, params, group, id);
-		this.init();
 		
 		this.__defineGetter__('score', function() {
 			return this.get('score');
@@ -30,22 +31,22 @@ var AnimatedEnemyView = (function() {
 			var animations = this.sprite.animations; 
 
 			if(enemyX > (playerX + 10)) {
-				if(this.currentAnimation !== 'walkL') {
+				if(_this.currentAnimation !== 'walkL') {
 					animations.play('walkL', animations.frameRate, true);
-					this.currentAnimation = 'walkL';
+					_this.currentAnimation = 'walkL';
 				}
-				this.sprite.x -= this.speed;
+				_this.sprite.x -= _this.speed;
 
 			} else if(enemyX < (playerX - 10)){
 				if(this.currentAnimation !== 'walkR') {
 					animations.play('walkR', animations.frameRate, true);
-					this.currentAnimation = 'walkR';
+					_this.currentAnimation = 'walkR';
 				}
-				this.sprite.x += this.speed;
+				_this.sprite.x += _this.speed;
 			} else {
 				animations.stop();
-				this.sprite.frame = 0
-				this.currentAnimation = '';
+				_this.sprite.frame = 0
+				_this.currentAnimation = '';
 			}
 		}
 	};

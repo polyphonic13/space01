@@ -201,73 +201,14 @@ function createGui() {
 function update() {
 	if(!gameOver) {
 
-		sectorTest(game.camera.x);
-
+		sectorManager.checkTerrainCollision(platforms);
+		sectorManager.setActive(game.camera.x);
 		var sector = sectorManager.activeSector;
-
-		// updateEnemies(sector.enemies);
 		sector.enemies.update({ player: player });
 
 		checkCollisions(sector);
 		checkGameInput();
 		setPlayerAnimations();
-	}
-}
-
-function sectorTest(x) {
-	// trace('sectorTest, x = ' + x + ', currentSector = ' + config.currentSector);
-	var sectors = sectorManager.collection;
-	var bounds;
-	for(var i = 0; i < sectors.length; i++) {
-		bounds = sectors[i].bounds;
-		// trace('bounds['+i+'] start/end = ' + bounds.start + '/' + bounds.end + ', x = ' + x);
-		if(x > bounds.start && x < bounds.end) {
-			if(sectorManager.activeSectorId !== i) {
-				sectorManager.activeSectorId = i;
-			}
-		}
-	}
-}
-
-function updateEnemies(enemies) {
-	for(var i = 0; i < enemies.length; i++) {
-		if(enemies[i].active) {
-			updateEnemy(enemies[i]);
-		}
-	}
-}
-
-function updateEnemy(enemy) {
-	if(!gameOver) {
-		trace('updateEnemy, sector['+ config.currentSector + ']/enemy[' + enemy.id + '], alive = ' + enemy.sprite.active);
-		// trace('enemy['+enemy.gameObj.name+'].screenX = ' + enemy.gameObj.body.screenX);
-		var enemyX = enemy.sprite.body.screenX;
-		var playerX = player.body.screenX;
-		// check for enemy on screen
-		if(enemyX < (playerX + config.stage.width/2) && enemyX > (playerX - config.stage.width/2)) {
-			// trace('enemy['+enemy.gameObj.name+'] activated');
-			if(enemyX > (playerX + 10)) {
-				if(enemy.currentAnimation !== 'walkL') {
-					enemy.sprite.animations.play('walkL', 10, true);
-					enemy.currentAnimation = 'walkL';
-				}
-		 		// enemy.tween = game.add.tween(enemy.gameObj).to({ x: 0 }, enemy.speed, Phaser.Easing.Linear.None, true, 0, 1000, true);
-				enemy.gameObj.x -= enemy.speed;
-			} else if(enemyX < (playerX - 10)){
-				if(enemy.currentAnimation !== 'walkR') {
-					enemy.sprite.animations.play('walkR', 10, true);
-					enemy.currentAnimation = 'walkR';
-				}
-		 		enemy.sprite.animations.play('walkR', 10, true);
-				// enemy.tween = game.add.tween(enemy.gameObj).to({ x: player.body.x }, enemy.speed, Phaser.Easing.Linear.None, true, 0, 1000, true);
-				enemy.sprite.x += enemy.speed;
-			} else {
-				// enemy.tween.pause();
-				enemy.sprite.animations.stop();
-				enemy.sprite.frame = 0
-				enemy.currentAnimation = '';
-			}
-		}
 	}
 }
 
@@ -285,20 +226,21 @@ function checkObjectCollision(views, callback) {
 	// trace('checkObjectCollision, views = ');
 	// trace(views);
 	for(var i = 0; i < views.length; i++) {
-		// trace('viewss['+i+'].active = ');
+		// trace('views['+i+'].active = ');
 		// trace(views[i].active);
 		if(views[i].active) {
-			// trace('views['+i+'].sprite = ');
+			// trace('views['+views[i].name+'].sprite = ');
 			// trace(views[i].sprite);
-			game.physics.collide(views[i].sprite, platforms);
+
+			// game.physics.collide(views[i].sprite, platforms);
 			game.physics.overlap(player, views[i].sprite, callback, null, this);
 		}
 	}
 }
 
 function enemyCollision(player, sprite) {
-	trace('enemyCollision');
-	trace(sprite);
+	// trace('enemyCollision');
+	// trace(sprite);
 	// trace('player overlap x/y = ' + sprite.body.overlapX + '/' + sprite.body.overlapY);
 	// trace(sprite);
 	// trace(player.body.touching);
@@ -327,8 +269,8 @@ function enemyCollision(player, sprite) {
 }
 
 function bonusCollision (player, sprite) {
-	trace('bonusCollision, sprite = ');
-	trace(sprite);
+	// trace('bonusCollision, sprite = ');
+	// trace(sprite);
 	var bonus = sectorManager.activeSector.bonuses.collection[sprite.idx];
 	sprite.kill();
 	bonus.active = false; 
@@ -418,14 +360,14 @@ function setPlayerAnimations() {
 	} else {
 		if(player.body.velocity.x > 0 && player.body.touching.down) {
 			if(config.player.currentAnimation !== 'runR') {
-		 		trace('play run right');
+		 		// trace('play run right');
 				player.animations.play('runR', 13, true);
 				config.player.currentAnimation = 'runR';
 				config.player.facingForward = false;
 			}
 		} else if(player.body.velocity.x < 0 && player.body.touching.down) {
 			if(config.player.currentAnimation !== 'runL') {
-		 		trace('play run left');
+		 		// trace('play run left');
 				player.animations.play('runL', 13, true);
 				config.player.currentAnimation = 'runL';
 				config.player.facingForward = false;

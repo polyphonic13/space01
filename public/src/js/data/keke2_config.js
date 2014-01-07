@@ -73,8 +73,7 @@ var config = {
 				y: 0
 			},
 			score: 100,
-			health: 10,
-			alive: true
+			health: 10
 		}]
 	},
 	{
@@ -115,8 +114,7 @@ var config = {
 				y: 0
 			},
 			score: 100,
-			health: 10,
-			alive: true
+			health: 10
 		}]
 	},
 	{
@@ -157,8 +155,7 @@ var config = {
 				y: 0
 			},
 			score: 100,
-			health: 10,
-			alive: true
+			health: 10
 		},
 		{
 			id: 1,
@@ -211,8 +208,7 @@ var config = {
 				y: 0
 			},
 			score: 100,
-			health: 10,
-			alive: true
+			health: 10
 		}]
 	}],
 	player: {

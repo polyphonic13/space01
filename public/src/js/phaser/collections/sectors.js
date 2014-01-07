@@ -13,13 +13,20 @@ var Sectors = (function() {
 		})
 	}
 	
-	Sectors.prototype.getSectorProperty = function(name) {
-		var sector = this.collection[this.activeSectorId];
-		if(sector.hasOwnProperty(name)) {
-			return sector[name];
-		} else {
-			return null;
+	Sectors.prototype.setActive = function(x) {
+		var sectors = this.collection;
+		var bounds;
+		for(var i = 0; i < sectors.length; i++) {
+			bounds = sectors[i].bounds;
+			// trace('bounds['+i+'] start/end = ' + bounds.start + '/' + bounds.end + ', x = ' + x);
+			if(x > bounds.start && x < bounds.end) {
+				if(this.activeSectorId !== i) {
+					trace('new sector id = ' + i);
+					this.activeSectorId = i;
+				}
+			}
 		}
+		
 	};
 	
 	return Sectors;
