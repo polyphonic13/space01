@@ -1,10 +1,13 @@
 var Sector = (function() {
 	
-	function Sector(params, game) {
+	function Sector(params, idx) {
+		trace('Sector['+idx+']/constructor, params = ');
+		trace(params);
 		this.model = params;
+		this.idx = idx; 
 
-		this.enemies = new GroupCollection(params.enemies);
-		this.enemies.init(AnimatedGroupView);
+		this.enemies = new EnemyCollection(params.enemies);
+		this.enemies.init(AnimatedEnemyView);
 
 		this.bonuses = new GroupCollection(params.bonuses);
 		this.bonuses.init(GroupView);
@@ -15,6 +18,12 @@ var Sector = (function() {
 		this.__defineGetter__('bonusGroup', function() {
 			return this.bonuses.group;
 		});
+
+		this.__defineGetter__('bounds', function() {
+			return this.model.bounds;
+		});
+
+		this.created = true;
 	}
 
 	return Sector;

@@ -1,30 +1,27 @@
 var GroupView = (function() {
 	
 	function GroupView(params, group, idx) {
+		trace('GroupView['+idx+']/constructor, params = ');
+		trace(params);
 		this.model = params;
-		var sprite;
+		this.id = idx;
+		this.active = true;
 
-		sprite = group.create(params.start.x, params.start.y, params.type);
+		var sprite = group.create(params.start.x, params.start.y, params.type);
 		sprite.name = params.type + '-' + idx;
 		sprite.idx = idx;
+
 		sprite.body.gravity.y = config.world.gravity;
 
-		if(params.bounce.y) {
+		if(params.bounce && params.bounce.y) {
 			sprite.body.bounce.y = params.bounce.y;
 		}
 
-		this.model.sprite = sprite;
-		this.__defineGetter__('sprite', function() {
-			return this.model.sprite;
-		});
+		this.sprite = sprite;
 	}
-	
-	GroupView.prototype.getProperty = function(name) {
-		if(this.model.hasOwnProperty(name)) {
-			return this.model[name];
-		} else {
-			return null;
-		}
+
+	GroupView.prototype.remove = function() {
+		this.sprite.remove();
 	};
 	
 	return GroupView;
