@@ -1,8 +1,8 @@
 var Sector = (function() {
 	
 	function Sector(params, idx) {
-		trace('Sector['+idx+']/constructor, params = ');
-		trace(params);
+		// trace('Sector['+idx+']/constructor, params = ');
+		// trace(params);
 		this.model = params;
 		this.idx = idx; 
 

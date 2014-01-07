@@ -2,8 +2,8 @@ var AnimatedGroupView = (function() {
 	Utils.inherits(AnimatedGroupView, GroupView);
 	
 	function AnimatedGroupView(params, group, idx) {
-		trace('AnimatedGroupView['+idx+']/constructor, params = ');
-		trace(params);
+		// trace('AnimatedGroupView['+idx+']/constructor, params = ');
+		// trace(params);
 		AnimatedGroupView._super.constructor.call(this, params, group, idx);
 		this.addAnimations();
 
@@ -17,13 +17,13 @@ var AnimatedGroupView = (function() {
 	}
 
 	AnimatedGroupView.prototype.addAnimations = function() {
-		trace('\t\tAnimatedGroupView['+this.id+']/addAnimations');
+		// trace('\t\tAnimatedGroupView['+this.id+']/addAnimations');
 		var animations = this.model.animations;
 		var sprite = this.sprite;
 
 		for(var i = 0; i < animations.length; i++) {
-			trace('\t\t\tanimations['+i+'].name = ' + animations[i].name + ', keyFrames = ' + animations[i].keyFrames + ', frameRate = ' + animations[i].frameRate + ', sprite =');
-			trace(sprite);
+			// trace('\t\t\tanimations['+i+'].name = ' + animations[i].name + ', keyFrames = ' + animations[i].keyFrames + ', frameRate = ' + animations[i].frameRate + ', sprite =');
+			// trace(sprite);
 			sprite.animations.add(animations[i].name, animations[i].keyFrames, animations[i].frameRate);
 		}
 

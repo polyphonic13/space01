@@ -41,7 +41,7 @@ var config = {
 		enemies: [{
 			type: 'caterpillar01',
 			start: {
-				x: 512,
+				x: 200,
 				y: 0
 			},
 			speed: 1,

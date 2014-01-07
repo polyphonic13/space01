@@ -2,8 +2,8 @@ var Sectors = (function() {
 	Utils.inherits(Sectors, Collection);
 	
 	function Sectors(params) {
-		trace('Sectors/constructor, params = ');
-		trace(params);
+		// trace('Sectors/constructor, params = ');
+		// trace(params);
 		Sectors._super.constructor.call(this, params);
 		this.init(Sector);
 		this.activeSectorId = 0;

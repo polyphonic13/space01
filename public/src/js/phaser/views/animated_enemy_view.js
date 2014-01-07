@@ -2,8 +2,8 @@ var AnimatedEnemyView = (function() {
 	Utils.inherits(AnimatedEnemyView, AnimatedGroupView);
 	
 	function AnimatedEnemyView(params, group, idx) {
-		trace('AnimatedEnemyView['+idx+']/constructor, params =');
-		trace(params);
+		// trace('AnimatedEnemyView['+idx+']/constructor, params =');
+		// trace(params);
 		AnimatedEnemyView._super.constructor.call(this, params, group, idx);
 	}
 	

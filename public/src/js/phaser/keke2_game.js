@@ -350,7 +350,7 @@ function checkObjectCollision(objects, callback) {
 	for(var i = 0; i < objects.length; i++) {
 		if(objects[i].gameObj.alive) {
 			game.physics.collide(objects[i].gameObj, platforms);
-			game.physics.collide(player, objects[i].gameObj, callback, null, this);
+			game.physics.overlap(player, objects[i].gameObj, callback, null, this);
 		}
 	}
 }

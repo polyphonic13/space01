@@ -1,8 +1,8 @@
 var GroupView = (function() {
 	
 	function GroupView(params, group, idx) {
-		trace('GroupView['+idx+']/constructor, params = ');
-		trace(params);
+		// trace('GroupView['+idx+']/constructor, params = ');
+		// trace(params);
 		this.model = params;
 		this.id = idx;
 		this.active = true;
