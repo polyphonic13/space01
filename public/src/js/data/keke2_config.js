@@ -219,7 +219,7 @@ var config = {
 		width: 76,
 		height: 148,
 		bounce: 0.2,
-		speed: 350,
+		speed: 150,
 		health: 100,
 		damage: 5,
 		jumpHeight: 350,
