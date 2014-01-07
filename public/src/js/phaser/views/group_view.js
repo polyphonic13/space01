@@ -11,9 +11,10 @@ var GroupView = (function() {
 	GroupView.prototype.init = function() {
 		var type = this.get('type');
 		var start = this.get('start');
-		var model = this.get('model');
-		var sprite = model.group.create(start.x, start.y, type);
-		sprite.name = model.type + '-' + this.id;
+		trace('GroupView/init, this = ');
+		trace(this);
+		var sprite = this.model.group.create(start.x, start.y, type);
+		sprite.name = this.model.type + '-' + this.id;
 		sprite.idx = this.id;
 
 		sprite.body.gravity.y = config.world.gravity;
