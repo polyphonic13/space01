@@ -24,10 +24,11 @@ var Sector = (function() {
 		// trace(this);
 		// trace('_this = ');
 		// trace(_this);
-		this.enemies = new EnemyCollection(this.model.enemies);
+		var sectorId = 'Sector' + this.id;
+		this.enemies = new EnemyCollection(this.model.enemies, sectorId);
 		this.enemies.init(AnimatedEnemyView);
 
-		this.bonuses = new GroupCollection(this.model.bonuses);
+		this.bonuses = new GroupCollection(this.model.bonuses, sectorId);
 		this.bonuses.init(GroupView);
 
 		this.created = true;

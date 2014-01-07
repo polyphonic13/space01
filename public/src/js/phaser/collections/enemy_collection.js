@@ -1,11 +1,13 @@
 var EnemyCollection = (function() {
 	Utils.inherits(EnemyCollection, GroupCollection);
 	
-	function EnemyCollection(params) {
-		EnemyCollection._super.constructor.call(this, params);
+	function EnemyCollection(params, id) {
+		EnemyCollection._super.constructor.call(this, params, id);
 	}
 	
 	EnemyCollection.prototype.update = function(params) {
+		// trace('EnemyCollection['+this.id+']/update, this.collection = ');
+		// trace(this.collection);
 		var enemy;
 		for(var key in this.collection) {
 			enemy = this.collection[key]

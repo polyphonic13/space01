@@ -79,7 +79,16 @@ function createTerrain() {
 	ledge = platforms.create(800, (config.world.height - 130), 'platform');
 	ledge.body.immovable = true;
 
+	ledge = platforms.create(1024, 0, 'platform');
+	ledge.body.immovable = true;
+
 	ledge = platforms.create(1100, (config.world.height - 180), 'platform');
+	ledge.body.immovable = true;
+
+	ledge = platforms.create(2048, 0, 'platform');
+	ledge.body.immovable = true;
+
+	ledge = platforms.create(3072, 0, 'platform');
 	ledge.body.immovable = true;
 
 	var ledge = platforms.create(3100, (config.world.height - 75), 'platform');
@@ -202,11 +211,13 @@ function update() {
 	if(!gameOver) {
 
 		sectorManager.checkTerrainCollision(platforms);
-		sectorManager.setActive(game.camera.x);
+		sectorManager.setActive(game.camera.x + (config.stage.width/2));
+		
 		var sector = sectorManager.activeSector;
 		sector.enemies.update({ player: player });
 
 		checkCollisions(sector);
+
 		checkGameInput();
 		setPlayerAnimations();
 	}
@@ -216,7 +227,6 @@ function checkCollisions(sector) {
 	if(!gameOver) {
 		game.physics.collide(player, platforms);
 
-		var sector = sectorManager.activeSector;
 		checkObjectCollision(sector.enemies.collection, enemyCollision);
 		checkObjectCollision(sector.bonuses.collection, bonusCollision);
 	}
@@ -269,9 +279,11 @@ function enemyCollision(player, sprite) {
 }
 
 function bonusCollision (player, sprite) {
-	// trace('bonusCollision, sprite = ');
-	// trace(sprite);
+	trace('bonusCollision, sprite = ');
+	trace(sprite);
 	var bonus = sectorManager.activeSector.bonuses.collection[sprite.idx];
+	trace('bonus = ');
+	trace(bonus);
 	sprite.kill();
 	bonus.active = false; 
 	

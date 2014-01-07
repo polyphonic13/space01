@@ -43,7 +43,7 @@ var config = {
 		enemies: [{
 			type: 'caterpillar01',
 			start: {
-				x: 200,
+				x: 512,
 				y: 0
 			},
 			speed: 1,
@@ -56,7 +56,7 @@ var config = {
 		{
 			type: 'caterpillar01',
 			start: {
-				x: 1000,
+				x: 900,
 				y: 0
 			},
 			speed: 1,
@@ -97,7 +97,7 @@ var config = {
 		{
 			type: 'caterpillar01',
 			start: {
-				x: 2000,
+				x: 1800,
 				y: 0
 			},
 			speed: 1,
@@ -107,15 +107,7 @@ var config = {
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		}],
-		bonuses: [{
-			type: 'lollipop',
-			start: {
-				x: 1250,
-				y: 0
-			},
-			score: 100,
-			health: 10
-		}]
+		bonuses: []
 	},
 	{
 		bounds: {
@@ -204,7 +196,7 @@ var config = {
 		bonuses: [{
 			type: 'lollipop',
 			start: {
-				x: 3080,
+				x: 3100,
 				y: 0
 			},
 			score: 100,

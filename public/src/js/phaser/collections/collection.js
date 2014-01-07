@@ -1,7 +1,8 @@
 var Collection = (function() {
 	
-	function Collection(params) {
+	function Collection(params, id) {
 		this.model = params;
+		this.id = id;
 		this.collection = [];
 	}
 	

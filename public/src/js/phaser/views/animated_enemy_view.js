@@ -23,11 +23,12 @@ var AnimatedEnemyView = (function() {
 	}
 	
 	AnimatedEnemyView.prototype.update = function(params) {
+		
 		var enemyX = this.sprite.body.screenX;
 		var playerX = params.player.body.screenX;
 
 		if(enemyX < (playerX + config.stage.width/2) && enemyX > (playerX - config.stage.width/2)) {
-			// trace('enemy['+this.gameObj.name+'] activated');
+			// trace('enemy['+this.sprite.name+'] activated');
 			var animations = this.sprite.animations; 
 
 			if(enemyX > (playerX + 10)) {

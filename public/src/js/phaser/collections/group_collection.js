@@ -1,8 +1,8 @@
 var GroupCollection = (function() {
 	Utils.inherits(GroupCollection, Collection);
 	
-	function GroupCollection(params) {
-		GroupCollection._super.constructor.call(this, params);
+	function GroupCollection(params, id) {
+		GroupCollection._super.constructor.call(this, params, id);
 		this.group = game.add.group();
 	}
 	
