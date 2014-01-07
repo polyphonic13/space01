@@ -4,6 +4,8 @@ var config = {
 		height: document.documentElement.clientHeight,
 	},
 	world: {
+		x: 0,
+		y: 0,
 		width: 4098,
 		height: document.documentElement.clientHeight,
 		gravity: 15
@@ -217,7 +219,7 @@ var config = {
 		width: 76,
 		height: 148,
 		bounce: 0.2,
-		speed: 50,
+		speed: 350,
 		health: 100,
 		damage: 5,
 		jumpHeight: 350,

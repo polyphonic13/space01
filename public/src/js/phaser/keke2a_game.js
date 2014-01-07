@@ -31,6 +31,8 @@ function preload() {
 }
 
 function create() {
+	game.world.setBounds(config.world.x, config.world.y, config.world.width, config.world.height);
+	
 	createScenery();
 	createTerrain();
 	createPlayer();
@@ -120,7 +122,7 @@ function createControls() {
 
   // Init game controller with left thumb stick
   // See https://github.com/austinhallock/html5-virtual-game-controller/ for examples.
-
+/*
 	GameController.init({
         left: {
 			position: { left: 75, bottom: 75 },
@@ -183,7 +185,7 @@ function createControls() {
     // similar to this example page, where the canvas isn't the whole screen.
     $('canvas').last().css('z-index', 20);
     $('canvas').last().offset( $('canvas').first().offset() );
-
+*/
 }
 
 function createGui() {
@@ -363,7 +365,7 @@ function checkGameInput() {
 			config.player.justJumped = false;
 			// setTimeout(resetJump, 1500);
 		}
-
+/*
 		// Check key states every frame.
 		if (game.input.joystickLeft) {
 			var jl = game.input.joystickLeft;
@@ -384,7 +386,7 @@ function checkGameInput() {
 			// 	}
 			// }
 		}
-
+*/
 		if(player.body.touching.down && config.player.jumpButtonPressed && !config.player.justJumped) {
 			player.body.velocity.y = -config.player.jumpHeight;
 			config.player.jumping = true;
@@ -483,6 +485,6 @@ function quit() {
 	trace('quit');
 	gameOver = true;
 	// clearSectors();
-	GameController.destroy();
+	// GameController.destroy();
 	game.destroy();
 }
