@@ -1,6 +1,7 @@
 var gameOver = false;
 var platforms;
 var sectorManager;
+var controls;
 var cursors;
 // phaser object
 var player; 
@@ -10,7 +11,7 @@ var scoreText;
 
 var quitButton;
 
-var game = new Phaser.Game(config.stage.width, config.stage.height, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var game = new Phaser.Game(stage.width, stage.height, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
 function preload() {
 	// images
@@ -45,19 +46,19 @@ function create() {
 
 function createScenery() {
 	var sky = game.add.sprite(0, 0, 'sky');
-	sky.width = config.stage.width;
-	sky.height = config.stage.height;
+	sky.width = stage.width;
+	sky.height = stage.height;
 	sky.fixedToCamera = true;
 	
 	game.add.sprite(0, 0, 'mountains');
-	game.add.sprite(0, (config.stage.height - 490), 'treesBack');
+	game.add.sprite(0, (stage.height - 490), 'treesBack');
 	game.add.sprite(0, 0, 'treesFore');
 	game.add.sprite(2048, 0, 'mountains');
-	game.add.sprite(2048, (config.stage.height - 490), 'treesBack');
+	game.add.sprite(2048, (stage.height - 490), 'treesBack');
 	game.add.sprite(2048, 0, 'treesFore');
 
-	game.add.sprite(0, (config.stage.height - 200), 'grass1');
-	game.add.sprite(2048, (config.stage.height - 200), 'grass2');
+	game.add.sprite(0, (stage.height - 200), 'grass1');
+	game.add.sprite(2048, (stage.height - 200), 'grass2');
 	
 }
 
@@ -105,7 +106,7 @@ function createTerrain() {
 }
 
 function createPlayer() {
-	player = game.add.sprite((config.stage.width/2 - 76/2), (config.stage.height - 148), 'keke');
+	player = game.add.sprite((stage.width/2 - 76/2), (stage.height - 148), 'keke');
 	player.anchor.setTo(0.5, 0.5);
 
 	player.animations.add('idleR', [0], 14);
@@ -129,6 +130,7 @@ function createControls() {
 	key1 = game.input.keyboard.addKey(Phaser.Keyboard.Q);
 	key1.onDown.add(quit, this);
 
+	controls = new ControlButtonCollection(config.controls);
   // Init game controller with left thumb stick
   // See https://github.com/austinhallock/html5-virtual-game-controller/ for examples.
 /*
@@ -150,7 +152,7 @@ function createControls() {
             }
         },
         right: {
-			position: { left: config.stage.width - 130, top: config.stage.height - 130 },
+			position: { left: stage.width - 130, top: stage.height - 130 },
 			buttons: [
 			{ 
 				radius: 50,
@@ -158,7 +160,7 @@ function createControls() {
 				fontSize: 18, 
 				offset: {
 					x: 0,
-					y: -(config.stage.height - 150)
+					y: -(stage.height - 150)
 				},
 				touchStart: function() { 
 					trace('right controller left button touchstart');
@@ -211,7 +213,7 @@ function update() {
 	if(!gameOver) {
 
 		sectorManager.checkTerrainCollision(platforms);
-		sectorManager.setActive(game.camera.x + (config.stage.width/2));
+		sectorManager.setActive(game.camera.x + (stage.width/2));
 		
 		var sector = sectorManager.activeSector;
 		sector.enemies.update({ player: player });
@@ -294,11 +296,11 @@ function killEnemy(enemy) {
 }
 
 function bonusCollision (player, sprite) {
-	trace('bonusCollision, sprite = ');
-	trace(sprite);
+	// trace('bonusCollision, sprite = ');
+	// trace(sprite);
 	var bonus = sectorManager.activeSector.bonuses.collection[sprite.idx];
-	trace('bonus = ');
-	trace(bonus);
+	// trace('bonus = ');
+	// trace(bonus);
 	sprite.kill();
 	bonus.active = false; 
 	
@@ -311,57 +313,41 @@ function bonusCollision (player, sprite) {
 
 function checkGameInput() {
 	if(!gameOver) {
-	 //  Reset the players velocity (movement)
-		player.body.velocity.x = 0;
-		var velX = 0;
-		if (cursors.left.isDown) {
-			velX = -config.player.speed;
-			config.player.facingForward = false;
-		}
-		else if (cursors.right.isDown) {
-			velX = config.player.speed;
-			config.player.facingForward = true;
-		}
-
-		if(player.body.touching.down) {
-			config.player.jumping = false;
-		}
-		//  Allow the player to jump if they are touching the ground.
-		if(cursors.up.isDown && player.body.touching.down && !config.player.justJumped) {
-			player.body.velocity.y = -config.player.jumpHeight;
-			config.player.jumping = true;
-			config.player.justJumped = false;
-			// setTimeout(resetJump, 1500);
-		}
-/*
-		// Check key states every frame.
-		if (game.input.joystickLeft) {
-			var jl = game.input.joystickLeft;
-			if(jl.normalizedX > 0.1) {
-				velX = config.player.speed;
-				config.player.facingForward = true;
-			} else if(jl.normalizedX < -0.1) {
+		if(controls.isDown(ControlButtonTypes.QUIT)) {
+			quit();
+		} else {
+		 //  Reset the players velocity (movement)
+			player.body.velocity.x = 0;
+			var velX = 0;
+			if (cursors.left.isDown || controls.isDown(ControlButtonTypes.LEFT)) {
 				velX = -config.player.speed;
 				config.player.facingForward = false;
 			}
+			else if (cursors.right.isDown || controls.isDown(ControlButtonTypes.RIGHT)) {
+				velX = config.player.speed;
+				config.player.facingForward = true;
+			}
 
-			// if(jl.normalizedY > 0.2) {
-			// 	if(player.body.touching.down && !config.player.justJumped) {
-			// 		player.body.velocity.y = -config.player.jumpHeight;
-			// 		config.player.jumping = true;
-			// 		config.player.justJumped = true;
-			// 		setTimeout(resetJump, 1000);
-			// 	}
-			// }
+			if(player.body.touching.down) {
+				config.player.jumping = false;
+			}
+			//  Allow the player to jump if they are touching the ground.
+			if(cursors.up.isDown || controls.isDown(ControlButtonTypes.UP)) {
+				if(player.body.touching.down && !config.player.justJumped) {
+					player.body.velocity.y = -config.player.jumpHeight;
+					config.player.jumping = true;
+					config.player.justJumped = false;
+					// setTimeout(resetJump, 1500);
+				}			
+			} 
+			if(player.body.touching.down && config.player.jumpButtonPressed && !config.player.justJumped) {
+				player.body.velocity.y = -config.player.jumpHeight;
+				config.player.jumping = true;
+				config.player.justJumped = true;
+				config.player.jumpButtonPressed = false;
+			}
+			player.body.velocity.x = velX;
 		}
-*/
-		if(player.body.touching.down && config.player.jumpButtonPressed && !config.player.justJumped) {
-			player.body.velocity.y = -config.player.jumpHeight;
-			config.player.jumping = true;
-			config.player.justJumped = true;
-			config.player.jumpButtonPressed = false;
-		}
-		player.body.velocity.x = velX;
 	}
 }
 

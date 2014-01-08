@@ -13,6 +13,12 @@ var Sectors = (function() {
 		})
 	}
 	
+	Sectors.prototype.checkTerrainCollision = function(ground) {
+		for(var key in this.collection) {
+			this.collection[key].checkTerrainCollision(ground);
+		}
+	};
+	
 	Sectors.prototype.setActive = function(x) {
 		var sectors = this.collection;
 		var bounds;
@@ -26,7 +32,6 @@ var Sectors = (function() {
 				}
 			}
 		}
-		
 	};
 	
 	return Sectors;

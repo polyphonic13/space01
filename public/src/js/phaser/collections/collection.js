@@ -14,12 +14,6 @@ var Collection = (function() {
 		}
 	};
 	
-	Collection.prototype.checkTerrainCollision = function(ground) {
-		for(var key in this.collection) {
-			this.collection[key].checkTerrainCollision(ground);
-		}
-	};
-	
 	Collection.prototype.addView = function(params, itemClass, idx) {
 		return new itemClass(params, idx);
 	};

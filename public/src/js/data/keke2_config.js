@@ -1,13 +1,14 @@
+var stage = {
+	width: document.documentElement.clientWidth,
+	height: document.documentElement.clientHeight
+};
+
 var config = {
-	stage: {
-		width: document.documentElement.clientWidth,
-		height: document.documentElement.clientHeight,
-	},
 	world: {
 		x: 0,
 		y: 0,
 		width: 4098,
-		height: document.documentElement.clientHeight,
+		height: stage.height,
 		gravity: 15
 	},
 	images: {
@@ -19,6 +20,9 @@ var config = {
 		grass1: 'images/grass01.png',
 		grass2: 'images/grass02.png',
 		lollipop: 'images/lollipop.png',
+		leftButton: 'images/arrow_left.png',
+		rightButton: 'images/arrow_right.png',
+		upButton: 'images/arrow_up.png',
 		quitButton: 'images/quit_button.png'
 	},
 	sprites: {
@@ -35,6 +39,34 @@ var config = {
 			frames: 12
 		}
 	},
+	controls: [{
+		type: ControlButtonTypes.LEFT,
+		start: {
+			x: 20,
+			y: stage.height - 50
+		}
+	},
+	{
+		type: ControlButtonTypes.RIGHT,
+		start: {
+			x: 70,
+			y: stage.height - 50
+		}
+	},
+	{
+		type: ControlButtonTypes.UP,
+		start: {
+			x: stage.width - 50,
+			y: stage.height - 50
+		}
+	},
+	{
+		type: ControlButtonTypes.QUIT,
+		start: {
+			x: stage.width - 50,
+			y: 10
+		}
+	}],
 	sectors: [{
 		bounds: {
 			start: 0,
@@ -50,7 +82,7 @@ var config = {
 			speed: 0.25,
 			damage: 5,
 			health: 5,
-			score: 1000,
+			score: 500,
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		},
@@ -64,7 +96,7 @@ var config = {
 			speed: 0.5,
 			damage: 5,
 			health: 5,
-			score: 250,
+			score: 500,
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		}],
@@ -92,8 +124,8 @@ var config = {
 			},
 			speed: 0.5,
 			damage: 5,
-			health: 5,
-			score: 500,
+			health: 10,
+			score: 1000,
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		},
@@ -106,8 +138,8 @@ var config = {
 			},
 			speed: 1,
 			damage: 5,
-			health: 5,
-			score: 500,
+			health: 10,
+			score: 1000,
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		}],
@@ -127,8 +159,8 @@ var config = {
 			},
 			speed: 0.75,
 			damage: 5,
-			health: 5,
-			score: 500,
+			health: 20,
+			score: 1000,
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		},
@@ -142,7 +174,7 @@ var config = {
 			speed: 1,
 			damage: 5,
 			health: 5,
-			score: 500,
+			score: 1000,
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		}],

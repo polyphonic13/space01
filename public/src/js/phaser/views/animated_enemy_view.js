@@ -27,7 +27,7 @@ var AnimatedEnemyView = (function() {
 		var playerX = params.player.body.screenX;
 		// trace('AnimatedEnemyView['+this.sprite.name+']/update\n\tenemyX = ' + enemyX + ', playerX = ' + playerX);
 
-		if(enemyX < (playerX + config.stage.width/2) && enemyX > (playerX - config.stage.width/2)) {
+		if(enemyX < (playerX + stage.width/2) && enemyX > (playerX - stage.width/2)) {
 			// trace('\tenemy['+this.sprite.name+'] in range');
 			var animations = this.sprite.animations; 
 
