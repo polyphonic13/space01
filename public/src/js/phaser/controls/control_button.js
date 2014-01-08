@@ -1,5 +1,5 @@
 Polyworks.ControlButton = (function() {
-	Utils.inherits(ControlButton, Polyworks.Base);
+	Polyworks.Utils.inherits(ControlButton, Polyworks.Base);
 	
 	var _this;
 	function ControlButton(params, id) {

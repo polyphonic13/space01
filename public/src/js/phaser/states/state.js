@@ -1,5 +1,5 @@
 Polyworks.State = (function() {
-	Utils.inherits(State, Polyworks.Base);
+	Polyworks.Utils.inherits(State, Polyworks.Base);
 	
 	function State(params, id) {
 		State._super.constructor.call(this, params, id);

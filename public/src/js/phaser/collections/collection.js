@@ -1,5 +1,5 @@
 Polyworks.Collection = (function() {
-	Utils.inherits(Collection, Polyworks.Base);
+	Polyworks.Utils.inherits(Collection, Polyworks.Base);
 	
 	function Collection(params, id) {
 		Collection._super.constructor.call(this, params, id);

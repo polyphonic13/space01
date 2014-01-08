@@ -1,8 +1,8 @@
-var Utils = (function() {
-	var gameUtils = {};
+Polyworks.Utils = (function() {
+	var utils = {};
 
 
-	gameUtils.clone = function(a) {
+	utils.clone = function(a) {
 		var obj = {};
 		for(var key in a) {
 			obj[key] = a[key];
@@ -10,20 +10,20 @@ var Utils = (function() {
 		return obj;
 	};
 
-	gameUtils.extend = function(a, b) {
+	utils.extend = function(a, b) {
 		for(var key in b) {
 			a[key] = b[key];
 		} 
 		return a;
 	};
 
-	gameUtils.extract = function(obj, prop) {
+	utils.extract = function(obj, prop) {
 		var a = obj[prop];
 		if(obj !== window) { delete obj[prop]; }
 		return a;
 	};
 
-	gameUtils.objLength = function(obj) {
+	utils.objLength = function(obj) {
 		var length = 0;
 		for(var key in obj) {
 			if(obj.hasOwnProperty(key)) { length++; }
@@ -31,22 +31,22 @@ var Utils = (function() {
 		return length;
 	};
 
-	gameUtils.mixin = function(c, p) {
+	utils.mixin = function(c, p) {
 	    for(var k in p) if(p[k]) c[k] = p[k];
 	};
 
-	gameUtils.bind = function(o, f) {
+	utils.bind = function(o, f) {
 	    return function() { return f.apply(o, arguments); };
 	};
 
-	gameUtils.inherits = function(c, p) {
+	utils.inherits = function(c, p) {
 	    this.mixin(c, p);
 	    function f() { this.constructor = c; };
 	    f.prototype = c._super = p.prototype;
 	    c.prototype = new f();
 	};
 
-	gameUtils.isInView = function(pos) {
+	utils.isInView = function(pos) {
 		if(pos.x > 0 && pos.x < stageConfig.width && pos.y > 0 && pos.y < stageConfig.height) {
 			return true;
 		} else {
@@ -54,5 +54,23 @@ var Utils = (function() {
 		}
 	};
 	
-	return gameUtils;
+	utils.addSprite = function(params) {
+		var sprite;
+		if(params.parentType === 'group') {
+			sprite = this.addSpriteToGroup(params);
+		} else {
+			sprite = this.addSpriteToGame(params); // default, parentType = game or undefined
+		}
+		return sprite;
+	};
+	
+	utils.addSpriteToGame = function(params) {
+		return game.add.sprite(params.start.x, params.start.y, params.type);
+	};
+	
+	utils.addSpriteToGroup = function(params) {
+		return params.group.create(params.start.x, params.start.y, params.type);
+	};
+	
+	return utils;
 }());

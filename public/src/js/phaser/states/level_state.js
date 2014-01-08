@@ -1,5 +1,5 @@
 Polyworks.LevelState = (function() {
-	Utils.inherits(LevelState, Polyworks.State); 
+	Polyworks.Utils.inherits(LevelState, Polyworks.State); 
 	
 	function LevelState(params, id) {
 		LevelState._super.constructor.call(this, params, id);
@@ -38,7 +38,7 @@ Polyworks.LevelState = (function() {
 
 		this.createScenery();
 		this.createTerrain();
-		this.sectorManager = new Polyworks.SectorManager(this.model.sectors);
+		this.sectorManager = new Polyworks.Sectors(this.model.sectors);
 		this.createPlayer();
 		this.createGui();
 		this.createControls();
@@ -122,7 +122,7 @@ Polyworks.LevelState = (function() {
 		key1 = game.input.keyboard.addKey(Phaser.Keyboard.Q);
 		key1.onDown.add(quit, this);
 
-		this.controls = new Polyworks.ControlButtonCollection(config.controls);
+		this.controls = new Polyworks.ControlButtons(config.controls);
 
 	 };
 	

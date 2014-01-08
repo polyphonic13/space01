@@ -1,11 +1,11 @@
-Polyworks.ControlButtonCollection = (function() {
-	Utils.inherits(ControlButtonCollection, Polyworks.Collection);
+Polyworks.ControlButtons = (function() {
+	Polyworks.Utils.inherits(ControlButtons, Polyworks.Collection);
 	
 	var _this = this;
-	function ControlButtonCollection(params) {
+	function ControlButtons(params) {
 		_this = this;
 		params.collection = this;
-		ControlButtonCollection._super.constructor.call(this, params);
+		ControlButtons._super.constructor.call(this, params);
 		this.init(Polyworks.ControlButton);
 		this.invisibleDown = false;
 
@@ -23,8 +23,8 @@ Polyworks.ControlButtonCollection = (function() {
 		}
 	}
 	
-	ControlButtonCollection.prototype.notifyPressed = function(params) {
-		trace('ControlButtonCollection/notifyPressed, params =');
+	ControlButtons.prototype.notifyPressed = function(params) {
+		trace('ControlButtons/notifyPressed, params =');
 		trace(params);
 		if(params.pressed) { // inputDown received
 			switch(params.button) {
@@ -57,13 +57,13 @@ Polyworks.ControlButtonCollection = (function() {
 		}
 	};
 	
-	ControlButtonCollection.prototype.getIndexByName = function(name) {
+	ControlButtons.prototype.getIndexByName = function(name) {
 		return this.nameIndex[name];
 	};
 	
-	ControlButtonCollection.prototype.isDown = function(name) {
+	ControlButtons.prototype.isDown = function(name) {
 		return this.collection[this.getIndexByName(name)].pressed;
 	};
 	
-	return ControlButtonCollection;
+	return ControlButtons;
 })();

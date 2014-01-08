@@ -1,17 +1,10 @@
 Polyworks.Sector = (function() {
-	Utils.inherits(Sector, Polyworks.Base);
+	Polyworks.Utils.inherits(Sector, Polyworks.Base);
 	
 	function Sector(params, id) {
 		// trace('Sector['+idx+']/constructor, params = ');
 		// trace(params);
 		Sector._super.constructor.call(this, params, id);
-
-		this.__defineGetter__('enemyGroup', function() {
-			return this.enemies.get('group');
-		});
-		this.__defineGetter__('bonusGroup', function() {
-			return this.bonuses.get('group');
-		});
 
 		this.__defineGetter__('bounds', function() {
 			return this.get('bounds');
@@ -25,11 +18,11 @@ Polyworks.Sector = (function() {
 		// trace('_this = ');
 		// trace(_this);
 		var sectorId = 'Sector' + this.id;
-		this.enemies = new Polyworks.EnemyCollection(this.model.enemies, game, sectorId);
+		this.enemies = new Polyworks.Enemies(this.model.enemies, sectorId);
 		this.enemies.init(Polyworks.AnimatedEnemyView);
 
-		this.bonuses = new Polyworks.GroupCollection(this.model.bonuses, game, sectorId);
-		this.bonuses.init(Polyworks.GroupView);
+		this.bonuses = new Polyworks.Groups(this.model.bonuses, sectorId);
+		this.bonuses.init(Polyworks.SpriteView);
 
 		this.created = true;
 	}
