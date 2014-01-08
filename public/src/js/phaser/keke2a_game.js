@@ -200,10 +200,10 @@ function createControls() {
 function createGui() {
    //  The score
 	var guiConsole = game.add.group(null);
-    scoreText = game.add.text(16, 16, 'Score: 0', { fontSize: '12px', fill: '#ffffff' });
+    scoreText = game.add.text(16, 15, 'Score: 0', { font: '18px Arial', fill: '#ffffff' });
 	guiConsole.add(scoreText);
 
-	healthText = game.add.text(16, 50, 'Health: ' + config.player.health, { fontSize: '12px', fill: '#ffffff' });
+	healthText = game.add.text(16, 40, 'Health: ' + config.player.health, { font: '18px Arial', fill: '#ffffff' });
 	guiConsole.add(healthText);
 }
 
