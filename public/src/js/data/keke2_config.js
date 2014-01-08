@@ -47,7 +47,7 @@ var config = {
 				x: 512,
 				y: 0
 			},
-			speed: 1,
+			speed: 0.25,
 			damage: 5,
 			health: 5,
 			score: 1000,
@@ -61,7 +61,7 @@ var config = {
 				x: 900,
 				y: 0
 			},
-			speed: 1,
+			speed: 0.5,
 			damage: 5,
 			health: 5,
 			score: 250,
@@ -90,7 +90,7 @@ var config = {
 				x: 1500,
 				y: 0
 			},
-			speed: 1,
+			speed: 0.5,
 			damage: 5,
 			health: 5,
 			score: 500,
@@ -125,7 +125,7 @@ var config = {
 				x: 2500,
 				y: 0
 			},
-			speed: 1,
+			speed: 0.75,
 			damage: 5,
 			health: 5,
 			score: 500,

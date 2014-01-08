@@ -249,6 +249,8 @@ function checkObjectCollision(views, callback) {
 }
 
 function enemyCollision(player, sprite) {
+	var enemy = sectorManager.activeSector.enemies.collection[sprite.idx];
+	
 	// trace('enemyCollision');
 	// trace(sprite);
 	// trace('player overlap x/y = ' + sprite.body.overlapX + '/' + sprite.body.overlapY);
@@ -262,20 +264,33 @@ function enemyCollision(player, sprite) {
 		player.body.velocity.y = -config.player.jumpHeight/2;
 		playerJump();
 		// keke damages enemy
-		killEnemy(sprite);
+		// killEnemy(sprite);
+		enemy.health -= config.player.damage;
+		if(enemy.health <= 0) {
+			// killEnemy(sprite);
+			killEnemy(enemy);
+		}
 	} else {
 		// trace('enemy damage player, player touching');
 		// trace(player.body.touching);
 		// trace('\tenemy touching');
 		// trace(sprite.body.touching);
 		// enemy damages keke
-		config.player.health -= 1;
+		config.player.health -= enemy.damage;
 		healthText.content = 'Health: ' + config.player.health;
 		if(config.player.health <= 0) {
 			quit();
 		}
 	}
 
+}
+
+function killEnemy(enemy) {
+	// trace('killEnemy');
+	score += enemy.score;
+	scoreText.content = 'Score: ' + score;
+
+	enemy.kill();
 }
 
 function bonusCollision (player, sprite) {
@@ -417,17 +432,6 @@ function playerJump() {
 		config.player.currentAnimation = 'jumpL';
 	}
 	
-}
-
-function killEnemy(sprite) {
-	trace('killEnemy, sprite = ');
-	trace(sprite);
-	var enemy = sectorManager.activeSector.enemies.collection[sprite.idx];
-	enemy.active = false;
-	sprite.kill();
-	
-	score += enemy.score;
-	scoreText.content = 'Score: ' + score;
 }
 
 function quit() {

@@ -52,5 +52,11 @@ var AnimatedEnemyView = (function() {
 		}
 	};
 	
+	AnimatedEnemyView.prototype.kill = function() {
+		trace('AnimatedEnemey['+this.sprite.name+']/kill');
+		this.active = false;
+		this.sprite.destroy();
+	};
+	
 	return AnimatedEnemyView;
 })();
