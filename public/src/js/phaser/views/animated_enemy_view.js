@@ -23,31 +23,31 @@ var AnimatedEnemyView = (function() {
 	}
 	
 	AnimatedEnemyView.prototype.update = function(params) {
-		
 		var enemyX = this.sprite.body.screenX;
 		var playerX = params.player.body.screenX;
+		// trace('AnimatedEnemyView['+this.sprite.name+']/update\n\tenemyX = ' + enemyX + ', playerX = ' + playerX);
 
 		if(enemyX < (playerX + config.stage.width/2) && enemyX > (playerX - config.stage.width/2)) {
-			// trace('enemy['+this.sprite.name+'] activated');
+			// trace('\tenemy['+this.sprite.name+'] in range');
 			var animations = this.sprite.animations; 
 
 			if(enemyX > (playerX + 10)) {
-				if(_this.currentAnimation !== 'walkL') {
+				if(this.currentAnimation !== 'walkL') {
 					animations.play('walkL', animations.frameRate, true);
-					_this.currentAnimation = 'walkL';
+					this.currentAnimation = 'walkL';
 				}
-				_this.sprite.x -= _this.speed;
+				this.sprite.x -= this.model.speed;
 
 			} else if(enemyX < (playerX - 10)){
 				if(this.currentAnimation !== 'walkR') {
 					animations.play('walkR', animations.frameRate, true);
-					_this.currentAnimation = 'walkR';
+					this.currentAnimation = 'walkR';
 				}
-				_this.sprite.x += _this.speed;
+				this.sprite.x += this.model.speed;
 			} else {
 				animations.stop();
-				_this.sprite.frame = 0
-				_this.currentAnimation = '';
+				this.sprite.frame = 0
+				this.currentAnimation = '';
 			}
 		}
 	};

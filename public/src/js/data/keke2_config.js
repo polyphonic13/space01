@@ -42,6 +42,7 @@ var config = {
 		},
 		enemies: [{
 			type: 'caterpillar01',
+			name: 'sector0-enemy0',
 			start: {
 				x: 512,
 				y: 0
@@ -49,12 +50,13 @@ var config = {
 			speed: 1,
 			damage: 5,
 			health: 5,
-			score: 500,
+			score: 1000,
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		},
 		{
 			type: 'caterpillar01',
+			name: 'sector0-enemy1',
 			start: {
 				x: 900,
 				y: 0
@@ -62,7 +64,7 @@ var config = {
 			speed: 1,
 			damage: 5,
 			health: 5,
-			score: 500,
+			score: 250,
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		}],
@@ -83,6 +85,7 @@ var config = {
 		},
 		enemies: [{
 			type: 'caterpillar01',
+			name: 'sector1-enemy0',
 			start: {
 				x: 1500,
 				y: 0
@@ -96,6 +99,7 @@ var config = {
 		},
 		{
 			type: 'caterpillar01',
+			name: 'sector1-enemy1',
 			start: {
 				x: 1800,
 				y: 0
@@ -116,6 +120,7 @@ var config = {
 		},
 		enemies: [{
 			type: 'caterpillar01',
+			name: 'sector2-enemy0',
 			start: {
 				x: 2500,
 				y: 0
@@ -129,6 +134,7 @@ var config = {
 		},
 		{
 			type: 'caterpillar01',
+			name: 'sector2-enemy1',
 			start: {
 				x: 3050,
 				y: 0
@@ -168,6 +174,7 @@ var config = {
 		},
 		enemies: [{
 			type: 'caterpillar01',
+			name: 'sector3-enemy0',
 			start: {
 				x: 3580,
 				y: 0
@@ -181,6 +188,7 @@ var config = {
 		},
 		{
 			type: 'caterpillar01',
+			name: 'sector3-enemy1',
 			start: {
 				x: 4000,
 				y: 0

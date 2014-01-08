@@ -21,7 +21,8 @@ var GroupView = (function() {
 		// trace(_this);
 		var start = _this.model.start;
 		var sprite = _this.model.group.create(start.x, start.y, _this.model.type);
-		sprite.name = _this.model.type + '-' + _this.id;
+		// sprite.name = _this.model.type + '-' + _this.id;
+		sprite.name = _this.model.name;
 		sprite.idx = _this.id;
 
 		sprite.body.gravity.y = config.world.gravity;
