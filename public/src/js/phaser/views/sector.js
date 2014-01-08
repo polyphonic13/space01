@@ -25,11 +25,11 @@ Polyworks.Sector = (function() {
 		// trace('_this = ');
 		// trace(_this);
 		var sectorId = 'Sector' + this.id;
-		this.enemies = new Polyworks.EnemyCollection(this.model.enemies, sectorId);
-		this.enemies.init(AnimatedEnemyView);
+		this.enemies = new Polyworks.EnemyCollection(this.model.enemies, game, sectorId);
+		this.enemies.init(Polyworks.AnimatedEnemyView);
 
-		this.bonuses = new Polyworks.GroupCollection(this.model.bonuses, sectorId);
-		this.bonuses.init(GroupView);
+		this.bonuses = new Polyworks.GroupCollection(this.model.bonuses, game, sectorId);
+		this.bonuses.init(Polyworks.GroupView);
 
 		this.created = true;
 	}

@@ -1,5 +1,1 @@
-var Polyworks = {
-	enums: {},
-	utils: {},
-	views: {}
-};
+var Polyworks = {};

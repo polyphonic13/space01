@@ -23,7 +23,8 @@ var config = {
 		leftButton: 'images/arrow_left.png',
 		rightButton: 'images/arrow_right.png',
 		upButton: 'images/arrow_up.png',
-		quitButton: 'images/quit_button.png'
+		quitButton: 'images/quit_button.png',
+		invisibleBg: 'images/invisible.png'
 	},
 	sprites: {
 		keke: {
@@ -40,6 +41,15 @@ var config = {
 		}
 	},
 	controls: [{
+		type: ControlButtonTypes.INVISIBLE_BG,
+		start: {
+			x: 0,
+			y: 0
+		},
+		width: stage.width, 
+		height: stage.height
+	},
+	{
 		type: ControlButtonTypes.LEFT,
 		start: {
 			x: 20,
@@ -67,7 +77,7 @@ var config = {
 			y: 10
 		}
 	}],
-	initialState: 'menu',
+	initialState: 'level1',
 	states: [{
 		id: 'menu',
 		type: 'State',

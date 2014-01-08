@@ -3,7 +3,7 @@ Polyworks.GroupView = (function() {
 	
 	var _this;
 	function GroupView(params, group, id) {
-		// trace('GroupView['+idx+']/constructor, params = ');
+		// trace('GroupView['+id+']/constructor, params = ');
 		// trace(params);
 		_this = this;
 		GroupView._super.constructor.call(_this, params, id);
@@ -13,8 +13,8 @@ Polyworks.GroupView = (function() {
 	}
 	
 	GroupView.prototype.init = function() {
-		// trace('GroupView['+_this.id+']/init, _this.model = ');
-		// trace(_this.model);
+		trace('GroupView['+_this.id+']/init, _this.model = ');
+		trace(_this.model);
 		// trace('\tthis = ');
 		// trace(this);
 		// trace('\t_this = ');

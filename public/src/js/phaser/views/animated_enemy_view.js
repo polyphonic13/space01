@@ -7,7 +7,7 @@ Polyworks.AnimatedEnemyView = (function() {
 		// trace(params);
 		_this = this;
 		AnimatedEnemyView._super.constructor.call(this, params, group, id);
-		
+
 		this.__defineGetter__('score', function() {
 			return this.get('score');
 		});

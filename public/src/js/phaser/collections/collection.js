@@ -1,8 +1,8 @@
 Polyworks.Collection = (function() {
+	Utils.inherits(Collection, Polyworks.Base);
 	
 	function Collection(params, id) {
-		this.model = params;
-		this.id = id;
+		Collection._super.constructor.call(this, params, id);
 		this.collection = [];
 	}
 	

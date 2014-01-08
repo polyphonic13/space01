@@ -3,6 +3,6 @@ var ControlButtonTypes = {
 	RIGHT: 'rightButton',
 	UP: 'upButton',
 	DOWN: 'downButton',
-	QUIT: 'quitButton'
-	
+	QUIT: 'quitButton',
+	INVISIBLE_BG: 'invisibleBg'
 };

@@ -1,11 +1,11 @@
-Polyworks.Sectors = (function() {
-	Utils.inherits(Sectors, Polyworks.Collection);
+Polyworks.SectorManager = (function() {
+	Utils.inherits(SectorManager, Polyworks.Collection);
 	
-	function Sectors(params) {
-		// trace('Sectors/constructor, params = ');
-		// trace(params);
-		Sectors._super.constructor.call(this, params);
-		this.init(Sector);
+	function SectorManager(params, id) {
+		trace('SectorManager/constructor, params = ');
+		trace(params);
+		SectorManager._super.constructor.call(this, params, id);
+		this.init(Polyworks.Sector);
 		this.activeSectorId = 0;
 
 		this.__defineGetter__('activeSector', function() {
@@ -13,13 +13,13 @@ Polyworks.Sectors = (function() {
 		})
 	}
 	
-	Sectors.prototype.checkTerrainCollision = function(ground) {
+	SectorManager.prototype.checkTerrainCollision = function(ground) {
 		for(var key in this.collection) {
 			this.collection[key].checkTerrainCollision(ground);
 		}
 	};
 	
-	Sectors.prototype.setActive = function(x) {
+	SectorManager.prototype.setActive = function(x) {
 		var sectors = this.collection;
 		var bounds;
 		for(var i = 0; i < sectors.length; i++) {
@@ -34,5 +34,5 @@ Polyworks.Sectors = (function() {
 		}
 	};
 	
-	return Sectors;
+	return SectorManager;
 })();

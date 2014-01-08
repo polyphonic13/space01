@@ -1,9 +1,8 @@
 Polyworks.State = (function() {
 	Utils.inherits(State, Polyworks.Base);
 	
-	function State(params, game) {
-		State._super.constructor.call(this, params);
-		this.game = game;
+	function State(params, id) {
+		State._super.constructor.call(this, params, id);
 	}
 	
 	State.prototype.preLoad = function() {

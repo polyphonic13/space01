@@ -2,7 +2,7 @@ Polyworks.SpriteView = (function() {
 	Utils.inherits(SpriteView, Polyworks.Base);
 	
 	var _this;
-	function SpriteView(params, group, id) {
+	function SpriteView(params, id) {
 		_this = this;
 		SpriteView._super.constructor.call(this, params, id);
 	}

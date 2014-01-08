@@ -9,11 +9,17 @@ Polyworks.ControlButton = (function() {
 	
 	ControlButton.prototype.init = function() {
 		var start = this.model.start;
-		// trace('ControlButton['+this.model.type+']/init, start x/y = ' + start.x + '/' + start.y);
+		trace('ControlButton['+this.model.type+']/init, start x/y = ' + start.x + '/' + start.y);
 	    this.button = game.add.button(start.x, start.y, this.model.type, null, this);
+		if(this.model.width) {
+			this.button.width = this.model.width;
+		}
+		if(this.model.height) {
+			this.button.height = this.model.height;
+		}
 		this.pressed = false;
 		this.addListeners();
-		
+
 	};
 	
 	ControlButton.prototype.actionOnClick = function() {
@@ -24,24 +30,28 @@ Polyworks.ControlButton = (function() {
 	ControlButton.prototype.addListeners = function() {
 		// trace('ControlButton['+this.model.type+']/addListeners, button = ');
 		// trace(this.button);
-		this.button.events.onInputDown.add(function() {
-			this.inputDown();
+		this.button.events.onInputDown.add(function(event, pointer) {
+			this.inputDown(event, pointer);
 		}, this);
-		this.button.events.onInputUp.add(function() {
-			this.inputUp();
+		this.button.events.onInputUp.add(function(event, pointer) {
+			this.inputUp(event, pointer);
 		}, this);
 	};
 	
-	ControlButton.prototype.inputDown = function() {
+	ControlButton.prototype.inputDown = function(event, pointer) {
 		trace('ControlButton['+this.model.type+']/inputDown');
 		this.pressed = true;
-		// this.model.parent.notify({ button: this.model.type, pressed: this.pressed });
+		if(this.callback) {
+			this.callback({ button: this.model.type, pressed: this.pressed, pointer: pointer });
+		}
 	};
 	
-	ControlButton.prototype.inputUp = function() {
+	ControlButton.prototype.inputUp = function(event, pointer) {
 		trace('ControlButton['+this.model.type+']/inputUp');
 		this.pressed = false;
-		// this.model.parent.notify({ button: this.model.type, pressed: this.pressed });
+		if(this.callback) {
+			this.callback({ button: this.model.type, pressed: this.pressed, pointer: pointer });
+		}
 	};
 	
 	return ControlButton;
