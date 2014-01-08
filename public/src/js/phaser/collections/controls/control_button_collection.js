@@ -6,9 +6,15 @@ var ControlButtonCollection = (function() {
 		this.init(ControlButton);
 		
 		this.nameIndex = {};
+		var name;
+		var button;
+		var controlConsole = game.add.group(null);
+		
 		for(var i = 0; i < this.collection.length; i++) {
-			var name = this.collection[i].model.type;
+			name = this.collection[i].model.type;
 			this.nameIndex[name] = i;
+			button = this.collection[i].button;
+			controlConsole.add(button);
 		}
 	}
 	
@@ -18,9 +24,9 @@ var ControlButtonCollection = (function() {
 	
 	ControlButtonCollection.prototype.isDown = function(name) {
 		// trace('ControlButonCollection/isDown, name = ' + name);
-		var button = this.collection[this.getButtonByName(name)];
+		var view = this.collection[this.getButtonByName(name)];
 		// trace(button);
-		return button.pressed;
+		return view.pressed;
 	};
 	
 	return ControlButtonCollection;

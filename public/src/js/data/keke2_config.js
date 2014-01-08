@@ -43,27 +43,27 @@ var config = {
 		type: ControlButtonTypes.LEFT,
 		start: {
 			x: 20,
-			y: stage.height - 50
+			y: stage.height - 80
 		}
 	},
 	{
 		type: ControlButtonTypes.RIGHT,
 		start: {
-			x: 70,
-			y: stage.height - 50
+			x: 120,
+			y: stage.height - 80
 		}
 	},
 	{
 		type: ControlButtonTypes.UP,
 		start: {
-			x: stage.width - 50,
-			y: stage.height - 50
+			x: stage.width - 80,
+			y: stage.height - 80
 		}
 	},
 	{
 		type: ControlButtonTypes.QUIT,
 		start: {
-			x: stage.width - 50,
+			x: stage.width - 80,
 			y: 10
 		}
 	}],
@@ -76,7 +76,7 @@ var config = {
 			type: 'caterpillar01',
 			name: 'sector0-enemy0',
 			start: {
-				x: 512,
+				x: 700,
 				y: 0
 			},
 			speed: 0.25,
@@ -90,7 +90,7 @@ var config = {
 			type: 'caterpillar01',
 			name: 'sector0-enemy1',
 			start: {
-				x: 900,
+				x: 1000,
 				y: 0
 			},
 			speed: 0.5,
@@ -100,15 +100,7 @@ var config = {
 			currentAnimation: '',
 			animations: caterpillarAnimations
 		}],
-		bonuses: [{
-			type: 'lollipop',
-			start: {
-				x: 750,
-				y: 0
-			},
-			score: 100,
-			health: 10
-		}]
+		bonuses: []
 	},
 	{
 		bounds: {

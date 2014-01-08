@@ -131,6 +131,7 @@ function createControls() {
 	key1.onDown.add(quit, this);
 
 	controls = new ControlButtonCollection(config.controls);
+	
   // Init game controller with left thumb stick
   // See https://github.com/austinhallock/html5-virtual-game-controller/ for examples.
 /*

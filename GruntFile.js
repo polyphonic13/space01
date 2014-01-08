@@ -37,13 +37,32 @@ module.exports = function(grunt) {
 					banner: "(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- KEKE_GAME.JS v<%= pkg.version %> created: <%= grunt.template.today(\"isoDateTime\") %>')})();\n"
 				},
 				src: [
-					'<%= srcDir %>/js/third_party/gamecontroller.js',
+					// '<%= srcDir %>/js/third_party/gamecontroller.js',
+					// '<%= srcDir %>/js/third_party/phaser.min.js',
+					// '<%= srcDir %>/js/utils/logger.js',
+					// 
+					// '<%= srcDir %>/js/data/caterpillar_animations2.js',
+					// '<%= srcDir %>/js/data/keke2_config.js',
+					// '<%= srcDir %>/js/phaser/keke2_game.js',
 					'<%= srcDir %>/js/third_party/phaser.min.js',
 					'<%= srcDir %>/js/utils/logger.js',
-
+					'<%= srcDir %>/js/utils/utils.js',
+					'<%= srcDir %>/js/phaser/enum/control_button_types.js',
 					'<%= srcDir %>/js/data/caterpillar_animations2.js',
 					'<%= srcDir %>/js/data/keke2_config.js',
-					'<%= srcDir %>/js/phaser/keke2_game.js',
+					'<%= srcDir %>/js/phaser/base.js',
+					'<%= srcDir %>/js/phaser/views/sprite_view.js',
+					'<%= srcDir %>/js/phaser/views/controls/control_button.js',
+					'<%= srcDir %>/js/phaser/views/group_view.js',
+					'<%= srcDir %>/js/phaser/views/animated_group_view.js',
+					'<%= srcDir %>/js/phaser/views/animated_enemy_view.js',
+					'<%= srcDir %>/js/phaser/views/sector.js',
+					'<%= srcDir %>/js/phaser/collections/collection.js',
+					'<%= srcDir %>/js/phaser/collections/controls/control_button_collection.js',
+					'<%= srcDir %>/js/phaser/collections/group_collection.js',
+					'<%= srcDir %>/js/phaser/collections/enemy_collection.js',
+					'<%= srcDir %>/js/phaser/collections/sectors.js',
+					'<%= srcDir %>/js/phaser/keke2a_game.js',
 				],
 				dest: '<%= deployDir %>/keke2/js/keke2_game.js'
 				
