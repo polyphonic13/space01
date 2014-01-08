@@ -1,4 +1,4 @@
-var Collection = (function() {
+Polyworks.Collection = (function() {
 	
 	function Collection(params, id) {
 		this.model = params;

@@ -1,4 +1,4 @@
-var Base = (function() {
+Polyworks.Base = (function() {
 	
 	var _this;
 	function Base(params, id) {

@@ -1,5 +1,5 @@
-var GroupView = (function() {
-	Utils.inherits(GroupView, Base); 
+Polyworks.GroupView = (function() {
+	Utils.inherits(GroupView, Polyworks.Base); 
 	
 	var _this;
 	function GroupView(params, group, id) {

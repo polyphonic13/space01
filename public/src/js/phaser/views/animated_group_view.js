@@ -1,5 +1,5 @@
-var AnimatedGroupView = (function() {
-	Utils.inherits(AnimatedGroupView, GroupView);
+Polyworks.AnimatedGroupView = (function() {
+	Utils.inherits(AnimatedGroupView, Polyworks.GroupView);
 	
 	var _this;
 	function AnimatedGroupView(params, group, id) {

@@ -62,6 +62,9 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/phaser/collections/group_collection.js',
 					'<%= srcDir %>/js/phaser/collections/enemy_collection.js',
 					'<%= srcDir %>/js/phaser/collections/sectors.js',
+					'<%= srcDir %>/js/phaser/states/state.js',
+					'<%= srcDir %>/js/phaser/states/level_state.js',
+					'<%= srcDir %>/js/phaser/keke2a_game.js',
 					'<%= srcDir %>/js/phaser/keke2a_game.js',
 				],
 				dest: '<%= deployDir %>/keke2/js/keke2_game.js'

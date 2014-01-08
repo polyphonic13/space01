@@ -1,5 +1,5 @@
-var ControlButtonCollection = (function() {
-	Utils.inherits(ControlButtonCollection, Collection);
+Polyworks.ControlButtonCollection = (function() {
+	Utils.inherits(ControlButtonCollection, Polyworks.Collection);
 	
 	function ControlButtonCollection(params) {
 		params.parent = this;

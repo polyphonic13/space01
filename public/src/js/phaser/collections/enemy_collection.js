@@ -1,5 +1,5 @@
-var EnemyCollection = (function() {
-	Utils.inherits(EnemyCollection, GroupCollection);
+Polyworks.EnemyCollection = (function() {
+	Utils.inherits(EnemyCollection, Polyworks.GroupCollection);
 	
 	function EnemyCollection(params, id) {
 		EnemyCollection._super.constructor.call(this, params, id);

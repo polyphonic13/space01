@@ -1,5 +1,5 @@
-var SpriteView = (function() {
-	Utils.inherits(SpriteView, Base);
+Polyworks.SpriteView = (function() {
+	Utils.inherits(SpriteView, Polyworks.Base);
 	
 	var _this;
 	function SpriteView(params, group, id) {

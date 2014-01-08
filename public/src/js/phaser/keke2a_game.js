@@ -12,172 +12,41 @@ var scoreText;
 var quitButton;
 
 var game = new Phaser.Game(stage.width, stage.height, Phaser.AUTO, '', { preload: preload, create: create, update: update });
-var menuState = new Phaser.State();
-var levelState = new Phaser.State({
-	preload: function() {
-		trace('levelState/preload');
-		create();
-		// var images = config.images;
-		// trace('preload images');
-		// for(key in images) {
-		// 	game.load.image(key, images[key]);
-		// }
-		// var sprites = config.sprites;
-		// trace('preload sprites');
-		// for(key in sprites) {
-		// 	// trace('\t' + key + ', width = ' + sprites[key].width + ', height = ' + sprites[key].height + ', frames = ' + sprites[key].frames);
-		// 	game.load.spritesheet(key, sprites[key].url, sprites[key].width, sprites[key].height, sprites[key].frames);
-		// }
-		// 
-		// // keyboard buttons
-		// cursors = game.input.keyboard.createCursorKeys();
-	},
-	// create: function() {
-	// 	game.world.setBounds(config.world.x, config.world.y, config.world.width, config.world.height);
-	// 	
-	// 	createScenery();
-	// 	createTerrain();
-	// 	createPlayer();
-	// 
-	// 	sectorManager = new Sectors(config.sectors);
-	// 
-	// 	createControls();
-	// 	createGui();
-	// },
-	update: function() {
-		if(!gameOver) {
 
-			sectorManager.checkTerrainCollision(platforms);
-			sectorManager.setActive(game.camera.x + (stage.width/2));
-
-			var sector = sectorManager.activeSector;
-			sector.enemies.update({ player: player });
-
-			checkCollisions(sector);
-
-			checkGameInput();
-			setPlayerAnimations();
-		}
-		
-	}
-});
-var quitState = new Phaser.State();
+var levelOne = new Polyworks.LevelState({});	
+// });
+// var quitState = new Phaser.State();
 // game.state.add('menu', menuState, false);
-// game.state.add('level0', levelState, true);
+game.state.add('level1', levelOne, true);
 // game.state.add('quit', quitState, false);
-// 
+
 // game.state.start('level0');
+// game.switchState(levelOne);
 
 function preload() {
+	trace('preload');
 	// images
-	var images = config.images;
-	trace('preload images');
-	for(key in images) {
-		game.load.image(key, images[key]);
-	}
-	var sprites = config.sprites;
-	trace('preload sprites');
-	for(key in sprites) {
-		// trace('\t' + key + ', width = ' + sprites[key].width + ', height = ' + sprites[key].height + ', frames = ' + sprites[key].frames);
-		game.load.spritesheet(key, sprites[key].url, sprites[key].width, sprites[key].height, sprites[key].frames);
-	}
-
-	// keyboard buttons
-	cursors = game.input.keyboard.createCursorKeys();
+	// var images = config.images;
+	// trace('preload images');
+	// for(key in images) {
+	// 	game.load.image(key, images[key]);
+	// }
+	// var sprites = config.sprites;
+	// trace('preload sprites');
+	// for(key in sprites) {
+	// 	// trace('\t' + key + ', width = ' + sprites[key].width + ', height = ' + sprites[key].height + ', frames = ' + sprites[key].frames);
+	// 	game.load.spritesheet(key, sprites[key].url, sprites[key].width, sprites[key].height, sprites[key].frames);
+	// }
+	// 
+	// // keyboard buttons
+	// cursors = game.input.keyboard.createCursorKeys();
 }
 
 function create() {
-	game.world.setBounds(config.world.x, config.world.y, config.world.width, config.world.height);
-	
-	createScenery();
-	createTerrain();
-	createPlayer();
-
-	sectorManager = new Sectors(config.sectors);
-
-	createControls();
-	createGui();
-}
-
-function createScenery() {
-	var sky = game.add.sprite(0, 0, 'sky');
-	sky.width = stage.width;
-	sky.height = stage.height;
-	sky.fixedToCamera = true;
-	
-	game.add.sprite(0, 0, 'mountains');
-	game.add.sprite(0, (stage.height - 490), 'treesBack');
-	game.add.sprite(0, 0, 'treesFore');
-	game.add.sprite(2048, 0, 'mountains');
-	game.add.sprite(2048, (stage.height - 490), 'treesBack');
-	game.add.sprite(2048, 0, 'treesFore');
-
-	game.add.sprite(0, (stage.height - 200), 'grass1');
-	game.add.sprite(2048, (stage.height - 200), 'grass2');
-	
-}
-
-function createTerrain() {
-	//  The platforms group contains the ground and the 2 ledges we can jump on
-	platforms = game.add.group();
-
-	var ground = platforms.create(0, game.world.height - 20, 'platform');
-	ground.scale.setTo(8, 1);
-	ground.body.immovable = true;
-
-	ground = platforms.create(2048, game.world.height - 20, 'platform');
-	ground.scale.setTo(8, 1);
-  	ground.body.immovable = true;
-
-	var ledge = platforms.create(500, (config.world.height - 75), 'platform');
-	ledge.body.immovable = true;
-
-	ledge = platforms.create(800, (config.world.height - 130), 'platform');
-	ledge.body.immovable = true;
-
-	ledge = platforms.create(1024, 0, 'platform');
-	ledge.body.immovable = true;
-
-	ledge = platforms.create(1100, (config.world.height - 180), 'platform');
-	ledge.body.immovable = true;
-
-	ledge = platforms.create(2048, 0, 'platform');
-	ledge.body.immovable = true;
-
-	ledge = platforms.create(3072, 0, 'platform');
-	ledge.body.immovable = true;
-
-	var ledge = platforms.create(3100, (config.world.height - 75), 'platform');
-	ledge.scale.setTo(0.8, 1);
-	ledge.body.immovable = true;
-
-	ledge = platforms.create(3300, (config.world.height - 130), 'platform');
-	ledge.scale.setTo(0.8, 1);
-	ledge.body.immovable = true;
-
-	ledge = platforms.create(3500, (config.world.height - 180), 'platform');
-	ledge.scale.setTo(0.8, 1);
-	ledge.body.immovable = true;
-}
-
-function createPlayer() {
-	player = game.add.sprite((stage.width/2 - 76/2), (stage.height - 148), 'keke');
-	player.anchor.setTo(0.5, 0.5);
-
-	player.animations.add('idleR', [0], 14);
-	player.animations.add('idleL', [1], 14);
-	player.animations.add('runR', [7, 8, 9, 10, 11, 12, 14, 15, 16, 18, 19], 13);
-	player.animations.add('runL', [21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33], 13);
-	player.animations.add('jumpR', [2], 14);
-	player.animations.add('jumpL', [3], 14);
-		
-	//  Player physics properties.
-	// player.body.setSize(30, config.player.height - 25, 0, 0); // bounding box
-	player.body.bounce.y = config.player.bounce;
-	player.body.gravity.y = config.world.gravity;
-	player.body.collideWorldBounds = true;
-	
-	game.camera.follow(player, Phaser.Camera.FOLLOW_PLATFORMER);
+	// game.world.setBounds(config.world.x, config.world.y, config.world.width, config.world.height);
+	// createPlayer();
+	// createControls();
+	// createGui();
 }
 
 function createControls() {
@@ -185,7 +54,7 @@ function createControls() {
 	key1 = game.input.keyboard.addKey(Phaser.Keyboard.Q);
 	key1.onDown.add(quit, this);
 
-	controls = new ControlButtonCollection(config.controls);
+	controls = new Polyworks.ControlButtonCollection(config.controls);
 	
  }
 
@@ -200,19 +69,19 @@ function createGui() {
 }
 
 function update() {
-	if(!gameOver) {
-	
-		sectorManager.checkTerrainCollision(platforms);
-		sectorManager.setActive(game.camera.x + (stage.width/2));
-		
-		var sector = sectorManager.activeSector;
-		sector.enemies.update({ player: player });
-	
-		checkCollisions(sector);
-	
-		checkGameInput();
-		setPlayerAnimations();
-	}
+	// if(!gameOver) {
+	// 
+	// 	sectorManager.checkTerrainCollision(platforms);
+	// 	sectorManager.setActive(game.camera.x + (stage.width/2));
+	// 	
+	// 	var sector = sectorManager.activeSector;
+	// 	sector.enemies.update({ player: player });
+	// 
+	// 	checkCollisions(sector);
+	// 
+	// 	checkGameInput();
+	// 	setPlayerAnimations();
+	// }
 }
 
 function checkCollisions(sector) {

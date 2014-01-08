@@ -1,5 +1,5 @@
-var Sector = (function() {
-	Utils.inherits(Sector, Base);
+Polyworks.Sector = (function() {
+	Utils.inherits(Sector, Polyworks.Base);
 	
 	function Sector(params, id) {
 		// trace('Sector['+idx+']/constructor, params = ');
@@ -25,10 +25,10 @@ var Sector = (function() {
 		// trace('_this = ');
 		// trace(_this);
 		var sectorId = 'Sector' + this.id;
-		this.enemies = new EnemyCollection(this.model.enemies, sectorId);
+		this.enemies = new Polyworks.EnemyCollection(this.model.enemies, sectorId);
 		this.enemies.init(AnimatedEnemyView);
 
-		this.bonuses = new GroupCollection(this.model.bonuses, sectorId);
+		this.bonuses = new Polyworks.GroupCollection(this.model.bonuses, sectorId);
 		this.bonuses.init(GroupView);
 
 		this.created = true;

@@ -67,172 +67,191 @@ var config = {
 			y: 10
 		}
 	}],
-	sectors: [{
-		bounds: {
-			start: 0,
-			end: 1024
-		},
-		enemies: [{
-			type: 'caterpillar01',
-			name: 'sector0-enemy0',
-			start: {
-				x: 700,
-				y: 0
-			},
-			speed: 0.25,
-			damage: 5,
-			health: 5,
-			score: 500,
-			currentAnimation: '',
-			animations: caterpillarAnimations
-		},
-		{
-			type: 'caterpillar01',
-			name: 'sector0-enemy1',
-			start: {
-				x: 1000,
-				y: 0
-			},
-			speed: 0.5,
-			damage: 5,
-			health: 5,
-			score: 500,
-			currentAnimation: '',
-			animations: caterpillarAnimations
-		}],
-		bonuses: []
-	},
-	{
-		bounds: {
-			start: 1024,
-			end: 2048
-		},
-		enemies: [{
-			type: 'caterpillar01',
-			name: 'sector1-enemy0',
-			start: {
-				x: 1500,
-				y: 0
-			},
-			speed: 0.5,
-			damage: 5,
-			health: 10,
-			score: 1000,
-			currentAnimation: '',
-			animations: caterpillarAnimations
-		},
-		{
-			type: 'caterpillar01',
-			name: 'sector1-enemy1',
-			start: {
-				x: 1800,
-				y: 0
-			},
-			speed: 1,
-			damage: 5,
-			health: 10,
-			score: 1000,
-			currentAnimation: '',
-			animations: caterpillarAnimations
-		}],
-		bonuses: []
-	},
-	{
-		bounds: {
-			start: 2048,
-			end: 3072
-		},
-		enemies: [{
-			type: 'caterpillar01',
-			name: 'sector2-enemy0',
-			start: {
-				x: 2500,
-				y: 0
-			},
-			speed: 0.75,
-			damage: 5,
-			health: 20,
-			score: 1000,
-			currentAnimation: '',
-			animations: caterpillarAnimations
-		},
-		{
-			type: 'caterpillar01',
-			name: 'sector2-enemy1',
-			start: {
-				x: 3050,
-				y: 0
-			},
-			speed: 1,
-			damage: 5,
-			health: 5,
-			score: 1000,
-			currentAnimation: '',
-			animations: caterpillarAnimations
-		}],
-		bonuses: [{
-			type: 'lollipop',
-			start: {
-				x: 2800,
-				y: 0
-			},
-			score: 100,
-			health: 10
-		},
-		{
-			id: 1,
-			type: 'lollipop',
-			start: {
-				x: 2950,
-				y: 0
-			},
-			score: 100,
-			health: 10,
-			alive: true
-		},]
-	},
-	{
-		bounds: {
-			start: 3072,
-			end: 4098
-		},
-		enemies: [{
-			type: 'caterpillar01',
-			name: 'sector3-enemy0',
-			start: {
-				x: 3580,
-				y: 0
-			},
-			speed: 1,
-			damage: 5,
-			health: 5,
-			score: 500,
-			currentAnimation: '',
-			animations: caterpillarAnimations
-		},
-		{
-			type: 'caterpillar01',
-			name: 'sector3-enemy1',
-			start: {
-				x: 4000,
-				y: 0
-			},
-			speed: 1,
-			damage: 5,
-			health: 5,
-			score: 500,
+	initialState: 'menu',
+	states: [{
+		id: 'menu',
+		type: 'State',
+		views: [{
 			
-			currentAnimation: '',
-			animations: caterpillarAnimations
-		}],
-		bonuses: [{
-			type: 'lollipop',
-			start: {
-				x: 3100,
-				y: 0
+		}]
+	},
+	{
+		id: 'level1',
+		type: 'LevelState',
+		sectors: [{
+			bounds: {
+				start: 0,
+				end: 1024
 			},
-			score: 100,
-			health: 10
+			enemies: [{
+				type: 'caterpillar01',
+				name: 'sector0-enemy0',
+				start: {
+					x: 700,
+					y: 0
+				},
+				speed: 0.25,
+				damage: 5,
+				health: 5,
+				score: 500,
+				currentAnimation: '',
+				animations: caterpillarAnimations
+			},
+			{
+				type: 'caterpillar01',
+				name: 'sector0-enemy1',
+				start: {
+					x: 1000,
+					y: 0
+				},
+				speed: 0.5,
+				damage: 5,
+				health: 5,
+				score: 500,
+				currentAnimation: '',
+				animations: caterpillarAnimations
+			}],
+			bonuses: []
+		},
+		{
+			bounds: {
+				start: 1024,
+				end: 2048
+			},
+			enemies: [{
+				type: 'caterpillar01',
+				name: 'sector1-enemy0',
+				start: {
+					x: 1500,
+					y: 0
+				},
+				speed: 0.5,
+				damage: 5,
+				health: 10,
+				score: 1000,
+				currentAnimation: '',
+				animations: caterpillarAnimations
+			},
+			{
+				type: 'caterpillar01',
+				name: 'sector1-enemy1',
+				start: {
+					x: 1800,
+					y: 0
+				},
+				speed: 1,
+				damage: 5,
+				health: 10,
+				score: 1000,
+				currentAnimation: '',
+				animations: caterpillarAnimations
+			}],
+			bonuses: []
+		},
+		{
+			bounds: {
+				start: 2048,
+				end: 3072
+			},
+			enemies: [{
+				type: 'caterpillar01',
+				name: 'sector2-enemy0',
+				start: {
+					x: 2500,
+					y: 0
+				},
+				speed: 0.75,
+				damage: 5,
+				health: 20,
+				score: 1000,
+				currentAnimation: '',
+				animations: caterpillarAnimations
+			},
+			{
+				type: 'caterpillar01',
+				name: 'sector2-enemy1',
+				start: {
+					x: 3050,
+					y: 0
+				},
+				speed: 1,
+				damage: 5,
+				health: 5,
+				score: 1000,
+				currentAnimation: '',
+				animations: caterpillarAnimations
+			}],
+			bonuses: [{
+				type: 'lollipop',
+				start: {
+					x: 2800,
+					y: 0
+				},
+				score: 100,
+				health: 10
+			},
+			{
+				id: 1,
+				type: 'lollipop',
+				start: {
+					x: 2950,
+					y: 0
+				},
+				score: 100,
+				health: 10,
+				alive: true
+			},]
+		},
+		{
+			bounds: {
+				start: 3072,
+				end: 4098
+			},
+			enemies: [{
+				type: 'caterpillar01',
+				name: 'sector3-enemy0',
+				start: {
+					x: 3580,
+					y: 0
+				},
+				speed: 1,
+				damage: 5,
+				health: 5,
+				score: 500,
+				currentAnimation: '',
+				animations: caterpillarAnimations
+			},
+			{
+				type: 'caterpillar01',
+				name: 'sector3-enemy1',
+				start: {
+					x: 4000,
+					y: 0
+				},
+				speed: 1,
+				damage: 5,
+				health: 5,
+				score: 500,
+
+				currentAnimation: '',
+				animations: caterpillarAnimations
+			}],
+			bonuses: [{
+				type: 'lollipop',
+				start: {
+					x: 3100,
+					y: 0
+				},
+				score: 100,
+				health: 10
+			}]
+		}]
+	},
+	{
+		id: 'end_state',
+		type: 'State',
+		views: [{
+			
 		}]
 	}],
 	player: {

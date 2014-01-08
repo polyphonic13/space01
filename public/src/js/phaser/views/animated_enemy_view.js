@@ -1,5 +1,5 @@
-var AnimatedEnemyView = (function() {
-	Utils.inherits(AnimatedEnemyView, AnimatedGroupView);
+Polyworks.AnimatedEnemyView = (function() {
+	Utils.inherits(AnimatedEnemyView, Polyworks.AnimatedGroupView);
 	
 	var _this;
 	function AnimatedEnemyView(params, group, id) {

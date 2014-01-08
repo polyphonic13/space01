@@ -1,5 +1,5 @@
-var GroupCollection = (function() {
-	Utils.inherits(GroupCollection, Collection);
+Polyworks.GroupCollection = (function() {
+	Utils.inherits(GroupCollection, Polyworks.Collection);
 	
 	function GroupCollection(params, id) {
 		GroupCollection._super.constructor.call(this, params, id);
