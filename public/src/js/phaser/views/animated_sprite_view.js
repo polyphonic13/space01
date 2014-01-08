@@ -29,12 +29,12 @@ Polyworks.AnimatedSpriteView = (function() {
 	
 	AnimatedSpriteView.prototype.play = function(name) {
 		_this.sprite.animations.play(name);
-		_this.set({ currentAnimation: name });
+		_this.model.currentAnimation = name;
 	};
 	
 	AnimatedSpriteView.prototype.stop = function() {
 		_this.sprite.animations.stop();
-		_this.set({ currentAnimation: '' });
+		_this.model.currentAnimation = '';
 	};
 
 	return AnimatedSpriteView();

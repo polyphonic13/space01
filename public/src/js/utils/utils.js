@@ -65,11 +65,47 @@ Polyworks.Utils = (function() {
 	};
 	
 	utils.addSpriteToGame = function(params) {
-		return game.add.sprite(params.start.x, params.start.y, params.type);
+		return game.add.sprite(params.start.x, params.start.y, params.img);
 	};
 	
 	utils.addSpriteToGroup = function(params) {
-		return params.group.create(params.start.x, params.start.y, params.type);
+		return params.group.create(params.start.x, params.start.y, params.img);
+	};
+	
+	utils.moveView = function(sprite, movement, params) {
+		switch(movement.type) {
+			case MovementTypes.DIRECTIONAL_BY_SPEED:
+				this.moveDirectionalBySpeed(sprite, movement, params.direction);
+			break;
+
+			default: 
+			console.log('WARNING: unknown movement type: ' + movement.type);
+			break;
+		}
+	};
+	
+	utils.moveDirectionalBySpeed = function(sprite, movement, direction) {
+		switch(direction) {
+			case Directions.LEFT: 
+			sprite.x -= movement.speed;
+			break;
+
+			case Directions.RIGHT:
+			sprite.x += movement.speed;
+			break;
+
+			case Directions.UP:
+			sprite.x -= movement.speed;
+			break;
+
+			case Directions.DOWN: 
+			sprite.y += movement.speed;
+			break;
+
+			default: 
+			trace('WARNING: unknown movement direction: ' + direction);
+			break;
+		}
 	};
 	
 	return utils;

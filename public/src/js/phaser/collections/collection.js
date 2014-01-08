@@ -7,8 +7,11 @@ Polyworks.Collection = (function() {
 	}
 	
 	Collection.prototype.init = function(itemClass) {
+		var cl;
 		for(var i = 0; i < this.model.length; i++) {
-			var view = this.addView(this.model[i], itemClass, i);
+			// use model-specific class type, or default to itemClass param
+			cl = (this.model[i] || itemClass);
+			var view = this.addView(this.model[i], cl, i);
 			view.init();
 			this.collection.push(view);
 		}

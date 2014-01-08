@@ -9,14 +9,39 @@ Polyworks.SpriteView = (function() {
 	
 	SpriteView.prototype.init = function() {
 		var start = _this.model.start;
-		trace('SpriteView/init, type = ' + _this.model.type + '\n\tx/y = '+ start.x + '/' + start.y);
+		trace('SpriteView/init, img = ' + _this.model.img + '\n\tx/y = '+ start.x + '/' + start.y);
 		// var sprite = game.add.sprite(start.x, start.y, _this.model.type);
 		// var sprite = _this.model.group.create(start.x, start.y, _this.model.type);
 		var sprite = Polyworks.Utils.addSprite(_this.model);
-		sprite.name = _this.model.type + '-' + _this.id;
+		sprite.name = _this.model.img + '-' + _this.id;
 		sprite.idx = _this.id;
-		this.sprite = sprite;
+		_this.sprite = sprite;
+
+		if(_this.model.physics) {
+			_this.initPhysics(_this.model.physics);
+		}
 	};
 
+	SpriteView.prototype.initPhysics = function(physics) {
+		for(var key in physics) {
+			this.sprite.body[key] = physics[key];
+		}
+		this.sprite.body.gravity = (this.sprite.body.gravity || config.world.gravity);
+	};
+	
+	SpriteView.prototype.checkTerrainCollision = function(terrain) {
+		game.physics.collide(this.sprite, terrain);
+	};
+	
+	SpriteView.prototype.move = function(params) {
+		if(this.model.movement) {
+			Polyworks.Utils.moveView(this.sprite, this.model.movement, params);
+		}
+	};
+	
+	SpriteView.prototype.remove = function() {
+		this.sprite.remove();
+	};
+	
 	return SpriteView;
 })();

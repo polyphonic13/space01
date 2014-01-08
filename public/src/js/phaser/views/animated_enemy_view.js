@@ -36,14 +36,15 @@ Polyworks.AnimatedEnemyView = (function() {
 					animations.play('walkL', animations.frameRate, true);
 					this.currentAnimation = 'walkL';
 				}
-				this.sprite.x -= this.model.speed;
-
+				// this.sprite.x -= this.model.speed;
+				this.move({ direction: Directions.LEFT });
 			} else if(enemyX < (playerX - 10)){
 				if(this.currentAnimation !== 'walkR') {
 					animations.play('walkR', animations.frameRate, true);
 					this.currentAnimation = 'walkR';
 				}
-				this.sprite.x += this.model.speed;
+				// this.sprite.x += this.model.speed;
+				this.move({ direction: Directions.RIGHT });
 			} else {
 				animations.stop();
 				this.sprite.frame = 0

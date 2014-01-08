@@ -94,30 +94,40 @@ var config = {
 				end: 1024
 			},
 			enemies: [{
-				type: 'caterpillar01',
+				type: 'AnimatedEnemy',
+				img: 'caterpillar01',
 				name: 'sector0-enemy0',
 				start: {
 					x: 700,
 					y: 0
 				},
-				speed: 0.25,
 				damage: 5,
 				health: 5,
 				score: 500,
+				movement: {
+					speed: 0.25,
+					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+					formula: null
+				},
 				currentAnimation: '',
 				animations: caterpillarAnimations
 			},
 			{
-				type: 'caterpillar01',
+				type: 'AnimatedEnemy',
+				img: 'caterpillar01',
 				name: 'sector0-enemy1',
 				start: {
 					x: 1000,
 					y: 0
 				},
-				speed: 0.5,
 				damage: 5,
 				health: 5,
 				score: 500,
+				movement: {
+					speed: 0.5,
+					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+					formula: null
+				},
 				currentAnimation: '',
 				animations: caterpillarAnimations
 			}],
@@ -129,7 +139,7 @@ var config = {
 				end: 2048
 			},
 			enemies: [{
-				type: 'caterpillar01',
+				img: 'caterpillar01',
 				name: 'sector1-enemy0',
 				start: {
 					x: 1500,
@@ -143,7 +153,7 @@ var config = {
 				animations: caterpillarAnimations
 			},
 			{
-				type: 'caterpillar01',
+				img: 'caterpillar01',
 				name: 'sector1-enemy1',
 				start: {
 					x: 1800,
@@ -164,35 +174,45 @@ var config = {
 				end: 3072
 			},
 			enemies: [{
-				type: 'caterpillar01',
+				type: 'AnimatedEnemy',
+				img: 'caterpillar01',
 				name: 'sector2-enemy0',
 				start: {
 					x: 2500,
 					y: 0
 				},
-				speed: 0.75,
 				damage: 5,
 				health: 20,
 				score: 1000,
+				movement: {
+					speed: 0.75,
+					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+					formula: null
+				},
 				currentAnimation: '',
 				animations: caterpillarAnimations
 			},
 			{
-				type: 'caterpillar01',
+				type: 'AnimatedEnemy',
+				img: 'caterpillar01',
 				name: 'sector2-enemy1',
 				start: {
 					x: 3050,
 					y: 0
 				},
-				speed: 1,
 				damage: 5,
 				health: 5,
 				score: 1000,
+				movement: {
+					speed: 1,
+					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+					formula: null
+				},
 				currentAnimation: '',
 				animations: caterpillarAnimations
 			}],
 			bonuses: [{
-				type: 'lollipop',
+				img: 'lollipop',
 				start: {
 					x: 2800,
 					y: 0
@@ -202,7 +222,7 @@ var config = {
 			},
 			{
 				id: 1,
-				type: 'lollipop',
+				img: 'lollipop',
 				start: {
 					x: 2950,
 					y: 0
@@ -218,36 +238,45 @@ var config = {
 				end: 4098
 			},
 			enemies: [{
-				type: 'caterpillar01',
+				type: 'AnimatedEnemy',
+				img: 'caterpillar01',
 				name: 'sector3-enemy0',
 				start: {
 					x: 3580,
 					y: 0
 				},
-				speed: 1,
 				damage: 5,
 				health: 5,
 				score: 500,
+				movement: {
+					speed: 1,
+					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+					formula: null
+				},
 				currentAnimation: '',
 				animations: caterpillarAnimations
 			},
 			{
-				type: 'caterpillar01',
+				type: 'AnimatedEnemy',
+				img: 'caterpillar01',
 				name: 'sector3-enemy1',
 				start: {
 					x: 4000,
 					y: 0
 				},
-				speed: 1,
 				damage: 5,
 				health: 5,
 				score: 500,
-
+				movement: {
+					speed: 1,
+					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+					formula: null
+				},
 				currentAnimation: '',
 				animations: caterpillarAnimations
 			}],
 			bonuses: [{
-				type: 'lollipop',
+				img: 'lollipop',
 				start: {
 					x: 3100,
 					y: 0
@@ -267,7 +296,12 @@ var config = {
 	player: {
 		width: 76,
 		height: 148,
-		bounce: 0.2,
+		physics: {
+			bounce: {
+				x: 0,
+				y: 0.2
+			}
+		},
 		speed: 150,
 		health: 100,
 		damage: 5,
