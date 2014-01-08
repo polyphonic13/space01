@@ -2,6 +2,7 @@ var ControlButtonCollection = (function() {
 	Utils.inherits(ControlButtonCollection, Collection);
 	
 	function ControlButtonCollection(params) {
+		params.parent = this;
 		ControlButtonCollection._super.constructor.call(this, params);
 		this.init(ControlButton);
 		
@@ -17,6 +18,15 @@ var ControlButtonCollection = (function() {
 			controlConsole.add(button);
 		}
 	}
+	
+	ControlButtonCollection.prototype.notify = function(params) {
+		
+		if(params.button === ControlButtonTypes.LEFT) {
+			this.getButtonByName(ControlButtonTypes.RIGHT).pressed = false;
+		} else if(params.button === ControlButtonTypes.RIGHT) {
+			this.getButtonByName(ControlButtonTypes.LEFT).pressed = false;
+		}
+	};
 	
 	ControlButtonCollection.prototype.getButtonByName = function(name) {
 		return this.nameIndex[name];

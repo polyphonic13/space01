@@ -12,6 +12,61 @@ var scoreText;
 var quitButton;
 
 var game = new Phaser.Game(stage.width, stage.height, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+var menuState = new Phaser.State();
+var levelState = new Phaser.State({
+	preload: function() {
+		trace('levelState/preload');
+		create();
+		// var images = config.images;
+		// trace('preload images');
+		// for(key in images) {
+		// 	game.load.image(key, images[key]);
+		// }
+		// var sprites = config.sprites;
+		// trace('preload sprites');
+		// for(key in sprites) {
+		// 	// trace('\t' + key + ', width = ' + sprites[key].width + ', height = ' + sprites[key].height + ', frames = ' + sprites[key].frames);
+		// 	game.load.spritesheet(key, sprites[key].url, sprites[key].width, sprites[key].height, sprites[key].frames);
+		// }
+		// 
+		// // keyboard buttons
+		// cursors = game.input.keyboard.createCursorKeys();
+	},
+	// create: function() {
+	// 	game.world.setBounds(config.world.x, config.world.y, config.world.width, config.world.height);
+	// 	
+	// 	createScenery();
+	// 	createTerrain();
+	// 	createPlayer();
+	// 
+	// 	sectorManager = new Sectors(config.sectors);
+	// 
+	// 	createControls();
+	// 	createGui();
+	// },
+	update: function() {
+		if(!gameOver) {
+
+			sectorManager.checkTerrainCollision(platforms);
+			sectorManager.setActive(game.camera.x + (stage.width/2));
+
+			var sector = sectorManager.activeSector;
+			sector.enemies.update({ player: player });
+
+			checkCollisions(sector);
+
+			checkGameInput();
+			setPlayerAnimations();
+		}
+		
+	}
+});
+var quitState = new Phaser.State();
+// game.state.add('menu', menuState, false);
+// game.state.add('level0', levelState, true);
+// game.state.add('quit', quitState, false);
+// 
+// game.state.start('level0');
 
 function preload() {
 	// images
@@ -132,73 +187,7 @@ function createControls() {
 
 	controls = new ControlButtonCollection(config.controls);
 	
-  // Init game controller with left thumb stick
-  // See https://github.com/austinhallock/html5-virtual-game-controller/ for examples.
-/*
-	GameController.init({
-        left: {
-			position: { left: 75, bottom: 75 },
-            type: 'joystick',
-            joystick: {
-                touchStart: function() {
-                    // Don't need this, but the event is here if you want it.
-                },
-                touchMove: function(joystick_details) {
-                    game.input.joystickLeft = joystick_details;
-                },
-                touchEnd: function() {
-                    game.input.joystickLeft = null;
-					
-                }
-            }
-        },
-        right: {
-			position: { left: stage.width - 130, top: stage.height - 130 },
-			buttons: [
-			{ 
-				radius: 50,
-				label: 'Quit',
-				fontSize: 18, 
-				offset: {
-					x: 0,
-					y: -(stage.height - 150)
-				},
-				touchStart: function() { 
-					trace('right controller left button touchstart');
-					quit();
-				} 
-			}, 
-			false,
-			{
-				radius: 50,
-				label: 'Jump',
-				fontSize: 18,
-				offset: {
-					x: 0,
-					y: 0
-				},
-				touchStart: function() {
-					trace('right controller right button touchstart');
-					config.player.jumpButtonPressed = true;
-				},
-				touchEnd: function() {
-					trace('right controller right button touchend');
-					config.player.justJumped = false;
-				}
-			}, 
-			false] 
-        }
-    });
-    
-    // This is an ugly hack to get this to show up over the Phaser Canvas
-    // (which has a manually set z-index in the example code) and position it in the right place,
-    // because it's positioned relatively...
-    // You probably don't need to do this in your game unless your game's canvas is positioned in a manner
-    // similar to this example page, where the canvas isn't the whole screen.
-    $('canvas').last().css('z-index', 20);
-    $('canvas').last().offset( $('canvas').first().offset() );
-*/
-}
+ }
 
 function createGui() {
    //  The score
@@ -212,15 +201,15 @@ function createGui() {
 
 function update() {
 	if(!gameOver) {
-
+	
 		sectorManager.checkTerrainCollision(platforms);
 		sectorManager.setActive(game.camera.x + (stage.width/2));
 		
 		var sector = sectorManager.activeSector;
 		sector.enemies.update({ player: player });
-
+	
 		checkCollisions(sector);
-
+	
 		checkGameInput();
 		setPlayerAnimations();
 	}
@@ -424,7 +413,9 @@ function playerJump() {
 function quit() {
 	trace('quit');
 	gameOver = true;
+    
 	// clearSectors();
 	// GameController.destroy();
 	game.destroy();
+	messageTest = game.add.text(stage.width/2, stage.height/2, 'Game Over', { font: '32px Arial', fill: '#ffffff' });
 }

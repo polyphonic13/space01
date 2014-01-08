@@ -13,6 +13,7 @@ var ControlButton = (function() {
 	    this.button = game.add.button(start.x, start.y, this.model.type, null, this);
 		this.pressed = false;
 		this.addListeners();
+		
 	};
 	
 	ControlButton.prototype.actionOnClick = function() {
@@ -34,11 +35,13 @@ var ControlButton = (function() {
 	ControlButton.prototype.inputDown = function() {
 		trace('ControlButton['+this.model.type+']/inputDown');
 		this.pressed = true;
+		// this.model.parent.notify({ button: this.model.type, pressed: this.pressed });
 	};
 	
 	ControlButton.prototype.inputUp = function() {
 		trace('ControlButton['+this.model.type+']/inputUp');
 		this.pressed = false;
+		// this.model.parent.notify({ button: this.model.type, pressed: this.pressed });
 	};
 	
 	return ControlButton;
