@@ -37,5 +37,5 @@ Polyworks.AnimatedSpriteView = (function() {
 		_this.model.currentAnimation = '';
 	};
 
-	return AnimatedSpriteView();
+	return AnimatedSpriteView;
 })();
