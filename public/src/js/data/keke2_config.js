@@ -2,15 +2,15 @@ var stage = {
 	width: document.documentElement.clientWidth,
 	height: document.documentElement.clientHeight
 };
+var world = {
+	x: 0,
+	y: 0,
+	width: 4098,
+	height: stage.height,
+	gravity: 15
+};
 
 var config = {
-	world: {
-		x: 0,
-		y: 0,
-		width: 4098,
-		height: stage.height,
-		gravity: 15
-	},
 	images: {
 		sky: 'images/night_sky.jpg',
 		mountains: 'images/hills03_grey.png',
@@ -88,6 +88,158 @@ var config = {
 	{
 		id: 'level1',
 		type: 'LevelState',
+		scenery: [{
+			img: 'sky',
+			name: 'sky',
+			start: {
+				x: 0,
+				y: 0
+			},
+			width: stage.width,
+			height: stage.height,
+			fixedToCamera: true
+		},
+		{
+			img: 'mountains',
+			start: {
+				x: 0,
+				y: 0
+			}
+		},
+		{
+			img: 'treesBack',
+			start: {
+				x: 0,
+				y: stage.height - 490
+			}
+		},
+		{
+			img: 'treesFore',
+			start: {
+				x: 0,
+				y: 0
+			}
+		},
+		{
+			img: 'mountains',
+			start: {
+				x: 2048,
+				y: 0
+			}
+		},
+		{
+			img: 'treesBack',
+			start: {
+				x: 2048,
+				y: stage.height - 490
+			}
+		},
+		{
+			img: 'treesFore',
+			start: {
+				x: 2048,
+				y: 0
+			}
+		},
+		{
+			img: 'grass1',
+			start: {
+				x: 0,
+				y: stage.height - 200
+			}
+		},
+		{
+			img: 'grass2',
+			start: {
+				x: 2048,
+				y: stage.height - 200
+			}
+		}],
+		terrain: [{
+			img: 'platform',
+			start: {
+				x: 0,
+				y: world.height - 20
+			},
+			scale: [8, 1],
+			physics: {
+				immovable: true,
+			}
+		},
+		{
+			img: 'platform',
+			start: {
+				x: 2048,
+				y: world.height - 75
+			},
+			scale: [8, 1],
+			physics: {
+				immovable: true,
+			}
+		},
+		{
+			img: 'platform',
+			start: {
+				x: 500,
+				y: world.height - 75
+			},
+			physics: {
+				immovable: true,
+			}
+		},
+		{
+			img: 'platform',
+			start: {
+				x: 800,
+				y: world.height - 130
+			},
+			physics: {
+				immovable: true,
+			}
+		},
+		{
+			img: 'platform',
+			start: {
+				x: 1100,
+				y: world.height - 180
+			},
+			physics: {
+				immovable: true,
+			}
+		},
+		{
+			img: 'platform',
+			start: {
+				x: 3100,
+				y: world.height - 75
+			},
+			scale: [0.8, 1],
+			physics: {
+				immovable: true,
+			}
+		},
+		{
+			img: 'platform',
+			start: {
+				x: 3300,
+				y: world.height - 130
+			},
+			scale: [0.8, 1],
+			physics: {
+				immovable: true,
+			}
+		},
+		{
+			img: 'platform',
+			start: {
+				x: 3500,
+				y: world.height - 180
+			},
+			scale: [0.8, 1],
+			physics: {
+				immovable: true,
+			}
+		}],
 		sectors: [{
 			bounds: {
 				start: 0,

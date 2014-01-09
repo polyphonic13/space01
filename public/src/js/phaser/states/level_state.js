@@ -5,7 +5,7 @@ Polyworks.LevelState = (function() {
 		LevelState._super.constructor.call(this, params, id);
 
 		this.gameOver = false;
-		this.platforms = {};
+		this.terrain;
 		this.controls;
 		this.cursors;
 		this.player; 
@@ -34,73 +34,22 @@ Polyworks.LevelState = (function() {
 	
 	LevelState.prototype.create =  function() {
 		trace('LevelState['+this.id+']/create');
-		game.world.setBounds(config.world.x, config.world.y, config.world.width, config.world.height);
+		game.world.setBounds(world.x, world.y, world.width, world.height);
 
-		this.createScenery();
-		this.createTerrain();
+		this.scenery = new Polyworks.Collection(this.model.scenery, 'Scenery' + this.id);
+		this.scenery.init('SpriteView');
+
+		this.terrain = new Polyworks.Groups(this.model.terrain, 'Terrain' + this.id);
+		this.terrain.init('SpriteView');
+
 		this.sectorManager = new Polyworks.Sectors(this.model.sectors);
-		this.createPlayer();
+
+		this.player = new Polyworks.Player(config.player, 0);
+
 		this.createGui();
 		this.createControls();
 	};
 	
-	LevelState.prototype.createScenery = function() {
-		var sky = game.add.sprite(0, 0, 'sky');
-		sky.width = stage.width;
-		sky.height = stage.height;
-		sky.fixedToCamera = true;
-
-		game.add.sprite(0, 0, 'mountains');
-		game.add.sprite(0, (stage.height - 490), 'treesBack');
-		game.add.sprite(0, 0, 'treesFore');
-		game.add.sprite(2048, 0, 'mountains');
-		game.add.sprite(2048, (stage.height - 490), 'treesBack');
-		game.add.sprite(2048, 0, 'treesFore');
-
-		game.add.sprite(0, (stage.height - 200), 'grass1');
-		game.add.sprite(2048, (stage.height - 200), 'grass2');
-
-	};
-
-	LevelState.prototype.createTerrain = function() {
-		//  The this.platforms group contains the ground and the 2 ledges we can jump on
-		this.platforms = game.add.group();
-
-		var ground = this.platforms.create(0, game.world.height - 20, 'platform');
-		ground.scale.setTo(8, 1);
-		ground.body.immovable = true;
-
-		ground = this.platforms.create(2048, game.world.height - 20, 'platform');
-		ground.scale.setTo(8, 1);
-	  	ground.body.immovable = true;
-
-		var ledge = this.platforms.create(500, (config.world.height - 75), 'platform');
-		ledge.body.immovable = true;
-
-		ledge = this.platforms.create(800, (config.world.height - 130), 'platform');
-		ledge.body.immovable = true;
-
-		ledge = this.platforms.create(1100, (config.world.height - 180), 'platform');
-		ledge.body.immovable = true;
-
-		var ledge = this.platforms.create(3100, (config.world.height - 75), 'platform');
-		ledge.scale.setTo(0.8, 1);
-		ledge.body.immovable = true;
-
-		ledge = this.platforms.create(3300, (config.world.height - 130), 'platform');
-		ledge.scale.setTo(0.8, 1);
-		ledge.body.immovable = true;
-
-		ledge = this.platforms.create(3500, (config.world.height - 180), 'platform');
-		ledge.scale.setTo(0.8, 1);
-		ledge.body.immovable = true;
-	};
-
-	LevelState.prototype.createPlayer = function() {
-		trace('createPlayer');
-		this.player = new Polyworks.Player(config.player, 0);
-	};
-
 	LevelState.prototype.createControls = function() {
 		// CONTROLS
 		key1 = game.input.keyboard.addKey(Phaser.Keyboard.Q);
@@ -122,8 +71,7 @@ Polyworks.LevelState = (function() {
 
 	LevelState.prototype.update = function() {
 		if(!this.gameOver) {
-
-			this.sectorManager.checkTerrainCollision(this.platforms);
+			this.sectorManager.checkTerrainCollision(this.terrain.group);
 			this.sectorManager.setActive(game.camera.x + (stage.width/2));
 
 			var sector = this.sectorManager.activeSector;
@@ -138,7 +86,7 @@ Polyworks.LevelState = (function() {
 	
 	LevelState.prototype.checkCollisions = function(sector) {
 		if(!this.gameOver) {
-			this.player.checkTerrainCollision(this.platforms);
+			this.player.checkTerrainCollision(this.terrain.group);
 
 			this.checkObjectCollision(sector.enemies.collection, this.enemyCollision);
 			this.checkObjectCollision(sector.bonuses.collection, this.bonusCollision);
@@ -155,7 +103,7 @@ Polyworks.LevelState = (function() {
 				// trace('views['+views[i].name+'].sprite = ');
 				// trace(views[i].sprite);
 
-				// game.physics.collide(views[i].sprite, this.platforms);
+				// game.physics.collide(views[i].sprite, this.terrain.group);
 				game.physics.overlap(this.player.sprite, views[i].sprite, callback, null, this);
 			}
 		}
