@@ -19,17 +19,12 @@ Polyworks.SpriteView = (function() {
 	};
 
 	SpriteView.prototype.initPhysics = function(physics, sprite) {
-		trace('SpriteView/initPhysics, physics = ');
-		trace(physics);
-		// trace('sprite = ');
-		// trace(sprite);
 		for(var key in physics) {
 			sprite.body[key] = physics[key];
 		}
 		if(!physics.gravity) {
 			sprite.body.gravity.y = config.world.gravity;
 		}
-		trace('phyisics set to ' + sprite.body);
 	};
 	
 	SpriteView.prototype.checkTerrainCollision = function(terrain) {

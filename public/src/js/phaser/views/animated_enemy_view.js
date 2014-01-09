@@ -2,7 +2,7 @@ Polyworks.AnimatedEnemyView = (function() {
 	Polyworks.Utils.inherits(AnimatedEnemyView, Polyworks.AnimatedSpriteView);
 	
 	var _this;
-	function AnimatedEnemyView(params, group, id) {
+	function AnimatedEnemyView(params, id) {
 		// trace('AnimatedEnemyView['+idx+']/constructor, params =');
 		// trace(params);
 		_this = this;

@@ -9,8 +9,8 @@ Polyworks.Enemies = (function() {
 		// trace('Enemies['+this.id+']/update, this.collection = ');
 		// trace(this.collection);
 		var enemy;
-		for(var key in this.collection) {
-			enemy = this.collection[key]
+		for(var i = 0; i < this.collection.length; i++) {
+			enemy = this.collection[i]
 			if(enemy.active) {
 				enemy.update(params);
 			}

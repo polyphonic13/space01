@@ -218,7 +218,7 @@ Polyworks.LevelState = (function() {
 		bonus.active = false; 
 
 	    this.score += bonus.get('score');
-	    this.scoreText.content = 'Score: ' + score;
+	    this.scoreText.content = 'Score: ' + this.score;
 
 		config.player.health += bonus.get('health');
 		this.healthText.content = 'Health: ' + config.player.health;
