@@ -303,6 +303,10 @@ var config = {
 			},
 			collideWorldBounds: true
 		},
+		anchor: {
+			x: 0.5,
+			y: 0.5
+		},
 		speed: 150,
 		health: 100,
 		damage: 5,

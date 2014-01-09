@@ -8,7 +8,9 @@ Polyworks.Player = (function() {
 		trace('Player, post super init, sprite = ');
 		trace(this.sprite);
 		trace(_this.sprite);
-		this.sprite.anchor.setTo(0.5, 0.5);
+		if(this.model.anchor) {
+			this.sprite.anchor.setTo(this.model.anchor.x, this.model.anchor.y);
+		}
 		game.camera.follow(this.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
 		
 	}
