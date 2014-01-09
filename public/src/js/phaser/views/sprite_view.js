@@ -9,22 +9,30 @@ Polyworks.SpriteView = (function() {
 	
 	SpriteView.prototype.init = function() {
 		var start = _this.model.start;
-		// trace('SpriteView/init, img = ' + _this.model.img + '\n\tx/y = '+ start.x + '/' + start.y);
+		trace('SpriteView/init, img = ' + _this.model.img + '\n\tx/y = '+ start.x + '/' + start.y);
 		var sprite = Polyworks.Utils.addSprite(_this.model);
 		sprite.name = _this.model.img + '-' + _this.id;
 		sprite.idx = _this.id;
 		_this.sprite = sprite;
-
+		trace(_this.model);
+		trace(this.model);
 		if(_this.model.physics) {
-			_this.initPhysics(_this.model.physics);
+			_this.initPhysics(_this.model.physics, _this.sprite);
 		}
 	};
 
-	SpriteView.prototype.initPhysics = function(physics) {
+	SpriteView.prototype.initPhysics = function(physics, sprite) {
+		trace('SpriteView/initPhysics, physics = ');
+		trace(physics);
+		trace('sprite = ');
+		trace(sprite);
 		for(var key in physics) {
-			this.sprite.body[key] = physics[key];
+			sprite.body[key] = physics[key];
 		}
-		this.sprite.body.gravity = (this.sprite.body.gravity || config.world.gravity);
+		if(!physics.gravity) {
+			sprite.body.gravity = config.world.gravity;
+		}
+		trace('gravity set to ' + sprite.body.gravity);
 	};
 	
 	SpriteView.prototype.checkTerrainCollision = function(terrain) {

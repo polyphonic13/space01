@@ -82,7 +82,7 @@ var config = {
 		id: 'menu',
 		type: 'State',
 		views: [{
-			
+
 		}]
 	},
 	{
@@ -98,8 +98,14 @@ var config = {
 				img: 'caterpillar01',
 				name: 'sector0-enemy0',
 				start: {
-					x: 700,
+					x: 500,
 					y: 0
+				},
+				physics: {
+					bounce: {
+						x: 0,
+						y: 0.2
+					}
 				},
 				damage: 5,
 				health: 5,
@@ -119,6 +125,12 @@ var config = {
 				start: {
 					x: 1000,
 					y: 0
+				},
+				physics: {
+					bounce: {
+						x: 0,
+						y: 0.2
+					}
 				},
 				damage: 5,
 				health: 5,
@@ -145,6 +157,12 @@ var config = {
 					x: 1500,
 					y: 0
 				},
+				physics: {
+					bounce: {
+						x: 0,
+						y: 0.2
+					}
+				},
 				speed: 0.5,
 				damage: 5,
 				health: 10,
@@ -158,6 +176,12 @@ var config = {
 				start: {
 					x: 1800,
 					y: 0
+				},
+				physics: {
+					bounce: {
+						x: 0,
+						y: 0.2
+					}
 				},
 				speed: 1,
 				damage: 5,
@@ -181,6 +205,12 @@ var config = {
 					x: 2500,
 					y: 0
 				},
+				physics: {
+					bounce: {
+						x: 0,
+						y: 0.2
+					}
+				},
 				damage: 5,
 				health: 20,
 				score: 1000,
@@ -200,6 +230,12 @@ var config = {
 					x: 3050,
 					y: 0
 				},
+				physics: {
+					bounce: {
+						x: 0,
+						y: 0.2
+					}
+				},
 				damage: 5,
 				health: 5,
 				score: 1000,
@@ -217,6 +253,12 @@ var config = {
 					x: 2800,
 					y: 0
 				},
+				physics: {
+					bounce: {
+						x: 0,
+						y: 0.2
+					}
+				},
 				score: 100,
 				health: 10
 			},
@@ -226,6 +268,12 @@ var config = {
 				start: {
 					x: 2950,
 					y: 0
+				},
+				physics: {
+					bounce: {
+						x: 0,
+						y: 0.2
+					}
 				},
 				score: 100,
 				health: 10,
@@ -244,6 +292,12 @@ var config = {
 				start: {
 					x: 3580,
 					y: 0
+				},
+				physics: {
+					bounce: {
+						x: 0,
+						y: 0.2
+					}
 				},
 				damage: 5,
 				health: 5,
@@ -264,6 +318,12 @@ var config = {
 					x: 4000,
 					y: 0
 				},
+				physics: {
+					bounce: {
+						x: 0,
+						y: 0.2
+					}
+				},
 				damage: 5,
 				health: 5,
 				score: 500,
@@ -281,6 +341,12 @@ var config = {
 					x: 3100,
 					y: 0
 				},
+				physics: {
+					bounce: {
+						x: 0,
+						y: 0.2
+					}
+				},
 				score: 100,
 				health: 10
 			}]
@@ -294,8 +360,13 @@ var config = {
 		}]
 	}],
 	player: {
+		img: 'keke',
 		width: 76,
 		height: 148,
+		start: {
+			x: stage.width/2 - 76/2,
+			y: stage.height - 148
+		},
 		physics: {
 			bounce: {
 				x: 0,

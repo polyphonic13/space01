@@ -45,7 +45,7 @@ Polyworks.ControlButtons = (function() {
 			}
 		} else { // inputUp received
 			if(params.button === ControlButtonTypes.INVISIBLE_BG) {
-				if(pointer.clientX < stage.width) {
+				if(params.pointer.clientX < stage.width) {
 					trace('\tsetting left and right buttons pressed to false');
 					_this.collection[_this.getIndexByName(ControlButtonTypes.LEFT)].pressed = false;
 					_this.collection[_this.getIndexByName(ControlButtonTypes.RIGHT)].pressed = false;

@@ -138,7 +138,7 @@ Polyworks.LevelState = (function() {
 	
 	LevelState.prototype.checkCollisions = function(sector) {
 		if(!this.gameOver) {
-			this.player.checkTerrainCollection(this.platforms);
+			this.player.checkTerrainCollision(this.platforms);
 
 			this.checkObjectCollision(sector.enemies.collection, this.enemyCollision);
 			this.checkObjectCollision(sector.bonuses.collection, this.bonusCollision);
@@ -281,10 +281,10 @@ Polyworks.LevelState = (function() {
 					config.player.facingForward = false;
 				}
 			} else if(this.player.sprite.body.velocity.x === 0) {
-				this.player.animations.stop();
+				this.player.stop();
 				if(config.player.facingForward) {
 					this.player.frame = 0;
-					this.player.animations.stop();
+					this.player.stop();
 					this.player.currentAnimation = 'idleR';
 				} else {
 					this.player.stop();
@@ -301,13 +301,13 @@ Polyworks.LevelState = (function() {
 		if(config.player.facingForward) {
 			// trace('playing jump r animation');
 			// this.player.play('jumpR', 1, false);
-			this.player.animations.stop();
+			this.player.stop();
 			this.player.frame = 9;
 			// this.player.frame = 2;
 			this.player.currentAnimation = 'jumpR';
 		} else {
 			// this.player.play('jumpL', 1, false);
-			this.player.animations.stop();
+			this.player.stop();
 			this.player.frame = 24;
 			// this.player.frame = 3;
 			this.player.currentAnimation = 'jumpL';
