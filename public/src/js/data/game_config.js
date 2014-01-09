@@ -345,7 +345,7 @@ var gameConfig = {
 				type: MovementTypes.BASIC_X,
 				velocity: -50
 			},
-			defaultDirection: Directions.LEFT,
+			defaultDirection: Polyworks.Directions.LEFT,
 			defaultAnimation: 'idleLeft',
 			animations: caterpillarAnimations,
 			speed: 6,
@@ -370,7 +370,7 @@ var gameConfig = {
 				type: MovementTypes.BASIC_X,
 				velocity: -25
 			},
-			defaultDirection: Directions.LEFT,
+			defaultDirection: Polyworks.Directions.LEFT,
 			defaultAnimation: 'idleLeft',
 			animations: caterpillarAnimations,
 			speed: 6,
@@ -397,7 +397,7 @@ var gameConfig = {
 				amplitude: 80,
 				period: 10000
 			},
-			defaultDirection: Directions.RIGHT,
+			defaultDirection: Polyworks.Directions.RIGHT,
 			defaultAnimation: 'idleRight',
 			animations: caterpillarAnimations,
 			speed: 6,
@@ -418,7 +418,7 @@ var gameConfig = {
 				index: 0,
 				frameRate: 5
 			},
-			defaultDirection: Directions.LEFT,
+			defaultDirection: Polyworks.Directions.LEFT,
 			defaultAnimation: 'idleLeft',
 			animations: caterpillarAnimations,
 			movement: {
@@ -446,7 +446,7 @@ var gameConfig = {
 				index: 0,
 				frameRate: 5
 			},
-			defaultDirection: Directions.LEFT,
+			defaultDirection: Polyworks.Directions.LEFT,
 			defaultAnimation: 'idleLeft',
 			animations: caterpillarAnimations,
 			movement: {
@@ -518,7 +518,7 @@ var gameConfig = {
 			index: 0,
 			frameRate: 14
 		},
-		defaultDirection: Directions.RIGHT,
+		defaultDirection: Polyworks.Directions.RIGHT,
 		defaultAnimation: 'idleRight',
 		animations: kekeAnimations,
 		damage: -5,

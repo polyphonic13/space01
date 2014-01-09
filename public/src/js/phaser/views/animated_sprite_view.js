@@ -5,6 +5,9 @@ Polyworks.AnimatedSpriteView = (function() {
 	function AnimatedSpriteView(params, id) {
 		_this = this;
 		AnimatedSpriteView._super.constructor.call(this, params, id);
+		this.__defineSetter__('frame', function(val) {
+			this.sprite.animations.frame = val;
+		})
 	}
 	
 	AnimatedSpriteView.prototype.init = function(params) {

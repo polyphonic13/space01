@@ -5,7 +5,7 @@ Polyworks.Sectors = (function() {
 		trace('Sectors/constructor, params = ');
 		trace(params);
 		Sectors._super.constructor.call(this, params, id);
-		this.init(Polyworks.Sector);
+		this.init('Sector');
 		this.activeSectorId = 0;
 
 		this.__defineGetter__('activeSector', function() {

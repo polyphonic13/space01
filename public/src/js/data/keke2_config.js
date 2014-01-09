@@ -41,7 +41,7 @@ var config = {
 		}
 	},
 	controls: [{
-		type: ControlButtonTypes.INVISIBLE_BG,
+		img: ControlButtonTypes.INVISIBLE_BG,
 		start: {
 			x: 0,
 			y: 0
@@ -50,28 +50,28 @@ var config = {
 		height: stage.height
 	},
 	{
-		type: ControlButtonTypes.LEFT,
+		img: ControlButtonTypes.LEFT,
 		start: {
 			x: 20,
 			y: stage.height - 80
 		}
 	},
 	{
-		type: ControlButtonTypes.RIGHT,
+		img: ControlButtonTypes.RIGHT,
 		start: {
 			x: 120,
 			y: stage.height - 80
 		}
 	},
 	{
-		type: ControlButtonTypes.UP,
+		img: ControlButtonTypes.UP,
 		start: {
 			x: stage.width - 80,
 			y: stage.height - 80
 		}
 	},
 	{
-		type: ControlButtonTypes.QUIT,
+		img: ControlButtonTypes.QUIT,
 		start: {
 			x: stage.width - 80,
 			y: 10
@@ -94,7 +94,7 @@ var config = {
 				end: 1024
 			},
 			enemies: [{
-				type: 'AnimatedEnemy',
+				type: 'AnimatedEnemyView',
 				img: 'caterpillar01',
 				name: 'sector0-enemy0',
 				start: {
@@ -109,11 +109,11 @@ var config = {
 					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
 					formula: null
 				},
-				currentAnimation: '',
+				defaultAnimation: '',
 				animations: caterpillarAnimations
 			},
 			{
-				type: 'AnimatedEnemy',
+				type: 'AnimatedEnemyView',
 				img: 'caterpillar01',
 				name: 'sector0-enemy1',
 				start: {
@@ -128,7 +128,7 @@ var config = {
 					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
 					formula: null
 				},
-				currentAnimation: '',
+				defaultAnimation: '',
 				animations: caterpillarAnimations
 			}],
 			bonuses: []
@@ -149,7 +149,7 @@ var config = {
 				damage: 5,
 				health: 10,
 				score: 1000,
-				currentAnimation: '',
+				defaultAnimation: '',
 				animations: caterpillarAnimations
 			},
 			{
@@ -163,7 +163,7 @@ var config = {
 				damage: 5,
 				health: 10,
 				score: 1000,
-				currentAnimation: '',
+				defaultAnimation: '',
 				animations: caterpillarAnimations
 			}],
 			bonuses: []
@@ -174,7 +174,7 @@ var config = {
 				end: 3072
 			},
 			enemies: [{
-				type: 'AnimatedEnemy',
+				type: 'AnimatedEnemyView',
 				img: 'caterpillar01',
 				name: 'sector2-enemy0',
 				start: {
@@ -189,11 +189,11 @@ var config = {
 					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
 					formula: null
 				},
-				currentAnimation: '',
+				defaultAnimation: '',
 				animations: caterpillarAnimations
 			},
 			{
-				type: 'AnimatedEnemy',
+				type: 'AnimatedEnemyView',
 				img: 'caterpillar01',
 				name: 'sector2-enemy1',
 				start: {
@@ -208,7 +208,7 @@ var config = {
 					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
 					formula: null
 				},
-				currentAnimation: '',
+				defaultAnimation: '',
 				animations: caterpillarAnimations
 			}],
 			bonuses: [{
@@ -238,7 +238,7 @@ var config = {
 				end: 4098
 			},
 			enemies: [{
-				type: 'AnimatedEnemy',
+				type: 'AnimatedEnemyView',
 				img: 'caterpillar01',
 				name: 'sector3-enemy0',
 				start: {
@@ -253,11 +253,11 @@ var config = {
 					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
 					formula: null
 				},
-				currentAnimation: '',
+				defaultAnimation: '',
 				animations: caterpillarAnimations
 			},
 			{
-				type: 'AnimatedEnemy',
+				type: 'AnimatedEnemyView',
 				img: 'caterpillar01',
 				name: 'sector3-enemy1',
 				start: {
@@ -272,7 +272,7 @@ var config = {
 					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
 					formula: null
 				},
-				currentAnimation: '',
+				defaultAnimation: '',
 				animations: caterpillarAnimations
 			}],
 			bonuses: [{
@@ -300,7 +300,8 @@ var config = {
 			bounce: {
 				x: 0,
 				y: 0.2
-			}
+			},
+			collideWorldBounds: true
 		},
 		speed: 150,
 		health: 100,
@@ -308,7 +309,8 @@ var config = {
 		jumpHeight: 350,
 		jumping: false,
 		justJumped: false,
-		currentAnimation: '',
+		defaultAnimation: 'idleL',
+		animations: kekeAnimations,
 		facingForward: true
 	}
 };

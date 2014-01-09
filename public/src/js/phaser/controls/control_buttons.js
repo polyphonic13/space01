@@ -6,7 +6,7 @@ Polyworks.ControlButtons = (function() {
 		_this = this;
 		params.collection = this;
 		ControlButtons._super.constructor.call(this, params);
-		this.init(Polyworks.ControlButton);
+		this.init('ControlButton');
 		this.invisibleDown = false;
 
 		this.nameIndex = {};
@@ -16,7 +16,7 @@ Polyworks.ControlButtons = (function() {
 		var controlConsole = game.add.group(null);
 		for(var i = 0; i < this.collection.length; i++) {
 			this.collection[i].callback = this.notifyPressed;
-			name = this.collection[i].model.type;
+			name = this.collection[i].model.img;
 			this.nameIndex[name] = i;
 			button = this.collection[i].button;
 			controlConsole.add(button);

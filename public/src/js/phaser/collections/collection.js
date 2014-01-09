@@ -7,10 +7,15 @@ Polyworks.Collection = (function() {
 	}
 	
 	Collection.prototype.init = function(itemClass) {
+		trace('itemClass = '+ itemClass);
 		var cl;
 		for(var i = 0; i < this.model.length; i++) {
 			// use model-specific class type, or default to itemClass param
-			cl = (this.model[i] || itemClass);
+			if(this.model[i].type) {
+				cl = this.model[i].type;
+			} else {
+				cl = itemClass;
+			}
 			var view = this.addView(this.model[i], cl, i);
 			view.init();
 			this.collection.push(view);
@@ -18,7 +23,7 @@ Polyworks.Collection = (function() {
 	};
 	
 	Collection.prototype.addView = function(params, itemClass, idx) {
-		return new itemClass(params, idx);
+		return new Polyworks[itemClass](params, idx);
 	};
 	
 	return Collection;

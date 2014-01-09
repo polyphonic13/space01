@@ -1,4 +1,4 @@
-var Directions = {
+Polyworks.Directions = {
 	LEFT: 'Left',
 	RIGHT: 'Right',
 	UP: 'Up',

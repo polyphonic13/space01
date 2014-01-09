@@ -6,7 +6,7 @@ Polyworks.AnimatedEnemyView = (function() {
 		// trace('AnimatedEnemyView['+idx+']/constructor, params =');
 		// trace(params);
 		_this = this;
-		AnimatedEnemyView._super.constructor.call(this, params, group, id);
+		AnimatedEnemyView._super.constructor.call(this, params, id);
 
 		this.__defineGetter__('score', function() {
 			return this.get('score');
@@ -37,14 +37,14 @@ Polyworks.AnimatedEnemyView = (function() {
 					this.currentAnimation = 'walkL';
 				}
 				// this.sprite.x -= this.model.speed;
-				this.move({ direction: Directions.LEFT });
+				this.move({ direction: Polyworks.Directions.LEFT });
 			} else if(enemyX < (playerX - 10)){
 				if(this.currentAnimation !== 'walkR') {
 					animations.play('walkR', animations.frameRate, true);
 					this.currentAnimation = 'walkR';
 				}
 				// this.sprite.x += this.model.speed;
-				this.move({ direction: Directions.RIGHT });
+				this.move({ direction: Polyworks.Directions.RIGHT });
 			} else {
 				animations.stop();
 				this.sprite.frame = 0

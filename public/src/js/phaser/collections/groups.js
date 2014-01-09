@@ -10,7 +10,7 @@ Polyworks.Groups = (function() {
 	Groups.prototype.addView = function(params, itemClass, idx) {
 		params.parentType = 'group';
 		params.group = this.group;
-		return new itemClass(params, idx);
+		return new Polyworks[itemClass](params, idx);
 	};
 	
 	Groups.prototype.checkTerrainCollision = function(ground) {

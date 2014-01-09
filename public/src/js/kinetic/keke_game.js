@@ -175,7 +175,7 @@ function checkInput() {
 					animationToPlay = 'jump';
 				}
 			}
-			keke.direction = Directions.LEFT
+			keke.direction = Polyworks.Directions.LEFT
 		} else if (keys[ControlKeys.RIGHT] || controls.getForward()) {         // left arrow         
 			if (keke.velX > -keke.speed) {
 	    		keke.velX--;
@@ -185,7 +185,7 @@ function checkInput() {
 					animationToPlay = 'jump';
 				}
 	        }
-			keke.direction = Directions.RIGHT;
+			keke.direction = Polyworks.Directions.RIGHT;
 		} else if(!keke.jumping) {
 			animationToPlay = 'idle';
 		}
@@ -232,10 +232,10 @@ function detectCollisions() {
 					trace('something damaging was hit');
 					keke.health += grounds[i].config.damage;
 				}
-			    if (col.direction === Directions.LEFT || col.direction === Directions.RIGHT) {
+			    if (col.direction === Polyworks.Directions.LEFT || col.direction === Polyworks.Directions.RIGHT) {
 			        keke.velX = 0;
 			        keke.jumping = false;
-				} else if (col.direction === Directions.BOTTOM) {
+				} else if (col.direction === Polyworks.Directions.BOTTOM) {
 					if(keke.justJumped) {
 						keke.justJumped = false;
 					} else {
@@ -243,7 +243,7 @@ function detectCollisions() {
 				        keke.jumping = false;
 						jumpKeyDepressed = false;
 					}
-				} else if (col.direction === Directions.TOP) {
+				} else if (col.direction === Polyworks.Directions.TOP) {
 			        // keke.velY *= -1;
 			    }
 				// break; // stop loop, something was hit
@@ -276,17 +276,17 @@ function detectCollisions() {
 					var kekeBottom = (kekeHitArea.y + kekeHitArea.height);
 					// trace('\tcol.direction = ' + col.direction + '\n\tenemy v center = ' + enemyVerticalCenter + ', keke bottom = ' + kekeBottom);
 
-					if(col.direction === Directions.TOP && (kekeBottom < enemyVerticalCenter)) {
+					if(col.direction === Polyworks.Directions.TOP && (kekeBottom < enemyVerticalCenter)) {
 						trace('enemy bottom collision, enemy health = ' + enemyObjs[key].health + ', keke.damage = ' + keke.damage);
 						enemyObjs[key].health += keke.damage;
 						// keke.velY = 0;
 			            keke.velY = -keke.speed * 0.75;
-					} else if(col.direction === Directions.LEFT || col.direction === Directions.RIGHT || col.direction === Directions.BOTTOM) {
+					} else if(col.direction === Polyworks.Directions.LEFT || col.direction === Polyworks.Directions.RIGHT || col.direction === Polyworks.Directions.BOTTOM) {
 						keke.health += enemyObjs[key].damage;
 						trace('enemy top/left/right collision, enemy damage = ' + enemyObjs[key].damage + ', keke.health = ' + keke.health + ', keke.dir3ection = ' + keke.direction);
 						// keke.velX = 0;
 						// move player backwards, away from the enemy
-						if(keke.direction === Directions.RIGHT) {
+						if(keke.direction === Polyworks.Directions.RIGHT) {
 							keke.velX++;
 						} else {
 							keke.velX--;
@@ -344,11 +344,11 @@ function horizontalCollisionCheck(shapeA, shapeB) {
 		// trace('oX = ' + oX + ', oY = ' + oY);
 		if (oX >= oY) {
             if (col.vY > 0) {
-                col.direction = Directions.TOP;
+                col.direction = Polyworks.Directions.TOP;
                 shapeA.y += oY;
 				col.id = shapeB.id;
             } else {
-                col.direction = Directions.BOTTOM;
+                col.direction = Polyworks.Directions.BOTTOM;
                 shapeA.y -= oY;
 				col.id = shapeB.id;
             }
@@ -368,11 +368,11 @@ function verticalCollisionCheck(shapeA, shapeB) {
 		// trace('oX = ' + oX + ', oY = ' + oY);
 		if (oX >= oY) {
             if (col.vX > 0) {
-                col.direction = Directions.LEFT;
+                col.direction = Polyworks.Directions.LEFT;
                 shapeA.x += oX;
 				col.id = shapeB.id;
             } else {
-                col.direction = Directions.RIGHT;
+                col.direction = Polyworks.Directions.RIGHT;
                 shapeA.x -= oX;
 				col.id = shapeB.id;
             }
@@ -392,21 +392,21 @@ function collisionCheck(shapeA, shapeB) {
 		// trace('oX = ' + oX + ', oY = ' + oY);
 		if (oX >= oY) {
             if (col.vY > 0) {
-                col.direction = Directions.TOP;
+                col.direction = Polyworks.Directions.TOP;
                 shapeA.y += oY;
 				col.id = shapeB.id;
             } else {
-                col.direction = Directions.BOTTOM;
+                col.direction = Polyworks.Directions.BOTTOM;
                 shapeA.y -= oY;
 				col.id = shapeB.id;
             }
         } else {
             if (col.vX > 0) {
-                col.direction = Directions.LEFT;
+                col.direction = Polyworks.Directions.LEFT;
                 shapeA.x += oX;
 				col.id = shapeB.id;
             } else {
-                col.direction = Directions.RIGHT;
+                col.direction = Polyworks.Directions.RIGHT;
                 shapeA.x -= oX;
 				col.id = shapeB.id;
             }
@@ -466,13 +466,13 @@ function keyupHandler(e) {
 	switch(e.which) {
 		case ControlKeys.LEFT:
 		keys[ControlKeys.LEFT] = false;
-		keke.direction = Directions.LEFT;
+		keke.direction = Polyworks.Directions.LEFT;
 		animationToPlay = 'idle';
 		break;
 
 		case ControlKeys.RIGHT:
 		keys[ControlKeys.RIGHT] = false;
-		keke.direction = Directions.RIGHT;
+		keke.direction = Polyworks.Directions.RIGHT;
 		animationToPlay = 'idle';
 		break;
 

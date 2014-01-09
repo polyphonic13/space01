@@ -74,7 +74,7 @@ Polyworks.Utils = (function() {
 	
 	utils.moveView = function(sprite, movement, params) {
 		switch(movement.type) {
-			case MovementTypes.DIRECTIONAL_BY_SPEED:
+			case Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED:
 				this.moveDirectionalBySpeed(sprite, movement, params.direction);
 			break;
 
@@ -86,19 +86,19 @@ Polyworks.Utils = (function() {
 	
 	utils.moveDirectionalBySpeed = function(sprite, movement, direction) {
 		switch(direction) {
-			case Directions.LEFT: 
+			case Polyworks.Directions.LEFT: 
 			sprite.x -= movement.speed;
 			break;
 
-			case Directions.RIGHT:
+			case Polyworks.Directions.RIGHT:
 			sprite.x += movement.speed;
 			break;
 
-			case Directions.UP:
+			case Polyworks.Directions.UP:
 			sprite.x -= movement.speed;
 			break;
 
-			case Directions.DOWN: 
+			case Polyworks.Directions.DOWN: 
 			sprite.y += movement.speed;
 			break;
 
