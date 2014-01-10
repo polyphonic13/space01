@@ -36,27 +36,21 @@ Polyworks.LevelState = (function() {
 	LevelState.prototype.create =  function() {
 		trace('LevelState['+this.id+']/create');
 		LevelState._super.create.call(this);
-		
+
 		this.scenery = new Polyworks.Collection(this.model.scenery, 'Scenery' + this.id);
-		this.scenery.init('SpriteView');
+		this.scenery.init('Sprite');
 
 		this.terrain = new Polyworks.Groups(this.model.terrain, 'Terrain' + this.id);
-		this.terrain.init('SpriteView');
+		this.terrain.init('Sprite');
 
 		this.sectorManager = new Polyworks.Sectors(this.model.sectors);
 
 		this.player = new Polyworks.Player(config.player, 0);
-		
-		this.createControls();
+
 		// this.player = Polyworks.Game.getPlayer();
-		// this.controls = Polyworks.Game.getControls();
 		this.cursors = this.controls.cursors;
 
 		this.createGui();
-	};
-	
-	LevelState.prototype.createControls = function() {
-		this.controls = new Polyworks.ControlButtons(config.controls.level);
 	};
 	
 	LevelState.prototype.createGui = function() {

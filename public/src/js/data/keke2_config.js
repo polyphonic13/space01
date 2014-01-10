@@ -25,6 +25,7 @@ var config = {
 		rightButton: 'images/arrow_right.png',
 		upButton: 'images/arrow_up.png',
 		quitButton: 'images/quit_button.png',
+		greyRect: 'images/grey_rect32x32.png',
 		invisibleBg: 'images/invisible.png'
 	},
 	sprites: {
@@ -91,55 +92,43 @@ var config = {
 	states: [{
 		id: 'menu',
 		type: 'State',
+		conrtolsType: 'menu',
 		views: [{
 			type: 'Rectangle',
-			properties: {
-				graphics: {
-					x: 0,
-					y: 0
-				},
-				stroke: {
-					width: 1,
-					color: '#ffffff',
-					opacity: 0.5
-				},
-				fill: {
-					color: '#cccccc',
-					alpha: 0.75
-				},
-				x: 10,
-				y: 10,
-				width: stage.width - 20,
-				height: stage.height - 20
-			}
+			graphics: {
+				x: 0,
+				y: 0
+			},
+			stroke: {
+				width: 1,
+				color: '#ffffff',
+				opacity: 0.5
+			},
+			fill: {
+				color: '#cccccc',
+				alpha: 0.75
+			},
+			x: 10,
+			y: 10,
+			width: stage.width - 20,
+			height: stage.height - 20
 		},
 		{
-			type: 'Rectangle',
-			properties: {
-				graphics: {
-					x: 0,
-					y: 0
-				},
-				stroke: {
-					width: 1,
-					color: '#123456',
-					opacity: 0.5
-				},
-				fill: {
-					color: '#0000ff',
-					alpha: 0.75
-				},
+			type: 'Sprite',
+			img: 'greyRect',
+			start: {
 				x: 20,
 				y: 20,
-				width: 20,
-				height: 20
-			}
+			},
+			width: stage.width - 40,
+			height: stage.width - 40
 		}]
 	},
 	{
 		id: 'level1',
 		type: 'LevelState',
-		view: [],
+		controlsType: 'level',
+		views: [],
 		scenery: [{
 			img: 'sky',
 			name: 'sky',
@@ -298,7 +287,7 @@ var config = {
 				end: 1024
 			},
 			enemies: [{
-				type: 'AnimatedEnemyView',
+				type: 'AnimatedEnemy',
 				img: 'caterpillar01',
 				name: 'sector0-enemy0',
 				start: {
@@ -323,7 +312,7 @@ var config = {
 				animations: caterpillarAnimations
 			},
 			{
-				type: 'AnimatedEnemyView',
+				type: 'AnimatedEnemy',
 				img: 'caterpillar01',
 				name: 'sector0-enemy1',
 				start: {
@@ -402,7 +391,7 @@ var config = {
 				end: 3072
 			},
 			enemies: [{
-				type: 'AnimatedEnemyView',
+				type: 'AnimatedEnemy',
 				img: 'caterpillar01',
 				name: 'sector2-enemy0',
 				start: {
@@ -427,7 +416,7 @@ var config = {
 				animations: caterpillarAnimations
 			},
 			{
-				type: 'AnimatedEnemyView',
+				type: 'AnimatedEnemy',
 				img: 'caterpillar01',
 				name: 'sector2-enemy1',
 				start: {
@@ -490,7 +479,7 @@ var config = {
 				end: 4098
 			},
 			enemies: [{
-				type: 'AnimatedEnemyView',
+				type: 'AnimatedEnemy',
 				img: 'caterpillar01',
 				name: 'sector3-enemy0',
 				start: {
@@ -515,7 +504,7 @@ var config = {
 				animations: caterpillarAnimations
 			},
 			{
-				type: 'AnimatedEnemyView',
+				type: 'AnimatedEnemy',
 				img: 'caterpillar01',
 				name: 'sector3-enemy1',
 				start: {
@@ -559,8 +548,9 @@ var config = {
 	{
 		id: 'end_state',
 		type: 'State',
+		controlsType: 'none',
 		views: [{
-			
+
 		}]
 	}],
 	player: {

@@ -1,21 +1,21 @@
-Polyworks.AnimatedSpriteView = (function() {
-	Polyworks.Utils.inherits(AnimatedSpriteView, Polyworks.SpriteView);
+Polyworks.AnimatedSprite = (function() {
+	Polyworks.Utils.inherits(AnimatedSprite, Polyworks.Sprite);
 	
 	var _this;
-	function AnimatedSpriteView(params, id) {
+	function AnimatedSprite(params, id) {
 		_this = this;
-		AnimatedSpriteView._super.constructor.call(this, params, id);
+		AnimatedSprite._super.constructor.call(this, params, id);
 		this.__defineSetter__('frame', function(val) {
 			this.sprite.animations.frame = val;
 		})
 	}
 	
-	AnimatedSpriteView.prototype.init = function(params) {
-		AnimatedSpriteView._super.init.call(_this, params);
+	AnimatedSprite.prototype.init = function(params) {
+		AnimatedSprite._super.init.call(_this, params);
 		this.initAnimations(_this.model.animations, _this.sprite);
 	};
 	
-	AnimatedSpriteView.prototype.initAnimations = function(animations, sprite) {
+	AnimatedSprite.prototype.initAnimations = function(animations, sprite) {
 		for(var i = 0; i < animations.length; i++) {
 			sprite.animations.add(animations[i].name, animations[i].keyFrames, animations[i].frameRate);
 		}
@@ -30,15 +30,15 @@ Polyworks.AnimatedSpriteView = (function() {
 		}
 	};
 	
-	AnimatedSpriteView.prototype.play = function(name, frameRate, looped) {
+	AnimatedSprite.prototype.play = function(name, frameRate, looped) {
 		_this.sprite.animations.play(name, frameRate, looped);
 		_this.model.currentAnimation = name;
 	};
 	
-	AnimatedSpriteView.prototype.stop = function() {
+	AnimatedSprite.prototype.stop = function() {
 		_this.sprite.animations.stop();
 		_this.model.currentAnimation = '';
 	};
 
-	return AnimatedSpriteView;
+	return AnimatedSprite;
 })();

@@ -19,10 +19,10 @@ Polyworks.Sector = (function() {
 		// trace(_this);
 		var sectorId = 'Sector' + this.id;
 		this.enemies = new Polyworks.Enemies(this.model.enemies, sectorId);
-		this.enemies.init('AnimatedEnemyView');
+		this.enemies.init('AnimatedEnemy');
 
 		this.bonuses = new Polyworks.Groups(this.model.bonuses, sectorId);
-		this.bonuses.init('SpriteView');
+		this.bonuses.init('Sprite');
 
 		this.created = true;
 	}

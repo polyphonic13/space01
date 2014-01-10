@@ -26,15 +26,18 @@ Polyworks.State = (function() {
 		var view;
 		this.viewManager = [];
 		for(var i = 0; i < views.length; i++) {
-			var properties = views[i].properties;
-			properties.game = this.game;
-			view = new Polyworks[views[i].type](properties);
+			views[i].game = this.game;
+			view = new Polyworks[views[i].type](views[i]);
+			view.init();
 			this.viewManager.push(view);
+		}
+		if(this.model.controlsType) {
+			this.controls = this.createControls(this.model.controlsType);
 		}
 	};
 	
-	State.prototype.createControls = function() {
-		this.controls = new Polyworks.ControlButtons(config.controls.level);
+	State.prototype.createControls = function(type) {
+		this.controls = new Polyworks.ControlButtons(config.controls[type]);
 	};
 	
 	State.prototype.update = function() {

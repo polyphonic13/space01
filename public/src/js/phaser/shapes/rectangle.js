@@ -10,5 +10,9 @@ Polyworks.Rectangle = (function() {
 		graphics.endFill();
 	}
 	
+	Rectangle.prototype.init = function() {
+
+	}
+	
 	return Rectangle;
 })();

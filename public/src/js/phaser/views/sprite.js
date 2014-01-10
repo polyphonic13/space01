@@ -1,13 +1,14 @@
-Polyworks.SpriteView = (function() {
-	Polyworks.Utils.inherits(SpriteView, Polyworks.Base);
+Polyworks.Sprite = (function() {
+	Polyworks.Utils.inherits(Sprite, Polyworks.Base);
 	
 	var _this;
-	function SpriteView(params, id) {
+	function Sprite(params, id) {
 		_this = this;
-		SpriteView._super.constructor.call(this, params, id);
+		Sprite._super.constructor.call(this, params, id);
 	}
 	
-	SpriteView.prototype.init = function() {
+	Sprite.prototype.init = function() {
+		trace('Sprite/init');
 		var start = _this.model.start;
 		var sprite = Polyworks.Utils.addSprite(_this.model);
 
@@ -31,8 +32,8 @@ Polyworks.SpriteView = (function() {
 		_this.sprite = sprite;
 	};
 
-	SpriteView.prototype.initPhysics = function(physics, sprite) {
-		// trace('SpriteView['+this.id+']/initPhysics');
+	Sprite.prototype.initPhysics = function(physics, sprite) {
+		// trace('Sprite['+this.id+']/initPhysics');
 		for(var key in physics) {
 			// trace(key + ' = ' + physics[key]);
 			sprite.body[key] = physics[key];
@@ -42,19 +43,19 @@ Polyworks.SpriteView = (function() {
 		}
 	};
 	
-	SpriteView.prototype.checkTerrainCollision = function(terrain) {
+	Sprite.prototype.checkTerrainCollision = function(terrain) {
 		Polyworks.Game.phaser.physics.collide(this.sprite, terrain);
 	};
 	
-	SpriteView.prototype.move = function(params) {
+	Sprite.prototype.move = function(params) {
 		if(this.model.movement) {
 			Polyworks.Utils.moveView(this.sprite, this.model.movement, params);
 		}
 	};
 	
-	SpriteView.prototype.remove = function() {
+	Sprite.prototype.remove = function() {
 		this.sprite.remove();
 	};
 	
-	return SpriteView;
+	return Sprite;
 })();

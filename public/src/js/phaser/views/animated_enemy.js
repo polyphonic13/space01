@@ -1,12 +1,12 @@
-Polyworks.AnimatedEnemyView = (function() {
-	Polyworks.Utils.inherits(AnimatedEnemyView, Polyworks.AnimatedSpriteView);
+Polyworks.AnimatedEnemy = (function() {
+	Polyworks.Utils.inherits(AnimatedEnemy, Polyworks.AnimatedSprite);
 	
 	var _this;
-	function AnimatedEnemyView(params, id) {
-		// trace('AnimatedEnemyView['+idx+']/constructor, params =');
+	function AnimatedEnemy(params, id) {
+		// trace('AnimatedEnemy['+idx+']/constructor, params =');
 		// trace(params);
 		_this = this;
-		AnimatedEnemyView._super.constructor.call(this, params, id);
+		AnimatedEnemy._super.constructor.call(this, params, id);
 
 		this.__defineGetter__('score', function() {
 			return this.get('score');
@@ -22,10 +22,10 @@ Polyworks.AnimatedEnemyView = (function() {
 		});
 	}
 	
-	AnimatedEnemyView.prototype.update = function(params) {
+	AnimatedEnemy.prototype.update = function(params) {
 		var enemyX = this.sprite.body.screenX;
 		var playerX = params.player.body.screenX;
-		// trace('AnimatedEnemyView['+this.sprite.name+']/update\n\tenemyX = ' + enemyX + ', playerX = ' + playerX);
+		// trace('AnimatedEnemy['+this.sprite.name+']/update\n\tenemyX = ' + enemyX + ', playerX = ' + playerX);
 
 		if(enemyX < (playerX + stage.width/2) && enemyX > (playerX - stage.width/2)) {
 			// trace('\tenemy['+this.sprite.name+'] in range');
@@ -53,11 +53,11 @@ Polyworks.AnimatedEnemyView = (function() {
 		}
 	};
 	
-	AnimatedEnemyView.prototype.kill = function() {
+	AnimatedEnemy.prototype.kill = function() {
 		trace('AnimatedEnemey['+this.sprite.name+']/kill');
 		this.active = false;
 		this.sprite.destroy();
 	};
 	
-	return AnimatedEnemyView;
+	return AnimatedEnemy;
 })();
