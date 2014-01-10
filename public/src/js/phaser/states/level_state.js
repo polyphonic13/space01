@@ -11,8 +11,7 @@ Polyworks.LevelState = (function() {
 		this.cursors;
 		this.player; 
 		this.quitButton;
-		this.score = 0;
-		this.scoreText;
+		Polyworks.Game.score = 0;
 	};
 	
 	LevelState.prototype.preload = function() {
@@ -31,7 +30,6 @@ Polyworks.LevelState = (function() {
 		this.terrain = this.elements.terrain;
 		this.sectorManager = this.elements.sectors;
 
-		// this.sectorManager = new Polyworks.Sectors(this.model.sectors);
 		this.player = new Polyworks.Player(config.player, 0);
 
 		this.createControls.call(this);
@@ -40,17 +38,18 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.update = function() {
+		// this.gameOver = true;
 		if(!this.gameOver) {
-			// this.sectorManager.checkTerrainCollision(this.terrain.group);
-			// this.sectorManager.setActive(this.game.camera.x + (stage.width/2));
-			// 
-			// var sector = this.sectorManager.activeSector;
-			// sector.enemies.update({ player: this.player.sprite });
-			// 
-			// this.checkCollisions(sector);
-			// 
-			// this.checkGameInput();
-			// this.setPlayerAnimations();
+			this.sectorManager.checkTerrainCollision(this.terrain.group);
+			this.sectorManager.setActive(this.game.camera.x + (stage.width/2));
+
+			var sector = this.sectorManager.activeSector;
+			sector.enemies.update({ player: this.player.sprite });
+
+			this.checkCollisions(sector);
+
+			this.checkGameInput();
+			this.setPlayerAnimations();
 		}
 	};
 	
@@ -110,7 +109,8 @@ Polyworks.LevelState = (function() {
 			// trace(sprite.body.touching);
 			// enemy damages keke
 			config.player.health -= enemy.damage;
-			this.healthText.content = 'Health: ' + config.player.health;
+			this.gui.setContent('health', 'Health: ' + config.player.health);
+
 			if(config.player.health <= 0) {
 				this.close();
 			}
@@ -120,9 +120,9 @@ Polyworks.LevelState = (function() {
 
 	LevelState.prototype.killEnemy = function(enemy) {
 		// trace('killEnemy');
-		this.score += enemy.score;
-		this.scoreText.content = 'Score: ' + this.score;
-
+		Polyworks.Game.score += enemy.score;
+		// Polyworks.Game.scoreText.content = 'Score: ' + Polyworks.Game.score;
+		this.gui.setContent('score', 'Score: ' + Polyworks.Game.score);
 		enemy.kill();
 	};
 
@@ -135,11 +135,11 @@ Polyworks.LevelState = (function() {
 		sprite.kill();
 		bonus.active = false; 
 
-	    this.score += bonus.get('score');
-	    this.scoreText.content = 'Score: ' + this.score;
+	    Polyworks.Game.score += bonus.get('score');
+		this.gui.setContent('score', 'Score: ' + Polyworks.Game.score);
 
 		config.player.health += bonus.get('health');
-		this.healthText.content = 'Health: ' + config.player.health;
+		this.gui.setContent('health', 'Health: ' + config.player.health);
 	};
 
 	LevelState.prototype.checkGameInput = function() {

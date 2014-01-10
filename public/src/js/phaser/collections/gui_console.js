@@ -15,7 +15,12 @@ Polyworks.GUIConsole = (function() {
 	}
 
 	GUIConsole.prototype.setContent = function(field, content) {
-		this.getItemByName(field).content = content;
+		trace('GUIConsole/setContent, field = ' + field + '\n\tcontent = ' + content);
+		trace(this.collection);
+		var text = this.getItemByName(field)
+		if(text) {
+			text.content = content;
+		}
 	};
 	
 	GUIConsole.prototype.getContent = function(field) {

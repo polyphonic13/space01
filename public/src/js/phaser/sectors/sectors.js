@@ -2,10 +2,9 @@ Polyworks.Sectors = (function() {
 	Utils.inherits(Sectors, Polyworks.Collection);
 	
 	function Sectors(params, id) {
-		trace('Sectors/constructor, params = ');
+		trace('Sectors['+id+']/constructor, params = ');
 		trace(params);
 		Sectors._super.constructor.call(this, params, id);
-		this.init('Sector');
 		this.activeSectorId = 0;
 
 		this.__defineGetter__('activeSector', function() {

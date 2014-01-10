@@ -10,7 +10,8 @@ Polyworks.Collection = (function() {
 	}
 	
 	Collection.prototype.init = function(itemClass) {
-		trace('Collection['+this.id+']/init, itemClass = '+ itemClass);
+		// trace('Collection['+this.id+']/init, itemClass = '+ itemClass);
+		// trace(this.model);
 		var cl;
 		for(var i = 0; i < this.model.length; i++) {
 			// use model-specific class type, or default to itemClass param

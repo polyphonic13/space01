@@ -12,6 +12,7 @@ var world = {
 
 
 var config = {
+	// IMAGES
 	images: {
 		sky: 'images/night_sky.jpg',
 		mountains: 'images/hills03_grey.png',
@@ -28,6 +29,7 @@ var config = {
 		greyRect: 'images/grey_rect32x32.png',
 		invisibleBg: 'images/invisible.png'
 	},
+	// SPRITES
 	sprites: {
 		keke: {
 			url: 'images/keke_character2.png', 
@@ -42,6 +44,7 @@ var config = {
 			frames: 12
 		}
 	},
+	// CONTROLS
 	controls: {
 		menu: [{
 			type: 'ControlButton',
@@ -118,6 +121,7 @@ var config = {
 			}
 		}]
 	},
+	// STATES
 	initialState: 'level1',
 	states: [{
 		id: 'menu',
@@ -682,16 +686,18 @@ var config = {
 					}]
 				}
 			}]
+
 		},
 		{
 			name: 'gui',
 			type: 'GUIConsole',
 			attrs: [{
+				name: 'score',
 				type: 'Text',
 				attrs: {
 					x: 15,
 					y: 15,
-					defaultContent: '',
+					defaultContent: 'Score: ',
 					stye: { 
 						font: '18px Arial', 
 						fill: '#ffffff' 
@@ -699,26 +705,19 @@ var config = {
 				}
 			},
 			{
+				name: 'health',
 				type: 'Text',
 				attrs: {
 					x: 15,
 					y: 40,
-					defaultContent: '',
+					defaultContent: 'Health: ',
 					style: { 
 						font: '18px Arial', 
 						fill: '#ffffff' 
 					}
 				}
 			}]
-		}],
-	},
-	{
-		id: 'endScreen',
-		type: 'State',
-		clearWorld: true,
-		clearCache: false,
-		elements: [{
-	
+
 		}]
 	}],
 	player: {

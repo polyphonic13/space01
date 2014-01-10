@@ -39,7 +39,7 @@ Polyworks.State = (function() {
 
 		for(var i = 0; i < elements.length; i++) {
 			attrs = elements[i].attrs;
-			trace('State/createElements, type = ' + elements[i].type);
+			trace('State/createElements, elements['+i+'].type = ' + elements[i].type);
 			trace(attrs);
 			var id = (attrs.name) ? attrs.name : i;
 			element = new Polyworks[elements[i].type](attrs, id);
