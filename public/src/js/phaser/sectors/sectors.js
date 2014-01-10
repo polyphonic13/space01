@@ -1,5 +1,5 @@
 Polyworks.Sectors = (function() {
-	Polyworks.Utils.inherits(Sectors, Polyworks.Collection);
+	Utils.inherits(Sectors, Polyworks.Collection);
 	
 	function Sectors(params, id) {
 		trace('Sectors/constructor, params = ');

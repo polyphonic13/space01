@@ -1,5 +1,5 @@
 Polyworks.AnimatedSprite = (function() {
-	Polyworks.Utils.inherits(AnimatedSprite, Polyworks.Sprite);
+	Utils.inherits(AnimatedSprite, Polyworks.Sprite);
 	
 	var _this;
 	function AnimatedSprite(params, id) {

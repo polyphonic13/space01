@@ -1,8 +1,10 @@
 Polyworks.ControlButton = (function() {
-	Polyworks.Utils.inherits(ControlButton, Polyworks.Base);
+	Utils.inherits(ControlButton, Polyworks.Base);
 	
 	var _this;
 	function ControlButton(params, id) {
+		trace('ControlButton/constructor, params = ');
+		trace(params);
 		_this = this;
 		ControlButton._super.constructor.call(this, params, id);
 	};

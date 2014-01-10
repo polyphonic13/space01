@@ -1,7 +1,8 @@
 Polyworks.Collection = (function() {
-	Polyworks.Utils.inherits(Collection, Polyworks.Base);
+	Utils.inherits(Collection, Polyworks.Base);
 	
 	function Collection(params, id) {
+		trace('Collection['+id+']/constructor');
 		Collection._super.constructor.call(this, params, id);
 		this.collection = [];
 		this.nameIndex = {};
@@ -10,6 +11,9 @@ Polyworks.Collection = (function() {
 	
 	Collection.prototype.init = function(itemClass) {
 		trace('itemClass = '+ itemClass);
+		if(itemClass === 'AnimatedEnemy') {
+			trace(this.model);
+		}
 		var cl;
 		for(var i = 0; i < this.model.length; i++) {
 			// use model-specific class type, or default to itemClass param
@@ -29,6 +33,10 @@ Polyworks.Collection = (function() {
 		return new Polyworks[itemClass](params, idx);
 	};
 	
+	Collection.prototype.getIndexByName = function(name) {
+		return this.nameIndex[name];
+	};
+
 	Collection.prototype.getItemByName = function(name) {
 		return this.collection[this.nameIndex[name]];
 	};

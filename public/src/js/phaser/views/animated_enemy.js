@@ -1,5 +1,5 @@
 Polyworks.AnimatedEnemy = (function() {
-	Polyworks.Utils.inherits(AnimatedEnemy, Polyworks.AnimatedSprite);
+	Utils.inherits(AnimatedEnemy, Polyworks.AnimatedSprite);
 	
 	var _this;
 	function AnimatedEnemy(params, id) {

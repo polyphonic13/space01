@@ -1,6 +1,5 @@
-Polyworks.Utils = (function() {
+Utils = (function() {
 	var utils = {};
-
 
 	utils.clone = function(a) {
 		var obj = {};

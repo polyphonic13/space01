@@ -1,13 +1,10 @@
 Polyworks.Player = (function() {
-	Polyworks.Utils.inherits(Player, Polyworks.AnimatedSprite);
+	Utils.inherits(Player, Polyworks.AnimatedSprite);
 	
 	function Player(params, id) {
 		_this = this;
 		Player._super.constructor.call(this, params, id);
 		this.init();
-		trace('Player, post super init, this = ');
-		trace(this);
-		trace(_this);
 		if(this.model.anchor) {
 			this.sprite.anchor.setTo(this.model.anchor.x, this.model.anchor.y);
 		}

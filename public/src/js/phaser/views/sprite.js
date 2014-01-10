@@ -1,5 +1,5 @@
 Polyworks.Sprite = (function() {
-	Polyworks.Utils.inherits(Sprite, Polyworks.Base);
+	Utils.inherits(Sprite, Polyworks.Base);
 	
 	var _this;
 	function Sprite(params, id) {
@@ -9,7 +9,7 @@ Polyworks.Sprite = (function() {
 	
 	Sprite.prototype.init = function() {
 		var start = _this.model.start;
-		var sprite = Polyworks.Utils.addSprite(_this.model);
+		var sprite = Utils.addSprite(_this.model);
 
 		sprite.name = _this.model.img + '-' + _this.id;
 		sprite.idx = _this.id;
@@ -51,7 +51,7 @@ Polyworks.Sprite = (function() {
 	
 	Sprite.prototype.move = function(params) {
 		if(this.model.movement) {
-			Polyworks.Utils.moveView(this.sprite, this.model.movement, params);
+			Utils.moveView(this.sprite, this.model.movement, params);
 		}
 	};
 	

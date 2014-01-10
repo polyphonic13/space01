@@ -1,5 +1,5 @@
 Polyworks.LevelState = (function() {
-	Polyworks.Utils.inherits(LevelState, Polyworks.ControlsState); 
+	Utils.inherits(LevelState, Polyworks.ControlsState); 
 	
 	function LevelState(params, id) {
 		trace('LevelState/constructor, phaser = ');
@@ -16,21 +16,6 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.preload = function() {
-		// trace('LevelState['+this.id+']/preload');
-		// var images = config.images;
-		// trace('preload images');
-		// for(key in images) {
-		// 	this.game.load.image(key, images[key]);
-		// }
-		// var sprites = config.sprites;
-		// trace('preload sprites');
-		// for(key in sprites) {
-		// 	// trace('\t' + key + ', width = ' + sprites[key].width + ', height = ' + sprites[key].height + ', frames = ' + sprites[key].frames);
-		// 	this.game.load.spritesheet(key, sprites[key].url, sprites[key].width, sprites[key].height, sprites[key].frames);
-		// }
-		// 
-		// // keyboard buttons
-		// this.cursors = this.game.input.keyboard.createCursorKeys();
 	};
 	
 	LevelState.prototype.create =  function() {
@@ -39,19 +24,17 @@ Polyworks.LevelState = (function() {
 	}
 	
 	LevelState.prototype.createState = function() {
-		// create scenery, terrain, sectors and player prior to super call (views and controls)
-		// this.scenery = new Polyworks.Collection(this.model.scenery, 'Scenery' + this.id);
-		// this.scenery.init('Sprite');
-		this.terrain = new Polyworks.Groups(this.model.terrain, 'Terrain' + this.id);
-		this.terrain.init('Sprite');
-		this.sectorManager = new Polyworks.Sectors(this.model.sectors);
-		this.player = new Polyworks.Player(config.player, 0);
 
 		// create views and controls with super
-		LevelState._super.createState.call(this);
-		this.cursors = this.controls.cursors;
+		// LevelState._super.createState.call(this);
+		// 
+		// this.sectorManager = new Polyworks.Sectors(this.model.sectors);
+		// this.player = new Polyworks.Player(config.player, 0);
+		// 
+		this.createControls.call(this);
+		// this.cursors = this.controls.cursors;
 
-		this.createGui();
+		// this.createGui();
 	};
 	
 	LevelState.prototype.createGui = function() {
@@ -66,16 +49,16 @@ Polyworks.LevelState = (function() {
 
 	LevelState.prototype.update = function() {
 		if(!this.gameOver) {
-			this.sectorManager.checkTerrainCollision(this.terrain.group);
-			this.sectorManager.setActive(this.game.camera.x + (stage.width/2));
-
-			var sector = this.sectorManager.activeSector;
-			sector.enemies.update({ player: this.player.sprite });
-
-			this.checkCollisions(sector);
-
-			this.checkGameInput();
-			this.setPlayerAnimations();
+			// this.sectorManager.checkTerrainCollision(this.terrain.group);
+			// this.sectorManager.setActive(this.game.camera.x + (stage.width/2));
+			// 
+			// var sector = this.sectorManager.activeSector;
+			// sector.enemies.update({ player: this.player.sprite });
+			// 
+			// this.checkCollisions(sector);
+			// 
+			// this.checkGameInput();
+			// this.setPlayerAnimations();
 		}
 	};
 	

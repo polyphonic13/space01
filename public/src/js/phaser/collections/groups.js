@@ -1,6 +1,6 @@
 // collection of Phaser group objects
 Polyworks.Groups = (function() {
-	Polyworks.Utils.inherits(Groups, Polyworks.Collection);
+	Utils.inherits(Groups, Polyworks.Collection);
 	
 	function Groups(params, id) {
 		Groups._super.constructor.call(this, params, id);
