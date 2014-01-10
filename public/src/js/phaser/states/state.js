@@ -9,30 +9,43 @@ Polyworks.State = (function() {
 	}
 	
 	State.prototype.preLoad = function() {
-		trace('State['+this.id+']/preLoad');
-		this.loaded = true;
+		trace('State['+this.id+']/preLoad, loaded = ' + this.loaded);
+		if(!this.loaded) {
+			this.loaded = true;
+		}
 	};
 	
 	State.prototype.create = function() {
-		trace('State['+this.id+']/create');
-		this.game = Polyworks.Game.phaser;
+		trace('State['+this.id+']/create, created = '+ this.created);
+		if(!this.created) {
+			this.createState();
+			this.created = true;
+		}
+	};
 
-		this.createViews();
-		this.created = true;
+	State.prototype.createState = function() {
+		this.game = Polyworks.Game.phaser;
+		this.gameOver = Polyworks.Game.gameOver; 
+
+		this.viewManager = [];
+
+		if(this.model.views) {
+			this.createViews();
+		}
+		if(this.model.controlsType) {
+			this.createControls(this.model.controlsType);
+		}
 	};
 	
 	State.prototype.createViews = function() {
 		var views = this.model.views;
 		var view;
-		this.viewManager = [];
+
 		for(var i = 0; i < views.length; i++) {
 			views[i].game = this.game;
 			view = new Polyworks[views[i].type](views[i]);
 			view.init();
 			this.viewManager.push(view);
-		}
-		if(this.model.controlsType) {
-			this.controls = this.createControls(this.model.controlsType);
 		}
 	};
 	
@@ -42,6 +55,9 @@ Polyworks.State = (function() {
 	
 	State.prototype.update = function() {
 //		trace('State['+this.id+']/update');
+		if(this.controls.isPressed()) {
+
+		}
 	};
 	
 	return State;

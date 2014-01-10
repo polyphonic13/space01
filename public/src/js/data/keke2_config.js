@@ -44,6 +44,15 @@ var config = {
 	},
 	controls: {
 		menu: [{
+			img: ControlButtonTypes.INVISIBLE_BG,
+			start: {
+				x: 0,
+				y: 0
+			},
+			width: stage.width, 
+			height: stage.height
+		},
+		{
 			img: ControlButtonTypes.UP,
 			start: {
 				x: stage.width/2,
@@ -88,10 +97,12 @@ var config = {
 			}
 		}]
 	},
-	initialState: 'menu',
+	initialState: 'level1',
 	states: [{
 		id: 'menu',
 		type: 'State',
+		clearWorld: true,
+		clearCache: false,
 		conrtolsType: 'menu',
 		views: [{
 			type: 'Rectangle',
@@ -127,8 +138,86 @@ var config = {
 	{
 		id: 'level1',
 		type: 'LevelState',
+		clearWorld: true,
+		clearCache: false,
 		controlsType: 'level',
-		views: [],
+		views: [{
+			type: 'Sprite',
+			img: 'sky',
+			name: 'sky',
+			start: {
+				x: 0,
+				y: 0
+			},
+			width: stage.width,
+			height: stage.height,
+			fixedToCamera: true
+		},
+		{
+			type: 'Sprite',
+			img: 'mountains',
+			start: {
+				x: 0,
+				y: 0
+			}
+		},
+		{
+			type: 'Sprite',
+			img: 'treesBack',
+			start: {
+				x: 0,
+				y: stage.height - 490
+			}
+		},
+		{
+			type: 'Sprite',
+			img: 'treesFore',
+			start: {
+				x: 0,
+				y: 0
+			}
+		},
+		{
+			type: 'Sprite',
+			img: 'mountains',
+			start: {
+				x: 2048,
+				y: 0
+			}
+		},
+		{
+			type: 'Sprite',
+			img: 'treesBack',
+			start: {
+				x: 2048,
+				y: stage.height - 490
+			}
+		},
+		{
+			type: 'Sprite',
+			img: 'treesFore',
+			start: {
+				x: 2048,
+				y: 0
+			}
+		},
+		{
+			type: 'Sprite',
+			img: 'grass1',
+			start: {
+				x: 0,
+				y: stage.height - 200
+			}
+		},
+		{
+			type: 'Sprite',
+			img: 'grass2',
+			start: {
+				x: 2048,
+				y: stage.height - 200
+			}
+		}],
+		/*
 		scenery: [{
 			img: 'sky',
 			name: 'sky',
@@ -196,6 +285,7 @@ var config = {
 				y: stage.height - 200
 			}
 		}],
+		*/
 		terrain: [{
 			img: 'platform',
 			start: {
@@ -548,7 +638,8 @@ var config = {
 	{
 		id: 'end_state',
 		type: 'State',
-		controlsType: 'none',
+		clearWorld: true,
+		clearCache: false,
 		views: [{
 
 		}]

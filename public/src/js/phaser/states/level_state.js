@@ -36,18 +36,19 @@ Polyworks.LevelState = (function() {
 	LevelState.prototype.create =  function() {
 		trace('LevelState['+this.id+']/create');
 		LevelState._super.create.call(this);
-
-		this.scenery = new Polyworks.Collection(this.model.scenery, 'Scenery' + this.id);
-		this.scenery.init('Sprite');
-
+	}
+	
+	LevelState.prototype.createState = function() {
+		// create scenery, terrain, sectors and player prior to super call (views and controls)
+		// this.scenery = new Polyworks.Collection(this.model.scenery, 'Scenery' + this.id);
+		// this.scenery.init('Sprite');
 		this.terrain = new Polyworks.Groups(this.model.terrain, 'Terrain' + this.id);
 		this.terrain.init('Sprite');
-
 		this.sectorManager = new Polyworks.Sectors(this.model.sectors);
-
 		this.player = new Polyworks.Player(config.player, 0);
 
-		// this.player = Polyworks.Game.getPlayer();
+		// create views and controls with super
+		LevelState._super.createState.call(this);
 		this.cursors = this.controls.cursors;
 
 		this.createGui();

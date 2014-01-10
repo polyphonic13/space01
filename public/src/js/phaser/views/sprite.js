@@ -8,7 +8,6 @@ Polyworks.Sprite = (function() {
 	}
 	
 	Sprite.prototype.init = function() {
-		trace('Sprite/init');
 		var start = _this.model.start;
 		var sprite = Polyworks.Utils.addSprite(_this.model);
 
@@ -24,6 +23,9 @@ Polyworks.Sprite = (function() {
 		var scale = _this.model.scale
 		if(scale) {
 			sprite.scale.setTo(scale[0], scale[1]);
+		}
+		if(_this.model.fixedToCamera) {
+			 sprite.fixedToCamera = true;
 		}
 		if(_this.model.physics) {
 			_this.initPhysics(_this.model.physics, sprite);

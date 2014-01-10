@@ -10,7 +10,8 @@ Polyworks.Game = (function() {
 		score: 0,
 		currentState: '',
 		previousState: '',
-		
+		gameOver: false,
+
 		init: function(params) {
 			_model = params;
 
@@ -42,9 +43,16 @@ Polyworks.Game = (function() {
 			}
 		},
 
+		changeState: function(id) {
+			var state = _states[id];
+			Polyworks.Game.previousState = Polyworks.Game.currentState;
+			Polyworks.Game.currentState = id;
+			Polyworks.Game.phaser.state.start(id, state.clearWorld, state.clearCache);
+		},
+
 		quit: function() {
 			trace('Polyworks.Game/quit');
-			gameOver = true;
+			Polyworks.Game.gameOver = true;
 			Polyworks.Game.phaser.destroy();
 		}
 	};
@@ -70,6 +78,8 @@ Polyworks.Game = (function() {
 		_initPlayer();
 		_initControls();
 		_initStates();
+		Polyworks.Game.changeState(config.initialState);
+
 	}
 	
 	function _initWorld() {
@@ -95,13 +105,16 @@ Polyworks.Game = (function() {
 		_states = {};
 
 		var states = _model.states;
+		var state;
 		trace(states);
 		for(var i = 0; i < states.length; i++) {
-			_states[states[i].id] = new Polyworks[states[i].type](states[i], states[i].id);
+			state = new Polyworks[states[i].type](states[i], states[i].id);
+			_states[states[i].id] = state;
+			Polyworks.Game.phaser.state.add(states[i].id, state, false);
 		}
 		trace('Game/init, initialState = ' + config.initialState + ', states = ');
 		trace(_states);
-		Polyworks.Game.phaser.state.add(config.initialState, _states[config.initialState], true);
+		// Polyworks.Game.phaser.state.add(config.initialState, _states[config.initialState], false);
 	}
 
 	return polyworks_game;
