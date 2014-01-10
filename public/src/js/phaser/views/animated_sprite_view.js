@@ -30,8 +30,8 @@ Polyworks.AnimatedSpriteView = (function() {
 		}
 	};
 	
-	AnimatedSpriteView.prototype.play = function(name) {
-		_this.sprite.animations.play(name);
+	AnimatedSpriteView.prototype.play = function(name, frameRate, looped) {
+		_this.sprite.animations.play(name, frameRate, looped);
 		_this.model.currentAnimation = name;
 	};
 	
