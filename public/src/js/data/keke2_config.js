@@ -127,33 +127,37 @@ var config = {
 		controlsType: 'menu',
 		views: [{
 			type: 'Rectangle',
-			graphics: {
-				x: 0,
-				y: 0
-			},
-			stroke: {
-				width: 1,
-				color: '#ffffff',
-				opacity: 0.5
-			},
-			fill: {
-				color: '#cccccc',
-				alpha: 0.75
-			},
-			x: 10,
-			y: 10,
-			width: stage.width - 20,
-			height: stage.height - 20
+			params: {
+				graphics: {
+					x: 0,
+					y: 0
+				},
+				stroke: {
+					width: 1,
+					color: '#ffffff',
+					opacity: 0.5
+				},
+				fill: {
+					color: '#cccccc',
+					alpha: 0.75
+				},
+				x: 10,
+				y: 10,
+				width: stage.width - 20,
+				height: stage.height - 20
+			}
 		},
 		{
 			type: 'Sprite',
-			img: 'greyRect',
-			start: {
-				x: 20,
-				y: 20
-			},
-			width: stage.width - 40,
-			height: stage.width - 40
+			params: {
+				img: 'greyRect',
+				start: {
+					x: 20,
+					y: 20
+				},
+				width: stage.width - 40,
+				height: stage.width - 40
+			}
 		}]
 	},
 	{
@@ -161,6 +165,30 @@ var config = {
 		type: 'LevelState',
 		clearWorld: true,
 		clearCache: false,
+		gui: [{
+			type: 'Text',
+			params: {
+				x: 15,
+				y: 15,
+				defaultContent: '',
+				stye: { 
+					font: '18px Arial', 
+					fill: '#ffffff' 
+				}
+			}
+		},
+		{
+			type: 'Text',
+			params: {
+				x: 15,
+				y: 40,
+				defaultContent: '',
+				style: { 
+					font: '18px Arial', 
+					fill: '#ffffff' 
+				}
+			}
+		}],
 		controlsType: 'level',
 		views: [{
 			type: 'Collection',

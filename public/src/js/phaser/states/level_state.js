@@ -26,27 +26,18 @@ Polyworks.LevelState = (function() {
 	LevelState.prototype.createState = function() {
 
 		// create views and controls with super
-		// LevelState._super.createState.call(this);
-		// 
-		// this.sectorManager = new Polyworks.Sectors(this.model.sectors);
-		// this.player = new Polyworks.Player(config.player, 0);
-		// 
-		this.createControls.call(this);
-		// this.cursors = this.controls.cursors;
+		LevelState._super.createState.call(this);
 
+		this.sectorManager = new Polyworks.Sectors(this.model.sectors);
+		this.player = new Polyworks.Player(config.player, 0);
+
+		this.createControls.call(this);
+		this.cursors = this.controls.cursors;
+
+		this.guiConsole = new Polyworks.GUIConsole(this.model.gui);
 		// this.createGui();
 	};
 	
-	LevelState.prototype.createGui = function() {
-	   //  The score
-		var guiConsole = this.game.add.group(null);
-	    this.scoreText = this.game.add.text(16, 15, 'Score: 0', { font: '18px Arial', fill: '#ffffff' });
-		guiConsole.add(this.scoreText);
-
-		this.healthText = this.game.add.text(16, 40, 'Health: ' + config.player.health, { font: '18px Arial', fill: '#ffffff' });
-		guiConsole.add(this.healthText);
-	};
-
 	LevelState.prototype.update = function() {
 		if(!this.gameOver) {
 			// this.sectorManager.checkTerrainCollision(this.terrain.group);

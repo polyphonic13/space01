@@ -10,10 +10,7 @@ Polyworks.Collection = (function() {
 	}
 	
 	Collection.prototype.init = function(itemClass) {
-		trace('itemClass = '+ itemClass);
-		if(itemClass === 'AnimatedEnemy') {
-			trace(this.model);
-		}
+		trace('Collection['+this.id+']/init, itemClass = '+ itemClass);
 		var cl;
 		for(var i = 0; i < this.model.length; i++) {
 			// use model-specific class type, or default to itemClass param

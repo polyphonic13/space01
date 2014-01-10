@@ -28,11 +28,11 @@ Polyworks.State = (function() {
 		this.gameOver = Polyworks.Game.gameOver; 
 
 		this.viewManager = [];
-		this.createElements();
+		this.createViews();
 
 	};
 	
-	State.prototype.createElements = function() {
+	State.prototype.createViews = function() {
 		var views = this.model.views;
 		var view;
 		var params; 

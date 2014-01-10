@@ -48,6 +48,7 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/data/keke_animations2.js',
 					'<%= srcDir %>/js/data/keke2_config.js',
 					'<%= srcDir %>/js/phaser/base.js',
+					'<%= srcDir %>/js/phaser/views/text.js',
 					'<%= srcDir %>/js/phaser/views/sprite.js',
 					'<%= srcDir %>/js/phaser/views/animated_sprite.js',
 					'<%= srcDir %>/js/phaser/views/animated_enemy.js',
