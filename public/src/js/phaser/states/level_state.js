@@ -46,9 +46,9 @@ Polyworks.LevelState = (function() {
 		this.sectorManager = new Polyworks.Sectors(this.model.sectors);
 
 		this.player = new Polyworks.Player(config.player, 0);
-		// this.controls = new Polyworks.ControlButtons(config.controls);
+		this.controls = new Polyworks.ControlButtons(config.controls);
 		// this.player = Polyworks.Game.getPlayer();
-		this.controls = Polyworks.Game.getControls();
+		// this.controls = Polyworks.Game.getControls();
 		this.cursors = this.controls.cursors;
 
 		this.createGui();
