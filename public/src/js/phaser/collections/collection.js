@@ -19,7 +19,7 @@ Polyworks.Collection = (function() {
 			} else {
 				cl = itemClass;
 			}
-			var view = this.addView(this.model[i].params, cl, i);
+			var view = this.addView(this.model[i].attrs, cl, i);
 			view.init();
 			this.nameIndex[view.id] = i;
 			this.collection.push(view);

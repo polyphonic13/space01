@@ -27,7 +27,6 @@ Polyworks.State = (function() {
 		this.game = Polyworks.Game.phaser;
 		this.gameOver = Polyworks.Game.gameOver; 
 
-		// this.elementManager = [];
 		this.elements = {};
 		this.createElements();
 
@@ -36,17 +35,16 @@ Polyworks.State = (function() {
 	State.prototype.createElements = function() {
 		var elements = this.model.elements;
 		var element;
-		var params; 
+		var attrs; 
 
 		for(var i = 0; i < elements.length; i++) {
-			params = elements[i].params;
-			// params.game = this.game;
-			trace('elements['+i+'].type = ' + elements[i].type);
-			trace(params);
-			element = new Polyworks[elements[i].type](params);
+			attrs = elements[i].attrs;
+			trace('State/createElements, type = ' + elements[i].type);
+			trace(attrs);
+			var id = (attrs.name) ? attrs.name : i;
+			element = new Polyworks[elements[i].type](attrs, id);
 			element.init();
 			this.elements[elements[i].name] = element;
-			// this.elementManager.push(element);
 		}
 	};
 	

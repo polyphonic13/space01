@@ -45,7 +45,7 @@ var config = {
 	controls: {
 		menu: [{
 			type: 'ControlButton',
-			params: {
+			attrs: {
 				img: ControlButtonTypes.INVISIBLE_BG,
 				start: {
 					x: 0,
@@ -57,7 +57,7 @@ var config = {
 		},
 		{
 			type: 'ControlButton',
-			params: {
+			attrs: {
 				img: ControlButtonTypes.UP,
 				start: {
 					x: stage.width/2,
@@ -67,7 +67,7 @@ var config = {
 		}],
 		level: [{
 			type: 'ControlButton',
-			params: {
+			attrs: {
 				img: ControlButtonTypes.INVISIBLE_BG,
 				start: {
 					x: 0,
@@ -79,7 +79,7 @@ var config = {
 		},
 		{
 			type: 'ControlButton',
-			params: {
+			attrs: {
 				img: ControlButtonTypes.LEFT,
 				start: {
 					x: 20,
@@ -89,7 +89,7 @@ var config = {
 		},
 		{
 			type: 'ControlButton',
-			params: {
+			attrs: {
 				img: ControlButtonTypes.RIGHT,
 				start: {
 					x: 120,
@@ -99,7 +99,7 @@ var config = {
 		},
 		{
 			type: 'ControlButton',
-			params: {
+			attrs: {
 				img: ControlButtonTypes.UP,
 				start: {
 					x: stage.width - 80,
@@ -109,7 +109,7 @@ var config = {
 		},
 		{
 			type: 'ControlButton',
-			params: {
+			attrs: {
 				img: ControlButtonTypes.QUIT,
 				start: {
 					x: stage.width - 80,
@@ -127,7 +127,7 @@ var config = {
 		controlsType: 'menu',
 		elements: [{
 			type: 'Rectangle',
-			params: {
+			attrs: {
 				graphics: {
 					x: 0,
 					y: 0
@@ -149,7 +149,7 @@ var config = {
 		},
 		{
 			type: 'Sprite',
-			params: {
+			attrs: {
 				img: 'greyRect',
 				start: {
 					x: 20,
@@ -167,11 +167,11 @@ var config = {
 		clearCache: false,
 		controlsType: 'level',
 		elements: [{
-			type: 'Collection',
 			name: 'scenery',
-			params: [{
+			type: 'Collection',
+			attrs: [{
 				type: 'Sprite',
-				params: {
+				attrs: {
 					img: 'sky',
 					name: 'sky',
 					start: {
@@ -185,7 +185,7 @@ var config = {
 			},
 			{
 				type: 'Sprite',
-				params: {
+				attrs: {
 					img: 'mountains',
 					start: {
 						x: 0,
@@ -195,7 +195,7 @@ var config = {
 			},
 			{
 				type: 'Sprite',
-				params: {
+				attrs: {
 					img: 'treesBack',
 					start: {
 						x: 0,
@@ -205,7 +205,7 @@ var config = {
 			},
 			{
 				type: 'Sprite',
-				params: {
+				attrs: {
 					img: 'treesFore',
 					start: {
 						x: 0,
@@ -215,7 +215,7 @@ var config = {
 			},
 			{
 				type: 'Sprite',
-				params: {
+				attrs: {
 					img: 'mountains',
 					start: {
 						x: 2048,
@@ -225,7 +225,7 @@ var config = {
 			},
 			{
 				type: 'Sprite',
-				params: {
+				attrs: {
 					img: 'treesBack',
 					start: {
 						x: 2048,
@@ -235,7 +235,7 @@ var config = {
 			},
 			{
 				type: 'Sprite',
-				params: {
+				attrs: {
 					img: 'treesFore',
 					start: {
 						x: 2048,
@@ -245,7 +245,7 @@ var config = {
 			},
 			{
 				type: 'Sprite',
-				params: {
+				attrs: {
 					img: 'grass1',
 					start: {
 						x: 0,
@@ -255,7 +255,7 @@ var config = {
 			},
 			{
 				type: 'Sprite',
-				params: {
+				attrs: {
 					img: 'grass2',
 					start: {
 						x: 2048,
@@ -265,11 +265,11 @@ var config = {
 			}]
 		},
 		{
-			type: 'PhysicalGroupCollection',
 			name: 'terrain',
-			params: [{
+			type: 'PhysicalGroupCollection',
+			attrs: [{
 				type: 'Sprite',
-				params: {
+				attrs: {
 					img: 'platform',
 					start: {
 						x: 0,
@@ -283,7 +283,7 @@ var config = {
 			},
 			{
 				type: 'Sprite',
-				params: {
+				attrs: {
 					img: 'platform',
 					start: {
 						x: 2048,
@@ -297,7 +297,7 @@ var config = {
 			},
 			{
 				type: 'Sprite',
-				params: {
+				attrs: {
 					img: 'platform',
 					start: {
 						x: 500,
@@ -310,7 +310,7 @@ var config = {
 			},
 			{
 				type: 'Sprite',
-				params: {
+				attrs: {
 					img: 'platform',
 					start: {
 						x: 800,
@@ -323,7 +323,7 @@ var config = {
 			},
 			{
 				type: 'Sprite',
-				params: {
+				attrs: {
 					img: 'platform',
 					start: {
 						x: 1100,
@@ -336,7 +336,7 @@ var config = {
 			},
 			{
 				type: 'Sprite',
-				params: {
+				attrs: {
 					img: 'platform',
 					start: {
 						x: 3100,
@@ -350,7 +350,7 @@ var config = {
 			},
 			{
 				type: 'Sprite',
-				params: {
+				attrs: {
 					img: 'platform',
 					start: {
 						x: 3300,
@@ -364,7 +364,7 @@ var config = {
 			},
 			{
 				type: 'Sprite',
-				params: {
+				attrs: {
 					img: 'platform',
 					start: {
 						x: 3500,
@@ -378,18 +378,18 @@ var config = {
 			}]
 		},
 		{
-			type: 'Sectors',
 			name: 'sectors',
-			params: [{
+			type: 'Sectors',
+			attrs: [{
 				type: 'Sector',
-				params: {
+				attrs: {
 					bounds: {
 						start: 0,
 						end: 1024
 					},
 					enemies: [{
 						type: 'AnimatedEnemy',
-						params: {
+						attrs: {
 							img: 'caterpillar01',
 							name: 'sector0-enemy0',
 							start: {
@@ -416,7 +416,7 @@ var config = {
 					},
 					{
 						type: 'AnimatedEnemy',
-						params: {
+						attrs: {
 							img: 'caterpillar01',
 							name: 'sector0-enemy1',
 							start: {
@@ -446,14 +446,14 @@ var config = {
 			},
 			{
 				type: 'Sector',
-				params: {
+				attrs: {
 					bounds: {
 						start: 1024,
 						end: 2048
 					},
 					enemies: [{
 						type: 'AnimatedEnemy',
-						params: {
+						attrs: {
 							img: 'caterpillar01',
 							name: 'sector1-enemy0',
 							start: {
@@ -476,7 +476,7 @@ var config = {
 					},
 					{
 						type: 'AnimatedEnemy',
-						params: {
+						attrs: {
 							img: 'caterpillar01',
 							name: 'sector1-enemy1',
 							start: {
@@ -502,14 +502,14 @@ var config = {
 			},
 			{
 				type: 'Sector',
-				params: {
+				attrs: {
 					bounds: {
 						start: 2048,
 						end: 3072
 					},
 					enemies: [{
 						type: 'AnimatedEnemy',
-						params: {
+						attrs: {
 							img: 'caterpillar01',
 							name: 'sector2-enemy0',
 							start: {
@@ -536,7 +536,7 @@ var config = {
 					},
 					{
 						type: 'AnimatedEnemy',
-						params: {
+						attrs: {
 							img: 'caterpillar01',
 							name: 'sector2-enemy1',
 							start: {
@@ -563,7 +563,7 @@ var config = {
 					}],
 					bonuses: [{
 						type: 'Sprite',
-						params: {
+						attrs: {
 							img: 'lollipop',
 							start: {
 								x: 2800,
@@ -581,7 +581,7 @@ var config = {
 					},
 					{
 						type: 'Sprite',
-						params: {
+						attrs: {
 							id: 1,
 							img: 'lollipop',
 							start: {
@@ -603,14 +603,14 @@ var config = {
 			},
 			{
 				type: 'Sector',
-				params: {
+				attrs: {
 					bounds: {
 						start: 3072,
 						end: 4098
 					},
 					enemies: [{
 						type: 'AnimatedEnemy',
-						params: {
+						attrs: {
 							img: 'caterpillar01',
 							name: 'sector3-enemy0',
 							start: {
@@ -637,7 +637,7 @@ var config = {
 					},
 					{
 						type: 'AnimatedEnemy',
-						params: {
+						attrs: {
 							img: 'caterpillar01',
 							name: 'sector3-enemy1',
 							start: {
@@ -664,7 +664,7 @@ var config = {
 					}],
 					bonuses: [{
 						type: 'Sprite',
-						params: {
+						attrs: {
 							img: 'lollipop',
 							start: {
 								x: 3100,
@@ -684,11 +684,11 @@ var config = {
 			}]
 		},
 		{
-			type: 'GUIConsole',
 			name: 'gui',
-			params: [{
+			type: 'GUIConsole',
+			attrs: [{
 				type: 'Text',
-				params: {
+				attrs: {
 					x: 15,
 					y: 15,
 					defaultContent: '',
@@ -700,7 +700,7 @@ var config = {
 			},
 			{
 				type: 'Text',
-				params: {
+				attrs: {
 					x: 15,
 					y: 40,
 					defaultContent: '',
@@ -711,15 +711,15 @@ var config = {
 				}
 			}]
 		}],
-	// },
-	// {
-	// 	id: 'endScreen',
-	// 	type: 'State',
-	// 	clearWorld: true,
-	// 	clearCache: false,
-	// 	elements: [{
-	// 
-	// 	}]
+	},
+	{
+		id: 'endScreen',
+		type: 'State',
+		clearWorld: true,
+		clearCache: false,
+		elements: [{
+	
+		}]
 	}],
 	player: {
 		img: 'keke',
