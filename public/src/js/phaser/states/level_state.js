@@ -28,14 +28,15 @@ Polyworks.LevelState = (function() {
 		// create views and controls with super
 		LevelState._super.createState.call(this);
 
-		this.sectorManager = new Polyworks.Sectors(this.model.sectors);
+		this.terrain = this.elements.terrain;
+		this.sectorManager = this.elements.sectors;
+
+		// this.sectorManager = new Polyworks.Sectors(this.model.sectors);
 		this.player = new Polyworks.Player(config.player, 0);
 
 		this.createControls.call(this);
 		this.cursors = this.controls.cursors;
-
-		this.guiConsole = new Polyworks.GUIConsole(this.model.gui);
-		// this.createGui();
+		this.gui = this.elements.gui;
 	};
 	
 	LevelState.prototype.update = function() {

@@ -21,7 +21,7 @@ Polyworks.Sector = (function() {
 		this.enemies = new Polyworks.Enemies(this.model.enemies, sectorId);
 		this.enemies.init('AnimatedEnemy');
 
-		this.bonuses = new Polyworks.Groups(this.model.bonuses, sectorId);
+		this.bonuses = new Polyworks.PhysicalGroupCollection(this.model.bonuses, sectorId);
 		this.bonuses.init('Sprite');
 
 		this.created = true;

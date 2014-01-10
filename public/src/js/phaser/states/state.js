@@ -27,31 +27,30 @@ Polyworks.State = (function() {
 		this.game = Polyworks.Game.phaser;
 		this.gameOver = Polyworks.Game.gameOver; 
 
-		this.viewManager = [];
-		this.createViews();
+		// this.elementManager = [];
+		this.elements = {};
+		this.createElements();
 
 	};
 	
-	State.prototype.createViews = function() {
-		var views = this.model.views;
-		var view;
+	State.prototype.createElements = function() {
+		var elements = this.model.elements;
+		var element;
 		var params; 
 
-		for(var i = 0; i < views.length; i++) {
-			params = views[i].params;
-			params.game = this.game;
-
-			view = new Polyworks[views[i].type](params);
-			view.init();
-			this.viewManager.push(view);
+		for(var i = 0; i < elements.length; i++) {
+			params = elements[i].params;
+			// params.game = this.game;
+			trace('elements['+i+'].type = ' + elements[i].type);
+			trace(params);
+			element = new Polyworks[elements[i].type](params);
+			element.init();
+			this.elements[elements[i].name] = element;
+			// this.elementManager.push(element);
 		}
 	};
 	
 	State.prototype.update = function() {
-//		trace('State['+this.id+']/update');
-		if(this.controls.isPressed()) {
-
-		}
 	};
 	
 	return State;

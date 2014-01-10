@@ -1,5 +1,5 @@
 Polyworks.Enemies = (function() {
-	Utils.inherits(Enemies, Polyworks.Groups);
+	Utils.inherits(Enemies, Polyworks.PhysicalGroupCollection);
 	
 	function Enemies(params, id) {
 		Enemies._super.constructor.call(this, params, id);
