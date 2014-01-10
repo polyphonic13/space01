@@ -32,9 +32,9 @@ Polyworks.SpriteView = (function() {
 	};
 
 	SpriteView.prototype.initPhysics = function(physics, sprite) {
-		trace('SpriteView['+this.id+']/initPhysics');
+		// trace('SpriteView['+this.id+']/initPhysics');
 		for(var key in physics) {
-			trace(key + ' = ' + physics[key]);
+			// trace(key + ' = ' + physics[key]);
 			sprite.body[key] = physics[key];
 		}
 		if(!physics.gravity && !physics.immovable) {
@@ -43,7 +43,7 @@ Polyworks.SpriteView = (function() {
 	};
 	
 	SpriteView.prototype.checkTerrainCollision = function(terrain) {
-		game.physics.collide(this.sprite, terrain);
+		Polyworks.Game.phaser.physics.collide(this.sprite, terrain);
 	};
 	
 	SpriteView.prototype.move = function(params) {

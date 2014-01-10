@@ -11,7 +11,7 @@ Polyworks.Player = (function() {
 		if(this.model.anchor) {
 			this.sprite.anchor.setTo(this.model.anchor.x, this.model.anchor.y);
 		}
-		game.camera.follow(this.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
+		Polyworks.Game.phaser.camera.follow(this.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
 
 	}
 	

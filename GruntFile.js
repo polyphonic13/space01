@@ -31,7 +31,7 @@ module.exports = function(grunt) {
 				nonull: true
 
 			},
-			
+
 			keke2_game: {
 				options: {
 					banner: "(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- KEKE_GAME.JS v<%= pkg.version %> created: <%= grunt.template.today(\"isoDateTime\") %>')})();\n"
@@ -64,14 +64,14 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/phaser/states/state.js',
 					'<%= srcDir %>/js/phaser/states/level_state.js',
 					// GAME MODULE
-					'<%= srcDir %>/js/phaser/recreation.js',
+					'<%= srcDir %>/js/phaser/polyworks_game.js',
 					// MAIN SCRIPT
 					'<%= srcDir %>/js/phaser/keke2a_game.js',
 				],
 				dest: '<%= deployDir %>/keke2/js/keke2_game.js'
-				
+
 			},
-			
+
 			keke_game: {
 				options: {
 					banner: "(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- KEKE_GAME.JS v<%= pkg.version %> created: <%= grunt.template.today(\"isoDateTime\") %>')})();\n"
@@ -132,7 +132,7 @@ module.exports = function(grunt) {
 				],
 				dest: '<%= deployDir %>/canvas_test/js/canvas_test2.js'
 			}
-			
+
 		},
 /////// MINIFICATION
 		uglify: {
@@ -222,7 +222,7 @@ module.exports = function(grunt) {
 					dest: '<%= deployDir %>/canvas_test/css'
 				}]
 			}
-			
+
 		},
 /////// LOCAL SERVER
 		connect: {

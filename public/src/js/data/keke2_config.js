@@ -10,6 +10,7 @@ var world = {
 	gravity: 15
 };
 
+
 var config = {
 	images: {
 		sky: 'images/night_sky.jpg',

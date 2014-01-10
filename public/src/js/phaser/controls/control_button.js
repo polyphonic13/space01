@@ -10,7 +10,7 @@ Polyworks.ControlButton = (function() {
 	ControlButton.prototype.init = function() {
 		var start = this.model.start;
 		trace('ControlButton['+this.model.img+']/init, start x/y = ' + start.x + '/' + start.y);
-	    this.button = game.add.button(start.x, start.y, this.model.img, null, this);
+	    this.button = Polyworks.Game.phaser.add.button(start.x, start.y, this.model.img, null, this);
 		if(this.model.width) {
 			this.button.width = this.model.width;
 		}

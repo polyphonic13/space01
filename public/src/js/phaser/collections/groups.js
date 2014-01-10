@@ -4,7 +4,7 @@ Polyworks.Groups = (function() {
 	
 	function Groups(params, id) {
 		Groups._super.constructor.call(this, params, id);
-		this.group = game.add.group();
+		this.group = Polyworks.Game.phaser.add.group();
 	}
 	
 	Groups.prototype.addView = function(params, itemClass, idx) {

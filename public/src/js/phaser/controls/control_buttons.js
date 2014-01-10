@@ -13,7 +13,7 @@ Polyworks.ControlButtons = (function() {
 
 		var name;
 		var button;
-		var controlConsole = game.add.group(null);
+		var controlConsole = Polyworks.Game.phaser.add.group(null);
 		for(var i = 0; i < this.collection.length; i++) {
 			this.collection[i].callback = this.notifyPressed;
 			name = this.collection[i].model.img;
@@ -21,6 +21,10 @@ Polyworks.ControlButtons = (function() {
 			button = this.collection[i].button;
 			controlConsole.add(button);
 		}
+
+		// keyboard buttons
+		this.cursors = Polyworks.Game.phaser.input.keyboard.createCursorKeys();
+
 	}
 	
 	ControlButtons.prototype.notifyPressed = function(params) {

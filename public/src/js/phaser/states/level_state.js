@@ -2,6 +2,7 @@ Polyworks.LevelState = (function() {
 	Polyworks.Utils.inherits(LevelState, Polyworks.State); 
 	
 	function LevelState(params, id) {
+		trace('LevelState/constructor, phaser = ');
 		LevelState._super.constructor.call(this, params, id);
 
 		this.gameOver = false;
@@ -15,26 +16,26 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.preload = function() {
-		trace('LevelState['+this.id+']/preload');
-		var images = config.images;
-		trace('preload images');
-		for(key in images) {
-			game.load.image(key, images[key]);
-		}
-		var sprites = config.sprites;
-		trace('preload sprites');
-		for(key in sprites) {
-			// trace('\t' + key + ', width = ' + sprites[key].width + ', height = ' + sprites[key].height + ', frames = ' + sprites[key].frames);
-			game.load.spritesheet(key, sprites[key].url, sprites[key].width, sprites[key].height, sprites[key].frames);
-		}
-
-		// keyboard buttons
-		this.cursors = game.input.keyboard.createCursorKeys();
+		// trace('LevelState['+this.id+']/preload');
+		// var images = config.images;
+		// trace('preload images');
+		// for(key in images) {
+		// 	this.game.load.image(key, images[key]);
+		// }
+		// var sprites = config.sprites;
+		// trace('preload sprites');
+		// for(key in sprites) {
+		// 	// trace('\t' + key + ', width = ' + sprites[key].width + ', height = ' + sprites[key].height + ', frames = ' + sprites[key].frames);
+		// 	this.game.load.spritesheet(key, sprites[key].url, sprites[key].width, sprites[key].height, sprites[key].frames);
+		// }
+		// 
+		// // keyboard buttons
+		// this.cursors = this.game.input.keyboard.createCursorKeys();
 	};
 	
 	LevelState.prototype.create =  function() {
 		trace('LevelState['+this.id+']/create');
-		game.world.setBounds(world.x, world.y, world.width, world.height);
+		this.game = Polyworks.Game.phaser;
 
 		this.scenery = new Polyworks.Collection(this.model.scenery, 'Scenery' + this.id);
 		this.scenery.init('SpriteView');
@@ -45,34 +46,28 @@ Polyworks.LevelState = (function() {
 		this.sectorManager = new Polyworks.Sectors(this.model.sectors);
 
 		this.player = new Polyworks.Player(config.player, 0);
+		// this.controls = new Polyworks.ControlButtons(config.controls);
+		// this.player = Polyworks.Game.getPlayer();
+		this.controls = Polyworks.Game.getControls();
+		this.cursors = this.controls.cursors;
 
 		this.createGui();
-		this.createControls();
 	};
-	
-	LevelState.prototype.createControls = function() {
-		// CONTROLS
-		key1 = game.input.keyboard.addKey(Phaser.Keyboard.Q);
-		key1.onDown.add(quit, this);
-
-		this.controls = new Polyworks.ControlButtons(config.controls);
-
-	 };
 	
 	LevelState.prototype.createGui = function() {
 	   //  The score
-		var guiConsole = game.add.group(null);
-	    this.scoreText = game.add.text(16, 15, 'Score: 0', { font: '18px Arial', fill: '#ffffff' });
+		var guiConsole = this.game.add.group(null);
+	    this.scoreText = this.game.add.text(16, 15, 'Score: 0', { font: '18px Arial', fill: '#ffffff' });
 		guiConsole.add(this.scoreText);
 
-		this.healthText = game.add.text(16, 40, 'Health: ' + config.player.health, { font: '18px Arial', fill: '#ffffff' });
+		this.healthText = this.game.add.text(16, 40, 'Health: ' + config.player.health, { font: '18px Arial', fill: '#ffffff' });
 		guiConsole.add(this.healthText);
 	};
 
 	LevelState.prototype.update = function() {
 		if(!this.gameOver) {
 			this.sectorManager.checkTerrainCollision(this.terrain.group);
-			this.sectorManager.setActive(game.camera.x + (stage.width/2));
+			this.sectorManager.setActive(this.game.camera.x + (stage.width/2));
 
 			var sector = this.sectorManager.activeSector;
 			sector.enemies.update({ player: this.player.sprite });
@@ -103,8 +98,8 @@ Polyworks.LevelState = (function() {
 				// trace('views['+views[i].name+'].sprite = ');
 				// trace(views[i].sprite);
 
-				// game.physics.collide(views[i].sprite, this.terrain.group);
-				game.physics.overlap(this.player.sprite, views[i].sprite, callback, null, this);
+				// this.game.physics.collide(views[i].sprite, this.terrain.group);
+				this.game.physics.overlap(this.player.sprite, views[i].sprite, callback, null, this);
 			}
 		}
 	};
@@ -140,7 +135,7 @@ Polyworks.LevelState = (function() {
 			// trace(sprite.body.touching);
 			// enemy damages keke
 			config.player.health -= enemy.damage;
-			healthText.content = 'Health: ' + config.player.health;
+			this.healthText.content = 'Health: ' + config.player.health;
 			if(config.player.health <= 0) {
 				this.close();
 			}
@@ -264,7 +259,7 @@ Polyworks.LevelState = (function() {
 	};
 
 	LevelState.prototype.close = function() {
-		
+		Polyworks.Game.quit();
 	};
 	
 	return LevelState;
