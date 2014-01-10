@@ -28,29 +28,23 @@ Polyworks.State = (function() {
 		this.gameOver = Polyworks.Game.gameOver; 
 
 		this.viewManager = [];
+		this.createElements();
 
-		if(this.model.views) {
-			this.createViews();
-		}
-		if(this.model.controlsType) {
-			this.createControls(this.model.controlsType);
-		}
 	};
 	
-	State.prototype.createViews = function() {
+	State.prototype.createElements = function() {
 		var views = this.model.views;
 		var view;
+		var params; 
 
 		for(var i = 0; i < views.length; i++) {
-			views[i].game = this.game;
-			view = new Polyworks[views[i].type](views[i]);
+			params = views[i].params;
+			params.game = this.game;
+
+			view = new Polyworks[views[i].type](params);
 			view.init();
 			this.viewManager.push(view);
 		}
-	};
-	
-	State.prototype.createControls = function(type) {
-		this.controls = new Polyworks.ControlButtons(config.controls[type]);
 	};
 	
 	State.prototype.update = function() {

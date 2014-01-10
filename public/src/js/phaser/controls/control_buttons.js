@@ -61,12 +61,8 @@ Polyworks.ControlButtons = (function() {
 		}
 	};
 	
-	ControlButtons.prototype.getIndexByName = function(name) {
-		return this.nameIndex[name];
-	};
-	
 	ControlButtons.prototype.isDown = function(name) {
-		return this.collection[this.getIndexByName(name)].pressed;
+		return this.collection[this.nameIndex[name]].pressed;
 	};
 	
 	return ControlButtons;

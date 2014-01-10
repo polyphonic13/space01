@@ -4,6 +4,8 @@ Polyworks.Collection = (function() {
 	function Collection(params, id) {
 		Collection._super.constructor.call(this, params, id);
 		this.collection = [];
+		this.nameIndex = {};
+
 	}
 	
 	Collection.prototype.init = function(itemClass) {
@@ -16,14 +18,19 @@ Polyworks.Collection = (function() {
 			} else {
 				cl = itemClass;
 			}
-			var view = this.addView(this.model[i], cl, i);
+			var view = this.addView(this.model[i].params, cl, i);
 			view.init();
+			this.nameIndex[view.id] = i;
 			this.collection.push(view);
 		}
 	};
 	
 	Collection.prototype.addView = function(params, itemClass, idx) {
 		return new Polyworks[itemClass](params, idx);
+	};
+	
+	Collection.prototype.getItemByName = function(name) {
+		return this.collection[this.nameIndex[name]];
 	};
 	
 	return Collection;

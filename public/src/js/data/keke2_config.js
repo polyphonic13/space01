@@ -100,10 +100,10 @@ var config = {
 	initialState: 'level1',
 	states: [{
 		id: 'menu',
-		type: 'State',
+		type: 'ControlsState',
 		clearWorld: true,
 		clearCache: false,
-		conrtolsType: 'menu',
+		controlsType: 'menu',
 		views: [{
 			type: 'Rectangle',
 			graphics: {
@@ -142,234 +142,191 @@ var config = {
 		clearCache: false,
 		controlsType: 'level',
 		views: [{
-			type: 'Sprite',
-			img: 'sky',
-			name: 'sky',
-			start: {
-				x: 0,
-				y: 0
+			type: 'Collection',
+			name: 'scenery',
+			params: [{
+				type: 'Sprite',
+				params: {
+					img: 'sky',
+					name: 'sky',
+					start: {
+						x: 0,
+						y: 0
+					},
+					width: stage.width,
+					height: stage.height,
+					fixedToCamera: true
+				}
 			},
-			width: stage.width,
-			height: stage.height,
-			fixedToCamera: true
-		},
-		{
-			type: 'Sprite',
-			img: 'mountains',
-			start: {
-				x: 0,
-				y: 0
-			}
-		},
-		{
-			type: 'Sprite',
-			img: 'treesBack',
-			start: {
-				x: 0,
-				y: stage.height - 490
-			}
-		},
-		{
-			type: 'Sprite',
-			img: 'treesFore',
-			start: {
-				x: 0,
-				y: 0
-			}
-		},
-		{
-			type: 'Sprite',
-			img: 'mountains',
-			start: {
-				x: 2048,
-				y: 0
-			}
-		},
-		{
-			type: 'Sprite',
-			img: 'treesBack',
-			start: {
-				x: 2048,
-				y: stage.height - 490
-			}
-		},
-		{
-			type: 'Sprite',
-			img: 'treesFore',
-			start: {
-				x: 2048,
-				y: 0
-			}
-		},
-		{
-			type: 'Sprite',
-			img: 'grass1',
-			start: {
-				x: 0,
-				y: stage.height - 200
-			}
-		},
-		{
-			type: 'Sprite',
-			img: 'grass2',
-			start: {
-				x: 2048,
-				y: stage.height - 200
-			}
-		}],
-		/*
-		scenery: [{
-			img: 'sky',
-			name: 'sky',
-			start: {
-				x: 0,
-				y: 0
+			{
+				type: 'Sprite',
+				params: {
+					img: 'mountains',
+					start: {
+						x: 0,
+						y: 0
+					}
+				}
 			},
-			width: stage.width,
-			height: stage.height,
-			fixedToCamera: true
-		},
-		{
-			img: 'mountains',
-			start: {
-				x: 0,
-				y: 0
-			}
-		},
-		{
-			img: 'treesBack',
-			start: {
-				x: 0,
-				y: stage.height - 490
-			}
-		},
-		{
-			img: 'treesFore',
-			start: {
-				x: 0,
-				y: 0
-			}
-		},
-		{
-			img: 'mountains',
-			start: {
-				x: 2048,
-				y: 0
-			}
-		},
-		{
-			img: 'treesBack',
-			start: {
-				x: 2048,
-				y: stage.height - 490
-			}
-		},
-		{
-			img: 'treesFore',
-			start: {
-				x: 2048,
-				y: 0
-			}
-		},
-		{
-			img: 'grass1',
-			start: {
-				x: 0,
-				y: stage.height - 200
-			}
-		},
-		{
-			img: 'grass2',
-			start: {
-				x: 2048,
-				y: stage.height - 200
-			}
-		}],
-		*/
-		terrain: [{
-			img: 'platform',
-			start: {
-				x: 0,
-				y: world.height - 20
+			{
+				type: 'Sprite',
+				params: {
+					img: 'treesBack',
+					start: {
+						x: 0,
+						y: stage.height - 490
+					}
+				}
 			},
-			scale: [8, 1],
-			physics: {
-				immovable: true,
-			}
+			{
+				type: 'Sprite',
+				params: {
+					img: 'treesFore',
+					start: {
+						x: 0,
+						y: 0
+					}
+				}
+			},
+			{
+				type: 'Sprite',
+				params: {
+					img: 'mountains',
+					start: {
+						x: 2048,
+						y: 0
+					}
+				}
+			},
+			{
+				type: 'Sprite',
+				params: {
+					img: 'treesBack',
+					start: {
+						x: 2048,
+						y: stage.height - 490
+					}
+				}
+			},
+			{
+				type: 'Sprite',
+				params: {
+					img: 'treesFore',
+					start: {
+						x: 2048,
+						y: 0
+					}
+				}
+			},
+			{
+				type: 'Sprite',
+				params: {
+					img: 'grass1',
+					start: {
+						x: 0,
+						y: stage.height - 200
+					}
+				}
+			},
+			{
+				type: 'Sprite',
+				params: {
+					img: 'grass2',
+					start: {
+						x: 2048,
+						y: stage.height - 200
+					}
+				}
+			}]
 		},
 		{
-			img: 'platform',
-			start: {
-				x: 2048,
-				y: world.height - 75
+			type: 'Collection',
+			name: 'terrain',
+			params: [{
+				img: 'platform',
+				start: {
+					x: 0,
+					y: world.height - 20
+				},
+				scale: [8, 1],
+				physics: {
+					immovable: true,
+				}
 			},
-			scale: [8, 1],
-			physics: {
-				immovable: true,
-			}
-		},
-		{
-			img: 'platform',
-			start: {
-				x: 500,
-				y: world.height - 75
+			{
+				img: 'platform',
+				start: {
+					x: 2048,
+					y: world.height - 75
+				},
+				scale: [8, 1],
+				physics: {
+					immovable: true,
+				}
 			},
-			physics: {
-				immovable: true,
-			}
-		},
-		{
-			img: 'platform',
-			start: {
-				x: 800,
-				y: world.height - 130
+			{
+				img: 'platform',
+				start: {
+					x: 500,
+					y: world.height - 75
+				},
+				physics: {
+					immovable: true,
+				}
 			},
-			physics: {
-				immovable: true,
-			}
-		},
-		{
-			img: 'platform',
-			start: {
-				x: 1100,
-				y: world.height - 180
+			{
+				img: 'platform',
+				start: {
+					x: 800,
+					y: world.height - 130
+				},
+				physics: {
+					immovable: true,
+				}
 			},
-			physics: {
-				immovable: true,
-			}
-		},
-		{
-			img: 'platform',
-			start: {
-				x: 3100,
-				y: world.height - 75
+			{
+				img: 'platform',
+				start: {
+					x: 1100,
+					y: world.height - 180
+				},
+				physics: {
+					immovable: true,
+				}
 			},
-			scale: [0.8, 1],
-			physics: {
-				immovable: true,
-			}
-		},
-		{
-			img: 'platform',
-			start: {
-				x: 3300,
-				y: world.height - 130
+			{
+				img: 'platform',
+				start: {
+					x: 3100,
+					y: world.height - 75
+				},
+				scale: [0.8, 1],
+				physics: {
+					immovable: true,
+				}
 			},
-			scale: [0.8, 1],
-			physics: {
-				immovable: true,
-			}
-		},
-		{
-			img: 'platform',
-			start: {
-				x: 3500,
-				y: world.height - 180
+			{
+				img: 'platform',
+				start: {
+					x: 3300,
+					y: world.height - 130
+				},
+				scale: [0.8, 1],
+				physics: {
+					immovable: true,
+				}
 			},
-			scale: [0.8, 1],
-			physics: {
-				immovable: true,
-			}
+			{
+				img: 'platform',
+				start: {
+					x: 3500,
+					y: world.height - 180
+				},
+				scale: [0.8, 1],
+				physics: {
+					immovable: true,
+				}
+			}]
 		}],
 		sectors: [{
 			bounds: {
@@ -378,53 +335,57 @@ var config = {
 			},
 			enemies: [{
 				type: 'AnimatedEnemy',
-				img: 'caterpillar01',
-				name: 'sector0-enemy0',
-				start: {
-					x: 500,
-					y: 0
-				},
-				physics: {
-					bounce: {
-						x: 0,
-						y: 0.2
-					}
-				},
-				damage: 5,
-				health: 5,
-				score: 500,
-				movement: {
-					speed: 0.25,
-					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
-					formula: null
-				},
-				defaultAnimation: '',
-				animations: caterpillarAnimations
+				params: {
+					img: 'caterpillar01',
+					name: 'sector0-enemy0',
+					start: {
+						x: 500,
+						y: 0
+					},
+					physics: {
+						bounce: {
+							x: 0,
+							y: 0.2
+						}
+					},
+					damage: 5,
+					health: 5,
+					score: 500,
+					movement: {
+						speed: 0.25,
+						type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+						formula: null
+					},
+					defaultAnimation: '',
+					animations: caterpillarAnimations
+				}
 			},
 			{
 				type: 'AnimatedEnemy',
-				img: 'caterpillar01',
-				name: 'sector0-enemy1',
-				start: {
-					x: 1000,
-					y: 0
-				},
-				physics: {
-					bounce: {
-						x: 0,
-						y: 0.2
-					}
-				},
-				damage: 5,
-				health: 5,
-				score: 500,
-				movement: {
-					speed: 0.5,
-					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
-					formula: null
-				},
-				defaultAnimation: '',
-				animations: caterpillarAnimations
+				params: {
+					img: 'caterpillar01',
+					name: 'sector0-enemy1',
+					start: {
+						x: 1000,
+						y: 0
+					},
+					physics: {
+						bounce: {
+							x: 0,
+							y: 0.2
+						}
+					},
+					damage: 5,
+					health: 5,
+					score: 500,
+					movement: {
+						speed: 0.5,
+						type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+						formula: null
+					},
+					defaultAnimation: '',
+					animations: caterpillarAnimations
+				}
 			}],
 			bonuses: []
 		},
@@ -434,44 +395,50 @@ var config = {
 				end: 2048
 			},
 			enemies: [{
-				img: 'caterpillar01',
-				name: 'sector1-enemy0',
-				start: {
-					x: 1500,
-					y: 0
-				},
-				physics: {
-					bounce: {
-						x: 0,
-						y: 0.2
-					}
-				},
-				speed: 0.5,
-				damage: 5,
-				health: 10,
-				score: 1000,
-				defaultAnimation: '',
-				animations: caterpillarAnimations
+				type: 'AnimatedEnemy',
+				params: {
+					img: 'caterpillar01',
+					name: 'sector1-enemy0',
+					start: {
+						x: 1500,
+						y: 0
+					},
+					physics: {
+						bounce: {
+							x: 0,
+							y: 0.2
+						}
+					},
+					speed: 0.5,
+					damage: 5,
+					health: 10,
+					score: 1000,
+					defaultAnimation: '',
+					animations: caterpillarAnimations
+				}
 			},
 			{
-				img: 'caterpillar01',
-				name: 'sector1-enemy1',
-				start: {
-					x: 1800,
-					y: 0
-				},
-				physics: {
-					bounce: {
-						x: 0,
-						y: 0.2
-					}
-				},
-				speed: 1,
-				damage: 5,
-				health: 10,
-				score: 1000,
-				defaultAnimation: '',
-				animations: caterpillarAnimations
+				type: 'AnimatedEnemy',
+				params: {
+					img: 'caterpillar01',
+					name: 'sector1-enemy1',
+					start: {
+						x: 1800,
+						y: 0
+					},
+					physics: {
+						bounce: {
+							x: 0,
+							y: 0.2
+						}
+					},
+					speed: 1,
+					damage: 5,
+					health: 10,
+					score: 1000,
+					defaultAnimation: '',
+					animations: caterpillarAnimations
+				}
 			}],
 			bonuses: []
 		},
@@ -482,86 +449,96 @@ var config = {
 			},
 			enemies: [{
 				type: 'AnimatedEnemy',
-				img: 'caterpillar01',
-				name: 'sector2-enemy0',
-				start: {
-					x: 2500,
-					y: 0
-				},
-				physics: {
-					bounce: {
-						x: 0,
-						y: 0.2
-					}
-				},
-				damage: 5,
-				health: 20,
-				score: 1000,
-				movement: {
-					speed: 0.75,
-					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
-					formula: null
-				},
-				defaultAnimation: '',
-				animations: caterpillarAnimations
+				params: {
+					img: 'caterpillar01',
+					name: 'sector2-enemy0',
+					start: {
+						x: 2500,
+						y: 0
+					},
+					physics: {
+						bounce: {
+							x: 0,
+							y: 0.2
+						}
+					},
+					damage: 5,
+					health: 20,
+					score: 1000,
+					movement: {
+						speed: 0.75,
+						type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+						formula: null
+					},
+					defaultAnimation: '',
+					animations: caterpillarAnimations
+				}
 			},
 			{
 				type: 'AnimatedEnemy',
-				img: 'caterpillar01',
-				name: 'sector2-enemy1',
-				start: {
-					x: 3050,
-					y: 0
-				},
-				physics: {
-					bounce: {
-						x: 0,
-						y: 0.2
-					}
-				},
-				damage: 5,
-				health: 5,
-				score: 1000,
-				movement: {
-					speed: 1,
-					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
-					formula: null
-				},
-				defaultAnimation: '',
-				animations: caterpillarAnimations
+				params: {
+					img: 'caterpillar01',
+					name: 'sector2-enemy1',
+					start: {
+						x: 3050,
+						y: 0
+					},
+					physics: {
+						bounce: {
+							x: 0,
+							y: 0.2
+						}
+					},
+					damage: 5,
+					health: 5,
+					score: 1000,
+					movement: {
+						speed: 1,
+						type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+						formula: null
+					},
+					defaultAnimation: '',
+					animations: caterpillarAnimations
+				}
 			}],
 			bonuses: [{
-				img: 'lollipop',
-				start: {
-					x: 2800,
-					y: 0
-				},
-				physics: {
-					bounce: {
-						x: 0,
-						y: 0.2
-					}
-				},
-				score: 100,
-				health: 10
+				type: 'Sprite',
+				params: {
+					img: 'lollipop',
+					start: {
+						x: 2800,
+						y: 0
+					},
+					physics: {
+						bounce: {
+							x: 0,
+							y: 0.2
+						}
+					},
+					score: 100,
+					health: 10
+				}
 			},
 			{
-				id: 1,
-				img: 'lollipop',
-				start: {
-					x: 2950,
-					y: 0
-				},
-				physics: {
-					bounce: {
-						x: 0,
-						y: 0.2
-					}
-				},
-				score: 100,
-				health: 10,
-				alive: true
-			},]
+				type: 'Sprite',
+				params: {
+					id: 1,
+					img: 'lollipop',
+					start: {
+						x: 2950,
+						y: 0
+					},
+					physics: {
+						bounce: {
+							x: 0,
+							y: 0.2
+						}
+					},
+					score: 100,
+					health: 10,
+					alive: true
+				}
+			}]
 		},
 		{
 			bounds: {
@@ -570,68 +547,75 @@ var config = {
 			},
 			enemies: [{
 				type: 'AnimatedEnemy',
-				img: 'caterpillar01',
-				name: 'sector3-enemy0',
-				start: {
-					x: 3580,
-					y: 0
-				},
-				physics: {
-					bounce: {
-						x: 0,
-						y: 0.2
-					}
-				},
-				damage: 5,
-				health: 5,
-				score: 500,
-				movement: {
-					speed: 1,
-					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
-					formula: null
-				},
-				defaultAnimation: '',
-				animations: caterpillarAnimations
+				params: {
+					img: 'caterpillar01',
+					name: 'sector3-enemy0',
+					start: {
+						x: 3580,
+						y: 0
+					},
+					physics: {
+						bounce: {
+							x: 0,
+							y: 0.2
+						}
+					},
+					damage: 5,
+					health: 5,
+					score: 500,
+					movement: {
+						speed: 1,
+						type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+						formula: null
+					},
+					defaultAnimation: '',
+					animations: caterpillarAnimations
+				}
 			},
 			{
 				type: 'AnimatedEnemy',
-				img: 'caterpillar01',
-				name: 'sector3-enemy1',
-				start: {
-					x: 4000,
-					y: 0
-				},
-				physics: {
-					bounce: {
-						x: 0,
-						y: 0.2
-					}
-				},
-				damage: 5,
-				health: 5,
-				score: 500,
-				movement: {
-					speed: 1,
-					type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
-					formula: null
-				},
-				defaultAnimation: '',
-				animations: caterpillarAnimations
+				params: {
+					img: 'caterpillar01',
+					name: 'sector3-enemy1',
+					start: {
+						x: 4000,
+						y: 0
+					},
+					physics: {
+						bounce: {
+							x: 0,
+							y: 0.2
+						}
+					},
+					damage: 5,
+					health: 5,
+					score: 500,
+					movement: {
+						speed: 1,
+						type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+						formula: null
+					},
+					defaultAnimation: '',
+					animations: caterpillarAnimations
+				}
 			}],
 			bonuses: [{
-				img: 'lollipop',
-				start: {
-					x: 3100,
-					y: 0
-				},
-				physics: {
-					bounce: {
-						x: 0,
-						y: 0.2
-					}
-				},
-				score: 100,
-				health: 10
+				type: Sprite,
+				params: {
+					img: 'lollipop',
+					start: {
+						x: 3100,
+						y: 0
+					},
+					physics: {
+						bounce: {
+							x: 0,
+							y: 0.2
+						}
+					},
+					score: 100,
+					health: 10
+				}			
 			}]
 		}]
 	},

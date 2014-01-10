@@ -1,5 +1,5 @@
 Polyworks.LevelState = (function() {
-	Polyworks.Utils.inherits(LevelState, Polyworks.State); 
+	Polyworks.Utils.inherits(LevelState, Polyworks.ControlsState); 
 	
 	function LevelState(params, id) {
 		trace('LevelState/constructor, phaser = ');
