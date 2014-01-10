@@ -41,54 +41,105 @@ var config = {
 			frames: 12
 		}
 	},
-	controls: [{
-		img: ControlButtonTypes.INVISIBLE_BG,
-		start: {
-			x: 0,
-			y: 0
+	controls: {
+		menu: [{
+			img: ControlButtonTypes.UP,
+			start: {
+				x: stage.width/2,
+				y: stage.height/2
+			}
+		}],
+		level: [{
+			img: ControlButtonTypes.INVISIBLE_BG,
+			start: {
+				x: 0,
+				y: 0
+			},
+			width: stage.width, 
+			height: stage.height
 		},
-		width: stage.width, 
-		height: stage.height
+		{
+			img: ControlButtonTypes.LEFT,
+			start: {
+				x: 20,
+				y: stage.height - 80
+			}
+		},
+		{
+			img: ControlButtonTypes.RIGHT,
+			start: {
+				x: 120,
+				y: stage.height - 80
+			}
+		},
+		{
+			img: ControlButtonTypes.UP,
+			start: {
+				x: stage.width - 80,
+				y: stage.height - 80
+			}
+		},
+		{
+			img: ControlButtonTypes.QUIT,
+			start: {
+				x: stage.width - 80,
+				y: 10
+			}
+		}]
 	},
-	{
-		img: ControlButtonTypes.LEFT,
-		start: {
-			x: 20,
-			y: stage.height - 80
-		}
-	},
-	{
-		img: ControlButtonTypes.RIGHT,
-		start: {
-			x: 120,
-			y: stage.height - 80
-		}
-	},
-	{
-		img: ControlButtonTypes.UP,
-		start: {
-			x: stage.width - 80,
-			y: stage.height - 80
-		}
-	},
-	{
-		img: ControlButtonTypes.QUIT,
-		start: {
-			x: stage.width - 80,
-			y: 10
-		}
-	}],
-	initialState: 'level1',
+	initialState: 'menu',
 	states: [{
 		id: 'menu',
 		type: 'State',
 		views: [{
-
+			type: 'Rectangle',
+			properties: {
+				graphics: {
+					x: 0,
+					y: 0
+				},
+				stroke: {
+					width: 1,
+					color: '#ffffff',
+					opacity: 0.5
+				},
+				fill: {
+					color: '#cccccc',
+					alpha: 0.75
+				},
+				x: 10,
+				y: 10,
+				width: stage.width - 20,
+				height: stage.height - 20
+			}
+		},
+		{
+			type: 'Rectangle',
+			properties: {
+				graphics: {
+					x: 0,
+					y: 0
+				},
+				stroke: {
+					width: 1,
+					color: '#123456',
+					opacity: 0.5
+				},
+				fill: {
+					color: '#0000ff',
+					alpha: 0.75
+				},
+				x: 20,
+				y: 20,
+				width: 20,
+				height: 20
+			}
 		}]
 	},
 	{
 		id: 'level1',
 		type: 'LevelState',
+		view: [],
 		scenery: [{
 			img: 'sky',
 			name: 'sky',

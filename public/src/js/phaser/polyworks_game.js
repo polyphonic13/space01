@@ -5,9 +5,12 @@ Polyworks.Game = (function() {
 	var _states = {};
 	var _qKey; 
 	
-	var _polyworks_game = {
+	var polyworks_game = {
 		phaser: null,
-
+		score: 0,
+		currentState: '',
+		previousState: '',
+		
 		init: function(params) {
 			_model = params;
 
@@ -101,5 +104,5 @@ Polyworks.Game = (function() {
 		Polyworks.Game.phaser.state.add(config.initialState, _states[config.initialState], true);
 	}
 
-	return _polyworks_game;
+	return polyworks_game;
 })();
