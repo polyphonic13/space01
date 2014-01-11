@@ -56,7 +56,8 @@ Polyworks.AnimatedEnemy = (function() {
 	AnimatedEnemy.prototype.kill = function() {
 		trace('AnimatedEnemey['+this.sprite.name+']/kill');
 		this.active = false;
-		this.sprite.destroy();
+		// this.sprite.destroy();
+		this.destroy();
 	};
 	
 	return AnimatedEnemy;

@@ -4,11 +4,19 @@ Polyworks.State = (function() {
 	var _this;
 	function State(params, id) {
 		_this = this;
-		
+		trace('State['+id+']/constructor')
 		State._super.constructor.call(this, params, id);
 		this.loaded = false;
 		this.created = false;
 		this.active = false;
+		
+		this.__defineGetter__('clearWorld', function() {
+			return this.model.clearWorld;
+		});
+		
+		this.__defineGetter__('clearCache', function() {
+			return this.model.clearCache;
+		});
 	}
 	
 	State.prototype.preLoad = function() {
@@ -54,5 +62,17 @@ Polyworks.State = (function() {
 	State.prototype.update = function() {
 	};
 	
+	State.prototype.shutdown = function() {
+		trace('State['+this.id+']/shutdown, this.elements.length = ');
+		trace(this.elements);
+		for(var key in this.elements) {
+			trace('\telements['+key+'] = ');
+			trace(this.elements[key]);
+			if(this.elements[key].destroy) {
+				this.elements[key].destroy();
+			}
+		}
+	};
+
 	return State;
 })();

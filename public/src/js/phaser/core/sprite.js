@@ -56,7 +56,24 @@ Polyworks.Sprite = (function() {
 	};
 	
 	Sprite.prototype.remove = function() {
-		this.sprite.remove();
+		if(this.sprite.remove) {
+			this.sprite.remove();
+		}
+		if(this.sprite.kill) {
+			this.sprite.kill();
+		}
+	};
+	
+	Sprite.prototype.kill = function() {
+		trace('Sprite['+this.id+']/kill');
+		this.sprite.kill();
+	};
+	
+	Sprite.prototype.destroy = function() {
+		trace('Sprite['+this.id+']/destroy');
+		trace(this.sprite);
+		this.sprite.kill();
+		this.sprite.destroy();
 	};
 	
 	return Sprite;

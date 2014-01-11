@@ -25,6 +25,7 @@ var config = {
 		leftButton: 'images/arrow_left.png',
 		rightButton: 'images/arrow_right.png',
 		upButton: 'images/arrow_up.png',
+		playButton: 'images/play_button.png',
 		quitButton: 'images/quit_button.png',
 		greyRect: 'images/grey_rect32x32.png',
 		invisibleBg: 'images/invisible.png'
@@ -62,12 +63,23 @@ var config = {
 		{
 			type: 'ControlButton',
 			attrs: {
-				img: ControlButtonTypes.UP,
+				img: ControlButtonTypes.PLAY,
 				start: {
-					x: stage.width/2,
-					y: stage.height/2
+					x: stage.width/2 - 256/2,
+					y: stage.height/2 - 256/2
 				},
-				value: Polyworks.ControlKeys.UP
+				value: Polyworks.ControlKeys.PLAY
+			}
+		},
+		{
+			type: 'ControlButton',
+			attrs: {
+				img: ControlButtonTypes.QUIT,
+				start: {
+					x: stage.width - 80,
+					y: 10
+				},
+				value: Polyworks.ControlKeys.QUIT
 			}
 		}],
 		level: [{
@@ -129,14 +141,14 @@ var config = {
 		}]
 	},
 	// STATES
-	initialState: 'level1',
+	initialState: 'menu',
 	states: [{
 		name: 'menu',
-		type: 'ControlsState',
+		type: 'MenuState',
 		clearWorld: true,
 		clearCache: false,
 		controlsType: 'menu',
-		elements: [{
+		elements: [/*{
 			type: 'Rectangle',
 			attrs: {
 				graphics: {
@@ -157,8 +169,9 @@ var config = {
 				width: stage.width - 20,
 				height: stage.height - 20
 			}
-		},
+		},*/
 		{
+			name: 'bg',
 			type: 'Sprite',
 			attrs: {
 				img: 'greyRect',
@@ -167,8 +180,25 @@ var config = {
 					y: 20
 				},
 				width: stage.width - 40,
-				height: stage.width - 40
+				height: stage.height - 40
 			}
+		},
+		{
+			name: 'copy',
+			type: 'GroupCollection',
+			attrs: [{
+				name: 'title',
+				type: 'Text',
+				attrs: {
+					x: 30,
+					y: 30,
+					defaultContent: 'Keke vs. the Caterpillars',
+					style: { 
+						font: '30px Arial', 
+						fill: '#ffffff' 
+					}
+				}
+			}]
 		}]
 	},
 	{

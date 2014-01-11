@@ -38,5 +38,13 @@ Polyworks.Collection = (function() {
 		return this.collection[this.nameIndex[name]];
 	};
 	
+	Collection.prototype.remove = function() {
+		for(var key in this.collection) {
+			if(this.collection[key].remove) {
+				this.collection[key].remove();
+			}
+		}
+	};
+	
 	return Collection;
 })();

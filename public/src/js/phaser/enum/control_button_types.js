@@ -4,5 +4,6 @@ var ControlButtonTypes = {
 	UP: 'upButton',
 	DOWN: 'downButton',
 	QUIT: 'quitButton',
+	PLAY: 'playButton',
 	INVISIBLE_BG: 'invisibleBg'
 };
