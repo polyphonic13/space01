@@ -23,9 +23,54 @@ Polyworks.ControlButtons = (function() {
 		}
 
 		// keyboard buttons
-		this.cursors = Polyworks.Game.phaser.input.keyboard.createCursorKeys();
-
+		// this.cursors = Polyworks.Game.phaser.input.keyboard.createCursorKeys();
+		this.initControlKeys();
 	}
+	
+	ControlButtons.prototype.initControlKeys = function() {
+		var cursorKeys = Polyworks.Game.phaser.input.keyboard.createCursorKeys();
+		cursorKeys['up'].onDown.add(this.upPressed, this);
+		cursorKeys['up'].onUp.add(this.upReleased, this);
+		cursorKeys['down'].onDown.add(this.downPressed, this);
+		cursorKeys['down'].onUp.add(this.downReleased, this);
+		cursorKeys['left'].onDown.add(this.leftPressed, this);
+		cursorKeys['left'].onUp.add(this.leftReleased, this);
+		cursorKeys['right'].onDown.add(this.rightPressed, this);
+		cursorKeys['right'].onUp.add(this.rightReleased, this);
+		this.cursorKeys = cursorKeys;
+	};
+	
+	ControlButtons.prototype.upPressed = function(params) {
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: this.cursorKeys['up'] });
+	};
+	
+	ControlButtons.prototype.upReleased = function(params) {
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: this.cursorKeys['up'] });
+	};
+	
+	ControlButtons.prototype.downPressed = function(params) {
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: this.cursorKeys['down'] });
+	};
+	
+	ControlButtons.prototype.downReleased = function(params) {
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: this.cursorKeys['down'] });
+	};
+	
+	ControlButtons.prototype.leftPressed = function(params) {
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: this.cursorKeys['left'] });
+	};
+	
+	ControlButtons.prototype.leftReleased = function(params) {
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: this.cursorKeys['left'] });
+	};
+	
+	ControlButtons.prototype.rightPressed = function(params) {
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: this.cursorKeys['right'] });
+	};
+	
+	ControlButtons.prototype.rightReleased = function(params) {
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: this.cursorKeys['right'] });
+	};
 	
 	ControlButtons.prototype.notifyPressed = function(params) {
 		trace('ControlButtons/notifyPressed, params =');
@@ -47,6 +92,7 @@ Polyworks.ControlButtons = (function() {
 				default: 
 				break;
 			}
+			Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: params.button });
 		} else { // inputUp received
 			if(params.button === ControlButtonTypes.INVISIBLE_BG) {
 				if(params.pointer.clientX < stage.width) {
@@ -58,7 +104,9 @@ Polyworks.ControlButtons = (function() {
 					_this.collection[_this.getIndexByName(ControlButtonTypes.JUMP)].pressed = false;
 				}
 			}
+			Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: params.button });
 		}
+		
 	};
 	
 	ControlButtons.prototype.isDown = function(name) {

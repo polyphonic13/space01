@@ -118,4 +118,4 @@ Polyworks.Game = (function() {
 	}
 
 	return polyworks_game;
-})();
+}());

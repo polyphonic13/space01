@@ -40,6 +40,21 @@ Polyworks.Player = (function() {
 
 	};
 	
+	Player.prototype.initEvents = function() {
+		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_BUTTON_PRESSED, this.onControlButtonPressed);
+		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_BUTTON_RELEASED, this.onControlButtonReleased);
+	};
+	
+	Player.prototype.onControlButtonPressed = function(event) {
+		trace('Player/onControlButtonPressed, event = ');
+		trace(event);
+	};
+	
+	Player.prototype.onControlButtonReleased = function(event) {
+		trace('Player/onControlButtonReleased, event = ');
+		trace(event);
+	};
+	
 	Player.prototype.update = function(params) {
 		this.view.checkTerrainCollision(params.terrain);
 		var physics = Polyworks.Game.phaser.physics;
