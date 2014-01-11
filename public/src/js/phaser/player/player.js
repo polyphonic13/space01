@@ -56,12 +56,12 @@ Polyworks.Player = (function() {
 		this.activeControls[Polyworks.ControlKeys.RIGHT] = false;
 		this.activeControls[Polyworks.ControlKeys.UP] = false;
 		this.activeControls[Polyworks.ControlKeys.DOWN] = false;
-		trace('activeControls');
-		trace(this.activeControls);
+		// trace('activeControls');
+		// trace(this.activeControls);
 	};
 	
 	Player.prototype.onControlButtonPressed = function(event) {
-		trace(_this.activeControls);
+		// trace(_this.activeControls);
 		_this.activeControls[event.value] = true;
 		_this.updateInput();
 	};
@@ -83,6 +83,13 @@ Polyworks.Player = (function() {
 			this.model.jumping = false;
 			this.model.justJumped = false;
 		}
+		
+		this.updateMovement();
+	};
+	
+	Player.prototype.updateMovement = function() {
+		// this.view.velocityX = this.velX;
+		// this.view.velocityY = this.velY;
 	};
 	
 	Player.prototype.checkCollision = function(collection, callback, physics) {
@@ -92,7 +99,7 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.updateInput = function() {
-		trace('Player/updateInput');
+		// trace('Player/updateInput');
 		this.velX = 0;
 		this.velY = 0;
 		
@@ -106,22 +113,30 @@ Polyworks.Player = (function() {
 			this.model.facingForward = true;
 		}
 
-		trace('player velX = ' + this.velX);
+		// trace('player velX = ' + this.velX);
 		this.view.velocityX = this.velX;
 
 		// vertical movement
 		if(this.activeControls[Polyworks.ControlKeys.UP]) {
 			// trace('Player/updateInput, up is active')
 			if(this.model.grounded && !this.model.justJumped) {
-				this.view.velocityY = -this.model.speed.y;
+				this.velY = -this.model.speed.y;
+				this.view.velocityY = this.velY;
 				this.model.grounded = false;
 				this.model.jumping = true;
 				this.model.justJumped = true;
+			} else {
+				this.velY = 0;
 			}
 		} else if(this.activeControls[Polyworks.ControlKeys.DOWN]) {
 			// trace('Player/updateInput, down is active')
 		}
 
+	};
+	
+	Player.prototype.hitEnemy = function() {
+		this.velY = -this.model.speed.y/2;
+		this.view.velocityY = this.velY;
 	};
 	
 	Player.prototype.checkInput = function() {
@@ -141,7 +156,7 @@ Polyworks.Player = (function() {
 			if(this.view.sprite.body.touching.down) {
 				this.jumping = false;
 			}
-			trace('player velX = ' + this.velX);
+			// trace('player velX = ' + this.velX);
 			this.view.velocityX = this.velX;
 			/*
 			//  Allow the this.player to jump if they are touching the ground.

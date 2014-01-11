@@ -1,7 +1,10 @@
 Polyworks.State = (function() {
 	Utils.inherits(State, Polyworks.Base);
 	
+	var _this;
 	function State(params, id) {
+		_this = this;
+		
 		State._super.constructor.call(this, params, id);
 		this.loaded = false;
 		this.created = false;

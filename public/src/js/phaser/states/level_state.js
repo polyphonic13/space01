@@ -1,8 +1,10 @@
 Polyworks.LevelState = (function() {
 	Utils.inherits(LevelState, Polyworks.ControlsState); 
 	
+	var _this;
 	function LevelState(params, id) {
 		// trace('LevelState/constructor, phaser = ');
+		_this = this;
 		LevelState._super.constructor.call(this, params, id);
 
 		this.gameOver = false;
@@ -98,7 +100,10 @@ Polyworks.LevelState = (function() {
 	};
 
 	LevelState.prototype.enemyCollision = function(player, sprite) {
-		var enemy = this.sectorManager.activeSector.enemies.collection[sprite.idx];
+		trace('LevelState/enemyCollision, _this = ');
+		trace(_this);
+		_this.player.hitEnemy();
+		var enemy = _this.sectorManager.activeSector.enemies.collection[sprite.idx];
 
 		trace('enemyCollision, sprite =');
 		trace(sprite);
@@ -107,19 +112,19 @@ Polyworks.LevelState = (function() {
 		// trace('this.player overlap x/y = ' + sprite.body.overlapX + '/' + sprite.body.overlapY);
 		// trace(sprite);
 		// trace(this.player.sprite.body.touching);
-		if(!this.player.sprite.body.touching.down) {
+		if(!_this.player.sprite.body.touching.down) {
 			// trace('this.player bottom touching enemy top, this.player touching: ');
 			// trace(this.player.sprite.body.touching);
 			// trace('\tenemy touching: ');
 			// trace(sprite.body.touching);
-			this.player.sprite.body.velocity.y = -config.player.jumpHeight/2;
-			this.playerJump();
+			// _this.player.sprite.body.velocity.y = -config.player.jumpHeight/2;
+			// _this.playerJump();
 			// keke damages enemy
 			// killEnemy(sprite);
-			enemy.health -= this.player.damage;
+			enemy.health -= _this.player.damage;
 			if(enemy.health <= 0) {
 				// killEnemy(sprite);
-				this.killEnemy(enemy);
+				_this.killEnemy(enemy);
 			}
 		} else {
 			// trace('enemy damage this.player, this.player touching');
@@ -127,14 +132,13 @@ Polyworks.LevelState = (function() {
 			// trace('\tenemy touching');
 			// trace(sprite.body.touching);
 			// enemy damages keke
-			this.player.health -= enemy.damage;
-			this.gui.setContent('health', 'Health: ' + this.player.health);
+			_this.player.health -= enemy.damage;
+			_this.gui.setContent('health', 'Health: ' + _this.player.health);
 
-			if(this.player.health <= 0) {
-				this.close();
+			if(_this.player.health <= 0) {
+				_this.close();
 			}
 		}
-
 	};
 
 	LevelState.prototype.killEnemy = function(enemy) {
@@ -148,17 +152,17 @@ Polyworks.LevelState = (function() {
 	LevelState.prototype.bonusCollision = function(player, sprite) {
 		// trace('bonusCollision, sprite = ');
 		// trace(sprite);
-		var bonus = this.sectorManager.activeSector.bonuses.collection[sprite.idx];
+		var bonus = _this.sectorManager.activeSector.bonuses.collection[sprite.idx];
 		// trace('bonus = ');
 		// trace(bonus);
 		sprite.kill();
 		bonus.active = false; 
 
 	    Polyworks.Game.score += bonus.get('score');
-		this.gui.setContent('score', 'Score: ' + Polyworks.Game.score);
+		_this.gui.setContent('score', 'Score: ' + Polyworks.Game.score);
 
-		this.player.health += bonus.get('health');
-		this.gui.setContent('health', 'Health: ' + this.player.health);
+		_this.player.health += bonus.get('health');
+		_this.gui.setContent('health', 'Health: ' + _this.player.health);
 	};
 
 	LevelState.prototype.checkGameInput = function() {

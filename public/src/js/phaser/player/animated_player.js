@@ -5,7 +5,6 @@ Polyworks.AnimatedPlayer = (function() {
 		// trace('AnimatedPlayer, params = ');
 		// trace(params);
 		AnimatedPlayer._super.constructor.call(this, params, id);
-		
 	}
 	
 	AnimatedPlayer.prototype.update = function(params) {
@@ -43,7 +42,7 @@ Polyworks.AnimatedPlayer = (function() {
 		}
 
 		if(this.model.jumping) {										// JUMPING
-			trace('player jumping');
+			// trace('player jumping');
 			if(this.model.facingForward) {
 				// trace('playing jump r animation');
 				this.view.stop();
