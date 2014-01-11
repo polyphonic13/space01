@@ -87,8 +87,8 @@ Polyworks.ControlButtons = (function() {
 	};
 	
 	ControlButtons.prototype.notifyPressed = function(params) {
-		// trace('ControlButtons/notifyPressed, params =');
-		// trace(params);
+		trace('ControlButtons/notifyPressed, params =');
+		trace(params);
 		
 		if(params.pressed) { // inputDown received
 			/*
@@ -109,7 +109,11 @@ Polyworks.ControlButtons = (function() {
 				break;
 			}
 			*/
-			Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: params.button });
+			if(params.value === Polyworks.ControlKeys.QUIT) {
+				Polyworks.Game.quit();
+			} else {
+				Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: params.value });
+			}
 		} else { // inputUp received
 			/*
 			if(params.button === ControlButtonTypes.INVISIBLE_BG) {
@@ -123,7 +127,7 @@ Polyworks.ControlButtons = (function() {
 				}
 			}
 			*/
-			Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: params.button });
+			Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: params.value });
 		}
 		
 	};

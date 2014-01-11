@@ -18,10 +18,13 @@ Polyworks.EventCenter = (function() {
 	eventCenter.trigger = function(params) {
 		for(var key in _listeners) {
 			if(key === params.type) {
-				for(var i = 0; i < _listeners[key].length; i++) {
-					_listeners[key][i].call(this, params);
+				trace('_listeners['+key+']. length = ' + _listeners[key].length);
+				trace(_listeners[key]);
+				if(_listeners[key]) {
+					for(var i = 0; i < _listeners[key].length; i++) {
+						_listeners[key][i].call(this, params);
+					}
 				}
-				break;
 			}
 		}
 	};
@@ -38,10 +41,11 @@ Polyworks.EventCenter = (function() {
 	};
 	
 	eventCenter.reset = function() {
-		for(var key in _listeners) {
-			delete _listeners[key];
-		}
-		_listeners = null;
+		_listeners = [];
+		// for(var key in _listeners) {
+		// 	delete _listeners[key];
+		// }
+		// _listeners = null;
 	};
 	
 	return eventCenter;

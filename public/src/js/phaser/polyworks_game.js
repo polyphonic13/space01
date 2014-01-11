@@ -53,9 +53,9 @@ Polyworks.Game = (function() {
 		quit: function() {
 			trace('Polyworks.Game/quit');
 			if(!Polyworks.Game.gameOver) {
+				Polyworks.EventCenter.reset();
 				Polyworks.Game.gameOver = true;
 				Polyworks.Game.phaser.destroy();
-				Polyworks.EventCenter.reset();
 			}
 		}
 	};
@@ -76,13 +76,28 @@ Polyworks.Game = (function() {
 	}
 	
 	function _create() {
-		Polyworks.EventCenter.init();
+		_initEvents();
 		_initWorld();
 		_initPlayer();
 		_initControls();
 		_initStates();
 		Polyworks.Game.changeState(config.initialState);
 
+	}
+	
+	function _initEvents() {
+		Polyworks.EventCenter.init();
+		// Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_BUTTON_PRESSED, _controlButtonPressed);
+	}
+	
+	function _controlButtonPressed(event) {
+		trace('Polyworks.Game/_controlButtonPressed, event = ');
+		trace(event);
+		switch(event.value) {
+			case Polyworks.ControlKeys.QUIT:
+			Polyworks.Game.quit();
+			break;
+		}
 	}
 	
 	function _initWorld() {

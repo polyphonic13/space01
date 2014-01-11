@@ -55,7 +55,8 @@ var config = {
 					y: 0
 				},
 				width: stage.width, 
-				height: stage.height
+				height: stage.height,
+				value: Polyworks.ControlKeys.RESET
 			}
 		},
 		{
@@ -65,7 +66,8 @@ var config = {
 				start: {
 					x: stage.width/2,
 					y: stage.height/2
-				}
+				},
+				value: Polyworks.ControlKeys.UP
 			}
 		}],
 		level: [{
@@ -77,7 +79,8 @@ var config = {
 					y: 0
 				},
 				width: stage.width, 
-				height: stage.height
+				height: stage.height,
+				value: Polyworks.ControlKeys.RESET
 			}
 		},
 		{
@@ -87,7 +90,8 @@ var config = {
 				start: {
 					x: 20,
 					y: stage.height - 80
-				}
+				},
+				value: Polyworks.ControlKeys.LEFT
 			}
 		},
 		{
@@ -97,7 +101,8 @@ var config = {
 				start: {
 					x: 120,
 					y: stage.height - 80
-				}
+				},
+				value: Polyworks.ControlKeys.RIGHT
 			}
 		},
 		{
@@ -107,7 +112,8 @@ var config = {
 				start: {
 					x: stage.width - 80,
 					y: stage.height - 80
-				}
+				},
+				value: Polyworks.ControlKeys.UP
 			}
 		},
 		{
@@ -117,7 +123,8 @@ var config = {
 				start: {
 					x: stage.width - 80,
 					y: 10
-				}
+				},
+				value: Polyworks.ControlKeys.QUIT
 			}
 		}]
 	},

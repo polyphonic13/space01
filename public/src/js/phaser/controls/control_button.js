@@ -44,7 +44,7 @@ Polyworks.ControlButton = (function() {
 		trace('ControlButton['+this.model.img+']/inputDown');
 		this.pressed = true;
 		if(this.callback) {
-			this.callback({ button: this.model.img, pressed: this.pressed, pointer: pointer });
+			this.callback({ button: this.model.img, pressed: this.pressed, pointer: pointer, value: this.model.value });
 		}
 	};
 	
@@ -52,7 +52,7 @@ Polyworks.ControlButton = (function() {
 		trace('ControlButton['+this.model.img+']/inputUp');
 		this.pressed = false;
 		if(this.callback) {
-			this.callback({ button: this.model.img, pressed: this.pressed, pointer: pointer });
+			this.callback({ button: this.model.img, pressed: this.pressed, pointer: pointer, value: this.model.value });
 		}
 	};
 	
