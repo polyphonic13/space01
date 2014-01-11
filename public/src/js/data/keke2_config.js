@@ -746,6 +746,11 @@ var config = {
 				x: 150,
 				y: 0,
 			},
+			controls: {
+				left: Polyworks.ControlKeys.LEFT,
+				right: Polyworks.ControlKeys.RIGHT,
+				jump: Polyworks.ControlKeys.UP
+			},
 			health: 100,
 			damage: 5,
 			jumpHeight: 350,

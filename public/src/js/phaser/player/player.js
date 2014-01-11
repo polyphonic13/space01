@@ -6,9 +6,13 @@ Polyworks.Player = (function() {
 		_this = this;
 		Player._super.constructor.call(this, params, id);
 
+		this.velX = 0;
+		this.velY = 0;
+		
 		this.initSprite();
 		this.initWorld();
 		this.initEvents();
+		this.initControls();
 		
 		this.__defineGetter__('health', function() {
 			return this.model.health;
@@ -46,14 +50,25 @@ Polyworks.Player = (function() {
 		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_BUTTON_RELEASED, this.onControlButtonReleased);
 	};
 	
+	Player.prototype.initControls = function() {
+		this.activeControls = {};
+		this.activeControls[Polyworks.ControlKeys.LEFT] = false;
+		this.activeControls[Polyworks.ControlKeys.RIGHT] = false;
+		this.activeControls[Polyworks.ControlKeys.UP] = false;
+		this.activeControls[Polyworks.ControlKeys.DOWN] = false;
+		trace('activeControls');
+		trace(this.activeControls);
+	};
+	
 	Player.prototype.onControlButtonPressed = function(event) {
-		trace('Player/onControlButtonPressed, event = ');
-		trace(event);
+		trace(_this.activeControls);
+		_this.activeControls[event.value] = true;
+		_this.updateInput();
 	};
 	
 	Player.prototype.onControlButtonReleased = function(event) {
-		trace('Player/onControlButtonReleased, event = ');
-		trace(event);
+		_this.activeControls[event.value] = false;
+		_this.updateInput();
 	};
 	
 	Player.prototype.update = function(params) {
@@ -63,7 +78,7 @@ Polyworks.Player = (function() {
 		this.checkCollision(params.enemies.collection, params.enemies.callback, physics);
 		this.checkCollision(params.bonuses.collection, params.bonuses.callback, physics);
 		
-		this.checkInput();
+		// this.checkInput();
 	};
 	
 	Player.prototype.checkCollision = function(collection, callback, physics) {
@@ -72,43 +87,69 @@ Polyworks.Player = (function() {
 		}
 	};
 	
-	Player.prototype.checkInput = function() {
-		/*
-			if(!this.gameOver) {
-				if(this.controls.isDown(ControlButtonTypes.QUIT)) {
-					this.close();
-				} else {
-				 //  Reset the this.players velocity (movement)
-					this.player.sprite.body.velocity.x = 0;
-					var velX = 0;
-					if (this.cursors.left.isDown || this.controls.isDown(ControlButtonTypes.LEFT)) {
-						velX = -config.player.speed;
-						config.player.facingForward = false;
-					}
-					else if (this.cursors.right.isDown || this.controls.isDown(ControlButtonTypes.RIGHT)) {
-						velX = config.player.speed;
-						config.player.facingForward = true;
-					}
+	Player.prototype.updateInput = function() {
+		trace('Player/updateInput');
+		this.velX = 0;
+		this.velY = 0;
+		
+		// vertical movement
+		if (this.activeControls[Polyworks.ControlKeys.LEFT]) {
+			this.velX = -this.model.speed.x;
+			this.model.facingForward = false;
+		}
+		else if (this.activeControls[Polyworks.ControlKeys.RIGHT]) {
+			this.velX = this.model.speed.x;
+			this.model.facingForward = true;
+		}
 
-					if(this.player.sprite.body.touching.down) {
-						config.player.jumping = false;
-					}
-					//  Allow the this.player to jump if they are touching the ground.
-					if(this.cursors.up.isDown || this.controls.isDown(ControlButtonTypes.UP)) {
-						if(this.player.sprite.body.touching.down && !config.player.justJumped) {
-							this.player.sprite.body.velocity.y = -config.player.jumpHeight;
-							config.player.jumping = true;
-						}
-					} 
-					if(this.player.sprite.body.touching.down && config.player.jumpButtonPressed && !config.player.justJumped) {
-						this.player.sprite.body.velocity.y = -config.player.jumpHeight;
-						config.player.jumping = true;
-						config.player.jumpButtonPressed = false;
-					}
-					this.player.sprite.body.velocity.x = velX;
-				}
+		trace('player velX = ' + this.velX);
+		this.view.sprite.body.velocity.x = this.velX;
+
+		// horizontal movement
+		if(this.view.sprite.body.touching.down) {
+			this.model.jumping = false;
+		}
+		if(this.activeControls[Polyworks.ControlKeys.UP]) {
+			trace('Player/updateInput, up is active')
+		} else if(this.activeControls[Polyworks.ControlKeys.DOWN]) {
+			trace('Player/updateInput, down is active')
+		}
+
+	};
+	
+	Player.prototype.checkInput = function() {
+
+		 //  Reset the this.players velocity (movement)
+			this.view.sprite.body.velocity.x = 0;
+			this.velX = 0;
+			if (this.activeControls[Polyworks.ControlKeys.LEFT]) {
+				this.velX = -this.model.speed.x;
+				this.facingForward = false;
 			}
-		*/
+			else if (this.activeControls[Polyworks.ControlKeys.RIGHT]) {
+				this.velX = this.model.speed.x;
+				this.facingForward = true;
+			}
+
+			if(this.view.sprite.body.touching.down) {
+				this.jumping = false;
+			}
+			trace('player velX = ' + this.velX);
+			this.view.sprite.body.velocity.x = this.velX;
+			/*
+			//  Allow the this.player to jump if they are touching the ground.
+			if(this.cursors.up.isDown || this.controls.isDown(ControlButtonTypes.UP)) {
+				if(this.player.sprite.body.touching.down && !config.player.justJumped) {
+					this.player.sprite.body.velocity.y = -config.player.jumpHeight;
+					config.player.jumping = true;
+				}
+			} 
+			if(this.player.sprite.body.touching.down && config.player.jumpButtonPressed && !config.player.justJumped) {
+				this.player.sprite.body.velocity.y = -config.player.jumpHeight;
+				config.player.jumping = true;
+				config.player.jumpButtonPressed = false;
+			}
+			*/
 	};
 	
 	Player.prototype.kill = function() {

@@ -89,7 +89,9 @@ Polyworks.ControlButtons = (function() {
 	ControlButtons.prototype.notifyPressed = function(params) {
 		// trace('ControlButtons/notifyPressed, params =');
 		// trace(params);
+		
 		if(params.pressed) { // inputDown received
+			/*
 			switch(params.button) {
 				case ControlButtonTypes.LEFT: 
 				_this.collection[_this.getIndexByName(ControlButtonTypes.RIGHT)].pressed = false;
@@ -106,8 +108,10 @@ Polyworks.ControlButtons = (function() {
 				default: 
 				break;
 			}
+			*/
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: params.button });
 		} else { // inputUp received
+			/*
 			if(params.button === ControlButtonTypes.INVISIBLE_BG) {
 				if(params.pointer.clientX < stage.width) {
 					trace('\tsetting left and right buttons pressed to false');
@@ -118,6 +122,7 @@ Polyworks.ControlButtons = (function() {
 					_this.collection[_this.getIndexByName(ControlButtonTypes.JUMP)].pressed = false;
 				}
 			}
+			*/
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: params.button });
 		}
 		
