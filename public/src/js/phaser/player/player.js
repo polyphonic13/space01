@@ -79,8 +79,9 @@ Polyworks.Player = (function() {
 		this.checkCollision(params.bonuses.collection, params.bonuses.callback, physics);
 		
 		if(this.view.sprite.body.touching.down) {
-			this.model.jumping = false;
 			this.model.grounded = true;
+			this.model.jumping = false;
+			this.model.justJumped = false;
 		}
 	};
 	
@@ -95,7 +96,7 @@ Polyworks.Player = (function() {
 		this.velX = 0;
 		this.velY = 0;
 		
-		// vertical movement
+		// horizontal movement
 		if (this.activeControls[Polyworks.ControlKeys.LEFT]) {
 			this.velX = -this.model.speed.x;
 			this.model.facingForward = false;
@@ -106,13 +107,19 @@ Polyworks.Player = (function() {
 		}
 
 		trace('player velX = ' + this.velX);
-		this.view.sprite.body.velocity.x = this.velX;
+		this.view.velocityX = this.velX;
 
-		// horizontal movement
+		// vertical movement
 		if(this.activeControls[Polyworks.ControlKeys.UP]) {
-			trace('Player/updateInput, up is active')
+			// trace('Player/updateInput, up is active')
+			if(this.model.grounded && !this.model.justJumped) {
+				this.view.velocityY = -this.model.speed.y;
+				this.model.grounded = false;
+				this.model.jumping = true;
+				this.model.justJumped = true;
+			}
 		} else if(this.activeControls[Polyworks.ControlKeys.DOWN]) {
-			trace('Player/updateInput, down is active')
+			// trace('Player/updateInput, down is active')
 		}
 
 	};
@@ -120,7 +127,7 @@ Polyworks.Player = (function() {
 	Player.prototype.checkInput = function() {
 
 		 //  Reset the this.players velocity (movement)
-			this.view.sprite.body.velocity.x = 0;
+			this.view.velocityX = 0;
 			this.velX = 0;
 			if (this.activeControls[Polyworks.ControlKeys.LEFT]) {
 				this.velX = -this.model.speed.x;
@@ -135,7 +142,7 @@ Polyworks.Player = (function() {
 				this.jumping = false;
 			}
 			trace('player velX = ' + this.velX);
-			this.view.sprite.body.velocity.x = this.velX;
+			this.view.velocityX = this.velX;
 			/*
 			//  Allow the this.player to jump if they are touching the ground.
 			if(this.cursors.up.isDown || this.controls.isDown(ControlButtonTypes.UP)) {

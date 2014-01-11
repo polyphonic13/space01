@@ -15,7 +15,7 @@ Polyworks.AnimatedPlayer = (function() {
 	};
 	
 	AnimatedPlayer.prototype.updateAnimations = function() {
-		if(this.velX === 0) {
+		if(this.velX === 0) {												// IDLE
 			this.view.stop();
 			if(this.model.facingForward) {
 				this.view.frame = 0;
@@ -25,18 +25,34 @@ Polyworks.AnimatedPlayer = (function() {
 				this.model.currentAnimation = 'idleL';
 			}
 		} else {
-			if(this.velX > 0 && this.model.grounded) {
-				if(this.model.currentAnimation !== 'runR') {
-			 		// trace('play run right');
-					this.view.play('runR', 13, true);
-					this.model.currentAnimation = 'runR';
+			if(!this.model.jumping) {
+				if(this.velX > 0) {
+					if(this.model.currentAnimation !== 'runR') {			// MOVING RIGHT
+				 		// trace('play run right');
+						this.view.play('runR', 13, true);
+						this.model.currentAnimation = 'runR';
+					}
+				} else if(this.velX < 0) {									// MOVING LEFT
+					if(this.model.currentAnimation !== 'runL') {
+				 		// trace('play run left');
+						this.view.play('runL', 13, true);
+						this.model.currentAnimation = 'runL';
+					}
 				}
-			} else if(this.velX < 0 && this.model.grounded) {
-				if(this.model.currentAnimation !== 'runL') {
-			 		// trace('play run left');
-					this.view.play('runL', 13, true);
-					this.model.currentAnimation = 'runL';
-				}
+			}
+		}
+
+		if(this.model.jumping) {										// JUMPING
+			trace('player jumping');
+			if(this.model.facingForward) {
+				// trace('playing jump r animation');
+				this.view.stop();
+				this.view.frame = 9;
+				this.model.currentAnimation = 'jumpR';
+			} else {
+				this.view.stop();
+				this.view.frame = 24;
+				this.model.currentAnimation = 'jumpL';
 			}
 		}
 	};

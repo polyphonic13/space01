@@ -51,7 +51,7 @@ Polyworks.Game = (function() {
 		},
 
 		quit: function() {
-			// trace('Polyworks.Game/quit');
+			trace('Polyworks.Game/quit');
 			if(!Polyworks.Game.gameOver) {
 				Polyworks.Game.gameOver = true;
 				Polyworks.Game.phaser.destroy();

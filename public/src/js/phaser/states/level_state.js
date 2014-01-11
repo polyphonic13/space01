@@ -188,11 +188,11 @@ Polyworks.LevelState = (function() {
 						config.player.jumping = true;
 					}
 				} 
-				if(this.player.sprite.body.touching.down && config.player.jumpButtonPressed && !config.player.justJumped) {
-					this.player.sprite.body.velocity.y = -config.player.jumpHeight;
-					config.player.jumping = true;
-					config.player.jumpButtonPressed = false;
-				}
+				// if(this.player.sprite.body.touching.down && config.player.jumpButtonPressed && !config.player.justJumped) {
+				// 	this.player.sprite.body.velocity.y = -config.player.jumpHeight;
+				// 	config.player.jumping = true;
+				// 	config.player.jumpButtonPressed = false;
+				// }
 				this.player.sprite.body.velocity.x = velX;
 			}
 		}

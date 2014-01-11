@@ -9,6 +9,14 @@ Polyworks.AnimatedSprite = (function() {
 		this.__defineSetter__('frame', function(val) {
 			this.sprite.animations.frame = val;
 		});
+
+		this.__defineSetter__('velocityX', function(val) {
+			this.sprite.body.velocity.x = val;
+		});
+
+		this.__defineSetter__('velocityY', function(val) {
+			this.sprite.body.velocity.y = val;
+		});
 	}
 	
 	AnimatedSprite.prototype.init = function(params) {

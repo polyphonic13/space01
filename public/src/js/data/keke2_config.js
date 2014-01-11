@@ -744,7 +744,7 @@ var config = {
 			},
 			speed: {
 				x: 150,
-				y: 0,
+				y: 350,
 			},
 			controls: {
 				left: Polyworks.ControlKeys.LEFT,
@@ -753,7 +753,6 @@ var config = {
 			},
 			health: 100,
 			damage: 5,
-			jumpHeight: 350,
 			jumping: false,
 			justJumped: false,
 			defaultAnimation: 'idleL',
