@@ -78,7 +78,10 @@ Polyworks.Player = (function() {
 		this.checkCollision(params.enemies.collection, params.enemies.callback, physics);
 		this.checkCollision(params.bonuses.collection, params.bonuses.callback, physics);
 		
-		// this.checkInput();
+		if(this.view.sprite.body.touching.down) {
+			this.model.jumping = false;
+			this.model.grounded = true;
+		}
 	};
 	
 	Player.prototype.checkCollision = function(collection, callback, physics) {
@@ -106,9 +109,6 @@ Polyworks.Player = (function() {
 		this.view.sprite.body.velocity.x = this.velX;
 
 		// horizontal movement
-		if(this.view.sprite.body.touching.down) {
-			this.model.jumping = false;
-		}
 		if(this.activeControls[Polyworks.ControlKeys.UP]) {
 			trace('Player/updateInput, up is active')
 		} else if(this.activeControls[Polyworks.ControlKeys.DOWN]) {

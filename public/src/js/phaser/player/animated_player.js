@@ -8,19 +8,37 @@ Polyworks.AnimatedPlayer = (function() {
 		
 	}
 	
-	// AnimatedPlayer.prototype.onControlButtonPressed = function(event) {
-	// 	AnimatedPlayer._super.onControlButtonPressed.call(this, event);
-	// 	this.updateAnimations(event);
-	// };
-	// 
-	// AnimatedPlayer.prototype.onControlButtonReleased = function(event) {
-	// 	AnimatedPlayer._super.onControlButtonPressed.call(this, event);
-	// 	this.updateAnimation(event);
-	// };
-	// 
-	AnimatedPlayer.prototype.updateAnimations = function(event) {
-		trace('AnimatedPlayer/updateAnimations, event = ');
-		trace(event);
+	AnimatedPlayer.prototype.update = function(params) {
+		AnimatedPlayer._super.update.call(this, params);
+		
+		this.updateAnimations();
+	};
+	
+	AnimatedPlayer.prototype.updateAnimations = function() {
+		if(this.velX === 0) {
+			this.view.stop();
+			if(this.model.facingForward) {
+				this.view.frame = 0;
+				this.model.currentAnimation = 'idleR';
+			} else {
+				this.view.frame = 1;
+				this.model.currentAnimation = 'idleL';
+			}
+		} else {
+			if(this.velX > 0 && this.model.grounded) {
+				if(this.model.currentAnimation !== 'runR') {
+			 		// trace('play run right');
+					this.view.play('runR', 13, true);
+					this.model.currentAnimation = 'runR';
+				}
+			} else if(this.velX < 0 && this.model.grounded) {
+				if(this.model.currentAnimation !== 'runL') {
+			 		// trace('play run left');
+					this.view.play('runL', 13, true);
+					this.model.currentAnimation = 'runL';
+				}
+			}
+		}
 	};
 	
 	return AnimatedPlayer;
