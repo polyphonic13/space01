@@ -720,32 +720,37 @@ var config = {
 		}]
 	}],
 	player: {
-		img: 'keke',
-		width: 76,
-		height: 148,
-		start: {
-			x: stage.width/2 - 76/2,
-			y: stage.height - 148
-		},
-		physics: {
-			bounce: {
-				x: 0,
-				y: 0.2
+		name: 'keke',
+		type: 'AnimatedPlayer',
+		attrs: {
+			spriteType: 'AnimatedSprite',
+			img: 'keke',
+			width: 76,
+			height: 148,
+			start: {
+				x: stage.width/2 - 76/2,
+				y: stage.height - 148
 			},
-			collideWorldBounds: true
-		},
-		anchor: {
-			x: 0.5,
-			y: 0.5
-		},
-		speed: 150,
-		health: 100,
-		damage: 5,
-		jumpHeight: 350,
-		jumping: false,
-		justJumped: false,
-		defaultAnimation: 'idleL',
-		animations: kekeAnimations,
-		facingForward: true
+			physics: {
+				bounce: {
+					x: 0,
+					y: 0.2
+				},
+				collideWorldBounds: true
+			},
+			anchor: {
+				x: 0.5,
+				y: 0.5
+			},
+			speed: 150,
+			health: 100,
+			damage: 5,
+			jumpHeight: 350,
+			jumping: false,
+			justJumped: false,
+			defaultAnimation: 'idleL',
+			animations: kekeAnimations,
+			facingForward: true
+		}
 	}
 };

@@ -30,7 +30,8 @@ Polyworks.LevelState = (function() {
 		this.terrain = this.elements.terrain;
 		this.sectorManager = this.elements.sectors;
 
-		this.player = new Polyworks.Player(config.player, 0);
+		trace('player type = ' + config.player.type);
+		this.player = new Polyworks[config.player.type](config.player.attrs, config.player.name);
 
 		this.createControls.call(this);
 		this.cursors = this.controls.cursors;
@@ -52,10 +53,22 @@ Polyworks.LevelState = (function() {
 			var sector = this.sectorManager.activeSector;
 			sector.enemies.update({ player: this.player.sprite });
 
-			this.checkCollisions(sector);
+			this.player.update({
+				terrain: this.terrain.group,
+				enemies: {
+					collection: sector.enemies.getActive(),
+					callback: this.enemyCollision
+				},
+				bonuses: {
+					collection: sector.bonuses.getActive(),
+					callback: this.bonusCollision
+				}
+			});
+			
+			// this.checkCollisions(sector);
 
 			this.checkGameInput();
-			this.setPlayerAnimations();
+			// this.setPlayerAnimations();
 		}
 	};
 	

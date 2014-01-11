@@ -5,9 +5,10 @@ Polyworks.AnimatedSprite = (function() {
 	function AnimatedSprite(params, id) {
 		_this = this;
 		AnimatedSprite._super.constructor.call(this, params, id);
+
 		this.__defineSetter__('frame', function(val) {
 			this.sprite.animations.frame = val;
-		})
+		});
 	}
 	
 	AnimatedSprite.prototype.init = function(params) {

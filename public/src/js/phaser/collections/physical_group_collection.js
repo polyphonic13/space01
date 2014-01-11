@@ -11,5 +11,15 @@ Polyworks.PhysicalGroupCollection = (function() {
 		}
 	};
 	
+	PhysicalGroupCollection.prototype.getActive = function() {
+		var activeElements = [];
+		for(var i = 0; i < this.collection.length; i++) {
+			if(this.collection[i].active) {
+				activeElements.push(this.collection[i]);
+			}
+		}
+		return activeElements;
+	};
+	
 	return PhysicalGroupCollection;
 })();

@@ -90,7 +90,7 @@ Polyworks.Game = (function() {
 		trace('Polyworks.Game/init, phaser = ');
 		trace(Polyworks.Game.phaser);
 
-		_player = new Polyworks.Player(config.player, 0);
+		// _player = new Polyworks.Player(config.player, 0);
 	}
 	
 	function _initControls() {

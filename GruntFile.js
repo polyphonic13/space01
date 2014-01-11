@@ -66,6 +66,7 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/phaser/states/menu_state.js',
 					'<%= srcDir %>/js/phaser/states/level_state.js',
 					'<%= srcDir %>/js/phaser/player/player.js',
+					'<%= srcDir %>/js/phaser/player/animated_player.js',
 					'<%= srcDir %>/js/phaser/polyworks_game.js',
 					'<%= srcDir %>/js/phaser/keke2a_game.js',
 				],
