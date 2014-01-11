@@ -29,6 +29,10 @@ Polyworks.Player = (function() {
 		this.__defineGetter__('sprite', function() {
 			return this.view.sprite;
 		});
+		
+		this.__defineGetter__('isJumping', function() {
+			return this.model.jumping;
+		})
 	}
 	
 	Player.prototype.initSprite = function() {
@@ -137,6 +141,13 @@ Polyworks.Player = (function() {
 	Player.prototype.hitEnemy = function() {
 		this.velY = -this.model.speed.y/2;
 		this.view.velocityY = this.velY;
+	};
+	
+	Player.prototype.damaged = function(damage) {
+		this.model.health -= damage;
+		if(this.model.health <= 0) {
+			Polyworks.Game.quit();
+		}
 	};
 	
 	Player.prototype.checkInput = function() {
