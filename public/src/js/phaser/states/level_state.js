@@ -34,7 +34,7 @@ Polyworks.LevelState = (function() {
 		this.player = new Polyworks[config.player.type](config.player.attrs, config.player.name);
 
 		this.createControls.call(this);
-		this.cursors = this.controls.cursors;
+		// this.cursors = this.controls.cursors;
 		this.gui = this.elements.gui;
 		this.initGUI();
 	};
@@ -67,7 +67,7 @@ Polyworks.LevelState = (function() {
 			
 			// this.checkCollisions(sector);
 
-			this.checkGameInput();
+			// this.checkGameInput();
 			// this.setPlayerAnimations();
 		}
 	};
