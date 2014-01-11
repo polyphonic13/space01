@@ -12,18 +12,17 @@ Polyworks.Collection = (function() {
 	Collection.prototype.init = function(itemClass) {
 		// trace('Collection['+this.id+']/init, itemClass = '+ itemClass);
 		// trace(this.model);
+		var element;
+		var id;
 		var cl;
 		for(var i = 0; i < this.model.length; i++) {
 			// use model-specific class type, or default to itemClass param
-			if(this.model[i].type) {
-				cl = this.model[i].type;
-			} else {
-				cl = itemClass;
-			}
-			var view = this.addView(this.model[i].attrs, cl, i);
-			view.init();
-			this.nameIndex[view.id] = i;
-			this.collection.push(view);
+			cl = (this.model[i].type) ? this.model[i].type : itemClass;
+			id = (this.model[i].name) ? this.model[i].name : i;
+			element = this.addView(this.model[i].attrs, cl, id);
+			element.init();
+			this.nameIndex[element.id] = i;
+			this.collection.push(element);
 		}
 	};
 	

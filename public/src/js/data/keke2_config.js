@@ -124,7 +124,7 @@ var config = {
 	// STATES
 	initialState: 'level1',
 	states: [{
-		id: 'menu',
+		name: 'menu',
 		type: 'ControlsState',
 		clearWorld: true,
 		clearCache: false,
@@ -165,7 +165,7 @@ var config = {
 		}]
 	},
 	{
-		id: 'level1',
+		name: 'level1',
 		type: 'LevelState',
 		clearWorld: true,
 		clearCache: false,
@@ -397,7 +397,7 @@ var config = {
 							img: 'caterpillar01',
 							name: 'sector0-enemy0',
 							start: {
-								x: 500,
+								x: 600,
 								y: 0
 							},
 							physics: {
@@ -586,7 +586,6 @@ var config = {
 					{
 						type: 'Sprite',
 						attrs: {
-							id: 1,
 							img: 'lollipop',
 							start: {
 								x: 2950,
@@ -698,7 +697,7 @@ var config = {
 					x: 15,
 					y: 15,
 					defaultContent: 'Score: ',
-					stye: { 
+					style: { 
 						font: '18px Arial', 
 						fill: '#ffffff' 
 					}

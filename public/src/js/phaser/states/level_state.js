@@ -35,6 +35,12 @@ Polyworks.LevelState = (function() {
 		this.createControls.call(this);
 		this.cursors = this.controls.cursors;
 		this.gui = this.elements.gui;
+		this.initGUI();
+	};
+	
+	LevelState.prototype.initGUI = function() {
+		this.gui.setContent('score', 'Score: ' + Polyworks.Game.score);
+		this.gui.setContent('health', 'Health: ' + this.player.health);
 	};
 	
 	LevelState.prototype.update = function() {
@@ -97,7 +103,7 @@ Polyworks.LevelState = (function() {
 			this.playerJump();
 			// keke damages enemy
 			// killEnemy(sprite);
-			enemy.health -= config.player.damage;
+			enemy.health -= this.player.damage;
 			if(enemy.health <= 0) {
 				// killEnemy(sprite);
 				this.killEnemy(enemy);
@@ -108,10 +114,10 @@ Polyworks.LevelState = (function() {
 			// trace('\tenemy touching');
 			// trace(sprite.body.touching);
 			// enemy damages keke
-			config.player.health -= enemy.damage;
-			this.gui.setContent('health', 'Health: ' + config.player.health);
+			this.player.health -= enemy.damage;
+			this.gui.setContent('health', 'Health: ' + this.player.health);
 
-			if(config.player.health <= 0) {
+			if(this.player.health <= 0) {
 				this.close();
 			}
 		}
@@ -138,8 +144,8 @@ Polyworks.LevelState = (function() {
 	    Polyworks.Game.score += bonus.get('score');
 		this.gui.setContent('score', 'Score: ' + Polyworks.Game.score);
 
-		config.player.health += bonus.get('health');
-		this.gui.setContent('health', 'Health: ' + config.player.health);
+		this.player.health += bonus.get('health');
+		this.gui.setContent('health', 'Health: ' + this.player.health);
 	};
 
 	LevelState.prototype.checkGameInput = function() {

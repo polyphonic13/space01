@@ -3,15 +3,15 @@ Polyworks.ControlButton = (function() {
 	
 	var _this;
 	function ControlButton(params, id) {
-		trace('ControlButton/constructor, params = ');
-		trace(params);
+		// trace('ControlButton/constructor, params = ');
+		// trace(params);
 		_this = this;
 		ControlButton._super.constructor.call(this, params, id);
 	};
 	
 	ControlButton.prototype.init = function() {
 		var start = this.model.start;
-		trace('ControlButton['+this.model.img+']/init, start x/y = ' + start.x + '/' + start.y);
+		// trace('ControlButton['+this.model.img+']/init, start x/y = ' + start.x + '/' + start.y);
 	    this.button = Polyworks.Game.phaser.add.button(start.x, start.y, this.model.img, null, this);
 		if(this.model.width) {
 			this.button.width = this.model.width;
@@ -25,7 +25,7 @@ Polyworks.ControlButton = (function() {
 	};
 	
 	ControlButton.prototype.actionOnClick = function() {
-		trace('ControlButton['+this.model.img+']/actionOnClick');
+		// trace('ControlButton['+this.model.img+']/actionOnClick');
 		// this.pressed = true;
 	};
 	

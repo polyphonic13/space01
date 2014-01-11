@@ -108,9 +108,9 @@ Polyworks.Game = (function() {
 		var state;
 		trace(states);
 		for(var i = 0; i < states.length; i++) {
-			state = new Polyworks[states[i].type](states[i], states[i].id);
-			_states[states[i].id] = state;
-			Polyworks.Game.phaser.state.add(states[i].id, state, false);
+			state = new Polyworks[states[i].type](states[i], states[i].name);
+			_states[states[i].name] = state;
+			Polyworks.Game.phaser.state.add(states[i].name, state, false);
 		}
 		trace('Game/init, initialState = ' + config.initialState + ', states = ');
 		trace(_states);
