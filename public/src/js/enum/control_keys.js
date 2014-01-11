@@ -1,4 +1,4 @@
-var ControlKeys = {
+Polyworks.ControlKeys = {
 	LEFT: 37, 		// left arrow
 	RIGHT: 39, 		// right arrow
 	UP: 38,			// up arrow

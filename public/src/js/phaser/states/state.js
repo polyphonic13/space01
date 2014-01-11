@@ -9,14 +9,14 @@ Polyworks.State = (function() {
 	}
 	
 	State.prototype.preLoad = function() {
-		trace('State['+this.id+']/preLoad, loaded = ' + this.loaded);
+		// trace('State['+this.id+']/preLoad, loaded = ' + this.loaded);
 		if(!this.loaded) {
 			this.loaded = true;
 		}
 	};
 	
 	State.prototype.create = function() {
-		trace('State['+this.id+']/create, created = '+ this.created);
+		// trace('State['+this.id+']/create, created = '+ this.created);
 		if(!this.created) {
 			this.createState();
 			this.created = true;
@@ -39,8 +39,8 @@ Polyworks.State = (function() {
 
 		for(var i = 0; i < elements.length; i++) {
 			attrs = elements[i].attrs;
-			trace('State/createElements, elements['+i+'].type = ' + elements[i].type);
-			trace(attrs);
+			// trace('State/createElements, elements['+i+'].type = ' + elements[i].type);
+			// trace(attrs);
 			var id = (attrs.name) ? attrs.name : i;
 			element = new Polyworks[elements[i].type](attrs, id);
 			element.init();

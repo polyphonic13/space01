@@ -10,8 +10,8 @@ Polyworks.ControlsState = (function() {
 	};
 
 	ControlsState.prototype.createControls = function() {
-		trace('ControlsState/createControls, this.model = ');
-		trace(this.model);
+		// trace('ControlsState/createControls, this.model = ');
+		// trace(this.model);
 		this.controls = new Polyworks.ControlButtons(config.controls[this.model.controlsType]);
 	};
 	

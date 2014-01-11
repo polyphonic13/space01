@@ -39,6 +39,7 @@ module.exports = function(grunt) {
 				src: [
 					'<%= srcDir %>/js/third_party/phaser.min.js',
 					'<%= srcDir %>/js/namespace.js',
+					'<%= srcDir %>/js/enum/control_keys.js',
 					'<%= srcDir %>/js/enum/directions.js',
 					'<%= srcDir %>/js/phaser/enum/movement_types.js',
 					'<%= srcDir %>/js/phaser/enum/control_button_types.js',

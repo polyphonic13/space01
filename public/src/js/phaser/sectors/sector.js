@@ -2,8 +2,8 @@ Polyworks.Sector = (function() {
 	Utils.inherits(Sector, Polyworks.Base);
 	
 	function Sector(params, id) {
-		trace('Sector['+id+']/constructor, params = ');
-		trace(params);
+		// trace('Sector['+id+']/constructor, params = ');
+		// trace(params);
 		Sector._super.constructor.call(this, params, id);
 
 		this.__defineGetter__('bounds', function() {
@@ -13,10 +13,8 @@ Polyworks.Sector = (function() {
 	}
 	
 	Sector.prototype.init = function() {
-		trace('Sector/['+this.id+']/init, this = ');
-		trace(this);
-		// trace('_this = ');
-		// trace(_this);
+		// trace('Sector/['+this.id+']/init, this = ');
+		// trace(this);
 		var sectorId = 'Sector' + this.id;
 		this.enemies = new Polyworks.Enemies(this.model.enemies, sectorId);
 		this.enemies.init('AnimatedEnemy');

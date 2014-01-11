@@ -2,7 +2,7 @@ Polyworks.Collection = (function() {
 	Utils.inherits(Collection, Polyworks.Base);
 	
 	function Collection(params, id) {
-		trace('Collection['+id+']/constructor');
+		// trace('Collection['+id+']/constructor');
 		Collection._super.constructor.call(this, params, id);
 		this.collection = [];
 		this.nameIndex = {};

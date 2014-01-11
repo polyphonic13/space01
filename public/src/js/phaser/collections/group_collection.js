@@ -5,7 +5,7 @@ Polyworks.GroupCollection = (function() {
 	function GroupCollection(params, id, groupContext) {
 		GroupCollection._super.constructor.call(this, params, id);
 		if(groupContext === 'null') {
-			trace('GroupCollection, adding group with context of null');
+			// trace('GroupCollection, adding group with context of null');
 			this.group = Polyworks.Game.phaser.add.group(null);
 		} else {
 			this.group = Polyworks.Game.phaser.add.group();

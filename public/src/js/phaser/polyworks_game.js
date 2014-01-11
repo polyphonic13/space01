@@ -51,21 +51,21 @@ Polyworks.Game = (function() {
 		},
 
 		quit: function() {
-			trace('Polyworks.Game/quit');
+			// trace('Polyworks.Game/quit');
 			Polyworks.Game.gameOver = true;
 			Polyworks.Game.phaser.destroy();
 		}
 	};
 
 	function _preload() {
-		trace('_preload');
+		// trace('_preload');
 		var images = _model.images;
-		trace('preload images');
+		// trace('preload images');
 		for(key in images) {
 			Polyworks.Game.phaser.load.image(key, images[key]);
 		}
 		var sprites = _model.sprites;
-		trace('preload sprites');
+		// trace('preload sprites');
 		for(key in sprites) {
 			// trace('\t' + key + ', width = ' + sprites[key].width + ', height = ' + sprites[key].height + ', frames = ' + sprites[key].frames);
 			Polyworks.Game.phaser.load.spritesheet(key, sprites[key].url, sprites[key].width, sprites[key].height, sprites[key].frames);
@@ -73,7 +73,7 @@ Polyworks.Game = (function() {
 	}
 	
 	function _create() {
-		trace('Polyworks.Game._create');
+		Polyworks.EventCenter.init();
 		_initWorld();
 		_initPlayer();
 		_initControls();
@@ -87,8 +87,8 @@ Polyworks.Game = (function() {
 	}
 
 	function _initPlayer() {
-		trace('Polyworks.Game/init, phaser = ');
-		trace(Polyworks.Game.phaser);
+		// trace('Polyworks.Game/init, phaser = ');
+		// trace(Polyworks.Game.phaser);
 
 		// _player = new Polyworks.Player(config.player, 0);
 	}
@@ -106,14 +106,14 @@ Polyworks.Game = (function() {
 
 		var states = _model.states;
 		var state;
-		trace(states);
+		// trace(states);
 		for(var i = 0; i < states.length; i++) {
 			state = new Polyworks[states[i].type](states[i], states[i].name);
 			_states[states[i].name] = state;
 			Polyworks.Game.phaser.state.add(states[i].name, state, false);
 		}
-		trace('Game/init, initialState = ' + config.initialState + ', states = ');
-		trace(_states);
+		// trace('Game/init, initialState = ' + config.initialState + ', states = ');
+		// trace(_states);
 		// Polyworks.Game.phaser.state.add(config.initialState, _states[config.initialState], false);
 	}
 

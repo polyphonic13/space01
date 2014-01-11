@@ -38,43 +38,57 @@ Polyworks.ControlButtons = (function() {
 		cursorKeys['right'].onDown.add(this.rightPressed, this);
 		cursorKeys['right'].onUp.add(this.rightReleased, this);
 		this.cursorKeys = cursorKeys;
+
+		var space = Polyworks.Game.phaser.input.keyboard.addKey(Phaser.Keyboard.SPACE_BAR);
+		space.onDown.add(this.spacePressed, this);
+		space.onDown.add(this.spaceReleased, this);
+		
+		this.cursorKeys['space'] = space;
 	};
 	
 	ControlButtons.prototype.upPressed = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: this.cursorKeys['up'] });
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: Polyworks.ControlKeys.UP });
 	};
 	
 	ControlButtons.prototype.upReleased = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: this.cursorKeys['up'] });
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: Polyworks.ControlKeys.UP });
 	};
 	
 	ControlButtons.prototype.downPressed = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: this.cursorKeys['down'] });
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: Polyworks.ControlKeys.DOWN });
 	};
 	
 	ControlButtons.prototype.downReleased = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: this.cursorKeys['down'] });
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: Polyworks.ControlKeys.DOWN });
 	};
 	
 	ControlButtons.prototype.leftPressed = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: this.cursorKeys['left'] });
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: Polyworks.ControlKeys.LEFT });
 	};
 	
 	ControlButtons.prototype.leftReleased = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: this.cursorKeys['left'] });
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: Polyworks.ControlKeys.LEFT });
 	};
 	
 	ControlButtons.prototype.rightPressed = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: this.cursorKeys['right'] });
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: Polyworks.ControlKeys.RIGHT });
 	};
 	
 	ControlButtons.prototype.rightReleased = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: this.cursorKeys['right'] });
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: Polyworks.ControlKeys.RIGHT });
+	};
+	
+	ControlButtons.prototype.spacePressed = function(params) {
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: Polyworks.ControlKeys.SPACE });
+	};
+	
+	ControlButtons.prototype.spaceReleased = function(params) {
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: Polyworks.ControlKeys.SPACE });
 	};
 	
 	ControlButtons.prototype.notifyPressed = function(params) {
-		trace('ControlButtons/notifyPressed, params =');
-		trace(params);
+		// trace('ControlButtons/notifyPressed, params =');
+		// trace(params);
 		if(params.pressed) { // inputDown received
 			switch(params.button) {
 				case ControlButtonTypes.LEFT: 

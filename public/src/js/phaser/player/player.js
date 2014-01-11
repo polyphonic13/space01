@@ -8,7 +8,8 @@ Polyworks.Player = (function() {
 
 		this.initSprite();
 		this.initWorld();
-	
+		this.initEvents();
+		
 		this.__defineGetter__('health', function() {
 			return this.model.health;
 		});
@@ -61,12 +62,53 @@ Polyworks.Player = (function() {
 		
 		this.checkCollision(params.enemies.collection, params.enemies.callback, physics);
 		this.checkCollision(params.bonuses.collection, params.bonuses.callback, physics);
+		
+		this.checkInput();
 	};
 	
 	Player.prototype.checkCollision = function(collection, callback, physics) {
 		for(var i = 0; i < collection.length; i++) {
 			physics.overlap(this.view.sprite, collection[i].sprite, callback, null, this);
 		}
+	};
+	
+	Player.prototype.checkInput = function() {
+		/*
+			if(!this.gameOver) {
+				if(this.controls.isDown(ControlButtonTypes.QUIT)) {
+					this.close();
+				} else {
+				 //  Reset the this.players velocity (movement)
+					this.player.sprite.body.velocity.x = 0;
+					var velX = 0;
+					if (this.cursors.left.isDown || this.controls.isDown(ControlButtonTypes.LEFT)) {
+						velX = -config.player.speed;
+						config.player.facingForward = false;
+					}
+					else if (this.cursors.right.isDown || this.controls.isDown(ControlButtonTypes.RIGHT)) {
+						velX = config.player.speed;
+						config.player.facingForward = true;
+					}
+
+					if(this.player.sprite.body.touching.down) {
+						config.player.jumping = false;
+					}
+					//  Allow the this.player to jump if they are touching the ground.
+					if(this.cursors.up.isDown || this.controls.isDown(ControlButtonTypes.UP)) {
+						if(this.player.sprite.body.touching.down && !config.player.justJumped) {
+							this.player.sprite.body.velocity.y = -config.player.jumpHeight;
+							config.player.jumping = true;
+						}
+					} 
+					if(this.player.sprite.body.touching.down && config.player.jumpButtonPressed && !config.player.justJumped) {
+						this.player.sprite.body.velocity.y = -config.player.jumpHeight;
+						config.player.jumping = true;
+						config.player.jumpButtonPressed = false;
+					}
+					this.player.sprite.body.velocity.x = velX;
+				}
+			}
+		*/
 	};
 	
 	Player.prototype.kill = function() {

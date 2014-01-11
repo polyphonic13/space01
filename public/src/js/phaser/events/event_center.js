@@ -1,13 +1,18 @@
 Polyworks.EventCenter = (function() {
 
 	var eventCenter = {};
-	var _listeners = {}; 
+	var _listeners; 
 	
-	eventCenter.bind = function(event, callback) {
-		if(!_listeners[event]) {
-			_listeners[event] = [];
+	eventCenter.init = function() {
+		_listeners = {};
+	};
+	
+	eventCenter.bind = function(type, callback) {
+		trace('EventCenter/bind, type = ' + type);
+		if(!_listeners[type]) {
+			_listeners[type] = [];
 		}
-		_listeners[event].push(callback);
+		_listeners[type].push(callback);
 	};
 	
 	eventCenter.trigger = function(params) {

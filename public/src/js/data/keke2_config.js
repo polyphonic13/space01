@@ -742,7 +742,10 @@ var config = {
 				x: 0.5,
 				y: 0.5
 			},
-			speed: 150,
+			speed: {
+				x: 150,
+				y: 0,
+			},
 			health: 100,
 			damage: 5,
 			jumpHeight: 350,
