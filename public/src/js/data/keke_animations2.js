@@ -6,7 +6,8 @@ var kekeAnimations = [{
 	{ 
 		name: 'idleL', 
 		keyFrames: [1], 
-		frameRate: 14},
+		frameRate: 14
+	},
 	{ 
 		name: 'runR', 
 		keyFrames: [7, 8, 9, 10, 11, 12, 14, 15, 16, 18, 19], 
