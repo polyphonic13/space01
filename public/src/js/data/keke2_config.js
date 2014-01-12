@@ -188,6 +188,10 @@ var config = {
 		clearWorld: true,
 		clearCache: false,
 		controlsType: 'level',
+		bounds: {
+			start: 0,
+			end: 4050
+		},
 		elements: [{
 			name: 'scenery',
 			type: 'Collection',

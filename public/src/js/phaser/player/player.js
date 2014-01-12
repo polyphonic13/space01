@@ -26,13 +26,14 @@ Polyworks.Player = (function() {
 			return this.model.damage;
 		});
 		
+		this.__defineGetter__('isJumping', function() {
+			return this.model.jumping;
+		});
+		
 		this.__defineGetter__('sprite', function() {
 			return this.view.sprite;
 		});
 		
-		this.__defineGetter__('isJumping', function() {
-			return this.model.jumping;
-		})
 	}
 	
 	Player.prototype.initSprite = function() {
