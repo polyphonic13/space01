@@ -121,6 +121,8 @@ Polyworks.Game = (function() {
 			_states[states[i].name] = state;
 			Polyworks.Game.phaser.state.add(states[i].name, state, false);
 		}
+		trace('Polyworks.Game, _states = ');
+		trace(_states);
 	}
 
 	return polyworks_game;
