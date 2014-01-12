@@ -17,11 +17,11 @@ Polyworks.Enemies = (function() {
 		}
 	};
 	
-	Enemies.prototype.remove = function() {
-		for(var key in this.collection) {
-			this.collection[key].remove();
-		}
-	};
-	
+	// Enemies.prototype.remove = function() {
+	// 	for(var key in this.collection) {
+	// 		this.collection[key].remove();
+	// 	}
+	// };
+	// 
 	return Enemies;
 })();

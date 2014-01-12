@@ -56,5 +56,9 @@ Polyworks.ControlButton = (function() {
 		}
 	};
 	
+	ControlButton.prototype.destroy = function() {
+		this.button.destroy();
+	};
+	
 	return ControlButton;
 })();

@@ -136,5 +136,11 @@ Polyworks.ControlButtons = (function() {
 		return this.collection[this.nameIndex[name]].pressed;
 	};
 	
+	ControlButtons.prototype.remove = function() {
+		for(var i = 0; i < this.collection.length; i++) {
+			this.collection[i].destroy();
+		}
+	};
+	
 	return ControlButtons;
 })();

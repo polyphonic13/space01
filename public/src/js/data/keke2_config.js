@@ -148,29 +148,7 @@ var config = {
 		clearWorld: true,
 		clearCache: false,
 		controlsType: 'menu',
-		elements: [/*{
-			type: 'Rectangle',
-			attrs: {
-				graphics: {
-					x: 0,
-					y: 0
-				},
-				stroke: {
-					width: 1,
-					color: '#ffffff',
-					opacity: 0.5
-				},
-				fill: {
-					color: '#cccccc',
-					alpha: 0.75
-				},
-				x: 10,
-				y: 10,
-				width: stage.width - 20,
-				height: stage.height - 20
-			}
-		},*/
-		{
+		elements: [{
 			name: 'bg',
 			type: 'Sprite',
 			attrs: {
@@ -755,6 +733,43 @@ var config = {
 			}]
 
 		}]
+	},
+	{
+		name: 'quit',
+		type: 'State',
+		clearWorld: true,
+		clearCache: false,
+		elements: [{
+			name: 'bg',
+			type: 'Sprite',
+			attrs: {
+				img: 'greyRect',
+				start: {
+					x: 40,
+					y: 40
+				},
+				width: stage.width - 80,
+				height: stage.height - 80
+			}
+		},
+		{
+			name: 'copy',
+			type: 'GroupCollection',
+			attrs: [{
+				name: 'title',
+				type: 'Text',
+				attrs: {
+					x: 30,
+					y: 30,
+					defaultContent: 'Game Over',
+					style: { 
+						font: '30px Arial', 
+						fill: '#ffffff' 
+					}
+				}
+			}]
+		}]
+
 	}],
 	player: {
 		name: 'keke',
