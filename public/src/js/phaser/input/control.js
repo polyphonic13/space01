@@ -15,7 +15,7 @@ Polyworks.Control = (function() {
 		var events = this.model.events;
 		// trace(events);
 		if(events && events.pressed) {
-			// trace('\tabout to dispatch ' + events.pressed.type);
+			trace('\tabout to dispatch ' + events.pressed.type);
 			event = { type: events.pressed.type, value: events.pressed.value };
 		} else {
 			event = { type: params.type, value: params.value }

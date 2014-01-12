@@ -26,6 +26,7 @@ var config = {
 		rightButton: 'images/arrow_right.png',
 		upButton: 'images/arrow_up.png',
 		startButton: 'images/start_button.png',
+		nextButton: 'images/next_button.png',
 		quitButton: 'images/quit_button.png',
 		greyRect: 'images/grey_rect32x32.png',
 		heart: 'images/heart.png',
@@ -84,7 +85,7 @@ var config = {
 		}],
 		buttons: {
 			menu: [{
-				name: 'invisBtn',
+				name: 'start',
 				type: 'MenuButton',
 				attrs: {
 					img: 'startButton',
@@ -93,6 +94,42 @@ var config = {
 						y: stage.height/2 - 64
 					},
 					inputCode: Polyworks.InputCodes.PLAY
+				}
+			},
+			{
+				name: 'quitBtn',
+				type: 'MenuButton',
+				attrs: {
+					img: 'quitButton',
+					start: {
+						x: stage.width - 80,
+						y: 10
+					},
+					inputCode: Polyworks.InputCodes.QUIT,
+					event: {
+						pressed: {
+							type: Polyworks.Events.CHANGE_STATE,
+							value: 'quit'
+						}
+					}
+				}
+			}],
+			levelComplete: [{
+				name: 'next',
+				type: 'MenuButton',
+				attrs: {
+					img: 'nextButton',
+					start: {
+						x: stage.width/2 - 128,
+						y: stage.height/2 - 64
+					},
+					inputCode: Polyworks.InputCodes.NEXT,
+					events: {
+						pressed: {
+							type: Polyworks.Events.CHANGE_STATE,
+							value: 'level'
+						}
+					}
 				}
 			},
 			{
@@ -1390,8 +1427,8 @@ var config = {
 		}]
 	},
 	{
-		name: 'completedLevel',
-		type: 'State',
+		name: 'levelCompleted',
+		type: 'MenuState',
 		world: {
 			x: 0,
 			y: 0,
@@ -1400,33 +1437,32 @@ var config = {
 		},
 		clearWorld: true,
 		clearCache: false,
+		controlsType: 'levelComplete',
 		elements: [{
+			name: 'bg',
+			type: 'Sprite',
+			attrs: {
+				img: 'greyRect',
+				start: {
+					x: 20,
+					y: 20 
+				},
+				width: stage.width - 40,
+				height: stage.height - 40
+			}
+		},
+		{
 			name: 'copy',
 			type: 'GroupCollection',
 			attrs: [{
-				name: 'bg',
-				type: 'Sprite',
-				attrs: {
-					img: 'greyRect',
-					start: {
-						x: 20,
-						y: 20
-					},
-					// fixedToCamera: true,
-					width: stage.width - 40,
-					height: stage.height - 40,
-				}
-			},
-			{
 				name: 'title',
 				type: 'Text',
 				attrs: {
 					centerX: true,
-					centerY: true,
-					x: stage.width/2,
-					y: stage.height/2,
+					centerY: false,
+					x: 0,
+					y: 50,
 					defaultContent: 'Level Completed',
-					fixedToCamera: true,
 					style: { 
 						font: '30px Arial', 
 						fill: '#000000',
@@ -1435,9 +1471,8 @@ var config = {
 				}
 			}]
 		}]
-
 	},
-		{
+	{
 		name: 'quit',
 		type: 'State',
 		world: {

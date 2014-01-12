@@ -9,6 +9,7 @@ Polyworks.Game = (function() {
 		phaser: null,
 		score: 0,
 		currentLevel: 0,
+		totalLevels: 0,
 		currentState: '',
 		previousState: '',
 		gameOver: false,
@@ -47,6 +48,9 @@ Polyworks.Game = (function() {
 		changeState: function(id) {
 			if(id === 'level') {
 				id += Polyworks.Game.currentLevel;
+				if(Polyworks.Game.currentLevel < Polyworks.Game.totalLevel) {
+					Polyworks.Game.currentLevel++;
+				}
 			}
 			var state = _states[id];
 			Polyworks.Game.previousState = Polyworks.Game.currentState;
@@ -120,6 +124,9 @@ Polyworks.Game = (function() {
 			state = new Polyworks[states[i].type](states[i], states[i].name);
 			_states[states[i].name] = state;
 			Polyworks.Game.phaser.state.add(states[i].name, state, false);
+			if(states[i].name === 'level') {
+				Polyworks.totalLevels++;
+			}
 		}
 		trace('Polyworks.Game, _states = ');
 		trace(_states);
