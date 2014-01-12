@@ -752,7 +752,7 @@ var config = {
 					y: 20
 				},
 				width: stage.width - 40,
-				height: stage.height - 40
+				height: stage.height - 40,
 			}
 		},
 		{
