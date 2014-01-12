@@ -155,7 +155,7 @@ var config = {
 				img: 'greyRect',
 				start: {
 					x: 20,
-					y: 20
+					y: 20 
 				},
 				width: stage.width - 40,
 				height: stage.height - 40
@@ -168,12 +168,15 @@ var config = {
 				name: 'title',
 				type: 'Text',
 				attrs: {
-					x: 30,
-					y: 30,
+					centerX: true,
+					centerY: false,
+					x: 0,
+					y: 50,
 					defaultContent: 'Keke vs. the Caterpillars',
 					style: { 
 						font: '30px Arial', 
-						fill: '#ffffff' 
+						fill: '#000000',
+						align: 'center'
 					}
 				}
 			}]
@@ -745,11 +748,11 @@ var config = {
 			attrs: {
 				img: 'greyRect',
 				start: {
-					x: 40,
-					y: 40
+					x: 20,
+					y: 20
 				},
-				width: stage.width - 80,
-				height: stage.height - 80
+				width: stage.width - 40,
+				height: stage.height - 40
 			}
 		},
 		{
@@ -759,12 +762,15 @@ var config = {
 				name: 'title',
 				type: 'Text',
 				attrs: {
-					x: 30,
-					y: 30,
+					centerX: true,
+					centerY: true,
+					x: stage.width/2,
+					y: stage.height/2,
 					defaultContent: 'Game Over',
 					style: { 
 						font: '30px Arial', 
-						fill: '#ffffff' 
+						fill: '#000000',
+						align: 'center'
 					}
 				}
 			}]

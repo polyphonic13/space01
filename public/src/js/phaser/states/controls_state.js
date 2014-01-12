@@ -12,18 +12,18 @@ Polyworks.ControlsState = (function() {
 	};
 
 	ControlsState.prototype.createControls = function() {
-		trace('ControlsState/createControls, this.model = ');
-		trace(this.model);
+		// trace('ControlsState/createControls, this.model = ');
+		// trace(this.model);
 		this.controls = new Polyworks.ControlButtons(config.controls[this.model.controlsType]);
 	};
 	
 	ControlsState.prototype.shutdown = function() {
-		trace('ControlsState['+this.id+']/shutdown, this.elements.length = ');
-		trace(this.controls);
+		// trace('ControlsState['+this.id+']/shutdown, this.elements.length = ');
+		// trace(this.controls);
 		/*
 		for(var key in this.controls) {
-			trace('\telements['+key+'] = ');
-			trace(this.elements[key]);
+			// trace('\telements['+key+'] = ');
+			// trace(this.elements[key]);
 			if(this.elements[key].destroy) {
 				this.elements[key].destroy();
 			}

@@ -8,7 +8,7 @@ Polyworks.EventCenter = (function() {
 	};
 	
 	eventCenter.bind = function(type, callback) {
-		trace('EventCenter/bind, type = ' + type);
+		// trace('EventCenter/bind, type = ' + type);
 		if(!_listeners[type]) {
 			_listeners[type] = [];
 		}

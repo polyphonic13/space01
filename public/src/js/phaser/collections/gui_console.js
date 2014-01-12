@@ -16,6 +16,12 @@ Polyworks.GUIConsole = (function() {
 	GUIConsole.prototype.getContent = function(field) {
 		return this.getItemByName(field).content;
 	};
+
+	GUIConsole.prototype.destroy = function() {
+		for(var i = 0; i < this.collection.length; i++) {
+			this.collection[i].destroy();
+		}
+	};
 	
 	return GUIConsole;
 })();

@@ -2,8 +2,8 @@ Polyworks.Sectors = (function() {
 	Utils.inherits(Sectors, Polyworks.Collection);
 	
 	function Sectors(params, id) {
-		trace('Sectors['+id+']/constructor, params = ');
-		trace(params);
+		// trace('Sectors['+id+']/constructor, params = ');
+		// trace(params);
 		Sectors._super.constructor.call(this, params, id);
 		this.activeSectorId = 0;
 
@@ -26,7 +26,7 @@ Polyworks.Sectors = (function() {
 			// trace('bounds['+i+'] start/end = ' + bounds.start + '/' + bounds.end + ', x = ' + x);
 			if(x > bounds.start && x < bounds.end) {
 				if(this.activeSectorId !== i) {
-					trace('new sector id = ' + i);
+					// trace('new sector id = ' + i);
 					this.activeSectorId = i;
 				}
 			}

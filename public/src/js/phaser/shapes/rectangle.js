@@ -1,10 +1,10 @@
 Polyworks.Rectangle = (function() {
 	
 	function Rectangle(params) {
-		trace('Rectangle, params = ');
-		trace(params);
+		// trace('Rectangle, params = ');
+		// trace(params);
 		var graphics = params.game.add.graphics(params.graphics.x, params.graphics.y);
-		trace(graphics);
+		// trace(graphics);
 		graphics.lineStyle(params.stroke.width, params.stroke.color, params.stroke.opacity);
 		graphics.beginFill(params.fill.color, params.fill.alpha);
 		graphics.drawRect(params.x, params.y, params.width, params.height);

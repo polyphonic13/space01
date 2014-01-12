@@ -4,7 +4,7 @@ Polyworks.State = (function() {
 	var _this;
 	function State(params, id) {
 		_this = this;
-		trace('State['+id+']/constructor')
+		// trace('State['+id+']/constructor')
 		State._super.constructor.call(this, params, id);
 		this.loaded = false;
 		this.created = false;
@@ -63,11 +63,11 @@ Polyworks.State = (function() {
 	};
 	
 	State.prototype.shutdown = function() {
-		trace('State['+this.id+']/shutdown, this.elements.length = ');
-		trace(this.elements);
+		// trace('State['+this.id+']/shutdown, this.elements.length = ');
+		// trace(this.elements);
 		for(var key in this.elements) {
-			trace('\telements['+key+'] = ');
-			trace(this.elements[key]);
+			// trace('\telements['+key+'] = ');
+			// trace(this.elements[key]);
 			if(this.elements[key].destroy) {
 				this.elements[key].destroy();
 			}

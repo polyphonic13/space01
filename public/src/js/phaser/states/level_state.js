@@ -20,7 +20,7 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.create =  function() {
-		trace('LevelState['+this.id+']/create');
+		// trace('LevelState['+this.id+']/create');
 		LevelState._super.create.call(this);
 	}
 	

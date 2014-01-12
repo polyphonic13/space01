@@ -48,18 +48,19 @@ Polyworks.Game = (function() {
 			var state = _states[id];
 			Polyworks.Game.previousState = Polyworks.Game.currentState;
 			Polyworks.Game.currentState = id;
-			trace('Polyworks.Game/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
-			trace(_states);
+			// trace('Polyworks.Game/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
+			// trace(_states);
 			Polyworks.Game.phaser.state.start(id, state.clearWorld, state.clearCache);
 		},
 
 		quit: function() {
 			trace('Polyworks.Game/quit');
-			if(!Polyworks.Game.gameOver) {
+			// if(!Polyworks.Game.gameOver) {
 				Polyworks.EventCenter.reset();
 				Polyworks.Game.gameOver = true;
-				Polyworks.Game.phaser.destroy();
-			}
+				// Polyworks.Game.phaser.destroy();
+				Polyworks.Game.changeState('quit');
+			// }
 		}
 	};
 
@@ -94,8 +95,8 @@ Polyworks.Game = (function() {
 	}
 	
 	function _controlButtonPressed(event) {
-		trace('Polyworks.Game/_controlButtonPressed, event = ');
-		trace(event);
+		// trace('Polyworks.Game/_controlButtonPressed, event = ');
+		// trace(event);
 		switch(event.value) {
 			case Polyworks.ControlKeys.QUIT:
 			Polyworks.Game.quit();

@@ -205,7 +205,7 @@ function createControls() {
 					y: -(config.world.height - 150)
 				},
 				touchStart: function() { 
-					trace('right controller left button touchstart');
+					// trace('right controller left button touchstart');
 					quit();
 				} 
 			}, 
@@ -219,11 +219,11 @@ function createControls() {
 					y: 0
 				},
 				touchStart: function() {
-					trace('right controller right button touchstart');
+					// trace('right controller right button touchstart');
 					config.player.jumpButtonPressed = true;
 				},
 				touchEnd: function() {
-					trace('right controller right button touchend');
+					// trace('right controller right button touchend');
 					config.player.justJumped = false;
 				}
 			}, 
@@ -284,7 +284,7 @@ function sectorTest(x) {
 }
 
 function activateSector(sector) {
-	trace('activateSector['+sector.id+'], created = ' + sector.created);
+	// trace('activateSector['+sector.id+'], created = ' + sector.created);
 	if(!sector.created) {
 		createSector(sector);
 	}
@@ -301,7 +301,7 @@ function updateEnemies(enemies) {
 
 function updateEnemy(enemy) {
 	if(!gameOver) {
-		trace('updateEnemy, sector['+ config.currentSector + ']/enemy[' + enemy.id + '], alive = ' + enemy.gameObj.alive);
+		// trace('updateEnemy, sector['+ config.currentSector + ']/enemy[' + enemy.id + '], alive = ' + enemy.gameObj.alive);
 		// trace('enemy['+enemy.gameObj.name+'].screenX = ' + enemy.gameObj.body.screenX);
 		var enemyX = enemy.gameObj.body.screenX;
 		var playerX = player.body.screenX;
@@ -356,8 +356,8 @@ function checkObjectCollision(objects, callback) {
 }
 
 function enemyCollision(player, enemy) {
-	trace('enemyCollision');
-	trace(enemy);
+	// trace('enemyCollision');
+	// trace(enemy);
 	// trace('player overlap x/y = ' + enemy.body.overlapX + '/' + enemy.body.overlapY);
 	// trace(enemy);
 	// trace(player.body.touching);
@@ -465,7 +465,7 @@ function setPlayerAnimations() {
 	if(config.player.jumping) {
 		playerJump();
 	// } else if(!player.body.touching.down) {
-	// 	trace('falling');
+	// 	// trace('falling');
 	// 	if(config.player.facingForward) {
 	// 		// player.frame = 4;
 	// 		player.frame = 9;
@@ -478,14 +478,14 @@ function setPlayerAnimations() {
 	} else {
 		if(player.body.velocity.x > 0 && player.body.touching.down) {
 			if(config.player.currentAnimation !== 'runR') {
-		 		trace('play run right');
+		 		// trace('play run right');
 				player.animations.play('runR', 13, true);
 				config.player.currentAnimation = 'runR';
 				config.player.facingForward = false;
 			}
 		} else if(player.body.velocity.x < 0 && player.body.touching.down) {
 			if(config.player.currentAnimation !== 'runL') {
-		 		trace('play run left');
+		 		// trace('play run left');
 				player.animations.play('runL', 13, true);
 				config.player.currentAnimation = 'runL';
 				config.player.facingForward = false;
@@ -526,8 +526,8 @@ function playerJump() {
 }
 
 function killEnemy(enemy) {
-	trace('killEnemey, enemy = ');
-	trace(enemy);
+	// trace('killEnemey, enemy = ');
+	// trace(enemy);
 	enemy.alive = false;
 	enemy.kill();
 	
@@ -543,7 +543,7 @@ function getCurrentSectorProperty(name) {
 }
 
 function quit() {
-	trace('quit');
+	// trace('quit');
 	gameOver = true;
 	// clearSectors();
 	GameController.destroy();
