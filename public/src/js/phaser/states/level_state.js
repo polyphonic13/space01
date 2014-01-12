@@ -60,7 +60,7 @@ Polyworks.LevelState = (function() {
 		// this.gameOver = true;
 		if(!this.gameOver) {
 			if(this.player.sprite.x >= this.model.bounds.end) {
-				Polyworks.Game.changeState('levelCompleted');
+				Polyworks.Game.changeState('intermission');
 			} else {
 				this.sectorManager.checkTerrainCollision(this.terrain.group);
 				this.sectorManager.setActive(this.game.camera.x + (stage.width/2));

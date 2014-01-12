@@ -30,8 +30,8 @@ Polyworks.State = (function() {
 	};
 
 	State.prototype.createState = function() {
-		trace('State/createState, this = ');
-		trace(this);
+		// trace('State/createState, this = ');
+		// trace(this);
 		
 		this.game = Polyworks.Game.phaser;
 		this.gameOver = Polyworks.Game.gameOver; 

@@ -127,7 +127,7 @@ var config = {
 					events: {
 						pressed: {
 							type: Polyworks.Events.CHANGE_STATE,
-							value: 'level'
+							value: 'nextLevel'
 						}
 					}
 				}
@@ -412,90 +412,6 @@ var config = {
 						immovable: true
 					}
 				}
-			},
-			{
-				type: 'Sprite',
-				attrs: {
-					img: 'platform',
-					start: {
-						x: 1000,
-						y: world.height - 75
-					},
-					scale: [0.5, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				type: 'Sprite',
-				attrs: {
-					img: 'platform',
-					start: {
-						x: 1200,
-						y: world.height - 130
-					},
-					scale: [0.5, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				type: 'Sprite',
-				attrs: {
-					img: 'platform',
-					start: {
-						x: 1400,
-						y: world.height - 180
-					},
-					scale: [0.5, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				type: 'Sprite',
-				attrs: {
-					img: 'platform',
-					start: {
-						x: 3100,
-						y: world.height - 75
-					},
-					scale: [0.8, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				type: 'Sprite',
-				attrs: {
-					img: 'platform',
-					start: {
-						x: 3300,
-						y: world.height - 130
-					},
-					scale: [0.8, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				type: 'Sprite',
-				attrs: {
-					img: 'platform',
-					start: {
-						x: 3500,
-						y: world.height - 180
-					},
-					scale: [0.8, 1],
-					physics: {
-						immovable: true
-					}
-				}
 			}]
 		},
 		{
@@ -528,33 +444,6 @@ var config = {
 							score: 500,
 							movement: {
 								speed: 0.25,
-								type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
-								formula: null
-							},
-							defaultAnimation: '',
-							animations: caterpillarAnimations
-						}
-					},
-					{
-						type: 'AnimatedEnemy',
-						attrs: {
-							img: 'caterpillar01',
-							name: 'sector0-enemy1',
-							start: {
-								x: 1000,
-								y: 0
-							},
-							physics: {
-								bounce: {
-									x: 0,
-									y: 0.2
-								}
-							},
-							damage: 5,
-							health: 5,
-							score: 500,
-							movement: {
-								speed: 0.5,
 								type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
 								formula: null
 							},
@@ -594,29 +483,6 @@ var config = {
 							defaultAnimation: '',
 							animations: caterpillarAnimations
 						}
-					},
-					{
-						type: 'AnimatedEnemy',
-						attrs: {
-							img: 'caterpillar01',
-							name: 'sector1-enemy1',
-							start: {
-								x: 1800,
-								y: 0
-							},
-							physics: {
-								bounce: {
-									x: 0,
-									y: 0.2
-								}
-							},
-							speed: 1,
-							damage: 5,
-							health: 10,
-							score: 1000,
-							defaultAnimation: '',
-							animations: caterpillarAnimations
-						}
 					}],
 					bonuses: []
 				}
@@ -629,33 +495,6 @@ var config = {
 						end: 3072
 					},
 					enemies: [{
-						type: 'AnimatedEnemy',
-						attrs: {
-							img: 'caterpillar01',
-							name: 'sector2-enemy0',
-							start: {
-								x: 2500,
-								y: 0
-							},
-							physics: {
-								bounce: {
-									x: 0,
-									y: 0.2
-								}
-							},
-							damage: 5,
-							health: 20,
-							score: 1000,
-							movement: {
-								speed: 0.75,
-								type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
-								formula: null
-							},
-							defaultAnimation: '',
-							animations: caterpillarAnimations
-						}
-					},
-					{
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
@@ -699,25 +538,6 @@ var config = {
 							score: 100,
 							health: 10
 						}
-					},
-					{
-						type: 'Sprite',
-						attrs: {
-							img: 'lollipop',
-							start: {
-								x: 2950,
-								y: 0
-							},
-							physics: {
-								bounce: {
-									x: 0,
-									y: 0.2
-								}
-							},
-							score: 100,
-							health: 10,
-							alive: true
-						}
 					}]
 				}
 			},
@@ -735,33 +555,6 @@ var config = {
 							name: 'sector3-enemy0',
 							start: {
 								x: 3580,
-								y: 0
-							},
-							physics: {
-								bounce: {
-									x: 0,
-									y: 0.2
-								}
-							},
-							damage: 5,
-							health: 5,
-							score: 500,
-							movement: {
-								speed: 1,
-								type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
-								formula: null
-							},
-							defaultAnimation: '',
-							animations: caterpillarAnimations
-						}
-					},
-					{
-						type: 'AnimatedEnemy',
-						attrs: {
-							img: 'caterpillar01',
-							name: 'sector3-enemy1',
-							start: {
-								x: 4000,
 								y: 0
 							},
 							physics: {
@@ -1427,7 +1220,7 @@ var config = {
 		}]
 	},
 	{
-		name: 'levelCompleted',
+		name: 'intermission',
 		type: 'MenuState',
 		world: {
 			x: 0,
