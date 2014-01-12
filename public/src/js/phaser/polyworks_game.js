@@ -54,11 +54,11 @@ Polyworks.Game = (function() {
 		},
 
 		quit: function() {
-			// trace('Polyworks.Game/quit');
+			trace('Polyworks.Game/quit');
 			// Polyworks.EventCenter.reset();
 			Polyworks.Game.gameOver = true;
-			// Polyworks.Game.phaser.destroy();
-			Polyworks.Game.changeState('quit');
+			Polyworks.Game.phaser.destroy();
+			// Polyworks.Game.changeState('quit');
 		}
 	};
 
@@ -80,7 +80,6 @@ Polyworks.Game = (function() {
 	function _create() {
 		_initEvents();
 		_initWorld();
-		_initPlayer();
 		_initControls();
 		_initStates();
 		Polyworks.Game.changeState(config.initialState);
@@ -89,36 +88,31 @@ Polyworks.Game = (function() {
 	
 	function _initEvents() {
 		Polyworks.EventCenter.init();
-		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_BUTTON_PRESSED, _controlButtonPressed);
+		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_PRESSED, _onControlPressed);
+		Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_STATE, _onChangeState);
 	}
 	
-	function _controlButtonPressed(event) {
-		// trace('Polyworks.Game/_controlButtonPressed, event = ');
-		// trace(event);
+	function _onControlPressed(event) {
 		switch(event.value) {
-			case Polyworks.ControlKeys.QUIT:
-			Polyworks.Game.quit();
+			case Polyworks.ControlCodes.QUIT:
+				Polyworks.Game.changeState('quit');
 			break;
 		}
+	}
+	
+	function _onChangeState(event) {
+		Polyworks.Game.changeState(event.value);
 	}
 	
 	function _initWorld() {
 		Polyworks.Game.phaser.world.setBounds(world.x, world.y, world.width, world.height);
 	}
 
-	function _initPlayer() {
-		// trace('Polyworks.Game/init, phaser = ');
-		// trace(Polyworks.Game.phaser);
-
-		// _player = new Polyworks.Player(config.player, 0);
-	}
-	
 	function _initControls() {
-		_controls = new Polyworks.ControlButtons(config.controls);
-
-		// CONTROLS
-		_qKey = Polyworks.Game.phaser.input.keyboard.addKey(Phaser.Keyboard.Q);
-		_qKey.onDown.add(Polyworks.Game.quit, this);
+		// trace('Polyworks.Game/_initControls');
+		// _controls = new Polyworks.ControlButtons(config.controls);
+		_controls = new Polyworks.Collection(config.controls.keys, 'controlKeys');
+		_controls.init();
 	}
 
 	function _initStates() {

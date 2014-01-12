@@ -1,4 +1,4 @@
-Polyworks.ControlKeys = {
+Polyworks.ControlCodes = {
 	PLAY: 1,
  	RESET: 99, 		// invisible button
 	LEFT: 37, 		// left arrow

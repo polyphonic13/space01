@@ -1,6 +1,5 @@
 Polyworks.Events = {
-	BUTTON_PRESSED: 'buttonPressed',
-	BUTTON_RELEASED: 'buttonReleased',
-	CONTROL_BUTTON_PRESSED: 'controlButtonPressed',
-	CONTROL_BUTTON_RELEASED: 'controlButtonReleased'
+	CONTROL_PRESSED: 'controlPressed',
+	CONTROL_RELEASED: 'controlReleased',
+	CHANGE_STATE: 'changeState'
 };

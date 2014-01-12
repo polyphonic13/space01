@@ -141,7 +141,7 @@ Polyworks.LevelState = (function() {
 	};
 
 	LevelState.prototype.close = function() {
-		Polyworks.Game.quit();
+		Polyworks.Game.changeState('quit');
 	};
 	
 	return LevelState;

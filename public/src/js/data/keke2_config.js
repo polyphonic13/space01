@@ -47,98 +47,144 @@ var config = {
 	},
 	// CONTROLS
 	controls: {
-		menu: [{
-			type: 'ControlButton',
+		keys: [{
+			name: 'quit',
+			type: 'ControlKey',
 			attrs: {
-				img: ControlButtonTypes.INVISIBLE_BG,
-				start: {
-					x: 0,
-					y: 0
-				},
-				width: stage.width, 
-				height: stage.height,
-				value: Polyworks.ControlKeys.RESET
+				controlCode: Polyworks.ControlCodes.QUIT,
+				events: {
+					pressed: Polyworks.Events.CHANGE_STATE,
+					value: 'quit'
+				}
 			}
 		},
 		{
-			type: 'ControlButton',
+			name: 'left',
+			type: 'ControlKey',
 			attrs: {
-				img: ControlButtonTypes.PLAY,
-				start: {
-					x: stage.width/2 - 256/2,
-					y: stage.height/2 - 256/2
-				},
-				value: Polyworks.ControlKeys.PLAY
+				controlCode: Polyworks.ControlCodes.LEFT
 			}
 		},
 		{
-			type: 'ControlButton',
+			name: 'right',
+			type: 'ControlKey',
 			attrs: {
-				img: ControlButtonTypes.QUIT,
-				start: {
-					x: stage.width - 80,
-					y: 10
-				},
-				value: Polyworks.ControlKeys.QUIT
+				controlCode: Polyworks.ControlCodes.RIGHT
+			}
+		},
+		{
+			name: 'up',
+			type: 'ControlKey',
+			attrs: {
+				controlCode: Polyworks.ControlCodes.UP
 			}
 		}],
-		level: [{
-			type: 'ControlButton',
-			attrs: {
-				img: ControlButtonTypes.INVISIBLE_BG,
-				start: {
-					x: 0,
-					y: 0
+		buttons: {
+			menu: [{
+				type: 'ControlButton',
+				attrs: {
+					img: ControlButtonTypes.INVISIBLE_BG,
+					start: {
+						x: 0,
+						y: 0
+					},
+					width: stage.width, 
+					height: stage.height,
+					value: Polyworks.ControlCodes.RESET
+				}
+			},
+			{
+				type: 'ControlButton',
+				attrs: {
+					img: ControlButtonTypes.PLAY,
+					start: {
+						x: stage.width/2 - 256/2,
+						y: stage.height/2 - 256/2
+					},
+					value: Polyworks.ControlCodes.PLAY
+				}
+			},
+			{
+				type: 'ControlButton',
+				attrs: {
+					img: ControlButtonTypes.QUIT,
+					start: {
+						x: stage.width - 80,
+						y: 10
+					},
+					value: Polyworks.ControlCodes.QUIT
+				}
+			}],
+			level: [{
+				type: 'ControlButton',
+				attrs: {
+					img: ControlButtonTypes.INVISIBLE_BG,
+					start: {
+						x: 0,
+						y: 0
+					},
+					width: stage.width, 
+					height: stage.height,
+					value: Polyworks.ControlCodes.RESET
 				},
-				width: stage.width, 
-				height: stage.height,
-				value: Polyworks.ControlKeys.RESET
-			}
-		},
-		{
-			type: 'ControlButton',
-			attrs: {
-				img: ControlButtonTypes.LEFT,
-				start: {
-					x: 20,
-					y: stage.height - 80
+				event: {
+					pressed: {
+						type: Polyworks.Events.CHANGE_STATE,
+						value: 'quit'
+					}
+				}
+			},
+			{
+				type: 'ControlButton',
+				attrs: {
+					img: ControlButtonTypes.LEFT,
+					start: {
+						x: 20,
+						y: stage.height - 80
+					},
+					value: Polyworks.ControlCodes.LEFT
+				}
+			},
+			{
+				type: 'ControlButton',
+				attrs: {
+					img: ControlButtonTypes.RIGHT,
+					start: {
+						x: 120,
+						y: stage.height - 80
+					},
+					value: Polyworks.ControlCodes.RIGHT
+				}
+			},
+			{
+				type: 'ControlButton',
+				attrs: {
+					img: ControlButtonTypes.UP,
+					start: {
+						x: stage.width - 80,
+						y: stage.height - 80
+					},
+					value: Polyworks.ControlCodes.UP
+				}
+			},
+			{
+				type: 'ControlButton',
+				attrs: {
+					img: ControlButtonTypes.QUIT,
+					start: {
+						x: stage.width - 80,
+						y: 10
+					},
+					value: Polyworks.ControlCodes.QUIT
 				},
-				value: Polyworks.ControlKeys.LEFT
-			}
-		},
-		{
-			type: 'ControlButton',
-			attrs: {
-				img: ControlButtonTypes.RIGHT,
-				start: {
-					x: 120,
-					y: stage.height - 80
-				},
-				value: Polyworks.ControlKeys.RIGHT
-			}
-		},
-		{
-			type: 'ControlButton',
-			attrs: {
-				img: ControlButtonTypes.UP,
-				start: {
-					x: stage.width - 80,
-					y: stage.height - 80
-				},
-				value: Polyworks.ControlKeys.UP
-			}
-		},
-		{
-			type: 'ControlButton',
-			attrs: {
-				img: ControlButtonTypes.QUIT,
-				start: {
-					x: stage.width - 80,
-					y: 10
-				},
-				value: Polyworks.ControlKeys.QUIT
-			}
-		}]
+				event: {
+					pressed: {
+						type: Polyworks.Events.CHANGE_STATE,
+						value: 'quit'
+					}
+				}
+			}]
+		}
 	},
 	// STATES
 	initialState: 'menu',
@@ -814,9 +860,9 @@ var config = {
 				y: 350,
 			},
 			controls: {
-				left: Polyworks.ControlKeys.LEFT,
-				right: Polyworks.ControlKeys.RIGHT,
-				jump: Polyworks.ControlKeys.UP
+				left: Polyworks.ControlCodes.LEFT,
+				right: Polyworks.ControlCodes.RIGHT,
+				jump: Polyworks.ControlCodes.UP
 			},
 			health: 100,
 			damage: 5,

@@ -9,12 +9,12 @@ Polyworks.MenuState = (function() {
 		MenuState._super.createState.call(this);
 		this.createControls.call(this);
 		
-		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_BUTTON_PRESSED, this.onControlButtonPressed);
+		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_PRESSED, this.onControlButtonPressed);
 		
 	};
 	
 	MenuState.prototype.onControlButtonPressed = function(event) {
-		if(event.value === Polyworks.ControlKeys.PLAY) {
+		if(event.value === Polyworks.ControlCodes.PLAY) {
 			Polyworks.Game.changeState('level1'); 
 		}
 	};

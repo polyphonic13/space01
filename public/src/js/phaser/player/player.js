@@ -51,16 +51,16 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.initEvents = function() {
-		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_BUTTON_PRESSED, this.onControlButtonPressed);
-		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_BUTTON_RELEASED, this.onControlButtonReleased);
+		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_PRESSED, this.onControlButtonPressed);
+		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_RELEASED, this.onControlButtonReleased);
 	};
 	
 	Player.prototype.initControls = function() {
 		this.activeControls = {};
-		this.activeControls[Polyworks.ControlKeys.LEFT] = false;
-		this.activeControls[Polyworks.ControlKeys.RIGHT] = false;
-		this.activeControls[Polyworks.ControlKeys.UP] = false;
-		this.activeControls[Polyworks.ControlKeys.DOWN] = false;
+		this.activeControls[Polyworks.ControlCodes.LEFT] = false;
+		this.activeControls[Polyworks.ControlCodes.RIGHT] = false;
+		this.activeControls[Polyworks.ControlCodes.UP] = false;
+		this.activeControls[Polyworks.ControlCodes.DOWN] = false;
 		// trace('activeControls');
 		// trace(this.activeControls);
 	};
@@ -76,9 +76,9 @@ Polyworks.Player = (function() {
 		_this.activeControls[event.value] = false;
 		// trace('Player.prototype.onControlButtonReleased, event.value = ' + event.value);
 		// trace(_this.activeControls);
-		if(event.value === Polyworks.ControlKeys.RESET) {
-			_this.activeControls[Polyworks.ControlKeys.LEFT] = false;
-			_this.activeControls[Polyworks.ControlKeys.RIGHT] = false;
+		if(event.value === Polyworks.ControlCodes.RESET) {
+			_this.activeControls[Polyworks.ControlCodes.LEFT] = false;
+			_this.activeControls[Polyworks.ControlCodes.RIGHT] = false;
 		}
 		_this.updateInput();
 	};
@@ -116,11 +116,11 @@ Polyworks.Player = (function() {
 		this.velY = 0;
 		
 		// horizontal movement
-		if (this.activeControls[Polyworks.ControlKeys.LEFT]) {
+		if (this.activeControls[Polyworks.ControlCodes.LEFT]) {
 			this.velX = -this.model.speed.x;
 			this.model.facingForward = false;
 		}
-		else if (this.activeControls[Polyworks.ControlKeys.RIGHT]) {
+		else if (this.activeControls[Polyworks.ControlCodes.RIGHT]) {
 			this.velX = this.model.speed.x;
 			this.model.facingForward = true;
 		}
@@ -129,7 +129,7 @@ Polyworks.Player = (function() {
 		this.view.velocityX = this.velX;
 
 		// vertical movement
-		if(this.activeControls[Polyworks.ControlKeys.UP]) {
+		if(this.activeControls[Polyworks.ControlCodes.UP]) {
 			// trace('Player/updateInput, up is active')
 			if(this.model.grounded && !this.model.justJumped) {
 				this.velY = -this.model.speed.y;
@@ -140,7 +140,7 @@ Polyworks.Player = (function() {
 			} else {
 				this.velY = 0;
 			}
-		} else if(this.activeControls[Polyworks.ControlKeys.DOWN]) {
+		} else if(this.activeControls[Polyworks.ControlCodes.DOWN]) {
 			// trace('Player/updateInput, down is active')
 		}
 
@@ -154,7 +154,7 @@ Polyworks.Player = (function() {
 	Player.prototype.damaged = function(damage) {
 		this.model.health -= damage;
 		if(this.model.health <= 0) {
-			Polyworks.Game.quit();
+			Polyworks.Game.changeState('quit');
 		}
 	};
 	
@@ -163,11 +163,11 @@ Polyworks.Player = (function() {
 		 //  Reset the this.players velocity (movement)
 			this.view.velocityX = 0;
 			this.velX = 0;
-			if (this.activeControls[Polyworks.ControlKeys.LEFT]) {
+			if (this.activeControls[Polyworks.ControlCodes.LEFT]) {
 				this.velX = -this.model.speed.x;
 				this.facingForward = false;
 			}
-			else if (this.activeControls[Polyworks.ControlKeys.RIGHT]) {
+			else if (this.activeControls[Polyworks.ControlCodes.RIGHT]) {
 				this.velX = this.model.speed.x;
 				this.facingForward = true;
 			}

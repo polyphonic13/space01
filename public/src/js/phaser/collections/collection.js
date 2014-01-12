@@ -41,9 +41,9 @@ Polyworks.Collection = (function() {
 	Collection.prototype.remove = function() {
 		// trace('Collection['+this.id+']/remove, collection = ');
 		// trace(this.collection);
-		for(var key in this.collection) {
-			if(this.collection[key].remove) {
-				this.collection[key].remove();
+		for(var i = 0; i < this.collection.length; i++) {
+			if(this.collection[i].remove) {
+				this.collection[i].remove();
 			}
 		}
 	};

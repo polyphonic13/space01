@@ -24,40 +24,30 @@ Polyworks.ControlButtons = (function() {
 
 		// keyboard buttons
 		// this.cursors = Polyworks.Game.phaser.input.keyboard.createCursorKeys();
-		this.initControlKeys();
+		// this.initControlKeys();
 	}
 	
 	ControlButtons.prototype.initControlKeys = function() {
 		// var cursorKeys = Polyworks.Game.phaser.input.keyboard.createCursorKeys();
 		var cursorKeys = {};
-		for(var key in Polyworks.ControlKeys) {
-			cursorKeys[key] = Polyworks.Game.phaser.input.keyboard.addKey(Polyworks.ControlKeys[key]);
+		for(var key in Polyworks.ControlCodes) {
+			cursorKeys[key] = Polyworks.Game.phaser.input.keyboard.addKey(Polyworks.ControlCodes[key]);
 			cursorKeys[key].onDown.add(this.keyPressed, this);
 			cursorKeys[key].onUp.add(this.keyReleased, this);
 			
 		}
-		/*
-		cursorKeys['up'].onDown.add(this.keyPressed, this);
-		cursorKeys['up'].onUp.add(this.keyReleased, this);
-		cursorKeys['down'].onDown.add(this.keyPressed, this);
-		cursorKeys['down'].onUp.add(this.keyReleased, this);
-		cursorKeys['left'].onDown.add(this.keyPressed, this);
-		cursorKeys['left'].onUp.add(this.keyReleased, this);
-		cursorKeys['right'].onDown.add(this.keyPressed, this);
-		cursorKeys['right'].onUp.add(this.keyReleased, this);
-		*/
 		this.cursorKeys = cursorKeys;
 	};
 	
 	ControlButtons.prototype.keyPressed = function(params) {
 		// trace('ControlButtons/keyPressed, keycode = ' + params.keyCode);
 		// trace(params);
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: params.keyCode });
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_PRESSED, value: params.keyCode });
 	};
 	
 	ControlButtons.prototype.keyReleased = function(params) {
 		// trace('ControlButtons/keyReleased, keycode = ' + params.keyCode);
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: params.keyCode });
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_RELEASED, value: params.keyCode });
 	};
 	
 	ControlButtons.prototype.notifyPressed = function(params) {
@@ -83,10 +73,10 @@ Polyworks.ControlButtons = (function() {
 				break;
 			}
 			*/
-			if(params.value === Polyworks.ControlKeys.QUIT) {
-				Polyworks.Game.quit();
+			if(params.value === Polyworks.ControlCodes.QUIT) {
+				Polyworks.Game.changeState('quit');
 			} else {
-				Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: params.value });
+				Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_PRESSED, value: params.value });
 			}
 		} else { // inputUp received
 			/*
@@ -101,7 +91,7 @@ Polyworks.ControlButtons = (function() {
 				}
 			}
 			*/
-			Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: params.value });
+			Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_RELEASED, value: params.value });
 		}
 		
 	};
