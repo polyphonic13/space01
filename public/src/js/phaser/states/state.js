@@ -4,7 +4,6 @@ Polyworks.State = (function() {
 	var _this;
 	function State(params, id) {
 		_this = this;
-		// trace('State['+id+']/constructor')
 		State._super.constructor.call(this, params, id);
 		this.loaded = false;
 		this.created = false;
@@ -20,18 +19,14 @@ Polyworks.State = (function() {
 	}
 	
 	State.prototype.preLoad = function() {
-		// trace('State['+this.id+']/preLoad, loaded = ' + this.loaded);
 		if(!this.loaded) {
 			this.loaded = true;
 		}
 	};
 	
 	State.prototype.create = function() {
-		// trace('State['+this.id+']/create, created = '+ this.created);
-		// if(!this.created) {
-			this.createState();
-			this.created = true;
-		// }
+		this.createState();
+		this.created = true;
 	};
 
 	State.prototype.createState = function() {
@@ -56,8 +51,6 @@ Polyworks.State = (function() {
 
 		for(var i = 0; i < elements.length; i++) {
 			attrs = elements[i].attrs;
-			// trace('State/createElements, elements['+i+'].type = ' + elements[i].type);
-			// trace(attrs);
 			var id = (attrs.name) ? attrs.name : i;
 			element = new Polyworks[elements[i].type](attrs, id);
 			element.init();
@@ -65,15 +58,8 @@ Polyworks.State = (function() {
 		}
 	};
 	
-	State.prototype.update = function() {
-	};
-	
 	State.prototype.shutdown = function() {
-		// trace('State['+this.id+']/shutdown, this.elements.length = ');
-		// trace(this.elements);
 		for(var key in this.elements) {
-			// trace('\telements['+key+'] = ');
-			// trace(this.elements[key]);
 			if(this.elements[key].destroy) {
 				this.elements[key].destroy();
 			}
