@@ -179,7 +179,7 @@ Polyworks.Player = (function() {
 			this.view.velocityX = this.velX;
 			/*
 			//  Allow the this.player to jump if they are touching the ground.
-			if(this.cursors.up.isDown || this.controls.isDown(ControlButtonTypes.UP)) {
+			if(this.cursors.up.isDown || this.controls.isDown(Polyworks.ControlButtonTypres.UP)) {
 				if(this.player.sprite.body.touching.down && !config.player.justJumped) {
 					this.player.sprite.body.velocity.y = -config.player.jumpHeight;
 					config.player.jumping = true;

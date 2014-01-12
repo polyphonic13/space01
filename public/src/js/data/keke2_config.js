@@ -25,7 +25,7 @@ var config = {
 		leftButton: 'images/arrow_left.png',
 		rightButton: 'images/arrow_right.png',
 		upButton: 'images/arrow_up.png',
-		playButton: 'images/play_button.png',
+		playButton: 'images/start_button.png',
 		quitButton: 'images/quit_button.png',
 		greyRect: 'images/grey_rect32x32.png',
 		invisibleBg: 'images/invisible.png'
@@ -84,10 +84,10 @@ var config = {
 				name: 'invisBtn',
 				type: 'ControlButton',
 				attrs: {
-					img: ControlButtonTypes.PLAY,
+					img: Polyworks.ControlButtonTypres.PLAY,
 					start: {
-						x: stage.width/2 - 256/2,
-						y: stage.height/2 - 256/2
+						x: stage.width/2 - 128,
+						y: stage.height/2 - 64
 					},
 					controlCode: Polyworks.ControlCodes.PLAY
 				}
@@ -96,7 +96,7 @@ var config = {
 				name: 'quitBtn',
 				type: 'ControlButton',
 				attrs: {
-					img: ControlButtonTypes.QUIT,
+					img: Polyworks.ControlButtonTypres.QUIT,
 					start: {
 						x: stage.width - 80,
 						y: 10
@@ -114,7 +114,7 @@ var config = {
 				name: 'invisBtn',
 				type: 'ControlButton',
 				attrs: {
-					img: ControlButtonTypes.INVISIBLE_BG,
+					img: Polyworks.ControlButtonTypres.INVISIBLE_BG,
 					start: {
 						x: 0,
 						y: 0
@@ -128,7 +128,7 @@ var config = {
 				name: 'leftBtn',
 				type: 'ControlButton',
 				attrs: {
-					img: ControlButtonTypes.LEFT,
+					img: Polyworks.ControlButtonTypres.LEFT,
 					start: {
 						x: 20,
 						y: stage.height - 80
@@ -140,7 +140,7 @@ var config = {
 				name: 'rightBtn',
 				type: 'ControlButton',
 				attrs: {
-					img: ControlButtonTypes.RIGHT,
+					img: Polyworks.ControlButtonTypres.RIGHT,
 					start: {
 						x: 120,
 						y: stage.height - 80
@@ -152,7 +152,7 @@ var config = {
 				name: 'upBtn',
 				type: 'ControlButton',
 				attrs: {
-					img: ControlButtonTypes.UP,
+					img: Polyworks.ControlButtonTypres.UP,
 					start: {
 						x: stage.width - 80,
 						y: stage.height - 80
@@ -164,7 +164,7 @@ var config = {
 				name: 'quitBtn',
 				type: 'ControlButton',
 				attrs: {
-					img: ControlButtonTypes.QUIT,
+					img: Polyworks.ControlButtonTypres.QUIT,
 					start: {
 						x: stage.width - 80,
 						y: 10

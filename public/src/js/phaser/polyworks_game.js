@@ -55,10 +55,9 @@ Polyworks.Game = (function() {
 
 		quit: function() {
 			trace('Polyworks.Game/quit');
-			// Polyworks.EventCenter.reset();
+			Polyworks.EventCenter.reset();
 			Polyworks.Game.gameOver = true;
 			Polyworks.Game.phaser.destroy();
-			// Polyworks.Game.changeState('quit');
 		}
 	};
 
@@ -72,7 +71,6 @@ Polyworks.Game = (function() {
 		var sprites = _model.sprites;
 		// trace('preload sprites');
 		for(key in sprites) {
-			// trace('\t' + key + ', width = ' + sprites[key].width + ', height = ' + sprites[key].height + ', frames = ' + sprites[key].frames);
 			Polyworks.Game.phaser.load.spritesheet(key, sprites[key].url, sprites[key].width, sprites[key].height, sprites[key].frames);
 		}
 	}
@@ -104,8 +102,7 @@ Polyworks.Game = (function() {
 	}
 	
 	function _initControls() {
-		// trace('Polyworks.Game/_initControls');
-		// _controls = new Polyworks.ControlButtons(config.controls);
+
 		_controls = new Polyworks.Collection(config.controls.keys, 'controlKeys');
 		_controls.init();
 	}
@@ -115,15 +112,12 @@ Polyworks.Game = (function() {
 
 		var states = _model.states;
 		var state;
-		// trace(states);
+
 		for(var i = 0; i < states.length; i++) {
 			state = new Polyworks[states[i].type](states[i], states[i].name);
 			_states[states[i].name] = state;
 			Polyworks.Game.phaser.state.add(states[i].name, state, false);
 		}
-		// trace('Game/init, initialState = ' + config.initialState + ', states = ');
-		// trace(_states);
-		// Polyworks.Game.phaser.state.add(config.initialState, _states[config.initialState], false);
 	}
 
 	return polyworks_game;
