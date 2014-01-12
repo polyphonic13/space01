@@ -1,5 +1,5 @@
 Polyworks.ControlButton = (function() {
-	Utils.inherits(ControlButton, Polyworks.Base);
+	Utils.inherits(ControlButton, Polyworks.Control);
 	
 	var _this;
 	function ControlButton(params, id) {
@@ -24,11 +24,6 @@ Polyworks.ControlButton = (function() {
 
 	};
 	
-	ControlButton.prototype.actionOnClick = function() {
-		// trace('ControlButton['+this.model.img+']/actionOnClick');
-		// this.pressed = true;
-	};
-	
 	ControlButton.prototype.addListeners = function() {
 		// trace('ControlButton['+this.model.img+']/addListeners, button = ');
 		// trace(this.button);
@@ -41,19 +36,13 @@ Polyworks.ControlButton = (function() {
 	};
 	
 	ControlButton.prototype.inputDown = function(event, pointer) {
-		// trace('ControlButton['+this.model.img+']/inputDown');
-		this.pressed = true;
-		if(this.callback) {
-			this.callback({ button: this.model.img, pressed: this.pressed, pointer: pointer, value: this.model.value });
-		}
+		// trace('ControlButton['+this.model.controlCode+']/inputDown');
+		this.controlPressed.call(this, { controlCode: this.model.controlCode });
 	};
 	
 	ControlButton.prototype.inputUp = function(event, pointer) {
-		// trace('ControlButton['+this.model.img+']/inputUp');
-		this.pressed = false;
-		if(this.callback) {
-			this.callback({ button: this.model.img, pressed: this.pressed, pointer: pointer, value: this.model.value });
-		}
+		// trace('ControlButton['+this.model.controlCode+']/inputUp');
+		this.controlReleased.call(this, { controlCode: this.model.controlCode });
 	};
 	
 	ControlButton.prototype.destroy = function() {

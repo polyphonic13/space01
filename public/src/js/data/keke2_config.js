@@ -81,19 +81,7 @@ var config = {
 		}],
 		buttons: {
 			menu: [{
-				type: 'ControlButton',
-				attrs: {
-					img: ControlButtonTypes.INVISIBLE_BG,
-					start: {
-						x: 0,
-						y: 0
-					},
-					width: stage.width, 
-					height: stage.height,
-					value: Polyworks.ControlCodes.RESET
-				}
-			},
-			{
+				name: 'invisBtn',
 				type: 'ControlButton',
 				attrs: {
 					img: ControlButtonTypes.PLAY,
@@ -101,10 +89,11 @@ var config = {
 						x: stage.width/2 - 256/2,
 						y: stage.height/2 - 256/2
 					},
-					value: Polyworks.ControlCodes.PLAY
+					controlCode: Polyworks.ControlCodes.PLAY
 				}
 			},
 			{
+				name: 'quitBtn',
 				type: 'ControlButton',
 				attrs: {
 					img: ControlButtonTypes.QUIT,
@@ -112,10 +101,17 @@ var config = {
 						x: stage.width - 80,
 						y: 10
 					},
-					value: Polyworks.ControlCodes.QUIT
+					controlCode: Polyworks.ControlCodes.QUIT,
+					event: {
+						pressed: {
+							type: Polyworks.Events.CHANGE_STATE,
+							value: 'quit'
+						}
+					}
 				}
 			}],
 			level: [{
+				name: 'invisBtn',
 				type: 'ControlButton',
 				attrs: {
 					img: ControlButtonTypes.INVISIBLE_BG,
@@ -125,16 +121,11 @@ var config = {
 					},
 					width: stage.width, 
 					height: stage.height,
-					value: Polyworks.ControlCodes.RESET
-				},
-				event: {
-					pressed: {
-						type: Polyworks.Events.CHANGE_STATE,
-						value: 'quit'
-					}
+					controlCode: Polyworks.ControlCodes.RESET
 				}
 			},
 			{
+				name: 'leftBtn',
 				type: 'ControlButton',
 				attrs: {
 					img: ControlButtonTypes.LEFT,
@@ -142,10 +133,11 @@ var config = {
 						x: 20,
 						y: stage.height - 80
 					},
-					value: Polyworks.ControlCodes.LEFT
+					controlCode: Polyworks.ControlCodes.LEFT
 				}
 			},
 			{
+				name: 'rightBtn',
 				type: 'ControlButton',
 				attrs: {
 					img: ControlButtonTypes.RIGHT,
@@ -153,10 +145,11 @@ var config = {
 						x: 120,
 						y: stage.height - 80
 					},
-					value: Polyworks.ControlCodes.RIGHT
+					controlCode: Polyworks.ControlCodes.RIGHT
 				}
 			},
 			{
+				name: 'upBtn',
 				type: 'ControlButton',
 				attrs: {
 					img: ControlButtonTypes.UP,
@@ -164,10 +157,11 @@ var config = {
 						x: stage.width - 80,
 						y: stage.height - 80
 					},
-					value: Polyworks.ControlCodes.UP
+					controlCode: Polyworks.ControlCodes.UP
 				}
 			},
 			{
+				name: 'quitBtn',
 				type: 'ControlButton',
 				attrs: {
 					img: ControlButtonTypes.QUIT,
@@ -175,12 +169,12 @@ var config = {
 						x: stage.width - 80,
 						y: 10
 					},
-					value: Polyworks.ControlCodes.QUIT
-				},
-				event: {
-					pressed: {
-						type: Polyworks.Events.CHANGE_STATE,
-						value: 'quit'
+					controlCode: Polyworks.ControlCodes.QUIT,
+					event: {
+						pressed: {
+							type: Polyworks.Events.CHANGE_STATE,
+							value: 'quit'
+						}
 					}
 				}
 			}]
@@ -840,6 +834,10 @@ var config = {
 			img: 'keke',
 			width: 76,
 			height: 148,
+			setSize: {
+				width: 50,
+				height: 140
+			},
 			start: {
 				x: stage.width/2 - 76/2,
 				y: stage.height - 148

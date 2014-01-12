@@ -48,7 +48,7 @@ Polyworks.Game = (function() {
 			var state = _states[id];
 			Polyworks.Game.previousState = Polyworks.Game.currentState;
 			Polyworks.Game.currentState = id;
-			// trace('Polyworks.Game/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
+			trace('Polyworks.Game/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
 			// trace(_states);
 			Polyworks.Game.phaser.state.start(id, state.clearWorld, state.clearCache);
 		},

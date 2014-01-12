@@ -15,11 +15,17 @@ Polyworks.ControlsState = (function() {
 		// trace('ControlsState/createControls, this.model = ');
 		// trace(this.model);
 		this.controls = new Polyworks.ControlButtons(config.controls.buttons[this.model.controlsType]);
+		this.controls.init();
+		// this.controls = new Polyworks.Collection(config.controls.buttons[this.model.controlsType], 'controlButtons');
+		// var controlConsole = Polyworks.Game.phaser.add.group(null);
+		// this.controls = new Polyworks.GroupCollection(config.controls.buttons[this.model.controlsType], 'controlButtons', 'null');
+		// this.controls.init();
 	};
 	
 	ControlsState.prototype.shutdown = function() {
 		this.controls.remove();
 		ControlsState._super.shutdown.call(this);
 	};
+	
 	return ControlsState;
 })();

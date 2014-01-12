@@ -30,7 +30,6 @@ Polyworks.Sprite = (function() {
 		if(_this.model.physics) {
 			_this.initPhysics(_this.model.physics, sprite);
 		}
-
 		_this.sprite = sprite;
 	};
 
