@@ -79,7 +79,6 @@ Polyworks.Game = (function() {
 	
 	function _create() {
 		_initEvents();
-		_initWorld();
 		_initControls();
 		_initStates();
 		Polyworks.Game.changeState(config.initialState);
@@ -104,10 +103,6 @@ Polyworks.Game = (function() {
 		Polyworks.Game.changeState(event.value);
 	}
 	
-	function _initWorld() {
-		Polyworks.Game.phaser.world.setBounds(world.x, world.y, world.width, world.height);
-	}
-
 	function _initControls() {
 		// trace('Polyworks.Game/_initControls');
 		// _controls = new Polyworks.ControlButtons(config.controls);

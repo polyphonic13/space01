@@ -39,10 +39,16 @@ Polyworks.State = (function() {
 		this.gameOver = Polyworks.Game.gameOver; 
 
 		this.elements = {};
+		this.createWorld();
 		this.createElements();
 
 	};
 	
+	State.prototype.createWorld = function() {
+		var world = this.model.world;
+		Polyworks.Game.phaser.world.setBounds(world.x, world.y, world.width, world.height);
+	};
+
 	State.prototype.createElements = function() {
 		var elements = this.model.elements;
 		var element;

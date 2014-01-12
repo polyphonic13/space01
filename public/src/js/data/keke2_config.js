@@ -185,6 +185,12 @@ var config = {
 	states: [{
 		name: 'menu',
 		type: 'MenuState',
+		world: {
+			x: 0,
+			y: 0,
+			width: stage.width,
+			height: stage.height
+		},
 		clearWorld: true,
 		clearCache: false,
 		controlsType: 'menu',
@@ -225,6 +231,12 @@ var config = {
 	{
 		name: 'level1',
 		type: 'LevelState',
+		world: {
+			x: 0,
+			y: 0,
+			width: 4098,
+			height: stage.height
+		},
 		clearWorld: true,
 		clearCache: false,
 		controlsType: 'level',
@@ -787,6 +799,12 @@ var config = {
 	{
 		name: 'quit',
 		type: 'State',
+		world: {
+			x: 0,
+			y: 0,
+			width: stage.width,
+			height: stage.height
+		},
 		clearWorld: true,
 		clearCache: false,
 		elements: [{
@@ -798,7 +816,7 @@ var config = {
 					x: 20,
 					y: 20
 				},
-				fixedToCamera: true,
+				// fixedToCamera: true,
 				width: stage.width - 40,
 				height: stage.height - 40,
 			}
