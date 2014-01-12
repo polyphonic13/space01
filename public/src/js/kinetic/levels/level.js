@@ -4,8 +4,8 @@
 	
 	function Level(params) {
 		_this = this;
-		trace('Level['+params.id+']/constructor, params = ');
-		trace(params);
+		// trace('Level['+params.id+']/constructor, params = ');
+		// trace(params);
 		this.id = params.id;
 		this.completed = false;
 		this.model = params;

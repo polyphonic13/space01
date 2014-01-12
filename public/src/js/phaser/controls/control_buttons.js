@@ -28,62 +28,35 @@ Polyworks.ControlButtons = (function() {
 	}
 	
 	ControlButtons.prototype.initControlKeys = function() {
-		var cursorKeys = Polyworks.Game.phaser.input.keyboard.createCursorKeys();
-		cursorKeys['up'].onDown.add(this.upPressed, this);
-		cursorKeys['up'].onUp.add(this.upReleased, this);
-		cursorKeys['down'].onDown.add(this.downPressed, this);
-		cursorKeys['down'].onUp.add(this.downReleased, this);
-		cursorKeys['left'].onDown.add(this.leftPressed, this);
-		cursorKeys['left'].onUp.add(this.leftReleased, this);
-		cursorKeys['right'].onDown.add(this.rightPressed, this);
-		cursorKeys['right'].onUp.add(this.rightReleased, this);
+		// var cursorKeys = Polyworks.Game.phaser.input.keyboard.createCursorKeys();
+		var cursorKeys = {};
+		for(var key in Polyworks.ControlKeys) {
+			cursorKeys[key] = Polyworks.Game.phaser.input.keyboard.addKey(Polyworks.ControlKeys[key]);
+			cursorKeys[key].onDown.add(this.keyPressed, this);
+			cursorKeys[key].onUp.add(this.keyPressed, this);
+			
+		}
+		/*
+		cursorKeys['up'].onDown.add(this.keyPressed, this);
+		cursorKeys['up'].onUp.add(this.keyReleased, this);
+		cursorKeys['down'].onDown.add(this.keyPressed, this);
+		cursorKeys['down'].onUp.add(this.keyReleased, this);
+		cursorKeys['left'].onDown.add(this.keyPressed, this);
+		cursorKeys['left'].onUp.add(this.keyReleased, this);
+		cursorKeys['right'].onDown.add(this.keyPressed, this);
+		cursorKeys['right'].onUp.add(this.keyReleased, this);
+		*/
 		this.cursorKeys = cursorKeys;
-
-		var space = Polyworks.Game.phaser.input.keyboard.addKey(Phaser.Keyboard.SPACE_BAR);
-		space.onDown.add(this.spacePressed, this);
-		space.onDown.add(this.spaceReleased, this);
-		
-		this.cursorKeys['space'] = space;
 	};
 	
-	ControlButtons.prototype.upPressed = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: Polyworks.ControlKeys.UP });
+	ControlButtons.prototype.keyPressed = function(params) {
+		// trace('ControlButtons/upPressed, params');
+		// trace(params);
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: params.keyCode });
 	};
 	
-	ControlButtons.prototype.upReleased = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: Polyworks.ControlKeys.UP });
-	};
-	
-	ControlButtons.prototype.downPressed = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: Polyworks.ControlKeys.DOWN });
-	};
-	
-	ControlButtons.prototype.downReleased = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: Polyworks.ControlKeys.DOWN });
-	};
-	
-	ControlButtons.prototype.leftPressed = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: Polyworks.ControlKeys.LEFT });
-	};
-	
-	ControlButtons.prototype.leftReleased = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: Polyworks.ControlKeys.LEFT });
-	};
-	
-	ControlButtons.prototype.rightPressed = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: Polyworks.ControlKeys.RIGHT });
-	};
-	
-	ControlButtons.prototype.rightReleased = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: Polyworks.ControlKeys.RIGHT });
-	};
-	
-	ControlButtons.prototype.spacePressed = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: Polyworks.ControlKeys.SPACE });
-	};
-	
-	ControlButtons.prototype.spaceReleased = function(params) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: Polyworks.ControlKeys.SPACE });
+	ControlButtons.prototype.keyReleased = function(params) {
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: params.keyCode });
 	};
 	
 	ControlButtons.prototype.notifyPressed = function(params) {

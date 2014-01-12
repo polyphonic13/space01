@@ -1,6 +1,6 @@
 Polyworks.ControlKeys = {
 	PLAY: 1,
- 	RESET: 0, 		// invisible button
+ 	RESET: 99, 		// invisible button
 	LEFT: 37, 		// left arrow
 	RIGHT: 39, 		// right arrow
 	UP: 38,			// up arrow

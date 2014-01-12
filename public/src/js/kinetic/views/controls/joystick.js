@@ -240,8 +240,8 @@ var Joystick = (function() {
 		});
 
 		_smCircle.on('touchmove', function(evt) {
-			trace('_smCircle, touchmove, evt =');
-			trace(evt);
+			// trace('_smCircle, touchmove, evt =');
+			// trace(evt);
 			// _onTouchMove(evt);
 		})
 		_smCircle.on('touchend', function(evt) {
@@ -271,18 +271,18 @@ var Joystick = (function() {
 	}
 
 	function _onLayerDragStart(evt) {
-		trace('_onLayerDragStart, x/y = ' + evt.x + '/' + evt.y);
+		// trace('_onLayerDragStart, x/y = ' + evt.x + '/' + evt.y);
 		_states[JoystickStates.REST] = false;
 		_checkDirection(evt, _layerBg, 0, 0);
 	}
 
 	function _onLayerMove(evt) {
-		trace('_onLayerMove, x/y = ' + evt.x + '/' + evt.y);
+		// trace('_onLayerMove, x/y = ' + evt.x + '/' + evt.y);
 		_checkDirection(evt, _layerBg, 0, 0);
 	}
 
 	function _onLayerDragEnd(evt) {
-		trace('_onLayerDragEnd');
+		// trace('_onLayerDragEnd');
 		_resetStates();
 		_layerBg.setPosition(0, 0);
 		_model.layer.draw();
@@ -290,27 +290,27 @@ var Joystick = (function() {
 	}
 
 	function _onTouchStart(evt, xAxis, yAxis) {
-		trace('_onLayerTouchStart');
+		// trace('_onLayerTouchStart');
 		// trace(evt);
 		if(evt.changedTouches || evt.changedTouches.length >= 1) {
 			var changedTouches = evt.changedTouches[0];
-			trace('\tchangedTouches: x = ' + changedTouches.clientX + ', y = ' + changedTouches.clientY
+			// trace('\tchangedTouches: x = ' + changedTouches.clientX + ', y = ' + changedTouches.clientY
 				+ '\n\txAxis = ' + xAxis + ', yAxis = ' + yAxis);
 			if(changedTouches.clientX > (xAxis + 10)) {
-				trace('\t\tMOVE RIGHT');
+				// trace('\t\tMOVE RIGHT');
 				_states[JoystickStates.REVERSE] = false;
 				_states[JoystickStates.FORWARD] = true;
 			} else if(changedTouches.clientX < (xAxis - 5)) {
-				trace('\t\tMOVE LEFT');
+				// trace('\t\tMOVE LEFT');
 				_states[JoystickStates.FORWARD] = false;
 				_states[JoystickStates.REVERSE] = true;
 			} else {
-				trace('\t\tNO MOVEMENT');
+				// trace('\t\tNO MOVEMENT');
 				_states[JoystickStates.FORWARD] = false;
 				_states[JoystickStates.REVERSE] = false;
 			}
 			if(changedTouches.clientY < (yAxis - 5)) {
-				trace('\t\tJUMP');
+				// trace('\t\tJUMP');
 				_states[JoystickStates.UP] = true;
 				_states[JoystickStates.DOWN] = false;
 			} else {
@@ -321,27 +321,27 @@ var Joystick = (function() {
 	}
 
 	function _onSmCircleTouchStart(evt) {
-		trace('_onLayerTouchStart');
+		// trace('_onLayerTouchStart');
 		// trace(evt);
 		if(evt.changedTouches || evt.changedTouches.length >= 1) {
 			var changedTouches = evt.changedTouches[0];
-			trace('\tchangedTouches: x = ' + changedTouches.clientX + ', y = ' + changedTouches.clientY
+			// trace('\tchangedTouches: x = ' + changedTouches.clientX + ', y = ' + changedTouches.clientY
 				+ '\n\tstage: width/2 = ' + stageConfig.width/2 + ', height/2 = ' + stageConfig.height/2);
 			if(changedTouches.clientX > stageConfig.width/2) {
-				trace('\t\tMOVE RIGHT');
+				// trace('\t\tMOVE RIGHT');
 				_states[JoystickStates.REVERSE] = false;
 				_states[JoystickStates.FORWARD] = true;
 			} else if(changedTouches.clientX < stageConfig.width/2) {
-				trace('\t\tMOVE LEFT');
+				// trace('\t\tMOVE LEFT');
 				_states[JoystickStates.FORWARD] = false;
 				_states[JoystickStates.REVERSE] = true;
 			} else {
-				trace('\t\tNO MOVEMENT');
+				// trace('\t\tNO MOVEMENT');
 				_states[JoystickStates.FORWARD] = false;
 				_states[JoystickStates.REVERSE] = false;
 			}
 			if(changedTouches.clientY < stageConfig.height/2) {
-				trace('\t\tJUMP');
+				// trace('\t\tJUMP');
 				_states[JoystickStates.UP] = true;
 				_states[JoystickStates.DOWN] = false;
 			} else {
@@ -358,18 +358,18 @@ var Joystick = (function() {
 	}
 
 	function _onCircleDragStart(evt) {
-		trace('_onCircleDragStart, x/y = ' + evt.x + '/' + evt.y);
+		// trace('_onCircleDragStart, x/y = ' + evt.x + '/' + evt.y);
 		_states[JoystickStates.REST] = false;
 		_checkDirection(evt, _smCircle, _model.startX, _model.startY);
 	}
 
 	function _onCircleMove(evt) {
-		trace('_onCircleMove, x/y = ' + evt.x + '/' + evt.y);
+		// trace('_onCircleMove, x/y = ' + evt.x + '/' + evt.y);
 		_checkDirection(evt, _smCircle, _model.startX, _model.startY);
 	}
 
 	function _onCircleDragEnd(evt) {
-		trace('_onCircleDragEnd');
+		// trace('_onCircleDragEnd');
 		_resetStates();
 		_smCircle.setPosition(_model.startX, _model.startY);
 		_model.layer.draw();

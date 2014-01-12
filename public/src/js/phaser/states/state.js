@@ -28,10 +28,10 @@ Polyworks.State = (function() {
 	
 	State.prototype.create = function() {
 		// trace('State['+this.id+']/create, created = '+ this.created);
-		if(!this.created) {
+		// if(!this.created) {
 			this.createState();
 			this.created = true;
-		}
+		// }
 	};
 
 	State.prototype.createState = function() {

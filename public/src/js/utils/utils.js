@@ -102,7 +102,7 @@ Utils = (function() {
 			break;
 
 			default: 
-			trace('WARNING: unknown movement direction: ' + direction);
+			// trace('WARNING: unknown movement direction: ' + direction);
 			break;
 		}
 	};

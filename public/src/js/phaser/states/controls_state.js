@@ -18,17 +18,6 @@ Polyworks.ControlsState = (function() {
 	};
 	
 	ControlsState.prototype.shutdown = function() {
-		// trace('ControlsState['+this.id+']/shutdown, this.elements.length = ');
-		// trace(this.controls);
-		/*
-		for(var key in this.controls) {
-			// trace('\telements['+key+'] = ');
-			// trace(this.elements[key]);
-			if(this.elements[key].destroy) {
-				this.elements[key].destroy();
-			}
-		}
-		*/
 		this.controls.remove();
 		ControlsState._super.shutdown.call(this);
 	};

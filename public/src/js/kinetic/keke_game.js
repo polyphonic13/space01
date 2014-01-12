@@ -229,7 +229,7 @@ function detectCollisions() {
 			if(col.direction !== '') {
 				// trace('grounds['+i+'].damage = ' + grounds[i].damage);
 				if(grounds[i].config.damage) {
-					trace('something damaging was hit');
+					// trace('something damaging was hit');
 					keke.health += grounds[i].config.damage;
 				}
 			    if (col.direction === Polyworks.Directions.LEFT || col.direction === Polyworks.Directions.RIGHT) {
@@ -277,13 +277,13 @@ function detectCollisions() {
 					// trace('\tcol.direction = ' + col.direction + '\n\tenemy v center = ' + enemyVerticalCenter + ', keke bottom = ' + kekeBottom);
 
 					if(col.direction === Polyworks.Directions.TOP && (kekeBottom < enemyVerticalCenter)) {
-						trace('enemy bottom collision, enemy health = ' + enemyObjs[key].health + ', keke.damage = ' + keke.damage);
+						// trace('enemy bottom collision, enemy health = ' + enemyObjs[key].health + ', keke.damage = ' + keke.damage);
 						enemyObjs[key].health += keke.damage;
 						// keke.velY = 0;
 			            keke.velY = -keke.speed * 0.75;
 					} else if(col.direction === Polyworks.Directions.LEFT || col.direction === Polyworks.Directions.RIGHT || col.direction === Polyworks.Directions.BOTTOM) {
 						keke.health += enemyObjs[key].damage;
-						trace('enemy top/left/right collision, enemy damage = ' + enemyObjs[key].damage + ', keke.health = ' + keke.health + ', keke.dir3ection = ' + keke.direction);
+						// trace('enemy top/left/right collision, enemy damage = ' + enemyObjs[key].damage + ', keke.health = ' + keke.health + ', keke.dir3ection = ' + keke.direction);
 						// keke.velX = 0;
 						// move player backwards, away from the enemy
 						if(keke.direction === Polyworks.Directions.RIGHT) {

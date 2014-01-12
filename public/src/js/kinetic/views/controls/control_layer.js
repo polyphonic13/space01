@@ -51,7 +51,7 @@ var ControlLayer = (function() {
 	};
 	
 	function _buildViews() {
-		trace('ControlLayer/_buildViews');
+		// trace('ControlLayer/_buildViews');
 		var views = _this.model.views
 		var view;
 

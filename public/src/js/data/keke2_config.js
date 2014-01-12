@@ -309,7 +309,7 @@ var config = {
 					img: 'platform',
 					start: {
 						x: 2048,
-						y: world.height - 75
+						y: world.height - 20
 					},
 					scale: [8, 1],
 					physics: {
@@ -322,9 +322,10 @@ var config = {
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 500,
+						x: 1000,
 						y: world.height - 75
 					},
+					scale: [0.5, 1],
 					physics: {
 						immovable: true
 					}
@@ -335,9 +336,10 @@ var config = {
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 800,
+						x: 1200,
 						y: world.height - 130
 					},
+					scale: [0.5, 1],
 					physics: {
 						immovable: true
 					}
@@ -348,9 +350,10 @@ var config = {
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 1100,
+						x: 1400,
 						y: world.height - 180
 					},
+					scale: [0.5, 1],
 					physics: {
 						immovable: true
 					}
@@ -415,7 +418,7 @@ var config = {
 							img: 'caterpillar01',
 							name: 'sector0-enemy0',
 							start: {
-								x: 600,
+								x: 800,
 								y: 0
 							},
 							physics: {
@@ -751,6 +754,7 @@ var config = {
 					x: 20,
 					y: 20
 				},
+				fixedToCamera: true,
 				width: stage.width - 40,
 				height: stage.height - 40,
 			}
@@ -767,6 +771,7 @@ var config = {
 					x: stage.width/2,
 					y: stage.height/2,
 					defaultContent: 'Game Over',
+					fixedToCamera: true,
 					style: { 
 						font: '30px Arial', 
 						fill: '#000000',

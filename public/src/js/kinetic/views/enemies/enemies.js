@@ -23,7 +23,7 @@ var Enemies = (function() {
 				break;
 				
 				default: 
-					trace('WARNING, enemy['+key+'].type = ' + params[key].type);
+					// trace('WARNING, enemy['+key+'].type = ' + params[key].type);
 					enemy = new Enemy(params[key]);
 				break;
 			}

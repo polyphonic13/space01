@@ -41,7 +41,7 @@ var MovementAnimation = (function() {
 				break;
 
 				default:
-					trace("ERROR: unrecognized movement type " + params.type);
+					// trace("ERROR: unrecognized movement type " + params.type);
 				break;
 			}
 
