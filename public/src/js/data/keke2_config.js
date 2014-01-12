@@ -28,6 +28,7 @@ var config = {
 		playButton: 'images/start_button.png',
 		quitButton: 'images/quit_button.png',
 		greyRect: 'images/grey_rect32x32.png',
+		heart: 'images/heart.png',
 		invisibleBg: 'images/invisible.png'
 	},
 	// SPRITES
@@ -229,7 +230,7 @@ var config = {
 		}]
 	},
 	{
-		name: 'level1',
+		name: 'level0',
 		type: 'LevelState',
 		world: {
 			x: 0,
@@ -538,7 +539,7 @@ var config = {
 							img: 'caterpillar01',
 							name: 'sector1-enemy0',
 							start: {
-								x: 1500,
+								x: 1400,
 								y: 0
 							},
 							physics: {
@@ -767,7 +768,7 @@ var config = {
 		{
 			name: 'gui',
 			type: 'GUIConsole',
-			attrs: [{
+			attrs: [/*{
 				name: 'score',
 				type: 'Text',
 				attrs: {
@@ -779,14 +780,25 @@ var config = {
 						fill: '#ffffff' 
 					}
 				}
+			}, */
+			{
+				name: 'heartIcon',
+				type: 'Sprite',
+				attrs: {
+					img: 'heart',
+					start: {
+						x: 20,
+						y: 20
+					}
+				}
 			},
 			{
 				name: 'health',
 				type: 'Text',
 				attrs: {
-					x: 15,
-					y: 40,
-					defaultContent: 'Health: ',
+					x: 60,
+					y: 25,
+					defaultContent: '',
 					style: { 
 						font: '18px Arial', 
 						fill: '#ffffff' 

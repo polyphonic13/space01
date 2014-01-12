@@ -8,7 +8,7 @@ Polyworks.Game = (function() {
 	var polyworks_game = {
 		phaser: null,
 		score: 0,
-		currentLevel: '',
+		currentLevel: 0,
 		currentState: '',
 		previousState: '',
 		gameOver: false,
@@ -45,6 +45,9 @@ Polyworks.Game = (function() {
 		},
 
 		changeState: function(id) {
+			if(id === 'level') {
+				id += Polyworks.Game.currentLevel;
+			}
 			var state = _states[id];
 			Polyworks.Game.previousState = Polyworks.Game.currentState;
 			Polyworks.Game.currentState = id;

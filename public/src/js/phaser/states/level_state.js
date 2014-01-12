@@ -13,7 +13,7 @@ Polyworks.LevelState = (function() {
 		this.cursors;
 		this.player; 
 		this.quitButton;
-		Polyworks.Game.score = 0;
+		// Polyworks.Game.score = 0;
 	};
 	
 	LevelState.prototype.preload = function() {
@@ -42,8 +42,8 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.initGUI = function() {
-		this.gui.setContent('score', 'Score: ' + Polyworks.Game.score);
-		this.gui.setContent('health', 'Health: ' + this.player.health);
+		// this.gui.setContent('score', 'Score: ' + Polyworks.Game.score);
+		this.gui.setContent('health', this.player.health);
 	};
 	
 	LevelState.prototype.update = function() {
@@ -112,7 +112,7 @@ Polyworks.LevelState = (function() {
 			// trace(sprite.body.touching);
 			// trace('enemy damages keke');
 			_this.player.damaged(enemy.damage);
-			_this.gui.setContent('health', 'Health: ' + _this.player.health);
+			_this.gui.setContent('health', _this.player.health);
 		}
 	};
 
@@ -120,7 +120,7 @@ Polyworks.LevelState = (function() {
 		// trace('killEnemy');
 		Polyworks.Game.score += enemy.score;
 		// Polyworks.Game.scoreText.content = 'Score: ' + Polyworks.Game.score;
-		this.gui.setContent('score', 'Score: ' + Polyworks.Game.score);
+		// this.gui.setContent('score', 'Score: ' + Polyworks.Game.score);
 		enemy.kill();
 	};
 
@@ -134,10 +134,10 @@ Polyworks.LevelState = (function() {
 		bonus.active = false; 
 
 	    Polyworks.Game.score += bonus.get('score');
-		_this.gui.setContent('score', 'Score: ' + Polyworks.Game.score);
+		// _this.gui.setContent('score', 'Score: ' + Polyworks.Game.score);
 
 		_this.player.health += bonus.get('health');
-		_this.gui.setContent('health', 'Health: ' + _this.player.health);
+		_this.gui.setContent('health', _this.player.health);
 	};
 
 	LevelState.prototype.close = function() {

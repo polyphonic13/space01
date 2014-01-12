@@ -15,7 +15,7 @@ Polyworks.MenuState = (function() {
 	
 	MenuState.prototype.onControlButtonPressed = function(event) {
 		if(event.value === Polyworks.ControlCodes.PLAY) {
-			Polyworks.Game.changeState('level1'); 
+			Polyworks.Game.changeState('level'); 
 		}
 	};
 	
