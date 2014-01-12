@@ -1,5 +1,6 @@
-Polyworks.ControlCodes = {
+Polyworks.InputCodes = {
 	PLAY: 1,
+	NEXT: 2,
  	RESET: 99, 		// invisible button
 	LEFT: 37, 		// left arrow
 	RIGHT: 39, 		// right arrow

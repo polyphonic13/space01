@@ -1,7 +1,9 @@
 Polyworks.MenuState = (function() {
 	Utils.inherits(MenuState, Polyworks.ControlsState);
 	
+	var _this;
 	function MenuState(params, id) {
+		_this = this;
 		MenuState._super.constructor.call(this, params, id);
 	}
 	
@@ -9,12 +11,14 @@ Polyworks.MenuState = (function() {
 		MenuState._super.createState.call(this);
 		this.createControls.call(this);
 		
-		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_PRESSED, this.onControlButtonPressed);
+		Polyworks.EventCenter.bind(Polyworks.Events.BUTTON_PRESSED, _this.onButtonPressed);
 		
 	};
 	
-	MenuState.prototype.onControlButtonPressed = function(event) {
-		if(event.value === Polyworks.ControlCodes.PLAY) {
+	MenuState.prototype.onButtonPressed = function(event) {
+		// trace('MenuState/onButtonPressed, event = ');
+		// trace(event);
+		if(event.value === Polyworks.InputCodes.PLAY) {
 			Polyworks.Game.changeState('level'); 
 		}
 	};

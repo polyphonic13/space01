@@ -8,19 +8,19 @@ Polyworks.ControlKey = (function() {
 	}
 	
 	ControlKey.prototype.init = function() {
-		this.key = Polyworks.Game.phaser.input.keyboard.addKey(this.model.controlCode);
+		this.key = Polyworks.Game.phaser.input.keyboard.addKey(this.model.inputCode);
 		this.key.onDown.add(this.inputDown, this);
 		this.key.onUp.add(this.inputUp, this);
 	};
 	
 	ControlKey.prototype.inputDown = function(params) {
-		// trace('ControlKey['+this.model.controlCode+']/inputDown');
-		this.controlPressed.call(this, { controlCode: params.keyCode });
+		// trace('ControlKey['+this.model.inputCode+']/inputDown');
+		this.inputPressed.call(this, { type: Polyworks.Events.CONTROL_PRESSED, value: params.keyCode });
 	};
 	
 	ControlKey.prototype.inputUp = function(params) {
-		// trace('ControlKey['+this.model.controlCode+']/inputUp');
-		this.controlReleased.call(this, { controlCode: params.keyCode });
+		// trace('ControlKey['+this.model.inputCode+']/inputUp');
+		this.inputReleased.call(this, { type: Polyworks.Events.CONTROL_RELEASED, value: params.keyCode });
 	};
 
 	return ControlKey;

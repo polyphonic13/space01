@@ -88,13 +88,13 @@ Polyworks.Game = (function() {
 	
 	function _initEvents() {
 		Polyworks.EventCenter.init();
-		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_PRESSED, _onControlPressed);
+		Polyworks.EventCenter.bind(Polyworks.Events.BUTTON_PRESSED, _onControlPressed);
 		Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_STATE, _onChangeState);
 	}
 	
 	function _onControlPressed(event) {
 		switch(event.value) {
-			case Polyworks.ControlCodes.QUIT:
+			case Polyworks.InputCodes.QUIT:
 				Polyworks.Game.changeState('quit');
 			break;
 		}

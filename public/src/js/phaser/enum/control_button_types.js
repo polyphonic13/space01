@@ -1,4 +1,4 @@
-Polyworks.ControlButtonTypres = {
+Polyworks.ControlButtonTypes = {
 	LEFT: 'leftButton',
 	RIGHT: 'rightButton',
 	UP: 'upButton',

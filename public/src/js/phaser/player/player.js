@@ -57,10 +57,10 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.initControls = function() {
 		this.activeControls = {};
-		this.activeControls[Polyworks.ControlCodes.LEFT] = false;
-		this.activeControls[Polyworks.ControlCodes.RIGHT] = false;
-		this.activeControls[Polyworks.ControlCodes.UP] = false;
-		this.activeControls[Polyworks.ControlCodes.DOWN] = false;
+		this.activeControls[Polyworks.InputCodes.LEFT] = false;
+		this.activeControls[Polyworks.InputCodes.RIGHT] = false;
+		this.activeControls[Polyworks.InputCodes.UP] = false;
+		this.activeControls[Polyworks.InputCodes.DOWN] = false;
 		// trace('activeControls');
 		// trace(this.activeControls);
 	};
@@ -76,9 +76,9 @@ Polyworks.Player = (function() {
 		_this.activeControls[event.value] = false;
 		// trace('Player.prototype.onControlButtonReleased, event.value = ' + event.value);
 		// trace(_this.activeControls);
-		if(event.value === Polyworks.ControlCodes.RESET) {
-			_this.activeControls[Polyworks.ControlCodes.LEFT] = false;
-			_this.activeControls[Polyworks.ControlCodes.RIGHT] = false;
+		if(event.value === Polyworks.InputCodes.RESET) {
+			_this.activeControls[Polyworks.InputCodes.LEFT] = false;
+			_this.activeControls[Polyworks.InputCodes.RIGHT] = false;
 		}
 		_this.updateInput();
 	};
@@ -116,11 +116,11 @@ Polyworks.Player = (function() {
 		this.velY = 0;
 		
 		// horizontal movement
-		if (this.activeControls[Polyworks.ControlCodes.LEFT]) {
+		if (this.activeControls[Polyworks.InputCodes.LEFT]) {
 			this.velX = -this.model.speed.x;
 			this.model.facingForward = false;
 		}
-		else if (this.activeControls[Polyworks.ControlCodes.RIGHT]) {
+		else if (this.activeControls[Polyworks.InputCodes.RIGHT]) {
 			this.velX = this.model.speed.x;
 			this.model.facingForward = true;
 		}
@@ -129,7 +129,7 @@ Polyworks.Player = (function() {
 		this.view.velocityX = this.velX;
 
 		// vertical movement
-		if(this.activeControls[Polyworks.ControlCodes.UP]) {
+		if(this.activeControls[Polyworks.InputCodes.UP]) {
 			// trace('Player/updateInput, up is active')
 			if(this.model.grounded && !this.model.justJumped) {
 				this.velY = -this.model.speed.y;
@@ -140,7 +140,7 @@ Polyworks.Player = (function() {
 			} else {
 				this.velY = 0;
 			}
-		} else if(this.activeControls[Polyworks.ControlCodes.DOWN]) {
+		} else if(this.activeControls[Polyworks.InputCodes.DOWN]) {
 			// trace('Player/updateInput, down is active')
 		}
 
@@ -163,11 +163,11 @@ Polyworks.Player = (function() {
 		 //  Reset the this.players velocity (movement)
 			this.view.velocityX = 0;
 			this.velX = 0;
-			if (this.activeControls[Polyworks.ControlCodes.LEFT]) {
+			if (this.activeControls[Polyworks.InputCodes.LEFT]) {
 				this.velX = -this.model.speed.x;
 				this.facingForward = false;
 			}
-			else if (this.activeControls[Polyworks.ControlCodes.RIGHT]) {
+			else if (this.activeControls[Polyworks.InputCodes.RIGHT]) {
 				this.velX = this.model.speed.x;
 				this.facingForward = true;
 			}
@@ -177,20 +177,6 @@ Polyworks.Player = (function() {
 			}
 			// trace('player velX = ' + this.velX);
 			this.view.velocityX = this.velX;
-			/*
-			//  Allow the this.player to jump if they are touching the ground.
-			if(this.cursors.up.isDown || this.controls.isDown(Polyworks.ControlButtonTypres.UP)) {
-				if(this.player.sprite.body.touching.down && !config.player.justJumped) {
-					this.player.sprite.body.velocity.y = -config.player.jumpHeight;
-					config.player.jumping = true;
-				}
-			} 
-			if(this.player.sprite.body.touching.down && config.player.jumpButtonPressed && !config.player.justJumped) {
-				this.player.sprite.body.velocity.y = -config.player.jumpHeight;
-				config.player.jumping = true;
-				config.player.jumpButtonPressed = false;
-			}
-			*/
 	};
 	
 	Player.prototype.kill = function() {
