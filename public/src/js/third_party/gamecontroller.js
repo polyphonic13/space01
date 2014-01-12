@@ -466,11 +466,11 @@
 			
 			var touchEnd = function( e ) {			
 				// trace('GameController, touchEnd, _this = ');
-				// // trace(_this);
+				// trace(_this);
 				var joystick = _this.getJoystick();
 				// trace(joystick.currentX + '/' + joystick.currentY);
 				joystick.resetPosition();
-				// // trace(e);
+				// trace(e);
 
 				// joystick.draw();
 				// joystick.x = 0;
@@ -1227,7 +1227,7 @@
 		};
 		
 		TouchableJoystick.prototype.draw = function() {
-			// // trace('TouchableJoystick/draw, currentX = ' + this.currentX + ', currentY = ' + this.currentY);
+			// trace('TouchableJoystick/draw, currentX = ' + this.currentX + ', currentY = ' + this.currentY);
 			if( ! this.id ) // wait until id is set
 				return false;
 				

@@ -65,16 +65,16 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.onControlButtonPressed = function(event) {
-		// trace('Player.prototype.onControlButtonPressed, event.value = ' + event.value);
 		_this.activeControls[event.value] = true;
+		// trace('Player.prototype.onControlButtonPressed, event.value = ' + event.value);
 		// trace(_this.activeControls);
 		_this.updateInput();
 	};
 	
 	Player.prototype.onControlButtonReleased = function(event) {
+		_this.activeControls[event.value] = false;
 		// trace('Player.prototype.onControlButtonReleased, event.value = ' + event.value);
 		// trace(_this.activeControls);
-		_this.activeControls[event.value] = false;
 		if(event.value === Polyworks.ControlKeys.RESET) {
 			_this.activeControls[Polyworks.ControlKeys.LEFT] = false;
 			_this.activeControls[Polyworks.ControlKeys.RIGHT] = false;

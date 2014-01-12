@@ -54,8 +54,8 @@ Polyworks.Game = (function() {
 		},
 
 		quit: function() {
-			trace('Polyworks.Game/quit');
-			Polyworks.EventCenter.reset();
+			// trace('Polyworks.Game/quit');
+			// Polyworks.EventCenter.reset();
 			Polyworks.Game.gameOver = true;
 			// Polyworks.Game.phaser.destroy();
 			Polyworks.Game.changeState('quit');

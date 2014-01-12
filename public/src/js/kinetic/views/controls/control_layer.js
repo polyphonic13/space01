@@ -192,7 +192,7 @@ var ControlLayer = (function() {
 	function _getEventPosition(evt) {
 		var pos = {};
 		if(evt.changedTouches && evt.changedTouches.length > 0) {
-			// // trace('there are changedTouches');
+			// trace('there are changedTouches');
 			pos = {
 				// x: evt.targetTouches[0].clientX,
 				// y: evt.targetTouches[0].clientY
@@ -200,7 +200,7 @@ var ControlLayer = (function() {
 				y: evt.changedTouches[0].clientY
 			}
 		} else {
-			// // trace('no target touches');
+			// trace('no target touches');
 			pos = {
 				x: evt.x,
 				y: evt.y

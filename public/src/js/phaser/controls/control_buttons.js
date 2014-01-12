@@ -33,7 +33,7 @@ Polyworks.ControlButtons = (function() {
 		for(var key in Polyworks.ControlKeys) {
 			cursorKeys[key] = Polyworks.Game.phaser.input.keyboard.addKey(Polyworks.ControlKeys[key]);
 			cursorKeys[key].onDown.add(this.keyPressed, this);
-			cursorKeys[key].onUp.add(this.keyPressed, this);
+			cursorKeys[key].onUp.add(this.keyReleased, this);
 			
 		}
 		/*
@@ -50,12 +50,13 @@ Polyworks.ControlButtons = (function() {
 	};
 	
 	ControlButtons.prototype.keyPressed = function(params) {
-		// trace('ControlButtons/upPressed, params');
+		// trace('ControlButtons/keyPressed, keycode = ' + params.keyCode);
 		// trace(params);
 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_PRESSED, value: params.keyCode });
 	};
 	
 	ControlButtons.prototype.keyReleased = function(params) {
+		// trace('ControlButtons/keyReleased, keycode = ' + params.keyCode);
 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CONTROL_BUTTON_RELEASED, value: params.keyCode });
 	};
 	
