@@ -68,43 +68,6 @@ Polyworks.Player = (function() {
 		// trace(this.activeControls);
 	};
 	
-	Player.prototype.updateInput = function() {
-		// if(this.alive) {
-			// trace('Player/updateInput');
-			this.velX = 0;
-			this.velY = 0;
-
-			// horizontal movement
-			if (this.activeControls[Polyworks.InputCodes.LEFT]) {
-				this.velX = -this.model.speed.x;
-				this.model.facingForward = false;
-			}
-			else if (this.activeControls[Polyworks.InputCodes.RIGHT]) {
-				this.velX = this.model.speed.x;
-				this.model.facingForward = true;
-			}
-
-			// trace('player velX = ' + this.velX);
-			this.view.velocityX = this.velX;
-
-			// vertical movement
-			if(this.activeControls[Polyworks.InputCodes.UP]) {
-				// trace('Player/updateInput, up is active')
-				if(this.model.grounded && !this.model.justJumped) {
-					this.velY = -this.model.speed.y;
-					this.view.velocityY = this.velY;
-					this.model.grounded = false;
-					this.model.jumping = true;
-					this.model.justJumped = true;
-				} else {
-					this.velY = 0;
-				}
-			} else if(this.activeControls[Polyworks.InputCodes.DOWN]) {
-				// trace('Player/updateInput, down is active')
-			}
-		// }
-	};
-	
 	Player.prototype.onControlButtonPressed = function(event) {
 		_this.activeControls[event.value] = true;
 		// trace('Player.prototype.onControlButtonPressed, event.value = ' + event.value);
@@ -123,23 +86,50 @@ Polyworks.Player = (function() {
 		_this.updateInput();
 	};
 	
-	Player.prototype.update = function(params) {
-		// if(this.alive) {
-			this.view.checkTerrainCollision(params.terrain);
-			var physics = PolyworksGame.phaser.physics;
+	Player.prototype.updateInput = function() {
+		this.velX = 0;
+		this.velY = 0;
 
-			this.checkCollision(params.enemies, this.onEnemyCollision, physics, this);
-			this.checkCollision(params.bonuses, this.onBonusCollision, physics, this);
+		if (this.activeControls[Polyworks.InputCodes.LEFT]) {
+			this.velX = -this.model.speed.x;
+			this.model.facingForward = false;
+		}
+		else if (this.activeControls[Polyworks.InputCodes.RIGHT]) {
+			this.velX = this.model.speed.x;
+			this.model.facingForward = true;
+		}
 
-			if(this.view.sprite.body.touching.down) {
-				this.model.grounded = true;
-				this.model.jumping = false;
-				this.model.justJumped = false;
+		this.view.velocityX = this.velX;
+
+		if(this.activeControls[Polyworks.InputCodes.UP]) {
+			if(this.model.grounded && !this.model.justJumped) {
+				this.velY = -this.model.speed.y;
+				this.view.velocityY = this.velY;
+				this.model.grounded = false;
+				this.model.jumping = true;
+				this.model.justJumped = true;
+			} else {
+				this.velY = 0;
 			}
-
-		// }
+		} else if(this.activeControls[Polyworks.InputCodes.DOWN]) {
+			// trace('Player/updateInput, down is active')
+		}
 	};
-	var traced = false;
+	
+	Player.prototype.update = function(params) {
+		this.view.checkTerrainCollision(params.terrain);
+		var physics = PolyworksGame.phaser.physics;
+
+		this.checkCollision(params.enemies, this.onEnemyCollision, physics, this);
+		this.checkCollision(params.bonuses, this.onBonusCollision, physics, this);
+
+		if(this.view.sprite.body.touching.down) {
+			this.model.grounded = true;
+			this.model.jumping = false;
+			this.model.justJumped = false;
+		}
+	};
+
 	Player.prototype.checkCollision = function(collection, callback, physics, context) {
 		for(var i = 0; i < collection.length; i++) {
 			physics.overlap(this.view.sprite, collection[i].sprite, callback, null, context);
@@ -148,14 +138,13 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.onEnemyCollision = function(player, sprite) {
 		var enemy = this.model.sectorManager.activeSector.enemies.getItemByName(sprite.idx);
-
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, enemy: enemy });
 
 		if(this.model.jumping || this.model.attacking) {
-			this.enemyCollisionPositionUpdate();
-			enemy.damaged(this.model.damage);
+			this.updatePositionFromCollision();
+			enemy.receiveDamage(this.model.damage);
 		} else {
-			this.damaged(enemy.damage);
+			this.receiveDamage(enemy.damage);
 		}
 	};
 	
@@ -163,7 +152,7 @@ Polyworks.Player = (function() {
 		var bonus = this.model.sectorManager.activeSector.bonuses.getItemByName(sprite.idx);
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.BONUS_COLLISION, player: player, bonus: bonus });
 
-	    PolyworksGame.score += bonus.get('score');
+	    PolyworksGame.setScore(bonus.get('score'));
 
 		var health = bonus.get('health');
 		if(health) {
@@ -174,17 +163,17 @@ Polyworks.Player = (function() {
 		bonus.active = false; 
 	};
 	
-	Player.prototype.enemyCollisionPositionUpdate = function() {
-		this.velY = -this.model.speed.y/2;
-		this.view.velocityY = this.velY;
-	};
-	
-	Player.prototype.damaged = function(damage) {
+	Player.prototype.receiveDamage = function(damage) {
 		this.health -= damage;
 		if(this.model.health <= 0) {
 			// this.destroy();
 			PolyworksGame.changeState('quit');
 		}
+	};
+	
+	Player.prototype.updatePositionFromCollision = function() {
+		this.velY = -this.model.speed.y/2;
+		this.view.velocityY = this.velY;
 	};
 	
 	Player.prototype.checkInput = function() {

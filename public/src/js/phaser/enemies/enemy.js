@@ -52,8 +52,8 @@ Polyworks.Enemy = (function() {
 		PolyworksGame.phaser.physics.collide(this.view.sprite, terrain);
 	};
 	
-	Enemy.prototype.damaged = function(damage) {
-		// trace('Enemy/damaged, player.damage = ' + damage);
+	Enemy.prototype.receiveDamage = function(damage) {
+		// trace('Enemy/receiveDamage, player.damage = ' + damage);
 		this.model.health -= damage;
 		if(this.model.health <= 0) {
 			PolyworksGame.setScore(this.model.score);
