@@ -84,21 +84,23 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.update = function(params) {
-		this.view.checkTerrainCollision(params.terrain);
-		var physics = Polyworks.Game.phaser.physics;
-		
-		this.checkCollision(params.enemies.collection, params.enemies.callback, physics, params.context);
-		this.checkCollision(params.bonuses.collection, params.bonuses.callback, physics, params.context);
-		// this.checkCollision(params.enemies.collection, this.onEnemeyCollision, physics);
-		// this.checkCollision(params.bonuses.collection, this.onBonusCollision, physics);
-		
-		if(this.view.sprite.body.touching.down) {
-			this.model.grounded = true;
-			this.model.jumping = false;
-			this.model.justJumped = false;
-		}
-		
-		this.updateMovement();
+		// if(this.alive) {
+			this.view.checkTerrainCollision(params.terrain);
+			var physics = Polyworks.Game.phaser.physics;
+
+			this.checkCollision(params.enemies.collection, params.enemies.callback, physics, params.context);
+			this.checkCollision(params.bonuses.collection, params.bonuses.callback, physics, params.context);
+			// this.checkCollision(params.enemies.collection, this.onEnemeyCollision, physics);
+			// this.checkCollision(params.bonuses.collection, this.onBonusCollision, physics);
+
+			if(this.view.sprite.body.touching.down) {
+				this.model.grounded = true;
+				this.model.jumping = false;
+				this.model.justJumped = false;
+			}
+
+			this.updateMovement();
+		// }
 	};
 	
 	Player.prototype.updateMovement = function() {
@@ -122,39 +124,40 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.updateInput = function() {
-		// trace('Player/updateInput');
-		this.velX = 0;
-		this.velY = 0;
-		
-		// horizontal movement
-		if (this.activeControls[Polyworks.InputCodes.LEFT]) {
-			this.velX = -this.model.speed.x;
-			this.model.facingForward = false;
-		}
-		else if (this.activeControls[Polyworks.InputCodes.RIGHT]) {
-			this.velX = this.model.speed.x;
-			this.model.facingForward = true;
-		}
+		// if(this.alive) {
+			// trace('Player/updateInput');
+			this.velX = 0;
+			this.velY = 0;
 
-		// trace('player velX = ' + this.velX);
-		this.view.velocityX = this.velX;
-
-		// vertical movement
-		if(this.activeControls[Polyworks.InputCodes.UP]) {
-			// trace('Player/updateInput, up is active')
-			if(this.model.grounded && !this.model.justJumped) {
-				this.velY = -this.model.speed.y;
-				this.view.velocityY = this.velY;
-				this.model.grounded = false;
-				this.model.jumping = true;
-				this.model.justJumped = true;
-			} else {
-				this.velY = 0;
+			// horizontal movement
+			if (this.activeControls[Polyworks.InputCodes.LEFT]) {
+				this.velX = -this.model.speed.x;
+				this.model.facingForward = false;
 			}
-		} else if(this.activeControls[Polyworks.InputCodes.DOWN]) {
-			// trace('Player/updateInput, down is active')
-		}
+			else if (this.activeControls[Polyworks.InputCodes.RIGHT]) {
+				this.velX = this.model.speed.x;
+				this.model.facingForward = true;
+			}
 
+			// trace('player velX = ' + this.velX);
+			this.view.velocityX = this.velX;
+
+			// vertical movement
+			if(this.activeControls[Polyworks.InputCodes.UP]) {
+				// trace('Player/updateInput, up is active')
+				if(this.model.grounded && !this.model.justJumped) {
+					this.velY = -this.model.speed.y;
+					this.view.velocityY = this.velY;
+					this.model.grounded = false;
+					this.model.jumping = true;
+					this.model.justJumped = true;
+				} else {
+					this.velY = 0;
+				}
+			} else if(this.activeControls[Polyworks.InputCodes.DOWN]) {
+				// trace('Player/updateInput, down is active')
+			}
+		// }
 	};
 	
 	Player.prototype.hitEnemy = function() {
@@ -165,6 +168,7 @@ Polyworks.Player = (function() {
 	Player.prototype.damaged = function(damage) {
 		this.model.health -= damage;
 		if(this.model.health <= 0) {
+			// this.destroy();
 			Polyworks.Game.changeState('quit');
 		}
 	};
@@ -191,13 +195,14 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.destroy = function() {
+		this.alive = false;
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_PRESSED, this.onControlButtonPressed);
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_RELEASED, this.onControlButtonReleased);
 		
 		this.view.destroy();
-		// this.update = null;
-		// this.updateInput = null;
-		this.model = null;
+		this.update = null;
+		this.updateInput = null;
+		// this.model = null;
 	};
 	
 	return Player;

@@ -56,6 +56,7 @@ Polyworks.LevelState = (function() {
 				this.sectorManager.setActive(this.game.camera.x + (stage.width/2));
 
 				var sector = this.sectorManager.activeSector;
+				sector.enemies.update({ player: this.player.sprite });
 
 				this.player.update({
 					terrain: this.terrain.group,
@@ -70,7 +71,6 @@ Polyworks.LevelState = (function() {
 					context: this
 				});
 
-				sector.enemies.update({ player: this.player.sprite });
 			}
 		}
 	};
@@ -88,8 +88,8 @@ Polyworks.LevelState = (function() {
 				this.killEnemy(enemy);
 			}
 		} else {
-			this.player.damaged(enemy.damage);
 			this.gui.setContent('health', this.player.health);
+			this.player.damaged(enemy.damage);
 		}
 	};
 

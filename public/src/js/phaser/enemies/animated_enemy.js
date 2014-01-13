@@ -53,5 +53,11 @@ Polyworks.AnimatedEnemy = (function() {
 		}
 	};
 	
+	AnimatedEnemy.prototype.destroy = function() {
+		this.sprite.animations.stop();
+		this.sprite.animations = null;
+		AnimatedEnemey._super.destroy.call(this);
+	};
+	
 	return AnimatedEnemy;
 })();
