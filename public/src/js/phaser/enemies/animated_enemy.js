@@ -64,7 +64,7 @@ Polyworks.AnimatedEnemy = (function() {
 	
 	AnimatedEnemy.prototype.destroy = function() {
 		this.sprite.animations.stop();
-		this.sprite.animations = null;
+		// this.sprite.animations = null;
 		AnimatedEnemy._super.destroy.call(this);
 	};
 	

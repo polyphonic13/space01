@@ -22,7 +22,7 @@ Polyworks.Player = (function() {
 		});
 
 		this.__defineSetter__('health', function(val) {
-			trace('Player/health setter, val = ' + val);
+			// trace('Player/health setter, val = ' + val);
 			this.model.health = val;
 			PolyworksGame.setHealth(this.model.health);
 		});
@@ -102,13 +102,7 @@ Polyworks.Player = (function() {
 				this.model.justJumped = false;
 			}
 
-			this.updateMovement();
 		// }
-	};
-	
-	Player.prototype.updateMovement = function() {
-		// this.view.velocityX = this.velX;
-		// this.view.velocityY = this.velY;
 	};
 	
 	Player.prototype.checkCollision = function(collection, callback, physics, context) {
@@ -117,14 +111,14 @@ Polyworks.Player = (function() {
 		}
 	};
 	
-	Player.prototype.onEnemyCollision = function(player, enemy) {
-		trace('Player/onEnemyCollision');
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, enemy: enemy });
-	};
-	
-	Player.prototype.onBonusCollision = function(player, bonus) {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, bonus: bonus });
-	};
+	// Player.prototype.onEnemyCollision = function(player, enemy) {
+	// 	trace('Player/onEnemyCollision');
+	// 	Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, enemy: enemy });
+	// };
+	// 
+	// Player.prototype.onBonusCollision = function(player, bonus) {
+	// 	Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, bonus: bonus });
+	// };
 	
 	Player.prototype.updateInput = function() {
 		// if(this.alive) {

@@ -81,7 +81,6 @@ Polyworks.LevelState = (function() {
 			this.player.hitEnemy();
 			enemy.damaged(this.player.damage);
 		} else {
-			this.gui.setContent('health', this.player.health);
 			this.player.damaged(enemy.damage);
 		}
 	};
@@ -94,7 +93,6 @@ Polyworks.LevelState = (function() {
 	    PolyworksGame.score += bonus.get('score');
 
 		this.player.health += bonus.get('health');
-		this.gui.setContent('health', this.player.health);
 	};
 
 	LevelState.prototype.shutdown = function() {

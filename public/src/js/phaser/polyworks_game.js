@@ -48,13 +48,11 @@ PolyworksGame = (function() {
 
 		setScore: function(val) {
 			PolyworksGame.score += val;
-			trace('PolyworksGame/setScore about to dispatch SCORE_UPDATED');
-			Polyworks.EventCenter.trigger({ type: Polyworks.Events.SCORE_UPATED });
+			Polyworks.EventCenter.trigger({ type: Polyworks.Events.SCORE_UPDATED });
 		},
 
 		setHealth: function(val) {
 			PolyworksGame.health = val;
-			trace('PolyworksGame/setScore about to dispatch HEALTH_UPDATED');
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.HEALTH_UPDATED });
 		},
 

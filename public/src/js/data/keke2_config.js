@@ -459,7 +459,7 @@ var config = {
 							img: 'caterpillar01',
 							name: 'sector0-enemy0',
 							start: {
-								x: 800,
+								x: 200,
 								y: 0
 							},
 							physics: {
