@@ -30,22 +30,21 @@ Polyworks.EventCenter = (function() {
 	};
 	
 	eventCenter.unbind = function(type, callback) {
-		if(_listeners[key]) {
-			for(var i = 0; i < _listeners[key].length; i++) {
-				if(_listeners[key][i] === callback) {
-					_listeners[key][i] = null;
-					break;
+		if(_listeners[type]) {
+			for(var i = 0; i < _listeners[type].length; i++) {
+				if(_listeners[type][i] === callback) {
+					_listeners[type][i] = null;
 				}
+			}
+			_listeners[type] = Utils.reindexArray(_listeners[type]);
+			if(_listeners[type].length === 0) {
+				delete _listeners[type];
 			}
 		}
 	};
 	
 	eventCenter.reset = function() {
 		_listeners = [];
-		// for(var key in _listeners) {
-		// 	delete _listeners[key];
-		// }
-		// _listeners = null;
 	};
 	
 	return eventCenter;

@@ -31,10 +31,8 @@ Polyworks.LevelState = (function() {
 
 		this.terrain = this.elements.terrain;
 		this.sectorManager = this.elements.sectors;
-		trace('this.sectorManager = ');
-		trace(this.sectorManager);
 		// trace('player type = ' + config.player.type);
-		this.player = new Polyworks[config.player.type](config.player.attrs, config.player.name);
+		this.player = new Polyworks[config.player.type](Utils.clone(config.player.attrs), config.player.name);
 
 		this.createControls.call(this);
 		
@@ -110,6 +108,12 @@ Polyworks.LevelState = (function() {
 
 		this.player.health += bonus.get('health');
 		this.gui.setContent('health', this.player.health);
+	};
+
+	LevelState.prototype.shutdown = function() {
+		this.player.destroy();
+		this.player = null;
+		LevelState._super.shutdown.call(this);
 	};
 
 	return LevelState;

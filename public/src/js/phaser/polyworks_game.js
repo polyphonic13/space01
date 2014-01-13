@@ -7,6 +7,7 @@ Polyworks.Game = (function() {
 	
 	var polyworks_game = {
 		phaser: null,
+		player: null,
 		score: 0,
 		currentLevel: 0,
 		totalLevels: 0,
@@ -25,30 +26,6 @@ Polyworks.Game = (function() {
 			
 			Polyworks.Game.phaser = new Phaser.Game(stage.width, stage.height, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
 			// _checkPhaserBoot();
-		},
-
-		getPlayer: function() {
-			return _player;
-		},
-
-		getControls: function() {
-			return _controls;
-		},
-
-		getStates: function() {
-			return _states;
-		},
-
-		get: function(key) {
-			if(_model.hasOwnProperty(key)) {
-				return _model[key];
-			}
-		},
-
-		set: function(params) {
-			for(var key in params) {
-				_model[key] = params[key];
-			}
 		},
 
 		changeState: function(id) {
@@ -76,6 +53,9 @@ Polyworks.Game = (function() {
 			trace('Polyworks.Game/quit');
 			Polyworks.EventCenter.reset();
 			Polyworks.Game.gameOver = true;
+			if(Polyworks.Game.player) {
+				Polyworks.Game.player.destroy();
+			}
 			Polyworks.Game.phaser.destroy();
 		}
 	};

@@ -3,6 +3,7 @@ Polyworks.Player = (function() {
 	Utils.inherits(Player, Polyworks.Base);
 	
 	function Player(params, id) {
+		trace('Player/constructor');
 		_this = this;
 		Player._super.constructor.call(this, params, id);
 
@@ -37,9 +38,8 @@ Polyworks.Player = (function() {
 	}
 	
 	Player.prototype.initSprite = function() {
-		var view = new Polyworks[this.model.spriteType](this.model, this.id + '-sprite');
-		view.init();
-		this.view = view;
+		this.view = new Polyworks[this.model.spriteType](this.model, this.id + '-sprite');
+		this.view.init();
 	};
 	
 	Player.prototype.initWorld = function() {
@@ -190,8 +190,14 @@ Polyworks.Player = (function() {
 			this.view.velocityX = this.velX;
 	};
 	
-	Player.prototype.kill = function() {
-
+	Player.prototype.destroy = function() {
+		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_PRESSED, this.onControlButtonPressed);
+		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_RELEASED, this.onControlButtonReleased);
+		
+		this.view.destroy();
+		// this.update = null;
+		// this.updateInput = null;
+		this.model = null;
 	};
 	
 	return Player;

@@ -30,6 +30,18 @@ Utils = (function() {
 		return length;
 	};
 
+	utils.reindexArray = function(array, start) {
+	    var temp = [];
+	    start = typeof start == 'undefined' ? 0 : start;
+	    start = typeof start != 'number' ? 0 : start;
+	    for(i in array){
+			// only add if this element is defined
+			if(array[i]) {
+		        temp[start++] = array[i];
+			}
+	    }
+	    return temp;
+	}
 	utils.mixin = function(c, p) {
 	    for(var k in p) if(p[k]) c[k] = p[k];
 	};

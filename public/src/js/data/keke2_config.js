@@ -471,11 +471,6 @@ var config = {
 							damage: 5,
 							health: 5,
 							score: 500,
-							movement: {
-								speed: 0.25,
-								type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
-								formula: null
-							},
 							defaultAnimation: '',
 							animations: caterpillarAnimations
 						}
@@ -509,6 +504,11 @@ var config = {
 							damage: 5,
 							health: 10,
 							score: 1000,
+							movement: {
+								speed: 0.25,
+								type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+								formula: null
+							},
 							defaultAnimation: '',
 							animations: caterpillarAnimations
 						}
