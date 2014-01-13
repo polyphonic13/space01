@@ -68,58 +68,6 @@ Polyworks.Player = (function() {
 		// trace(this.activeControls);
 	};
 	
-	Player.prototype.onControlButtonPressed = function(event) {
-		_this.activeControls[event.value] = true;
-		// trace('Player.prototype.onControlButtonPressed, event.value = ' + event.value);
-		// trace(_this.activeControls);
-		_this.updateInput();
-	};
-	
-	Player.prototype.onControlButtonReleased = function(event) {
-		_this.activeControls[event.value] = false;
-		// trace('Player.prototype.onControlButtonReleased, event.value = ' + event.value);
-		// trace(_this.activeControls);
-		if(event.value === Polyworks.InputCodes.RESET) {
-			_this.activeControls[Polyworks.InputCodes.LEFT] = false;
-			_this.activeControls[Polyworks.InputCodes.RIGHT] = false;
-		}
-		_this.updateInput();
-	};
-	
-	Player.prototype.update = function(params) {
-		// if(this.alive) {
-			this.view.checkTerrainCollision(params.terrain);
-			var physics = PolyworksGame.phaser.physics;
-
-			this.checkCollision(params.enemies.collection, params.enemies.callback, physics, params.context);
-			this.checkCollision(params.bonuses.collection, params.bonuses.callback, physics, params.context);
-			// this.checkCollision(params.enemies.collection, this.onEnemeyCollision, physics);
-			// this.checkCollision(params.bonuses.collection, this.onBonusCollision, physics);
-
-			if(this.view.sprite.body.touching.down) {
-				this.model.grounded = true;
-				this.model.jumping = false;
-				this.model.justJumped = false;
-			}
-
-		// }
-	};
-	
-	Player.prototype.checkCollision = function(collection, callback, physics, context) {
-		for(var i = 0; i < collection.length; i++) {
-			physics.overlap(this.view.sprite, collection[i].sprite, callback, null, context);
-		}
-	};
-	
-	// Player.prototype.onEnemyCollision = function(player, enemy) {
-	// 	trace('Player/onEnemyCollision');
-	// 	Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, enemy: enemy });
-	// };
-	// 
-	// Player.prototype.onBonusCollision = function(player, bonus) {
-	// 	Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, bonus: bonus });
-	// };
-	
 	Player.prototype.updateInput = function() {
 		// if(this.alive) {
 			// trace('Player/updateInput');
@@ -157,7 +105,76 @@ Polyworks.Player = (function() {
 		// }
 	};
 	
-	Player.prototype.hitEnemy = function() {
+	Player.prototype.onControlButtonPressed = function(event) {
+		_this.activeControls[event.value] = true;
+		// trace('Player.prototype.onControlButtonPressed, event.value = ' + event.value);
+		// trace(_this.activeControls);
+		_this.updateInput();
+	};
+	
+	Player.prototype.onControlButtonReleased = function(event) {
+		_this.activeControls[event.value] = false;
+		// trace('Player.prototype.onControlButtonReleased, event.value = ' + event.value);
+		// trace(_this.activeControls);
+		if(event.value === Polyworks.InputCodes.RESET) {
+			_this.activeControls[Polyworks.InputCodes.LEFT] = false;
+			_this.activeControls[Polyworks.InputCodes.RIGHT] = false;
+		}
+		_this.updateInput();
+	};
+	
+	Player.prototype.update = function(params) {
+		// if(this.alive) {
+			this.view.checkTerrainCollision(params.terrain);
+			var physics = PolyworksGame.phaser.physics;
+
+			this.checkCollision(params.enemies, this.onEnemyCollision, physics, this);
+			this.checkCollision(params.bonuses, this.onBonusCollision, physics, this);
+
+			if(this.view.sprite.body.touching.down) {
+				this.model.grounded = true;
+				this.model.jumping = false;
+				this.model.justJumped = false;
+			}
+
+		// }
+	};
+	var traced = false;
+	Player.prototype.checkCollision = function(collection, callback, physics, context) {
+		for(var i = 0; i < collection.length; i++) {
+			physics.overlap(this.view.sprite, collection[i].sprite, callback, null, context);
+		}
+	};
+	
+	Player.prototype.onEnemyCollision = function(player, sprite) {
+		var enemy = this.model.sectorManager.activeSector.enemies.getItemByName(sprite.idx);
+
+		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, enemy: enemy });
+
+		if(this.model.jumping || this.model.attacking) {
+			this.enemyCollisionPositionUpdate();
+			enemy.damaged(this.model.damage);
+		} else {
+			this.damaged(enemy.damage);
+		}
+	};
+	
+	Player.prototype.onBonusCollision = function(player, sprite) {
+		var bonus = this.model.sectorManager.activeSector.bonuses.getItemByName(sprite.idx);
+		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.BONUS_COLLISION, player: player, bonus: bonus });
+
+	    PolyworksGame.score += bonus.get('score');
+
+		var health = bonus.get('health');
+		if(health) {
+			this.health += bonus.get('health');
+		}
+
+		sprite.kill();
+		bonus.active = false; 
+	};
+	
+	Player.prototype.enemyCollisionPositionUpdate = function() {
 		this.velY = -this.model.speed.y/2;
 		this.view.velocityY = this.velY;
 	};

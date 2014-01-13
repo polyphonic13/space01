@@ -460,7 +460,7 @@ var config = {
 							img: 'caterpillar01',
 							spriteType: 'AnimatedSprite',
 							start: {
-								x: 500,
+								x: 600,
 								y: 0
 							},
 							physics: {
@@ -476,7 +476,24 @@ var config = {
 							animations: caterpillarAnimations
 						}
 					}],
-					bonuses: []
+					bonuses: [{
+						type: 'Sprite',
+						attrs: {
+							img: 'lollipop',
+							start: {
+								x: 200,
+								y: 0
+							},
+							physics: {
+								bounce: {
+									x: 0,
+									y: 0.2
+								}
+							},
+							score: 100,
+							health: 10
+						}
+					}]
 				}
 			},
 			{
