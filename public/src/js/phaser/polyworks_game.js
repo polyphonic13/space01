@@ -17,7 +17,13 @@ Polyworks.Game = (function() {
 		init: function(params) {
 			_model = params;
 
-			Polyworks.Game.phaser = new Phaser.Game(stage.width, stage.height, Phaser.AUTO, '', { preload: _preload, create: _create });
+			// var loadingAnimation = document.createElement("img");
+			// loadingAnimation.setAttribute("src", "images/loading_animation.gif");
+			// loadingAnimation.setAttribute("height", "75");
+			// loadingAnimation.setAttribute("width", "75");
+			// document.getElementById('loading').appendChild(loadingAnimation);
+			
+			Polyworks.Game.phaser = new Phaser.Game(stage.width, stage.height, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
 			// _checkPhaserBoot();
 		},
 
@@ -92,9 +98,11 @@ Polyworks.Game = (function() {
 		_initEvents();
 		_initControls();
 		_initStates();
+		_removeLoadingAnimation();
 		Polyworks.Game.changeState(config.initialState);
 
 	}
+	
 	
 	function _initEvents() {
 		Polyworks.EventCenter.init();
@@ -138,5 +146,10 @@ Polyworks.Game = (function() {
 		trace(_states);
 	}
 
+	function _removeLoadingAnimation() {
+		var loading = document.getElementById('loading');
+		loading.parentNode.removeChild(loading);
+	}
+	
 	return polyworks_game;
 }());

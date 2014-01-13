@@ -7,9 +7,26 @@
         body {
             margin: 0;
         }
+		#loading {
+			background: #ffffff url("images/loading_animation.gif") no-repeat center;
+			background-size: 75px;
+			position: absolute;
+			z-index: 2;
+			text-align: center;
+			width: 100%;
+			height: 100%;
+		}
+		#gameContainer {
+			position: absolute;
+			z-index: 1;
+			left: 0px;
+			top: 0px;
+		}
     </style>
 </head>
 <body>
+	<div id="loading"></div>
+	<div id="gameContainer"></div>
 	<script type="text/javascript" src="js/keke2_game.min.js"></script>
 <body>
 </html>
