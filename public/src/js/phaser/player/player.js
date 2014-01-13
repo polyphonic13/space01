@@ -46,7 +46,7 @@ Polyworks.Player = (function() {
 		if(this.model.anchor) {
 			this.view.sprite.anchor.setTo(this.model.anchor.x, this.model.anchor.y);
 		}
-		Polyworks.Game.phaser.camera.follow(this.view.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
+		PolyworksGame.phaser.camera.follow(this.view.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
 
 	};
 	
@@ -86,7 +86,7 @@ Polyworks.Player = (function() {
 	Player.prototype.update = function(params) {
 		// if(this.alive) {
 			this.view.checkTerrainCollision(params.terrain);
-			var physics = Polyworks.Game.phaser.physics;
+			var physics = PolyworksGame.phaser.physics;
 
 			this.checkCollision(params.enemies.collection, params.enemies.callback, physics, params.context);
 			this.checkCollision(params.bonuses.collection, params.bonuses.callback, physics, params.context);
@@ -169,7 +169,7 @@ Polyworks.Player = (function() {
 		this.model.health -= damage;
 		if(this.model.health <= 0) {
 			// this.destroy();
-			Polyworks.Game.changeState('quit');
+			PolyworksGame.changeState('quit');
 		}
 	};
 	

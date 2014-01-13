@@ -7,9 +7,9 @@ Polyworks.GroupCollection = (function() {
 		GroupCollection._super.constructor.call(this, params, id);
 		if(groupContext === 'null') {
 			// trace('GroupCollection['+id+'], adding group with context of null');
-			this.group = Polyworks.Game.phaser.add.group(null);
+			this.group = PolyworksGame.phaser.add.group(null);
 		} else {
-			this.group = Polyworks.Game.phaser.add.group();
+			this.group = PolyworksGame.phaser.add.group();
 		}
 	}
 	

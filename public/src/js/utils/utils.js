@@ -76,7 +76,7 @@ Utils = (function() {
 	};
 	
 	utils.addSpriteToGame = function(params) {
-		return Polyworks.Game.phaser.add.sprite(params.start.x, params.start.y, params.img);
+		return PolyworksGame.phaser.add.sprite(params.start.x, params.start.y, params.img);
 	};
 	
 	utils.addSpriteToGroup = function(params) {

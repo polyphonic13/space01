@@ -46,7 +46,7 @@ Polyworks.MovableSprite = (function() {
 	MovableSprite.prototype.constructor = Polyworks.Sprite;
 
 	MovableSprite.prototype.checkTerrainCollision = function(terrain) {
-		Polyworks.Game.phaser.physics.collide(this.sprite, terrain);
+		PolyworksGame.phaser.physics.collide(this.sprite, terrain);
 	};
 	
 	MovableSprite.prototype.move = function(params) {

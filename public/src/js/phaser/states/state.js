@@ -33,8 +33,8 @@ Polyworks.State = (function() {
 		// trace('State/createState, this = ');
 		// trace(this);
 		
-		this.game = Polyworks.Game.phaser;
-		this.gameOver = Polyworks.Game.gameOver; 
+		this.game = PolyworksGame.phaser;
+		this.gameOver = PolyworksGame.gameOver; 
 
 		this.elements = {};
 		this.createWorld();
@@ -44,7 +44,7 @@ Polyworks.State = (function() {
 	
 	State.prototype.createWorld = function() {
 		var world = this.model.world;
-		Polyworks.Game.phaser.world.setBounds(world.x, world.y, world.width, world.height);
+		PolyworksGame.phaser.world.setBounds(world.x, world.y, world.width, world.height);
 	};
 
 	State.prototype.createElements = function() {
@@ -62,6 +62,7 @@ Polyworks.State = (function() {
 	};
 	
 	State.prototype.shutdown = function() {
+		this.update = null;
 		for(var key in this.elements) {
 			if(this.elements[key].destroy) {
 				this.elements[key].destroy();

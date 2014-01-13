@@ -8,7 +8,7 @@ Polyworks.ControlKey = (function() {
 	}
 	
 	ControlKey.prototype.init = function() {
-		this.key = Polyworks.Game.phaser.input.keyboard.addKey(this.model.inputCode);
+		this.key = PolyworksGame.phaser.input.keyboard.addKey(this.model.inputCode);
 		this.key.onDown.add(this.inputDown, this);
 		this.key.onUp.add(this.inputUp, this);
 	};

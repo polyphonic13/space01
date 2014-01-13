@@ -12,7 +12,7 @@ Polyworks.ControlButtons = (function() {
 		ControlButtons._super.init.call(this, 'ControlButton');
 
 		var button;
-		var controlConsole = Polyworks.Game.phaser.add.group(null);
+		var controlConsole = PolyworksGame.phaser.add.group(null);
 		for(var i = 0; i < this.collection.length; i++) {
 			button = this.collection[i].button;
 			controlConsole.add(button);

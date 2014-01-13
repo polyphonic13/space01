@@ -14,7 +14,7 @@ Polyworks.Text = (function() {
 		// trace('\tx = ' + this.model.x + ', y = ' + this.model.y);
 		var content = this.model.defaultContent;
 
-		this.text = Polyworks.Game.phaser.add.text(this.model.x, this.model.y, content, this.model.style);
+		this.text = PolyworksGame.phaser.add.text(this.model.x, this.model.y, content, this.model.style);
 		params.group.add(this.text);
 		// trace('\ttext width = ' + this.text.width);
 		if(this.model.centerX) {

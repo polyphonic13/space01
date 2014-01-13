@@ -1,3 +1,4 @@
+
 Polyworks.LevelState = (function() {
 	Utils.inherits(LevelState, Polyworks.ControlsState); 
 	
@@ -13,7 +14,7 @@ Polyworks.LevelState = (function() {
 		this.cursors;
 		this.player; 
 		this.quitButton;
-		// Polyworks.Game.score = 0;
+		// PolyworksGame.score = 0;
 	};
 	
 	LevelState.prototype.preload = function() {
@@ -41,7 +42,7 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.initGUI = function() {
-		// this.gui.setContent('score', 'Score: ' + Polyworks.Game.score);
+		// this.gui.setContent('score', 'Score: ' + PolyworksGame.score);
 		this.gui.setContent('health', this.player.health);
 	};
 	
@@ -50,7 +51,7 @@ Polyworks.LevelState = (function() {
 		// this.gameOver = true;
 		if(!this.gameOver) {
 			if(this.player.sprite.x >= this.model.bounds.end) {
-				Polyworks.Game.changeState('intermission');
+				PolyworksGame.changeState('intermission');
 			} else {
 				this.sectorManager.checkTerrainCollision(this.terrain.group);
 				this.sectorManager.setActive(this.game.camera.x + (stage.width/2));
@@ -95,7 +96,7 @@ Polyworks.LevelState = (function() {
 
 	LevelState.prototype.killEnemy = function(enemy) {
 		// trace('killEnemy');
-		Polyworks.Game.score += enemy.score;
+		PolyworksGame.score += enemy.score;
 		enemy.kill();
 	};
 
@@ -104,7 +105,7 @@ Polyworks.LevelState = (function() {
 		sprite.kill();
 		bonus.active = false; 
 
-	    Polyworks.Game.score += bonus.get('score');
+	    PolyworksGame.score += bonus.get('score');
 
 		this.player.health += bonus.get('health');
 		this.gui.setContent('health', this.player.health);

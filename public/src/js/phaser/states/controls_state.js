@@ -19,7 +19,7 @@ Polyworks.ControlsState = (function() {
 		this.controls = new Polyworks.ControlButtons(config.controls.buttons[this.model.controlsType]);
 		this.controls.init();
 		// this.controls = new Polyworks.Collection(config.controls.buttons[this.model.controlsType], 'controlButtons');
-		// var controlConsole = Polyworks.Game.phaser.add.group(null);
+		// var controlConsole = PolyworksGame.phaser.add.group(null);
 		// this.controls = new Polyworks.GroupCollection(config.controls.buttons[this.model.controlsType], 'controlButtons', 'null');
 		// this.controls.init();
 	};

@@ -1,4 +1,4 @@
 function quit() {
-	Polyworks.Game.changeState('quit');
+	PolyworksGame.changeState('quit');
 }
-Polyworks.Game.init(config);
+PolyworksGame.init(config);
