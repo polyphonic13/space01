@@ -12,7 +12,9 @@ Polyworks.Text = (function() {
 			this.model.y = stage.height/2;
 		}
 		// trace('\tx = ' + this.model.x + ', y = ' + this.model.y);
-		this.text = Polyworks.Game.phaser.add.text(this.model.x, this.model.y, this.model.defaultContent, this.model.style);
+		var content = this.model.defaultContent;
+
+		this.text = Polyworks.Game.phaser.add.text(this.model.x, this.model.y, content, this.model.style);
 		params.group.add(this.text);
 		// trace('\ttext width = ' + this.text.width);
 		if(this.model.centerX) {
