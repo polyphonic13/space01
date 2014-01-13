@@ -386,6 +386,7 @@ var config = {
 			name: 'terrain',
 			type: 'PhysicalGroupCollection',
 			attrs: [{
+				name: 'ground',
 				type: 'Sprite',
 				attrs: {
 					img: 'platform',
@@ -393,7 +394,7 @@ var config = {
 						x: 0,
 						y: world.height - 20
 					},
-					scale: [8, 1],
+					scale: [16, 1],
 					physics: {
 						immovable: true
 					}
@@ -404,10 +405,38 @@ var config = {
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 2048,
-						y: world.height - 20
+						x: 2000,
+						y: world.height - 75
 					},
-					scale: [8, 1],
+					scale: [0.3, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				type: 'Sprite',
+				attrs: {
+					img: 'platform',
+					start: {
+						x: 2200,
+						y: world.height - 130
+					},
+					scale: [0.3, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				type: 'Sprite',
+				attrs: {
+					img: 'platform',
+					start: {
+						x: 2400,
+						y: world.height - 185
+					},
+					scale: [0.3, 1],
 					physics: {
 						immovable: true
 					}
@@ -526,7 +555,7 @@ var config = {
 						attrs: {
 							img: 'lollipop',
 							start: {
-								x: 2800,
+								x: 2420,
 								y: 0
 							},
 							physics: {
@@ -580,7 +609,7 @@ var config = {
 						attrs: {
 							img: 'lollipop',
 							start: {
-								x: 3100,
+								x: 3500,
 								y: 0
 							},
 							physics: {
@@ -600,20 +629,7 @@ var config = {
 		{
 			name: 'gui',
 			type: 'GUIConsole',
-			attrs: [/*{
-				name: 'score',
-				type: 'Text',
-				attrs: {
-					x: 15,
-					y: 15,
-					defaultContent: 'Score: ',
-					style: { 
-						font: '18px Arial', 
-						fill: '#ffffff' 
-					}
-				}
-			}, */
-			{
+			attrs: [{
 				name: 'heartIcon',
 				type: 'Sprite',
 				attrs: {
@@ -765,21 +781,7 @@ var config = {
 						x: 0,
 						y: world.height - 20
 					},
-					scale: [8, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				type: 'Sprite',
-				attrs: {
-					img: 'platform',
-					start: {
-						x: 2048,
-						y: world.height - 20
-					},
-					scale: [8, 1],
+					scale: [16, 1],
 					physics: {
 						immovable: true
 					}
@@ -1344,21 +1346,7 @@ var config = {
 						x: 0,
 						y: world.height - 20
 					},
-					scale: [8, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				type: 'Sprite',
-				attrs: {
-					img: 'platform',
-					start: {
-						x: 2048,
-						y: world.height - 20
-					},
-					scale: [8, 1],
+					scale: [16, 1],
 					physics: {
 						immovable: true
 					}
@@ -1923,21 +1911,7 @@ var config = {
 						x: 0,
 						y: world.height - 20
 					},
-					scale: [8, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				type: 'Sprite',
-				attrs: {
-					img: 'platform',
-					start: {
-						x: 2048,
-						y: world.height - 20
-					},
-					scale: [8, 1],
+					scale: [16, 1],
 					physics: {
 						immovable: true
 					}
