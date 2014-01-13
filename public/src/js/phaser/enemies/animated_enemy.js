@@ -14,12 +14,12 @@ Polyworks.AnimatedEnemy = (function() {
 		if(this.active) {
 			AnimatedEnemy._super.update.call(this, params);
 
-			var enemyX = this.view.sprite.body.screenX;
-			var playerX = params.player.body.screenX;
 			// trace('AnimatedEnemy['+this.view.sprite.name+']/update\n\tenemyX = ' + enemyX + ', playerX = ' + playerX);
 
 			if(this.isInView) {
 				// trace('\tenemy['+this.view.sprite.name+'] in range');
+				var enemyX = this.view.sprite.body.screenX;
+				var playerX = params.player.body.screenX;
 				var animations = this.view.sprite.animations; 
 
 				if(enemyX > (playerX + 10)) {

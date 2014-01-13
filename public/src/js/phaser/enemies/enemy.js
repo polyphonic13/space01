@@ -37,6 +37,9 @@ Polyworks.Enemy = (function() {
 	
 	Enemy.prototype.update = function(params) {
 		if(this.active) {
+			var enemyX = this.view.sprite.body.screenX;
+			var playerX = params.player.body.screenX;
+
 			if(enemyX < (playerX + stage.width/2) && enemyX > (playerX - stage.width/2)) {
 				this.isInView = true;
 			} else {
