@@ -37,17 +37,9 @@ Polyworks.LevelState = (function() {
 		this.player = new Polyworks[config.player.type](config.player.attrs, config.player.name);
 
 		this.createControls.call(this);
-		// this.cursors = this.controls.cursors;
-		
-		this.initEvents();
 		
 		this.gui = this.elements.gui;
 		this.initGUI();
-	};
-	
-	LevelState.prototype.initEvents = function() {
-		Polyworks.EventCenter.bind(Polyworks.Events.ENEMY_COLLISION, this.onEnemyCollision);
-		Polyworks.EventCenter.bind(Polyworks.Events.BONUS_COLLISION, this.onBonusCollision);
 	};
 	
 	LevelState.prototype.initGUI = function() {
@@ -66,7 +58,6 @@ Polyworks.LevelState = (function() {
 				this.sectorManager.setActive(this.game.camera.x + (stage.width/2));
 
 				var sector = this.sectorManager.activeSector;
-				sector.enemies.update({ player: this.player.sprite });
 
 				this.player.update({
 					terrain: this.terrain.group,
@@ -80,18 +71,10 @@ Polyworks.LevelState = (function() {
 					},
 					context: this
 				});
+
+				sector.enemies.update({ player: this.player.sprite });
 			}
 		}
-	};
-	
-	LevelState.prototype.onEnemyCollision = function(event) {
-		trace('LevelState['+this.id+']/onEnemyCollision, event =');
-		trace(event);
-	};
-	
-	LevelState.prototype.onBonusCollision = function(event) {
-		trace('LevelState['+this.id+']/onEnemyCollision, event =');
-		trace(event);
 	};
 	
 	LevelState.prototype.enemyCollision = function(player, sprite) {
@@ -127,13 +110,6 @@ Polyworks.LevelState = (function() {
 
 		this.player.health += bonus.get('health');
 		this.gui.setContent('health', this.player.health);
-	};
-
-	LevelState.prototype.shutdown = function() {
-		Polyworks.EventCenter.unbind(Polyworks.Events.ENEMY_COLLISION, this.onEnemyCollision);
-		Polyworks.EventCenter.unbind(Polyworks.Events.BONUS_COLLISION, this.onBonusCollision);
-
-		LevelState._super.shutdown.call(this);
 	};
 
 	return LevelState;
