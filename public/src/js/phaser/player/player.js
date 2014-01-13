@@ -9,32 +9,35 @@ Polyworks.Player = (function() {
 
 		this.velX = 0;
 		this.velY = 0;
-		
+
 		this.initSprite();
 		this.initWorld();
 		this.initEvents();
 		this.initControls();
-		
+
+		PolyworksGame.setHealth(this.model.health);
+
 		this.__defineGetter__('health', function() {
 			return this.model.health;
 		});
-		
+
 		this.__defineSetter__('health', function(val) {
+			trace('Player/health setter, val = ' + val);
 			this.model.health = val;
+			PolyworksGame.setHealth(this.model.health);
 		});
-		
+
 		this.__defineGetter__('damage', function() {
 			return this.model.damage;
 		});
-		
+
 		this.__defineGetter__('isJumping', function() {
 			return this.model.jumping;
 		});
-		
+
 		this.__defineGetter__('sprite', function() {
 			return this.view.sprite;
 		});
-		
 	}
 	
 	Player.prototype.initSprite = function() {
@@ -166,7 +169,7 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.damaged = function(damage) {
-		this.model.health -= damage;
+		this.health -= damage;
 		if(this.model.health <= 0) {
 			// this.destroy();
 			PolyworksGame.changeState('quit');
@@ -198,7 +201,7 @@ Polyworks.Player = (function() {
 		this.alive = false;
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_PRESSED, this.onControlButtonPressed);
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_RELEASED, this.onControlButtonReleased);
-		
+
 		this.view.destroy();
 		this.update = null;
 		this.updateInput = null;

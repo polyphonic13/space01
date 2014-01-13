@@ -36,14 +36,9 @@ Polyworks.LevelState = (function() {
 		this.player = new Polyworks[config.player.type](Utils.clone(config.player.attrs), config.player.name);
 
 		this.createControls.call(this);
-		
+
 		this.gui = this.elements.gui;
-		this.initGUI();
-	};
-	
-	LevelState.prototype.initGUI = function() {
-		// this.gui.setContent('score', 'Score: ' + PolyworksGame.score);
-		this.gui.setContent('health', this.player.health);
+		this.gui.setInitialContent();
 	};
 	
 	LevelState.prototype.update = function() {
@@ -84,20 +79,11 @@ Polyworks.LevelState = (function() {
 
 		if(this.player.isJumping) {
 			this.player.hitEnemy();
-			enemy.health -= this.player.damage;
-			if(enemy.health <= 0) {
-				this.killEnemy(enemy);
-			}
+			enemy.damaged(this.player.damage);
 		} else {
 			this.gui.setContent('health', this.player.health);
 			this.player.damaged(enemy.damage);
 		}
-	};
-
-	LevelState.prototype.killEnemy = function(enemy) {
-		// trace('killEnemy');
-		PolyworksGame.score += enemy.score;
-		enemy.kill();
 	};
 
 	LevelState.prototype.bonusCollision = function(player, sprite) {

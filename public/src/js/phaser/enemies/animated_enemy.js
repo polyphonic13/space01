@@ -9,16 +9,16 @@ Polyworks.AnimatedEnemy = (function() {
 		AnimatedEnemy._super.constructor.call(this, params, id);
 
 		this.__defineGetter__('score', function() {
-			return this.get('score');
+			return this.model.score;
 		});
 		this.__defineGetter__('damage', function() {
-			return this.get('damage');
+			return this.model.damage;
 		});
 		this.__defineGetter__('health', function() {
-			return this.get('health');
+			return this.model.health;
 		});
 		this.__defineSetter__('health', function(val) {
-			this.set({ health: val });
+			this.model.health = val;
 		});
 	}
 	
@@ -53,10 +53,19 @@ Polyworks.AnimatedEnemy = (function() {
 		}
 	};
 	
+	AnimatedEnemy.prototype.damaged = function(damage) {
+		trace('AnimatedEnemy/damaged, player.damage = ' + damage);
+		this.model.health -= damage;
+		if(this.model.health <= 0) {
+			PolyworksGame.setScore(this.model.score);
+			this.destroy();
+		}
+	}
+	
 	AnimatedEnemy.prototype.destroy = function() {
 		this.sprite.animations.stop();
 		this.sprite.animations = null;
-		AnimatedEnemey._super.destroy.call(this);
+		AnimatedEnemy._super.destroy.call(this);
 	};
 	
 	return AnimatedEnemy;

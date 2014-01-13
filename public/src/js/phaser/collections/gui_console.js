@@ -2,10 +2,44 @@ Polyworks.GUIConsole = (function() {
 	Utils.inherits(GUIConsole, Polyworks.GroupCollection);
 	
 	function GUIConsole(params, id) {
-		// trace('GUIConsole/constructor');
+		trace('GUIConsole/constructor');
 		GUIConsole._super.constructor.call(this, params, id, 'null');
 	}
 
+	GUIConsole.prototype.setInitialContent = function() {
+		for(var i = 0; i < this.collection.length; i++) {
+			if(this.collection[i].text) {
+				this.parseAndSetContent(this.collection[i].id);
+			}
+		}
+		this.addListeners();
+	};
+	
+	GUIConsole.prototype.addListeners = function() {
+		Polyworks.EventCenter.bind(Polyworks.Events.SCORE_UPDATED, this.onScoreUpdated);
+		Polyworks.EventCenter.bind(Polyworks.Events.HEALTH_UPDATE, this.onHealthUpdated);
+	};
+	
+	GUIConsole.prototype.onScoreUpdated = function() {
+		trace('GUIConsole/onScoreUpdated');
+		this.parseAndSetContent('score');
+	};
+	
+	GUIConsole.prototype.onHealthUpdated = function() {
+		trace('GUIConsole/onHealthUpdated');
+		this.parseAndSetContent('health');
+	};
+	
+	GUIConsole.prototype.parseAndSetContent = function(field, context) {
+		trace('GUIConsole/parseAndSetContent, field = ' + field);
+		var text = this.getItemByName(field);
+		trace(text);
+		if(text) {
+			var context = (context) ? context : PolyworksGame;
+			text.content = Utils.parseMarkup(text.model.defaultContent, context);
+		}
+	};
+	
 	GUIConsole.prototype.setContent = function(field, content) {
 		var text = this.getItemByName(field);
 		if(text) {

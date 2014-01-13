@@ -630,6 +630,19 @@ var config = {
 			name: 'gui',
 			type: 'GUIConsole',
 			attrs: [{
+				name: 'score',
+				type: 'Text',
+				attrs: {
+					x: 15,
+					y: 50,
+					defaultContent: 'Score: ~{score}~',
+					style: { 
+						font: '18px Arial', 
+						fill: '#ffffff' 
+					}
+				}
+			}, 
+			{
 				name: 'heartIcon',
 				type: 'Sprite',
 				attrs: {
@@ -646,7 +659,7 @@ var config = {
 				attrs: {
 					x: 60,
 					y: 25,
-					defaultContent: '',
+					defaultContent: '~{health}~',
 					style: { 
 						font: '18px Arial', 
 						fill: '#ffffff' 
@@ -1181,19 +1194,19 @@ var config = {
 		{
 			name: 'gui',
 			type: 'GUIConsole',
-			attrs: [/*{
+			attrs: [{
 				name: 'score',
 				type: 'Text',
 				attrs: {
 					x: 15,
-					y: 15,
-					defaultContent: 'Score: ',
+					y: 30,
+					defaultContent: 'Score: ~{score}~',
 					style: { 
 						font: '18px Arial', 
 						fill: '#ffffff' 
 					}
 				}
-			}, */
+			}, 
 			{
 				name: 'heartIcon',
 				type: 'Sprite',
@@ -1746,19 +1759,19 @@ var config = {
 		{
 			name: 'gui',
 			type: 'GUIConsole',
-			attrs: [/*{
+			attrs: [{
 				name: 'score',
 				type: 'Text',
 				attrs: {
 					x: 15,
 					y: 15,
-					defaultContent: 'Score: ',
+					defaultContent: 'Score: ~{score}~',
 					style: { 
 						font: '18px Arial', 
 						fill: '#ffffff' 
 					}
 				}
-			}, */
+			},
 			{
 				name: 'heartIcon',
 				type: 'Sprite',

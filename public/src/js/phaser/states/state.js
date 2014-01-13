@@ -32,7 +32,7 @@ Polyworks.State = (function() {
 	State.prototype.createState = function() {
 		// trace('State/createState, this = ');
 		// trace(this);
-		
+
 		this.game = PolyworksGame.phaser;
 		this.gameOver = PolyworksGame.gameOver; 
 

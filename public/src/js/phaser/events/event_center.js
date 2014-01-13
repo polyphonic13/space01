@@ -18,8 +18,8 @@ Polyworks.EventCenter = (function() {
 	eventCenter.trigger = function(params) {
 		for(var key in _listeners) {
 			if(key === params.type) {
-				// trace('_listeners['+key+']. length = ' + _listeners[key].length);
-				// trace(_listeners[key]);
+				trace('_listeners['+key+']. length = ' + _listeners[key].length);
+				trace(_listeners[key]);
 				if(_listeners[key]) {
 					for(var i = 0; i < _listeners[key].length; i++) {
 						_listeners[key][i].call(this, params);

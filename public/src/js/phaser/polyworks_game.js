@@ -3,12 +3,12 @@ PolyworksGame = (function() {
 	var _player = {};
 	var _controls = {};
 	var _states = {};
-	var _qKey; 
 	
 	var polyworks_game = {
 		phaser: null,
 		player: null,
 		score: 0,
+		health: 0,
 		currentLevel: 0,
 		totalLevels: 0,
 		currentState: '',
@@ -44,6 +44,18 @@ PolyworksGame = (function() {
 				// trace(_states);
 				PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
 			// }
+		},
+
+		setScore: function(val) {
+			PolyworksGame.score += val;
+			trace('PolyworksGame/setScore about to dispatch SCORE_UPDATED');
+			Polyworks.EventCenter.trigger({ type: Polyworks.Events.SCORE_UPATED });
+		},
+
+		setHealth: function(val) {
+			PolyworksGame.health = val;
+			trace('PolyworksGame/setScore about to dispatch HEALTH_UPDATED');
+			Polyworks.EventCenter.trigger({ type: Polyworks.Events.HEALTH_UPDATED });
 		},
 
 		quit: function() {
