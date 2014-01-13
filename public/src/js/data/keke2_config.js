@@ -454,12 +454,13 @@ var config = {
 						end: 1024
 					},
 					enemies: [{
+						name: 'sector0-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector0-enemy0',
+							spriteType: 'AnimatedSprite',
 							start: {
-								x: 200,
+								x: 500,
 								y: 0
 							},
 							physics: {
@@ -486,10 +487,11 @@ var config = {
 						end: 2048
 					},
 					enemies: [{
+						name: 'sector1-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector1-enemy0',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 1400,
 								y: 0
@@ -524,10 +526,11 @@ var config = {
 						end: 3072
 					},
 					enemies: [{
+						name: 'sector2-enemy1',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector2-enemy1',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 3050,
 								y: 0
@@ -578,10 +581,11 @@ var config = {
 						end: 4098
 					},
 					enemies: [{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector3-enemy0',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 3580,
 								y: 0
@@ -896,10 +900,11 @@ var config = {
 						end: 1024
 					},
 					enemies: [{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector0-enemy0',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 800,
 								y: 0
@@ -923,10 +928,11 @@ var config = {
 						}
 					},
 					{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector0-enemy1',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 1000,
 								y: 0
@@ -960,10 +966,11 @@ var config = {
 						end: 2048
 					},
 					enemies: [{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector1-enemy0',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 1400,
 								y: 0
@@ -983,10 +990,11 @@ var config = {
 						}
 					},
 					{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector1-enemy1',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 1800,
 								y: 0
@@ -1016,10 +1024,11 @@ var config = {
 						end: 3072
 					},
 					enemies: [{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector2-enemy0',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 2500,
 								y: 0
@@ -1043,10 +1052,11 @@ var config = {
 						}
 					},
 					{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector2-enemy1',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 3050,
 								y: 0
@@ -1116,10 +1126,11 @@ var config = {
 						end: 4098
 					},
 					enemies: [{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector3-enemy0',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 3580,
 								y: 0
@@ -1143,10 +1154,11 @@ var config = {
 						}
 					},
 					{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector3-enemy1',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 4000,
 								y: 0
@@ -1461,10 +1473,11 @@ var config = {
 						end: 1024
 					},
 					enemies: [{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector0-enemy0',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 800,
 								y: 0
@@ -1488,10 +1501,11 @@ var config = {
 						}
 					},
 					{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector0-enemy1',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 1000,
 								y: 0
@@ -1525,10 +1539,11 @@ var config = {
 						end: 2048
 					},
 					enemies: [{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector1-enemy0',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 1400,
 								y: 0
@@ -1548,10 +1563,11 @@ var config = {
 						}
 					},
 					{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector1-enemy1',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 1800,
 								y: 0
@@ -1581,10 +1597,11 @@ var config = {
 						end: 3072
 					},
 					enemies: [{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector2-enemy0',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 2500,
 								y: 0
@@ -1608,10 +1625,11 @@ var config = {
 						}
 					},
 					{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector2-enemy1',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 3050,
 								y: 0
@@ -1681,10 +1699,11 @@ var config = {
 						end: 4098
 					},
 					enemies: [{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector3-enemy0',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 3580,
 								y: 0
@@ -1708,10 +1727,11 @@ var config = {
 						}
 					},
 					{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector3-enemy1',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 4000,
 								y: 0
@@ -2026,10 +2046,11 @@ var config = {
 						end: 1024
 					},
 					enemies: [{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector0-enemy0',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 800,
 								y: 0
@@ -2053,10 +2074,11 @@ var config = {
 						}
 					},
 					{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector0-enemy1',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 1000,
 								y: 0
@@ -2090,10 +2112,11 @@ var config = {
 						end: 2048
 					},
 					enemies: [{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector1-enemy0',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 1400,
 								y: 0
@@ -2113,10 +2136,11 @@ var config = {
 						}
 					},
 					{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector1-enemy1',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 1800,
 								y: 0
@@ -2146,10 +2170,11 @@ var config = {
 						end: 3072
 					},
 					enemies: [{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector2-enemy0',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 2500,
 								y: 0
@@ -2173,10 +2198,11 @@ var config = {
 						}
 					},
 					{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector2-enemy1',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 3050,
 								y: 0
@@ -2246,10 +2272,11 @@ var config = {
 						end: 4098
 					},
 					enemies: [{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector3-enemy0',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 3580,
 								y: 0
@@ -2273,10 +2300,11 @@ var config = {
 						}
 					},
 					{
+						name: 'sector-enemy0',
 						type: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							name: 'sector3-enemy1',
+							spriteType: 'AnimatedSprite',
 							start: {
 								x: 4000,
 								y: 0

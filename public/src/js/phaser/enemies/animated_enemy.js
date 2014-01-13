@@ -1,5 +1,5 @@
 Polyworks.AnimatedEnemy = (function() {
-	Utils.inherits(AnimatedEnemy, Polyworks.AnimatedSprite);
+	Utils.inherits(AnimatedEnemy, Polyworks.Enemy);
 	
 	var _this;
 	function AnimatedEnemy(params, id) {
@@ -8,64 +8,39 @@ Polyworks.AnimatedEnemy = (function() {
 		_this = this;
 		AnimatedEnemy._super.constructor.call(this, params, id);
 
-		this.__defineGetter__('score', function() {
-			return this.model.score;
-		});
-		this.__defineGetter__('damage', function() {
-			return this.model.damage;
-		});
-		this.__defineGetter__('health', function() {
-			return this.model.health;
-		});
-		this.__defineSetter__('health', function(val) {
-			this.model.health = val;
-		});
 	}
 	
 	AnimatedEnemy.prototype.update = function(params) {
 		if(this.active) {
-			var enemyX = this.sprite.body.screenX;
-			var playerX = params.player.body.screenX;
-			// trace('AnimatedEnemy['+this.sprite.name+']/update\n\tenemyX = ' + enemyX + ', playerX = ' + playerX);
+			AnimatedEnemy._super.update.call(this, params);
 
-			if(enemyX < (playerX + stage.width/2) && enemyX > (playerX - stage.width/2)) {
-				// trace('\tenemy['+this.sprite.name+'] in range');
-				var animations = this.sprite.animations; 
+			var enemyX = this.view.sprite.body.screenX;
+			var playerX = params.player.body.screenX;
+			// trace('AnimatedEnemy['+this.view.sprite.name+']/update\n\tenemyX = ' + enemyX + ', playerX = ' + playerX);
+
+			if(this.isInView) {
+				// trace('\tenemy['+this.view.sprite.name+'] in range');
+				var animations = this.view.sprite.animations; 
 
 				if(enemyX > (playerX + 10)) {
 					if(this.currentAnimation !== 'walkL') {
 						animations.play('walkL', animations.frameRate, true);
 						this.currentAnimation = 'walkL';
 					}
-					this.move({ direction: Polyworks.Directions.LEFT });
+					this.view.move({ direction: Polyworks.Directions.LEFT });
 				} else if(enemyX < (playerX - 10)){
 					if(this.currentAnimation !== 'walkR') {
 						animations.play('walkR', animations.frameRate, true);
 						this.currentAnimation = 'walkR';
 					}
-					this.move({ direction: Polyworks.Directions.RIGHT });
+					this.view.move({ direction: Polyworks.Directions.RIGHT });
 				} else {
 					animations.stop();
-					this.sprite.frame = 0
+					this.view.sprite.frame = 0
 					this.currentAnimation = '';
 				}
 			}
 		}
-	};
-	
-	AnimatedEnemy.prototype.damaged = function(damage) {
-		trace('AnimatedEnemy/damaged, player.damage = ' + damage);
-		this.model.health -= damage;
-		if(this.model.health <= 0) {
-			PolyworksGame.setScore(this.model.score);
-			this.destroy();
-		}
-	}
-	
-	AnimatedEnemy.prototype.destroy = function() {
-		this.sprite.animations.stop();
-		// this.sprite.animations = null;
-		AnimatedEnemy._super.destroy.call(this);
 	};
 	
 	return AnimatedEnemy;

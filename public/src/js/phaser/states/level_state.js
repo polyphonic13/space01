@@ -75,7 +75,7 @@ Polyworks.LevelState = (function() {
 		// trace('LevelState['+this.id+']/enemyCollision');
 		// trace(this);
 		// trace(this.sectorManager);
-		var enemy = this.sectorManager.activeSector.enemies.collection[sprite.idx];
+		var enemy = this.sectorManager.activeSector.enemies.getItemByName(sprite.idx);
 
 		if(this.player.isJumping) {
 			this.player.hitEnemy();
