@@ -29,7 +29,9 @@ Polyworks.Game = (function() {
 		},
 
 		changeState: function(id) {
-			if(id === 'level') {
+			if(id === 'quit') {
+				_quit();
+			} else if(id === 'level') {
 				id += Polyworks.Game.currentLevel;
 			} else if(id === 'nextLevel') {
 				trace('next level, current = ' + Polyworks.Game.currentLevel + ', total = ' + Polyworks.Game.totalLevels);
