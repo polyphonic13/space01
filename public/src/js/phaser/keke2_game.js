@@ -526,7 +526,7 @@ function playerJump() {
 }
 
 function killEnemy(enemy) {
-	// trace('killEnemey, enemy = ');
+	// trace('killEnemy, enemy = ');
 	// trace(enemy);
 	enemy.alive = false;
 	enemy.kill();

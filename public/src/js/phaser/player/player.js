@@ -118,10 +118,10 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.update = function(params) {
 		this.view.checkTerrainCollision(params.terrain);
-		var physics = PolyworksGame.phaser.physics;
 
-		this.checkCollision(params.enemies, this.onEnemyCollision, physics, this);
-		this.checkCollision(params.bonuses, this.onBonusCollision, physics, this);
+		var physics = PolyworksGame.phaser.physics;
+		this.updateEnemyCollision(params.enemies, physics);
+		this.updateBonusCollision(this.bonusCollision, physics);
 
 		if(this.view.sprite.body.touching.down) {
 			this.model.grounded = true;
@@ -130,13 +130,21 @@ Polyworks.Player = (function() {
 		}
 	};
 
+	Player.prototype.updateEnemyCollision = function(enemies, physics) {
+		this.checkCollision(enemies, this.enemyCollision, physics, this);
+	};
+	
+	Player.prototype.updateBonusCollision = function(bonuses, physics) {
+		this.checkCollision(bonuses, this.bonusCollision, physics, this);
+	};
+	
 	Player.prototype.checkCollision = function(collection, callback, physics, context) {
 		for(var i = 0; i < collection.length; i++) {
 			physics.overlap(this.view.sprite, collection[i].sprite, callback, null, context);
 		}
 	};
 	
-	Player.prototype.onEnemyCollision = function(player, sprite) {
+	Player.prototype.enemyCollision = function(player, sprite) {
 		var enemy = this.model.sectorManager.activeSector.enemies.getItemByName(sprite.idx);
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, enemy: enemy });
 
@@ -148,7 +156,7 @@ Polyworks.Player = (function() {
 		}
 	};
 	
-	Player.prototype.onBonusCollision = function(player, sprite) {
+	Player.prototype.bonusCollision = function(player, sprite) {
 		var bonus = this.model.sectorManager.activeSector.bonuses.getItemByName(sprite.idx);
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.BONUS_COLLISION, player: player, bonus: bonus });
 
