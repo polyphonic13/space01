@@ -2337,20 +2337,7 @@ var config = {
 		{
 			name: 'gui',
 			type: 'GUIConsole',
-			attrs: [/*{
-				name: 'score',
-				type: 'Text',
-				attrs: {
-					x: 15,
-					y: 15,
-					defaultContent: 'Score: ',
-					style: { 
-						font: '18px Arial', 
-						fill: '#ffffff' 
-					}
-				}
-			}, */
-			{
+			attrs: [{
 				name: 'heartIcon',
 				type: 'Sprite',
 				attrs: {
@@ -2500,7 +2487,7 @@ var config = {
 			},
 			speed: {
 				x: 150,
-				y: 350,
+				y: 400,
 			},
 			controls: {
 				left: Polyworks.InputCodes.LEFT,
