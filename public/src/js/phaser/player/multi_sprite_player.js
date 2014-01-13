@@ -24,16 +24,6 @@ Polyworks.MultiSpritePlayer = (function() {
 		}
 	};
 	
-	MultiSpritePlayer.prototype.update = function(params) {
-		this.view.checkTerrainCollision(params.terrain);
-
-		if(this.view.sprite.body.touching.down) {
-			this.model.grounded = true;
-			this.model.jumping = false;
-			this.model.justJumped = false;
-		}
-	};
-
 	MultiSpritePlayer.prototype.updateEnemyCollision = function(enemies, physics) {
 		this.updateEnemyCollisionByParts('attack', enemies, physics);
 		this.updateEnemyCollisionByParts('vunerable', enemies, physics);

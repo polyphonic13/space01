@@ -121,7 +121,7 @@ Polyworks.Player = (function() {
 
 		var physics = PolyworksGame.phaser.physics;
 		this.updateEnemyCollision(params.enemies, physics);
-		this.updateBonusCollision(this.bonusCollision, physics);
+		this.updateBonusCollision(params.bonuses, physics);
 
 		if(this.view.sprite.body.touching.down) {
 			this.model.grounded = true;
@@ -145,6 +145,13 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.enemyCollision = function(player, sprite) {
+		trace('PLAYER\n\toverlapX = ' + player.body.overlapX + '\n\toverlapY = ' + player.body.overlapY + '\n\ttouching = ');
+		trace(player.body.touching);
+		trace('---------------------------')
+		trace('SPRITE\n\toverlapX = ' + sprite.body.overlapX + '\n\toverlapY = ' + sprite.body.overlapY + '\n\ttouching = ');
+		trace('\temeny.touching = ');
+		trace(sprite.body.touching);
+		trace('---------------------------\n\n')
 		var enemy = this.model.sectorManager.activeSector.enemies.getItemByName(sprite.idx);
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, enemy: enemy });
 

@@ -460,7 +460,7 @@ var config = {
 							img: 'caterpillar01',
 							spriteType: 'AnimatedSprite',
 							start: {
-								x: 600,
+								x: 50,
 								y: 0
 							},
 							physics: {
@@ -481,7 +481,7 @@ var config = {
 						attrs: {
 							img: 'lollipop',
 							start: {
-								x: 200,
+								x: 600,
 								y: 0
 							},
 							physics: {
