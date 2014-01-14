@@ -132,7 +132,7 @@ function createEnemies(sector) {
 	
 	for(var i = 0; i < enemies.length; i++) {
 		enemy = group.create((enemies[i].start.x + sector.bounds.start), enemies[i].start.y, enemies[i].type);
-		enemy.name = enemies[i].type + '-' + i;
+		enemy.id = enemies[i].type + '-' + i;
 		enemy.idx = i;
 		enemy.alive = true;
 		enemy.body.gravity.y = config.world.gravity;
@@ -140,7 +140,7 @@ function createEnemies(sector) {
 		
 		var animations = enemies[i].animations;
 		for(var j = 0; j < animations.length; j++) {
-			enemy.animations.add(animations[i].name, animations[i].keyFrames, animations[i].frameRate);
+			enemy.animations.add(animations[i].id, animations[i].keyFrames, animations[i].frameRate);
 		}
 		enemy.animations.frame = 0;
 		enemies[i].gameObj = enemy;
@@ -158,7 +158,7 @@ function createBonuses(sector) {
 	
 	for(var i = 0; i < bonuses.length; i++) {
 		bonus = group.create((bonuses[i].start.x + sector.bounds.start), bonuses[i].start.y, bonuses[i].type);
-		bonus.name = bonuses[i].type + i;
+		bonus.id = bonuses[i].type + i;
 		bonus.idx = i;
 		bonus.alive = true;
 
@@ -302,12 +302,12 @@ function updateEnemies(enemies) {
 function updateEnemy(enemy) {
 	if(!gameOver) {
 		// trace('updateEnemy, sector['+ config.currentSector + ']/enemy[' + enemy.id + '], alive = ' + enemy.gameObj.alive);
-		// trace('enemy['+enemy.gameObj.name+'].screenX = ' + enemy.gameObj.body.screenX);
+		// trace('enemy['+enemy.gameObj.id+'].screenX = ' + enemy.gameObj.body.screenX);
 		var enemyX = enemy.gameObj.body.screenX;
 		var playerX = player.body.screenX;
 		// check for enemy on screen
 		if(enemyX < (playerX + config.world.width/2) && enemyX > (playerX - config.world.width/2)) {
-			// trace('enemy['+enemy.gameObj.name+'] activated');
+			// trace('enemy['+enemy.gameObj.id+'] activated');
 			if(enemyX > (playerX + 10)) {
 				if(enemy.currentAnimation !== 'walkL') {
 					enemy.gameObj.animations.play('walkL', 10, true);

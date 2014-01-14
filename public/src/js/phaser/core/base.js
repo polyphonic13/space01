@@ -1,12 +1,12 @@
 Polyworks.Base = (function() {
 	
 	var _this;
-	function Base(params, id) {
-		// trace('Base['+id+']/constructor, params = ');
+	function Base(params) {
+		// trace('Base['+params.id+']/constructor, params = ');
 		// trace(params);
 		_this = this;
 		this.model = params;
-		this.id = id;
+		this.id = params.id;
 		this.active = true;
 	}
 	

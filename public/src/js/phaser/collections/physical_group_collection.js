@@ -1,8 +1,8 @@
 Polyworks.PhysicalGroupCollection = (function() {
 	Utils.inherits(PhysicalGroupCollection, Polyworks.GroupCollection);
 	
-	function PhysicalGroupCollection(params, id) {
-		PhysicalGroupCollection._super.constructor.call(this, params, id);
+	function PhysicalGroupCollection(params) {
+		PhysicalGroupCollection._super.constructor.call(this, params);
 	}
 	
 	PhysicalGroupCollection.prototype.checkTerrainCollision = function(ground) {
@@ -13,9 +13,9 @@ Polyworks.PhysicalGroupCollection = (function() {
 	
 	PhysicalGroupCollection.prototype.getActive = function() {
 		var activeElements = [];
-		for(var i = 0; i < this.collection.length; i++) {
-			if(this.collection[i].active) {
-				activeElements.push(this.collection[i]);
+		for(var key in this.collection) {
+			if(this.collection[key].active) {
+				activeElements.push(this.collection[key]);
 			}
 		}
 		return activeElements;

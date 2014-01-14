@@ -1,8 +1,8 @@
 Polyworks.Text = (function() {
 	Utils.inherits(Text, Polyworks.Base);
 	
-	function Text(params, id) {
-		Text._super.constructor.call(this, params, id);
+	function Text(params) {
+		Text._super.constructor.call(this, params);
 		// trace('Text['+this.id+']/constructor, model = ');
 		// trace(this.model);
 		if(this.model.x === 'centered') {
@@ -29,9 +29,8 @@ Polyworks.Text = (function() {
 		});
 
 		this.__defineSetter__('content', function(val) {
-			if(val) {
-				this.text.content = val;
-			}
+			// trace('Text['+this.id+']/set content, val = ' + val);
+			this.text.content = val;
 		});
 	}
 

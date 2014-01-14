@@ -2,17 +2,17 @@ Polyworks.State = (function() {
 	Utils.inherits(State, Polyworks.Base);
 	
 	var _this;
-	function State(params, id) {
+	function State(params) {
 		_this = this;
-		State._super.constructor.call(this, params, id);
+		State._super.constructor.call(this, params);
 		this.loaded = false;
 		this.created = false;
 		this.active = false;
-		
+
 		this.__defineGetter__('clearWorld', function() {
 			return this.model.clearWorld;
 		});
-		
+
 		this.__defineGetter__('clearCache', function() {
 			return this.model.clearCache;
 		});
@@ -49,16 +49,22 @@ Polyworks.State = (function() {
 
 	State.prototype.createElements = function() {
 		trace('State['+this.id+']/createElements');
+		var game = PolyworksGame.phaser;
 		var elements = this.model.elements;
 		var element;
 		var attrs; 
 
 		for(var i = 0; i < elements.length; i++) {
 			attrs = elements[i].attrs;
-			var id = (attrs.name) ? attrs.name : i;
-			element = new Polyworks[elements[i].type](attrs, id);
+			attrs.id = (attrs.id) ? attrs.id : i;
+			trace('\telements['+i+'].cl = ' + elements[i].cl);
+			if(elements[i].type === 'view') {
+				element = new Polyworks[elements[i].cl](game, attrs.start.x, attrs.start.y, attrs);
+			} else {
+				element = new Polyworks[elements[i].cl](attrs);
+			}
 			element.init();
-			this.elements[elements[i].name] = element;
+			this.elements[elements[i].id] = element;
 		}
 	};
 	

@@ -2,11 +2,11 @@ Polyworks.AnimatedEnemy = (function() {
 	Utils.inherits(AnimatedEnemy, Polyworks.Enemy);
 	
 	var _this;
-	function AnimatedEnemy(params, id) {
+	function AnimatedEnemy(params) {
 		// trace('AnimatedEnemy['+idx+']/constructor, params =');
 		// trace(params);
 		_this = this;
-		AnimatedEnemy._super.constructor.call(this, params, id);
+		AnimatedEnemy._super.constructor.call(this, params);
 
 	}
 	
@@ -14,10 +14,10 @@ Polyworks.AnimatedEnemy = (function() {
 		if(this.active) {
 			AnimatedEnemy._super.update.call(this, params);
 
-			// trace('AnimatedEnemy['+this.view.sprite.name+']/update\n\tenemyX = ' + enemyX + ', playerX = ' + playerX);
+			// trace('AnimatedEnemy['+this.view.sprite.id+']/update\n\tenemyX = ' + enemyX + ', playerX = ' + playerX);
 
 			if(this.isInView) {
-				// trace('\tenemy['+this.view.sprite.name+'] in range');
+				// trace('\tenemy['+this.view.sprite.id+'] in range');
 				var enemyX = this.view.sprite.body.screenX;
 				var playerX = params.player.body.screenX;
 				var animations = this.view.sprite.animations; 

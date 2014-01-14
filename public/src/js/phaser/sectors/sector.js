@@ -1,10 +1,10 @@
 Polyworks.Sector = (function() {
 	Utils.inherits(Sector, Polyworks.Base);
 	
-	function Sector(params, id) {
-		// trace('Sector['+id+']/constructor, params = ');
+	function Sector(params) {
+		// trace('Sector['+params.id+']/constructor, params = ');
 		// trace(params);
-		Sector._super.constructor.call(this, params, id);
+		Sector._super.constructor.call(this, params);
 
 		this.__defineGetter__('bounds', function() {
 			return this.get('bounds');

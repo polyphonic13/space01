@@ -84,7 +84,7 @@ PolyworksGame = (function() {
 	
 	function _create() {
 		_initEvents();
-		_initControls();
+		// _initControls();
 		_initStates();
 		_removeLoadingAnimation();
 		PolyworksGame.changeState(config.initialState);
@@ -110,12 +110,12 @@ PolyworksGame = (function() {
 		PolyworksGame.changeState(event.value);
 	}
 	
-	function _initControls() {
-
-		_controls = new Polyworks.Collection(config.controls.keys, 'controlKeys');
-		_controls.init();
-	}
-
+	// function _initControls() {
+	// 
+	// 	_controls = new Polyworks.Collection(config.controls.keys, 'controlKeys');
+	// 	_controls.init();
+	// }
+	// 
 	function _initStates() {
 		_states = {};
 
@@ -123,10 +123,10 @@ PolyworksGame = (function() {
 		var state;
 
 		for(var i = 0; i < states.length; i++) {
-			state = new Polyworks[states[i].type](states[i], states[i].name);
-			_states[states[i].name] = state;
-			PolyworksGame.phaser.state.add(states[i].name, state, false);
-			if(states[i].name.indexOf('level') > -1) {
+			state = new Polyworks[states[i].cl](states[i], states[i].id);
+			_states[states[i].id] = state;
+			PolyworksGame.phaser.state.add(states[i].id, state, false);
+			if(states[i].id.indexOf('level') > -1) {
 				PolyworksGame.totalLevels++;
 			}
 		}

@@ -2,9 +2,9 @@ Polyworks.Enemy = (function() {
 	Utils.inherits(Enemy, Polyworks.Base);
 	
 	var _this;
-	function Enemy(params, id) {
+	function Enemy(params) {
 		_this = this;
-		Enemy._super.constructor.call(this, params, id);
+		Enemy._super.constructor.call(this, params);
 
 		this.__defineGetter__('sprite', function() {
 			return this.view.sprite;
@@ -62,7 +62,6 @@ Polyworks.Enemy = (function() {
 	}
 	
 	Enemy.prototype.destroy = function() {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_DESTROYED, value: this.id });
 		this.view.destroy();
 	};
 	

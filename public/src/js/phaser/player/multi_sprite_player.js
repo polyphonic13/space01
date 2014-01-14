@@ -1,8 +1,8 @@
 Polyworks.MultiSpritePlayer = (function() {
 	Utils.inherits(MultiSpritePlayer, Polyworks.Player);
 	
-	function MultiSpritePlayer(params, id) {
-		MultiSpritePlayer._super.constructor.call(this, params, id);
+	function MultiSpritePlayer(params) {
+		MultiSpritePlayer._super.constructor.call(this, params);
 		this.anatomy = {
 			attack: {},
 			vunerable: {}
@@ -17,9 +17,9 @@ Polyworks.MultiSpritePlayer = (function() {
 			view = new Polyworks[views[i].spriteType](views[i].attrs, this.id + '-sprite-' + i);
 			view.init();
 			if(view[i].attrs.isVunerable) {
-				this.anatomy.vunerable[view[i].name] = view;
+				this.anatomy.vunerable[view[i].id] = view;
 			} else {
-				this.anatomy.attack[view[i].name] = view;
+				this.anatomy.attack[view[i].id] = view;
 			}
 		}
 	};

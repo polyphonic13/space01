@@ -23,9 +23,9 @@ var GameView = (function(){
 		}
 	}
 
-	function _addImage(params, idx) {
+	function _addImage(params) {
 	    var imageObj = new Image();
-		var imageConfig = _createImageConfig(params, idx);
+		var imageConfig = _createImageConfig(params);
 		imageConfig.image = imageObj;
 	    imageObj.onload = function() {
 			var image = new Kinetic.Image(imageConfig);
@@ -36,7 +36,7 @@ var GameView = (function(){
 	    imageObj.src = params.url;
 	}
 	
-	function _createImageConfig(params, idx) {
+	function _createImageConfig(params) {
 		var config = {
 			id: idx,
 			x: params.x,

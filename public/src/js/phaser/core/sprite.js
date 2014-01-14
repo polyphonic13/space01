@@ -2,16 +2,19 @@ Polyworks.Sprite = (function() {
 	Utils.inherits(Sprite, Polyworks.Base);
 	
 	var _this;
-	function Sprite(params, id) {
+	function Sprite(params) {
+		trace('Sprite['+params.id+']/constructor, params = ');
+		trace(params);
 		_this = this;
-		Sprite._super.constructor.call(this, params, id);
+		_this.id = params.id;
+		Sprite._super.constructor.call(this, params);
 	}
 	
 	Sprite.prototype.init = function() {
 		var start = _this.model.start;
 		var sprite = Utils.addSprite(_this.model);
 
-		sprite.name = _this.model.img + '-' + _this.id;
+		sprite.id = _this.model.img + '-' + _this.id;
 		sprite.idx = _this.id;
 
 		if(_this.model.width) {

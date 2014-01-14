@@ -2,9 +2,9 @@ Polyworks.ControlsState = (function() {
 	Utils.inherits(ControlsState, Polyworks.State); 
 	
 	var _this;
-	function ControlsState(params, id) {
+	function ControlsState(params) {
 		_this = this;
-		ControlsState._super.constructor.call(this, params, id); 
+		ControlsState._super.constructor.call(this, params); 
 	}
 	
 	ControlsState.prototype.createState = function() {

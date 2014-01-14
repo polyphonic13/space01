@@ -2,9 +2,10 @@ Polyworks.AnimatedSprite = (function() {
 	Utils.inherits(AnimatedSprite, Polyworks.Sprite);
 	
 	var _this;
-	function AnimatedSprite(params, id) {
+	function AnimatedSprite(params) {
 		_this = this;
-		AnimatedSprite._super.constructor.call(this, params, id);
+		_this.id = id;
+		AnimatedSprite._super.constructor.call(this, params);
 
 		this.__defineSetter__('frame', function(val) {
 			this.sprite.animations.frame = val;
@@ -26,7 +27,7 @@ Polyworks.AnimatedSprite = (function() {
 	
 	AnimatedSprite.prototype.initAnimations = function(animations, sprite) {
 		for(var i = 0; i < animations.length; i++) {
-			sprite.animations.add(animations[i].name, animations[i].keyFrames, animations[i].frameRate);
+			sprite.animations.add(animations[i].id, animations[i].keyFrames, animations[i].frameRate);
 		}
 
 		var defaultAnimation = _this.model.defaultAnimation;

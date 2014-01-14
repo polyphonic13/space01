@@ -1,10 +1,10 @@
 Polyworks.AnimatedPlayer = (function() {
 	Utils.inherits(AnimatedPlayer, Polyworks.Player);
 	
-	function AnimatedPlayer(params, id) {
+	function AnimatedPlayer(params) {
 		// trace('AnimatedPlayer, params = ');
 		// trace(params);
-		AnimatedPlayer._super.constructor.call(this, params, id);
+		AnimatedPlayer._super.constructor.call(this, params);
 	}
 	
 	AnimatedPlayer.prototype.update = function(params) {

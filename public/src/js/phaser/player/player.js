@@ -2,10 +2,10 @@ Polyworks.Player = (function() {
 	// Utils.inherits(Player, Polyworks.AnimatedSprite);
 	Utils.inherits(Player, Polyworks.Base);
 	
-	function Player(params, id) {
+	function Player(params) {
 		trace('Player/constructor');
 		_this = this;
-		Player._super.constructor.call(this, params, id);
+		Player._super.constructor.call(this, params);
 
 		this.velX = 0;
 		this.velY = 0;

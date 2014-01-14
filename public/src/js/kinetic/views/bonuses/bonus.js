@@ -3,7 +3,7 @@ var Bonus = (function() {
 
 	var _this;
 	
-	function Bonus(params, id, holder) {
+	function Bonus(params, holder) {
 		// trace('Bonus/constructor');
 		_this = this;
 		this.holder = holder;

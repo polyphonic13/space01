@@ -1,16 +1,9 @@
 Polyworks.Enemies = (function() {
 	Utils.inherits(Enemies, Polyworks.PhysicalGroupCollection);
 	
-	var _this;
-	function Enemies(params, id) {
-		_this = this;
-		Enemies._super.constructor.call(this, params, id);
-		this.addListeners();
+	function Enemies(params) {
+		Enemies._super.constructor.call(this, params);
 	}
-	
-	Enemies.prototype.addListeners = function() {
-		Polyworks.EventCenter.bind(Polyworks.Events.ENEMY_DESTROYED, this.enemyDestroyed);
-	};
 	
 	Enemies.prototype.update = function(params) {
 		// trace('Enemies['+this.id+']/update, this.collection = ');
@@ -22,12 +15,6 @@ Polyworks.Enemies = (function() {
 				enemy.update(params);
 			}
 		}
-	};
-	
-	Enemies.prototype.enemyDestroyed = function(event) {
-		trace('Enemies['+_this.id+']/enemyDestroyed, event.value = ' + event.value);
-		var enemy = _this.getItemByName(event.value);
-		trace(enemy);
 	};
 	
 	return Enemies;

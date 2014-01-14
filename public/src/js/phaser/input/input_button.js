@@ -2,11 +2,11 @@ Polyworks.InputButton = (function() {
 	Utils.inherits(InputButton, Polyworks.Control);
 	
 	var _this;
-	function InputButton(params, id) {
+	function InputButton(params) {
 		// trace('InputButton/constructor, params = ');
 		// trace(params);
 		_this = this;
-		InputButton._super.constructor.call(this, params, id);
+		InputButton._super.constructor.call(this, params);
 	};
 	
 	InputButton.prototype.init = function() {

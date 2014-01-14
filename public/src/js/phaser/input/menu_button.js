@@ -2,11 +2,11 @@ Polyworks.MenuButton = (function() {
 	Utils.inherits(MenuButton, Polyworks.InputButton);
 	
 	var _this;
-	function MenuButton(params, id) {
+	function MenuButton(params) {
 		// trace('MenuButton/constructor, params = ');
 		// trace(params);
 		_this = this;
-		MenuButton._super.constructor.call(this, params, id);
+		MenuButton._super.constructor.call(this, params);
 	};
 	
 	MenuButton.prototype.inputDown = function(event, pointer) {

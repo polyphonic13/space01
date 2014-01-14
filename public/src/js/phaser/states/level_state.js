@@ -3,10 +3,10 @@ Polyworks.LevelState = (function() {
 	Utils.inherits(LevelState, Polyworks.ControlsState); 
 	
 	var _this;
-	function LevelState(params, id) {
+	function LevelState(params) {
 		// trace('LevelState/constructor, phaser = ');
 		_this = this;
-		LevelState._super.constructor.call(this, params, id);
+		LevelState._super.constructor.call(this, params);
 
 		this.gameOver = false;
 		this.terrain;
@@ -35,7 +35,7 @@ Polyworks.LevelState = (function() {
 		// trace('player type = ' + config.player.type);
 		var params = Utils.clone(config.player.attrs);
 		params.sectorManager = this.sectorManager;
-		this.player = new Polyworks[config.player.type](params, config.player.name);
+		this.player = new Polyworks[config.player.type](params, config.player.id);
 
 		this.createControls.call(this);
 
