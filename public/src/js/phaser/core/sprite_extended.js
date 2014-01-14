@@ -1,6 +1,10 @@
 Polyworks.MovableSprite = (function() {
 	
+	var _model;
+	var _this;
 	function MovableSprite(game, x, y, params) {
+		_this = this;
+		_model = new new Polyworks.Base(params);
 		Phaser.Sprite.call(this, game, x, y, params.img);
 	}
 	
@@ -31,29 +35,29 @@ Polyworks.MovableSprite = (function() {
 		_this.sprite = sprite;
 	};
 
+	MovableSprite.prototype = Object.create(Phaser.Sprite.prototype);
+	MovableSprite.prototype.constructor = Polyworks.Sprite;
+
 	MovableSprite.prototype.initPhysics = function(physics, sprite) {
 		// trace('Sprite['+this.id+']/initPhysics');
 		for(var key in physics) {
 			// trace(key + ' = ' + physics[key]);
-			sprite.body[key] = physics[key];
+			_this.body[key] = physics[key];
 		}
 		if(!physics.gravity && !physics.immovable) {
-			sprite.body.gravity.y = world.gravity;
+			_this.body.gravity.y = world.gravity;
 		}
 	};
-
-	MovableSprite.prototype = Object.create(Phaser.Sprite.prototype);
-	MovableSprite.prototype.constructor = Polyworks.Sprite;
 
 	MovableSprite.prototype.checkTerrainCollision = function(terrain) {
-		PolyworksGame.phaser.physics.collide(this.sprite, terrain);
+		PolyworksGame.phaser.physics.collide(_this, terrain);
 	};
 	
-	MovableSprite.prototype.move = function(params) {
-		if(this.model.movement) {
-			Utils.moveView(this.sprite, this.model.movement, params);
-		}
-	};
+	// MovableSprite.prototype.move = function(params) {
+	// 	if(this.model.movement) {
+	// 		Utils.moveView(this.sprite, this.model.movement, params);
+	// 	}
+	// };
 	
 	return MovableSprite;
 })();
