@@ -1,21 +1,23 @@
-Polyworks.Collection = (function() {
+Polyworks.Group = (function() {
+	var _this;
 	
-	function Collection(params) {
+	function Group(game, params) {
+		_this = this;
 		this.model = new Polyworks.Model(params);
-		trace('Collection['+params.name+']/constructor');
 		this.collection = {};
+		Phaser.Group.call(this, game, params.parent, params.name, parmas.useStage);
 	}
 	
-	Collection.prototype.init = function() {
-		trace('Collection['+this.model.name+']/init, itemClass = '+ itemClass);
+	Group.prototype = Object.create(Phaser.Group.prototype);
+	Group.prototype.constructor = Polyworks.Group;
+
+	Group.prototype.init = function() {
+		trace('Group['+this.model.name+']/init');
 		trace(this.model.attrs);
 		var game = PolyworksGame.phaser;
 		var elements = this.model.attrs;
 		var element;
 		var cl;
-
-		this.group = game.add.group();
-
 		for(var i = 0; i < elements.length; i++) {
 			if(!elements[i].attrs.name) {
 				elements[i].attrs.name = (elements[i].name) ? elements[i].name : i;
@@ -32,29 +34,14 @@ Polyworks.Collection = (function() {
 			}
 			element.init();
 			this.collection[elements[i].name] = element;
-			this.group.add(element);
 		}
 	};
 	
-	Collection.prototype.addView = function(params, itemClass) {
-		trace('Collection['+this.model.name+']/addView, itemClass = ' + itemClass);
+	Group.prototype.addView = function(params, itemClass) {
+		trace('Group['+this.model.name+']/addView, itemClass = ' + itemClass);
 		trace(params);
 		return new Polyworks[itemClass](params);
 	};
 	
-	Collection.prototype.getItemByName = function(name) {
-		return this.collection[name];
-	};
-	
-	Collection.prototype.remove = function() {
-		// trace('Collection['+this.model.name+']/remove, collection = ');
-		// trace(this.collection);
-		for(var i = 0; i < this.collection.length; i++) {
-			if(this.collection[i].remove) {
-				this.collection[i].remove();
-			}
-		}
-	};
-	
-	return Collection;
+	return Group;
 })();

@@ -10,7 +10,7 @@ Polyworks.GUIConsole = (function() {
 	GUIConsole.prototype.setInitialContent = function() {
 		for(var i = 0; i < this.collection.length; i++) {
 			if(this.collection[i].text) {
-				this.parseAndSetContent(this.collection[i].id);
+				this.parseAndSetContent(this.collection[i].name);
 			}
 		}
 		this.addListeners();

@@ -1,10 +1,9 @@
 Polyworks.Enemy = (function() {
-	Utils.inherits(Enemy, Polyworks.Base);
 	
 	var _this;
 	function Enemy(params) {
 		_this = this;
-		Enemy._super.constructor.call(this, params);
+		this.model = new Polyworks.Model(params);
 
 		this.__defineGetter__('sprite', function() {
 			return this.view.sprite;
@@ -31,7 +30,7 @@ Polyworks.Enemy = (function() {
 	};
 	
 	Enemy.prototype.initSprite = function() {
-		this.view = new Polyworks[this.model.spriteType](this.model, this.id);
+		this.view = new Polyworks[this.model.spriteType](this.model, this.model.name);
 		this.view.init();
 	};
 	

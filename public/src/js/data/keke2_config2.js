@@ -50,7 +50,7 @@ var config = {
 	// CONTROLS
 	controls: {
 		keys: [{
-			id: 'quit',
+			name: 'quit',
 			cl: 'ControlKey',
 			attrs: {
 				inputCode: Polyworks.InputCodes.QUIT,
@@ -63,21 +63,21 @@ var config = {
 			}
 		},
 		{
-			id: 'left',
+			name: 'left',
 			cl: 'ControlKey',
 			attrs: {
 				inputCode: Polyworks.InputCodes.LEFT
 			}
 		},
 		{
-			id: 'right',
+			name: 'right',
 			cl: 'ControlKey',
 			attrs: {
 				inputCode: Polyworks.InputCodes.RIGHT
 			}
 		},
 		{
-			id: 'up',
+			name: 'up',
 			cl: 'ControlKey',
 			attrs: {
 				inputCode: Polyworks.InputCodes.UP
@@ -85,7 +85,7 @@ var config = {
 		}],
 		buttons: {
 			menu: [{
-				id: 'start',
+				name: 'start',
 				cl: 'MenuButton',
 				attrs: {
 					img: 'startButton',
@@ -97,7 +97,7 @@ var config = {
 				}
 			},
 			{
-				id: 'quitBtn',
+				name: 'quitBtn',
 				cl: 'MenuButton',
 				attrs: {
 					img: 'quitButton',
@@ -115,7 +115,7 @@ var config = {
 				}
 			}],
 			levelComplete: [{
-				id: 'next',
+				name: 'next',
 				cl: 'MenuButton',
 				attrs: {
 					img: 'nextButton',
@@ -133,7 +133,7 @@ var config = {
 				}
 			},
 			{
-				id: 'quitBtn',
+				name: 'quitBtn',
 				cl: 'MenuButton',
 				attrs: {
 					img: 'quitButton',
@@ -151,7 +151,7 @@ var config = {
 				}
 			}],
 			level: [{
-				id: 'invisBtn',
+				name: 'invisBtn',
 				cl: 'ControlButton',
 				attrs: {
 					img: 'invisibleBg',
@@ -165,7 +165,7 @@ var config = {
 				}
 			},
 			{
-				id: 'leftBtn',
+				name: 'leftBtn',
 				cl: 'ControlButton',
 				attrs: {
 					img: 'leftButton',
@@ -177,7 +177,7 @@ var config = {
 				}
 			},
 			{
-				id: 'rightBtn',
+				name: 'rightBtn',
 				cl: 'ControlButton',
 				attrs: {
 					img: 'rightButton',
@@ -189,7 +189,7 @@ var config = {
 				}
 			},
 			{
-				id: 'upBtn',
+				name: 'upBtn',
 				cl: 'ControlButton',
 				attrs: {
 					img: 'upButton',
@@ -201,7 +201,7 @@ var config = {
 				}
 			},
 			{
-				id: 'quitBtn',
+				name: 'quitBtn',
 				cl: 'MenuButton',
 				attrs: {
 					img: 'quitButton',
@@ -223,7 +223,7 @@ var config = {
 	// STATES
 	initialState: 'menu',
 	states: [{
-		id: 'menu',
+		name: 'menu',
 		cl: 'MenuState',
 		world: {
 			x: 0,
@@ -235,9 +235,9 @@ var config = {
 		clearCache: false,
 		controlsType: 'menu',
 		elements: [{
-			id: 'bg',
+			name: 'bg',
 			cl: 'Sprite',
-			type: 'view',
+			type: 'sprite',
 			attrs: {
 				img: 'greyRect',
 				start: {
@@ -249,29 +249,25 @@ var config = {
 			}
 		},
 		{
-			id: 'copy',
-			cl: 'GroupCollection',
-			attrs: [{
-				id: 'title',
-				cl: 'Text',
-				attrs: {
-					centerX: true,
-					centerY: false,
-					x: 0,
-					y: 50,
-					defaultContent: 'Keke vs. the Caterpillars',
-					style: { 
-						font: '30px Arial', 
-						fill: '#000000',
-						align: 'center'
-					}
+			name: 'title',
+			cl: 'Text',
+			attrs: {
+				centerX: true,
+				centerY: false,
+				x: 0,
+				y: 50,
+				defaultContent: 'Keke vs. the Caterpillars',
+				style: { 
+					font: '30px Arial', 
+					fill: '#000000',
+					align: 'center'
 				}
-			}]
+			}
 		}]
+		/*
 	},
-/*
 	{
-		id: 'level0',
+		name: 'level0',
 		cl: 'LevelState',
 		world: {
 			x: 0,
@@ -287,14 +283,14 @@ var config = {
 			end: 4050
 		},
 		elements: [{
-			id: 'scenery',
+			name: 'scenery',
 			cl: 'Collection',
 			attrs: [{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'sky',
-					id: 'sky',
+					name: 'sky',
 					start: {
 						x: 0,
 						y: 0
@@ -306,7 +302,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'mountains',
 					start: {
@@ -317,7 +313,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'treesBack',
 					start: {
@@ -328,7 +324,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'treesFore',
 					start: {
@@ -339,7 +335,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'mountains',
 					start: {
@@ -350,7 +346,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'treesBack',
 					start: {
@@ -361,7 +357,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'treesFore',
 					start: {
@@ -372,7 +368,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'grass1',
 					start: {
@@ -383,7 +379,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'grass2',
 					start: {
@@ -394,12 +390,12 @@ var config = {
 			}]
 		},
 		{
-			id: 'terrain',
+			name: 'terrain',
 			cl: 'PhysicalGroupCollection',
 			attrs: [{
-				id: 'ground',
+				name: 'ground',
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -414,7 +410,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -429,7 +425,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -444,7 +440,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -459,7 +455,7 @@ var config = {
 			}]
 		},
 		{
-			id: 'sectors',
+			name: 'sectors',
 			cl: 'Sectors',
 			attrs: [{
 				cl: 'Sector',
@@ -469,7 +465,7 @@ var config = {
 						end: 1024
 					},
 					enemies: [{
-						id: 'level0-sector0-enemy0',
+						name: 'level0-sector0-enemy0',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
@@ -493,7 +489,7 @@ var config = {
 					}],
 					bonuses: [{
 						cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 						attrs: {
 							img: 'lollipop',
 							start: {
@@ -520,7 +516,7 @@ var config = {
 						end: 2048
 					},
 					enemies: [{
-						id: 'level0-sector1-enemy0',
+						name: 'level0-sector1-enemy0',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
@@ -559,7 +555,7 @@ var config = {
 						end: 3072
 					},
 					enemies: [{
-						id: 'level0-sector2-enemy1',
+						name: 'level0-sector2-enemy1',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
@@ -588,7 +584,7 @@ var config = {
 					}],
 					bonuses: [{
 						cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 						attrs: {
 							img: 'lollipop',
 							start: {
@@ -615,7 +611,7 @@ var config = {
 						end: 4098
 					},
 					enemies: [{
-						id: 'level0-sector3-enemy0',
+						name: 'level0-sector3-enemy0',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
@@ -644,7 +640,7 @@ var config = {
 					}],
 					bonuses: [{
 						cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 						attrs: {
 							img: 'lollipop',
 							start: {
@@ -666,12 +662,12 @@ var config = {
 
 		},
 		{
-			id: 'gui',
+			name: 'gui',
 			cl: 'GUIConsole',
 			attrs: [{
-				id: 'heartIcon',
+				name: 'heartIcon',
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'heart',
 					start: {
@@ -681,7 +677,7 @@ var config = {
 				}
 			},
 			{
-				id: 'health',
+				name: 'health',
 				cl: 'Text',
 				attrs: {
 					x: 60,
@@ -697,7 +693,7 @@ var config = {
 		}]
 	},
 	{
-		id: 'level1',
+		name: 'level1',
 		cl: 'LevelState',
 		world: {
 			x: 0,
@@ -713,14 +709,14 @@ var config = {
 			end: 4050
 		},
 		elements: [{
-			id: 'scenery',
+			name: 'scenery',
 			cl: 'Collection',
 			attrs: [{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'sky',
-					id: 'sky',
+					name: 'sky',
 					start: {
 						x: 0,
 						y: 0
@@ -732,7 +728,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'mountains',
 					start: {
@@ -743,7 +739,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'treesBack',
 					start: {
@@ -754,7 +750,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'treesFore',
 					start: {
@@ -765,7 +761,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'mountains',
 					start: {
@@ -776,7 +772,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'treesBack',
 					start: {
@@ -787,7 +783,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'treesFore',
 					start: {
@@ -798,7 +794,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'grass1',
 					start: {
@@ -809,7 +805,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'grass2',
 					start: {
@@ -820,11 +816,11 @@ var config = {
 			}]
 		},
 		{
-			id: 'terrain',
+			name: 'terrain',
 			cl: 'PhysicalGroupCollection',
 			attrs: [{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -839,7 +835,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -854,7 +850,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -869,7 +865,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -884,7 +880,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -899,7 +895,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -914,7 +910,7 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -929,7 +925,7 @@ var config = {
 			}]
 		},
 		{
-			id: 'sectors',
+			name: 'sectors',
 			cl: 'Sectors',
 			attrs: [{
 				cl: 'Sector',
@@ -939,7 +935,7 @@ var config = {
 						end: 1024
 					},
 					enemies: [{
-						id: 'level1-sector0-enemy0',
+						name: 'level1-sector0-enemy0',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
@@ -967,7 +963,7 @@ var config = {
 						}
 					},
 					{
-						id: 'level1-sector0-enemy0',
+						name: 'level1-sector0-enemy0',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
@@ -1005,7 +1001,7 @@ var config = {
 						end: 2048
 					},
 					enemies: [{
-						id: 'level1-sector1-enemy0',
+						name: 'level1-sector1-enemy0',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
@@ -1029,7 +1025,7 @@ var config = {
 						}
 					},
 					{
-						id: 'level1-sector1-enemy0',
+						name: 'level1-sector1-enemy0',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
@@ -1063,7 +1059,7 @@ var config = {
 						end: 3072
 					},
 					enemies: [{
-						id: 'level1-sector2-enemy0',
+						name: 'level1-sector2-enemy0',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
@@ -1091,7 +1087,7 @@ var config = {
 						}
 					},
 					{
-						id: 'level1-sector2-enemy0',
+						name: 'level1-sector2-enemy0',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
@@ -1120,7 +1116,7 @@ var config = {
 					}],
 					bonuses: [{
 						cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 						attrs: {
 							img: 'lollipop',
 							start: {
@@ -1139,7 +1135,7 @@ var config = {
 					},
 					{
 						cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 						attrs: {
 							img: 'lollipop',
 							start: {
@@ -1167,7 +1163,7 @@ var config = {
 						end: 4098
 					},
 					enemies: [{
-						id: 'level1-sector3-enemy0',
+						name: 'level1-sector3-enemy0',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
@@ -1195,7 +1191,7 @@ var config = {
 						}
 					},
 					{
-						id: 'level1-sector3-enemy0',
+						name: 'level1-sector3-enemy0',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
@@ -1224,7 +1220,7 @@ var config = {
 					}],
 					bonuses: [{
 						cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 						attrs: {
 							img: 'lollipop',
 							start: {
@@ -1246,12 +1242,12 @@ var config = {
 
 		},
 		{
-			id: 'gui',
+			name: 'gui',
 			cl: 'GUIConsole',
 			attrs: [{
-				id: 'heartIcon',
+				name: 'heartIcon',
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'heart',
 					start: {
@@ -1261,7 +1257,7 @@ var config = {
 				}
 			},
 			{
-				id: 'health',
+				name: 'health',
 				cl: 'Text',
 				attrs: {
 					x: 60,
@@ -1277,7 +1273,7 @@ var config = {
 		}]
 	},
 	{
-		id: 'intermission',
+		name: 'intermission',
 		cl: 'MenuState',
 		world: {
 			x: 0,
@@ -1289,9 +1285,9 @@ var config = {
 		clearCache: false,
 		controlsType: 'levelComplete',
 		elements: [{
-			id: 'bg',
+			name: 'bg',
 			cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 			attrs: {
 				img: 'greyRect',
 				start: {
@@ -1303,10 +1299,10 @@ var config = {
 			}
 		},
 		{
-			id: 'copy',
+			name: 'copy',
 			cl: 'GroupCollection',
 			attrs: [{
-				id: 'title',
+				name: 'title',
 				cl: 'Text',
 				attrs: {
 					centerX: true,
@@ -1323,9 +1319,8 @@ var config = {
 			}]
 		}]
 	},
-*/
 	{
-		id: 'quit',
+		name: 'quit',
 		cl: 'State',
 		world: {
 			x: 0,
@@ -1336,12 +1331,12 @@ var config = {
 		clearWorld: true,
 		clearCache: false,
 		elements: [{
-			id: 'copy',
+			name: 'copy',
 			cl: 'GroupCollection',
 			attrs: [{
-				id: 'bg',
+				name: 'bg',
 				cl: 'Sprite',
-	type: 'view',
+	type: 'sprite',
 				attrs: {
 					img: 'greyRect',
 					start: {
@@ -1354,7 +1349,7 @@ var config = {
 				}
 			},
 			{
-				id: 'title',
+				name: 'title',
 				cl: 'Text',
 				attrs: {
 					centerX: true,
@@ -1371,10 +1366,10 @@ var config = {
 				}
 			}]
 		}]
-
+*/
 	}],
 	player: {
-		id: 'keke',
+		name: 'keke',
 		cl: 'AnimatedPlayer',
 		attrs: {
 			spriteType: 'AnimatedSprite',
@@ -1402,7 +1397,7 @@ var config = {
 			},
 			speed: {
 				x: 150,
-				y: 400,
+				y: 400
 			},
 			controls: {
 				left: Polyworks.InputCodes.LEFT,

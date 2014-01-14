@@ -21,7 +21,7 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.create =  function() {
-		// trace('LevelState['+this.id+']/create');
+		// trace('LevelState['+this.model.name+']/create');
 		LevelState._super.create.call(this);
 	};
 	
@@ -35,7 +35,7 @@ Polyworks.LevelState = (function() {
 		// trace('player type = ' + config.player.type);
 		var params = Utils.clone(config.player.attrs);
 		params.sectorManager = this.sectorManager;
-		this.player = new Polyworks[config.player.type](params, config.player.id);
+		this.player = new Polyworks[config.player.type](params, config.player.name);
 
 		this.createControls.call(this);
 

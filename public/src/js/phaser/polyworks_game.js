@@ -46,6 +46,10 @@ PolyworksGame = (function() {
 			// }
 		},
 
+		getState: function(name) {
+			return _states[name];
+		},
+
 		setScore: function(val) {
 			PolyworksGame.score += val;
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.SCORE_UPDATED });
@@ -83,12 +87,23 @@ PolyworksGame = (function() {
 	}
 	
 	function _create() {
+		_removeLoadingAnimation();
 		_initEvents();
 		// _initControls();
 		_initStates();
-		_removeLoadingAnimation();
-		PolyworksGame.changeState(config.initialState);
-
+/*
+		var params = {
+			x: 10, 
+			y: 10,
+			img: 'heart',
+			name: 'heartIcon'
+		};
+		var test = new Polyworks.Sprite(PolyworksGame.phaser, params.x, params.y, params);
+		test.init();
+		// PolyworksGame.phaser.add.sprite(10, 10, params.img, params.name);
+		var group = PolyworksGame.phaser.add.group();
+		group.add(test);
+*/
 	}
 	
 	
@@ -110,12 +125,12 @@ PolyworksGame = (function() {
 		PolyworksGame.changeState(event.value);
 	}
 	
-	// function _initControls() {
-	// 
-	// 	_controls = new Polyworks.Collection(config.controls.keys, 'controlKeys');
-	// 	_controls.init();
-	// }
-	// 
+	function _initControls() {
+	
+		_controls = new Polyworks.Collection(config.controls.keys, 'controlKeys');
+		_controls.init();
+	}
+	
 	function _initStates() {
 		_states = {};
 
@@ -123,15 +138,16 @@ PolyworksGame = (function() {
 		var state;
 
 		for(var i = 0; i < states.length; i++) {
-			state = new Polyworks[states[i].cl](states[i], states[i].id);
-			_states[states[i].id] = state;
-			PolyworksGame.phaser.state.add(states[i].id, state, false);
-			if(states[i].id.indexOf('level') > -1) {
+			state = new Polyworks[states[i].cl](states[i], states[i].name);
+			_states[states[i].name] = state;
+			PolyworksGame.phaser.state.add(states[i].name, state, false);
+			if(states[i].name.indexOf('level') > -1) {
 				PolyworksGame.totalLevels++;
 			}
 		}
 		trace('PolyworksGame, _states = ');
 		trace(_states);
+		PolyworksGame.changeState(config.initialState);
 	}
 
 	function _removeLoadingAnimation() {

@@ -2,10 +2,12 @@ Polyworks.Sprite = (function() {
 	var _this;
 
 	function Sprite(game, x, y, params) {
-		trace('SpriteExtended['+params.id+']/constructor, params = ');
-		trace(params);
 		_this = this;
-		this.model = new Polyworks.Base(params);
+		this.model = new Polyworks.Model(params);
+		trace('Sprite['+this.model.name+']/constructor, model = ');
+		trace(this.model);
+		trace('\tgame =');
+		trace(game);
 		Phaser.Sprite.call(this, game, x, y, params.img);
 	}
 	
@@ -13,7 +15,8 @@ Polyworks.Sprite = (function() {
 	Sprite.prototype.constructor = Polyworks.Sprite;
 
 	Sprite.prototype.init = function() {
-
+		trace('Sprite['+this.model.name+']/init, model = ');
+		trace(this.model);
 		if(this.model.width) {
 			this.width = this.model.width;
 		}
@@ -33,7 +36,7 @@ Polyworks.Sprite = (function() {
 	};
 
 	Sprite.prototype.initPhysics = function(physics, sprite) {
-		// trace('Sprite['+this.id+']/initPhysics');
+		// trace('Sprite['+this.model.name+']/initPhysics');
 		for(var key in physics) {
 			// trace(key + ' = ' + physics[key]);
 			this.body[key] = physics[key];

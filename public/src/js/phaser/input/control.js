@@ -1,11 +1,10 @@
 Polyworks.Control = (function() {
-	Utils.inherits(Control, Polyworks.Base);
 	
 	var _this;
 	
 	function Control(params) {
 		_this = this;
-		Control._super.constructor.call(this, params);
+		this.model = new Polyworks.Model(params);
 	}
 	
 	Control.prototype.inputPressed = function(params) {

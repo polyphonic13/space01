@@ -1,10 +1,9 @@
 Polyworks.State = (function() {
-	Utils.inherits(State, Polyworks.Base);
 	
 	var _this;
 	function State(params) {
 		_this = this;
-		State._super.constructor.call(this, params);
+		this.model = new Polyworks.Model(params);
 		this.loaded = false;
 		this.created = false;
 		this.active = false;
@@ -48,23 +47,28 @@ Polyworks.State = (function() {
 	};
 
 	State.prototype.createElements = function() {
-		trace('State['+this.id+']/createElements');
+		trace('State['+this.model.name+']/createElements');
+		trace(this.model);
 		var game = PolyworksGame.phaser;
 		var elements = this.model.elements;
+		trace('\telements.length = ' + elements.length);
 		var element;
 		var attrs; 
 
 		for(var i = 0; i < elements.length; i++) {
-			attrs = elements[i].attrs;
-			attrs.id = (attrs.id) ? attrs.id : i;
-			trace('\telements['+i+'].cl = ' + elements[i].cl);
-			if(elements[i].type === 'view') {
-				element = new Polyworks[elements[i].cl](game, attrs.start.x, attrs.start.y, attrs);
-			} else {
-				element = new Polyworks[elements[i].cl](attrs);
+			if(!elements[i].name) {
+				elements[i].name = i;
 			}
-			element.init();
-			this.elements[elements[i].id] = element;
+			trace('\telements['+elements[i].name+'].cl = ' + elements[i].cl);
+			trace(elements[i]);
+			if(elements[i].type === 'sprite') {
+				element = new Polyworks[elements[i].cl](game, elements[i].attrs.start.x, elements[i].attrs.start.y, elements[i].attrs);
+				element.init(elements[i].name);
+			} else {
+				element = new Polyworks[elements[i].cl](game, elements[i]);
+				element.init();
+			}
+			this.elements[elements[i].name] = element;
 		}
 	};
 	

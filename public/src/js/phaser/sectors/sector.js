@@ -1,10 +1,9 @@
 Polyworks.Sector = (function() {
-	Utils.inherits(Sector, Polyworks.Base);
 	
 	function Sector(params) {
-		// trace('Sector['+params.id+']/constructor, params = ');
+		// trace('Sector['+params.name+']/constructor, params = ');
 		// trace(params);
-		Sector._super.constructor.call(this, params);
+		this.model = new Polyworks.Model(params);
 
 		this.__defineGetter__('bounds', function() {
 			return this.get('bounds');
@@ -13,9 +12,9 @@ Polyworks.Sector = (function() {
 	}
 	
 	Sector.prototype.init = function() {
-		// trace('Sector/['+this.id+']/init, this = ');
+		// trace('Sector/['+this.model.name+']/init, this = ');
 		// trace(this);
-		var sectorId = 'Sector' + this.id;
+		var sectorId = 'Sector' + this.model.name;
 		this.enemies = new Polyworks.Enemies(this.model.enemies, sectorId);
 		this.enemies.init('AnimatedEnemy');
 
@@ -26,7 +25,7 @@ Polyworks.Sector = (function() {
 	}
 
 	Sector.prototype.checkTerrainCollision = function(ground) {
-		// trace('Sector['+this.id+']/checkTerrainCollision');
+		// trace('Sector['+this.model.name+']/checkTerrainCollision');
 		this.enemies.checkTerrainCollision(ground);
 		this.bonuses.checkTerrainCollision(ground);
 	};

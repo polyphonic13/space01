@@ -6,7 +6,7 @@ Polyworks.Enemies = (function() {
 	}
 	
 	Enemies.prototype.update = function(params) {
-		// trace('Enemies['+this.id+']/update, this.collection = ');
+		// trace('Enemies['+this.model.name+']/update, this.collection = ');
 		// trace(this.collection);
 		var enemy;
 		for(var i = 0; i < this.collection.length; i++) {

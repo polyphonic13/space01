@@ -14,12 +14,12 @@ Polyworks.MultiSpritePlayer = (function() {
 		var view;
 
 		for(var i = 0; i < views; i++) {
-			view = new Polyworks[views[i].spriteType](views[i].attrs, this.id + '-sprite-' + i);
+			view = new Polyworks[views[i].spriteType](views[i].attrs, this.model.name + '-sprite-' + i);
 			view.init();
 			if(view[i].attrs.isVunerable) {
-				this.anatomy.vunerable[view[i].id] = view;
+				this.anatomy.vunerable[view[i].name] = view;
 			} else {
-				this.anatomy.attack[view[i].id] = view;
+				this.anatomy.attack[view[i].name] = view;
 			}
 		}
 	};
@@ -49,7 +49,7 @@ Polyworks.MultiSpritePlayer = (function() {
 		trace(playerSprite);
 		trace('sprite = ');
 		trace(sprite);
-		var enemy = this.model.sectorManager.activeSector.enemies.getItemByName(sprite.idx);
+		var enemy = this.model.sectorManager.activeSector.enemies.getItemByName(sprite.namex);
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, enemy: enemy });
 		this.updatePositionFromCollision();
 		enemy.receiveDamage(this.model.damage);
@@ -60,7 +60,7 @@ Polyworks.MultiSpritePlayer = (function() {
 		trace(playerSprite);
 		trace('sprite = ');
 		trace(sprite);
-		var enemy = this.model.sectorManager.activeSector.enemies.getItemByName(sprite.idx);
+		var enemy = this.model.sectorManager.activeSector.enemies.getItemByName(sprite.namex);
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, enemy: enemy });
 		this.receiveDamage(enemy.damage);
 	};
