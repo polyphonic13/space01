@@ -269,39 +269,34 @@ var config = {
 			}
 		},
 		{
-			name: 'controls',
-			cl: 'Collection',
-			addTo: 'null',
-			attrs: [{
-				name: 'start',
-				cl: 'InputButton',
-				attrs: {
-					img: 'startButton',
-					start: {
-						x: stage.width/2 - 128,
-						y: stage.height/2 - 64
-					},
-					inputCode: Polyworks.InputCodes.PLAY
-				}
-			},
-			{
-				name: 'quitBtn',
-				cl: 'InputButton',
-				attrs: {
-					img: 'quitButton',
-					start: {
-						x: stage.width - 80,
-						y: 10
-					},
-					inputCode: Polyworks.InputCodes.QUIT,
-					event: {
-						pressed: {
-							cl: Polyworks.Events.CHANGE_STATE,
-							value: 'quit'
-						}
+			name: 'start',
+			cl: 'InputButton',
+			attrs: {
+				img: 'startButton',
+				start: {
+					x: stage.width/2 - 128,
+					y: stage.height/2 - 64
+				},
+				inputCode: Polyworks.InputCodes.PLAY
+			}
+		},
+		{
+			name: 'quitBtn',
+			cl: 'InputButton',
+			attrs: {
+				img: 'quitButton',
+				start: {
+					x: stage.width - 80,
+					y: 10
+				},
+				inputCode: Polyworks.InputCodes.QUIT,
+				event: {
+					pressed: {
+						cl: Polyworks.Events.CHANGE_STATE,
+						value: 'quit'
 					}
 				}
-			}]
+			}
 		}]
 		/*
 	},
