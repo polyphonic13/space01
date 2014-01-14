@@ -1,13 +1,13 @@
 Polyworks.Text = (function() {
 	var _this; 
 	
-	function Text(game, params) {
+	function Text(params) {
 		_this = this;
 		this.model = new Polyworks.Model(params);
 		var attrs = this.model.attrs;
 		// trace('Text['+params.name+']/constructor, this = ');
 		// trace(this);
-		Phaser.Text.call(this, game, attrs.x, attrs.y, attrs.defaultContent, attrs.style);
+		Phaser.Text.call(this, params.game, attrs.x, attrs.y, attrs.defaultContent, attrs.style);
 	}
 	
 	Text.prototype = Object.create(Phaser.Text.prototype);

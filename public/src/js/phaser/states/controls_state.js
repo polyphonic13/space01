@@ -12,12 +12,15 @@ Polyworks.ControlsState = (function() {
 	};
 
 	ControlsState.prototype.createControls = function() {
-		// trace('ControlsState/createControls, this.this = ');
-		// trace(this);
-		// trace(_this);
-		// trace(this);
-		this.controls = new Polyworks.ControlButtons(config.controls.buttons[this.model.controlsType]);
-		this.controls.begin();
+		trace('ControlsState/createControls, this.this = ');
+		trace(this);
+		var ctrls = PolyworksGame.get('controls');
+		var attrs = ctrls.buttons[this.model.name];
+
+		this.addChildren(this.game, this.model.group, attrs);
+		this.controls = this.getItemByName('controls');
+		// this.controls = new Polyworks.ControlButtons(config.controls.buttons[this.model.controlsType]);
+		// this.controls.begin();
 		// this.controls = new Polyworks.Collection(config.controls.buttons[this.model.controlsType], 'controlButtons');
 		// var controlConsole = PolyworksGame.phaser.add.group(null);
 		// this.controls = new Polyworks.GroupCollection(config.controls.buttons[this.model.controlsType], 'controlButtons', 'null');

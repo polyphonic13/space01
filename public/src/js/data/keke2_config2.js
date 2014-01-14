@@ -85,38 +85,43 @@ var config = {
 		}],
 		buttons: {
 			menu: [{
-				name: 'start',
-				cl: 'MenuButton',
-				attrs: {
-					img: 'startButton',
-					start: {
-						x: stage.width/2 - 128,
-						y: stage.height/2 - 64
-					},
-					inputCode: Polyworks.InputCodes.PLAY
-				}
-			},
-			{
-				name: 'quitBtn',
-				cl: 'MenuButton',
-				attrs: {
-					img: 'quitButton',
-					start: {
-						x: stage.width - 80,
-						y: 10
-					},
-					inputCode: Polyworks.InputCodes.QUIT,
-					event: {
-						pressed: {
-							cl: Polyworks.Events.CHANGE_STATE,
-							value: 'quit'
+				name: 'controls',
+				cl: 'Collection',
+				addTo: 'null',
+				attrs: [{
+					name: 'start',
+					cl: 'InputButton',
+					attrs: {
+						img: 'startButton',
+						start: {
+							x: stage.width/2 - 128,
+							y: stage.height/2 - 64
+						},
+						inputCode: Polyworks.InputCodes.PLAY
+					}
+				},
+				{
+					name: 'quitBtn',
+					cl: 'InputButton',
+					attrs: {
+						img: 'quitButton',
+						start: {
+							x: stage.width - 80,
+							y: 10
+						},
+						inputCode: Polyworks.InputCodes.QUIT,
+						event: {
+							pressed: {
+								cl: Polyworks.Events.CHANGE_STATE,
+								value: 'quit'
+							}
 						}
 					}
-				}
+				}]
 			}],
 			levelComplete: [{
 				name: 'next',
-				cl: 'MenuButton',
+				cl: 'InputButton',
 				attrs: {
 					img: 'nextButton',
 					start: {
@@ -134,7 +139,7 @@ var config = {
 			},
 			{
 				name: 'quitBtn',
-				cl: 'MenuButton',
+				cl: 'InputButton',
 				attrs: {
 					img: 'quitButton',
 					start: {
@@ -152,7 +157,7 @@ var config = {
 			}],
 			level: [{
 				name: 'invisBtn',
-				cl: 'ControlButton',
+				cl: 'InputButton',
 				attrs: {
 					img: 'invisibleBg',
 					start: {
@@ -166,7 +171,7 @@ var config = {
 			},
 			{
 				name: 'leftBtn',
-				cl: 'ControlButton',
+				cl: 'InputButton',
 				attrs: {
 					img: 'leftButton',
 					start: {
@@ -178,7 +183,7 @@ var config = {
 			},
 			{
 				name: 'rightBtn',
-				cl: 'ControlButton',
+				cl: 'InputButton',
 				attrs: {
 					img: 'rightButton',
 					start: {
@@ -190,7 +195,7 @@ var config = {
 			},
 			{
 				name: 'upBtn',
-				cl: 'ControlButton',
+				cl: 'InputButton',
 				attrs: {
 					img: 'upButton',
 					start: {
@@ -202,7 +207,7 @@ var config = {
 			},
 			{
 				name: 'quitBtn',
-				cl: 'MenuButton',
+				cl: 'InputButton',
 				attrs: {
 					img: 'quitButton',
 					start: {
@@ -262,6 +267,41 @@ var config = {
 					align: 'center'
 				}
 			}
+		},
+		{
+			name: 'controls',
+			cl: 'Collection',
+			addTo: 'null',
+			attrs: [{
+				name: 'start',
+				cl: 'InputButton',
+				attrs: {
+					img: 'startButton',
+					start: {
+						x: stage.width/2 - 128,
+						y: stage.height/2 - 64
+					},
+					inputCode: Polyworks.InputCodes.PLAY
+				}
+			},
+			{
+				name: 'quitBtn',
+				cl: 'InputButton',
+				attrs: {
+					img: 'quitButton',
+					start: {
+						x: stage.width - 80,
+						y: 10
+					},
+					inputCode: Polyworks.InputCodes.QUIT,
+					event: {
+						pressed: {
+							cl: Polyworks.Events.CHANGE_STATE,
+							value: 'quit'
+						}
+					}
+				}
+			}]
 		}]
 		/*
 	},

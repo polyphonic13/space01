@@ -21,6 +21,14 @@ PolyworksGame = (function() {
 			// _checkPhaserBoot();
 		},
 
+		get: function(prop) {
+			if(_model.hasOwnProperty(prop)) {
+				return _model[prop];
+			} else {
+				return null;
+			}
+		},
+
 		changeState: function(id) {
 			// if(id === 'quit') {
 			// 	PolyworksGame.quit();
@@ -109,8 +117,8 @@ PolyworksGame = (function() {
 	
 	function _beginEvents() {
 		Polyworks.EventCenter.begin();
-		Polyworks.EventCenter.bind(Polyworks.Events.BUTTON_PRESSED, _onControlPressed);
-		Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_STATE, _onChangeState);
+		Polyworks.EventCenter.bind(Polyworks.Events.BUTTON_PRESSED, _onControlPressed, this);
+		Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_STATE, _onChangeState, this);
 	}
 	
 	function _onControlPressed(event) {

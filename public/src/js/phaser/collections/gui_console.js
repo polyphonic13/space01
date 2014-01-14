@@ -18,8 +18,8 @@ Polyworks.GUIConsole = (function() {
 	
 	GUIConsole.prototype.addListeners = function() {
 		// trace('GUIConsole/addListeners');
-		Polyworks.EventCenter.bind(Polyworks.Events.SCORE_UPDATED, this.onScoreUpdated);
-		Polyworks.EventCenter.bind(Polyworks.Events.HEALTH_UPDATED, this.onHealthUpdated);
+		Polyworks.EventCenter.bind(Polyworks.Events.SCORE_UPDATED, this.onScoreUpdated, this);
+		Polyworks.EventCenter.bind(Polyworks.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
 	};
 	
 	GUIConsole.prototype.onScoreUpdated = function() {

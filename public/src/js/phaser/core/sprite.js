@@ -1,13 +1,14 @@
 Polyworks.Sprite = (function() {
 	var _this;
 
-	function Sprite(game, params) {
+	function Sprite(params) {
 		_this = this;
 		this.model = new Polyworks.Model(params);
-		// trace('Sprite['+this.model.name+']/constructor, this = ');
-		// trace(this);
+		trace('Sprite['+this.model.name+']/constructor, this = ');
+		trace(this);
+		trace(params);
 		var attrs = this.model.attrs;
-		Phaser.Sprite.call(this, game, attrs.x, attrs.y, attrs.img);
+		Phaser.Sprite.call(this, params.game, attrs.x, attrs.y, attrs.img);
 	}
 	
 	Sprite.prototype = Object.create(Phaser.Sprite.prototype);

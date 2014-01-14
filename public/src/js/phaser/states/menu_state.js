@@ -11,7 +11,7 @@ Polyworks.MenuState = (function() {
 		MenuState._super.createState.call(this);
 		// this.createControls.call(this);
 
-		Polyworks.EventCenter.bind(Polyworks.Events.BUTTON_PRESSED, _this.onButtonPressed);
+		Polyworks.EventCenter.bind(Polyworks.Events.BUTTON_PRESSED, _this.onButtonPressed, _this);
 
 	};
 	

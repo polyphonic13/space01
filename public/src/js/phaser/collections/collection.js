@@ -3,6 +3,7 @@ Polyworks.Collection = (function() {
 	function Collection(params) {
 		this.model = new Polyworks.Model(params);
 		trace('Collection['+params.name+']/constructor');
+		trace(params);
 	}
 	
 	Collection.prototype.begin = function() {
@@ -11,29 +12,29 @@ Polyworks.Collection = (function() {
 
 		var game = PolyworksGame.phaser;
 		var group;
-		if(this.model.parent) {
-			if(this.model.parent === 'null') {
-				group = game.add.group(null);
-			} else {
-				group = game.add.group(this.model.parent);
-			}
+		if(this.model.addTo && this.model.addTo === 'null') {
+			group = game.add.group(null);
 		} else {
 			group = game.add.group();
 		}
 
-		this.addChildren(game, group);
+		this.addChildren(game, group, this.model.attrs);
 	};
 	
-	Collection.prototype.addChildren = function(game, group) {
-		var collection = {};
-		var children = this.model.attrs;
+	Collection.prototype.addChildren = function(game, group, children) {
+		trace('Collection['+this.model.name+']/addChildren, children = ');
+		trace(children);
+		var collection = this.model.collection || {};
 		var child;
+		var params;
 
 		for(var i = 0; i < children.length; i++) {
-			trace('\tchildren['+children[i].name+'].cl = ' + children[i].cl);
-			trace(children[i]);
+			params = children[i];
+			trace('\tchildren['+children[i].name+'].cl = ' + params.cl);
+			params.game = game;
+			trace(params);
 
-			child = new Polyworks[children[i].cl](game, children[i]);
+			child = new Polyworks[params.cl](params);
 			child.begin();
 
 			collection[children[i].name] = child;
@@ -43,11 +44,11 @@ Polyworks.Collection = (function() {
 		this.model.set({ collection: collection, group: group });
 	};
 	
-	Collection.prototype.addView = function(params, itemClass) {
-		trace('----- Collection['+this.model.name+']/addView');
-		trace(params);
-		return new Polyworks[itemClass](params);
-	};
+	// Collection.prototype.addView = function(params, itemClass) {
+	// 	trace('----- Collection['+this.model.name+']/addView');
+	// 	trace(params);
+	// 	return new Polyworks[itemClass](params);
+	// };
 	
 	Collection.prototype.getItemByName = function(name) {
 		return this.model.collection[name];
