@@ -29,8 +29,9 @@ Polyworks.Text = (function() {
 		});
 
 		this.__defineSetter__('content', function(val) {
-			// trace('Text['+this.id+']/set content, val = ' + val);
-			this.text.content = val;
+			if(val) {
+				this.text.content = val;
+			}
 		});
 	}
 

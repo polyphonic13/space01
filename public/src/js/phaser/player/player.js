@@ -145,17 +145,17 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.enemyCollision = function(player, sprite) {
-		trace('PLAYER\n\toverlapX = ' + player.body.overlapX + '\n\toverlapY = ' + player.body.overlapY + '\n\ttouching = ');
-		trace(player.body.touching);
-		trace('---------------------------')
-		trace('SPRITE\n\toverlapX = ' + sprite.body.overlapX + '\n\toverlapY = ' + sprite.body.overlapY + '\n\ttouching = ');
-		trace('\temeny.touching = ');
-		trace(sprite.body.touching);
-		trace('---------------------------\n\n')
+		var playerX = player.body.x + (player.body.width);
+		var playerY = player.body.y + (player.body.height);
+		var enemyX = sprite.body.x + (sprite.body.width);
+		var enemyY = sprite.body.y + (sprite.body.height);
+		// trace('Player/enemyCollision, player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
+		// trace('Player/enemyCollision, player x/y = ' + Math.ceil(player.body.x) + '/' + Math.ceil(player.body.y) + ', enemy x/y = ' + Math.ceil(sprite.body.x) + '/' + Math.ceil(sprite.body.y));
 		var enemy = this.model.sectorManager.activeSector.enemies.getItemByName(sprite.idx);
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, enemy: enemy });
 
-		if(this.model.jumping || this.model.attacking) {
+		// if(this.model.jumping || this.model.attacking) {
+		if(playerY < enemyY) {
 			this.updatePositionFromCollision();
 			enemy.receiveDamage(this.model.damage);
 		} else {

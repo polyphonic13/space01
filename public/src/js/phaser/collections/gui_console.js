@@ -18,26 +18,20 @@ Polyworks.GUIConsole = (function() {
 	
 	GUIConsole.prototype.addListeners = function() {
 		// trace('GUIConsole/addListeners');
-		Polyworks.EventCenter.bind(Polyworks.Events.SCORE_UPDATED, this.onScoreUpdated);
+		// Polyworks.EventCenter.bind(Polyworks.Events.SCORE_UPDATED, this.onScoreUpdated);
 		Polyworks.EventCenter.bind(Polyworks.Events.HEALTH_UPDATED, this.onHealthUpdated);
 	};
 	
 	GUIConsole.prototype.onScoreUpdated = function() {
-		// trace('GUIConsole/onScoreUpdated');
-		// trace(this);
-		// trace(_this);
 		_this.parseAndSetContent('score');
 	};
 	
 	GUIConsole.prototype.onHealthUpdated = function() {
-		// trace('GUIConsole/onHealthUpdated');
 		_this.parseAndSetContent('health');
 	};
 	
 	GUIConsole.prototype.parseAndSetContent = function(field, context) {
-		// trace('GUIConsole/parseAndSetContent, field = ' + field);
-		var text = this.getItemByName(field);
-		// trace(text);
+		trace(text);
 		if(text) {
 			var context = (context) ? context : PolyworksGame;
 			text.content = Utils.parseMarkup(text.model.defaultContent, context);
@@ -56,6 +50,9 @@ Polyworks.GUIConsole = (function() {
 	};
 
 	GUIConsole.prototype.destroy = function() {
+		// Polyworks.EventCenter.unbind(Polyworks.Events.SCORE_UPDATED, this.onScoreUpdated);
+		Polyworks.EventCenter.unbind(Polyworks.Events.HEALTH_UPDATED, this.onHealthUpdated);
+		
 		for(var i = 0; i < this.collection.length; i++) {
 			this.collection[i].destroy();
 		}
