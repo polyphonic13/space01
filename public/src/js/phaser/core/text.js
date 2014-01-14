@@ -2,16 +2,11 @@ Polyworks.Text = (function() {
 	var _this; 
 	
 	function Text(game, params) {
-		trace('Text['+params.name+']/constructor');
-		trace(params);
 		_this = this;
 		this.model = new Polyworks.Model(params);
-		var attrs = this.model.attrs;
-		Phaser.Text.call(this, game, attrs.x, attrs.y, attrs.defaultContent, attrs.style);
-
-		if(params.group) {
-			params.group.add(this);
-		}
+		trace('Text['+params.name+']/constructor, model = ');
+		trace(this.model);
+		Phaser.Text.call(this, game, this.model.x, this.model.y, this.model.defaultContent, this.model.style);
 	}
 	
 	Text.prototype = Object.create(Phaser.Text.prototype);

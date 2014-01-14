@@ -12,24 +12,22 @@ Polyworks.Collection = (function() {
 		var children = this.model.attrs;
 		var child;
 		var cl;
+		var attrs;
 		var group = game.add.group();
 		var collection = {};
 
 		for(var i = 0; i < children.length; i++) {
-			if(!children[i].attrs.name) {
-				children[i].attrs.name = (children[i].name) ? children[i].name : i;
+			var attrs = children[i].attrs;
+			if(!attrs.name) {
+				attrs.name = (children[i].name) ? children[i].name : i;
 			}
-			if(!children[i].cl) {
-				children[i].cl = itemClass;
-			}
+
 			trace('\tchildren['+children[i].name+'].cl = ' + children[i].cl);
-			trace(children[i]);
-			if(children[i].type === 'view') {
-				child = new Polyworks[children[i].cl](game, children[i].attrs.start.x, children[i].attrs.start.y, children[i].attrs);
-			} else {
-				child = new Polyworks[children[i].cl](children[i]);
-			}
+			trace(attrs);
+
+			child = new Polyworks[children[i].cl](game, attrs);
 			child.init();
+
 			collection[children[i].name] = child;
 			group.add(child);
 		}
