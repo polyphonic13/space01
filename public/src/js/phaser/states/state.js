@@ -1,12 +1,17 @@
 Polyworks.State = (function() {
+	Utils.inherits(State, Polyworks.Collection);
 	
 	var _this;
 	function State(params) {
+		trace('State['+params.name+']/constructor');
 		_this = this;
-		this.model = new Polyworks.Model(params);
-		this.loaded = false;
-		this.created = false;
-		this.active = false;
+
+		State._super.constructor.call(this, params);
+		this.model.set({
+			loaded: false,
+			created: false,
+			active: false
+		});
 
 		this.__defineGetter__('clearWorld', function() {
 			return this.model.clearWorld;
@@ -18,14 +23,17 @@ Polyworks.State = (function() {
 	}
 	
 	State.prototype.preLoad = function() {
-		if(!this.loaded) {
-			this.loaded = true;
+		if(!this.model.loaded) {
+			this.model.loaded = true;
 		}
 	};
 	
 	State.prototype.create = function() {
-		this.createState();
-		this.created = true;
+		if(!this.model.created) {
+			this.init();
+			this.createState();
+			this.model.set({ created: true });
+		}
 	};
 
 	State.prototype.createState = function() {
@@ -35,9 +43,8 @@ Polyworks.State = (function() {
 		this.game = PolyworksGame.phaser;
 		this.gameOver = PolyworksGame.gameOver; 
 
-		this.elements = {};
 		this.createWorld();
-		this.createElements();
+		// this.createElements();
 
 	};
 	
@@ -54,6 +61,8 @@ Polyworks.State = (function() {
 		trace('\telements.length = ' + elements.length);
 		var element;
 		var attrs; 
+		var group = game.add.group();
+		var collection = {};
 
 		for(var i = 0; i < elements.length; i++) {
 			if(!elements[i].name) {
@@ -68,17 +77,17 @@ Polyworks.State = (function() {
 				element = new Polyworks[elements[i].cl](game, elements[i]);
 				element.init();
 			}
-			this.elements[elements[i].name] = element;
+			collection[elements[i].name] = element;
+			group.add(element);
 		}
+
+		this.model.set({ group: group, collection: collection });
 	};
 	
 	State.prototype.shutdown = function() {
 		this.update = null;
-		for(var key in this.elements) {
-			if(this.elements[key].destroy) {
-				this.elements[key].destroy();
-			}
-		}
+		this.model.group.destroy();
+		this.model = null;
 	};
 
 	return State;

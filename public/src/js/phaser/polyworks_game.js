@@ -145,8 +145,8 @@ PolyworksGame = (function() {
 				PolyworksGame.totalLevels++;
 			}
 		}
-		trace('PolyworksGame, _states = ');
-		trace(_states);
+		// trace('PolyworksGame, _states = ');
+		// trace(_states);
 		PolyworksGame.changeState(config.initialState);
 	}
 

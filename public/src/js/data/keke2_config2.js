@@ -234,7 +234,7 @@ var config = {
 		clearWorld: true,
 		clearCache: false,
 		controlsType: 'menu',
-		elements: [{
+		attrs: [{
 			name: 'bg',
 			cl: 'Sprite',
 			type: 'sprite',
@@ -282,7 +282,7 @@ var config = {
 			start: 0,
 			end: 4050
 		},
-		elements: [{
+		attrs: [{
 			name: 'scenery',
 			cl: 'Collection',
 			attrs: [{
@@ -708,7 +708,7 @@ var config = {
 			start: 0,
 			end: 4050
 		},
-		elements: [{
+		attrs: [{
 			name: 'scenery',
 			cl: 'Collection',
 			attrs: [{
@@ -1284,7 +1284,7 @@ var config = {
 		clearWorld: true,
 		clearCache: false,
 		controlsType: 'levelComplete',
-		elements: [{
+		attrs: [{
 			name: 'bg',
 			cl: 'Sprite',
 	type: 'sprite',
@@ -1330,7 +1330,7 @@ var config = {
 		},
 		clearWorld: true,
 		clearCache: false,
-		elements: [{
+		attrs: [{
 			name: 'copy',
 			cl: 'GroupCollection',
 			attrs: [{

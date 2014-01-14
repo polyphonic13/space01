@@ -3,58 +3,63 @@ Polyworks.Collection = (function() {
 	function Collection(params) {
 		this.model = new Polyworks.Model(params);
 		trace('Collection['+params.name+']/constructor');
-		this.collection = {};
 	}
 	
 	Collection.prototype.init = function() {
-		trace('Collection['+this.model.name+']/init, itemClass = '+ itemClass);
-		trace(this.model.attrs);
+		trace('Collection['+this.model.name+']/init');
+		trace(this.model);
 		var game = PolyworksGame.phaser;
-		var elements = this.model.attrs;
-		var element;
+		var children = this.model.attrs;
+		var child;
 		var cl;
+		var group = game.add.group();
+		var collection = {};
 
-		this.group = game.add.group();
-
-		for(var i = 0; i < elements.length; i++) {
-			if(!elements[i].attrs.name) {
-				elements[i].attrs.name = (elements[i].name) ? elements[i].name : i;
+		for(var i = 0; i < children.length; i++) {
+			if(!children[i].attrs.name) {
+				children[i].attrs.name = (children[i].name) ? children[i].name : i;
 			}
-			if(!elements[i].cl) {
-				elements[i].cl = itemClass;
+			if(!children[i].cl) {
+				children[i].cl = itemClass;
 			}
-			trace('\telements['+elements[i].name+'].cl = ' + elements[i].cl);
-			trace(elements[i]);
-			if(elements[i].type === 'view') {
-				element = new Polyworks[elements[i].cl](game, elements[i].attrs.start.x, elements[i].attrs.start.y, elements[i].attrs);
+			trace('\tchildren['+children[i].name+'].cl = ' + children[i].cl);
+			trace(children[i]);
+			if(children[i].type === 'view') {
+				child = new Polyworks[children[i].cl](game, children[i].attrs.start.x, children[i].attrs.start.y, children[i].attrs);
 			} else {
-				element = new Polyworks[elements[i].cl](elements[i]);
+				child = new Polyworks[children[i].cl](children[i]);
 			}
-			element.init();
-			this.collection[elements[i].name] = element;
-			this.group.add(element);
+			child.init();
+			collection[children[i].name] = child;
+			group.add(child);
 		}
+		this.model.set({ collection: collection, group: group });
 	};
 	
 	Collection.prototype.addView = function(params, itemClass) {
-		trace('Collection['+this.model.name+']/addView, itemClass = ' + itemClass);
+		trace('Collection['+this.model.name+']/addView');
 		trace(params);
 		return new Polyworks[itemClass](params);
 	};
 	
 	Collection.prototype.getItemByName = function(name) {
-		return this.collection[name];
+		return this.model.collection[name];
 	};
 	
-	Collection.prototype.remove = function() {
+	Collection.prototype.remove = function(child) {
+		this.model.group.remove(child);
+		delete this.model.collection[child];
+	};
+	
+	Collection.prototype.removeAll = function() {
 		// trace('Collection['+this.model.name+']/remove, collection = ');
 		// trace(this.collection);
-		for(var i = 0; i < this.collection.length; i++) {
-			if(this.collection[i].remove) {
-				this.collection[i].remove();
-			}
+		this.model.group.removeAll();
+		var collection = this.model.collection;
+		for(var key in collection) {
+			delete collection[key];
 		}
 	};
-	
+
 	return Collection;
 })();
