@@ -4,9 +4,10 @@ Polyworks.Text = (function() {
 	function Text(game, params) {
 		_this = this;
 		this.model = new Polyworks.Model(params);
+		var attrs = this.model.attrs;
 		// trace('Text['+params.name+']/constructor, this = ');
 		// trace(this);
-		Phaser.Text.call(this, game, this.model.x, this.model.y, this.model.defaultContent, this.model.style);
+		Phaser.Text.call(this, game, attrs.x, attrs.y, attrs.defaultContent, attrs.style);
 	}
 	
 	Text.prototype = Object.create(Phaser.Text.prototype);
@@ -15,13 +16,14 @@ Polyworks.Text = (function() {
 	Text.prototype.begin = function() {
 		// trace('Text['+this.model.name+']/begin, this = ');
 		// trace(this);
-		var content = this.model.defaultContent;
+		var attrs = this.model.attrs;
+		var content = attrs.defaultContent;
 
 		// trace('\ttext width = ' + this.width);
-		if(this.model.centerX) {
+		if(attrs.centerX) {
 			this.x = stage.width/2 - this.width/2;
 		}
-		if(this.model.centerY) {
+		if(attrs.centerY) {
 			this.y = stage.height/2 - this.height/2;
 		}
 

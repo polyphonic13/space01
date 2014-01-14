@@ -237,8 +237,7 @@ var config = {
 		attrs: [{
 			name: 'bg',
 			cl: 'Sprite',
-			type: 'sprite',
-			attrs: {
+				attrs: {
 				img: 'greyRect',
 				start: {
 					x: 20,
@@ -287,7 +286,6 @@ var config = {
 			cl: 'Collection',
 			attrs: [{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'sky',
 					name: 'sky',
@@ -302,7 +300,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'mountains',
 					start: {
@@ -313,7 +310,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'treesBack',
 					start: {
@@ -324,7 +320,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'treesFore',
 					start: {
@@ -335,7 +330,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'mountains',
 					start: {
@@ -346,7 +340,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'treesBack',
 					start: {
@@ -357,7 +350,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'treesFore',
 					start: {
@@ -368,7 +360,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'grass1',
 					start: {
@@ -379,7 +370,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'grass2',
 					start: {
@@ -395,7 +385,6 @@ var config = {
 			attrs: [{
 				name: 'ground',
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -410,7 +399,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -425,7 +413,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -440,7 +427,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -489,7 +475,6 @@ var config = {
 					}],
 					bonuses: [{
 						cl: 'Sprite',
-	type: 'sprite',
 						attrs: {
 							img: 'lollipop',
 							start: {
@@ -584,7 +569,6 @@ var config = {
 					}],
 					bonuses: [{
 						cl: 'Sprite',
-	type: 'sprite',
 						attrs: {
 							img: 'lollipop',
 							start: {
@@ -640,7 +624,6 @@ var config = {
 					}],
 					bonuses: [{
 						cl: 'Sprite',
-	type: 'sprite',
 						attrs: {
 							img: 'lollipop',
 							start: {
@@ -667,7 +650,6 @@ var config = {
 			attrs: [{
 				name: 'heartIcon',
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'heart',
 					start: {
@@ -691,6 +673,8 @@ var config = {
 			}]
 
 		}]
+		/*
+
 	},
 	{
 		name: 'level1',
@@ -713,7 +697,6 @@ var config = {
 			cl: 'Collection',
 			attrs: [{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'sky',
 					name: 'sky',
@@ -728,7 +711,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'mountains',
 					start: {
@@ -739,7 +721,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'treesBack',
 					start: {
@@ -750,7 +731,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'treesFore',
 					start: {
@@ -761,7 +741,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'mountains',
 					start: {
@@ -772,7 +751,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'treesBack',
 					start: {
@@ -783,7 +761,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'treesFore',
 					start: {
@@ -794,7 +771,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'grass1',
 					start: {
@@ -805,7 +781,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'grass2',
 					start: {
@@ -820,7 +795,6 @@ var config = {
 			cl: 'PhysicalGroupCollection',
 			attrs: [{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -835,7 +809,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -850,7 +823,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -865,7 +837,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -880,7 +851,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -895,7 +865,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -910,7 +879,6 @@ var config = {
 			},
 			{
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'platform',
 					start: {
@@ -1116,7 +1084,6 @@ var config = {
 					}],
 					bonuses: [{
 						cl: 'Sprite',
-	type: 'sprite',
 						attrs: {
 							img: 'lollipop',
 							start: {
@@ -1135,7 +1102,6 @@ var config = {
 					},
 					{
 						cl: 'Sprite',
-	type: 'sprite',
 						attrs: {
 							img: 'lollipop',
 							start: {
@@ -1220,7 +1186,6 @@ var config = {
 					}],
 					bonuses: [{
 						cl: 'Sprite',
-	type: 'sprite',
 						attrs: {
 							img: 'lollipop',
 							start: {
@@ -1247,7 +1212,6 @@ var config = {
 			attrs: [{
 				name: 'heartIcon',
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'heart',
 					start: {
@@ -1287,7 +1251,6 @@ var config = {
 		attrs: [{
 			name: 'bg',
 			cl: 'Sprite',
-	type: 'sprite',
 			attrs: {
 				img: 'greyRect',
 				start: {
@@ -1336,7 +1299,6 @@ var config = {
 			attrs: [{
 				name: 'bg',
 				cl: 'Sprite',
-	type: 'sprite',
 				attrs: {
 					img: 'greyRect',
 					start: {

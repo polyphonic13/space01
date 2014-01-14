@@ -6,7 +6,8 @@ Polyworks.Sprite = (function() {
 		this.model = new Polyworks.Model(params);
 		// trace('Sprite['+this.model.name+']/constructor, this = ');
 		// trace(this);
-		Phaser.Sprite.call(this, game, params.x, params.y, params.img);
+		var attrs = this.model.attrs;
+		Phaser.Sprite.call(this, game, attrs.x, attrs.y, attrs.img);
 	}
 	
 	Sprite.prototype = Object.create(Phaser.Sprite.prototype);
@@ -15,21 +16,23 @@ Polyworks.Sprite = (function() {
 	Sprite.prototype.begin = function() {
 		trace('Sprite['+this.model.name+']/begin, this = ');
 		trace(this);
-		if(this.model.width) {
-			this.width = this.model.width;
+
+		var attrs = this.model.attrs;
+		if(attrs.width) {
+			this.width = attrs.width;
 		}
-		if(this.model.height) {
-			this.height = this.model.height;
+		if(attrs.height) {
+			this.height = attrs.height;
 		}
-		var scale = this.model.scale
+		var scale = attrs.scale
 		if(scale) {
 			this.scale.setTo(scale[0], scale[1]);
 		}
-		if(this.model.fixedToCamera) {
+		if(attrs.fixedToCamera) {
 			 this.fixedToCamera = true;
 		}
-		if(this.model.physics) {
-			this.beginPhysics(this.model.physics, sprite);
+		if(attrs.physics) {
+			this.beginPhysics(attrs.physics, sprite);
 		}
 	};
 
