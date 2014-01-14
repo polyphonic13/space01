@@ -7,7 +7,7 @@ Polyworks.ControlKey = (function() {
 		ControlKey._super.constructor.call(this, params);
 	}
 	
-	ControlKey.prototype.init = function() {
+	ControlKey.prototype.begin = function() {
 		this.key = PolyworksGame.phaser.input.keyboard.addKey(this.model.inputCode);
 		this.key.onDown.add(this.inputDown, this);
 		this.key.onUp.add(this.inputUp, this);

@@ -4,17 +4,17 @@ Polyworks.Sprite = (function() {
 	function Sprite(game, params) {
 		_this = this;
 		this.model = new Polyworks.Model(params);
-		trace('Sprite['+this.model.name+']/constructor, model = ');
-		trace(this.model);
+		// trace('Sprite['+this.model.name+']/constructor, this = ');
+		// trace(this);
 		Phaser.Sprite.call(this, game, params.x, params.y, params.img);
 	}
 	
 	Sprite.prototype = Object.create(Phaser.Sprite.prototype);
 	Sprite.prototype.constructor = Polyworks.Sprite;
 
-	Sprite.prototype.init = function() {
-		trace('Sprite['+this.model.name+']/init, model = ');
-		trace(this.model);
+	Sprite.prototype.begin = function() {
+		trace('Sprite['+this.model.name+']/begin, this = ');
+		trace(this);
 		if(this.model.width) {
 			this.width = this.model.width;
 		}
@@ -29,12 +29,12 @@ Polyworks.Sprite = (function() {
 			 this.fixedToCamera = true;
 		}
 		if(this.model.physics) {
-			this.initPhysics(this.model.physics, sprite);
+			this.beginPhysics(this.model.physics, sprite);
 		}
 	};
 
-	Sprite.prototype.initPhysics = function(physics, sprite) {
-		// trace('Sprite['+this.model.name+']/initPhysics');
+	Sprite.prototype.beginPhysics = function(physics, sprite) {
+		// trace('Sprite['+this.model.name+']/beginPhysics');
 		for(var key in physics) {
 			// trace(key + ' = ' + physics[key]);
 			this.body[key] = physics[key];

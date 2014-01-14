@@ -12,16 +12,16 @@ Polyworks.ControlsState = (function() {
 	};
 
 	ControlsState.prototype.createControls = function() {
-		// trace('ControlsState/createControls, this.model = ');
-		// trace(this.model);
+		// trace('ControlsState/createControls, this.this = ');
+		// trace(this);
 		// trace(_this);
 		// trace(this);
 		this.controls = new Polyworks.ControlButtons(config.controls.buttons[this.model.controlsType]);
-		this.controls.init();
+		this.controls.begin();
 		// this.controls = new Polyworks.Collection(config.controls.buttons[this.model.controlsType], 'controlButtons');
 		// var controlConsole = PolyworksGame.phaser.add.group(null);
 		// this.controls = new Polyworks.GroupCollection(config.controls.buttons[this.model.controlsType], 'controlButtons', 'null');
-		// this.controls.init();
+		// this.controls.begin();
 	};
 	
 	ControlsState.prototype.shutdown = function() {

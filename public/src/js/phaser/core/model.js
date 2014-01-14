@@ -13,7 +13,7 @@ Polyworks.Model = (function() {
 	}
 	
 	Model.prototype.get = function(prop) {
-		// trace('Model/get, prop = ' + prop + ', model = ');
+		// trace('Model/get, prop = ' + prop + ', this = ');
 		// trace(this);
 		if(this[prop]) {
 			return this[prop];

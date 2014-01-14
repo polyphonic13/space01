@@ -22,16 +22,16 @@ Polyworks.Enemy = (function() {
 		});
 	}
 	
-	Enemy.prototype.init = function(params) {
+	Enemy.prototype.begin = function(params) {
 		this.isInView = false;
 		this.velX = 0;
 		this.velY = 0;
-		this.initSprite();
+		this.beginSprite();
 	};
 	
-	Enemy.prototype.initSprite = function() {
+	Enemy.prototype.beginSprite = function() {
 		this.view = new Polyworks[this.model.spriteType](this.model, this.model.name);
-		this.view.init();
+		this.view.begin();
 	};
 	
 	Enemy.prototype.update = function(params) {

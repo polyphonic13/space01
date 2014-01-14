@@ -67,7 +67,7 @@ var Bonus = (function() {
 	};
 	
 	Bonus.prototype.buildViews = function() {
-		// trace('Bonus/buildViews, model = ');
+		// trace('Bonus/buildViews, this = ');
 		// trace(_this.model);
 		var views = this.model.views
 		var view;

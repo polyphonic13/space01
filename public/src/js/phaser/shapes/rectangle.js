@@ -11,7 +11,7 @@ Polyworks.Rectangle = (function() {
 		graphics.endFill();
 	}
 	
-	Rectangle.prototype.init = function() {
+	Rectangle.prototype.begin = function() {
 
 	}
 	

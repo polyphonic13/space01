@@ -9,13 +9,13 @@ Polyworks.MultiSpritePlayer = (function() {
 		};
 	}
 	
-	MultiSpritePlayer.prototype.initSprite = function() {
+	MultiSpritePlayer.prototype.beginSprite = function() {
 		var views = this.model.views;
 		var view;
 
 		for(var i = 0; i < views; i++) {
 			view = new Polyworks[views[i].spriteType](views[i].attrs, this.model.name + '-sprite-' + i);
-			view.init();
+			view.begin();
 			if(view[i].attrs.isVunerable) {
 				this.anatomy.vunerable[view[i].name] = view;
 			} else {

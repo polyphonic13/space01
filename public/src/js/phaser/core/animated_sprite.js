@@ -20,12 +20,12 @@ Polyworks.AnimatedSprite = (function() {
 		});
 	}
 	
-	AnimatedSprite.prototype.init = function(params) {
-		AnimatedSprite._super.init.call(_this, params);
-		this.initAnimations(_this.model.animations, _this.sprite);
+	AnimatedSprite.prototype.begin = function(params) {
+		AnimatedSprite._super.begin.call(_this, params);
+		this.beginAnimations(_this.model.animations, _this.sprite);
 	};
 	
-	AnimatedSprite.prototype.initAnimations = function(animations, sprite) {
+	AnimatedSprite.prototype.beginAnimations = function(animations, sprite) {
 		for(var i = 0; i < animations.length; i++) {
 			sprite.animations.add(animations[i].name, animations[i].keyFrames, animations[i].frameRate);
 		}

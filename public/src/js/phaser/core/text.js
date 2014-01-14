@@ -4,17 +4,17 @@ Polyworks.Text = (function() {
 	function Text(game, params) {
 		_this = this;
 		this.model = new Polyworks.Model(params);
-		trace('Text['+params.name+']/constructor, model = ');
-		trace(this.model);
+		// trace('Text['+params.name+']/constructor, this = ');
+		// trace(this);
 		Phaser.Text.call(this, game, this.model.x, this.model.y, this.model.defaultContent, this.model.style);
 	}
 	
 	Text.prototype = Object.create(Phaser.Text.prototype);
 	Text.prototype.constructor = Polyworks.Text;
 
-	Text.prototype.init = function() {
-		trace('Text['+this.model.name+']/init, model = ');
-		trace(this.model);
+	Text.prototype.begin = function() {
+		// trace('Text['+this.model.name+']/begin, this = ');
+		// trace(this);
 		var content = this.model.defaultContent;
 
 		// trace('\ttext width = ' + this.width);

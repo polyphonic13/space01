@@ -11,15 +11,15 @@ Polyworks.Sector = (function() {
 
 	}
 	
-	Sector.prototype.init = function() {
-		// trace('Sector/['+this.model.name+']/init, this = ');
+	Sector.prototype.begin = function() {
+		// trace('Sector/['+this.model.name+']/begin, this = ');
 		// trace(this);
 		var sectorId = 'Sector' + this.model.name;
 		this.enemies = new Polyworks.Enemies(this.model.enemies, sectorId);
-		this.enemies.init('AnimatedEnemy');
+		this.enemies.begin('AnimatedEnemy');
 
 		this.bonuses = new Polyworks.PhysicalGroupCollection(this.model.bonuses, sectorId);
-		this.bonuses.init('Sprite');
+		this.bonuses.begin('Sprite');
 
 		this.created = true;
 	}

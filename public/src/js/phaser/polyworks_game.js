@@ -15,7 +15,7 @@ PolyworksGame = (function() {
 		previousState: '',
 		gameOver: false,
 
-		init: function(params) {
+		begin: function(params) {
 			_model = params;
 			PolyworksGame.phaser = new Phaser.Game(stage.width, stage.height, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
 			// _checkPhaserBoot();
@@ -88,9 +88,9 @@ PolyworksGame = (function() {
 	
 	function _create() {
 		_removeLoadingAnimation();
-		_initEvents();
-		// _initControls();
-		_initStates();
+		_beginEvents();
+		// _beginControls();
+		_beginStates();
 /*
 		var params = {
 			x: 10, 
@@ -99,7 +99,7 @@ PolyworksGame = (function() {
 			name: 'heartIcon'
 		};
 		var test = new Polyworks.Sprite(PolyworksGame.phaser, params.x, params.y, params);
-		test.init();
+		test.begin();
 		// PolyworksGame.phaser.add.sprite(10, 10, params.img, params.name);
 		var group = PolyworksGame.phaser.add.group();
 		group.add(test);
@@ -107,8 +107,8 @@ PolyworksGame = (function() {
 	}
 	
 	
-	function _initEvents() {
-		Polyworks.EventCenter.init();
+	function _beginEvents() {
+		Polyworks.EventCenter.begin();
 		Polyworks.EventCenter.bind(Polyworks.Events.BUTTON_PRESSED, _onControlPressed);
 		Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_STATE, _onChangeState);
 	}
@@ -125,13 +125,13 @@ PolyworksGame = (function() {
 		PolyworksGame.changeState(event.value);
 	}
 	
-	function _initControls() {
+	function _beginControls() {
 	
 		_controls = new Polyworks.Collection(config.controls.keys, 'controlKeys');
-		_controls.init();
+		_controls.begin();
 	}
 	
-	function _initStates() {
+	function _beginStates() {
 		_states = {};
 
 		var states = _model.states;

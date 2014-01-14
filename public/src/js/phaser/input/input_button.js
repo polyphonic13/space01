@@ -9,9 +9,9 @@ Polyworks.InputButton = (function() {
 		InputButton._super.constructor.call(this, params);
 	};
 	
-	InputButton.prototype.init = function() {
+	InputButton.prototype.begin = function() {
 		var start = this.model.start;
-		// trace('InputButton['+this.model.img+']/init, start x/y = ' + start.x + '/' + start.y);
+		// trace('InputButton['+this.model.img+']/begin, start x/y = ' + start.x + '/' + start.y);
 	    this.button = PolyworksGame.phaser.add.button(start.x, start.y, this.model.img, null, this);
 		if(this.model.width) {
 			this.button.width = this.model.width;

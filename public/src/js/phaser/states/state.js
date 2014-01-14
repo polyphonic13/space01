@@ -36,12 +36,11 @@ Polyworks.State = (function() {
 	};
 
 	State.prototype.createState = function() {
-		trace('\nState/createState, this = ');
+		trace('\nState['+this.model.name+']/createState, this = ');
 		trace(this);
-		this.game = PolyworksGame.phaser;
 		this.gameOver = PolyworksGame.gameOver; 
 
-		// this.init();
+		this.begin();
 		this.createWorld();
 	};
 	
