@@ -62,6 +62,7 @@ Polyworks.Enemy = (function() {
 	}
 	
 	Enemy.prototype.destroy = function() {
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_DESTROYED, value: this.id });
 		this.view.destroy();
 	};
 	
