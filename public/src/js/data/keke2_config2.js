@@ -298,8 +298,8 @@ var config = {
 				}
 			}
 		}]
-		/*
 	},
+/*
 	{
 		name: 'level0',
 		cl: 'LevelState',
@@ -1317,6 +1317,7 @@ var config = {
 			}]
 		}]
 	},
+*/
 	{
 		name: 'quit',
 		cl: 'State',
@@ -1329,41 +1330,36 @@ var config = {
 		clearWorld: true,
 		clearCache: false,
 		attrs: [{
-			name: 'copy',
-			cl: 'GroupCollection',
-			attrs: [{
-				name: 'bg',
-				cl: 'Sprite',
-				attrs: {
-					img: 'greyRect',
-					start: {
-						x: 20,
-						y: 20
-					},
-					// fixedToCamera: true,
-					width: stage.width - 40,
-					height: stage.height - 40,
+			name: 'bg',
+			cl: 'Sprite',
+			attrs: {
+				img: 'greyRect',
+				start: {
+					x: 20,
+					y: 20
+				},
+				// fixedToCamera: true,
+				width: stage.width - 40,
+				height: stage.height - 40
+			}
+		},
+		{
+			name: 'title',
+			cl: 'Text',
+			attrs: {
+				centerX: true,
+				centerY: true,
+				x: stage.width/2,
+				y: stage.height/2,
+				defaultContent: 'Game Over',
+				fixedToCamera: true,
+				style: { 
+					font: '30px Arial', 
+					fill: '#000000',
+					align: 'center'
 				}
-			},
-			{
-				name: 'title',
-				cl: 'Text',
-				attrs: {
-					centerX: true,
-					centerY: true,
-					x: stage.width/2,
-					y: stage.height/2,
-					defaultContent: 'Game Over',
-					fixedToCamera: true,
-					style: { 
-						font: '30px Arial', 
-						fill: '#000000',
-						align: 'center'
-					}
-				}
-			}]
+			}
 		}]
-*/
 	}],
 	player: {
 		name: 'keke',

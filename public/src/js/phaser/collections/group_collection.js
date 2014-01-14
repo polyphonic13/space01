@@ -1,6 +1,6 @@
 // collection of Phaser group objects
 Polyworks.GroupCollection = (function() {
-	Utils.inherits(GroupCollection, Polyworks.Collection);
+	Utils.inherits(GroupCollection, Polyworks.GroupCollection);
 	
 	function GroupCollection(params, groupContext) {
 		// trace('GroupCollection['+params.name+']/constructor, groupContext = ' + groupContext);
@@ -13,12 +13,43 @@ Polyworks.GroupCollection = (function() {
 		}
 	}
 	
-	GroupCollection.prototype.addView = function(params, itemClass) {
-		trace('GroupCollection['+this.model.name+']/addView, itemClass = ' + itemClass);
-		trace(params);
-		params.parentType = 'group';
-		params.group = this.group;
-		return new Polyworks[itemClass](params);
+	GroupCollection.prototype.begin = function() {
+		trace('GroupCollection['+this.model.name+']/begin');
+		trace(this);
+		GroupCollection._super.begin.call(this);
+
+		var game = PolyworksGame.phaser;
+		var collection = this.model.collection;
+		var group;
+
+		if(this.model.addTo && this.model.addTo === 'null') {
+			group = game.add.group(null);
+		} else {
+			group = game.add.group();
+		}
+
+		for(var i = 0; i < collection.length; i++) {
+			group.add(collection[i]);
+		}
+	};
+
+	GroupCollection.prototype.remove = function(child) {
+		this.model.group.remove(child);
+		delete this.model.collection[child];
+	};
+	
+	GroupCollection.prototype.removeAll = function() {
+		// trace('GroupCollection['+this.model.name+']/remove, collection = ');
+		// trace(this.collection);
+		this.model.group.removeAll();
+	};
+
+	GroupCollection.prototype.destroy = function() {
+		this.model.group.destroy();
+		var collection = this.model.collection;
+		for(var key in collection) {
+			delete collection[key];
+		}
 	};
 	
 	return GroupCollection;

@@ -13,7 +13,8 @@ Polyworks.EventCenter = (function() {
 		if(!_listeners[type]) {
 			_listeners[type] = [];
 		}
-		_listeners[type].push({ func: callback, ctx: ctx });
+		// _listeners[type].push({ func: callback, ctx: ctx });
+		_listeners[type].push(callback);
 	};
 	
 	eventCenter.trigger = function(params) {
@@ -25,10 +26,10 @@ Polyworks.EventCenter = (function() {
 				// trace(_listeners[key]);
 				if(_listeners[key]) {
 					for(var i = 0; i < _listeners[key].length; i++) {
-						var func = _listeners[key][i].func;
-						var ctx = _listeners[key][i].ctx;
-						ctx[func].call(this, params);
-						// _listeners[key][i].call(this, params);
+						// var func = _listeners[key][i].func;
+						// var ctx = _listeners[key][i].ctx;
+						// ctx[func].call(this, params);
+						_listeners[key][i].call(this, params);
 					}
 				}
 			}

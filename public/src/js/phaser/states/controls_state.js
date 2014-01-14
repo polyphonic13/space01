@@ -28,7 +28,9 @@ Polyworks.ControlsState = (function() {
 	};
 	
 	ControlsState.prototype.shutdown = function() {
-		this.controls.remove();
+		if(this.controls) {
+			this.controls.remove();
+		}
 		ControlsState._super.shutdown.call(this);
 	};
 	
