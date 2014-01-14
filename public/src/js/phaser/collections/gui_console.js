@@ -31,7 +31,7 @@ Polyworks.GUIConsole = (function() {
 	};
 	
 	GUIConsole.prototype.parseAndSetContent = function(field, context) {
-		trace(text);
+		var text = this.getItemByName(field);
 		if(text) {
 			var context = (context) ? context : PolyworksGame;
 			text.content = Utils.parseMarkup(text.model.defaultContent, context);

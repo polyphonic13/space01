@@ -69,10 +69,12 @@ Polyworks.Sprite = (function() {
 	};
 	
 	Sprite.prototype.destroy = function() {
-		// trace('Sprite['+this.id+']/destroy');
-		// trace(this.sprite);
-		this.sprite.kill();
-		this.sprite.destroy();
+		trace('Sprite['+this.id+']/destroy');
+		trace(this.sprite);
+		if(this.sprite.game) {
+			this.sprite.kill();
+			this.sprite.destroy();
+		}
 	};
 	
 	return Sprite;

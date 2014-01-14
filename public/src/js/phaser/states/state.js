@@ -48,6 +48,7 @@ Polyworks.State = (function() {
 	};
 
 	State.prototype.createElements = function() {
+		trace('State['+this.id+']/createElements');
 		var elements = this.model.elements;
 		var element;
 		var attrs; 
