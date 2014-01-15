@@ -23,11 +23,11 @@
 			top: 0px;
 		}
     </style>
+	<script type="text/javascript" src="js/third_party/phaser.js"></script>
 </head>
-<body>
+<body onload="start();">
 	<div id="loading"></div>
 	<div id="gameContainer"></div>
-	<script type="text/javascript" src="js/third_party/phaser.js"></script>
 	<script type="text/javascript" src="js/namespace.js"></script>
 	<script type="text/javascript" src="js/enum/input_codes.js"></script>
 	<script type="text/javascript" src="js/enum/directions.js"></script>
@@ -66,6 +66,10 @@
 	<script type="text/javascript" src="js/phaser/player/player.js"></script>
 	<script type="text/javascript" src="js/phaser/player/animated_player.js"></script>
 	<script type="text/javascript" src="js/phaser/polyworks_game.js"></script>
-	<script type="text/javascript" src="js/phaser/keke2a_game.js"></script>
+	<script type="text/javascript">
+		function start() {
+			PolyworksGame.begin(config);			
+		}
+	</script>
 </body>
 </html>

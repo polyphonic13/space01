@@ -37,7 +37,7 @@ module.exports = function(grunt) {
 					banner: "(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- KEKE_GAME.JS v<%= pkg.version %> created: <%= grunt.template.today(\"isoDateTime\") %>')})();\n"
 				},
 				src: [
-					'<%= srcDir %>/js/third_party/phaser.min.js',
+					// '<%= srcDir %>/js/third_party/phaser.min.js',
 					'<%= srcDir %>/js/namespace.js',
 					'<%= srcDir %>/js/enum/input_codes.js',
 					'<%= srcDir %>/js/enum/directions.js',
@@ -74,7 +74,7 @@ module.exports = function(grunt) {
 					'<%= srcDir %>/js/phaser/player/player.js',
 					'<%= srcDir %>/js/phaser/player/animated_player.js',
 					'<%= srcDir %>/js/phaser/polyworks_game.js',
-					'<%= srcDir %>/js/phaser/keke2a_game.js',
+					// '<%= srcDir %>/js/phaser/keke2a_game.js',
 				],
 				dest: '<%= deployDir %>/keke2/js/keke2_game.js'
 
