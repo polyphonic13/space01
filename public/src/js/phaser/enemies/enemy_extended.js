@@ -1,7 +1,12 @@
 Polyworks.Enemy = (function() {
-	
+	var _this;
 	function Enemy(params) {
-		
+		// _this = this;
+		trace('Enemy/constructor');
+		Polyworks.Sprite.call(this, params);
+		trace(this);
+		// trace(_this);
+		// this.beginGetterSetters();
 	}
 
 	Enemy.prototype = Object.create(Polyworks.Sprite.prototype);
