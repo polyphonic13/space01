@@ -36,6 +36,9 @@ Polyworks.Sprite = (function() {
 		if(attrs.physics) {
 			this.beginPhysics(attrs.physics);
 		}
+		if(attrs.animations) {
+			this.beginAnimations(attrs.animations)
+		}
 	};
 
 	Sprite.prototype.beginPhysics = function(physics) {
@@ -53,12 +56,36 @@ Polyworks.Sprite = (function() {
 		PolyworksGame.phaser.physics.collide(this, terrain);
 	};
 	
+	Sprite.prototype.beginAnimations = function(animations) {
+		for(var i = 0; i < animations.length; i++) {
+			this.animations.add(animations[i].name, animations[i].keyFrames, animations[i].frameRate);
+		}
+
+		var defaultAnimation = this.model.defaultAnimation;
+		if(defaultAnimation) {
+			this.play();
+			this.model.currentAnimation = defaultAnimation;
+		} else {
+			this.animations.frame = 0;
+			this.model.currentAnimation = '';
+		}
+	};
+	
+	Sprite.prototype.play = function(name, frameRate, looped) {
+		this.animations.play(name, frameRate, looped);
+		this.model.currentAnimation = name;
+	};
+	
+	Sprite.prototype.stop = function() {
+		this.animations.stop();
+		this.model.currentAnimation = '';
+	};
+
 	// Sprite.prototype.move = function(params) {
 	// 	if(this.model.movement) {
-	// 		Utils.moveView(this.sprite, this.model.movement, params);
+	// 		Utils.moveView(this, this.model.movement, params);
 	// 	}
 	// };
-	
 	return Sprite;
 })();
 

@@ -508,63 +508,74 @@ var config = {
 					}
 				}
 			}]
-			/*
-
 		},
 		{
 			name: 'sectors',
 			cl: 'Sectors',
 			attrs: [{
+				name: 'sector0',
 				cl: 'Sector',
 				attrs: {
 					bounds: {
 						start: 0,
 						end: 1024
 					},
-					enemies: [{
-						name: 'level0-sector0-enemy0',
-						cl: 'AnimatedEnemy',
-						attrs: {
-							img: 'caterpillar01',
-							spriteType: 'AnimatedSprite',
-							start: {
-								x: 50,
-								y: 0
-							},
-							physics: {
-								bounce: {
-									x: 0,
-									y: 0.2
-								}
-							},
-							damage: 5,
-							health: 5,
-							score: 500,
-							defaultAnimation: '',
-							animations: caterpillarAnimations
-						}
-					}],
-					bonuses: [{
-						cl: 'Sprite',
-						attrs: {
-							img: 'lollipop',
-							start: {
-								x: 600,
-								y: 0
-							},
-							physics: {
-								bounce: {
-									x: 0,
-									y: 0.2
-								}
-							},
-							score: 100,
-							health: 10
-						}
-					}]
+					enemies: {
+						name: 'enemies',
+						cl: 'Enemies',
+						attrs: [{
+							name: 'level0-sector0-enemy0',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								name: 'caterpillar01-sprite',
+								img: 'caterpillar01',
+								spriteType: 'Sprite',
+								start: {
+									x: 50,
+									y: 0
+								},
+								physics: {
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								damage: 5,
+								health: 5,
+								score: 500,
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}] 
+					},
+				bonuses: {
+						name: 'bonuses',
+						cl: 'PhysicalGroupCollection',
+						attrs: [{
+							name: 'bonus0-sprite',
+							cl: 'Sprite',
+							attrs: {
+								img: 'lollipop',
+								start: {
+									x: 600,
+									y: 0
+								},
+								physics: {
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								score: 100,
+								health: 10
+							}
+						}]
+					}
 				}
+				/*
 			},
 			{
+				name: 'sector1',
 				cl: 'Sector',
 				attrs: {
 					bounds: {
@@ -576,7 +587,7 @@ var config = {
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							spriteType: 'AnimatedSprite',
+							spriteType: 'Sprite',
 							start: {
 								x: 1400,
 								y: 0
@@ -604,6 +615,7 @@ var config = {
 				}
 			},
 			{
+				name: 'sector2',
 				cl: 'Sector',
 				attrs: {
 					bounds: {
@@ -615,7 +627,7 @@ var config = {
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							spriteType: 'AnimatedSprite',
+							spriteType: 'Sprite',
 							start: {
 								x: 3050,
 								y: 0
@@ -659,6 +671,7 @@ var config = {
 				}
 			},
 			{
+				name: 'sector3',
 				cl: 'Sector',
 				attrs: {
 					bounds: {
@@ -670,7 +683,7 @@ var config = {
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							spriteType: 'AnimatedSprite',
+							spriteType: 'Sprite',
 							start: {
 								x: 3580,
 								y: 0
@@ -712,6 +725,7 @@ var config = {
 						}
 					}]
 				}
+				*/
 			}]
 
 		},
@@ -742,7 +756,6 @@ var config = {
 					}
 				}
 			}]
-*/
 		}]
 	},
 	/*
@@ -978,7 +991,7 @@ var config = {
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							spriteType: 'AnimatedSprite',
+							spriteType: 'Sprite',
 							start: {
 								x: 800,
 								y: 0
@@ -1006,7 +1019,7 @@ var config = {
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							spriteType: 'AnimatedSprite',
+							spriteType: 'Sprite',
 							start: {
 								x: 1000,
 								y: 0
@@ -1044,7 +1057,7 @@ var config = {
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							spriteType: 'AnimatedSprite',
+							spriteType: 'Sprite',
 							start: {
 								x: 1400,
 								y: 0
@@ -1068,7 +1081,7 @@ var config = {
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							spriteType: 'AnimatedSprite',
+							spriteType: 'Sprite',
 							start: {
 								x: 1800,
 								y: 0
@@ -1102,7 +1115,7 @@ var config = {
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							spriteType: 'AnimatedSprite',
+							spriteType: 'Sprite',
 							start: {
 								x: 2500,
 								y: 0
@@ -1130,7 +1143,7 @@ var config = {
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							spriteType: 'AnimatedSprite',
+							spriteType: 'Sprite',
 							start: {
 								x: 3050,
 								y: 0
@@ -1204,7 +1217,7 @@ var config = {
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							spriteType: 'AnimatedSprite',
+							spriteType: 'Sprite',
 							start: {
 								x: 3580,
 								y: 0
@@ -1232,7 +1245,7 @@ var config = {
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar01',
-							spriteType: 'AnimatedSprite',
+							spriteType: 'Sprite',
 							start: {
 								x: 4000,
 								y: 0
@@ -1409,7 +1422,7 @@ var config = {
 		name: 'keke',
 		cl: 'AnimatedPlayer',
 		attrs: {
-			spriteType: 'AnimatedSprite',
+			spriteType: 'Sprite',
 			img: 'keke',
 			width: 76,
 			height: 128,

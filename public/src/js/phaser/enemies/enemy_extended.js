@@ -1,13 +1,13 @@
 Polyworks.Enemy = (function() {
 	
-	var _this;
 	function Enemy(params) {
-		_this = this;
-		this.model = new Polyworks.Model(params);
+		
+	}
 
-		this.__defineGetter__('sprite', function() {
-			return this.view.sprite;
-		});
+	Enemy.prototype = Object.create(Polyworks.Sprite.prototype);
+	Enemy.prototype.constructor = Polyworks.Enemy;
+	
+	Enemy.prototype.beginGetterSeters = function() {
 		this.__defineGetter__('score', function() {
 			return this.model.score;
 		});
@@ -20,25 +20,11 @@ Polyworks.Enemy = (function() {
 		this.__defineSetter__('health', function(val) {
 			this.model.health = val;
 		});
-	}
-	
-	Enemy.prototype.begin = function(params) {
-		this.isInView = false;
-		this.velX = 0;
-		this.velY = 0;
-		this.beginSprite();
-	};
-	
-	Enemy.prototype.beginSprite = function() {
-		trace('Enemy['+this.model.name+']/beginSprite');
-		trace(this.model);
-		this.view = new Polyworks[this.model.attrs.spriteType](this.model.attrs, this.model.name);
-		this.view.begin();
 	};
 	
 	Enemy.prototype.update = function(params) {
 		if(this.active) {
-			var enemyX = this.view.sprite.body.screenX;
+			var enemyX = this.body.screenX;
 			var playerX = params.player.body.screenX;
 
 			if(enemyX < (playerX + stage.width/2) && enemyX > (playerX - stage.width/2)) {
@@ -49,10 +35,6 @@ Polyworks.Enemy = (function() {
 		}
 	};
 	
-	Enemy.prototype.checkTerrainCollision = function(terrain) {
-		PolyworksGame.phaser.physics.collide(this.view.sprite, terrain);
-	};
-	
 	Enemy.prototype.receiveDamage = function(damage) {
 		// trace('Enemy/receiveDamage, player.damage = ' + damage);
 		this.model.health -= damage;
@@ -60,10 +42,6 @@ Polyworks.Enemy = (function() {
 			PolyworksGame.setScore(this.model.score);
 			this.destroy();
 		}
-	}
-	
-	Enemy.prototype.destroy = function() {
-		this.view.destroy();
 	};
 	
 	return Enemy;

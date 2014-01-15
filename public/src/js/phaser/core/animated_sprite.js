@@ -1,10 +1,10 @@
 Polyworks.AnimatedSprite = (function() {
-	Utils.inherits(AnimatedSprite, Polyworks.Sprite);
+	// Utils.inherits(AnimatedSprite, Polyworks.Sprite);
 	
-	var _this;
+	// var _this;
 	function AnimatedSprite(params) {
-		_this = this;
-		_this.model.name = id;
+		// _this = this;
+		// _this.model.name = id;
 		AnimatedSprite._super.constructor.call(this, params);
 
 		this.__defineSetter__('frame', function(val) {
