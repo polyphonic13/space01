@@ -33,13 +33,16 @@ Polyworks.LevelState = (function() {
 		this.terrain = this.getItemByName('terrain');
 		this.sectorManager = this.getItemByName('sectors');
 
+		var playerConfig = PolyworksGame.get('player');
+		playerConfig.game = PolyworksGame.phaser;
+		this.player = new Polyworks[playerConfig.cl](playerConfig);
+		this.player.begin();
 /*
 		this.terrain = this.elements.terrain;
 		this.sectorManager = this.elements.sectors;
 		// trace('player type = ' + config.player.type);
 		var params = Utils.clone(config.player.attrs);
 		params.sectorManager = this.sectorManager;
-		this.player = new Polyworks[config.player.type](params, config.player.name);
 
 		this.createControls.call(this);
 

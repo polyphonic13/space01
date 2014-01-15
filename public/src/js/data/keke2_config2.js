@@ -1479,6 +1479,7 @@ var config = {
 				x: 0.5,
 				y: 0.5
 			},
+			followStyle: Phaser.Camera.FOLLOW_PLATFORMER,
 			speed: {
 				x: 150,
 				y: 400

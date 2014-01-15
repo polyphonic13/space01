@@ -9,7 +9,6 @@ Polyworks.AnimatedPlayer = (function() {
 	
 	AnimatedPlayer.prototype.update = function(params) {
 		AnimatedPlayer._super.update.call(this, params);
-		
 		this.updateAnimations();
 	};
 	

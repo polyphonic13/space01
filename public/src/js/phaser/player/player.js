@@ -1,15 +1,21 @@
 Polyworks.Player = (function() {
 	// Utils.inherits(Player, Polyworks.AnimatedSprite);
-	
+	Utils.inherits(Player, Polyworks.Sprite);
+
+	var _this;
 	function Player(params) {
 		trace('Player/constructor');
 		_this = this;
 		this.model = new Polyworks.Model(params);
+		Player._super.constructor.call(this, params);
+	}
+	
+	Player.prototype.begin = function() {
+		Player._super.begin.call(this);
 
 		this.velX = 0;
 		this.velY = 0;
 
-		this.beginSprite();
 		this.beginWorld();
 		this.beginEvents();
 		this.beginControls();
@@ -35,21 +41,20 @@ Polyworks.Player = (function() {
 		});
 
 		this.__defineGetter__('sprite', function() {
-			return this.view.sprite;
+			return this;
 		});
 	}
 	
-	Player.prototype.beginSprite = function() {
-		this.view = new Polyworks[this.model.spriteType](this.model, this.model.name + '-sprite');
-		this.view.begin();
-	};
-	
 	Player.prototype.beginWorld = function() {
-		if(this.model.anchor) {
-			this.view.sprite.anchor.setTo(this.model.anchor.x, this.model.anchor.y);
+		trace('Player/beginWorld');
+		trace(this);
+		var attrs = this.model.attrs;
+		if(attrs.anchor) {
+			this.anchor.setTo(attrs.anchor.x, attrs.anchor.y);
 		}
-		PolyworksGame.phaser.camera.follow(this.view.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
-
+		if(attrs.followStyle) {
+			PolyworksGame.phaser.camera.follow(this, attrs.followStyle);
+		}
 	};
 	
 	Player.prototype.beginEvents = function() {
@@ -98,12 +103,12 @@ Polyworks.Player = (function() {
 			this.model.facingForward = true;
 		}
 
-		this.view.velocityX = this.velX;
+		this.velocityX = this.velX;
 
 		if(this.activeControls[Polyworks.InputCodes.UP]) {
 			if(this.model.grounded && !this.model.justJumped) {
 				this.velY = -this.model.speed.y;
-				this.view.velocityY = this.velY;
+				this.velocityY = this.velY;
 				this.model.grounded = false;
 				this.model.jumping = true;
 				this.model.justJumped = true;
@@ -116,13 +121,13 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.update = function(params) {
-		this.view.checkTerrainCollision(params.terrain);
+		this.checkTerrainCollision(params.terrain);
 
 		var physics = PolyworksGame.phaser.physics;
 		this.updateEnemyCollision(params.enemies, physics);
 		this.updateBonusCollision(params.bonuses, physics);
 
-		if(this.view.sprite.body.touching.down) {
+		if(this.body.touching.down) {
 			this.model.grounded = true;
 			this.model.jumping = false;
 			this.model.justJumped = false;
@@ -139,7 +144,7 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.checkCollision = function(collection, callback, physics, context) {
 		for(var i = 0; i < collection.length; i++) {
-			physics.overlap(this.view.sprite, collection[i].sprite, callback, null, context);
+			physics.overlap(this, collection[i].sprite, callback, null, context);
 		}
 	};
 	
@@ -187,13 +192,13 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.updatePositionFromCollision = function() {
 		this.velY = -this.model.speed.y/2;
-		this.view.velocityY = this.velY;
+		this.velocityY = this.velY;
 	};
 	
 	Player.prototype.checkInput = function() {
 
 		 //  Reset the this.players velocity (movement)
-			this.view.velocityX = 0;
+			this.velocityX = 0;
 			this.velX = 0;
 			if (this.activeControls[Polyworks.InputCodes.LEFT]) {
 				this.velX = -this.model.speed.x;
@@ -204,22 +209,21 @@ Polyworks.Player = (function() {
 				this.facingForward = true;
 			}
 
-			if(this.view.sprite.body.touching.down) {
+			if(this.body.touching.down) {
 				this.jumping = false;
 			}
 			// trace('player velX = ' + this.velX);
-			this.view.velocityX = this.velX;
+			this.velocityX = this.velX;
 	};
 	
 	Player.prototype.destroy = function() {
-		this.alive = false;
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_PRESSED, this.onControlButtonPressed);
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_RELEASED, this.onControlButtonReleased);
 
-		this.view.destroy();
+		this.alive = false;
 		this.update = null;
 		this.updateInput = null;
-		// this.model = null;
+		this.destroy();
 	};
 	
 	return Player;

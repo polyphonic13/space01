@@ -1,14 +1,10 @@
 Polyworks.Sprite = (function() {
 	Utils.inherits(Sprite, Phaser.Sprite);
-	var _this;
 
 	function Sprite(params) {
-		// _this = this;
 		this.model = new Polyworks.Model(params);
 		// trace('Sprite['+this.model.name+']/constructor, this = ');
 		// trace(this);
-		// trace(_this);
-		// trace(params);
 		var attrs = this.model.attrs;
 		var start = attrs.start;
 		Sprite._super.constructor.call(this, params.game, start.x, start.y, attrs.img);
