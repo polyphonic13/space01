@@ -546,6 +546,30 @@ var config = {
 								defaultAnimation: '',
 								animations: caterpillarAnimations
 							}
+						},
+						{
+							name: 'level0-sector0-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								name: 'caterpillar01-sprite',
+								img: 'caterpillar01',
+								spriteType: 'Sprite',
+								start: {
+									x: 150,
+									y: 0
+								},
+								physics: {
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								damage: 5,
+								health: 5,
+								score: 500,
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
 						}] 
 					},
 				bonuses: {
