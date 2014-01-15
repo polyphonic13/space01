@@ -307,7 +307,6 @@ var config = {
 		}
 		]
 	},
-/*
 	{
 		name: 'level0',
 		cl: 'LevelState',
@@ -326,8 +325,9 @@ var config = {
 		},
 		attrs: [{
 			name: 'scenery',
-			cl: 'Collection',
+			cl: 'GroupCollection',
 			attrs: [{
+				name: 'sky',
 				cl: 'Sprite',
 				attrs: {
 					img: 'sky',
@@ -342,6 +342,7 @@ var config = {
 				}
 			},
 			{
+				name: 'mountains0',
 				cl: 'Sprite',
 				attrs: {
 					img: 'mountains',
@@ -352,26 +353,7 @@ var config = {
 				}
 			},
 			{
-				cl: 'Sprite',
-				attrs: {
-					img: 'treesBack',
-					start: {
-						x: 0,
-						y: stage.height - 490
-					}
-				}
-			},
-			{
-				cl: 'Sprite',
-				attrs: {
-					img: 'treesFore',
-					start: {
-						x: 0,
-						y: 0
-					}
-				}
-			},
-			{
+				name: 'mountains1',
 				cl: 'Sprite',
 				attrs: {
 					img: 'mountains',
@@ -382,6 +364,18 @@ var config = {
 				}
 			},
 			{
+				name: 'treesBack0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'treesBack',
+					start: {
+						x: 0,
+						y: stage.height - 490
+					}
+				}
+			},
+			{
+				name: 'treesBack1',
 				cl: 'Sprite',
 				attrs: {
 					img: 'treesBack',
@@ -392,6 +386,18 @@ var config = {
 				}
 			},
 			{
+				name: 'treesFore0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'treesFore',
+					start: {
+						x: 0,
+						y: 0
+					}
+				}
+			},
+			{
+				name: 'treesFore1',
 				cl: 'Sprite',
 				attrs: {
 					img: 'treesFore',
@@ -402,6 +408,7 @@ var config = {
 				}
 			},
 			{
+				name: 'grass0',
 				cl: 'Sprite',
 				attrs: {
 					img: 'grass1',
@@ -412,6 +419,7 @@ var config = {
 				}
 			},
 			{
+				name: 'grass1',
 				cl: 'Sprite',
 				attrs: {
 					img: 'grass2',
@@ -426,7 +434,7 @@ var config = {
 			name: 'terrain',
 			cl: 'PhysicalGroupCollection',
 			attrs: [{
-				name: 'ground',
+				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
 					img: 'platform',
@@ -441,6 +449,22 @@ var config = {
 				}
 			},
 			{
+				name: 'platform0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platform',
+					start: {
+						x: 750,
+						y: world.height - 75
+					},
+					scale: [0.3, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'platform1',
 				cl: 'Sprite',
 				attrs: {
 					img: 'platform',
@@ -455,6 +479,7 @@ var config = {
 				}
 			},
 			{
+				name: 'platform2',
 				cl: 'Sprite',
 				attrs: {
 					img: 'platform',
@@ -469,6 +494,7 @@ var config = {
 				}
 			},
 			{
+				name: 'platform3',
 				cl: 'Sprite',
 				attrs: {
 					img: 'platform',
@@ -482,6 +508,8 @@ var config = {
 					}
 				}
 			}]
+			/*
+
 		},
 		{
 			name: 'sectors',
@@ -714,11 +742,11 @@ var config = {
 					}
 				}
 			}]
-
+*/
 		}]
-		/*
-
 	},
+	/*
+
 	{
 		name: 'level1',
 		cl: 'LevelState',
@@ -1279,6 +1307,7 @@ var config = {
 
 		}]
 	},
+*/
 	{
 		name: 'intermission',
 		cl: 'MenuState',
@@ -1291,23 +1320,25 @@ var config = {
 		clearWorld: true,
 		clearCache: false,
 		controlsType: 'levelComplete',
-		attrs: [{
-			name: 'bg',
-			cl: 'Sprite',
-			attrs: {
-				img: 'greyRect',
-				start: {
-					x: 20,
-					y: 20 
-				},
-				width: stage.width - 40,
-				height: stage.height - 40
-			}
-		},
+		attrs: [		
 		{
-			name: 'copy',
+			name: 'intermission-group',
 			cl: 'GroupCollection',
-			attrs: [{
+			attrs: [
+			{
+				name: 'bg',
+				cl: 'Sprite',
+				attrs: {
+					img: 'greyRect',
+					start: {
+						x: 20,
+						y: 20 
+					},
+					width: stage.width - 40,
+					height: stage.height - 40
+				}
+			},
+			{
 				name: 'title',
 				cl: 'Text',
 				attrs: {
@@ -1325,7 +1356,6 @@ var config = {
 			}]
 		}]
 	},
-*/
 	{
 		name: 'quit',
 		cl: 'State',

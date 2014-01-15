@@ -2,12 +2,12 @@ Polyworks.InputButton = (function() {
 	
 	var _this;
 	function InputButton(params) {
-		trace('InputButton/constructor, params = ');
-		trace(params);
+		// trace('InputButton/constructor, params = ');
+		// trace(params);
 		_this = this;
 		this.model = new Polyworks.Model(params);
-		trace('\tinput button model = ');
-		trace(this.model);
+		// trace('\tinput button model = ');
+		// trace(this.model);
 		var attrs = this.model.attrs;
 		Phaser.Button.call(this, params.game, attrs.x, attrs.y, attrs.img, null, this);
 	};

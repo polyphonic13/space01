@@ -4,11 +4,12 @@ Polyworks.Sprite = (function() {
 	function Sprite(params) {
 		_this = this;
 		this.model = new Polyworks.Model(params);
-		trace('Sprite['+this.model.name+']/constructor, this = ');
-		trace(this);
-		trace(params);
+		// trace('Sprite['+this.model.name+']/constructor, this = ');
+		// trace(this);
+		// trace(params);
 		var attrs = this.model.attrs;
-		Phaser.Sprite.call(this, params.game, attrs.x, attrs.y, attrs.img);
+		var start = attrs.start;
+		Phaser.Sprite.call(this, params.game, start.x, start.y, attrs.img);
 	}
 	
 	Sprite.prototype = Object.create(Phaser.Sprite.prototype);
@@ -33,18 +34,18 @@ Polyworks.Sprite = (function() {
 			 this.fixedToCamera = true;
 		}
 		if(attrs.physics) {
-			this.beginPhysics(attrs.physics, sprite);
+			this.beginPhysics(attrs.physics);
 		}
 	};
 
-	Sprite.prototype.beginPhysics = function(physics, sprite) {
-		// trace('Sprite['+this.model.name+']/beginPhysics');
+	Sprite.prototype.beginPhysics = function(physics) {
+		// trace('\n\nSprite['+this.model.name+']/beginPhysics');
 		for(var key in physics) {
-			// trace(key + ' = ' + physics[key]);
+			trace(key + ' = ' + physics[key]);
 			this.body[key] = physics[key];
 		}
 		if(!physics.gravity && !physics.immovable) {
-			this.body.gravity.y = world.gravity;
+			// this.body.gravity.y = world.gravity;
 		}
 	};
 

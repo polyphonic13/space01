@@ -38,11 +38,6 @@ Polyworks.Collection = (function() {
 	};
 	
 	Collection.prototype.removeAll = function() {
-		for(var key in this.model.collection) {
-			if(this.model.collection[key].destroy) {
-				this.model.collection[key].destroy()
-			}
-		}
 		this.destroy();
 	};
 	

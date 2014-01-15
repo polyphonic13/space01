@@ -29,7 +29,7 @@ Polyworks.LevelState = (function() {
 
 		// create views and controls with super
 		LevelState._super.createState.call(this);
-
+/*
 		this.terrain = this.elements.terrain;
 		this.sectorManager = this.elements.sectors;
 		// trace('player type = ' + config.player.type);
@@ -41,11 +41,12 @@ Polyworks.LevelState = (function() {
 
 		this.gui = this.elements.gui;
 		this.gui.setInitialContent();
+*/
 	};
 
 	LevelState.prototype.update = function() {
 		// trace('this.player.x = ' + this.player.sprite.x + ', end = ' + this.model.bounds.end);
-		// this.gameOver = true;
+		this.gameOver = true;
 		if(!this.gameOver) {
 			if(this.player.sprite.x >= this.model.bounds.end) {
 				PolyworksGame.changeState('intermission');

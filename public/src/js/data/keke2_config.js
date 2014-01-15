@@ -1250,22 +1250,22 @@ var config = {
 		clearCache: false,
 		controlsType: 'levelComplete',
 		elements: [{
-			name: 'bg',
-			type: 'Sprite',
-			attrs: {
-				img: 'greyRect',
-				start: {
-					x: 20,
-					y: 20 
-				},
-				width: stage.width - 40,
-				height: stage.height - 40
-			}
-		},
-		{
-			name: 'copy',
+			name: 'intermission-group',
 			type: 'GroupCollection',
 			attrs: [{
+				name: 'bg',
+				type: 'Sprite',
+				attrs: {
+					img: 'greyRect',
+					start: {
+						x: 20,
+						y: 20 
+					},
+					width: stage.width - 40,
+					height: stage.height - 40
+				}
+			},
+			{
 				name: 'title',
 				type: 'Text',
 				attrs: {
@@ -1295,7 +1295,7 @@ var config = {
 		clearWorld: true,
 		clearCache: false,
 		elements: [{
-			name: 'copy',
+			name: 'quit-group',
 			type: 'GroupCollection',
 			attrs: [{
 				name: 'bg',
