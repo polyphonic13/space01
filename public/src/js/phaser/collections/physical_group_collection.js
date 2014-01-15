@@ -6,6 +6,9 @@ Polyworks.PhysicalGroupCollection = (function() {
 	}
 	
 	PhysicalGroupCollection.prototype.checkTerrainCollision = function(ground) {
+		trace('PhysicalGroupCollection['+this.model.name+']/checkTerrainCollsion');
+		trace(ground);
+		trace(this);
 		var collection = this.model.collection;
 		for(var i = 0; i < collection.length; i++) {
 			collection[i].checkTerrainCollision(ground);

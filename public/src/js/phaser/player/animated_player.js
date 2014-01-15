@@ -14,12 +14,12 @@ Polyworks.AnimatedPlayer = (function() {
 	
 	AnimatedPlayer.prototype.updateAnimations = function() {
 		if(this.velX === 0) {												// IDLE
-			this.view.stop();
+			this.stop();
 			if(this.model.facingForward) {
-				this.view.frame = 0;
+				this.frame = 0;
 				this.model.currentAnimation = 'idleR';
 			} else {
-				this.view.frame = 1;
+				this.frame = 1;
 				this.model.currentAnimation = 'idleL';
 			}
 		} else {
@@ -27,13 +27,13 @@ Polyworks.AnimatedPlayer = (function() {
 				if(this.velX > 0) {
 					if(this.model.currentAnimation !== 'runR') {			// MOVING RIGHT
 				 		// trace('play run right');
-						this.view.play('runR', 13, true);
+						this.play('runR', 13, true);
 						this.model.currentAnimation = 'runR';
 					}
 				} else if(this.velX < 0) {									// MOVING LEFT
 					if(this.model.currentAnimation !== 'runL') {
 				 		// trace('play run left');
-						this.view.play('runL', 13, true);
+						this.play('runL', 13, true);
 						this.model.currentAnimation = 'runL';
 					}
 				}
@@ -44,12 +44,12 @@ Polyworks.AnimatedPlayer = (function() {
 			// trace('player jumping');
 			if(this.model.facingForward) {
 				// trace('playing jump r animation');
-				this.view.stop();
-				this.view.frame = 9;
+				this.stop();
+				this.frame = 9;
 				this.model.currentAnimation = 'jumpR';
 			} else {
-				this.view.stop();
-				this.view.frame = 24;
+				this.stop();
+				this.frame = 24;
 				this.model.currentAnimation = 'jumpL';
 			}
 		}

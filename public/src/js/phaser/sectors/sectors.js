@@ -20,8 +20,8 @@ Polyworks.Sectors = (function() {
 	};
 	
 	Sectors.prototype.setActive = function(x) {
-		trace('Sectors/setActive, this = ');
-		trace(this);
+		// trace('Sectors/setActive, this = ');
+		// trace(this);
 		var sectors = this.model.collection;
 		var bounds;
 		for(var i = 0; i < sectors.length; i++) {

@@ -11,8 +11,9 @@ Polyworks.Enemies = (function() {
 		// trace('Enemies['+this.model.name+']/update, this.collection = ');
 		// trace(this.collection);
 		var enemy;
-		for(var i = 0; i < this.collection.length; i++) {
-			enemy = this.collection[i]
+		var collection  = this.model.collection;
+		for(var i = 0; i < collection.length; i++) {
+			enemy = collection[i]
 			if(enemy.active) {
 				enemy.update(params);
 			}
