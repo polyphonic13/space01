@@ -11,8 +11,8 @@ Polyworks.Group = (function() {
 	Group.prototype = Object.create(Phaser.Group.prototype);
 	Group.prototype.constructor = Polyworks.Group;
 
-	Group.prototype.begin = function() {
-		trace('Group['+this.model.name+']/begin');
+	Group.prototype.start = function() {
+		trace('Group['+this.model.name+']/start');
 		trace(this.model.attrs);
 		var game = PolyworksGame.phaser;
 		var elements = this.model.attrs;
@@ -32,7 +32,7 @@ Polyworks.Group = (function() {
 			} else {
 				element = new Polyworks[elements[i].cl](elements[i]);
 			}
-			element.begin();
+			element.start();
 			this.collection[elements[i].name] = element;
 		}
 	};

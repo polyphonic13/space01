@@ -176,7 +176,7 @@ function createControls() {
   // Init game controller with left thumb stick
   // See https://github.com/austinhallock/html5-virtual-game-controller/ for examples.
 
-	GameController.begin({
+	GameController.start({
         left: {
 			position: { left: 75, bottom: 75 },
             type: 'joystick',

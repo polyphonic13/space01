@@ -14,14 +14,14 @@ Polyworks.Enemy = (function() {
 	// Enemy.prototype = Object.create(Polyworks.Sprite.prototype);
 	// Enemy.prototype.constructor = Enemy;
 
-	Enemy.prototype.begin = function() {
-		// trace('Enemy['+this.model.name+']/begin');
+	Enemy.prototype.start = function() {
+		// trace('Enemy['+this.model.name+']/start');
 		// trace(this);
-		Enemy._super.begin.call(this);
-		this.beginGetterSetters();
+		Enemy._super.start.call(this);
+		this.initGetterSetters();
 	};
 
-	Enemy.prototype.beginGetterSetters = function() {
+	Enemy.prototype.initGetterSetters = function() {
 		this.__defineGetter__('score', function() {
 			return this.model.score;
 		});

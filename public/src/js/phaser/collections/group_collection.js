@@ -13,10 +13,10 @@ Polyworks.GroupCollection = (function() {
 		}
 	}
 	
-	GroupCollection.prototype.begin = function() {
-		trace('GroupCollection['+this.model.name+']/begin');
+	GroupCollection.prototype.start = function() {
+		trace('GroupCollection['+this.model.name+']/start');
 		trace(this);
-		GroupCollection._super.begin.call(this);
+		GroupCollection._super.start.call(this);
 
 		var game = PolyworksGame.phaser;
 		var collection = this.model.collection;

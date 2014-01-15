@@ -40,7 +40,7 @@ Polyworks.State = (function() {
 		trace(this);
 		this.gameOver = PolyworksGame.gameOver; 
 
-		this.begin();
+		this.start();
 		this.createWorld();
 	};
 	

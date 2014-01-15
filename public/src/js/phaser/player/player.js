@@ -9,10 +9,10 @@ Polyworks.Player = (function() {
 		this.velX = 0;
 		this.velY = 0;
 
-		this.beginSprite();
-		this.beginWorld();
-		this.beginEvents();
-		this.beginControls();
+		this.initSprite();
+		this.initWorld();
+		this.initEvents();
+		this.initControls();
 
 		PolyworksGame.setHealth(this.model.health);
 
@@ -39,12 +39,12 @@ Polyworks.Player = (function() {
 		});
 	}
 	
-	Player.prototype.beginSprite = function() {
+	Player.prototype.initSprite = function() {
 		this.view = new Polyworks[this.model.spriteType](this.model, this.model.name + '-sprite');
-		this.view.begin();
+		this.view.start();
 	};
 	
-	Player.prototype.beginWorld = function() {
+	Player.prototype.initWorld = function() {
 		if(this.model.anchor) {
 			this.view.sprite.anchor.setTo(this.model.anchor.x, this.model.anchor.y);
 		}
@@ -52,12 +52,12 @@ Polyworks.Player = (function() {
 
 	};
 	
-	Player.prototype.beginEvents = function() {
+	Player.prototype.initEvents = function() {
 		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_PRESSED, this.onControlButtonPressed, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_RELEASED, this.onControlButtonReleased, this);
 	};
 	
-	Player.prototype.beginControls = function() {
+	Player.prototype.initControls = function() {
 		this.activeControls = {};
 		this.activeControls[Polyworks.InputCodes.LEFT] = false;
 		this.activeControls[Polyworks.InputCodes.RIGHT] = false;

@@ -13,8 +13,8 @@ Polyworks.Text = (function() {
 	Text.prototype = Object.create(Phaser.Text.prototype);
 	Text.prototype.constructor = Polyworks.Text;
 
-	Text.prototype.begin = function() {
-		// trace('Text['+this.model.name+']/begin, this = ');
+	Text.prototype.start = function() {
+		// trace('Text['+this.model.name+']/start, this = ');
 		// trace(this);
 		var attrs = this.model.attrs;
 		var content = attrs.defaultContent;

@@ -8,8 +8,8 @@ Polyworks.ControlButtons = (function() {
 		ControlButtons._super.constructor.call(this, params);
 	}
 	
-	ControlButtons.prototype.begin = function() {
-		ControlButtons._super.begin.call(this, 'ControlButton');
+	ControlButtons.prototype.start = function() {
+		ControlButtons._super.start.call(this, 'ControlButton');
 
 		var button;
 		var controlConsole = PolyworksGame.phaser.add.group(null);

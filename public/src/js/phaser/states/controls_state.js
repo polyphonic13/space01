@@ -20,11 +20,11 @@ Polyworks.ControlsState = (function() {
 		this.addChildren(this.game, this.model.group, attrs);
 		this.controls = this.getItemByName('controls');
 		// this.controls = new Polyworks.ControlButtons(config.controls.buttons[this.model.controlsType]);
-		// this.controls.begin();
+		// this.controls.start();
 		// this.controls = new Polyworks.Collection(config.controls.buttons[this.model.controlsType], 'controlButtons');
 		// var controlConsole = PolyworksGame.phaser.add.group(null);
 		// this.controls = new Polyworks.GroupCollection(config.controls.buttons[this.model.controlsType], 'controlButtons', 'null');
-		// this.controls.begin();
+		// this.controls.start();
 	};
 	
 	ControlsState.prototype.shutdown = function() {

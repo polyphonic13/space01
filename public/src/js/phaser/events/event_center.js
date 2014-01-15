@@ -3,7 +3,7 @@ Polyworks.EventCenter = (function() {
 	var eventCenter = {};
 	var _listeners; 
 	
-	eventCenter.begin = function() {
+	eventCenter.start = function() {
 		_listeners = {};
 	};
 	

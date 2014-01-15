@@ -18,8 +18,8 @@ Polyworks.Sprite = (function() {
 	// Sprite.prototype = Object.create(Phaser.Sprite.prototype);
 	// Sprite.prototype.constructor = Sprite;
 
-	Sprite.prototype.begin = function() {
-		trace('Sprite['+this.model.name+']/begin, this = ');
+	Sprite.prototype.start = function() {
+		trace('Sprite['+this.model.name+']/start, this = ');
 		trace(this);
 
 		var attrs = this.model.attrs;
@@ -37,15 +37,15 @@ Polyworks.Sprite = (function() {
 			 this.fixedToCamera = true;
 		}
 		if(attrs.physics) {
-			this.beginPhysics(attrs.physics);
+			this.initPhysics(attrs.physics);
 		}
 		if(attrs.animations) {
-			this.beginAnimations(attrs.animations)
+			this.initAnimations(attrs.animations)
 		}
 	};
 
-	Sprite.prototype.beginPhysics = function(physics) {
-		// trace('\n\nSprite['+this.model.name+']/beginPhysics');
+	Sprite.prototype.initPhysics = function(physics) {
+		// trace('\n\nSprite['+this.model.name+']/startPhysics');
 		for(var key in physics) {
 			trace(key + ' = ' + physics[key]);
 			this.body[key] = physics[key];
@@ -59,7 +59,7 @@ Polyworks.Sprite = (function() {
 		PolyworksGame.phaser.physics.collide(this, terrain);
 	};
 	
-	Sprite.prototype.beginAnimations = function(animations) {
+	Sprite.prototype.initAnimations = function(animations) {
 		for(var i = 0; i < animations.length; i++) {
 			this.animations.add(animations[i].name, animations[i].keyFrames, animations[i].frameRate);
 		}

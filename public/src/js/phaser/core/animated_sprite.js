@@ -1,10 +1,10 @@
 Polyworks.AnimatedSprite = (function() {
-	// Utils.inherits(AnimatedSprite, Polyworks.Sprite);
+	Utils.inherits(AnimatedSprite, Polyworks.Sprite);
 	
-	// var _this;
+	var _this;
 	function AnimatedSprite(params) {
-		// _this = this;
-		// _this.model.name = id;
+		_this = this;
+		_this.model.name = id;
 		AnimatedSprite._super.constructor.call(this, params);
 
 		this.__defineSetter__('frame', function(val) {
@@ -20,12 +20,12 @@ Polyworks.AnimatedSprite = (function() {
 		});
 	}
 	
-	AnimatedSprite.prototype.begin = function(params) {
-		AnimatedSprite._super.begin.call(_this, params);
-		this.beginAnimations(_this.model.animations, _this.sprite);
+	AnimatedSprite.prototype.start = function(params) {
+		AnimatedSprite._super.start.call(_this, params);
+		this.initAnimations(_this.model.animations, _this.sprite);
 	};
 	
-	AnimatedSprite.prototype.beginAnimations = function(animations, sprite) {
+	AnimatedSprite.prototype.initAnimations = function(animations, sprite) {
 		for(var i = 0; i < animations.length; i++) {
 			sprite.animations.add(animations[i].name, animations[i].keyFrames, animations[i].frameRate);
 		}
