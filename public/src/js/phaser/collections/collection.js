@@ -20,6 +20,7 @@ Polyworks.Collection = (function() {
 			params = children[i];
 			trace('\tchildren['+children[i].name+'].cl = ' + params.cl);
 			params.game = game;
+			params.ancestor = this;
 			trace(params);
 
 			child = new Polyworks[params.cl](params);
