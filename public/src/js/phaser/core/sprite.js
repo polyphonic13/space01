@@ -5,8 +5,8 @@ Polyworks.Sprite = (function() {
 	function Sprite(params) {
 		// _this = this;
 		this.model = new Polyworks.Model(params);
-		trace('Sprite['+this.model.name+']/constructor, this = ');
-		trace(this);
+		// trace('Sprite['+this.model.name+']/constructor, this = ');
+		// trace(this);
 		// trace(_this);
 		// trace(params);
 		var attrs = this.model.attrs;

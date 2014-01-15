@@ -4,10 +4,10 @@ Polyworks.Enemy = (function() {
 	var _this;
 	function Enemy(params) {
 		// _this = this;
-		trace('Enemy/constructor');
+		// trace('Enemy/constructor');
 		// Polyworks.Sprite.call(this, params);
 		Enemy._super.constructor.call(this, params);
-		trace(this);
+		// trace(this);
 		// trace(_this);
 	}
 
@@ -15,8 +15,8 @@ Polyworks.Enemy = (function() {
 	// Enemy.prototype.constructor = Enemy;
 
 	Enemy.prototype.begin = function() {
-		trace('Enemy['+this.model.name+']/begin');
-		trace(this);
+		// trace('Enemy['+this.model.name+']/begin');
+		// trace(this);
 		Enemy._super.begin.call(this);
 		this.beginGetterSetters();
 	};

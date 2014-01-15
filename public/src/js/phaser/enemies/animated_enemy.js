@@ -17,29 +17,29 @@ Polyworks.AnimatedEnemy = (function() {
 		if(this.active) {
 			AnimatedEnemy._super.update.call(this, params);
 
-			// trace('AnimatedEnemy['+this.view.sprite.name+']/update\n\tenemyX = ' + enemyX + ', playerX = ' + playerX);
+			// trace('AnimatedEnemy['+this.name+']/update\n\tenemyX = ' + enemyX + ', playerX = ' + playerX);
 
 			if(this.isInView) {
-				// trace('\tenemy['+this.view.sprite.name+'] in range');
-				var enemyX = this.view.sprite.body.screenX;
+				// trace('\tenemy['+this.name+'] in range');
+				var enemyX = this.body.screenX;
 				var playerX = params.player.body.screenX;
-				var animations = this.view.sprite.animations; 
+				var animations = this.animations; 
 
 				if(enemyX > (playerX + 10)) {
 					if(this.currentAnimation !== 'walkL') {
 						animations.play('walkL', animations.frameRate, true);
 						this.currentAnimation = 'walkL';
 					}
-					this.view.move({ direction: Polyworks.Directions.LEFT });
+					this.move({ direction: Polyworks.Directions.LEFT });
 				} else if(enemyX < (playerX - 10)){
 					if(this.currentAnimation !== 'walkR') {
 						animations.play('walkR', animations.frameRate, true);
 						this.currentAnimation = 'walkR';
 					}
-					this.view.move({ direction: Polyworks.Directions.RIGHT });
+					this.move({ direction: Polyworks.Directions.RIGHT });
 				} else {
 					animations.stop();
-					this.view.sprite.frame = 0
+					this.frame = 0
 					this.currentAnimation = '';
 				}
 			}
