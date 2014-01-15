@@ -2,8 +2,8 @@ Polyworks.Enemies = (function() {
 	Utils.inherits(Enemies, Polyworks.PhysicalGroupCollection);
 	
 	function Enemies(params) {
-		trace('Enemies['+params.name+']/constructor');
-		trace(params);
+		// trace('Enemies['+params.name+']/constructor');
+		// trace(params);
 		Enemies._super.constructor.call(this, params);
 	}
 	

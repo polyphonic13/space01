@@ -6,16 +6,18 @@ Polyworks.PhysicalGroupCollection = (function() {
 	}
 	
 	PhysicalGroupCollection.prototype.checkTerrainCollision = function(ground) {
-		for(var key in this.collection) {
-			this.collection[key].checkTerrainCollision(ground);
+		var collection = this.model.collection;
+		for(var i = 0; i < collection.length; i++) {
+			collection[i].checkTerrainCollision(ground);
 		}
 	};
 	
 	PhysicalGroupCollection.prototype.getActive = function() {
 		var activeElements = [];
-		for(var key in this.collection) {
-			if(this.collection[key].active) {
-				activeElements.push(this.collection[key]);
+		var collection = this.model.collection;
+		for(var i = 0; i < collection.length; i++) {
+			if(collection[i].active) {
+				activeElements.push(collection[i]);
 			}
 		}
 		return activeElements;

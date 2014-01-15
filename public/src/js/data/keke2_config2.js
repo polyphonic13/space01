@@ -226,7 +226,8 @@ var config = {
 		}
 	},
 	// STATES
-	initialState: 'menu',
+	// initialState: 'menu',
+	initialState: 'level0',
 	states: [{
 		name: 'menu',
 		cl: 'MenuState',
@@ -521,7 +522,7 @@ var config = {
 						end: 1024
 					},
 					enemies: {
-						name: 'enemies',
+						name: 'sector0-enemies',
 						cl: 'Enemies',
 						attrs: [{
 							name: 'level0-sector0-enemy0',
@@ -555,7 +556,7 @@ var config = {
 								img: 'caterpillar01',
 								spriteType: 'Sprite',
 								start: {
-									x: 150,
+									x: 350,
 									y: 0
 								},
 								physics: {
@@ -572,7 +573,7 @@ var config = {
 							}
 						}] 
 					},
-				bonuses: {
+					bonuses: {
 						name: 'bonuses',
 						cl: 'PhysicalGroupCollection',
 						attrs: [{
@@ -596,7 +597,6 @@ var config = {
 						}]
 					}
 				}
-				/*
 			},
 			{
 				name: 'sector1',
@@ -606,37 +606,46 @@ var config = {
 						start: 1024,
 						end: 2048
 					},
-					enemies: [{
-						name: 'level0-sector1-enemy0',
-						cl: 'AnimatedEnemy',
-						attrs: {
-							img: 'caterpillar01',
-							spriteType: 'Sprite',
-							start: {
-								x: 1400,
-								y: 0
-							},
-							physics: {
-								bounce: {
-									x: 0,
-									y: 0.2
-								}
-							},
-							speed: 0.5,
-							damage: 5,
-							health: 10,
-							score: 1000,
-							movement: {
-								speed: 0.25,
-								cl: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
-								formula: null
-							},
-							defaultAnimation: '',
-							animations: caterpillarAnimations
-						}
-					}],
-					bonuses: []
+					enemies: {
+						name: 'sector1-enemies',
+						cl: 'Enemies',
+						attrs: [{
+							name: 'level0-sector1-enemy0',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								spriteType: 'Sprite',
+								start: {
+									x: 1400,
+									y: 0
+								},
+								physics: {
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								speed: 0.5,
+								damage: 5,
+								health: 10,
+								score: 1000,
+								movement: {
+									speed: 0.25,
+									cl: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}]
+					},
+					bonuses: {
+						name: 'sector1-bonuses',
+						cl: 'PhysicalGroupCollection',
+						attrs: []
+					}
 				}
+				/*
 			},
 			{
 				name: 'sector2',

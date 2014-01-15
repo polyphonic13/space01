@@ -3,15 +3,9 @@ Polyworks.AnimatedEnemy = (function() {
 	
 	var _this;
 	function AnimatedEnemy(params) {
-		trace('AnimatedEnemy/constructor');
+		// trace('AnimatedEnemy/constructor');
 		AnimatedEnemy._super.constructor.call(this, params);
-		// _this = this;
-		// Polyworks.Enemy.call(this, params);
-
 	}
-	
-	// AnimatedEnemy.prototype = Object.create(Polyworks.Enemy.prototype);
-	// AnimatedEnemy.prototype.constructor = AnimatedEnemy;
 	
 	AnimatedEnemy.prototype.update = function(params) {
 		if(this.active) {

@@ -29,6 +29,10 @@ Polyworks.LevelState = (function() {
 
 		// create views and controls with super
 		LevelState._super.createState.call(this);
+
+		this.terrain = this.getItemByName('terrain');
+		this.sectorManager = this.getItemByName('sectors');
+
 /*
 		this.terrain = this.elements.terrain;
 		this.sectorManager = this.elements.sectors;
@@ -48,22 +52,23 @@ Polyworks.LevelState = (function() {
 		// trace('this.player.x = ' + this.player.sprite.x + ', end = ' + this.model.bounds.end);
 		this.gameOver = true;
 		if(!this.gameOver) {
-			if(this.player.sprite.x >= this.model.bounds.end) {
-				PolyworksGame.changeState('intermission');
-			} else {
+			// if(this.player.sprite.x >= this.model.bounds.end) {
+			// 	PolyworksGame.changeState('intermission');
+			// } else {
 				this.sectorManager.checkTerrainCollision(this.terrain.group);
+				// this.sectorManager.checkTerrainCollision();
 				this.sectorManager.setActive(this.game.camera.x + (stage.width/2));
 
 				var sector = this.sectorManager.activeSector;
-				sector.enemies.update({ player: this.player.sprite });
+				// sector.enemies.update({ player: this.player.sprite });
 
-				this.player.update({
-					terrain: this.terrain.group,
-					enemies: sector.enemies.getActive(),
-					bonuses: sector.bonuses.getActive(),
-					context: this
-				});
-			}
+				// this.player.update({
+				// 	terrain: this.terrain.group,
+				// 	enemies: sector.enemies.getActive(),
+				// 	bonuses: sector.bonuses.getActive(),
+				// 	context: this
+				// });
+			// }
 		}
 	};
 	

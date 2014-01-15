@@ -8,18 +8,21 @@ Polyworks.Sectors = (function() {
 		this.activeSectorId = 0;
 
 		this.__defineGetter__('activeSector', function() {
-			return this.collection[this.activeSectorId];
+			return this.model.collection[this.activeSectorId];
 		})
 	}
 	
 	Sectors.prototype.checkTerrainCollision = function(ground) {
-		for(var key in this.collection) {
-			this.collection[key].checkTerrainCollision(ground);
+		var sectors = this.model.collection;
+		for(var i = 0; i < sectors.length; i++) {
+			sectors[i].checkTerrainCollision(ground);
 		}
 	};
 	
 	Sectors.prototype.setActive = function(x) {
-		var sectors = this.collection;
+		trace('Sectors/setActive, this = ');
+		trace(this);
+		var sectors = this.model.collection;
 		var bounds;
 		for(var i = 0; i < sectors.length; i++) {
 			bounds = sectors[i].bounds;

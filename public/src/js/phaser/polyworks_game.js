@@ -135,7 +135,7 @@ PolyworksGame = (function() {
 	
 	function _beginControls() {
 	
-		_controls = new Polyworks.Collection(config.controls.keys, 'controlKeys');
+		_controls = new Polyworks.Collection(_model.controls.keys, 'controlKeys');
 		_controls.begin();
 	}
 	
@@ -155,7 +155,9 @@ PolyworksGame = (function() {
 		}
 		// trace('PolyworksGame, _states = ');
 		// trace(_states);
-		PolyworksGame.changeState(config.initialState);
+		if(_model.initialState) {
+			PolyworksGame.changeState(_model.initialState);
+		}
 	}
 
 	function _removeLoadingAnimation() {
