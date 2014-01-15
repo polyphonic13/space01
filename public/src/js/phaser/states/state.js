@@ -51,8 +51,8 @@ Polyworks.State = (function() {
 
 	State.prototype.shutdown = function() {
 		this.update = null;
-		// this.destroy();
-		this.removeAll();
+		this.destroy();
+		// this.removeAll();
 	};
 
 	return State;

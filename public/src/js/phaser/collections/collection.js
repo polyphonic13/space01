@@ -9,8 +9,10 @@ Polyworks.Collection = (function() {
 	Collection.prototype.begin = function() {
 		trace('Collection['+this.model.name+']/begin');
 		trace(this);
+		var game = PolyworksGame.phaser;
 		var collection = [];
 		var nameIndex = {};
+		var children = this.model.attrs;
 		var child;
 		var params;
 
@@ -32,6 +34,21 @@ Polyworks.Collection = (function() {
 	
 	Collection.prototype.getItemByName = function(name) {
 		return this.model.collection[this.model.nameIndex[name]];
+	};
+	
+	Collection.prototype.removeAll = function() {
+		for(var key in this.model.collection) {
+			if(this.model.collection[key].destroy) {
+				this.model.collection[key].destroy()
+			}
+		}
+		this.destroy();
+	};
+	
+	Collection.prototype.destroy = function() {
+		while(this.model.collection.length > 0) {
+			this.model.collection.pop();
+		}
 	};
 	
 	return Collection;

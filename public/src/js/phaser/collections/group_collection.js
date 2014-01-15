@@ -1,6 +1,6 @@
 // collection of Phaser group objects
 Polyworks.GroupCollection = (function() {
-	Utils.inherits(GroupCollection, Polyworks.GroupCollection);
+	Utils.inherits(GroupCollection, Polyworks.Collection);
 	
 	function GroupCollection(params, groupContext) {
 		// trace('GroupCollection['+params.name+']/constructor, groupContext = ' + groupContext);
@@ -46,10 +46,7 @@ Polyworks.GroupCollection = (function() {
 
 	GroupCollection.prototype.destroy = function() {
 		this.model.group.destroy();
-		var collection = this.model.collection;
-		for(var key in collection) {
-			delete collection[key];
-		}
+		GroupCollection._super.destroy.call(this);
 	};
 	
 	return GroupCollection;

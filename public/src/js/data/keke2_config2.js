@@ -239,65 +239,73 @@ var config = {
 		clearWorld: true,
 		clearCache: false,
 		controlsType: 'menu',
-		attrs: [{
-			name: 'bg',
-			cl: 'Sprite',
-				attrs: {
-				img: 'greyRect',
-				start: {
-					x: 20,
-					y: 20 
-				},
-				width: stage.width - 40,
-				height: stage.height - 40
-			}
-		},
+		attrs: [
 		{
-			name: 'title',
-			cl: 'Text',
-			attrs: {
-				centerX: true,
-				centerY: false,
-				x: 0,
-				y: 50,
-				defaultContent: 'Keke vs. the Caterpillars',
-				style: { 
-					font: '30px Arial', 
-					fill: '#000000',
-					align: 'center'
+			name: 'menu-group',
+			cl: 'GroupCollection',
+			attrs: [
+			{
+				name: 'bg',
+				cl: 'Sprite',
+					attrs: {
+					img: 'greyRect',
+					start: {
+						x: 20,
+						y: 20 
+					},
+					width: stage.width - 40,
+					height: stage.height - 40
 				}
-			}
-		},
-		{
-			name: 'start',
-			cl: 'InputButton',
-			attrs: {
-				img: 'startButton',
-				start: {
-					x: stage.width/2 - 128,
-					y: stage.height/2 - 64
-				},
-				inputCode: Polyworks.InputCodes.PLAY
-			}
-		},
-		{
-			name: 'quitBtn',
-			cl: 'InputButton',
-			attrs: {
-				img: 'quitButton',
-				start: {
-					x: stage.width - 80,
-					y: 10
-				},
-				inputCode: Polyworks.InputCodes.QUIT,
-				event: {
-					pressed: {
-						cl: Polyworks.Events.CHANGE_STATE,
-						value: 'quit'
+			},
+			{
+				name: 'title',
+				cl: 'Text',
+				attrs: {
+					centerX: true,
+					centerY: false,
+					x: 0,
+					y: 50,
+					defaultContent: 'Keke vs. the Caterpillars',
+					style: { 
+						font: '30px Arial', 
+						fill: '#000000',
+						align: 'center'
+					}
+				}
+			},
+			{
+				name: 'start',
+				cl: 'InputButton',
+				attrs: {
+					img: 'startButton',
+					start: {
+						x: stage.width/2 - 128,
+						y: stage.height/2 - 64
+					},
+					inputCode: Polyworks.InputCodes.PLAY
+				}
+			},
+			{
+				name: 'quitBtn',
+				cl: 'InputButton',
+				attrs: {
+					img: 'quitButton',
+					start: {
+						x: stage.width - 80,
+						y: 10
+					},
+					inputCode: Polyworks.InputCodes.QUIT,
+					event: {
+						pressed: {
+							cl: Polyworks.Events.CHANGE_STATE,
+							value: 'quit'
+						}
 					}
 				}
 			}
-		}]
+			]
+		}
+		]
 	},
 /*
 	{
@@ -1330,35 +1338,41 @@ var config = {
 		clearWorld: true,
 		clearCache: false,
 		attrs: [{
-			name: 'bg',
-			cl: 'Sprite',
-			attrs: {
-				img: 'greyRect',
-				start: {
-					x: 20,
-					y: 20
-				},
-				// fixedToCamera: true,
-				width: stage.width - 40,
-				height: stage.height - 40
-			}
-		},
-		{
-			name: 'title',
-			cl: 'Text',
-			attrs: {
-				centerX: true,
-				centerY: true,
-				x: stage.width/2,
-				y: stage.height/2,
-				defaultContent: 'Game Over',
-				fixedToCamera: true,
-				style: { 
-					font: '30px Arial', 
-					fill: '#000000',
-					align: 'center'
+			name: 'quit-group',
+			cl: 'GroupCollection',
+			attrs: [
+			{
+				name: 'bg',
+				cl: 'Sprite',
+				attrs: {
+					img: 'greyRect',
+					start: {
+						x: 20,
+						y: 20
+					},
+					// fixedToCamera: true,
+					width: stage.width - 40,
+					height: stage.height - 40
+				}
+			},
+			{
+				name: 'title',
+				cl: 'Text',
+				attrs: {
+					centerX: true,
+					centerY: true,
+					x: stage.width/2,
+					y: stage.height/2,
+					defaultContent: 'Game Over',
+					fixedToCamera: true,
+					style: { 
+						font: '30px Arial', 
+						fill: '#000000',
+						align: 'center'
+					}
 				}
 			}
+			]
 		}]
 	}],
 	player: {
