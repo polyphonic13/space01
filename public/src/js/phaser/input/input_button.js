@@ -16,9 +16,10 @@ Polyworks.InputButton = (function() {
 	InputButton.prototype.constructor = Polyworks.InputButton;
 
 	InputButton.prototype.begin = function() {
-		var start = this.model.start;
+		var start = this.model.attrs.start;
+		this.x = start.x;
+		this.y = start.y;
 		// trace('InputButton['+this.model.img+']/begin, start x/y = ' + start.x + '/' + start.y);
-	    // this = PolyworksGame.phaser.add.button(start.x, start.y, this.model.img, null, this);
 		if(this.model.width) {
 			this.width = this.model.width;
 		}
