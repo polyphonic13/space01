@@ -1,18 +1,27 @@
 Polyworks.Enemy = (function() {
+	Utils.inherits(Enemy, Polyworks.Sprite);
+	
 	var _this;
 	function Enemy(params) {
 		// _this = this;
 		trace('Enemy/constructor');
-		Polyworks.Sprite.call(this, params);
+		// Polyworks.Sprite.call(this, params);
+		Enemy._super.constructor.call(this, params);
 		trace(this);
 		// trace(_this);
-		// this.beginGetterSetters();
 	}
 
-	Enemy.prototype = Object.create(Polyworks.Sprite.prototype);
-	Enemy.prototype.constructor = Polyworks.Enemy;
-	
-	Enemy.prototype.beginGetterSeters = function() {
+	// Enemy.prototype = Object.create(Polyworks.Sprite.prototype);
+	// Enemy.prototype.constructor = Enemy;
+
+	Enemy.prototype.begin = function() {
+		trace('Enemy['+this.model.name+']/begin');
+		trace(this);
+		Enemy._super.begin.call(this);
+		this.beginGetterSetters();
+	};
+
+	Enemy.prototype.beginGetterSetters = function() {
 		this.__defineGetter__('score', function() {
 			return this.model.score;
 		});

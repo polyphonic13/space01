@@ -1,4 +1,5 @@
 Polyworks.Sprite = (function() {
+	Utils.inherits(Sprite, Phaser.Sprite);
 	var _this;
 
 	function Sprite(params) {
@@ -7,14 +8,15 @@ Polyworks.Sprite = (function() {
 		trace('Sprite['+this.model.name+']/constructor, this = ');
 		trace(this);
 		// trace(_this);
-		trace(params);
+		// trace(params);
 		var attrs = this.model.attrs;
 		var start = attrs.start;
-		Phaser.Sprite.call(this, params.game, start.x, start.y, attrs.img);
+		Sprite._super.constructor.call(this, params.game, start.x, start.y, attrs.img);
+		// Phaser.Sprite.call(this, params.game, start.x, start.y, attrs.img);
 	}
 	
-	Sprite.prototype = Object.create(Phaser.Sprite.prototype);
-	Sprite.prototype.constructor = Polyworks.Sprite;
+	// Sprite.prototype = Object.create(Phaser.Sprite.prototype);
+	// Sprite.prototype.constructor = Sprite;
 
 	Sprite.prototype.begin = function() {
 		trace('Sprite['+this.model.name+']/begin, this = ');
