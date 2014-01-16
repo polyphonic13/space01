@@ -28,14 +28,23 @@ Polyworks.LevelState = (function() {
 	LevelState.prototype.createState = function() {
 
 		// create views and controls with super
-		LevelState._super.createState.call(this);
+		// LevelState._super.createState.call(this);
 
-		this.terrain = this.getItemByName('terrain');
-		this.sectorManager = this.getItemByName('sectors');
-		trace('LevelState/createState, terrain = ');
-		trace(this.terrain);
-		this.createPlayer();
+		// this.terrain = this.getItemByName('terrain');
+		// this.sectorManager = this.getItemByName('sectors');
+		// this.createPlayer();
+this.game.add.sprite(0, 0, 'treesBack');
 
+this.platforms = this.game.add.group();
+
+var ground = this.platforms.create(0, (stage.height - 100), 'platform');
+ground.scale.setTo(8, 1);
+ground.body.immovable = true;
+
+trace('stage height - 50 = ' + (stage.height - 100) + ', tGroup = ');
+trace(this.platforms);
+this.tPop = this.game.add.sprite(10, 10, 'lollipop');
+this.tPop.body.gravity.y = 5;
 /*
 		this.terrain = this.elements.terrain;
 		this.sectorManager = this.elements.sectors;
@@ -61,15 +70,15 @@ Polyworks.LevelState = (function() {
 	var updatedOnce = false;
 	LevelState.prototype.update = function() {
 		// trace('this.player.x = ' + this.player.sprite.x + ', end = ' + this.model.bounds.end);
-		this.gameOver = true;
-		// if(!this.gameOver) {
 		if(!updatedOnce) {
-			if(this.player.body.x >= this.model.bounds.end) {
-				PolyworksGame.changeState('intermission');
-			} else {
-				this.sectorManager.checkTerrainCollision(this.terrain.group);
+			// if(this.player.body.x >= this.model.bounds.end) {
+				// PolyworksGame.changeState('intermission');
+			// } else {
+				this.game.physics.collide(this.tPop, this.platforms);
+				// this.sectorManager.checkTerrainCollision(this.tGroup);
+				// this.sectorManager.checkTerrainCollision(this.terrain.group);
 				// this.sectorManager.checkTerrainCollision();
-				this.sectorManager.setActive(this.game.camera.x + (stage.width/2));
+				// this.sectorManager.setActive(this.game.camera.x + (stage.width/2));
 
 				// var sector = this.sectorManager.activeSector;
 				// sector.enemies.update({ player: this.player.sprite });
@@ -80,7 +89,7 @@ Polyworks.LevelState = (function() {
 				// 	bonuses: sector.bonuses.getActive(),
 				// 	context: this
 				// });
-			}
+			// }
 			updatedOnce = true;
 		}
 	};

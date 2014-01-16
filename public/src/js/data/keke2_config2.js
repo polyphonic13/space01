@@ -582,7 +582,7 @@ var config = {
 							attrs: {
 								img: 'lollipop',
 								start: {
-									x: 600,
+									x: 760,
 									y: 0
 								},
 								physics: {
