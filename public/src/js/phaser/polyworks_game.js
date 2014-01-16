@@ -97,21 +97,8 @@ PolyworksGame = (function() {
 	function _create() {
 		_removeLoadingAnimation();
 		_beginEvents();
-		// _beginControls();
+		_beginControls();
 		_beginStates();
-/*
-		var params = {
-			x: 10, 
-			y: 10,
-			img: 'heart',
-			name: 'heartIcon'
-		};
-		var test = new Polyworks.Sprite(PolyworksGame.phaser, params.x, params.y, params);
-		test.begin();
-		// PolyworksGame.phaser.add.sprite(10, 10, params.img, params.name);
-		var group = PolyworksGame.phaser.add.group();
-		group.add(test);
-*/
 	}
 	
 	
@@ -135,7 +122,7 @@ PolyworksGame = (function() {
 	
 	function _beginControls() {
 	
-		_controls = new Polyworks.Collection(_model.controls.keys, 'controlKeys');
+		_controls = new Polyworks.Collection(_model.controls.keys);
 		_controls.begin();
 	}
 	
@@ -156,7 +143,7 @@ PolyworksGame = (function() {
 		// trace('PolyworksGame, _states = ');
 		// trace(_states);
 		if(_model.initialState) {
-			PolyworksGame.changeState(_model.initialState);
+			// PolyworksGame.changeState(_model.initialState);
 		}
 	}
 

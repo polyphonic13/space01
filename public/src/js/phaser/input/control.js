@@ -8,8 +8,8 @@ Polyworks.Control = (function() {
 	}
 	
 	Control.prototype.inputPressed = function(params) {
-		// trace('Control/inputPressed, value = ' + params.value + ', type = ' + params.type);
-		// trace(this);
+		trace('Control/inputPressed, value = ' + params.value + ', type = ' + params.type);
+		trace(this);
 		var event;
 		var events = this.model.events;
 		// trace(events);

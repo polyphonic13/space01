@@ -49,40 +49,44 @@ var config = {
 	},
 	// CONTROLS
 	controls: {
-		keys: [{
-			name: 'quit',
+		keys: {
+			name: 'controlKeys',
 			cl: 'ControlKey',
-			attrs: {
-				inputCode: Polyworks.InputCodes.QUIT,
-				events: {
-					pressed: {
-						cl: Polyworks.Events.CHANGE_STATE,
-						value: 'quit'
+			attrs: [{
+				name: 'quit',
+				cl: 'ControlKey',
+				attrs: {
+					inputCode: Polyworks.InputCodes.QUIT,
+					events: {
+						pressed: {
+							cl: Polyworks.Events.CHANGE_STATE,
+							value: 'quit'
+						}
 					}
 				}
-			}
+			},
+			{
+				name: 'left',
+				cl: 'ControlKey',
+				attrs: {
+					inputCode: Polyworks.InputCodes.LEFT
+				}
+			},
+			{
+				name: 'right',
+				cl: 'ControlKey',
+				attrs: {
+					inputCode: Polyworks.InputCodes.RIGHT
+				}
+			},
+			{
+				name: 'up',
+				cl: 'ControlKey',
+				attrs: {
+					inputCode: Polyworks.InputCodes.UP
+				}
+			}]
 		},
-		{
-			name: 'left',
-			cl: 'ControlKey',
-			attrs: {
-				inputCode: Polyworks.InputCodes.LEFT
-			}
-		},
-		{
-			name: 'right',
-			cl: 'ControlKey',
-			attrs: {
-				inputCode: Polyworks.InputCodes.RIGHT
-			}
-		},
-		{
-			name: 'up',
-			cl: 'ControlKey',
-			attrs: {
-				inputCode: Polyworks.InputCodes.UP
-			}
-		}],
 		buttons: {
 			menu: [{
 				name: 'controls',
