@@ -120,7 +120,9 @@ Polyworks.Player = (function() {
 		}
 	};
 	
-	Player.prototype.update = function(params) {
+	Player.prototype.updatePlayer = function(params) {
+		trace('Player/update, params = ');
+		trace(params);
 		this.checkTerrainCollision(params.terrain);
 
 		var physics = PolyworksGame.phaser.physics;

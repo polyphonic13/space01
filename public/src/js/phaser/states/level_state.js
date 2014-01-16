@@ -55,6 +55,8 @@ Polyworks.LevelState = (function() {
 		playerConfig.game = PolyworksGame.phaser;
 		this.player = new Polyworks[playerConfig.cl](playerConfig);
 		this.player.begin();
+		this.playerGroup = PolyworksGame.phaser.add.group();
+		this.playerGroup.add(this.player);
 	};
 	
 	LevelState.prototype.update = function() {
@@ -71,7 +73,7 @@ Polyworks.LevelState = (function() {
 				var sector = this.sectorManager.activeSector;
 				sector.enemies.update({ player: this.player.sprite });
 
-				this.player.update({
+				this.player.updatePlayer({
 					terrain: this.terrain.group,
 					enemies: sector.enemies.getActive(),
 					bonuses: sector.bonuses.getActive(),
@@ -82,8 +84,7 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.shutdown = function() {
-		this.player.destroy();
-		this.player = null;
+		this.playerGroup.destroy();
 		LevelState._super.shutdown.call(this);
 	};
 

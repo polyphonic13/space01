@@ -7,8 +7,8 @@ Polyworks.AnimatedPlayer = (function() {
 		AnimatedPlayer._super.constructor.call(this, params);
 	}
 	
-	AnimatedPlayer.prototype.update = function(params) {
-		AnimatedPlayer._super.update.call(this, params);
+	AnimatedPlayer.prototype.updatePlayer = function(params) {
+		AnimatedPlayer._super.updatePlayer.call(this, params);
 		this.updateAnimations();
 	};
 	
