@@ -105,6 +105,7 @@ PolyworksGame = (function() {
 	function _beginEvents() {
 		Polyworks.EventCenter.begin();
 		Polyworks.EventCenter.bind(Polyworks.Events.BUTTON_PRESSED, _onControlPressed, this);
+		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_PRESSED, _onControlPressed, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_STATE, _onChangeState, this);
 	}
 	
@@ -143,7 +144,7 @@ PolyworksGame = (function() {
 		// trace('PolyworksGame, _states = ');
 		// trace(_states);
 		if(_model.initialState) {
-			// PolyworksGame.changeState(_model.initialState);
+			PolyworksGame.changeState(_model.initialState);
 		}
 	}
 

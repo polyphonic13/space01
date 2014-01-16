@@ -64,7 +64,7 @@ Polyworks.LevelState = (function() {
 					context: this
 				});
 			}
-			updatedOnce = true;
+			// updatedOnce = true;
 		}
 	};
 	
