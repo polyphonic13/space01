@@ -35,14 +35,13 @@ Polyworks.LevelState = (function() {
 		// this.createPlayer();
 this.game.add.sprite(0, 0, 'treesBack');
 
-this.platforms = this.game.add.group();
-
-var ground = this.platforms.create(0, (stage.height - 100), 'platform');
-ground.scale.setTo(8, 1);
-ground.body.immovable = true;
-
-trace('stage height - 50 = ' + (stage.height - 100) + ', tGroup = ');
-trace(this.platforms);
+this.tGroup = this.game.add.group();
+var tTerrain = this.tGroup.create(0, stage.height - 100, 'platform');
+// var tTerrain = this.game.add.sprite(0, stage.height - 50, 'platform');
+// tTerrain.scale.setTo(16, 0);
+tTerrain.body.immovable = true;
+trace('stage height - 50 = ' + (stage.height - 50) + ', tGroup = ');
+trace(this.tGroup);
 this.tPop = this.game.add.sprite(10, 10, 'lollipop');
 this.tPop.body.gravity.y = 5;
 /*
@@ -74,7 +73,7 @@ this.tPop.body.gravity.y = 5;
 			// if(this.player.body.x >= this.model.bounds.end) {
 				// PolyworksGame.changeState('intermission');
 			// } else {
-				this.game.physics.collide(this.tPop, this.platforms);
+				this.game.physics.collide(this.tPop, this.tGroup);
 				// this.sectorManager.checkTerrainCollision(this.tGroup);
 				// this.sectorManager.checkTerrainCollision(this.terrain.group);
 				// this.sectorManager.checkTerrainCollision();
