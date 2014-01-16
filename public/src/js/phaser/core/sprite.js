@@ -48,6 +48,9 @@ Polyworks.Sprite = (function() {
 	};
 
 	Sprite.prototype.checkTerrainCollision = function(terrain) {
+		trace('Sprite['+this.model.name+']/checkTerrainCollision, terrain = ');
+		trace(terrain);
+		trace(this);
 		PolyworksGame.phaser.physics.collide(this, terrain);
 	};
 	
