@@ -39,13 +39,14 @@ Polyworks.State = (function() {
 		trace('\nState['+this.model.name+']/createState, this = ');
 		trace(this);
 		this.gameOver = PolyworksGame.gameOver; 
-
-		this.begin();
 		this.createWorld();
+		this.begin();
 	};
 	
 	State.prototype.createWorld = function() {
+		trace('State/createWorld, world params = ');
 		var world = this.model.world;
+		trace(world);
 		PolyworksGame.phaser.world.setBounds(world.x, world.y, world.width, world.height);
 	};
 

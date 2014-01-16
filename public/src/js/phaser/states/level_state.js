@@ -26,9 +26,10 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.createState = function() {
-
+		
 		// create views and controls with super
 		// LevelState._super.createState.call(this);
+		LevelState._super.createWorld.call(this);
 
 		// this.terrain = this.getItemByName('terrain');
 		// this.sectorManager = this.getItemByName('sectors');
