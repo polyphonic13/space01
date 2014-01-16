@@ -28,14 +28,14 @@ Polyworks.Sector = (function() {
 		this.created = true;
 	}
 
-	Sector.prototype.checkTerrainCollision = function(ground) {
-		trace('Sector['+this.model.name+']/checkTerrainCollision, ground = ');
-		trace(ground);
+	Sector.prototype.checkTerrainCollision = function(terrain) {
+		// trace('Sector['+this.model.name+']/checkTerrainCollision, terrain = ');
+		// trace(terrain);
 		if(this.enemies) {
-			this.enemies.checkTerrainCollision(ground);
+			this.enemies.checkTerrainCollision(terrain);
 		}
 		if(this.bonuses) {
-			this.bonuses.checkTerrainCollision(ground);
+			this.bonuses.checkTerrainCollision(terrain);
 		}
 	};
 	

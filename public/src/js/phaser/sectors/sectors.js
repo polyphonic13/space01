@@ -12,10 +12,10 @@ Polyworks.Sectors = (function() {
 		})
 	}
 	
-	Sectors.prototype.checkTerrainCollision = function(ground) {
+	Sectors.prototype.checkTerrainCollision = function(terrain) {
 		var sectors = this.model.collection;
 		for(var i = 0; i < sectors.length; i++) {
-			sectors[i].checkTerrainCollision(ground);
+			sectors[i].checkTerrainCollision(terrain);
 		}
 	};
 	

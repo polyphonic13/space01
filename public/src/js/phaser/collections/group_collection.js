@@ -5,12 +5,12 @@ Polyworks.GroupCollection = (function() {
 	function GroupCollection(params, groupContext) {
 		// trace('GroupCollection['+params.name+']/constructor, groupContext = ' + groupContext);
 		GroupCollection._super.constructor.call(this, params);
-		if(groupContext === 'null') {
-			// trace('GroupCollection['+params.name+'], adding group with context of null');
-			this.group = PolyworksGame.phaser.add.group(null);
-		} else {
-			this.group = PolyworksGame.phaser.add.group();
-		}
+		// if(groupContext === 'null') {
+		// 	// trace('GroupCollection['+params.name+'], adding group with context of null');
+		// 	this.group = PolyworksGame.phaser.add.group(null);
+		// } else {
+		// 	this.group = PolyworksGame.phaser.add.group();
+		// }
 	}
 	
 	GroupCollection.prototype.begin = function() {
@@ -29,8 +29,13 @@ Polyworks.GroupCollection = (function() {
 		}
 
 		for(var i = 0; i < collection.length; i++) {
+			trace('\t\tcollection['+i+'] = ');
+			trace(collection[i]);
 			group.add(collection[i]);
 		}
+		this.group = group;
+		trace('GROUP NOW = ');
+		trace(this.group);
 	};
 
 	GroupCollection.prototype.remove = function(child) {

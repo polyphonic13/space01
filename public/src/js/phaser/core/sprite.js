@@ -39,11 +39,11 @@ Polyworks.Sprite = (function() {
 	Sprite.prototype.beginPhysics = function(physics) {
 		// trace('\n\nSprite['+this.model.name+']/beginPhysics');
 		for(var key in physics) {
-			trace(key + ' = ' + physics[key]);
+			// trace(key + ' = ' + physics[key]);
 			this.body[key] = physics[key];
 		}
 		if(!physics.gravity && !physics.immovable) {
-			// this.body.gravity.y = world.gravity;
+			this.body.gravity.y = world.gravity;
 		}
 	};
 
