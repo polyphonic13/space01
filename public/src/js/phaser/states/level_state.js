@@ -28,35 +28,12 @@ Polyworks.LevelState = (function() {
 	LevelState.prototype.createState = function() {
 		
 		// create views and controls with super
-		// LevelState._super.createState.call(this);
-		LevelState._super.createWorld.call(this);
+		LevelState._super.createState.call(this);
 
-		// this.terrain = this.getItemByName('terrain');
-		// this.sectorManager = this.getItemByName('sectors');
-		// this.createPlayer();
-this.game.add.sprite(0, 0, 'treesBack');
+		this.terrain = this.getItemByName('terrain');
+		this.sectorManager = this.getItemByName('sectors');
+		this.createPlayer();
 
-this.tGroup = this.game.add.group();
-var tTerrain = this.tGroup.create(0, stage.height - 100, 'platform');
-// var tTerrain = this.game.add.sprite(0, stage.height - 50, 'platform');
-// tTerrain.scale.setTo(16, 0);
-tTerrain.body.immovable = true;
-trace('stage height - 50 = ' + (stage.height - 50) + ', tGroup = ');
-trace(this.tGroup);
-this.tPop = this.game.add.sprite(10, 10, 'lollipop');
-this.tPop.body.gravity.y = 5;
-/*
-		this.terrain = this.elements.terrain;
-		this.sectorManager = this.elements.sectors;
-		// trace('player type = ' + config.player.type);
-		var params = Utils.clone(config.player.attrs);
-		params.sectorManager = this.sectorManager;
-
-		this.createControls.call(this);
-
-		this.gui = this.elements.gui;
-		this.gui.setInitialContent();
-*/
 	};
 
 	LevelState.prototype.createPlayer = function() {
@@ -74,10 +51,7 @@ this.tPop.body.gravity.y = 5;
 			// if(this.player.body.x >= this.model.bounds.end) {
 				// PolyworksGame.changeState('intermission');
 			// } else {
-				this.game.physics.collide(this.tPop, this.tGroup);
-				// this.sectorManager.checkTerrainCollision(this.tGroup);
-				// this.sectorManager.checkTerrainCollision(this.terrain.group);
-				// this.sectorManager.checkTerrainCollision();
+				this.sectorManager.checkTerrainCollision(this.terrain.group);
 				// this.sectorManager.setActive(this.game.camera.x + (stage.width/2));
 
 				// var sector = this.sectorManager.activeSector;
@@ -90,7 +64,7 @@ this.tPop.body.gravity.y = 5;
 				// 	context: this
 				// });
 			// }
-			updatedOnce = true;
+//			updatedOnce = true;
 		}
 	};
 	
