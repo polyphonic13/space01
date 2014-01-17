@@ -7,50 +7,55 @@ Polyworks.AnimatedPlayer = (function() {
 		AnimatedPlayer._super.constructor.call(this, params);
 	}
 	
-	AnimatedPlayer.prototype.updatePlayer = function(params) {
-		AnimatedPlayer._super.updatePlayer.call(this, params);
-		this.updateAnimations();
+	AnimatedPlayer.prototype.pwUpdate = function(params) {
+		if(this.alive) {
+			AnimatedPlayer._super.pwUpdate.call(this, params);
+			this.updateAnimations();
+		}
 	};
 	
 	AnimatedPlayer.prototype.updateAnimations = function() {
+		var attrs = this.model.attrs;
 		if(this.velX === 0) {												// IDLE
 			this.stop();
-			if(this.model.facingForward) {
+			if(attrs.facingForward) {
 				this.frame = 0;
-				this.model.currentAnimation = 'idleR';
+				attrs.currentAnimation = 'idleR';
 			} else {
 				this.frame = 1;
-				this.model.currentAnimation = 'idleL';
+				attrs.currentAnimation = 'idleL';
 			}
 		} else {
-			if(!this.model.jumping) {
+			if(!attrs.jumping) {
 				if(this.velX > 0) {
-					if(this.model.currentAnimation !== 'runR') {			// MOVING RIGHT
+					if(attrs.currentAnimation !== 'runR') {			// MOVING RIGHT
 				 		// trace('play run right');
 						this.play('runR', 13, true);
-						this.model.currentAnimation = 'runR';
+						attrs.currentAnimation = 'runR';
 					}
 				} else if(this.velX < 0) {									// MOVING LEFT
-					if(this.model.currentAnimation !== 'runL') {
+					if(attrs.currentAnimation !== 'runL') {
 				 		// trace('play run left');
 						this.play('runL', 13, true);
-						this.model.currentAnimation = 'runL';
+						attrs.currentAnimation = 'runL';
 					}
 				}
 			}
 		}
 
-		if(this.model.jumping) {										// JUMPING
+		if(attrs.jumping) {										// JUMPING
 			// trace('player jumping');
-			if(this.model.facingForward) {
+			if(attrs.facingForward) {
 				// trace('playing jump r animation');
 				this.stop();
 				this.frame = 9;
-				this.model.currentAnimation = 'jumpR';
+				// this.play('jumpR', 13, true);
+				attrs.currentAnimation = 'jumpR';
 			} else {
 				this.stop();
 				this.frame = 24;
-				this.model.currentAnimation = 'jumpL';
+				// this.play('jumpL', 13, true);
+				attrs.currentAnimation = 'jumpL';
 			}
 		}
 	};

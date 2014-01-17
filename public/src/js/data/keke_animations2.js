@@ -20,11 +20,11 @@ var kekeAnimations = [{
 	},
 	{ 
 		name: 'jumpR', 
-		keyFrames: [2], 
+		keyFrames: [9], 
 		frameRate: 14
 	},
 	{ 
 		name: 'jumpL', 
-		keyFrames: [3], 
+		keyFrames: [24], 
 		frameRate: 14
 	}];

@@ -74,8 +74,8 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.onControlButtonPressed = function(event) {
 		_this.activeControls[event.value] = true;
-		trace('Player.prototype.onControlButtonPressed, event.value = ' + event.value);
-		trace(_this.activeControls);
+		// trace('Player.prototype.onControlButtonPressed, event.value = ' + event.value);
+		// trace(_this.activeControls);
 		_this.updateInput();
 	};
 	
@@ -121,28 +121,30 @@ Polyworks.Player = (function() {
 		}
 	};
 	
-	Player.prototype.updatePlayer = function(params) {
+	Player.prototype.pwUpdate = function(params) {
 		// trace('Player/update, params = ');
 		// trace(params);
-		var physics = PolyworksGame.phaser.physics;
-		var attrs = this.model.attrs;
+		if(this.alive) {
+			var physics = PolyworksGame.phaser.physics;
+			var attrs = this.model.attrs;
 
-		this.checkTerrainCollision(params.terrain);
-		this.updateEnemyCollision(params.enemies, physics);
-		this.updateBonusCollision(params.bonuses, physics);
+			this.checkTerrainCollision(params.terrain);
+			// this.checkEnemyCollision(params.enemies, physics);
+			// this.checkBonusCollision(params.bonuses, physics);
 
-		if(this.body.touching.down) {
-			attrs.grounded = true;
-			attrs.jumping = false;
-			attrs.justJumped = false;
+			if(this.body.touching.down) {
+				attrs.grounded = true;
+				attrs.jumping = false;
+				attrs.justJumped = false;
+			}
 		}
 	};
 
-	Player.prototype.updateEnemyCollision = function(enemies, physics) {
+	Player.prototype.checkEnemyCollision = function(enemies, physics) {
 		this.checkCollision(enemies, this.enemyCollision, physics, this);
 	};
 	
-	Player.prototype.updateBonusCollision = function(bonuses, physics) {
+	Player.prototype.checkBonusCollision = function(bonuses, physics) {
 		this.checkCollision(bonuses, this.bonusCollision, physics, this);
 	};
 	
@@ -163,7 +165,7 @@ Polyworks.Player = (function() {
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, enemy: enemy });
 
 		// if(this.model.jumping || this.model.attacking) {
-		if(playerY < enemyY) {
+		if(playerY < enemyY) { // player is above enemy
 			this.updatePositionFromCollision();
 			enemy.receiveDamage(this.model.damage);
 		} else {

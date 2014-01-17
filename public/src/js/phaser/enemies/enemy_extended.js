@@ -43,7 +43,7 @@ Polyworks.Enemy = (function() {
 	};
 	
 	Enemy.prototype.pwUpdate = function(params) {
-		if(this.active) {
+		if(this.alive) {
 			// trace('Enemy['+this.model.name+']/pwUpdate');
 			// trace(this);
 			var enemyX = this.body.screenX;

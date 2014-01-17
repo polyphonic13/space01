@@ -58,7 +58,7 @@ Polyworks.LevelState = (function() {
 				var sector = this.sectorManager.activeSector;
 				sector.enemies.update({ player: this.player.sprite });
 
-				this.player.updatePlayer({
+				this.player.pwUpdate({
 					terrain: this.terrain.group,
 					enemies: sector.enemies.getActive(),
 					bonuses: sector.bonuses.getActive(),

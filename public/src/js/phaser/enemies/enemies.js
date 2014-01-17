@@ -11,7 +11,7 @@ Polyworks.Enemies = (function() {
 		var enemy;
 		var collection  = this.model.collection;
 		for(var i = 0; i < collection.length; i++) {
-			if(collection[i].active) {
+			if(collection[i].alive) {
 				collection[i].pwUpdate(params);
 			}
 		}

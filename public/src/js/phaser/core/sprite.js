@@ -14,6 +14,8 @@ Polyworks.Sprite = (function() {
 		// trace('Sprite['+this.model.name+']/begin, this = ');
 		// trace(this);
 
+		this.beginGetterSetters();
+
 		var attrs = this.model.attrs;
 		if(attrs.width) {
 			this.width = attrs.width;
@@ -36,6 +38,28 @@ Polyworks.Sprite = (function() {
 		}
 	};
 
+	Sprite.prototype.beginGetterSetters = function() {
+		this.__defineGetter__('velocityX', function() {
+			return this.body.velocity.x;
+		});
+		this.__defineSetter__('velocityX', function(val) {
+			this.body.velocity.x = val;
+		});
+		this.__defineGetter__('velocityY', function() {
+			return this.body.velocity.y;
+		});
+		this.__defineSetter__('velocityY', function(val) {
+			this.body.velocity.y = val;
+		});
+		this.__defineGetter__('frame', function() {
+			return this.animations.frame;
+		});
+		this.__defineSetter__('frame', function(val) {
+			// trace('Sprite['+this.model.name+']/set frame, val = ' + val);
+			this.animations.frame = val;
+		});
+	};
+	
 	Sprite.prototype.beginPhysics = function(physics) {
 		// trace('\n\nSprite['+this.model.name+']/beginPhysics');
 		for(var key in physics) {

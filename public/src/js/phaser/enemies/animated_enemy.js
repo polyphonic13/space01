@@ -8,7 +8,7 @@ Polyworks.AnimatedEnemy = (function() {
 	}
 	
 	AnimatedEnemy.prototype.pwUpdate = function(params) {
-		if(this.active) {
+		if(this.alive) {
 			// trace('AnimatedEnemy['+this.model.name+']/pwUpdate');
 			// trace(this);
 			AnimatedEnemy._super.pwUpdate.call(this, params);
