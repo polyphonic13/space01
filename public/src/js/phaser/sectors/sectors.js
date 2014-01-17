@@ -36,5 +36,12 @@ Polyworks.Sectors = (function() {
 		}
 	};
 	
+	Sectors.prototype.destroy = function() {
+		var sectors = this.model.collection;
+		for(var i = 0; i < sectors.length; i++) {
+			sectors[i].destroy();
+		}
+	};
+	
 	return Sectors;
 })();

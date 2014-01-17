@@ -583,7 +583,7 @@ var config = {
 						}] 
 					},
 					bonuses: {
-						name: 'bonuses',
+						name: 'sector0-bonuses',
 						cl: 'PhysicalGroupCollection',
 						attrs: [{
 							name: 'bonus0-sprite',

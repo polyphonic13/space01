@@ -39,5 +39,14 @@ Polyworks.Sector = (function() {
 		}
 	};
 	
+	Sector.prototype.destroy = function() {
+		if(this.enemies) {
+			this.enemies.destroy();
+		}
+		if(this.bonuses) {
+			this.bonuses.destroy();
+		}
+	};
+	
 	return Sector;
 })();

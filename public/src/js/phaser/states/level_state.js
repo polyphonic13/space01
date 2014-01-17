@@ -70,6 +70,7 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.shutdown = function() {
+		this.sectorManager.destroy();
 		this.playerGroup.destroy();
 		this.player.destroy();
 		LevelState._super.shutdown.call(this);

@@ -45,8 +45,14 @@ Polyworks.Collection = (function() {
 	};
 	
 	Collection.prototype.destroy = function() {
-		while(this.model.collection.length > 0) {
-			this.model.collection.pop();
+		var collection = this.model.collection;
+		// for(var i = 0; i < collection.length; i++) {
+		// 	if(collection[i].destroy) {
+		// 		collection[i].destroy();
+		// 	}
+		// }
+		while(collection.length > 0) {
+			collection.pop();
 		}
 	};
 	
