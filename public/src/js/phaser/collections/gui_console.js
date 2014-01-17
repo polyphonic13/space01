@@ -9,8 +9,8 @@ Polyworks.GUIConsole = (function() {
 
 	GUIConsole.prototype.begin = function() {
 		GUIConsole._super.begin.call(this);
-		trace('GUIConsole/begin')
-		trace(this);
+		// trace('GUIConsole/begin')
+		// trace(this);
 		for(var i = 0; i < this.model.length; i++) {
 			if(this.collection[i].text) {
 				this.parseAndSetContent(this.collection[i].name);
@@ -34,17 +34,17 @@ Polyworks.GUIConsole = (function() {
 	};
 	
 	GUIConsole.prototype.onHealthUpdated = function() {
-		trace('GUIConsole/onHealthUpdated');
+		// trace('GUIConsole/onHealthUpdated');
 		_this.parseAndSetContent('health');
 	};
 	
 	GUIConsole.prototype.parseAndSetContent = function(field, context) {
-		trace('GUIConsole/parseAndSetContent, field = ' + field);
+		// trace('GUIConsole/parseAndSetContent, field = ' + field);
 		var text = this.getChildByName(field);
-		trace(text);
+		// trace(text);
 		if(text) {
 			var context = (context) ? context : PolyworksGame;
-			text.content = Utils.parseMarkup(text.model.defaultContent, context);
+			text.content = Utils.parseMarkup(text.model.attrs.defaultContent, context);
 		}
 	};
 	

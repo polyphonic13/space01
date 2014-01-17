@@ -44,6 +44,9 @@ Polyworks.LevelState = (function() {
 		this.player.begin();
 		this.playerGroup = PolyworksGame.phaser.add.group();
 		this.playerGroup.add(this.player);
+
+		trace('LevelState['+this.model.name+'] all creation done');
+		trace(this);
 	};
 	
 	var updatedOnce = false;
@@ -75,7 +78,13 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.shutdown = function() {
-		this.sectorManager.destroy();
+		var attrs = this.model.attrs;
+		for(var i = 0; i < attrs.length; i++) {
+			if(attrs[i].destroy) {
+				attrs[i].destroy();
+			}
+		}
+		// this.sectorManager.destroy();
 		this.playerGroup.destroy();
 		this.player.destroy();
 		LevelState._super.shutdown.call(this);
