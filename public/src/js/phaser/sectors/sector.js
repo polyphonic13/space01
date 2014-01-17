@@ -15,16 +15,20 @@ Polyworks.Sector = (function() {
 		// trace('Sector/['+this.model.name+']/begin, this = ');
 		// trace(this);
 		var enemies = this.model.attrs.enemies
-		if(enemies && enemies.attrs && enemies.attrs.length > 0) {
+		if(enemies && enemies.attrs) {
 			this.enemies = new Polyworks.Enemies(enemies);
 			this.enemies.begin();
 		}
 		var bonuses = this.model.attrs.bonuses;
-		if(bonuses && bonuses.attrs && bonuses.attrs.length > 0) {
+		if(bonuses && bonuses.attrs) {
 			this.bonuses = new Polyworks.PhysicalGroupCollection(bonuses);
 			this.bonuses.begin();
 		}
 
+		trace('Sector['+this.model.name+']/begin, enemies = ');
+		trace(this.enemies);
+		trace('\tbonuses = ');
+		trace(this.bonuses);
 		this.created = true;
 	}
 
