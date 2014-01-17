@@ -221,13 +221,14 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.destroy = function() {
+		trace('Player/destroy');
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_PRESSED, this.onControlButtonPressed);
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_RELEASED, this.onControlButtonReleased);
 
 		this.alive = false;
 		this.update = null;
 		this.updateInput = null;
-		this.destroy();
+		Player._super.destroy.call(this);
 	};
 	
 	return Player;

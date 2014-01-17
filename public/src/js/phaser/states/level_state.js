@@ -44,6 +44,7 @@ Polyworks.LevelState = (function() {
 		this.playerGroup = PolyworksGame.phaser.add.group();
 		this.playerGroup.add(this.player);
 	};
+	
 	var updatedOnce = false;
 	LevelState.prototype.update = function() {
 		// trace('this.player.x = ' + this.player.sprite.x + ', end = ' + this.model.bounds.end);
@@ -70,6 +71,7 @@ Polyworks.LevelState = (function() {
 	
 	LevelState.prototype.shutdown = function() {
 		this.playerGroup.destroy();
+		this.player.destroy();
 		LevelState._super.shutdown.call(this);
 	};
 
