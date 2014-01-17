@@ -156,23 +156,20 @@ Polyworks.Player = (function() {
 		}
 	};
 	
-	Player.prototype.enemyCollision = function(player, sprite) {
+	Player.prototype.enemyCollision = function(player, enemy) {
 		var playerX = player.body.x + (player.body.width);
 		var playerY = player.body.y + (player.body.height);
-		var enemyX = sprite.body.x + (sprite.body.width);
-		var enemyY = sprite.body.y + (sprite.body.height);
+		var enemyX = enemy.body.x + (enemy.body.width);
+		var enemyY = enemy.body.y + (enemy.body.height);
 		// trace('Player/enemyCollision, player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
-		trace('Player/enemyCollision, player x/y = ' + Math.ceil(player.body.x) + '/' + Math.ceil(player.body.y) + ', enemy x/y = ' + Math.ceil(sprite.body.x) + '/' + Math.ceil(sprite.body.y));
-		// trace(sprite);
-		// var enemy = this.model.sectorManager.activeSector.enemies.getChildByName(sprite.model.name);
-		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, enemy: enemy });
+		// trace(enemy);
 
 		// if(this.model.jumping || this.model.attacking) {
 		if(playerY < enemyY) { // player is above enemy
 			this.updatePositionFromCollision();
-			sprite.receiveDamage(this.damage);
+			enemy.receiveDamage(this.damage);
 		} else {
-			this.receiveDamage(sprite.damage);
+			this.receiveDamage(enemy.damage);
 		}
 	};
 	
@@ -192,8 +189,9 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.receiveDamage = function(damage) {
+		// trace('Player/receiveDamage, damage = ' + damage + ', health = ' + this.health);
 		this.health -= damage;
-		if(this.model.health <= 0) {
+		if(this.health <= 0) {
 			// this.destroy();
 			PolyworksGame.changeState('quit');
 		}
