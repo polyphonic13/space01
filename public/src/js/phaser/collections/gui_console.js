@@ -8,13 +8,15 @@ Polyworks.GUIConsole = (function() {
 	}
 
 	GUIConsole.prototype.begin = function() {
+		GUIConsole._super.begin.call(this);
 		trace('GUIConsole/begin')
-		this.collection = this.model.attrs;
-		for(var i = 0; i < this.collection.length; i++) {
+		trace(this);
+		for(var i = 0; i < this.model.length; i++) {
 			if(this.collection[i].text) {
 				this.parseAndSetContent(this.collection[i].name);
 			}
 		}
+
 		this.addListeners();
 	};
 	

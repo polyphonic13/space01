@@ -66,8 +66,8 @@ Utils = (function() {
 	};
 	
 	utils.parseMarkup = function(str, reference) {
-		var parsedString = str;
-		if(parsedString.indexOf('~{') > -1) {
+		var parsedString;
+		if(str.indexOf('~{') > -1) {
 			trace('Utils/parseMarkup, str = ' + str + ', reference = ');
 			trace(reference);
 			var pattern = /~\{[A-Z]*\}~/gi;
@@ -92,6 +92,8 @@ Utils = (function() {
 			} else {
 				parsedString = null;
 			}
+		} else {
+			parsedString = str;
 		}
 		return parsedString;
 	};
