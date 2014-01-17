@@ -80,8 +80,9 @@ Polyworks.Sprite = (function() {
 	};
 
 	Sprite.prototype.move = function(params) {
-		if(this.model.movement) {
-			Utils.moveView(this, this.model.movement, params);
+		var movement = this.model.attrs.movement;
+		if(movement) {
+			Utils.moveView(this, movement, params);
 		}
 	};
 

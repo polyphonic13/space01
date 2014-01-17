@@ -52,7 +52,6 @@ Polyworks.LevelState = (function() {
 			if(this.player.body.x >= this.model.bounds.end) {
 				PolyworksGame.changeState('intermission');
 			} else {
-				trace('UPDATING ONCE');
 				this.sectorManager.checkTerrainCollision(this.terrain.group);
 				this.sectorManager.setActive(this.game.camera.x + (stage.width/2));
 
@@ -66,7 +65,7 @@ Polyworks.LevelState = (function() {
 					context: this
 				});
 			}
-			updatedOnce = true;
+			// updatedOnce = true;
 		}
 	};
 	

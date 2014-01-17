@@ -536,7 +536,7 @@ var config = {
 								img: 'caterpillar01',
 								spriteType: 'Sprite',
 								start: {
-									x: 50,
+									x: 500,
 									y: 0
 								},
 								physics: {
@@ -544,6 +544,11 @@ var config = {
 										x: 0,
 										y: 0.2
 									}
+								},
+								movement: {
+									speed: 0.25,
+									type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+									formula: null
 								},
 								damage: 5,
 								health: 5,
@@ -560,7 +565,7 @@ var config = {
 								img: 'caterpillar01',
 								spriteType: 'Sprite',
 								start: {
-									x: 350,
+									x: 900,
 									y: 0
 								},
 								physics: {
@@ -635,7 +640,7 @@ var config = {
 								score: 1000,
 								movement: {
 									speed: 0.25,
-									cl: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+									type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
 									formula: null
 								},
 								defaultAnimation: '',
@@ -680,7 +685,7 @@ var config = {
 							score: 1000,
 							movement: {
 								speed: 1,
-								cl: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+								type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
 								formula: null
 							},
 							defaultAnimation: '',
@@ -736,7 +741,7 @@ var config = {
 							score: 500,
 							movement: {
 								speed: 1,
-								cl: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+								type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
 								formula: null
 							},
 							defaultAnimation: '',
@@ -1045,7 +1050,7 @@ var config = {
 							score: 500,
 							movement: {
 								speed: 0.25,
-								cl: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+								type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
 								formula: null
 							},
 							defaultAnimation: '',
@@ -1073,7 +1078,7 @@ var config = {
 							score: 500,
 							movement: {
 								speed: 0.5,
-								cl: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+								type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
 								formula: null
 							},
 							defaultAnimation: '',
@@ -1169,7 +1174,7 @@ var config = {
 							score: 1000,
 							movement: {
 								speed: 0.75,
-								cl: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+								type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
 								formula: null
 							},
 							defaultAnimation: '',
@@ -1197,7 +1202,7 @@ var config = {
 							score: 1000,
 							movement: {
 								speed: 1,
-								cl: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+								type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
 								formula: null
 							},
 							defaultAnimation: '',
@@ -1271,7 +1276,7 @@ var config = {
 							score: 500,
 							movement: {
 								speed: 1,
-								cl: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+								type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
 								formula: null
 							},
 							defaultAnimation: '',
@@ -1299,7 +1304,7 @@ var config = {
 							score: 500,
 							movement: {
 								speed: 1,
-								cl: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+								type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
 								formula: null
 							},
 							defaultAnimation: '',

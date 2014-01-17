@@ -67,6 +67,7 @@ Polyworks.Enemy = (function() {
 	};
 	
 	Enemy.prototype.destroy = function() {
+		trace('Enemy['+this.model.name+']/destroy');
 		this.model.ancestor.destroyEnemy.call(this, this.model.name);
 	};
 	
