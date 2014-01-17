@@ -59,7 +59,7 @@ var config = {
 					inputCode: Polyworks.InputCodes.QUIT,
 					events: {
 						pressed: {
-							cl: Polyworks.Events.CHANGE_STATE,
+							type: Polyworks.Events.CHANGE_STATE,
 							value: 'quit'
 						}
 					}
@@ -89,40 +89,36 @@ var config = {
 		},
 		buttons: {
 			menu: [{
-				name: 'controls',
-				cl: 'Collection',
-				addTo: 'null',
-				attrs: [{
-					name: 'start',
-					cl: 'InputButton',
-					attrs: {
-						img: 'startButton',
-						start: {
-							x: stage.width/2 - 128,
-							y: stage.height/2 - 64
-						},
-						inputCode: Polyworks.InputCodes.PLAY
-					}
-				},
-				{
-					name: 'quitBtn',
-					cl: 'InputButton',
-					attrs: {
-						img: 'quitButton',
-						start: {
-							x: stage.width - 80,
-							y: 10
-						},
-						inputCode: Polyworks.InputCodes.QUIT,
-						event: {
-							pressed: {
-								cl: Polyworks.Events.CHANGE_STATE,
-								value: 'quit'
-							}
+				name: 'start',
+				cl: 'InputButton',
+				attrs: {
+					img: 'startButton',
+					start: {
+						x: stage.width/2 - 128,
+						y: stage.height/2 - 64
+					},
+					inputCode: Polyworks.InputCodes.PLAY
+				}
+			},
+			{
+				name: 'quitBtn',
+				cl: 'InputButton',
+				attrs: {
+					img: 'quitButton',
+					start: {
+						x: stage.width - 80,
+						y: 10
+					},
+					inputCode: Polyworks.InputCodes.QUIT,
+					event: {
+						pressed: {
+							type: Polyworks.Events.CHANGE_STATE,
+							value: 'quit'
 						}
 					}
-				}]
-			}],
+				}
+			}
+			],
 			levelComplete: [{
 				name: 'next',
 				cl: 'InputButton',
@@ -135,7 +131,7 @@ var config = {
 					inputCode: Polyworks.InputCodes.NEXT,
 					events: {
 						pressed: {
-							cl: Polyworks.Events.CHANGE_STATE,
+							type: Polyworks.Events.CHANGE_STATE,
 							value: 'nextLevel'
 						}
 					}
@@ -153,7 +149,7 @@ var config = {
 					inputCode: Polyworks.InputCodes.QUIT,
 					event: {
 						pressed: {
-							cl: Polyworks.Events.CHANGE_STATE,
+							type: Polyworks.Events.CHANGE_STATE,
 							value: 'quit'
 						}
 					}
@@ -221,7 +217,7 @@ var config = {
 					inputCode: Polyworks.InputCodes.QUIT,
 					event: {
 						pressed: {
-							cl: Polyworks.Events.CHANGE_STATE,
+							type: Polyworks.Events.CHANGE_STATE,
 							value: 'quit'
 						}
 					}
@@ -231,7 +227,7 @@ var config = {
 	},
 	// STATES
 	// initialState: 'menu',
-	initialState: 'level0',
+	initialState: 'menu',
 	states: [{
 		name: 'menu',
 		cl: 'MenuState',
@@ -302,11 +298,17 @@ var config = {
 					inputCode: Polyworks.InputCodes.QUIT,
 					event: {
 						pressed: {
-							cl: Polyworks.Events.CHANGE_STATE,
+							type: Polyworks.Events.CHANGE_STATE,
 							value: 'quit'
 						}
 					}
 				}
+			// }
+			// {
+			// 	name: 'quitBtn',
+			// 	cl: 'ControlButtons',
+			// 	type: 'menu',
+			// 	attrs: {}
 			}
 			]
 		}

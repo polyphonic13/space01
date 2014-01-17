@@ -64,10 +64,7 @@ PolyworksGame = (function() {
 		},
 
 		setHealth: function(val) {
-			trace('PolyworksGame/setHealth, val = ');
-			trace(val);
 			PolyworksGame.health = val;
-			trace('POLYWORKS GAME HEALTH IS NOW: ' + PolyworksGame.health);
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.HEALTH_UPDATED });
 		},
 
@@ -159,8 +156,8 @@ PolyworksGame = (function() {
 	function _killStates() {
 		trace('PolyworksGame/_killStates');
 		for(var key in _states) {
-			if(_states[key].destroy) {
-				_states[key].destroy();
+			if(_states[key].shutdown) {
+				_states[key].shutdown();
 			}
 		}
 	}

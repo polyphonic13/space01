@@ -12,7 +12,7 @@ Polyworks.ControlsState = (function() {
 	};
 
 	ControlsState.prototype.createControls = function() {
-		trace('ControlsState/createControls, this.this = ');
+		trace('ControlsState/createControls, this = ');
 		trace(this);
 		var ctrls = PolyworksGame.get('controls');
 		var attrs = ctrls.buttons[this.model.name];
