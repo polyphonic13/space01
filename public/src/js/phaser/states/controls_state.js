@@ -18,7 +18,7 @@ Polyworks.ControlsState = (function() {
 		var attrs = ctrls.buttons[this.model.name];
 
 		this.addChildren(this.game, this.model.group, attrs);
-		this.controls = this.getItemByName('controls');
+		this.controls = this.getChildByName('controls');
 		// this.controls = new Polyworks.ControlButtons(config.controls.buttons[this.model.controlsType]);
 		// this.controls.begin();
 		// this.controls = new Polyworks.Collection(config.controls.buttons[this.model.controlsType], 'controlButtons');

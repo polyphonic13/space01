@@ -8,20 +8,22 @@ Polyworks.Enemies = (function() {
 	}
 	
 	Enemies.prototype.update = function(params) {
-		trace('Enemies['+this.model.name+']/update, this.collection = ');
-		trace(this.model.collection);
 		var enemy;
 		var collection  = this.model.collection;
 		for(var i = 0; i < collection.length; i++) {
-			enemy = collection[i]
-			trace('\tenemy['+i+'].active = ' + enemy.active);
-			if(enemy.active) {
-				trace('\t\tcalling update on enemy['+i+']');
-				enemy.pwUpdate(params);
+			if(collection[i].active) {
+				collection[i].pwUpdate(params);
 			}
 		}
 	};
 	
-	// Enemie
+	Enemies.prototype.destroyEnemy = function(name) {
+		var enemy = this.model.collection.getChildByName(name);
+		trace('Enemies/destroyEnemy, name = ' + name + ', enemy = ');
+		trace(enemy);
+		enemy.alive = false;
+		enemy.destroy();
+	};
+	
 	return Enemies;
 })();

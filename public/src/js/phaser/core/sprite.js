@@ -79,11 +79,12 @@ Polyworks.Sprite = (function() {
 		this.model.currentAnimation = '';
 	};
 
-	// Sprite.prototype.move = function(params) {
-	// 	if(this.model.movement) {
-	// 		Utils.moveView(this, this.model.movement, params);
-	// 	}
-	// };
+	Sprite.prototype.move = function(params) {
+		if(this.model.movement) {
+			Utils.moveView(this, this.model.movement, params);
+		}
+	};
+
 	return Sprite;
 })();
 

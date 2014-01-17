@@ -36,7 +36,7 @@ Polyworks.GUIConsole = (function() {
 	
 	GUIConsole.prototype.parseAndSetContent = function(field, context) {
 		// trace('GUIConsole/parseAndSetContent, field = ' + field);
-		var text = this.getItemByName(field);
+		var text = this.getChildByName(field);
 		// trace(text);
 		if(text) {
 			var context = (context) ? context : PolyworksGame;
@@ -45,14 +45,14 @@ Polyworks.GUIConsole = (function() {
 	};
 	
 	GUIConsole.prototype.setContent = function(field, content) {
-		var text = this.getItemByName(field);
+		var text = this.getChildByName(field);
 		if(text) {
 			text.content = content;
 		}
 	};
 	
 	GUIConsole.prototype.getContent = function(field) {
-		return this.getItemByName(field).content;
+		return this.getChildByName(field).content;
 	};
 
 	GUIConsole.prototype.destroy = function() {

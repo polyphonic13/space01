@@ -49,7 +49,7 @@ Polyworks.MultiSpritePlayer = (function() {
 		trace(playerSprite);
 		trace('sprite = ');
 		trace(sprite);
-		var enemy = this.model.sectorManager.activeSector.enemies.getItemByName(sprite.namex);
+		var enemy = this.model.sectorManager.activeSector.enemies.getChildByName(sprite.namex);
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, enemy: enemy });
 		this.updatePositionFromCollision();
 		enemy.receiveDamage(this.model.damage);
@@ -60,7 +60,7 @@ Polyworks.MultiSpritePlayer = (function() {
 		trace(playerSprite);
 		trace('sprite = ');
 		trace(sprite);
-		var enemy = this.model.sectorManager.activeSector.enemies.getItemByName(sprite.namex);
+		var enemy = this.model.sectorManager.activeSector.enemies.getChildByName(sprite.namex);
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, enemy: enemy });
 		this.receiveDamage(enemy.damage);
 	};

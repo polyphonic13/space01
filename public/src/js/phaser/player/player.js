@@ -159,7 +159,7 @@ Polyworks.Player = (function() {
 		var enemyY = sprite.body.y + (sprite.body.height);
 		// trace('Player/enemyCollision, player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
 		// trace('Player/enemyCollision, player x/y = ' + Math.ceil(player.body.x) + '/' + Math.ceil(player.body.y) + ', enemy x/y = ' + Math.ceil(sprite.body.x) + '/' + Math.ceil(sprite.body.y));
-		var enemy = this.model.sectorManager.activeSector.enemies.getItemByName(sprite.namex);
+		var enemy = this.model.sectorManager.activeSector.enemies.getChildByName(sprite.namex);
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, enemy: enemy });
 
 		// if(this.model.jumping || this.model.attacking) {
@@ -172,7 +172,7 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.bonusCollision = function(player, sprite) {
-		var bonus = this.model.sectorManager.activeSector.bonuses.getItemByName(sprite.namex);
+		var bonus = this.model.sectorManager.activeSector.bonuses.getChildByName(sprite.namex);
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.BONUS_COLLISION, player: player, bonus: bonus });
 
 	    PolyworksGame.setScore(bonus.get('score'));

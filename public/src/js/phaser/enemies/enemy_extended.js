@@ -44,8 +44,8 @@ Polyworks.Enemy = (function() {
 	
 	Enemy.prototype.pwUpdate = function(params) {
 		if(this.active) {
-			trace('Enemy['+this.model.name+']/pwUpdate');
-			trace(this);
+			// trace('Enemy['+this.model.name+']/pwUpdate');
+			// trace(this);
 			var enemyX = this.body.screenX;
 			var playerX = params.player.body.screenX;
 
@@ -64,6 +64,10 @@ Polyworks.Enemy = (function() {
 			PolyworksGame.setScore(this.model.score);
 			this.destroy();
 		}
+	};
+	
+	Enemy.prototype.destroy = function() {
+		this.model.ancestor.destroyEnemy.call(this, this.model.name);
 	};
 	
 	return Enemy;

@@ -34,8 +34,8 @@ Polyworks.Collection = (function() {
 		this.model.set({ collection: collection, nameIndex: nameIndex });
 	};
 	
-	Collection.prototype.getItemByName = function(name) {
-		// trace('Collection/getItemByName, name = ' + name);
+	Collection.prototype.getChildByName = function(name) {
+		// trace('Collection/getChildByName, name = ' + name);
 		// trace(this.model);
 		return this.model.collection[this.model.nameIndex[name]];
 	};
