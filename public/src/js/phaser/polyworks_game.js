@@ -64,7 +64,10 @@ PolyworksGame = (function() {
 		},
 
 		setHealth: function(val) {
+			trace('PolyworksGame/setHealth, val = ');
+			trace(val);
 			PolyworksGame.health = val;
+			trace('POLYWORKS GAME HEALTH IS NOW: ' + PolyworksGame.health);
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.HEALTH_UPDATED });
 		},
 

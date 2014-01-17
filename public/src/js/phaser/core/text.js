@@ -7,7 +7,8 @@ Polyworks.Text = (function() {
 		var attrs = this.model.attrs;
 		// trace('Text['+params.name+']/constructor, this = ');
 		// trace(this);
-		Phaser.Text.call(this, params.game, attrs.x, attrs.y, attrs.defaultContent, attrs.style);
+		var content = Utils.parseMarkup(attrs.defaultContent, PolyworksGame);
+		Phaser.Text.call(this, params.game, attrs.x, attrs.y, content, attrs.style);
 	}
 	
 	Text.prototype = Object.create(Phaser.Text.prototype);

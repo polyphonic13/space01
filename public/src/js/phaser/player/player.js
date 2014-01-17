@@ -16,12 +16,15 @@ Polyworks.Player = (function() {
 		this.velX = 0;
 		this.velY = 0;
 
+		this.beginGetterSetters();
 		this.beginWorld();
 		this.beginEvents();
 		this.beginControls();
 
-		PolyworksGame.setHealth(this.model.health);
-
+		PolyworksGame.setHealth(this.health);
+	}
+	
+	Player.prototype.beginGetterSetters = function() {
 		this.__defineGetter__('facingForward', function() {
 			return this.model.attrs.facingForward;
 		});
@@ -34,7 +37,7 @@ Polyworks.Player = (function() {
 		this.__defineSetter__('health', function(val) {
 			// trace('Player/health setter, val = ' + val);
 			this.model.attrs.health = val;
-			PolyworksGame.setHealth(this.model.health);
+			PolyworksGame.setHealth(this.health);
 		});
 		this.__defineGetter__('damage', function() {
 			return this.model.attrs.damage;

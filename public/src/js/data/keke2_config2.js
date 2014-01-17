@@ -317,9 +317,9 @@ var config = {
 		cl: 'LevelState',
 		world: {
 			x: 0,
-			y: 0,
+			y: -256,
 			width: 4098,
-			height: stage.height
+			height: stage.height + 256
 		},
 		clearWorld: true,
 		clearCache: false,
@@ -526,7 +526,7 @@ var config = {
 						end: 1024
 					},
 					enemies: {
-						name: 'sector0-enemies',
+						name: 'level0-sector0-enemies',
 						cl: 'Enemies',
 						attrs: [{
 							name: 'level0-sector0-enemy0',
@@ -583,7 +583,7 @@ var config = {
 						}] 
 					},
 					bonuses: {
-						name: 'sector0-bonuses',
+						name: 'level0-sector0-bonuses',
 						cl: 'PhysicalGroupCollection',
 						attrs: [{
 							name: 'bonus0-sprite',
@@ -616,7 +616,7 @@ var config = {
 						end: 2048
 					},
 					enemies: {
-						name: 'sector1-enemies',
+						name: 'level0-sector1-enemies',
 						cl: 'Enemies',
 						attrs: [{
 							name: 'level0-sector1-enemy0',
@@ -649,12 +649,11 @@ var config = {
 						}]
 					},
 					bonuses: {
-						name: 'sector1-bonuses',
+						name: 'level0-sector1-bonuses',
 						cl: 'PhysicalGroupCollection',
 						attrs: []
 					}
 				}
-				/*
 			},
 			{
 				name: 'sector2',
@@ -664,52 +663,88 @@ var config = {
 						start: 2048,
 						end: 3072
 					},
-					enemies: [{
-						name: 'level0-sector2-enemy1',
-						cl: 'AnimatedEnemy',
-						attrs: {
-							img: 'caterpillar01',
-							spriteType: 'Sprite',
-							start: {
-								x: 3050,
-								y: 0
+					enemies: {
+						name: 'level0-sector2-enemies',
+						cl: 'Enemies',
+						attrs: [{
+							name: 'level0-sector2-enemy0',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								spriteType: 'Sprite',
+								start: {
+									x: 3050,
+									y: 0
+								},
+								physics: {
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								damage: 5,
+								health: 5,
+								score: 1000,
+								movement: {
+									speed: 1,
+									type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
 							},
-							physics: {
-								bounce: {
-									x: 0,
-									y: 0.2
-								}
-							},
-							damage: 5,
-							health: 5,
-							score: 1000,
-							movement: {
-								speed: 1,
-								type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
-								formula: null
-							},
-							defaultAnimation: '',
-							animations: caterpillarAnimations
-						}
-					}],
-					bonuses: [{
-						cl: 'Sprite',
-						attrs: {
-							img: 'lollipop',
-							start: {
-								x: 2420,
-								y: 0
-							},
-							physics: {
-								bounce: {
-									x: 0,
-									y: 0.2
-								}
-							},
-							score: 100,
-							health: 10
-						}
-					}]
+						},
+						{
+							name: 'level0-sector2-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								spriteType: 'Sprite',
+								start: {
+									x: 3550,
+									y: 0
+								},
+								physics: {
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								damage: 5,
+								health: 5,
+								score: 1000,
+								movement: {
+									speed: 1,
+									type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}]
+					},
+					bonuses: {
+						name: 'level0-sector3-bonuses',
+						cl: 'PhysicalGroupCollection',
+						attrs:  [{
+							cl: 'Sprite',
+							attrs: {
+								img: 'lollipop',
+								start: {
+									x: 2420,
+									y: 0
+								},
+								physics: {
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								score: 100,
+								health: 10
+							}
+						}]
+					}
 				}
 			},
 			{
@@ -720,60 +755,67 @@ var config = {
 						start: 3072,
 						end: 4098
 					},
-					enemies: [{
-						name: 'level0-sector3-enemy0',
-						cl: 'AnimatedEnemy',
-						attrs: {
-							img: 'caterpillar01',
-							spriteType: 'Sprite',
-							start: {
-								x: 3580,
-								y: 0
-							},
-							physics: {
-								bounce: {
-									x: 0,
-									y: 0.2
-								}
-							},
-							damage: 5,
-							health: 5,
-							score: 500,
-							movement: {
-								speed: 1,
-								type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
-								formula: null
-							},
-							defaultAnimation: '',
-							animations: caterpillarAnimations
-						}
-					}],
-					bonuses: [{
-						cl: 'Sprite',
-						attrs: {
-							img: 'lollipop',
-							start: {
-								x: 3500,
-								y: 0
-							},
-							physics: {
-								bounce: {
-									x: 0,
-									y: 0.2
-								}
-							},
-							score: 100,
-							health: 10
-						}
-					}]
+					enemies: {
+						name: 'level0-sector3-enemies',
+						cl: 'Enemies',
+						attrs: [{
+							name: 'level0-sector3-enemy0',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								spriteType: 'Sprite',
+								start: {
+									x: 3580,
+									y: 0
+								},
+								physics: {
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								damage: 5,
+								health: 5,
+								score: 500,
+								movement: {
+									speed: 1,
+									type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}]
+					},
+					bonuses: {
+						name: 'level0-sector3-bonues',
+						cl: 'PhysicalGroupCollection',
+						attrs: [{
+							cl: 'Sprite',
+							attrs: {
+								img: 'lollipop',
+								start: {
+									x: 3500,
+									y: 0
+								},
+								physics: {
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								score: 100,
+								health: 10
+							}
+						}]
+					}
 				}
-				*/
 			}]
-/*
 		},
 		{
 			name: 'gui',
 			cl: 'GUIConsole',
+			addTo: 'null',
 			attrs: [{
 				name: 'heartIcon',
 				cl: 'Sprite',
@@ -798,7 +840,6 @@ var config = {
 					}
 				}
 			}]
-*/
 		}]
 	},
 	/*
