@@ -4,7 +4,7 @@ Polyworks.Player = (function() {
 
 	var _this;
 	function Player(params) {
-		trace('Player/constructor');
+		// trace('Player/constructor');
 		_this = this;
 		this.model = new Polyworks.Model(params);
 		Player._super.constructor.call(this, params);
@@ -122,8 +122,8 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.updatePlayer = function(params) {
-		trace('Player/update, params = ');
-		trace(params);
+		// trace('Player/update, params = ');
+		// trace(params);
 		var physics = PolyworksGame.phaser.physics;
 		var attrs = this.model.attrs;
 

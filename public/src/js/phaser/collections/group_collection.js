@@ -29,13 +29,14 @@ Polyworks.GroupCollection = (function() {
 		}
 
 		for(var i = 0; i < collection.length; i++) {
-			trace('\t\tcollection['+i+'] = ');
-			trace(collection[i]);
+			// trace('\t\tcollection['+i+'] = ');
+			// trace(collection[i]);
 			group.add(collection[i]);
 		}
 		this.group = group;
-		trace('GROUP NOW = ');
-		trace(this.group);
+		
+		// trace('GROUP NOW = ');
+		// trace(this.group);
 	};
 
 	GroupCollection.prototype.remove = function(child) {
