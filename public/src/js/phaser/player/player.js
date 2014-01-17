@@ -173,19 +173,19 @@ Polyworks.Player = (function() {
 		}
 	};
 	
-	Player.prototype.bonusCollision = function(player, sprite) {
-		var bonus = this.model.sectorManager.activeSector.bonuses.getChildByName(sprite.namex);
+	Player.prototype.bonusCollision = function(player, bonus) {
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.BONUS_COLLISION, player: player, bonus: bonus });
+		trace('Player/bonusCollision, bonus = ');
+		trace(bonus);
+	    PolyworksGame.setScore(bonus.score);
 
-	    PolyworksGame.setScore(bonus.get('score'));
-
-		var health = bonus.get('health');
+		var health = bonus.health;
 		if(health) {
-			this.health += bonus.get('health');
+			this.health += bonus.health;
 		}
 
-		sprite.kill();
 		bonus.active = false; 
+		bonus.destroy();
 	};
 	
 	Player.prototype.receiveDamage = function(damage) {

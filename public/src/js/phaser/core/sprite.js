@@ -39,6 +39,12 @@ Polyworks.Sprite = (function() {
 	};
 
 	Sprite.prototype.beginGetterSetters = function() {
+		this.__defineGetter__('active', function() {
+			return this.model.active;
+		});
+		this.__defineSetter__('active', function(val) {
+			this.model.active = val;
+		});
 		this.__defineGetter__('velocityX', function() {
 			return this.body.velocity.x;
 		});
