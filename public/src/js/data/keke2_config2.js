@@ -326,7 +326,7 @@ var config = {
 		controlsType: 'level',
 		bounds: {
 			start: 0,
-			end: 4050
+			end: 4020
 		},
 		attrs: [{
 			name: 'scenery',
