@@ -1,20 +1,19 @@
 Polyworks.InputButton = (function() {
+	Utils.inherits(InputButton, Phaser.Button);
 	
 	var _this;
 	function InputButton(params) {
-		// trace('InputButton/constructor, params = ');
-		// trace(params);
+		trace('InputButton/constructor, params = ');
+		trace(params);
 		_this = this;
 		this.model = new Polyworks.Model(params);
 		// trace('\tinput button model = ');
 		// trace(this.model);
 		var attrs = this.model.attrs;
-		Phaser.Button.call(this, params.game, attrs.x, attrs.y, attrs.img, null, this);
+		// Phaser.Button.call(this, params.game, attrs.x, attrs.y, attrs.img, null, this);
+		InputButton._super.constructor.call(this, params.game, attrs.x, attrs.y, attrs.img, null, this);
 	};
 	
-	InputButton.prototype = Object.create(Phaser.Button.prototype);
-	InputButton.prototype.constructor = Polyworks.InputButton;
-
 	InputButton.prototype.begin = function() {
 		var start = this.model.attrs.start;
 		this.x = start.x;
@@ -28,7 +27,8 @@ Polyworks.InputButton = (function() {
 		}
 		this.pressed = false;
 		this.addListeners();
-
+		trace('InputButton, end of begin');
+		trace(this);
 	};
 	
 	InputButton.prototype.addListeners = function() {

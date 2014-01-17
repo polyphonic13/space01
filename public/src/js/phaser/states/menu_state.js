@@ -1,5 +1,5 @@
 Polyworks.MenuState = (function() {
-	Utils.inherits(MenuState, Polyworks.ControlsState);
+	Utils.inherits(MenuState, Polyworks.State);
 	
 	var _this;
 	function MenuState(params) {

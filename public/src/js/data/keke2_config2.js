@@ -274,41 +274,46 @@ var config = {
 					}
 				}
 			},
-			{
-				name: 'start',
-				cl: 'InputButton',
-				attrs: {
-					img: 'startButton',
-					start: {
-						x: stage.width/2 - 128,
-						y: stage.height/2 - 64
-					},
-					inputCode: Polyworks.InputCodes.PLAY
-				}
-			},
-			{
-				name: 'quitBtn',
-				cl: 'InputButton',
-				attrs: {
-					img: 'quitButton',
-					start: {
-						x: stage.width - 80,
-						y: 10
-					},
-					inputCode: Polyworks.InputCodes.QUIT,
-					event: {
-						pressed: {
-							type: Polyworks.Events.CHANGE_STATE,
-							value: 'quit'
-						}
-					}
-				}
-			// }
+			// {
+			// 	name: 'start',
+			// 	cl: 'InputButton',
+			// 	attrs: {
+			// 		img: 'startButton',
+			// 		start: {
+			// 			x: stage.width/2 - 128,
+			// 			y: stage.height/2 - 64
+			// 		},
+			// 		inputCode: Polyworks.InputCodes.PLAY
+			// 	}
+			// },
 			// {
 			// 	name: 'quitBtn',
-			// 	cl: 'ControlButtons',
-			// 	type: 'menu',
-			// 	attrs: {}
+			// 	cl: 'InputButton',
+			// 	attrs: {
+			// 		img: 'quitButton',
+			// 		start: {
+			// 			x: stage.width - 80,
+			// 			y: 10
+			// 		},
+			// 		inputCode: Polyworks.InputCodes.QUIT,
+			// 		event: {
+			// 			pressed: {
+			// 				type: Polyworks.Events.CHANGE_STATE,
+			// 				value: 'quit'
+			// 			}
+			// 		}
+			// 	}
+			// }
+			{
+				name: 'menu-controls',
+				cl: 'InputButton',
+				type: 'menu',
+				attrs: {
+					start: {
+						x: 0,
+						y: 0
+					}
+				}
 			}
 			]
 		}

@@ -1,6 +1,6 @@
 
 Polyworks.LevelState = (function() {
-	Utils.inherits(LevelState, Polyworks.ControlsState); 
+	Utils.inherits(LevelState, Polyworks.State); 
 	
 	var _this;
 	function LevelState(params) {

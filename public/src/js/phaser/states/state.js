@@ -29,6 +29,7 @@ Polyworks.State = (function() {
 	};
 	
 	State.prototype.create = function() {
+		trace('State['+this.model.name+']/create');
 		if(!this.model.created) {
 			this.createState();
 			this.model.set({ created: true });
@@ -41,6 +42,8 @@ Polyworks.State = (function() {
 		this.gameOver = PolyworksGame.gameOver; 
 		this.createWorld();
 		this.begin();
+		trace('State['+this.model.name+'] end create state');
+		trace(this);
 	};
 	
 	State.prototype.createWorld = function() {
