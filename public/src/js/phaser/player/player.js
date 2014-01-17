@@ -22,24 +22,26 @@ Polyworks.Player = (function() {
 
 		PolyworksGame.setHealth(this.model.health);
 
+		this.__defineGetter__('facingForward', function() {
+			return this.model.attrs.facingForward;
+		});
+		this.__defineSetter__('facingForward', function(val) {
+			this.model.attrs.facingForward = val;
+		});
 		this.__defineGetter__('health', function() {
 			return this.model.attrs.health;
 		});
-
 		this.__defineSetter__('health', function(val) {
 			// trace('Player/health setter, val = ' + val);
 			this.model.attrs.health = val;
 			PolyworksGame.setHealth(this.model.health);
 		});
-
 		this.__defineGetter__('damage', function() {
 			return this.model.attrs.damage;
 		});
-
 		this.__defineGetter__('isJumping', function() {
 			return this.model.attrs.jumping;
 		});
-
 		this.__defineGetter__('sprite', function() {
 			return this;
 		});
@@ -129,8 +131,8 @@ Polyworks.Player = (function() {
 			var attrs = this.model.attrs;
 
 			this.checkTerrainCollision(params.terrain);
-			// this.checkEnemyCollision(params.enemies, physics);
-			// this.checkBonusCollision(params.bonuses, physics);
+			this.checkEnemyCollision(params.enemies, physics);
+			this.checkBonusCollision(params.bonuses, physics);
 
 			if(this.body.touching.down) {
 				attrs.grounded = true;
@@ -150,7 +152,7 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.checkCollision = function(collection, callback, physics, context) {
 		for(var i = 0; i < collection.length; i++) {
-			physics.overlap(this, collection[i].sprite, callback, null, context);
+			physics.overlap(this, collection[i], callback, null, context);
 		}
 	};
 	
@@ -160,16 +162,17 @@ Polyworks.Player = (function() {
 		var enemyX = sprite.body.x + (sprite.body.width);
 		var enemyY = sprite.body.y + (sprite.body.height);
 		// trace('Player/enemyCollision, player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
-		// trace('Player/enemyCollision, player x/y = ' + Math.ceil(player.body.x) + '/' + Math.ceil(player.body.y) + ', enemy x/y = ' + Math.ceil(sprite.body.x) + '/' + Math.ceil(sprite.body.y));
-		var enemy = this.model.sectorManager.activeSector.enemies.getChildByName(sprite.namex);
+		trace('Player/enemyCollision, player x/y = ' + Math.ceil(player.body.x) + '/' + Math.ceil(player.body.y) + ', enemy x/y = ' + Math.ceil(sprite.body.x) + '/' + Math.ceil(sprite.body.y));
+		// trace(sprite);
+		// var enemy = this.model.sectorManager.activeSector.enemies.getChildByName(sprite.model.name);
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.ENEMY_COLLISION, player: player, enemy: enemy });
 
 		// if(this.model.jumping || this.model.attacking) {
 		if(playerY < enemyY) { // player is above enemy
 			this.updatePositionFromCollision();
-			enemy.receiveDamage(this.model.damage);
+			sprite.receiveDamage(this.damage);
 		} else {
-			this.receiveDamage(enemy.damage);
+			this.receiveDamage(sprite.damage);
 		}
 	};
 	
@@ -197,7 +200,7 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.updatePositionFromCollision = function() {
-		this.velY = -this.model.speed.y/2;
+		this.velY = -this.model.attrs.speed.y/2;
 		this.velocityY = this.velY;
 	};
 	
@@ -207,11 +210,11 @@ Polyworks.Player = (function() {
 			this.velocityX = 0;
 			this.velX = 0;
 			if (this.activeControls[Polyworks.InputCodes.LEFT]) {
-				this.velX = -this.model.speed.x;
+				this.velX = -this.model.attrs.speed.x;
 				this.facingForward = false;
 			}
 			else if (this.activeControls[Polyworks.InputCodes.RIGHT]) {
-				this.velX = this.model.speed.x;
+				this.velX = this.model.attrs.speed.x;
 				this.facingForward = true;
 			}
 

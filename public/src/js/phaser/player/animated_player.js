@@ -18,7 +18,7 @@ Polyworks.AnimatedPlayer = (function() {
 		var attrs = this.model.attrs;
 		if(this.velX === 0) {												// IDLE
 			this.stop();
-			if(attrs.facingForward) {
+			if(this.facingForward) {
 				this.frame = 0;
 				attrs.currentAnimation = 'idleR';
 			} else {
@@ -45,7 +45,7 @@ Polyworks.AnimatedPlayer = (function() {
 
 		if(attrs.jumping) {										// JUMPING
 			// trace('player jumping');
-			if(attrs.facingForward) {
+			if(this.facingForward) {
 				// trace('playing jump r animation');
 				this.stop();
 				this.frame = 9;
