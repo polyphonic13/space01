@@ -22,6 +22,12 @@ Polyworks.Enemy = (function() {
 	};
 
 	Enemy.prototype.beginGetterSetters = function() {
+		this.__defineGetter__('active', function() {
+			return this.model.active;
+		});
+		this.__defineSetter__('active', function(val) {
+			this.model.active = val;
+		});
 		this.__defineGetter__('score', function() {
 			return this.model.score;
 		});
@@ -36,8 +42,10 @@ Polyworks.Enemy = (function() {
 		});
 	};
 	
-	Enemy.prototype.update = function(params) {
+	Enemy.prototype.pwUpdate = function(params) {
 		if(this.active) {
+			trace('Enemy['+this.model.name+']/pwUpdate');
+			trace(this);
 			var enemyX = this.body.screenX;
 			var playerX = params.player.body.screenX;
 

@@ -7,9 +7,12 @@ Polyworks.AnimatedEnemy = (function() {
 		AnimatedEnemy._super.constructor.call(this, params);
 	}
 	
-	AnimatedEnemy.prototype.update = function(params) {
+	AnimatedEnemy.prototype.pwUpdate = function(params) {
 		if(this.active) {
-			AnimatedEnemy._super.update.call(this, params);
+			trace('AnimatedEnemy['+this.model.name+']/pwUpdate');
+			trace(this);
+			trace(AnimatedEnemy._super);
+			AnimatedEnemy._super.pwUpdate.call(this, params);
 
 			// trace('AnimatedEnemy['+this.name+']/update\n\tenemyX = ' + enemyX + ', playerX = ' + playerX);
 
