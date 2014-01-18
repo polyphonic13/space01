@@ -51,6 +51,7 @@ Polyworks.LevelState = (function() {
 	
 	var updatedOnce = false;
 	LevelState.prototype.update = function() {
+		// trace('LevelState['+this.model.name+']/update');
 		// trace('this.player.x = ' + this.player.sprite.x + ', end = ' + this.model.bounds.end);
 		if(!updatedOnce) {
 			if(this.player.body.x >= this.model.bounds.end) {

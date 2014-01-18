@@ -48,6 +48,8 @@ Polyworks.Sector = (function() {
 	Sector.prototype.checkTerrainCollision = function(terrain) {
 		// trace('Sector['+this.model.name+']/checkTerrainCollision, terrain = ');
 		// trace(terrain);
+		// trace('enemies = ');
+		// trace(this.enemies);
 		if(this.enemies) {
 			this.enemies.checkTerrainCollision(terrain);
 		}

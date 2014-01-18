@@ -630,7 +630,7 @@ var config = {
 		},
 		{
 			name: 'sectors',
-			cl: 'Sectors',
+			cl: 'SectorManager',
 			attrs: [{
 				name: 'sector0',
 				cl: 'Sector',
@@ -1227,7 +1227,7 @@ var config = {
 		},
 		{
 			name: 'sectors',
-			cl: 'Sectors',
+			cl: 'SectorManager',
 			attrs: [{
 				name: 'sector0',
 				cl: 'Sector',
@@ -1784,7 +1784,7 @@ var config = {
 		},
 		{
 			name: 'sectors',
-			cl: 'Sectors',
+			cl: 'SectorManager',
 			attrs: [{
 				cl: 'Sector',
 				attrs: {

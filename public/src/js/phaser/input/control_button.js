@@ -20,8 +20,8 @@ Polyworks.ControlButton = (function() {
 	};
 	
 	ControlButton.prototype.destroy = function() {
-		trace('ControlButton['+this.model.name+']/destroy');
-		trace(this);
+		// trace('ControlButton['+this.model.name+']/destroy');
+		// trace(this);
 	};
 	
 	return ControlButton;

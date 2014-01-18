@@ -37,7 +37,7 @@ function create() {
 	createScenery();
 	createTerrain();
  	createPlayer();
-	createSectors();
+	createSectorManager();
 	createControls();
 	createGui();
 }
@@ -114,7 +114,7 @@ function createPlayer() {
 	game.camera.follow(player, Phaser.Camera.FOLLOW_PLATFORMER);
 }
 
-function createSectors() {
+function createSectorManager() {
 	for(var i = 0; i < config.sectors.length; i++) {
 		createSector(config.sectors[i]);
 	}
@@ -545,7 +545,7 @@ function getCurrentSectorProperty(name) {
 function quit() {
 	// trace('quit');
 	gameOver = true;
-	// clearSectors();
+	// clearSectorManager();
 	GameController.destroy();
 	game.destroy();
 }

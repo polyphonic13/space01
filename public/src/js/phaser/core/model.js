@@ -5,7 +5,7 @@ Polyworks.Model = (function() {
 		// trace('Model['+params.name+']/constructor, params = ');
 		// trace(params);
 		_this = this;
-
+		this.instanceId = new Date().getTime();
 		this.active = true;
 		for(var key in params) {
 			this[key] = params[key];

@@ -445,7 +445,7 @@ var config = {
 		},
 		{
 			name: 'sectors',
-			type: 'Sectors',
+			type: 'SectorManager',
 			attrs: [{
 				type: 'Sector',
 				attrs: {
@@ -895,7 +895,7 @@ var config = {
 		},
 		{
 			name: 'sectors',
-			type: 'Sectors',
+			type: 'SectorManager',
 			attrs: [{
 				type: 'Sector',
 				attrs: {

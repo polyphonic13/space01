@@ -1,10 +1,10 @@
-Polyworks.Sectors = (function() {
-	Utils.inherits(Sectors, Polyworks.Collection);
+Polyworks.SectorManager = (function() {
+	Utils.inherits(SectorManager, Polyworks.Collection);
 	
-	function Sectors(params) {
-		trace('Sectors['+params.name+']/constructor, params = ');
+	function SectorManager(params) {
+		trace('SectorManager['+params.name+']/constructor, params = ');
 		trace(params);
-		Sectors._super.constructor.call(this, params);
+		SectorManager._super.constructor.call(this, params);
 		this.activeSectorId = 0;
 
 		this.__defineGetter__('activeSector', function() {
@@ -12,15 +12,15 @@ Polyworks.Sectors = (function() {
 		})
 	}
 	
-	Sectors.prototype.checkTerrainCollision = function(terrain) {
+	SectorManager.prototype.checkTerrainCollision = function(terrain) {
 		var sectors = this.model.collection;
 		for(var i = 0; i < sectors.length; i++) {
 			sectors[i].checkTerrainCollision(terrain);
 		}
 	};
 	
-	Sectors.prototype.setActive = function(x) {
-		// trace('Sectors/setActive, this = ');
+	SectorManager.prototype.setActive = function(x) {
+		// trace('SectorManager/setActive, this = ');
 		// trace(this);
 		var sectors = this.model.collection;
 		var bounds;
@@ -36,12 +36,12 @@ Polyworks.Sectors = (function() {
 		}
 	};
 	
-	Sectors.prototype.destroy = function() {
+	SectorManager.prototype.destroy = function() {
 		var sectors = this.model.collection;
 		for(var i = 0; i < sectors.length; i++) {
 			sectors[i].destroy();
 		}
 	};
 	
-	return Sectors;
+	return SectorManager;
 })();
