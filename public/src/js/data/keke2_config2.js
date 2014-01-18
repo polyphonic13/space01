@@ -541,7 +541,7 @@ var config = {
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 2248,
+						x: 2198,
 						y: world.height - 150
 					},
 					scale: [0.6, 1],
@@ -556,7 +556,7 @@ var config = {
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 2448,
+						x: 2348,
 						y: world.height - 225
 					},
 					scale: [0.6, 1],
@@ -571,7 +571,7 @@ var config = {
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 2648,
+						x: 2498,
 						y: world.height - 300
 					},
 					scale: [0.6, 1],
@@ -586,7 +586,7 @@ var config = {
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 2848,
+						x: 2648,
 						y: world.height - 300
 					},
 					scale: [0.6, 1],
@@ -601,7 +601,7 @@ var config = {
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 3048,
+						x: 2798,
 						y: world.height - 300
 					},
 					scale: [0.6, 1],
@@ -616,7 +616,7 @@ var config = {
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 3248,
+						x: 2948,
 						y: world.height - 300
 					},
 					scale: [0.6, 1],
