@@ -463,102 +463,12 @@ var config = {
 						x: 0,
 						y: world.height - 20
 					},
-					scale: [16, 1],
+					scale: [32, 1],
 					physics: {
 						immovable: true
 					}
 				}
 			},
-			{
-				name: 'ground1',
-				cl: 'Sprite',
-				attrs: {
-					img: 'platform_red',
-					start: {
-						x: 2048,
-						y: world.height - 20
-					},
-					scale: [1, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},	
-			{
-				name: 'ground2',
-				cl: 'Sprite',
-				attrs: {
-					img: 'platform',
-					start: {
-						x: 2176,
-						y: world.height - 20
-					},
-					scale: [1, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},	
-			{		
-				name: 'ground1',
-				cl: 'Sprite',
-				attrs: {
-					img: 'platform_red',
-					start: {
-						x: 2304,
-						y: world.height - 20
-					},
-					scale: [1, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},	
-			{
-				name: 'ground2',
-				cl: 'Sprite',
-				attrs: {
-					img: 'platform',
-					start: {
-						x: 2432,
-						y: world.height - 20
-					},
-					scale: [1, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},	
-			{		
-				name: 'ground1',
-				cl: 'Sprite',
-				attrs: {
-					img: 'platform_red',
-					start: {
-						x: 2560,
-						y: world.height - 20
-					},
-					scale: [1, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},	
-			{
-				name: 'ground2',
-				cl: 'Sprite',
-				attrs: {
-					img: 'platform',
-					start: {
-						x: 2688,
-						y: world.height - 20
-					},
-					scale: [11, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},	
 			{
 				name: 'platform0',
 				cl: 'Sprite',
@@ -580,7 +490,7 @@ var config = {
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 2000,
+						x: 2048,
 						y: world.height - 75
 					},
 					scale: [0.6, 1],
@@ -595,7 +505,7 @@ var config = {
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 2200,
+						x: 2248,
 						y: world.height - 150
 					},
 					scale: [0.6, 1],
@@ -610,7 +520,7 @@ var config = {
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 2400,
+						x: 2448,
 						y: world.height - 225
 					},
 					scale: [0.6, 1],
@@ -625,7 +535,7 @@ var config = {
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 2600,
+						x: 2648,
 						y: world.height - 300
 					},
 					scale: [0.6, 1],
@@ -645,6 +555,28 @@ var config = {
 					bounds: {
 						start: 0,
 						end: 1024
+					},
+					hazards: {
+						name: 'level0-sector0-hazards',
+						cl: 'PhysicalGroupCollection',
+						attrs: [
+						{
+							name: 'level0-sector0-hazard0',
+							cl: 'Sprite',
+							attrs: {
+								img: 'platform_red',
+								start: {
+									x: 800,
+									y: world.height - 21
+								},
+								scale: [1, 1],
+								physics: {
+									immovable: true
+								},
+								damage: 10
+							}
+						}	
+						]
 					},
 					enemies: {
 						name: 'level0-sector0-enemies',
@@ -736,6 +668,11 @@ var config = {
 						start: 1024,
 						end: 2048
 					},
+					hazards: {
+						name: 'level0-sector0-hazards',
+						cl: 'PhysicalGroupCollection',
+						attrs: []
+					},
 					enemies: {
 						name: 'level0-sector1-enemies',
 						cl: 'Enemies',
@@ -783,6 +720,60 @@ var config = {
 					bounds: {
 						start: 2048,
 						end: 3072
+					},
+					hazards: {
+						name: 'level0-sector2-hazards',
+						cl: 'PhysicalGroupCollection',
+						attrs: [
+						{
+							name: 'level0-sector2-hazard0',
+							cl: 'Sprite',
+							attrs: {
+								img: 'platform_red',
+								start: {
+									x: 2048,
+									y: world.height - 21
+								},
+								scale: [1, 1],
+								physics: {
+									immovable: true
+								},
+								damage: 10
+							}
+						},	
+						{		
+							name: 'level0-sector2-hazard1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'platform_red',
+								start: {
+									x: 2304,
+									y: world.height - 21
+								},
+								scale: [1, 1],
+								physics: {
+									immovable: true
+								},
+								damage: 10
+							}
+						},	
+						{		
+							name: 'level0-sector2-hazard2',
+							cl: 'Sprite',
+							attrs: {
+								img: 'platform_red',
+								start: {
+									x: 2560,
+									y: world.height - 21
+								},
+								scale: [1, 1],
+								physics: {
+									immovable: true
+								},
+								damage: 10
+							}
+						},	
+						]
 					},
 					enemies: {
 						name: 'level0-sector2-enemies',
@@ -847,6 +838,11 @@ var config = {
 					bounds: {
 						start: 3072,
 						end: 4098
+					},
+					hazards: {
+						name: 'level0-sector0-hazards',
+						cl: 'PhysicalGroupCollection',
+						attrs: []
 					},
 					enemies: {
 						name: 'level0-sector3-enemies',

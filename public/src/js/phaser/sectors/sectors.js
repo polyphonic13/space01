@@ -29,7 +29,7 @@ Polyworks.Sectors = (function() {
 			// trace('bounds['+i+'] start/end = ' + bounds.start + '/' + bounds.end + ', x = ' + x);
 			if(x > bounds.start && x < bounds.end) {
 				if(this.activeSectorId !== i) {
-					// trace('new sector id = ' + i);
+					trace('new sector id = ' + i + ', name = ' + sectors[i].model.name);
 					this.activeSectorId = i;
 				}
 			}

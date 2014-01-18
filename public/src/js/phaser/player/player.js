@@ -140,6 +140,11 @@ Polyworks.Player = (function() {
 			var attrs = this.model.attrs;
 
 			this.checkTerrainCollision(params.terrain);
+			
+			// this.checkCollision(params.hazards, this.hazardCollision, physics);
+			// this.checkCollision(params.enemies, this.enemyCollision, physics);
+			// this.checkCollision(params.bonuses, this.bonusCollision, physics);
+			this.checkHazardCollision(params.hazards, physics);
 			this.checkEnemyCollision(params.enemies, physics);
 			this.checkBonusCollision(params.bonuses, physics);
 
@@ -151,6 +156,10 @@ Polyworks.Player = (function() {
 		}
 	};
 
+	Player.prototype.checkHazardCollision = function(hazards, physics) {
+		this.checkCollision(hazards, this.hazardCollision, physics, this);
+	};
+	
 	Player.prototype.checkEnemyCollision = function(enemies, physics) {
 		this.checkCollision(enemies, this.enemyCollision, physics, this);
 	};
@@ -163,6 +172,12 @@ Polyworks.Player = (function() {
 		for(var i = 0; i < collection.length; i++) {
 			physics.overlap(this, collection[i], callback, null, context);
 		}
+	};
+	
+	Player.prototype.hazardCollision = function(player, hazard) {
+		// trace('Player/hazardCollision, hazard = ');
+		// trace(hazard);
+		this.receiveDamage(hazard.model.attrs.damage);
 	};
 	
 	Player.prototype.enemyCollision = function(player, enemy) {
@@ -213,7 +228,7 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.resetJustDamaged = function() {
-		trace('Player/resetJustDamaged');
+ 		trace('Player/resetJustDamaged');
 		clearTimeout(_this.damageTimer);
 		_this.justDamaged = false;
 	};

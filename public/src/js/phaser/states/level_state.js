@@ -69,6 +69,7 @@ Polyworks.LevelState = (function() {
 				// trace(sector.bonuses);
 				this.player.pwUpdate({
 					terrain: this.terrain.group,
+					hazards: sector.hazards.getActive(),
 					enemies: sector.enemies.getActive(),
 					bonuses: sector.bonuses.getActive(),
 					context: this

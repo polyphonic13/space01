@@ -14,24 +14,37 @@ Polyworks.Sector = (function() {
 	Sector.prototype.begin = function() {
 		// trace('Sector/['+this.model.name+']/begin, this = ');
 		// trace(this);
-		var enemies = this.model.attrs.enemies
-		if(enemies && enemies.attrs) {
-			this.enemies = new Polyworks.Enemies(enemies);
-			this.enemies.begin();
-		}
-		var bonuses = this.model.attrs.bonuses;
-		if(bonuses && bonuses.attrs) {
-			this.bonuses = new Polyworks.PhysicalGroupCollection(bonuses);
-			this.bonuses.begin();
-		}
+		this.beginChildren('hazards');
+		this.beginChildren('enemies');
+		this.beginChildren('bonuses');
+		// var hazards = this.model.attrs.hazards;
+		// 
+		// var enemies = this.model.attrs.enemies;
+		// if(enemies && enemies.attrs) {
+		// 	this.enemies = new Polyworks.Enemies(enemies);
+		// 	this.enemies.begin();
+		// }
+		// var bonuses = this.model.attrs.bonuses;
+		// if(bonuses && bonuses.attrs) {
+		// 	this.bonuses = new Polyworks.PhysicalGroupCollection(bonuses);
+		// 	this.bonuses.begin();
+		// }
 
 		// trace('Sector['+this.model.name+']/begin, enemies = ');
 		// trace(this.enemies);
 		// trace('\tbonuses = ');
 		// trace(this.bonuses);
 		this.created = true;
-	}
+	};
 
+	Sector.prototype.beginChildren = function(type, cl) {
+		var children = this.model.attrs[type];
+		if(children) {
+			this[type] = new Polyworks[children.cl](children);
+			this[type].begin();
+		}
+	};
+	
 	Sector.prototype.checkTerrainCollision = function(terrain) {
 		// trace('Sector['+this.model.name+']/checkTerrainCollision, terrain = ');
 		// trace(terrain);
