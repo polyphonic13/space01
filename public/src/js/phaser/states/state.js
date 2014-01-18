@@ -3,7 +3,7 @@ Polyworks.State = (function() {
 	
 	var _this;
 	function State(params) {
-		trace('State['+params.name+']/constructor');
+		// trace('State['+params.name+']/constructor');
 		_this = this;
 
 		State._super.constructor.call(this, params);

@@ -3,8 +3,8 @@ Polyworks.InputButton = (function() {
 	
 	var _this;
 	function InputButton(params) {
-		trace('InputButton/constructor, params = ');
-		trace(params);
+		// trace('InputButton/constructor, params = ');
+		// trace(params);
 		_this = this;
 		this.model = new Polyworks.Model(params);
 		// trace('\tinput button model = ');
@@ -27,8 +27,8 @@ Polyworks.InputButton = (function() {
 		}
 		this.pressed = false;
 		this.addListeners();
-		trace('InputButton, end of begin');
-		trace(this);
+		// trace('InputButton, end of begin');
+		// trace(this);
 	};
 	
 	InputButton.prototype.addListeners = function() {
@@ -44,19 +44,19 @@ Polyworks.InputButton = (function() {
 	};
 	
 	InputButton.prototype.inputDown = function(event, pointer, ctx) {
-		trace('InputButton['+this.model.name+']/inputDown');
-		trace(event);
-		trace('\tpointer = ');
-		trace(pointer);
-		trace('\tcontext = ');
-		trace(ctx);
-		ctx.inputPressed.call(ctx, { type: Polyworks.Events.BUTTON_PRESSED, value: ctx.model.attrs.inputCode });
+		// trace('InputButton['+this.model.name+']/inputDown');
+		// trace(event);
+		// trace('\tpointer = ');
+		// trace(pointer);
+		// trace('\tcontext = ');
+		// trace(ctx);
+		ctx.inputPressed.call(ctx, { type: Polyworks.Events.CONTROL_PRESSED, value: ctx.model.attrs.inputCode });
 		ctx.pressed = true;
 	};
 	
 	InputButton.prototype.inputUp = function(event, pointer, ctx) {
-		trace('InputButton['+this.model.name+']/inputUp');
-		ctx.inputReleased.call(ctx, { type: Polyworks.Events.BUTTON_RELEASED, value: ctx.model.attrs.inputCode });
+		// trace('InputButton['+this.model.name+']/inputUp');
+		ctx.inputReleased.call(ctx, { type: Polyworks.Events.CONTROL_RELEASED, value: ctx.model.attrs.inputCode });
 		ctx.pressed = false;
 	};
 	
@@ -65,13 +65,14 @@ Polyworks.InputButton = (function() {
 		trace(this);
 		var event;
 		var events = this.model.attrs.events;
-		trace(events);
+		// trace(events);
 		if(events && events.pressed) {
 			trace('\tabout to dispatch ' + events.pressed.type);
 			event = { type: events.pressed.type, value: events.pressed.value };
 		} else {
 			event = { type: params.type, value: params.value }
 		}
+		trace(event);
 		_trigger(event);
 	};
 	

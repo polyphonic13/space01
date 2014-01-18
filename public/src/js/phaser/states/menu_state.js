@@ -13,7 +13,6 @@ Polyworks.MenuState = (function() {
 
 		// this.addListeners();
 		this.changingState = false;
-		trace('MenuState['+this.model.name+']/createState, changingState = ' + this.changingState);
 	};
 	
 	MenuState.prototype.addListeners = function() {

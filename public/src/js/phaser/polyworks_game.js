@@ -30,28 +30,43 @@ PolyworksGame = (function() {
 		},
 
 		changeState: function(id) {
-			// if(id === 'quit') {
-			// 	PolyworksGame.quit();
-			// } else {
-				if(id === 'level') {
-					id += PolyworksGame.currentLevel;
-				} else if(id === 'nextLevel') {
-					trace('next level, current = ' + PolyworksGame.currentLevel + ', total = ' + PolyworksGame.totalLevels);
-					if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels - 1)) {
-						PolyworksGame.currentLevel++;
-						id = 'level' + PolyworksGame.currentLevel;
-					} else {
-						id = 'end';
-					}
+				switch(id) {
+					case 'level':
+						id += PolyworksGame.currentLevel;
+					break;
+					
+					case 'nextLevel':
+						trace('next level, current = ' + PolyworksGame.currentLevel + ', total = ' + PolyworksGame.totalLevels);
+						if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels - 1)) {
+							PolyworksGame.currentLevel++;
+							id = 'level' + PolyworksGame.currentLevel;
+						} else {
+							id = 'end';
+						}
+					break;
+					
+					case 'intermission':
+						if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels - 1)) {
+							id = 'intermission';
+						} else {
+							id = 'end';
+						}
+					break;
+					
+					default:
+					break;
 				}
-				trace('\tid = ' + id);
+
 				var state = _states[id];
-				PolyworksGame.previousState = PolyworksGame.currentState;
-				PolyworksGame.currentState = id;
-				trace('PolyworksGame/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
-				// trace(_states);
-				PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
-			// }
+				if(state) {
+					PolyworksGame.previousState = PolyworksGame.currentState;
+					PolyworksGame.currentState = id;
+					trace('PolyworksGame/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
+					// trace(_states);
+					PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
+				} else {
+					trace('ERROR: state['+id+'] not found');
+				}
 		},
 
 		getState: function(name) {

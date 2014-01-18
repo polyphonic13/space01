@@ -221,14 +221,15 @@ var config = {
 						y: 10
 					},
 					inputCode: Polyworks.InputCodes.QUIT,
-					event: {
+					events: {
 						pressed: {
 							type: Polyworks.Events.CHANGE_STATE,
 							value: 'quit'
 						}
 					}
 				}
-			}]
+			}
+			]
 		}
 	},
 	// STATES
@@ -336,7 +337,6 @@ var config = {
 		},
 		clearWorld: true,
 		clearCache: false,
-		controlsType: 'level',
 		bounds: {
 			start: 0,
 			// end: 1024
@@ -504,7 +504,7 @@ var config = {
 					img: 'platform',
 					start: {
 						x: 2200,
-						y: world.height - 130
+						y: world.height - 150
 					},
 					scale: [0.3, 1],
 					physics: {
@@ -519,7 +519,22 @@ var config = {
 					img: 'platform',
 					start: {
 						x: 2400,
-						y: world.height - 185
+						y: world.height - 225
+					},
+					scale: [0.3, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'platform4',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platform',
+					start: {
+						x: 2600,
+						y: world.height - 300
 					},
 					scale: [0.3, 1],
 					physics: {
@@ -707,34 +722,6 @@ var config = {
 								defaultAnimation: '',
 								animations: caterpillarAnimations
 							},
-						},
-						{
-							name: 'level0-sector2-enemy1',
-							cl: 'AnimatedEnemy',
-							attrs: {
-								img: 'caterpillar01',
-								spriteType: 'Sprite',
-								start: {
-									x: 3550,
-									y: 0
-								},
-								physics: {
-									bounce: {
-										x: 0,
-										y: 0.2
-									}
-								},
-								damage: 5,
-								health: 5,
-								score: 1000,
-								movement: {
-									speed: 1,
-									type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
-									formula: null
-								},
-								defaultAnimation: '',
-								animations: caterpillarAnimations
-							}
 						}]
 					},
 					bonuses: {
@@ -854,6 +841,18 @@ var config = {
 					}
 				}
 			}]
+		},
+		{
+			name: 'level-controls',
+			cl: 'ControlButtons',
+			type: 'level',
+			addTo: 'null',
+			attrs: {
+				start: {
+					x: 0,
+					y: 0
+				}
+			}
 		}]
 	},
 	{
@@ -1385,6 +1384,18 @@ var config = {
 					}
 				}
 			}]
+		},
+		{
+			name: 'level-controls',
+			cl: 'ControlButtons',
+			type: 'level',
+			addTo: 'null',
+			attrs: {
+				start: {
+					x: 0,
+					y: 0
+				}
+			}
 		}]
 	},
 /*

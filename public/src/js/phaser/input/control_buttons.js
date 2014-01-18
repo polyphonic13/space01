@@ -17,23 +17,7 @@ Polyworks.ControlButtons = (function() {
 		// trace(ctrls);
 		// trace(this.model.attrs);
 		ControlButtons._super.begin.call(this);
-		trace('post super begin: ');
-		trace(this);
-		/*
-		var button;
-		var controlConsole = PolyworksGame.phaser.add.group(null);
-		for(var i = 0; i < this.collection.length; i++) {
-			button = this.collection[i].button;
-			controlConsole.add(button);
-		}
-		*/
 	};
-	
-	// ControlButtons.prototype.remove = function() {
-	// 	for(var i = 0; i < this.collection.length; i++) {
-	// 		this.collection[i].destroy();
-	// 	}
-	// };
 	
 	return ControlButtons;
 })();
