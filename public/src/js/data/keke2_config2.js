@@ -339,8 +339,8 @@ var config = {
 		controlsType: 'level',
 		bounds: {
 			start: 0,
-			end: 1024
-			// end: 4020
+			// end: 1024
+			end: 4020
 		},
 		attrs: [{
 			name: 'scenery',
@@ -870,8 +870,8 @@ var config = {
 		controlsType: 'level',
 		bounds: {
 			start: 0,
-			end: 1024
-			// end: 4020
+			// end: 1024
+			end: 4020
 		},
 		attrs: [{
 			name: 'scenery',
@@ -2006,6 +2006,55 @@ var config = {
 					y: 0
 				}
 			}
+		}
+		]
+	},
+	{
+		name: 'end',
+		cl: 'MenuState',
+		world: {
+			x: 0,
+			y: 0,
+			width: stage.width,
+			height: stage.height
+		},
+		clearWorld: true,
+		clearCache: false,
+		controlsType: 'levelComplete',
+		attrs: [		
+		{
+			name: 'end-group',
+			cl: 'GroupCollection',
+			attrs: [
+			{
+				name: 'bg',
+				cl: 'Sprite',
+				attrs: {
+					img: 'greyRect',
+					start: {
+						x: 20,
+						y: 20 
+					},
+					width: stage.width - 40,
+					height: stage.height - 40
+				}
+			},
+			{
+				name: 'title',
+				cl: 'Text',
+				attrs: {
+					centerX: true,
+					centerY: false,
+					x: 0,
+					y: 50,
+					defaultContent: 'All Completed',
+					style: { 
+						font: '30px Arial', 
+						fill: '#000000',
+						align: 'center'
+					}
+				}
+			}]
 		}
 		]
 	},

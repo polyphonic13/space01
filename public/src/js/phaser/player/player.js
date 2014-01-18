@@ -185,9 +185,9 @@ Polyworks.Player = (function() {
 		trace(bonus);
 	    PolyworksGame.setScore(bonus.score);
 
-		var health = bonus.health;
+		var health = bonus.model.attrs.health;
 		if(health) {
-			this.health += bonus.health;
+			this.health += health;
 		}
 
 		bonus.active = false; 
@@ -195,7 +195,7 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.receiveDamage = function(damage) {
-		// trace('Player/receiveDamage, damage = ' + damage + ', health = ' + this.health);
+		trace('Player/receiveDamage, damage = ' + damage + ', health = ' + this.health);
 		this.health -= damage;
 		if(this.health <= 0) {
 			// this.destroy();

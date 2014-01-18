@@ -32,7 +32,7 @@ Polyworks.State = (function() {
 		trace('State['+this.model.name+']/create');
 		if(!this.model.created) {
 			this.createState();
-			this.model.set({ created: true });
+			this.model.created = true;
 		}
 	};
 
