@@ -49,6 +49,8 @@ Polyworks.Sprite = (function() {
 			return this.body.velocity.x;
 		});
 		this.__defineSetter__('velocityX', function(val) {
+			trace('Sprite['+this.model.name+']/set velocityX, val = ' + val);
+			trace(this);
 			this.body.velocity.x = val;
 		});
 		this.__defineGetter__('velocityY', function() {

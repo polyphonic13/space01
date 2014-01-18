@@ -59,11 +59,11 @@ Polyworks.GUIConsole = (function() {
 		return this.getChildByName(field).content;
 	};
 
-	GUIConsole.prototype.destroy = function() {
-		for(var i = 0; i < this.collection.length; i++) {
-			this.collection[i].destroy();
-		}
-	};
+	// GUIConsole.prototype.destroy = function() {
+	// 	for(var i = 0; i < this.collection.length; i++) {
+	// 		this.collection[i].destroy();
+	// 	}
+	// };
 	
 	return GUIConsole;
 })();

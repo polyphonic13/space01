@@ -109,12 +109,14 @@ Polyworks.Player = (function() {
 			attrs.facingForward = true;
 		}
 
-		this.velocityX = this.velX;
-
+		// this.velocityX = this.velX;
+		this.body.velocity.x = this.velX;
+		
 		if(this.activeControls[Polyworks.InputCodes.UP]) {
 			if(attrs.grounded && !attrs.justJumped) {
 				this.velY = -attrs.speed.y;
-				this.velocityY = this.velY;
+				// this.velocityY = this.velY;
+				this.body.velocity.y = this.velY;
 				attrs.grounded = false;
 				attrs.jumping = true;
 				attrs.justJumped = true;
@@ -124,7 +126,7 @@ Polyworks.Player = (function() {
 		} else if(this.activeControls[Polyworks.InputCodes.DOWN]) {
 			// trace('Player/updateInput, down is active')
 		}
-		trace('end player update input, velX = ' + this.velX + ', velY = ' + this.velY);
+		trace('end player update input, velX = ' + this.velocityX + ', velY = ' + this.velocityY);
 	};
 	
 	Player.prototype.pwUpdate = function(params) {
@@ -203,7 +205,8 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.updatePositionFromCollision = function() {
 		this.velY = -this.model.attrs.speed.y/2;
-		this.velocityY = this.velY;
+		// this.velocityY = this.velY;
+		this.body.velocity.y = this.velY;
 	};
 	
 	Player.prototype.checkInput = function() {
