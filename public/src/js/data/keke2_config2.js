@@ -18,16 +18,21 @@ var config = {
 		mountains: 'images/hills03_grey.png',
 		treesBack: 'images/trees_back01.png',
 		treesFore: 'images/trees_fore01.png',
+		tree01: 'images/tree01.png',
+		tree02: 'images/tree02.png',
+		tree03: 'images/tree03.png',
+		tree04: 'images/tree04.png',
 		grass1: 'images/grass01.png',
 		grass2: 'images/grass02.png',
 		platform: 'images/platform.png',
-		platform_red: 'images/platform_red.png',
+		thorns: 'images/thorns02.png',
 		lollipop: 'images/lollipop.png',
 		leftButton: 'images/arrow_left.png',
 		rightButton: 'images/arrow_right.png',
 		upButton: 'images/arrow_up.png',
 		startButton: 'images/start_button.png',
 		nextButton: 'images/next_button.png',
+		menuButton: 'images/menu_button.png',
 		quitButton: 'images/quit_button.png',
 		greyRect: 'images/grey_rect32x32.png',
 		heart: 'images/heart.png',
@@ -213,19 +218,19 @@ var config = {
 				}
 			},
 			{
-				name: 'quitBtn',
+				name: 'menuBtn',
 				cl: 'InputButton',
 				attrs: {
-					img: 'quitButton',
+					img: 'menuButton',
 					start: {
 						x: stage.width - 80,
 						y: 10
 					},
-					inputCode: Polyworks.InputCodes.QUIT,
+					inputCode: Polyworks.InputCodes.MENU,
 					events: {
 						pressed: {
 							type: Polyworks.Events.CHANGE_STATE,
-							value: 'quit'
+							value: 'menu'
 						}
 					}
 				}
@@ -379,7 +384,7 @@ var config = {
 					img: 'mountains',
 					start: {
 						x: 2048,
-						y: 0
+						y: -200
 					}
 				}
 			},
@@ -390,7 +395,7 @@ var config = {
 					img: 'treesBack',
 					start: {
 						x: 0,
-						y: stage.height - 490
+						y: stage.height - 400
 					}
 				}
 			},
@@ -401,53 +406,69 @@ var config = {
 					img: 'treesBack',
 					start: {
 						x: 2048,
-						y: stage.height - 490
+						y: stage.height - 400
 					}
 				}
 			},
 			{
 				name: 'treesFore0',
 				cl: 'Sprite',
+				width: 2048,
+				height: stage.height,
 				attrs: {
 					img: 'treesFore',
 					start: {
 						x: 0,
-						y: 0
+						y: -140
 					}
 				}
 			},
 			{
 				name: 'treesFore1',
 				cl: 'Sprite',
+				width: 2048,
+				height: stage.height,
 				attrs: {
 					img: 'treesFore',
 					start: {
 						x: 2048,
-						y: 0
+						y: -140
 					}
 				}
-			// },
-			// {
-			// 	name: 'grass0',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'grass1',
-			// 		start: {
-			// 			x: 0,
-			// 			y: stage.height - 200
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	name: 'grass1',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'grass2',
-			// 		start: {
-			// 			x: 2048,
-			// 			y: stage.height - 200
-			// 		}
-			// 	}
+			},
+			{
+				name: 'tree01',
+				cl: 'Sprite',
+				height: stage.height * 2,
+				attrs: {
+					img: 'tree01',
+					start: {
+						x: 1900,
+						y: -120
+					}
+				}
+			},
+			{
+				name: 'grass0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'grass1',
+					start: {
+						x: 0,
+						y: stage.height - 200
+					}
+				}
+			},
+			{
+				name: 'grass1',
+				cl: 'Sprite',
+				attrs: {
+					img: 'grass2',
+					start: {
+						x: 2048,
+						y: stage.height - 200
+					}
+				}
 			}]
 		},
 		{
@@ -461,7 +482,7 @@ var config = {
 					img: 'platform',
 					start: {
 						x: 0,
-						y: world.height - 20
+						y: world.height - 10
 					},
 					scale: [32, 1],
 					physics: {
@@ -477,6 +498,21 @@ var config = {
 					start: {
 						x: 750,
 						y: world.height - 75
+					},
+					scale: [0.6, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'platform2',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platform',
+					start: {
+						x: 900,
+						y: world.height - 100
 					},
 					scale: [0.6, 1],
 					physics: {
@@ -543,7 +579,54 @@ var config = {
 						immovable: true
 					}
 				}
-			}]
+			},
+			{
+				name: 'platform5',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platform',
+					start: {
+						x: 2848,
+						y: world.height - 300
+					},
+					scale: [0.6, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'platform6',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platform',
+					start: {
+						x: 3048,
+						y: world.height - 300
+					},
+					scale: [0.6, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'platform7',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platform',
+					start: {
+						x: 3248,
+						y: world.height - 300
+					},
+					scale: [0.6, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			}
+			
+			]
 		},
 		{
 			name: 'sectors',
@@ -564,12 +647,11 @@ var config = {
 							name: 'level0-sector0-hazard0',
 							cl: 'Sprite',
 							attrs: {
-								img: 'platform_red',
+								img: 'thorns',
 								start: {
 									x: 800,
-									y: world.height - 21
+									y: world.height - 75
 								},
-								scale: [1, 1],
 								physics: {
 									immovable: true
 								},
@@ -729,12 +811,11 @@ var config = {
 							name: 'level0-sector2-hazard0',
 							cl: 'Sprite',
 							attrs: {
-								img: 'platform_red',
+								img: 'thorns',
 								start: {
-									x: 2048,
-									y: world.height - 21
+									x: 2140,
+									y: world.height - 75
 								},
-								scale: [1, 1],
 								physics: {
 									immovable: true
 								},
@@ -745,12 +826,11 @@ var config = {
 							name: 'level0-sector2-hazard1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'platform_red',
+								img: 'thorns',
 								start: {
-									x: 2304,
-									y: world.height - 21
+									x: 2350,
+									y: world.height - 75
 								},
-								scale: [1, 1],
 								physics: {
 									immovable: true
 								},
@@ -761,12 +841,11 @@ var config = {
 							name: 'level0-sector2-hazard2',
 							cl: 'Sprite',
 							attrs: {
-								img: 'platform_red',
+								img: 'thorns',
 								start: {
 									x: 2560,
-									y: world.height - 21
+									y: world.height - 75
 								},
-								scale: [1, 1],
 								physics: {
 									immovable: true
 								},
@@ -815,7 +894,7 @@ var config = {
 							attrs: {
 								img: 'lollipop',
 								start: {
-									x: 2620,
+									x: 2668,
 									y: 0
 								},
 								physics: {

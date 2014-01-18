@@ -269,6 +269,7 @@ Polyworks.Player = (function() {
 		this.update = null;
 		this.updateInput = null;
 		Player._super.destroy.call(this);
+		trace('end player destroy');
 	};
 	
 	return Player;
