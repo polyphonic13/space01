@@ -48,22 +48,5 @@ Polyworks.GUIConsole = (function() {
 		}
 	};
 	
-	GUIConsole.prototype.setContent = function(field, content) {
-		var text = this.getChildByName(field);
-		if(text) {
-			text.content = content;
-		}
-	};
-	
-	GUIConsole.prototype.getContent = function(field) {
-		return this.getChildByName(field).content;
-	};
-
-	// GUIConsole.prototype.destroy = function() {
-	// 	for(var i = 0; i < this.collection.length; i++) {
-	// 		this.collection[i].destroy();
-	// 	}
-	// };
-	
 	return GUIConsole;
 })();

@@ -29,12 +29,5 @@ Polyworks.Text = (function() {
 
 	}
 
-	Text.prototype.setContent = function(str, ctx) {
-		var attrs = this.model.attrs;
-		var content = str || attrs.defaultContent;
-		var context = ctx || PolyworksGame;
-		this.content = Utils.parseMarkup(content, context);
-	}
-	
 	return Text;
 })();

@@ -78,13 +78,12 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.shutdown = function() {
-		var attrs = this.model.attrs;
-		for(var i = 0; i < attrs.length; i++) {
-			if(attrs[i].destroy) {
-				attrs[i].destroy();
+		var collection = this.model.collection;
+		for(var i = 0; i < collection.length; i++) {
+			if(collection[i].destroy) {
+				collection[i].destroy();
 			}
 		}
-		// this.sectorManager.destroy();
 		this.playerGroup.destroy();
 		this.player.destroy();
 		LevelState._super.shutdown.call(this);
