@@ -233,8 +233,8 @@ var config = {
 		}
 	},
 	// STATES
-	initialState: 'menu',
-	// initialState: 'level0',
+	// initialState: 'menu',
+	initialState: 'level0',
 	states: [{
 		name: 'menu',
 		cl: 'MenuState',
@@ -565,7 +565,7 @@ var config = {
 								img: 'caterpillar01',
 								spriteType: 'Sprite',
 								start: {
-									x: 500,
+									x: 600,
 									y: 0
 								},
 								physics: {
@@ -732,7 +732,7 @@ var config = {
 							attrs: {
 								img: 'lollipop',
 								start: {
-									x: 2420,
+									x: 2620,
 									y: 0
 								},
 								physics: {
@@ -796,7 +796,7 @@ var config = {
 							attrs: {
 								img: 'lollipop',
 								start: {
-									x: 3500,
+									x: 3700,
 									y: 0
 								},
 								physics: {

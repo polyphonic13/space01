@@ -15,7 +15,10 @@ Polyworks.Player = (function() {
 
 		this.velX = 0;
 		this.velY = 0;
-
+		this.damageTimer = 0;
+		this.damageInterval = 500;
+		this.justDamaged = false;
+		
 		this.beginGetterSetters();
 		this.beginWorld();
 		this.beginEvents();
@@ -195,12 +198,24 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.receiveDamage = function(damage) {
-		trace('Player/receiveDamage, damage = ' + damage + ', health = ' + this.health);
-		this.health -= damage;
-		if(this.health <= 0) {
-			// this.destroy();
-			PolyworksGame.changeState('quit');
+		if(!_this.justDamaged) {
+			trace('Player/receiveDamage, damage = ' + damage + ', health = ' + this.health);
+			this.health -= damage;
+			if(this.health <= 0) {
+				// this.destroy();
+				PolyworksGame.changeState('quit');
+			} else {
+				_this.justDamaged = true;
+				_this.damageTimer = setTimeout(_this.resetJustDamaged, _this.damageInterval);
+			}
+			
 		}
+	};
+	
+	Player.prototype.resetJustDamaged = function() {
+		trace('Player/resetJustDamaged');
+		clearTimeout(_this.damageTimer);
+		_this.justDamaged = false;
 	};
 	
 	Player.prototype.updatePositionFromCollision = function() {
