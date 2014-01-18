@@ -19,5 +19,10 @@ Polyworks.ControlButton = (function() {
 		this.inputReleased.call(this, { type: Polyworks.Events.CONTROL_RELEASED, value: this.model.inputCode });
 	};
 	
+	ControlButton.prototype.destroy = function() {
+		trace('ControlButton['+this.model.name+']/destroy');
+		trace(this);
+	};
+	
 	return ControlButton;
 })();

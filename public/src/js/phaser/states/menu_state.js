@@ -31,7 +31,6 @@ Polyworks.MenuState = (function() {
 	};
 	
 	MenuState.prototype.shutdown = function() {
-		this.model.created = false;
 		MenuState._super.shutdown.call(this);
 	};
 	

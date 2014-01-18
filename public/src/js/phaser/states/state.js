@@ -23,6 +23,7 @@ Polyworks.State = (function() {
 	}
 	
 	State.prototype.preLoad = function() {
+		trace('State['+this.model.name+']/preload');
 		if(!this.model.loaded) {
 			this.model.loaded = true;
 		}
@@ -55,10 +56,11 @@ Polyworks.State = (function() {
 
 	State.prototype.shutdown = function() {
 		trace('State['+this.model.name+']/shutdown');
+		this.model.created = false;
 		this.update = null;
 		this.destroy();
 		// this.removeAll();
-		trace('end state shutdown');
+		// trace('end state shutdown');
 	};
 
 	return State;
