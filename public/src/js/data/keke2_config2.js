@@ -18,9 +18,10 @@ var config = {
 		mountains: 'images/hills03_grey.png',
 		treesBack: 'images/trees_back01.png',
 		treesFore: 'images/trees_fore01.png',
-		platform: 'images/platform.png',
 		grass1: 'images/grass01.png',
 		grass2: 'images/grass02.png',
+		platform: 'images/platform.png',
+		platform_red: 'images/platform_red.png',
 		lollipop: 'images/lollipop.png',
 		leftButton: 'images/arrow_left.png',
 		rightButton: 'images/arrow_right.png',
@@ -425,34 +426,35 @@ var config = {
 						y: 0
 					}
 				}
-			},
-			{
-				name: 'grass0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'grass1',
-					start: {
-						x: 0,
-						y: stage.height - 200
-					}
-				}
-			},
-			{
-				name: 'grass1',
-				cl: 'Sprite',
-				attrs: {
-					img: 'grass2',
-					start: {
-						x: 2048,
-						y: stage.height - 200
-					}
-				}
+			// },
+			// {
+			// 	name: 'grass0',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'grass1',
+			// 		start: {
+			// 			x: 0,
+			// 			y: stage.height - 200
+			// 		}
+			// 	}
+			// },
+			// {
+			// 	name: 'grass1',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'grass2',
+			// 		start: {
+			// 			x: 2048,
+			// 			y: stage.height - 200
+			// 		}
+			// 	}
 			}]
 		},
 		{
 			name: 'terrain',
 			cl: 'PhysicalGroupCollection',
-			attrs: [{
+			attrs: [
+			{
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
@@ -468,6 +470,96 @@ var config = {
 				}
 			},
 			{
+				name: 'ground1',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platform_red',
+					start: {
+						x: 2048,
+						y: world.height - 20
+					},
+					scale: [1, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},	
+			{
+				name: 'ground2',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platform',
+					start: {
+						x: 2176,
+						y: world.height - 20
+					},
+					scale: [1, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},	
+			{		
+				name: 'ground1',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platform_red',
+					start: {
+						x: 2304,
+						y: world.height - 20
+					},
+					scale: [1, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},	
+			{
+				name: 'ground2',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platform',
+					start: {
+						x: 2432,
+						y: world.height - 20
+					},
+					scale: [1, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},	
+			{		
+				name: 'ground1',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platform_red',
+					start: {
+						x: 2560,
+						y: world.height - 20
+					},
+					scale: [1, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},	
+			{
+				name: 'ground2',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platform',
+					start: {
+						x: 2688,
+						y: world.height - 20
+					},
+					scale: [11, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},	
+			{
 				name: 'platform0',
 				cl: 'Sprite',
 				attrs: {
@@ -476,7 +568,7 @@ var config = {
 						x: 750,
 						y: world.height - 75
 					},
-					scale: [0.3, 1],
+					scale: [0.6, 1],
 					physics: {
 						immovable: true
 					}
@@ -491,7 +583,7 @@ var config = {
 						x: 2000,
 						y: world.height - 75
 					},
-					scale: [0.3, 1],
+					scale: [0.6, 1],
 					physics: {
 						immovable: true
 					}
@@ -506,7 +598,7 @@ var config = {
 						x: 2200,
 						y: world.height - 150
 					},
-					scale: [0.3, 1],
+					scale: [0.6, 1],
 					physics: {
 						immovable: true
 					}
@@ -521,7 +613,7 @@ var config = {
 						x: 2400,
 						y: world.height - 225
 					},
-					scale: [0.3, 1],
+					scale: [0.6, 1],
 					physics: {
 						immovable: true
 					}
@@ -536,7 +628,7 @@ var config = {
 						x: 2600,
 						y: world.height - 300
 					},
-					scale: [0.3, 1],
+					scale: [0.6, 1],
 					physics: {
 						immovable: true
 					}
@@ -991,7 +1083,7 @@ var config = {
 						x: 0,
 						y: world.height - 20
 					},
-					scale: [16, 1],
+					scale: [32, 1],
 					physics: {
 						immovable: true
 					}
@@ -1006,7 +1098,7 @@ var config = {
 						x: 750,
 						y: world.height - 75
 					},
-					scale: [0.3, 1],
+					scale: [0.6, 1],
 					physics: {
 						immovable: true
 					}
@@ -1021,7 +1113,7 @@ var config = {
 						x: 2000,
 						y: world.height - 75
 					},
-					scale: [0.3, 1],
+					scale: [0.6, 1],
 					physics: {
 						immovable: true
 					}
@@ -1036,7 +1128,7 @@ var config = {
 						x: 2200,
 						y: world.height - 130
 					},
-					scale: [0.3, 1],
+					scale: [0.6, 1],
 					physics: {
 						immovable: true
 					}
@@ -1051,7 +1143,7 @@ var config = {
 						x: 2400,
 						y: world.height - 185
 					},
-					scale: [0.3, 1],
+					scale: [0.6, 1],
 					physics: {
 						immovable: true
 					}
@@ -1524,7 +1616,7 @@ var config = {
 						x: 0,
 						y: world.height - 20
 					},
-					scale: [16, 1],
+					scale: [32, 1],
 					physics: {
 						immovable: true
 					}
