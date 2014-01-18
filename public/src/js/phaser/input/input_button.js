@@ -64,8 +64,8 @@ Polyworks.InputButton = (function() {
 		trace('Control/inputPressed, value = ' + params.value + ', type = ' + params.type);
 		trace(this);
 		var event;
-		var events = this.model.events;
-		// trace(events);
+		var events = this.model.attrs.events;
+		trace(events);
 		if(events && events.pressed) {
 			trace('\tabout to dispatch ' + events.pressed.type);
 			event = { type: events.pressed.type, value: events.pressed.value };

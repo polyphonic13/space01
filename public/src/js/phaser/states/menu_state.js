@@ -11,7 +11,9 @@ Polyworks.MenuState = (function() {
 		MenuState._super.createState.call(this);
 		// this.createControls.call(this);
 
-		this.addListeners();
+		// this.addListeners();
+		this.changingState = false;
+		trace('MenuState['+this.model.name+']/createState, changingState = ' + this.changingState);
 	};
 	
 	MenuState.prototype.addListeners = function() {
@@ -19,10 +21,13 @@ Polyworks.MenuState = (function() {
 	};
 	
 	MenuState.prototype.onButtonPressed = function(event) {
-		trace('MenuState/onButtonPressed, event = ');
+		trace('MenuState/onButtonPressed, changingState = ' + this.changingState + ', event = ');
 		trace(event);
-		if(event.value === Polyworks.InputCodes.PLAY) {
-			PolyworksGame.changeState('level'); 
+		if(event.value === Polyworks.InputCodes.PLAY || event.value === Polyworks.InputCodes.NEXT) {
+			// if(!this.changingState) {
+				PolyworksGame.changeState('level'); 
+				this.changingState = true;
+			// }
 		}
 	};
 	

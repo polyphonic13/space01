@@ -25,10 +25,10 @@ Polyworks.Sector = (function() {
 			this.bonuses.begin();
 		}
 
-		trace('Sector['+this.model.name+']/begin, enemies = ');
-		trace(this.enemies);
-		trace('\tbonuses = ');
-		trace(this.bonuses);
+		// trace('Sector['+this.model.name+']/begin, enemies = ');
+		// trace(this.enemies);
+		// trace('\tbonuses = ');
+		// trace(this.bonuses);
 		this.created = true;
 	}
 
