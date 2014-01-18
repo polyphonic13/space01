@@ -239,8 +239,8 @@ var config = {
 		}
 	},
 	// STATES
-	// initialState: 'menu',
-	initialState: 'level0',
+	initialState: 'menu',
+	// initialState: 'level0',
 	states: [{
 		name: 'menu',
 		cl: 'MenuState',
