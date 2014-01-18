@@ -124,6 +124,7 @@ Polyworks.Player = (function() {
 		} else if(this.activeControls[Polyworks.InputCodes.DOWN]) {
 			// trace('Player/updateInput, down is active')
 		}
+		trace('end player update input, velX = ' + this.velX + ', velY = ' + this.velY);
 	};
 	
 	Player.prototype.pwUpdate = function(params) {

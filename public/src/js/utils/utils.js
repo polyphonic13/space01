@@ -69,27 +69,29 @@ Utils = (function() {
 		var parsedString = str;
 		// trace('Utils/parseMarkup, str = ' + str + ', reference = ');
 		// trace(reference);
-		var pattern = /~\{[A-Z]*\}~/gi;
-		var patternMatch = str.match(pattern);
+		if(str.indexOf('~{') > -1) {
+			var pattern = /~\{[A-Z]*\}~/gi;
+			var patternMatch = str.match(pattern);
 
-		if(patternMatch) {
-			for (var matchNum in patternMatch) {
-				var match = String(patternMatch[matchNum]);
+			if(patternMatch) {
+				for (var matchNum in patternMatch) {
+					var match = String(patternMatch[matchNum]);
 
-				var matchLength = match.length;
-				var matchKey = match.substring(2, matchLength - 2);
-				var output = reference[matchKey];
-				//trace('output = ' + output);
-				if(output === undefined || output === null) {
-					output = match;
-				} else {
-					output = output.toString();
+					var matchLength = match.length;
+					var matchKey = match.substring(2, matchLength - 2);
+					var output = reference[matchKey];
+					//trace('output = ' + output);
+					if(output === undefined || output === null) {
+						output = match;
+					} else {
+						output = output.toString();
+					}
+					parsedString = parsedString.replace(match, output);
 				}
-				parsedString = parsedString.replace(match, output);
+				//trace(parsedString);
+			} else {
+				parsedString = null;
 			}
-			//trace(parsedString);
-		} else {
-			parsedString = null;
 		}
 
 		return parsedString;

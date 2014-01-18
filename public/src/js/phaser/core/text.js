@@ -9,8 +9,7 @@ Polyworks.Text = (function() {
 		// trace('Text['+params.name+']/constructor, this = ');
 		// trace(this);
 		var content = Utils.parseMarkup(attrs.defaultContent, PolyworksGame);
-		// Phaser.Text.call(this, params.game, attrs.x, attrs.y, content, attrs.style);
-		Text._super.constructor.call(this, params.game, attrs.x, attrs.y, '', attrs.style);
+		Text._super.constructor.call(this, params.game, attrs.x, attrs.y, content, attrs.style);
 
 	}
 	

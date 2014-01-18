@@ -227,7 +227,7 @@ var config = {
 	},
 	// STATES
 	// initialState: 'menu',
-	initialState: 'menu',
+	initialState: 'level0',
 	states: [{
 		name: 'menu',
 		cl: 'MenuState',
@@ -273,7 +273,7 @@ var config = {
 						align: 'center'
 					}
 				}
-			},
+			}
 			// {
 			// 	name: 'start',
 			// 	cl: 'InputButton',
@@ -304,20 +304,19 @@ var config = {
 			// 		}
 			// 	}
 			// }
-			{
-				name: 'menu-controls',
-				cl: 'InputButton',
-				type: 'menu',
-				attrs: {
-					start: {
-						x: 0,
-						y: 0
-					}
+			]
+		},
+		{
+			name: 'menu-controls',
+			cl: 'ControlButtons',
+			type: 'menu',
+			attrs: {
+				start: {
+					x: 0,
+					y: 0
 				}
 			}
-			]
-		}
-		]
+		}]
 	},
 	{
 		name: 'level0',
