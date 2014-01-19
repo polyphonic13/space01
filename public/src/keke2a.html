@@ -13,8 +13,12 @@
 			position: absolute;
 			z-index: 2;
 			text-align: center;
-			width: 100%;
-			height: 100%;
+			padding: 20px;
+			border-style: solid;
+			border-color: #000000;
+			border-width: 20px;
+			font-size: 30px;
+			font-family: 'Arial', sans-serif;
 		}
 		#gameContainer {
 			position: absolute;
@@ -68,6 +72,11 @@
 	<script type="text/javascript" src="js/phaser/polyworks_game.js"></script>
 	<script type="text/javascript">
 		function start() {
+			var loadingDiv = document.getElementById('loading');
+			var width = document.documentElement.clientWidth - 80;
+			var height = document.documentElement.clientHeight - 80;
+			loadingDiv.style.width = width + 'px';
+			loadingDiv.style.height = height + 'px';
 			PolyworksGame.begin(config);			
 		}
 	</script>
