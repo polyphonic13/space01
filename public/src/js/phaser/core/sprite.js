@@ -18,9 +18,11 @@ Polyworks.Sprite = (function() {
 
 		var attrs = this.model.attrs;
 		if(attrs.width) {
+			// trace('setting ' + this.model.name + ' width to ' + attrs.width);
 			this.width = attrs.width;
 		}
 		if(attrs.height) {
+			// trace('setting ' + this.model.name + ' height to ' + attrs.height);
 			this.height = attrs.height;
 		}
 		var scale = attrs.scale
