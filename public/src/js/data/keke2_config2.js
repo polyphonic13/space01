@@ -192,8 +192,8 @@ var config = {
 				attrs: {
 					img: 'leftButton',
 					start: {
-						x: 50,
-						y: stage.height - 90
+						x: 30,
+						y: stage.height - 266
 					},
 					inputCode: Polyworks.InputCodes.LEFT
 				}
@@ -205,7 +205,7 @@ var config = {
 					img: 'rightButton',
 					start: {
 						x: 150,
-						y: stage.height - 90
+						y: stage.height - 266
 					},
 					inputCode: Polyworks.InputCodes.RIGHT
 				}
@@ -217,7 +217,7 @@ var config = {
 					img: 'upButton',
 					start: {
 						x: stage.width - 90,
-						y: stage.height - 90
+						y: stage.height - 266
 					},
 					inputCode: Polyworks.InputCodes.UP
 				}
