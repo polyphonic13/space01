@@ -84,6 +84,14 @@ Polyworks.Player = (function() {
 		_this.activeControls[event.value] = true;
 		// trace('Player.prototype.onControlButtonPressed, event.value = ' + event.value);
 		// trace(_this.activeControls);
+		if(event.value === Polyworks.InputCodes.RESET) {
+			_this.activeControls[Polyworks.InputCodes.LEFT] = false;
+			_this.activeControls[Polyworks.InputCodes.RIGHT] = false;
+		} else if(event.value === Polyworks.InputCodes.LEFT) {
+			_this.activeControls[Polyworks.InputCodes.RIGHT] = false;
+		} else if(event.value === Polyworks.InputCodes.RIGHT) {
+			_this.activeControls[Polyworks.InputCodes.LEFT] = false;
+		}
 		_this.updateInput();
 	};
 	
@@ -94,6 +102,10 @@ Polyworks.Player = (function() {
 		if(event.value === Polyworks.InputCodes.RESET) {
 			_this.activeControls[Polyworks.InputCodes.LEFT] = false;
 			_this.activeControls[Polyworks.InputCodes.RIGHT] = false;
+		} else if(event.value === Polyworks.InputCodes.LEFT) {
+			_this.activeControls[Polyworks.InputCodes.RIGHT] = false;
+		} else if(event.value === Polyworks.InputCodes.RIGHT) {
+			_this.activeControls[Polyworks.InputCodes.LEFT] = false;
 		}
 		_this.updateInput();
 	};
