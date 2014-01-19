@@ -19,6 +19,7 @@
 			border-width: 20px;
 			font-size: 30px;
 			font-family: 'Arial', sans-serif;
+			display: none;
 		}
 		#gameContainer {
 			position: absolute;
@@ -77,6 +78,7 @@
 			var height = document.documentElement.clientHeight - 80;
 			loadingDiv.style.width = width + 'px';
 			loadingDiv.style.height = height + 'px';
+			loadingDiv.style.display = 'block';
 			PolyworksGame.begin(config);			
 		}
 	</script>
