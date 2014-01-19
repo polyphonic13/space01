@@ -402,7 +402,7 @@ var config = {
 					width: stage.height,
 					height: stage.height * 2,
 					start: {
-						x: 2300,
+						x: 2200,
 						y: (-stage.height)
 					}
 				}
@@ -415,7 +415,7 @@ var config = {
 					width: stage.height,
 					height: stage.height * 2,
 					start: {
-						x: 2650,
+						x: 2600,
 						y: (-stage.height)
 					}
 				}
@@ -482,7 +482,7 @@ var config = {
 					img: 'branch02Left',
 					start: {
 						x: 700,
-						y: world.height - 125
+						y: world.height - 115
 					},
 					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
@@ -498,7 +498,7 @@ var config = {
 					img: 'branch02Right',
 					start: {
 						x: 900,
-						y: world.height - 150
+						y: world.height - 140
 					},
 					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
@@ -514,7 +514,7 @@ var config = {
 					img: 'branch02Left',
 					start: {
 						x: 1948,
-						y: world.height - 125
+						y: world.height - 115
 					},
 					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
@@ -530,7 +530,7 @@ var config = {
 					img: 'branch02Right',
 					start: {
 						x: 2148,
-						y: world.height - 200
+						y: world.height - 180
 					},
 					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
@@ -546,7 +546,7 @@ var config = {
 					img: 'branch02Left',
 					start: {
 						x: 2248,
-						y: world.height - 275
+						y: world.height - 255
 					},
 					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
@@ -561,8 +561,8 @@ var config = {
 				attrs: {
 					img: 'branch02Right',
 					start: {
-						x: 2498,
-						y: world.height - 300
+						x: 2448,
+						y: world.height - 290
 					},
 					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
@@ -577,7 +577,7 @@ var config = {
 				attrs: {
 					img: 'branch02Left',
 					start: {
-						x: 2698,
+						x: 2648,
 						y: world.height - 300
 					},
 					setSize: [64, 16, 32, 32],
@@ -593,8 +593,8 @@ var config = {
 				attrs: {
 					img: 'branch02Right',
 					start: {
-						x: 2898,
-						y: world.height - 300
+						x: 2848,
+						y: world.height - 290
 					},
 					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
@@ -609,8 +609,8 @@ var config = {
 				attrs: {
 					img: 'branch02Left',
 					start: {
-						x: 3098,
-						y: world.height - 300
+						x: 3048,
+						y: world.height - 280
 					},
 					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
@@ -625,7 +625,7 @@ var config = {
 				attrs: {
 					img: 'branch02Right',
 					start: {
-						x: 3298,
+						x: 3248,
 						y: world.height - 300
 					},
 					setSize: [64, 16, 32, 32],
@@ -904,7 +904,7 @@ var config = {
 							attrs: {
 								img: 'lollipop',
 								start: {
-									x: 2700,
+									x: 2740,
 									y: 0
 								},
 								physics: {
