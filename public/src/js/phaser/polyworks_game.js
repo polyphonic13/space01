@@ -77,6 +77,7 @@ PolyworksGame = (function() {
 
 		setScore: function(val) {
 			PolyworksGame.score += val;
+			trace('PolyworksGame/setScore, val = ' + val + ', score = ' + PolyworksGame.score);
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.SCORE_UPDATED });
 		},
 

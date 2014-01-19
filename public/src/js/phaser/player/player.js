@@ -201,7 +201,7 @@ Polyworks.Player = (function() {
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.BONUS_COLLISION, player: player, bonus: bonus });
 		trace('Player/bonusCollision, bonus = ');
 		trace(bonus);
-	    PolyworksGame.setScore(bonus.score);
+	    PolyworksGame.setScore(bonus.model.attrs.score);
 
 		var health = bonus.model.attrs.health;
 		if(health) {
