@@ -16,10 +16,7 @@ var config = {
 	images: {
 		sky: 'images/night_sky.jpg',
 		
-		// mountains: 'images/hills03_grey.png',
-		// treesBack: 'images/trees_back01.png',
-		// treesFore: 'images/trees_fore01.png',
-
+		movingBackground0: 'images/moving_background0.png',
 		movingBackground1: 'images/moving_background1.png',
 		movingBackground2: 'images/moving_background2.png',
 		
@@ -345,7 +342,7 @@ var config = {
 				name: 'moving_background01',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground1',
+					img: 'movingBackground0',
 					width: 2048,
 					height: stage.height * 1.5,
 					start: {
@@ -358,7 +355,7 @@ var config = {
 				name: 'moving_background02',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground2',
+					img: 'movingBackground0',
 					width: 2048,
 					height: stage.height * 1.5,
 					start: {
@@ -381,32 +378,32 @@ var config = {
 					}
 				}
 			},
-			{
-				name: 'tree02',
-				cl: 'Sprite',
-				attrs: {
-					img: 'tree02',
-					width: stage.height,
-					height: stage.height * 2,
-					start: {
-						x: 1900,
-						y: (-stage.height)
-					}
-				}
-			},
-			{
-				name: 'tree03',
-				cl: 'Sprite',
-				attrs: {
-					img: 'tree03',
-					width: stage.height,
-					height: stage.height * 2,
-					start: {
-						x: 2300,
-						y: (-stage.height)
-					}
-				}
-			},
+			// {
+			// 	name: 'tree02',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'tree02',
+			// 		width: stage.height,
+			// 		height: stage.height * 2,
+			// 		start: {
+			// 			x: 1900,
+			// 			y: (-stage.height)
+			// 		}
+			// 	}
+			// },
+			// {
+			// 	name: 'tree03',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'tree03',
+			// 		width: stage.height,
+			// 		height: stage.height * 2,
+			// 		start: {
+			// 			x: 2300,
+			// 			y: (-stage.height)
+			// 		}
+			// 	}
+			// },
 			{
 				name: 'tree04',
 				cl: 'Sprite',
@@ -602,6 +599,21 @@ var config = {
 					img: 'platform',
 					start: {
 						x: 3098,
+						y: world.height - 300
+					},
+					scale: [0.6, 0.3],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'platform9',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platform',
+					start: {
+						x: 3298,
 						y: world.height - 300
 					},
 					scale: [0.6, 0.3],
