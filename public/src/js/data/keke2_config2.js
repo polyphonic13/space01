@@ -374,9 +374,9 @@ var config = {
 				attrs: {
 					img: 'tree01',
 					width: stage.height,
-					height: stage.height * 2,
+					height: (stage.height * 2) + 20,
 					start: {
-						x: 650,
+						x: 640,
 						y: (-stage.height)
 					}
 				}
@@ -385,9 +385,9 @@ var config = {
 				name: 'tree02',
 				cl: 'Sprite',
 				attrs: {
-					img: 'tree02',
+					img: 'tree01',
 					width: stage.height,
-					height: stage.height * 2,
+					height: (stage.height * 2) + 20,
 					start: {
 						x: 1900,
 						y: (-stage.height)
@@ -402,7 +402,7 @@ var config = {
 					width: stage.height,
 					height: stage.height * 2,
 					start: {
-						x: 2200,
+						x: 2190,
 						y: (-stage.height)
 					}
 				}
@@ -1013,7 +1013,7 @@ var config = {
 					y: 25,
 					defaultContent: '~{health}~',
 					style: { 
-						font: '18px Arial', 
+						font: '22px Arial', 
 						fill: '#ffffff' 
 					}
 				}
@@ -1933,10 +1933,7 @@ var config = {
 			img: 'keke',
 			width: 76,
 			height: 128,
-			// setSize: {
-			// 	width: 50,
-			// 	height: 128
-			// },
+			// setSize: [50, 120],
 			start: {
 				x: stage.width/2 - 76/2,
 				y: stage.height - 128
