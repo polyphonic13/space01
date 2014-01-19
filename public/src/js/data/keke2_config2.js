@@ -283,7 +283,7 @@ var config = {
 					centerX: true,
 					centerY: false,
 					x: 0,
-					y: 50,
+					y: 40,
 					defaultContent: 'Keke vs. the Caterpillars',
 					style: { 
 						font: '30px Arial', 
@@ -1745,7 +1745,7 @@ var config = {
 					centerX: true,
 					centerY: false,
 					x: 0,
-					y: 50,
+					y: 40,
 					defaultContent: 'Level Completed',
 					style: { 
 						font: '30px Arial', 
@@ -1822,7 +1822,7 @@ var config = {
 					centerX: true,
 					centerY: false,
 					x: 0,
-					y: 50,
+					y: 40,
 					defaultContent: 'All Completed',
 					style: { 
 						font: '30px Arial', 
@@ -1887,7 +1887,7 @@ var config = {
 					centerX: true,
 					centerY: true,
 					x: stage.width/2,
-					y: stage.height/2,
+					y: 40,
 					defaultContent: 'Game Over',
 					fixedToCamera: true,
 					style: { 
