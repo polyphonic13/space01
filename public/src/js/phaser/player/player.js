@@ -16,7 +16,7 @@ Polyworks.Player = (function() {
 		this.velX = 0;
 		this.velY = 0;
 		this.damageTimer = 0;
-		this.damageInterval = 500;
+		this.damageInterval = 250;
 		this.justDamaged = false;
 		
 		this.beginGetterSetters();

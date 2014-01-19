@@ -123,8 +123,8 @@ var config = {
 				attrs: {
 					img: 'quitButton',
 					start: {
-						x: stage.width - 80,
-						y: 10
+						x: stage.width - 90,
+						y: 15
 					},
 					inputCode: Polyworks.InputCodes.QUIT,
 					events: {
@@ -160,8 +160,8 @@ var config = {
 				attrs: {
 					img: 'quitButton',
 					start: {
-						x: stage.width - 80,
-						y: 10
+						x: stage.width - 90,
+						y: 15
 					},
 					inputCode: Polyworks.InputCodes.QUIT,
 					event: {
@@ -192,8 +192,8 @@ var config = {
 				attrs: {
 					img: 'leftButton',
 					start: {
-						x: 20,
-						y: stage.height - 80
+						x: 30,
+						y: stage.height - 90
 					},
 					inputCode: Polyworks.InputCodes.LEFT
 				}
@@ -204,8 +204,8 @@ var config = {
 				attrs: {
 					img: 'rightButton',
 					start: {
-						x: 120,
-						y: stage.height - 80
+						x: 130,
+						y: stage.height - 90
 					},
 					inputCode: Polyworks.InputCodes.RIGHT
 				}
@@ -216,8 +216,8 @@ var config = {
 				attrs: {
 					img: 'upButton',
 					start: {
-						x: stage.width - 80,
-						y: stage.height - 80
+						x: stage.width - 90,
+						y: stage.height - 90
 					},
 					inputCode: Polyworks.InputCodes.UP
 				}
@@ -228,8 +228,8 @@ var config = {
 				attrs: {
 					img: 'menuButton',
 					start: {
-						x: stage.width - 80,
-						y: 10
+						x: stage.width - 90,
+						y: 15
 					},
 					inputCode: Polyworks.InputCodes.MENU,
 					events: {
@@ -1830,7 +1830,24 @@ var config = {
 						align: 'center'
 					}
 				}
-			}]
+			},
+			{
+				name: 'score',
+				cl: 'Text',
+				attrs: {
+					centerX: true,
+					centerY: false,
+					x: 0,
+					y: 100,
+					defaultContent: 'Score: ~{score}~',
+					style: { 
+						font: '18px Arial', 
+						fill: '#000000',
+						align: 'center'
+					}
+				}
+			}
+			]
 		}
 		]
 	},
