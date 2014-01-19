@@ -419,7 +419,7 @@ var config = {
 					width: stage.height,
 					height: stage.height * 2,
 					start: {
-						x: 1900,
+						x: 2000,
 						y: (-stage.height)
 					}
 				}
@@ -445,7 +445,7 @@ var config = {
 					width: stage.height,
 					height: stage.height * 2,
 					start: {
-						x: 2600,
+						x: 2650,
 						y: (-stage.height)
 					}
 				}
@@ -458,7 +458,7 @@ var config = {
 					width: stage.height,
 					height: stage.height * 2,
 					start: {
-						x: 2900,
+						x: 3000,
 						y: (-stage.height)
 					}
 				}
@@ -601,7 +601,7 @@ var config = {
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 2648,
+						x: 2698,
 						y: world.height - 300
 					},
 					scale: [0.6, 0.3],
@@ -616,7 +616,7 @@ var config = {
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 2798,
+						x: 2898,
 						y: world.height - 300
 					},
 					scale: [0.6, 0.3],
@@ -631,7 +631,7 @@ var config = {
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 2948,
+						x: 3098,
 						y: world.height - 300
 					},
 					scale: [0.6, 0.3],
@@ -879,7 +879,7 @@ var config = {
 								img: 'caterpillar01',
 								spriteType: 'Sprite',
 								start: {
-									x: 3050,
+									x: 2850,
 									y: 0
 								},
 								physics: {
@@ -909,7 +909,7 @@ var config = {
 							attrs: {
 								img: 'lollipop',
 								start: {
-									x: 2668,
+									x: 2700,
 									y: 0
 								},
 								physics: {
