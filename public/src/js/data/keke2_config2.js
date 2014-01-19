@@ -376,7 +376,7 @@ var config = {
 					width: stage.height,
 					height: stage.height * 2,
 					start: {
-						x: 700,
+						x: 650,
 						y: (-stage.height)
 					}
 				}
@@ -389,7 +389,7 @@ var config = {
 					width: stage.height,
 					height: stage.height * 2,
 					start: {
-						x: 2000,
+						x: 1900,
 						y: (-stage.height)
 					}
 				}
@@ -491,12 +491,12 @@ var config = {
 				}
 			},
 			{
-				name: 'platform2',
+				name: 'platform1',
 				cl: 'Sprite',
 				attrs: {
 					img: 'platform',
 					start: {
-						x: 900,
+						x: 950,
 						y: world.height - 100
 					},
 					scale: [0.6, 0.3],
@@ -506,7 +506,7 @@ var config = {
 				}
 			},
 			{
-				name: 'platform1',
+				name: 'platform2',
 				cl: 'Sprite',
 				attrs: {
 					img: 'platform',
@@ -521,7 +521,7 @@ var config = {
 				}
 			},
 			{
-				name: 'platform2',
+				name: 'platform3',
 				cl: 'Sprite',
 				attrs: {
 					img: 'platform',
@@ -536,7 +536,7 @@ var config = {
 				}
 			},
 			{
-				name: 'platform3',
+				name: 'platform4',
 				cl: 'Sprite',
 				attrs: {
 					img: 'platform',
@@ -551,7 +551,7 @@ var config = {
 				}
 			},
 			{
-				name: 'platform4',
+				name: 'platform5',
 				cl: 'Sprite',
 				attrs: {
 					img: 'platform',
@@ -566,7 +566,7 @@ var config = {
 				}
 			},
 			{
-				name: 'platform5',
+				name: 'platform6',
 				cl: 'Sprite',
 				attrs: {
 					img: 'platform',
@@ -581,7 +581,7 @@ var config = {
 				}
 			},
 			{
-				name: 'platform6',
+				name: 'platform7',
 				cl: 'Sprite',
 				attrs: {
 					img: 'platform',
@@ -596,7 +596,7 @@ var config = {
 				}
 			},
 			{
-				name: 'platform7',
+				name: 'platform8',
 				cl: 'Sprite',
 				attrs: {
 					img: 'platform',
