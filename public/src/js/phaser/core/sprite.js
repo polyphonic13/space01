@@ -25,9 +25,29 @@ Polyworks.Sprite = (function() {
 			// trace('setting ' + this.model.name + ' height to ' + attrs.height);
 			this.height = attrs.height;
 		}
-		var scale = attrs.scale
+		var scale = attrs.scale;
 		if(scale) {
 			this.scale.setTo(scale[0], scale[1]);
+		}
+		var setSize = attrs.setSize;
+		if(setSize) {
+			trace('Sprite['+this.model.name+'] setSize = ' + setSize.length);
+			trace(setSize);
+			if(setSize.length === 4) {
+				trace('\tsetting w, h, x, y size');
+				this.body.setSize(setSize[0], setSize[1], setSize[2], setSize[3]);
+			} else {
+				trace('\tsetting w, h size');
+				this.body.setSize(setSize[0], setSize[1]);
+			}
+			
+			// if(setSize.x && setSize.y) {
+			// 	trace('setting ['+this.model.name+'] size to: ');
+			// 	trace(setSize);
+			// 	this.body.setSize(setSize.width, setSize.height, setSize.x, setSize.y);
+			// } else {
+			// 	this.body.setSize(setSize.width, setSize.height);
+			// }
 		}
 		if(attrs.fixedToCamera) {
 			 this.fixedToCamera = true;

@@ -27,6 +27,9 @@ var config = {
 		grass1: 'images/grass01.png',
 		grass2: 'images/grass02.png',
 		platform: 'images/platform.png',
+		platform_grey: 'images/platform_grey.png',
+		branch02Left: 'images/branch02_left.png',
+		branch02Right: 'images/branch02_right.png',
 		thorns: 'images/thorns02.png',
 		lollipop: 'images/lollipop.png',
 		leftButton: 'images/arrow_left.png',
@@ -378,32 +381,32 @@ var config = {
 					}
 				}
 			},
-			// {
-			// 	name: 'tree02',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'tree02',
-			// 		width: stage.height,
-			// 		height: stage.height * 2,
-			// 		start: {
-			// 			x: 1900,
-			// 			y: (-stage.height)
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	name: 'tree03',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'tree03',
-			// 		width: stage.height,
-			// 		height: stage.height * 2,
-			// 		start: {
-			// 			x: 2300,
-			// 			y: (-stage.height)
-			// 		}
-			// 	}
-			// },
+			{
+				name: 'tree02',
+				cl: 'Sprite',
+				attrs: {
+					img: 'tree02',
+					width: stage.height,
+					height: stage.height * 2,
+					start: {
+						x: 1900,
+						y: (-stage.height)
+					}
+				}
+			},
+			{
+				name: 'tree03',
+				cl: 'Sprite',
+				attrs: {
+					img: 'tree03',
+					width: stage.height,
+					height: stage.height * 2,
+					start: {
+						x: 2300,
+						y: (-stage.height)
+					}
+				}
+			},
 			{
 				name: 'tree04',
 				cl: 'Sprite',
@@ -476,12 +479,13 @@ var config = {
 				name: 'platform0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Left',
 					start: {
-						x: 750,
-						y: world.height - 75
+						x: 700,
+						y: world.height - 125
 					},
-					scale: [0.6, 0.3],
+					setSize: [64, 16, 32, 32],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -491,12 +495,13 @@ var config = {
 				name: 'platform1',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Right',
 					start: {
-						x: 950,
-						y: world.height - 100
+						x: 900,
+						y: world.height - 150
 					},
-					scale: [0.6, 0.3],
+					setSize: [64, 16, 32, 32],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -506,12 +511,13 @@ var config = {
 				name: 'platform2',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Left',
 					start: {
-						x: 2048,
-						y: world.height - 75
+						x: 1948,
+						y: world.height - 125
 					},
-					scale: [0.6, 0.3],
+					setSize: [64, 16, 32, 32],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -521,12 +527,13 @@ var config = {
 				name: 'platform3',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Right',
 					start: {
-						x: 2198,
-						y: world.height - 150
+						x: 2148,
+						y: world.height - 200
 					},
-					scale: [0.6, 0.3],
+					setSize: [64, 16, 32, 32],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -536,12 +543,13 @@ var config = {
 				name: 'platform4',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Left',
 					start: {
-						x: 2348,
-						y: world.height - 225
+						x: 2248,
+						y: world.height - 275
 					},
-					scale: [0.6, 0.3],
+					setSize: [64, 16, 32, 32],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -551,12 +559,13 @@ var config = {
 				name: 'platform5',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Right',
 					start: {
 						x: 2498,
 						y: world.height - 300
 					},
-					scale: [0.6, 0.3],
+					setSize: [64, 16, 32, 32],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -566,12 +575,13 @@ var config = {
 				name: 'platform6',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Left',
 					start: {
 						x: 2698,
 						y: world.height - 300
 					},
-					scale: [0.6, 0.3],
+					setSize: [64, 16, 32, 32],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -581,12 +591,13 @@ var config = {
 				name: 'platform7',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Right',
 					start: {
 						x: 2898,
 						y: world.height - 300
 					},
-					scale: [0.6, 0.3],
+					setSize: [64, 16, 32, 32],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -596,12 +607,13 @@ var config = {
 				name: 'platform8',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Left',
 					start: {
 						x: 3098,
 						y: world.height - 300
 					},
-					scale: [0.6, 0.3],
+					setSize: [64, 16, 32, 32],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -611,12 +623,13 @@ var config = {
 				name: 'platform9',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Right',
 					start: {
 						x: 3298,
 						y: world.height - 300
 					},
-					scale: [0.6, 0.3],
+					setSize: [64, 16, 32, 32],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -1196,7 +1209,7 @@ var config = {
 						x: 750,
 						y: world.height - 75
 					},
-					scale: [0.6, 0.3],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -1211,7 +1224,7 @@ var config = {
 						x: 900,
 						y: world.height - 100
 					},
-					scale: [0.6, 0.3],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -1226,7 +1239,7 @@ var config = {
 						x: 2048,
 						y: world.height - 75
 					},
-					scale: [0.6, 0.3],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -1241,7 +1254,7 @@ var config = {
 						x: 2198,
 						y: world.height - 150
 					},
-					scale: [0.6, 0.3],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -1256,7 +1269,7 @@ var config = {
 						x: 2348,
 						y: world.height - 225
 					},
-					scale: [0.6, 0.3],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -1271,7 +1284,7 @@ var config = {
 						x: 2498,
 						y: world.height - 300
 					},
-					scale: [0.6, 0.3],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -1286,7 +1299,7 @@ var config = {
 						x: 2698,
 						y: world.height - 300
 					},
-					scale: [0.6, 0.3],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -1301,7 +1314,7 @@ var config = {
 						x: 2898,
 						y: world.height - 300
 					},
-					scale: [0.6, 0.3],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -1316,7 +1329,7 @@ var config = {
 						x: 3098,
 						y: world.height - 300
 					},
-					scale: [0.6, 0.3],
+					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -1920,10 +1933,10 @@ var config = {
 			img: 'keke',
 			width: 76,
 			height: 128,
-			setSize: {
-				width: 50,
-				height: 140
-			},
+			// setSize: {
+			// 	width: 50,
+			// 	height: 128
+			// },
 			start: {
 				x: stage.width/2 - 76/2,
 				y: stage.height - 128
