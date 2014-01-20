@@ -32,6 +32,7 @@ var config = {
 		branch02Right: 'images/branch02_right.png',
 		thorns: 'images/thorns02.png',
 		lollipop: 'images/lollipop.png',
+		particle: 'images/particle01.png',
 		leftButton: 'images/arrow_left.png',
 		rightButton: 'images/arrow_right.png',
 		upButton: 'images/arrow_up.png',

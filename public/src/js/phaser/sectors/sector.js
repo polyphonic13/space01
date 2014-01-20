@@ -17,23 +17,6 @@ Polyworks.Sector = (function() {
 		this.beginChildren('hazards');
 		this.beginChildren('enemies');
 		this.beginChildren('bonuses');
-		// var hazards = this.model.attrs.hazards;
-		// 
-		// var enemies = this.model.attrs.enemies;
-		// if(enemies && enemies.attrs) {
-		// 	this.enemies = new Polyworks.Enemies(enemies);
-		// 	this.enemies.begin();
-		// }
-		// var bonuses = this.model.attrs.bonuses;
-		// if(bonuses && bonuses.attrs) {
-		// 	this.bonuses = new Polyworks.PhysicalGroupCollection(bonuses);
-		// 	this.bonuses.begin();
-		// }
-
-		// trace('Sector['+this.model.name+']/begin, enemies = ');
-		// trace(this.enemies);
-		// trace('\tbonuses = ');
-		// trace(this.bonuses);
 		this.created = true;
 	};
 
@@ -43,6 +26,45 @@ Polyworks.Sector = (function() {
 			this[type] = new Polyworks[children.cl](children);
 			this[type].begin();
 		}
+		// this.addParticles();
+	};
+	
+	Sector.prototype.addParticles = function() {
+		var game = PolyworksGame.phaser;
+		// var world = this.model.attrs.world;
+		// trace(game.world);
+		var bounds = this.model.attrs.bounds;
+	    this.emitter = game.add.emitter(bounds.start, game.world.bounds.y, 400);
+
+		// this.emitter.width = stage.width;
+		this.emitter.width = bounds.end;
+	    this.emitter.makeParticles('particle');
+		// SNOW
+		this.emitter.maxParticleScale = 0.5;
+		this.emitter.minParticleScale = 0.1;
+		this.emitter.setYSpeed(50, 100);
+		this.emitter.setXSpeed(-5, 5);
+		this.emitter.gravity = 0;
+		this.emitter.minRotation = 0;
+		this.emitter.maxRotation = 0;
+		this.emitter.start(false, 7000, 10, false);
+/*
+
+		// RANDOM
+	    this.emitter.minParticleSpeed.setTo(-200, -300);
+	    this.emitter.maxParticleSpeed.setTo(200, -400);
+	    this.emitter.gravity = 8;
+	    this.emitter.bounce.setTo(0.5, 0.5);
+	    this.emitter.particleDrag.x = 10;
+	    this.emitter.angularDrag = 30;
+		// this.emitter.rotation = -0.5;
+	    this.emitter.start(false, 1600, 400);
+*/
+		
+	};
+	
+	Sector.prototype.setActive = function(active) {
+		this.model.active = active;
 	};
 	
 	Sector.prototype.checkTerrainCollision = function(terrain) {

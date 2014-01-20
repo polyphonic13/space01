@@ -31,6 +31,9 @@ Polyworks.SectorManager = (function() {
 				if(this.activeSectorId !== i) {
 					trace('new sector id = ' + i + ', name = ' + sectors[i].model.name);
 					this.activeSectorId = i;
+				// 	sectors[i].setActive(true);
+				// } else {
+				// 	sectors[i].setActive(false);
 				}
 			}
 		}

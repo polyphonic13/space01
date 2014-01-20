@@ -33,6 +33,7 @@ Polyworks.LevelState = (function() {
 		this.terrain = this.getChildByName('terrain');
 		this.sectorManager = this.getChildByName('sectors');
 		this.createPlayer();
+
 	};
 
 	LevelState.prototype.createPlayer = function() {
@@ -56,6 +57,7 @@ Polyworks.LevelState = (function() {
 				// PolyworksGame.currentLevel++;
 				PolyworksGame.changeState('intermission');
 			} else {
+			    // PolyworksGame.phaser.physics.collide(this.emitter, this.emitter);
 				this.sectorManager.checkTerrainCollision(this.terrain.group);
 				this.sectorManager.setActive(this.game.camera.x + (stage.width/2));
 
