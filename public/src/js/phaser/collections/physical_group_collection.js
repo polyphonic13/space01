@@ -15,6 +15,14 @@ Polyworks.PhysicalGroupCollection = (function() {
 		}
 	};
 	
+	PhysicalGroupCollection.prototype.activateGravity = function() {
+		var collection = this.model.collection;
+		trace('PhysicalGroupCollection['+this.model.name+']/activateGravity, collection length = ' + collection.length);
+		for(var i = 0; i < collection.length; i++) {
+			collection[i].activateGravity();
+		}
+	};
+	
 	PhysicalGroupCollection.prototype.getActive = function() {
 		var activeElements = [];
 		var collection = this.model.collection;

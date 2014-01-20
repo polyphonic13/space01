@@ -18,6 +18,8 @@ Polyworks.Sector = (function() {
 		this.beginChildren('enemies');
 		this.beginChildren('bonuses');
 		this.created = true;
+		this.active = false;
+		this.activatedOnce = false;
 	};
 
 	Sector.prototype.beginChildren = function(type, cl) {
@@ -27,6 +29,22 @@ Polyworks.Sector = (function() {
 			this[type].begin();
 		}
 		// this.addParticles();
+	};
+	
+	Sector.prototype.setActive = function(active) {
+		this.active = active;
+		if(active) {
+			trace('Sector['+this.model.name+']/setActive: active = ' + active + ', activatedOnce = ' + this.activatedOnce);
+			if(!this.activatedOnce) {
+				this.activateOnce = true;
+				if(this.enemies) {
+					this.enemies.activateGravity();
+				}
+				if(this.bonuses) {
+					this.enemies.activateGravity();
+				}
+			}
+		}
 	};
 	
 	Sector.prototype.addParticles = function() {
@@ -63,8 +81,12 @@ Polyworks.Sector = (function() {
 		
 	};
 	
-	Sector.prototype.setActive = function(active) {
-		this.model.active = active;
+	Sector.prototype.pwUpdate = function(params) {
+		// this.checkTerrainCollision(params.terrain);
+		
+		if(this.enemies) {
+			this.enemies.pwUpdate(params);
+		}
 	};
 	
 	Sector.prototype.checkTerrainCollision = function(terrain) {

@@ -60,8 +60,8 @@ Polyworks.Player = (function() {
 	}
 	
 	Player.prototype.beginWorld = function() {
-		trace('Player/beginWorld');
-		trace(this);
+		// trace('Player/beginWorld');
+		// trace(this);
 		var attrs = this.model.attrs;
 		if(attrs.anchor) {
 			this.anchor.setTo(attrs.anchor.x, attrs.anchor.y);

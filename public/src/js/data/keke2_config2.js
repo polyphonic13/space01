@@ -7,7 +7,10 @@ var world = {
 	y: 0,
 	width: 4098,
 	height: stage.height,
-	gravity: 15
+	gravity: {
+		x: 0,
+		y: 15
+	}
 };
 
 
@@ -649,10 +652,11 @@ var config = {
 								img: 'caterpillar01a',
 								spriteType: 'Sprite',
 								start: {
-									x: 900,
+									x: 700,
 									y: 0
 								},
 								physics: {
+									deferredGravity: true,
 									bounce: {
 										x: 0,
 										y: 0.2
@@ -693,13 +697,18 @@ var config = {
 							name: 'level0-sector1-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar01a',
+								img: 'caterpillar01b',
 								spriteType: 'Sprite',
 								start: {
 									x: 1400,
 									y: 0
 								},
 								physics: {
+									deferredGravity: true,
+									// gravity: {
+									// 	x: 0,
+									// 	y: 10
+									// },
 									bounce: {
 										x: 0,
 										y: 0.2
@@ -799,6 +808,7 @@ var config = {
 									y: 0
 								},
 								physics: {
+									deferredGravity: true,
 									bounce: {
 										x: 0,
 										y: 0.2
@@ -827,6 +837,7 @@ var config = {
 									y: 0
 								},
 								physics: {
+									deferredGravity: true,
 									bounce: {
 										x: 0,
 										y: 0.2
@@ -854,13 +865,10 @@ var config = {
 								img: 'lollipop',
 								start: {
 									x: 2740,
-									y: 0
+									y: 20
 								},
 								physics: {
-									bounce: {
-										x: 0,
-										y: 0.2
-									}
+									immovable: true
 								},
 								score: 100,
 								health: 10
@@ -896,6 +904,7 @@ var config = {
 									y: 0
 								},
 								physics: {
+									deferredGravity: true,
 									bounce: {
 										x: 0,
 										y: 0.2
@@ -923,13 +932,10 @@ var config = {
 								img: 'lollipop',
 								start: {
 									x: 3700,
-									y: 0
+									y: stage.height - 100
 								},
 								physics: {
-									bounce: {
-										x: 0,
-										y: 0.2
-									}
+									immovable: true
 								},
 								score: 100,
 								health: 10
@@ -1360,6 +1366,7 @@ var config = {
 									y: 0
 								},
 								physics: {
+									deferredGravity: true,
 									bounce: {
 										x: 0,
 										y: 0.2
@@ -1389,6 +1396,7 @@ var config = {
 									y: 0
 								},
 								physics: {
+									deferredGravity: true,
 									bounce: {
 										x: 0,
 										y: 0.2
@@ -1415,10 +1423,7 @@ var config = {
 									y: 0
 								},
 								physics: {
-									bounce: {
-										x: 0,
-										y: 0.2
-									}
+									immovable: true
 								},
 								score: 100,
 								health: 10
@@ -1454,6 +1459,7 @@ var config = {
 									y: 0
 								},
 								physics: {
+									deferredGravity: true,
 									bounce: {
 										x: 0,
 										y: 0.2
@@ -1552,6 +1558,7 @@ var config = {
 									y: 0
 								},
 								physics: {
+									deferredGravity: true,
 									bounce: {
 										x: 0,
 										y: 0.2
@@ -1582,10 +1589,7 @@ var config = {
 									y: 0
 								},
 								physics: {
-									bounce: {
-										x: 0,
-										y: 0.2
-									}
+									immovable: true
 								},
 								score: 100,
 								health: 10
@@ -1621,6 +1625,7 @@ var config = {
 									y: 0
 								},
 								physics: {
+									deferredGravity: true,
 									bounce: {
 										x: 0,
 										y: 0.2
@@ -1651,10 +1656,7 @@ var config = {
 									y: 0
 								},
 								physics: {
-									bounce: {
-										x: 0,
-										y: 0.2
-									}
+									immovable: true
 								},
 								score: 100,
 								health: 10
@@ -1912,16 +1914,7 @@ var config = {
 		}
 		]
 	}],
-	playerDamaged: {
-		name: 'damageIcon',
-		cl: 'Sprite',
-		attrs: {
-			width: 32,
-			height: 64
-			// x: stage.width/2 - 76/2,
-			// y: stage.height - 128
-		}
-	},
+
 	player: {
 		name: 'keke',
 		cl: 'AnimatedPlayer',

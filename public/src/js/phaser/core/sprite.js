@@ -94,13 +94,28 @@ Polyworks.Sprite = (function() {
 		// trace('\n\nSprite['+this.model.name+']/beginPhysics');
 		for(var key in physics) {
 			// trace(key + ' = ' + physics[key]);
-			this.body[key] = physics[key];
+			if(key !== 'gravity') {
+				this.body[key] = physics[key];
+			}
 		}
-		if(!physics.gravity && !physics.immovable) {
-			this.body.gravity.y = world.gravity;
+		if(!physics.deferredGravity && !physics.immovable) {
+			if(!physics.gravity) {
+				this.body.gravity = world.gravity;
+			}
 		}
 	};
 
+	Sprite.prototype.activateGravity = function() {
+		trace('Sprite['+this.model.name+']/activateGravity');
+		var physics = this.model.attrs.physics;
+		if(physics && physics.deferredGravity) {
+			var gravity = (physics.gravity) ? physics.gravity : world.gravity;
+			trace('gravity = ');
+			trace(gravity);
+			this.body.gravity = world.gravity;
+		}
+	};
+	
 	Sprite.prototype.checkTerrainCollision = function(terrain) {
 		// trace('Sprite['+this.model.name+']/checkTerrainCollision, terrain = ');
 		// trace(terrain);

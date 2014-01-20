@@ -32,16 +32,20 @@ Polyworks.LevelState = (function() {
 
 		this.terrain = this.getChildByName('terrain');
 		this.sectorManager = this.getChildByName('sectors');
+		this.sectorManager.setActiveSector(0);
+		
 		this.createPlayer();
 
 	};
 
 	LevelState.prototype.createPlayer = function() {
 		var playerConfig = Utils.clone(PolyworksGame.get('player'));
-		trace('Level['+this.model.name+']/createPlyaer, playerConfig = ');
-		trace(playerConfig);
+		// trace('Level['+this.model.name+']/createPlyaer, playerConfig = ');
+		// trace(playerConfig);
+
 		playerConfig.game = PolyworksGame.phaser;
 		playerConfig.sectorManager = this.sectorManager;
+		
 		this.playerGroup = PolyworksGame.phaser.add.group();
 		this.player = new Polyworks[playerConfig.cl](playerConfig);
 		this.player.begin();
@@ -57,13 +61,19 @@ Polyworks.LevelState = (function() {
 				// PolyworksGame.currentLevel++;
 				PolyworksGame.changeState('intermission');
 			} else {
-			    // PolyworksGame.phaser.physics.collide(this.emitter, this.emitter);
-				this.sectorManager.checkTerrainCollision(this.terrain.group);
-				this.sectorManager.setActive(this.game.camera.x + (stage.width/2));
+				// update active sector via sector manager
+				var updateParams = {
+					player: this.player.sprite,
+					terrain: this.terrain.group,
+					position: {
+						x: this.game.camera.x + (stage.width/2),
+						y: this.game.camera.y + (stage.height/2)
+					}
+				};
+				this.sectorManager.pwUpdate(updateParams);
 
+				// update player with active sector members & terrain
 				var sector = this.sectorManager.activeSector;
-				sector.enemies.pwUpdate({ player: this.player.sprite });
-
 				// trace('sector.enemies = ');
 				// trace(sector.enemies);
 				// trace('bonuses = ');
