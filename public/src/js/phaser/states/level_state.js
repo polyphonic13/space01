@@ -33,20 +33,16 @@ Polyworks.LevelState = (function() {
 		this.terrain = this.getChildByName('terrain');
 		this.sectorManager = this.getChildByName('sectors');
 		this.createPlayer();
-
 	};
 
 	LevelState.prototype.createPlayer = function() {
 		var playerConfig = PolyworksGame.get('player');
 		playerConfig.game = PolyworksGame.phaser;
 		playerConfig.sectorManager = this.sectorManager;
+		this.playerGroup = PolyworksGame.phaser.add.group();
 		this.player = new Polyworks[playerConfig.cl](playerConfig);
 		this.player.begin();
-		this.playerGroup = PolyworksGame.phaser.add.group();
 		this.playerGroup.add(this.player);
-
-		trace('LevelState['+this.model.name+'] all creation done');
-		trace(this);
 	};
 	
 	var updatedOnce = false;

@@ -86,6 +86,9 @@ PolyworksGame = (function() {
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.HEALTH_UPDATED });
 		},
 
+		// setPlayerGroup: function(group) {
+		// 	_model[]
+		// }
 		quit: function() {
 			trace('PolyworksGame/quit');
 			// _killStates();

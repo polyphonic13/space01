@@ -8,5 +8,7 @@ Polyworks.Events = {
 	ENEMY_DESTROYED: 'enemyDestroyed',
 	BONUS_COLLISION: 'bonusCollision',
 	SCORE_UPDATED: 'scoreUpdated',
-	HEALTH_UPDATED: 'healthUpdated'
+	HEALTH_UPDATED: 'healthUpdated',
+	PLAYER_DAMAGED: 'playerDamaged',
+	DAMAGE_RESET: 'damageReset'
 };

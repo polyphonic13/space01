@@ -10,9 +10,10 @@ Polyworks.Player = (function() {
 		Player._super.constructor.call(this, params);
 	}
 	
-	Player.prototype.begin = function() {
+	Player.prototype.begin = function(group) {
 		Player._super.begin.call(this);
 
+		// this.group = group;
 		this.velX = 0;
 		this.velY = 0;
 		this.damageTimer = 0;
@@ -25,7 +26,11 @@ Polyworks.Player = (function() {
 		this.beginControls();
 
 		PolyworksGame.setHealth(this.health);
-	}
+	};
+	
+	Player.prototype.setGroup = function(group) {
+		this.group = group;
+	};
 	
 	Player.prototype.beginGetterSetters = function() {
 		this.__defineGetter__('facingForward', function() {
@@ -274,9 +279,15 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.destroy = function() {
 		trace('Player/destroy');
+		trace(this.damageIconGroup);
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_PRESSED, this.onControlButtonPressed);
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_RELEASED, this.onControlButtonReleased);
 
+		if(this.damageIconGroup) {
+			this.damageIconGroup.destroy();
+			clearTimeout(_this.damageIconTimer);
+			
+		}
 		this.alive = false;
 		this.update = null;
 		this.updateInput = null;

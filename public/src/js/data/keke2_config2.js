@@ -41,6 +41,7 @@ var config = {
 		quitButton: 'images/quit_button.png',
 		greyRect: 'images/grey_rect32x32.png',
 		heart: 'images/heart.png',
+		damageIcon: 'images/alarm_icon.png',
 		invisibleBg: 'images/invisible.png'
 	},
 	// SPRITES
@@ -1925,6 +1926,16 @@ var config = {
 			]
 		}]
 	}],
+	playerDamaged: {
+		name: 'damageIcon',
+		cl: 'Sprite',
+		attrs: {
+			width: 32,
+			height: 64
+			// x: stage.width/2 - 76/2,
+			// y: stage.height - 128
+		}
+	},
 	player: {
 		name: 'keke',
 		cl: 'AnimatedPlayer',

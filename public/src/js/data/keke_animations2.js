@@ -18,6 +18,16 @@ var kekeAnimations = [{
 		keyFrames: [21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33], 
 		frameRate: 13
 	},
+	{
+		name: 'damagedR',
+		keyFrames: [4],
+		frameRate: 13
+	},
+	{
+		name: 'damagedL',
+		keyFrames: [5],
+		frameRate: 13
+	},
 	{ 
 		name: 'jumpR', 
 		keyFrames: [9], 
