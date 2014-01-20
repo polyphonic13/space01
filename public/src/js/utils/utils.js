@@ -121,6 +121,12 @@ Utils = (function() {
 				this.moveDirectionalBySpeed(sprite, movement, params.direction);
 			break;
 
+			case Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED:
+				if(sprite.body.touching.down) {
+					this.moveDirectionalBySpeed(sprite, movement, params.direction);
+				}
+			break;
+			
 			default: 
 			console.log('WARNING: unknown movement type: ' + movement.type);
 			break;

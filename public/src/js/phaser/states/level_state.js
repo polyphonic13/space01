@@ -62,7 +62,7 @@ Polyworks.LevelState = (function() {
 				this.sectorManager.setActive(this.game.camera.x + (stage.width/2));
 
 				var sector = this.sectorManager.activeSector;
-				sector.enemies.update({ player: this.player.sprite });
+				sector.enemies.pwUpdate({ player: this.player.sprite });
 
 				// trace('sector.enemies = ');
 				// trace(sector.enemies);

@@ -7,7 +7,7 @@ Polyworks.Enemies = (function() {
 		Enemies._super.constructor.call(this, params);
 	}
 	
-	Enemies.prototype.update = function(params) {
+	Enemies.prototype.pwUpdate = function(params) {
 		var enemy;
 		var collection  = this.model.collection;
 		for(var i = 0; i < collection.length; i++) {
