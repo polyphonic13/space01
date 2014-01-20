@@ -173,6 +173,26 @@ var config = {
 					}
 				}
 			}],
+			quit: [
+			{
+				name: 'menuBtn',
+				cl: 'InputButton',
+				attrs: {
+					img: 'menuButton',
+					start: {
+						x: stage.width - 90,
+						y: 15
+					},
+					inputCode: Polyworks.InputCodes.MENU,
+					events: {
+						pressed: {
+							type: Polyworks.Events.CHANGE_STATE,
+							value: 'menu'
+						}
+					}
+				}
+			}
+			],
 			level: [{
 				name: 'invisBtn',
 				cl: 'InputButton',
@@ -1033,6 +1053,7 @@ var config = {
 			}
 		}]
 	},
+
 	{
 		name: 'level1',
 		cl: 'LevelState',
@@ -1071,7 +1092,7 @@ var config = {
 				name: 'moving_background01',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground1',
+					img: 'movingBackground0',
 					width: 2048,
 					height: stage.height * 1.5,
 					start: {
@@ -1084,7 +1105,7 @@ var config = {
 				name: 'moving_background02',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground2',
+					img: 'movingBackground0',
 					width: 2048,
 					height: stage.height * 1.5,
 					start: {
@@ -1100,9 +1121,9 @@ var config = {
 				attrs: {
 					img: 'tree01',
 					width: stage.height,
-					height: stage.height * 2,
+					height: (stage.height * 2) + 20,
 					start: {
-						x: 700,
+						x: 640,
 						y: (-stage.height)
 					}
 				}
@@ -1111,11 +1132,11 @@ var config = {
 				name: 'tree02',
 				cl: 'Sprite',
 				attrs: {
-					img: 'tree02',
+					img: 'tree01',
 					width: stage.height,
-					height: stage.height * 2,
+					height: (stage.height * 2) + 20,
 					start: {
-						x: 2000,
+						x: 1900,
 						y: (-stage.height)
 					}
 				}
@@ -1128,7 +1149,7 @@ var config = {
 					width: stage.height,
 					height: stage.height * 2,
 					start: {
-						x: 2300,
+						x: 2190,
 						y: (-stage.height)
 					}
 				}
@@ -1141,7 +1162,7 @@ var config = {
 					width: stage.height,
 					height: stage.height * 2,
 					start: {
-						x: 2650,
+						x: 2600,
 						y: (-stage.height)
 					}
 				}
@@ -1205,26 +1226,12 @@ var config = {
 				name: 'platform0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Left',
 					start: {
-						x: 750,
-						y: world.height - 75
+						x: 700,
+						y: world.height - 115
 					},
-					// scale: [0.6, 0.3],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				name: 'platform2',
-				cl: 'Sprite',
-				attrs: {
-					img: 'platform',
-					start: {
-						x: 900,
-						y: world.height - 100
-					},
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1235,11 +1242,12 @@ var config = {
 				name: 'platform1',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Right',
 					start: {
-						x: 2048,
-						y: world.height - 75
+						x: 900,
+						y: world.height - 140
 					},
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1250,11 +1258,12 @@ var config = {
 				name: 'platform2',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Left',
 					start: {
-						x: 2198,
-						y: world.height - 150
+						x: 1948,
+						y: world.height - 115
 					},
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1265,11 +1274,12 @@ var config = {
 				name: 'platform3',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Right',
 					start: {
-						x: 2348,
-						y: world.height - 225
+						x: 2148,
+						y: world.height - 180
 					},
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1280,11 +1290,12 @@ var config = {
 				name: 'platform4',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Left',
 					start: {
-						x: 2498,
-						y: world.height - 300
+						x: 2248,
+						y: world.height - 255
 					},
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1295,11 +1306,12 @@ var config = {
 				name: 'platform5',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Right',
 					start: {
-						x: 2698,
-						y: world.height - 300
+						x: 2448,
+						y: world.height - 290
 					},
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1310,11 +1322,12 @@ var config = {
 				name: 'platform6',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Left',
 					start: {
-						x: 2898,
+						x: 2648,
 						y: world.height - 300
 					},
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1325,11 +1338,44 @@ var config = {
 				name: 'platform7',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'branch02Right',
 					start: {
-						x: 3098,
+						x: 2848,
+						y: world.height - 290
+					},
+					setSize: [64, 16, 32, 32],
+					// scale: [0.6, 0.3],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'platform8',
+				cl: 'Sprite',
+				attrs: {
+					img: 'branch02Left',
+					start: {
+						x: 3048,
+						y: world.height - 280
+					},
+					setSize: [64, 16, 32, 32],
+					// scale: [0.6, 0.3],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'platform9',
+				cl: 'Sprite',
+				attrs: {
+					img: 'branch02Right',
+					start: {
+						x: 3248,
 						y: world.height - 300
 					},
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1605,7 +1651,7 @@ var config = {
 							attrs: {
 								img: 'lollipop',
 								start: {
-									x: 2700,
+									x: 2740,
 									y: 0
 								},
 								physics: {
@@ -1714,7 +1760,7 @@ var config = {
 					y: 25,
 					defaultContent: '~{health}~',
 					style: { 
-						font: '18px Arial', 
+						font: '22px Arial', 
 						fill: '#ffffff' 
 					}
 				}
@@ -1879,7 +1925,7 @@ var config = {
 	},
 	{
 		name: 'quit',
-		cl: 'State',
+		cl: 'MenuState',
 		world: {
 			x: 0,
 			y: 0,
@@ -1888,6 +1934,7 @@ var config = {
 		},
 		clearWorld: true,
 		clearCache: false,
+		controlsType: 'gameOver',
 		attrs: [{
 			name: 'quit-group',
 			cl: 'GroupCollection',
@@ -1924,7 +1971,19 @@ var config = {
 				}
 			}
 			]
-		}]
+		},
+		{
+			name: 'quit-controls',
+			cl: 'ControlButtons',
+			type: 'quit',
+			attrs: {
+				start: {
+					x: 0,
+					y: 0
+				}
+			}
+		}
+		]
 	}],
 	playerDamaged: {
 		name: 'damageIcon',

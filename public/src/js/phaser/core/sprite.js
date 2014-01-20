@@ -31,13 +31,13 @@ Polyworks.Sprite = (function() {
 		}
 		var setSize = attrs.setSize;
 		if(setSize) {
-			trace('Sprite['+this.model.name+'] setSize = ' + setSize.length);
-			trace(setSize);
+			// trace('Sprite['+this.model.name+'] setSize = ' + setSize.length);
+			// trace(setSize);
 			if(setSize.length === 4) {
-				trace('\tsetting w, h, x, y size');
+				// trace('\tsetting w, h, x, y size');
 				this.body.setSize(setSize[0], setSize[1], setSize[2], setSize[3]);
 			} else {
-				trace('\tsetting w, h size');
+				// trace('\tsetting w, h size');
 				this.body.setSize(setSize[0], setSize[1]);
 			}
 			

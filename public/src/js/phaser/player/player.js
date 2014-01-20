@@ -10,10 +10,11 @@ Polyworks.Player = (function() {
 		Player._super.constructor.call(this, params);
 	}
 	
-	Player.prototype.begin = function(group) {
+	Player.prototype.begin = function() {
 		Player._super.begin.call(this);
 
-		// this.group = group;
+		this.health = PolyworksGame.startingHealth;
+
 		this.velX = 0;
 		this.velY = 0;
 		this.damageTimer = 0;

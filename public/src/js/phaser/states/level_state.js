@@ -36,7 +36,9 @@ Polyworks.LevelState = (function() {
 	};
 
 	LevelState.prototype.createPlayer = function() {
-		var playerConfig = PolyworksGame.get('player');
+		var playerConfig = Utils.clone(PolyworksGame.get('player'));
+		trace('Level['+this.model.name+']/createPlyaer, playerConfig = ');
+		trace(playerConfig);
 		playerConfig.game = PolyworksGame.phaser;
 		playerConfig.sectorManager = this.sectorManager;
 		this.playerGroup = PolyworksGame.phaser.add.group();
