@@ -106,12 +106,12 @@ Polyworks.Sprite = (function() {
 	};
 
 	Sprite.prototype.activateGravity = function() {
-		trace('Sprite['+this.model.name+']/activateGravity');
+		// trace('Sprite['+this.model.name+']/activateGravity');
 		var physics = this.model.attrs.physics;
 		if(physics && physics.deferredGravity) {
 			var gravity = (physics.gravity) ? physics.gravity : world.gravity;
-			trace('gravity = ');
-			trace(gravity);
+			// trace('gravity = ');
+			// trace(gravity);
 			this.body.gravity = gravity;
 		}
 	};

@@ -207,7 +207,7 @@ Polyworks.Player = (function() {
 		// trace(enemy);
 
 		// if(this.model.jumping || this.model.attacking) {
-		if(playerY < enemyY) { // player is above enemy
+		if(playerY < (enemyY - 15)) { // player is above enemy
 			this.updatePositionFromCollision();
 			enemy.receiveDamage(this.damage);
 		} else {

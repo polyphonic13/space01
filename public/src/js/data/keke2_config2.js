@@ -289,7 +289,6 @@ var config = {
 		},
 		clearWorld: true,
 		clearCache: false,
-		controlsType: 'menu',
 		attrs: [
 		{
 			name: 'menu-group',
@@ -412,9 +411,8 @@ var config = {
 					}
 				}
 			},
-
 			{
-				name: 'tree02',
+				name: 'tree03',
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree01',
@@ -427,7 +425,7 @@ var config = {
 				}
 			},
 			{
-				name: 'tree03',
+				name: 'tree04',
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree03',
@@ -440,7 +438,7 @@ var config = {
 				}
 			},
 			{
-				name: 'tree04',
+				name: 'tree05',
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree04',
@@ -1076,6 +1074,19 @@ var config = {
 				name: 'tree02',
 				cl: 'Sprite',
 				attrs: {
+					img: 'tree04',
+					width: stage.height,
+					height: (stage.height * 2),
+					start: {
+						x: 1200,
+						y: (-stage.height)
+					}
+				}
+			},
+			{
+				name: 'tree02',
+				cl: 'Sprite',
+				attrs: {
 					img: 'tree01',
 					width: stage.height,
 					height: (stage.height * 2) + 20,
@@ -1569,6 +1580,35 @@ var config = {
 								img: 'caterpillar02b',
 								spriteType: 'Sprite',
 								start: {
+									x: 2200,
+									y: 0
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								damage: 20,
+								health: 10,
+								score: 2000,
+								movement: {
+									speed: 2,
+									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							},
+						},
+						{
+							name: 'level1-sector2-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02b',
+								spriteType: 'Sprite',
+								start: {
 									x: 2850,
 									y: 0
 								},
@@ -1629,8 +1669,38 @@ var config = {
 					enemies: {
 						name: 'level1-sector3-enemies',
 						cl: 'Enemies',
-						attrs: [{
+						attrs: [
+						{
 							name: 'level1-sector3-enemy0',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02b',
+								spriteType: 'Sprite',
+								start: {
+									x: 3180,
+									y: 0
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								damage: 20,
+								health: 5,
+								score: 500,
+								movement: {
+									speed: 1.5,
+									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						},
+						{
+							name: 'level1-sector3-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -1657,7 +1727,8 @@ var config = {
 								defaultAnimation: '',
 								animations: caterpillarAnimations
 							}
-						}]
+						}
+						]
 					},
 					bonuses: {
 						name: 'level1-sector3-bonues',
@@ -1735,7 +1806,6 @@ var config = {
 		},
 		clearWorld: true,
 		clearCache: false,
-		controlsType: 'levelComplete',
 		attrs: [		
 		{
 			name: 'intermission-group',
@@ -1812,7 +1882,6 @@ var config = {
 		},
 		clearWorld: true,
 		clearCache: false,
-		controlsType: 'levelComplete',
 		attrs: [		
 		{
 			name: 'end-group',
@@ -1878,7 +1947,6 @@ var config = {
 		},
 		clearWorld: true,
 		clearCache: false,
-		controlsType: 'gameOver',
 		attrs: [{
 			name: 'quit-group',
 			cl: 'GroupCollection',
@@ -1915,17 +1983,17 @@ var config = {
 				}
 			}
 			]
-		},
-		{
-			name: 'quit-controls',
-			cl: 'ControlButtons',
-			type: 'quit',
-			attrs: {
-				start: {
-					x: 0,
-					y: 0
-				}
-			}
+		// },
+		// {
+		// 	name: 'quit-controls',
+		// 	cl: 'ControlButtons',
+		// 	type: 'quit',
+		// 	attrs: {
+		// 		start: {
+		// 			x: 0,
+		// 			y: 0
+		// 		}
+		// 	}
 		}
 		]
 	}],
