@@ -35,6 +35,7 @@ var config = {
 		branch02Right: 'images/branch02_right.png',
 		thorns: 'images/thorns02.png',
 		lollipop: 'images/lollipop.png',
+		cupcake: 'images/cupcake.png',
 		particle: 'images/particle01.png',
 		leftButton: 'images/arrow_left.png',
 		rightButton: 'images/arrow_right.png',
@@ -56,13 +57,13 @@ var config = {
 			height: 128, 
 			frames: 35
 		},
-		caterpillar01a: {
+		caterpillar02a: {
 			url: 'images/caterpillar02a.png',
 			width: 104, 
 			height: 32, 
 			frames: 14
 		},
-		caterpillar01b: {
+		caterpillar02b: {
 			url: 'images/caterpillar02b.png',
 			width: 104, 
 			height: 32, 
@@ -406,7 +407,7 @@ var config = {
 					width: stage.height,
 					height: (stage.height * 2),
 					start: {
-						x: 1300,
+						x: 950,
 						y: (-stage.height)
 					}
 				}
@@ -661,11 +662,11 @@ var config = {
 							name: 'level0-sector0-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								name: 'caterpillar01a-sprite',
-								img: 'caterpillar01a',
+								name: 'caterpillar02a-sprite',
+								img: 'caterpillar02a',
 								spriteType: 'Sprite',
 								start: {
-									x: 900,
+									x: 700,
 									y: stage.height - 50
 								},
 								physics: {
@@ -710,18 +711,14 @@ var config = {
 							name: 'level0-sector1-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar01a',
+								img: 'caterpillar02a',
 								spriteType: 'Sprite',
 								start: {
-									x: 1400,
+									x: 1100,
 									y: 0
 								},
 								physics: {
 									deferredGravity: true,
-									gravity: {
-										x: 0,
-										y: 5
-									},
 									bounce: {
 										x: 0,
 										y: 0.2
@@ -814,7 +811,7 @@ var config = {
 							name: 'level0-sector2-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar01a',
+								img: 'caterpillar02a',
 								spriteType: 'Sprite',
 								start: {
 									x: 2150,
@@ -843,7 +840,7 @@ var config = {
 							name: 'level0-sector2-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar01a',
+								img: 'caterpillar02a',
 								spriteType: 'Sprite',
 								start: {
 									x: 2850,
@@ -910,7 +907,7 @@ var config = {
 							name: 'level0-sector3-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar01a',
+								img: 'caterpillar02a',
 								spriteType: 'Sprite',
 								start: {
 									x: 3580,
@@ -1371,11 +1368,41 @@ var config = {
 							name: 'level1-sector0-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								name: 'caterpillar01b-sprite',
-								img: 'caterpillar01b',
+								name: 'caterpillar02b-sprite',
+								img: 'caterpillar02b',
 								spriteType: 'Sprite',
 								start: {
 									x: 600,
+									y: 0
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								movement: {
+									speed: 1,
+									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								damage: 20,
+								health: 10,
+								score: 2000,
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						},
+						{
+							name: 'level1-sector0-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								name: 'caterpillar02b-sprite',
+								img: 'caterpillar02b',
+								spriteType: 'Sprite',
+								start: {
+									x: 900,
 									y: 0
 								},
 								physics: {
@@ -1390,32 +1417,7 @@ var config = {
 									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 									formula: null
 								},
-								damage: 10,
-								health: 10,
-								score: 2000,
-								defaultAnimation: '',
-								animations: caterpillarAnimations
-							}
-						},
-						{
-							name: 'level1-sector0-enemy1',
-							cl: 'AnimatedEnemy',
-							attrs: {
-								name: 'caterpillar01b-sprite',
-								img: 'caterpillar01b',
-								spriteType: 'Sprite',
-								start: {
-									x: 900,
-									y: 0
-								},
-								physics: {
-									deferredGravity: true,
-									bounce: {
-										x: 0,
-										y: 0.2
-									}
-								},
-								damage: 10,
+								damage: 20,
 								health: 10,
 								score: 2000,
 								defaultAnimation: '',
@@ -1430,16 +1432,16 @@ var config = {
 							name: 'bonus0-sprite',
 							cl: 'Sprite',
 							attrs: {
-								img: 'lollipop',
+								img: 'cupcake',
 								start: {
 									x: 760,
-									y: stage.height - 200
+									y: stage.height - 250
 								},
 								physics: {
 									immovable: true
 								},
-								score: 100,
-								health: 10
+								score: 500,
+								health: 20
 							}
 						}]
 					}
@@ -1465,7 +1467,7 @@ var config = {
 							name: 'level1-sector1-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar01b',
+								img: 'caterpillar02b',
 								spriteType: 'Sprite',
 								start: {
 									x: 1400,
@@ -1478,11 +1480,11 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 10,
+								damage: 20,
 								health: 10,
 								score: 2000,
 								movement: {
-									speed: 1,
+									speed: 1.5,
 									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 									formula: null
 								},
@@ -1564,7 +1566,7 @@ var config = {
 							name: 'level1-sector2-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar01b',
+								img: 'caterpillar02b',
 								spriteType: 'Sprite',
 								start: {
 									x: 2850,
@@ -1577,11 +1579,11 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 10,
+								damage: 20,
 								health: 10,
 								score: 2000,
 								movement: {
-									speed: 1,
+									speed: 2,
 									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 									formula: null
 								},
@@ -1631,7 +1633,7 @@ var config = {
 							name: 'level1-sector3-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar01b',
+								img: 'caterpillar02b',
 								spriteType: 'Sprite',
 								start: {
 									x: 3580,
@@ -1644,11 +1646,11 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 5,
+								damage: 20,
 								health: 5,
 								score: 500,
 								movement: {
-									speed: 1,
+									speed: 1.5,
 									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 									formula: null
 								},
@@ -1666,7 +1668,7 @@ var config = {
 								img: 'lollipop',
 								start: {
 									x: 3700,
-									y: stage.height - 75
+									y: stage.height - 150
 								},
 								physics: {
 									immovable: true
