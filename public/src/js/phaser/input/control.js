@@ -33,8 +33,8 @@ Polyworks.Control = (function() {
 	};
 	
 	Control.prototype.trigger = function(event) {
-		// trace('Control/trigger, event = ');
-		// trace(event);
+		trace('Control/trigger, event = ');
+		trace(event);
 		Polyworks.EventCenter.trigger(event);
 	};
 	

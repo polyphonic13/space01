@@ -236,7 +236,7 @@ Polyworks.Player = (function() {
 			this.health -= damage;
 			if(this.health <= 0) {
 				// this.destroy();
-				PolyworksGame.changeState('quit');
+				PolyworksGame.changeState('gameOver');
 			} else {
 				_this.justDamaged = true;
 				_this.damageTimer = setTimeout(_this.resetJustDamaged, _this.damageInterval);

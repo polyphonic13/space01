@@ -543,7 +543,7 @@ function getCurrentSectorProperty(name) {
 }
 
 function quit() {
-	// trace('quit');
+	// trace('gameOver');
 	gameOver = true;
 	// clearSectorManager();
 	GameController.destroy();

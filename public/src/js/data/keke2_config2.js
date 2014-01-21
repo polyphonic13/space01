@@ -17,12 +17,13 @@ var world = {
 var config = {
 	// IMAGES
 	images: {
+		// scenery
 		sky: 'images/night_sky.jpg',
-		
+
 		movingBackground0: 'images/moving_background0.png',
 		movingBackground1: 'images/moving_background1.png',
 		movingBackground2: 'images/moving_background2.png',
-		
+
 		tree01: 'images/tree01.png',
 		tree02: 'images/tree02.png',
 		tree03: 'images/tree03.png',
@@ -34,9 +35,13 @@ var config = {
 		branch02Left: 'images/branch02_left.png',
 		branch02Right: 'images/branch02_right.png',
 		thorns: 'images/thorns02.png',
+
+		// bonuses
 		lollipop: 'images/lollipop.png',
 		cupcake: 'images/cupcake.png',
 		particle: 'images/particle01.png',
+
+		// buttons
 		leftButton: 'images/arrow_left.png',
 		rightButton: 'images/arrow_right.png',
 		upButton: 'images/arrow_up.png',
@@ -45,18 +50,22 @@ var config = {
 		menuButton: 'images/menu_button.png',
 		quitButton: 'images/quit_button.png',
 		greyRect: 'images/grey_rect32x32.png',
+
+		// icons
 		heart: 'images/heart.png',
 		damageIcon: 'images/alarm_icon.png',
 		invisibleBg: 'images/invisible.png'
 	},
 	// SPRITES
 	sprites: {
+		// player
 		keke: {
 			url: 'images/keke_character2.png', 
 			width: 76, 
 			height: 128, 
 			frames: 35
 		},
+		// enemies
 		caterpillar02a: {
 			url: 'images/caterpillar02a.png',
 			width: 104, 
@@ -76,14 +85,14 @@ var config = {
 			name: 'controlKeys',
 			cl: 'ControlKey',
 			attrs: [{
-				name: 'quit',
+				name: 'gameOver',
 				cl: 'ControlKey',
 				attrs: {
 					inputCode: Polyworks.InputCodes.QUIT,
 					events: {
 						pressed: {
 							type: Polyworks.Events.CHANGE_STATE,
-							value: 'quit'
+							value: 'gameOver'
 						}
 					}
 				}
@@ -167,24 +176,45 @@ var config = {
 				}
 			},
 			{
-				name: 'quitBtn',
+				name: 'menuBtn',
 				cl: 'InputButton',
 				attrs: {
-					img: 'quitButton',
+					img: 'menuButton',
 					start: {
 						x: stage.width - 90,
 						y: 15
 					},
-					inputCode: Polyworks.InputCodes.QUIT,
-					event: {
+					inputCode: Polyworks.InputCodes.MENU,
+					events: {
 						pressed: {
 							type: Polyworks.Events.CHANGE_STATE,
-							value: 'quit'
+							value: 'menu'
 						}
 					}
 				}
-			}],
-			quit: [
+			}
+			],
+			completed: [
+			{
+				name: 'menuBtn',
+				cl: 'InputButton',
+				attrs: {
+					img: 'menuButton',
+					start: {
+						x: stage.width - 90,
+						y: 15
+					},
+					inputCode: Polyworks.InputCodes.MENU,
+					events: {
+						pressed: {
+							type: Polyworks.Events.CHANGE_STATE,
+							value: 'menu'
+						}
+					}
+				}
+			}
+			],
+			gameOver: [
 			{
 				name: 'menuBtn',
 				cl: 'InputButton',
@@ -799,7 +829,7 @@ var config = {
 								},
 								damage: 10
 							}
-						},	
+						}
 						]
 					},
 					enemies: {
@@ -832,7 +862,7 @@ var config = {
 								},
 								defaultAnimation: '',
 								animations: caterpillarAnimations
-							},
+							}
 						},
 						{
 							name: 'level0-sector2-enemy1',
@@ -861,7 +891,7 @@ var config = {
 								},
 								defaultAnimation: '',
 								animations: caterpillarAnimations
-							},
+							}
 						}]
 					},
 					bonuses: {
@@ -1567,7 +1597,7 @@ var config = {
 								},
 								damage: 10
 							}
-						},	
+						}	
 						]
 					},
 					enemies: {
@@ -1600,7 +1630,7 @@ var config = {
 								},
 								defaultAnimation: '',
 								animations: caterpillarAnimations
-							},
+							}
 						},
 						{
 							name: 'level1-sector2-enemy1',
@@ -1795,7 +1825,7 @@ var config = {
 			}
 		}]
 	},
-
+/*
 	{
 		name: 'level2',
 		cl: 'LevelState',
@@ -2367,7 +2397,7 @@ var config = {
 								},
 								damage: 10
 							}
-						},	
+						}	
 						]
 					},
 					enemies: {
@@ -2400,7 +2430,7 @@ var config = {
 								},
 								defaultAnimation: '',
 								animations: caterpillarAnimations
-							},
+							}
 						},
 						{
 							name: 'level2-sector2-enemy1',
@@ -2595,7 +2625,7 @@ var config = {
 			}
 		}]
 	},
-
+*/
 	{
 		name: 'intermission',
 		cl: 'MenuState',
@@ -2607,7 +2637,7 @@ var config = {
 		},
 		clearWorld: true,
 		clearCache: false,
-		attrs: [		
+		attrs: [
 		{
 			name: 'intermission-group',
 			cl: 'GroupCollection',
@@ -2673,7 +2703,7 @@ var config = {
 		]
 	},
 	{
-		name: 'end',
+		name: 'completed',
 		cl: 'MenuState',
 		world: {
 			x: 0,
@@ -2683,9 +2713,9 @@ var config = {
 		},
 		clearWorld: true,
 		clearCache: false,
-		attrs: [		
+		attrs: [
 		{
-			name: 'end-group',
+			name: 'completed-group',
 			cl: 'GroupCollection',
 			attrs: [
 			{
@@ -2734,11 +2764,22 @@ var config = {
 				}
 			}
 			]
+		},
+		{
+			name: 'completed-controls',
+			cl: 'ControlButtons',
+			type: 'completed',
+			attrs: {
+				start: {
+					x: 0,
+					y: 0
+				}
+			}
 		}
 		]
 	},
 	{
-		name: 'quit',
+		name: 'gameOver',
 		cl: 'MenuState',
 		world: {
 			x: 0,
@@ -2749,7 +2790,7 @@ var config = {
 		clearWorld: true,
 		clearCache: false,
 		attrs: [{
-			name: 'quit-group',
+			name: 'gameOver-group',
 			cl: 'GroupCollection',
 			attrs: [
 			{
@@ -2784,17 +2825,17 @@ var config = {
 				}
 			}
 			]
-		// },
-		// {
-		// 	name: 'quit-controls',
-		// 	cl: 'ControlButtons',
-		// 	type: 'quit',
-		// 	attrs: {
-		// 		start: {
-		// 			x: 0,
-		// 			y: 0
-		// 		}
-		// 	}
+		},
+		{
+			name: 'gameOver-controls',
+			cl: 'ControlButtons',
+			type: 'gameOver',
+			attrs: {
+				start: {
+					x: 0,
+					y: 0
+				}
+			}
 		}
 		]
 	}],
