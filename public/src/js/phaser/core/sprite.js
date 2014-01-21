@@ -112,7 +112,7 @@ Polyworks.Sprite = (function() {
 			var gravity = (physics.gravity) ? physics.gravity : world.gravity;
 			trace('gravity = ');
 			trace(gravity);
-			this.body.gravity = world.gravity;
+			this.body.gravity = gravity;
 		}
 	};
 	

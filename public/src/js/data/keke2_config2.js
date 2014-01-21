@@ -57,16 +57,16 @@ var config = {
 			frames: 35
 		},
 		caterpillar01a: {
-			url: 'images/caterpillar01a_sprite.png',
+			url: 'images/caterpillar02a.png',
 			width: 104, 
-			height: 22, 
-			frames: 12
+			height: 32, 
+			frames: 14
 		},
 		caterpillar01b: {
-			url: 'images/caterpillar01b_sprite.png',
+			url: 'images/caterpillar02b.png',
 			width: 104, 
-			height: 22, 
-			frames: 12
+			height: 32, 
+			frames: 14
 		}
 	},
 	// CONTROLS
@@ -398,6 +398,19 @@ var config = {
 					}
 				}
 			},
+			{
+				name: 'tree01',
+				cl: 'Sprite',
+				attrs: {
+					img: 'tree02',
+					width: stage.height,
+					height: (stage.height * 2),
+					start: {
+						x: 1300,
+						y: (-stage.height)
+					}
+				}
+			},
 
 			{
 				name: 'tree02',
@@ -652,8 +665,8 @@ var config = {
 								img: 'caterpillar01a',
 								spriteType: 'Sprite',
 								start: {
-									x: 700,
-									y: 0
+									x: 900,
+									y: stage.height - 50
 								},
 								physics: {
 									deferredGravity: true,
@@ -697,7 +710,7 @@ var config = {
 							name: 'level0-sector1-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar01b',
+								img: 'caterpillar01a',
 								spriteType: 'Sprite',
 								start: {
 									x: 1400,
@@ -705,10 +718,10 @@ var config = {
 								},
 								physics: {
 									deferredGravity: true,
-									// gravity: {
-									// 	x: 0,
-									// 	y: 10
-									// },
+									gravity: {
+										x: 0,
+										y: 5
+									},
 									bounce: {
 										x: 0,
 										y: 0.2
@@ -901,7 +914,7 @@ var config = {
 								spriteType: 'Sprite',
 								start: {
 									x: 3580,
-									y: 0
+									y: stage.height - 50
 								},
 								physics: {
 									deferredGravity: true,
@@ -932,7 +945,7 @@ var config = {
 								img: 'lollipop',
 								start: {
 									x: 3700,
-									y: stage.height - 100
+									y: stage.height - 150
 								},
 								physics: {
 									immovable: true
@@ -1420,7 +1433,7 @@ var config = {
 								img: 'lollipop',
 								start: {
 									x: 760,
-									y: 0
+									y: stage.height - 200
 								},
 								physics: {
 									immovable: true
@@ -1586,7 +1599,7 @@ var config = {
 								img: 'lollipop',
 								start: {
 									x: 2740,
-									y: 0
+									y: stage.height - 150
 								},
 								physics: {
 									immovable: true
@@ -1653,7 +1666,7 @@ var config = {
 								img: 'lollipop',
 								start: {
 									x: 3700,
-									y: 0
+									y: stage.height - 75
 								},
 								physics: {
 									immovable: true

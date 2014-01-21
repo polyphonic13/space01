@@ -19,22 +19,38 @@ Polyworks.AnimatedEnemy = (function() {
 				var playerX = params.player.body.screenX;
 				var animations = this.animations; 
 
-				if(enemyX > (playerX + 10)) {
-					if(this.currentAnimation !== 'walkL') {
-						animations.play('walkL', animations.frameRate, true);
-						this.currentAnimation = 'walkL';
+				var playerToLeft = true;
+				if(enemyX < (playerX - 10)) {
+					playerToLeft = false;
+				}
+				
+				if(!this.body.touching.down) {
+					if(playerToLeft) {
+						if(this.currentAnimation !== 'fallingL') {
+							animations.play('fallingL', animations.frameRate, true);
+							this.currentAnimation = 'fallingL';
+						}
+					} else {
+						if(this.currentAnimation !== 'fallingR') {
+							animations.play('fallingR', animations.frameRate, true);
+							this.currentAnimation = 'fallingR';
+						}
+						
 					}
-					this.move({ direction: Polyworks.Directions.LEFT });
-				} else if(enemyX < (playerX - 10)){
-					if(this.currentAnimation !== 'walkR') {
-						animations.play('walkR', animations.frameRate, true);
-						this.currentAnimation = 'walkR';
-					}
-					this.move({ direction: Polyworks.Directions.RIGHT });
 				} else {
-					animations.stop();
-					this.frame = 0
-					this.currentAnimation = '';
+					if(playerToLeft) {
+						if(this.currentAnimation !== 'walkL') {
+							animations.play('walkL', animations.frameRate, true);
+							this.currentAnimation = 'walkL';
+						}
+						this.move({ direction: Polyworks.Directions.LEFT });
+					} else {
+						if(this.currentAnimation !== 'walkR') {
+							animations.play('walkR', animations.frameRate, true);
+							this.currentAnimation = 'walkR';
+						}
+						this.move({ direction: Polyworks.Directions.RIGHT });
+					}
 				}
 			}
 		}
