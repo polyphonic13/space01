@@ -311,8 +311,9 @@ var config = {
 	},
 	// STATES
 	initialState: 'menu',
-	// initialState: 'level0',
-	states: [{
+	states: [
+	// menu
+	{
 		name: 'menu',
 		cl: 'MenuState',
 		world: {
@@ -372,7 +373,7 @@ var config = {
 		}
 		]
 	},
-
+	// level 0
 	{
 		name: 'level0',
 		cl: 'LevelState',
@@ -789,7 +790,7 @@ var config = {
 			}
 		}]
 	},
-
+	// level 1
 	{
 		name: 'level1',
 		cl: 'LevelState',
@@ -1447,7 +1448,7 @@ var config = {
 			}
 		}]
 	},
-
+	// level 2
 	{
 		name: 'level2',
 		cl: 'LevelState',
@@ -2247,7 +2248,7 @@ var config = {
 			}
 		}]
 	},
-
+	// level 3
 	{
 		name: 'level3',
 		cl: 'LevelState',
@@ -2969,7 +2970,7 @@ var config = {
 			}
 		}]
 	},
-
+	// intermission
 	{
 		name: 'intermission',
 		cl: 'MenuState',
@@ -3007,7 +3008,7 @@ var config = {
 					centerY: false,
 					x: 0,
 					y: 40,
-					defaultContent: 'Level Completed',
+					defaultContent: 'Level ~{currentLevel}~ Completed',
 					style: { 
 						font: '30px Arial', 
 						fill: '#000000',
@@ -3046,7 +3047,7 @@ var config = {
 		}
 		]
 	},
-
+	// completed
 	{
 		name: 'completed',
 		cl: 'MenuState',
@@ -3123,7 +3124,7 @@ var config = {
 		}
 		]
 	},
-
+	// gameOver
 	{
 		name: 'gameOver',
 		cl: 'MenuState',
