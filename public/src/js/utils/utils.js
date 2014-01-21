@@ -1,6 +1,7 @@
 Utils = (function() {
 	var utils = {};
 
+	
 	utils.clone = function(a) {
 		var obj = {};
 		for(var key in a) {

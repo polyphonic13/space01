@@ -18,11 +18,11 @@ Polyworks.Enemies = (function() {
 	};
 	
 	Enemies.prototype.destroyEnemy = function(name, ancestor) {
-		trace('Enemies/destroyEnemy, name = ' + name);
-		trace(this);
-		trace(ancestor);
+		// trace('Enemies/destroyEnemy, name = ' + name);
+		// trace(this);
+		// trace(ancestor);
 		var enemy = ancestor.model.collection[ancestor.nameIndex[name]];
-		trace(enemy);
+		// trace(enemy);
 		enemy.alive = false;
 		enemy.destroy();
 	};

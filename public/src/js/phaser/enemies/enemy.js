@@ -58,7 +58,7 @@ Polyworks.Enemy = (function() {
 	};
 	
 	Enemy.prototype.receiveDamage = function(damage) {
-		trace('Enemy/receiveDamage, player.damage = ' + damage + ', this.health = ' + this.health);
+		// trace('Enemy/receiveDamage, player.damage = ' + damage + ', this.health = ' + this.health);
 		this.health -= damage;
 		if(this.health <= 0) {
 			PolyworksGame.setScore(this.score);
@@ -67,7 +67,7 @@ Polyworks.Enemy = (function() {
 	};
 	
 	Enemy.prototype.destroy = function() {
-		trace('Enemy['+this.model.name+']/destroy');
+		// trace('Enemy['+this.model.name+']/destroy');
 		this.alive = false;
 		Enemy._super.destroy.call(this);
 		// var ancestor = this.model.ancestor;

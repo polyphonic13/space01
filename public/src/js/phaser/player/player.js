@@ -217,8 +217,8 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.bonusCollision = function(player, bonus) {
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.BONUS_COLLISION, player: player, bonus: bonus });
-		trace('Player/bonusCollision, bonus = ');
-		trace(bonus);
+		// trace('Player/bonusCollision, bonus = ');
+		// trace(bonus);
 	    PolyworksGame.setScore(bonus.model.attrs.score);
 
 		var health = bonus.model.attrs.health;
@@ -232,7 +232,7 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.receiveDamage = function(damage) {
 		if(!_this.justDamaged) {
-			trace('Player/receiveDamage, damage = ' + damage + ', health = ' + this.health);
+			// trace('Player/receiveDamage, damage = ' + damage + ', health = ' + this.health);
 			this.health -= damage;
 			if(this.health <= 0) {
 				// this.destroy();
@@ -246,7 +246,7 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.resetJustDamaged = function() {
- 		trace('Player/resetJustDamaged');
+ 		// trace('Player/resetJustDamaged');
 		clearTimeout(_this.damageTimer);
 		_this.justDamaged = false;
 	};
@@ -279,8 +279,8 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.destroy = function() {
-		trace('Player/destroy');
-		trace(this.damageIconGroup);
+		// trace('Player/destroy');
+		// trace(this.damageIconGroup);
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_PRESSED, this.onControlButtonPressed);
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_RELEASED, this.onControlButtonReleased);
 
@@ -293,7 +293,7 @@ Polyworks.Player = (function() {
 		this.update = null;
 		this.updateInput = null;
 		Player._super.destroy.call(this);
-		trace('end player destroy');
+		// trace('end player destroy');
 	};
 	
 	return Player;

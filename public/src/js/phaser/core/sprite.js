@@ -42,8 +42,8 @@ Polyworks.Sprite = (function() {
 			}
 			
 			// if(setSize.x && setSize.y) {
-			// 	trace('setting ['+this.model.name+'] size to: ');
-			// 	trace(setSize);
+			// 	// trace('setting ['+this.model.name+'] size to: ');
+			// 	// trace(setSize);
 			// 	this.body.setSize(setSize.width, setSize.height, setSize.x, setSize.y);
 			// } else {
 			// 	this.body.setSize(setSize.width, setSize.height);
@@ -71,8 +71,8 @@ Polyworks.Sprite = (function() {
 			return this.body.velocity.x;
 		});
 		this.__defineSetter__('velocityX', function(val) {
-			trace('Sprite['+this.model.name+']/set velocityX, val = ' + val);
-			trace(this);
+			// trace('Sprite['+this.model.name+']/set velocityX, val = ' + val);
+			// trace(this);
 			this.body.velocity.x = val;
 		});
 		this.__defineGetter__('velocityY', function() {

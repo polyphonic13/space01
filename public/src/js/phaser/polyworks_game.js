@@ -17,8 +17,8 @@ PolyworksGame = (function() {
 		isQuit: false,
 
 		begin: function(params) {
-			trace('PolyworksGame/begin, stage w/h = ' + stage.width + '/' + stage.height);
-			trace((stage.height * 2) + ' ' + ((-stage.height) + 10));
+			// trace('PolyworksGame/begin, stage w/h = ' + stage.width + '/' + stage.height);
+			// trace((stage.height * 2) + ' ' + ((-stage.height) + 10));
 			_model = params;
 			PolyworksGame.startingHealth = params.player.attrs.health;
 			PolyworksGame.phaser = new Phaser.Game(stage.width, stage.height, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
@@ -40,7 +40,7 @@ PolyworksGame = (function() {
 					break;
 
 					case 'nextLevel':
-						trace('next level, current = ' + PolyworksGame.currentLevel + ', total = ' + PolyworksGame.totalLevels);
+						// trace('next level, current = ' + PolyworksGame.currentLevel + ', total = ' + PolyworksGame.totalLevels);
 						if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels - 1)) {
 							PolyworksGame.currentLevel++;
 							id = 'level' + PolyworksGame.currentLevel;
@@ -72,11 +72,11 @@ PolyworksGame = (function() {
 					if(state) {
 						PolyworksGame.previousState = PolyworksGame.currentState;
 						PolyworksGame.currentState = id;
-						trace('PolyworksGame/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
+						// trace('PolyworksGame/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
 						// trace(_states);
 						PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
 					} else {
-						trace('ERROR: state['+id+'] not found');
+						// trace('ERROR: state['+id+'] not found');
 					}
 				}
 		},
@@ -87,7 +87,7 @@ PolyworksGame = (function() {
 
 		setScore: function(val) {
 			PolyworksGame.score += val;
-			trace('PolyworksGame/setScore, val = ' + val + ', score = ' + PolyworksGame.score);
+			// trace('PolyworksGame/setScore, val = ' + val + ', score = ' + PolyworksGame.score);
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.SCORE_UPDATED });
 		},
 
@@ -96,11 +96,8 @@ PolyworksGame = (function() {
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.HEALTH_UPDATED });
 		},
 
-		// setPlayerGroup: function(group) {
-		// 	_model[]
-		// }
 		quit: function() {
-			trace('PolyworksGame/quit');
+			// trace('PolyworksGame/quit');
 			if(!PolyworksGame.isQuit) {
 				PolyworksGame.isQuit = true;
 				// _killStates();
@@ -111,7 +108,10 @@ PolyworksGame = (function() {
 					PolyworksGame.player.destroy();
 				}
 				PolyworksGame.phaser.destroy();
-				trace('end of polyworks game quit');
+
+				var gameContainer = document.getElementById('gameContainer');
+				gameContainer.parentNode.removeChild(gameContainer);
+
 			}
 		}
 	};
@@ -190,7 +190,7 @@ PolyworksGame = (function() {
 	}
 	
 	function _killStates() {
-		trace('PolyworksGame/_killStates');
+		// trace('PolyworksGame/_killStates');
 		for(var key in _states) {
 			if(_states[key].shutdown) {
 				_states[key].shutdown();

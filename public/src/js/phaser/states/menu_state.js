@@ -20,8 +20,8 @@ Polyworks.MenuState = (function() {
 	};
 	
 	MenuState.prototype.onButtonPressed = function(event) {
-		trace('MenuState/onButtonPressed, changingState = ' + this.changingState + ', event = ');
-		trace(event);
+		// trace('MenuState/onButtonPressed, changingState = ' + this.changingState + ', event = ');
+		// trace(event);
 		if(event.value === Polyworks.InputCodes.PLAY || event.value === Polyworks.InputCodes.NEXT) {
 			// if(!this.changingState) {
 				PolyworksGame.changeState('level'); 
