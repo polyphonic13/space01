@@ -1,5 +1,4 @@
 Polyworks.Player = (function() {
-	// Utils.inherits(Player, Polyworks.AnimatedSprite);
 	Utils.inherits(Player, Polyworks.Sprite);
 
 	var _this;
