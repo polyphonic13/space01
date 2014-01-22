@@ -127,7 +127,7 @@ Utils = (function() {
 					this.moveDirectionalBySpeed(sprite, movement, params.direction);
 				}
 			break;
-			
+
 			default: 
 			console.log('WARNING: unknown movement type: ' + movement.type);
 			break;
