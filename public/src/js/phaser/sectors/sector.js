@@ -1,35 +1,53 @@
 Polyworks.Sector = (function() {
+	Utils.inherits(Sector, Polyworks.Collection);
 	
 	function Sector(params) {
 		// trace('Sector['+params.name+']/constructor, params = ');
 		// trace(params);
-		this.model = new Polyworks.Model(params);
-
-		this.__defineGetter__('bounds', function() {
-			return this.model.attrs.bounds;
-		});
+		Sector._super.constructor.call(this, params);
 
 	}
 	
 	Sector.prototype.begin = function() {
 		// trace('Sector/['+this.model.name+']/begin, this = ');
 		// trace(this);
+		Sector._super.begin.call(this);
+		
+		this.beginGetterSetters();
+		
+		/*
 		this.beginChildren('hazards');
 		this.beginChildren('enemies');
 		this.beginChildren('bonuses');
 		this.created = true;
 		this.active = false;
 		this.activatedOnce = false;
+		*/
 	};
 
-	Sector.prototype.beginChildren = function(type, cl) {
-		var children = this.model.attrs[type];
-		if(children) {
-			this[type] = new Polyworks[children.cl](children);
-			this[type].begin();
-		}
-		// this.addParticles();
+	Sector.prototype.beginGetterSetters = function() {
+		this.__defineGetter__('bounds', function() {
+			return this.model.attrs.bounds;
+		});
+		this.__defineGetter__('hazards', function() {
+			return this.getChildByName('hazards');
+		});
+		this.__defineGetter__('enemies', function() {
+			return this.getChildByName('enemies');
+		});
+		this.__defineGetter__('bonuses', function() {
+			return this.getChildByName('bonuses');
+		});
 	};
+	
+	// Sector.prototype.beginChildren = function(type, cl) {
+	// 	var children = this.model.attrs[type];
+	// 	if(children) {
+	// 		this[type] = new Polyworks[children.cl](children);
+	// 		this[type].begin();
+	// 	}
+	// 	// this.addParticles();
+	// };
 	
 	Sector.prototype.setActive = function(active) {
 		this.active = active;
