@@ -12,10 +12,10 @@ Polyworks.Sector = (function() {
 		// trace('Sector/['+this.model.name+']/begin, this = ');
 		// trace(this);
 		Sector._super.begin.call(this);
-		trace('post sector super begin');
-		trace(this);
 		this.beginGetterSetters();
-		
+		trace('Sector['+this.model.name+']/begin (end)');
+		trace(this);
+
 		/*
 		this.beginChildren('hazards');
 		this.beginChildren('enemies');
@@ -28,11 +28,9 @@ Polyworks.Sector = (function() {
 
 	Sector.prototype.beginGetterSetters = function() {
 		this.__defineGetter__('bounds', function() {
-			return this.model.attrs.bounds;
+			return this.model.bounds;
 		});
 		this.__defineGetter__('hazards', function() {
-			trace('Sector/get hazards');
-			trace(this);
 			return this.getChildByName('hazards');
 		});
 		this.__defineGetter__('enemies', function() {
