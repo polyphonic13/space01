@@ -19,11 +19,11 @@ var config = {
 	images: {
 		// scenery
 		sky: 'images/night_sky.jpg',
-		movingBackground0a: 'images/new_background01.gif',
-		movingBackground0b: 'images/new_background02.gif',
-		movingBackground0: 'images/new_background03.gif',
-		movingBackground1: 'images/new_background04.gif',
-		movingBackground2: 'images/moving_background2.png',
+		movingBackground0a: 'images/new_background01.png',
+		movingBackground0b: 'images/new_background02.png',
+		movingBackground0: 'images/new_background03.png',
+		movingBackground1: 'images/new_background03.png',
+		movingBackground2: 'images/new_background04.png',
 		movingBackground3: 'images/moving_background3.png',
 		movingBackground4: 'images/moving_background4.png',
 
