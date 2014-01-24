@@ -19,23 +19,15 @@ var config = {
 	images: {
 		// scenery
 		sky: 'images/night_sky.jpg',
-		movingBackground0a: 'images/new_background01.png',
-		movingBackground0b: 'images/new_background02.png',
-		movingBackground0: 'images/new_background03.png',
-		movingBackground1: 'images/new_background03.png',
-		movingBackground2: 'images/new_background04.png',
-		movingBackground3: 'images/moving_background3.png',
-		movingBackground4: 'images/moving_background4.png',
-
-/*
-		movingBackground0a: 'images/moving_background0a.png',
-		movingBackground0b: 'images/moving_background0b.png',
-		movingBackground0: 'images/moving_background0.png',
-		movingBackground1: 'images/moving_background1.png',
-		movingBackground2: 'images/moving_background2.png',
-		movingBackground3: 'images/moving_background3.png',
-		movingBackground4: 'images/moving_background4.png',
-*/
+		movingBackground0a: 'images/moving_background0.png',
+		/*
+		movingBackground0a: 'images/new_background02.png',
+		movingBackground0a: 'images/new_background03.png',
+		movingBackground0a: 'images/new_background03.png',
+		movingBackground0a: 'images/new_background04.png',
+		movingBackground0a: 'images/moving_background3.png',
+		movingBackground0a: 'images/moving_background4.png',
+		*/
 		tree01: 'images/tree01.png',
 		tree02: 'images/tree02.png',
 		tree03: 'images/tree03.png',
@@ -422,7 +414,9 @@ var config = {
 				attrs: {
 					img: 'movingBackground0a',
 					width: 1024,
-					height: stage.height * 1.5,
+					height: 512,
+					// width: (stage.height * 1.5) * 2,
+					// height: stage.height * 1.5,
 					start: {
 						x: 0,
 						y: -(stage.height * 0.5)
@@ -433,7 +427,7 @@ var config = {
 				name: 'moving_background02',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground0b',
+					img: 'movingBackground0a',
 					width: 1024,
 					height: stage.height * 1.5,
 					start: {
@@ -446,7 +440,7 @@ var config = {
 				name: 'moving_background01',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground1',
+					img: 'movingBackground0a',
 					width: 2048,
 					height: stage.height * 1.5,
 					start: {
@@ -459,7 +453,7 @@ var config = {
 				name: 'moving_background02',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground2',
+					img: 'movingBackground0a',
 					width: 3072,
 					height: stage.height * 1.5,
 					start: {
@@ -866,7 +860,7 @@ var config = {
 				name: 'moving_background01',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground0',
+					img: 'movingBackground0a',
 					width: 2048,
 					height: stage.height * 1.5,
 					start: {
@@ -879,7 +873,7 @@ var config = {
 				name: 'moving_background02',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground0',
+					img: 'movingBackground0a',
 					width: 2048,
 					height: stage.height * 1.5,
 					start: {
@@ -1524,7 +1518,7 @@ var config = {
 				name: 'moving_background01',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground1',
+					img: 'movingBackground0a',
 					width: 2048,
 					height: stage.height * 1.5,
 					start: {
@@ -1537,7 +1531,7 @@ var config = {
 				name: 'moving_background02',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground2',
+					img: 'movingBackground0a',
 					width: 2048,
 					height: stage.height * 1.5,
 					start: {
@@ -2324,7 +2318,7 @@ var config = {
 				name: 'moving_background01',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground3',
+					img: 'movingBackground0a',
 					width: 2048,
 					height: stage.height * 1.5,
 					start: {
@@ -2337,7 +2331,7 @@ var config = {
 				name: 'moving_background02',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground4',
+					img: 'movingBackground0a',
 					width: 2048,
 					height: stage.height * 1.5,
 					start: {
