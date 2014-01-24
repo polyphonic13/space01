@@ -20,8 +20,10 @@ var config = {
 		// scenery
 		sky: 'images/night_sky.jpg',
 
-		movingBackground0a: 'images/moving_background0a.png',
-		movingBackground0b: 'images/moving_background0b.png',
+		movingBackground0a: 'images/moving_background5.png',
+		movingBackground0b: 'images/moving_background5.png',
+		// movingBackground0a: 'images/moving_background0a.png',
+		// movingBackground0b: 'images/moving_background0b.png',
 		movingBackground0: 'images/moving_background0.png',
 		movingBackground1: 'images/moving_background1.png',
 		movingBackground2: 'images/moving_background2.png',
@@ -414,10 +416,12 @@ var config = {
 				attrs: {
 					img: 'movingBackground0a',
 					width: 2048,
-					height: stage.height * 1.5,
+					// height: stage.height * 1.5,
+					height: 512,
 					start: {
 						x: 0,
-						y: -(stage.height * 0.5)
+						// y: -(stage.height * 0.5)
+						y: stage.height - 512
 					}
 				}
 			},
@@ -447,17 +451,17 @@ var config = {
 					}
 				}
 			},
-			{
-				name: 'grass0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'grass1',
-					start: {
-						x: 0,
-						y: stage.height - 200
-					}
-				}
-			},
+			// {
+			// 	name: 'grass0',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'grass1',
+			// 		start: {
+			// 			x: 0,
+			// 			y: stage.height - 200
+			// 		}
+			// 	}
+			// },
 			{
 				name: 'grass1',
 				cl: 'Sprite',
