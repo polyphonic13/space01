@@ -461,7 +461,7 @@ var config = {
 						y: -(stage.height * 0.5)
 					}
 				}
-			}
+			},
 /*
 			{
 				name: 'tree05',
@@ -476,6 +476,7 @@ var config = {
 					}
 				}
 			},
+*/			
 			{
 				name: 'grass0',
 				cl: 'Sprite',
@@ -498,7 +499,7 @@ var config = {
 					}
 				}
 			}
-*/
+
 			]
 		},
 		{
