@@ -416,7 +416,7 @@ var config = {
 			},
 			{
 				name: 'moving_background01',
-				cl: 'MovingSprite',
+				cl: 'Sprite',
 				attrs: {
 					img: 'movingBackground0a',
 					width: 2048,
@@ -424,17 +424,12 @@ var config = {
 					start: {
 						x: 0,
 						y: -(stage.height * 0.5)
-					},
-					movement: {
-						speed: 0.1,
-						type: Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER,
-						formula: null
 					}
 				}
 			},
 			{
 				name: 'moving_background02',
-				cl: 'MovingSprite',
+				cl: 'Sprite',
 				attrs: {
 					img: 'movingBackground0a',
 					width: 2048,
@@ -442,11 +437,6 @@ var config = {
 					start: {
 						x: 2048,
 						y: -(stage.height * 0.5)
-					},
-					movement: {
-						speed: 0.1,
-						type: Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER,
-						formula: null
 					}
 				}
 			},
@@ -3358,7 +3348,7 @@ var config = {
 			},
 			followStyle: Phaser.Camera.FOLLOW_PLATFORMER,
 			speed: {
-				x: 100,
+				x: 50,
 				y: 400
 			},
 			controls: {
