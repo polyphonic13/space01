@@ -38,10 +38,10 @@ var config = {
 		grass2: 'images/grass02.png',
 		platform: 'images/platform.png',
 		platform_grey: 'images/platform_grey.png',
-		// branch02Left: 'images/branch02_left.png',
-		branch02Left: 'images/vines01.png',
-		// branch02Right: 'images/branch02_right.png',
-		branch02Right: 'images/vines01.png',
+		branch02Left: 'images/branch02_left.png',
+		// branch02Left: 'images/vines01.png',
+		branch02Right: 'images/branch02_right.png',
+		// branch02Right: 'images/vines01.png',
 		thorns: 'images/thorns02.png',
 
 		// bonuses
@@ -100,7 +100,7 @@ var config = {
 					events: {
 						pressed: {
 							type: Polyworks.Events.CHANGE_STATE,
-							value: 'gameOver'
+							value: 'quit'
 						}
 					}
 				}
@@ -314,7 +314,7 @@ var config = {
 		}
 	},
 	// STATES
-	initialState: 'level1',
+	initialState: 'menu',
 	states: [
 	// menu
 	{
@@ -418,12 +418,12 @@ var config = {
 				attrs: {
 					img: 'movingBackground0a',
 					width: 2048,
-					// height: stage.height * 1.5,
-					height: 512,
+					height: stage.height * 1.5,
+					// height: 512,
 					start: {
 						x: 0,
-						// y: -(stage.height * 0.5)
-						y: stage.height - 512
+						y: -(stage.height * 0.5)
+						// y: stage.height - 512
 					}
 				}
 			},
@@ -431,7 +431,7 @@ var config = {
 				name: 'moving_background02',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground0b',
+					img: 'movingBackground0a',
 					width: 2048,
 					height: stage.height * 1.5,
 					start: {
@@ -453,17 +453,17 @@ var config = {
 					}
 				}
 			},
-			// {
-			// 	name: 'grass0',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'grass1',
-			// 		start: {
-			// 			x: 0,
-			// 			y: stage.height - 200
-			// 		}
-			// 	}
-			// },
+			{
+				name: 'grass0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'grass1',
+					start: {
+						x: 0,
+						y: stage.height - 200
+					}
+				}
+			},
 			{
 				name: 'grass1',
 				cl: 'Sprite',
@@ -959,7 +959,7 @@ var config = {
 					img: 'platform',
 					start: {
 						x: 0,
-						y: world.height - 30
+						y: world.height - 20
 					},
 					scale: [32, 1],
 					physics: {
@@ -976,7 +976,7 @@ var config = {
 						x: 1948,
 						y: world.height - 115
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -992,7 +992,7 @@ var config = {
 						x: 2148,
 						y: world.height - 180
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1008,7 +1008,7 @@ var config = {
 						x: 2248,
 						y: world.height - 255
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1024,7 +1024,7 @@ var config = {
 						x: 2448,
 						y: world.height - 290
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1040,7 +1040,7 @@ var config = {
 						x: 2648,
 						y: world.height - 300
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1056,7 +1056,7 @@ var config = {
 						x: 2848,
 						y: world.height - 290
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1072,7 +1072,7 @@ var config = {
 						x: 3048,
 						y: world.height - 280
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1088,7 +1088,7 @@ var config = {
 						x: 3248,
 						y: world.height - 300
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1648,7 +1648,7 @@ var config = {
 						x: 700,
 						y: world.height - 115
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1664,7 +1664,7 @@ var config = {
 						x: 900,
 						y: world.height - 140
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1680,7 +1680,7 @@ var config = {
 						x: 1948,
 						y: world.height - 115
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1696,7 +1696,7 @@ var config = {
 						x: 2148,
 						y: world.height - 180
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1712,7 +1712,7 @@ var config = {
 						x: 2248,
 						y: world.height - 255
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1728,7 +1728,7 @@ var config = {
 						x: 2448,
 						y: world.height - 290
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1744,7 +1744,7 @@ var config = {
 						x: 2648,
 						y: world.height - 340
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1760,7 +1760,7 @@ var config = {
 						x: 2848,
 						y: world.height - 390
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1776,7 +1776,7 @@ var config = {
 						x: 3048,
 						y: world.height - 440
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -1792,7 +1792,7 @@ var config = {
 						x: 3248,
 						y: world.height - 490
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -2370,7 +2370,7 @@ var config = {
 						x: 700,
 						y: world.height - 115
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -2386,7 +2386,7 @@ var config = {
 						x: 900,
 						y: world.height - 140
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -2402,7 +2402,7 @@ var config = {
 						x: 1948,
 						y: world.height - 115
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -2418,7 +2418,7 @@ var config = {
 						x: 2148,
 						y: world.height - 180
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -2434,7 +2434,7 @@ var config = {
 						x: 2248,
 						y: world.height - 255
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -2450,7 +2450,7 @@ var config = {
 						x: 2448,
 						y: world.height - 290
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -2466,7 +2466,7 @@ var config = {
 						x: 2648,
 						y: world.height - 340
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -2482,7 +2482,7 @@ var config = {
 						x: 2848,
 						y: world.height - 390
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -2498,7 +2498,7 @@ var config = {
 						x: 3048,
 						y: world.height - 440
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
@@ -2514,7 +2514,7 @@ var config = {
 						x: 3248,
 						y: world.height - 490
 					},
-					setSize: [128, 8, 0, 8],
+					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
 					physics: {
 						immovable: true
