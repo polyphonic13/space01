@@ -20,12 +20,12 @@ var config = {
 		// scenery
 		sky: 'images/night_sky.jpg',
 
-		movingBackground0a: 'images/new_backgroundA.png',
-		movingBackground0b: 'images/new_backgroundB.png',
+		// movingBackground0a: 'images/new_backgroundA.png',
+		// movingBackground0b: 'images/new_backgroundB.png',
 		// movingBackground0a: 'images/moving_background2a.png',
 		// movingBackground0b: 'images/moving_background2b.png',
-		// movingBackground0a: 'images/moving_background0a.png',
-		// movingBackground0b: 'images/moving_background0b.png',
+		movingBackground0a: 'images/moving_background0a.png',
+		movingBackground0b: 'images/moving_background0b.png',
 		movingBackground0: 'images/moving_background0.png',
 		movingBackground1: 'images/moving_background1.png',
 		movingBackground2: 'images/moving_background2.png',
@@ -435,6 +435,7 @@ var config = {
 					}
 				}
 			},
+			/*
 			{
 				name: 'moving_background02',
 				cl: 'Sprite',
@@ -449,43 +450,44 @@ var config = {
 						height: stage.height * 1.5,
 					}
 				}
-			// },
-			// {
-			// 	name: 'tree05',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'tree02',
-			// 		start: {
-			// 			x: 3700,
-			// 			y: (-stage.height)
-			// 		},
-			// 		phaser: {
-			// 			width: stage.height,
-			// 			height: stage.height * 2,
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	name: 'grass0',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'grass1',
-			// 		start: {
-			// 			x: 0,
-			// 			y: stage.height - 220
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	name: 'grass1',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'grass2',
-			// 		start: {
-			// 			x: 2048,
-			// 			y: stage.height - 220
-			// 		}
-			// 	}
+			},
+			*/
+			{
+				name: 'tree05',
+				cl: 'Sprite',
+				attrs: {
+					img: 'tree02',
+					start: {
+						x: 3700,
+						y: (-stage.height)
+					},
+					phaser: {
+						width: stage.height,
+						height: stage.height * 2,
+					}
+				}
+			},
+			{
+				name: 'grass0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'grass1',
+					start: {
+						x: 0,
+						y: stage.height - 220
+					}
+				}
+			},
+			{
+				name: 'grass1',
+				cl: 'Sprite',
+				attrs: {
+					img: 'grass2',
+					start: {
+						x: 2048,
+						y: stage.height - 220
+					}
+				}
 			}
 			]
 		},
