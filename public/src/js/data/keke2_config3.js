@@ -34,6 +34,9 @@ var config = {
 		tree02: 'images/tree02.png',
 		tree03: 'images/tree03.png',
 		tree04: 'images/tree04.png',
+
+		treeClump01: 'images/tree_clump01.png',
+
 		grass1: 'images/grass01.png',
 		grass2: 'images/grass02.png',
 		platform: 'images/platform.png',
@@ -391,7 +394,6 @@ var config = {
 		clearCache: false,
 		bounds: {
 			start: 0,
-			// end: 1024
 			end: 4020
 		},
 		attrs: [{
@@ -414,22 +416,25 @@ var config = {
 			},
 			{
 				name: 'moving_background01',
-				cl: 'Sprite',
+				cl: 'MovingSprite',
 				attrs: {
 					img: 'movingBackground0a',
 					width: 2048,
 					height: stage.height * 1.5,
-					// height: 512,
 					start: {
 						x: 0,
 						y: -(stage.height * 0.5)
-						// y: stage.height - 512
+					},
+					movement: {
+						speed: 0.1,
+						type: Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER,
+						formula: null
 					}
 				}
 			},
 			{
 				name: 'moving_background02',
-				cl: 'Sprite',
+				cl: 'MovingSprite',
 				attrs: {
 					img: 'movingBackground0a',
 					width: 2048,
@@ -437,12 +442,89 @@ var config = {
 					start: {
 						x: 2048,
 						y: -(stage.height * 0.5)
+					},
+					movement: {
+						speed: 0.1,
+						type: Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER,
+						formula: null
+					}
+				}
+			},
+			{
+				name: 'trees1',
+				cl: 'MovingSprite',
+				attrs: {
+					img: 'treeClump01',
+					width: 1024,
+					height: stage.height * 1.5,
+					start: {
+						x: 500,
+						y: -(stage.height * 0.5)
+					},
+					movement: {
+						speed: 0.3,
+						type: Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER,
+						formula: null
+					}
+				}
+			},
+			{
+				name: 'trees2',
+				cl: 'MovingSprite',
+				attrs: {
+					img: 'treeClump01',
+					width: 1024,
+					height: stage.height * 1.5,
+					start: {
+						x: 2048,
+						y: -(stage.height * 0.5)
+					},
+					movement: {
+						speed: 0.3,
+						type: Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER,
+						formula: null
 					}
 				}
 			},
 			{
 				name: 'tree05',
-				cl: 'Sprite',
+				cl: 'MovingSprite',
+				attrs: {
+					img: 'tree02',
+					width: stage.height,
+					height: stage.height * 2,
+					start: {
+						x: 1000,
+						y: (-stage.height)
+					},
+					movement: {
+						speed: 0.6,
+						type: Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER,
+						formula: null
+					}
+				}
+			},
+			{
+				name: 'tree05',
+				cl: 'MovingSprite',
+				attrs: {
+					img: 'tree02',
+					width: stage.height,
+					height: stage.height * 2,
+					start: {
+						x: 2000,
+						y: (-stage.height)
+					},
+					movement: {
+						speed: 0.6,
+						type: Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER,
+						formula: null
+					}
+				}
+			},
+			{
+				name: 'tree05',
+				cl: 'MovingSprite',
 				attrs: {
 					img: 'tree02',
 					width: stage.height,
@@ -450,28 +532,43 @@ var config = {
 					start: {
 						x: 3700,
 						y: (-stage.height)
+					},
+					movement: {
+						speed: 0.5,
+						type: Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER,
+						formula: null
 					}
 				}
 			},
 			{
 				name: 'grass0',
-				cl: 'Sprite',
+				cl: 'MovingSprite',
 				attrs: {
 					img: 'grass1',
 					start: {
 						x: 0,
 						y: stage.height - 220
+					},
+					movement: {
+						speed: 1,
+						type: Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER,
+						formula: null
 					}
 				}
 			},
 			{
 				name: 'grass1',
-				cl: 'Sprite',
+				cl: 'MovingSprite',
 				attrs: {
 					img: 'grass2',
 					start: {
 						x: 2048,
 						y: stage.height - 220
+					},
+					movement: {
+						speed: 1,
+						type: Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER,
+						formula: null
 					}
 				}
 			}]
@@ -508,6 +605,15 @@ var config = {
 					end: 1024
 				},
 				attrs: [
+					// {
+					// 	name: 'scrollingScenery',
+					// 	cl: 'GroupCollection',
+					// 	atts: [
+					// 	{
+					// 		
+					// 	}
+					// 	]
+					// },
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -833,7 +939,7 @@ var config = {
 			},
 			{
 				name: 'moving_background01',
-				cl: 'Sprite',
+				cl: 'MovingSprite',
 				attrs: {
 					img: 'movingBackground0a',
 					width: 2048,
@@ -841,12 +947,17 @@ var config = {
 					start: {
 						x: 0,
 						y: -(stage.height * 0.5)
+					},
+					movement: {
+						speed: 0.25,
+						type: Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER,
+						formula: null
 					}
 				}
 			},
 			{
 				name: 'moving_background02',
-				cl: 'Sprite',
+				cl: 'MovingSprite',
 				attrs: {
 					img: 'movingBackground0b',
 					width: 2048,
@@ -854,6 +965,11 @@ var config = {
 					start: {
 						x: 2048,
 						y: -(stage.height * 0.5)
+					},
+					movement: {
+						speed: 0.25,
+						type: Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER,
+						formula: null
 					}
 				}
 			},
@@ -1502,6 +1618,11 @@ var config = {
 					start: {
 						x: 0,
 						y: -(stage.height * 0.5)
+					},
+					movement: {
+						speed: 0.25,
+						type: Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER,
+						formula: null
 					}
 				}
 			},
@@ -1515,6 +1636,11 @@ var config = {
 					start: {
 						x: 2048,
 						y: -(stage.height * 0.5)
+					},
+					movement: {
+						speed: 0.25,
+						type: Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER,
+						formula: null
 					}
 				}
 			},
@@ -2302,6 +2428,11 @@ var config = {
 					start: {
 						x: 0,
 						y: -(stage.height * 0.5)
+					},
+					movement: {
+						speed: 0.25,
+						type: Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER,
+						formula: null
 					}
 				}
 			},
@@ -2315,6 +2446,11 @@ var config = {
 					start: {
 						x: 2048,
 						y: -(stage.height * 0.5)
+					},
+					movement: {
+						speed: 0.25,
+						type: Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER,
+						formula: null
 					}
 				}
 			},
@@ -3222,7 +3358,7 @@ var config = {
 			},
 			followStyle: Phaser.Camera.FOLLOW_PLATFORMER,
 			speed: {
-				x: 150,
+				x: 100,
 				y: 400
 			},
 			controls: {

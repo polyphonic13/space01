@@ -7,6 +7,10 @@ PolyworksGame = (function() {
 	var polyworks_game = {
 		phaser: null,
 		player: null,
+		playerVelocity: {
+			x: 0,
+			y: 0
+		},
 		score: 0,
 		health: 0,
 		currentLevel: 0,

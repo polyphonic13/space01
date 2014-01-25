@@ -131,13 +131,13 @@ Polyworks.Player = (function() {
 		}
 
 		// this.velocityX = this.velX;
-		this.body.velocity.x = this.velX;
+		PolyworksGame.playerVelocity.x = this.body.velocity.x = this.velX;
 		
 		if(this.activeControls[Polyworks.InputCodes.UP]) {
 			if(attrs.grounded && !attrs.justJumped) {
 				this.velY = -attrs.speed.y;
 				// this.velocityY = this.velY;
-				this.body.velocity.y = this.velY;
+				PolyworksGame.playerVelocity.y = this.body.velocity.y = this.velY;
 				attrs.grounded = false;
 				attrs.jumping = true;
 				attrs.justJumped = true;

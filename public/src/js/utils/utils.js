@@ -128,9 +128,22 @@ Utils = (function() {
 				}
 			break;
 
+			case Polyworks.MovementTypes.HORIZONTAL_OPPOSING_PLAYER:
+				this.moveHoritzontalOpposingPlayer(sprite, movement, params);
+			break;
+			
 			default: 
 			console.log('WARNING: unknown movement type: ' + movement.type);
 			break;
+		}
+	};
+	
+	utils.moveHoritzontalOpposingPlayer = function(sprite, movement, params) {
+		var velX = PolyworksGame.playerVelocity.x;
+		if(velX < 0) {
+			this.moveDirectionalBySpeed(sprite, movement, Polyworks.Directions.RIGHT);
+		} else if(velX > 0) {
+			this.moveDirectionalBySpeed(sprite, movement, Polyworks.Directions.LEFT);
 		}
 	};
 	
