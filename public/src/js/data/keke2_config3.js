@@ -460,7 +460,7 @@ var config = {
 					img: 'grass1',
 					start: {
 						x: 0,
-						y: stage.height - 200
+						y: stage.height - 220
 					}
 				}
 			},
@@ -471,7 +471,7 @@ var config = {
 					img: 'grass2',
 					start: {
 						x: 2048,
-						y: stage.height - 200
+						y: stage.height - 220
 					}
 				}
 			}]
@@ -487,9 +487,9 @@ var config = {
 					img: 'platform',
 					start: {
 						x: 0,
-						y: world.height - 10
+						y: world.height - 20
 					},
-					scale: [32, 1],
+					scale: [32, 2],
 					physics: {
 						immovable: true
 					}
@@ -930,7 +930,7 @@ var config = {
 					img: 'grass1',
 					start: {
 						x: 0,
-						y: stage.height - 200
+						y: stage.height - 220
 					}
 				}
 			},
@@ -941,7 +941,7 @@ var config = {
 					img: 'grass2',
 					start: {
 						x: 2048,
-						y: stage.height - 200
+						y: stage.height - 220
 					}
 				}
 			}
@@ -961,7 +961,7 @@ var config = {
 						x: 0,
 						y: world.height - 20
 					},
-					scale: [32, 1],
+					scale: [32, 2],
 					physics: {
 						immovable: true
 					}
@@ -1604,7 +1604,7 @@ var config = {
 					img: 'grass1',
 					start: {
 						x: 0,
-						y: stage.height - 200
+						y: stage.height - 220
 					}
 				}
 			},
@@ -1615,7 +1615,7 @@ var config = {
 					img: 'grass2',
 					start: {
 						x: 2048,
-						y: stage.height - 200
+						y: stage.height - 220
 					}
 				}
 			}]
@@ -1631,9 +1631,9 @@ var config = {
 					img: 'platform',
 					start: {
 						x: 0,
-						y: world.height - 10
+						y: world.height - 20
 					},
-					scale: [32, 1],
+					scale: [32, 2],
 					physics: {
 						immovable: true
 					}
@@ -2326,7 +2326,7 @@ var config = {
 					img: 'grass1',
 					start: {
 						x: 0,
-						y: stage.height - 200
+						y: stage.height - 220
 					}
 				}
 			},
@@ -2337,7 +2337,7 @@ var config = {
 					img: 'grass2',
 					start: {
 						x: 2048,
-						y: stage.height - 200
+						y: stage.height - 220
 					}
 				}
 			}]
@@ -2353,9 +2353,9 @@ var config = {
 					img: 'platform',
 					start: {
 						x: 0,
-						y: world.height - 10
+						y: world.height - 20
 					},
-					scale: [32, 1],
+					scale: [32, 2],
 					physics: {
 						immovable: true
 					}
