@@ -381,7 +381,7 @@ var config = {
 	},
 	// level 0
 	{
-		name: 'level0',
+		name: 'level1',
 		cl: 'LevelState',
 		world: {
 			x: 0,
@@ -528,7 +528,7 @@ var config = {
 						cl: 'Enemies',
 						attrs: [						
 						{
-							name: 'level0-sector0-enemy1',
+							name: 'level1-sector0-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								name: 'caterpillar02a-sprite',
@@ -578,7 +578,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level0-sector1-enemy0',
+							name: 'level1-sector1-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
@@ -633,7 +633,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level0-sector2-enemy0',
+							name: 'level1-sector2-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
@@ -663,7 +663,7 @@ var config = {
 							}
 						},
 						{
-							name: 'level0-sector2-enemy1',
+							name: 'level1-sector2-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
@@ -731,7 +731,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level0-sector3-enemy0',
+							name: 'level1-sector3-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
@@ -813,7 +813,7 @@ var config = {
 	},
 	// level 1
 	{
-		name: 'level1',
+		name: 'level2',
 		cl: 'LevelState',
 		world: {
 			x: 0,
@@ -1150,7 +1150,7 @@ var config = {
 						cl: 'Enemies',
 						attrs: [						
 						{
-							name: 'level1-sector0-enemy1',
+							name: 'level2-sector0-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								name: 'caterpillar02a-sprite',
@@ -1200,7 +1200,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level1-sector1-enemy0',
+							name: 'level2-sector1-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
@@ -1251,7 +1251,7 @@ var config = {
 						cl: 'PhysicalGroupCollection',
 						attrs: [
 						{
-							name: 'level1-sector2-hazard0',
+							name: 'level2-sector2-hazard0',
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns',
@@ -1266,7 +1266,7 @@ var config = {
 							}
 						},	
 						{		
-							name: 'level1-sector2-hazard1',
+							name: 'level2-sector2-hazard1',
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns',
@@ -1281,7 +1281,7 @@ var config = {
 							}
 						},	
 						{		
-							name: 'level1-sector2-hazard2',
+							name: 'level2-sector2-hazard2',
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns',
@@ -1301,7 +1301,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level1-sector2-enemy0',
+							name: 'level2-sector2-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
@@ -1331,7 +1331,7 @@ var config = {
 							}
 						},
 						{
-							name: 'level1-sector2-enemy1',
+							name: 'level2-sector2-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
@@ -1399,7 +1399,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level1-sector3-enemy0',
+							name: 'level2-sector3-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
@@ -1495,7 +1495,7 @@ var config = {
 	},
 	// level 2
 	{
-		name: 'level2',
+		name: 'level3',
 		cl: 'LevelState',
 		world: {
 			x: 0,
@@ -1872,7 +1872,7 @@ var config = {
 						cl: 'PhysicalGroupCollection',
 						attrs: [
 						{
-							name: 'level2-sector0-hazard0',
+							name: 'level3-sector0-hazard0',
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns',
@@ -1892,7 +1892,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level2-sector0-enemy0',
+							name: 'level3-sector0-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								name: 'caterpillar02b-sprite',
@@ -1923,7 +1923,7 @@ var config = {
 							}
 						},
 						{
-							name: 'level2-sector0-enemy1',
+							name: 'level3-sector0-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								name: 'caterpillar02b-sprite',
@@ -1993,7 +1993,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level2-sector1-enemy0',
+							name: 'level3-sector1-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -2043,7 +2043,7 @@ var config = {
 						cl: 'PhysicalGroupCollection',
 						attrs: [
 						{
-							name: 'level2-sector2-hazard0',
+							name: 'level3-sector2-hazard0',
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns',
@@ -2058,7 +2058,7 @@ var config = {
 							}
 						},	
 						{		
-							name: 'level2-sector2-hazard1',
+							name: 'level3-sector2-hazard1',
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns',
@@ -2073,7 +2073,7 @@ var config = {
 							}
 						},	
 						{		
-							name: 'level2-sector2-hazard2',
+							name: 'level3-sector2-hazard2',
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns',
@@ -2093,7 +2093,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level2-sector2-enemy0',
+							name: 'level3-sector2-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -2123,7 +2123,7 @@ var config = {
 							}
 						},
 						{
-							name: 'level2-sector2-enemy1',
+							name: 'level3-sector2-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -2193,7 +2193,7 @@ var config = {
 						cl: 'Enemies',
 						attrs: [
 						{
-							name: 'level2-sector3-enemy0',
+							name: 'level3-sector3-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -2223,7 +2223,7 @@ var config = {
 							}
 						},
 						{
-							name: 'level2-sector3-enemy1',
+							name: 'level3-sector3-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -2318,9 +2318,9 @@ var config = {
 			}
 		}]
 	},
-	// level 3
+	// level 4
 	{
-		name: 'level3',
+		name: 'level4',
 		cl: 'LevelState',
 		world: {
 			x: 0,
@@ -2607,7 +2607,7 @@ var config = {
 						cl: 'PhysicalGroupCollection',
 						attrs: [
 						{
-							name: 'level3-sector0-hazard0',
+							name: 'level4-sector0-hazard0',
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns',
@@ -2627,7 +2627,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level3-sector0-enemy0',
+							name: 'level4-sector0-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								name: 'caterpillar02b-sprite',
@@ -2658,7 +2658,7 @@ var config = {
 							}
 						},
 						{
-							name: 'level3-sector0-enemy1',
+							name: 'level4-sector0-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								name: 'caterpillar02b-sprite',
@@ -2728,7 +2728,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level3-sector1-enemy0',
+							name: 'level4-sector1-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -2778,7 +2778,7 @@ var config = {
 						cl: 'PhysicalGroupCollection',
 						attrs: [
 						{
-							name: 'level3-sector2-hazard0',
+							name: 'level4-sector2-hazard0',
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns',
@@ -2793,7 +2793,7 @@ var config = {
 							}
 						},	
 						{		
-							name: 'level3-sector2-hazard1',
+							name: 'level4-sector2-hazard1',
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns',
@@ -2808,7 +2808,7 @@ var config = {
 							}
 						},	
 						{		
-							name: 'level3-sector2-hazard2',
+							name: 'level4-sector2-hazard2',
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns',
@@ -2828,7 +2828,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level3-sector2-enemy0',
+							name: 'level4-sector2-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -2858,7 +2858,7 @@ var config = {
 							}
 						},
 						{
-							name: 'level3-sector2-enemy1',
+							name: 'level4-sector2-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -2928,7 +2928,7 @@ var config = {
 						cl: 'Enemies',
 						attrs: [
 						{
-							name: 'level3-sector3-enemy0',
+							name: 'level4-sector3-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -2958,7 +2958,7 @@ var config = {
 							}
 						},
 						{
-							name: 'level3-sector3-enemy1',
+							name: 'level4-sector3-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',

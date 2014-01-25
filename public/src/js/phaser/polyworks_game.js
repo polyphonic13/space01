@@ -9,7 +9,7 @@ PolyworksGame = (function() {
 		player: null,
 		score: 0,
 		health: 0,
-		currentLevel: 0,
+		currentLevel: 1,
 		totalLevels: 0,
 		currentState: '',
 		previousState: '',
@@ -42,7 +42,7 @@ PolyworksGame = (function() {
 
 					case 'nextLevel':
 						// trace('next level, current = ' + PolyworksGame.currentLevel + ', total = ' + PolyworksGame.totalLevels);
-						if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels - 1)) {
+						if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels)) {
 							PolyworksGame.currentLevel++;
 							id = 'level' + PolyworksGame.currentLevel;
 						} else {
@@ -51,7 +51,7 @@ PolyworksGame = (function() {
 					break;
 
 					case 'intermission':
-						if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels - 1)) {
+						if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels)) {
 							id = 'intermission';
 						} else {
 							id = 'completed';
@@ -59,7 +59,7 @@ PolyworksGame = (function() {
 					break;
 
 					case 'gameOver':
-						PolyworksGame.currentLevel = 0;
+						PolyworksGame.currentLevel = 1;
 					break;
 
 					default:

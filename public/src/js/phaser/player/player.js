@@ -27,9 +27,6 @@ Polyworks.Player = (function() {
 		this.beginControls();
 
 		PolyworksGame.setHealth(this.health);
-		
-		trace('End Player/begin, this = ');
-		trace(this);
 	};
 	
 	Player.prototype.setGroup = function(group) {
@@ -146,7 +143,7 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.pwUpdate = function(params) {
-		// trace('Player/update, params = ');
+		// trace('Player/update, health = ' + this.health);
 		// trace(params);
 		if(this.alive) {
 			var physics = PolyworksGame.phaser.physics;
@@ -182,6 +179,7 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.checkCollision = function(collection, callback, physics, context) {
+		// trace('Player/checkCollision, health = ' + this.health);
 		for(var i = 0; i < collection.length; i++) {
 			physics.overlap(this, collection[i], callback, null, context);
 		}
@@ -205,7 +203,7 @@ Polyworks.Player = (function() {
 		if(playerY < (enemyY - 15)) { // player is above enemy
 			this.updatePositionFromCollision();
 			//enemy.receiveDamage(this.damage);
-			enemy.damage(this.attack);
+			enemy.damage(enemy.attack);
 		} else {
 			this.receiveDamage(enemy.attack);
 		}
@@ -228,7 +226,7 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.receiveDamage = function(damage) {
 		if(!_this.justDamaged) {
-			trace('Player/receiveDamage, damage = ' + damage + ', health = ' + this.health);
+			// trace('Player/receiveDamage, damage = ' + damage + ', health = ' + this.health);
 			this.health -= damage;
 			PolyworksGame.setHealth(this.health);
 			if(this.health <= 0) {
@@ -252,27 +250,6 @@ Polyworks.Player = (function() {
 		this.velY = -this.model.attrs.speed.y/2;
 		// this.velocityY = this.velY;
 		this.body.velocity.y = this.velY;
-	};
-	
-	Player.prototype.checkInput = function() {
-
-		 //  Reset the this.players velocity (movement)
-			this.velocityX = 0;
-			this.velX = 0;
-			if (this.activeControls[Polyworks.InputCodes.LEFT]) {
-				this.velX = -this.model.attrs.speed.x;
-				this.facingForward = false;
-			}
-			else if (this.activeControls[Polyworks.InputCodes.RIGHT]) {
-				this.velX = this.model.attrs.speed.x;
-				this.facingForward = true;
-			}
-
-			if(this.body.touching.down) {
-				this.jumping = false;
-			}
-			// trace('player velX = ' + this.velX);
-			this.velocityX = this.velX;
 	};
 	
 	Player.prototype.destroy = function() {

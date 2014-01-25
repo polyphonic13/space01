@@ -22,6 +22,8 @@ Polyworks.Enemy = (function() {
 	};
 
 	Enemy.prototype.beginGetterSetters = function() {
+		Enemy._super.beginGetterSetters.call(this);
+		
 		this.__defineGetter__('active', function() {
 			return this.model.active;
 		});
@@ -47,15 +49,6 @@ Polyworks.Enemy = (function() {
 			}
 		}
 	};
-	
-	// Enemy.prototype.receiveDamage = function(damage) {
-	// 	// trace('Enemy/receiveDamage, player.damage = ' + damage + ', this.health = ' + this.health);
-	// 	this.health -= damage;
-	// 	if(this.health <= 0) {
-	// 		PolyworksGame.setScore(this.score);
-	// 		this.destroy();
-	// 	}
-	// };
 	
 	Enemy.prototype.kill = function(damage) {
 		trace('Enemy['+this.model.name+']/kill');
