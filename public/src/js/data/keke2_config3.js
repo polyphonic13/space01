@@ -20,8 +20,8 @@ var config = {
 		// scenery
 		sky: 'images/night_sky.jpg',
 
-		movingBackground0a: 'images/moving_background5.png',
-		movingBackground0b: 'images/moving_background5.png',
+		movingBackground0a: 'images/moving_background2a.png',
+		movingBackground0b: 'images/moving_background2b.png',
 		// movingBackground0a: 'images/moving_background0a.png',
 		// movingBackground0b: 'images/moving_background0b.png',
 		movingBackground0: 'images/moving_background0.png',
