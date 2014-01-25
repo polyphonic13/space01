@@ -27,8 +27,8 @@ var config = {
 		movingBackground0: 'images/moving_background0.png',
 		movingBackground1: 'images/moving_background1.png',
 		movingBackground2: 'images/moving_background2.png',
-		movingBackground3: 'images/moving_background3.png',
-		movingBackground4: 'images/moving_background4.png',
+		movingBackground3: 'images/moving_background5.png',
+		movingBackground4: 'images/moving_background5.png',
 
 		tree01: 'images/tree01.png',
 		tree02: 'images/tree02.png',
@@ -38,10 +38,10 @@ var config = {
 		grass2: 'images/grass02.png',
 		platform: 'images/platform.png',
 		platform_grey: 'images/platform_grey.png',
-		branch02Left: 'images/branch02_left.png',
-		// branch02Left: 'images/vines01.png',
-		branch02Right: 'images/branch02_right.png',
-		// branch02Right: 'images/vines01.png',
+		// branch02Left: 'images/branch02_left.png',
+		branch02Left: 'images/vine01_left.png',
+		// branch02Right: 'images/branch02_right.png',
+		branch02Right: 'images/vine01_right.png',
 		thorns: 'images/thorns02.png',
 
 		// bonuses
@@ -314,7 +314,7 @@ var config = {
 		}
 	},
 	// STATES
-	initialState: 'menu',
+	initialState: 'level4',
 	states: [
 	// menu
 	{
@@ -379,7 +379,7 @@ var config = {
 		}
 		]
 	},
-	// level 0
+	// level 1
 	{
 		name: 'level1',
 		cl: 'LevelState',
@@ -484,7 +484,8 @@ var config = {
 						y: stage.height - 220
 					}
 				}
-			}]
+			}
+			]
 		},
 		{
 			name: 'terrain',
@@ -594,7 +595,7 @@ var config = {
 									}
 								},
 								phaser: {
-									health: 10
+									health: 5
 								},
 								speed: 0.5,
 								attack: 5,
@@ -650,7 +651,7 @@ var config = {
 								},
 								attack: 5,
 								phaser: {
-									health: 10
+									health: 5
 								},
 								score: 2000,
 								movement: {
@@ -680,7 +681,7 @@ var config = {
 								},
 								attack: 5,
 								phaser: {
-									health: 10
+									health: 5
 								},
 								score: 2000,
 								movement: {
@@ -811,7 +812,7 @@ var config = {
 			}
 		}]
 	},
-	// level 1
+	// level 2
 	{
 		name: 'level2',
 		cl: 'LevelState',
@@ -1493,7 +1494,7 @@ var config = {
 			}
 		}]
 	},
-	// level 2
+	// level 3
 	{
 		name: 'level3',
 		cl: 'LevelState',
@@ -2515,7 +2516,7 @@ var config = {
 					img: 'branch02Right',
 					start: {
 						x: 2448,
-						y: world.height - 290
+						y: world.height - 330
 					},
 					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
@@ -2531,7 +2532,7 @@ var config = {
 					img: 'branch02Left',
 					start: {
 						x: 2648,
-						y: world.height - 340
+						y: world.height - 405
 					},
 					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
@@ -2547,7 +2548,7 @@ var config = {
 					img: 'branch02Right',
 					start: {
 						x: 2848,
-						y: world.height - 390
+						y: world.height - 480
 					},
 					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
@@ -2563,7 +2564,7 @@ var config = {
 					img: 'branch02Left',
 					start: {
 						x: 3048,
-						y: world.height - 440
+						y: world.height - 555
 					},
 					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
@@ -2579,7 +2580,7 @@ var config = {
 					img: 'branch02Right',
 					start: {
 						x: 3248,
-						y: world.height - 490
+						y: world.height - 630
 					},
 					setSize: [64, 16, 32, 32],
 					// scale: [0.6, 0.3],
