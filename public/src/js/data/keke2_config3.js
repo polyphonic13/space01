@@ -342,8 +342,10 @@ var config = {
 						x: 20,
 						y: 20 
 					},
-					width: stage.width - 40,
-					height: stage.height - 40
+					phaser: {
+						width: stage.width - 40,
+						height: stage.height - 40
+					}
 				}
 			},
 			{
@@ -407,9 +409,11 @@ var config = {
 						x: 0,
 						y: 0
 					},
-					width: stage.width,
-					height: stage.height,
-					fixedToCamera: true
+					phaser: {
+						width: stage.width,
+						height: stage.height,
+						fixedToCamera: true
+					}
 				}
 			},
 			{
@@ -417,13 +421,15 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'movingBackground0a',
-					width: 2048,
-					height: stage.height * 1.5,
-					// height: 512,
 					start: {
 						x: 0,
 						y: -(stage.height * 0.5)
 						// y: stage.height - 512
+					},
+					phaser: {
+						width: 2048,
+						height: stage.height * 1.5,
+						// height: 512,
 					}
 				}
 			},
@@ -432,11 +438,13 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'movingBackground0a',
-					width: 2048,
-					height: stage.height * 1.5,
 					start: {
 						x: 2048,
 						y: -(stage.height * 0.5)
+					},
+					phaser: {
+						width: 2048,
+						height: stage.height * 1.5,
 					}
 				}
 			},
@@ -445,11 +453,13 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree02',
-					width: stage.height,
-					height: stage.height * 2,
 					start: {
 						x: 3700,
 						y: (-stage.height)
+					},
+					phaser: {
+						width: stage.height,
+						height: stage.height * 2,
 					}
 				}
 			},
@@ -523,7 +533,6 @@ var config = {
 							attrs: {
 								name: 'caterpillar02a-sprite',
 								img: 'caterpillar02a',
-								spriteType: 'Sprite',
 								start: {
 									x: 700,
 									y: stage.height - 50
@@ -535,8 +544,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 5,
-								health: 5,
+								phaser: {
+									health: 5
+								},
+								attack: 5,
 								score: 500,
 								defaultAnimation: '',
 								animations: caterpillarAnimations
@@ -571,7 +582,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
-								spriteType: 'Sprite',
 								start: {
 									x: 1500,
 									y: stage.height - 50
@@ -583,9 +593,11 @@ var config = {
 										y: 0.2
 									}
 								},
+								phaser: {
+									health: 10
+								},
 								speed: 0.5,
-								damage: 5,
-								health: 10,
+								attack: 5,
 								score: 1000,
 								movement: {
 									speed: 0.25,
@@ -625,7 +637,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
-								spriteType: 'Sprite',
 								start: {
 									x: 2150,
 									y: stage.height - 50
@@ -637,8 +648,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 5,
-								health: 10,
+								attack: 5,
+								phaser: {
+									health: 10
+								},
 								score: 2000,
 								movement: {
 									speed: 1,
@@ -654,7 +667,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
-								spriteType: 'Sprite',
 								start: {
 									x: 2850,
 									y: stage.height - 50
@@ -666,8 +678,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 5,
-								health: 10,
+								attack: 5,
+								phaser: {
+									health: 10
+								},
 								score: 2000,
 								movement: {
 									speed: 1,
@@ -721,7 +735,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
-								spriteType: 'Sprite',
 								start: {
 									x: 3580,
 									y: stage.height - 50
@@ -733,8 +746,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 5,
-								health: 5,
+								attack: 5,
+								phaser: {
+									health: 10
+								},
 								score: 500,
 								movement: {
 									speed: 1,
@@ -826,9 +841,11 @@ var config = {
 						x: 0,
 						y: 0
 					},
-					width: stage.width,
-					height: stage.height,
-					fixedToCamera: true
+					phaser: {
+						width: stage.width,
+						height: stage.height,
+						fixedToCamera: true
+					}
 				}
 			},
 			{
@@ -836,11 +853,13 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'movingBackground0a',
-					width: 2048,
-					height: stage.height * 1.5,
 					start: {
 						x: 0,
 						y: -(stage.height * 0.5)
+					},
+					phaser: {
+						width: 2048,
+						height: stage.height * 1.5
 					}
 				}
 			},
@@ -849,11 +868,13 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'movingBackground0b',
-					width: 2048,
-					height: stage.height * 1.5,
 					start: {
 						x: 2048,
 						y: -(stage.height * 0.5)
+					},
+					phaser: {
+						width: 2048,
+						height: stage.height * 1.5
 					}
 				}
 			},
@@ -863,11 +884,13 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree02',
-					width: stage.height,
-					height: (stage.height * 2),
 					start: {
 						x: 950,
 						y: (-stage.height)
+					},
+					phaser: {
+						width: stage.height,
+						height: (stage.height * 2)
 					}
 				}
 			},
@@ -876,11 +899,13 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree01',
-					width: stage.height,
-					height: (stage.height * 2) + 20,
 					start: {
 						x: 1900,
 						y: (-stage.height)
+					},
+					phaser: {
+						width: stage.height,
+						height: (stage.height * 2) + 20						
 					}
 				}
 			},
@@ -889,11 +914,13 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree03',
-					width: stage.height,
-					height: stage.height * 2,
 					start: {
 						x: 2190,
 						y: (-stage.height)
+					},
+					phaser: {
+						width: stage.height,
+						height: stage.height * 2
 					}
 				}
 			},
@@ -902,8 +929,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree04',
-					width: stage.height,
-					height: stage.height * 2,
+					phaser: {
+						width: stage.height,
+						height: stage.height * 2
+					},
 					start: {
 						x: 2600,
 						y: (-stage.height)
@@ -915,8 +944,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree02',
-					width: stage.height,
-					height: stage.height * 2,
+					phaser: {
+						width: stage.height,
+						height: stage.height * 2
+					},
 					start: {
 						x: 3000,
 						y: (-stage.height)
@@ -1124,7 +1155,6 @@ var config = {
 							attrs: {
 								name: 'caterpillar02a-sprite',
 								img: 'caterpillar02a',
-								spriteType: 'Sprite',
 								start: {
 									x: 700,
 									y: stage.height - 50
@@ -1136,8 +1166,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 5,
-								health: 5,
+								attack: 5,
+								phaser: {
+									health: 5
+								},
 								score: 500,
 								defaultAnimation: '',
 								animations: caterpillarAnimations
@@ -1172,7 +1204,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
-								spriteType: 'Sprite',
 								start: {
 									x: 1100,
 									y: 0
@@ -1185,8 +1216,10 @@ var config = {
 									}
 								},
 								speed: 0.5,
-								damage: 5,
-								health: 10,
+								attack: 5,
+								phaser: {
+									health: 10
+								},
 								score: 1000,
 								movement: {
 									speed: 0.25,
@@ -1229,7 +1262,7 @@ var config = {
 								physics: {
 									immovable: true
 								},
-								damage: 10
+								attack: 10
 							}
 						},	
 						{		
@@ -1244,7 +1277,7 @@ var config = {
 								physics: {
 									immovable: true
 								},
-								damage: 10
+								attack: 10
 							}
 						},	
 						{		
@@ -1259,7 +1292,7 @@ var config = {
 								physics: {
 									immovable: true
 								},
-								damage: 10
+								attack: 10
 							}
 						}
 						]
@@ -1272,7 +1305,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
-								spriteType: 'Sprite',
 								start: {
 									x: 2150,
 									y: 0
@@ -1284,8 +1316,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 5,
-								health: 10,
+								attack: 5,
+								phaser: {
+									health: 10
+								},
 								score: 2000,
 								movement: {
 									speed: 1,
@@ -1301,7 +1335,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
-								spriteType: 'Sprite',
 								start: {
 									x: 2850,
 									y: 0
@@ -1313,8 +1346,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 5,
-								health: 10,
+								attack: 5,
+								phaser: {
+									health: 10
+								},
 								score: 2000,
 								movement: {
 									speed: 1,
@@ -1368,7 +1403,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
-								spriteType: 'Sprite',
 								start: {
 									x: 3580,
 									y: stage.height - 50
@@ -1380,8 +1414,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 5,
-								health: 5,
+								attack: 5,
+								phaser: {
+									health: 5
+								},
 								score: 500,
 								movement: {
 									speed: 1,
@@ -1487,9 +1523,11 @@ var config = {
 						x: 0,
 						y: 0
 					},
-					width: stage.width,
-					height: stage.height,
-					fixedToCamera: true
+					phaser: {
+						width: stage.width,
+						height: stage.height,
+						fixedToCamera: true
+					}
 				}
 			},
 			{
@@ -1497,8 +1535,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'movingBackground1',
-					width: 2048,
-					height: stage.height * 1.5,
+					phaser: {
+						width: 2048,
+						height: stage.height * 1.5
+					},
 					start: {
 						x: 0,
 						y: -(stage.height * 0.5)
@@ -1510,8 +1550,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'movingBackground2',
-					width: 2048,
-					height: stage.height * 1.5,
+					phaser: {
+						width: 2048,
+						height: stage.height * 1.5
+					},
 					start: {
 						x: 2048,
 						y: -(stage.height * 0.5)
@@ -1524,8 +1566,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree01',
-					width: stage.height,
-					height: (stage.height * 2) + 20,
+					phaser: {
+						width: stage.height,
+						height: (stage.height * 2) + 20
+					},
 					start: {
 						x: 640,
 						y: (-stage.height)
@@ -1537,8 +1581,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree04',
-					width: stage.height,
-					height: (stage.height * 2),
+					phaser: {
+						width: stage.height,
+						height: (stage.height * 2)
+					},
 					start: {
 						x: 1200,
 						y: (-stage.height)
@@ -1550,8 +1596,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree01',
-					width: stage.height,
-					height: (stage.height * 2) + 20,
+					phaser: {
+						width: stage.height,
+						height: (stage.height * 2) + 20
+					},
 					start: {
 						x: 1900,
 						y: (-stage.height)
@@ -1563,8 +1611,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree03',
-					width: stage.height,
-					height: stage.height * 2,
+					phaser: {
+						width: stage.height,
+						height: stage.height * 2
+					},
 					start: {
 						x: 2190,
 						y: (-stage.height)
@@ -1576,8 +1626,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree04',
-					width: stage.height,
-					height: stage.height * 2,
+					phaser: {
+						width: stage.height,
+						height: stage.height * 2
+					},
 					start: {
 						x: 2600,
 						y: (-stage.height)
@@ -1589,8 +1641,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree02',
-					width: stage.height,
-					height: stage.height * 2,
+					phaser: {
+						width: stage.height,
+						height: stage.height * 2
+					},
 					start: {
 						x: 3000,
 						y: (-stage.height)
@@ -1829,7 +1883,7 @@ var config = {
 								physics: {
 									immovable: true
 								},
-								damage: 10
+								attack: 10
 							}
 						}	
 						]
@@ -1843,7 +1897,6 @@ var config = {
 							attrs: {
 								name: 'caterpillar02b-sprite',
 								img: 'caterpillar02b',
-								spriteType: 'Sprite',
 								start: {
 									x: 600,
 									y: 0
@@ -1860,8 +1913,10 @@ var config = {
 									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 									formula: null
 								},
-								damage: 20,
-								health: 10,
+								attack: 20,
+								phaser: {
+									health: 10
+								},
 								score: 2000,
 								defaultAnimation: '',
 								animations: caterpillarAnimations
@@ -1873,7 +1928,6 @@ var config = {
 							attrs: {
 								name: 'caterpillar02b-sprite',
 								img: 'caterpillar02b',
-								spriteType: 'Sprite',
 								start: {
 									x: 900,
 									y: 0
@@ -1890,8 +1944,10 @@ var config = {
 									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 									formula: null
 								},
-								damage: 20,
-								health: 10,
+								attack: 20,
+								phaser: {
+									health: 10
+								},
 								score: 2000,
 								defaultAnimation: '',
 								animations: caterpillarAnimations
@@ -1941,7 +1997,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
-								spriteType: 'Sprite',
 								start: {
 									x: 1400,
 									y: 0
@@ -1953,8 +2008,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 20,
-								health: 10,
+								attack: 20,
+								phaser: {
+									health: 10
+								},
 								score: 2000,
 								movement: {
 									speed: 1.5,
@@ -1997,7 +2054,7 @@ var config = {
 								physics: {
 									immovable: true
 								},
-								damage: 10
+								attack: 10
 							}
 						},	
 						{		
@@ -2012,7 +2069,7 @@ var config = {
 								physics: {
 									immovable: true
 								},
-								damage: 10
+								attack: 10
 							}
 						},	
 						{		
@@ -2027,7 +2084,7 @@ var config = {
 								physics: {
 									immovable: true
 								},
-								damage: 10
+								attack: 10
 							}
 						}	
 						]
@@ -2040,7 +2097,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
-								spriteType: 'Sprite',
 								start: {
 									x: 2200,
 									y: 0
@@ -2052,8 +2108,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 20,
-								health: 10,
+								attack: 20,
+								phaser: {
+									health: 10
+								},
 								score: 2000,
 								movement: {
 									speed: 2,
@@ -2069,7 +2127,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
-								spriteType: 'Sprite',
 								start: {
 									x: 2850,
 									y: 0
@@ -2081,8 +2138,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 20,
-								health: 10,
+								attack: 20,
+								phaser: {
+									health: 10
+								},
 								score: 2000,
 								movement: {
 									speed: 2,
@@ -2138,7 +2197,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
-								spriteType: 'Sprite',
 								start: {
 									x: 3090,
 									y: 0
@@ -2150,8 +2208,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 20,
-								health: 5,
+								attack: 20,
+								phaser: {
+									health: 5
+								},
 								score: 500,
 								movement: {
 									speed: 1.5,
@@ -2167,7 +2227,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
-								spriteType: 'Sprite',
 								start: {
 									x: 3280,
 									y: -100
@@ -2179,8 +2238,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 20,
-								health: 5,
+								attack: 20,
+								phaser: {
+									health: 5
+								},
 								score: 500,
 								movement: {
 									speed: 1.5,
@@ -2283,13 +2344,15 @@ var config = {
 				attrs: {
 					img: 'sky',
 					name: 'sky',
+					phaser: {
+						width: stage.width,
+						height: stage.height,
+						fixedToCamera: true
+					},
 					start: {
 						x: 0,
 						y: 0
-					},
-					width: stage.width,
-					height: stage.height,
-					fixedToCamera: true
+					}
 				}
 			},
 			{
@@ -2297,8 +2360,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'movingBackground3',
-					width: 2048,
-					height: stage.height * 1.5,
+					phaser: {
+						width: 2048,
+						height: stage.height * 1.5
+					},
 					start: {
 						x: 0,
 						y: -(stage.height * 0.5)
@@ -2310,8 +2375,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'movingBackground4',
-					width: 2048,
-					height: stage.height * 1.5,
+					phaser: {
+						width: 2048,
+						height: stage.height * 1.5
+					},
 					start: {
 						x: 2048,
 						y: -(stage.height * 0.5)
@@ -2551,7 +2618,7 @@ var config = {
 								physics: {
 									immovable: true
 								},
-								damage: 10
+								attack: 10
 							}
 						}	
 						]
@@ -2565,7 +2632,6 @@ var config = {
 							attrs: {
 								name: 'caterpillar02b-sprite',
 								img: 'caterpillar02b',
-								spriteType: 'Sprite',
 								start: {
 									x: 600,
 									y: 0
@@ -2582,8 +2648,10 @@ var config = {
 									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 									formula: null
 								},
-								damage: 20,
-								health: 10,
+								attack: 20,
+								phaser: {
+									health: 10
+								},
 								score: 2000,
 								defaultAnimation: '',
 								animations: caterpillarAnimations
@@ -2595,7 +2663,6 @@ var config = {
 							attrs: {
 								name: 'caterpillar02b-sprite',
 								img: 'caterpillar02b',
-								spriteType: 'Sprite',
 								start: {
 									x: 900,
 									y: 0
@@ -2612,8 +2679,10 @@ var config = {
 									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 									formula: null
 								},
-								damage: 20,
-								health: 10,
+								attack: 20,
+								phaser: {
+									health: 15
+								},
 								score: 2000,
 								defaultAnimation: '',
 								animations: caterpillarAnimations
@@ -2663,7 +2732,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
-								spriteType: 'Sprite',
 								start: {
 									x: 1400,
 									y: 0
@@ -2675,8 +2743,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 20,
-								health: 10,
+								attack: 20,
+								phaser: {
+									health: 10
+								},
 								score: 2000,
 								movement: {
 									speed: 1.5,
@@ -2719,7 +2789,7 @@ var config = {
 								physics: {
 									immovable: true
 								},
-								damage: 10
+								attack: 10
 							}
 						},	
 						{		
@@ -2734,7 +2804,7 @@ var config = {
 								physics: {
 									immovable: true
 								},
-								damage: 10
+								attack: 10
 							}
 						},	
 						{		
@@ -2749,7 +2819,7 @@ var config = {
 								physics: {
 									immovable: true
 								},
-								damage: 10
+								attack: 10
 							}
 						}	
 						]
@@ -2762,7 +2832,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
-								spriteType: 'Sprite',
 								start: {
 									x: 2200,
 									y: 0
@@ -2774,8 +2843,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 20,
-								health: 10,
+								attack: 20,
+								phaser: {
+									health: 15
+								},
 								score: 2000,
 								movement: {
 									speed: 2,
@@ -2791,7 +2862,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
-								spriteType: 'Sprite',
 								start: {
 									x: 2850,
 									y: 0
@@ -2803,8 +2873,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 20,
-								health: 10,
+								attack: 20,
+								phaser: {
+									health: 10
+								},
 								score: 2000,
 								movement: {
 									speed: 2,
@@ -2860,7 +2932,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
-								spriteType: 'Sprite',
 								start: {
 									x: 3090,
 									y: 0
@@ -2872,8 +2943,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 20,
-								health: 5,
+								attack: 20,
+								phaser: {
+									health: 5
+								},
 								score: 500,
 								movement: {
 									speed: 1.5,
@@ -2889,7 +2962,6 @@ var config = {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
-								spriteType: 'Sprite',
 								start: {
 									x: 3280,
 									y: -100
@@ -2901,8 +2973,10 @@ var config = {
 										y: 0.2
 									}
 								},
-								damage: 20,
-								health: 5,
+								attack: 20,
+								phaser: {
+									health: 5
+								},
 								score: 500,
 								movement: {
 									speed: 1.5,
@@ -3005,8 +3079,10 @@ var config = {
 						x: 20,
 						y: 20 
 					},
-					width: stage.width - 40,
-					height: stage.height - 40
+					phaser: {
+						width: stage.width - 40,
+						height: stage.height - 40
+					}
 				}
 			},
 			{
@@ -3082,8 +3158,10 @@ var config = {
 						x: 20,
 						y: 20 
 					},
-					width: stage.width - 40,
-					height: stage.height - 40
+					phaser: {
+						width: stage.width - 40,
+						height: stage.height - 40
+					}
 				}
 			},
 			{
@@ -3158,9 +3236,11 @@ var config = {
 						x: 20,
 						y: 20
 					},
-					// fixedToCamera: true,
-					width: stage.width - 40,
-					height: stage.height - 40
+					phaser: {
+						// fixedToCamera: true,
+						width: stage.width - 40,
+						height: stage.height - 40
+					}
 				}
 			},
 			{
@@ -3200,11 +3280,13 @@ var config = {
 		name: 'keke',
 		cl: 'AnimatedPlayer',
 		attrs: {
-			spriteType: 'Sprite',
 			img: 'keke',
-			width: 76,
-			height: 128,
-			setSize: [50, 120],
+			phaser: {
+				health: 100,
+				width: 76,
+				height: 128,
+			},
+			// setSize: [50, 120],
 			start: {
 				x: stage.width/2 - 76/2,
 				y: stage.height - 128
@@ -3230,8 +3312,7 @@ var config = {
 				right: Polyworks.InputCodes.RIGHT,
 				jump: Polyworks.InputCodes.UP
 			},
-			health: 100,
-			damage: 5,
+			attack: 5,
 			jumping: false,
 			justJumped: false,
 			defaultAnimation: 'idleL',

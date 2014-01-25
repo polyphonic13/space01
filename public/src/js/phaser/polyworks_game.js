@@ -20,7 +20,8 @@ PolyworksGame = (function() {
 			// trace('PolyworksGame/begin, stage w/h = ' + stage.width + '/' + stage.height);
 			// trace((stage.height * 2) + ' ' + ((-stage.height) + 10));
 			_model = params;
-			PolyworksGame.startingHealth = params.player.attrs.health;
+			trace(params);
+			PolyworksGame.startingHealth = params.player.attrs.phaser.health;
 			PolyworksGame.phaser = new Phaser.Game(stage.width, stage.height, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
 			// _checkPhaserBoot();
 		},

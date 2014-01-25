@@ -17,14 +17,14 @@ Polyworks.Sprite = (function() {
 		this.beginGetterSetters();
 
 		var attrs = this.model.attrs;
-		if(attrs.width) {
-			// trace('setting ' + this.model.name + ' width to ' + attrs.width);
-			this.width = attrs.width;
+		var phaser = attrs.phaser; 
+		
+		// set phaser.sprite specific attributes
+		for(var key in phaser) {
+			this[key] = phaser[key];
 		}
-		if(attrs.height) {
-			// trace('setting ' + this.model.name + ' height to ' + attrs.height);
-			this.height = attrs.height;
-		}
+
+		// call phaser.sprite methods on other attributes
 		var scale = attrs.scale;
 		if(scale) {
 			this.scale.setTo(scale[0], scale[1]);
@@ -48,9 +48,6 @@ Polyworks.Sprite = (function() {
 			// } else {
 			// 	this.body.setSize(setSize.width, setSize.height);
 			// }
-		}
-		if(attrs.fixedToCamera) {
-			 this.fixedToCamera = true;
 		}
 		if(attrs.physics) {
 			this.beginPhysics(attrs.physics);
@@ -87,6 +84,9 @@ Polyworks.Sprite = (function() {
 		this.__defineSetter__('frame', function(val) {
 			// trace('Sprite['+this.model.name+']/set frame, val = ' + val);
 			this.animations.frame = val;
+		});
+		this.__defineGetter__('attack', function() {
+			return this.model.attrs.attack;
 		});
 	};
 	

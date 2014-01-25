@@ -27,6 +27,9 @@ Polyworks.Player = (function() {
 		this.beginControls();
 
 		PolyworksGame.setHealth(this.health);
+		
+		trace('End Player/begin, this = ');
+		trace(this);
 	};
 	
 	Player.prototype.setGroup = function(group) {
@@ -40,16 +43,8 @@ Polyworks.Player = (function() {
 		this.__defineSetter__('facingForward', function(val) {
 			this.model.attrs.facingForward = val;
 		});
-		this.__defineGetter__('health', function() {
-			return this.model.attrs.health;
-		});
-		this.__defineSetter__('health', function(val) {
-			// trace('Player/health setter, val = ' + val);
-			this.model.attrs.health = val;
-			PolyworksGame.setHealth(this.health);
-		});
-		this.__defineGetter__('damage', function() {
-			return this.model.attrs.damage;
+		this.__defineGetter__('attack', function() {
+			return this.model.attrs.attack;
 		});
 		this.__defineGetter__('isJumping', function() {
 			return this.model.attrs.jumping;
@@ -195,7 +190,7 @@ Polyworks.Player = (function() {
 	Player.prototype.hazardCollision = function(player, hazard) {
 		// trace('Player/hazardCollision, hazard = ');
 		// trace(hazard);
-		this.receiveDamage(hazard.model.attrs.damage);
+		this.receiveDamage(hazard.model.attrs.attack);
 	};
 	
 	Player.prototype.enemyCollision = function(player, enemy) {
@@ -209,9 +204,10 @@ Polyworks.Player = (function() {
 		// if(this.model.jumping || this.model.attacking) {
 		if(playerY < (enemyY - 15)) { // player is above enemy
 			this.updatePositionFromCollision();
-			enemy.receiveDamage(this.damage);
+			//enemy.receiveDamage(this.damage);
+			enemy.damage(this.attack);
 		} else {
-			this.receiveDamage(enemy.damage);
+			this.receiveDamage(enemy.attack);
 		}
 	};
 	
@@ -232,8 +228,9 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.receiveDamage = function(damage) {
 		if(!_this.justDamaged) {
-			// trace('Player/receiveDamage, damage = ' + damage + ', health = ' + this.health);
+			trace('Player/receiveDamage, damage = ' + damage + ', health = ' + this.health);
 			this.health -= damage;
+			PolyworksGame.setHealth(this.health);
 			if(this.health <= 0) {
 				// this.destroy();
 				PolyworksGame.changeState('gameOver');

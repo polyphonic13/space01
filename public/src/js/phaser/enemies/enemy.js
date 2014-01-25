@@ -31,15 +31,6 @@ Polyworks.Enemy = (function() {
 		this.__defineGetter__('score', function() {
 			return this.model.attrs.score;
 		});
-		this.__defineGetter__('damage', function() {
-			return this.model.attrs.damage;
-		});
-		this.__defineGetter__('health', function() {
-			return this.model.attrs.health;
-		});
-		this.__defineSetter__('health', function(val) {
-			this.model.attrs.health = val;
-		});
 	};
 	
 	Enemy.prototype.pwUpdate = function(params) {
@@ -57,13 +48,19 @@ Polyworks.Enemy = (function() {
 		}
 	};
 	
-	Enemy.prototype.receiveDamage = function(damage) {
-		// trace('Enemy/receiveDamage, player.damage = ' + damage + ', this.health = ' + this.health);
-		this.health -= damage;
-		if(this.health <= 0) {
-			PolyworksGame.setScore(this.score);
-			this.destroy();
-		}
+	// Enemy.prototype.receiveDamage = function(damage) {
+	// 	// trace('Enemy/receiveDamage, player.damage = ' + damage + ', this.health = ' + this.health);
+	// 	this.health -= damage;
+	// 	if(this.health <= 0) {
+	// 		PolyworksGame.setScore(this.score);
+	// 		this.destroy();
+	// 	}
+	// };
+	
+	Enemy.prototype.kill = function(damage) {
+		trace('Enemy['+this.model.name+']/kill');
+		PolyworksGame.setScore(this.score);
+		Enemy._super.kill.call(this);
 	};
 	
 	Enemy.prototype.destroy = function() {
