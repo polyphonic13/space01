@@ -218,6 +218,7 @@ Polyworks.Player = (function() {
 		var health = bonus.model.attrs.health;
 		if(health) {
 			this.health += health;
+			PolyworksGame.setHealth(this.health);
 		}
 
 		bonus.active = false; 
