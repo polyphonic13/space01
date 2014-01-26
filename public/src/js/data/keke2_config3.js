@@ -72,7 +72,7 @@ var config = {
 			url: 'images/keke_character3.png', 
 			width: 95, 
 			height: 113, 
-			frames: 2
+			frames: 35
 		},
 /*				
 		keke: {
@@ -394,9 +394,11 @@ var config = {
 		cl: 'LevelState',
 		world: {
 			x: 0,
-			y: -256,
+			// y: -256,
+			y: -stage.height,
 			width: 4098,
-			height: stage.height + 256
+			// height: stage.height + 256
+			height: stage.height * 2
 		},
 		clearWorld: true,
 		clearCache: false,

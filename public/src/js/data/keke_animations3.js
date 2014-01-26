@@ -10,12 +10,12 @@ var kekeAnimations = [{
 	},
 	{ 
 		name: 'runR', 
-		keyFrames: [0], 
+		keyFrames: [7, 8, 9, 10, 11, 12, 13], 
 		frameRate: 13
 	},
 	{ 
 		name: 'runL', 
-		keyFrames: [1], 
+		keyFrames: [14, 15, 16, 17, 18, 19], 
 		frameRate: 13
 	},
 	{
@@ -30,11 +30,11 @@ var kekeAnimations = [{
 	},
 	{ 
 		name: 'jumpR', 
-		keyFrames: [0], 
+		keyFrames: [11], 
 		frameRate: 14
 	},
 	{ 
 		name: 'jumpL', 
-		keyFrames: [1], 
+		keyFrames: [18], 
 		frameRate: 14
 	}];

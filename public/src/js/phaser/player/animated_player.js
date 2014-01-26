@@ -57,13 +57,13 @@ Polyworks.AnimatedPlayer = (function() {
 				if(this.facingForward) {
 					// trace('playing jump r animation');
 					this.stop();
-					this.frame = 9;
-					// this.play('jumpR', 13, true);
+					// this.frame = 9;
+					this.play('jumpR', 13, true);
 					attrs.currentAnimation = 'jumpR';
 				} else {
 					this.stop();
-					this.frame = 24;
-					// this.play('jumpL', 13, true);
+					// this.frame = 24;
+					this.play('jumpL', 13, true);
 					attrs.currentAnimation = 'jumpL';
 				}
 			}
