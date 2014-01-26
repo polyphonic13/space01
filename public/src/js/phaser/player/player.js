@@ -27,6 +27,9 @@ Polyworks.Player = (function() {
 		this.beginControls();
 
 		PolyworksGame.setHealth(this.health);
+		trace(this);
+		// this.body.setSize(50, 113, 22.5, 0);
+	    
 	};
 	
 	Player.prototype.setGroup = function(group) {

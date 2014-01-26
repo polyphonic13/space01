@@ -52,6 +52,17 @@ Polyworks.LevelState = (function() {
 		this.playerGroup.add(this.player);
 	};
 	
+	var renderedOnce = false;
+	LevelState.prototype.render = function() {
+		if(!renderedOnce) {
+			trace('LevelState['+this.model.name+']/render');
+			trace(this.player.body);
+		    PolyworksGame.phaser.debug.renderRectangle(this.player.body);
+			renderedOnce = true;
+		}
+
+	};
+	
 	var updatedOnce = false;
 	LevelState.prototype.update = function() {
 		// trace('LevelState['+this.model.name+']/update');

@@ -37,7 +37,7 @@ var config = {
 		tree04: 'images/tree04.png',
 		grass1: 'images/grass01.png',
 		grass2: 'images/grass02.png',
-		platform: 'images/platform_red.png',
+		platform: 'images/platform_grey.png',
 		platform_grey: 'images/platform_grey.png',
 		// branch02Left: 'images/branch02_left.png',
 		branch02Left: 'images/vine01_left.png',
@@ -69,11 +69,19 @@ var config = {
 	sprites: {
 		// player
 		keke: {
+			url: 'images/keke_character3.png', 
+			width: 95, 
+			height: 113, 
+			frames: 2
+		},
+/*				
+		keke: {
 			url: 'images/keke_character2.png', 
 			width: 76, 
 			height: 128, 
 			frames: 35
 		},
+*/
 		// enemies
 		caterpillar02a: {
 			url: 'images/caterpillar02a.png',
@@ -3338,9 +3346,13 @@ var config = {
 			img: 'keke',
 			phaser: {
 				health: 100,
-				width: 76,
-				height: 128,
+				// width: 76,
+				// height: 128,
+				width: 95,
+				height: 113
 			},
+			// setSize: [51, 113, 22, 0],
+			setSize: [51, 113],
 			// setSize: [50, 120],
 			start: {
 				x: stage.width/2 - 76/2,
