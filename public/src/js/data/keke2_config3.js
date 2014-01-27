@@ -37,13 +37,13 @@ var config = {
 		tree04: 'images/tree04.png',
 		grass1: 'images/grass01.png',
 		grass2: 'images/grass02.png',
-		platform: 'images/platform2.png',
+		platform: 'images/platform.png',
 		platform_grey: 'images/platform_grey.png',
 		rockPlatform1: 'images/rock_platform1.png',
-		// branch02Left: 'images/branch02_left.png',
-		branch02Left: 'images/vine01_left.png',
-		// branch02Right: 'images/branch02_right.png',
-		branch02Right: 'images/vine01_right.png',
+		branch02Left: 'images/branch02_left.png',
+		vine01Left: 'images/vine01_left.png',
+		branch02Right: 'images/branch02_right.png',
+		vine01Right: 'images/vine01_right.png',
 		thorns: 'images/thorns02.png',
 
 		// bonuses
@@ -324,7 +324,7 @@ var config = {
 		}
 	},
 	// STATES
-	initialState: 'level1',
+	initialState: 'menu',
 	states: [
 	// menu
 	{
@@ -389,17 +389,15 @@ var config = {
 		}
 		]
 	},
-	// level 5
+	// level 1
 	{
 		name: 'level1',
 		cl: 'LevelState',
 		world: {
 			x: 0,
-			// y: -256,
-			y: -stage.height,
+			y: -256,
 			width: 4098,
-			// height: stage.height + 256
-			height: stage.height * 2
+			height: stage.height + 256
 		},
 		clearWorld: true,
 		clearCache: false,
@@ -429,10 +427,10 @@ var config = {
 				}
 			},
 			{
-				name: 'mountainBackground1a',
+				name: 'moving_background01',
 				cl: 'Sprite',
 				attrs: {
-					img: 'mountainBackground1a',
+					img: 'movingBackground0a',
 					start: {
 						x: 0,
 						y: -(stage.height * 0.5)
@@ -446,10 +444,10 @@ var config = {
 				}
 			},
 			{
-				name: 'mountainBackground1b',
+				name: 'moving_background02',
 				cl: 'Sprite',
 				attrs: {
-					img: 'mountainBackground1b',
+					img: 'movingBackground0b',
 					start: {
 						x: 2048,
 						y: -(stage.height * 0.5)
@@ -459,43 +457,43 @@ var config = {
 						height: stage.height * 1.5,
 					}
 				}
-			// },
-			// {
-			// 	name: 'tree05',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'tree02',
-			// 		start: {
-			// 			x: 3700,
-			// 			y: (-stage.height)
-			// 		},
-			// 		phaser: {
-			// 			width: stage.height,
-			// 			height: stage.height * 2,
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	name: 'grass0',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'grass1',
-			// 		start: {
-			// 			x: 0,
-			// 			y: stage.height - 220
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	name: 'grass1',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'grass2',
-			// 		start: {
-			// 			x: 2048,
-			// 			y: stage.height - 220
-			// 		}
-			// 	}
+			},
+			{
+				name: 'tree05',
+				cl: 'Sprite',
+				attrs: {
+					img: 'tree02',
+					start: {
+						x: 3700,
+						y: (-stage.height)
+					},
+					phaser: {
+						width: stage.height,
+						height: stage.height * 2,
+					}
+				}
+			},
+			{
+				name: 'grass0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'grass1',
+					start: {
+						x: 0,
+						y: stage.height - 220
+					}
+				}
+			},
+			{
+				name: 'grass1',
+				cl: 'Sprite',
+				attrs: {
+					img: 'grass2',
+					start: {
+						x: 2048,
+						y: stage.height - 220
+					}
+				}
 			}
 			]
 		},
@@ -507,223 +505,12 @@ var config = {
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'rockPlatform1',
+					img: 'platform',
 					start: {
 						x: 0,
 						y: world.height - 20
 					},
-					scale: [6, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				name: 'ground0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'rockPlatform1',
-					start: {
-						x: 768,
-						y: world.height - 50
-					},
-					scale: [2, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				name: 'ground0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'rockPlatform1',
-					start: {
-						x: 1024,
-						y: world.height - 80
-					},
-					scale: [2, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				name: 'ground0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'rockPlatform1',
-					start: {
-						x: 1280,
-						y: world.height - 120
-					},
-					scale: [2, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				name: 'ground0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'rockPlatform1',
-					start: {
-						x: 1536,
-						y: world.height - 150
-					},
-					scale: [1.5, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				name: 'ground0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'rockPlatform1',
-					start: {
-						x: 1728,
-						y: world.height - 190
-					},
-					scale: [1.5, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				name: 'ground0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'rockPlatform1',
-					start: {
-						x: 1920,
-						// x: 2048,
-						y: world.height - 240
-					},
-					scale: [3, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				name: 'ground0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'rockPlatform1',
-					start: {
-						x: 2304,
-						y: world.height - 280
-					},
-					scale: [2, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				name: 'ground0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'rockPlatform1',
-					start: {
-						x: 2560,
-						y: world.height - 320
-					},
-					scale: [1, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				name: 'ground0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'rockPlatform1',
-					start: {
-						x: 2688,
-						y: world.height - 360
-					},
-					scale: [1, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				name: 'ground0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'rockPlatform1',
-					start: {
-						x: 2816,
-						y: world.height - 400
-					},
-					scale: [2, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				name: 'ground0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'rockPlatform1',
-					start: {
-						x: 3076,
-						y: world.height - 440
-					},
-					scale: [2, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				name: 'ground0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'rockPlatform1',
-					start: {
-						x: 3332,
-						y: world.height - 500
-					},
-					scale: [2, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				name: 'ground0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'rockPlatform1',
-					start: {
-						x: 3588,
-						y: world.height - 530
-					},
-					scale: [2, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
-			{
-				name: 'ground0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'rockPlatform1',
-					start: {
-						x: 3844,
-						y: world.height - 560
-					},
-					scale: [2, 1],
+					scale: [32, 2],
 					physics: {
 						immovable: true
 					}
@@ -750,7 +537,33 @@ var config = {
 					{
 						name: 'enemies',
 						cl: 'Enemies',
-						attrs: [] 
+						attrs: [						
+						{
+							name: 'level1-sector0-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								name: 'caterpillar02a-sprite',
+								img: 'caterpillar02a',
+								start: {
+									x: 700,
+									y: stage.height - 50
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								phaser: {
+									health: 5
+								},
+								attack: 5,
+								score: 500,
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}] 
 					},
 					{
 						name: 'bonuses',
@@ -775,7 +588,37 @@ var config = {
 					{
 						name: 'enemies',
 						cl: 'Enemies',
-						attrs: []
+						attrs: [{
+							name: 'level1-sector1-enemy0',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02a',
+								start: {
+									x: 1500,
+									y: stage.height - 50
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								phaser: {
+									health: 5
+								},
+								speed: 0.5,
+								attack: 5,
+								score: 1000,
+								movement: {
+									speed: 0.25,
+									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}]
 					},
 					{
 						name: 'bonuses',
@@ -800,12 +643,85 @@ var config = {
 					{
 						name: 'enemies',
 						cl: 'Enemies',
-						attrs: []
+						attrs: [{
+							name: 'level1-sector2-enemy0',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02a',
+								start: {
+									x: 2150,
+									y: stage.height - 50
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 5,
+								phaser: {
+									health: 5
+								},
+								score: 2000,
+								movement: {
+									speed: 1,
+									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						},
+						{
+							name: 'level1-sector2-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02a',
+								start: {
+									x: 2850,
+									y: stage.height - 50
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 5,
+								phaser: {
+									health: 5
+								},
+								score: 2000,
+								movement: {
+									speed: 1,
+									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}]
 					},
 					{
 						name: 'bonuses',
 						cl: 'PhysicalGroupCollection',
-						attrs:  []
+						attrs:  [{
+							cl: 'Sprite',
+							attrs: {
+								img: 'lollipop',
+								start: {
+									x: 2740,
+									y: stage.height - 100
+								},
+								physics: {
+									immovable: true
+								},
+								score: 100,
+								health: 10
+							}
+						}]
 					}
 				]
 			},
@@ -825,7 +741,36 @@ var config = {
 					{
 						name: 'enemies',
 						cl: 'Enemies',
-						attrs: []
+						attrs: [{
+							name: 'level1-sector3-enemy0',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02a',
+								start: {
+									x: 3580,
+									y: stage.height - 50
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 5,
+								phaser: {
+									health: 10
+								},
+								score: 500,
+								movement: {
+									speed: 1,
+									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}]
 					},
 					{
 						name: 'bonuses',
@@ -877,6 +822,7 @@ var config = {
 			}
 		}]
 	},
+
 	// level 2
 	{
 		name: 'level2',
@@ -1068,7 +1014,7 @@ var config = {
 				name: 'platform2',
 				cl: 'Sprite',
 				attrs: {
-					img: 'branch02Left',
+					img: 'vine01Left',
 					start: {
 						x: 1948,
 						y: world.height - 115
@@ -1084,7 +1030,7 @@ var config = {
 				name: 'platform3',
 				cl: 'Sprite',
 				attrs: {
-					img: 'branch02Right',
+					img: 'vine01Right',
 					start: {
 						x: 2148,
 						y: world.height - 180
@@ -1763,7 +1709,7 @@ var config = {
 				name: 'platform0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'branch02Left',
+					img: 'vine01Left',
 					start: {
 						x: 700,
 						y: world.height - 115
@@ -1779,7 +1725,7 @@ var config = {
 				name: 'platform1',
 				cl: 'Sprite',
 				attrs: {
-					img: 'branch02Right',
+					img: 'vine01Right',
 					start: {
 						x: 900,
 						y: world.height - 140
@@ -1795,7 +1741,7 @@ var config = {
 				name: 'platform2',
 				cl: 'Sprite',
 				attrs: {
-					img: 'branch02Left',
+					img: 'vine01Left',
 					start: {
 						x: 1948,
 						y: world.height - 115
@@ -1811,7 +1757,7 @@ var config = {
 				name: 'platform3',
 				cl: 'Sprite',
 				attrs: {
-					img: 'branch02Right',
+					img: 'vine01Right',
 					start: {
 						x: 2148,
 						y: world.height - 180
@@ -2498,7 +2444,7 @@ var config = {
 				name: 'platform0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'branch02Left',
+					img: 'vine01Left',
 					start: {
 						x: 700,
 						y: world.height - 115
@@ -2514,7 +2460,7 @@ var config = {
 				name: 'platform1',
 				cl: 'Sprite',
 				attrs: {
-					img: 'branch02Right',
+					img: 'vine01Right',
 					start: {
 						x: 900,
 						y: world.height - 140
@@ -2530,7 +2476,7 @@ var config = {
 				name: 'platform2',
 				cl: 'Sprite',
 				attrs: {
-					img: 'branch02Left',
+					img: 'vine01Left',
 					start: {
 						x: 1948,
 						y: world.height - 115
@@ -2546,7 +2492,7 @@ var config = {
 				name: 'platform3',
 				cl: 'Sprite',
 				attrs: {
-					img: 'branch02Right',
+					img: 'vine01Right',
 					start: {
 						x: 2148,
 						y: world.height - 180
@@ -3119,6 +3065,495 @@ var config = {
 			}
 		}]
 	},
+
+	// level 5
+	{
+		name: 'level5',
+		cl: 'LevelState',
+		world: {
+			x: 0,
+			// y: -256,
+			y: -stage.height,
+			width: 4098,
+			// height: stage.height + 256
+			height: stage.height * 2
+		},
+		clearWorld: true,
+		clearCache: false,
+		bounds: {
+			start: 0,
+			// end: 1024
+			end: 4020
+		},
+		attrs: [{
+			name: 'scenery',
+			cl: 'GroupCollection',
+			attrs: [{
+				name: 'sky',
+				cl: 'Sprite',
+				attrs: {
+					img: 'sky',
+					name: 'sky',
+					start: {
+						x: 0,
+						y: 0
+					},
+					phaser: {
+						width: stage.width,
+						height: stage.height,
+						fixedToCamera: true
+					}
+				}
+			},
+			{
+				name: 'mountainBackground1a',
+				cl: 'Sprite',
+				attrs: {
+					img: 'mountainBackground1a',
+					start: {
+						x: 0,
+						y: -(stage.height * 0.5)
+						// y: stage.height - 512
+					},
+					phaser: {
+						width: 2048,
+						height: stage.height * 1.5,
+						// height: 512,
+					}
+				}
+			},
+			{
+				name: 'mountainBackground1b',
+				cl: 'Sprite',
+				attrs: {
+					img: 'mountainBackground1b',
+					start: {
+						x: 2048,
+						y: -(stage.height * 0.5)
+					},
+					phaser: {
+						width: 2048,
+						height: stage.height * 1.5,
+					}
+				}
+			},
+			{
+				name: 'tree05',
+				cl: 'Sprite',
+				attrs: {
+					img: 'tree02',
+					start: {
+						x: 128,
+						y: (-stage.height)
+					},
+					phaser: {
+						width: stage.height,
+						height: stage.height * 2,
+					}
+				}
+			// },
+			// {
+			// 	name: 'grass0',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'grass1',
+			// 		start: {
+			// 			x: 0,
+			// 			y: stage.height - 220
+			// 		}
+			// 	}
+			// },
+			// {
+			// 	name: 'grass1',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'grass2',
+			// 		start: {
+			// 			x: 2048,
+			// 			y: stage.height - 220
+			// 		}
+			// 	}
+			}
+			]
+		},
+		{
+			name: 'terrain',
+			cl: 'PhysicalGroupCollection',
+			attrs: [
+			{
+				name: 'ground0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'rockPlatform1',
+					start: {
+						x: 0,
+						y: world.height - 20
+					},
+					scale: [6, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'ground0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'rockPlatform1',
+					start: {
+						x: 768,
+						y: world.height - 50
+					},
+					scale: [2, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'ground0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'rockPlatform1',
+					start: {
+						x: 1024,
+						y: world.height - 80
+					},
+					scale: [2, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'ground0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'rockPlatform1',
+					start: {
+						x: 1280,
+						y: world.height - 120
+					},
+					scale: [2, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'ground0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'rockPlatform1',
+					start: {
+						x: 1536,
+						y: world.height - 150
+					},
+					scale: [1.5, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'ground0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'rockPlatform1',
+					start: {
+						x: 1728,
+						y: world.height - 190
+					},
+					scale: [1.5, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'ground0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'rockPlatform1',
+					start: {
+						x: 1920,
+						// x: 2048,
+						y: world.height - 240
+					},
+					scale: [3, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'ground0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'rockPlatform1',
+					start: {
+						x: 2304,
+						y: world.height - 280
+					},
+					scale: [2, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'ground0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'rockPlatform1',
+					start: {
+						x: 2560,
+						y: world.height - 320
+					},
+					scale: [1, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'ground0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'rockPlatform1',
+					start: {
+						x: 2688,
+						y: world.height - 360
+					},
+					scale: [1, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'ground0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'rockPlatform1',
+					start: {
+						x: 2816,
+						y: world.height - 400
+					},
+					scale: [2, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'ground0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'rockPlatform1',
+					start: {
+						x: 3076,
+						y: world.height - 440
+					},
+					scale: [2, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'ground0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'rockPlatform1',
+					start: {
+						x: 3332,
+						y: world.height - 500
+					},
+					scale: [2, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'ground0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'rockPlatform1',
+					start: {
+						x: 3588,
+						y: world.height - 530
+					},
+					scale: [2, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			},
+			{
+				name: 'ground0',
+				cl: 'Sprite',
+				attrs: {
+					img: 'rockPlatform1',
+					start: {
+						x: 3844,
+						y: world.height - 560
+					},
+					scale: [2, 1],
+					physics: {
+						immovable: true
+					}
+				}
+			}
+			]
+		},
+		{
+			name: 'sectors',
+			cl: 'SectorManager',
+			attrs: [{
+				name: 'sector0',
+				cl: 'Sector',
+				bounds: {
+					start: 0,
+					end: 1024
+				},
+				attrs: [
+					{
+						name: 'hazards',
+						cl: 'PhysicalGroupCollection',
+						attrs: []
+					},
+					{
+						name: 'enemies',
+						cl: 'Enemies',
+						attrs: [] 
+					},
+					{
+						name: 'bonuses',
+						cl: 'PhysicalGroupCollection',
+						attrs: []
+					}
+				]
+			},
+			{
+				name: 'sector1',
+				cl: 'Sector',
+				bounds: {
+					start: 1024,
+					end: 2048
+				},
+				attrs: [
+					{
+						name: 'hazards',
+						cl: 'PhysicalGroupCollection',
+						attrs: []
+					},
+					{
+						name: 'enemies',
+						cl: 'Enemies',
+						attrs: []
+					},
+					{
+						name: 'bonuses',
+						cl: 'PhysicalGroupCollection',
+						attrs: []
+					}
+					]
+			},
+			{
+				name: 'sector2',
+				cl: 'Sector',
+				bounds: {
+					start: 2048,
+					end: 3072
+				},
+				attrs: [
+					{
+						name: 'hazards',
+						cl: 'PhysicalGroupCollection',
+						attrs: []
+					},
+					{
+						name: 'enemies',
+						cl: 'Enemies',
+						attrs: []
+					},
+					{
+						name: 'bonuses',
+						cl: 'PhysicalGroupCollection',
+						attrs:  []
+					}
+				]
+			},
+			{
+				name: 'sector3',
+				cl: 'Sector',
+				bounds: {
+					start: 3072,
+					end: 4098
+				},
+				attrs: [
+					{
+						name: 'hazards',
+						cl: 'PhysicalGroupCollection',
+						attrs: []
+					},
+					{
+						name: 'enemies',
+						cl: 'Enemies',
+						attrs: []
+					},
+					{
+						name: 'bonuses',
+						cl: 'PhysicalGroupCollection',
+						attrs: []
+					}
+				]
+			}]
+		},
+		{
+			name: 'gui',
+			cl: 'GUIConsole',
+			addTo: 'null',
+			attrs: [{
+				name: 'heartIcon',
+				cl: 'Sprite',
+				attrs: {
+					img: 'heart',
+					start: {
+						x: 20,
+						y: 20
+					}
+				}
+			},
+			{
+				name: 'health',
+				cl: 'Text',
+				attrs: {
+					x: 60,
+					y: 25,
+					defaultContent: '~{health}~',
+					style: { 
+						font: '22px Arial', 
+						fill: '#ffffff' 
+					}
+				}
+			}]
+		},
+		{
+			name: 'level-controls',
+			cl: 'ControlButtons',
+			type: 'level',
+			addTo: 'null',
+			attrs: {
+				start: {
+					x: 0,
+					y: 0
+				}
+			}
+		}]
+	},
 	// intermission
 	{
 		name: 'intermission',
@@ -3392,439 +3827,3 @@ var config = {
 	}
 };
 
-/*
-// level 1
-{
-	name: 'level1',
-	cl: 'LevelState',
-	world: {
-		x: 0,
-		y: -256,
-		width: 4098,
-		height: stage.height + 256
-	},
-	clearWorld: true,
-	clearCache: false,
-	bounds: {
-		start: 0,
-		// end: 1024
-		end: 4020
-	},
-	attrs: [{
-		name: 'scenery',
-		cl: 'GroupCollection',
-		attrs: [{
-			name: 'sky',
-			cl: 'Sprite',
-			attrs: {
-				img: 'sky',
-				name: 'sky',
-				start: {
-					x: 0,
-					y: 0
-				},
-				phaser: {
-					width: stage.width,
-					height: stage.height,
-					fixedToCamera: true
-				}
-			}
-		},
-		{
-			name: 'moving_background01',
-			cl: 'Sprite',
-			attrs: {
-				img: 'movingBackground0a',
-				start: {
-					x: 0,
-					y: -(stage.height * 0.5)
-					// y: stage.height - 512
-				},
-				phaser: {
-					width: 2048,
-					height: stage.height * 1.5,
-					// height: 512,
-				}
-			}
-		},
-		{
-			name: 'moving_background02',
-			cl: 'Sprite',
-			attrs: {
-				img: 'movingBackground0b',
-				start: {
-					x: 2048,
-					y: -(stage.height * 0.5)
-				},
-				phaser: {
-					width: 2048,
-					height: stage.height * 1.5,
-				}
-			}
-		},
-		{
-			name: 'tree05',
-			cl: 'Sprite',
-			attrs: {
-				img: 'tree02',
-				start: {
-					x: 3700,
-					y: (-stage.height)
-				},
-				phaser: {
-					width: stage.height,
-					height: stage.height * 2,
-				}
-			}
-		},
-		{
-			name: 'grass0',
-			cl: 'Sprite',
-			attrs: {
-				img: 'grass1',
-				start: {
-					x: 0,
-					y: stage.height - 220
-				}
-			}
-		},
-		{
-			name: 'grass1',
-			cl: 'Sprite',
-			attrs: {
-				img: 'grass2',
-				start: {
-					x: 2048,
-					y: stage.height - 220
-				}
-			}
-		}
-		]
-	},
-	{
-		name: 'terrain',
-		cl: 'PhysicalGroupCollection',
-		attrs: [
-		{
-			name: 'ground0',
-			cl: 'Sprite',
-			attrs: {
-				img: 'platform',
-				start: {
-					x: 0,
-					y: world.height - 20
-				},
-				scale: [32, 2],
-				physics: {
-					immovable: true
-				}
-			}
-		}
-		]
-	},
-	{
-		name: 'sectors',
-		cl: 'SectorManager',
-		attrs: [{
-			name: 'sector0',
-			cl: 'Sector',
-			bounds: {
-				start: 0,
-				end: 1024
-			},
-			attrs: [
-				{
-					name: 'hazards',
-					cl: 'PhysicalGroupCollection',
-					attrs: []
-				},
-				{
-					name: 'enemies',
-					cl: 'Enemies',
-					attrs: [						
-					{
-						name: 'level1-sector0-enemy1',
-						cl: 'AnimatedEnemy',
-						attrs: {
-							name: 'caterpillar02a-sprite',
-							img: 'caterpillar02a',
-							start: {
-								x: 700,
-								y: stage.height - 50
-							},
-							physics: {
-								deferredGravity: true,
-								bounce: {
-									x: 0,
-									y: 0.2
-								}
-							},
-							phaser: {
-								health: 5
-							},
-							attack: 5,
-							score: 500,
-							defaultAnimation: '',
-							animations: caterpillarAnimations
-						}
-					}] 
-				},
-				{
-					name: 'bonuses',
-					cl: 'PhysicalGroupCollection',
-					attrs: []
-				}
-			]
-		},
-		{
-			name: 'sector1',
-			cl: 'Sector',
-			bounds: {
-				start: 1024,
-				end: 2048
-			},
-			attrs: [
-				{
-					name: 'hazards',
-					cl: 'PhysicalGroupCollection',
-					attrs: []
-				},
-				{
-					name: 'enemies',
-					cl: 'Enemies',
-					attrs: [{
-						name: 'level1-sector1-enemy0',
-						cl: 'AnimatedEnemy',
-						attrs: {
-							img: 'caterpillar02a',
-							start: {
-								x: 1500,
-								y: stage.height - 50
-							},
-							physics: {
-								deferredGravity: true,
-								bounce: {
-									x: 0,
-									y: 0.2
-								}
-							},
-							phaser: {
-								health: 5
-							},
-							speed: 0.5,
-							attack: 5,
-							score: 1000,
-							movement: {
-								speed: 0.25,
-								type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-								formula: null
-							},
-							defaultAnimation: '',
-							animations: caterpillarAnimations
-						}
-					}]
-				},
-				{
-					name: 'bonuses',
-					cl: 'PhysicalGroupCollection',
-					attrs: []
-				}
-				]
-		},
-		{
-			name: 'sector2',
-			cl: 'Sector',
-			bounds: {
-				start: 2048,
-				end: 3072
-			},
-			attrs: [
-				{
-					name: 'hazards',
-					cl: 'PhysicalGroupCollection',
-					attrs: []
-				},
-				{
-					name: 'enemies',
-					cl: 'Enemies',
-					attrs: [{
-						name: 'level1-sector2-enemy0',
-						cl: 'AnimatedEnemy',
-						attrs: {
-							img: 'caterpillar02a',
-							start: {
-								x: 2150,
-								y: stage.height - 50
-							},
-							physics: {
-								deferredGravity: true,
-								bounce: {
-									x: 0,
-									y: 0.2
-								}
-							},
-							attack: 5,
-							phaser: {
-								health: 5
-							},
-							score: 2000,
-							movement: {
-								speed: 1,
-								type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-								formula: null
-							},
-							defaultAnimation: '',
-							animations: caterpillarAnimations
-						}
-					},
-					{
-						name: 'level1-sector2-enemy1',
-						cl: 'AnimatedEnemy',
-						attrs: {
-							img: 'caterpillar02a',
-							start: {
-								x: 2850,
-								y: stage.height - 50
-							},
-							physics: {
-								deferredGravity: true,
-								bounce: {
-									x: 0,
-									y: 0.2
-								}
-							},
-							attack: 5,
-							phaser: {
-								health: 5
-							},
-							score: 2000,
-							movement: {
-								speed: 1,
-								type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-								formula: null
-							},
-							defaultAnimation: '',
-							animations: caterpillarAnimations
-						}
-					}]
-				},
-				{
-					name: 'bonuses',
-					cl: 'PhysicalGroupCollection',
-					attrs:  [{
-						cl: 'Sprite',
-						attrs: {
-							img: 'lollipop',
-							start: {
-								x: 2740,
-								y: stage.height - 100
-							},
-							physics: {
-								immovable: true
-							},
-							score: 100,
-							health: 10
-						}
-					}]
-				}
-			]
-		},
-		{
-			name: 'sector3',
-			cl: 'Sector',
-			bounds: {
-				start: 3072,
-				end: 4098
-			},
-			attrs: [
-				{
-					name: 'hazards',
-					cl: 'PhysicalGroupCollection',
-					attrs: []
-				},
-				{
-					name: 'enemies',
-					cl: 'Enemies',
-					attrs: [{
-						name: 'level1-sector3-enemy0',
-						cl: 'AnimatedEnemy',
-						attrs: {
-							img: 'caterpillar02a',
-							start: {
-								x: 3580,
-								y: stage.height - 50
-							},
-							physics: {
-								deferredGravity: true,
-								bounce: {
-									x: 0,
-									y: 0.2
-								}
-							},
-							attack: 5,
-							phaser: {
-								health: 10
-							},
-							score: 500,
-							movement: {
-								speed: 1,
-								type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-								formula: null
-							},
-							defaultAnimation: '',
-							animations: caterpillarAnimations
-						}
-					}]
-				},
-				{
-					name: 'bonuses',
-					cl: 'PhysicalGroupCollection',
-					attrs: []
-				}
-			]
-		}]
-	},
-	{
-		name: 'gui',
-		cl: 'GUIConsole',
-		addTo: 'null',
-		attrs: [{
-			name: 'heartIcon',
-			cl: 'Sprite',
-			attrs: {
-				img: 'heart',
-				start: {
-					x: 20,
-					y: 20
-				}
-			}
-		},
-		{
-			name: 'health',
-			cl: 'Text',
-			attrs: {
-				x: 60,
-				y: 25,
-				defaultContent: '~{health}~',
-				style: { 
-					font: '22px Arial', 
-					fill: '#ffffff' 
-				}
-			}
-		}]
-	},
-	{
-		name: 'level-controls',
-		cl: 'ControlButtons',
-		type: 'level',
-		addTo: 'null',
-		attrs: {
-			start: {
-				x: 0,
-				y: 0
-			}
-		}
-	}]
-},
-
-*/
