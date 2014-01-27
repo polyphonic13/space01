@@ -104,7 +104,7 @@ Polyworks.Sprite = (function() {
 			}
 		}
 	};
-
+/*
 	Sprite.prototype.preUpdate = function() {
 		if(this.active) {
 			trace('Sprite['+this.model.name+']/preUpdate');
@@ -126,7 +126,7 @@ Polyworks.Sprite = (function() {
 			Sprite._super.postUpdate.call(this);
 		}
 	};
-	
+*/	
 	Sprite.prototype.activateGravity = function() {
 		// trace('Sprite['+this.model.name+']/activateGravity');
 		var physics = this.model.attrs.physics;
