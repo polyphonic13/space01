@@ -105,6 +105,28 @@ Polyworks.Sprite = (function() {
 		}
 	};
 
+	Sprite.prototype.preUpdate = function() {
+		if(this.active) {
+			trace('Sprite['+this.model.name+']/preUpdate');
+			trace(this);
+			Sprite._super.preUpdate.call(this);
+		}
+	};
+	
+	Sprite.prototype.update = function() {
+		if(this.active) {
+			trace('Sprite['+this.model.name+']/update');
+
+		}
+	};
+	
+	Sprite.prototype.postUpdate = function() {
+		if(this.active) {
+			trace('Sprite['+this.model.name+']/postUpdate');
+			Sprite._super.postUpdate.call(this);
+		}
+	};
+	
 	Sprite.prototype.activateGravity = function() {
 		// trace('Sprite['+this.model.name+']/activateGravity');
 		var physics = this.model.attrs.physics;
