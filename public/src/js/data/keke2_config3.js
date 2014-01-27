@@ -325,7 +325,7 @@ var config = {
 		}
 	},
 	// STATES
-	initialState: 'level5',
+	initialState: 'menu',
 	states: [
 	// menu
 	{
