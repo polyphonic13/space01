@@ -57,6 +57,7 @@ var config = {
 		upButton: 'images/arrow_up.png',
 		startButton: 'images/start_button.png',
 		nextButton: 'images/next_button.png',
+		pauseButton: 'images/pause_button.png',
 		menuButton: 'images/menu_button.png',
 		quitButton: 'images/quit_button.png',
 		greyRect: 'images/grey_rect32x32.png',
@@ -162,7 +163,7 @@ var config = {
 				attrs: {
 					img: 'quitButton',
 					start: {
-						x: stage.width - 90,
+						x: 30,
 						y: 15
 					},
 					inputCode: Polyworks.InputCodes.QUIT,
@@ -199,7 +200,7 @@ var config = {
 				attrs: {
 					img: 'menuButton',
 					start: {
-						x: stage.width - 90,
+						x: 30,
 						y: 15
 					},
 					inputCode: Polyworks.InputCodes.MENU,
@@ -219,7 +220,7 @@ var config = {
 				attrs: {
 					img: 'menuButton',
 					start: {
-						x: stage.width - 90,
+						x: 30,
 						y: 15
 					},
 					inputCode: Polyworks.InputCodes.MENU,
@@ -239,7 +240,7 @@ var config = {
 				attrs: {
 					img: 'menuButton',
 					start: {
-						x: stage.width - 90,
+						x: 30,
 						y: 15
 					},
 					inputCode: Polyworks.InputCodes.MENU,
@@ -303,15 +304,15 @@ var config = {
 				}
 			},
 			{
-				name: 'menuBtn',
+				name: 'pauseButton',
 				cl: 'InputButton',
 				attrs: {
-					img: 'menuButton',
+					img: 'pauseButton',
 					start: {
-						x: stage.width - 90,
+						x: 30,
 						y: 15
 					},
-					inputCode: Polyworks.InputCodes.MENU,
+					inputCode: Polyworks.InputCodes.PAUSE,
 					events: {
 						pressed: {
 							type: Polyworks.Events.CHANGE_STATE,
@@ -790,7 +791,7 @@ var config = {
 				attrs: {
 					img: 'heart',
 					start: {
-						x: 20,
+						x: stage.width - 50,
 						y: 20
 					}
 				}
@@ -799,11 +800,11 @@ var config = {
 				name: 'health',
 				cl: 'Text',
 				attrs: {
-					x: 60,
+					x: stage.width - 100,
 					y: 25,
 					defaultContent: '~{health}~',
 					style: { 
-						font: '22px Arial', 
+						font: '26px Arial', 
 						fill: '#ffffff' 
 					}
 				}
@@ -1473,7 +1474,7 @@ var config = {
 				attrs: {
 					img: 'heart',
 					start: {
-						x: 20,
+						x: stage.width - 50,
 						y: 20
 					}
 				}
@@ -1482,11 +1483,11 @@ var config = {
 				name: 'health',
 				cl: 'Text',
 				attrs: {
-					x: 60,
+					x: stage.width - 100,
 					y: 25,
 					defaultContent: '~{health}~',
 					style: { 
-						font: '22px Arial', 
+						font: '26px Arial', 
 						fill: '#ffffff' 
 					}
 				}
@@ -2298,7 +2299,7 @@ var config = {
 				attrs: {
 					img: 'heart',
 					start: {
-						x: 20,
+						x: stage.width - 50,
 						y: 20
 					}
 				}
@@ -2307,11 +2308,11 @@ var config = {
 				name: 'health',
 				cl: 'Text',
 				attrs: {
-					x: 60,
+					x: stage.width - 100,
 					y: 25,
 					defaultContent: '~{health}~',
 					style: { 
-						font: '22px Arial', 
+						font: '26px Arial', 
 						fill: '#ffffff' 
 					}
 				}
@@ -3033,7 +3034,7 @@ var config = {
 				attrs: {
 					img: 'heart',
 					start: {
-						x: 20,
+						x: stage.width - 50,
 						y: 20
 					}
 				}
@@ -3042,11 +3043,11 @@ var config = {
 				name: 'health',
 				cl: 'Text',
 				attrs: {
-					x: 60,
+					x: stage.width - 100,
 					y: 25,
 					defaultContent: '~{health}~',
 					style: { 
-						font: '22px Arial', 
+						font: '26px Arial', 
 						fill: '#ffffff' 
 					}
 				}
@@ -3522,7 +3523,7 @@ var config = {
 				attrs: {
 					img: 'heart',
 					start: {
-						x: 20,
+						x: stage.width - 50,
 						y: 20
 					}
 				}
@@ -3531,11 +3532,11 @@ var config = {
 				name: 'health',
 				cl: 'Text',
 				attrs: {
-					x: 60,
+					x: stage.width - 100,
 					y: 25,
 					defaultContent: '~{health}~',
 					style: { 
-						font: '22px Arial', 
+						font: '26px Arial', 
 						fill: '#ffffff' 
 					}
 				}
