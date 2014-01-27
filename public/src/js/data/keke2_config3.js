@@ -37,8 +37,9 @@ var config = {
 		tree04: 'images/tree04.png',
 		grass1: 'images/grass01.png',
 		grass2: 'images/grass02.png',
-		platform: 'images/platform.png',
+		platform: 'images/platform2.png',
 		platform_grey: 'images/platform_grey.png',
+		rockPlatform1: 'images/rock_platform1.png',
 		// branch02Left: 'images/branch02_left.png',
 		branch02Left: 'images/vine01_left.png',
 		// branch02Right: 'images/branch02_right.png',
@@ -388,7 +389,7 @@ var config = {
 		}
 		]
 	},
-	// level 1
+	// level 5
 	{
 		name: 'level1',
 		cl: 'LevelState',
@@ -506,12 +507,12 @@ var config = {
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'rockPlatform1',
 					start: {
 						x: 0,
 						y: world.height - 20
 					},
-					scale: [6, 2],
+					scale: [6, 1],
 					physics: {
 						immovable: true
 					}
@@ -521,12 +522,12 @@ var config = {
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'rockPlatform1',
 					start: {
 						x: 768,
 						y: world.height - 50
 					},
-					scale: [2, 2],
+					scale: [2, 1],
 					physics: {
 						immovable: true
 					}
@@ -536,12 +537,12 @@ var config = {
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'rockPlatform1',
 					start: {
 						x: 1024,
 						y: world.height - 80
 					},
-					scale: [2, 2],
+					scale: [2, 1],
 					physics: {
 						immovable: true
 					}
@@ -551,12 +552,12 @@ var config = {
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'rockPlatform1',
 					start: {
 						x: 1280,
 						y: world.height - 120
 					},
-					scale: [2, 2],
+					scale: [2, 1],
 					physics: {
 						immovable: true
 					}
@@ -566,12 +567,12 @@ var config = {
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'rockPlatform1',
 					start: {
 						x: 1536,
 						y: world.height - 150
 					},
-					scale: [1.5, 2],
+					scale: [1.5, 1],
 					physics: {
 						immovable: true
 					}
@@ -581,12 +582,12 @@ var config = {
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'rockPlatform1',
 					start: {
 						x: 1728,
 						y: world.height - 190
 					},
-					scale: [1.5, 2],
+					scale: [1.5, 1],
 					physics: {
 						immovable: true
 					}
@@ -596,13 +597,13 @@ var config = {
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'rockPlatform1',
 					start: {
 						x: 1920,
 						// x: 2048,
 						y: world.height - 240
 					},
-					scale: [3, 2],
+					scale: [3, 1],
 					physics: {
 						immovable: true
 					}
@@ -612,12 +613,12 @@ var config = {
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'rockPlatform1',
 					start: {
 						x: 2304,
 						y: world.height - 280
 					},
-					scale: [2, 2],
+					scale: [2, 1],
 					physics: {
 						immovable: true
 					}
@@ -627,12 +628,12 @@ var config = {
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'rockPlatform1',
 					start: {
 						x: 2560,
 						y: world.height - 320
 					},
-					scale: [1, 2],
+					scale: [1, 1],
 					physics: {
 						immovable: true
 					}
@@ -642,12 +643,12 @@ var config = {
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'rockPlatform1',
 					start: {
 						x: 2688,
 						y: world.height - 360
 					},
-					scale: [1, 2],
+					scale: [1, 1],
 					physics: {
 						immovable: true
 					}
@@ -657,12 +658,12 @@ var config = {
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'rockPlatform1',
 					start: {
 						x: 2816,
 						y: world.height - 400
 					},
-					scale: [2, 2],
+					scale: [2, 1],
 					physics: {
 						immovable: true
 					}
@@ -672,12 +673,12 @@ var config = {
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'rockPlatform1',
 					start: {
 						x: 3076,
 						y: world.height - 440
 					},
-					scale: [2, 2],
+					scale: [2, 1],
 					physics: {
 						immovable: true
 					}
@@ -687,12 +688,12 @@ var config = {
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'rockPlatform1',
 					start: {
 						x: 3332,
 						y: world.height - 500
 					},
-					scale: [2, 2],
+					scale: [2, 1],
 					physics: {
 						immovable: true
 					}
@@ -702,12 +703,12 @@ var config = {
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'rockPlatform1',
 					start: {
 						x: 3588,
-						y: world.height - 540
+						y: world.height - 530
 					},
-					scale: [2, 2],
+					scale: [2, 1],
 					physics: {
 						immovable: true
 					}
@@ -717,12 +718,12 @@ var config = {
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'rockPlatform1',
 					start: {
 						x: 3844,
-						y: world.height - 600
+						y: world.height - 560
 					},
-					scale: [2, 2],
+					scale: [2, 1],
 					physics: {
 						immovable: true
 					}

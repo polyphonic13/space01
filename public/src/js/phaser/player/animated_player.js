@@ -39,13 +39,13 @@ Polyworks.AnimatedPlayer = (function() {
 					if(this.velX > 0) {
 						if(attrs.currentAnimation !== 'runR') {			// MOVING RIGHT
 					 		// trace('play run right');
-							this.play('runR', 13, true);
+							this.play('runR', 14, true);
 							attrs.currentAnimation = 'runR';
 						}
 					} else if(this.velX < 0) {									// MOVING LEFT
 						if(attrs.currentAnimation !== 'runL') {
 					 		// trace('play run left');
-							this.play('runL', 13, true);
+							this.play('runL', 14, true);
 							attrs.currentAnimation = 'runL';
 						}
 					}
