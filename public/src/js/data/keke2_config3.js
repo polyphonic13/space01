@@ -37,7 +37,7 @@ var config = {
 		tree04: 'images/tree04.png',
 		grass1: 'images/grass01.png',
 		grass2: 'images/grass02.png',
-		platform: 'images/platform_grey.png',
+		platform: 'images/platform.png',
 		platform_grey: 'images/platform_grey.png',
 		// branch02Left: 'images/branch02_left.png',
 		branch02Left: 'images/vine01_left.png',
