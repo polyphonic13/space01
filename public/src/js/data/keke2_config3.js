@@ -325,7 +325,7 @@ var config = {
 		}
 	},
 	// STATES
-	initialState: 'menu',
+	initialState: 'level5',
 	states: [
 	// menu
 	{
@@ -3152,28 +3152,21 @@ var config = {
 						height: stage.height * 2,
 					}
 				}
-			// },
-			// {
-			// 	name: 'grass0',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'grass1',
-			// 		start: {
-			// 			x: 0,
-			// 			y: stage.height - 220
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	name: 'grass1',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'grass2',
-			// 		start: {
-			// 			x: 2048,
-			// 			y: stage.height - 220
-			// 		}
-			// 	}
+			},
+			{
+				name: 'tree04',
+				cl: 'Sprite',
+				attrs: {
+					img: 'tree02',
+					start: {
+						x: 384,
+						y: (-stage.height)
+					},
+					phaser: {
+						width: stage.height,
+						height: stage.height * 2,
+					}
+				}
 			}
 			]
 		},
@@ -3217,10 +3210,10 @@ var config = {
 				attrs: {
 					img: 'rockPlatform1',
 					start: {
-						x: 1024,
+						x: 1088,
 						y: world.height - 80
 					},
-					scale: [2, 1],
+					scale: [1.5, 1],
 					physics: {
 						immovable: true
 					}
@@ -3247,10 +3240,10 @@ var config = {
 				attrs: {
 					img: 'rockPlatform1',
 					start: {
-						x: 1536,
+						x: 1664,
 						y: world.height - 150
 					},
-					scale: [1.5, 1],
+					scale: [1, 1],
 					physics: {
 						immovable: true
 					}
@@ -3262,10 +3255,10 @@ var config = {
 				attrs: {
 					img: 'rockPlatform1',
 					start: {
-						x: 1728,
+						x: 1856,
 						y: world.height - 190
 					},
-					scale: [1.5, 1],
+					scale: [1, 1],
 					physics: {
 						immovable: true
 					}
@@ -3277,11 +3270,10 @@ var config = {
 				attrs: {
 					img: 'rockPlatform1',
 					start: {
-						x: 1920,
-						// x: 2048,
+						x: 2048,
 						y: world.height - 240
 					},
-					scale: [3, 1],
+					scale: [1.5, 1],
 					physics: {
 						immovable: true
 					}
@@ -3308,7 +3300,7 @@ var config = {
 				attrs: {
 					img: 'rockPlatform1',
 					start: {
-						x: 2560,
+						x: 2624,
 						y: world.height - 320
 					},
 					scale: [1, 1],
@@ -3317,21 +3309,21 @@ var config = {
 					}
 				}
 			},
-			{
-				name: 'ground0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'rockPlatform1',
-					start: {
-						x: 2688,
-						y: world.height - 360
-					},
-					scale: [1, 1],
-					physics: {
-						immovable: true
-					}
-				}
-			},
+			// {
+			// 	name: 'ground0',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'rockPlatform1',
+			// 		start: {
+			// 			x: 2688,
+			// 			y: world.height - 360
+			// 		},
+			// 		scale: [1, 1],
+			// 		physics: {
+			// 			immovable: true
+			// 		}
+			// 	}
+			// },
 			{
 				name: 'ground0',
 				cl: 'Sprite',
@@ -3353,10 +3345,10 @@ var config = {
 				attrs: {
 					img: 'rockPlatform1',
 					start: {
-						x: 3076,
+						x: 3140,
 						y: world.height - 440
 					},
-					scale: [2, 1],
+					scale: [1, 1],
 					physics: {
 						immovable: true
 					}
@@ -3383,10 +3375,10 @@ var config = {
 				attrs: {
 					img: 'rockPlatform1',
 					start: {
-						x: 3588,
+						x: 3652,
 						y: world.height - 530
 					},
-					scale: [2, 1],
+					scale: [1, 1],
 					physics: {
 						immovable: true
 					}
@@ -3785,16 +3777,13 @@ var config = {
 			img: 'keke',
 			phaser: {
 				health: 100,
-				// width: 76,
-				// height: 128,
 				width: 95,
 				height: 113
 			},
-			// setSize: [51, 113, 22, 0],
 			setSize: [51, 113],
-			// setSize: [50, 120],
 			start: {
-				x: stage.width/2 - 76/2,
+				// x: stage.width/2 - 95/2,
+				x: 500,
 				y: stage.height - 128
 			},
 			physics: {
