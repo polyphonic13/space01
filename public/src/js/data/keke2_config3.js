@@ -3215,7 +3215,7 @@ var config = {
 				name: 'tree05',
 				cl: 'Sprite',
 				attrs: {
-					img: 'tree01',
+					img: 'tree01Traced',
 					start: {
 						x: 128,
 						y: (-stage.height)
