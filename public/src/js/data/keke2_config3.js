@@ -32,6 +32,7 @@ var config = {
 		movingBackground4: 'images/moving_background5.png',
 
 		tree01: 'images/tree01.png',
+		tree01Traced: 'images/tree01_traced.png',
 		tree02: 'images/tree02.png',
 		tree03: 'images/tree03.png',
 		tree04: 'images/tree04.png',
@@ -3142,7 +3143,7 @@ var config = {
 				name: 'tree05',
 				cl: 'Sprite',
 				attrs: {
-					img: 'tree02',
+					img: 'tree01',
 					start: {
 						x: 128,
 						y: (-stage.height)
@@ -3152,21 +3153,21 @@ var config = {
 						height: stage.height * 2,
 					}
 				}
-			},
-			{
-				name: 'tree04',
-				cl: 'Sprite',
-				attrs: {
-					img: 'tree02',
-					start: {
-						x: 384,
-						y: (-stage.height)
-					},
-					phaser: {
-						width: stage.height,
-						height: stage.height * 2,
-					}
-				}
+			// },
+			// {
+			// 	name: 'tree04',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'tree01Traced',
+			// 		start: {
+			// 			x: 384,
+			// 			y: (-stage.height)
+			// 		},
+			// 		phaser: {
+			// 			width: stage.height,
+			// 			height: stage.height * 2,
+			// 		}
+			// 	}
 			}
 			]
 		},
