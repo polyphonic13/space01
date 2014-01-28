@@ -6,7 +6,7 @@ var stage = {
 var world = {
 	x: 0,
 	y: 0,
-	width: 4098,
+	width: 4096,
 	height: stage.height,
 	gravity: {
 		x: 0,
@@ -326,7 +326,7 @@ var config = {
 		}
 	},
 	// STATES
-	initialState: 'menu',
+	initialState: 'level5',
 	states: [
 	// menu
 	{
@@ -398,7 +398,7 @@ var config = {
 		world: {
 			x: 0,
 			y: -256,
-			width: 4098,
+			width: 4096,
 			height: stage.height + 256
 		},
 		clearWorld: true,
@@ -732,7 +732,7 @@ var config = {
 				cl: 'Sector',
 				bounds: {
 					start: 3072,
-					end: 4098
+					end: 4096
 				},
 				attrs: [
 					{
@@ -832,7 +832,7 @@ var config = {
 		world: {
 			x: 0,
 			y: -256,
-			width: 4098,
+			width: 4096,
 			height: stage.height + 256
 		},
 		clearWorld: true,
@@ -1401,7 +1401,7 @@ var config = {
 				cl: 'Sector',
 				bounds: {
 					start: 3072,
-					end: 4098
+					end: 4096
 				},
 				attrs: [
 					{
@@ -1514,7 +1514,7 @@ var config = {
 		world: {
 			x: 0,
 			y: -256,
-			width: 4098,
+			width: 4096,
 			height: stage.height + 256
 		},
 		clearWorld: true,
@@ -2194,7 +2194,7 @@ var config = {
 				cl: 'Sector',
 				bounds: {
 					start: 3072,
-					end: 4098
+					end: 4096
 				},
 				attrs: [
 					{
@@ -2339,7 +2339,7 @@ var config = {
 		world: {
 			x: 0,
 			y: -256,
-			width: 4098,
+			width: 4096,
 			height: stage.height + 256
 		},
 		clearWorld: true,
@@ -2929,7 +2929,7 @@ var config = {
 				cl: 'Sector',
 				bounds: {
 					start: 3072,
-					end: 4098
+					end: 4096
 				},
 				attrs: [
 					{
@@ -3076,7 +3076,7 @@ var config = {
 			x: 0,
 			// y: -256,
 			y: -stage.height,
-			width: 4098,
+			width: 4096,
 			// height: stage.height + 256
 			height: stage.height * 2
 		},
@@ -3416,7 +3416,24 @@ var config = {
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
-						attrs: []
+						attrs: [
+						{
+							name: 'death',
+							cl: 'Sprite',
+							attrs: {
+								img: 'invisibleBg',
+								start: {
+									x: 0,
+									y: world.height + 100
+								},
+								scale: [32, 1],
+								physics: {
+									immovable: true
+								},
+								attack: 1000
+							}
+						}
+						]
 					},
 					{
 						name: 'enemies',
@@ -3441,7 +3458,24 @@ var config = {
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
-						attrs: []
+						attrs: [
+						{
+							name: 'death',
+							cl: 'Sprite',
+							attrs: {
+								img: 'invisibleBg',
+								start: {
+									x: 1024,
+									y: world.height + 100
+								},
+								scale: [32, 1],
+								physics: {
+									immovable: true
+								},
+								attack: 1000
+							}
+						}
+						]
 					},
 					{
 						name: 'enemies',
@@ -3466,7 +3500,24 @@ var config = {
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
-						attrs: []
+						attrs: [
+						{
+							name: 'death',
+							cl: 'Sprite',
+							attrs: {
+								img: 'invisibleBg',
+								start: {
+									x: 2048,
+									y: world.height + 100
+								},
+								scale: [32, 1],
+								physics: {
+									immovable: true
+								},
+								attack: 1000
+							}
+						}
+						]
 					},
 					{
 						name: 'enemies',
@@ -3485,13 +3536,30 @@ var config = {
 				cl: 'Sector',
 				bounds: {
 					start: 3072,
-					end: 4098
+					end: 4096
 				},
 				attrs: [
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
-						attrs: []
+						attrs: [
+						{
+							name: 'death',
+							cl: 'Sprite',
+							attrs: {
+								img: 'invisibleBg',
+								start: {
+									x: 3072,
+									y: world.height + 100
+								},
+								scale: [32, 1],
+								physics: {
+									immovable: true
+								},
+								attack: 1000
+							}
+						}
+						]
 					},
 					{
 						name: 'enemies',
@@ -3792,7 +3860,7 @@ var config = {
 					x: 0,
 					y: 0.2
 				},
-				collideWorldBounds: true
+				collideWorldBounds: false
 			},
 			anchor: {
 				x: 0.5,
