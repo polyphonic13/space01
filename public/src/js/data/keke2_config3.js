@@ -39,7 +39,7 @@ var config = {
 		grass1: 'images/grass01.png',
 		grass2: 'images/grass02.png',
 		platform: 'images/platform.png',
-		platform_grey: 'images/platform_grey.png',
+		platformV: 'images/platform_v.png',
 		rockPlatform1: 'images/rock_platform1.png',
 		branch02Left: 'images/branch02_left.png',
 		vine01Left: 'images/vine01_left.png',
@@ -503,6 +503,24 @@ var config = {
 			name: 'terrain',
 			cl: 'PhysicalGroupCollection',
 			attrs: [
+			{
+				name: 'leftWall',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platformV',
+					start: {
+						x: -16,
+						y: -stage.height
+					},
+					phaser: {
+						width: 16,
+						height: stage.height * 2
+					},
+					physics: {
+						immovable: true
+					}
+				}
+			},
 			{
 				name: 'ground0',
 				cl: 'Sprite',
@@ -997,6 +1015,24 @@ var config = {
 			name: 'terrain',
 			cl: 'PhysicalGroupCollection',
 			attrs: [
+ 			{
+				name: 'leftWall',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platformV',
+					start: {
+						x: -16,
+						y: -stage.height
+					},
+					phaser: {
+						width: 16,
+						height: stage.height * 2
+					},
+					physics: {
+						immovable: true
+					}
+				}
+			},
 			{
 				name: 'ground0',
 				cl: 'Sprite',
@@ -1692,6 +1728,24 @@ var config = {
 			name: 'terrain',
 			cl: 'PhysicalGroupCollection',
 			attrs: [
+			{
+				name: 'leftWall',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platformV',
+					start: {
+						x: -16,
+						y: -stage.height
+					},
+					phaser: {
+						width: 16,
+						height: stage.height * 2
+					},
+					physics: {
+						immovable: true
+					}
+				}
+			},
 			{
 				name: 'ground0',
 				cl: 'Sprite',
@@ -2427,6 +2481,24 @@ var config = {
 			name: 'terrain',
 			cl: 'PhysicalGroupCollection',
 			attrs: [
+			{
+				name: 'leftWall',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platformV',
+					start: {
+						x: -16,
+						y: -stage.height
+					},
+					phaser: {
+						width: 16,
+						height: stage.height * 2
+					},
+					physics: {
+						immovable: true
+					}
+				}
+			},
 			{
 				name: 'ground0',
 				cl: 'Sprite',
@@ -3175,6 +3247,24 @@ var config = {
 			name: 'terrain',
 			cl: 'PhysicalGroupCollection',
 			attrs: [
+			{
+				name: 'leftWall',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platformV',
+					start: {
+						x: -16,
+						y: -stage.height
+					},
+					phaser: {
+						width: 16,
+						height: stage.height * 2
+					},
+					physics: {
+						immovable: true
+					}
+				}
+			},
 			{
 				name: 'ground0',
 				cl: 'Sprite',
