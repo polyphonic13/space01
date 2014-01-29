@@ -46,6 +46,7 @@ PolyworksGame = (function() {
 							PolyworksGame.currentLevel++;
 							id = 'level' + PolyworksGame.currentLevel;
 						} else {
+							PolyworksGame.currentLevel = 1;
 							id = 'completed';
 						}
 					break;
@@ -59,7 +60,7 @@ PolyworksGame = (function() {
 					break;
 
 					case 'gameOver':
-						PolyworksGame.currentLevel = 1;
+						// PolyworksGame.currentLevel = 1;
 					break;
 
 					default:
