@@ -17,6 +17,7 @@ PolyworksGame = (function() {
 		isQuit: false,
 
 		begin: function(params) {
+			window.scrollTo(0,0);
 			// trace('PolyworksGame/begin, stage w/h = ' + stage.width + '/' + stage.height);
 			// trace((stage.height * 2) + ' ' + ((-stage.height) + 10));
 			_model = params;
