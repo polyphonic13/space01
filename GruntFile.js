@@ -41,6 +41,7 @@ module.exports = function(grunt) {
 				'<%= srcDir %>/js/enum/input_codes.js',
 				'<%= srcDir %>/js/enum/directions.js',
 				'<%= srcDir %>/js/phaser/enum/movement_types.js',
+				'<%= srcDir %>/js/phaser/enum/animation_types.js',
 				'<%= srcDir %>/js/utils/logger.js',
 				'<%= srcDir %>/js/utils/utils.js',
 				'<%= srcDir %>/js/phaser/events/events.js',

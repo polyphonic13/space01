@@ -1,22 +1,22 @@
-var caterpillarAnimations = [
-	{
-		name: 'walkL',
+var caterpillarAnimations = {
+	walkL: {
 		keyFrames: [0, 2, 4, 6, 8, 10],
+		loop: true,
 		frameRate: 10
 	},
-	{
-		name: 'walkR',
+	walkR: {
 		keyFrames: [1, 3, 5, 7, 9, 11],
+		loop: true,
 		frameRate: 10
 	},
-	{
-		name: 'fallingL',
+	fallingL: {
 		keyFrames: [12],
+		loop: true,
 		frameRate: 10
 	},
-	{
-		name: 'fallingR',
+	fallingR: {
 		keyFrames: [13],
+		loop: true,
 		frameRate: 10
 	}
-	];
+};

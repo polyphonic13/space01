@@ -45,7 +45,7 @@ Polyworks.LevelState = (function() {
 
 		playerConfig.game = PolyworksGame.phaser;
 		playerConfig.sectorManager = this.sectorManager;
-		
+
 		this.playerGroup = PolyworksGame.phaser.add.group();
 		this.player = new Polyworks[playerConfig.cl](playerConfig);
 		this.player.begin();

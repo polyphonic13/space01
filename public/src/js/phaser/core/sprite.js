@@ -146,8 +146,11 @@ Polyworks.Sprite = (function() {
 	};
 	
 	Sprite.prototype.beginAnimations = function(animations) {
-		for(var i = 0; i < animations.length; i++) {
-			this.animations.add(animations[i].name, animations[i].keyFrames, animations[i].frameRate);
+		// for(var i = 0; i < animations.length; i++) {
+		// 	this.animations.add(animations[i].name, animations[i].keyFrames, animations[i].frameRate);
+		// }
+		for(var key in animations) {
+			this.animations.add(key, animations[key].keyFrames, animations[key].frameRate);
 		}
 
 		var defaultAnimation = this.model.defaultAnimation;

@@ -16,37 +16,34 @@ Polyworks.AnimatedPlayer = (function() {
 	
 	AnimatedPlayer.prototype.updateAnimations = function() {
 		var attrs = this.model.attrs;
+		var animations = attrs.animations; 
 		if(this.justDamaged) {											// DAMAGED
 			if(attrs.facingForward) {
-				this.play('damagedR', 13, true);
-				attrs.currentAnimation = 'damagedR';
+				trace('Player/updateAnimations, AnimationTypes.DAMAGED_R = ' + AnimationTypes.DAMAGED_R + ', animations = ');
+				trace(animations);
+				this.play(AnimationTypes.DAMAGED_R, animations[AnimationTypes.DAMAGED_R].frameRate, animations[AnimationTypes.DAMAGED_R].loop);
 			} else {
-				this.play('damagedL', 13, true);
-				attrs.currentAnimation = 'damagedL';
+				this.play(AnimationTypes.DAMAGED_L, animations[AnimationTypes.DAMAGED_L].frameRate, animations[AnimationTypes.DAMAGED_L].loop);
 			}
 		} else {
 			if(this.velX === 0) {												// IDLE
 				this.stop();
 				if(this.facingForward) {
-					this.frame = 0;
-					attrs.currentAnimation = 'idleR';
+					this.play(AnimationTypes.IDLE_R, animations[AnimationTypes.IDLE_R].frameRate, animations[AnimationTypes.IDLE_R].loop);
 				} else {
-					this.frame = 1;
-					attrs.currentAnimation = 'idleL';
+					this.play(AnimationTypes.IDLE_L, animations[AnimationTypes.IDLE_L].frameRate, animations[AnimationTypes.IDLE_L].loop);
 				}
 			} else {
 				if(!attrs.jumping) {
 					if(this.velX > 0) {
-						if(attrs.currentAnimation !== 'runR') {			// MOVING RIGHT
+						if(this.currentAnimation !== 'runR') {			// MOVING RIGHT
 					 		// trace('play run right');
-							this.play('runR', 14, true);
-							attrs.currentAnimation = 'runR';
+							this.play(AnimationTypes.RUN_R, animations[AnimationTypes.RUN_R].frameRate, animations[AnimationTypes.RUN_R].loop);
 						}
 					} else if(this.velX < 0) {									// MOVING LEFT
-						if(attrs.currentAnimation !== 'runL') {
+						if(this.currentAnimation !== 'runL') {
 					 		// trace('play run left');
-							this.play('runL', 14, true);
-							attrs.currentAnimation = 'runL';
+							this.play(AnimationTypes.RUN_L, animations[AnimationTypes.RUN_L].frameRate, animations[AnimationTypes.RUN_L].loop);
 						}
 					}
 				}
@@ -58,13 +55,11 @@ Polyworks.AnimatedPlayer = (function() {
 					// trace('playing jump r animation');
 					this.stop();
 					// this.frame = 9;
-					this.play('jumpR', 13, true);
-					attrs.currentAnimation = 'jumpR';
+					this.play(AnimationTypes.JUMP_R, animations[AnimationTypes.JUMP_R].frameRate, animations[AnimationTypes.JUMP_R].loop);
 				} else {
 					this.stop();
 					// this.frame = 24;
-					this.play('jumpL', 13, true);
-					attrs.currentAnimation = 'jumpL';
+					this.play(AnimationTypes.JUMP_L, animations[AnimationTypes.JUMP_L].frameRate, animations[AnimationTypes.JUMP_L].loop);
 				}
 			}
 		}

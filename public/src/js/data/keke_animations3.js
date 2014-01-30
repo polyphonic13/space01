@@ -1,40 +1,42 @@
-var kekeAnimations = [{ 
-		name: 'idleR', 
+var kekeAnimations = {
+	idleL: {
 		keyFrames: [0], 
+		loop: true,
 		frameRate: 14
 	},
-	{ 
-		name: 'idleL', 
+	idleR: {
 		keyFrames: [1], 
+		loop: true,
 		frameRate: 14
 	},
-	{ 
-		name: 'runR', 
-		keyFrames: [7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19], 
-		frameRate: 13
-	},
-	{ 
-		name: 'runL', 
+	runL: {
 		keyFrames: [21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33], 
+		loop: true,
 		frameRate: 13
 	},
-	{
-		name: 'damagedR',
-		keyFrames: [2],
+	runR: {
+		keyFrames: [7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19], 
+		loop: true,
 		frameRate: 13
 	},
-	{
-		name: 'damagedL',
+	damagedL: {
 		keyFrames: [3],
+		loop: true,
 		frameRate: 13
 	},
-	{ 
-		name: 'jumpR', 
-		keyFrames: [11], 
+	damagedR: {
+		keyFrames: [2],
+		loop: true,
+		frameRate: 13
+	},
+	jumpL: {
+		keyFrames: [25], 
+		loop: true,
 		frameRate: 14
 	},
-	{ 
-		name: 'jumpL', 
-		keyFrames: [25], 
+	jumpR: {
+		keyFrames: [11], 
+		loop: true,
 		frameRate: 14
-	}];
+	}
+};
