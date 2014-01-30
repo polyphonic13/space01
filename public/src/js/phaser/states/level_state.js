@@ -36,6 +36,7 @@ Polyworks.LevelState = (function() {
 
 		this.createPlayer();
 
+		this.addOvalMask();
 	};
 
 	LevelState.prototype.createPlayer = function() {
@@ -50,6 +51,13 @@ Polyworks.LevelState = (function() {
 		this.player = new Polyworks[playerConfig.cl](playerConfig);
 		this.player.begin();
 		this.playerGroup.add(this.player);
+	};
+	
+	LevelState.prototype.addOvalMask = function() {
+		var mask = PolyworksGame.phaser.add.sprite(-5, -5, 'ovalMask');
+		mask.width = stage.width + 10;
+		mask.height = stage.height + 10;
+		mask.fixedToCamera = true;
 	};
 	
 	var renderedOnce = false;
