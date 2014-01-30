@@ -20,6 +20,8 @@ var config = {
 		// scenery
 		sky: 'images/night_sky.jpg',
 
+		ovalMask: 'images/oval_mask.png',
+
 		mountainBackground1a: 'images/mountain_background1a.png',
 		mountainBackground1b: 'images/mountain_background1b.png',
 
@@ -421,7 +423,8 @@ var config = {
 		attrs: [{
 			name: 'scenery',
 			cl: 'GroupCollection',
-			attrs: [{
+			attrs: [
+			{
 				name: 'sky',
 				cl: 'Sprite',
 				attrs: {
@@ -1311,53 +1314,7 @@ var config = {
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
-						attrs: [
-						{
-							name: 'level2-sector2-hazard0',
-							cl: 'Sprite',
-							attrs: {
-								img: 'thorns',
-								start: {
-									x: 2140,
-									y: world.height - 75
-								},
-								physics: {
-									immovable: true
-								},
-								attack: 10
-							}
-						},	
-						{		
-							name: 'level2-sector2-hazard1',
-							cl: 'Sprite',
-							attrs: {
-								img: 'thorns',
-								start: {
-									x: 2350,
-									y: world.height - 75
-								},
-								physics: {
-									immovable: true
-								},
-								attack: 10
-							}
-						},	
-						{		
-							name: 'level2-sector2-hazard2',
-							cl: 'Sprite',
-							attrs: {
-								img: 'thorns',
-								start: {
-									x: 2560,
-									y: world.height - 75
-								},
-								physics: {
-									immovable: true
-								},
-								attack: 10
-							}
-						}
-						]
+						attrs: []
 					},
 					{
 						name: 'enemies',
@@ -3986,7 +3943,7 @@ var config = {
 			attack: 5,
 			jumping: false,
 			justJumped: false,
-			defaultAnimation: 'idleL',
+			defaultAnimation: AnimationTypes.IDLE_L,
 			animations: kekeAnimations,
 			facingForward: true
 		}
