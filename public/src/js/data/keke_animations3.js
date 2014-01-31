@@ -1,11 +1,11 @@
 var kekeAnimations = {
 	idleL: {
-		keyFrames: [0], 
+		keyFrames: [1], 
 		loop: true,
 		frameRate: 14
 	},
 	idleR: {
-		keyFrames: [1], 
+		keyFrames: [0], 
 		loop: true,
 		frameRate: 14
 	},
