@@ -36,7 +36,7 @@ Polyworks.LevelState = (function() {
 
 		this.createPlayer();
 
-		this.addOvalMask();
+		// this.addOvalMask();
 	};
 
 	LevelState.prototype.createPlayer = function() {

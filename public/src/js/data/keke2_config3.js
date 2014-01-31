@@ -25,6 +25,13 @@ var config = {
 		mountainBackground1a: 'images/mountain_background1a.png',
 		mountainBackground1b: 'images/mountain_background1b.png',
 
+		// movingBackground0a: 'images/forest01a.png',
+		// movingBackground0b: 'images/forest01b.png',
+		// movingBackground0: 'images/forest01a.png',
+		// movingBackground1: 'images/forest01b.png',
+		// movingBackground2: 'images/forest01a.png',
+		// movingBackground3: 'images/forest01b.png',
+		// movingBackground4: 'images/forest01b.png',
 		movingBackground0a: 'images/new_backgroundA1a.png',
 		movingBackground0b: 'images/new_backgroundA1b.png',
 		movingBackground0: 'images/new_backgroundA1a.png',
