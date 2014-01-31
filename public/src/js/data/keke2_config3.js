@@ -91,7 +91,7 @@ var config = {
 	sprites: {
 		// player
 		keke: {
-			url: 'images/keke_character3.png', 
+			url: 'images/keke_character3c.png', 
 			width: 95, 
 			height: 113, 
 			frames: 35
