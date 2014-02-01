@@ -32,6 +32,15 @@ var config = {
 		// movingBackground2: 'images/forest01a.png',
 		// movingBackground3: 'images/forest01b.png',
 		// movingBackground4: 'images/forest01b.png',
+
+		movingBackground0a: 'images/forest_background01a.png',
+		movingBackground0b: 'images/forest_background01b.png',
+		movingBackground0: 'images/forest_background01a.png',
+		movingBackground1: 'images/forest_background01b.png',
+		movingBackground2: 'images/forest_background01a.png',
+		movingBackground3: 'images/forest_background01b.png',
+		movingBackground4: 'images/forest_background01b.png',
+/*
 		movingBackground0a: 'images/new_backgroundA1a.png',
 		movingBackground0b: 'images/new_backgroundA1b.png',
 		movingBackground0: 'images/new_backgroundA1a.png',
@@ -39,7 +48,7 @@ var config = {
 		movingBackground2: 'images/new_backgroundA1a.png',
 		movingBackground3: 'images/new_backgroundA1b.png',
 		movingBackground4: 'images/new_backgroundA1b.png',
-
+*/
 		// movingBackground0a: 'images/moving_background0a.png',
 		// movingBackground0b: 'images/moving_background0b.png',
 		// movingBackground0: 'images/moving_background0.png',
@@ -58,12 +67,12 @@ var config = {
 		platform: 'images/platform.png',
 		platformV: 'images/platform_v.png',
 		rockPlatform1: 'images/rock_platform1.png',
-		branch02Left: 'images/vine01_left.png',
+		branch02Left: 'images/vine01a_left.png',
 		// branch02Left: 'images/branch02_left.png',
-		vine01Left: 'images/vine01_left.png',
-		branch02Right: 'images/vine01_right.png',
+		vine01Left: 'images/vine01a_left.png',
+		branch02Right: 'images/vine01a_right.png',
 		// branch02Right: 'images/branch02_right.png',
-		vine01Right: 'images/vine01_right.png',
+		vine01Right: 'images/vine01a_right.png',
 		thorns: 'images/thorns02.png',
 
 		// bonuses
