@@ -495,13 +495,13 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree02',
+					// phaser: {
+					// 	width: stage.height,
+					// 	height: stage.height * 2,
+					// },
 					start: {
 						x: 3700,
 						y: (-stage.height)
-					},
-					phaser: {
-						width: stage.height,
-						height: stage.height * 2,
 					}
 				}
 			// },
@@ -947,13 +947,13 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree02',
+					// phaser: {
+					// 	width: stage.height,
+					// 	height: (stage.height * 2)
+					// },
 					start: {
 						x: 950,
 						y: (-stage.height)
-					},
-					phaser: {
-						width: stage.height,
-						height: (stage.height * 2)
 					}
 				}
 			},
@@ -962,13 +962,13 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree01',
+					// phaser: {
+					// 	width: stage.height,
+					// 	height: (stage.height * 2) + 20						
+					// },
 					start: {
 						x: 1900,
 						y: (-stage.height)
-					},
-					phaser: {
-						width: stage.height,
-						height: (stage.height * 2) + 20						
 					}
 				}
 			},
@@ -977,13 +977,13 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree03',
+					// phaser: {
+					// 	width: stage.height,
+					// 	height: stage.height * 2
+					// },
 					start: {
 						x: 2190,
 						y: (-stage.height)
-					},
-					phaser: {
-						width: stage.height,
-						height: stage.height * 2
 					}
 				}
 			},
@@ -992,10 +992,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree04',
-					phaser: {
-						width: stage.height,
-						height: stage.height * 2
-					},
+					// phaser: {
+					// 	width: stage.height,
+					// 	height: stage.height * 2
+					// },
 					start: {
 						x: 2600,
 						y: (-stage.height)
@@ -1007,10 +1007,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree02',
-					phaser: {
-						width: stage.height,
-						height: stage.height * 2
-					},
+					// phaser: {
+					// 	width: stage.height,
+					// 	height: stage.height * 2
+					// },
 					start: {
 						x: 3000,
 						y: (-stage.height)
@@ -1603,10 +1603,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree01',
-					phaser: {
-						width: stage.height,
-						height: (stage.height * 2) + 20
-					},
+					// phaser: {
+					// 	width: stage.height,
+					// 	height: (stage.height * 2) + 20
+					// },
 					start: {
 						x: 640,
 						y: (-stage.height)
@@ -1618,10 +1618,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree04',
-					phaser: {
-						width: stage.height,
-						height: (stage.height * 2)
-					},
+					// phaser: {
+					// 	width: stage.height,
+					// 	height: (stage.height * 2)
+					// },
 					start: {
 						x: 1200,
 						y: (-stage.height)
@@ -1633,10 +1633,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree01',
-					phaser: {
-						width: stage.height,
-						height: (stage.height * 2) + 20
-					},
+					// phaser: {
+					// 	width: stage.height,
+					// 	height: (stage.height * 2) + 20
+					// },
 					start: {
 						x: 1900,
 						y: (-stage.height)
@@ -1648,10 +1648,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree03',
-					phaser: {
-						width: stage.height,
-						height: stage.height * 2
-					},
+					// phaser: {
+					// 	width: stage.height,
+					// 	height: stage.height * 2
+					// },
 					start: {
 						x: 2190,
 						y: (-stage.height)
@@ -1663,10 +1663,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree04',
-					phaser: {
-						width: stage.height,
-						height: stage.height * 2
-					},
+					// phaser: {
+					// 	width: stage.height,
+					// 	height: stage.height * 2
+					// },
 					start: {
 						x: 2600,
 						y: (-stage.height)
@@ -1678,10 +1678,10 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree02',
-					phaser: {
-						width: stage.height,
-						height: stage.height * 2
-					},
+					// phaser: {
+					// 	width: stage.height,
+					// 	height: stage.height * 2
+					// },
 					start: {
 						x: 3000,
 						y: (-stage.height)
