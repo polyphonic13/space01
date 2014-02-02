@@ -59,9 +59,9 @@ var config = {
 		movingBackground4: 'images/moving_background5.png',
 		*/
 
-		tree01: 'images/tree01a.png',
-		tree02: 'images/tree02a.png',
-		tree03: 'images/tree03a.png',
+		tree01: 'images/tree04a.png',
+		tree02: 'images/tree04a.png',
+		tree03: 'images/tree04a.png',
 		tree04: 'images/tree04a.png',
 		grass1: 'images/grass01.png',
 		grass2: 'images/grass02.png',
@@ -355,7 +355,7 @@ var config = {
 		}
 	},
 	// STATES
-	initialState: 'menu',
+	initialState: 'level2',
 	states: [
 	// menu
 	{
