@@ -19,8 +19,8 @@ Polyworks.AnimatedPlayer = (function() {
 		var animations = attrs.animations; 
 		if(this.justDamaged) {											// DAMAGED
 			if(attrs.facingForward) {
-				trace('Player/updateAnimations, AnimationTypes.DAMAGED_R = ' + AnimationTypes.DAMAGED_R + ', animations = ');
-				trace(animations);
+				// trace('Player/updateAnimations, AnimationTypes.DAMAGED_R = ' + AnimationTypes.DAMAGED_R + ', animations = ');
+				// trace(animations);
 				this.play(AnimationTypes.DAMAGED_R, animations[AnimationTypes.DAMAGED_R].frameRate, animations[AnimationTypes.DAMAGED_R].loop);
 			} else {
 				this.play(AnimationTypes.DAMAGED_L, animations[AnimationTypes.DAMAGED_L].frameRate, animations[AnimationTypes.DAMAGED_L].loop);

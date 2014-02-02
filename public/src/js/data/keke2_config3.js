@@ -40,7 +40,8 @@ var config = {
 		movingBackground2: 'images/forest_background01a.png',
 		movingBackground3: 'images/forest_background01b.png',
 		movingBackground4: 'images/forest_background01b.png',
-/*
+
+		/*
 		movingBackground0a: 'images/new_backgroundA1a.png',
 		movingBackground0b: 'images/new_backgroundA1b.png',
 		movingBackground0: 'images/new_backgroundA1a.png',
@@ -48,31 +49,31 @@ var config = {
 		movingBackground2: 'images/new_backgroundA1a.png',
 		movingBackground3: 'images/new_backgroundA1b.png',
 		movingBackground4: 'images/new_backgroundA1b.png',
-*/
-		// movingBackground0a: 'images/moving_background0a.png',
-		// movingBackground0b: 'images/moving_background0b.png',
-		// movingBackground0: 'images/moving_background0.png',
-		// movingBackground1: 'images/moving_background1.png',
-		// movingBackground2: 'images/moving_background2.png',
-		// movingBackground3: 'images/moving_background5.png',
-		// movingBackground4: 'images/moving_background5.png',
 
-		tree01: 'images/tree01.png',
-		tree01Traced: 'images/tree01_traced.png',
-		tree02: 'images/tree02.png',
-		tree03: 'images/tree03.png',
-		tree04: 'images/tree04.png',
+		movingBackground0a: 'images/moving_background0a.png',
+		movingBackground0b: 'images/moving_background0b.png',
+		movingBackground0: 'images/moving_background0.png',
+		movingBackground1: 'images/moving_background1.png',
+		movingBackground2: 'images/moving_background2.png',
+		movingBackground3: 'images/moving_background5.png',
+		movingBackground4: 'images/moving_background5.png',
+		*/
+
+		tree01: 'images/tree01a.png',
+		tree02: 'images/tree02a.png',
+		tree03: 'images/tree03a.png',
+		tree04: 'images/tree04a.png',
 		grass1: 'images/grass01.png',
 		grass2: 'images/grass02.png',
 		platform: 'images/platform.png',
 		platformV: 'images/platform_v.png',
 		rockPlatform1: 'images/rock_platform1.png',
-		branch02Left: 'images/vine01a_left.png',
-		// branch02Left: 'images/branch02_left.png',
-		vine01Left: 'images/vine01a_left.png',
-		branch02Right: 'images/vine01a_right.png',
-		// branch02Right: 'images/branch02_right.png',
-		vine01Right: 'images/vine01a_right.png',
+		// branch02Left: 'images/vine01_left.png',
+		branch02Left: 'images/branch02_left.png',
+		vine01Left: 'images/vine01_left.png',
+		// branch02Right: 'images/vine01_right.png',
+		branch02Right: 'images/branch02_right.png',
+		vine01Right: 'images/vine01_right.png',
 		thorns: 'images/thorns02.png',
 
 		// bonuses
@@ -488,21 +489,21 @@ var config = {
 						height: stage.height * 1.5,
 					}
 				}
-			// },
-			// {
-			// 	name: 'tree05',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'tree02',
-			// 		start: {
-			// 			x: 3700,
-			// 			y: (-stage.height)
-			// 		},
-			// 		phaser: {
-			// 			width: stage.height,
-			// 			height: stage.height * 2,
-			// 		}
-			// 	}
+			},
+			{
+				name: 'tree05',
+				cl: 'Sprite',
+				attrs: {
+					img: 'tree02',
+					start: {
+						x: 3700,
+						y: (-stage.height)
+					},
+					phaser: {
+						width: stage.height,
+						height: stage.height * 2,
+					}
+				}
 			// },
 			// {
 			// 	name: 'grass0',
@@ -938,7 +939,7 @@ var config = {
 						height: stage.height * 1.5
 					}
 				}
-/*
+
 			},
 
 			{
@@ -1015,29 +1016,29 @@ var config = {
 						y: (-stage.height)
 					}
 				}
-			},
-			{
-				name: 'grass0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'grass1',
-					start: {
-						x: 0,
-						y: stage.height - 220
-					}
-				}
-			},
-			{
-				name: 'grass1',
-				cl: 'Sprite',
-				attrs: {
-					img: 'grass2',
-					start: {
-						x: 2048,
-						y: stage.height - 220
-					}
-				}
-*/				
+			// },
+			// {
+			// 	name: 'grass0',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'grass1',
+			// 		start: {
+			// 			x: 0,
+			// 			y: stage.height - 220
+			// 		}
+			// 	}
+			// },
+			// {
+			// 	name: 'grass1',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'grass2',
+			// 		start: {
+			// 			x: 2048,
+			// 			y: stage.height - 220
+			// 		}
+			// 	}
+
 			}
 
 			]
@@ -1594,7 +1595,7 @@ var config = {
 						y: -(stage.height * 0.5)
 					}
 				}
-/*				
+
 			},
 
 			{
@@ -1686,29 +1687,29 @@ var config = {
 						y: (-stage.height)
 					}
 				}
-			},
-			{
-				name: 'grass0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'grass1',
-					start: {
-						x: 0,
-						y: stage.height - 220
-					}
-				}
-			},
-			{
-				name: 'grass1',
-				cl: 'Sprite',
-				attrs: {
-					img: 'grass2',
-					start: {
-						x: 2048,
-						y: stage.height - 220
-					}
-				}
-*/
+			// },
+			// {
+			// 	name: 'grass0',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'grass1',
+			// 		start: {
+			// 			x: 0,
+			// 			y: stage.height - 220
+			// 		}
+			// 	}
+			// },
+			// {
+			// 	name: 'grass1',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'grass2',
+			// 		start: {
+			// 			x: 2048,
+			// 			y: stage.height - 220
+			// 		}
+			// 	}
+
 			}
 			]
 		},
@@ -2440,31 +2441,31 @@ var config = {
 						y: -(stage.height * 0.5)
 					}
 				}
-/*
-			},
 
-			{
-				name: 'grass0',
-				cl: 'Sprite',
-				attrs: {
-					img: 'grass1',
-					start: {
-						x: 0,
-						y: stage.height - 220
-					}
-				}
-			},
-			{
-				name: 'grass1',
-				cl: 'Sprite',
-				attrs: {
-					img: 'grass2',
-					start: {
-						x: 2048,
-						y: stage.height - 220
-					}
-				}
-*/			}
+			// },
+			// 
+			// {
+			// 	name: 'grass0',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'grass1',
+			// 		start: {
+			// 			x: 0,
+			// 			y: stage.height - 220
+			// 		}
+			// 	}
+			// },
+			// {
+			// 	name: 'grass1',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'grass2',
+			// 		start: {
+			// 			x: 2048,
+			// 			y: stage.height - 220
+			// 		}
+			// 	}
+			}
 			]
 		},
 		{
