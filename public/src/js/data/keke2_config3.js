@@ -355,7 +355,7 @@ var config = {
 		}
 	},
 	// STATES
-	initialState: 'level2',
+	initialState: 'level1',
 	states: [
 	// menu
 	{
@@ -580,6 +580,27 @@ var config = {
 				},
 				attrs: [
 					{
+						name: 'dynamicTerrain',
+						cl: 'PhysicalGroupCollection',
+						attrs: [
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'platform',
+								start: {
+									x: 800,
+									y: world.height - 75
+								},
+								scale: [1, 0.5],
+								physics: {
+									immovable: true
+								}
+							}
+						}
+						]
+					},
+					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
 						attrs: []
@@ -587,7 +608,7 @@ var config = {
 					{
 						name: 'enemies',
 						cl: 'Enemies',
-						attrs: [						
+						attrs: [
 						{
 							name: 'level1-sector0-enemy1',
 							cl: 'AnimatedEnemy',
@@ -630,6 +651,11 @@ var config = {
 					end: 2048
 				},
 				attrs: [
+					{
+						name: 'dynamicTerrain',
+						cl: 'PhysicalGroupCollection',
+						attrs: []
+					},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -685,6 +711,11 @@ var config = {
 					end: 3072
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -783,6 +814,11 @@ var config = {
 					end: 4096
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -1222,6 +1258,11 @@ var config = {
 					end: 1024
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -1273,6 +1314,11 @@ var config = {
 					end: 2048
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -1328,6 +1374,11 @@ var config = {
 					end: 3072
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -1426,6 +1477,11 @@ var config = {
 					end: 4096
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -1924,6 +1980,11 @@ var config = {
 					end: 1024
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -2041,6 +2102,11 @@ var config = {
 					end: 2048
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -2095,6 +2161,11 @@ var config = {
 					end: 3072
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -2240,6 +2311,11 @@ var config = {
 					end: 4096
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -2679,6 +2755,11 @@ var config = {
 					end: 1024
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -2796,6 +2877,11 @@ var config = {
 					end: 2048
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -2850,6 +2936,11 @@ var config = {
 					end: 3072
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -2995,6 +3086,11 @@ var config = {
 					end: 4096
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -3494,6 +3590,11 @@ var config = {
 					end: 1024
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -3536,6 +3637,11 @@ var config = {
 					end: 2048
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -3578,6 +3684,11 @@ var config = {
 					end: 3072
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -3620,6 +3731,11 @@ var config = {
 					end: 4096
 				},
 				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',

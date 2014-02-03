@@ -127,7 +127,7 @@ Polyworks.Player = (function() {
 
 		// this.velocityX = this.velX;
 		this.body.velocity.x = this.velX;
-		
+
 		if(this.activeControls[Polyworks.InputCodes.UP]) {
 			if(attrs.grounded && !attrs.justJumped) {
 				this.velY = -attrs.speed.y;
@@ -153,10 +153,8 @@ Polyworks.Player = (function() {
 			var attrs = this.model.attrs;
 
 			this.checkTerrainCollision(params.terrain);
-			
-			// this.checkCollision(params.hazards, this.hazardCollision, physics);
-			// this.checkCollision(params.enemies, this.enemyCollision, physics);
-			// this.checkCollision(params.bonuses, this.bonusCollision, physics);
+
+			this.checkDynamicTerrainCollision(params.dynamicTerrain, physics);
 			this.checkHazardCollision(params.hazards, physics);
 			this.checkEnemyCollision(params.enemies, physics);
 			this.checkBonusCollision(params.bonuses, physics);
@@ -169,6 +167,10 @@ Polyworks.Player = (function() {
 		}
 	};
 
+	Player.prototype.checkDynamicTerrainCollision = function(dynamicTerrain, physics) {
+		this.checkCollision(dynamicTerrain, this.dynamicTerrainCollision, physics, this);
+	};
+	
 	Player.prototype.checkHazardCollision = function(hazards, physics) {
 		this.checkCollision(hazards, this.hazardCollision, physics, this);
 	};
@@ -185,6 +187,20 @@ Polyworks.Player = (function() {
 		// trace('Player/checkCollision, health = ' + this.health);
 		for(var i = 0; i < collection.length; i++) {
 			physics.overlap(this, collection[i], callback, null, context);
+		}
+	};
+	
+	Player.prototype.dynamicTerrainCollision = function(player, terrain) {
+		trace('Player/dynamicTerrainCollision, terrain = ');
+		trace(terrain);
+		var terrainY = terrain.body.y;
+		var playerOffsetY = this.body.y + this.height;
+		trace('\tterrainY = ' + terrainY + ', playerOffsetY = ' + playerOffsetY);
+		if(playerOffsetY <= terrainY) {
+			trace('\tgoing to do collision check again this terrain since player is above it');
+			this.checkTerrainCollision(params.terrain);
+		} else {
+			trace('\tdo nothing, the player is under the terrain');
 		}
 	};
 	
@@ -240,7 +256,6 @@ Polyworks.Player = (function() {
 				_this.justDamaged = true;
 				_this.damageTimer = setTimeout(_this.resetJustDamaged, _this.damageInterval);
 			}
-			
 		}
 	};
 	
@@ -258,15 +273,9 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.destroy = function() {
 		// trace('Player/destroy');
-		// trace(this.damageIconGroup);
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_PRESSED, this.onControlButtonPressed);
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_RELEASED, this.onControlButtonReleased);
 
-		if(this.damageIconGroup) {
-			this.damageIconGroup.destroy();
-			clearTimeout(_this.damageIconTimer);
-			
-		}
 		this.alive = false;
 		this.update = null;
 		this.updateInput = null;

@@ -17,6 +17,9 @@ Polyworks.Sector = (function() {
 		this.__defineGetter__('bounds', function() {
 			return this.model.bounds;
 		});
+		this.__defineGetter__('dynamicTerrain', function() {
+			return this.getChildByName('dynamicTerrain');
+		});
 		this.__defineGetter__('hazards', function() {
 			return this.getChildByName('hazards');
 		});
@@ -75,7 +78,6 @@ Polyworks.Sector = (function() {
 		// this.emitter.rotation = -0.5;
 	    this.emitter.start(false, 1600, 400);
 */
-		
 	};
 	
 	Sector.prototype.pwUpdate = function(params) {
