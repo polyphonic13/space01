@@ -590,11 +590,13 @@ var config = {
 								img: 'platform',
 								start: {
 									x: 800,
-									y: world.height - 75
+									y: world.height - 50
 								},
 								scale: [1, 0.5],
 								physics: {
-									immovable: true
+									// immovable: true
+									// gravity: 0
+									allowGravity: false
 								}
 							}
 						}

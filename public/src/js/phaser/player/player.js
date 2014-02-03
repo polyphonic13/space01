@@ -191,14 +191,19 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.dynamicTerrainCollision = function(player, terrain) {
-		trace('Player/dynamicTerrainCollision, terrain = ');
-		trace(terrain);
+		trace('Player/dynamicTerrainCollision, player = ');
+		trace(player);
+		// if(!player.model.grounded) {
+		// 	
+		// }
+		// trace(terrain);
 		var terrainY = terrain.body.y;
-		var playerOffsetY = this.body.y + this.height;
+		var playerOffsetY = this.body.y + (this.body.height/2);
 		trace('\tterrainY = ' + terrainY + ', playerOffsetY = ' + playerOffsetY);
 		if(playerOffsetY <= terrainY) {
 			trace('\tgoing to do collision check again this terrain since player is above it');
-			this.checkTerrainCollision(params.terrain);
+			// terrain.body.immovable = true;
+			// this.checkTerrainCollision(terrain);
 		} else {
 			trace('\tdo nothing, the player is under the terrain');
 		}
