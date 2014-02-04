@@ -69,11 +69,14 @@ var config = {
 		platformV: 'images/platform_v.png',
 		rockPlatform1: 'images/rock_platform1.png',
 		// branch02Left: 'images/vine01_left.png',
-		branch02Left: 'images/branch02_left.png',
+		branch02Left: 'images/branch03_left.png',
+		branch02aLeft: 'images/branch03a_left.png',
 		vine01Left: 'images/vine01_left.png',
 		// branch02Right: 'images/vine01_right.png',
-		branch02Right: 'images/branch02_right.png',
+		branch02Right: 'images/branch03_right.png',
+		branch02aRight: 'images/branch03a_right.png',
 		vine01Right: 'images/vine01_right.png',
+		bush01: 'images/bush01.png',
 		thorns: 'images/thorns02.png',
 
 		// bonuses
@@ -491,22 +494,7 @@ var config = {
 				}
 			},
 			{
-				name: 'tree05',
-				cl: 'Sprite',
-				attrs: {
-					img: 'tree02',
-					// phaser: {
-					// 	width: stage.height,
-					// 	height: stage.height * 2,
-					// },
-					start: {
-						x: 3700,
-						y: (-stage.height)
-					}
-				}
-			},
-			{
-				name: 'branch',
+				name: 'tree01',
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree01',
@@ -517,15 +505,107 @@ var config = {
 				}
 			},
 			{
-				name: 'branch',
+				name: 'tree05',
 				cl: 'Sprite',
 				attrs: {
-					img: 'vine01Right',
+					img: 'tree02',
+					// phaser: {
+					// 	width: stage.height,
+					// 	height: stage.height * 2,
+					// },
 					start: {
-						x: 950,
-						y: stage.height - 220
+						x: 3400,
+						y: (-stage.height)
 					}
 				}
+			// },
+			// {
+			// 	name: 'branch1',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'branch02Left',
+			// 		start: {
+			// 			x: 600,
+			// 			y: world.height - 150
+			// 		}
+			// 	}
+			// },
+			// {
+			// 	name: 'branch2',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'branch02Right',
+			// 		start: {
+			// 			x: 900,
+			// 			y: stage.height - 200
+			// 		}
+			// 	}
+			// },
+			// {
+			// 	name: 'branch1',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'branch02Left',
+			// 		start: {
+			// 			x: 600,
+			// 			y: world.height - 250
+			// 		}
+			// 	}
+			// },
+			// {
+			// 	name: 'branch2',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'branch02Right',
+			// 		start: {
+			// 			x: 900,
+			// 			y: stage.height - 300
+			// 		}
+			// 	}
+			// },
+			// {
+			// 	name: 'branch1',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'branch02Left',
+			// 		start: {
+			// 			x: 600,
+			// 			y: world.height - 350
+			// 		}
+			// 	}
+			// },
+			// {
+			// 	name: 'branch2',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'branch02Right',
+			// 		start: {
+			// 			x: 900,
+			// 			y: stage.height - 400
+			// 		}
+			// 	}
+			// },
+			// {
+			// 	name: 'branch3',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'branch02Left',
+			// 		start: {
+			// 			x: 600,
+			// 			y: stage.height - 450
+			// 		}
+			// 	}
+			// },
+			// {
+			// 	name: 'branch4',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'branch02Right',
+			// 		start: {
+			// 			x: 900,
+			// 			y: stage.height - 500
+			// 		}
+			// 	}
 			}
 			]
 		},
@@ -589,10 +669,10 @@ var config = {
 							attrs: {
 								img: 'platform',
 								start: {
-									x: 700,
+									x: 600,
 									y: world.height - 75
 								},
-								scale: [1, 0.5],
+								scale: [1, 1],
 								physics: {
 									immovable: true,
 									allowGravity: false
@@ -603,12 +683,12 @@ var config = {
 							name: 'plat1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'platform',
+								img: 'branch02aLeft',
 								start: {
 									x: 750,
 									y: world.height - 125
 								},
-								scale: [1, 0.5],
+								scale: [1, 1],
 								physics: {
 									immovable: true,
 									allowGravity: false
@@ -619,12 +699,12 @@ var config = {
 							name: 'plat1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'platform',
+								img: 'branch02aRight',
 								start: {
 									x: 900,
 									y: world.height - 175
 								},
-								scale: [1, 0.5],
+								scale: [1, 1],
 								physics: {
 									immovable: true,
 									allowGravity: false
@@ -635,12 +715,12 @@ var config = {
 							name: 'plat1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'platform',
+								img: 'branch02aLeft',
 								start: {
 									x: 765,
 									y: world.height - 225
 								},
-								scale: [0.85, 0.5],
+								scale: [0.85, 0.8],
 								physics: {
 									immovable: true,
 									allowGravity: false
@@ -651,12 +731,12 @@ var config = {
 							name: 'plat1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'platform',
+								img: 'branch02aRight',
 								start: {
 									x: 900,
 									y: world.height - 275
 								},
-								scale: [0.85, 0.5],
+								scale: [0.85, 0.8],
 								physics: {
 									immovable: true,
 									allowGravity: false
@@ -667,12 +747,12 @@ var config = {
 							name: 'plat1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'platform',
+								img: 'branch02aLeft',
 								start: {
 									x: 780,
 									y: world.height - 325
 								},
-								scale: [0.7, 0.5],
+								scale: [0.7, 0.7],
 								physics: {
 									immovable: true,
 									allowGravity: false
@@ -683,12 +763,12 @@ var config = {
 							name: 'plat1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'platform',
+								img: 'branch02aRight',
 								start: {
 									x: 900,
 									y: world.height - 375
 								},
-								scale: [0.7, 0.5],
+								scale: [0.7, 0.7],
 								physics: {
 									immovable: true,
 									allowGravity: false
@@ -699,12 +779,12 @@ var config = {
 							name: 'plat1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'platform',
+								img: 'branch02Left',
 								start: {
-									x: 795,
+									x: 710,
 									y: world.height - 425
 								},
-								scale: [0.55, 0.5],
+								scale: [0.6, 0.6],
 								physics: {
 									immovable: true,
 									allowGravity: false
@@ -715,12 +795,12 @@ var config = {
 							name: 'plat1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'platform',
+								img: 'branch02Right',
 								start: {
 									x: 900,
 									y: stage.height - 475
 								},
-								scale: [0.55, 0.5],
+								scale: [0.6, 0.6],
 								physics: {
 									immovable: true,
 									allowGravity: false
@@ -731,28 +811,12 @@ var config = {
 							name: 'plat1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'platform',
+								img: 'branch02Left',
 								start: {
-									x: 700,
+									x: 500,
 									y: world.height - 525
 								},
-								scale: [1.5, 0.5],
-								physics: {
-									immovable: true,
-									allowGravity: false
-								}
-							}
-						},
-						{
-							name: 'plat1',
-							cl: 'Sprite',
-							attrs: {
-								img: 'platform',
-								start: {
-									x: 900,
-									y: world.height - 575
-								},
-								scale: [1, 0.5],
+								scale: [1.5, 1],
 								physics: {
 									immovable: true,
 									allowGravity: false
@@ -801,7 +865,23 @@ var config = {
 					{
 						name: 'bonuses',
 						cl: 'PhysicalGroupCollection',
-						attrs: []
+						attrs: [
+						{
+							cl: 'Sprite',
+							attrs: {
+								img: 'lollipop',
+								start: {
+									x: 500,
+									y: world.height - 600
+								},
+								physics: {
+									immovable: true
+								},
+								score: 100,
+								health: 10
+							}
+						}
+						]
 					}
 				]
 			},
@@ -950,7 +1030,8 @@ var config = {
 					{
 						name: 'bonuses',
 						cl: 'PhysicalGroupCollection',
-						attrs:  [{
+						attrs:  [
+						{
 							cl: 'Sprite',
 							attrs: {
 								img: 'lollipop',
@@ -964,7 +1045,8 @@ var config = {
 								score: 100,
 								health: 10
 							}
-						}]
+						}
+						]
 					}
 				]
 			},
