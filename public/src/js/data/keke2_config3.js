@@ -590,11 +590,11 @@ var config = {
 								img: 'platform',
 								start: {
 									x: 800,
-									y: world.height - 50
+									y: world.height - 75
 								},
 								scale: [1, 0.5],
 								physics: {
-									// immovable: true
+									immovable: true,
 									// gravity: 0
 									allowGravity: false
 								}
@@ -611,32 +611,33 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [
-						{
-							name: 'level1-sector0-enemy1',
-							cl: 'AnimatedEnemy',
-							attrs: {
-								name: 'caterpillar02a-sprite',
-								img: 'caterpillar02a',
-								start: {
-									x: 700,
-									y: stage.height - 50
-								},
-								physics: {
-									deferredGravity: true,
-									bounce: {
-										x: 0,
-										y: 0.2
-									}
-								},
-								phaser: {
-									health: 5
-								},
-								attack: 5,
-								score: 500,
-								defaultAnimation: '',
-								animations: caterpillarAnimations
-							}
-						}] 
+						// {
+						// 	name: 'level1-sector0-enemy1',
+						// 	cl: 'AnimatedEnemy',
+						// 	attrs: {
+						// 		name: 'caterpillar02a-sprite',
+						// 		img: 'caterpillar02a',
+						// 		start: {
+						// 			x: 700,
+						// 			y: stage.height - 50
+						// 		},
+						// 		physics: {
+						// 			deferredGravity: true,
+						// 			bounce: {
+						// 				x: 0,
+						// 				y: 0.2
+						// 			}
+						// 		},
+						// 		phaser: {
+						// 			health: 5
+						// 		},
+						// 		attack: 5,
+						// 		score: 500,
+						// 		defaultAnimation: '',
+						// 		animations: caterpillarAnimations
+						// 	}
+						// }
+						] 
 					},
 					{
 						name: 'bonuses',
