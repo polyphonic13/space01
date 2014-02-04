@@ -504,28 +504,28 @@ var config = {
 						y: (-stage.height)
 					}
 				}
-			// },
-			// {
-			// 	name: 'grass0',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'grass1',
-			// 		start: {
-			// 			x: 0,
-			// 			y: stage.height - 220
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	name: 'grass1',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'grass2',
-			// 		start: {
-			// 			x: 2048,
-			// 			y: stage.height - 220
-			// 		}
-			// 	}
+			},
+			{
+				name: 'branch',
+				cl: 'Sprite',
+				attrs: {
+					img: 'tree01',
+					start: {
+						x: 480,
+						y: -(stage.height)
+					}
+				}
+			},
+			{
+				name: 'branch',
+				cl: 'Sprite',
+				attrs: {
+					img: 'vine01Right',
+					start: {
+						x: 950,
+						y: stage.height - 220
+					}
+				}
 			}
 			]
 		},
@@ -584,18 +584,193 @@ var config = {
 						cl: 'PhysicalGroupCollection',
 						attrs: [
 						{
-							name: 'plat1',
+							name: 'plat0',
 							cl: 'Sprite',
 							attrs: {
 								img: 'platform',
 								start: {
-									x: 800,
+									x: 650,
 									y: world.height - 75
 								},
 								scale: [1, 0.5],
 								physics: {
 									immovable: true,
-									// gravity: 0
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'platform',
+								start: {
+									x: 750,
+									y: world.height - 125
+								},
+								scale: [1, 0.5],
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'platform',
+								start: {
+									x: 900,
+									y: world.height - 175
+								},
+								scale: [1, 0.5],
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'platform',
+								start: {
+									x: 765,
+									y: world.height - 225
+								},
+								scale: [0.85, 0.5],
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'platform',
+								start: {
+									x: 900,
+									y: world.height - 275
+								},
+								scale: [0.85, 0.5],
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'platform',
+								start: {
+									x: 780,
+									y: world.height - 325
+								},
+								scale: [0.7, 0.5],
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'platform',
+								start: {
+									x: 900,
+									y: world.height - 375
+								},
+								scale: [0.7, 0.5],
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'platform',
+								start: {
+									x: 795,
+									y: world.height - 425
+								},
+								scale: [0.55, 0.5],
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'platform',
+								start: {
+									x: 900,
+									y: stage.height - 475
+								},
+								scale: [0.55, 0.5],
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'platform',
+								start: {
+									x: 700,
+									y: world.height - 525
+								},
+								scale: [1.5, 0.5],
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'platform',
+								start: {
+									x: 900,
+									y: world.height - 575
+								},
+								scale: [1, 0.5],
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat2',
+							cl: 'Sprite',
+							attrs: {
+								img: 'platform',
+								start: {
+									x: 950,
+									y: world.height - 75
+								},
+								scale: [0.5, 0.5],
+								physics: {
+									immovable: true,
 									allowGravity: false
 								}
 							}
