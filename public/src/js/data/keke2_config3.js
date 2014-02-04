@@ -589,7 +589,7 @@ var config = {
 							attrs: {
 								img: 'platform',
 								start: {
-									x: 650,
+									x: 700,
 									y: world.height - 75
 								},
 								scale: [1, 0.5],
@@ -753,22 +753,6 @@ var config = {
 									y: world.height - 575
 								},
 								scale: [1, 0.5],
-								physics: {
-									immovable: true,
-									allowGravity: false
-								}
-							}
-						},
-						{
-							name: 'plat2',
-							cl: 'Sprite',
-							attrs: {
-								img: 'platform',
-								start: {
-									x: 950,
-									y: world.height - 75
-								},
-								scale: [0.5, 0.5],
 								physics: {
 									immovable: true,
 									allowGravity: false
