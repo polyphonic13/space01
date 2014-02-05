@@ -5,16 +5,21 @@ PolyworksStage = (function() {
 	stage.height = 0;
 	stage.unit = 0;
 	
+	// set aspect ratio (width/height)
+	var _ar = [3, 2];
+	// var ar = [16, 9];
+	
 	function _init() {
 		stage.height = (document.documentElement.clientHeight > 500) ? 500 : document.documentElement.clientHeight;
-		stage.width = ((document.documentElement.clientHeight/9) * 16);
+		stage.width = ((document.documentElement.clientHeight/_ar[1]) * _ar[0]);
 
 		if(stage.width > document.documentElement.clientWidth) {
 			stage.width = document.documentElement.clientWidth;
-			stage.height = (stage.width/16) * 9;
+			stage.height = (stage.width/_ar[0]) * _ar[1];
 		}
-		stage.unit = stage.height/9;
-		var left = document.documentElement.clientWidth;
+		stage.unit = stage.height/_ar[1];
+		var left = (document.documentElement.clientWidth/2) - (stage.width/2);
+		var top = (document.documentElement.clientHeight/2) - (stage.height/2);
 
 		console.log('stage.width = ' + stage.width + ', stage.height = ' + stage.height);
 
@@ -24,14 +29,16 @@ PolyworksStage = (function() {
 		var loadingDiv = document.getElementById('loading');
 		var containerDiv = document.getElementById('gameContainer');
 
-		loadingDiv.style.width = loadingWidth + 'px';
-		loadingDiv.style.height = loadingHeight + 'px';
-		loadingDiv.style.left = (left/2 - stage.width/2) + 'px';
-		loadingDiv.style.display = 'block';
-
-		containerDiv.style.width = stage.width + 'px';
-		containerDiv.style.height = stage.height + 'px';
-		containerDiv.style.left = (left/2 - stage.width/2) + 'px';
+		_sizeAndPositionDiv(loadingDiv, loadingWidth, loadingHeight, left, top);
+		_sizeAndPositionDiv(containerDiv, stage.width, stage.height, left, top);
+	}
+	
+	function _sizeAndPositionDiv(div, width, height, left, right) {
+		div.style.width = width + 'px';
+		div.style.height = height + 'px';
+		div.style.left = left + 'px';
+		div.style.top = top + 'px';
+		div.style.display = 'block';
 	}
 	
 	_init();
