@@ -25,9 +25,9 @@
 		#gameContainer {
 			position: absolute;
 			z-index: 1;
-			left: 0px;
+/*			left: 0px;
 			top: 0px;
-		}
+*/		}
     </style>
 	<script type="text/javascript" src="js/third_party/phaser.js"></script>
 </head>
@@ -44,11 +44,9 @@
 	<script type="text/javascript" src="js/phaser/events/events.js"></script>
 	<script type="text/javascript" src="js/phaser/events/event_center.js"></script>
 	<script type="text/javascript" src="js/data/caterpillar_animations3.js"></script>
-<!--	<script type="text/javascript" src="js/data/keke_animations2.js"></script> -->
 	<script type="text/javascript" src="js/data/keke_animations3.js"></script>
 	
 	<script type="text/javascript" src="js/data/keke2_config3.js"></script> 
-<!--	<script type="text/javascript" src="js/data/keke2_config4_vector.js"></script> -->
 
 	<script type="text/javascript" src="js/phaser/core/model.js"></script>
 	<script type="text/javascript" src="js/phaser/shapes/rectangle.js"></script>
@@ -80,11 +78,24 @@
 	<script type="text/javascript">
 		function start() {
 			var loadingDiv = document.getElementById('loading');
-			var width = document.documentElement.clientWidth - 80;
-			var height = document.documentElement.clientHeight - 80;
-			loadingDiv.style.width = width + 'px';
-			loadingDiv.style.height = height + 'px';
+			var containerDiv = document.getElementById('gameContainer');
+			
+			var width = ((document.documentElement.clientHeight/9) * 16);
+			var height = document.documentElement.clientHeight;
+			var left = document.documentElement.clientWidth;
+			
+			var loadingWidth = width - 80;
+			var loadingHeight = height - 80;
+			// var height = document.documentElement.clientHeight;
+			console.log('width = ' + width + ', height = ' + height);
+			loadingDiv.style.width = loadingWidth + 'px';
+			loadingDiv.style.height = loadingHeight + 'px';
+			loadingDiv.style.left = (left/2 - width/2) + 'px';
 			loadingDiv.style.display = 'block';
+			
+			containerDiv.style.width = width + 'px';
+			containerDiv.style.height = height + 'px';
+			containerDiv.style.left = (left/2 - width/2) + 'px';
 			PolyworksGame.begin(config);			
 		}
 	</script>

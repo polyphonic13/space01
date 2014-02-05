@@ -1,12 +1,15 @@
 var stage = {
-	width: document.documentElement.clientWidth,
-	height: document.documentElement.clientHeight
+	// width: document.documentElement.clientWidth,
+	width: (document.documentElement.clientHeight/9) * 16,
+	height: document.documentElement.clientHeight,
+	unit: (document.documentElement.clientHeight/9)
 };
 
 var world = {
 	x: 0,
 	y: 0,
-	width: 4096,
+	// width: 4096,
+	width: stage.width * 4,
 	height: stage.height,
 	gravity: {
 		x: 0,
@@ -429,16 +432,18 @@ var config = {
 		cl: 'LevelState',
 		world: {
 			x: 0,
-			y: -256,
-			width: 4096,
-			height: stage.height + 256
+			y: -(stage.height),
+			// width: 4096,
+			width: stage.width * 4,
+			height: stage.height * 2
 		},
 		clearWorld: true,
 		clearCache: false,
 		bounds: {
 			start: 0,
 			// end: 1024
-			end: 4020
+			// end: 4020
+			end: world.width - stage.unit
 		},
 		attrs: [{
 			name: 'scenery',
@@ -468,13 +473,11 @@ var config = {
 					img: 'movingBackground0a',
 					start: {
 						x: 0,
-						y: -(stage.height * 0.5)
-						// y: stage.height - 512
+						y: -(stage.height)
 					},
 					phaser: {
-						width: 2048,
-						height: stage.height * 1.5,
-						// height: 512,
+						width: stage.width * 2,
+						height: stage.height * 2
 					}
 				}
 			},
@@ -484,12 +487,12 @@ var config = {
 				attrs: {
 					img: 'movingBackground0b',
 					start: {
-						x: 2048,
-						y: -(stage.height * 0.5)
+						x: stage.width * 2,
+						y: -(stage.height)
 					},
 					phaser: {
-						width: 2048,
-						height: stage.height * 1.5,
+						width: stage.width * 2,
+						height: stage.height * 2
 					}
 				}
 			},
