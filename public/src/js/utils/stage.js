@@ -6,8 +6,9 @@ PolyworksStage = (function() {
 	stage.unit = 0;
 	
 	// set aspect ratio (width/height)
+	// var _ar = [16, 10];
+	// var _ar = [16, 9];
 	var _ar = [3, 2];
-	// var ar = [16, 9];
 	
 	function _init() {
 		stage.height = (document.documentElement.clientHeight > 500) ? 500 : document.documentElement.clientHeight;
