@@ -1,16 +1,16 @@
-var stage = {
-	// width: document.documentElement.clientWidth,
-	width: (document.documentElement.clientHeight/9) * 16,
-	height: document.documentElement.clientHeight,
-	unit: (document.documentElement.clientHeight/9)
-};
+// var stage = {
+// 	// width: document.documentElement.clientWidth,
+// 	width: (document.documentElement.clientHeight/9) * 16,
+// 	height: document.documentElement.clientHeight,
+// 	unit: (document.documentElement.clientHeight/9)
+// };
 
 var world = {
 	x: 0,
 	y: 0,
 	// width: 4096,
-	width: stage.width * 4,
-	height: stage.height,
+	width: PolyworksStage.width * 4,
+	height: PolyworksStage.height,
 	gravity: {
 		x: 0,
 		y: 15
@@ -181,8 +181,8 @@ var config = {
 				attrs: {
 					img: 'startButton',
 					start: {
-						x: stage.width/2 - 128,
-						y: stage.height/2 - 64
+						x: PolyworksStage.width/2 - 128,
+						y: PolyworksStage.height/2 - 64
 					},
 					inputCode: Polyworks.InputCodes.PLAY,
 					events: {
@@ -218,8 +218,8 @@ var config = {
 				attrs: {
 					img: 'nextButton',
 					start: {
-						x: stage.width/2 - 128,
-						y: stage.height/2 - 64
+						x: PolyworksStage.width/2 - 128,
+						y: PolyworksStage.height/2 - 64
 					},
 					inputCode: Polyworks.InputCodes.NEXT,
 					events: {
@@ -298,8 +298,8 @@ var config = {
 						x: 0,
 						y: 0
 					},
-					width: stage.width, 
-					height: stage.height,
+					width: PolyworksStage.width, 
+					height: PolyworksStage.height,
 					inputCode: Polyworks.InputCodes.RESET
 				}
 			},
@@ -310,7 +310,7 @@ var config = {
 					img: 'leftButton',
 					start: {
 						x: 30,
-						y: stage.height - 266
+						y: PolyworksStage.height - 266
 					},
 					inputCode: Polyworks.InputCodes.LEFT
 				}
@@ -322,7 +322,7 @@ var config = {
 					img: 'rightButton',
 					start: {
 						x: 150,
-						y: stage.height - 266
+						y: PolyworksStage.height - 266
 					},
 					inputCode: Polyworks.InputCodes.RIGHT
 				}
@@ -333,8 +333,8 @@ var config = {
 				attrs: {
 					img: 'upButton',
 					start: {
-						x: stage.width - 90,
-						y: stage.height - 266
+						x: PolyworksStage.width - 90,
+						y: PolyworksStage.height - 266
 					},
 					inputCode: Polyworks.InputCodes.UP
 				}
@@ -370,8 +370,8 @@ var config = {
 		world: {
 			x: 0,
 			y: 0,
-			width: stage.width,
-			height: stage.height
+			width: PolyworksStage.width,
+			height: PolyworksStage.height
 		},
 		clearWorld: true,
 		clearCache: false,
@@ -390,8 +390,8 @@ var config = {
 						y: 20 
 					},
 					phaser: {
-						width: stage.width - 40,
-						height: stage.height - 40
+						width: PolyworksStage.width - 40,
+						height: PolyworksStage.height - 40
 					}
 				}
 			},
@@ -432,10 +432,10 @@ var config = {
 		cl: 'LevelState',
 		world: {
 			x: 0,
-			y: -(stage.height),
+			y: -(PolyworksStage.height),
 			// width: 4096,
-			width: stage.width * 4,
-			height: stage.height * 2
+			width: PolyworksStage.width * 4,
+			height: PolyworksStage.height * 2
 		},
 		clearWorld: true,
 		clearCache: false,
@@ -443,7 +443,7 @@ var config = {
 			start: 0,
 			// end: 1024
 			// end: 4020
-			end: world.width - stage.unit
+			end: world.width - PolyworksStage.unit
 		},
 		attrs: [{
 			name: 'scenery',
@@ -460,8 +460,8 @@ var config = {
 						y: 0
 					},
 					phaser: {
-						width: stage.width,
-						height: stage.height,
+						width: PolyworksStage.width,
+						height: PolyworksStage.height,
 						fixedToCamera: true
 					}
 				}
@@ -473,11 +473,11 @@ var config = {
 					img: 'movingBackground0a',
 					start: {
 						x: 0,
-						y: -(stage.height)
+						y: -(PolyworksStage.height)
 					},
 					phaser: {
-						width: stage.width * 2,
-						height: stage.height * 2
+						width: PolyworksStage.width * 2,
+						height: PolyworksStage.height * 2
 					}
 				}
 			},
@@ -487,12 +487,12 @@ var config = {
 				attrs: {
 					img: 'movingBackground0b',
 					start: {
-						x: stage.width * 2,
-						y: -(stage.height)
+						x: PolyworksStage.width * 2,
+						y: -(PolyworksStage.height)
 					},
 					phaser: {
-						width: stage.width * 2,
-						height: stage.height * 2
+						width: PolyworksStage.width * 2,
+						height: PolyworksStage.height * 2
 					}
 				}
 			},
@@ -503,7 +503,7 @@ var config = {
 					img: 'tree01',
 					start: {
 						x: 480,
-						y: -(stage.height)
+						y: -(PolyworksStage.height)
 					}
 				}
 			},
@@ -513,12 +513,12 @@ var config = {
 				attrs: {
 					img: 'tree02',
 					// phaser: {
-					// 	width: stage.height,
-					// 	height: stage.height * 2,
+					// 	width: PolyworksStage.height,
+					// 	height: PolyworksStage.height * 2,
 					// },
 					start: {
 						x: 3400,
-						y: (-stage.height)
+						y: (-PolyworksStage.height)
 					}
 				}
 			// },
@@ -540,7 +540,7 @@ var config = {
 			// 		img: 'branch02Right',
 			// 		start: {
 			// 			x: 900,
-			// 			y: stage.height - 200
+			// 			y: PolyworksStage.height - 200
 			// 		}
 			// 	}
 			// },
@@ -562,7 +562,7 @@ var config = {
 			// 		img: 'branch02Right',
 			// 		start: {
 			// 			x: 900,
-			// 			y: stage.height - 300
+			// 			y: PolyworksStage.height - 300
 			// 		}
 			// 	}
 			// },
@@ -584,7 +584,7 @@ var config = {
 			// 		img: 'branch02Right',
 			// 		start: {
 			// 			x: 900,
-			// 			y: stage.height - 400
+			// 			y: PolyworksStage.height - 400
 			// 		}
 			// 	}
 			// },
@@ -595,7 +595,7 @@ var config = {
 			// 		img: 'branch02Left',
 			// 		start: {
 			// 			x: 600,
-			// 			y: stage.height - 450
+			// 			y: PolyworksStage.height - 450
 			// 		}
 			// 	}
 			// },
@@ -606,7 +606,7 @@ var config = {
 			// 		img: 'branch02Right',
 			// 		start: {
 			// 			x: 900,
-			// 			y: stage.height - 500
+			// 			y: PolyworksStage.height - 500
 			// 		}
 			// 	}
 			}
@@ -623,11 +623,11 @@ var config = {
 					img: 'platformV',
 					start: {
 						x: -16,
-						y: -stage.height
+						y: -PolyworksStage.height
 					},
 					phaser: {
 						width: 16,
-						height: stage.height * 2
+						height: PolyworksStage.height * 2
 					},
 					physics: {
 						immovable: true
@@ -801,7 +801,7 @@ var config = {
 								img: 'branch02Right',
 								start: {
 									x: 900,
-									y: stage.height - 475
+									y: PolyworksStage.height - 475
 								},
 								scale: [0.6, 0.6],
 								physics: {
@@ -845,7 +845,7 @@ var config = {
 						// 		img: 'caterpillar02a',
 						// 		start: {
 						// 			x: 700,
-						// 			y: stage.height - 50
+						// 			y: PolyworksStage.height - 50
 						// 		},
 						// 		physics: {
 						// 			deferredGravity: true,
@@ -916,7 +916,7 @@ var config = {
 								img: 'caterpillar02a',
 								start: {
 									x: 1500,
-									y: stage.height - 50
+									y: PolyworksStage.height - 50
 								},
 								physics: {
 									deferredGravity: true,
@@ -976,7 +976,7 @@ var config = {
 								img: 'caterpillar02a',
 								start: {
 									x: 2150,
-									y: stage.height - 50
+									y: PolyworksStage.height - 50
 								},
 								physics: {
 									deferredGravity: true,
@@ -1006,7 +1006,7 @@ var config = {
 								img: 'caterpillar02a',
 								start: {
 									x: 2850,
-									y: stage.height - 50
+									y: PolyworksStage.height - 50
 								},
 								physics: {
 									deferredGravity: true,
@@ -1040,7 +1040,7 @@ var config = {
 								img: 'lollipop',
 								start: {
 									x: 2740,
-									y: stage.height - 100
+									y: PolyworksStage.height - 100
 								},
 								physics: {
 									immovable: true
@@ -1081,7 +1081,7 @@ var config = {
 								img: 'caterpillar02a',
 								start: {
 									x: 3580,
-									y: stage.height - 50
+									y: PolyworksStage.height - 50
 								},
 								physics: {
 									deferredGravity: true,
@@ -1123,7 +1123,7 @@ var config = {
 				attrs: {
 					img: 'heart',
 					start: {
-						x: stage.width - 50,
+						x: PolyworksStage.width - 50,
 						y: 20
 					}
 				}
@@ -1132,7 +1132,7 @@ var config = {
 				name: 'health',
 				cl: 'Text',
 				attrs: {
-					x: stage.width - 100,
+					x: PolyworksStage.width - 100,
 					y: 25,
 					defaultContent: '~{health}~',
 					style: { 
@@ -1164,7 +1164,7 @@ var config = {
 			x: 0,
 			y: -256,
 			width: 4096,
-			height: stage.height + 256
+			height: PolyworksStage.height + 256
 		},
 		clearWorld: true,
 		clearCache: false,
@@ -1187,8 +1187,8 @@ var config = {
 						y: 0
 					},
 					phaser: {
-						width: stage.width,
-						height: stage.height,
+						width: PolyworksStage.width,
+						height: PolyworksStage.height,
 						fixedToCamera: true
 					}
 				}
@@ -1200,11 +1200,11 @@ var config = {
 					img: 'movingBackground0a',
 					start: {
 						x: 0,
-						y: -(stage.height * 0.5)
+						y: -(PolyworksStage.height * 0.5)
 					},
 					phaser: {
 						width: 2048,
-						height: stage.height * 1.5
+						height: PolyworksStage.height * 1.5
 					}
 				}
 			},
@@ -1215,11 +1215,11 @@ var config = {
 					img: 'movingBackground0b',
 					start: {
 						x: 2048,
-						y: -(stage.height * 0.5)
+						y: -(PolyworksStage.height * 0.5)
 					},
 					phaser: {
 						width: 2048,
-						height: stage.height * 1.5
+						height: PolyworksStage.height * 1.5
 					}
 				}
 
@@ -1231,12 +1231,12 @@ var config = {
 				attrs: {
 					img: 'tree02',
 					// phaser: {
-					// 	width: stage.height,
-					// 	height: (stage.height * 2)
+					// 	width: PolyworksStage.height,
+					// 	height: (PolyworksStage.height * 2)
 					// },
 					start: {
 						x: 950,
-						y: (-stage.height)
+						y: (-PolyworksStage.height)
 					}
 				}
 			},
@@ -1246,12 +1246,12 @@ var config = {
 				attrs: {
 					img: 'tree01',
 					// phaser: {
-					// 	width: stage.height,
-					// 	height: (stage.height * 2) + 20						
+					// 	width: PolyworksStage.height,
+					// 	height: (PolyworksStage.height * 2) + 20						
 					// },
 					start: {
 						x: 1900,
-						y: (-stage.height)
+						y: (-PolyworksStage.height)
 					}
 				}
 			},
@@ -1261,12 +1261,12 @@ var config = {
 				attrs: {
 					img: 'tree03',
 					// phaser: {
-					// 	width: stage.height,
-					// 	height: stage.height * 2
+					// 	width: PolyworksStage.height,
+					// 	height: PolyworksStage.height * 2
 					// },
 					start: {
 						x: 2190,
-						y: (-stage.height)
+						y: (-PolyworksStage.height)
 					}
 				}
 			},
@@ -1276,12 +1276,12 @@ var config = {
 				attrs: {
 					img: 'tree04',
 					// phaser: {
-					// 	width: stage.height,
-					// 	height: stage.height * 2
+					// 	width: PolyworksStage.height,
+					// 	height: PolyworksStage.height * 2
 					// },
 					start: {
 						x: 2600,
-						y: (-stage.height)
+						y: (-PolyworksStage.height)
 					}
 				}
 			},
@@ -1291,12 +1291,12 @@ var config = {
 				attrs: {
 					img: 'tree02',
 					// phaser: {
-					// 	width: stage.height,
-					// 	height: stage.height * 2
+					// 	width: PolyworksStage.height,
+					// 	height: PolyworksStage.height * 2
 					// },
 					start: {
 						x: 3000,
-						y: (-stage.height)
+						y: (-PolyworksStage.height)
 					}
 				}
 			// },
@@ -1307,7 +1307,7 @@ var config = {
 			// 		img: 'grass1',
 			// 		start: {
 			// 			x: 0,
-			// 			y: stage.height - 220
+			// 			y: PolyworksStage.height - 220
 			// 		}
 			// 	}
 			// },
@@ -1318,7 +1318,7 @@ var config = {
 			// 		img: 'grass2',
 			// 		start: {
 			// 			x: 2048,
-			// 			y: stage.height - 220
+			// 			y: PolyworksStage.height - 220
 			// 		}
 			// 	}
 
@@ -1337,11 +1337,11 @@ var config = {
 					img: 'platformV',
 					start: {
 						x: -16,
-						y: -stage.height
+						y: -PolyworksStage.height
 					},
 					phaser: {
 						width: 16,
-						height: stage.height * 2
+						height: PolyworksStage.height * 2
 					},
 					physics: {
 						immovable: true
@@ -1527,7 +1527,7 @@ var config = {
 								img: 'caterpillar02a',
 								start: {
 									x: 700,
-									y: stage.height - 50
+									y: PolyworksStage.height - 50
 								},
 								physics: {
 									deferredGravity: true,
@@ -1744,7 +1744,7 @@ var config = {
 								img: 'caterpillar02a',
 								start: {
 									x: 3580,
-									y: stage.height - 50
+									y: PolyworksStage.height - 50
 								},
 								physics: {
 									deferredGravity: true,
@@ -1777,7 +1777,7 @@ var config = {
 								img: 'lollipop',
 								start: {
 									x: 3700,
-									y: stage.height - 150
+									y: PolyworksStage.height - 150
 								},
 								physics: {
 									immovable: true
@@ -1800,7 +1800,7 @@ var config = {
 				attrs: {
 					img: 'heart',
 					start: {
-						x: stage.width - 50,
+						x: PolyworksStage.width - 50,
 						y: 20
 					}
 				}
@@ -1809,7 +1809,7 @@ var config = {
 				name: 'health',
 				cl: 'Text',
 				attrs: {
-					x: stage.width - 100,
+					x: PolyworksStage.width - 100,
 					y: 25,
 					defaultContent: '~{health}~',
 					style: { 
@@ -1840,7 +1840,7 @@ var config = {
 			x: 0,
 			y: -256,
 			width: 4096,
-			height: stage.height + 256
+			height: PolyworksStage.height + 256
 		},
 		clearWorld: true,
 		clearCache: false,
@@ -1863,8 +1863,8 @@ var config = {
 						y: 0
 					},
 					phaser: {
-						width: stage.width,
-						height: stage.height,
+						width: PolyworksStage.width,
+						height: PolyworksStage.height,
 						fixedToCamera: true
 					}
 				}
@@ -1876,11 +1876,11 @@ var config = {
 					img: 'movingBackground1',
 					phaser: {
 						width: 2048,
-						height: stage.height * 1.5
+						height: PolyworksStage.height * 1.5
 					},
 					start: {
 						x: 0,
-						y: -(stage.height * 0.5)
+						y: -(PolyworksStage.height * 0.5)
 					}
 				}
 			},
@@ -1891,11 +1891,11 @@ var config = {
 					img: 'movingBackground2',
 					phaser: {
 						width: 2048,
-						height: stage.height * 1.5
+						height: PolyworksStage.height * 1.5
 					},
 					start: {
 						x: 2048,
-						y: -(stage.height * 0.5)
+						y: -(PolyworksStage.height * 0.5)
 					}
 				}
 
@@ -1907,12 +1907,12 @@ var config = {
 				attrs: {
 					img: 'tree01',
 					// phaser: {
-					// 	width: stage.height,
-					// 	height: (stage.height * 2) + 20
+					// 	width: PolyworksStage.height,
+					// 	height: (PolyworksStage.height * 2) + 20
 					// },
 					start: {
 						x: 640,
-						y: (-stage.height)
+						y: (-PolyworksStage.height)
 					}
 				}
 			},
@@ -1922,12 +1922,12 @@ var config = {
 				attrs: {
 					img: 'tree04',
 					// phaser: {
-					// 	width: stage.height,
-					// 	height: (stage.height * 2)
+					// 	width: PolyworksStage.height,
+					// 	height: (PolyworksStage.height * 2)
 					// },
 					start: {
 						x: 1200,
-						y: (-stage.height)
+						y: (-PolyworksStage.height)
 					}
 				}
 			},
@@ -1937,12 +1937,12 @@ var config = {
 				attrs: {
 					img: 'tree01',
 					// phaser: {
-					// 	width: stage.height,
-					// 	height: (stage.height * 2) + 20
+					// 	width: PolyworksStage.height,
+					// 	height: (PolyworksStage.height * 2) + 20
 					// },
 					start: {
 						x: 1900,
-						y: (-stage.height)
+						y: (-PolyworksStage.height)
 					}
 				}
 			},
@@ -1952,12 +1952,12 @@ var config = {
 				attrs: {
 					img: 'tree03',
 					// phaser: {
-					// 	width: stage.height,
-					// 	height: stage.height * 2
+					// 	width: PolyworksStage.height,
+					// 	height: PolyworksStage.height * 2
 					// },
 					start: {
 						x: 2190,
-						y: (-stage.height)
+						y: (-PolyworksStage.height)
 					}
 				}
 			},
@@ -1967,12 +1967,12 @@ var config = {
 				attrs: {
 					img: 'tree04',
 					// phaser: {
-					// 	width: stage.height,
-					// 	height: stage.height * 2
+					// 	width: PolyworksStage.height,
+					// 	height: PolyworksStage.height * 2
 					// },
 					start: {
 						x: 2600,
-						y: (-stage.height)
+						y: (-PolyworksStage.height)
 					}
 				}
 			},
@@ -1982,12 +1982,12 @@ var config = {
 				attrs: {
 					img: 'tree02',
 					// phaser: {
-					// 	width: stage.height,
-					// 	height: stage.height * 2
+					// 	width: PolyworksStage.height,
+					// 	height: PolyworksStage.height * 2
 					// },
 					start: {
 						x: 3000,
-						y: (-stage.height)
+						y: (-PolyworksStage.height)
 					}
 				}
 			// },
@@ -1998,7 +1998,7 @@ var config = {
 			// 		img: 'grass1',
 			// 		start: {
 			// 			x: 0,
-			// 			y: stage.height - 220
+			// 			y: PolyworksStage.height - 220
 			// 		}
 			// 	}
 			// },
@@ -2009,7 +2009,7 @@ var config = {
 			// 		img: 'grass2',
 			// 		start: {
 			// 			x: 2048,
-			// 			y: stage.height - 220
+			// 			y: PolyworksStage.height - 220
 			// 		}
 			// 	}
 
@@ -2027,11 +2027,11 @@ var config = {
 					img: 'platformV',
 					start: {
 						x: -16,
-						y: -stage.height
+						y: -PolyworksStage.height
 					},
 					phaser: {
 						width: 16,
-						height: stage.height * 2
+						height: PolyworksStage.height * 2
 					},
 					physics: {
 						immovable: true
@@ -2329,7 +2329,7 @@ var config = {
 								img: 'lollipop',
 								start: {
 									x: 760,
-									y: stage.height - 250
+									y: PolyworksStage.height - 250
 								},
 								physics: {
 									immovable: true
@@ -2538,7 +2538,7 @@ var config = {
 								img: 'cupcake',
 								start: {
 									x: 2740,
-									y: stage.height - 150
+									y: PolyworksStage.height - 150
 								},
 								physics: {
 									immovable: true
@@ -2643,7 +2643,7 @@ var config = {
 								img: 'lollipop',
 								start: {
 									x: 3600,
-									y: stage.height - 150
+									y: PolyworksStage.height - 150
 								},
 								physics: {
 									immovable: true
@@ -2666,7 +2666,7 @@ var config = {
 				attrs: {
 					img: 'heart',
 					start: {
-						x: stage.width - 50,
+						x: PolyworksStage.width - 50,
 						y: 20
 					}
 				}
@@ -2675,7 +2675,7 @@ var config = {
 				name: 'health',
 				cl: 'Text',
 				attrs: {
-					x: stage.width - 100,
+					x: PolyworksStage.width - 100,
 					y: 25,
 					defaultContent: '~{health}~',
 					style: { 
@@ -2706,7 +2706,7 @@ var config = {
 			x: 0,
 			y: -256,
 			width: 4096,
-			height: stage.height + 256
+			height: PolyworksStage.height + 256
 		},
 		clearWorld: true,
 		clearCache: false,
@@ -2725,8 +2725,8 @@ var config = {
 					img: 'sky',
 					name: 'sky',
 					phaser: {
-						width: stage.width,
-						height: stage.height,
+						width: PolyworksStage.width,
+						height: PolyworksStage.height,
 						fixedToCamera: true
 					},
 					start: {
@@ -2742,11 +2742,11 @@ var config = {
 					img: 'movingBackground3',
 					phaser: {
 						width: 2048,
-						height: stage.height * 1.5
+						height: PolyworksStage.height * 1.5
 					},
 					start: {
 						x: 0,
-						y: -(stage.height * 0.5)
+						y: -(PolyworksStage.height * 0.5)
 					}
 				}
 			},
@@ -2757,11 +2757,11 @@ var config = {
 					img: 'movingBackground4',
 					phaser: {
 						width: 2048,
-						height: stage.height * 1.5
+						height: PolyworksStage.height * 1.5
 					},
 					start: {
 						x: 2048,
-						y: -(stage.height * 0.5)
+						y: -(PolyworksStage.height * 0.5)
 					}
 				}
 
@@ -2774,7 +2774,7 @@ var config = {
 			// 		img: 'grass1',
 			// 		start: {
 			// 			x: 0,
-			// 			y: stage.height - 220
+			// 			y: PolyworksStage.height - 220
 			// 		}
 			// 	}
 			// },
@@ -2785,7 +2785,7 @@ var config = {
 			// 		img: 'grass2',
 			// 		start: {
 			// 			x: 2048,
-			// 			y: stage.height - 220
+			// 			y: PolyworksStage.height - 220
 			// 		}
 			// 	}
 			}
@@ -2802,11 +2802,11 @@ var config = {
 					img: 'platformV',
 					start: {
 						x: -16,
-						y: -stage.height
+						y: -PolyworksStage.height
 					},
 					phaser: {
 						width: 16,
-						height: stage.height * 2
+						height: PolyworksStage.height * 2
 					},
 					physics: {
 						immovable: true
@@ -3104,7 +3104,7 @@ var config = {
 								img: 'lollipop',
 								start: {
 									x: 760,
-									y: stage.height - 250
+									y: PolyworksStage.height - 250
 								},
 								physics: {
 									immovable: true
@@ -3313,7 +3313,7 @@ var config = {
 								img: 'lollipop',
 								start: {
 									x: 2740,
-									y: stage.height - 150
+									y: PolyworksStage.height - 150
 								},
 								physics: {
 									immovable: true
@@ -3418,7 +3418,7 @@ var config = {
 								img: 'lollipop',
 								start: {
 									x: 3600,
-									y: stage.height - 150
+									y: PolyworksStage.height - 150
 								},
 								physics: {
 									immovable: true
@@ -3441,7 +3441,7 @@ var config = {
 				attrs: {
 					img: 'heart',
 					start: {
-						x: stage.width - 50,
+						x: PolyworksStage.width - 50,
 						y: 20
 					}
 				}
@@ -3450,7 +3450,7 @@ var config = {
 				name: 'health',
 				cl: 'Text',
 				attrs: {
-					x: stage.width - 100,
+					x: PolyworksStage.width - 100,
 					y: 25,
 					defaultContent: '~{health}~',
 					style: { 
@@ -3481,10 +3481,10 @@ var config = {
 		world: {
 			x: 0,
 			// y: -256,
-			y: -stage.height,
+			y: -PolyworksStage.height,
 			width: 4096,
-			// height: stage.height + 256
-			height: stage.height * 2
+			// height: PolyworksStage.height + 256
+			height: PolyworksStage.height * 2
 		},
 		clearWorld: true,
 		clearCache: false,
@@ -3507,8 +3507,8 @@ var config = {
 						y: 0
 					},
 					phaser: {
-						width: stage.width,
-						height: stage.height,
+						width: PolyworksStage.width,
+						height: PolyworksStage.height,
 						fixedToCamera: true
 					}
 				}
@@ -3520,12 +3520,12 @@ var config = {
 					img: 'mountainBackground1a',
 					start: {
 						x: 0,
-						y: -(stage.height * 0.5)
-						// y: stage.height - 512
+						y: -(PolyworksStage.height * 0.5)
+						// y: PolyworksStage.height - 512
 					},
 					phaser: {
 						width: 2048,
-						height: stage.height * 1.5,
+						height: PolyworksStage.height * 1.5,
 						// height: 512,
 					}
 				}
@@ -3537,11 +3537,11 @@ var config = {
 					img: 'mountainBackground1b',
 					start: {
 						x: 2048,
-						y: -(stage.height * 0.5)
+						y: -(PolyworksStage.height * 0.5)
 					},
 					phaser: {
 						width: 2048,
-						height: stage.height * 1.5,
+						height: PolyworksStage.height * 1.5,
 					}
 				}
 			// },
@@ -3552,11 +3552,11 @@ var config = {
 			// 		img: 'tree01Traced',
 			// 		start: {
 			// 			x: 128,
-			// 			y: (-stage.height)
+			// 			y: (-PolyworksStage.height)
 			// 		},
 			// 		phaser: {
-			// 			width: stage.height,
-			// 			height: stage.height * 2,
+			// 			width: PolyworksStage.height,
+			// 			height: PolyworksStage.height * 2,
 			// 		}
 			// 	}
 			// },
@@ -3567,11 +3567,11 @@ var config = {
 			// 		img: 'tree01Traced',
 			// 		start: {
 			// 			x: 384,
-			// 			y: (-stage.height)
+			// 			y: (-PolyworksStage.height)
 			// 		},
 			// 		phaser: {
-			// 			width: stage.height,
-			// 			height: stage.height * 2,
+			// 			width: PolyworksStage.height,
+			// 			height: PolyworksStage.height * 2,
 			// 		}
 			// 	}
 			}
@@ -3588,11 +3588,11 @@ var config = {
 					img: 'platformV',
 					start: {
 						x: -16,
-						y: -stage.height
+						y: -PolyworksStage.height
 					},
 					phaser: {
 						width: 16,
-						height: stage.height * 2
+						height: PolyworksStage.height * 2
 					},
 					physics: {
 						immovable: true
@@ -4028,7 +4028,7 @@ var config = {
 				attrs: {
 					img: 'heart',
 					start: {
-						x: stage.width - 50,
+						x: PolyworksStage.width - 50,
 						y: 20
 					}
 				}
@@ -4037,7 +4037,7 @@ var config = {
 				name: 'health',
 				cl: 'Text',
 				attrs: {
-					x: stage.width - 100,
+					x: PolyworksStage.width - 100,
 					y: 25,
 					defaultContent: '~{health}~',
 					style: { 
@@ -4067,8 +4067,8 @@ var config = {
 		world: {
 			x: 0,
 			y: 0,
-			width: stage.width,
-			height: stage.height
+			width: PolyworksStage.width,
+			height: PolyworksStage.height
 		},
 		clearWorld: true,
 		clearCache: false,
@@ -4087,8 +4087,8 @@ var config = {
 						y: 20 
 					},
 					phaser: {
-						width: stage.width - 40,
-						height: stage.height - 40
+						width: PolyworksStage.width - 40,
+						height: PolyworksStage.height - 40
 					}
 				}
 			},
@@ -4146,8 +4146,8 @@ var config = {
 		world: {
 			x: 0,
 			y: 0,
-			width: stage.width,
-			height: stage.height
+			width: PolyworksStage.width,
+			height: PolyworksStage.height
 		},
 		clearWorld: true,
 		clearCache: false,
@@ -4166,8 +4166,8 @@ var config = {
 						y: 20 
 					},
 					phaser: {
-						width: stage.width - 40,
-						height: stage.height - 40
+						width: PolyworksStage.width - 40,
+						height: PolyworksStage.height - 40
 					}
 				}
 			},
@@ -4225,8 +4225,8 @@ var config = {
 		world: {
 			x: 0,
 			y: 0,
-			width: stage.width,
-			height: stage.height
+			width: PolyworksStage.width,
+			height: PolyworksStage.height
 		},
 		clearWorld: true,
 		clearCache: false,
@@ -4245,8 +4245,8 @@ var config = {
 					},
 					phaser: {
 						// fixedToCamera: true,
-						width: stage.width - 40,
-						height: stage.height - 40
+						width: PolyworksStage.width - 40,
+						height: PolyworksStage.height - 40
 					}
 				}
 			},
@@ -4256,7 +4256,7 @@ var config = {
 				attrs: {
 					centerX: true,
 					centerY: true,
-					x: stage.width/2,
+					x: PolyworksStage.width/2,
 					y: 40,
 					defaultContent: 'Game Over',
 					fixedToCamera: true,
@@ -4295,9 +4295,9 @@ var config = {
 			},
 			setSize: [51, 113],
 			start: {
-				// x: stage.width/2 - 95/2,
+				// x: PolyworksStage.width/2 - 95/2,
 				x: 500,
-				y: stage.height - 128
+				y: PolyworksStage.height - 128
 			},
 			physics: {
 				bounce: {

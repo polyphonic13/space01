@@ -55,8 +55,8 @@ Polyworks.LevelState = (function() {
 	
 	LevelState.prototype.addOvalMask = function() {
 		var mask = PolyworksGame.phaser.add.sprite(-5, -5, 'ovalMask');
-		mask.width = stage.width + 10;
-		mask.height = stage.height + 10;
+		mask.width = PolyworksStage.width + 10;
+		mask.height = PolyworksStage.height + 10;
 		mask.fixedToCamera = true;
 	};
 	
@@ -85,8 +85,8 @@ Polyworks.LevelState = (function() {
 					player: this.player.sprite,
 					terrain: this.terrain.group,
 					position: {
-						x: this.game.camera.x + (stage.width/2),
-						y: this.game.camera.y + (stage.height/2)
+						x: this.game.camera.x + (PolyworksStage.width/2),
+						y: this.game.camera.y + (PolyworksStage.height/2)
 					}
 				};
 				this.sectorManager.pwUpdate(updateParams);

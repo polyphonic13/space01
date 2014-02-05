@@ -18,12 +18,12 @@ PolyworksGame = (function() {
 
 		begin: function(params) {
 			window.scrollTo(0,0);
-			// trace('PolyworksGame/begin, stage w/h = ' + stage.width + '/' + stage.height);
-			// trace((stage.height * 2) + ' ' + ((-stage.height) + 10));
+			// trace('PolyworksGame/begin, stage w/h = ' + PolyworksStage.width + '/' + PolyworksStage.height);
+			// trace((PolyworksStage.height * 2) + ' ' + ((-PolyworksStage.height) + 10));
 			_model = params;
 			trace(params);
 			PolyworksGame.startingHealth = params.player.attrs.phaser.health;
-			PolyworksGame.phaser = new Phaser.Game(stage.width, stage.height, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
+			PolyworksGame.phaser = new Phaser.Game(PolyworksStage.width, PolyworksStage.height, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
 			// _checkPhaserBoot();
 		},
 

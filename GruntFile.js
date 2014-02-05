@@ -153,6 +153,11 @@ module.exports = function(grunt) {
 				report: 'min'
 			},
 
+			stage: {
+				src: [ '<%= srcDir %>/js/utils/stage.js' ],
+				dest: '<%= deployDir %>/keke2/js/stage.min.js'
+			},
+
 			keke2_game: {
 				src: [ '<%= deployDir %>/keke2/js/keke2_game.js' ],
 				dest: '<%= deployDir %>/keke2/js/keke2_game.min.js'
@@ -250,7 +255,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-connect');
 	
 	grunt.registerTask('default', ['concat', 'uglify', 'copy']);
-	grunt.registerTask('keke2', ['concat:keke2_game', 'uglify:keke2_game', 'copy:keke2_game_html', 'copy:keke2_game_js', 'copy:keke2_game_css:files']);
+	grunt.registerTask('keke2', ['concat:keke2_game', 'uglify:keke2_game', 'uglify:stage', 'copy:keke2_game_html', 'copy:keke2_game_js', 'copy:keke2_game_css:files']);
 	grunt.registerTask('keke2-images', ['copy:keke2_game_images:files'])
 	grunt.registerTask('keke', ['concat:keke_game', 'uglify:keke_game', 'copy:keke_game_html', 'copy:keke_game_css:files']);
 	grunt.registerTask('keke-images', ['copy:keke_game_images:files']);

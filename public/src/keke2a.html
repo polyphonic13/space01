@@ -34,6 +34,8 @@
 <body onload="start();">
 	<div id="loading">Keke vs. the Caterpillars</div>
 	<div id="gameContainer"></div>
+	<script type="text/javascript" src="js/utils/stage.js"></script>
+	
 	<script type="text/javascript" src="js/namespace.js"></script>
 	<script type="text/javascript" src="js/enum/input_codes.js"></script>
 	<script type="text/javascript" src="js/enum/directions.js"></script>
@@ -77,25 +79,6 @@
 	<script type="text/javascript" src="js/phaser/polyworks_game.js"></script>
 	<script type="text/javascript">
 		function start() {
-			var loadingDiv = document.getElementById('loading');
-			var containerDiv = document.getElementById('gameContainer');
-			
-			var width = ((document.documentElement.clientHeight/9) * 16);
-			var height = document.documentElement.clientHeight;
-			var left = document.documentElement.clientWidth;
-			
-			var loadingWidth = width - 80;
-			var loadingHeight = height - 80;
-			// var height = document.documentElement.clientHeight;
-			console.log('width = ' + width + ', height = ' + height);
-			loadingDiv.style.width = loadingWidth + 'px';
-			loadingDiv.style.height = loadingHeight + 'px';
-			loadingDiv.style.left = (left/2 - width/2) + 'px';
-			loadingDiv.style.display = 'block';
-			
-			containerDiv.style.width = width + 'px';
-			containerDiv.style.height = height + 'px';
-			containerDiv.style.left = (left/2 - width/2) + 'px';
 			PolyworksGame.begin(config);			
 		}
 	</script>

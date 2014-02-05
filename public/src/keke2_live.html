@@ -34,15 +34,10 @@
 <body onload="start();">
 	<div id="loading">Keke vs. the Caterpillars</div>
 	<div id="gameContainer"></div>
+	<script type="text/javascript" src="js/stage.min.js"></script>
 	<script type="text/javascript" src="js/keke2_game.min.js"></script>
 	<script type="text/javascript">
 		function start() {
-			var loadingDiv = document.getElementById('loading');
-			var width = document.documentElement.clientWidth - 80;
-			var height = document.documentElement.clientHeight - 80;
-			loadingDiv.style.width = width + 'px';
-			loadingDiv.style.height = height + 'px';
-			loadingDiv.style.display = 'block';
 			PolyworksGame.begin(config);			
 		}
 	</script>
