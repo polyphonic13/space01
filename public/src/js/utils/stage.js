@@ -6,19 +6,24 @@ PolyworksStage = (function() {
 	stage.unit = 0;
 	
 	function _init() {
-		var loadingDiv = document.getElementById('loading');
-		var containerDiv = document.getElementById('gameContainer');
-
+		stage.height = (document.documentElement.clientHeight > 500) ? 500 : document.documentElement.clientHeight;
 		stage.width = ((document.documentElement.clientHeight/9) * 16);
-		stage.height = document.documentElement.clientHeight;
-		stage.unit = stage.height/9;
 
+		if(stage.width > document.documentElement.clientWidth) {
+			stage.width = document.documentElement.clientWidth;
+			stage.height = (stage.width/16) * 9;
+		}
+		stage.unit = stage.height/9;
 		var left = document.documentElement.clientWidth;
+
+		console.log('stage.width = ' + stage.width + ', stage.height = ' + stage.height);
 
 		var loadingWidth = stage.width - 80;
 		var loadingHeight = stage.height - 80;
-		// var stage.height = document.documentElement.clientHeight;
-		console.log('stage.width = ' + stage.width + ', stage.height = ' + stage.height);
+
+		var loadingDiv = document.getElementById('loading');
+		var containerDiv = document.getElementById('gameContainer');
+
 		loadingDiv.style.width = loadingWidth + 'px';
 		loadingDiv.style.height = loadingHeight + 'px';
 		loadingDiv.style.left = (left/2 - stage.width/2) + 'px';

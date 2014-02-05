@@ -23,7 +23,7 @@ var config = {
 		// scenery
 		sky: 'images/night_sky.jpg',
 
-		ovalMask: 'images/oval_mask.png',
+		// ovalMask: 'images/oval_mask.png',
 
 		mountainBackground1a: 'images/mountain_background1a.png',
 		mountainBackground1b: 'images/mountain_background1b.png',
