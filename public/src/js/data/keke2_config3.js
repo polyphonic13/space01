@@ -1,10 +1,3 @@
-// var stage = {
-// 	// width: document.documentElement.clientWidth,
-// 	width: (document.documentElement.clientHeight/9) * 16,
-// 	height: document.documentElement.clientHeight,
-// 	unit: (document.documentElement.clientHeight/9)
-// };
-
 var world = {
 	x: 0,
 	y: 0,
@@ -28,46 +21,20 @@ var config = {
 		mountainBackground1a: 'images/mountain_background1a.png',
 		mountainBackground1b: 'images/mountain_background1b.png',
 
-		// movingBackground0a: 'images/forest01a.png',
-		// movingBackground0b: 'images/forest01b.png',
-		// movingBackground0: 'images/forest01a.png',
-		// movingBackground1: 'images/forest01b.png',
-		// movingBackground2: 'images/forest01a.png',
-		// movingBackground3: 'images/forest01b.png',
-		// movingBackground4: 'images/forest01b.png',
-
-		movingBackground0a: 'images/forest_background01a.png',
-		movingBackground0b: 'images/forest_background01b.png',
-		movingBackground0: 'images/forest_background01a.png',
-		movingBackground1: 'images/forest_background01b.png',
-		movingBackground2: 'images/forest_background01a.png',
-		movingBackground3: 'images/forest_background01b.png',
-		movingBackground4: 'images/forest_background01b.png',
-
-		/*
-		movingBackground0a: 'images/new_backgroundA1a.png',
-		movingBackground0b: 'images/new_backgroundA1b.png',
-		movingBackground0: 'images/new_backgroundA1a.png',
-		movingBackground1: 'images/new_backgroundA1b.png',
-		movingBackground2: 'images/new_backgroundA1a.png',
-		movingBackground3: 'images/new_backgroundA1b.png',
-		movingBackground4: 'images/new_backgroundA1b.png',
-
-		movingBackground0a: 'images/moving_background0a.png',
-		movingBackground0b: 'images/moving_background0b.png',
-		movingBackground0: 'images/moving_background0.png',
-		movingBackground1: 'images/moving_background1.png',
-		movingBackground2: 'images/moving_background2.png',
-		movingBackground3: 'images/moving_background5.png',
-		movingBackground4: 'images/moving_background5.png',
-		*/
+		forestBackground01: 'images/moving_background0a.png',
+		forestBackground02: 'images/moving_background0b.png',
+		forestBackground03: 'images/forest_background01a.png',
+		forestBackground04: 'images/forest_background01b.png',
+		forestBackground05: 'images/forest_background01a.png',
+		forestBackground06: 'images/forest_background01b.png',
+		forestBackground07: 'images/forest_background01b.png',
 
 		tree01: 'images/tree04a.png',
 		tree02: 'images/tree04a.png',
 		tree03: 'images/tree04a.png',
 		tree04: 'images/tree04a.png',
-		grass1: 'images/grass01.png',
-		grass2: 'images/grass02.png',
+		grass01: 'images/grass01.png',
+		grass02: 'images/grass02.png',
 		platform: 'images/platform.png',
 		platformV: 'images/platform_v.png',
 		rockPlatform1: 'images/rock_platform1.png',
@@ -112,14 +79,6 @@ var config = {
 			height: 113, 
 			frames: 35
 		},
-/*				
-		keke: {
-			url: 'images/keke_character2.png', 
-			width: 76, 
-			height: 128, 
-			frames: 35
-		},
-*/
 		// enemies
 		caterpillar02a: {
 			url: 'images/caterpillar02a.png',
@@ -433,7 +392,6 @@ var config = {
 		world: {
 			x: 0,
 			y: -(PolyworksStage.height),
-			// width: 4096,
 			width: PolyworksStage.width * 8,
 			height: PolyworksStage.height * 2
 		},
@@ -441,8 +399,6 @@ var config = {
 		clearCache: false,
 		bounds: {
 			start: 0,
-			// end: 1024
-			// end: 4020
 			end: (PolyworksStage.width * 8) - PolyworksStage.unit
 		},
 		attrs: [{
@@ -467,10 +423,10 @@ var config = {
 				}
 			},
 			{
-				name: 'moving_background01',
+				name: 'background01',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground0a',
+					img: 'forestBackground01',
 					start: {
 						x: 0,
 						y: -(PolyworksStage.height)
@@ -482,10 +438,10 @@ var config = {
 				}
 			},
 			{
-				name: 'moving_background02',
+				name: 'background02',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground0b',
+					img: 'forestBackground02',
 					start: {
 						x: PolyworksStage.width * 4,
 						y: -(PolyworksStage.height)
@@ -493,6 +449,34 @@ var config = {
 					phaser: {
 						width: PolyworksStage.width * 4,
 						height: PolyworksStage.height * 2
+					}
+				}
+			},
+			{
+				name: 'grass01',
+				cl: 'Sprite',
+				attrs: {
+					img: 'grass01',
+					phaser: {
+						width: (PolyworksStage.width * 4)
+					},
+					start: {
+						x: 0,
+						y: PolyworksStage.height - 200
+					}
+				}
+			},
+			{
+				name: 'grass02',
+				cl: 'Sprite',
+				attrs: {
+					img: 'grass02',
+					phaser: {
+						width: (PolyworksStage.width * 4)
+					},
+					start: {
+						x: (PolyworksStage.width * 4),
+						y: PolyworksStage.height - 256
 					}
 				}
 			},
@@ -512,103 +496,11 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree02',
-					// phaser: {
-					// 	width: PolyworksStage.height,
-					// 	height: PolyworksStage.height * 2,
-					// },
 					start: {
-						x: 3400,
+						x: (PolyworksStage.width * 8) - (PolyworksStage.height * 2),
 						y: (-PolyworksStage.height)
 					}
 				}
-			// },
-			// {
-			// 	name: 'branch1',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'branch02Left',
-			// 		start: {
-			// 			x: 600,
-			// 			y: world.height - 150
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	name: 'branch2',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'branch02Right',
-			// 		start: {
-			// 			x: 900,
-			// 			y: PolyworksStage.height - 200
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	name: 'branch1',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'branch02Left',
-			// 		start: {
-			// 			x: 600,
-			// 			y: world.height - 250
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	name: 'branch2',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'branch02Right',
-			// 		start: {
-			// 			x: 900,
-			// 			y: PolyworksStage.height - 300
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	name: 'branch1',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'branch02Left',
-			// 		start: {
-			// 			x: 600,
-			// 			y: world.height - 350
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	name: 'branch2',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'branch02Right',
-			// 		start: {
-			// 			x: 900,
-			// 			y: PolyworksStage.height - 400
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	name: 'branch3',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'branch02Left',
-			// 		start: {
-			// 			x: 600,
-			// 			y: PolyworksStage.height - 450
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	name: 'branch4',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'branch02Right',
-			// 		start: {
-			// 			x: 900,
-			// 			y: PolyworksStage.height - 500
-			// 		}
-			// 	}
 			}
 			]
 		},
@@ -646,7 +538,6 @@ var config = {
 					phaser: {
 						width: PolyworksStage.width * 8
 					},
-					// scale: [32, 2],
 					physics: {
 						immovable: true
 					}
@@ -839,34 +730,7 @@ var config = {
 					{
 						name: 'enemies',
 						cl: 'Enemies',
-						attrs: [
-						// {
-						// 	name: 'level1-sector0-enemy1',
-						// 	cl: 'AnimatedEnemy',
-						// 	attrs: {
-						// 		name: 'caterpillar02a-sprite',
-						// 		img: 'caterpillar02a',
-						// 		start: {
-						// 			x: 700,
-						// 			y: PolyworksStage.height - 50
-						// 		},
-						// 		physics: {
-						// 			deferredGravity: true,
-						// 			bounce: {
-						// 				x: 0,
-						// 				y: 0.2
-						// 			}
-						// 		},
-						// 		phaser: {
-						// 			health: 5
-						// 		},
-						// 		attack: 5,
-						// 		score: 500,
-						// 		defaultAnimation: '',
-						// 		animations: caterpillarAnimations
-						// 	}
-						// }
-						] 
+						attrs: [] 
 					},
 					{
 						name: 'bonuses',
@@ -1165,16 +1029,15 @@ var config = {
 		cl: 'LevelState',
 		world: {
 			x: 0,
-			y: -256,
-			width: 4096,
-			height: PolyworksStage.height + 256
+			y: -(PolyworksStage.height),
+			width: PolyworksStage.width * 8,
+			height: PolyworksStage.height * 2
 		},
 		clearWorld: true,
 		clearCache: false,
 		bounds: {
 			start: 0,
-			// end: 1024
-			end: 4020
+			end: (PolyworksStage.width * 8) - PolyworksStage.unit
 		},
 		attrs: [{
 			name: 'scenery',
@@ -1197,37 +1060,35 @@ var config = {
 				}
 			},
 			{
-				name: 'moving_background01',
+				name: 'background01',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground0a',
+					img: 'forestBackground03',
 					start: {
 						x: 0,
-						y: -(PolyworksStage.height * 0.5)
+						y: -(PolyworksStage.height)
 					},
 					phaser: {
-						width: 2048,
-						height: PolyworksStage.height * 1.5
+						width: PolyworksStage.width * 4,
+						height: PolyworksStage.height * 2
 					}
 				}
 			},
 			{
-				name: 'moving_background02',
+				name: 'background02',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground0b',
+					img: 'forestBackground04',
 					start: {
-						x: 2048,
-						y: -(PolyworksStage.height * 0.5)
+						x: PolyworksStage.width * 4,
+						y: -(PolyworksStage.height)
 					},
 					phaser: {
-						width: 2048,
-						height: PolyworksStage.height * 1.5
+						width: PolyworksStage.width * 4,
+						height: PolyworksStage.height * 2
 					}
 				}
-
 			},
-
 			{
 				name: 'tree01',
 				cl: 'Sprite',
@@ -1307,7 +1168,7 @@ var config = {
 			// 	name: 'grass0',
 			// 	cl: 'Sprite',
 			// 	attrs: {
-			// 		img: 'grass1',
+			// 		img: 'grass01',
 			// 		start: {
 			// 			x: 0,
 			// 			y: PolyworksStage.height - 220
@@ -1315,10 +1176,10 @@ var config = {
 			// 	}
 			// },
 			// {
-			// 	name: 'grass1',
+			// 	name: 'grass01',
 			// 	cl: 'Sprite',
 			// 	attrs: {
-			// 		img: 'grass2',
+			// 		img: 'grass02',
 			// 		start: {
 			// 			x: 2048,
 			// 			y: PolyworksStage.height - 220
@@ -1360,7 +1221,9 @@ var config = {
 						x: 0,
 						y: world.height - 20
 					},
-					scale: [32, 2],
+					phaser: {
+						width: PolyworksStage.width * 8
+					},
 					physics: {
 						immovable: true
 					}
@@ -1873,10 +1736,10 @@ var config = {
 				}
 			},
 			{
-				name: 'moving_background01',
+				name: 'background01',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground1',
+					img: 'forestBackground04',
 					phaser: {
 						width: 2048,
 						height: PolyworksStage.height * 1.5
@@ -1888,10 +1751,10 @@ var config = {
 				}
 			},
 			{
-				name: 'moving_background02',
+				name: 'background02',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground2',
+					img: 'forestBackground05',
 					phaser: {
 						width: 2048,
 						height: PolyworksStage.height * 1.5
@@ -1998,7 +1861,7 @@ var config = {
 			// 	name: 'grass0',
 			// 	cl: 'Sprite',
 			// 	attrs: {
-			// 		img: 'grass1',
+			// 		img: 'grass01',
 			// 		start: {
 			// 			x: 0,
 			// 			y: PolyworksStage.height - 220
@@ -2006,10 +1869,10 @@ var config = {
 			// 	}
 			// },
 			// {
-			// 	name: 'grass1',
+			// 	name: 'grass01',
 			// 	cl: 'Sprite',
 			// 	attrs: {
-			// 		img: 'grass2',
+			// 		img: 'grass02',
 			// 		start: {
 			// 			x: 2048,
 			// 			y: PolyworksStage.height - 220
@@ -2739,10 +2602,10 @@ var config = {
 				}
 			},
 			{
-				name: 'moving_background01',
+				name: 'background01',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground3',
+					img: 'forestBackground06',
 					phaser: {
 						width: 2048,
 						height: PolyworksStage.height * 1.5
@@ -2754,10 +2617,10 @@ var config = {
 				}
 			},
 			{
-				name: 'moving_background02',
+				name: 'background02',
 				cl: 'Sprite',
 				attrs: {
-					img: 'movingBackground4',
+					img: 'forestBackground07',
 					phaser: {
 						width: 2048,
 						height: PolyworksStage.height * 1.5
@@ -2774,7 +2637,7 @@ var config = {
 			// 	name: 'grass0',
 			// 	cl: 'Sprite',
 			// 	attrs: {
-			// 		img: 'grass1',
+			// 		img: 'grass01',
 			// 		start: {
 			// 			x: 0,
 			// 			y: PolyworksStage.height - 220
@@ -2782,10 +2645,10 @@ var config = {
 			// 	}
 			// },
 			// {
-			// 	name: 'grass1',
+			// 	name: 'grass01',
 			// 	cl: 'Sprite',
 			// 	attrs: {
-			// 		img: 'grass2',
+			// 		img: 'grass02',
 			// 		start: {
 			// 			x: 2048,
 			// 			y: PolyworksStage.height - 220
@@ -3528,7 +3391,7 @@ var config = {
 					},
 					phaser: {
 						width: 2048,
-						height: PolyworksStage.height * 1.5,
+						height: PolyworksStage.height * 1.5
 						// height: 512,
 					}
 				}
@@ -3544,7 +3407,7 @@ var config = {
 					},
 					phaser: {
 						width: 2048,
-						height: PolyworksStage.height * 1.5,
+						height: PolyworksStage.height * 1.5
 					}
 				}
 			// },
