@@ -49,8 +49,8 @@ Polyworks.State = (function() {
 	
 	State.prototype.createWorld = function() {
 		var world = this.model.world;
-		// trace('State['+this.model.name+']/createWorld, world params = ');
-		// trace(world);
+		trace('State['+this.model.name+']/createWorld, world params = ');
+		trace(world);
 		PolyworksGame.phaser.world.setBounds(world.x, world.y, world.width, world.height);
 	};
 

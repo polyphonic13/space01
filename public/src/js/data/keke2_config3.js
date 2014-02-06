@@ -434,7 +434,7 @@ var config = {
 			x: 0,
 			y: -(PolyworksStage.height),
 			// width: 4096,
-			width: PolyworksStage.width * 4,
+			width: PolyworksStage.width * 8,
 			height: PolyworksStage.height * 2
 		},
 		clearWorld: true,
@@ -443,7 +443,7 @@ var config = {
 			start: 0,
 			// end: 1024
 			// end: 4020
-			end: world.width - PolyworksStage.unit
+			end: (PolyworksStage.width * 8) - PolyworksStage.unit
 		},
 		attrs: [{
 			name: 'scenery',
@@ -476,7 +476,7 @@ var config = {
 						y: -(PolyworksStage.height)
 					},
 					phaser: {
-						width: PolyworksStage.width * 2,
+						width: PolyworksStage.width * 4,
 						height: PolyworksStage.height * 2
 					}
 				}
@@ -487,11 +487,11 @@ var config = {
 				attrs: {
 					img: 'movingBackground0b',
 					start: {
-						x: PolyworksStage.width * 2,
+						x: PolyworksStage.width * 4,
 						y: -(PolyworksStage.height)
 					},
 					phaser: {
-						width: PolyworksStage.width * 2,
+						width: PolyworksStage.width * 4,
 						height: PolyworksStage.height * 2
 					}
 				}
@@ -643,7 +643,10 @@ var config = {
 						x: 0,
 						y: world.height - 20
 					},
-					scale: [32, 2],
+					phaser: {
+						width: PolyworksStage.width * 8
+					},
+					// scale: [32, 2],
 					physics: {
 						immovable: true
 					}
