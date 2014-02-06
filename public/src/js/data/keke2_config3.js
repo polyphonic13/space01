@@ -1708,7 +1708,7 @@ var config = {
 		world: {
 			x: 0,
 			y: -256,
-			width: (PolworksStage.width * 8),
+			width: (PolyworksStage.width * 8),
 			height: PolyworksStage.height + 256
 		},
 		clearWorld: true,
