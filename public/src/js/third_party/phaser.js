@@ -34348,7 +34348,6 @@ Phaser.Utils.Debug.prototype = {
     * @param {string} [color] - Color of the debug info to be rendered (format is css color string).
     */
     renderRectangle: function (rect, color) {
-		console.log('Debug renderRectangle, rect = ' + rect.x + '/' + rect.y + ', ' + rect.width + '/' + rect.height + '\n\tcolor = ' + color);
         if (this.context == null)
         {
             return;
