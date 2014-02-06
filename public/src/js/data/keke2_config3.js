@@ -399,7 +399,7 @@ var config = {
 		clearCache: false,
 		bounds: {
 			start: 0,
-			end: (PolyworksStage.width * 8) - PolyworksStage.unit
+			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 4)
 		},
 		attrs: [{
 			name: 'scenery',
@@ -531,12 +531,13 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'platform',
+					phaser: {
+						width: PolyworksStage.width * 8,
+						height: 128
+					},
 					start: {
 						x: 0,
 						y: world.height - 20
-					},
-					phaser: {
-						width: PolyworksStage.width * 8
 					},
 					physics: {
 						immovable: true
@@ -1038,7 +1039,7 @@ var config = {
 		clearCache: false,
 		bounds: {
 			start: 0,
-			end: (PolyworksStage.width * 8) - PolyworksStage.unit
+			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 4)
 		},
 		attrs: [{
 			name: 'scenery',
@@ -1218,12 +1219,13 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'platform',
+					phaser: {
+						width: PolyworksStage.width * 8,
+						height: 128
+					},
 					start: {
 						x: 0,
 						y: world.height - 20
-					},
-					phaser: {
-						width: PolyworksStage.width * 8
 					},
 					physics: {
 						immovable: true
@@ -1706,15 +1708,14 @@ var config = {
 		world: {
 			x: 0,
 			y: -256,
-			width: 4096,
+			width: (PolworksStage.width * 8),
 			height: PolyworksStage.height + 256
 		},
 		clearWorld: true,
 		clearCache: false,
 		bounds: {
 			start: 0,
-			// end: 1024
-			end: 4020
+			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 4)
 		},
 		attrs: [{
 			name: 'scenery',
@@ -1910,11 +1911,14 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'platform',
+					phaser: {
+						width: PolyworksStage.width * 8,
+						height: 128
+					},
 					start: {
 						x: 0,
 						y: world.height - 20
 					},
-					scale: [32, 2],
 					physics: {
 						immovable: true
 					}
@@ -2685,11 +2689,14 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'platform',
+					phaser: {
+						width: PolyworksStage.width * 8,
+						height: 128
+					},
 					start: {
 						x: 0,
 						y: world.height - 20
 					},
-					scale: [32, 2],
 					physics: {
 						immovable: true
 					}
@@ -3471,11 +3478,14 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'rockPlatform1',
+					phaser: {
+						width: PolyworksStage.width * 8,
+						height: 128
+					},
 					start: {
 						x: 0,
 						y: world.height - 20
 					},
-					scale: [6, 1],
 					physics: {
 						immovable: true
 					}
