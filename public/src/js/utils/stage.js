@@ -1,17 +1,22 @@
 PolyworksStage = (function() {
 	var stage = {};
 	
+	stage.winW = 0;
+	stage.winH = 0;
 	stage.width = 0;
 	stage.height = 0;
 	stage.unit = 0;
 	
 	// set aspect ratio (width/height)
 	// var _ar = [16, 10];
-	// var _ar = [16, 9];
-	var _ar = [3, 2];
+	var _ar = [16, 9];
+	// var _ar = [3, 2];
 	
 	function _init() {
-		stage.height = (document.documentElement.clientHeight > 500) ? 500 : document.documentElement.clientHeight;
+		stage.winW = document.documentElement.clientWidth; 
+		stage.winH = document.documentElement.clientHeight;
+		
+		stage.height = (document.documentElement.clientHeight > 800) ? 800 : document.documentElement.clientHeight;
 		stage.width = ((document.documentElement.clientHeight/_ar[1]) * _ar[0]);
 
 		if(stage.width > document.documentElement.clientWidth) {
