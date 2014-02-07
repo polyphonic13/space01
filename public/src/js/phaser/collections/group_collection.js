@@ -34,7 +34,7 @@ Polyworks.GroupCollection = (function() {
 			group.add(collection[i]);
 		}
 		this.group = group;
-		
+
 		// trace('GROUP NOW = ');
 		// trace(this.group);
 	};

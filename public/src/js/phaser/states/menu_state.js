@@ -31,6 +31,7 @@ Polyworks.MenuState = (function() {
 	};
 	
 	MenuState.prototype.shutdown = function() {
+		Polyworks.EventCenter.unbind(Polyworks.Events.BUTTON_PRESSED, this.onButtonPressed, this);
 		MenuState._super.shutdown.call(this);
 	};
 	

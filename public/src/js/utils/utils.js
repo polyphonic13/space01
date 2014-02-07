@@ -1,6 +1,18 @@
 Utils = (function() {
 	var utils = {};
 
+	utils.each = function(list, callback, context) {
+		if(typeof(list) === 'array') {
+			var length = list.length;
+			for(var i = 0; i < length; i++) {
+				callback.call(context, list[i], i, list);
+			}
+		} else {
+			for(var key in list) {
+				callback.call(context, list[key], key, list);
+			}
+		}
+	};
 	
 	utils.clone = function(a) {
 		var obj = {};
@@ -31,18 +43,6 @@ Utils = (function() {
 		return length;
 	};
 
-	utils.reindexArray = function(array, start) {
-	    var temp = [];
-	    start = typeof start == 'undefined' ? 0 : start;
-	    start = typeof start != 'number' ? 0 : start;
-	    for(i in array){
-			// only add if this element is defined
-			if(array[i]) {
-		        temp[start++] = array[i];
-			}
-	    }
-	    return temp;
-	}
 	utils.mixin = function(c, p) {
 	    for(var k in p) if(p[k]) c[k] = p[k];
 	};

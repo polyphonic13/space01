@@ -102,6 +102,7 @@ PolyworksGame = (function() {
 		quit: function() {
 			// trace('PolyworksGame/quit');
 			if(!PolyworksGame.isQuit) {
+				_removeListeners();
 				PolyworksGame.isQuit = true;
 				// _killStates();
 				// Polyworks.EventCenter.reset();
@@ -135,19 +136,25 @@ PolyworksGame = (function() {
 	
 	function _create() {
 		_removeLoadingAnimation();
-		_beginEvents();
+		_addListeners();
 		_beginControls();
 		_beginStates();
 	}
 	
 	
-	function _beginEvents() {
+	function _addListeners() {
 		Polyworks.EventCenter.begin();
 		Polyworks.EventCenter.bind(Polyworks.Events.BUTTON_PRESSED, _onControlPressed, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_PRESSED, _onControlPressed, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_STATE, _onChangeState, this);
 	}
-	
+
+	function _removeListeners() {
+		Polyworks.EventCenter.unbind(Polyworks.Events.BUTTON_PRESSED, _onControlPressed, this);
+		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_PRESSED, _onControlPressed, this);
+		Polyworks.EventCenter.unbind(Polyworks.Events.CHANGE_STATE, _onChangeState, this);
+	}
+
 	function _onControlPressed(event) {
 		switch(event.value) {
 			case Polyworks.InputCodes.QUIT:

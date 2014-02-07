@@ -49,5 +49,11 @@ Polyworks.GUIConsole = (function() {
 		}
 	};
 	
+	GUIConsole.prototype.destroy = function() {
+		Polyworks.EventCenter.unbind(Polyworks.Events.SCORE_UPDATED, this.onScoreUpdated, this);
+		Polyworks.EventCenter.unbind(Polyworks.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
+		GUIConsole._super.destroy.call(this);
+	};
+	
 	return GUIConsole;
 })();
