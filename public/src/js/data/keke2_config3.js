@@ -320,7 +320,7 @@ var config = {
 		}
 	},
 	// STATES
-	initialState: 'level1',
+	initialState: 'menu',
 	states: [
 	// menu
 	{
@@ -401,7 +401,8 @@ var config = {
 			start: 0,
 			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 4)
 		},
-		attrs: [{
+		attrs: [
+		{
 			name: 'scenery',
 			cl: 'GroupCollection',
 			attrs: [
@@ -549,7 +550,8 @@ var config = {
 		{
 			name: 'sectors',
 			cl: 'SectorManager',
-			attrs: [{
+			attrs: [
+			{
 				name: 'sector1',
 				cl: 'Sector',
 				bounds: {
@@ -808,7 +810,7 @@ var config = {
 								x: 3750,
 								y: world.height - 125
 							},
-							scale: [1, 1],
+							scale: [0.6, 0.3],
 							physics: {
 								immovable: true,
 								allowGravity: false
@@ -825,7 +827,7 @@ var config = {
 								x: 3900,
 								y: world.height - 175
 							},
-							scale: [1, 1],
+							scale: [0.6, 0.3],
 							physics: {
 								immovable: true,
 								allowGravity: false
@@ -876,7 +878,7 @@ var config = {
 								x: 3780,
 								y: world.height - 325
 							},
-							scale: [0.7, 0.7],
+							scale: [0.6, 0.3],
 							physics: {
 								immovable: true,
 								allowGravity: false
@@ -893,7 +895,7 @@ var config = {
 								x: 3900,
 								y: world.height - 375
 							},
-							scale: [0.7, 0.7],
+							scale: [0.6, 0.3],
 							physics: {
 								immovable: true,
 								allowGravity: false
@@ -910,7 +912,7 @@ var config = {
 								x: 3500,
 								y: world.height - 425
 							},
-							scale: [1.5, 1],
+							scale: [1.5, 0.3],
 							physics: {
 								immovable: true,
 								allowGravity: false
@@ -1039,7 +1041,7 @@ var config = {
 		clearCache: false,
 		bounds: {
 			start: 0,
-			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 4)
+			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 2)
 		},
 		attrs: [{
 			name: 'scenery',
@@ -1146,7 +1148,7 @@ var config = {
 					// 	height: PolyworksStage.height * 2
 					// },
 					start: {
-						x: 2600,
+						x: 2480,
 						y: (-PolyworksStage.height)
 					}
 				}
@@ -1161,7 +1163,7 @@ var config = {
 					// 	height: PolyworksStage.height * 2
 					// },
 					start: {
-						x: 3000,
+						x: 2850,
 						y: (-PolyworksStage.height)
 					}
 				}
@@ -1237,12 +1239,129 @@ var config = {
 		{
 			name: 'sectors',
 			cl: 'SectorManager',
-			attrs: [{
+			attrs: [
+			{
 				name: 'sector1',
 				cl: 'Sector',
 				bounds: {
 					start: 0,
 					end: 1024
+				},
+				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
+				{
+					name: 'hazards',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
+				{
+					name: 'enemies',
+					cl: 'Enemies',
+					attrs: [						
+					{
+						name: 'level2-sector1-enemy1',
+						cl: 'AnimatedEnemy',
+						attrs: {
+							name: 'caterpillar02a-sprite',
+							img: 'caterpillar02a',
+							start: {
+								x: 700,
+								y: PolyworksStage.height - 50
+							},
+							physics: {
+								deferredGravity: true,
+								bounce: {
+									x: 0,
+									y: 0.2
+								}
+							},
+							attack: 5,
+							phaser: {
+								health: 5
+							},
+							score: 500,
+							defaultAnimation: '',
+							animations: caterpillarAnimations
+						}
+					}] 
+				},
+				{
+					name: 'bonuses',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				}
+				]
+			},
+			{
+				name: 'sector2',
+				cl: 'Sector',
+				bounds: {
+					start: 1024,
+					end: 2048
+				},
+				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
+				{
+					name: 'hazards',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
+				{
+					name: 'enemies',
+					cl: 'Enemies',
+					attrs: [{
+						name: 'level2-sector2-enemy0',
+						cl: 'AnimatedEnemy',
+						attrs: {
+							img: 'caterpillar02a',
+							start: {
+								x: 1200,
+								y: -100
+							},
+							physics: {
+								deferredGravity: true,
+								bounce: {
+									x: 0,
+									y: 0.2
+								}
+							},
+							speed: 0.5,
+							attack: 5,
+							phaser: {
+								health: 10
+							},
+							score: 1000,
+							movement: {
+								speed: 0.25,
+								type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+								formula: null
+							},
+							defaultAnimation: '',
+							animations: caterpillarAnimations
+						}
+					}]
+				},
+				{
+					name: 'bonuses',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				}
+				]
+			},
+			{
+				name: 'sector3',
+				cl: 'Sector',
+				bounds: {
+					start: 2048,
+					end: 3072
 				},
 				attrs: [
 				{
@@ -1255,7 +1374,7 @@ var config = {
 						attrs: {
 							img: 'vine01Left',
 							start: {
-								x: 1948,
+								x: 2048,
 								y: world.height - 115
 							},
 							setSize: [64, 16, 32, 32],
@@ -1287,11 +1406,11 @@ var config = {
 						attrs: {
 							img: 'branch02Left',
 							start: {
-								x: 2248,
-								y: world.height - 255
+								x: 2148,
+								y: world.height - 230
 							},
-							setSize: [64, 16, 32, 32],
-							// scale: [0.6, 0.3],
+							// setSize: [64, 16, 32, 32],
+							scale: [0.6, 0.3],
 							physics: {
 								immovable: true
 							}
@@ -1303,11 +1422,11 @@ var config = {
 						attrs: {
 							img: 'branch02Right',
 							start: {
-								x: 2448,
+								x: 2298,
 								y: world.height - 290
 							},
-							setSize: [64, 16, 32, 32],
-							// scale: [0.6, 0.3],
+							// setSize: [64, 16, 32, 32],
+							scale: [0.6, 0.3],
 							physics: {
 								immovable: true
 							}
@@ -1319,11 +1438,11 @@ var config = {
 						attrs: {
 							img: 'branch02Left',
 							start: {
-								x: 2648,
-								y: world.height - 300
+								x: 2448,
+								y: world.height - 360
 							},
-							setSize: [64, 16, 32, 32],
-							// scale: [0.6, 0.3],
+							// setSize: [64, 16, 32, 32],
+							scale: [0.6, 0.3],
 							physics: {
 								immovable: true
 							}
@@ -1335,11 +1454,11 @@ var config = {
 						attrs: {
 							img: 'branch02Right',
 							start: {
-								x: 2848,
-								y: world.height - 290
+								x: 2598,
+								y: world.height - 430
 							},
-							setSize: [64, 16, 32, 32],
-							// scale: [0.6, 0.3],
+							// setSize: [64, 16, 32, 32],
+							scale: [0.6, 0.3],
 							physics: {
 								immovable: true
 							}
@@ -1351,11 +1470,11 @@ var config = {
 						attrs: {
 							img: 'branch02Left',
 							start: {
-								x: 3048,
-								y: world.height - 280
+								x: 2748,
+								y: world.height - 380
 							},
-							setSize: [64, 16, 32, 32],
-							// scale: [0.6, 0.3],
+							// setSize: [64, 16, 32, 32],
+							scale: [0.6, 0.3],
 							physics: {
 								immovable: true
 							}
@@ -1367,11 +1486,11 @@ var config = {
 						attrs: {
 							img: 'branch02Right',
 							start: {
-								x: 3248,
-								y: world.height - 300
+								x: 2898,
+								y: world.height - 350
 							},
-							setSize: [64, 16, 32, 32],
-							// scale: [0.6, 0.3],
+							// setSize: [64, 16, 32, 32],
+							scale: [0.6, 0.3],
 							physics: {
 								immovable: true
 							}
@@ -1379,210 +1498,94 @@ var config = {
 					}
 					]
 				},
-					{
-						name: 'hazards',
-						cl: 'PhysicalGroupCollection',
-						attrs: []
-					},
-					{
-						name: 'enemies',
-						cl: 'Enemies',
-						attrs: [						
-						{
-							name: 'level2-sector1-enemy1',
-							cl: 'AnimatedEnemy',
-							attrs: {
-								name: 'caterpillar02a-sprite',
-								img: 'caterpillar02a',
-								start: {
-									x: 700,
-									y: PolyworksStage.height - 50
-								},
-								physics: {
-									deferredGravity: true,
-									bounce: {
-										x: 0,
-										y: 0.2
-									}
-								},
-								attack: 5,
-								phaser: {
-									health: 5
-								},
-								score: 500,
-								defaultAnimation: '',
-								animations: caterpillarAnimations
-							}
-						}] 
-					},
-					{
-						name: 'bonuses',
-						cl: 'PhysicalGroupCollection',
-						attrs: []
-					}
-				]
-			},
-			{
-				name: 'sector2',
-				cl: 'Sector',
-				bounds: {
-					start: 1024,
-					end: 2048
-				},
-				attrs: [
 				{
-					name: 'dynamicTerrain',
+					name: 'hazards',
 					cl: 'PhysicalGroupCollection',
 					attrs: []
 				},
-					{
-						name: 'hazards',
-						cl: 'PhysicalGroupCollection',
-						attrs: []
-					},
-					{
-						name: 'enemies',
-						cl: 'Enemies',
-						attrs: [{
-							name: 'level2-sector2-enemy0',
-							cl: 'AnimatedEnemy',
-							attrs: {
-								img: 'caterpillar02a',
-								start: {
-									x: 1100,
-									y: 0
-								},
-								physics: {
-									deferredGravity: true,
-									bounce: {
-										x: 0,
-										y: 0.2
-									}
-								},
-								speed: 0.5,
-								attack: 5,
-								phaser: {
-									health: 10
-								},
-								score: 1000,
-								movement: {
-									speed: 0.25,
-									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-									formula: null
-								},
-								defaultAnimation: '',
-								animations: caterpillarAnimations
-							}
-						}]
-					},
-					{
-						name: 'bonuses',
-						cl: 'PhysicalGroupCollection',
-						attrs: []
-					}
-				]
-			},
-			{
-				name: 'sector3',
-				cl: 'Sector',
-				bounds: {
-					start: 2048,
-					end: 3072
-				},
-				attrs: [
 				{
-					name: 'dynamicTerrain',
-					cl: 'PhysicalGroupCollection',
-					attrs: []
-				},
-					{
-						name: 'hazards',
-						cl: 'PhysicalGroupCollection',
-						attrs: []
-					},
-					{
-						name: 'enemies',
-						cl: 'Enemies',
-						attrs: [{
-							name: 'level2-sector3-enemy0',
-							cl: 'AnimatedEnemy',
-							attrs: {
-								img: 'caterpillar02a',
-								start: {
-									x: 2150,
-									y: 0
-								},
-								physics: {
-									deferredGravity: true,
-									bounce: {
-										x: 0,
-										y: 0.2
-									}
-								},
-								attack: 5,
-								phaser: {
-									health: 10
-								},
-								score: 2000,
-								movement: {
-									speed: 1,
-									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-									formula: null
-								},
-								defaultAnimation: '',
-								animations: caterpillarAnimations
-							}
-						},
-						{
-							name: 'level2-sector3-enemy1',
-							cl: 'AnimatedEnemy',
-							attrs: {
-								img: 'caterpillar02a',
-								start: {
-									x: 2850,
-									y: 0
-								},
-								physics: {
-									deferredGravity: true,
-									bounce: {
-										x: 0,
-										y: 0.2
-									}
-								},
-								attack: 5,
-								phaser: {
-									health: 10
-								},
-								score: 2000,
-								movement: {
-									speed: 1,
-									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-									formula: null
-								},
-								defaultAnimation: '',
-								animations: caterpillarAnimations
-							}
-						}]
-					},
-					{
-						name: 'bonuses',
-						cl: 'PhysicalGroupCollection',
-						attrs:  [{
-							cl: 'Sprite',
-							attrs: {
-								img: 'lollipop',
-								start: {
-									x: 2740,
-									y: 20
-								},
-								physics: {
-									immovable: true
-								},
-								score: 100,
+					name: 'enemies',
+					cl: 'Enemies',
+					attrs: [{
+						name: 'level2-sector3-enemy0',
+						cl: 'AnimatedEnemy',
+						attrs: {
+							img: 'caterpillar02a',
+							start: {
+								x: 2150,
+								y: 0
+							},
+							physics: {
+								deferredGravity: true,
+								bounce: {
+									x: 0,
+									y: 0.2
+								}
+							},
+							attack: 5,
+							phaser: {
 								health: 10
-							}
-						}]
-					}
+							},
+							score: 2000,
+							movement: {
+								speed: 1,
+								type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+								formula: null
+							},
+							defaultAnimation: '',
+							animations: caterpillarAnimations
+						}
+					},
+					{
+						name: 'level2-sector3-enemy1',
+						cl: 'AnimatedEnemy',
+						attrs: {
+							img: 'caterpillar02a',
+							start: {
+								x: 2850,
+								y: 0
+							},
+							physics: {
+								deferredGravity: true,
+								bounce: {
+									x: 0,
+									y: 0.2
+								}
+							},
+							attack: 5,
+							phaser: {
+								health: 10
+							},
+							score: 2000,
+							movement: {
+								speed: 1,
+								type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+								formula: null
+							},
+							defaultAnimation: '',
+							animations: caterpillarAnimations
+						}
+					}]
+				},
+				{
+					name: 'bonuses',
+					cl: 'PhysicalGroupCollection',
+					attrs:  [{
+						cl: 'Sprite',
+						attrs: {
+							img: 'lollipop',
+							start: {
+								x: 2740,
+								y: 20
+							},
+							physics: {
+								immovable: true
+							},
+							score: 100,
+							health: 10
+						}
+					}]
+				}
 				]
 			},
 			{
@@ -1596,7 +1599,40 @@ var config = {
 				{
 					name: 'dynamicTerrain',
 					cl: 'PhysicalGroupCollection',
-					attrs: []
+					attrs: [
+					{
+						name: 'platform9',
+						cl: 'Sprite',
+						attrs: {
+							img: 'branch02Left',
+							start: {
+								x: 3098,
+								y: world.height - 300
+							},
+							// setSize: [64, 16, 32, 32],
+							scale: [0.6, 0.3],
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
+						name: 'platform9',
+						cl: 'Sprite',
+						attrs: {
+							img: 'branch02Right',
+							start: {
+								x: 3248,
+								y: world.height - 380
+							},
+							// setSize: [64, 16, 32, 32],
+							scale: [0.6, 0.3],
+							physics: {
+								immovable: true
+							}
+						}
+					}
+					]
 				},
 					{
 						name: 'hazards',
@@ -1933,8 +1969,8 @@ var config = {
 						x: 700,
 						y: world.height - 115
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -1949,8 +1985,8 @@ var config = {
 						x: 900,
 						y: world.height - 140
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -1965,8 +2001,8 @@ var config = {
 						x: 1948,
 						y: world.height - 115
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -1981,8 +2017,8 @@ var config = {
 						x: 2148,
 						y: world.height - 180
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -1997,8 +2033,8 @@ var config = {
 						x: 2248,
 						y: world.height - 255
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -2013,8 +2049,8 @@ var config = {
 						x: 2448,
 						y: world.height - 290
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -2029,8 +2065,8 @@ var config = {
 						x: 2648,
 						y: world.height - 340
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -2045,8 +2081,8 @@ var config = {
 						x: 2848,
 						y: world.height - 390
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -2061,8 +2097,8 @@ var config = {
 						x: 3048,
 						y: world.height - 440
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -2077,8 +2113,8 @@ var config = {
 						x: 3248,
 						y: world.height - 490
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -2711,8 +2747,8 @@ var config = {
 						x: 700,
 						y: world.height - 115
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -2727,8 +2763,8 @@ var config = {
 						x: 900,
 						y: world.height - 140
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -2743,8 +2779,8 @@ var config = {
 						x: 1948,
 						y: world.height - 115
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -2759,8 +2795,8 @@ var config = {
 						x: 2148,
 						y: world.height - 180
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -2775,8 +2811,8 @@ var config = {
 						x: 2248,
 						y: world.height - 255
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -2791,8 +2827,8 @@ var config = {
 						x: 2398,
 						y: world.height - 330
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -2807,8 +2843,8 @@ var config = {
 						x: 2548,
 						y: world.height - 405
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -2823,8 +2859,8 @@ var config = {
 						x: 2698,
 						y: world.height - 480
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -2839,8 +2875,8 @@ var config = {
 						x: 2848,
 						y: world.height - 555
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
@@ -2855,8 +2891,8 @@ var config = {
 						x: 3248,
 						y: world.height - 630
 					},
-					setSize: [64, 16, 32, 32],
-					// scale: [0.6, 0.3],
+					// setSize: [64, 16, 32, 32],
+					scale: [0.6, 0.3],
 					physics: {
 						immovable: true
 					}
