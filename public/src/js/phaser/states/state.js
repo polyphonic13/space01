@@ -23,14 +23,12 @@ Polyworks.State = (function() {
 	}
 	
 	State.prototype.preLoad = function() {
-		// trace('State['+this.model.name+']/preload');
 		if(!this.model.loaded) {
 			this.model.loaded = true;
 		}
 	};
 	
 	State.prototype.create = function() {
-		// trace('State['+this.model.name+']/create');
 		if(!this.model.created) {
 			this.createState();
 			this.model.created = true;
@@ -38,29 +36,44 @@ Polyworks.State = (function() {
 	};
 
 	State.prototype.createState = function() {
-		// trace('\nState['+this.model.name+']/createState, this = ');
-		// trace(this);
 		this.gameOver = PolyworksGame.gameOver; 
 		this.createWorld();
+
+		if(this.model.pausable) {
+			Polyworks.EventCenter.bind(Polyworks.Events.PAUSE_STATE, this.onPauseState, this);
+			Polyworks.EventCenter.bind(Polyworks.Events.RESUME_STATE, this.onResumeState, this);
+		}
 		this.begin();
-		// trace('State['+this.model.name+'] end create state');
-		// trace(this);
+	};
+	
+	State.prototype.onPauseState = function() {
+		trace(this);
+		trace('State['+this.model.name+']/onPauseState');
+		this.paused = true;
+	};
+	
+	State.prototype.onResumeState = function() {
+		trace('State['+this.model.name+']/onResuemState');
+		this.paused = false;
 	};
 	
 	State.prototype.createWorld = function() {
 		var world = this.model.world;
-		trace('State['+this.model.name+']/createWorld, world params = ');
-		trace(world);
 		PolyworksGame.phaser.world.setBounds(world.x, world.y, world.width, world.height);
 	};
 
+	State.prototype.update = function() {
+		if(!this.paused) {
+			// extend update implementation
+		}
+	};
+	
 	State.prototype.shutdown = function() {
-		// trace('State['+this.model.name+']/shutdown');
+		Polyworks.EventCenter.unbind(Polyworks.Events.PAUSE_STATE, this.onPauseState);
+		Polyworks.EventCenter.unbind(Polyworks.Events.RESUME_STATE, this.onResumeState);
+
 		this.model.created = false;
-		// this.update = null;
 		this.destroy();
-		// this.removeAll();
-		// trace('end state shutdown');
 	};
 
 	return State;

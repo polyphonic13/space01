@@ -71,37 +71,35 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.update = function() {
-		// trace('LevelState['+this.model.name+']/update');
-		// trace('this.player.x = ' + this.player.body.x + ', end = ' + this.model.bounds.end);
-		if(this.player.body.x >= this.model.bounds.end) {
-			// PolyworksGame.currentLevel++;
-			PolyworksGame.changeState('intermission');
-		} else {
-			// update active sector via sector manager
-			var updateParams = {
-				player: this.player.sprite,
-				terrain: this.terrain.group,
-				position: {
-					x: this.game.camera.x + (PolyworksStage.width/2),
-					y: this.game.camera.y + (PolyworksStage.height/2)
-				}
-			};
-			this.sectorManager.pwUpdate(updateParams);
+		if(!this.paused) {
+			// trace('LevelState['+this.model.name+']/update');
+			if(this.player.body.x >= this.model.bounds.end) {
+				PolyworksGame.changeState('intermission');
+			} else {
+				// update active sector via sector manager
+				var updateParams = {
+					player: this.player.sprite,
+					terrain: this.terrain.group,
+					position: {
+						x: this.game.camera.x + (PolyworksStage.width/2),
+						y: this.game.camera.y + (PolyworksStage.height/2)
+					}
+				};
+				this.sectorManager.pwUpdate(updateParams);
 
-			// update player with active sector members & terrain
-			var sector = this.sectorManager.activeSector;
-			// trace('sector.enemies = ');
-			// trace(sector.enemies);
-			// trace('bonuses = ');
-			// trace(sector.bonuses);
-			this.player.pwUpdate({
-				terrain: this.terrain.group,
-				dynamicTerrain: sector.dynamicTerrain.getActive(),
-				hazards: sector.hazards.getActive(),
-				enemies: sector.enemies.getActive(),
-				bonuses: sector.bonuses.getActive(),
-				context: this
-			});
+				// update player with active sector members & terrain
+				var sector = this.sectorManager.activeSector;
+
+				this.player.pwUpdate({
+					terrain: this.terrain.group,
+					dynamicTerrain: sector.dynamicTerrain.getActive(),
+					hazards: sector.hazards.getActive(),
+					enemies: sector.enemies.getActive(),
+					bonuses: sector.bonuses.getActive(),
+					context: this
+				});
+			}
+			LevelState._super.update.call(this);
 		}
 	};
 	

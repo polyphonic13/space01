@@ -10,26 +10,29 @@ Polyworks.EventCenter = (function() {
 	eventCenter.bind = function(type, callback, context) {
 		var ctx = context || this;
 		// trace('EventCenter/bind, type = ' + type);
+		// trace(callback);
 		if(!_listeners[type]) {
 			_listeners[type] = [];
 		}
-		// _listeners[type].push({ func: callback, ctx: ctx });
-		_listeners[type].push(callback);
+		_listeners[type].push({ func: callback, ctx: ctx });
+		// trace('_listeners['+type+'] now = ');
+		// trace(_listeners[type]);
 	};
 	
 	eventCenter.trigger = function(params) {
-		// trace('EventCenter/trigger, params = ');
-		// trace(params);
+		trace('EventCenter/trigger, params = ');
+		trace(params);
 		for(var key in _listeners) {
 			if(key === params.type) {
-				// trace('\t_listeners['+key+']. length = ' + _listeners[key].length);
-				// trace(_listeners[key]);
+				trace('\t_listeners['+key+']. length = ' + _listeners[key].length);
+				trace(_listeners[key]);
 				if(_listeners[key]) {
 					for(var i = 0; i < _listeners[key].length; i++) {
-						// var func = _listeners[key][i].func;
-						// var ctx = _listeners[key][i].ctx;
-						// ctx[func].call(this, params);
-						_listeners[key][i].call(this, params);
+						trace('\t\t_listeners['+key+']['+i+'] = ');
+						trace(_listeners[key][i]);
+						var func = _listeners[key][i].func;
+						var ctx = _listeners[key][i].ctx;
+						func.call(ctx, params);
 					}
 				}
 			}

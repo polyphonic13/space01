@@ -34,7 +34,8 @@ Polyworks.GUIConsole = (function() {
 	};
 	
 	GUIConsole.prototype.onHealthUpdated = function() {
-		// trace('GUIConsole/onHealthUpdated');
+		trace('GUIConsole/onHealthUpdated');
+		trace(this);
 		_this.parseAndSetContent('health');
 	};
 	

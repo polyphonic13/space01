@@ -2,10 +2,10 @@ Polyworks.Player = (function() {
 	// Utils.inherits(Player, Polyworks.AnimatedSprite);
 	Utils.inherits(Player, Polyworks.Sprite);
 
-	var _this;
+	// var this;
 	function Player(params) {
 		// trace('Player/constructor');
-		_this = this;
+		// this = this;
 		this.model = new Polyworks.Model(params);
 		Player._super.constructor.call(this, params);
 	}
@@ -82,33 +82,33 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.onControlButtonPressed = function(event) {
-		_this.activeControls[event.value] = true;
+		this.activeControls[event.value] = true;
 		// trace('Player.prototype.onControlButtonPressed, event.value = ' + event.value);
-		// trace(_this.activeControls);
+		// trace(this.activeControls);
 		if(event.value === Polyworks.InputCodes.RESET) {
-			_this.activeControls[Polyworks.InputCodes.LEFT] = false;
-			_this.activeControls[Polyworks.InputCodes.RIGHT] = false;
+			this.activeControls[Polyworks.InputCodes.LEFT] = false;
+			this.activeControls[Polyworks.InputCodes.RIGHT] = false;
 		} else if(event.value === Polyworks.InputCodes.LEFT) {
-			_this.activeControls[Polyworks.InputCodes.RIGHT] = false;
+			this.activeControls[Polyworks.InputCodes.RIGHT] = false;
 		} else if(event.value === Polyworks.InputCodes.RIGHT) {
-			_this.activeControls[Polyworks.InputCodes.LEFT] = false;
+			this.activeControls[Polyworks.InputCodes.LEFT] = false;
 		}
-		_this.updatePosition();
+		this.updatePosition();
 	};
 	
 	Player.prototype.onControlButtonReleased = function(event) {
-		_this.activeControls[event.value] = false;
+		this.activeControls[event.value] = false;
 		// trace('Player.prototype.onControlButtonReleased, event.value = ' + event.value);
-		// trace(_this.activeControls);
+		// trace(this.activeControls);
 		if(event.value === Polyworks.InputCodes.RESET) {
-			_this.activeControls[Polyworks.InputCodes.LEFT] = false;
-			_this.activeControls[Polyworks.InputCodes.RIGHT] = false;
+			this.activeControls[Polyworks.InputCodes.LEFT] = false;
+			this.activeControls[Polyworks.InputCodes.RIGHT] = false;
 		} else if(event.value === Polyworks.InputCodes.LEFT) {
-			_this.activeControls[Polyworks.InputCodes.RIGHT] = false;
+			this.activeControls[Polyworks.InputCodes.RIGHT] = false;
 		} else if(event.value === Polyworks.InputCodes.RIGHT) {
-			_this.activeControls[Polyworks.InputCodes.LEFT] = false;
+			this.activeControls[Polyworks.InputCodes.LEFT] = false;
 		}
-		_this.updatePosition();
+		this.updatePosition();
 	};
 	
 	Player.prototype.updatePosition = function() {
@@ -262,7 +262,7 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.receiveDamage = function(damage) {
-		if(!_this.justDamaged) {
+		if(!this.justDamaged) {
 			// trace('Player/receiveDamage, damage = ' + damage + ', health = ' + this.health);
 			this.health -= damage;
 			PolyworksGame.setHealth(this.health);
@@ -270,16 +270,16 @@ Polyworks.Player = (function() {
 				// this.destroy();
 				PolyworksGame.changeState('gameOver');
 			} else {
-				_this.justDamaged = true;
-				_this.damageTimer = setTimeout(_this.resetJustDamaged, _this.damageInterval);
+				this.justDamaged = true;
+				this.damageTimer = setTimeout(this.resetJustDamaged, this.damageInterval);
 			}
 		}
 	};
 	
 	Player.prototype.resetJustDamaged = function() {
  		// trace('Player/resetJustDamaged');
-		clearTimeout(_this.damageTimer);
-		_this.justDamaged = false;
+		clearTimeout(this.damageTimer);
+		this.justDamaged = false;
 	};
 	
 	Player.prototype.destroy = function() {

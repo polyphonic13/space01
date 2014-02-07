@@ -4,6 +4,8 @@ Polyworks.Events = {
 	CONTROL_PRESSED: 'controlPressed',
 	CONTROL_RELEASED: 'controlReleased',
 	CHANGE_STATE: 'changeState',
+	PAUSE_STATE: 'pauseState',
+	RESUME_STATE: 'resumeState',
 	ENEMY_COLLISION: 'enemyCollision',
 	ENEMY_DESTROYED: 'enemyDestroyed',
 	BONUS_COLLISION: 'bonusCollision',

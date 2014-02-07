@@ -16,7 +16,7 @@ Polyworks.MenuState = (function() {
 	};
 	
 	MenuState.prototype.addListeners = function() {
-		Polyworks.EventCenter.bind(Polyworks.Events.BUTTON_PRESSED, this.onButtonPressed);
+		Polyworks.EventCenter.bind(Polyworks.Events.BUTTON_PRESSED, this.onButtonPressed, this);
 	};
 	
 	MenuState.prototype.onButtonPressed = function(event) {

@@ -140,7 +140,8 @@ var config = {
 			}]
 		},
 		buttons: {
-			menu: [{
+			menu: [
+			{
 				name: 'start',
 				cl: 'InputButton',
 				attrs: {
@@ -177,7 +178,8 @@ var config = {
 				}
 			}
 			],
-			intermission: [{
+			intermission: [
+			{
 				name: 'next',
 				cl: 'InputButton',
 				attrs: {
@@ -254,7 +256,8 @@ var config = {
 				}
 			}
 			],
-			level: [{
+			level: [
+			{
 				name: 'invisBtn',
 				cl: 'InputButton',
 				attrs: {
@@ -316,8 +319,7 @@ var config = {
 					inputCode: Polyworks.InputCodes.PAUSE,
 					events: {
 						pressed: {
-							type: Polyworks.Events.CHANGE_STATE,
-							value: 'menu'
+							type: Polyworks.Events.PAUSE_STATE
 						}
 					}
 				}
@@ -407,6 +409,7 @@ var config = {
 			start: 0,
 			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 4)
 		},
+		pausable: true,
 		attrs: [
 		{
 			name: 'scenery',
