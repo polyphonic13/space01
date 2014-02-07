@@ -123,7 +123,7 @@ PolyworksGame = (function() {
 	function _preload() {
 		// trace('_preload');
 		var images = _model.images;
-		var phaser = PolyworksGames.phaser;
+		var phaser = PolyworksGame.phaser;
 		// trace('preload images');
 		Utils.each(images,
 			function(i, key) {

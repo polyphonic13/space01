@@ -20,12 +20,9 @@ Polyworks.Sprite = (function() {
 		var phaser = attrs.phaser; 
 
 		// set phaser.sprite specific attributes
-		Utils.each(phaser,
-			function(p, key) {
-				this[key] = p;
-			},
-		 	this
-		);
+		for(var key in phaser) {
+			this[key] = phaser[key];
+		}
 
 		// call phaser.sprite methods on other attributes
 		var scale = attrs.scale;
@@ -95,14 +92,9 @@ Polyworks.Sprite = (function() {
 	
 	Sprite.prototype.beginPhysics = function(physics) {
 		// trace('\n\nSprite['+this.model.name+']/beginPhysics');
-		Utils.each(physics,
-			function(p, key) {
-				if(key !== 'gravity') {
-					this.body[key] = p;
-				}
-			},
-			true
-		);
+		for(var key in physics) {
+			this.body[key] = physics[key];
+		}
 
 		if(!physics.deferredGravity && !physics.immovable) {
 			if(!physics.gravity) {
@@ -152,7 +144,7 @@ Polyworks.Sprite = (function() {
 	};
 	
 	Sprite.prototype.beginAnimations = function(animations) {
-		Utils.each(animations,
+			Utils.each(animations,
 			function(a, key) {
 				this.animations.add(key, a.keyFrames, a.frameRate);
 			},

@@ -2,7 +2,7 @@ Utils = (function() {
 	var utils = {};
 
 	utils.each = function(list, callback, context) {
-		if(typeof(list) === 'array') {
+		if(Array.isArray(list)) {
 			var length = list.length;
 			for(var i = 0; i < length; i++) {
 				callback.call(context, list[i], i, list);

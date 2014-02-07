@@ -31,14 +31,10 @@ Polyworks.GUIConsole = (function() {
 	
 	GUIConsole.prototype.onScoreUpdated = function() {
 		// trace('GUIConsole/onScoreUpdated');
-		// trace(this);
-		// trace(_this);
-		_this.parseAndSetContent('score');
+		this.parseAndSetContent('score');
 	};
 	
 	GUIConsole.prototype.onHealthUpdated = function() {
-		trace('GUIConsole/onHealthUpdated');
-		trace(this);
 		_this.parseAndSetContent('health');
 	};
 	

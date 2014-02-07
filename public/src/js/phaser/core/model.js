@@ -26,7 +26,7 @@ Polyworks.Model = (function() {
 	
 	Model.prototype.set = function(params) {
 		Utils.each(params,
-			function(p, k) {
+			function(p, key) {
 				this[key] = p;
 			},
 			this
