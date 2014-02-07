@@ -60,8 +60,8 @@ Polyworks.EventCenter = (function() {
 
 	eventCenter.reset = function() {
 		// iterate thru _listeners object
-		// for each type, set type array to [] and delete
-		// type from _listeners
+		// for each type, remove all array elements
+		// then delete type from _listeners
 		Utils.each(_listeners,
 			function(l, key) {
 				l = [];
