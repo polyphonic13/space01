@@ -28,11 +28,13 @@ Polyworks.GroupCollection = (function() {
 			group = game.add.group();
 		}
 
-		for(var i = 0; i < collection.length; i++) {
-			// trace('\t\tcollection['+i+'] = ');
-			// trace(collection[i]);
-			group.add(collection[i]);
-		}
+		Utils.each(collection,
+			function(c) {
+				group.add(c);
+			},
+			this
+		);
+
 		this.group = group;
 
 		// trace('GROUP NOW = ');

@@ -6,9 +6,12 @@ Polyworks.Model = (function() {
 		// trace(params);
 		_this = this;
 		this.active = true;
-		for(var key in params) {
-			this[key] = params[key];
-		}
+		Utils.each(params,
+			function(p, key) {
+				this[key] = p;
+			},
+			this
+		);
 	}
 	
 	Model.prototype.get = function(prop) {
@@ -22,9 +25,12 @@ Polyworks.Model = (function() {
 	};
 	
 	Model.prototype.set = function(params) {
-		for(var key in params) {
-			this[key] = params[key];
-		}
+		Utils.each(params,
+			function(p, k) {
+				this[key] = p;
+			},
+			this
+		);
 	};
 	
 	return Model;

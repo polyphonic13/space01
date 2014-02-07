@@ -52,7 +52,7 @@ Polyworks.Player = (function() {
 		this.__defineGetter__('sprite', function() {
 			return this;
 		});
-	}
+	};
 	
 	Player.prototype.beginWorld = function() {
 		// trace('Player/beginWorld');
@@ -196,9 +196,12 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.checkCollision = function(collection, callback, physics, context) {
 		// trace('Player/checkCollision, health = ' + this.health);
-		for(var i = 0; i < collection.length; i++) {
-			physics.overlap(this, collection[i], callback, null, context);
-		}
+		Utils.each(collection,
+			function(c) {
+				physics.overlap(this, c, callback, null, context);
+			},
+			this
+		);
 	};
 	
 	Player.prototype.dynamicTerrainCollision = function(player, terrain) {

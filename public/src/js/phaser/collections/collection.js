@@ -16,20 +16,19 @@ Polyworks.Collection = (function() {
 		var child;
 		var params;
 
-		for(var i = 0; i < children.length; i++) {
-			params = children[i];
-			params.game = game;
-			params.ancestor = this;
+		Utils.each(children,
+			function(c, i) {
+				c.game = game;
+				c.ancestor = this;
 
-			// trace('\tchildren['+children[i].name+'].cl = ' + params.cl);
-			// trace(params);
+				child = new Polyworks[c.cl](c);
+				child.begin();
 
-			child = new Polyworks[params.cl](params);
-			child.begin();
-
-			collection.push(child);
-			nameIndex[children[i].name] = i;
-		}
+				collection.push(child);
+				nameIndex[c.name] = i;
+			},
+			this
+		);
 
 		this.model.set({ collection: collection, nameIndex: nameIndex });
 	};
@@ -46,11 +45,7 @@ Polyworks.Collection = (function() {
 	
 	Collection.prototype.destroy = function() {
 		var collection = this.model.collection;
-		// for(var i = 0; i < collection.length; i++) {
-		// 	if(collection[i].destroy) {
-		// 		collection[i].destroy();
-		// 	}
-		// }
+
 		while(collection.length > 0) {
 			collection.pop();
 		}

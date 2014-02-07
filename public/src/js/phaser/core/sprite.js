@@ -18,11 +18,14 @@ Polyworks.Sprite = (function() {
 
 		var attrs = this.model.attrs;
 		var phaser = attrs.phaser; 
-		
+
 		// set phaser.sprite specific attributes
-		for(var key in phaser) {
-			this[key] = phaser[key];
-		}
+		Utils.each(phaser,
+			function(p, key) {
+				this[key] = p;
+			},
+		 	this
+		);
 
 		// call phaser.sprite methods on other attributes
 		var scale = attrs.scale;
@@ -53,7 +56,7 @@ Polyworks.Sprite = (function() {
 			this.beginPhysics(attrs.physics);
 		}
 		if(attrs.animations) {
-			this.beginAnimations(attrs.animations)
+			this.beginAnimations(attrs.animations);
 		}
 	};
 
@@ -92,12 +95,15 @@ Polyworks.Sprite = (function() {
 	
 	Sprite.prototype.beginPhysics = function(physics) {
 		// trace('\n\nSprite['+this.model.name+']/beginPhysics');
-		for(var key in physics) {
-			// trace(key + ' = ' + physics[key]);
-			if(key !== 'gravity') {
-				this.body[key] = physics[key];
-			}
-		}
+		Utils.each(physics,
+			function(p, key) {
+				if(key !== 'gravity') {
+					this.body[key] = p;
+				}
+			},
+			true
+		);
+
 		if(!physics.deferredGravity && !physics.immovable) {
 			if(!physics.gravity) {
 				this.body.gravity = world.gravity;
@@ -146,12 +152,12 @@ Polyworks.Sprite = (function() {
 	};
 	
 	Sprite.prototype.beginAnimations = function(animations) {
-		// for(var i = 0; i < animations.length; i++) {
-		// 	this.animations.add(animations[i].name, animations[i].keyFrames, animations[i].frameRate);
-		// }
-		for(var key in animations) {
-			this.animations.add(key, animations[key].keyFrames, animations[key].frameRate);
-		}
+		Utils.each(animations,
+			function(a, key) {
+				this.animations.add(key, a.keyFrames, a.frameRate);
+			},
+			this
+		);
 
 		var defaultAnimation = this.model.defaultAnimation;
 		if(defaultAnimation) {

@@ -1,3 +1,13 @@
+/*
+	_listeners: {
+		type: [
+		{
+			callback: cb,
+			context: ctx
+		}
+		]
+	}
+*/
 Polyworks.EventCenter = (function() {
 
 	var eventCenter = {};
@@ -22,20 +32,14 @@ Polyworks.EventCenter = (function() {
 	eventCenter.trigger = function(params) {
 		// trace('EventCenter/trigger, params = ');
 		// trace(params);
-		for(var key in _listeners) {
-			if(key === params.type) {
-				// trace('\t_listeners['+key+']. length = ' + _listeners[key].length);
-				// trace(_listeners[key]);
-				if(_listeners[key]) {
-					for(var i = 0; i < _listeners[key].length; i++) {
-						// trace('\t\t_listeners['+key+']['+i+'] = ');
-						// trace(_listeners[key][i]);
-						var callback = _listeners[key][i].callback;
-						var context = _listeners[key][i].context;
-						callback.call(context, params);
-					}
-				}
-			}
+		var list = _listeners[params.type];
+		if(list) {
+			Utils.each(list,
+				function(l) {
+					l.callback.call(l.context, params);
+				},
+				this
+			);
 		}
 	};
 	
@@ -43,17 +47,29 @@ Polyworks.EventCenter = (function() {
 		var removed = false;
 		var listeners = _listeners[type];
 		if(listeners) {
-			var length = listeners.length;
-			for(var i = 0; i < length; i++) {
-				if(listeners[i] === callback) {
-					listeners.splice(i, 1);
-					break;
-				}
-			}
+			Utils.each(listeners,
+				function(l, i) {
+					if(l.callback === callback) {
+						listeners.splice(i, 1);
+					}
+				},
+				this
+			);
 		}
 	};
 
 	eventCenter.reset = function() {
+		// iterate thru _listeners object
+		// for each type, set type array to [] and delete
+		// type from _listeners
+		Utils.each(_listeners,
+			function(l, key) {
+				l = [];
+				delete _listeners[key];
+			},
+			this
+		);
+		// set entire _listeners array to []
 		_listeners = [];
 	};
 	

@@ -8,13 +8,14 @@ Polyworks.Enemies = (function() {
 	}
 	
 	Enemies.prototype.pwUpdate = function(params) {
-		var enemy;
-		var collection  = this.model.collection;
-		for(var i = 0; i < collection.length; i++) {
-			if(collection[i].alive) {
-				collection[i].pwUpdate(params);
-			}
-		}
+		Utils.each(this.model.collection,
+			function(c) {
+				if(c.alive) {
+					c.pwUpdate(params);
+				}
+			},
+			this
+		);
 	};
 	
 	Enemies.prototype.destroyEnemy = function(name, ancestor) {

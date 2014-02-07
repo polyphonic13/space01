@@ -104,12 +104,13 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.shutdown = function() {
-		var collection = this.model.collection;
-		for(var i = 0; i < collection.length; i++) {
-			if(collection[i].destroy) {
-				collection[i].destroy();
-			}
-		}
+		Utils.each(this.model.collection,
+			function(c) {
+				c.destroy();
+			},
+			this
+		);
+
 		this.playerGroup.destroy();
 		this.player.destroy();
 		LevelState._super.shutdown.call(this);

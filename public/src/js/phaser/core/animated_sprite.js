@@ -26,9 +26,12 @@ Polyworks.AnimatedSprite = (function() {
 	};
 	
 	AnimatedSprite.prototype.beginAnimations = function(animations, sprite) {
-		for(var i = 0; i < animations.length; i++) {
-			sprite.animations.add(animations[i].name, animations[i].keyFrames, animations[i].frameRate);
-		}
+		Utils.each(animations,
+			function(a) {
+				sprite.animations.add(a.name, a.keyFrames, a.frameRate);
+			},
+			this
+		);
 
 		var defaultAnimation = _this.model.defaultAnimation;
 		if(defaultAnimation) {

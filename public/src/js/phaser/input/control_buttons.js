@@ -25,10 +25,12 @@ Polyworks.ControlButtons = (function() {
 		// trace('ControlButtons['+this.model.name+']/destroy');
 		// trace(this);
 //		ControlButtons._super.destroy.call(this);
-		var collection = this.model.collection;
-		for(var i = 0; i < collection.length; i++) {
-			collection[i].destroy();
-		}
+		Utils.each(this.model.collection,
+			function(c) {
+				c.destroy();
+			},
+			this
+		);
 	};
 	
 	return ControlButtons;

@@ -123,15 +123,23 @@ PolyworksGame = (function() {
 	function _preload() {
 		// trace('_preload');
 		var images = _model.images;
+		var phaser = PolyworksGames.phaser;
 		// trace('preload images');
-		for(key in images) {
-			PolyworksGame.phaser.load.image(key, images[key]);
-		}
+		Utils.each(images,
+			function(i, key) {
+				phaser.load.image(key, i);
+			},
+			this
+		);
+
 		var sprites = _model.sprites;
 		// trace('preload sprites');
-		for(key in sprites) {
-			PolyworksGame.phaser.load.spritesheet(key, sprites[key].url, sprites[key].width, sprites[key].height, sprites[key].frames);
-		}
+		Utils.each(sprites,
+			function(s, key) {
+				phaser.load.spritesheet(key, s.url, s.width, s.height, s.frames);
+			},
+			this
+		);
 	}
 	
 	function _create() {
@@ -179,14 +187,18 @@ PolyworksGame = (function() {
 		var states = _model.states;
 		var state;
 
-		for(var i = 0; i < states.length; i++) {
-			state = new Polyworks[states[i].cl](states[i], states[i].name);
-			_states[states[i].name] = state;
-			PolyworksGame.phaser.state.add(states[i].name, state, false);
-			if(states[i].name.indexOf('level') > -1) {
-				PolyworksGame.totalLevels++;
-			}
-		}
+		Utils.each(states,
+			function(s) {
+				state = new Polyworks[s.cl](s, s.name);
+				_states[s.name] = state;
+				PolyworksGame.phaser.state.add(s.name, state, false);
+				if(s.name.indexOf('level') > -1) {
+					PolyworksGame.totalLevels++;
+				}
+			},
+			this
+		);
+
 		// trace('PolyworksGame, _states = ');
 		// trace(_states);
 		if(_model.initialState) {
@@ -201,11 +213,12 @@ PolyworksGame = (function() {
 	
 	function _killStates() {
 		// trace('PolyworksGame/_killStates');
-		for(var key in _states) {
-			if(_states[key].shutdown) {
-				_states[key].shutdown();
-			}
-		}
+		Utils.each(_states,
+			function(s) {
+				s.shutdown();
+			},
+			this
+		);
 	}
 	
 	return polyworks_game;

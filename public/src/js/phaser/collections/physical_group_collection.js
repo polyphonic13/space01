@@ -9,28 +9,35 @@ Polyworks.PhysicalGroupCollection = (function() {
 		// trace('PhysicalGroupCollection['+this.model.name+']/checkTerrainCollsion');
 		// trace(terrain);
 		// trace(this);
-		var collection = this.model.collection;
-		for(var i = 0; i < collection.length; i++) {
-			collection[i].checkTerrainCollision(terrain);
-		}
+		Utils.each(this.model.collection,
+			function(c) {
+				c.checkTerrainCollection(terrain);
+			},
+			this
+		);
 	};
 	
 	PhysicalGroupCollection.prototype.activateGravity = function() {
-		var collection = this.model.collection;
 		// trace('PhysicalGroupCollection['+this.model.name+']/activateGravity, collection length = ' + collection.length);
-		for(var i = 0; i < collection.length; i++) {
-			collection[i].activateGravity();
-		}
+		Utils.each(this.model.collection,
+			function(c) {
+				c.activateGravity();
+			},
+			this
+		);
 	};
 	
 	PhysicalGroupCollection.prototype.getActive = function() {
 		var activeElements = [];
-		var collection = this.model.collection;
-		for(var i = 0; i < collection.length; i++) {
-			if(collection[i].active) {
-				activeElements.push(collection[i]);
-			}
-		}
+		Utils.each(this.model.collection,
+			function(c) {
+				if(c.active) {
+					activeElements.push(c);
+				}
+			},
+			this
+		);
+
 		return activeElements;
 	};
 	

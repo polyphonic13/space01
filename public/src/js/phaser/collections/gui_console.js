@@ -11,11 +11,14 @@ Polyworks.GUIConsole = (function() {
 		GUIConsole._super.begin.call(this);
 		// trace('GUIConsole/begin')
 		// trace(this);
-		for(var i = 0; i < this.model.length; i++) {
-			if(this.collection[i].text) {
-				this.parseAndSetContent(this.collection[i].name);
-			}
-		}
+		Utils.each(this.collection,
+			function(c) {
+				if(c.text) {
+					this.parseAndSetContent(c.name);
+				}
+			},
+			this
+		);
 
 		this.addListeners();
 	};
