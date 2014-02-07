@@ -1,4 +1,3 @@
-
 Polyworks.LevelState = (function() {
 	Utils.inherits(LevelState, Polyworks.State); 
 	

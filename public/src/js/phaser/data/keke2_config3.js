@@ -326,7 +326,7 @@ var config = {
 		}
 	},
 	// STATES
-	initialState: 'menu',
+	initialState: 'level1',
 	states: [
 	// menu
 	{
@@ -996,7 +996,6 @@ var config = {
 								animations: caterpillarAnimations
 							}
 						}
-						
 						]
 					},
 					{
@@ -1082,7 +1081,8 @@ var config = {
 			start: 0,
 			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 2)
 		},
-		attrs: [{
+		attrs: [
+		{
 			name: 'scenery',
 			cl: 'GroupCollection',
 			attrs: [{
@@ -1300,7 +1300,7 @@ var config = {
 				{
 					name: 'enemies',
 					cl: 'Enemies',
-					attrs: [						
+					attrs: [
 					{
 						name: 'level2-sector1-enemy1',
 						cl: 'AnimatedEnemy',
@@ -1320,7 +1320,7 @@ var config = {
 							},
 							attack: 5,
 							phaser: {
-								health: 5
+								health: 3
 							},
 							score: 500,
 							defaultAnimation: '',

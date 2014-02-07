@@ -23,7 +23,7 @@ Polyworks.Enemy = (function() {
 
 	Enemy.prototype.beginGetterSetters = function() {
 		Enemy._super.beginGetterSetters.call(this);
-		
+
 		this.__defineGetter__('active', function() {
 			return this.model.active;
 		});
@@ -50,7 +50,15 @@ Polyworks.Enemy = (function() {
 		}
 	};
 	
-	Enemy.prototype.kill = function(damage) {
+	Enemy.prototype.damage = function(damage) {
+		trace('Enemy['+this.model.name+']/damage, damage = ' + damage + ', health = ' + this.health);
+		this.health -= damage;
+		if(this.health <= 0) {
+			this.kill();
+		}
+	};
+	
+	Enemy.prototype.kill = function() {
 		trace('Enemy['+this.model.name+']/kill');
 		PolyworksGame.setScore(this.score);
 		Enemy._super.kill.call(this);

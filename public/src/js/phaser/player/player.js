@@ -20,7 +20,7 @@ Polyworks.Player = (function() {
 		this.damageTimer = 0;
 		this.damageInterval = 250;
 		this.justDamaged = false;
-		
+
 		this.beginGetterSetters();
 		this.beginWorld();
 		this.beginEvents();
@@ -29,7 +29,7 @@ Polyworks.Player = (function() {
 		PolyworksGame.setHealth(this.health);
 		trace(this);
 		// this.body.setSize(50, 113, 22.5, 0);
-	    
+
 	};
 	
 	Player.prototype.setGroup = function(group) {
@@ -93,7 +93,7 @@ Polyworks.Player = (function() {
 		} else if(event.value === Polyworks.InputCodes.RIGHT) {
 			_this.activeControls[Polyworks.InputCodes.LEFT] = false;
 		}
-		_this.updateInput();
+		_this.updatePosition();
 	};
 	
 	Player.prototype.onControlButtonReleased = function(event) {
@@ -108,10 +108,10 @@ Polyworks.Player = (function() {
 		} else if(event.value === Polyworks.InputCodes.RIGHT) {
 			_this.activeControls[Polyworks.InputCodes.LEFT] = false;
 		}
-		_this.updateInput();
+		_this.updatePosition();
 	};
 	
-	Player.prototype.updateInput = function() {
+	Player.prototype.updatePosition = function() {
 		this.velX = 0;
 		this.velY = 0;
 		var attrs = this.model.attrs;
@@ -140,9 +140,20 @@ Polyworks.Player = (function() {
 				this.velY = 0;
 			}
 		} else if(this.activeControls[Polyworks.InputCodes.DOWN]) {
-			// trace('Player/updateInput, down is active')
+			// trace('Player/updatePosition, down is active')
 		}
 		// trace('end player update input, velX = ' + this.velocityX + ', velY = ' + this.velocityY);
+	};
+	
+	Player.prototype.updatePositionFromCollision = function() {
+		this.velY = -this.model.attrs.speed.y/2;
+		this.velX = this.model.attrs.speed.x/2;
+		if(this.model.attrs.facingForward) {
+			this.velX = -this.velX;
+		}
+		// this.velocityY = this.velY;
+		this.body.velocity.y = this.velY;
+		this.body.velocity.x = this.velX;
 	};
 	
 	Player.prototype.pwUpdate = function(params) {
@@ -228,7 +239,7 @@ Polyworks.Player = (function() {
 		if(playerY < (enemyY - 15)) { // player is above enemy
 			this.updatePositionFromCollision();
 			//enemy.receiveDamage(this.damage);
-			enemy.damage(enemy.attack);
+			enemy.damage(this.attack);
 		} else {
 			this.receiveDamage(enemy.attack);
 		}
@@ -271,12 +282,6 @@ Polyworks.Player = (function() {
 		_this.justDamaged = false;
 	};
 	
-	Player.prototype.updatePositionFromCollision = function() {
-		this.velY = -this.model.attrs.speed.y/2;
-		// this.velocityY = this.velY;
-		this.body.velocity.y = this.velY;
-	};
-	
 	Player.prototype.destroy = function() {
 		// trace('Player/destroy');
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_PRESSED, this.onControlButtonPressed);
@@ -284,7 +289,7 @@ Polyworks.Player = (function() {
 
 		this.alive = false;
 		this.update = null;
-		this.updateInput = null;
+		this.updatePosition = null;
 		Player._super.destroy.call(this);
 		// trace('end player destroy');
 	};
