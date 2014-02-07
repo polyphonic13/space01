@@ -91,6 +91,12 @@ var config = {
 			width: 104, 
 			height: 32, 
 			frames: 14
+		},
+		caterpillarBoss01: {
+			url: 'images/caterpillar02b_giant.png',
+			width: 416, 
+			height: 124, 
+			frames: 14
 		}
 	},
 	// CONTROLS
@@ -929,7 +935,8 @@ var config = {
 					{
 						name: 'enemies',
 						cl: 'Enemies',
-						attrs: [{
+						attrs: [
+						{
 							name: 'level1-sector4-enemy0',
 							cl: 'AnimatedEnemy',
 							attrs: {
@@ -958,7 +965,39 @@ var config = {
 								defaultAnimation: '',
 								animations: caterpillarAnimations
 							}
-						}]
+						},
+						{
+							name: 'level1-sector4-enemy0',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillarBoss01',
+								start: {
+									x: (PolyworksStage.width * 7),
+									y: PolyworksStage.height - 200
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 20,
+								phaser: {
+									health: 50
+								},
+								score: 500,
+								movement: {
+									speed: 2,
+									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
+						
+						]
 					},
 					{
 						name: 'bonuses',
