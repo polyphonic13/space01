@@ -200,22 +200,12 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.dynamicTerrainCollision = function(player, terrain) {
 		// trace('Player/dynamicTerrainCollision, player = ');
-		// trace(player.bounds);
-		// if(!player.model.grounded) {
-			// trace(terrain);
-			// var terrainY = terrain.body.y;
-			var terrainY = terrain.body.y + terrain.body.height;
-			var playerOffsetY = this.body.y + (this.body.height);
-			// var playerOffsetY = this.bounds.x + this.bounds.height;
-			// trace('\tterrainY = ' + terrainY + ', playerOffsetY = ' + playerOffsetY);
-			if(playerOffsetY <= terrainY) {
-				// trace('\tgoing to do collision check against terrain['+terrain.model.name+'] since player is above it');
-				// terrain.body.immovable = true;
-				this.checkTerrainCollision(terrain);
-			} else {
-				// trace('\tdo nothing, the player is under terrain['+terrain.model.name+']');
-			}
-		// }
+		var terrainY = terrain.body.y + terrain.body.height;
+		var playerOffsetY = this.body.y + (this.body.height);
+
+		if(playerOffsetY <= terrainY) {
+			this.checkTerrainCollision(terrain);
+		}
 	};
 	
 	Player.prototype.hazardCollision = function(player, hazard) {
@@ -232,7 +222,6 @@ Polyworks.Player = (function() {
 		// trace('Player/enemyCollision, player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
 		// trace(enemy);
 
-		// if(this.model.jumping || this.model.attacking) {
 		if(playerY < (enemyY - 15)) { // player is above enemy
 			this.updatePositionFromCollision();
 			//enemy.receiveDamage(this.damage);
@@ -259,16 +248,13 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.receiveDamage = function(damage) {
-		trace('Player/receiveDamage, justDamaged = ' + this.justDamaged);
+		// trace('Player/receiveDamage, justDamaged = ' + this.justDamaged);
 		if(!this.justDamaged) {
-			// trace('Player/receiveDamage, damage = ' + damage + ', health = ' + this.health);
 			this.health -= damage;
 			PolyworksGame.setHealth(this.health);
 			if(this.health <= 0) {
-				// this.destroy();
 				PolyworksGame.changeState('gameOver');
 			} else {
-				trace('\tabout to set timer');
 				_this.justDamaged = true;
 				_this.damageTimer = setTimeout(_this.resetJustDamaged, _this.damageInterval);
 			}
@@ -278,7 +264,6 @@ Polyworks.Player = (function() {
 	Player.prototype.resetJustDamaged = function() {
 		clearTimeout(_this.damageTimer);
 		_this.justDamaged = false;
- 		trace('Player/resetJustDamaged, justDamaged = ' + _this.justDamaged);
 	};
 	
 	Player.prototype.destroy = function() {

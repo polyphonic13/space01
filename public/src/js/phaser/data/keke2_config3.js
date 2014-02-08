@@ -105,7 +105,7 @@ var config = {
 			name: 'controlKeys',
 			cl: 'ControlKey',
 			attrs: [{
-				name: 'gameOver',
+				name: 'quit',
 				cl: 'ControlKey',
 				attrs: {
 					inputCode: Polyworks.InputCodes.QUIT,
@@ -319,7 +319,9 @@ var config = {
 					inputCode: Polyworks.InputCodes.PAUSE,
 					events: {
 						pressed: {
-							type: Polyworks.Events.PAUSE_STATE
+							// type: Polyworks.Events.PAUSE_STATE
+							type: Polyworks.Events.CHANGE_STATE,
+							value: 'menu'
 						}
 					}
 				}

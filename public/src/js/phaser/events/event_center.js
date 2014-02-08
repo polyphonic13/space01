@@ -48,7 +48,7 @@ Polyworks.EventCenter = (function() {
 		if(listeners) {
 			Utils.each(listeners,
 				function(l, i) {
-					if(l.callback === callback) {
+					if(l && l.callback === callback) {
 						listeners.splice(i, 1);
 					}
 				},

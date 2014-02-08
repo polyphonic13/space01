@@ -36,6 +36,7 @@ PolyworksGame = (function() {
 		},
 
 		changeState: function(id) {
+			trace('change state, id = ' + id);
 				switch(id) {
 					case 'level':
 						id += PolyworksGame.currentLevel;
@@ -116,6 +117,11 @@ PolyworksGame = (function() {
 				var gameContainer = document.getElementById('gameContainer');
 				gameContainer.parentNode.removeChild(gameContainer);
 
+				PolyworksGame.phaser = null;
+				PolyworksStage = null;
+				Polyworks = null;
+				Phaser = null;
+				window.PolyworksGame = null;
 			}
 		}
 	};
@@ -166,7 +172,7 @@ PolyworksGame = (function() {
 	function _onControlPressed(event) {
 		switch(event.value) {
 			case Polyworks.InputCodes.QUIT:
-				PolyworksGame.changeState('gameOver');
+				PolyworksGame.changeState('quit');
 			break;
 		}
 	}
