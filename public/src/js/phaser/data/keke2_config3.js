@@ -407,7 +407,7 @@ var config = {
 		clearCache: false,
 		bounds: {
 			start: 0,
-			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 4)
+			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 2)
 		},
 		pausable: true,
 		attrs: [
