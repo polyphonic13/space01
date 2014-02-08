@@ -27,6 +27,8 @@ Polyworks.Player = (function() {
 		this.beginControls();
 
 		PolyworksGame.setHealth(this.health);
+		
+		this.paused = false;
 		trace(this);
 		// this.body.setSize(50, 113, 22.5, 0);
 
@@ -153,25 +155,47 @@ Polyworks.Player = (function() {
 	Player.prototype.pwUpdate = function(params) {
 		// trace('Player/update, health = ' + this.health);
 		// trace(params);
-		if(this.alive) {
-			var physics = PolyworksGame.phaser.physics;
-			var attrs = this.model.attrs;
+		if(!this.paused) {
+			if(this.alive) {
+				var physics = PolyworksGame.phaser.physics;
+				var attrs = this.model.attrs;
 
-			this.checkTerrainCollision(params.terrain);
+				this.checkTerrainCollision(params.terrain);
 
-			this.checkDynamicTerrainCollision(params.dynamicTerrain, physics);
-			this.checkHazardCollision(params.hazards, physics);
-			this.checkEnemyCollision(params.enemies, physics);
-			this.checkBonusCollision(params.bonuses, physics);
+				this.checkDynamicTerrainCollision(params.dynamicTerrain, physics);
+				this.checkHazardCollision(params.hazards, physics);
+				this.checkEnemyCollision(params.enemies, physics);
+				this.checkBonusCollision(params.bonuses, physics);
 
-			if(this.body.touching.down) {
-				attrs.grounded = true;
-				attrs.jumping = false;
-				attrs.justJumped = false;
+				if(this.body.touching.down) {
+					attrs.grounded = true;
+					attrs.jumping = false;
+					attrs.justJumped = false;
+				}
 			}
 		}
 	};
 
+	Player.prototype.pause = function() {
+		this.paused = true;
+		this.playerX = this.body.x;
+		this.playerY = this.body.y;
+		this.body.allowGravity = false;
+		this.velY = 0;
+		this.velX = 0;
+		
+		trace('player.y = ' + this.body.y + ', playerY = ' + this.playerY);
+	};
+	
+	Player.prototype.resume = function() {
+		this.paused = false;
+		this.body.allowGravity = true;
+		this.body.x = this.playerX;
+		// this.body.y = this.playerY;
+		this.body.y = this.model.attrs.start.y
+		trace('player.y = ' + this.body.y + ', playerY = ' + this.playerY + ', start y = '+ this.model.attrs.start.y);
+	};
+	
 	Player.prototype.checkDynamicTerrainCollision = function(dynamicTerrain, physics) {
 		this.checkCollision(dynamicTerrain, this.dynamicTerrainCollision, physics, this);
 	};
@@ -200,22 +224,11 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.dynamicTerrainCollision = function(player, terrain) {
 		// trace('Player/dynamicTerrainCollision, player = ');
-		// trace(player.bounds);
-		// if(!player.model.grounded) {
-			// trace(terrain);
-			// var terrainY = terrain.body.y;
-			var terrainY = terrain.body.y + terrain.body.height;
-			var playerOffsetY = this.body.y + (this.body.height);
-			// var playerOffsetY = this.bounds.x + this.bounds.height;
-			// trace('\tterrainY = ' + terrainY + ', playerOffsetY = ' + playerOffsetY);
-			if(playerOffsetY <= terrainY) {
-				// trace('\tgoing to do collision check against terrain['+terrain.model.name+'] since player is above it');
-				// terrain.body.immovable = true;
-				this.checkTerrainCollision(terrain);
-			} else {
-				// trace('\tdo nothing, the player is under terrain['+terrain.model.name+']');
-			}
-		// }
+		var terrainY = terrain.body.y + terrain.body.height;
+		var playerOffsetY = this.body.y + (this.body.height);
+		if(playerOffsetY <= terrainY) {
+			this.checkTerrainCollision(terrain);
+		}
 	};
 	
 	Player.prototype.hazardCollision = function(player, hazard) {
@@ -259,7 +272,7 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.receiveDamage = function(damage) {
-		trace('Player/receiveDamage, justDamaged = ' + this.justDamaged);
+		// trace('Player/receiveDamage, justDamaged = ' + this.justDamaged);
 		if(!this.justDamaged) {
 			// trace('Player/receiveDamage, damage = ' + damage + ', health = ' + this.health);
 			this.health -= damage;
@@ -268,7 +281,6 @@ Polyworks.Player = (function() {
 				// this.destroy();
 				PolyworksGame.changeState('gameOver');
 			} else {
-				trace('\tabout to set timer');
 				_this.justDamaged = true;
 				_this.damageTimer = setTimeout(_this.resetJustDamaged, _this.damageInterval);
 			}
@@ -278,7 +290,6 @@ Polyworks.Player = (function() {
 	Player.prototype.resetJustDamaged = function() {
 		clearTimeout(_this.damageTimer);
 		_this.justDamaged = false;
- 		trace('Player/resetJustDamaged, justDamaged = ' + _this.justDamaged);
 	};
 	
 	Player.prototype.destroy = function() {

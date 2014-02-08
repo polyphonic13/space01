@@ -12,6 +12,10 @@ Polyworks.SectorManager = (function() {
 		});
 	}
 	
+	// SectorManager.prototype.setChildProperty = function(val, prop) {
+	// 	
+	// };
+	
 	SectorManager.prototype.checkTerrainCollision = function(terrain) {
 		Utils.each(this.model.collection,
 			function(c) {

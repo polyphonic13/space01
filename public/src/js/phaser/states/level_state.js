@@ -49,6 +49,7 @@ Polyworks.LevelState = (function() {
 		this.playerGroup = PolyworksGame.phaser.add.group();
 		this.player = new Polyworks[playerConfig.cl](playerConfig);
 		this.player.begin();
+		this.playerY = this.player.body.y;
 		this.playerGroup.add(this.player);
 	};
 	
@@ -101,6 +102,37 @@ Polyworks.LevelState = (function() {
 			}
 			LevelState._super.update.call(this);
 		}
+	};
+	
+	LevelState.prototype.onPauseState = function() {
+		trace('LevelState['+this.model.name+']/onPause, pause = ' + this.paused);
+		var collection = this.model.collection;
+		if(this.paused) {
+			PolyworksGame.phaser.paused = false;
+			this.player.resume();
+			// this.playerGroup.visible = true;
+
+			Utils.each(collection,
+				function(c) {
+					c.setChildProperty('exists', true);
+					// c.setChildProperty('visible', true);
+				},
+				this
+			);
+		} else {
+			PolyworksGame.phaser.paused = true;
+			this.player.pause();
+			// this.playerGroup.visible = false;
+
+			Utils.each(collection,
+				function(c) {
+					c.setChildProperty('exists', false);
+					// c.setChildProperty('visible', false);
+				},
+				this
+			);
+		}
+		LevelState._super.onPauseState.call(this);
 	};
 	
 	LevelState.prototype.shutdown = function() {

@@ -41,6 +41,18 @@ Polyworks.GroupCollection = (function() {
 		// trace(this.group);
 	};
 
+	GroupCollection.prototype.setChildProperty = function(prop, val) {
+		// trace('GroupCollection['+this.model.name+']/setChildProperty, val = ' + val + ', prop = ' + prop);
+		// trace(this.group);
+		// if(this.group.hasOwnProperty(prop)) {
+			// trace('\tsetting group['+prop+'] to ' + val);
+			this.group[prop] = val;
+		// } else {
+		// 	trace('\tcalling _super setChildProperty');
+		// 	GroupCollection._super.setChildProperty.call(this, val, prop);
+		// }
+	};
+	
 	GroupCollection.prototype.remove = function(child) {
 		this.model.group.remove(child);
 		delete this.model.collection[child];

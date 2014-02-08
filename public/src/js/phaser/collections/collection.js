@@ -31,8 +31,37 @@ Polyworks.Collection = (function() {
 		);
 
 		this.model.set({ collection: collection, nameIndex: nameIndex });
+		// this.beginGetterSetters();
 	};
 	
+	// Collection.prototype.beginGetterSetters = function() {
+	// 	this.__defineSetter__('exists', function(val) {
+	// 		this.setChildProperty(val, 'exists');
+	// 	});
+	// 	this.__defineSetter__('visible', function(val) {
+	// 		trace('Collection['+this.model.name+']/set visible, val = ' + val);
+	// 		this.setChildProperty(val, 'visible');
+	// 	});
+	// };
+	
+	Collection.prototype.setChildProperty = function(prop, val) {
+		// trace('Collection['+this.model.name+']/setChildProperty, val = ' + val + ', prop = ' + prop);
+		Utils.each(this.model.collection,
+			function(c) {
+				// trace('\tc = ' + c.model.name);
+				if(c.setChildProperty) {
+					// trace('\t\tcalling setChildProperty');
+					c.setChildProperty(val, prop);
+				} else if(c.hasOwnProperty(prop)) {
+					// trace('\t\tsetting property');
+					c[prop] = val;
+				}
+			},
+			true
+		);
+	};
+	
+	Collection.prototype.set
 	Collection.prototype.getChildByName = function(name) {
 		// trace('Collection/getChildByName, name = ' + name);
 		// trace(this.model);

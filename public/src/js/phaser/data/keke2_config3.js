@@ -4252,7 +4252,7 @@ var config = {
 			start: {
 				// x: PolyworksStage.width/2 - 95/2,
 				x: 500,
-				y: PolyworksStage.height - 128
+				y: PolyworksStage.height - 150
 			},
 			physics: {
 				bounce: {
@@ -4267,7 +4267,7 @@ var config = {
 			},
 			followStyle: Phaser.Camera.FOLLOW_PLATFORMER,
 			speed: {
-				x: 150,
+				x: 200,
 				y: 400
 			},
 			controls: {

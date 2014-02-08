@@ -49,11 +49,12 @@ Polyworks.State = (function() {
 	State.prototype.onPauseState = function() {
 		trace(this);
 		trace('State['+this.model.name+']/onPauseState');
-		if(PolyworksGame.phaser.paused) {
-			PolyworksGame.phaser.paused = false;
+		// if(PolyworksGame.phaser.paused) {
+		if(this.paused) {
+			// PolyworksGame.phaser.paused = false;
 			this.paused = false;
 		} else {
-			PolyworksGame.phaser.paused = true;
+			// PolyworksGame.phaser.paused = true;
 			this.paused = true;
 		}
 	};
