@@ -2,10 +2,10 @@ Polyworks.Player = (function() {
 	// Utils.inherits(Player, Polyworks.AnimatedSprite);
 	Utils.inherits(Player, Polyworks.Sprite);
 
-	// var this;
+	var _this;
 	function Player(params) {
 		// trace('Player/constructor');
-		// this = this;
+		_this = this;
 		this.model = new Polyworks.Model(params);
 		Player._super.constructor.call(this, params);
 	}
@@ -147,13 +147,7 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.updatePositionFromCollision = function() {
 		this.velY = -this.model.attrs.speed.y/2;
-		this.velX = this.model.attrs.speed.x/2;
-		if(this.model.attrs.facingForward) {
-			this.velX = -this.velX;
-		}
-		// this.velocityY = this.velY;
 		this.body.velocity.y = this.velY;
-		this.body.velocity.x = this.velX;
 	};
 	
 	Player.prototype.pwUpdate = function(params) {
@@ -275,16 +269,16 @@ Polyworks.Player = (function() {
 				PolyworksGame.changeState('gameOver');
 			} else {
 				trace('\tabout to set timer');
-				this.justDamaged = true;
-				this.damageTimer = setTimeout(this.resetJustDamaged, this.damageInterval);
+				_this.justDamaged = true;
+				_this.damageTimer = setTimeout(_this.resetJustDamaged, _this.damageInterval);
 			}
 		}
 	};
 	
 	Player.prototype.resetJustDamaged = function() {
-		clearTimeout(this.damageTimer);
-		this.justDamaged = false;
- 		trace('Player/resetJustDamaged, justDamaged = ' + this.justDamaged);
+		clearTimeout(_this.damageTimer);
+		_this.justDamaged = false;
+ 		trace('Player/resetJustDamaged, justDamaged = ' + _this.justDamaged);
 	};
 	
 	Player.prototype.destroy = function() {
