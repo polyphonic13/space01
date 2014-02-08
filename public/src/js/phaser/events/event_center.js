@@ -30,13 +30,13 @@ Polyworks.EventCenter = (function() {
 	};
 	
 	eventCenter.trigger = function(params) {
-		// trace('EventCenter/trigger, params = ');
-		// trace(params);
 		var list = _listeners[params.type];
 		if(list) {
 			Utils.each(list,
 				function(l) {
-					l.callback.call(l.context, params);
+					if(l && l.callback) { // in case callback is destroyed during course of trigger
+						l.callback.call(l.context, params);
+					}
 				},
 				this
 			);
@@ -44,7 +44,6 @@ Polyworks.EventCenter = (function() {
 	};
 	
 	eventCenter.unbind = function(type, callback) {
-		var removed = false;
 		var listeners = _listeners[type];
 		if(listeners) {
 			Utils.each(listeners,

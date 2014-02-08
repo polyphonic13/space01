@@ -17,6 +17,7 @@ Polyworks.AnimatedPlayer = (function() {
 	AnimatedPlayer.prototype.updateAnimations = function() {
 		var attrs = this.model.attrs;
 		var animations = attrs.animations; 
+		// trace('AnimatedPlayer/updateAnimations, justDamaged = ' + this.justDamaged);
 		if(this.justDamaged) {											// DAMAGED
 			if(attrs.facingForward) {
 				// trace('Player/updateAnimations, AnimationTypes.DAMAGED_R = ' + AnimationTypes.DAMAGED_R + ', animations = ');

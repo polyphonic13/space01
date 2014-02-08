@@ -265,6 +265,7 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.receiveDamage = function(damage) {
+		trace('Player/receiveDamage, justDamaged = ' + this.justDamaged);
 		if(!this.justDamaged) {
 			// trace('Player/receiveDamage, damage = ' + damage + ', health = ' + this.health);
 			this.health -= damage;
@@ -273,6 +274,7 @@ Polyworks.Player = (function() {
 				// this.destroy();
 				PolyworksGame.changeState('gameOver');
 			} else {
+				trace('\tabout to set timer');
 				this.justDamaged = true;
 				this.damageTimer = setTimeout(this.resetJustDamaged, this.damageInterval);
 			}
@@ -280,9 +282,9 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.resetJustDamaged = function() {
- 		// trace('Player/resetJustDamaged');
 		clearTimeout(this.damageTimer);
 		this.justDamaged = false;
+ 		trace('Player/resetJustDamaged, justDamaged = ' + this.justDamaged);
 	};
 	
 	Player.prototype.destroy = function() {

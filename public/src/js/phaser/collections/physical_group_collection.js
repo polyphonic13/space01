@@ -11,7 +11,7 @@ Polyworks.PhysicalGroupCollection = (function() {
 		// trace(this);
 		Utils.each(this.model.collection,
 			function(c) {
-				c.checkTerrainCollection(terrain);
+				c.checkTerrainCollision(terrain);
 			},
 			this
 		);
