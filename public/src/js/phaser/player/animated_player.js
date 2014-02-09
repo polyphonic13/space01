@@ -42,7 +42,7 @@ Polyworks.AnimatedPlayer = (function() {
 				}
 			} else {
 				if(!attrs.grounded && (this.body.y > this.previousY) && !this.collided) {
-					trace('player grounded = ' + attrs.grounded + ', collided = ' + this.collided);
+					// trace('player grounded = ' + attrs.grounded + ', collided = ' + this.collided);
 					if(this.facingForward) {
 						this.play(AnimationTypes.FALLING_R, animations[AnimationTypes.FALLING_R].frameRate, animations[AnimationTypes.FALLING_R].loop);
 					} else {

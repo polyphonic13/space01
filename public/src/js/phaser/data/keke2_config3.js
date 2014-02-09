@@ -401,10 +401,11 @@ var config = {
 		cl: 'LevelState',
 		world: {
 			x: 0,
-			// y: -(PolyworksStage.height),
-			y: -512,
+			y: -(PolyworksStage.height),
+			// y: -512,
 			width: 4096,
-			height: 1024
+			height: PolyworksStage.height * 2
+			// height: 1024
 		},
 		clearWorld: true,
 		clearCache: false,
@@ -489,7 +490,7 @@ var config = {
 					},
 					start: {
 						x: 2048,
-						y: world.height - 256
+						y: world.height - 216
 					}
 				}
 			},
@@ -546,11 +547,11 @@ var config = {
 					img: 'platform',
 					phaser: {
 						width: 4096,
-						height: 128
+						height: 64
 					},
 					start: {
 						x: 0,
-						y: PolyworksStage.height
+						y: PolyworksStage.height - 20
 					},
 					physics: {
 						immovable: true
@@ -1079,7 +1080,8 @@ var config = {
 			x: 0,
 			y: -(PolyworksStage.height),
 			width: 4096,
-			height: 1024
+			// height: 1024
+			height: PolyworksStage.height * 2
 		},
 		clearWorld: true,
 		clearCache: false,
