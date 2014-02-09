@@ -475,7 +475,7 @@ var config = {
 					},
 					start: {
 						x: 0,
-						y: PolyworksStage.height - 200
+						y: world.height - 200
 					}
 				}
 			},
@@ -489,7 +489,7 @@ var config = {
 					},
 					start: {
 						x: 2048,
-						y: PolyworksStage.height - 256
+						y: world.height - 256
 					}
 				}
 			},
@@ -550,7 +550,7 @@ var config = {
 					},
 					start: {
 						x: 0,
-						y: world.height - 20
+						y: PolyworksStage.height
 					},
 					physics: {
 						immovable: true
