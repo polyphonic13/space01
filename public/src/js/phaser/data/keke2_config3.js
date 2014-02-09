@@ -470,7 +470,7 @@ var config = {
 				attrs: {
 					img: 'grass01',
 					phaser: {
-						width: (2048)
+						width: 2048
 					},
 					start: {
 						x: 0,
@@ -484,10 +484,10 @@ var config = {
 				attrs: {
 					img: 'grass02',
 					phaser: {
-						width: (2048)
+						width: 2048
 					},
 					start: {
-						x: (2048),
+						x: 2048,
 						y: PolyworksStage.height - 256
 					}
 				}
@@ -509,7 +509,7 @@ var config = {
 				attrs: {
 					img: 'tree02',
 					start: {
-						x: (2048) - (PolyworksStage.height * 3),
+						x: 2048 - (PolyworksStage.height * 3),
 						y: (-PolyworksStage.height)
 					}
 				}

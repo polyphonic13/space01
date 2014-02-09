@@ -38,5 +38,15 @@ var kekeAnimations = {
 		keyFrames: [11], 
 		loop: true,
 		frameRate: 14
+	},
+	fallingL: {
+		keyFrames: [27],
+		loop: true,
+		frameRate: 14
+	},
+	fallingR: {
+		keyFrames: [13],
+		loop: true,
+		frameRate: 14
 	}
 };

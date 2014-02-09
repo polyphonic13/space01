@@ -17,6 +17,7 @@ Polyworks.Player = (function() {
 
 		this.velX = 0;
 		this.velY = 0;
+		this.previousY = this.body.y;
 		this.damageTimer = 0;
 		this.damageInterval = 250;
 		this.justDamaged = false;
@@ -154,6 +155,7 @@ Polyworks.Player = (function() {
 		// trace('Player/update, health = ' + this.health);
 		// trace(params);
 		if(this.alive) {
+			this.collided = false;
 			var physics = PolyworksGame.phaser.physics;
 			var attrs = this.model.attrs;
 
@@ -168,6 +170,8 @@ Polyworks.Player = (function() {
 				attrs.grounded = true;
 				attrs.jumping = false;
 				attrs.justJumped = false;
+			} else {
+				attrs.grounded = false;
 			}
 		}
 	};
@@ -200,6 +204,7 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.dynamicTerrainCollision = function(player, terrain) {
 		// trace('Player/dynamicTerrainCollision, player = ');
+		this.collided = true;
 		var terrainY = terrain.body.y + terrain.body.height;
 		var playerOffsetY = this.body.y + (this.body.height);
 
@@ -211,10 +216,12 @@ Polyworks.Player = (function() {
 	Player.prototype.hazardCollision = function(player, hazard) {
 		// trace('Player/hazardCollision, hazard = ');
 		// trace(hazard);
+		this.collided = true;
 		this.receiveDamage(hazard.model.attrs.attack);
 	};
 	
 	Player.prototype.enemyCollision = function(player, enemy) {
+		this.collided = true;
 		var playerX = player.body.x + (player.body.width);
 		var playerY = player.body.y + (player.body.height);
 		var enemyX = enemy.body.x + (enemy.body.width);
@@ -235,6 +242,7 @@ Polyworks.Player = (function() {
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.BONUS_COLLISION, player: player, bonus: bonus });
 		// trace('Player/bonusCollision, bonus = ');
 		// trace(bonus);
+		this.collided = true;
 	    PolyworksGame.setScore(bonus.model.attrs.score);
 
 		var health = bonus.model.attrs.health;
