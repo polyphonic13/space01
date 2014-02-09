@@ -41,8 +41,7 @@ Polyworks.AnimatedPlayer = (function() {
 					this.play(AnimationTypes.JUMP_L, animations[AnimationTypes.JUMP_L].frameRate, animations[AnimationTypes.JUMP_L].loop);
 				}
 			} else {
-				// if(!attrs.grounded && (this.body.y != this.previousY)) {
-				if(!attrs.grounded && !this.collided) {
+				if(!attrs.grounded && (this.body.y > this.previousY) && !this.collided) {
 					trace('player grounded = ' + attrs.grounded + ', collided = ' + this.collided);
 					if(this.facingForward) {
 						this.play(AnimationTypes.FALLING_R, animations[AnimationTypes.FALLING_R].frameRate, animations[AnimationTypes.FALLING_R].loop);

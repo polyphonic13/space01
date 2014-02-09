@@ -401,7 +401,8 @@ var config = {
 		cl: 'LevelState',
 		world: {
 			x: 0,
-			y: -(PolyworksStage.height),
+			// y: -(PolyworksStage.height),
+			y: -512,
 			width: 4096,
 			height: 1024
 		},
@@ -4259,7 +4260,8 @@ var config = {
 			physics: {
 				bounce: {
 					x: 0,
-					y: 0.2
+					// y: 0.2
+					y: 0
 				},
 				collideWorldBounds: false
 			},

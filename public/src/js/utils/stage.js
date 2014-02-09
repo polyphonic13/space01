@@ -15,15 +15,16 @@ PolyworksStage = (function() {
 	function _init() {
 		stage.winW = document.documentElement.clientWidth; 
 		stage.winH = document.documentElement.clientHeight;
-		
-		stage.height = (document.documentElement.clientHeight > 800) ? 800 : document.documentElement.clientHeight;
-		stage.width = ((document.documentElement.clientHeight/_ar[1]) * _ar[0]);
-
-		if(stage.width > document.documentElement.clientWidth) {
-			stage.width = document.documentElement.clientWidth;
-			stage.height = (stage.width/_ar[0]) * _ar[1];
-		}
-		stage.unit = stage.height/_ar[1];
+		stage.width = stage.winW;
+		stage.height = stage.winH;
+		// stage.height = (document.documentElement.clientHeight > 800) ? 800 : document.documentElement.clientHeight;
+		// stage.width = ((document.documentElement.clientHeight/_ar[1]) * _ar[0]);
+		// 
+		// if(stage.width > document.documentElement.clientWidth) {
+		// 	stage.width = document.documentElement.clientWidth;
+		// 	stage.height = (stage.width/_ar[0]) * _ar[1];
+		// }
+		// stage.unit = stage.height/_ar[1];
 		var left = (document.documentElement.clientWidth/2) - (stage.width/2);
 		var top = (document.documentElement.clientHeight/2) - (stage.height/2);
 
