@@ -47,7 +47,7 @@ Polyworks.SectorManager = (function() {
 				// trace('bounds['+i+'] start/end = ' + bounds.start + '/' + bounds.end + ', x = ' + position.x);
 				if(position.x > bounds.start && position.x < bounds.end) {
 					if(this.activeSectorId !== i) {
-						// trace('new sector id = ' + i + ', name = ' + sectors[i].model.name);
+						trace('new sector id = ' + i + ', name = ' + c.model.name);
 						this.activeSectorId = i;
 						c.setActive(true);
 					}

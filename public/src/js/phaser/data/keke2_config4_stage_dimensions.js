@@ -2,7 +2,7 @@ var world = {
 	x: 0,
 	y: 0,
 	// width: 4096,
-	width: 2048,
+	width: PolyworksStage.width * 4,
 	height: PolyworksStage.height,
 	gravity: {
 		x: 0,
@@ -402,14 +402,14 @@ var config = {
 		world: {
 			x: 0,
 			y: -(PolyworksStage.height),
-			width: 4096,
-			height: 1024
+			width: PolyworksStage.width * 8,
+			height: PolyworksStage.height * 2
 		},
 		clearWorld: true,
 		clearCache: false,
 		bounds: {
 			start: 0,
-			end: 4020
+			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 4)
 		},
 		pausable: true,
 		attrs: [
@@ -444,8 +444,8 @@ var config = {
 						y: -(PolyworksStage.height)
 					},
 					phaser: {
-						width: 2048,
-						height: 1024
+						width: PolyworksStage.width * 4,
+						height: PolyworksStage.height * 2
 					}
 				}
 			},
@@ -455,12 +455,12 @@ var config = {
 				attrs: {
 					img: 'forestBackground02',
 					start: {
-						x: 2048,
+						x: PolyworksStage.width * 4,
 						y: -(PolyworksStage.height)
 					},
 					phaser: {
-						width: 2048,
-						height: 1024
+						width: PolyworksStage.width * 4,
+						height: PolyworksStage.height * 2
 					}
 				}
 			},
@@ -470,7 +470,7 @@ var config = {
 				attrs: {
 					img: 'grass01',
 					phaser: {
-						width: (2048)
+						width: (PolyworksStage.width * 4)
 					},
 					start: {
 						x: 0,
@@ -484,10 +484,10 @@ var config = {
 				attrs: {
 					img: 'grass02',
 					phaser: {
-						width: (2048)
+						width: (PolyworksStage.width * 4)
 					},
 					start: {
-						x: (2048),
+						x: (PolyworksStage.width * 4),
 						y: PolyworksStage.height - 256
 					}
 				}
@@ -509,7 +509,7 @@ var config = {
 				attrs: {
 					img: 'tree02',
 					start: {
-						x: (2048) - (PolyworksStage.height * 3),
+						x: (PolyworksStage.width * 4) - (PolyworksStage.height * 3),
 						y: (-PolyworksStage.height)
 					}
 				}
@@ -531,7 +531,7 @@ var config = {
 					},
 					phaser: {
 						width: 16,
-						height: 1024
+						height: PolyworksStage.height * 2
 					},
 					physics: {
 						immovable: true
@@ -544,7 +544,7 @@ var config = {
 				attrs: {
 					img: 'platform',
 					phaser: {
-						width: 4096,
+						width: PolyworksStage.width * 8,
 						height: 128
 					},
 					start: {
@@ -787,7 +787,7 @@ var config = {
 				cl: 'Sector',
 				bounds: {
 					start: 3072,
-					end: (4096)
+					end: (PolyworksStage.width * 8)
 				},
 				attrs: [
 				{
@@ -800,7 +800,7 @@ var config = {
 						attrs: {
 							img: 'platform',
 							start: {
-								// x: (4096) - (PolyworksStage.height * 4),
+								// x: (PolyworksStage.width * 8) - (PolyworksStage.height * 4),
 								x: 3600,
 								y: world.height - 75
 							},
@@ -817,7 +817,7 @@ var config = {
 						attrs: {
 							img: 'branch02aLeft',
 							start: {
-								// x: (4096) - (PolyworksStage.height * 3),
+								// x: (PolyworksStage.width * 8) - (PolyworksStage.height * 3),
 								x: 3750,
 								y: world.height - 125
 							},
@@ -834,7 +834,7 @@ var config = {
 						attrs: {
 							img: 'branch02aRight',
 							start: {
-								// x: (4096) - (PolyworksStage.height * 3),
+								// x: (PolyworksStage.width * 8) - (PolyworksStage.height * 3),
 								x: 3900,
 								y: world.height - 175
 							},
@@ -851,7 +851,7 @@ var config = {
 						attrs: {
 							img: 'branch02aLeft',
 							start: {
-								// x: (4096) - (PolyworksStage.height * 3),
+								// x: (PolyworksStage.width * 8) - (PolyworksStage.height * 3),
 								x: 3765,
 								y: world.height - 225
 							},
@@ -868,7 +868,7 @@ var config = {
 						attrs: {
 							img: 'branch02aRight',
 							start: {
-								// x: (4096) - (PolyworksStage.height * 3),
+								// x: (PolyworksStage.width * 8) - (PolyworksStage.height * 3),
 								x: 3900,
 								y: world.height - 275
 							},
@@ -885,7 +885,7 @@ var config = {
 						attrs: {
 							img: 'branch02aLeft',
 							start: {
-								// x: (4096) - (PolyworksStage.height * 3),
+								// x: (PolyworksStage.width * 8) - (PolyworksStage.height * 3),
 								x: 3780,
 								y: world.height - 325
 							},
@@ -902,7 +902,7 @@ var config = {
 						attrs: {
 							img: 'branch02aRight',
 							start: {
-								// x: (4096) - (PolyworksStage.height * 3),
+								// x: (PolyworksStage.width * 8) - (PolyworksStage.height * 3),
 								x: 3900,
 								y: world.height - 375
 							},
@@ -919,7 +919,7 @@ var config = {
 						attrs: {
 							img: 'branch02Left',
 							start: {
-								// x: (4096) - (PolyworksStage.height * 3),
+								// x: (PolyworksStage.width * 8) - (PolyworksStage.height * 3),
 								x: 3500,
 								y: world.height - 425
 							},
@@ -1077,14 +1077,14 @@ var config = {
 		world: {
 			x: 0,
 			y: -(PolyworksStage.height),
-			width: 4096,
-			height: 1024
+			width: PolyworksStage.width * 8,
+			height: PolyworksStage.height * 2
 		},
 		clearWorld: true,
 		clearCache: false,
 		bounds: {
 			start: 0,
-			end: (4096) - (PolyworksStage.unit * 2)
+			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 2)
 		},
 		attrs: [
 		{
@@ -1117,8 +1117,8 @@ var config = {
 						y: -(PolyworksStage.height)
 					},
 					phaser: {
-						width: 2048,
-						height: 1024
+						width: PolyworksStage.width * 4,
+						height: PolyworksStage.height * 2
 					}
 				}
 			},
@@ -1128,12 +1128,12 @@ var config = {
 				attrs: {
 					img: 'forestBackground04',
 					start: {
-						x: 2048,
+						x: PolyworksStage.width * 4,
 						y: -(PolyworksStage.height)
 					},
 					phaser: {
-						width: 2048,
-						height: 1024
+						width: PolyworksStage.width * 4,
+						height: PolyworksStage.height * 2
 					}
 				}
 			},
@@ -1144,7 +1144,7 @@ var config = {
 					img: 'tree02',
 					// phaser: {
 					// 	width: PolyworksStage.height,
-					// 	height: (1024)
+					// 	height: (PolyworksStage.height * 2)
 					// },
 					start: {
 						x: 950,
@@ -1159,7 +1159,7 @@ var config = {
 					img: 'tree01',
 					// phaser: {
 					// 	width: PolyworksStage.height,
-					// 	height: (1024) + 20						
+					// 	height: (PolyworksStage.height * 2) + 20						
 					// },
 					start: {
 						x: 1900,
@@ -1174,7 +1174,7 @@ var config = {
 					img: 'tree03',
 					// phaser: {
 					// 	width: PolyworksStage.height,
-					// 	height: 1024
+					// 	height: PolyworksStage.height * 2
 					// },
 					start: {
 						x: 2190,
@@ -1189,7 +1189,7 @@ var config = {
 					img: 'tree04',
 					// phaser: {
 					// 	width: PolyworksStage.height,
-					// 	height: 1024
+					// 	height: PolyworksStage.height * 2
 					// },
 					start: {
 						x: 2480,
@@ -1204,7 +1204,7 @@ var config = {
 					img: 'tree02',
 					// phaser: {
 					// 	width: PolyworksStage.height,
-					// 	height: 1024
+					// 	height: PolyworksStage.height * 2
 					// },
 					start: {
 						x: 2850,
@@ -1253,7 +1253,7 @@ var config = {
 					},
 					phaser: {
 						width: 16,
-						height: 1024
+						height: PolyworksStage.height * 2
 					},
 					physics: {
 						immovable: true
@@ -1266,7 +1266,7 @@ var config = {
 				attrs: {
 					img: 'platform',
 					phaser: {
-						width: 4096,
+						width: PolyworksStage.width * 8,
 						height: 128
 					},
 					start: {
@@ -1788,14 +1788,14 @@ var config = {
 		world: {
 			x: 0,
 			y: -256,
-			width: (4096),
+			width: (PolyworksStage.width * 8),
 			height: PolyworksStage.height + 256
 		},
 		clearWorld: true,
 		clearCache: false,
 		bounds: {
 			start: 0,
-			end: 4020
+			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 4)
 		},
 		attrs: [{
 			name: 'scenery',
@@ -1856,7 +1856,7 @@ var config = {
 					img: 'tree01',
 					// phaser: {
 					// 	width: PolyworksStage.height,
-					// 	height: (1024) + 20
+					// 	height: (PolyworksStage.height * 2) + 20
 					// },
 					start: {
 						x: 640,
@@ -1871,7 +1871,7 @@ var config = {
 					img: 'tree04',
 					// phaser: {
 					// 	width: PolyworksStage.height,
-					// 	height: (1024)
+					// 	height: (PolyworksStage.height * 2)
 					// },
 					start: {
 						x: 1200,
@@ -1886,7 +1886,7 @@ var config = {
 					img: 'tree01',
 					// phaser: {
 					// 	width: PolyworksStage.height,
-					// 	height: (1024) + 20
+					// 	height: (PolyworksStage.height * 2) + 20
 					// },
 					start: {
 						x: 1900,
@@ -1901,7 +1901,7 @@ var config = {
 					img: 'tree03',
 					// phaser: {
 					// 	width: PolyworksStage.height,
-					// 	height: 1024
+					// 	height: PolyworksStage.height * 2
 					// },
 					start: {
 						x: 2190,
@@ -1916,7 +1916,7 @@ var config = {
 					img: 'tree04',
 					// phaser: {
 					// 	width: PolyworksStage.height,
-					// 	height: 1024
+					// 	height: PolyworksStage.height * 2
 					// },
 					start: {
 						x: 2600,
@@ -1931,7 +1931,7 @@ var config = {
 					img: 'tree02',
 					// phaser: {
 					// 	width: PolyworksStage.height,
-					// 	height: 1024
+					// 	height: PolyworksStage.height * 2
 					// },
 					start: {
 						x: 3000,
@@ -1979,7 +1979,7 @@ var config = {
 					},
 					phaser: {
 						width: 16,
-						height: 1024
+						height: PolyworksStage.height * 2
 					},
 					physics: {
 						immovable: true
@@ -1992,7 +1992,7 @@ var config = {
 				attrs: {
 					img: 'platform',
 					phaser: {
-						width: 4096,
+						width: PolyworksStage.width * 8,
 						height: 128
 					},
 					start: {
@@ -2757,7 +2757,7 @@ var config = {
 					},
 					phaser: {
 						width: 16,
-						height: 1024
+						height: PolyworksStage.height * 2
 					},
 					physics: {
 						immovable: true
@@ -2770,7 +2770,7 @@ var config = {
 				attrs: {
 					img: 'platform',
 					phaser: {
-						width: 4096,
+						width: PolyworksStage.width * 8,
 						height: 128
 					},
 					start: {
@@ -3438,7 +3438,7 @@ var config = {
 			y: -PolyworksStage.height,
 			width: 4096,
 			// height: PolyworksStage.height + 256
-			height: 1024
+			height: PolyworksStage.height * 2
 		},
 		clearWorld: true,
 		clearCache: false,
@@ -3510,7 +3510,7 @@ var config = {
 			// 		},
 			// 		phaser: {
 			// 			width: PolyworksStage.height,
-			// 			height: 1024,
+			// 			height: PolyworksStage.height * 2,
 			// 		}
 			// 	}
 			// },
@@ -3525,7 +3525,7 @@ var config = {
 			// 		},
 			// 		phaser: {
 			// 			width: PolyworksStage.height,
-			// 			height: 1024,
+			// 			height: PolyworksStage.height * 2,
 			// 		}
 			// 	}
 			}
@@ -3546,7 +3546,7 @@ var config = {
 					},
 					phaser: {
 						width: 16,
-						height: 1024
+						height: PolyworksStage.height * 2
 					},
 					physics: {
 						immovable: true
@@ -3559,7 +3559,7 @@ var config = {
 				attrs: {
 					img: 'rockPlatform1',
 					phaser: {
-						width: 4096,
+						width: PolyworksStage.width * 8,
 						height: 128
 					},
 					start: {
