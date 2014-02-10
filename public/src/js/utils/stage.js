@@ -26,14 +26,14 @@ PolyworksStage = (function() {
 
 		_calculateSizes();
 
-		// window.addEventListener('resize', function(event) {
-		// 	// _onSizeChange(event)
-		// 	_calculateSizes();
-		// });
-		// window.addEventListener('orientationchagne', function(event) {
-		// 	// _onSizeChange(event)
-		// 	_calculateSizes();
-		// });
+		window.addEventListener('resize', function(event) {
+			_onSizeChange(event);
+			// _calculateSizes();
+		});
+		window.addEventListener('orientationchagne', function(event) {
+			_onSizeChange(event);
+			// _calculateSizes();
+		});
 	}
 
 	function _calculateSizes() {
