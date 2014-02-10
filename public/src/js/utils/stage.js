@@ -24,7 +24,8 @@ PolyworksStage = (function() {
 			stage.width = document.documentElement.clientWidth;
 			stage.height = (stage.width/_ar[0]) * _ar[1];
 		}
-		stage.unit = stage.height/_ar[1];
+		// stage.unit = stage.height/_ar[1];
+		stage.unit = stage.width/10;
 		var left = (document.documentElement.clientWidth/2) - (stage.width/2);
 		var top = (document.documentElement.clientHeight/2) - (stage.height/2);
 

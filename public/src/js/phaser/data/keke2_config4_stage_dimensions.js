@@ -330,7 +330,7 @@ var config = {
 		}
 	},
 	// STATES
-	initialState: 'level1',
+	initialState: 'menu',
 	states: [
 	// menu
 	{
@@ -409,7 +409,7 @@ var config = {
 		clearCache: false,
 		bounds: {
 			start: 0,
-			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 4)
+			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 1)
 		},
 		pausable: true,
 		attrs: [
@@ -488,7 +488,7 @@ var config = {
 					},
 					start: {
 						x: (PolyworksStage.width * 4),
-						y: PolyworksStage.height - 256
+						y: PolyworksStage.height - 216
 					}
 				}
 			},
@@ -498,18 +498,29 @@ var config = {
 				attrs: {
 					img: 'tree01',
 					start: {
-						x: 3480,
+						x: (PolyworksStage.width * 2) - (PolyworksStage.unit * 2),
 						y: -(PolyworksStage.height)
 					}
 				}
 			},
 			{
-				name: 'tree05',
+				name: 'tree01',
+				cl: 'Sprite',
+				attrs: {
+					img: 'tree01',
+					start: {
+						x: (PolyworksStage.width * 4) - (PolyworksStage.unit * 4),
+						y: -(PolyworksStage.height)
+					}
+				}
+			},
+			{
+				name: 'tree02',
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree02',
 					start: {
-						x: (PolyworksStage.width * 4) - (PolyworksStage.height * 3),
+						x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 4.5),
 						y: (-PolyworksStage.height)
 					}
 				}
@@ -567,7 +578,7 @@ var config = {
 				cl: 'Sector',
 				bounds: {
 					start: 0,
-					end: 1024
+					end: PolyworksStage.width * 2
 				},
 				attrs: [
 				{
@@ -584,12 +595,12 @@ var config = {
 					name: 'enemies',
 					cl: 'Enemies',
 					attrs: [{
-						name: 'level1-sector2-enemy0',
+						name: 'level1-sector1-enemy1',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar02a',
 							start: {
-								x: 800,
+								x: PolyworksStage.unit * 11,
 								y: PolyworksStage.height - 50
 							},
 							physics: {
@@ -600,7 +611,7 @@ var config = {
 								}
 							},
 							phaser: {
-								health: 1
+								health: 3
 							},
 							speed: 0.5,
 							attack: 5,
@@ -621,8 +632,8 @@ var config = {
 				name: 'sector2',
 				cl: 'Sector',
 				bounds: {
-					start: 1024,
-					end: 2048
+					start: PolyworksStage.width * 2,
+					end: PolyworksStage.width * 4
 				},
 				attrs: [
 					{
@@ -638,13 +649,45 @@ var config = {
 					{
 						name: 'enemies',
 						cl: 'Enemies',
-						attrs: [{
-							name: 'level1-sector2-enemy0',
+						attrs: [
+						{
+							name: 'level1-sector2-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
 								start: {
-									x: 1500,
+									x: (PolyworksStage.width * 2) + (PolyworksStage.unit * 2),
+									y: -50
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								phaser: {
+									health: 3
+								},
+								speed: 0.5,
+								attack: 5,
+								score: 2000,
+								movement: {
+									speed: 0.25,
+									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						},
+						{
+							name: 'level1-sector2-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02a',
+								start: {
+									x: (PolyworksStage.width * 2) + (PolyworksStage.unit * 11),
 									y: PolyworksStage.height - 50
 								},
 								physics: {
@@ -655,20 +698,21 @@ var config = {
 									}
 								},
 								phaser: {
-									health: 1
+									health: 7
 								},
 								speed: 0.5,
 								attack: 5,
-								score: 1000,
+								score: 2500,
 								movement: {
-									speed: 0.25,
+									speed: 0.5,
 									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 									formula: null
 								},
 								defaultAnimation: '',
 								animations: caterpillarAnimations
 							}
-						}]
+						}
+						]
 					},
 					{
 						name: 'bonuses',
@@ -681,8 +725,8 @@ var config = {
 				name: 'sector3',
 				cl: 'Sector',
 				bounds: {
-					start: 2048,
-					end: 3072
+					start: PolyworksStage.width * 4,
+					end: PolyworksStage.width * 6
 				},
 				attrs: [
 				{
@@ -699,13 +743,13 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level1-sector3-enemy0',
+							name: 'level1-sector3-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
 								start: {
-									x: 2150,
-									y: -50
+									x: (PolyworksStage.width * 4),
+									y: -(PolyworksStage.height/4) 
 								},
 								physics: {
 									deferredGravity: true,
@@ -729,12 +773,12 @@ var config = {
 							}
 						},
 						{
-							name: 'level1-sector3-enemy1',
+							name: 'level1-sector3-enemy2',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
 								start: {
-									x: 2850,
+									x: (PolyworksStage.width * 5) + (PolyworksStage.unit * 2),
 									y: PolyworksStage.height - 50
 								},
 								physics: {
@@ -744,13 +788,13 @@ var config = {
 										y: 0.2
 									}
 								},
-								attack: 5,
+								attack: 15,
 								phaser: {
-									health: 5
+									health: 15
 								},
 								score: 2000,
 								movement: {
-									speed: 1,
+									speed: 2,
 									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 									formula: null
 								},
@@ -768,7 +812,7 @@ var config = {
 							attrs: {
 								img: 'lollipop',
 								start: {
-									x: 2740,
+									x: (PolyworksStage.width * 5) + (PolyworksStage.unit),
 									y: PolyworksStage.height - 100
 								},
 								physics: {
@@ -786,8 +830,8 @@ var config = {
 				name: 'sector4',
 				cl: 'Sector',
 				bounds: {
-					start: 3072,
-					end: (PolyworksStage.width * 8)
+					start: PolyworksStage.width * 6,
+					end: PolyworksStage.width * 8
 				},
 				attrs: [
 				{
@@ -800,8 +844,7 @@ var config = {
 						attrs: {
 							img: 'platform',
 							start: {
-								// x: (PolyworksStage.width * 8) - (PolyworksStage.height * 4),
-								x: 3600,
+								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 7),
 								y: world.height - 75
 							},
 							scale: [1, 1],
@@ -817,11 +860,10 @@ var config = {
 						attrs: {
 							img: 'branch02aLeft',
 							start: {
-								// x: (PolyworksStage.width * 8) - (PolyworksStage.height * 3),
-								x: 3750,
+								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 8.5),
 								y: world.height - 125
 							},
-							scale: [0.6, 0.3],
+							scale: [0.6, 0.5],
 							physics: {
 								immovable: true,
 								allowGravity: false
@@ -834,11 +876,10 @@ var config = {
 						attrs: {
 							img: 'branch02aRight',
 							start: {
-								// x: (PolyworksStage.width * 8) - (PolyworksStage.height * 3),
-								x: 3900,
+								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 9.5),
 								y: world.height - 175
 							},
-							scale: [0.6, 0.3],
+							scale: [0.6, 0.5],
 							physics: {
 								immovable: true,
 								allowGravity: false
@@ -851,8 +892,7 @@ var config = {
 						attrs: {
 							img: 'branch02aLeft',
 							start: {
-								// x: (PolyworksStage.width * 8) - (PolyworksStage.height * 3),
-								x: 3765,
+								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 8.5),
 								y: world.height - 225
 							},
 							scale: [0.85, 0.8],
@@ -868,8 +908,7 @@ var config = {
 						attrs: {
 							img: 'branch02aRight',
 							start: {
-								// x: (PolyworksStage.width * 8) - (PolyworksStage.height * 3),
-								x: 3900,
+								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 9.5),
 								y: world.height - 275
 							},
 							scale: [0.85, 0.8],
@@ -885,11 +924,10 @@ var config = {
 						attrs: {
 							img: 'branch02aLeft',
 							start: {
-								// x: (PolyworksStage.width * 8) - (PolyworksStage.height * 3),
-								x: 3780,
+								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 8.5),
 								y: world.height - 325
 							},
-							scale: [0.6, 0.3],
+							scale: [0.6, 0.5],
 							physics: {
 								immovable: true,
 								allowGravity: false
@@ -902,11 +940,10 @@ var config = {
 						attrs: {
 							img: 'branch02aRight',
 							start: {
-								// x: (PolyworksStage.width * 8) - (PolyworksStage.height * 3),
-								x: 3900,
+								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 9.5),
 								y: world.height - 375
 							},
-							scale: [0.6, 0.3],
+							scale: [0.6, 0.5],
 							physics: {
 								immovable: true,
 								allowGravity: false
@@ -919,11 +956,10 @@ var config = {
 						attrs: {
 							img: 'branch02Left',
 							start: {
-								// x: (PolyworksStage.width * 8) - (PolyworksStage.height * 3),
-								x: 3500,
+								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 5),
 								y: world.height - 425
 							},
-							scale: [1.5, 0.3],
+							scale: [1.5, 0.5],
 							physics: {
 								immovable: true,
 								allowGravity: false
@@ -942,12 +978,12 @@ var config = {
 						cl: 'Enemies',
 						attrs: [
 						{
-							name: 'level1-sector4-enemy0',
+							name: 'level1-sector4-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
 								start: {
-									x: 3580,
+									x: PolyworksStage.width * 7,
 									y: PolyworksStage.height - 50
 								},
 								physics: {
@@ -970,36 +1006,36 @@ var config = {
 								defaultAnimation: '',
 								animations: caterpillarAnimations
 							}
-						},
-						{
-							name: 'level1-sector4-enemy0',
-							cl: 'AnimatedEnemy',
-							attrs: {
-								img: 'caterpillarBoss01',
-								start: {
-									x: (PolyworksStage.width * 7),
-									y: PolyworksStage.height - 200
-								},
-								physics: {
-									deferredGravity: true,
-									bounce: {
-										x: 0,
-										y: 0.2
-									}
-								},
-								attack: 20,
-								phaser: {
-									health: 50
-								},
-								score: 500,
-								movement: {
-									speed: 2,
-									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-									formula: null
-								},
-								defaultAnimation: '',
-								animations: caterpillarAnimations
-							}
+						// },
+						// {
+						// 	name: 'level1-sector4-enemy1',
+						// 	cl: 'AnimatedEnemy',
+						// 	attrs: {
+						// 		img: 'caterpillarBoss01',
+						// 		start: {
+						// 			x: (PolyworksStage.width * 7),
+						// 			y: PolyworksStage.height - 200
+						// 		},
+						// 		physics: {
+						// 			deferredGravity: true,
+						// 			bounce: {
+						// 				x: 0,
+						// 				y: 0.2
+						// 			}
+						// 		},
+						// 		attack: 20,
+						// 		phaser: {
+						// 			health: 50
+						// 		},
+						// 		score: 500,
+						// 		movement: {
+						// 			speed: 2,
+						// 			type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+						// 			formula: null
+						// 		},
+						// 		defaultAnimation: '',
+						// 		animations: caterpillarAnimations
+						// 	}
 						}
 						]
 					},
@@ -1012,7 +1048,7 @@ var config = {
 							attrs: {
 								img: 'lollipop',
 								start: {
-									x: 3520,
+									x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 5),
 									y: world.height - 500
 								},
 								physics: {
@@ -1307,7 +1343,7 @@ var config = {
 					cl: 'Enemies',
 					attrs: [
 					{
-						name: 'level2-sector1-enemy1',
+						name: 'level2-sector1-enemy2',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							name: 'caterpillar02a-sprite',
@@ -1362,7 +1398,7 @@ var config = {
 					name: 'enemies',
 					cl: 'Enemies',
 					attrs: [{
-						name: 'level2-sector2-enemy0',
+						name: 'level2-sector2-enemy1',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar02a',
@@ -1422,7 +1458,7 @@ var config = {
 								y: world.height - 115
 							},
 							setSize: [64, 16, 32, 32],
-							// scale: [0.6, 0.3],
+							// scale: [0.6, 0.5],
 							physics: {
 								immovable: true
 							}
@@ -1438,7 +1474,7 @@ var config = {
 								y: world.height - 180
 							},
 							setSize: [64, 16, 32, 32],
-							// scale: [0.6, 0.3],
+							// scale: [0.6, 0.5],
 							physics: {
 								immovable: true
 							}
@@ -1454,7 +1490,7 @@ var config = {
 								y: world.height - 230
 							},
 							// setSize: [64, 16, 32, 32],
-							scale: [0.6, 0.3],
+							scale: [0.6, 0.5],
 							physics: {
 								immovable: true
 							}
@@ -1470,7 +1506,7 @@ var config = {
 								y: world.height - 290
 							},
 							// setSize: [64, 16, 32, 32],
-							scale: [0.6, 0.3],
+							scale: [0.6, 0.5],
 							physics: {
 								immovable: true
 							}
@@ -1486,7 +1522,7 @@ var config = {
 								y: world.height - 360
 							},
 							// setSize: [64, 16, 32, 32],
-							scale: [0.6, 0.3],
+							scale: [0.6, 0.5],
 							physics: {
 								immovable: true
 							}
@@ -1502,7 +1538,7 @@ var config = {
 								y: world.height - 430
 							},
 							// setSize: [64, 16, 32, 32],
-							scale: [0.6, 0.3],
+							scale: [0.6, 0.5],
 							physics: {
 								immovable: true
 							}
@@ -1518,7 +1554,7 @@ var config = {
 								y: world.height - 380
 							},
 							// setSize: [64, 16, 32, 32],
-							scale: [0.6, 0.3],
+							scale: [0.6, 0.5],
 							physics: {
 								immovable: true
 							}
@@ -1534,7 +1570,7 @@ var config = {
 								y: world.height - 350
 							},
 							// setSize: [64, 16, 32, 32],
-							scale: [0.6, 0.3],
+							scale: [0.6, 0.5],
 							physics: {
 								immovable: true
 							}
@@ -1551,7 +1587,7 @@ var config = {
 					name: 'enemies',
 					cl: 'Enemies',
 					attrs: [{
-						name: 'level2-sector3-enemy0',
+						name: 'level2-sector3-enemy1',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar02a',
@@ -1581,7 +1617,7 @@ var config = {
 						}
 					},
 					{
-						name: 'level2-sector3-enemy1',
+						name: 'level2-sector3-enemy2',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar02a',
@@ -1654,7 +1690,7 @@ var config = {
 								y: world.height - 300
 							},
 							// setSize: [64, 16, 32, 32],
-							scale: [0.6, 0.3],
+							scale: [0.6, 0.5],
 							physics: {
 								immovable: true
 							}
@@ -1670,7 +1706,7 @@ var config = {
 								y: world.height - 380
 							},
 							// setSize: [64, 16, 32, 32],
-							scale: [0.6, 0.3],
+							scale: [0.6, 0.5],
 							physics: {
 								immovable: true
 							}
@@ -1687,7 +1723,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level2-sector4-enemy0',
+							name: 'level2-sector4-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
@@ -2014,7 +2050,7 @@ var config = {
 						y: world.height - 115
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2030,7 +2066,7 @@ var config = {
 						y: world.height - 140
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2046,7 +2082,7 @@ var config = {
 						y: world.height - 115
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2062,7 +2098,7 @@ var config = {
 						y: world.height - 180
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2078,7 +2114,7 @@ var config = {
 						y: world.height - 255
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2094,7 +2130,7 @@ var config = {
 						y: world.height - 290
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2110,7 +2146,7 @@ var config = {
 						y: world.height - 340
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2126,7 +2162,7 @@ var config = {
 						y: world.height - 390
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2142,7 +2178,7 @@ var config = {
 						y: world.height - 440
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2158,7 +2194,7 @@ var config = {
 						y: world.height - 490
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2208,7 +2244,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level3-sector1-enemy0',
+							name: 'level3-sector1-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								name: 'caterpillar02b-sprite',
@@ -2239,7 +2275,7 @@ var config = {
 							}
 						},
 						{
-							name: 'level3-sector1-enemy1',
+							name: 'level3-sector1-enemy2',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								name: 'caterpillar02b-sprite',
@@ -2314,7 +2350,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level3-sector2-enemy0',
+							name: 'level3-sector2-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -2419,7 +2455,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level3-sector3-enemy0',
+							name: 'level3-sector3-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -2449,7 +2485,7 @@ var config = {
 							}
 						},
 						{
-							name: 'level3-sector3-enemy1',
+							name: 'level3-sector3-enemy2',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -2524,7 +2560,7 @@ var config = {
 						cl: 'Enemies',
 						attrs: [
 						{
-							name: 'level3-sector4-enemy0',
+							name: 'level3-sector4-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -2554,7 +2590,7 @@ var config = {
 							}
 						},
 						{
-							name: 'level3-sector4-enemy1',
+							name: 'level3-sector4-enemy2',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -2792,7 +2828,7 @@ var config = {
 						y: world.height - 115
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2808,7 +2844,7 @@ var config = {
 						y: world.height - 140
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2824,7 +2860,7 @@ var config = {
 						y: world.height - 115
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2840,7 +2876,7 @@ var config = {
 						y: world.height - 180
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2856,7 +2892,7 @@ var config = {
 						y: world.height - 255
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2872,7 +2908,7 @@ var config = {
 						y: world.height - 330
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2888,7 +2924,7 @@ var config = {
 						y: world.height - 405
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2904,7 +2940,7 @@ var config = {
 						y: world.height - 480
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2920,7 +2956,7 @@ var config = {
 						y: world.height - 555
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2936,7 +2972,7 @@ var config = {
 						y: world.height - 630
 					},
 					// setSize: [64, 16, 32, 32],
-					scale: [0.6, 0.3],
+					scale: [0.6, 0.5],
 					physics: {
 						immovable: true
 					}
@@ -2986,7 +3022,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level4-sector1-enemy0',
+							name: 'level4-sector1-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								name: 'caterpillar02b-sprite',
@@ -3017,7 +3053,7 @@ var config = {
 							}
 						},
 						{
-							name: 'level4-sector1-enemy1',
+							name: 'level4-sector1-enemy2',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								name: 'caterpillar02b-sprite',
@@ -3092,7 +3128,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level4-sector2-enemy0',
+							name: 'level4-sector2-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -3197,7 +3233,7 @@ var config = {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level4-sector3-enemy0',
+							name: 'level4-sector3-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -3227,7 +3263,7 @@ var config = {
 							}
 						},
 						{
-							name: 'level4-sector3-enemy1',
+							name: 'level4-sector3-enemy2',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -3302,7 +3338,7 @@ var config = {
 						cl: 'Enemies',
 						attrs: [
 						{
-							name: 'level4-sector4-enemy0',
+							name: 'level4-sector4-ß',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -3332,7 +3368,7 @@ var config = {
 							}
 						},
 						{
-							name: 'level4-sector4-enemy1',
+							name: 'level4-sector4-enemy2',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02b',
@@ -4257,10 +4293,12 @@ var config = {
 				y: PolyworksStage.height - 128
 			},
 			physics: {
+				/*
 				bounce: {
 					x: 0,
 					y: 0.2
 				},
+				*/
 				collideWorldBounds: false
 			},
 			anchor: {
