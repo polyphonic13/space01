@@ -612,6 +612,7 @@ var config = {
 							phaser: {
 								health: 3
 							},
+							scale: [0.75, 0.75],
 							speed: 0.5,
 							attack: 5,
 							score: 1000,
@@ -668,6 +669,7 @@ var config = {
 								phaser: {
 									health: 3
 								},
+								scale: [0.75, 0.75],
 								speed: 0.5,
 								attack: 5,
 								score: 2000,
@@ -699,6 +701,7 @@ var config = {
 								phaser: {
 									health: 7
 								},
+								scale: [0.75, 0.75],
 								speed: 0.5,
 								attack: 5,
 								score: 2500,
@@ -846,7 +849,6 @@ var config = {
 								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 7),
 								y: PolyworksStage.height - 75
 							},
-							scale: [1, 1],
 							physics: {
 								immovable: true,
 								allowGravity: false
@@ -859,10 +861,10 @@ var config = {
 						attrs: {
 							img: 'branch02aLeft',
 							start: {
-								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 8.5),
+								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 7.5),
 								y: PolyworksStage.height - 125
 							},
-							scale: [0.6, 0.5],
+							scale: [1, 0.5],
 							physics: {
 								immovable: true,
 								allowGravity: false
@@ -875,10 +877,10 @@ var config = {
 						attrs: {
 							img: 'branch02aRight',
 							start: {
-								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 9.5),
+								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 9),
 								y: PolyworksStage.height - 175
 							},
-							scale: [0.6, 0.5],
+							scale: [1, 0.5],
 							physics: {
 								immovable: true,
 								allowGravity: false
@@ -891,10 +893,10 @@ var config = {
 						attrs: {
 							img: 'branch02aLeft',
 							start: {
-								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 8.5),
+								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 7.5),
 								y: PolyworksStage.height - 225
 							},
-							scale: [0.85, 0.8],
+							scale: [1, 0.5],
 							physics: {
 								immovable: true,
 								allowGravity: false
@@ -907,10 +909,10 @@ var config = {
 						attrs: {
 							img: 'branch02aRight',
 							start: {
-								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 9.5),
+								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 9),
 								y: PolyworksStage.height - 275
 							},
-							scale: [0.85, 0.8],
+							scale: [1, 0.5],
 							physics: {
 								immovable: true,
 								allowGravity: false
@@ -923,10 +925,10 @@ var config = {
 						attrs: {
 							img: 'branch02aLeft',
 							start: {
-								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 8.5),
+								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 7.5),
 								y: PolyworksStage.height - 325
 							},
-							scale: [0.6, 0.5],
+							scale: [1, 0.5],
 							physics: {
 								immovable: true,
 								allowGravity: false
@@ -939,10 +941,10 @@ var config = {
 						attrs: {
 							img: 'branch02aRight',
 							start: {
-								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 9.5),
+								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 9),
 								y: PolyworksStage.height - 375
 							},
-							scale: [0.6, 0.5],
+							scale: [1, 0.5],
 							physics: {
 								immovable: true,
 								allowGravity: false
@@ -1005,36 +1007,6 @@ var config = {
 								defaultAnimation: '',
 								animations: caterpillarAnimations
 							}
-						// },
-						// {
-						// 	name: 'level1-sector4-enemy1',
-						// 	cl: 'AnimatedEnemy',
-						// 	attrs: {
-						// 		img: 'caterpillarBoss01',
-						// 		start: {
-						// 			x: (PolyworksStage.width * 7),
-						// 			y: PolyworksStage.height - 200
-						// 		},
-						// 		physics: {
-						// 			deferredGravity: true,
-						// 			bounce: {
-						// 				x: 0,
-						// 				y: 0.2
-						// 			}
-						// 		},
-						// 		attack: 20,
-						// 		phaser: {
-						// 			health: 50
-						// 		},
-						// 		score: 500,
-						// 		movement: {
-						// 			speed: 2,
-						// 			type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-						// 			formula: null
-						// 		},
-						// 		defaultAnimation: '',
-						// 		animations: caterpillarAnimations
-						// 	}
 						}
 						]
 					},
@@ -1324,7 +1296,7 @@ var config = {
 				cl: 'Sector',
 				bounds: {
 					start: 0,
-					end: 1024
+					end: PolyworksStage.width * 2
 				},
 				attrs: [
 				{
@@ -1379,8 +1351,8 @@ var config = {
 				name: 'sector2',
 				cl: 'Sector',
 				bounds: {
-					start: 1024,
-					end: 2048
+					start: PolyworksStage.width * 2,
+					end: PolyworksStage.width * 4
 				},
 				attrs: [
 				{
@@ -1439,8 +1411,8 @@ var config = {
 				name: 'sector3',
 				cl: 'Sector',
 				bounds: {
-					start: 2048,
-					end: 3072
+					start: PolyworksStage.width * 4,
+					end: PolyworksStage.width * 6
 				},
 				attrs: [
 				{
@@ -1671,8 +1643,8 @@ var config = {
 				name: 'sector4',
 				cl: 'Sector',
 				bounds: {
-					start: 3072,
-					end: 4096
+					start: PolyworksStage.width * 6,
+					end: PolyworksStage.width * 8
 				},
 				attrs: [
 				{
