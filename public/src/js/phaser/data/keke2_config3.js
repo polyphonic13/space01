@@ -1,3 +1,14 @@
+var world = {
+	x: 0,
+	y: 0,
+ 	width: PolyworksStage.width * 4,
+	height: PolyworksStage.height,
+	gravity: {
+		x: 0,
+		y: 15
+	}
+};
+
 var config = {
 	// IMAGES
 	images: {
@@ -26,11 +37,9 @@ var config = {
 		platform: 'images/platform.png',
 		platformV: 'images/platform_v.png',
 		rockPlatform1: 'images/rock_platform1.png',
-		// branch02Left: 'images/vine01_left.png',
 		branch02Left: 'images/branch03_left.png',
 		branch02aLeft: 'images/branch03a_left.png',
 		vine01Left: 'images/vine01_left.png',
-		// branch02Right: 'images/vine01_right.png',
 		branch02Right: 'images/branch03_right.png',
 		branch02aRight: 'images/branch03a_right.png',
 		vine01Right: 'images/vine01_right.png',
@@ -431,7 +440,8 @@ var config = {
 					img: 'forestBackground01',
 					start: {
 						x: 0,
-						y: -(PolyworksStage.height)
+						// y: -(PolyworksStage.height)
+						y: -(1024 - PolyworksStage.height)
 					},
 					phaser: {
 						width: 2048,
@@ -446,7 +456,8 @@ var config = {
 					img: 'forestBackground02',
 					start: {
 						x: 2048,
-						y: -(PolyworksStage.height)
+						y: -(1024 - PolyworksStage.height)
+						// y: -(PolyworksStage.height)
 					},
 					phaser: {
 						width: 2048,
@@ -777,7 +788,7 @@ var config = {
 				cl: 'Sector',
 				bounds: {
 					start: 3072,
-					end: (4096)
+					end: 4096
 				},
 				attrs: [
 				{

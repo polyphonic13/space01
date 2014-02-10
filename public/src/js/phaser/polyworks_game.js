@@ -103,25 +103,7 @@ PolyworksGame = (function() {
 		quit: function() {
 			// trace('PolyworksGame/quit');
 			if(!PolyworksGame.isQuit) {
-				_removeListeners();
-				PolyworksGame.isQuit = true;
-				// _killStates();
-				// Polyworks.EventCenter.reset();
-				_states[PolyworksGame.currentState].shutdown();
-				PolyworksGame.gameOver = true;
-				if(PolyworksGame.player) {
-					PolyworksGame.player.destroy();
-				}
-				PolyworksGame.phaser.destroy();
-
-				var gameContainer = document.getElementById('gameContainer');
-				gameContainer.parentNode.removeChild(gameContainer);
-
-				PolyworksGame.phaser = null;
-				PolyworksStage = null;
-				Polyworks = null;
-				Phaser = null;
-				window.PolyworksGame = null;
+				_quit();
 			}
 		}
 	};
@@ -215,6 +197,29 @@ PolyworksGame = (function() {
 	function _removeLoadingAnimation() {
 		var loading = document.getElementById('loading');
 		loading.parentNode.removeChild(loading);
+	}
+
+	function _quit() {
+		_removeListeners();
+		PolyworksGame.isQuit = true;
+		// _killStates();
+		// Polyworks.EventCenter.reset();
+		_states[PolyworksGame.currentState].shutdown();
+		PolyworksGame.gameOver = true;
+		if(PolyworksGame.player) {
+			PolyworksGame.player.destroy();
+		}
+		PolyworksGame.phaser.destroy();
+
+		var gameContainer = document.getElementById('gameContainer');
+		gameContainer.parentNode.removeChild(gameContainer);
+
+		PolyworksGame.phaser = null;
+		PolyworksStage.destroy();
+		PolyworksStage = null;
+		Polyworks = null;
+		Phaser = null;
+		window.PolyworksGame = null;
 	}
 	
 	function _killStates() {
