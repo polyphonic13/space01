@@ -1,8 +1,7 @@
 var world = {
 	x: 0,
 	y: 0,
-	// width: 4096,
-	width: PolyworksStage.width * 4,
+ 	width: PolyworksStage.width * 4,
 	height: PolyworksStage.height,
 	gravity: {
 		x: 0,
@@ -330,7 +329,7 @@ var config = {
 		}
 	},
 	// STATES
-	initialState: 'menu',
+	initialState: 'level1',
 	states: [
 	// menu
 	{
@@ -409,7 +408,7 @@ var config = {
 		clearCache: false,
 		bounds: {
 			start: 0,
-			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 1)
+			end: (PolyworksStage.width * 8) - (PolyworksStage.wUnit * 1)
 		},
 		pausable: true,
 		attrs: [
@@ -498,7 +497,7 @@ var config = {
 				attrs: {
 					img: 'tree01',
 					start: {
-						x: (PolyworksStage.width * 2) - (PolyworksStage.unit * 2),
+						x: (PolyworksStage.width * 2) - (PolyworksStage.wUnit * 2),
 						y: -(PolyworksStage.height)
 					}
 				}
@@ -509,7 +508,7 @@ var config = {
 				attrs: {
 					img: 'tree01',
 					start: {
-						x: (PolyworksStage.width * 4) - (PolyworksStage.unit * 4),
+						x: (PolyworksStage.width * 4) - (PolyworksStage.wUnit * 4),
 						y: -(PolyworksStage.height)
 					}
 				}
@@ -520,7 +519,7 @@ var config = {
 				attrs: {
 					img: 'tree02',
 					start: {
-						x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 4.5),
+						x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 4.5),
 						y: (-PolyworksStage.height)
 					}
 				}
@@ -560,7 +559,7 @@ var config = {
 					},
 					start: {
 						x: 0,
-						y: world.height - 20
+						y: PolyworksStage.height - 20
 					},
 					physics: {
 						immovable: true
@@ -600,7 +599,7 @@ var config = {
 						attrs: {
 							img: 'caterpillar02a',
 							start: {
-								x: PolyworksStage.unit * 11,
+								x: PolyworksStage.wUnit * 11,
 								y: PolyworksStage.height - 50
 							},
 							physics: {
@@ -656,7 +655,7 @@ var config = {
 							attrs: {
 								img: 'caterpillar02a',
 								start: {
-									x: (PolyworksStage.width * 2) + (PolyworksStage.unit * 2),
+									x: (PolyworksStage.width * 2) + (PolyworksStage.wUnit * 2),
 									y: -50
 								},
 								physics: {
@@ -687,7 +686,7 @@ var config = {
 							attrs: {
 								img: 'caterpillar02a',
 								start: {
-									x: (PolyworksStage.width * 2) + (PolyworksStage.unit * 11),
+									x: (PolyworksStage.width * 2) + (PolyworksStage.wUnit * 11),
 									y: PolyworksStage.height - 50
 								},
 								physics: {
@@ -778,7 +777,7 @@ var config = {
 							attrs: {
 								img: 'caterpillar02a',
 								start: {
-									x: (PolyworksStage.width * 5) + (PolyworksStage.unit * 2),
+									x: (PolyworksStage.width * 5) + (PolyworksStage.wUnit * 2),
 									y: PolyworksStage.height - 50
 								},
 								physics: {
@@ -812,7 +811,7 @@ var config = {
 							attrs: {
 								img: 'lollipop',
 								start: {
-									x: (PolyworksStage.width * 5) + (PolyworksStage.unit),
+									x: (PolyworksStage.width * 5) + (PolyworksStage.wUnit),
 									y: PolyworksStage.height - 100
 								},
 								physics: {
@@ -844,8 +843,8 @@ var config = {
 						attrs: {
 							img: 'platform',
 							start: {
-								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 7),
-								y: world.height - 75
+								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 7),
+								y: PolyworksStage.height - 75
 							},
 							scale: [1, 1],
 							physics: {
@@ -860,8 +859,8 @@ var config = {
 						attrs: {
 							img: 'branch02aLeft',
 							start: {
-								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 8.5),
-								y: world.height - 125
+								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 8.5),
+								y: PolyworksStage.height - 125
 							},
 							scale: [0.6, 0.5],
 							physics: {
@@ -876,8 +875,8 @@ var config = {
 						attrs: {
 							img: 'branch02aRight',
 							start: {
-								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 9.5),
-								y: world.height - 175
+								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 9.5),
+								y: PolyworksStage.height - 175
 							},
 							scale: [0.6, 0.5],
 							physics: {
@@ -892,8 +891,8 @@ var config = {
 						attrs: {
 							img: 'branch02aLeft',
 							start: {
-								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 8.5),
-								y: world.height - 225
+								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 8.5),
+								y: PolyworksStage.height - 225
 							},
 							scale: [0.85, 0.8],
 							physics: {
@@ -908,8 +907,8 @@ var config = {
 						attrs: {
 							img: 'branch02aRight',
 							start: {
-								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 9.5),
-								y: world.height - 275
+								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 9.5),
+								y: PolyworksStage.height - 275
 							},
 							scale: [0.85, 0.8],
 							physics: {
@@ -924,8 +923,8 @@ var config = {
 						attrs: {
 							img: 'branch02aLeft',
 							start: {
-								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 8.5),
-								y: world.height - 325
+								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 8.5),
+								y: PolyworksStage.height - 325
 							},
 							scale: [0.6, 0.5],
 							physics: {
@@ -940,8 +939,8 @@ var config = {
 						attrs: {
 							img: 'branch02aRight',
 							start: {
-								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 9.5),
-								y: world.height - 375
+								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 9.5),
+								y: PolyworksStage.height - 375
 							},
 							scale: [0.6, 0.5],
 							physics: {
@@ -956,8 +955,8 @@ var config = {
 						attrs: {
 							img: 'branch02Left',
 							start: {
-								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 5),
-								y: world.height - 425
+								x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 5),
+								y: PolyworksStage.height - 425
 							},
 							scale: [1.5, 0.5],
 							physics: {
@@ -1048,8 +1047,8 @@ var config = {
 							attrs: {
 								img: 'lollipop',
 								start: {
-									x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 5),
-									y: world.height - 500
+									x: (PolyworksStage.width * 6) + (PolyworksStage.wUnit * 5),
+									y: PolyworksStage.height - 500
 								},
 								physics: {
 									immovable: true
@@ -1120,7 +1119,7 @@ var config = {
 		clearCache: false,
 		bounds: {
 			start: 0,
-			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 2)
+			end: (PolyworksStage.width * 8) - (PolyworksStage.wUnit * 2)
 		},
 		attrs: [
 		{
@@ -1307,7 +1306,7 @@ var config = {
 					},
 					start: {
 						x: 0,
-						y: world.height - 20
+						y: PolyworksStage.height - 20
 					},
 					physics: {
 						immovable: true
@@ -1455,7 +1454,7 @@ var config = {
 							img: 'vine01Left',
 							start: {
 								x: 2048,
-								y: world.height - 115
+								y: PolyworksStage.height - 115
 							},
 							setSize: [64, 16, 32, 32],
 							// scale: [0.6, 0.5],
@@ -1471,7 +1470,7 @@ var config = {
 							img: 'vine01Right',
 							start: {
 								x: 2148,
-								y: world.height - 180
+								y: PolyworksStage.height - 180
 							},
 							setSize: [64, 16, 32, 32],
 							// scale: [0.6, 0.5],
@@ -1487,7 +1486,7 @@ var config = {
 							img: 'branch02Left',
 							start: {
 								x: 2148,
-								y: world.height - 230
+								y: PolyworksStage.height - 230
 							},
 							// setSize: [64, 16, 32, 32],
 							scale: [0.6, 0.5],
@@ -1503,7 +1502,7 @@ var config = {
 							img: 'branch02Right',
 							start: {
 								x: 2298,
-								y: world.height - 290
+								y: PolyworksStage.height - 290
 							},
 							// setSize: [64, 16, 32, 32],
 							scale: [0.6, 0.5],
@@ -1519,7 +1518,7 @@ var config = {
 							img: 'branch02Left',
 							start: {
 								x: 2448,
-								y: world.height - 360
+								y: PolyworksStage.height - 360
 							},
 							// setSize: [64, 16, 32, 32],
 							scale: [0.6, 0.5],
@@ -1535,7 +1534,7 @@ var config = {
 							img: 'branch02Right',
 							start: {
 								x: 2598,
-								y: world.height - 430
+								y: PolyworksStage.height - 430
 							},
 							// setSize: [64, 16, 32, 32],
 							scale: [0.6, 0.5],
@@ -1551,7 +1550,7 @@ var config = {
 							img: 'branch02Left',
 							start: {
 								x: 2748,
-								y: world.height - 380
+								y: PolyworksStage.height - 380
 							},
 							// setSize: [64, 16, 32, 32],
 							scale: [0.6, 0.5],
@@ -1567,7 +1566,7 @@ var config = {
 							img: 'branch02Right',
 							start: {
 								x: 2898,
-								y: world.height - 350
+								y: PolyworksStage.height - 350
 							},
 							// setSize: [64, 16, 32, 32],
 							scale: [0.6, 0.5],
@@ -1687,7 +1686,7 @@ var config = {
 							img: 'branch02Left',
 							start: {
 								x: 3098,
-								y: world.height - 300
+								y: PolyworksStage.height - 300
 							},
 							// setSize: [64, 16, 32, 32],
 							scale: [0.6, 0.5],
@@ -1703,7 +1702,7 @@ var config = {
 							img: 'branch02Right',
 							start: {
 								x: 3248,
-								y: world.height - 380
+								y: PolyworksStage.height - 380
 							},
 							// setSize: [64, 16, 32, 32],
 							scale: [0.6, 0.5],
@@ -1831,7 +1830,7 @@ var config = {
 		clearCache: false,
 		bounds: {
 			start: 0,
-			end: (PolyworksStage.width * 8) - (PolyworksStage.unit * 4)
+			end: (PolyworksStage.width * 8) - (PolyworksStage.wUnit * 4)
 		},
 		attrs: [{
 			name: 'scenery',
@@ -2033,7 +2032,7 @@ var config = {
 					},
 					start: {
 						x: 0,
-						y: world.height - 20
+						y: PolyworksStage.height - 20
 					},
 					physics: {
 						immovable: true
@@ -2047,7 +2046,7 @@ var config = {
 					img: 'vine01Left',
 					start: {
 						x: 700,
-						y: world.height - 115
+						y: PolyworksStage.height - 115
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2063,7 +2062,7 @@ var config = {
 					img: 'vine01Right',
 					start: {
 						x: 900,
-						y: world.height - 140
+						y: PolyworksStage.height - 140
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2079,7 +2078,7 @@ var config = {
 					img: 'vine01Left',
 					start: {
 						x: 1948,
-						y: world.height - 115
+						y: PolyworksStage.height - 115
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2095,7 +2094,7 @@ var config = {
 					img: 'vine01Right',
 					start: {
 						x: 2148,
-						y: world.height - 180
+						y: PolyworksStage.height - 180
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2111,7 +2110,7 @@ var config = {
 					img: 'branch02Left',
 					start: {
 						x: 2248,
-						y: world.height - 255
+						y: PolyworksStage.height - 255
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2127,7 +2126,7 @@ var config = {
 					img: 'branch02Right',
 					start: {
 						x: 2448,
-						y: world.height - 290
+						y: PolyworksStage.height - 290
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2143,7 +2142,7 @@ var config = {
 					img: 'branch02Left',
 					start: {
 						x: 2648,
-						y: world.height - 340
+						y: PolyworksStage.height - 340
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2159,7 +2158,7 @@ var config = {
 					img: 'branch02Right',
 					start: {
 						x: 2848,
-						y: world.height - 390
+						y: PolyworksStage.height - 390
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2175,7 +2174,7 @@ var config = {
 					img: 'branch02Left',
 					start: {
 						x: 3048,
-						y: world.height - 440
+						y: PolyworksStage.height - 440
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2191,7 +2190,7 @@ var config = {
 					img: 'branch02Right',
 					start: {
 						x: 3248,
-						y: world.height - 490
+						y: PolyworksStage.height - 490
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2230,7 +2229,7 @@ var config = {
 								img: 'thorns',
 								start: {
 									x: 800,
-									y: world.height - 75
+									y: PolyworksStage.height - 75
 								},
 								physics: {
 									immovable: true
@@ -2411,7 +2410,7 @@ var config = {
 								img: 'thorns',
 								start: {
 									x: 2140,
-									y: world.height - 75
+									y: PolyworksStage.height - 75
 								},
 								physics: {
 									immovable: true
@@ -2426,7 +2425,7 @@ var config = {
 								img: 'thorns',
 								start: {
 									x: 2350,
-									y: world.height - 75
+									y: PolyworksStage.height - 75
 								},
 								physics: {
 									immovable: true
@@ -2441,7 +2440,7 @@ var config = {
 								img: 'thorns',
 								start: {
 									x: 2560,
-									y: world.height - 75
+									y: PolyworksStage.height - 75
 								},
 								physics: {
 									immovable: true
@@ -2811,7 +2810,7 @@ var config = {
 					},
 					start: {
 						x: 0,
-						y: world.height - 20
+						y: PolyworksStage.height - 20
 					},
 					physics: {
 						immovable: true
@@ -2825,7 +2824,7 @@ var config = {
 					img: 'vine01Left',
 					start: {
 						x: 700,
-						y: world.height - 115
+						y: PolyworksStage.height - 115
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2841,7 +2840,7 @@ var config = {
 					img: 'vine01Right',
 					start: {
 						x: 900,
-						y: world.height - 140
+						y: PolyworksStage.height - 140
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2857,7 +2856,7 @@ var config = {
 					img: 'vine01Left',
 					start: {
 						x: 1948,
-						y: world.height - 115
+						y: PolyworksStage.height - 115
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2873,7 +2872,7 @@ var config = {
 					img: 'vine01Right',
 					start: {
 						x: 2148,
-						y: world.height - 180
+						y: PolyworksStage.height - 180
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2889,7 +2888,7 @@ var config = {
 					img: 'branch02Left',
 					start: {
 						x: 2248,
-						y: world.height - 255
+						y: PolyworksStage.height - 255
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2905,7 +2904,7 @@ var config = {
 					img: 'branch02Right',
 					start: {
 						x: 2398,
-						y: world.height - 330
+						y: PolyworksStage.height - 330
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2921,7 +2920,7 @@ var config = {
 					img: 'branch02Left',
 					start: {
 						x: 2548,
-						y: world.height - 405
+						y: PolyworksStage.height - 405
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2937,7 +2936,7 @@ var config = {
 					img: 'branch02Right',
 					start: {
 						x: 2698,
-						y: world.height - 480
+						y: PolyworksStage.height - 480
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2953,7 +2952,7 @@ var config = {
 					img: 'branch02Left',
 					start: {
 						x: 2848,
-						y: world.height - 555
+						y: PolyworksStage.height - 555
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -2969,7 +2968,7 @@ var config = {
 					img: 'branch02Right',
 					start: {
 						x: 3248,
-						y: world.height - 630
+						y: PolyworksStage.height - 630
 					},
 					// setSize: [64, 16, 32, 32],
 					scale: [0.6, 0.5],
@@ -3008,7 +3007,7 @@ var config = {
 								img: 'thorns',
 								start: {
 									x: 800,
-									y: world.height - 75
+									y: PolyworksStage.height - 75
 								},
 								physics: {
 									immovable: true
@@ -3189,7 +3188,7 @@ var config = {
 								img: 'thorns',
 								start: {
 									x: 2140,
-									y: world.height - 75
+									y: PolyworksStage.height - 75
 								},
 								physics: {
 									immovable: true
@@ -3204,7 +3203,7 @@ var config = {
 								img: 'thorns',
 								start: {
 									x: 2350,
-									y: world.height - 75
+									y: PolyworksStage.height - 75
 								},
 								physics: {
 									immovable: true
@@ -3212,14 +3211,14 @@ var config = {
 								attack: 10
 							}
 						},	
-						{		
+						{
 							name: 'level4-sector3-hazard2',
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns',
 								start: {
 									x: 2560,
-									y: world.height - 75
+									y: PolyworksStage.height - 75
 								},
 								physics: {
 									immovable: true
@@ -3600,7 +3599,7 @@ var config = {
 					},
 					start: {
 						x: 0,
-						y: world.height - 20
+						y: PolyworksStage.height - 20
 					},
 					physics: {
 						immovable: true
@@ -3614,7 +3613,7 @@ var config = {
 					img: 'rockPlatform1',
 					start: {
 						x: 768,
-						y: world.height - 50
+						y: PolyworksStage.height - 50
 					},
 					scale: [2, 1],
 					physics: {
@@ -3629,7 +3628,7 @@ var config = {
 					img: 'rockPlatform1',
 					start: {
 						x: 1088,
-						y: world.height - 80
+						y: PolyworksStage.height - 80
 					},
 					scale: [1.5, 1],
 					physics: {
@@ -3644,7 +3643,7 @@ var config = {
 					img: 'rockPlatform1',
 					start: {
 						x: 1280,
-						y: world.height - 120
+						y: PolyworksStage.height - 120
 					},
 					scale: [2, 1],
 					physics: {
@@ -3659,7 +3658,7 @@ var config = {
 					img: 'rockPlatform1',
 					start: {
 						x: 1664,
-						y: world.height - 150
+						y: PolyworksStage.height - 150
 					},
 					scale: [1, 1],
 					physics: {
@@ -3674,7 +3673,7 @@ var config = {
 					img: 'rockPlatform1',
 					start: {
 						x: 1856,
-						y: world.height - 190
+						y: PolyworksStage.height - 190
 					},
 					scale: [1, 1],
 					physics: {
@@ -3689,7 +3688,7 @@ var config = {
 					img: 'rockPlatform1',
 					start: {
 						x: 2048,
-						y: world.height - 240
+						y: PolyworksStage.height - 240
 					},
 					scale: [1.5, 1],
 					physics: {
@@ -3704,7 +3703,7 @@ var config = {
 					img: 'rockPlatform1',
 					start: {
 						x: 2304,
-						y: world.height - 280
+						y: PolyworksStage.height - 280
 					},
 					scale: [2, 1],
 					physics: {
@@ -3719,7 +3718,7 @@ var config = {
 					img: 'rockPlatform1',
 					start: {
 						x: 2624,
-						y: world.height - 320
+						y: PolyworksStage.height - 320
 					},
 					scale: [1, 1],
 					physics: {
@@ -3734,7 +3733,7 @@ var config = {
 			// 		img: 'rockPlatform1',
 			// 		start: {
 			// 			x: 2688,
-			// 			y: world.height - 360
+			// 			y: PolyworksStage.height - 360
 			// 		},
 			// 		scale: [1, 1],
 			// 		physics: {
@@ -3749,7 +3748,7 @@ var config = {
 					img: 'rockPlatform1',
 					start: {
 						x: 2816,
-						y: world.height - 400
+						y: PolyworksStage.height - 400
 					},
 					scale: [2, 1],
 					physics: {
@@ -3764,7 +3763,7 @@ var config = {
 					img: 'rockPlatform1',
 					start: {
 						x: 3140,
-						y: world.height - 440
+						y: PolyworksStage.height - 440
 					},
 					scale: [1, 1],
 					physics: {
@@ -3779,7 +3778,7 @@ var config = {
 					img: 'rockPlatform1',
 					start: {
 						x: 3332,
-						y: world.height - 500
+						y: PolyworksStage.height - 500
 					},
 					scale: [2, 1],
 					physics: {
@@ -3794,7 +3793,7 @@ var config = {
 					img: 'rockPlatform1',
 					start: {
 						x: 3652,
-						y: world.height - 530
+						y: PolyworksStage.height - 530
 					},
 					scale: [1, 1],
 					physics: {
@@ -3809,7 +3808,7 @@ var config = {
 					img: 'rockPlatform1',
 					start: {
 						x: 3844,
-						y: world.height - 560
+						y: PolyworksStage.height - 560
 					},
 					scale: [2, 1],
 					physics: {
@@ -3846,7 +3845,7 @@ var config = {
 								img: 'invisibleBg',
 								start: {
 									x: 0,
-									y: world.height + 100
+									y: PolyworksStage.height + 100
 								},
 								scale: [32, 1],
 								physics: {
@@ -3893,7 +3892,7 @@ var config = {
 								img: 'invisibleBg',
 								start: {
 									x: 1024,
-									y: world.height + 100
+									y: PolyworksStage.height + 100
 								},
 								scale: [32, 1],
 								physics: {
@@ -3940,7 +3939,7 @@ var config = {
 								img: 'invisibleBg',
 								start: {
 									x: 2048,
-									y: world.height + 100
+									y: PolyworksStage.height + 100
 								},
 								scale: [32, 1],
 								physics: {
@@ -3987,7 +3986,7 @@ var config = {
 								img: 'invisibleBg',
 								start: {
 									x: 3072,
-									y: world.height + 100
+									y: PolyworksStage.height + 100
 								},
 								scale: [32, 1],
 								physics: {

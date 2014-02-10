@@ -1,15 +1,3 @@
-var world = {
-	x: 0,
-	y: 0,
-	// width: 4096,
-	width: 2048,
-	height: PolyworksStage.height,
-	gravity: {
-		x: 0,
-		y: 15
-	}
-};
-
 var config = {
 	// IMAGES
 	images: {
