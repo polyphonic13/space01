@@ -12,12 +12,12 @@ var kekeAnimations = {
 	runL: {
 		keyFrames: [21, 22, 23, 24, 25, 26, 28, 29, 30, 31, 32, 33], 
 		loop: true,
-		frameRate: 11
+		frameRate: 15
 	},
 	runR: {
 		keyFrames: [7, 8, 9, 10, 11, 12, 14, 15, 16, 17, 18, 19], 
 		loop: true,
-		frameRate: 11
+		frameRate: 15
 	},
 	damagedL: {
 		keyFrames: [3],

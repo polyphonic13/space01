@@ -1,7 +1,7 @@
 var world = {
 	x: 0,
 	y: 0,
- 	width: PolyworksStage.width * 4,
+ 	width: PolyworksStage.width,
 	height: PolyworksStage.height,
 	gravity: {
 		x: 0,
@@ -35,6 +35,7 @@ var config = {
 		grass01: 'images/grass01.png',
 		grass02: 'images/grass02.png',
 		platform: 'images/platform.png',
+		platformRed: 'images/platform_red.png',
 		platformV: 'images/platform_v.png',
 		rockPlatform1: 'images/rock_platform1.png',
 		// branch02Left: 'images/vine01_left.png',
@@ -523,6 +524,23 @@ var config = {
 						y: (-PolyworksStage.height)
 					}
 				}
+			},
+			{
+				name: 'stageSize',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platformRed',
+					phaser: {
+						width: PolyworksStage.width,
+						height: PolyworksStage.height,
+						alpha: 0.5
+					},
+					start: {
+						x: 0,
+						y: 0
+						//y: (PolyworksStage.winW - PolyworksStage.height)
+					}
+				}
 			}
 			]
 		},
@@ -536,7 +554,7 @@ var config = {
 				attrs: {
 					img: 'platformV',
 					start: {
-						x: -16,
+						x: 0,
 						y: -PolyworksStage.height
 					},
 					phaser: {
@@ -4254,8 +4272,10 @@ var config = {
 			img: 'keke',
 			phaser: {
 				health: 100,
-				width: 95,
-				height: 113
+				// width: 95,
+				// height: 113
+				width: (PolyworksStage.unit * 3) * 0.84,
+				height: PolyworksStage.unit * 3
 			},
 			setSize: [51, 113],
 			start: {
