@@ -577,7 +577,7 @@ var config = {
 				cl: 'Sector',
 				bounds: {
 					start: 0,
-					end: PolyworksStage.width * 2
+					end: PolyworksStage.width
 				},
 				attrs: [
 				{
