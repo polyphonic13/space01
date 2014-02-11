@@ -632,8 +632,8 @@ var config = {
 				name: 'sector2',
 				cl: 'Sector',
 				bounds: {
-					start: PolyworksStage.width * 2,
-					end: PolyworksStage.width * 4
+					start: PolyworksStage.width,
+					end: PolyworksStage.width * 2
 				},
 				attrs: [
 					{
@@ -727,8 +727,8 @@ var config = {
 				name: 'sector3',
 				cl: 'Sector',
 				bounds: {
-					start: PolyworksStage.width * 4,
-					end: PolyworksStage.width * 6
+					start: PolyworksStage.width * 2,
+					end: PolyworksStage.width * 3
 				},
 				attrs: [
 				{
@@ -832,8 +832,8 @@ var config = {
 				name: 'sector4',
 				cl: 'Sector',
 				bounds: {
-					start: PolyworksStage.width * 6,
-					end: PolyworksStage.width * 8
+					start: PolyworksStage.width * 3,
+					end: PolyworksStage.width * 4
 				},
 				attrs: [
 				{
