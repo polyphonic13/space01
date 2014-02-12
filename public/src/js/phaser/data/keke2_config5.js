@@ -35,6 +35,7 @@ var config = {
 		grass01: 'images/grass01.png',
 		grass02: 'images/grass02.png',
 		platform: 'images/platform.png',
+		platformGrey: 'images/platform_grey.png',
 		platformRed: 'images/platform_red.png',
 		platformV: 'images/platform_v.png',
 		rockPlatform1: 'images/rock_platform1.png',
@@ -147,8 +148,8 @@ var config = {
 				attrs: {
 					img: 'startButton',
 					start: {
-						x: PolyworksStage.width/2 - 128,
-						y: PolyworksStage.height/2 - 64
+						x: PolyworksStage.winW/2 - 128,
+						y: PolyworksStage.winH/2 - 64
 					},
 					inputCode: Polyworks.InputCodes.PLAY,
 					events: {
@@ -185,8 +186,8 @@ var config = {
 				attrs: {
 					img: 'nextButton',
 					start: {
-						x: PolyworksStage.width/2 - 128,
-						y: PolyworksStage.height/2 - 64
+						x: PolyworksStage.winW/2 - 128,
+						y: PolyworksStage.winH/2 - 64
 					},
 					inputCode: Polyworks.InputCodes.NEXT,
 					events: {
@@ -278,7 +279,7 @@ var config = {
 					img: 'leftButton',
 					start: {
 						x: 30,
-						y: PolyworksStage.height - 266
+						y: PolyworksStage.winH - 266
 					},
 					inputCode: Polyworks.InputCodes.LEFT
 				}
@@ -290,7 +291,7 @@ var config = {
 					img: 'rightButton',
 					start: {
 						x: 150,
-						y: PolyworksStage.height - 266
+						y: PolyworksStage.winH - 266
 					},
 					inputCode: Polyworks.InputCodes.RIGHT
 				}
@@ -301,8 +302,8 @@ var config = {
 				attrs: {
 					img: 'upButton',
 					start: {
-						x: PolyworksStage.width - 90,
-						y: PolyworksStage.height - 266
+						x: PolyworksStage.winW - 90,
+						y: PolyworksStage.winH - 266
 					},
 					inputCode: Polyworks.InputCodes.UP
 				}
@@ -359,8 +360,8 @@ var config = {
 						y: 20 
 					},
 					phaser: {
-						width: PolyworksStage.width - 40,
-						height: PolyworksStage.height - 40
+						width: PolyworksStage.winW - 40,
+						height: PolyworksStage.winH - 40
 					}
 				}
 			},
@@ -549,29 +550,29 @@ var config = {
 			name: 'terrain',
 			cl: 'PhysicalGroupCollection',
 			attrs: [
-			{
-				name: 'leftWall',
-				cl: 'Sprite',
-				attrs: {
-					img: 'platformV',
-					start: {
-						x: 0,
-						y: -PolyworksStage.height
-					},
-					phaser: {
-						width: 16,
-						height: PolyworksStage.height * 2
-					},
-					physics: {
-						immovable: true
-					}
-				}
-			},
+			// {
+			// 	name: 'leftWall',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'platformV',
+			// 		start: {
+			// 			x: 0,
+			// 			y: -PolyworksStage.height
+			// 		},
+			// 		phaser: {
+			// 			width: 16,
+			// 			height: PolyworksStage.height * 2
+			// 		},
+			// 		physics: {
+			// 			immovable: true
+			// 		}
+			// 	}
+			// },
 			{
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'platformGrey',
 					phaser: {
 						width: PolyworksStage.width * 8,
 						height: 128
@@ -4280,13 +4281,15 @@ var config = {
 				// width: 95,
 				// height: 113
 				width: (PolyworksStage.unit * 3) * 0.84,
-				height: PolyworksStage.unit * 3
+				height: (PolyworksStage.unit * 3)
+				// width: ((PolyworksStage.unit/50) * 95),
+				// height: ((PolyworksStage.unit/50) * 113)
 			},
 			// setSize: [51, 113],
-			setSize: [((PolyworksStage.unit * 3) * 0.3), ((PolyworksStage.unit * 3))],
+			setSize: [((PolyworksStage.unit * 3) * 0.3), (PolyworksStage.unit * 2.5)],
 			start: {
-				x: PolyworksStage.width/2 - ((PolyworksStage.unit * 3) * 0.84)/2,
-				y: PolyworksStage.height - 128
+				x: PolyworksStage.winW/2 - ((PolyworksStage.unit * 3) * 0.84)/2,
+				y: PolyworksStage.winH - (PolyworksStage.unit * 3)
 			},
 			physics: {
 				/*

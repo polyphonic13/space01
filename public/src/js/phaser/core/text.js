@@ -21,10 +21,10 @@ Polyworks.Text = (function() {
 
 		// trace('\ttext width = ' + this.width);
 		if(attrs.centerX) {
-			this.x = PolyworksStage.width/2 - this.width/2;
+			this.x = PolyworksStage.winW/2 - this.width/2;
 		}
 		if(attrs.centerY) {
-			this.y = PolyworksStage.height/2 - this.height/2;
+			this.y = PolyworksStage.winH/2 - this.height/2;
 		}
 
 	}
