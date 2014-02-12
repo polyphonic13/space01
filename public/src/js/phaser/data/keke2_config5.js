@@ -552,24 +552,24 @@ var config = {
 			name: 'terrain',
 			cl: 'PhysicalGroupCollection',
 			attrs: [
-			// {
-			// 	name: 'leftWall',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'platformV',
-			// 		start: {
-			// 			x: 0,
-			// 			y: -PolyworksStage.height
-			// 		},
-			// 		phaser: {
-			// 			width: 16,
-			// 			height: PolyworksStage.height * 2
-			// 		},
-			// 		physics: {
-			// 			immovable: true
-			// 		}
-			// 	}
-			// },
+			{
+				name: 'leftWall',
+				cl: 'Sprite',
+				attrs: {
+					img: 'platformV',
+					start: {
+						x: 0,
+						y: -PolyworksStage.height
+					},
+					phaser: {
+						width: 16,
+						height: PolyworksStage.height * 2
+					},
+					physics: {
+						immovable: true
+					}
+				}
+			},
 			{
 				name: 'ground0',
 				cl: 'Sprite',
@@ -4288,7 +4288,7 @@ var config = {
 				// height: ((PolyworksStage.unit/50) * 113)
 			},
 			// setSize: [51, 113],
-			setSize: [((PolyworksStage.unit * 3) * 0.3), (PolyworksStage.unit * 2.5)],
+			// setSize: [((PolyworksStage.unit * 3) * 0.3), (PolyworksStage.unit * 2.5)],
 			start: {
 				x: PolyworksStage.winW/2 - ((PolyworksStage.unit * 3) * 0.84)/2,
 				y: PolyworksStage.winH - (PolyworksStage.unit * 3)
