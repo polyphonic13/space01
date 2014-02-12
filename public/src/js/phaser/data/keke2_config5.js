@@ -76,8 +76,10 @@ var config = {
 		// player
 		keke: {
 			url: 'images/keke_character3c.png', 
-			width: 95, 
-			height: 113, 
+			// width: 95, 
+			// height: 113, 
+			width: 190,
+			height: 226,
 			frames: 35
 		},
 		// enemies
@@ -4280,8 +4282,8 @@ var config = {
 				health: 100,
 				// width: 95,
 				// height: 113
-				width: (PolyworksStage.unit * 3) * 0.84,
-				height: (PolyworksStage.unit * 3)
+				width: (PolyworksStage.unit * 2.5) * 0.84,
+				height: (PolyworksStage.unit * 2.5)
 				// width: ((PolyworksStage.unit/50) * 95),
 				// height: ((PolyworksStage.unit/50) * 113)
 			},
