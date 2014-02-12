@@ -113,6 +113,7 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.updatePosition = function() {
+		// trace('Player/updatePosition, x = ' + this.body.x);
 		this.velX = 0;
 		this.velY = 0;
 		var attrs = this.model.attrs;

@@ -81,8 +81,8 @@ Polyworks.LevelState = (function() {
 					player: this.player.sprite,
 					terrain: this.terrain.group,
 					position: {
-						x: this.game.camera.x + (PolyworksStage.width/2),
-						y: this.game.camera.y + (PolyworksStage.height/2)
+						x: this.game.camera.x + (PolyworksStage.winW/2),
+						y: this.game.camera.y + (PolyworksStage.winH/2)
 					}
 				};
 				this.sectorManager.pwUpdate(updateParams);

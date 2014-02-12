@@ -33,10 +33,10 @@ PolyworksStage = (function() {
 	
 	stage.destroy = function() {
 		window.removeEventListener('resize', function(event) {
-			_onSizeChange(event)
+			_onSizeChange(event);
 		});
 		window.removeEventListener('orientationchagne', function(event) {
-			_onSizeChange(event)
+			_onSizeChange(event);
 		});
 	};
 	
@@ -83,8 +83,8 @@ PolyworksStage = (function() {
 		var containerDiv = document.getElementById('gameContainer');
 
 		_sizeAndPositionDiv(loadingDiv, loadingWidth, loadingHeight, 0, 0);
-		_sizeAndPositionDiv(containerDiv, stage.width, stage.height, left, top);
-		// _sizeAndPositionDiv(containerDiv, stage.winW, stage.winH, left, top);
+		// _sizeAndPositionDiv(containerDiv, stage.width, stage.height, left, top);
+		_sizeAndPositionDiv(containerDiv, stage.winW, stage.winH, 0, 0);
 
 	}
 

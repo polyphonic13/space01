@@ -1,8 +1,8 @@
 var world = {
-	x: 0,
-	y: 0,
- 	width: PolyworksStage.width,
-	height: PolyworksStage.height,
+	// x: 0,
+	// y: 0,
+	//  	width: PolyworksStage.width,
+	// height: PolyworksStage.height,
 	gravity: {
 		x: 0,
 		y: 15
@@ -266,8 +266,8 @@ var config = {
 						x: 0,
 						y: 0
 					},
-					width: PolyworksStage.width, 
-					height: PolyworksStage.height,
+					width: PolyworksStage.winW, 
+					height: PolyworksStage.winH,
 					inputCode: Polyworks.InputCodes.RESET
 				}
 			},
@@ -339,8 +339,8 @@ var config = {
 		world: {
 			x: 0,
 			y: 0,
-			width: PolyworksStage.width,
-			height: PolyworksStage.height
+			width: PolyworksStage.winW,
+			height: PolyworksStage.winH
 		},
 		clearWorld: true,
 		clearCache: false,
@@ -401,7 +401,8 @@ var config = {
 		cl: 'LevelState',
 		world: {
 			x: 0,
-			y: -(PolyworksStage.height),
+			// y: -(PolyworksStage.height),
+			y: -(PolyworksStage.height * 2) + PolyworksStage.winH,
 			width: PolyworksStage.width * 6,
 			height: PolyworksStage.height * 2
 		},
@@ -417,23 +418,23 @@ var config = {
 			name: 'scenery',
 			cl: 'GroupCollection',
 			attrs: [
-			{
-				name: 'sky',
-				cl: 'Sprite',
-				attrs: {
-					img: 'sky',
-					name: 'sky',
-					start: {
-						x: 0,
-						y: 0
-					},
-					phaser: {
-						width: PolyworksStage.width,
-						height: PolyworksStage.height,
-						fixedToCamera: true
-					}
-				}
-			},
+			// {
+			// 	name: 'sky',
+			// 	cl: 'Sprite',
+			// 	attrs: {
+			// 		img: 'sky',
+			// 		name: 'sky',
+			// 		start: {
+			// 			x: 0,
+			// 			y: 0
+			// 		},
+			// 		phaser: {
+			// 			width: PolyworksStage.width,
+			// 			height: PolyworksStage.height,
+			// 			fixedToCamera: true
+			// 		}
+			// 	}
+			// },
 			{
 				name: 'background01',
 				cl: 'Sprite',
@@ -1273,7 +1274,8 @@ var config = {
 				attrs: {
 					img: 'platformV',
 					start: {
-						x: -16,
+						// x: -16,
+						x: 0,
 						y: -PolyworksStage.height
 					},
 					phaser: {
@@ -1999,7 +2001,8 @@ var config = {
 				attrs: {
 					img: 'platformV',
 					start: {
-						x: -16,
+						// x: -16,
+						x: 0,
 						y: -PolyworksStage.height
 					},
 					phaser: {
@@ -2777,7 +2780,8 @@ var config = {
 				attrs: {
 					img: 'platformV',
 					start: {
-						x: -16,
+						// x: -16,
+						x: 0,
 						y: -PolyworksStage.height
 					},
 					phaser: {
@@ -3566,7 +3570,8 @@ var config = {
 				attrs: {
 					img: 'platformV',
 					start: {
-						x: -16,
+						// x: -16,
+						x: 0,
 						y: -PolyworksStage.height
 					},
 					phaser: {
@@ -4277,10 +4282,10 @@ var config = {
 				width: (PolyworksStage.unit * 3) * 0.84,
 				height: PolyworksStage.unit * 3
 			},
-			setSize: [51, 113],
+			// setSize: [51, 113],
+			setSize: [((PolyworksStage.unit * 3) * 0.3), ((PolyworksStage.unit * 3))],
 			start: {
-				// x: PolyworksStage.width/2 - 95/2,
-				x: 500,
+				x: PolyworksStage.width/2 - ((PolyworksStage.unit * 3) * 0.84)/2,
 				y: PolyworksStage.height - 128
 			},
 			physics: {
@@ -4298,8 +4303,10 @@ var config = {
 			},
 			followStyle: Phaser.Camera.FOLLOW_PLATFORMER,
 			speed: {
-				x: 150,
-				y: 400
+				// x: 150,
+				// y: 400
+				x: (PolyworksStage.unit * 4),
+				y: (PolyworksStage.unit * 10)
 			},
 			controls: {
 				left: Polyworks.InputCodes.LEFT,

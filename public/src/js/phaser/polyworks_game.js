@@ -23,7 +23,7 @@ PolyworksGame = (function() {
 			_model = params;
 			trace(params);
 			PolyworksGame.startingHealth = params.player.attrs.phaser.health;
-			PolyworksGame.phaser = new Phaser.Game(PolyworksStage.width, PolyworksStage.height, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
+			PolyworksGame.phaser = new Phaser.Game(PolyworksStage.winW, PolyworksStage.winH, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
 			// _checkPhaserBoot();
 		},
 
