@@ -682,7 +682,7 @@ var config = (function() {
 							attrs: {
 								img: 'caterpillar02a',
 								start: {
-									x: (stageWidth * 2) + (stageUnit * 11),
+									x: (stageWidth) + (stageUnit * 12),
 									y: stageHeight - 50
 								},
 								physics: {
@@ -744,7 +744,7 @@ var config = (function() {
 							attrs: {
 								img: 'caterpillar02a',
 								start: {
-									x: (stageWidth * 4),
+									x: (stageWidth * 2) + (stageUnit * 6),
 									y: -(stageHeight/4) 
 								},
 								physics: {
@@ -776,7 +776,7 @@ var config = (function() {
 							attrs: {
 								img: 'caterpillar02a',
 								start: {
-									x: (stageWidth * 5) + (stageUnit * 2),
+									x: (stageWidth * 2) + (stageUnit * 13),
 									y: stageHeight - 50
 								},
 								physics: {
@@ -980,7 +980,7 @@ var config = (function() {
 							attrs: {
 								img: 'caterpillar02a',
 								start: {
-									x: stageWidth * 7,
+									x: (stageWidth * 3) + (stageUnit),
 									y: stageHeight - 50
 								},
 								physics: {
@@ -1058,7 +1058,7 @@ var config = (function() {
 								attrs: {
 									img: 'caterpillar02a',
 									start: {
-										x: (stageWidth * 4),
+										x: (stageWidth * 4) + (stageUnit * 4),
 										y: -(stageHeight/4) 
 									},
 									physics: {
@@ -1090,7 +1090,7 @@ var config = (function() {
 								attrs: {
 									img: 'caterpillar02a',
 									start: {
-										x: (stageWidth * 5) + (stageUnit * 2),
+										x: (stageWidth * 4) + (stageUnit * 8),
 										y: stageHeight - 50
 									},
 									physics: {
@@ -1281,70 +1281,70 @@ var config = (function() {
 						}
 						]
 					},
+					{
+						name: 'hazards',
+						cl: 'PhysicalGroupCollection',
+						attrs: []
+					},
+					{
+						name: 'enemies',
+						cl: 'Enemies',
+						attrs: [
 						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level1-sector4-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar02a',
-									start: {
-										x: stageWidth * 7,
-										y: stageHeight - 50
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 5,
-									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
-										health: 10
-									},
-									score: 500,
-									movement: {
-										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}
-							]
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								cl: 'Sprite',
-								attrs: {
-									img: 'lollipop',
-									start: {
-										x: (stageWidth * 6) + (stageUnit * 5),
-										y: stageHeight - 500
-									},
-									physics: {
-										immovable: true
-									},
-									score: 100,
+							name: 'level1-sector4-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02a',
+								start: {
+									x: (stageWidth * 5) + (stageUnit * 2),
+									y: stageHeight - 50
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 5,
+								phaser: {
+									width: enemy01.width,
+									height: enemy01.height,
 									health: 10
-								}
+								},
+								score: 500,
+								movement: {
+									speed: 1,
+									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
 							}
-							]
 						}
+						]
+					},
+					{
+						name: 'bonuses',
+						cl: 'PhysicalGroupCollection',
+						attrs: [
+						{
+							cl: 'Sprite',
+							attrs: {
+								img: 'lollipop',
+								start: {
+									x: (stageWidth * 6) + (stageUnit * 5),
+									y: stageHeight - 500
+								},
+								physics: {
+									immovable: true
+								},
+								score: 100,
+								health: 10
+							}
+						}
+						]
+					}
 					]
 				}]
 			},
