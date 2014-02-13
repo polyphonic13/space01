@@ -810,7 +810,7 @@ var config = (function() {
 							attrs: {
 								img: 'lollipop',
 								start: {
-									x: (stageWidth * 5) + (stageUnit),
+									x: (stageWidth * 2) + (stageUnit),
 									y: stageHeight - 100
 								},
 								physics: {
@@ -1017,7 +1017,7 @@ var config = (function() {
 							attrs: {
 								img: 'lollipop',
 								start: {
-									x: (stageWidth * 6) + (stageUnit * 5),
+									x: (stageWidth * 3) + (stageUnit * 5),
 									y: stageHeight - 500
 								},
 								physics: {
@@ -1044,100 +1044,100 @@ var config = (function() {
 						cl: 'PhysicalGroupCollection',
 						attrs: []
 					},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [{
-								name: 'level1-sector3-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar02a',
-									start: {
-										x: (stageWidth * 4) + (stageUnit * 4),
-										y: -(stageHeight/4) 
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 5,
-									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
-										health: 5
-									},
-									score: 2000,
-									movement: {
-										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							},
-							{
-								name: 'level1-sector3-enemy2',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar02a',
-									start: {
-										x: (stageWidth * 4) + (stageUnit * 8),
-										y: stageHeight - 50
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 15,
-									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
-										health: 15
-									},
-									score: 2000,
-									movement: {
-										speed: 2,
-										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}]
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs:  [
-							{
-								cl: 'Sprite',
-								attrs: {
-									img: 'lollipop',
-									start: {
-										x: (stageWidth * 5) + (stageUnit),
-										y: stageHeight - 100
-									},
-									physics: {
-										immovable: true
-									},
-									score: 100,
-									health: 10
-								}
+					{
+						name: 'hazards',
+						cl: 'PhysicalGroupCollection',
+						attrs: []
+					},
+					{
+						name: 'enemies',
+						cl: 'Enemies',
+						attrs: [{
+							name: 'level1-sector3-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02a',
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 4),
+									y: -(stageHeight/4) 
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 5,
+								phaser: {
+									width: enemy01.width,
+									height: enemy01.height,
+									health: 5
+								},
+								score: 2000,
+								movement: {
+									speed: 1,
+									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
 							}
-							]
+						},
+						{
+							name: 'level1-sector3-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02a',
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 8),
+									y: stageHeight - 50
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 15,
+								phaser: {
+									width: enemy01.width,
+									height: enemy01.height,
+									health: 15
+								},
+								score: 2000,
+								movement: {
+									speed: 2,
+									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}]
+					},
+					{
+						name: 'bonuses',
+						cl: 'PhysicalGroupCollection',
+						attrs:  [
+						{
+							cl: 'Sprite',
+							attrs: {
+								img: 'lollipop',
+								start: {
+									x: (stageWidth * 4) + (stageUnit),
+									y: stageHeight - 100
+								},
+								physics: {
+									immovable: true
+								},
+								score: 100,
+								health: 10
+							}
 						}
+						]
+					}
 					]
 				},
 				{
@@ -1333,7 +1333,7 @@ var config = (function() {
 							attrs: {
 								img: 'lollipop',
 								start: {
-									x: (stageWidth * 6) + (stageUnit * 5),
+									x: (stageWidth * 5) + (stageUnit * 5),
 									y: stageHeight - 500
 								},
 								physics: {
@@ -1358,7 +1358,7 @@ var config = (function() {
 					attrs: {
 						img: 'heart',
 						start: {
-							x: stageWidth - 50,
+							x: winW - 50,
 							y: 20
 						}
 					}
@@ -1367,7 +1367,7 @@ var config = (function() {
 					name: 'health',
 					cl: 'Text',
 					attrs: {
-						x: stageWidth - 100,
+						x: winW - 100,
 						y: 25,
 						defaultContent: '~{health}~',
 						style: { 
@@ -2046,7 +2046,7 @@ var config = (function() {
 					attrs: {
 						img: 'heart',
 						start: {
-							x: stageWidth - 50,
+							x: winW - 50,
 							y: 20
 						}
 					}
@@ -2055,7 +2055,7 @@ var config = (function() {
 					name: 'health',
 					cl: 'Text',
 					attrs: {
-						x: stageWidth - 100,
+						x: winW - 100,
 						y: 25,
 						defaultContent: '~{health}~',
 						style: { 
@@ -2915,7 +2915,7 @@ var config = (function() {
 					attrs: {
 						img: 'heart',
 						start: {
-							x: stageWidth - 50,
+							x: winW - 50,
 							y: 20
 						}
 					}
@@ -2924,7 +2924,7 @@ var config = (function() {
 					name: 'health',
 					cl: 'Text',
 					attrs: {
-						x: stageWidth - 100,
+						x: winW - 100,
 						y: 25,
 						defaultContent: '~{health}~',
 						style: { 
@@ -3694,7 +3694,7 @@ var config = (function() {
 					attrs: {
 						img: 'heart',
 						start: {
-							x: stageWidth - 50,
+							x: winW - 50,
 							y: 20
 						}
 					}
@@ -3703,7 +3703,7 @@ var config = (function() {
 					name: 'health',
 					cl: 'Text',
 					attrs: {
-						x: stageWidth - 100,
+						x: winW - 100,
 						y: 25,
 						defaultContent: '~{health}~',
 						style: { 
@@ -4284,7 +4284,7 @@ var config = (function() {
 					attrs: {
 						img: 'heart',
 						start: {
-							x: stageWidth - 50,
+							x: winW - 50,
 							y: 20
 						}
 					}
@@ -4293,7 +4293,7 @@ var config = (function() {
 					name: 'health',
 					cl: 'Text',
 					attrs: {
-						x: stageWidth - 100,
+						x: winW - 100,
 						y: 25,
 						defaultContent: '~{health}~',
 						style: { 
