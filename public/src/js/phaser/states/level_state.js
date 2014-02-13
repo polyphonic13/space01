@@ -50,6 +50,7 @@ Polyworks.LevelState = (function() {
 		this.player = new Polyworks[playerConfig.cl](playerConfig);
 		this.player.begin();
 		this.playerGroup.add(this.player);
+		trace('LevelState['+this.model.name+']/player created, jump = ' + playerConfig.attrs.speed.y, playerConfig);
 	};
 	
 	LevelState.prototype.addOvalMask = function() {

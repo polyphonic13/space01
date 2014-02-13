@@ -8,6 +8,7 @@ Polyworks.Player = (function() {
 		_this = this;
 		this.model = new Polyworks.Model(params);
 		Player._super.constructor.call(this, params);
+		trace('player body size = ' + this.body.width + '/' + this.body.height);
 	}
 	
 	Player.prototype.begin = function() {

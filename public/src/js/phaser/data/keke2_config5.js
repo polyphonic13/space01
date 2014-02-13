@@ -4594,4 +4594,3 @@ var config = (function() {
 
 	return c;
 }());
-
