@@ -5,7 +5,8 @@ var world = {
 	// height: PolyworksStage.height,
 	gravity: {
 		x: 0,
-		y: 15
+		// y: 15
+		y: PolyworksStage.unit/2.5
 	}
 };
 
@@ -20,8 +21,8 @@ var config = {
 		mountainBackground1a: 'images/mountain_background1a.png',
 		mountainBackground1b: 'images/mountain_background1b.png',
 
-		forestBackground01: 'images/moving_background0a.png',
-		forestBackground02: 'images/moving_background0b.png',
+		forestBackground01: 'images/forest_distant_background01a.png',
+		forestBackground02: 'images/forest_distant_background01b.png',
 		forestBackground03: 'images/forest_background01a.png',
 		forestBackground04: 'images/forest_background01b.png',
 		forestBackground05: 'images/forest_background01a.png',
@@ -32,8 +33,6 @@ var config = {
 		tree02: 'images/tree04a.png',
 		tree03: 'images/tree04a.png',
 		tree04: 'images/tree04a.png',
-		grass01: 'images/grass01.png',
-		grass02: 'images/grass02.png',
 		platform: 'images/platform.png',
 		platformGrey: 'images/platform_grey.png',
 		platformRed: 'images/platform_red.png',
@@ -333,7 +332,7 @@ var config = {
 		}
 	},
 	// STATES
-	initialState: 'level1',
+	initialState: 'level2',
 	states: [
 	// menu
 	{
@@ -404,7 +403,6 @@ var config = {
 		cl: 'LevelState',
 		world: {
 			x: 0,
-			// y: -(PolyworksStage.height),
 			y: -(PolyworksStage.height * 2) + PolyworksStage.winH,
 			width: PolyworksStage.width * 6,
 			height: PolyworksStage.height * 2
@@ -421,35 +419,35 @@ var config = {
 			name: 'scenery',
 			cl: 'GroupCollection',
 			attrs: [
-			// {
-			// 	name: 'sky',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'sky',
-			// 		name: 'sky',
-			// 		start: {
-			// 			x: 0,
-			// 			y: 0
-			// 		},
-			// 		phaser: {
-			// 			width: PolyworksStage.width,
-			// 			height: PolyworksStage.height,
-			// 			fixedToCamera: true
-			// 		}
-			// 	}
-			// },
+			{
+				name: 'sky',
+				cl: 'Sprite',
+				attrs: {
+					img: 'sky',
+					name: 'sky',
+					start: {
+						x: 0,
+						y: 0
+					},
+					phaser: {
+						width: PolyworksStage.winW,
+						height: PolyworksStage.winH,
+						fixedToCamera: true
+					}
+				}
+			},
 			{
 				name: 'background01',
 				cl: 'Sprite',
 				attrs: {
 					img: 'forestBackground01',
+					phaser: {
+						width: PolyworksStage.width * 3,
+						height: PolyworksStage.height * 2
+					},
 					start: {
 						x: 0,
-						y: -(PolyworksStage.height)
-					},
-					phaser: {
-						width: PolyworksStage.width * 4,
-						height: PolyworksStage.height * 2
+						y: (-(PolyworksStage.height * 2) + PolyworksStage.winH)
 					}
 				}
 			},
@@ -458,41 +456,13 @@ var config = {
 				cl: 'Sprite',
 				attrs: {
 					img: 'forestBackground02',
-					start: {
-						x: PolyworksStage.width * 4,
-						y: -(PolyworksStage.height)
-					},
 					phaser: {
-						width: PolyworksStage.width * 4,
+						width: PolyworksStage.width * 3,
 						height: PolyworksStage.height * 2
-					}
-				}
-			},
-			{
-				name: 'grass01',
-				cl: 'Sprite',
-				attrs: {
-					img: 'grass01',
-					phaser: {
-						width: (PolyworksStage.width * 4)
 					},
 					start: {
-						x: 0,
-						y: PolyworksStage.height - 200
-					}
-				}
-			},
-			{
-				name: 'grass02',
-				cl: 'Sprite',
-				attrs: {
-					img: 'grass02',
-					phaser: {
-						width: (PolyworksStage.width * 4)
-					},
-					start: {
-						x: (PolyworksStage.width * 4),
-						y: PolyworksStage.height - 216
+						x: PolyworksStage.width * 3,
+						y: (-(PolyworksStage.height * 2) + PolyworksStage.winH)
 					}
 				}
 			},
@@ -508,7 +478,7 @@ var config = {
 				}
 			},
 			{
-				name: 'tree01',
+				name: 'tree02',
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree01',
@@ -519,7 +489,7 @@ var config = {
 				}
 			},
 			{
-				name: 'tree02',
+				name: 'tree03',
 				cl: 'Sprite',
 				attrs: {
 					img: 'tree02',
@@ -533,7 +503,7 @@ var config = {
 				name: 'stageSize',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platformRed',
+					img: 'platformGrey',
 					phaser: {
 						width: PolyworksStage.width,
 						height: PolyworksStage.height,
@@ -541,8 +511,8 @@ var config = {
 					},
 					start: {
 						x: 0,
-						y: 0
-						//y: (PolyworksStage.winW - PolyworksStage.height)
+						// y: 0
+						y: (PolyworksStage.winW - PolyworksStage.height)
 					}
 				}
 			}
@@ -559,7 +529,7 @@ var config = {
 					img: 'platformV',
 					start: {
 						x: 0,
-						y: -PolyworksStage.height
+						y: (-(PolyworksStage.height * 2) + PolyworksStage.winH)
 					},
 					phaser: {
 						width: 16,
@@ -577,11 +547,11 @@ var config = {
 					img: 'platformGrey',
 					phaser: {
 						width: PolyworksStage.width * 8,
-						height: 128
+						height: 32
 					},
 					start: {
 						x: 0,
-						y: PolyworksStage.height - 20
+						y: PolyworksStage.winH - 16
 					},
 					physics: {
 						immovable: true
@@ -991,6 +961,316 @@ var config = {
 					}
 					]
 				},
+				{
+					name: 'hazards',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
+				{
+					name: 'enemies',
+					cl: 'Enemies',
+					attrs: [
+					{
+						name: 'level1-sector4-enemy1',
+						cl: 'AnimatedEnemy',
+						attrs: {
+							img: 'caterpillar02a',
+							start: {
+								x: PolyworksStage.width * 7,
+								y: PolyworksStage.height - 50
+							},
+							physics: {
+								deferredGravity: true,
+								bounce: {
+									x: 0,
+									y: 0.2
+								}
+							},
+							attack: 5,
+							phaser: {
+								health: 10
+							},
+							score: 500,
+							movement: {
+								speed: 1,
+								type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+								formula: null
+							},
+							defaultAnimation: '',
+							animations: caterpillarAnimations
+						}
+					}
+					]
+				},
+				{
+					name: 'bonuses',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						cl: 'Sprite',
+						attrs: {
+							img: 'lollipop',
+							start: {
+								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 5),
+								y: PolyworksStage.height - 500
+							},
+							physics: {
+								immovable: true
+							},
+							score: 100,
+							health: 10
+						}
+					}
+					]
+				}
+				]
+			},
+			{
+				name: 'sector5',
+				cl: 'Sector',
+				bounds: {
+					start: PolyworksStage.width * 4,
+					end: PolyworksStage.width * 5
+				},
+				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: []
+				},
+					{
+						name: 'hazards',
+						cl: 'PhysicalGroupCollection',
+						attrs: []
+					},
+					{
+						name: 'enemies',
+						cl: 'Enemies',
+						attrs: [{
+							name: 'level1-sector3-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02a',
+								start: {
+									x: (PolyworksStage.width * 4),
+									y: -(PolyworksStage.height/4) 
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 5,
+								phaser: {
+									health: 5
+								},
+								score: 2000,
+								movement: {
+									speed: 1,
+									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						},
+						{
+							name: 'level1-sector3-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02a',
+								start: {
+									x: (PolyworksStage.width * 5) + (PolyworksStage.unit * 2),
+									y: PolyworksStage.height - 50
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 15,
+								phaser: {
+									health: 15
+								},
+								score: 2000,
+								movement: {
+									speed: 2,
+									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}]
+					},
+					{
+						name: 'bonuses',
+						cl: 'PhysicalGroupCollection',
+						attrs:  [
+						{
+							cl: 'Sprite',
+							attrs: {
+								img: 'lollipop',
+								start: {
+									x: (PolyworksStage.width * 5) + (PolyworksStage.unit),
+									y: PolyworksStage.height - 100
+								},
+								physics: {
+									immovable: true
+								},
+								score: 100,
+								health: 10
+							}
+						}
+						]
+					}
+				]
+			},
+			{
+				name: 'sector6',
+				cl: 'Sector',
+				bounds: {
+					start: PolyworksStage.width * 5,
+					end: PolyworksStage.width * 6
+				},
+				attrs: [
+				{
+					name: 'dynamicTerrain',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'plat0',
+						cl: 'Sprite',
+						attrs: {
+							img: 'platform',
+							start: {
+								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 7),
+								y: PolyworksStage.height - 75
+							},
+							physics: {
+								immovable: true,
+								allowGravity: false
+							}
+						}
+					},
+					{
+						name: 'plat1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'branch02aLeft',
+							start: {
+								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 7.5),
+								y: PolyworksStage.height - 125
+							},
+							scale: [1, 0.5],
+							physics: {
+								immovable: true,
+								allowGravity: false
+							}
+						}
+					},
+					{
+						name: 'plat1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'branch02aRight',
+							start: {
+								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 9),
+								y: PolyworksStage.height - 175
+							},
+							scale: [1, 0.5],
+							physics: {
+								immovable: true,
+								allowGravity: false
+							}
+						}
+					},
+					{
+						name: 'plat1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'branch02aLeft',
+							start: {
+								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 7.5),
+								y: PolyworksStage.height - 225
+							},
+							scale: [1, 0.5],
+							physics: {
+								immovable: true,
+								allowGravity: false
+							}
+						}
+					},
+					{
+						name: 'plat1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'branch02aRight',
+							start: {
+								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 9),
+								y: PolyworksStage.height - 275
+							},
+							scale: [1, 0.5],
+							physics: {
+								immovable: true,
+								allowGravity: false
+							}
+						}
+					},
+					{
+						name: 'plat1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'branch02aLeft',
+							start: {
+								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 7.5),
+								y: PolyworksStage.height - 325
+							},
+							scale: [1, 0.5],
+							physics: {
+								immovable: true,
+								allowGravity: false
+							}
+						}
+					},
+					{
+						name: 'plat1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'branch02aRight',
+							start: {
+								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 9),
+								y: PolyworksStage.height - 375
+							},
+							scale: [1, 0.5],
+							physics: {
+								immovable: true,
+								allowGravity: false
+							}
+						}
+					},
+					{
+						name: 'plat1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'branch02Left',
+							start: {
+								x: (PolyworksStage.width * 6) + (PolyworksStage.unit * 5),
+								y: PolyworksStage.height - 425
+							},
+							scale: [1.5, 0.5],
+							physics: {
+								immovable: true,
+								allowGravity: false
+							}
+						}
+					}
+					]
+				},
 					{
 						name: 'hazards',
 						cl: 'PhysicalGroupCollection',
@@ -1098,15 +1378,14 @@ var config = {
 			}
 		}]
 	},
-
 	// level 2
 	{
 		name: 'level2',
 		cl: 'LevelState',
 		world: {
 			x: 0,
-			y: -(PolyworksStage.height),
-			width: PolyworksStage.width * 8,
+			y: -(PolyworksStage.height * 2) + PolyworksStage.winH,
+			width: PolyworksStage.width * 6,
 			height: PolyworksStage.height * 2
 		},
 		clearWorld: true,
@@ -1119,7 +1398,8 @@ var config = {
 		{
 			name: 'scenery',
 			cl: 'GroupCollection',
-			attrs: [{
+			attrs: [
+			{
 				name: 'sky',
 				cl: 'Sprite',
 				attrs: {
@@ -1143,10 +1423,10 @@ var config = {
 					img: 'forestBackground03',
 					start: {
 						x: 0,
-						y: -(PolyworksStage.height)
+						y: (-(PolyworksStage.height * 2) + PolyworksStage.winH)
 					},
 					phaser: {
-						width: PolyworksStage.width * 4,
+						width: PolyworksStage.width * 3,
 						height: PolyworksStage.height * 2
 					}
 				}
@@ -1157,11 +1437,11 @@ var config = {
 				attrs: {
 					img: 'forestBackground04',
 					start: {
-						x: PolyworksStage.width * 4,
-						y: -(PolyworksStage.height)
+						x: PolyworksStage.width * 3,
+						y: (-(PolyworksStage.height * 2) + PolyworksStage.winH)
 					},
 					phaser: {
-						width: PolyworksStage.width * 4,
+						width: PolyworksStage.width * 3,
 						height: PolyworksStage.height * 2
 					}
 				}
@@ -1240,46 +1520,21 @@ var config = {
 						y: (-PolyworksStage.height)
 					}
 				}
-			// },
-			// {
-			// 	name: 'grass0',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'grass01',
-			// 		start: {
-			// 			x: 0,
-			// 			y: PolyworksStage.height - 220
-			// 		}
-			// 	}
-			// },
-			// {
-			// 	name: 'grass01',
-			// 	cl: 'Sprite',
-			// 	attrs: {
-			// 		img: 'grass02',
-			// 		start: {
-			// 			x: 2048,
-			// 			y: PolyworksStage.height - 220
-			// 		}
-			// 	}
-
 			}
-
 			]
 		},
 		{
 			name: 'terrain',
 			cl: 'PhysicalGroupCollection',
 			attrs: [
- 			{
+			{
 				name: 'leftWall',
 				cl: 'Sprite',
 				attrs: {
 					img: 'platformV',
 					start: {
-						// x: -16,
 						x: 0,
-						y: -PolyworksStage.height
+						y: (-(PolyworksStage.height * 2) + PolyworksStage.winH)
 					},
 					phaser: {
 						width: 16,
@@ -1294,14 +1549,14 @@ var config = {
 				name: 'ground0',
 				cl: 'Sprite',
 				attrs: {
-					img: 'platform',
+					img: 'platformGrey',
 					phaser: {
 						width: PolyworksStage.width * 8,
-						height: 128
+						height: 32
 					},
 					start: {
 						x: 0,
-						y: PolyworksStage.height - 20
+						y: PolyworksStage.winH - 16
 					},
 					physics: {
 						immovable: true
@@ -3459,7 +3714,6 @@ var config = {
 			}
 		}]
 	},
-
 	// level 5
 	{
 		name: 'level5',
@@ -4057,8 +4311,8 @@ var config = {
 		world: {
 			x: 0,
 			y: 0,
-			width: PolyworksStage.width,
-			height: PolyworksStage.height
+			width: PolyworksStage.winW,
+			height: PolyworksStage.winH
 		},
 		clearWorld: true,
 		clearCache: false,
@@ -4077,8 +4331,8 @@ var config = {
 						y: 20 
 					},
 					phaser: {
-						width: PolyworksStage.width - 40,
-						height: PolyworksStage.height - 40
+						width: PolyworksStage.winW - 40,
+						height: PolyworksStage.winH - 40
 					}
 				}
 			},
@@ -4136,8 +4390,8 @@ var config = {
 		world: {
 			x: 0,
 			y: 0,
-			width: PolyworksStage.width,
-			height: PolyworksStage.height
+			width: PolyworksStage.winW,
+			height: PolyworksStage.winH
 		},
 		clearWorld: true,
 		clearCache: false,
@@ -4156,8 +4410,8 @@ var config = {
 						y: 20 
 					},
 					phaser: {
-						width: PolyworksStage.width - 40,
-						height: PolyworksStage.height - 40
+						width: PolyworksStage.winW - 40,
+						height: PolyworksStage.winH - 40
 					}
 				}
 			},
@@ -4215,8 +4469,8 @@ var config = {
 		world: {
 			x: 0,
 			y: 0,
-			width: PolyworksStage.width,
-			height: PolyworksStage.height
+			width: PolyworksStage.winW,
+			height: PolyworksStage.winH
 		},
 		clearWorld: true,
 		clearCache: false,
@@ -4234,9 +4488,8 @@ var config = {
 						y: 20
 					},
 					phaser: {
-						// fixedToCamera: true,
-						width: PolyworksStage.width - 40,
-						height: PolyworksStage.height - 40
+						width: PolyworksStage.winW - 40,
+						height: PolyworksStage.winH - 40
 					}
 				}
 			},
@@ -4246,7 +4499,7 @@ var config = {
 				attrs: {
 					centerX: true,
 					centerY: true,
-					x: PolyworksStage.width/2,
+					x: 0,
 					y: 40,
 					defaultContent: 'Game Over',
 					fixedToCamera: true,
@@ -4288,10 +4541,11 @@ var config = {
 				// height: ((PolyworksStage.unit/50) * 113)
 			},
 			// setSize: [51, 113],
-			// setSize: [((PolyworksStage.unit * 3) * 0.3), (PolyworksStage.unit * 2.5)],
+			setSize: [((PolyworksStage.unit * 3) * 0.3), 220],
 			start: {
 				x: PolyworksStage.winW/2 - ((PolyworksStage.unit * 3) * 0.84)/2,
-				y: PolyworksStage.winH - (PolyworksStage.unit * 3)
+				y: PolyworksStage.winH - 300
+				// y: 0
 			},
 			physics: {
 				/*

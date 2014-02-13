@@ -15,7 +15,9 @@ level backgrounds (2)
 nexus 5:
 980x470 (screen)
 836x470 (stage)
-level: 6688x940
+
+2940x940 = 3x2
+5880x940 = 6x2 (level)
 */
 PolyworksStage = (function() {
 	var stage = {};
