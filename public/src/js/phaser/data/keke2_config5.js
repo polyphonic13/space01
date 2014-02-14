@@ -332,7 +332,7 @@ var config = (function() {
 			}
 		},
 		// STATES
-		initialState: 'level1',
+		initialState: 'menu',
 		states: [
 		// menu
 		{
@@ -486,20 +486,13 @@ var config = (function() {
 					cl: 'Sprite',
 					attrs: {
 						img: 'tree01',
+						phaser: {
+							width: (stageHeight * 1.5),
+							height: (stageHeight * 2)
+						},
 						start: {
-							x: (stageWidth * 4) - (stageUnit * 4),
+							x: (stageWidth * 4) + (stageUnit * 4),
 							y: -(stageHeight)
-						}
-					}
-				},
-				{
-					name: 'tree03',
-					cl: 'Sprite',
-					attrs: {
-						img: 'tree02',
-						start: {
-							x: (stageWidth * 6) + (stageUnit * 4.5),
-							y: (-stageHeight)
 						}
 					}
 				},
@@ -593,6 +586,11 @@ var config = (function() {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
+								phaser: {
+									width: enemy01.width,
+									height: enemy01.height,
+									health: 3
+								},
 								start: {
 									x: stageUnit * 11,
 									y: stageHeight - 50
@@ -603,11 +601,6 @@ var config = (function() {
 										x: 0,
 										y: 0.2
 									}
-								},
-								phaser: {
-									width: enemy01.width,
-									height: enemy01.height,
-									health: 3
 								},
 								// scale: [0.75, 0.75],
 								speed: 0.5,
@@ -652,6 +645,11 @@ var config = (function() {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
+								phaser: {
+									width: enemy01.width,
+									height: enemy01.height,
+									health: 3
+								},
 								start: {
 									x: (stageWidth) + (stageUnit),
 									y: -50
@@ -662,11 +660,6 @@ var config = (function() {
 										x: 0,
 										y: 0.2
 									}
-								},
-								phaser: {
-									width: enemy01.width,
-									height: enemy01.height,
-									health: 3
 								},
 								speed: 0.5,
 								attack: 5,
@@ -685,6 +678,11 @@ var config = (function() {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
+								phaser: {
+									width: enemy01.width,
+									height: enemy01.height,
+									health: 7
+								},
 								start: {
 									x: (stageWidth) + (stageUnit * 12),
 									y: stageHeight - 50
@@ -695,9 +693,6 @@ var config = (function() {
 										x: 0,
 										y: 0.2
 									}
-								},
-								phaser: {
-									health: 7
 								},
 								scale: [0.75, 0.75],
 								speed: 0.5,
@@ -877,6 +872,11 @@ var config = (function() {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
+								phaser: {
+									width: enemy01.width,
+									height: enemy01.height,
+									health: 5
+								},
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 6),
 									y: -(stageHeight/4) 
@@ -889,11 +889,6 @@ var config = (function() {
 									}
 								},
 								attack: 5,
-								phaser: {
-									width: enemy01.width,
-									height: enemy01.height,
-									health: 5
-								},
 								score: 2000,
 								movement: {
 									speed: 1,
@@ -909,6 +904,11 @@ var config = (function() {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
+								phaser: {
+									width: enemy01.width,
+									height: enemy01.height,
+									health: 15
+								},
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 13),
 									y: stageHeight - 50
@@ -921,9 +921,6 @@ var config = (function() {
 									}
 								},
 								attack: 15,
-								phaser: {
-									health: 15
-								},
 								score: 2000,
 								movement: {
 									speed: 2,
@@ -1114,6 +1111,11 @@ var config = (function() {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
+								phaser: {
+									width: enemy01.width,
+									height: enemy01.height,
+									health: 10
+								},
 								start: {
 									x: (stageWidth * 3) + (stageUnit),
 									y: stageHeight - 50
@@ -1126,11 +1128,6 @@ var config = (function() {
 									}
 								},
 								attack: 5,
-								phaser: {
-									width: enemy01.width,
-									height: enemy01.height,
-									health: 10
-								},
 								score: 500,
 								movement: {
 									speed: 1,
@@ -1193,6 +1190,11 @@ var config = (function() {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
+								phaser: {
+									width: enemy01.width,
+									height: enemy01.height,
+									health: 5
+								},
 								start: {
 									x: (stageWidth * 4) + (stageUnit * 4),
 									y: -(stageHeight/4) 
@@ -1205,11 +1207,6 @@ var config = (function() {
 									}
 								},
 								attack: 5,
-								phaser: {
-									width: enemy01.width,
-									height: enemy01.height,
-									health: 5
-								},
 								score: 2000,
 								movement: {
 									speed: 1,
@@ -1225,6 +1222,11 @@ var config = (function() {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
+								phaser: {
+									width: enemy01.width,
+									height: enemy01.height,
+									health: 15
+								},
 								start: {
 									x: (stageWidth * 4) + (stageUnit * 8),
 									y: stageHeight - 50
@@ -1237,11 +1239,6 @@ var config = (function() {
 									}
 								},
 								attack: 15,
-								phaser: {
-									width: enemy01.width,
-									height: enemy01.height,
-									health: 15
-								},
 								score: 2000,
 								movement: {
 									speed: 2,
@@ -1432,6 +1429,11 @@ var config = (function() {
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
+								phaser: {
+									width: enemy01.width,
+									height: enemy01.height,
+									health: 10
+								},
 								start: {
 									x: (stageWidth * 5) + (stageUnit),
 									y: stageHeight - 50
@@ -1444,11 +1446,6 @@ var config = (function() {
 									}
 								},
 								attack: 5,
-								phaser: {
-									width: enemy01.width,
-									height: enemy01.height,
-									health: 10
-								},
 								score: 500,
 								movement: {
 									speed: 1,
@@ -1560,8 +1557,8 @@ var config = (function() {
 							y: 0
 						},
 						phaser: {
-							width: stageWidth,
-							height: stageHeight,
+							width: winW,
+							height: winH,
 							fixedToCamera: true
 						}
 					}
@@ -1571,13 +1568,13 @@ var config = (function() {
 					cl: 'Sprite',
 					attrs: {
 						img: 'forestBackground03',
-						start: {
-							x: 0,
-							y: (-(stageHeight * 2) + winH)
-						},
 						phaser: {
 							width: stageWidth * 3,
 							height: stageHeight * 2
+						},
+						start: {
+							x: 0,
+							y: (-(stageHeight * 2) + winH)
 						}
 					}
 				},
@@ -1586,13 +1583,13 @@ var config = (function() {
 					cl: 'Sprite',
 					attrs: {
 						img: 'forestBackground04',
-						start: {
-							x: stageWidth * 3,
-							y: (-(stageHeight * 2) + winH)
-						},
 						phaser: {
 							width: stageWidth * 3,
 							height: stageHeight * 2
+						},
+						start: {
+							x: stageWidth * 3,
+							y: (-(stageHeight * 2) + winH)
 						}
 					}
 				},
