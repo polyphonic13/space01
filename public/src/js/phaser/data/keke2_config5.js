@@ -6,7 +6,7 @@ var config = (function() {
 	var stageUnit = PolyworksStage.unit;
 
 	var enemy01 = {
-		width: stageUnit * 2,
+		width: (stageUnit) * 2,
 		height: stageUnit * 0.67
 	};
 
@@ -472,7 +472,7 @@ var config = (function() {
 					attrs: {
 						img: 'tree01',
 						start: {
-							x: (stageWidth * 2) - (stageUnit * 2),
+							x: (stageWidth * 2) + (stageUnit * 1.5),
 							y: -(stageHeight)
 						}
 					}
@@ -649,7 +649,7 @@ var config = (function() {
 							attrs: {
 								img: 'caterpillar02a',
 								start: {
-									x: (stageWidth) + (stageUnit * 2),
+									x: (stageWidth) + (stageUnit),
 									y: -50
 								},
 								physics: {
@@ -728,7 +728,135 @@ var config = (function() {
 					{
 						name: 'dynamicTerrain',
 						cl: 'PhysicalGroupCollection',
-						attrs: []
+						attrs: [
+						{
+							name: 'plat0',
+							cl: 'Sprite',
+							attrs: {
+								img: 'platform',
+								start: {
+									x: (stageWidth * 2) + (stageUnit * 7),
+									y: winH - stageUnit
+								},
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aLeft',
+								start: {
+									x: (stageWidth * 2) + (stageUnit * 7.5),
+									y: winH - (stageUnit * 2)
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aRight',
+								start: {
+									x: (stageWidth * 2) + (stageUnit * 9),
+									y: winH - 175
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aLeft',
+								start: {
+									x: (stageWidth * 2) + (stageUnit * 7.5),
+									y: winH - 225
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aRight',
+								start: {
+									x: (stageWidth * 2) + (stageUnit * 9),
+									y: winH - 275
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aLeft',
+								start: {
+									x: (stageWidth * 2) + (stageUnit * 7.5),
+									y: winH - 325
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aRight',
+								start: {
+									x: (stageWidth * 2) + (stageUnit * 9),
+									y: winH - 375
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02Right',
+								start: {
+									x: (stageWidth * 2) + (stageUnit * 9),
+									y: winH - 475
+								},
+								phaser: { width: (stageUnit * 7), height: (stageUnit * 0.5) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						}
+						]
 					},
 					{
 						name: 'hazards',
@@ -1296,7 +1424,7 @@ var config = (function() {
 							attrs: {
 								img: 'caterpillar02a',
 								start: {
-									x: (stageWidth * 5) + (stageUnit * 2),
+									x: (stageWidth * 5) + (stageUnit),
 									y: stageHeight - 50
 								},
 								physics: {
@@ -1404,7 +1532,7 @@ var config = (function() {
 			clearCache: false,
 			bounds: {
 				start: 0,
-				end: (stageWidth * 8) - (stageUnit * 2)
+				end: (stageWidth * 8) - (stageUnit)
 			},
 			attrs: [
 			{
@@ -4545,8 +4673,8 @@ var config = (function() {
 				img: 'keke',
 				phaser: {
 					health: 100,
-					width: (stageUnit * 2.5) * 0.84,
-					height: (stageUnit * 2.5)
+					width: (stageUnit * 2.3) * 0.84,
+					height: (stageUnit * 2.3)
 				},
 				setSize: [((stageUnit * 3) * 0.3), 220],
 				start: {

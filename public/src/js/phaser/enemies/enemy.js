@@ -51,7 +51,7 @@ Polyworks.Enemy = (function() {
 	};
 	
 	Enemy.prototype.damage = function(damage) {
-		trace('Enemy['+this.model.name+']/damage, damage = ' + damage + ', health = ' + this.health);
+		// trace('Enemy['+this.model.name+']/damage, damage = ' + damage + ', health = ' + this.health);
 		this.health -= damage;
 		if(this.health <= 0) {
 			this.kill();
