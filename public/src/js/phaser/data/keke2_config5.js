@@ -13,10 +13,7 @@ var config = (function() {
 	var c = {
 		// IMAGES
 		images: {
-			// scenery
 			sky: 'images/night_sky.jpg',
-
-			// ovalMask: 'images/oval_mask.png',
 
 			mountainBackground1a: 'images/mountain_background1a.png',
 			mountainBackground1b: 'images/mountain_background1b.png',
@@ -540,7 +537,7 @@ var config = (function() {
 					name: 'ground0',
 					cl: 'Sprite',
 					attrs: {
-						img: 'platformGrey',
+						img: 'platform',
 						phaser: {
 							width: stageWidth * 8,
 							height: (stageUnit * 0.5)
