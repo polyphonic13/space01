@@ -471,8 +471,12 @@ var config = (function() {
 					cl: 'Sprite',
 					attrs: {
 						img: 'tree01',
+						phaser: {
+							width: (stageHeight * 1.5),
+							height: (stageHeight * 2)
+						},
 						start: {
-							x: (stageWidth * 2) + (stageUnit * 1.5),
+							x: (stageWidth * 2) + (stageUnit * 1.75),
 							y: -(stageHeight)
 						}
 					}
@@ -546,11 +550,11 @@ var config = (function() {
 						img: 'platformGrey',
 						phaser: {
 							width: stageWidth * 8,
-							height: 32
+							height: (stageUnit * 0.5)
 						},
 						start: {
 							x: 0,
-							y: winH - 16
+							y: winH - (stageUnit * 0.5)
 						},
 						physics: {
 							immovable: true
@@ -729,29 +733,31 @@ var config = (function() {
 						name: 'dynamicTerrain',
 						cl: 'PhysicalGroupCollection',
 						attrs: [
+						// {
+						// 	name: 'plat0',
+						// 	cl: 'Sprite',
+						// 	attrs: {
+						// 		img: 'platformRed',
+						// 		phaser: { width: (stageUnit * 3), height: (stageUnit * 0.1) },
+						// 		start: {
+						// 			// x: (stageWidth * 2) + (stageUnit * 1.5),
+						// 			x: (stageWidth * 2) + (stageUnit * 6),
+						// 			y: winH - (stageUnit * 1)
+						// 		},
+						// 		physics: {
+						// 			immovable: true,
+						// 			allowGravity: false
+						// 		}
+						// 	}
+						// },
 						{
-							name: 'plat0',
+							name: 'plat1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'platform',
+								img: 'branch02aLeft',
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 7),
-									y: winH - stageUnit
-								},
-								physics: {
-									immovable: true,
-									allowGravity: false
-								}
-							}
-						},
-						{
-							name: 'plat1',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02aLeft',
-								start: {
-									x: (stageWidth * 2) + (stageUnit * 7.5),
-									y: winH - (stageUnit * 2)
+									y: winH - (stageUnit * 2.5)
 								},
 								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
 								physics: {
@@ -767,7 +773,7 @@ var config = (function() {
 								img: 'branch02aRight',
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 9),
-									y: winH - 175
+									y: winH - (stageUnit * 4)
 								},
 								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
 								physics: {
@@ -782,8 +788,8 @@ var config = (function() {
 							attrs: {
 								img: 'branch02aLeft',
 								start: {
-									x: (stageWidth * 2) + (stageUnit * 7.5),
-									y: winH - 225
+									x: (stageWidth * 2) + (stageUnit * 7),
+									y: winH - (stageUnit * 5.5)
 								},
 								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
 								physics: {
@@ -799,7 +805,7 @@ var config = (function() {
 								img: 'branch02aRight',
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 9),
-									y: winH - 275
+									y: winH - (stageUnit * 7)
 								},
 								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
 								physics: {
@@ -814,8 +820,8 @@ var config = (function() {
 							attrs: {
 								img: 'branch02aLeft',
 								start: {
-									x: (stageWidth * 2) + (stageUnit * 7.5),
-									y: winH - 325
+									x: (stageWidth * 2) + (stageUnit * 7),
+									y: winH - (stageUnit * 8.5)
 								},
 								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
 								physics: {
@@ -831,7 +837,7 @@ var config = (function() {
 								img: 'branch02aRight',
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 9),
-									y: winH - 375
+									y: winH - (stageUnit * 10)
 								},
 								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
 								physics: {
@@ -847,7 +853,7 @@ var config = (function() {
 								img: 'branch02Right',
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 9),
-									y: winH - 475
+									y: winH - (stageUnit * 11.5)
 								},
 								phaser: { width: (stageUnit * 7), height: (stageUnit * 0.5) },
 								physics: {
@@ -937,9 +943,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'lollipop',
+								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 								start: {
-									x: (stageWidth * 2) + (stageUnit),
-									y: stageHeight - 100
+									x: (stageWidth * 2) + (stageUnit * 15),
+									y: -(stageUnit * 4)
 								},
 								physics: {
 									immovable: true
@@ -1144,9 +1151,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'lollipop',
+								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 								start: {
 									x: (stageWidth * 3) + (stageUnit * 5),
-									y: stageHeight - 500
+									y: winH - (stageUnit * 1.5)
 								},
 								physics: {
 									immovable: true
@@ -1253,6 +1261,7 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'lollipop',
+								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 								start: {
 									x: (stageWidth * 4) + (stageUnit),
 									y: stageHeight - 100
@@ -1460,6 +1469,7 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'lollipop',
+								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 								start: {
 									x: (stageWidth * 5) + (stageUnit * 5),
 									y: stageHeight - 500
@@ -2043,6 +2053,7 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'lollipop',
+								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 								start: {
 									x: 2740,
 									y: 20
@@ -2149,6 +2160,7 @@ var config = (function() {
 								cl: 'Sprite',
 								attrs: {
 									img: 'lollipop',
+								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 									start: {
 										x: 3700,
 										y: stageHeight - 150
@@ -2704,6 +2716,7 @@ var config = (function() {
 								cl: 'Sprite',
 								attrs: {
 									img: 'lollipop',
+								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 									start: {
 										x: 760,
 										y: stageHeight - 250
@@ -3018,6 +3031,7 @@ var config = (function() {
 								cl: 'Sprite',
 								attrs: {
 									img: 'lollipop',
+								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 									start: {
 										x: 3600,
 										y: stageHeight - 150
@@ -3483,6 +3497,7 @@ var config = (function() {
 								cl: 'Sprite',
 								attrs: {
 									img: 'lollipop',
+								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 									start: {
 										x: 760,
 										y: stageHeight - 250
@@ -3692,6 +3707,7 @@ var config = (function() {
 								cl: 'Sprite',
 								attrs: {
 									img: 'lollipop',
+								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 									start: {
 										x: 2740,
 										y: stageHeight - 150
@@ -3797,6 +3813,7 @@ var config = (function() {
 								cl: 'Sprite',
 								attrs: {
 									img: 'lollipop',
+								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 									start: {
 										x: 3600,
 										y: stageHeight - 150
