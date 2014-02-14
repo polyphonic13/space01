@@ -103,8 +103,9 @@ var config = (function() {
 			keys: {
 				name: 'controlKeys',
 				cl: 'ControlKey',
-				attrs: [{
-					name: 'quit',
+				attrs: [
+				{
+					name: 'quit', // q
 					cl: 'ControlKey',
 					attrs: {
 						inputCode: Polyworks.InputCodes.QUIT,
@@ -112,6 +113,45 @@ var config = (function() {
 							pressed: {
 								type: Polyworks.Events.CHANGE_STATE,
 								value: 'quit'
+							}
+						}
+					}
+				},
+				{
+					name: 'start', // s
+					cl: 'ControlKey',
+					attrs: {
+						inputCode: Polyworks.InputCodes.START,
+						events: {
+							pressed: {
+								type: Polyworks.Events.CHANGE_STATE,
+								value: 'level'
+							}
+						}
+					}
+				},
+				{
+					name: 'next', // n
+					cl: 'ControlKey',
+					attrs: {
+						inputCode: Polyworks.InputCodes.NEXT,
+						events: {
+							pressed: {
+								type: Polyworks.Events.CHANGE_STATE,
+								value: 'nextLevel'
+							}
+						}
+					}
+				},
+				{
+					name: 'pause', // p
+					cl: 'ControlKey',
+					attrs: {
+						inputCode: Polyworks.InputCodes.PAUSE,
+						events: {
+							pressed: {
+								type: Polyworks.Events.CHANGE_STATE,
+								value: 'menu'
 							}
 						}
 					}
@@ -136,7 +176,8 @@ var config = (function() {
 					attrs: {
 						inputCode: Polyworks.InputCodes.UP
 					}
-				}]
+				}
+				]
 			},
 			buttons: {
 				menu: [
@@ -590,7 +631,7 @@ var config = (function() {
 								},
 								start: {
 									x: stageUnit * 11,
-									y: stageHeight - 50
+									y: winH - ((stageUnit * 2) + 32)
 								},
 								physics: {
 									deferredGravity: true,
@@ -682,7 +723,7 @@ var config = (function() {
 								},
 								start: {
 									x: (stageWidth) + (stageUnit * 12),
-									y: stageHeight - 50
+									y: winH - ((stageUnit * 2) + 32)
 								},
 								physics: {
 									deferredGravity: true,
@@ -691,7 +732,6 @@ var config = (function() {
 										y: 0.2
 									}
 								},
-								scale: [0.75, 0.75],
 								speed: 0.5,
 								attack: 5,
 								score: 2500,
@@ -908,7 +948,7 @@ var config = (function() {
 								},
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 13),
-									y: stageHeight - 50
+									y: winH - ((stageUnit * 2) + 32)
 								},
 								physics: {
 									deferredGravity: true,
@@ -1115,7 +1155,7 @@ var config = (function() {
 								},
 								start: {
 									x: (stageWidth * 3) + (stageUnit),
-									y: stageHeight - 50
+									y: winH - ((stageUnit * 2) + 32)
 								},
 								physics: {
 									deferredGravity: true,
@@ -1226,7 +1266,7 @@ var config = (function() {
 								},
 								start: {
 									x: (stageWidth * 4) + (stageUnit * 8),
-									y: stageHeight - 50
+									y: winH - ((stageUnit * 2) + 32)
 								},
 								physics: {
 									deferredGravity: true,
@@ -1433,7 +1473,7 @@ var config = (function() {
 								},
 								start: {
 									x: (stageWidth * 5) + (stageUnit),
-									y: stageHeight - 50
+									y: winH - ((stageUnit * 2) + 32)
 								},
 								physics: {
 									deferredGravity: true,
@@ -1743,7 +1783,7 @@ var config = (function() {
 								img: 'caterpillar02a',
 								start: {
 									x: 700,
-									y: stageHeight - 50
+									y: winH - ((stageUnit * 2) + 32)
 								},
 								physics: {
 									deferredGravity: true,
@@ -2123,7 +2163,7 @@ var config = (function() {
 									img: 'caterpillar02a',
 									start: {
 										x: 3580,
-										y: stageHeight - 50
+										y: winH - ((stageUnit * 2) + 32)
 									},
 									physics: {
 										deferredGravity: true,
@@ -4016,7 +4056,7 @@ var config = (function() {
 						img: 'rockPlatform1',
 						start: {
 							x: 768,
-							y: stageHeight - 50
+							y: winH - ((stageUnit * 2) + 32)
 						},
 						scale: [2, 1],
 						physics: {

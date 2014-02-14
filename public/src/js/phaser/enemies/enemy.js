@@ -19,6 +19,7 @@ Polyworks.Enemy = (function() {
 		// trace(this);
 		Enemy._super.begin.call(this);
 		this.beginGetterSetters();
+		trace('Enemy['+this.model.name+']/begin, size = ' + this.width + '/' + this.height + ', body size = ' + this.body.width + '/' + this.body.height);
 	};
 
 	Enemy.prototype.beginGetterSetters = function() {
