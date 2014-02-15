@@ -8,13 +8,13 @@ Polyworks.Control = (function() {
 	}
 	
 	Control.prototype.inputPressed = function(params) {
-		trace('Control/inputPressed, value = ' + params.value + ', type = ' + params.type);
+		// trace('Control/inputPressed, value = ' + params.value + ', type = ' + params.type);
 		// trace(this);
 		var event;
 		var events = this.model.attrs.events;
-		trace(events);
+		// trace(events);
 		if(events && events.pressed) {
-			trace('\tabout to dispatch ' + events.pressed.type);
+			// trace('\tabout to dispatch ' + events.pressed.type);
 			event = { type: events.pressed.type, value: events.pressed.value };
 		} else {
 			event = { type: params.type, value: params.value }

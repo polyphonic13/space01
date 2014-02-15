@@ -11,15 +11,12 @@ Polyworks.Enemy = (function() {
 		// trace(_this);
 	}
 
-	// Enemy.prototype = Object.create(Polyworks.Sprite.prototype);
-	// Enemy.prototype.constructor = Enemy;
-
 	Enemy.prototype.begin = function() {
 		// trace('Enemy['+this.model.name+']/begin');
 		// trace(this);
 		Enemy._super.begin.call(this);
 		this.beginGetterSetters();
-		trace('Enemy['+this.model.name+']/begin, size = ' + this.width + '/' + this.height + ', body size = ' + this.body.width + '/' + this.body.height);
+		// trace('Enemy['+this.model.name+']/begin, size = ' + this.width + '/' + this.height + ', body size = ' + this.body.width + '/' + this.body.height);
 	};
 
 	Enemy.prototype.beginGetterSetters = function() {
