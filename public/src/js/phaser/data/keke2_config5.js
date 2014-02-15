@@ -370,7 +370,7 @@ var config = (function() {
 			}
 		},
 		// STATES
-		initialState: 'menu',
+		initialState: 'level1',
 		states: [
 		// menu
 		{
@@ -529,24 +529,8 @@ var config = (function() {
 							height: (stageHeight * 2)
 						},
 						start: {
-							x: (stageWidth * 4) + (stageUnit * 4),
+							x: (stageWidth * 4) + (stageUnit * 2),
 							y: winH - (stageHeight * 2)
-						}
-					}
-				},
-				{
-					name: 'stageSize',
-					cl: 'Sprite',
-					attrs: {
-						img: 'platformGrey',
-						phaser: {
-							width: stageWidth,
-							height: stageHeight,
-							alpha: 0.5
-						},
-						start: {
-							x: 0,
-							y: (winH - stageHeight)
 						}
 					}
 				}
@@ -1168,7 +1152,120 @@ var config = (function() {
 					{
 						name: 'dynamicTerrain',
 						cl: 'PhysicalGroupCollection',
-						attrs: []
+						attrs: [
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aLeft',
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 7),
+									y: winH - (stageUnit * 2.5)
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aRight',
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 9),
+									y: winH - (stageUnit * 4)
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aLeft',
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 7),
+									y: winH - (stageUnit * 5.5)
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aRight',
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 9),
+									y: winH - (stageUnit * 7)
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aLeft',
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 7),
+									y: winH - (stageUnit * 8.5)
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aRight',
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 9),
+									y: winH - (stageUnit * 10)
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02Left',
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 2),
+									y: winH - (stageUnit * 11.5)
+								},
+								phaser: { width: (stageUnit * 7), height: (stageUnit * 0.5) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						}
+						]
 					},
 					{
 						name: 'hazards',
@@ -1254,7 +1351,7 @@ var config = (function() {
 								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 								start: {
 									x: (stageWidth * 4) + (stageUnit),
-									y: stageHeight - 100
+									y: winH - (stageUnit * 12.5)
 								},
 								physics: {
 									immovable: true
@@ -1278,135 +1375,7 @@ var config = (function() {
 					{
 						name: 'dynamicTerrain',
 						cl: 'PhysicalGroupCollection',
-						attrs: [
-						{
-							name: 'plat0',
-							cl: 'Sprite',
-							attrs: {
-								img: 'platform',
-								start: {
-									x: (stageWidth * 6) + (stageUnit * 7),
-									y: stageHeight - 75
-								},
-								physics: {
-									immovable: true,
-									allowGravity: false
-								}
-							}
-						},
-						{
-							name: 'plat1',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02aLeft',
-								start: {
-									x: (stageWidth * 6) + (stageUnit * 7.5),
-									y: stageHeight - 125
-								},
-								scale: [1, 0.5],
-								physics: {
-									immovable: true,
-									allowGravity: false
-								}
-							}
-						},
-						{
-							name: 'plat1',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02aRight',
-								start: {
-									x: (stageWidth * 6) + (stageUnit * 9),
-									y: stageHeight - 175
-								},
-								scale: [1, 0.5],
-								physics: {
-									immovable: true,
-									allowGravity: false
-								}
-							}
-						},
-						{
-							name: 'plat1',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02aLeft',
-								start: {
-									x: (stageWidth * 6) + (stageUnit * 7.5),
-									y: stageHeight - 225
-								},
-								scale: [1, 0.5],
-								physics: {
-									immovable: true,
-									allowGravity: false
-								}
-							}
-						},
-						{
-							name: 'plat1',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02aRight',
-								start: {
-									x: (stageWidth * 6) + (stageUnit * 9),
-									y: stageHeight - 275
-								},
-								scale: [1, 0.5],
-								physics: {
-									immovable: true,
-									allowGravity: false
-								}
-							}
-						},
-						{
-							name: 'plat1',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02aLeft',
-								start: {
-									x: (stageWidth * 6) + (stageUnit * 7.5),
-									y: stageHeight - 325
-								},
-								scale: [1, 0.5],
-								physics: {
-									immovable: true,
-									allowGravity: false
-								}
-							}
-						},
-						{
-							name: 'plat1',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02aRight',
-								start: {
-									x: (stageWidth * 6) + (stageUnit * 9),
-									y: stageHeight - 375
-								},
-								scale: [1, 0.5],
-								physics: {
-									immovable: true,
-									allowGravity: false
-								}
-							}
-						},
-						{
-							name: 'plat1',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02Left',
-								start: {
-									x: (stageWidth * 6) + (stageUnit * 5),
-									y: stageHeight - 425
-								},
-								scale: [1.5, 0.5],
-								physics: {
-									immovable: true,
-									allowGravity: false
-								}
-							}
-						}
-						]
+						attrs: []
 					},
 					{
 						name: 'hazards',
@@ -1418,7 +1387,7 @@ var config = (function() {
 						cl: 'Enemies',
 						attrs: [
 						{
-							name: 'level1-sector4-enemy1',
+							name: 'level1-sector6-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar02a',
@@ -1462,7 +1431,7 @@ var config = (function() {
 								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 								start: {
 									x: (stageWidth * 5) + (stageUnit * 5),
-									y: stageHeight - 500
+									y: winH - (stageUnit * 2)
 								},
 								physics: {
 									immovable: true
@@ -1532,7 +1501,7 @@ var config = (function() {
 			clearCache: false,
 			bounds: {
 				start: 0,
-				end: (stageWidth * 8) - (stageUnit)
+				end: (stageWidth * 6) - (stageUnit * 1)
 			},
 			attrs: [
 			{
@@ -2214,15 +2183,15 @@ var config = (function() {
 			cl: 'LevelState',
 			world: {
 				x: 0,
-				y: -256,
-				width: (stageWidth * 8),
-				height: stageHeight + 256
+				y: -(stageHeight * 2) + winH,
+				width: stageWidth * 6,
+				height: stageHeight * 2
 			},
 			clearWorld: true,
 			clearCache: false,
 			bounds: {
 				start: 0,
-				end: (stageWidth * 8) - (stageUnit * 4)
+				end: (stageWidth * 6) - (stageUnit * 1)
 			},
 			attrs: [{
 				name: 'scenery',
@@ -3085,16 +3054,16 @@ var config = (function() {
 			cl: 'LevelState',
 			world: {
 				x: 0,
-				y: -256,
-				width: 4096,
-				height: stageHeight + 256
+				y: -(stageHeight * 2) + winH,
+				width: stageWidth * 6,
+				height: stageHeight * 2
 			},
 			clearWorld: true,
 			clearCache: false,
 			bounds: {
 				start: 0,
 				// end: 1024
-				end: 4020
+				end: (stageWidth * 6) - (stageUnit * 1)
 			},
 			attrs: [{
 				name: 'scenery',
@@ -3867,18 +3836,15 @@ var config = (function() {
 			cl: 'LevelState',
 			world: {
 				x: 0,
-				// y: -256,
-				y: -stageHeight,
-				width: 4096,
-				// height: stageHeight + 256
+				y: -(stageHeight * 2) + winH,
+				width: stageWidth * 6,
 				height: stageHeight * 2
 			},
 			clearWorld: true,
 			clearCache: false,
 			bounds: {
 				start: 0,
-				// end: 1024
-				end: 4020
+				end: (stageWidth * 6) - (stageUnit * 1)
 			},
 			attrs: [{
 				name: 'scenery',
