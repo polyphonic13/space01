@@ -38,11 +38,11 @@ var config = (function() {
 			// branch02Left: 'images/vine01_left.png',
 			branch02Left: 'images/branch03_left.png',
 			branch02aLeft: 'images/branch03a_left.png',
-			vine01Left: 'images/vine01_left.png',
+			vine01Left: 'images/vine01a_left.png',
 			// branch02Right: 'images/vine01_right.png',
 			branch02Right: 'images/branch03_right.png',
 			branch02aRight: 'images/branch03a_right.png',
-			vine01Right: 'images/vine01_right.png',
+			vine01Right: 'images/vine01a_right.png',
 			bush01: 'images/bush01.png',
 			thorns: 'images/thorns02.png',
 
@@ -370,7 +370,7 @@ var config = (function() {
 			}
 		},
 		// STATES
-		initialState: 'menu',
+		initialState: 'level2',
 		states: [
 		// menu
 		{
@@ -1712,10 +1712,11 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'vine01Left',
-								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+								phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
+								setSize: [(stageUnit * 3), (stageUnit * 0.5), (stageUnit * 3), (stageUnit * 0.5)],
 								start: {
 									x: (stageWidth * 2) + (stageUnit),
-									y: winH - (stageUnit * 2)
+									y: winH - (stageUnit * 2.5)
 								},
 								physics: {
 									immovable: true
@@ -1727,8 +1728,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'vine01Right',
+								phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
+								setSize: [(stageUnit * 3), (stageUnit * 0.5), (stageUnit * 3), (stageUnit * 0.5)],
 								start: {
-									x: (stageWidth * 2) + (stageUnit * 3),
+									x: (stageWidth * 2) + (stageUnit * 4),
 									y: winH - (stageUnit * 3.5)
 								},
 								physics: {
