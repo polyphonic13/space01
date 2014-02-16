@@ -110,24 +110,32 @@ PolyworksGame = (function() {
 
 	function _preload() {
 		// trace('_preload');
-		var images = _model.images;
 		var phaser = PolyworksGame.phaser;
+		var images = _model.images;
 		// trace('preload images');
+		var loadedImages = {};
+
 		Utils.each(images,
-			function(i, key) {
-				phaser.load.image(key, i);
+			function(image, key) {
+				phaser.load.image(key, image);
+				loadedImages[key] = false;
 			},
 			this
 		);
 
 		var sprites = _model.sprites;
+		var loadedSprites = {};
 		// trace('preload sprites');
 		Utils.each(sprites,
-			function(s, key) {
-				phaser.load.spritesheet(key, s.url, s.width, s.height, s.frames);
+			function(sprite, key) {
+				phaser.load.spritesheet(key, sprite.url, sprite.width, sprite.height, sprite.frames);
+				loadedSprites[key] = false;
 			},
 			this
 		);
+		
+		PolyworksGame.loadedImages = loadedImages;
+		PolyworksGame.loadedSprites = loadedSprites;
 	}
 	
 	function _create() {

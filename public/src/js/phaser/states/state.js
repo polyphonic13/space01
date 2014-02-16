@@ -3,7 +3,7 @@ Polyworks.State = (function() {
 	
 	var _this;
 	function State(params) {
-		// trace('State['+params.name+']/constructor');
+		trace('State['+params.name+']/constructor');
 		_this = this;
 
 		State._super.constructor.call(this, params);
@@ -22,13 +22,19 @@ Polyworks.State = (function() {
 		});
 	}
 	
+	State.prototype.start = function() {
+		trace('Stage['+this.model.name+']/start');
+	};
+	
 	State.prototype.preLoad = function() {
+		trace('Stage['+this.model.name+']/preLoad');
 		if(!this.model.loaded) {
 			this.model.loaded = true;
 		}
 	};
 	
 	State.prototype.create = function() {
+		trace('Stage['+this.model.name+']/create');
 		if(!this.model.created) {
 			this.createState();
 			this.model.created = true;
