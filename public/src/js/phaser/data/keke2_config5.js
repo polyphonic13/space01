@@ -1583,7 +1583,7 @@ var config = (function() {
 					name: 'ground0',
 					cl: 'Sprite',
 					attrs: {
-						img: 'platformGrey',
+						img: 'platform',
 						phaser: {
 							width: stageWidth * 8,
 							height: 32
@@ -1713,10 +1713,10 @@ var config = (function() {
 							attrs: {
 								img: 'vine01Left',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
-								setSize: [(stageUnit * 3), (stageUnit * 0.5), (stageUnit * 3), (stageUnit * 0.5)],
+								setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 								start: {
 									x: (stageWidth * 2) + (stageUnit),
-									y: winH - (stageUnit * 2.5)
+									y: winH - (stageUnit * 3.5)
 								},
 								physics: {
 									immovable: true
@@ -1729,10 +1729,10 @@ var config = (function() {
 							attrs: {
 								img: 'vine01Right',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
-								setSize: [(stageUnit * 3), (stageUnit * 0.5), (stageUnit * 3), (stageUnit * 0.5)],
+								setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 4),
-									y: winH - (stageUnit * 3.5)
+									y: winH - (stageUnit * 5)
 								},
 								physics: {
 									immovable: true
@@ -1746,7 +1746,23 @@ var config = (function() {
 								img: 'branch02Left',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
-									x: (stageWidth * 2) + (stageUnit * 6),
+									x: (stageWidth * 2) + (stageUnit * 7),
+									y: winH - (stageUnit * 4.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'platform2',
+							cl: 'Sprite',
+							attrs: {
+								img: 'vine01Left',
+								phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
+								setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
+								start: {
+									x: (stageWidth * 2) + (stageUnit * 11),
 									y: winH - (stageUnit * 5)
 								},
 								physics: {
@@ -1761,23 +1777,8 @@ var config = (function() {
 								img: 'branch02Right',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
-									x: (stageWidth * 2) + (stageUnit * 9),
-									y: winH - (stageUnit * 6.5)
-								},
-								physics: {
-									immovable: true
-								}
-							}
-						},
-						{
-							name: 'platform6',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02Left',
-								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
-								start: {
 									x: (stageWidth * 2) + (stageUnit * 12),
-									y: winH - (stageUnit * 8)
+									y: winH - (stageUnit * 6)
 								},
 								physics: {
 									immovable: true
@@ -1894,14 +1895,29 @@ var config = (function() {
 						cl: 'PhysicalGroupCollection',
 						attrs: [
 						{
+							name: 'platform6',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02Left',
+								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+								start: {
+									x: (stageWidth * 3) + (stageUnit),
+									y: winH - (stageUnit * 7.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
 							name: 'platform7',
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02Right',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
-									x: (stageWidth * 2) + (stageUnit * 15),
-									y: winH - (stageUnit * 9.5)
+									x: (stageWidth * 3) + (stageUnit * 5),
+									y: winH - (stageUnit * 9)
 								},
 								physics: {
 									immovable: true
@@ -1915,8 +1931,8 @@ var config = (function() {
 								img: 'branch02Left',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
-									x: (stageWidth * 3) + (stageUnit * 2),
-									y: winH - (stageUnit * 11)
+									x: (stageWidth * 3) + (stageUnit * 9),
+									y: winH - (stageUnit * 10.5)
 								},
 								physics: {
 									immovable: true
