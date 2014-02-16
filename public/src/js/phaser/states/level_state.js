@@ -17,6 +17,7 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.preload = function() {
+		LevelState._super.preload.call(this);
 	};
 	
 	LevelState.prototype.create =  function() {

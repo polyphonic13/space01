@@ -1,6 +1,6 @@
 Polyworks.State = (function() {
-	// Utils.inherits(State, Polyworks.Collection);
-	Utils.inherits(State, Phaser.State); 
+	Utils.inherits(State, Polyworks.Collection);
+	// Utils.inherits(State, Phaser.State); 
 	
 	function State(params) {
 		trace('State['+params.name+']/constructor');
@@ -13,7 +13,8 @@ Polyworks.State = (function() {
 			created: false,
 			active: false
 		});
-
+		// this.collection = new Polyworks.Collection(params);
+		
 		this.__defineGetter__('clearWorld', function() {
 			return this.model.clearWorld;
 		});
@@ -27,11 +28,47 @@ Polyworks.State = (function() {
 		trace('Stage['+this.model.name+']/start');
 	};
 	
-	State.prototype.preLoad = function() {
-		trace('Stage['+this.model.name+']/preLoad');
+	State.prototype.preload = function() {
+		trace('Stage['+this.model.name+']/preLoad, loaded = ' + this.model.loaded);
 		if(!this.model.loaded) {
+			trace('\tstate images = ');
+			trace(this.model.images);
+			if(this.model.images.length > 0) {
+				var images = PolyworksGame.get('images');
+				Utils.each(this.model.images,
+					function(img) {
+						trace('\t\timage['+img+'] loaded = ' + PolyworksGame.loadedImages[img]);
+						if(!PolyworksGame.loadedImages[img]) {
+							PolyworksGame.phaser.load.image(img, images[img]);
+							PolyworksGame.loadedImages[img] = true;
+						}
+					},
+					this
+				);
+			}
+			if(this.model.sprites.length > 0) {
+				var sprites = PolyworksGame.get('sprites');
+				Utils.each(this.model.sprites,
+					function(spr, key) {
+						trace('\t\tsprite['+spr+'] loaded = ' + PolyworksGame.loadedSprites[spr]);
+						if(!PolyworksGame.loadedImages[spr]) {
+							var sprite = sprites[spr];
+							trace('\t\tsprite = ');
+							trace(sprite);
+							PolyworksGame.phaser.load.spritesheet(spr, sprite.url, sprite.width, sprite.height, sprite.frames);
+							PolyworksGame.loadedImages[spr] = true;
+						}
+					},
+					this
+				);
+			}
 			this.model.loaded = true;
 		}
+	};
+	
+	State.prototype.loadUpdate = function(event) {
+		// trace('State['+this.model.name+']/loadUpate, event = ');
+		// trace(event);
 	};
 	
 	State.prototype.create = function() {
@@ -50,6 +87,7 @@ Polyworks.State = (function() {
 			Polyworks.EventCenter.bind(Polyworks.Events.PAUSE_STATE, this.onPauseState, this);
 			Polyworks.EventCenter.bind(Polyworks.Events.RESUME_STATE, this.onResumeState, this);
 		}
+		// this.collection.begin();
 		this.begin();
 	};
 	

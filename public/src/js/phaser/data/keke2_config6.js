@@ -92,20 +92,20 @@ var config = (function() {
 				frames: 35
 			},
 			// enemies
-			caterpillar02a: {
+			caterpillar01: {
 				url: 'images/caterpillar02a.png',
 				width: 104, 
 				height: 32, 
 				frames: 14
 			},
-			caterpillar02b: {
+			caterpillar02: {
 				url: 'images/caterpillar02b.png',
 				width: 104, 
 				height: 32, 
 				frames: 14
 			},
 			caterpillarBoss01: {
-				url: 'images/caterpillar02b_giant.png',
+				url: 'images/caterpillar02_giant.png',
 				width: 416, 
 				height: 124, 
 				frames: 14
@@ -471,6 +471,39 @@ var config = (function() {
 				end: (stageWidth * 6) - (stageUnit * 1)
 			},
 			pausable: true,
+			images: [
+				'sky',
+				'forestDistantA1',
+				'forestDistantA2',
+				'forestDistantB1',
+				'forestDistantB2',
+				'forestDistantC1',
+				'forestDistantC2',
+				'forestDistantD1',
+				'forestDistantD2',
+				'forestDistantE1',
+				'forestDistantE2',
+				'forestDistantF1',
+				'forestDistantF2',
+				'tree01',
+				'platformV',
+				'platform',
+				'branch02Left',
+				'branch02Right',
+				'branch02aLeft',
+				'branch02aRight',
+				'lollipop',
+				'leftButton',
+				'rightButton',
+				'upButton',
+				'pauseButton',
+				'invisibleBg',
+				'heart'
+			],
+			sprites: [
+				'keke',
+				'caterpillar01'
+			],
 			attrs: [
 			{
 				name: 'scenery',
@@ -777,7 +810,7 @@ var config = (function() {
 							name: 'level1-sector1-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar02a',
+								img: 'caterpillar01',
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
@@ -841,7 +874,7 @@ var config = (function() {
 							name: 'level1-sector2-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar02a',
+								img: 'caterpillar01',
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
@@ -1017,7 +1050,7 @@ var config = (function() {
 							name: 'level1-sector3-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar02a',
+								img: 'caterpillar01',
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
@@ -1049,7 +1082,7 @@ var config = (function() {
 							name: 'level1-sector3-enemy2',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar02a',
+								img: 'caterpillar01',
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
@@ -1256,7 +1289,7 @@ var config = (function() {
 							name: 'level1-sector4-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar02a',
+								img: 'caterpillar01',
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
@@ -1448,7 +1481,7 @@ var config = (function() {
 							name: 'level1-sector3-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar02a',
+								img: 'caterpillar01',
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
@@ -1480,7 +1513,7 @@ var config = (function() {
 							name: 'level1-sector3-enemy2',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar02a',
+								img: 'caterpillar01',
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
@@ -1559,7 +1592,7 @@ var config = (function() {
 							name: 'level1-sector6-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar02a',
+								img: 'caterpillar01',
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
@@ -1827,7 +1860,7 @@ var config = (function() {
 							name: 'level2-sector2-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar02a',
+								img: 'caterpillar01',
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
@@ -1968,7 +2001,7 @@ var config = (function() {
 							name: 'level2-sector3-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar02a',
+								img: 'caterpillar01',
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
@@ -2000,7 +2033,7 @@ var config = (function() {
 							name: 'level2-sector3-enemy2',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar02a',
+								img: 'caterpillar01',
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
@@ -2137,7 +2170,7 @@ var config = (function() {
 							name: 'level2-sector4-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar02a',
+								img: 'caterpillar01',
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
@@ -2344,7 +2377,7 @@ var config = (function() {
 							name: 'level2-sector5-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar02a',
+								img: 'caterpillar01',
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
@@ -2376,7 +2409,7 @@ var config = (function() {
 							name: 'level2-sector5-enemy2',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar02a',
+								img: 'caterpillar01',
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
@@ -2485,7 +2518,7 @@ var config = (function() {
 							name: 'level2-sector6-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
-								img: 'caterpillar02a',
+								img: 'caterpillar01',
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
@@ -3010,8 +3043,8 @@ var config = (function() {
 								name: 'level3-sector1-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									name: 'caterpillar02b-sprite',
-									img: 'caterpillar02b',
+									name: 'caterpillar02-sprite',
+									img: 'caterpillar02',
 									start: {
 										x: 600,
 										y: 0
@@ -3041,8 +3074,8 @@ var config = (function() {
 								name: 'level3-sector1-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									name: 'caterpillar02b-sprite',
-									img: 'caterpillar02b',
+									name: 'caterpillar02-sprite',
+									img: 'caterpillar02',
 									start: {
 										x: 900,
 										y: 0
@@ -3117,7 +3150,7 @@ var config = (function() {
 								name: 'level3-sector2-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar02b',
+									img: 'caterpillar02',
 									start: {
 										x: 1400,
 										y: 0
@@ -3222,7 +3255,7 @@ var config = (function() {
 								name: 'level3-sector3-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar02b',
+									img: 'caterpillar02',
 									start: {
 										x: 2200,
 										y: 0
@@ -3252,7 +3285,7 @@ var config = (function() {
 								name: 'level3-sector3-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar02b',
+									img: 'caterpillar02',
 									start: {
 										x: 2850,
 										y: 0
@@ -3327,7 +3360,7 @@ var config = (function() {
 								name: 'level3-sector4-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar02b',
+									img: 'caterpillar02',
 									start: {
 										x: 3090,
 										y: 0
@@ -3357,7 +3390,7 @@ var config = (function() {
 								name: 'level3-sector4-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar02b',
+									img: 'caterpillar02',
 									start: {
 										x: 3280,
 										y: -100
@@ -3791,8 +3824,8 @@ var config = (function() {
 								name: 'level4-sector1-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									name: 'caterpillar02b-sprite',
-									img: 'caterpillar02b',
+									name: 'caterpillar02-sprite',
+									img: 'caterpillar02',
 									start: {
 										x: 600,
 										y: 0
@@ -3822,8 +3855,8 @@ var config = (function() {
 								name: 'level4-sector1-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									name: 'caterpillar02b-sprite',
-									img: 'caterpillar02b',
+									name: 'caterpillar02-sprite',
+									img: 'caterpillar02',
 									start: {
 										x: 900,
 										y: 0
@@ -3898,7 +3931,7 @@ var config = (function() {
 								name: 'level4-sector2-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar02b',
+									img: 'caterpillar02',
 									start: {
 										x: 1400,
 										y: 0
@@ -4003,7 +4036,7 @@ var config = (function() {
 								name: 'level4-sector3-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar02b',
+									img: 'caterpillar02',
 									start: {
 										x: 2200,
 										y: 0
@@ -4033,7 +4066,7 @@ var config = (function() {
 								name: 'level4-sector3-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar02b',
+									img: 'caterpillar02',
 									start: {
 										x: 2850,
 										y: 0
@@ -4109,7 +4142,7 @@ var config = (function() {
 								name: 'level4-sector4-ß',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar02b',
+									img: 'caterpillar02',
 									start: {
 										x: 3090,
 										y: 0
@@ -4139,7 +4172,7 @@ var config = (function() {
 								name: 'level4-sector4-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar02b',
+									img: 'caterpillar02',
 									start: {
 										x: 3280,
 										y: -100

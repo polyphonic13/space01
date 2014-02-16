@@ -85,10 +85,6 @@ PolyworksGame = (function() {
 				}
 		},
 
-		getState: function(name) {
-			return _states[name];
-		},
-
 		setScore: function(val) {
 			PolyworksGame.score += val;
 			// trace('PolyworksGame/setScore, val = ' + val + ', score = ' + PolyworksGame.score);
@@ -117,7 +113,7 @@ PolyworksGame = (function() {
 
 		Utils.each(images,
 			function(image, key) {
-				phaser.load.image(key, image);
+				// phaser.load.image(key, image);
 				loadedImages[key] = false;
 			},
 			this
@@ -128,7 +124,7 @@ PolyworksGame = (function() {
 		// trace('preload sprites');
 		Utils.each(sprites,
 			function(sprite, key) {
-				phaser.load.spritesheet(key, sprite.url, sprite.width, sprite.height, sprite.frames);
+				// phaser.load.spritesheet(key, sprite.url, sprite.width, sprite.height, sprite.frames);
 				loadedSprites[key] = false;
 			},
 			this
