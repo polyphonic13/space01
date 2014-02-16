@@ -1,12 +1,13 @@
 Polyworks.State = (function() {
-	Utils.inherits(State, Polyworks.Collection);
+	// Utils.inherits(State, Polyworks.Collection);
+	Utils.inherits(State, Phaser.State); 
 	
-	var _this;
 	function State(params) {
 		trace('State['+params.name+']/constructor');
-		_this = this;
+		
+		State._super.constructor.call(this);
 
-		State._super.constructor.call(this, params);
+		this.model = new Polyworks.Model(params);
 		this.model.set({
 			loaded: false,
 			created: false,
