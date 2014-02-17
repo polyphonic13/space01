@@ -582,7 +582,7 @@ var config = (function() {
 					attrs: {
 						img: 'platformV',
 						start: {
-							x: 0,
+							x: -16,
 							y: winH - (stageHeight * 2)
 						},
 						phaser: {
@@ -1628,7 +1628,7 @@ var config = (function() {
 					attrs: {
 						img: 'platformV',
 						start: {
-							x: 0,
+							x: -16,
 							y: winH - (stageHeight * 2)
 						},
 						phaser: {
@@ -2630,7 +2630,7 @@ var config = (function() {
 					attrs: {
 						img: 'platformV',
 						start: {
-							x: 0,
+							x: -16,
 							y: winH - (stageHeight * 2)
 						},
 						phaser: {
@@ -2648,208 +2648,13 @@ var config = (function() {
 					attrs: {
 						img: 'platform',
 						phaser: {
-							width: stageWidth * 2,
-							height: (stageUnit * 0.5)
+							width: stageWidth + (stageUnit * 5),
+							height: (stageUnit)
 						},
 						start: {
 							x: 0,
 							y: winH - (stageUnit * 0.5)
 						},
-						physics: {
-							immovable: true
-						}
-					}
-				},
-				{
-					name: 'ground0',
-					cl: 'Sprite',
-					attrs: {
-						img: 'rockPlatform1',
-						start: {
-							x: 768,
-							y: winH - ((stageUnit * 2) + 32)
-						},
-						scale: [2, 1],
-						physics: {
-							immovable: true
-						}
-					}
-				},
-				{
-					name: 'ground0',
-					cl: 'Sprite',
-					attrs: {
-						img: 'rockPlatform1',
-						start: {
-							x: 1088,
-							y: stageHeight - 80
-						},
-						scale: [1.5, 1],
-						physics: {
-							immovable: true
-						}
-					}
-				},
-				{
-					name: 'ground0',
-					cl: 'Sprite',
-					attrs: {
-						img: 'rockPlatform1',
-						start: {
-							x: 1280,
-							y: stageHeight - 120
-						},
-						scale: [2, 1],
-						physics: {
-							immovable: true
-						}
-					}
-				},
-				{
-					name: 'ground0',
-					cl: 'Sprite',
-					attrs: {
-						img: 'rockPlatform1',
-						start: {
-							x: 1664,
-							y: stageHeight - 150
-						},
-						scale: [1, 1],
-						physics: {
-							immovable: true
-						}
-					}
-				},
-				{
-					name: 'ground0',
-					cl: 'Sprite',
-					attrs: {
-						img: 'rockPlatform1',
-						start: {
-							x: 1856,
-							y: stageHeight - 190
-						},
-						scale: [1, 1],
-						physics: {
-							immovable: true
-						}
-					}
-				},
-				{
-					name: 'ground0',
-					cl: 'Sprite',
-					attrs: {
-						img: 'rockPlatform1',
-						start: {
-							x: 2048,
-							y: stageHeight - 240
-						},
-						scale: [1.5, 1],
-						physics: {
-							immovable: true
-						}
-					}
-				},
-				{
-					name: 'ground0',
-					cl: 'Sprite',
-					attrs: {
-						img: 'rockPlatform1',
-						start: {
-							x: 2304,
-							y: stageHeight - 280
-						},
-						scale: [2, 1],
-						physics: {
-							immovable: true
-						}
-					}
-				},
-				{
-					name: 'ground0',
-					cl: 'Sprite',
-					attrs: {
-						img: 'rockPlatform1',
-						start: {
-							x: 2624,
-							y: stageHeight - 320
-						},
-						scale: [1, 1],
-						physics: {
-							immovable: true
-						}
-					}
-				},
-				{
-					name: 'ground0',
-					cl: 'Sprite',
-					attrs: {
-						img: 'rockPlatform1',
-						start: {
-							x: 2816,
-							y: stageHeight - 400
-						},
-						scale: [2, 1],
-						physics: {
-							immovable: true
-						}
-					}
-				},
-				{
-					name: 'ground0',
-					cl: 'Sprite',
-					attrs: {
-						img: 'rockPlatform1',
-						start: {
-							x: 3140,
-							y: stageHeight - 440
-						},
-						scale: [1, 1],
-						physics: {
-							immovable: true
-						}
-					}
-				},
-				{
-					name: 'ground0',
-					cl: 'Sprite',
-					attrs: {
-						img: 'rockPlatform1',
-						start: {
-							x: 3332,
-							y: stageHeight - 500
-						},
-						scale: [2, 1],
-						physics: {
-							immovable: true
-						}
-					}
-				},
-				{
-					name: 'ground0',
-					cl: 'Sprite',
-					attrs: {
-						img: 'rockPlatform1',
-						start: {
-							x: 3652,
-							y: stageHeight - 530
-						},
-						scale: [1, 1],
-						physics: {
-							immovable: true
-						}
-					}
-				},
-				{
-					name: 'ground0',
-					cl: 'Sprite',
-					attrs: {
-						img: 'rockPlatform1',
-						start: {
-							x: 3844,
-							y: stageHeight - 560
-						},
-						scale: [2, 1],
 						physics: {
 							immovable: true
 						}
@@ -2922,7 +2727,62 @@ var config = (function() {
 					{
 						name: 'dynamicTerrain',
 						cl: 'PhysicalGroupCollection',
-						attrs: []
+						attrs: [
+						{
+							name: 'rockPlatform1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 3),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth) + (stageUnit * 2),
+									y: winH - (stageUnit * 2)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'rockPlatform2',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 3),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth) + (stageUnit * 6),
+									y: winH - (stageUnit * 3)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'rockPlatform3',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 2),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth) + (stageUnit * 11),
+									y: winH - (stageUnit * 4)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						}
+						]
 					},
 					{
 						name: 'hazards',
@@ -2972,7 +2832,80 @@ var config = (function() {
 					{
 						name: 'dynamicTerrain',
 						cl: 'PhysicalGroupCollection',
-						attrs: []
+						attrs: [
+						{
+							name: 'rockPlatform4',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 3),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth * 2),
+									y: winH - (stageUnit * 2)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'rockPlatform5',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 2.5),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth * 2) + (stageUnit * 6),
+									y: winH - (stageUnit * 2.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'rockPlatform6',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 2),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth * 2) + (stageUnit * 10),
+									y: winH - (stageUnit * 4)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'rockPlatform7',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 2.5),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth * 2) + (stageUnit * 13),
+									y: winH - (stageUnit * 6)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						}
+						]
 					},
 					{
 						name: 'hazards',
@@ -3022,7 +2955,80 @@ var config = (function() {
 					{
 						name: 'dynamicTerrain',
 						cl: 'PhysicalGroupCollection',
-						attrs: []
+						attrs: [
+						{
+							name: 'rockPlatform8',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 2),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth * 3) + (stageUnit),
+									y: winH - (stageUnit * 5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'rockPlatform9',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 2.5),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth * 3) + (stageUnit * 4),
+									y: winH - (stageUnit * 7)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'rockPlatform10',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 2),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth * 3) + (stageUnit * 10),
+									y: winH - (stageUnit * 6.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'rockPlatform11',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 2.5),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth * 3) + (stageUnit * 13),
+									y: winH - (stageUnit * 8)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						}
+						]
 					},
 					{
 						name: 'hazards',
@@ -3072,7 +3078,80 @@ var config = (function() {
 					{
 						name: 'dynamicTerrain',
 						cl: 'PhysicalGroupCollection',
-						attrs: []
+						attrs: [
+						{
+							name: 'rockPlatform12',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 2),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth * 4) + (stageUnit),
+									y: winH - (stageUnit * 7)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'rockPlatform13',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 2.5),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 4),
+									y: winH - (stageUnit * 8.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'rockPlatform14',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 2),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 9),
+									y: winH - (stageUnit * 9.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'rockPlatform15',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 2),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 13),
+									y: winH - (stageUnit * 9)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						}
+						]
 					},
 					{
 						name: 'hazards',
@@ -3084,7 +3163,7 @@ var config = (function() {
 							attrs: {
 								img: 'invisibleBg',
 								phaser: {
-									width: stageWidth,
+									width: stageWidth + stageUnit,
 									height: 32
 								},
 								start: {
@@ -3122,7 +3201,80 @@ var config = (function() {
 					{
 						name: 'dynamicTerrain',
 						cl: 'PhysicalGroupCollection',
-						attrs: []
+						attrs: [
+						{
+							name: 'rockPlatform16',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 1.5),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth * 5) + (stageUnit * 2),
+									y: winH - (stageUnit * 9.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'rockPlatform17',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 3),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth * 5) + (stageUnit * 5),
+									y: winH - (stageUnit * 10.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'rockPlatform18',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 2),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth * 5) + (stageUnit * 9),
+									y: winH - (stageUnit * 12.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'rockPlatform19',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 3),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageWidth * 5) + (stageUnit * 13),
+									y: winH - (stageUnit * 14.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						}
+						]
 					},
 					{
 						name: 'hazards',
