@@ -13,7 +13,6 @@ Polyworks.State = (function() {
 			created: false,
 			active: false
 		});
-		// this.collection = new Polyworks.Collection(params);
 		
 		this.__defineGetter__('clearWorld', function() {
 			return this.model.clearWorld;
@@ -37,7 +36,7 @@ Polyworks.State = (function() {
 				var images = PolyworksGame.get('images');
 				Utils.each(this.model.images,
 					function(img) {
-						// trace('\t\timage['+img+'] loaded = ' + PolyworksGame.loadedImages[img]);
+						trace('\t\timage['+img+'] loaded = ' + PolyworksGame.loadedImages[img]);
 						if(!PolyworksGame.loadedImages[img]) {
 							PolyworksGame.phaser.load.image(img, images[img]);
 							PolyworksGame.loadedImages[img] = true;
@@ -50,11 +49,9 @@ Polyworks.State = (function() {
 				var sprites = PolyworksGame.get('sprites');
 				Utils.each(this.model.sprites,
 					function(spr) {
-						// trace('\t\tsprite['+spr+'] loaded = ' + PolyworksGame.loadedSprites[spr]);
+						trace('\t\tsprite['+spr+'] loaded = ' + PolyworksGame.loadedSprites[spr]);
 						if(!PolyworksGame.loadedImages[spr]) {
 							var sprite = sprites[spr];
-							// trace('\t\tsprite = ');
-							// trace(sprite);
 							PolyworksGame.phaser.load.spritesheet(spr, sprite.url, sprite.width, sprite.height, sprite.frames);
 							PolyworksGame.loadedImages[spr] = true;
 						}
