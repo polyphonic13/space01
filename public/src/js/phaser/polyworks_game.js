@@ -76,7 +76,7 @@ PolyworksGame = (function() {
 					if(state) {
 						PolyworksGame.previousState = PolyworksGame.currentState;
 						PolyworksGame.currentState = id;
-						// trace('PolyworksGame/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
+						trace('PolyworksGame/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
 						// trace(_states);
 						PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
 						PolyworksGame.showLoadingDiv();
@@ -98,13 +98,30 @@ PolyworksGame = (function() {
 		},
 
 		hideLoadingDiv: function() {
+			// var loading = document.getElementById('loading');
+			// if(loading) {
+			// 	loading.parentNode.removeChild(loading);
+			// }
+
+			trace('PolyworksGame/hideLoadingDiv');
 			var loading = document.getElementById('loading');
+			trace('loading, display = ' + loading.style.display);
+			trace(loading);
+			loading.style.visibility = 'hidden';
 			loading.style.display = 'none';
+			trace('loading, display = ' + loading.style.display);
 		},
 		
 		showLoadingDiv: function() {
+			// var loading = document.createElement('div');
+			// loading.setAttribute('id', 'loading');
+			// loading.innerHTML = 'Keke vs. the Caterpillars';
+			// document.body.appendChild(loading);
+
 			var loading = document.getElementById('loading');
+			loading.style.visibility = 'visible';
 			loading.style.display = 'block';
+
 		},
 		
 		quit: function() {

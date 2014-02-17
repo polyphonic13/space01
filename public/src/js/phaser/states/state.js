@@ -72,15 +72,16 @@ Polyworks.State = (function() {
 	};
 	
 	State.prototype.create = function() {
-		trace('Stage['+this.model.name+']/create');
+		trace('Stage['+this.model.name+']/create, created = ' + this.model.created);
 		PolyworksGame.hideLoadingDiv();
-		if(!this.model.created) {
+		// if(!this.model.created) {
 			this.createState();
 			this.model.created = true;
-		}
+		// }
 	};
 
 	State.prototype.createState = function() {
+		trace('State['+this.model.name+']/createState');
 		this.gameOver = PolyworksGame.gameOver; 
 		this.createWorld();
 
@@ -88,7 +89,6 @@ Polyworks.State = (function() {
 			Polyworks.EventCenter.bind(Polyworks.Events.PAUSE_STATE, this.onPauseState, this);
 			Polyworks.EventCenter.bind(Polyworks.Events.RESUME_STATE, this.onResumeState, this);
 		}
-		// this.collection.begin();
 		this.begin();
 	};
 	
