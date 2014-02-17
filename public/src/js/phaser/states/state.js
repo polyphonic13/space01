@@ -3,7 +3,7 @@ Polyworks.State = (function() {
 	// Utils.inherits(State, Phaser.State); 
 	
 	function State(params) {
-		trace('State['+params.name+']/constructor');
+		// trace('State['+params.name+']/constructor');
 		
 		State._super.constructor.call(this);
 
@@ -31,13 +31,13 @@ Polyworks.State = (function() {
 	State.prototype.preload = function() {
 		trace('Stage['+this.model.name+']/preLoad, loaded = ' + this.model.loaded);
 		if(!this.model.loaded) {
-			trace('\tstate images = ');
-			trace(this.model.images);
+			// trace('\tstate images = ');
+			// trace(this.model.images);
 			if(this.model.images.length > 0) {
 				var images = PolyworksGame.get('images');
 				Utils.each(this.model.images,
 					function(img) {
-						trace('\t\timage['+img+'] loaded = ' + PolyworksGame.loadedImages[img]);
+						// trace('\t\timage['+img+'] loaded = ' + PolyworksGame.loadedImages[img]);
 						if(!PolyworksGame.loadedImages[img]) {
 							PolyworksGame.phaser.load.image(img, images[img]);
 							PolyworksGame.loadedImages[img] = true;
@@ -50,11 +50,11 @@ Polyworks.State = (function() {
 				var sprites = PolyworksGame.get('sprites');
 				Utils.each(this.model.sprites,
 					function(spr) {
-						trace('\t\tsprite['+spr+'] loaded = ' + PolyworksGame.loadedSprites[spr]);
+						// trace('\t\tsprite['+spr+'] loaded = ' + PolyworksGame.loadedSprites[spr]);
 						if(!PolyworksGame.loadedImages[spr]) {
 							var sprite = sprites[spr];
-							trace('\t\tsprite = ');
-							trace(sprite);
+							// trace('\t\tsprite = ');
+							// trace(sprite);
 							PolyworksGame.phaser.load.spritesheet(spr, sprite.url, sprite.width, sprite.height, sprite.frames);
 							PolyworksGame.loadedImages[spr] = true;
 						}
