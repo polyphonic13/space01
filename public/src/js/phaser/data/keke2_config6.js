@@ -2085,7 +2085,7 @@ var config = (function() {
 								img: 'branch02Right',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
-									x: (stageWidth * 3) + (stageUnit * 5),
+									x: (stageWidth * 3) + (stageUnit * 4.5),
 									y: winH - (stageUnit * 12)
 								},
 								physics: {
@@ -2100,7 +2100,7 @@ var config = (function() {
 								img: 'branch02Right',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
-									x: (stageWidth * 3) + (stageUnit * 13),
+									x: (stageWidth * 3) + (stageUnit * 12.5),
 									y: winH - (stageUnit * 10.5)
 								},
 								physics: {
