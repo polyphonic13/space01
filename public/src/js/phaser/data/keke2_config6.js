@@ -375,7 +375,7 @@ var config = (function() {
 			}
 		},
 		// STATES
-		initialState: 'menu',
+		initialState: 'level2',
 		states: [
 		// menu
 		{
@@ -1617,7 +1617,83 @@ var config = (function() {
 							y: winH - (stageHeight * 2)
 						}
 					}
+				},
+				{
+					name: 'tree01',
+					cl: 'Sprite',
+					attrs: {
+						img: 'tree01',
+						phaser: {
+							width: (stageHeight * 2),
+							height: (stageHeight * 3)
+						},
+						start: {
+							x: (stageWidth * 2) + (stageUnit * 2),
+							y: winH - (stageHeight * 3)
+						}
+					}
+				},
+				{
+					name: 'tree02',
+					cl: 'Sprite',
+					attrs: {
+						img: 'tree01',
+						phaser: {
+							width: (stageHeight * 2),
+							height: (stageHeight * 3)
+						},
+						start: {
+							x: (stageWidth * 2) + (stageUnit * 11),
+							y: winH - (stageHeight * 3)
+						}
+					}
+				},
+				{
+					name: 'tree03',
+					cl: 'Sprite',
+					attrs: {
+						img: 'tree01',
+						phaser: {
+							width: (stageHeight * 2),
+							height: (stageHeight * 3)
+						},
+						start: {
+							x: (stageWidth * 3) + (stageUnit * 3),
+							y: winH - (stageHeight * 3)
+						}
+					}
+				},
+				{
+					name: 'tree04',
+					cl: 'Sprite',
+					attrs: {
+						img: 'tree01',
+						phaser: {
+							width: (stageHeight * 2),
+							height: (stageHeight * 3)
+						},
+						start: {
+							x: (stageWidth * 3) + (stageUnit * 11),
+							y: winH - (stageHeight * 3)
+						}
+					}
+				},
+				{
+					name: 'tree05',
+					cl: 'Sprite',
+					attrs: {
+						img: 'tree01',
+						phaser: {
+							width: (stageHeight * 2),
+							height: (stageHeight * 3)
+						},
+						start: {
+							x: (stageWidth * 4) + (stageUnit * 4),
+							y: winH - (stageHeight * 3)
+						}
+					}
 				}
+				
 				]
 			},
 			{
@@ -1794,7 +1870,7 @@ var config = (function() {
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
 								setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 								start: {
-									x: (stageWidth * 2) + (stageUnit * 4),
+									x: (stageWidth * 2) + (stageUnit * 5),
 									y: winH - (stageUnit * 5)
 								},
 								physics: {
@@ -1809,7 +1885,7 @@ var config = (function() {
 								img: 'branch02Left',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
-									x: (stageWidth * 2) + (stageUnit * 7),
+									x: (stageWidth * 2) + (stageUnit * 8),
 									y: winH - (stageUnit * 4.5)
 								},
 								physics: {
@@ -2010,7 +2086,22 @@ var config = (function() {
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
 									x: (stageWidth * 3) + (stageUnit * 5),
-									y: winH - (stageUnit * 12.5)
+									y: winH - (stageUnit * 12)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'platform10',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02Right',
+								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+								start: {
+									x: (stageWidth * 3) + (stageUnit * 13),
+									y: winH - (stageUnit * 10.5)
 								},
 								physics: {
 									immovable: true
@@ -2069,8 +2160,8 @@ var config = (function() {
 								img: 'lollipop',
 								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 								start: {
-									x: (stageWidth * 3) + (stageUnit * 10),
-									y: winH - (stageUnit * 1.5)
+									x: (stageWidth * 3) + (stageUnit * 6),
+									y: winH - (stageUnit * 15)
 								},
 								physics: {
 									immovable: true
@@ -2093,7 +2184,68 @@ var config = (function() {
 					{
 						name: 'dynamicTerrain',
 						cl: 'PhysicalGroupCollection',
-						attrs: []
+						attrs: [
+						{
+							name: 'platform6',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02Left',
+								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+								start: {
+									x: (stageWidth * 4) + (stageUnit),
+									y: winH - (stageUnit * 7.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'platform7',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02Right',
+								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 5),
+									y: winH - (stageUnit * 9)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'platform8',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02Left',
+								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 10),
+									y: winH - (stageUnit * 10.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'platform9',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02Right',
+								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 13),
+									y: winH - (stageUnit * 12)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						}
+						]
 					},
 					{
 						name: 'hazards',
@@ -2201,40 +2353,7 @@ var config = (function() {
 					{
 						name: 'dynamicTerrain',
 						cl: 'PhysicalGroupCollection',
-						attrs: [
-						{
-							name: 'platform9',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02Left',
-								start: {
-									x: 3098,
-									y: stageHeight - 300
-								},
-								// setSize: [64, 16, 32, 32],
-								scale: [0.6, 0.5],
-								physics: {
-									immovable: true
-								}
-							}
-						},
-						{
-							name: 'platform9',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02Right',
-								start: {
-									x: 3248,
-									y: stageHeight - 380
-								},
-								// setSize: [64, 16, 32, 32],
-								scale: [0.6, 0.5],
-								physics: {
-									immovable: true
-								}
-							}
-						}
-						]
+						attrs: []
 					},
 					{
 						name: 'hazards',
