@@ -375,7 +375,7 @@ var config = (function() {
 			}
 		},
 		// STATES
-		initialState: 'level3',
+		initialState: 'menu',
 		states: [
 		// menu
 		{
@@ -2677,7 +2677,26 @@ var config = (function() {
 					{
 						name: 'dynamicTerrain',
 						cl: 'PhysicalGroupCollection',
-						attrs: []
+						attrs: [
+						{
+							name: 'rockPlatform1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'rockPlatform1',
+								phaser: {
+									width: (stageUnit * 2),
+									height: (stageUnit)
+								},
+								start: {
+									x: (stageUnit * 13),
+									y: winH - (stageUnit * 1.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						}
+						]
 					},
 					{
 						name: 'hazards',
@@ -2738,7 +2757,7 @@ var config = (function() {
 									height: (stageUnit)
 								},
 								start: {
-									x: (stageWidth) + (stageUnit * 2),
+									x: (stageWidth) + (stageUnit),
 									y: winH - (stageUnit * 2)
 								},
 								physics: {
@@ -3002,7 +3021,7 @@ var config = (function() {
 									height: (stageUnit)
 								},
 								start: {
-									x: (stageWidth * 3) + (stageUnit * 10),
+									x: (stageWidth * 3) + (stageUnit * 9.5),
 									y: winH - (stageUnit * 6.5)
 								},
 								physics: {
