@@ -2519,7 +2519,7 @@ var config = (function() {
 					attrs: {
 						img: 'platform',
 						phaser: {
-							width: stageWidth + (stageUnit * 5),
+							width: stageWidth - (stageUnit),
 							height: (stageUnit)
 						},
 						start: {
@@ -2555,8 +2555,8 @@ var config = (function() {
 							attrs: {
 								img: 'rockPlatform1',
 								phaser: {
-									width: (stageUnit * 2),
-									height: (stageUnit)
+									width: (stageUnit * 3),
+									height: (stageUnit * 1.5)
 								},
 								start: {
 									x: (stageUnit * 13),
