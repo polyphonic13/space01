@@ -392,6 +392,8 @@ var config = (function() {
 			images: [
 				'greyRect',
 				'startButton',
+				'nextButton',
+				'menuButton',
 				'quitButton'
 			],
 			sprites: [
@@ -1930,8 +1932,8 @@ var config = (function() {
 								img: 'lollipop',
 								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 								start: {
-									x: (stageWidth * 2) + (stageUnit * 4),
-									y: 20
+									x: (stageWidth * 2) + (stageUnit * 8),
+									y: winH - (stageUnit * 6)
 								},
 								physics: {
 									immovable: true
@@ -2065,10 +2067,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'lollipop',
-							phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
+								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 								start: {
-									x: 3700,
-									y: stageHeight - 150
+									x: (stageWidth * 3) + (stageUnit * 10),
+									y: winH - (stageUnit * 1.5)
 								},
 								physics: {
 									immovable: true
@@ -2091,138 +2093,7 @@ var config = (function() {
 					{
 						name: 'dynamicTerrain',
 						cl: 'PhysicalGroupCollection',
-						attrs: [
-						/*
-						{
-							name: 'platform2',
-							cl: 'Sprite',
-							attrs: {
-								img: 'vine01Left',
-								start: {
-									x: 2048,
-									y: stageHeight - 115
-								},
-								setSize: [64, 16, 32, 32],
-								// scale: [0.6, 0.5],
-								physics: {
-									immovable: true
-								}
-							}
-						},
-						{
-							name: 'platform3',
-							cl: 'Sprite',
-							attrs: {
-								img: 'vine01Right',
-								start: {
-									x: 2148,
-									y: stageHeight - 180
-								},
-								setSize: [64, 16, 32, 32],
-								// scale: [0.6, 0.5],
-								physics: {
-									immovable: true
-								}
-							}
-						},
-						{
-							name: 'platform4',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02Left',
-								start: {
-									x: 2148,
-									y: stageHeight - 230
-								},
-								// setSize: [64, 16, 32, 32],
-								scale: [0.6, 0.5],
-								physics: {
-									immovable: true
-								}
-							}
-						},
-						{
-							name: 'platform5',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02Right',
-								start: {
-									x: 2298,
-									y: stageHeight - 290
-								},
-								// setSize: [64, 16, 32, 32],
-								scale: [0.6, 0.5],
-								physics: {
-									immovable: true
-								}
-							}
-						},
-						{
-							name: 'platform6',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02Left',
-								start: {
-									x: 2448,
-									y: stageHeight - 360
-								},
-								// setSize: [64, 16, 32, 32],
-								scale: [0.6, 0.5],
-								physics: {
-									immovable: true
-								}
-							}
-						},
-						{
-							name: 'platform7',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02Right',
-								start: {
-									x: 2598,
-									y: stageHeight - 430
-								},
-								// setSize: [64, 16, 32, 32],
-								scale: [0.6, 0.5],
-								physics: {
-									immovable: true
-								}
-							}
-						},
-						{
-							name: 'platform8',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02Left',
-								start: {
-									x: (stageWidth * 4) + (stageUnit),
-									y: stageHeight - 380
-								},
-								// setSize: [64, 16, 32, 32],
-								scale: [0.6, 0.5],
-								physics: {
-									immovable: true
-								}
-							}
-						},
-						{
-							name: 'platform9',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02Right',
-								start: {
-									x: 2898,
-									y: stageHeight - 350
-								},
-								// setSize: [64, 16, 32, 32],
-								scale: [0.6, 0.5],
-								physics: {
-									immovable: true
-								}
-							}
-						}
-						*/
-						]
+						attrs: []
 					},
 					{
 						name: 'hazards',
@@ -2306,8 +2177,8 @@ var config = (function() {
 								img: 'lollipop',
 								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 								start: {
-									x: 2740,
-									y: 20
+									x: (stageWidth * 4) + (stageUnit * 5),
+									y: winH - (stageUnit * 1.5)
 								},
 								physics: {
 									immovable: true
@@ -2416,7 +2287,7 @@ var config = (function() {
 								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 								start: {
 									x: (stageWidth * 5) + (stageUnit * 9),
-									y: stageHeight - 150
+									y: winH - (stageUnit * 1.5)
 								},
 								physics: {
 									immovable: true
