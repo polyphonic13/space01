@@ -49,7 +49,7 @@ Polyworks.State = (function() {
 			if(this.model.sprites.length > 0) {
 				var sprites = PolyworksGame.get('sprites');
 				Utils.each(this.model.sprites,
-					function(spr, key) {
+					function(spr) {
 						trace('\t\tsprite['+spr+'] loaded = ' + PolyworksGame.loadedSprites[spr]);
 						if(!PolyworksGame.loadedImages[spr]) {
 							var sprite = sprites[spr];

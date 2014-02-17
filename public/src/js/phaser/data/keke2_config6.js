@@ -389,7 +389,9 @@ var config = (function() {
 				'startButton',
 				'quitButton'
 			],
-			sprites: [],
+			sprites: [
+				'keke'
+			],
 			attrs: [
 			{
 				name: 'menu-group',
