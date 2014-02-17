@@ -18,19 +18,6 @@ var config = (function() {
 			mountainBackground1a: 'images/mountain_background1a.png',
 			mountainBackground1b: 'images/mountain_background1b.png',
 
-			forestDistantA1: 'images/forest_distant_background01_a1.png',
-			forestDistantA2: 'images/forest_distant_background01_a2.png',
-			forestDistantB1: 'images/forest_distant_background01_b1.png',
-			forestDistantB2: 'images/forest_distant_background01_b2.png',
-			forestDistantC1: 'images/forest_distant_background01_c1.png',
-			forestDistantC2: 'images/forest_distant_background01_c2.png',
-			forestDistantD1: 'images/forest_distant_background01_d1.png',
-			forestDistantD2: 'images/forest_distant_background01_d2.png',
-			forestDistantE1: 'images/forest_distant_background01_e1.png',
-			forestDistantE2: 'images/forest_distant_background01_e2.png',
-			forestDistantF1: 'images/forest_distant_background01_f1.png',
-			forestDistantF2: 'images/forest_distant_background01_f2.png',
-			
 			forestBackground01: 'images/forest_distant_background01a.png',
 			forestBackground02: 'images/forest_distant_background01b.png',
 			forestBackground03: 'images/forest_background01a.png',
@@ -473,18 +460,8 @@ var config = (function() {
 			pausable: true,
 			images: [
 				'sky',
-				'forestDistantA1',
-				'forestDistantA2',
-				'forestDistantB1',
-				'forestDistantB2',
-				'forestDistantC1',
-				'forestDistantC2',
-				'forestDistantD1',
-				'forestDistantD2',
-				'forestDistantE1',
-				'forestDistantE2',
-				'forestDistantF1',
-				'forestDistantF2',
+				'forestBackground01',
+				'forestBackground02',
 				'tree01',
 				'platformV',
 				'platform',
@@ -530,29 +507,14 @@ var config = (function() {
 					name: 'background01',
 					cl: 'Sprite',
 					attrs: {
-						img: 'forestDistantA1',
+						img: 'forestBackground01',
 						phaser: {
-							width: stageWidth,
-							height: stageHeight
+							width: stageWidth * 3,
+							height: stageHeight * 2
 						},
 						start: {
 							x: 0,
-							y: winH - (stageHeight * 2)
-						}
-					}
-				},
-				{
-					name: 'background01',
-					cl: 'Sprite',
-					attrs: {
-						img: 'forestDistantA2',
-						phaser: {
-							width: stageWidth,
-							height: stageHeight
-						},
-						start: {
-							x: 0,
-							y: winH - (stageHeight)
+							y: (-(stageHeight * 2) + winH)
 						}
 					}
 				},
@@ -560,149 +522,14 @@ var config = (function() {
 					name: 'background02',
 					cl: 'Sprite',
 					attrs: {
-						img: 'forestDistantB1',
+						img: 'forestBackground02',
 						phaser: {
-							width: stageWidth,
-							height: stageHeight
-						},
-						start: {
-							x: stageWidth,
-							y: winH - (stageHeight * 2)
-						}
-					}
-				},
-				{
-					name: 'background01',
-					cl: 'Sprite',
-					attrs: {
-						img: 'forestDistantB2',
-						phaser: {
-							width: stageWidth,
-							height: stageHeight
-						},
-						start: {
-							x: stageWidth,
-							y: winH - (stageHeight)
-						}
-					}
-				},
-				{
-					name: 'background02',
-					cl: 'Sprite',
-					attrs: {
-						img: 'forestDistantC1',
-						phaser: {
-							width: stageWidth,
-							height: stageHeight
-						},
-						start: {
-							x: stageWidth * 2,
-							y: winH - (stageHeight * 2)
-						}
-					}
-				},
-				{
-					name: 'background01',
-					cl: 'Sprite',
-					attrs: {
-						img: 'forestDistantC2',
-						phaser: {
-							width: stageWidth,
-							height: stageHeight
-						},
-						start: {
-							x: stageWidth * 2,
-							y: winH - (stageHeight)
-						}
-					}
-				},
-				{
-					name: 'background02',
-					cl: 'Sprite',
-					attrs: {
-						img: 'forestDistantD1',
-						phaser: {
-							width: stageWidth,
-							height: stageHeight
+							width: stageWidth * 3,
+							height: stageHeight * 2
 						},
 						start: {
 							x: stageWidth * 3,
-							y: winH - (stageHeight * 2)
-						}
-					}
-				},
-				{
-					name: 'background01',
-					cl: 'Sprite',
-					attrs: {
-						img: 'forestDistantD2',
-						phaser: {
-							width: stageWidth,
-							height: stageHeight
-						},
-						start: {
-							x: stageWidth * 3,
-							y: winH - (stageHeight)
-						}
-					}
-				},
-				{
-					name: 'background02',
-					cl: 'Sprite',
-					attrs: {
-						img: 'forestDistantE1',
-						phaser: {
-							width: stageWidth,
-							height: stageHeight
-						},
-						start: {
-							x: stageWidth * 4,
-							y: winH - (stageHeight * 2)
-						}
-					}
-				},
-				{
-					name: 'background01',
-					cl: 'Sprite',
-					attrs: {
-						img: 'forestDistantE2',
-						phaser: {
-							width: stageWidth,
-							height: stageHeight
-						},
-						start: {
-							x: stageWidth * 4,
-							y: winH - (stageHeight)
-						}
-					}
-				},
-				{
-					name: 'background02',
-					cl: 'Sprite',
-					attrs: {
-						img: 'forestDistantF1',
-						phaser: {
-							width: stageWidth,
-							height: stageHeight
-						},
-						start: {
-							x: stageWidth * 5,
-							y: winH - (stageHeight * 2)
-						}
-					}
-				},
-				{
-					name: 'background02',
-					cl: 'Sprite',
-					attrs: {
-						img: 'forestDistantF2',
-						phaser: {
-							width: stageWidth,
-							height: stageHeight
-						},
-						start: {
-							x: stageWidth * 5,
-							y: winH - (stageHeight)
+							y: (-(stageHeight * 2) + winH)
 						}
 					}
 				},
