@@ -79,6 +79,7 @@ PolyworksGame = (function() {
 						// trace('PolyworksGame/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
 						// trace(_states);
 						PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
+						PolyworksGame.showLoadingDiv();
 					} else {
 						// trace('ERROR: state['+id+'] not found');
 					}
@@ -96,6 +97,16 @@ PolyworksGame = (function() {
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.HEALTH_UPDATED });
 		},
 
+		hideLoadingDiv: function() {
+			var loading = document.getElementById('loading');
+			loading.style.display = 'none';
+		},
+		
+		showLoadingDiv: function() {
+			var loading = document.getElementById('loading');
+			loading.style.display = 'block';
+		},
+		
 		quit: function() {
 			// trace('PolyworksGame/quit');
 			if(!PolyworksGame.isQuit) {
@@ -135,7 +146,8 @@ PolyworksGame = (function() {
 	}
 	
 	function _create() {
-		_removeLoadingAnimation();
+		// _removeLoadingAnimation();
+		PolyworksGame.hideLoadingDiv();
 		_addListeners();
 		_beginControls();
 		_beginStates();

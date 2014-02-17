@@ -73,6 +73,7 @@ Polyworks.State = (function() {
 	
 	State.prototype.create = function() {
 		trace('Stage['+this.model.name+']/create');
+		PolyworksGame.hideLoadingDiv();
 		if(!this.model.created) {
 			this.createState();
 			this.model.created = true;

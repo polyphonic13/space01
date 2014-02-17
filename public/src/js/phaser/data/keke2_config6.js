@@ -1705,6 +1705,41 @@ var config = (function() {
 				start: 0,
 				end: (stageWidth * 6) - (stageUnit * 1)
 			},
+			images: [
+				'sky',
+				'forestDistantA1',
+				'forestDistantA2',
+				'forestDistantB1',
+				'forestDistantB2',
+				'forestDistantC1',
+				'forestDistantC2',
+				'forestDistantD1',
+				'forestDistantD2',
+				'forestDistantE1',
+				'forestDistantE2',
+				'forestDistantF1',
+				'forestDistantF2',
+				'tree01',
+				'platformV',
+				'platform',
+				'branch02Left',
+				'branch02Right',
+				'branch02aLeft',
+				'branch02aRight',
+				'vine01Left',
+				'vine01Right',
+				'lollipop',
+				'leftButton',
+				'rightButton',
+				'upButton',
+				'pauseButton',
+				'invisibleBg',
+				'heart'
+			],
+			sprites: [
+				'keke',
+				'caterpillar01'
+			],
 			attrs: [
 			{
 				name: 'scenery',
@@ -4864,6 +4899,12 @@ var config = (function() {
 			},
 			clearWorld: true,
 			clearCache: false,
+			images: [
+				'greyRect',
+				'nextButton',
+				'menuButton'
+			],
+			sprites: [],
 			attrs: [
 			{
 				name: 'intermission-group',
@@ -4943,6 +4984,12 @@ var config = (function() {
 			},
 			clearWorld: true,
 			clearCache: false,
+			images: [
+				'greyRect',
+				'menuButton',
+				'quitButton'
+			],
+			sprites: [],
 			attrs: [
 			{
 				name: 'completed-group',
@@ -5022,7 +5069,14 @@ var config = (function() {
 			},
 			clearWorld: true,
 			clearCache: false,
-			attrs: [{
+			images: [
+				'greyRect',
+				'menuButton',
+				'quitButton'
+			],
+			sprites: [],
+			attrs: [
+			{
 				name: 'gameOver-group',
 				cl: 'GroupCollection',
 				attrs: [
