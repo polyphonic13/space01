@@ -3572,9 +3572,9 @@ var config = (function() {
 				}
 			}]
 		},
-		// level 5
+		// level 4
 		{
-			name: 'level5',
+			name: 'level4',
 			cl: 'LevelState',
 			world: {
 				x: 0,

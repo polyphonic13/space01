@@ -43,7 +43,7 @@ PolyworksGame = (function() {
 					break;
 
 					case 'nextLevel':
-						// trace('next level, current = ' + PolyworksGame.currentLevel + ', total = ' + PolyworksGame.totalLevels);
+						trace('next level, current = ' + PolyworksGame.currentLevel + ', total = ' + PolyworksGame.totalLevels);
 						if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels)) {
 							PolyworksGame.currentLevel++;
 							id = 'level' + PolyworksGame.currentLevel;
