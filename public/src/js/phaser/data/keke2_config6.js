@@ -6,8 +6,8 @@ var config = (function() {
 	var stageUnit = PolyworksStage.unit;
 
 	var enemy01 = {
-		width: (stageUnit) * 2,
-		height: stageUnit * 0.67
+		width: (stageUnit) * 1.5,
+		height: stageUnit * 0.5
 	};
 
 	var c = {
@@ -375,7 +375,7 @@ var config = (function() {
 			}
 		},
 		// STATES
-		initialState: 'menu',
+		initialState: 'level1',
 		states: [
 		// menu
 		{

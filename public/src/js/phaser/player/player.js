@@ -163,7 +163,8 @@ Polyworks.Player = (function() {
 
 			this.checkTerrainCollision(params.terrain);
 
-			this.checkDynamicTerrainCollision(params.dynamicTerrain, physics);
+			this.checkDynamicTerrainCollision(params.dynamicTerrain);
+			
 			this.checkHazardCollision(params.hazards, physics);
 			this.checkEnemyCollision(params.enemies, physics);
 			this.checkBonusCollision(params.bonuses, physics);
@@ -178,10 +179,6 @@ Polyworks.Player = (function() {
 		}
 	};
 
-	Player.prototype.checkDynamicTerrainCollision = function(dynamicTerrain, physics) {
-		this.checkCollision(dynamicTerrain, this.dynamicTerrainCollision, physics, this);
-	};
-	
 	Player.prototype.checkHazardCollision = function(hazards, physics) {
 		this.checkCollision(hazards, this.hazardCollision, physics, this);
 	};
@@ -203,18 +200,7 @@ Polyworks.Player = (function() {
 			this
 		);
 	};
-	
-	Player.prototype.dynamicTerrainCollision = function(player, terrain) {
-		// trace('Player/dynamicTerrainCollision, player = ');
-		this.collided = true;
-		var terrainY = terrain.body.y + terrain.body.height;
-		var playerOffsetY = this.body.y + (this.body.height);
-
-		if(playerOffsetY <= terrainY) {
-			this.checkTerrainCollision(terrain);
-		}
-	};
-	
+		
 	Player.prototype.hazardCollision = function(player, hazard) {
 		// trace('Player/hazardCollision, hazard = ');
 		// trace(hazard);

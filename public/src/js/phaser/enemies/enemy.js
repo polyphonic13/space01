@@ -45,6 +45,8 @@ Polyworks.Enemy = (function() {
 			} else {
 				this.isInView = false;
 			}
+			
+			this.checkDynamicTerrainCollision(params.dynamicTerrain);
 		}
 	};
 	

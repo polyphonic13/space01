@@ -143,6 +143,30 @@ Polyworks.Sprite = (function() {
 		PolyworksGame.phaser.physics.collide(this, terrain);
 	};
 	
+	Sprite.prototype.checkDynamicTerrainCollision = function(dynamicTerrain) {
+		var physics = PolyworksGame.phaser.physics;
+		var _this = this;
+		
+		Utils.each(dynamicTerrain,
+			function(c) {
+				physics.overlap(this, c, _this.dynamicTerrainCollision, null, _this);
+			},
+			_this
+		);
+		
+	};
+	
+	Sprite.prototype.dynamicTerrainCollision = function(sprite, terrain) {
+		// trace('Sprite['+this.model.name+']/dynamicTerrainCollision, terrain = ' + terrain.model.name);
+		var terrainY = terrain.body.y + terrain.body.height;
+		var spriteOffsetY = this.body.y + (this.body.height);
+
+		if(spriteOffsetY <= terrainY) {
+			this.checkTerrainCollision(terrain);
+		}
+		
+	};
+	
 	Sprite.prototype.beginAnimations = function(animations) {
 			Utils.each(animations,
 			function(a, key) {

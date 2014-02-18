@@ -68,9 +68,12 @@ Polyworks.LevelState = (function() {
 				PolyworksGame.changeState('intermission');
 			} else {
 				// update active sector via sector manager
+				var sector = this.sectorManager.activeSector;
+
 				var updateParams = {
 					player: this.player.sprite,
 					terrain: this.terrain.group,
+					dynamicTerrain: sector.dynamicTerrain.getActive(),
 					position: {
 						x: this.game.camera.x + (PolyworksStage.winW/2),
 						y: this.game.camera.y + (PolyworksStage.winH/2)
@@ -79,7 +82,6 @@ Polyworks.LevelState = (function() {
 				this.sectorManager.pwUpdate(updateParams);
 
 				// update player with active sector members & terrain
-				var sector = this.sectorManager.activeSector;
 
 				this.player.pwUpdate({
 					terrain: this.terrain.group,

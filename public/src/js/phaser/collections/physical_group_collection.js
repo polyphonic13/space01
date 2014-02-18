@@ -17,6 +17,18 @@ Polyworks.PhysicalGroupCollection = (function() {
 		);
 	};
 	
+	PhysicalGroupCollection.prototype.checkDyanmicTerrainCollision = function(terrain) {
+		// trace('PhysicalGroupCollection['+this.model.name+']/checkDyanmicTerrainCollision');
+		// trace(terrain);
+		// trace(this);
+		Utils.each(this.model.collection,
+			function(c) {
+				c.checkDynamicTerrainCollision(terrain);
+			},
+			this
+		);
+	};
+	
 	PhysicalGroupCollection.prototype.activateGravity = function() {
 		// trace('PhysicalGroupCollection['+this.model.name+']/activateGravity, collection length = ' + collection.length);
 		Utils.each(this.model.collection,
