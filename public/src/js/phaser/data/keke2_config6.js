@@ -380,7 +380,7 @@ var config = (function() {
 			}
 		},
 		// STATES
-		initialState: 'level2',
+		initialState: 'menu',
 		states: [
 		// menu
 		{
