@@ -380,7 +380,7 @@ var config = (function() {
 			}
 		},
 		// STATES
-		initialState: 'menu',
+		initialState: 'level3',
 		states: [
 		// menu
 		{
@@ -650,41 +650,7 @@ var config = (function() {
 					{
 						name: 'enemies',
 						cl: 'Enemies',
-						attrs: [
-						{
-							name: 'level1-sector1-enemy1',
-							cl: 'AnimatedEnemy',
-							attrs: {
-								img: 'caterpillar01',
-								phaser: {
-									width: enemy01.width,
-									height: enemy01.height,
-									health: 3
-								},
-								start: {
-									x: (stageWidth) - (stageUnit),
-									y: winH - (stageUnit + 32)
-								},
-								physics: {
-									deferredGravity: true,
-									bounce: {
-										x: 0,
-										y: 0.2
-									}
-								},
-								speed: 0.5,
-								attack: 5,
-								score: 2000,
-								movement: {
-									speed: 0.25,
-									type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-									formula: null
-								},
-								defaultAnimation: '',
-								animations: caterpillarAnimations
-							}
-						}
-						] 
+						attrs: [] 
 					},
 					{
 						name: 'bonuses',
@@ -2622,6 +2588,36 @@ var config = (function() {
 							y: winH - (stageHeight * 3)
 						}
 					}
+				},
+				{
+					name: 'tree06',
+					cl: 'Sprite',
+					attrs: {
+						img: 'tree01',
+						phaser: {
+							width: (stageHeight * 2),
+							height: (stageHeight * 3)
+						},
+						start: {
+							x: (stageWidth * 3) + (stageUnit * 11),
+							y: winH - (stageHeight * 3)
+						}
+					}
+				},
+				{
+					name: 'tree07',
+					cl: 'Sprite',
+					attrs: {
+						img: 'tree01',
+						phaser: {
+							width: (stageHeight * 2),
+							height: (stageHeight * 3)
+						},
+						start: {
+							x: (stageWidth * 4) + (stageUnit * 4),
+							y: winH - (stageHeight * 3)
+						}
+					}
 				}
 
 				]
@@ -3136,13 +3132,14 @@ var config = (function() {
 					{
 						name: 'bonuses',
 						cl: 'PhysicalGroupCollection',
-						attrs: [{
+						attrs: [
+						{
 							cl: 'Sprite',
 							attrs: {
 								img: 'lollipop',
 								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 								start: {
-									x: (stageWidth * 2) + (stageUnit * 6),
+									x: (stageWidth * 2) + (stageUnit * 7),
 									y: winH - (stageUnit * 15)
 								},
 								physics: {
@@ -3151,7 +3148,8 @@ var config = (function() {
 								score: 100,
 								health: 10
 							}
-						}]
+						}
+						]
 					}
 					]
 				},
@@ -3360,7 +3358,7 @@ var config = (function() {
 								img: 'lollipop',
 								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 								start: {
-									x: (stageWidth * 3) + (stageUnit * 5),
+									x: (stageWidth * 3) + (stageUnit * 6),
 									y: winH - (stageUnit * 1.5)
 								},
 								physics: {
@@ -3384,7 +3382,68 @@ var config = (function() {
 					{
 						name: 'dynamicTerrain',
 						cl: 'PhysicalGroupCollection',
-						attrs: []
+						attrs: [
+						{
+							name: 'platform6',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02Left',
+								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+								start: {
+									x: (stageWidth * 4) + (stageUnit),
+									y: winH - (stageUnit * 7.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'platform7',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02Right',
+								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 5),
+									y: winH - (stageUnit * 9)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'platform8',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02Left',
+								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 10),
+									y: winH - (stageUnit * 10.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'platform9',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02Right',
+								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 13),
+									y: winH - (stageUnit * 12)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						}
+						]
 					},
 					{
 						name: 'hazards',
@@ -3398,6 +3457,54 @@ var config = (function() {
 								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 4),
+									y: winH - (stageUnit * 2) + 32
+								},
+								physics: {
+									immovable: true
+								},
+								attack: 10
+							}
+						},	
+						{
+							name: 'level3-sector5-hazard1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'thorns01',
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 4),
+									y: winH - (stageUnit * 2) + 32
+								},
+								physics: {
+									immovable: true
+								},
+								attack: 10
+							}
+						},	
+						{
+							name: 'level3-sector5-hazard1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'thorns01',
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 9),
+									y: winH - (stageUnit * 2) + 32
+								},
+								physics: {
+									immovable: true
+								},
+								attack: 10
+							}
+						},	
+						{
+							name: 'level3-sector5-hazard1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'thorns01',
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 12.5),
 									y: winH - (stageUnit * 2) + 32
 								},
 								physics: {
@@ -3453,7 +3560,7 @@ var config = (function() {
 								img: 'lollipop',
 								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 								start: {
-									x: (stageWidth * 4) + (stageUnit * 9),
+									x: (stageWidth * 4) + (stageUnit * 11),
 									y: winH - (stageUnit * 1.5)
 								},
 								physics: {
