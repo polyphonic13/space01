@@ -380,7 +380,7 @@ var config = (function() {
 			}
 		},
 		// STATES
-		initialState: 'level3',
+		initialState: 'menu',
 		states: [
 		// menu
 		{
@@ -689,7 +689,7 @@ var config = (function() {
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
-									health: 7
+									health: 3
 								},
 								start: {
 									x: (stageWidth) + (stageUnit * 12),
@@ -865,7 +865,7 @@ var config = (function() {
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
-									health: 5
+									health: 3
 								},
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 6),
@@ -897,7 +897,7 @@ var config = (function() {
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
-									health: 15
+									health: 3
 								},
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 13),
@@ -976,7 +976,7 @@ var config = (function() {
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
-									health: 10
+									health: 3
 								},
 								start: {
 									x: (stageWidth * 3) + (stageUnit),
@@ -1168,7 +1168,7 @@ var config = (function() {
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
-									health: 5
+									health: 3
 								},
 								start: {
 									x: (stageWidth * 4) + (stageUnit * 4),
@@ -1200,7 +1200,7 @@ var config = (function() {
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
-									health: 15
+									health: 3
 								},
 								start: {
 									x: (stageWidth * 4) + (stageUnit * 8),
@@ -1279,7 +1279,7 @@ var config = (function() {
 								phaser: {
 									width: enemy01.width,
 									height: enemy01.height,
-									health: 10
+									health: 3
 								},
 								start: {
 									x: (stageWidth * 5) + (stageUnit),
@@ -3192,7 +3192,7 @@ var config = (function() {
 								phaser: { width: (stageUnit * 1), height: (stageUnit * 0.3) },
 								start: {
 									x: (stageWidth * 3) + (stageUnit * 5),
-									y: winH - (stageUnit * 2.5)
+									y: winH - (stageUnit * 2.25)
 								},
 								physics: {
 									immovable: true
@@ -3204,10 +3204,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02aLeft',
-								phaser: { width: (stageUnit * 1), height: (stageUnit * 0.4) },
+								phaser: { width: (stageUnit * 1), height: (stageUnit * 0.3) },
 								start: {
 									x: (stageWidth * 3) + (stageUnit * 3),
-									y: winH - (stageUnit * 4.5)
+									y: winH - (stageUnit * 4.25)
 								},
 								physics: {
 									immovable: true
@@ -3222,7 +3222,7 @@ var config = (function() {
 								phaser: { width: (stageUnit * 1), height: (stageUnit * 0.3) },
 								start: {
 									x: (stageWidth * 3) + (stageUnit * 5),
-									y: winH - (stageUnit * 6.5)
+									y: winH - (stageUnit * 6.25)
 								},
 								physics: {
 									immovable: true
@@ -3237,7 +3237,7 @@ var config = (function() {
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
 									x: (stageWidth * 3) + (stageUnit),
-									y: winH - (stageUnit * 8.5)
+									y: winH - (stageUnit * 8.25)
 								},
 								physics: {
 									immovable: true
@@ -3252,7 +3252,7 @@ var config = (function() {
 								phaser: { width: (stageUnit * 2.5), height: (stageUnit * 0.4) },
 								start: {
 									x: (stageWidth * 3) + (stageUnit * 4.5),
-									y: winH - (stageUnit * 10.5)
+									y: winH - (stageUnit * 10.25)
 								},
 								physics: {
 									immovable: true
@@ -3267,7 +3267,7 @@ var config = (function() {
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
 									x: (stageWidth * 3) + (stageUnit * 10),
-									y: winH - (stageUnit * 10.5)
+									y: winH - (stageUnit * 10)
 								},
 								physics: {
 									immovable: true
