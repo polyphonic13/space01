@@ -2668,6 +2668,7 @@ var config = (function() {
 				name: 'sectors',
 				cl: 'SectorManager',
 				attrs: [
+				// sector1
 				{
 					name: 'sector1',
 					cl: 'Sector',
@@ -2698,6 +2699,7 @@ var config = (function() {
 					}
 					]
 				},
+				// sector2
 				{
 					name: 'sector2',
 					cl: 'Sector',
@@ -2711,7 +2713,7 @@ var config = (function() {
 						cl: 'PhysicalGroupCollection',
 						attrs: [
 						{
-							name: 'platform2',
+							name: 'vines01',
 							cl: 'Sprite',
 							attrs: {
 								img: 'vine01Left',
@@ -2727,7 +2729,7 @@ var config = (function() {
 							}
 						},
 						{
-							name: 'platform3',
+							name: 'vines02',
 							cl: 'Sprite',
 							attrs: {
 								img: 'vine01Right',
@@ -2743,7 +2745,7 @@ var config = (function() {
 							}
 						},
 						{
-							name: 'platform4',
+							name: 'tree01-branch01',
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02aLeft',
@@ -2758,7 +2760,7 @@ var config = (function() {
 							}
 						},
 						{
-							name: 'platform5',
+							name: 'tree01-branch02',
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02aRight',
@@ -2934,6 +2936,7 @@ var config = (function() {
 					}
 					]
 				},
+				// sector3
 				{
 					name: 'sector3',
 					cl: 'Sector',
@@ -2947,7 +2950,7 @@ var config = (function() {
 						cl: 'PhysicalGroupCollection',
 						attrs: [
 						{
-							name: 'platform6',
+							name: 'tree02-branch01',
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02Left',
@@ -2962,7 +2965,7 @@ var config = (function() {
 							}
 						},
 						{
-							name: 'platform7',
+							name: 'tree02-branch02',
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02Right',
@@ -2977,26 +2980,11 @@ var config = (function() {
 							}
 						},
 						{
-							name: 'platform8',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02Left',
-								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
-								start: {
-									x: (stageWidth * 2) + (stageUnit * 9),
-									y: winH - (stageUnit * 10.5)
-								},
-								physics: {
-									immovable: true
-								}
-							}
-						},
-						{
-							name: 'platform9',
+							name: 'tree02-branch03',
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02Right',
-								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+								phaser: { width: (stageUnit * 2.5), height: (stageUnit * 0.4) },
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 4.5),
 									y: winH - (stageUnit * 12)
@@ -3007,7 +2995,37 @@ var config = (function() {
 							}
 						},
 						{
-							name: 'platform10',
+							name: 'tree03-branch01',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02Right',
+								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+								start: {
+									x: (stageWidth * 2) + (stageUnit * 13),
+									y: winH - (stageUnit * 5.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'tree03-branch02',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02Left',
+								phaser: { width: (stageUnit * 2.5), height: (stageUnit * 0.4) },
+								start: {
+									x: (stageWidth * 2) + (stageUnit * 9.5),
+									y: winH - (stageUnit * 10.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'tree03-branch03',
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02Right',
@@ -3139,8 +3157,8 @@ var config = (function() {
 								img: 'lollipop',
 								phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 								start: {
-									x: (stageWidth * 2) + (stageUnit * 7),
-									y: winH - (stageUnit * 15)
+									x: (stageWidth * 2) + (stageUnit * 5),
+									y: winH - (stageUnit * 14.5)
 								},
 								physics: {
 									immovable: true
@@ -3153,6 +3171,7 @@ var config = (function() {
 					}
 					]
 				},
+				// sector4
 				{
 					name: 'sector4',
 					cl: 'Sector',
@@ -3166,14 +3185,59 @@ var config = (function() {
 						cl: 'PhysicalGroupCollection',
 						attrs: [
 						{
-							name: 'platform6',
+							name: 'tree04-branch01',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aRight',
+								phaser: { width: (stageUnit * 1), height: (stageUnit * 0.3) },
+								start: {
+									x: (stageWidth * 3) + (stageUnit * 5),
+									y: winH - (stageUnit * 2.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'tree04-branch02',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aLeft',
+								phaser: { width: (stageUnit * 1), height: (stageUnit * 0.4) },
+								start: {
+									x: (stageWidth * 3) + (stageUnit * 3),
+									y: winH - (stageUnit * 4.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'tree04-branch03',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aRight',
+								phaser: { width: (stageUnit * 1), height: (stageUnit * 0.3) },
+								start: {
+									x: (stageWidth * 3) + (stageUnit * 5),
+									y: winH - (stageUnit * 6.5)
+								},
+								physics: {
+									immovable: true
+								}
+							}
+						},
+						{
+							name: 'tree04-branch04',
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02Left',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
 									x: (stageWidth * 3) + (stageUnit),
-									y: winH - (stageUnit * 7.5)
+									y: winH - (stageUnit * 8.5)
 								},
 								physics: {
 									immovable: true
@@ -3181,14 +3245,14 @@ var config = (function() {
 							}
 						},
 						{
-							name: 'platform7',
+							name: 'tree04-branch05',
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02Right',
-								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+								phaser: { width: (stageUnit * 2.5), height: (stageUnit * 0.4) },
 								start: {
-									x: (stageWidth * 3) + (stageUnit * 5),
-									y: winH - (stageUnit * 9)
+									x: (stageWidth * 3) + (stageUnit * 4.5),
+									y: winH - (stageUnit * 10.5)
 								},
 								physics: {
 									immovable: true
@@ -3196,7 +3260,7 @@ var config = (function() {
 							}
 						},
 						{
-							name: 'platform8',
+							name: 'tree05-branch01',
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02Left',
@@ -3211,7 +3275,7 @@ var config = (function() {
 							}
 						},
 						{
-							name: 'platform9',
+							name: 'tree05-branch02',
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02Right',
@@ -3371,6 +3435,7 @@ var config = (function() {
 					}
 					]
 				},
+				// sector5
 				{
 					name: 'sector5',
 					cl: 'Sector',
@@ -3384,7 +3449,7 @@ var config = (function() {
 						cl: 'PhysicalGroupCollection',
 						attrs: [
 						{
-							name: 'platform6',
+							name: 'tree06-branch01',
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02Left',
@@ -3399,7 +3464,7 @@ var config = (function() {
 							}
 						},
 						{
-							name: 'platform7',
+							name: 'tree06-branch02',
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02Right',
@@ -3414,7 +3479,7 @@ var config = (function() {
 							}
 						},
 						{
-							name: 'platform8',
+							name: 'tree07-branch01',
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02Left',
@@ -3429,7 +3494,7 @@ var config = (function() {
 							}
 						},
 						{
-							name: 'platform9',
+							name: 'tree07-branch02',
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02Right',
@@ -3573,6 +3638,7 @@ var config = (function() {
 					}
 					]
 				},
+				// sector6
 				{
 					name: 'sector6',
 					cl: 'Sector',
