@@ -328,7 +328,7 @@ var config = (function() {
 						img: 'leftButton',
 						start: {
 							x: 30,
-							y: winH - 266
+							y: winH - 350
 						},
 						inputCode: Polyworks.InputCodes.LEFT
 					}
@@ -339,8 +339,8 @@ var config = (function() {
 					attrs: {
 						img: 'rightButton',
 						start: {
-							x: 150,
-							y: winH - 266
+							x: 160,
+							y: winH - 350
 						},
 						inputCode: Polyworks.InputCodes.RIGHT
 					}
@@ -351,8 +351,8 @@ var config = (function() {
 					attrs: {
 						img: 'upButton',
 						start: {
-							x: winW - 90,
-							y: winH - 266
+							x: winW - 140,
+							y: winH - 350
 						},
 						inputCode: Polyworks.InputCodes.UP
 					}
@@ -742,7 +742,7 @@ var config = (function() {
 								img: 'branch02aLeft',
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 7),
-									y: winH - (stageUnit * 2.5)
+									y: winH - (stageUnit * 2)
 								},
 								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
 								physics: {
@@ -774,7 +774,7 @@ var config = (function() {
 								img: 'branch02aLeft',
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 7),
-									y: winH - (stageUnit * 5.5)
+									y: winH - (stageUnit * 6)
 								},
 								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
 								physics: {
@@ -787,10 +787,10 @@ var config = (function() {
 							name: 'plat1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'branch02aRight',
+								img: 'branch02Right',
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 10),
-									y: winH - (stageUnit * 7)
+									y: winH - (stageUnit * 8)
 								},
 								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
 								physics: {
@@ -803,25 +803,9 @@ var config = (function() {
 							name: 'plat1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'branch02aLeft',
+								img: 'branch02Left',
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 7),
-									y: winH - (stageUnit * 8.5)
-								},
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
-								physics: {
-									immovable: true,
-									allowGravity: false
-								}
-							}
-						},
-						{
-							name: 'plat1',
-							cl: 'Sprite',
-							attrs: {
-								img: 'branch02aRight',
-								start: {
-									x: (stageWidth * 2) + (stageUnit * 10),
 									y: winH - (stageUnit * 10)
 								},
 								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
@@ -838,7 +822,7 @@ var config = (function() {
 								img: 'branch02Right',
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 9.5),
-									y: winH - (stageUnit * 11.5)
+									y: winH - (stageUnit * 12)
 								},
 								phaser: { width: (stageUnit * 7), height: (stageUnit * 0.5) },
 								physics: {
@@ -1090,7 +1074,7 @@ var config = (function() {
 							name: 'plat1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'branch02aRight',
+								img: 'branch02Right',
 								start: {
 									x: (stageWidth * 4) + (stageUnit * 10),
 									y: winH - (stageUnit * 7)
@@ -1106,7 +1090,7 @@ var config = (function() {
 							name: 'plat1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'branch02aLeft',
+								img: 'branch02Left',
 								start: {
 									x: (stageWidth * 4) + (stageUnit * 7),
 									y: winH - (stageUnit * 8.5)
@@ -1122,7 +1106,7 @@ var config = (function() {
 							name: 'plat1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'branch02aRight',
+								img: 'branch02Right',
 								start: {
 									x: (stageWidth * 4) + (stageUnit * 10),
 									y: winH - (stageUnit * 10)
@@ -1713,7 +1697,7 @@ var config = (function() {
 							name: 'plat1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'branch02aLeft',
+								img: 'branch02Left',
 								start: {
 									x: (stageWidth) + (stageUnit * 7),
 									y: winH - (stageUnit * 8.5)
@@ -1729,7 +1713,7 @@ var config = (function() {
 							name: 'plat1',
 							cl: 'Sprite',
 							attrs: {
-								img: 'branch02aRight',
+								img: 'branch02Right',
 								start: {
 									x: (stageWidth) + (stageUnit * 10),
 									y: winH - (stageUnit * 10)
@@ -1748,9 +1732,9 @@ var config = (function() {
 								img: 'branch02Right',
 								start: {
 									x: (stageWidth) + (stageUnit * 9.5),
-									y: winH - (stageUnit * 11.5)
+									y: winH - (stageUnit * 12)
 								},
-								phaser: { width: (stageUnit * 7), height: (stageUnit * 0.5) },
+								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.4) },
 								physics: {
 									immovable: true,
 									allowGravity: false
@@ -1995,7 +1979,7 @@ var config = (function() {
 							name: 'platform6',
 							cl: 'Sprite',
 							attrs: {
-								img: 'branch02Left',
+								img: 'branch02aLeft',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
 									x: (stageWidth * 3) + (stageUnit),
@@ -2010,7 +1994,7 @@ var config = (function() {
 							name: 'platform7',
 							cl: 'Sprite',
 							attrs: {
-								img: 'branch02Right',
+								img: 'branch02aRight',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
 									x: (stageWidth * 3) + (stageUnit * 5),
@@ -2147,7 +2131,7 @@ var config = (function() {
 							name: 'platform6',
 							cl: 'Sprite',
 							attrs: {
-								img: 'branch02Left',
+								img: 'branch02aLeft',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
 									x: (stageWidth * 4) + (stageUnit),
@@ -2162,7 +2146,7 @@ var config = (function() {
 							name: 'platform7',
 							cl: 'Sprite',
 							attrs: {
-								img: 'branch02Right',
+								img: 'branch02aRight',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
 									x: (stageWidth * 4) + (stageUnit * 5),
@@ -2953,7 +2937,7 @@ var config = (function() {
 							name: 'tree02-branch01',
 							cl: 'Sprite',
 							attrs: {
-								img: 'branch02Left',
+								img: 'branch02aLeft',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
 									x: (stageWidth * 2) + (stageUnit),
@@ -2968,7 +2952,7 @@ var config = (function() {
 							name: 'tree02-branch02',
 							cl: 'Sprite',
 							attrs: {
-								img: 'branch02Right',
+								img: 'branch02aRight',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 5),
@@ -2998,7 +2982,7 @@ var config = (function() {
 							name: 'tree03-branch01',
 							cl: 'Sprite',
 							attrs: {
-								img: 'branch02Right',
+								img: 'branch02aRight',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 13),
@@ -3452,7 +3436,7 @@ var config = (function() {
 							name: 'tree06-branch01',
 							cl: 'Sprite',
 							attrs: {
-								img: 'branch02Left',
+								img: 'branch02aLeft',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
 									x: (stageWidth * 4) + (stageUnit),
@@ -3467,7 +3451,7 @@ var config = (function() {
 							name: 'tree06-branch02',
 							cl: 'Sprite',
 							attrs: {
-								img: 'branch02Right',
+								img: 'branch02aRight',
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 								start: {
 									x: (stageWidth * 4) + (stageUnit * 5),
@@ -6364,7 +6348,7 @@ var config = (function() {
 				followStyle: Phaser.Camera.FOLLOW_PLATFORMER,
 				speed: {
 					x: (stageUnit * 4),
-					y: (stageUnit * 10)
+					y: (stageUnit * 10.1)
 				},
 				controls: {
 					left: Polyworks.InputCodes.LEFT,
