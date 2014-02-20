@@ -4,7 +4,6 @@ Polyworks.State = (function() {
 	
 	function State(params) {
 		// trace('State['+params.name+']/constructor');
-		
 		State._super.constructor.call(this);
 
 		this.model = new Polyworks.Model(params);
@@ -13,14 +12,9 @@ Polyworks.State = (function() {
 			created: false,
 			active: false
 		});
-		
-		this.__defineGetter__('clearWorld', function() {
-			return this.model.clearWorld;
-		});
 
-		this.__defineGetter__('clearCache', function() {
-			return this.model.clearCache;
-		});
+		this.clearWorld = this.model.clearWorld;
+		this.clearCache = this.model.clearCache;
 	}
 	
 	State.prototype.start = function() {

@@ -8,13 +8,12 @@ Polyworks.Sprite = (function() {
 		var attrs = this.model.attrs;
 		var start = attrs.start;
 		Sprite._super.constructor.call(this, params.game, start.x, start.y, attrs.img);
+		this.active = true;
 	}
 	
 	Sprite.prototype.begin = function() {
 		// trace('Sprite['+this.model.name+']/begin, this = ');
 		// trace(this);
-
-		this.beginGetterSetters();
 
 		var attrs = this.model.attrs;
 		var phaser = attrs.phaser; 
@@ -40,7 +39,6 @@ Polyworks.Sprite = (function() {
 				// trace('\tsetting w, h size');
 				this.body.setSize(setSize[0], setSize[1]);
 			}
-			
 			// if(setSize.x && setSize.y) {
 			// 	// trace('setting ['+this.model.name+'] size to: ');
 			// 	// trace(setSize);
@@ -57,39 +55,6 @@ Polyworks.Sprite = (function() {
 		}
 	};
 
-	Sprite.prototype.beginGetterSetters = function() {
-		this.__defineGetter__('active', function() {
-			return this.model.active;
-		});
-		this.__defineSetter__('active', function(val) {
-			this.model.active = val;
-		});
-		this.__defineGetter__('velocityX', function() {
-			return this.body.velocity.x;
-		});
-		this.__defineSetter__('velocityX', function(val) {
-			// trace('Sprite['+this.model.name+']/set velocityX, val = ' + val);
-			// trace(this);
-			this.body.velocity.x = val;
-		});
-		this.__defineGetter__('velocityY', function() {
-			return this.body.velocity.y;
-		});
-		this.__defineSetter__('velocityY', function(val) {
-			this.body.velocity.y = val;
-		});
-		this.__defineGetter__('frame', function() {
-			return this.animations.frame;
-		});
-		this.__defineSetter__('frame', function(val) {
-			// trace('Sprite['+this.model.name+']/set frame, val = ' + val);
-			this.animations.frame = val;
-		});
-		this.__defineGetter__('attack', function() {
-			return this.model.attrs.attack;
-		});
-	};
-	
 	Sprite.prototype.beginPhysics = function(physics) {
 		// trace('\n\nSprite['+this.model.name+']/beginPhysics');
 		for(var key in physics) {

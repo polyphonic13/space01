@@ -6,11 +6,11 @@ Polyworks.SectorManager = (function() {
 		// trace(params);
 		SectorManager._super.constructor.call(this, params);
 		this.activeSectorId = 0;
-
-		this.__defineGetter__('activeSector', function() {
-			return this.model.collection[this.activeSectorId];
-		});
 	}
+	
+	SectorManager.prototype.getActiveSector = function() {
+		return this.model.collection[this.activeSectorId];
+	};
 	
 	SectorManager.prototype.checkTerrainCollision = function(terrain) {
 		Utils.each(this.model.collection,
@@ -43,7 +43,7 @@ Polyworks.SectorManager = (function() {
 		// find sector within bounds
 		Utils.each(this.model.collection, 
 			function(c, i) {
-				bounds = c.bounds;
+				bounds = c.model.bounds;
 				// trace('bounds['+i+'] start/end = ' + bounds.start + '/' + bounds.end + ', x = ' + position.x);
 				if(position.x > bounds.start && position.x < bounds.end) {
 					if(this.activeSectorId !== i) {

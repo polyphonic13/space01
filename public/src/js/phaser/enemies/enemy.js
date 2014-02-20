@@ -15,24 +15,9 @@ Polyworks.Enemy = (function() {
 		// trace('Enemy['+this.model.name+']/begin');
 		// trace(this);
 		Enemy._super.begin.call(this);
-		this.beginGetterSetters();
 		// trace('Enemy['+this.model.name+']/begin, size = ' + this.width + '/' + this.height + ', body size = ' + this.body.width + '/' + this.body.height);
 	};
 
-	Enemy.prototype.beginGetterSetters = function() {
-		Enemy._super.beginGetterSetters.call(this);
-
-		this.__defineGetter__('active', function() {
-			return this.model.active;
-		});
-		this.__defineSetter__('active', function(val) {
-			this.model.active = val;
-		});
-		this.__defineGetter__('score', function() {
-			return this.model.attrs.score;
-		});
-	};
-	
 	Enemy.prototype.pwUpdate = function(params) {
 		if(this.alive) {
 			// trace('Enemy['+this.model.name+']/pwUpdate');
@@ -60,7 +45,7 @@ Polyworks.Enemy = (function() {
 	
 	Enemy.prototype.kill = function() {
 		trace('Enemy['+this.model.name+']/kill');
-		PolyworksGame.setScore(this.score);
+		PolyworksGame.setScore(this.model.attrs.score);
 		Enemy._super.kill.call(this);
 	};
 	

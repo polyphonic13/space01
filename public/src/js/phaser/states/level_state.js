@@ -13,7 +13,6 @@ Polyworks.LevelState = (function() {
 		this.cursors;
 		this.player; 
 		this.quitButton;
-		// PolyworksGame.score = 0;
 	};
 	
 	LevelState.prototype.preload = function() {
@@ -68,10 +67,10 @@ Polyworks.LevelState = (function() {
 				PolyworksGame.changeState('intermission');
 			} else {
 				// update active sector via sector manager
-				var sector = this.sectorManager.activeSector;
+				var sector = this.sectorManager.getActiveSector();
 
 				var updateParams = {
-					player: this.player.sprite,
+					player: this.player,
 					terrain: this.terrain.group,
 					dynamicTerrain: sector.dynamicTerrain.getActive(),
 					position: {

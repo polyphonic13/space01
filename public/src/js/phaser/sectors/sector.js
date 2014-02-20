@@ -10,27 +10,12 @@ Polyworks.Sector = (function() {
 	
 	Sector.prototype.begin = function() {
 		Sector._super.begin.call(this);
-		this.beginGetterSetters();
+		this.dynamicTerrain = this.getChildByName('dynamicTerrain');
+		this.hazards = this.getChildByName('hazards');
+		this.enemies = this.getChildByName('enemies');
+		this.bonuses = this.getChildByName('bonuses');
 	};
 
-	Sector.prototype.beginGetterSetters = function() {
-		this.__defineGetter__('bounds', function() {
-			return this.model.bounds;
-		});
-		this.__defineGetter__('dynamicTerrain', function() {
-			return this.getChildByName('dynamicTerrain');
-		});
-		this.__defineGetter__('hazards', function() {
-			return this.getChildByName('hazards');
-		});
-		this.__defineGetter__('enemies', function() {
-			return this.getChildByName('enemies');
-		});
-		this.__defineGetter__('bonuses', function() {
-			return this.getChildByName('bonuses');
-		});
-	};
-	
 	Sector.prototype.setActive = function(active) {
 		this.active = active;
 		if(active) {

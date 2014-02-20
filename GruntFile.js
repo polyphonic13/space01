@@ -55,7 +55,6 @@ module.exports = function(grunt) {
 				'<%= srcDir %>/js/phaser/shapes/rectangle.js',
 				'<%= srcDir %>/js/phaser/core/text.js',
 				'<%= srcDir %>/js/phaser/core/sprite.js',
-				'<%= srcDir %>/js/phaser/core/animated_sprite.js',
 				'<%= srcDir %>/js/phaser/enemies/enemy.js',
 				'<%= srcDir %>/js/phaser/enemies/animated_enemy.js',
 				'<%= srcDir %>/js/phaser/collections/collection.js',
