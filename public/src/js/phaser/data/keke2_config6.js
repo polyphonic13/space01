@@ -1652,7 +1652,7 @@ var config = (function() {
 								img: 'branch02aLeft',
 								start: {
 									x: (stageWidth) + (stageUnit * 7),
-									y: winH - (stageUnit * 2.5)
+									y: winH - (stageUnit * 2.25)
 								},
 								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
 								physics: {
