@@ -70,7 +70,7 @@ var config = (function() {
 			pauseButton: 'images/pause_button.png',
 			menuButton: 'images/menu_button.png',
 			quitButton: 'images/quit_button.png',
-			greyRect: 'images/grey_rect32x32.png',
+			blackRect: 'images/black_rect32x32.png',
 
 			// icons
 			heart: 'images/heart.png',
@@ -395,7 +395,7 @@ var config = (function() {
 			clearWorld: true,
 			clearCache: false,
 			images: [
-				'greyRect',
+				'blackRect',
 				'startButton',
 				'nextButton',
 				'menuButton',
@@ -413,7 +413,7 @@ var config = (function() {
 					name: 'bg',
 					cl: 'Sprite',
 					attrs: {
-						img: 'greyRect',
+						img: 'blackRect',
 						start: {
 							x: 20,
 							y: 20 
@@ -435,7 +435,7 @@ var config = (function() {
 						defaultContent: 'Keke vs. the Caterpillars',
 						style: { 
 							font: '30px Arial', 
-							fill: '#000000',
+							fill: '#ffffff',
 							align: 'center'
 						}
 					}
@@ -6105,7 +6105,7 @@ var config = (function() {
 			clearWorld: true,
 			clearCache: false,
 			images: [
-				'greyRect',
+				'blackRect',
 				'nextButton',
 				'menuButton'
 			],
@@ -6119,7 +6119,7 @@ var config = (function() {
 					name: 'bg',
 					cl: 'Sprite',
 					attrs: {
-						img: 'greyRect',
+						img: 'blackRect',
 						start: {
 							x: 20,
 							y: 20 
@@ -6141,7 +6141,7 @@ var config = (function() {
 						defaultContent: 'Level ~{currentLevel}~ Completed',
 						style: { 
 							font: '30px Arial', 
-							fill: '#000000',
+							fill: '#ffffff',
 							align: 'center'
 						}
 					}
@@ -6157,7 +6157,7 @@ var config = (function() {
 						defaultContent: 'Score: ~{score}~',
 						style: { 
 							font: '18px Arial', 
-							fill: '#000000',
+							fill: '#ffffff',
 							align: 'center'
 						}
 					}
@@ -6190,7 +6190,7 @@ var config = (function() {
 			clearWorld: true,
 			clearCache: false,
 			images: [
-				'greyRect',
+				'blackRect',
 				'menuButton',
 				'quitButton'
 			],
@@ -6204,7 +6204,7 @@ var config = (function() {
 					name: 'bg',
 					cl: 'Sprite',
 					attrs: {
-						img: 'greyRect',
+						img: 'blackRect',
 						start: {
 							x: 20,
 							y: 20 
@@ -6226,7 +6226,7 @@ var config = (function() {
 						defaultContent: 'All Completed',
 						style: { 
 							font: '30px Arial', 
-							fill: '#000000',
+							fill: '#ffffff',
 							align: 'center'
 						}
 					}
@@ -6242,7 +6242,7 @@ var config = (function() {
 						defaultContent: 'Score: ~{score}~',
 						style: { 
 							font: '18px Arial', 
-							fill: '#000000',
+							fill: '#ffffff',
 							align: 'center'
 						}
 					}
@@ -6275,7 +6275,7 @@ var config = (function() {
 			clearWorld: true,
 			clearCache: false,
 			images: [
-				'greyRect',
+				'blackRect',
 				'menuButton',
 				'quitButton'
 			],
@@ -6289,7 +6289,7 @@ var config = (function() {
 					name: 'bg',
 					cl: 'Sprite',
 					attrs: {
-						img: 'greyRect',
+						img: 'blackRect',
 						start: {
 							x: 20,
 							y: 20
@@ -6312,7 +6312,7 @@ var config = (function() {
 						fixedToCamera: true,
 						style: { 
 							font: '30px Arial', 
-							fill: '#000000',
+							fill: '#ffffff',
 							align: 'center'
 						}
 					}
