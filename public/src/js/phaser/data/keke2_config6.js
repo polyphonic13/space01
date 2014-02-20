@@ -4687,7 +4687,7 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02Right',
-								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
 								start: {
 									x: (stageWidth * 3) + (stageUnit * 14),
 									y: winH - (stageUnit * 9.25)
@@ -4893,9 +4893,9 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'branch02Left',
-								phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+								phaser: { width: (stageUnit * 4), height: (stageUnit * 0.6) },
 								start: {
-									x: (stageWidth * 4) + (stageUnit),
+									x: (stageWidth * 4) + (stageUnit * 0.5),
 									y: winH - (stageUnit * 11)
 								},
 								physics: {
