@@ -92,14 +92,20 @@ Polyworks.Sprite = (function() {
 	// 	}
 	// };
 
+	Sprite.prototype.deactivateGravity = function() {
+		this.body.gravity = 0;
+		this.allowGravity = false;
+	};
+	
 	Sprite.prototype.activateGravity = function() {
-		// trace('Sprite['+this.model.name+']/activateGravity');
+		trace('Sprite['+this.model.name+']/activateGravity, y = ' + this.body.y);
 		var physics = this.model.attrs.physics;
 		if(physics && physics.deferredGravity) {
 			var gravity = (physics.gravity) ? physics.gravity : config.gravity;
 			// trace('gravity = ');
 			// trace(gravity);
 			this.body.gravity = gravity;
+			this.allowGravity = true;
 		}
 	};
 	
@@ -113,14 +119,13 @@ Polyworks.Sprite = (function() {
 	Sprite.prototype.checkDynamicTerrainCollision = function(dynamicTerrain) {
 		var physics = PolyworksGame.phaser.physics;
 		var _this = this;
-		
+
 		Utils.each(dynamicTerrain,
 			function(c) {
 				physics.overlap(this, c, _this.dynamicTerrainCollision, null, _this);
 			},
 			_this
 		);
-		
 	};
 	
 	Sprite.prototype.dynamicTerrainCollision = function(sprite, terrain) {
@@ -131,7 +136,6 @@ Polyworks.Sprite = (function() {
 		if(spriteOffsetY <= terrainY) {
 			this.checkTerrainCollision(terrain);
 		}
-		
 	};
 	
 	Sprite.prototype.beginAnimations = function(animations) {

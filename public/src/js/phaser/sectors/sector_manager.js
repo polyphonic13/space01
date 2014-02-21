@@ -26,12 +26,15 @@ Polyworks.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.checkTerrainCollision = function(terrain) {
+		this.model.collection[this.activeSectorId].checkTerrainCollision(terrain);
+		/*
 		Utils.each(this.model.collection,
 			function(c) {
 				c.checkTerrainCollision(terrain);
 			},
 			this
 		);
+		*/
 	};
 	
 	SectorManager.prototype.pwUpdate = function(params) {
@@ -55,30 +58,11 @@ Polyworks.SectorManager = (function() {
 			if(position.x > bounds.start && position.x < bounds.end) {
 				if(this.activeSectorId !== i) {
 					trace('new sector id = ' + i + ', name = ' + c[i].model.name);
-					// this.activeSectorId = i;
-					// c.setActive(true);
 					this.setActiveSector(i);
 					break;
 				}
 			}
 		}
-		// find sector within bounds
-		/*
-		Utils.each(this.model.collection, 
-			function(c, i) {
-				bounds = c.model.bounds;
-				// trace('bounds['+i+'] start/end = ' + bounds.start + '/' + bounds.end + ', x = ' + position.x);
-				if(position.x > bounds.start && position.x < bounds.end) {
-					if(this.activeSectorId !== i) {
-						trace('new sector id = ' + i + ', name = ' + c.model.name);
-						this.activeSectorId = i;
-						c.setActive(true);
-					}
-				}
-			},
-			this
-		);
-		*/
 	};
 	
 	SectorManager.prototype.deactivateAll = function() {

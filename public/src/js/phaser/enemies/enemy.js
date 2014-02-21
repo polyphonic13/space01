@@ -9,6 +9,7 @@ Polyworks.Enemy = (function() {
 		Enemy._super.constructor.call(this, params);
 		// trace(this);
 		// trace(_this);
+		this.deactivateGravity();
 	}
 
 	Enemy.prototype.begin = function() {
@@ -30,7 +31,6 @@ Polyworks.Enemy = (function() {
 			} else {
 				this.isInView = false;
 			}
-			
 			this.checkDynamicTerrainCollision(params.dynamicTerrain);
 		}
 	};

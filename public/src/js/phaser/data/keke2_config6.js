@@ -650,7 +650,41 @@ var config = (function() {
 					{
 						name: 'enemies',
 						cl: 'Enemies',
-						attrs: [] 
+						attrs: [
+						{
+							name: 'level1-sector2-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: enemy01.width,
+									height: enemy01.height,
+									health: 3
+								},
+								start: {
+									x: (stageWidth) + (stageUnit * 12),
+									y: winH - ((stageUnit * 2) + 32)
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								speed: 0.5,
+								attack: 5,
+								score: 2500,
+								// movement: {
+								// 	speed: 0.5,
+								// 	type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+								// 	formula: null
+								// },
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
+						] 
 					},
 					{
 						name: 'bonuses',

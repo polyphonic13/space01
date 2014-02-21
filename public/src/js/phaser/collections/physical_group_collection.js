@@ -29,6 +29,15 @@ Polyworks.PhysicalGroupCollection = (function() {
 		);
 	};
 	
+	PhysicalGroupCollection.prototype.deactivateGravity = function() {
+		Utils.each(this.model.collection,
+			function(c) {
+				c.deactivateGravity();
+			},
+			this
+		);
+	};
+	
 	PhysicalGroupCollection.prototype.activateGravity = function() {
 		// trace('PhysicalGroupCollection['+this.model.name+']/activateGravity, collection length = ' + collection.length);
 		Utils.each(this.model.collection,
