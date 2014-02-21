@@ -5,8 +5,7 @@ Polyworks.SectorManager = (function() {
 		// trace('SectorManager['+params.name+']/constructor, params = ');
 		// trace(params);
 		SectorManager._super.constructor.call(this, params);
-		// this.activeSectorId = 0;
-		this.setActiveSector(0);
+		// this.setActiveSector(0);
 	}
 
 	SectorManager.prototype.setState = function(state) {
@@ -14,7 +13,6 @@ Polyworks.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.setActiveSector = function(idx) {
-		trace('SectorManager/setActiveSector, new sector id = ' + i + ', name = ' + this.model.collection[idx].model.name);
 		this.deactivateAll();
 		this.activeSectorId = idx;
 		this.model.collection[idx].setActive(true);
@@ -53,10 +51,10 @@ Polyworks.SectorManager = (function() {
 		var length = c.length;
 
 		for(var i = 0; i < length; i++) {
-			bounds = c.model.bounds;
+			bounds = c[i].model.bounds;
 			if(position.x > bounds.start && position.x < bounds.end) {
 				if(this.activeSectorId !== i) {
-					// trace('new sector id = ' + i + ', name = ' + c.model.name);
+					trace('new sector id = ' + i + ', name = ' + c[i].model.name);
 					// this.activeSectorId = i;
 					// c.setActive(true);
 					this.setActiveSector(i);

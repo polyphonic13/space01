@@ -32,7 +32,7 @@ Polyworks.LevelState = (function() {
 		this.terrain = this.getChildByName('terrain');
 		this.sectorManager = this.getChildByName('sectors');
 		this.sectorManager.setState(this);
-		// this.sectorManager.setActiveSector(0);
+		this.sectorManager.setActiveSector(0);
 
 		this.createPlayer();
 

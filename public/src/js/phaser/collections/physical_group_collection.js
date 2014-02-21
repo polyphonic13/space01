@@ -44,7 +44,7 @@ Polyworks.PhysicalGroupCollection = (function() {
 		var activeElements = [];
 		Utils.each(this.model.collection,
 			function(c) {
-				trace('c['+c.model.name+'].active = ' + c.active);
+				// trace('c['+c.model.name+'].active = ' + c.active);
 				if(c.active) {
 					activeElements.push(c);
 				}

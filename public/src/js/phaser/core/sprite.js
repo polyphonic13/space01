@@ -9,6 +9,9 @@ Polyworks.Sprite = (function() {
 		var start = attrs.start;
 		Sprite._super.constructor.call(this, params.game, start.x, start.y, attrs.img);
 		this.active = true;
+		// this.active = false;
+		// this.alive = false;
+		// this.exists = false;
 	}
 	
 	Sprite.prototype.begin = function() {
@@ -77,10 +80,9 @@ Polyworks.Sprite = (function() {
 	// };
 
 	// Sprite.prototype.update = function() {
-	// 	if(this.active) {
-	// 		trace('Sprite['+this.model.name+']/update');
-	// 
-	// 	}
+	// 	trace('Sprite['+this.model.name+']/update, active = ' + this.active + ', alive = ' + this.alive);
+	// 	// if(this.active) {
+	// 	// }
 	// };
 
 	// Sprite.prototype.postUpdate = function() {
