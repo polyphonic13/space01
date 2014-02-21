@@ -40,9 +40,11 @@ Polyworks.PhysicalGroupCollection = (function() {
 	};
 	
 	PhysicalGroupCollection.prototype.getActive = function() {
+		// trace('PhysicalGroupCollection['+this.model.name+']/getActive, collection length = ' + this.model.collection.length);
 		var activeElements = [];
 		Utils.each(this.model.collection,
 			function(c) {
+				trace('c['+c.model.name+'].active = ' + c.active);
 				if(c.active) {
 					activeElements.push(c);
 				}

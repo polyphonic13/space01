@@ -5,8 +5,23 @@ Polyworks.SectorManager = (function() {
 		// trace('SectorManager['+params.name+']/constructor, params = ');
 		// trace(params);
 		SectorManager._super.constructor.call(this, params);
-		this.activeSectorId = 0;
+		// this.activeSectorId = 0;
+		this.setActiveSector(0);
 	}
+
+	SectorManager.prototype.setState = function(state) {
+		this.model.set({ state: state });
+	};
+	
+	SectorManager.prototype.setActiveSector = function(idx) {
+		trace('SectorManager/setActiveSector, new sector id = ' + i + ', name = ' + this.model.collection[idx].model.name);
+		this.deactivateAll();
+		this.activeSectorId = idx;
+		this.model.collection[idx].setActive(true);
+
+		var state = this.model.get('state');
+		state.activeSector = this.model.collection[idx];
+	};
 	
 	SectorManager.prototype.getActiveSector = function() {
 		return this.model.collection[this.activeSectorId];
@@ -27,12 +42,6 @@ Polyworks.SectorManager = (function() {
 		this.model.collection[this.activeSectorId].pwUpdate(params);
 	};
 	
-	SectorManager.prototype.setActiveSector = function(idx) {
-		this.deactivateAll();
-		this.activeSectorId = idx;
-		this.model.collection[idx].setActive(true);
-	};
-	
 	SectorManager.prototype.findActiveSector = function(position) {
 		// trace('SectorManager/findActiveSector, this = ');
 		// trace(this);
@@ -40,7 +49,23 @@ Polyworks.SectorManager = (function() {
 		// reset all sectors to off
 		this.deactivateAll();
 
+		var c = this.model.collection;
+		var length = c.length;
+
+		for(var i = 0; i < length; i++) {
+			bounds = c.model.bounds;
+			if(position.x > bounds.start && position.x < bounds.end) {
+				if(this.activeSectorId !== i) {
+					// trace('new sector id = ' + i + ', name = ' + c.model.name);
+					// this.activeSectorId = i;
+					// c.setActive(true);
+					this.setActiveSector(i);
+					break;
+				}
+			}
+		}
 		// find sector within bounds
+		/*
 		Utils.each(this.model.collection, 
 			function(c, i) {
 				bounds = c.model.bounds;
@@ -55,6 +80,7 @@ Polyworks.SectorManager = (function() {
 			},
 			this
 		);
+		*/
 	};
 	
 	SectorManager.prototype.deactivateAll = function() {

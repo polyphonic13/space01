@@ -31,7 +31,8 @@ Polyworks.LevelState = (function() {
 
 		this.terrain = this.getChildByName('terrain');
 		this.sectorManager = this.getChildByName('sectors');
-		this.sectorManager.setActiveSector(0);
+		this.sectorManager.setState(this);
+		// this.sectorManager.setActiveSector(0);
 
 		this.createPlayer();
 
@@ -66,8 +67,7 @@ Polyworks.LevelState = (function() {
 			if(this.player.body.x >= this.model.bounds.end) {
 				PolyworksGame.changeState('intermission');
 			} else {
-				// update active sector via sector manager
-				var sector = this.sectorManager.getActiveSector();
+				var sector = this.activeSector;
 
 				var updateParams = {
 					player: this.player,
