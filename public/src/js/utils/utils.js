@@ -35,10 +35,15 @@ Utils = (function() {
 		return a;
 	};
 
+	utils.has = function(obj, prop) {
+		return Object.prototype.hasOwnProperty.call(obj, prop);
+	};
+	
 	utils.objLength = function(obj) {
 		var length = 0;
 		for(var key in obj) {
-			if(obj.hasOwnProperty(key)) { length++; }
+			// if(obj.hasOwnProperty(key)) { length++; }
+			if(Utils.has(obj, key)) { length++; }
 		}
 		return length;
 	};

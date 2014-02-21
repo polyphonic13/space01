@@ -21,7 +21,7 @@ Polyworks.Enemy = (function() {
 
 	Enemy.prototype.pwUpdate = function(params) {
 		if(this.alive) {
-			// trace('Enemy['+this.model.name+']/pwUpdate');
+			trace('Enemy['+this.model.name+']/pwUpdate, x/y = ' + this.body.screenX + '/' + this.body.screenY);
 			// trace(this);
 			var enemyX = this.body.screenX;
 			var playerX = params.player.body.screenX;

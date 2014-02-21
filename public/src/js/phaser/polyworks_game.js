@@ -28,7 +28,8 @@ PolyworksGame = (function() {
 		},
 
 		get: function(prop) {
-			if(_model.hasOwnProperty(prop)) {
+			// if(_model.hasOwnProperty(prop)) {
+			if(Utils.has(_model, prop)) {
 				return _model[prop];
 			} else {
 				return null;
