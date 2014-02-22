@@ -50,6 +50,7 @@ PolyworksGame = (function() {
 							id = 'level' + PolyworksGame.currentLevel;
 						} else {
 							PolyworksGame.currentLevel = 1;
+							trace('ALL COMPLETED, CURRENT LEVEL = ' + PolyworksGame.currentLevel);
 							id = 'completed';
 						}
 					break;
@@ -58,6 +59,8 @@ PolyworksGame = (function() {
 						if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels)) {
 							id = 'intermission';
 						} else {
+							PolyworksGame.currentLevel = 1;
+							trace('ALL COMPLETED, CURRENT LEVEL = ' + PolyworksGame.currentLevel);
 							id = 'completed';
 						}
 					break;

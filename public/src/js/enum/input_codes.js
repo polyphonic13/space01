@@ -2,7 +2,8 @@ Polyworks.InputCodes = {
 	PLAY: 1,
 	NEXT: 78,		// n
 	PAUSE: 80,		// p
-	MENU: 4,
+	MENU: 77,		// m
+	RETRY: 82,		// r
  	RESET: 99, 		// invisible button
 	LEFT: 37, 		// left arrow
 	RIGHT: 39, 		// right arrow

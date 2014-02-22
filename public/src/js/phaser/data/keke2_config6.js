@@ -64,6 +64,7 @@ var config = (function() {
 			// buttons
 			startButton: 'images/start_button.png',
 			nextButton: 'images/next_button.png',
+			retryButton: 'images/retry_button.png',
 
 			blackRect: 'images/black_rect32x32.png',
 
@@ -192,6 +193,19 @@ var config = (function() {
 							pressed: {
 								type: Polyworks.Events.CHANGE_STATE,
 								value: 'nextLevel'
+							}
+						}
+					}
+				},
+				{
+					name: 'retry', // r
+					cl: 'ControlKey',
+					attrs: {
+						inputCode: Polyworks.InputCodes.RETRY,
+						events: {
+							pressed: {
+								type: Polyworks.Events.CHANGE_STATE,
+								value: 'level'
 							}
 						}
 					}
@@ -333,6 +347,24 @@ var config = (function() {
 				}
 				],
 				gameOver: [
+				{
+					name: 'retry',
+					cl: 'InputButton',
+					attrs: {
+						img: 'retryButton',
+						start: {
+							x: winW/2 - 128,
+							y: winH/2 - 64
+						},
+						inputCode: Polyworks.InputCodes.RETRY,
+						events: {
+							pressed: {
+								type: Polyworks.Events.CHANGE_STATE,
+								value: 'level'
+							}
+						}
+					}
+				},
 				{
 					name: 'menuBtn',
 					cl: 'InputButton',
@@ -6366,6 +6398,7 @@ var config = (function() {
 			images: [
 				'blackRect',
 				'menuButton',
+				'retryButton',
 				'quitButton'
 			],
 			sprites: [],
@@ -6394,18 +6427,17 @@ var config = (function() {
 					cl: 'Text',
 					attrs: {
 						centerX: true,
-						centerY: true,
+						centerY: false,
 						x: 0,
 						y: 40,
 						defaultContent: 'Game Over',
-						fixedToCamera: true,
 						style: { 
 							font: '30px Arial', 
 							fill: '#ffffff',
 							align: 'center'
 						}
 					}
-				}
+				},
 				]
 			},
 			{
