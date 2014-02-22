@@ -46,6 +46,7 @@ Polyworks.State = (function() {
 						trace('\t\tsprite['+spr+'] loaded = ' + PolyworksGame.loadedSprites[spr]);
 						if(!PolyworksGame.loadedImages[spr]) {
 							var sprite = sprites[spr];
+							// trace('\t\t\tsprite = ', sprite);
 							PolyworksGame.phaser.load.spritesheet(spr, sprite.url, sprite.width, sprite.height, sprite.frames);
 							PolyworksGame.loadedImages[spr] = true;
 						}

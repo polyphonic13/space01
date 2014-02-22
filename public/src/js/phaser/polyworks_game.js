@@ -138,6 +138,7 @@ PolyworksGame = (function() {
 		// trace('preload sprites');
 		Utils.each(sprites,
 			function(sprite, key) {
+				// trace('PolyworksGame setting sprite['+key+'] loaded to false');
 				// phaser.load.spritesheet(key, sprite.url, sprite.width, sprite.height, sprite.frames);
 				loadedSprites[key] = false;
 			},

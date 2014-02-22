@@ -20,7 +20,8 @@ Polyworks.Collection = (function() {
 			function(c, i) {
 				c.game = game;
 				c.ancestor = this;
-
+				c.idx = i;
+				
 				child = new Polyworks[c.cl](c);
 				child.begin();
 
@@ -36,11 +37,36 @@ Polyworks.Collection = (function() {
 	Collection.prototype.getChildByName = function(name) {
 		// trace('Collection/getChildByName, name = ' + name);
 		// trace(this.model);
-		return this.model.collection[this.model.nameIndex[name]];
+		var child; 
+		
+		var collection = this.model.collection;
+		var length = collection.length;
+		for(var i = 0; i < length; i++) {
+			if(collection[i].model.name === name) {
+				child = collection[i].model.name;
+				break;
+			}
+		}
+		return child;
 	};
 	
-	Collection.prototype.removeChild = function(idx) {
-		this.model.collection.splice(idx, 1);
+	Collection.prototype.removeChild = function(name) {
+		// trace('Collection/removeChild, name = ' + name + ', pre splice collection: ');
+		// trace(this.model.collection);
+		// this.model.collection.splice(idx, 1);
+
+		var collection = this.model.collection;
+		var length = collection.length;
+		for(var i = 0; i < length; i++) {
+			if(collection[i].model.name === name) {
+				// trace('\tfound name at index: ' + i);
+				this.model.collection.splice(i, 1);
+				break;
+			}
+		}
+
+		// trace('\tpost splice collection: ');
+		// trace(this.model.collection);
 	};
 	
 	Collection.prototype.removeAll = function() {

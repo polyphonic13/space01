@@ -22,7 +22,7 @@ Polyworks.Enemies = (function() {
 		// this = me;
 		// trace('Enemies['+this.model.name+']/killEnemy, name = ' + name);
 		// trace(this);
-		this.removeChild(this.model.nameIndex[name]);
+		this.removeChild(name);
 	};
 	
 	Enemies.prototype.destroyEnemy = function(name, ancestor) {

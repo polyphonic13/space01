@@ -62,14 +62,9 @@ var config = (function() {
 			particle: 'images/particle01.png',
 
 			// buttons
-			leftButton: 'images/arrow_left2.png',
-			rightButton: 'images/arrow_right2.png',
-			upButton: 'images/arrow_up2.png',
 			startButton: 'images/start_button.png',
 			nextButton: 'images/next_button.png',
-			pauseButton: 'images/pause_button2.png',
-			menuButton: 'images/menu_button2.png',
-			quitButton: 'images/quit_button2.png',
+
 			blackRect: 'images/black_rect32x32.png',
 
 			// icons
@@ -79,8 +74,53 @@ var config = (function() {
 		},
 		// SPRITES
 		sprites: {
+			// buttons
+			leftButton: 
+			{
+				url: 'images/arrow_left2.png',
+				width: 100,
+				height: 341,
+				frames: 2
+			},
+			rightButton: 
+			{
+				url: 'images/arrow_right2.png',
+				width: 100,
+				height: 341,
+				frames: 2
+			},
+			upButton: 
+			{
+				url: 'images/arrow_up2.png',
+				width: 100,
+				height: 341,
+				frames: 2
+			},
+			pauseButton: 
+			{
+				url: 'images/pause_button2.png',
+				width: 100,
+				height: 100,
+				frames: 2
+			},
+			menuButton: 
+			{
+				url: 'images/menu_button2.png',
+				width: 100,
+				height: 100,
+				frames: 2
+			},
+			quitButton: 
+			{
+				url: 'images/quit_button2.png',
+				width: 100,
+				height: 100,
+				frames: 2
+			},
+
 			// player
-			keke: {
+			keke: 
+			{
 				url: 'images/keke_character3c.png', 
 				// width: 95, 
 				// height: 113, 
@@ -89,19 +129,22 @@ var config = (function() {
 				frames: 35
 			},
 			// enemies
-			caterpillar01: {
+			caterpillar01: 
+			{
 				url: 'images/caterpillar02a.png',
 				width: 104, 
 				height: 32, 
 				frames: 14
 			},
-			caterpillar02: {
+			caterpillar02: 
+			{
 				url: 'images/caterpillar02b.png',
 				width: 104, 
 				height: 32, 
 				frames: 14
 			},
-			caterpillarBoss01: {
+			caterpillarBoss01: 
+			{
 				url: 'images/caterpillar02_giant.png',
 				width: 416, 
 				height: 124, 
@@ -218,6 +261,7 @@ var config = (function() {
 							x: 30,
 							y: 15
 						},
+						frames: [0, 0, 1],
 						inputCode: Polyworks.InputCodes.QUIT,
 						events: {
 							pressed: {
@@ -256,6 +300,7 @@ var config = (function() {
 							x: 30,
 							y: 15
 						},
+						frames: [0, 0, 1],
 						inputCode: Polyworks.InputCodes.MENU,
 						events: {
 							pressed: {
@@ -276,6 +321,7 @@ var config = (function() {
 							x: 30,
 							y: 15
 						},
+						frames: [0, 0, 1],
 						inputCode: Polyworks.InputCodes.MENU,
 						events: {
 							pressed: {
@@ -296,6 +342,7 @@ var config = (function() {
 							x: 30,
 							y: 15
 						},
+						frames: [0, 0, 1],
 						inputCode: Polyworks.InputCodes.MENU,
 						events: {
 							pressed: {
@@ -328,8 +375,9 @@ var config = (function() {
 						img: 'leftButton',
 						start: {
 							x: 30,
-							y: winH - 266
+							y: winH - 356
 						},
+						frames: [0, 0, 1],
 						inputCode: Polyworks.InputCodes.LEFT
 					}
 				},
@@ -339,9 +387,10 @@ var config = (function() {
 					attrs: {
 						img: 'rightButton',
 						start: {
-							x: 150,
-							y: winH - 266
+							x: 170,
+							y: winH - 356
 						},
+						frames: [0, 0, 1],
 						inputCode: Polyworks.InputCodes.RIGHT
 					}
 				},
@@ -351,9 +400,10 @@ var config = (function() {
 					attrs: {
 						img: 'upButton',
 						start: {
-							x: winW - 90,
-							y: winH - 266
+							x: winW - 130,
+							y: winH - 356
 						},
+						frames: [0, 0, 1],
 						inputCode: Polyworks.InputCodes.UP
 					}
 				},
@@ -366,6 +416,7 @@ var config = (function() {
 							x: 30,
 							y: 15
 						},
+						frames: [0, 0, 1],
 						inputCode: Polyworks.InputCodes.PAUSE,
 						events: {
 							pressed: {
@@ -396,13 +447,13 @@ var config = (function() {
 			clearCache: false,
 			images: [
 				'blackRect',
-				'startButton',
 				'nextButton',
-				'menuButton',
-				'quitButton'
+				'startButton'
 			],
 			sprites: [
-				'keke'
+				'keke',
+				'menuButton',
+				'quitButton'
 			],
 			attrs: [
 			{
@@ -486,14 +537,14 @@ var config = (function() {
 				'branch02aLeft',
 				'branch02aRight',
 				'lollipop',
-				'leftButton',
-				'rightButton',
-				'upButton',
-				'pauseButton',
 				'invisibleBg',
 				'heart'
 			],
 			sprites: [
+				'leftButton',
+				'rightButton',
+				'upButton',
+				'pauseButton',
 				'keke',
 				'caterpillar01'
 			],
@@ -1440,14 +1491,14 @@ var config = (function() {
 				'vine01Left',
 				'vine01Right',
 				'lollipop',
-				'leftButton',
-				'rightButton',
-				'upButton',
-				'pauseButton',
 				'invisibleBg',
 				'heart'
 			],
 			sprites: [
+				'leftButton',
+				'rightButton',
+				'upButton',
+				'pauseButton',
 				'keke',
 				'caterpillar01'
 			],
@@ -2488,14 +2539,14 @@ var config = (function() {
 				'vine01Right',
 				'thorns01',
 				'lollipop',
-				'leftButton',
-				'rightButton',
-				'upButton',
-				'pauseButton',
 				'invisibleBg',
 				'heart'
 			],
 			sprites: [
+				'leftButton',
+				'rightButton',
+				'upButton',
+				'pauseButton',
 				'keke',
 				'caterpillar01',
 				'caterpillar02'
@@ -3814,14 +3865,14 @@ var config = (function() {
 				'vine01Right',
 				'thorns01',
 				'lollipop',
-				'leftButton',
-				'rightButton',
-				'upButton',
-				'pauseButton',
 				'invisibleBg',
 				'heart'
 			],
 			sprites: [
+				'leftButton',
+				'rightButton',
+				'upButton',
+				'pauseButton',
 				'keke',
 				'caterpillar01',
 				'caterpillar02'
@@ -5252,14 +5303,14 @@ var config = (function() {
 				'platformV',
 				'platform',
 				'rockPlatform1',
-				'leftButton',
-				'rightButton',
-				'upButton',
-				'pauseButton',
 				'invisibleBg',
 				'heart'
 			],
 			sprites: [
+				'leftButton',
+				'rightButton',
+				'upButton',
+				'pauseButton',
 				'keke'
 			],
 			attrs: [{
