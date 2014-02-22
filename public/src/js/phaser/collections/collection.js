@@ -43,7 +43,7 @@ Polyworks.Collection = (function() {
 		var length = collection.length;
 		for(var i = 0; i < length; i++) {
 			if(collection[i].model.name === name) {
-				child = collection[i].model.name;
+				child = collection[i];
 				break;
 			}
 		}
