@@ -652,7 +652,7 @@ var config = (function() {
 						cl: 'Enemies',
 						attrs: [
 						{
-							name: 'level1-sector2-enemy1',
+							name: 'level1-sector1-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar01',
@@ -662,7 +662,7 @@ var config = (function() {
 									health: 3
 								},
 								start: {
-									x: (stageWidth) + (stageUnit * 12),
+									x: (stageUnit * 12),
 									y: winH - ((stageUnit * 2) + 32)
 								},
 								physics: {
@@ -961,6 +961,7 @@ var config = (function() {
 						cl: 'PhysicalGroupCollection',
 						attrs:  [
 						{
+							name: 'level1-sector3-bonus1',
 							cl: 'Sprite',
 							attrs: {
 								img: 'lollipop',
@@ -1041,6 +1042,7 @@ var config = (function() {
 						cl: 'PhysicalGroupCollection',
 						attrs: [
 						{
+							name: 'level1-sector4-bonus1',
 							cl: 'Sprite',
 							attrs: {
 								img: 'lollipop',
@@ -1195,7 +1197,7 @@ var config = (function() {
 						name: 'enemies',
 						cl: 'Enemies',
 						attrs: [{
-							name: 'level1-sector3-enemy1',
+							name: 'level1-sector5-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar01',
@@ -1227,7 +1229,7 @@ var config = (function() {
 							}
 						},
 						{
-							name: 'level1-sector3-enemy2',
+							name: 'level1-sector5-enemy2',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'caterpillar01',
@@ -1264,6 +1266,7 @@ var config = (function() {
 						cl: 'PhysicalGroupCollection',
 						attrs:  [
 						{
+							name: 'level1-sector5-bonus1',
 							cl: 'Sprite',
 							attrs: {
 								img: 'lollipop',
@@ -1344,6 +1347,7 @@ var config = (function() {
 						cl: 'PhysicalGroupCollection',
 						attrs: [
 						{
+							name: 'level1-sector6-bonus1',
 							cl: 'Sprite',
 							attrs: {
 								img: 'lollipop',

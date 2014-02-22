@@ -39,6 +39,10 @@ Polyworks.Collection = (function() {
 		return this.model.collection[this.model.nameIndex[name]];
 	};
 	
+	Collection.prototype.removeChild = function(idx) {
+		this.model.collection.splice(idx, 1);
+	};
+	
 	Collection.prototype.removeAll = function() {
 		this.destroy();
 	};

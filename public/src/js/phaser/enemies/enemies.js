@@ -18,6 +18,13 @@ Polyworks.Enemies = (function() {
 		);
 	};
 	
+	Enemies.prototype.killEnemy = function(name) {
+		// this = me;
+		// trace('Enemies['+this.model.name+']/killEnemy, name = ' + name);
+		// trace(this);
+		this.removeChild(this.model.nameIndex[name]);
+	};
+	
 	Enemies.prototype.destroyEnemy = function(name, ancestor) {
 		// trace('Enemies/destroyEnemy, name = ' + name);
 		// trace(this);

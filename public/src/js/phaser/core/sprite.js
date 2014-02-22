@@ -93,14 +93,14 @@ Polyworks.Sprite = (function() {
 	// };
 
 	Sprite.prototype.deactivateGravity = function() {
-		trace('Sprte['+this.model.name+']/deactivateGravity');
+		// trace('Sprte['+this.model.name+']/deactivateGravity');
 		this.exists = false;
 		this.allowGravity = false;
 		this.body.gravity = 0;
 	};
 	
 	Sprite.prototype.activateGravity = function() {
-		trace('Sprite['+this.model.name+']/activateGravity, y = ' + this.body.screenY);
+		// trace('Sprite['+this.model.name+']/activateGravity, y = ' + this.body.screenY);
 		var physics = this.model.attrs.physics;
 		if(physics && physics.deferredGravity) {
 			var gravity = (physics.gravity) ? physics.gravity : config.gravity;

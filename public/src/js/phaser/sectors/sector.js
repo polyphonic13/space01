@@ -17,18 +17,20 @@ Polyworks.Sector = (function() {
 	};
 
 	Sector.prototype.setActive = function(active) {
+		// trace('Sector['+this.model.name+']/setActive: active = ' + active + ', activatedOnce = ' + this.activatedOnce);
+
 		this.active = active;
 		if(active) {
-			// trace('Sector['+this.model.name+']/setActive: active = ' + active + ', activatedOnce = ' + this.activatedOnce);
-			if(!this.activatedOnce) {
+			trace('Sector['+this.model.name+']/setActive: active = ' + active + ', activatedOnce = ' + this.activatedOnce);
+			// if(!this.activatedOnce) {
 				this.activateOnce = true;
 				if(this.enemies) {
 					this.enemies.activateGravity();
 				}
-				if(this.bonuses) {
-					this.bonuses.activateGravity();
-				}
-			}
+				// if(this.bonuses) {
+				// 	this.bonuses.activateGravity();
+				// }
+			// }
 			this.deactivated = false;
 			
 		} else if(!this.deactivated){
@@ -36,9 +38,9 @@ Polyworks.Sector = (function() {
 			if(this.enemies) {
 				this.enemies.deactivateGravity();
 			} 
-			if(this.bonuses) {
-				this.bonuses.deactivateGravity();
-			}
+			// if(this.bonuses) {
+			// 	this.bonuses.deactivateGravity();
+			// }
 			this.deactivated = true;
 		}
 	};

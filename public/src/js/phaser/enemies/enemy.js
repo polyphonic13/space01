@@ -9,7 +9,7 @@ Polyworks.Enemy = (function() {
 		Enemy._super.constructor.call(this, params);
 		// trace(this);
 		// trace(_this);
-		this.deactivateGravity();
+		// this.deactivateGravity();
 	}
 
 	Enemy.prototype.begin = function() {
@@ -44,8 +44,10 @@ Polyworks.Enemy = (function() {
 	};
 	
 	Enemy.prototype.kill = function() {
-		trace('Enemy['+this.model.name+']/kill');
+		trace('Enemy['+this.model.name+']/kill, ancestor = ');
+		// trace(this.model);
 		PolyworksGame.setScore(this.model.attrs.score);
+		this.model.ancestor.killEnemy.call(this.model.ancestor, this.model.name);
 		Enemy._super.kill.call(this);
 	};
 	

@@ -193,7 +193,7 @@ Polyworks.Player = (function() {
 		var playerY = player.body.y + (player.body.height);
 		var enemyX = enemy.body.x + (enemy.body.width);
 		var enemyY = enemy.body.y + (enemy.body.height);
-		// trace('Player/enemyCollision, player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
+		trace('Player/enemyCollision['+enemy.model.name+'], player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
 		// trace(enemy);
 
 		if(playerY < (enemyY - 15)) { // player is above enemy

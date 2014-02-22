@@ -48,7 +48,7 @@ Polyworks.SectorManager = (function() {
 		// trace(this);
 		var bounds;
 		// reset all sectors to off
-		this.deactivateAll();
+		// this.deactivateAll();
 
 		var c = this.model.collection;
 		var length = c.length;
