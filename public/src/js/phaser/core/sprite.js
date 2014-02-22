@@ -93,6 +93,7 @@ Polyworks.Sprite = (function() {
 	// };
 
 	Sprite.prototype.deactivateGravity = function() {
+		trace('Sprte['+this.model.name+']/deactivateGravity');
 		this.exists = false;
 		this.allowGravity = false;
 		this.body.gravity = 0;

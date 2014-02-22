@@ -132,7 +132,7 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.pwUpdate = function(params) {
-		trace('Player/update, x/y = ' + this.body.screenX + '/' + this.body.screenY);
+		// trace('Player/update, x/y = ' + this.body.screenX + '/' + this.body.screenY);
 		// trace('Player/update, health = ' + this.health);
 		// trace(params);
 		if(this.alive) {
