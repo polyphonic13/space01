@@ -62,14 +62,14 @@ var config = (function() {
 			particle: 'images/particle01.png',
 
 			// buttons
-			leftButton: 'images/arrow_left.png',
-			rightButton: 'images/arrow_right.png',
-			upButton: 'images/arrow_up.png',
+			leftButton: 'images/arrow_left2.png',
+			rightButton: 'images/arrow_right2.png',
+			upButton: 'images/arrow_up2.png',
 			startButton: 'images/start_button.png',
 			nextButton: 'images/next_button.png',
-			pauseButton: 'images/pause_button.png',
-			menuButton: 'images/menu_button.png',
-			quitButton: 'images/quit_button.png',
+			pauseButton: 'images/pause_button2.png',
+			menuButton: 'images/menu_button2.png',
+			quitButton: 'images/quit_button2.png',
 			blackRect: 'images/black_rect32x32.png',
 
 			// icons
@@ -6402,7 +6402,7 @@ var config = (function() {
 				followStyle: Phaser.Camera.FOLLOW_PLATFORMER,
 				speed: {
 					x: (stageUnit * 4),
-					y: (stageUnit * 10)
+					y: (stageUnit * 10.1)
 				},
 				controls: {
 					left: Polyworks.InputCodes.LEFT,
