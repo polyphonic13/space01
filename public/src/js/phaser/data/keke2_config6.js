@@ -31,12 +31,12 @@ var config = (function() {
 			// mountainBackground01e: 'images/mountain_background01e.png',
 			// mountainBackground01f: 'images/mountain_background01f.png',
 
-			mountainBackground01a: 'images/pencil_mountain01a.png',
-			mountainBackground01b: 'images/pencil_mountain01b.png',
-			mountainBackground01c: 'images/pencil_mountain01c.png',
-			mountainBackground01d: 'images/pencil_mountain01d.png',
-			mountainBackground01e: 'images/pencil_mountain01e.png',
-			mountainBackground01f: 'images/pencil_mountain01f.png',
+			mountainBackground01a: 'images/pencil_mountain03a.png',
+			mountainBackground01b: 'images/pencil_mountain03b.png',
+			mountainBackground01c: 'images/pencil_mountain03c.png',
+			mountainBackground01d: 'images/pencil_mountain03d.png',
+			mountainBackground01e: 'images/pencil_mountain03e.png',
+			mountainBackground01f: 'images/pencil_mountain03f.png',
 
 			ovalMask: 'images/oval_mask.png',
 			
@@ -145,13 +145,6 @@ var config = (function() {
 				url: 'images/caterpillar02b.png',
 				width: 104, 
 				height: 32, 
-				frames: 14
-			},
-			caterpillarBoss01: 
-			{
-				url: 'images/caterpillar02_giant.png',
-				width: 416, 
-				height: 124, 
 				frames: 14
 			}
 		},
@@ -466,7 +459,7 @@ var config = (function() {
 			}
 		},
 		// STATES
-		initialState: 'level4',
+		initialState: 'level5',
 		states: [
 		// menu
 		{
@@ -5512,6 +5505,7 @@ var config = (function() {
 				'mountainBackground01d',
 				'mountainBackground01e',
 				'mountainBackground01f',
+				'tree01',
 				'platformV',
 				'platform',
 				'rockPlatform1',
@@ -5528,23 +5522,24 @@ var config = (function() {
 			attrs: [{
 				name: 'scenery',
 				cl: 'GroupCollection',
-				attrs: [{
-					name: 'sky',
-					cl: 'Sprite',
-					attrs: {
-						img: 'sky',
-						name: 'sky',
-						start: {
-							x: 0,
-							y: 0
-						},
-						phaser: {
-							width: winW,
-							height: winH,
-							fixedToCamera: true
-						}
-					}
-				},
+				attrs: [
+				// {
+				// 	name: 'sky',
+				// 	cl: 'Sprite',
+				// 	attrs: {
+				// 		img: 'sky',
+				// 		name: 'sky',
+				// 		start: {
+				// 			x: 0,
+				// 			y: 0
+				// 		},
+				// 		phaser: {
+				// 			width: winW,
+				// 			height: winH,
+				// 			fixedToCamera: true
+				// 		}
+				// 	}
+				// },
 				{
 					name: 'mountainBackground01a',
 					cl: 'Sprite',
@@ -5634,7 +5629,22 @@ var config = (function() {
 							y: winH - (stageHeight * 2)
 						}
 					}
-				}
+				},
+				{
+					name: 'tree01',
+					cl: 'Sprite',
+					attrs: {
+						img: 'tree01',
+						phaser: {
+							width: (stageHeight * 2),
+							height: (stageHeight * 3)
+						},
+						start: {
+							x: (stageUnit * 1),
+							y: winH - (stageHeight * 3)
+						}
+					}
+				},
 				]
 			},
 			{
@@ -5695,6 +5705,134 @@ var config = (function() {
 						name: 'dynamicTerrain',
 						cl: 'PhysicalGroupCollection',
 						attrs: [
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aLeft',
+								start: {
+									x: (stageUnit * 8),
+									y: winH - (stageUnit * 2.25)
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aRight',
+								start: {
+									x: (stageUnit * 11),
+									y: winH - (stageUnit * 4)
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aLeft',
+								start: {
+									x: (stageUnit * 8),
+									y: winH - (stageUnit * 5.5)
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aRight',
+								start: {
+									x: (stageUnit * 11),
+									y: winH - (stageUnit * 7)
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aLeft',
+								start: {
+									x: (stageUnit * 8),
+									y: winH - (stageUnit * 8.5)
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02aRight',
+								start: {
+									x: (stageUnit * 11),
+									y: winH - (stageUnit * 10)
+								},
+								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02Left',
+								start: {
+									x: (stageUnit * 3),
+									y: winH - (stageUnit * 11.5)
+								},
+								phaser: { width: (stageUnit * 7), height: (stageUnit * 0.5) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
+						{
+							name: 'plat1',
+							cl: 'Sprite',
+							attrs: {
+								img: 'branch02Right',
+								start: {
+									x: (stageUnit * 10.5),
+									y: winH - (stageUnit * 13)
+								},
+								phaser: { width: (stageUnit * 7), height: (stageUnit * 0.5) },
+								physics: {
+									immovable: true,
+									allowGravity: false
+								}
+							}
+						},
 						{
 							name: 'rockPlatform1',
 							cl: 'Sprite',
