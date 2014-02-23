@@ -54,12 +54,12 @@ Polyworks.LevelState = (function() {
 		trace('LevelState['+this.model.name+']/player created, jump = ' + playerConfig.attrs.speed.y, playerConfig);
 	};
 	
-	LevelState.prototype.addOvalMask = function() {
-		var mask = PolyworksGame.phaser.add.sprite(-5, -5, 'ovalMask');
-		mask.width = PolyworksStage.width + 10;
-		mask.height = PolyworksStage.height + 10;
-		mask.fixedToCamera = true;
-	};
+	// LevelState.prototype.addOvalMask = function() {
+	// 	var mask = PolyworksGame.phaser.add.sprite(-10, -10, 'ovalMask');
+	// 	mask.width = PolyworksStage.winW + 20;
+	// 	mask.height = PolyworksStage.winH + 20;
+	// 	mask.fixedToCamera = true;
+	// };
 	
 	LevelState.prototype.update = function() {
 		if(!this.paused) {

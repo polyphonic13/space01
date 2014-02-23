@@ -36,6 +36,8 @@ var config = (function() {
 			mountainBackground01e: 'images/mountain_background01e.png',
 			mountainBackground01f: 'images/mountain_background01f.png',
 
+			ovalMask: 'images/oval_mask.png',
+			
 			tree01: 'images/tree04a.png',
 			tree02: 'images/tree04a.png',
 			tree03: 'images/tree04a.png',
@@ -197,19 +199,19 @@ var config = (function() {
 						}
 					}
 				},
-				{
-					name: 'retry', // r
-					cl: 'ControlKey',
-					attrs: {
-						inputCode: Polyworks.InputCodes.RETRY,
-						events: {
-							pressed: {
-								type: Polyworks.Events.CHANGE_STATE,
-								value: 'level'
-							}
-						}
-					}
-				},
+				// {
+				// 	name: 'retry', // r
+				// 	cl: 'ControlKey',
+				// 	attrs: {
+				// 		inputCode: Polyworks.InputCodes.RETRY,
+				// 		events: {
+				// 			pressed: {
+				// 				type: Polyworks.Events.CHANGE_STATE,
+				// 				value: 'level'
+				// 			}
+				// 		}
+				// 	}
+				// },
 				{
 					name: 'pause', // p
 					cl: 'ControlKey',
@@ -561,9 +563,11 @@ var config = (function() {
 				// 'forestBackground02',
 				'forestBackground03',
 				'forestBackground04',
+				'ovalMask',
 				'tree01',
 				'platformV',
 				'platform',
+				'platformRed',
 				'branch02Left',
 				'branch02Right',
 				'branch02aLeft',
@@ -1452,6 +1456,28 @@ var config = (function() {
 				}]
 			},
 			{
+				name: 'foreground',
+				cl: 'GroupCollection',
+				addTo: 'null',
+				attrs: [
+				{
+					name: 'ovalMask',
+					cl: 'Sprite',
+					attrs: {
+						img: 'ovalMask',
+						start: {
+							x: -50,
+							y: -50
+						},
+						phaser: {
+							width: winW + 100,
+							height: winH + 100,
+						}
+					}
+				}
+				]
+			},
+			{
 				name: 'gui',
 				cl: 'GUIConsole',
 				addTo: 'null',
@@ -1773,7 +1799,7 @@ var config = (function() {
 								img: 'branch02aLeft',
 								start: {
 									x: (stageWidth) + (stageUnit * 7),
-									y: winH - (stageUnit * 2.5)
+									y: winH - (stageUnit * 2.25)
 								},
 								phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
 								physics: {
@@ -2497,6 +2523,28 @@ var config = (function() {
 					}
 					]
 				}]
+			},
+			{
+				name: 'foreground',
+				cl: 'GroupCollection',
+				addTo: 'null',
+				attrs: [
+				{
+					name: 'ovalMask',
+					cl: 'Sprite',
+					attrs: {
+						img: 'ovalMask',
+						start: {
+							x: -50,
+							y: -50
+						},
+						phaser: {
+							width: winW + 100,
+							height: winH + 100,
+						}
+					}
+				}
+				]
 			},
 			{
 				name: 'gui',
@@ -3821,6 +3869,28 @@ var config = (function() {
 						attrs: []
 					}
 					]
+				}
+				]
+			},
+			{
+				name: 'foreground',
+				cl: 'GroupCollection',
+				addTo: 'null',
+				attrs: [
+				{
+					name: 'ovalMask',
+					cl: 'Sprite',
+					attrs: {
+						img: 'ovalMask',
+						start: {
+							x: -50,
+							y: -50
+						},
+						phaser: {
+							width: winW + 100,
+							height: winH + 100,
+						}
+					}
 				}
 				]
 			},
@@ -5267,6 +5337,28 @@ var config = (function() {
 				]
 			},
 			{
+				name: 'foreground',
+				cl: 'GroupCollection',
+				addTo: 'null',
+				attrs: [
+				{
+					name: 'ovalMask',
+					cl: 'Sprite',
+					attrs: {
+						img: 'ovalMask',
+						start: {
+							x: -50,
+							y: -50
+						},
+						phaser: {
+							width: winW + 100,
+							height: winH + 100,
+						}
+					}
+				}
+				]
+			},
+			{
 				name: 'gui',
 				cl: 'GUIConsole',
 				addTo: 'null',
@@ -6168,6 +6260,50 @@ var config = (function() {
 						attrs: []
 					}
 					]
+				}
+				]
+			},
+			{
+				name: 'foreground',
+				cl: 'GroupCollection',
+				addTo: 'null',
+				attrs: [
+				{
+					name: 'ovalMask',
+					cl: 'Sprite',
+					attrs: {
+						img: 'ovalMask',
+						start: {
+							x: -50,
+							y: -50
+						},
+						phaser: {
+							width: winW + 100,
+							height: winH + 100,
+						}
+					}
+				}
+				]
+			},
+			{
+				name: 'foreground',
+				cl: 'GroupCollection',
+				addTo: 'null',
+				attrs: [
+				{
+					name: 'ovalMask',
+					cl: 'Sprite',
+					attrs: {
+						img: 'ovalMask',
+						start: {
+							x: -50,
+							y: -50
+						},
+						phaser: {
+							width: winW + 100,
+							height: winH + 100,
+						}
+					}
 				}
 				]
 			},

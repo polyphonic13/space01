@@ -9,9 +9,6 @@ body, canvas {
 	z-index: 2;
 	text-align: center;
 	padding: 20px;
-	border-style: solid;
-	border-color: #000000;
-	border-width: 20px;
 	font-size: 30px;
 	font-family: 'Arial', sans-serif;
 	color: #ffffff;
@@ -22,4 +19,12 @@ body, canvas {
 	z-index: 1;
 	left: 0px;
 	top: 0px;
+}
+#ovalMask {
+	background: url("../images/oval_mask.png") no-repeat center;
+	background-size: cover;
+	position: absolute;
+	z-index: 3;
+	width: 100%;
+	height: 100%;
 }
