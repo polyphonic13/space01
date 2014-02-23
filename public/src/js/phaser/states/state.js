@@ -22,6 +22,8 @@ Polyworks.State = (function() {
 	};
 	
 	State.prototype.preload = function() {
+		this.toLoad = 0;
+		this.loaded = 0;
 		trace('Stage['+this.model.name+']/preLoad, loaded = ' + this.model.loaded);
 		if(!this.model.loaded) {
 			// trace('\tstate images = ');
@@ -32,6 +34,7 @@ Polyworks.State = (function() {
 					function(img) {
 						trace('\t\timage['+img+'] loaded = ' + PolyworksGame.loadedImages[img]);
 						if(!PolyworksGame.loadedImages[img]) {
+							this.toLoad++;
 							PolyworksGame.phaser.load.image(img, images[img]);
 							PolyworksGame.loadedImages[img] = true;
 						}
@@ -47,6 +50,7 @@ Polyworks.State = (function() {
 						if(!PolyworksGame.loadedImages[spr]) {
 							var sprite = sprites[spr];
 							// trace('\t\t\tsprite = ', sprite);
+							this.toLoad++;
 							PolyworksGame.phaser.load.spritesheet(spr, sprite.url, sprite.width, sprite.height, sprite.frames);
 							PolyworksGame.loadedImages[spr] = true;
 						}
@@ -59,7 +63,8 @@ Polyworks.State = (function() {
 	};
 	
 	State.prototype.loadUpdate = function(event) {
-		// trace('State['+this.model.name+']/loadUpate, event = ');
+		this.loaded++;
+		trace('State['+this.model.name+']/loadUpate, loaded = ' + this.loaded + ', toLoad = ' + this.toLoad);
 		// trace(event);
 	};
 	

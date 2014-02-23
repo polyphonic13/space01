@@ -24,12 +24,19 @@ var config = (function() {
 			forestBackground02: 'images/pencil_forest_background01b.png',
 			forestBackground03: 'images/pencil_forest_background01c.png',
 
-			mountainBackground01a: 'images/mountain_background01a.png',
-			mountainBackground01b: 'images/mountain_background01b.png',
-			mountainBackground01c: 'images/mountain_background01c.png',
-			mountainBackground01d: 'images/mountain_background01d.png',
-			mountainBackground01e: 'images/mountain_background01e.png',
-			mountainBackground01f: 'images/mountain_background01f.png',
+			// mountainBackground01a: 'images/mountain_background01a.png',
+			// mountainBackground01b: 'images/mountain_background01b.png',
+			// mountainBackground01c: 'images/mountain_background01c.png',
+			// mountainBackground01d: 'images/mountain_background01d.png',
+			// mountainBackground01e: 'images/mountain_background01e.png',
+			// mountainBackground01f: 'images/mountain_background01f.png',
+
+			mountainBackground01a: 'images/pencil_mountain01a.png',
+			mountainBackground01b: 'images/pencil_mountain01b.png',
+			mountainBackground01c: 'images/pencil_mountain01c.png',
+			mountainBackground01d: 'images/pencil_mountain01d.png',
+			mountainBackground01e: 'images/pencil_mountain01e.png',
+			mountainBackground01f: 'images/pencil_mountain01f.png',
 
 			ovalMask: 'images/oval_mask.png',
 			
@@ -459,7 +466,7 @@ var config = (function() {
 			}
 		},
 		// STATES
-		initialState: 'menu',
+		initialState: 'level4',
 		states: [
 		// menu
 		{
@@ -5498,7 +5505,7 @@ var config = (function() {
 				end: (stageWidth * 6) - (stageUnit * 1)
 			},
 			images: [
-				'sky',
+				// 'sky',
 				'mountainBackground01a',
 				'mountainBackground01b',
 				'mountainBackground01c',
