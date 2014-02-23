@@ -42,11 +42,9 @@ var config = (function() {
 			platformRed: 'images/platform_red.png',
 			platformV: 'images/platform_v.png',
 			
-			// branch02Left: 'images/vine01_left.png',
 			branch02Left: 'images/branch03_left.png',
 			branch02aLeft: 'images/branch03a_left.png',
 			vine01Left: 'images/vine01a_left.png',
-			// branch02Right: 'images/vine01_right.png',
 			branch02Right: 'images/branch03_right.png',
 			branch02aRight: 'images/branch03a_right.png',
 			vine01Right: 'images/vine01a_right.png',
@@ -2830,7 +2828,7 @@ var config = (function() {
 							height: (stageUnit * 5)
 						},
 						start: {
-							x: (stageWidth) + (stageUnit * 3.6),
+							x: (stageWidth) + (stageUnit * 2.9),
 							y: winH - (stageUnit * 5)
 						}
 					}
@@ -3041,7 +3039,7 @@ var config = (function() {
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
 								setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 								start: {
-									x: (stageWidth) + (stageUnit),
+									x: (stageWidth) + (stageUnit * 0.2),
 									y: winH - (stageUnit * 3.5)
 								},
 								physics: {
@@ -3057,7 +3055,7 @@ var config = (function() {
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
 								setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 								start: {
-									x: (stageWidth) + (stageUnit * 5),
+									x: (stageWidth) + (stageUnit * 4.3),
 									y: winH - (stageUnit * 5)
 								},
 								physics: {
@@ -3342,7 +3340,7 @@ var config = (function() {
 								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 8),
-									y: winH - (stageUnit * 2) + 32
+									y: winH - (stageUnit * 1.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -3358,7 +3356,7 @@ var config = (function() {
 								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 15),
-									y: winH - (stageUnit * 2) + 32
+									y: winH - (stageUnit * 1.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -3560,7 +3558,7 @@ var config = (function() {
 								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 3) + (stageUnit * 8),
-									y: winH - (stageUnit * 2) + 32
+									y: winH - (stageUnit * 1.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -4109,7 +4107,7 @@ var config = (function() {
 							height: (stageUnit * 5)
 						},
 						start: {
-							x: (stageWidth) + (stageUnit * 3.6),
+							x: (stageWidth) + (stageUnit * 2.9),
 							y: winH - (stageUnit * 5)
 						}
 					}
@@ -4356,7 +4354,7 @@ var config = (function() {
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
 								setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 								start: {
-									x: (stageWidth) + (stageUnit),
+									x: (stageWidth) + (stageUnit * 0.2),
 									y: winH - (stageUnit * 3.5)
 								},
 								physics: {
@@ -4372,7 +4370,7 @@ var config = (function() {
 								phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
 								setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 								start: {
-									x: (stageWidth) + (stageUnit * 5),
+									x: (stageWidth) + (stageUnit * 4.3),
 									y: winH - (stageUnit * 5)
 								},
 								physics: {
