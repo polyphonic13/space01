@@ -554,7 +554,6 @@ var config = (function() {
 			},
 			pausable: true,
 			images: [
-				'sky',
 				'forestBackground01',
 				'forestBackground02',
 				'forestBackground03',
@@ -584,23 +583,6 @@ var config = (function() {
 				name: 'scenery',
 				cl: 'GroupCollection',
 				attrs: [
-				{
-					name: 'sky',
-					cl: 'Sprite',
-					attrs: {
-						img: 'sky',
-						name: 'sky',
-						start: {
-							x: 0,
-							y: 0
-						},
-						phaser: {
-							width: winW,
-							height: winH,
-							fixedToCamera: true
-						}
-					}
-				},
 				{
 					name: 'background01',
 					cl: 'Sprite',
@@ -1589,7 +1571,6 @@ var config = (function() {
 				end: (stageWidth * 6) - (stageUnit * 1)
 			},
 			images: [
-				'sky',
 				'forestBackground01',
 				'forestBackground02',
 				'forestBackground03',
@@ -1620,23 +1601,6 @@ var config = (function() {
 				name: 'scenery',
 				cl: 'GroupCollection',
 				attrs: [
-				{
-					name: 'sky',
-					cl: 'Sprite',
-					attrs: {
-						img: 'sky',
-						name: 'sky',
-						start: {
-							x: 0,
-							y: 0
-						},
-						phaser: {
-							width: winW,
-							height: winH,
-							fixedToCamera: true
-						}
-					}
-				},
 				{
 					name: 'background01',
 					cl: 'Sprite',
@@ -2735,7 +2699,6 @@ var config = (function() {
 				end: (stageWidth * 6) - (stageUnit * 1)
 			},
 			images: [
-				'sky',
 				'forestBackground01',
 				'forestBackground02',
 				'forestBackground03',
@@ -2767,23 +2730,6 @@ var config = (function() {
 				name: 'scenery',
 				cl: 'GroupCollection',
 				attrs: [
-				{
-					name: 'sky',
-					cl: 'Sprite',
-					attrs: {
-						img: 'sky',
-						name: 'sky',
-						start: {
-							x: 0,
-							y: 0
-						},
-						phaser: {
-							width: winW,
-							height: winH,
-							fixedToCamera: true
-						}
-					}
-				},
 				{
 					name: 'background01',
 					cl: 'Sprite',
@@ -2874,21 +2820,21 @@ var config = (function() {
 						}
 					}
 				},
-				// {
-				// 	name: 'trunk01',
-				// 	cl: 'Sprite',
-				// 	attrs: {
-				// 		img: 'trunk01',
-				// 		phaser: {
-				// 			width: (stageUnit * 2),
-				// 			height: (stageUnit * 5)
-				// 		},
-				// 		start: {
-				// 			x: (stageWidth * 2) + (stageUnit * 3.6),
-				// 			y: winH - (stageUnit * 5)
-				// 		}
-				// 	}
-				// },
+				{
+					name: 'trunk01',
+					cl: 'Sprite',
+					attrs: {
+						img: 'trunk01',
+						phaser: {
+							width: (stageUnit * 2),
+							height: (stageUnit * 5)
+						},
+						start: {
+							x: (stageWidth) + (stageUnit * 3.6),
+							y: winH - (stageUnit * 5)
+						}
+					}
+				},
 				{
 					name: 'tree01',
 					cl: 'Sprite',
@@ -3160,10 +3106,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth) + (stageUnit * 7),
-									y: winH - (stageUnit * 2) + 32
+									y: winH - (stageUnit * 1.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -3176,10 +3122,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth) + (stageUnit * 14),
-									y: winH - (stageUnit * 2) + 32
+									y: winH - (stageUnit * 1.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -3393,7 +3339,7 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 8),
 									y: winH - (stageUnit * 2) + 32
@@ -3409,7 +3355,7 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 15),
 									y: winH - (stageUnit * 2) + 32
@@ -3611,7 +3557,7 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 3) + (stageUnit * 8),
 									y: winH - (stageUnit * 2) + 32
@@ -3798,10 +3744,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 4),
-									y: winH - (stageUnit * 2) + 32
+									y: winH - (stageUnit * 1.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -3815,10 +3761,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 4) + (stageUnit * 9),
-									y: winH - (stageUnit * 2) + 32
+									y: winH - (stageUnit * 1.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -4032,7 +3978,6 @@ var config = (function() {
 				end: (stageWidth * 6) - (stageUnit * 1)
 			},
 			images: [
-				'sky',
 				'forestBackground01',
 				'forestBackground02',
 				'forestBackground03',
@@ -4064,23 +4009,6 @@ var config = (function() {
 				name: 'scenery',
 				cl: 'GroupCollection',
 				attrs: [
-				{
-					name: 'sky',
-					cl: 'Sprite',
-					attrs: {
-						img: 'sky',
-						name: 'sky',
-						start: {
-							x: 0,
-							y: 0
-						},
-						phaser: {
-							width: winW,
-							height: winH,
-							fixedToCamera: true
-						}
-					}
-				},
 				{
 					name: 'background01',
 					cl: 'Sprite',
@@ -4171,21 +4099,21 @@ var config = (function() {
 						}
 					}
 				},
-				// {
-				// 	name: 'trunk01',
-				// 	cl: 'Sprite',
-				// 	attrs: {
-				// 		img: 'trunk01',
-				// 		phaser: {
-				// 			width: (stageUnit * 2),
-				// 			height: (stageUnit * 5)
-				// 		},
-				// 		start: {
-				// 			x: (stageWidth * 2) + (stageUnit * 3.6),
-				// 			y: winH - (stageUnit * 5)
-				// 		}
-				// 	}
-				// },
+				{
+					name: 'trunk01',
+					cl: 'Sprite',
+					attrs: {
+						img: 'trunk01',
+						phaser: {
+							width: (stageUnit * 2),
+							height: (stageUnit * 5)
+						},
+						start: {
+							x: (stageWidth) + (stageUnit * 3.6),
+							y: winH - (stageUnit * 5)
+						}
+					}
+				},
 				{
 					name: 'tree01',
 					cl: 'Sprite',
@@ -4317,7 +4245,7 @@ var config = (function() {
 					}
 				},
 				{
-					name: 'ground0',
+					name: 'ground1',
 					cl: 'Sprite',
 					attrs: {
 						img: 'platform',
@@ -4335,13 +4263,13 @@ var config = (function() {
 					}
 				},
 				{
-					name: 'ground1',
+					name: 'ground2',
 					cl: 'Sprite',
 					attrs: {
 						img: 'platform',
 						phaser: {
 							width: stageWidth * 2,
-							height: 32
+							height: 32 + (stageUnit * 2)
 						},
 						start: {
 							x: (stageWidth * 2),
@@ -4353,13 +4281,13 @@ var config = (function() {
 					}
 				},
 				{
-					name: 'ground2',
+					name: 'ground3',
 					cl: 'Sprite',
 					attrs: {
 						img: 'platform',
 						phaser: {
 							width: stageWidth * 2,
-							height: 32
+							height: 32 + (stageUnit * 4)
 						},
 						start: {
 							x: (stageWidth * 4),
@@ -4519,14 +4447,14 @@ var config = (function() {
 						cl: 'PhysicalGroupCollection',
 						attrs: [
 						{
-							name: 'level4-sector2-hazard0',
+							name: 'level4-sector2-hazard1',
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth) + (stageUnit * 4),
-									y: winH - (stageUnit * 2) + 32
+									y: winH - (stageUnit * 1.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -4535,14 +4463,14 @@ var config = (function() {
 							}
 						},	
 						{
-							name: 'level4-sector2-hazard0',
+							name: 'level4-sector2-hazard2',
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth) + (stageUnit * 7),
-									y: winH - (stageUnit * 2) + 32
+									y: winH - (stageUnit * 1.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -4551,14 +4479,14 @@ var config = (function() {
 							}
 						},
 						{
-							name: 'level4-sector2-hazard0',
+							name: 'level4-sector2-hazard3',
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth) + (stageUnit * 10.5),
-									y: winH - (stageUnit * 2) + 32
+									y: winH - (stageUnit * 1.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -4567,14 +4495,14 @@ var config = (function() {
 							}
 						},
 						{
-							name: 'level4-sector2-hazard0',
+							name: 'level4-sector2-hazard4',
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth) + (stageUnit * 14),
-									y: winH - (stageUnit * 2) + 32
+									y: winH - (stageUnit * 1.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -4773,10 +4701,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 3.5),
-									y: winH - (stageUnit * 4) + 32
+									y: winH - (stageUnit * 3.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -4789,10 +4717,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 8),
-									y: winH - (stageUnit * 4) + 32
+									y: winH - (stageUnit * 3.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -4805,10 +4733,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 11.5),
-									y: winH - (stageUnit * 4) + 32
+									y: winH - (stageUnit * 3.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -4821,10 +4749,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 2) + (stageUnit * 15),
-									y: winH - (stageUnit * 4) + 32
+									y: winH - (stageUnit * 3.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -5084,10 +5012,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 3) + (stageUnit * 3.5),
-									y: winH - (stageUnit * 4) + 32
+									y: winH - (stageUnit * 3.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -5100,10 +5028,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 3) + (stageUnit * 8),
-									y: winH - (stageUnit * 4) + 32
+									y: winH - (stageUnit * 3.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -5116,10 +5044,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 3) + (stageUnit * 12.5),
-									y: winH - (stageUnit * 4) + 32
+									y: winH - (stageUnit * 3.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -5305,10 +5233,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 4),
-									y: winH - (stageUnit * 6) + 32
+									y: winH - (stageUnit * 5.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -5321,10 +5249,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 4) + (stageUnit * 4),
-									y: winH - (stageUnit * 6) + 32
+									y: winH - (stageUnit * 5.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -5337,10 +5265,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 4) + (stageUnit * 9),
-									y: winH - (stageUnit * 6) + 32
+									y: winH - (stageUnit * 5.5) + 32
 								},
 								physics: {
 									immovable: true
@@ -5353,10 +5281,10 @@ var config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'thorns01',
-								phaser: { width: (stageUnit * 2), height: (stageUnit * 1.5) },
+								phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
 								start: {
 									x: (stageWidth * 4) + (stageUnit * 12.5),
-									y: winH - (stageUnit * 6) + 32
+									y: winH - (stageUnit * 5.5) + 32
 								},
 								physics: {
 									immovable: true
