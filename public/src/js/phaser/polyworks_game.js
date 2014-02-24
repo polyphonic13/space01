@@ -11,6 +11,9 @@ PolyworksGame = (function() {
 	var _stageInitialized = false;
 	var _statesInitialized = false;
 	
+	var _resizeTimer = null;
+	var _resizeInterval = 200;
+	
 	var polyworks_game = {
 		phaser: null,
 		player: null,
@@ -26,8 +29,9 @@ PolyworksGame = (function() {
 
 		begin: function() {
 			// _model = params;
+			window.scrollTo(0,0);
 			_addListeners();
-			Polyworks.Stage.init();
+			_checkOrientation();
 		},
 
 		get: function(prop) {
@@ -129,27 +133,26 @@ PolyworksGame = (function() {
 		var w = window.innerWidth;
 		var h = window.innerHeight;
 		PolyworksGame.isLandscape = (w > h) ? true : false;
+		trace('PolyworksGame/_checkOrientation, isLandscape = ' + PolyworksGame.isLandscape, '\t_stageInitialized = ' + _stageInitialized);
+		if(PolyworksGame.isLandscape && !_stageInitialized) {
+			Polyworks.Stage.init();
+		}
 	}
 	
-	function _beginWindow() {
-		window.scrollTo(0,0);
-		window.onorientationchange = function(event) {
-			_orientationChange(event);
-		};
-		window.onresize = function(event) {
-			if(_isTouchDevice) {
-				_orientationChange(event);
-			}
-		};
-	}
-
-	function _orientationChange(event) {
+	function _orientationChange() {
 		_checkOrientation();
 		trace('PolyworksGame/_orientationChange, isLandscape = ' + PolyworksGame.isLandscape + ', currentState' + PolyworksGame.currentState); 
 		if(PolyworksGame.currentState !== '') {
 			_states[PolyworksGame.currentState].orientationSet(PolyworksGame.isLandscape);
 		}
 	}
+	
+	function resizedw(){
+	    // Haven't resized in 100ms!
+	}
+
+	window.onresize = function(){
+	};
 	
 	function _preload() {
 		trace('PolyworksGame/_preload');
@@ -189,6 +192,16 @@ PolyworksGame = (function() {
 	}
 	
 	function _addListeners() {
+		window.onorientationchange = function(event) {
+			_orientationChange();
+		};
+		window.onresize = function(event) {
+			// if(_isTouchDevice) {
+			  clearTimeout(_resizeTimer);
+			  _resizeTimer = setTimeout(_orientationChange, _resizeInterval);
+			// }
+		};
+
 		Polyworks.EventCenter.begin();
 		Polyworks.EventCenter.bind(Polyworks.Events.STAGE_INITIALIZED, _onStageInitialized, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.CONFIG_LOADED, _onConfigLoaded, this);
@@ -198,6 +211,8 @@ PolyworksGame = (function() {
 	}
 
 	function _removeListeners() {
+		window.onorientationchange = null;
+		window.onresize = null;
 		Polyworks.EventCenter.unbind(Polyworks.Events.STAGE_INITIALIZED, _onStageInitialized, this);
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONFIG_LOADED, _onConfigLoaded, this);
 		Polyworks.EventCenter.unbind(Polyworks.Events.BUTTON_PRESSED, _onControlPressed, this);
@@ -209,8 +224,6 @@ PolyworksGame = (function() {
 		_stageInitialized = true;
 		_isTouchDevice = (navigator.userAgent.match(/ipad|iphone|android/i) !== null);
 		trace('PolyworksGame/_onStageInitialized, _isTouchDevice = ' + _isTouchDevice);
-		_checkOrientation();
-		_beginWindow();
 
 		// trace('PolyworksGame/begin, stage w/h = ' + Polyworks.Stage.width + '/' + Polyworks.Stage.height);
 		// trace((Polyworks.Stage.height * 2) + ' ' + ((-Polyworks.Stage.height) + 10));
@@ -225,9 +238,9 @@ PolyworksGame = (function() {
 		PolyworksGame.startingHealth = _model.player.attrs.phaser.health;
 		PolyworksGame.phaser = new Phaser.Game(Polyworks.Stage.winW, Polyworks.Stage.winH, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
 
-		if(_statesInitialized) {
-			PolyworksGame.changeState(_model.initialState);
-		}
+		// if(_statesInitialized) {
+		// 	PolyworksGame.changeState(_model.initialState);
+		// }
 	}
 	function _onControlPressed(event) {
 		switch(event.value) {

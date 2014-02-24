@@ -9,6 +9,5 @@ function trace(message, level) {
 			},
 			this
 		);
-		// console.log(arguments)
 	}
 }
