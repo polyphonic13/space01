@@ -1,9 +1,10 @@
 
 # flags:
 #
+#	-p	target project (required)
+#	-t	target directory: optional directory target; defaults to target project value
 # 	-r	remove previous deploy directory prior to running grunt
 #	-g	skip grunt
-#	-p	target project (for selective deployment)
 #	-c 	commit repo to target git branch
 #
 set -e
@@ -12,10 +13,11 @@ REMOVE_DEPLOY=0
 SKIP_GRUNT=0
 SKIP_IMAGES=0
 TARGET_PROJECT=""
-TEMP_DIR=""
+PROJECT_DIR=""
+TARGET_DIR=""
 PUBLIC_DIR="public"
 DEPLOY_DIR="deploy"
-DEST_DIR="games"
+GAMES_DIR="games"
 
 function remove_deploy_dir {
 	deploy_dir=$PUBLIC_DIR/$DEPLOY_DIR
@@ -30,26 +32,21 @@ function remove_deploy_dir {
 
 function run_grunt_tasks {
 	echo "RUNNING GRUNT, PROJECT = $TARGET_PROJECT"
-	grunt -pjt $TARGET_PROJECT
+	grunt -pjt=$TARGET_PROJECT
 
-	if([ "$SKIP_IMAGES" = 0 ])
-		then
-		grunt "$TARGET_PROJECT-images"
-	fi
-	
 	make_temp_dir_and_copy_files_to_server
 }
 
 function make_temp_dir_and_copy_files_to_server {
 	# cd $PUBLIC_DIR
 	# echo "MAKING TEMP DIR"
-	# cp -r $DEPLOY_DIR $TEMP_DIR
+	# cp -r $DEPLOY_DIR $PROJECT_DIR
 
-	dir_to_copy="$PUBLIC_DIR/$DEPLOY_DIR/$TEMP_DIR"
-	. ./bin/dreamhost_copy.sh $dir_to_copy $DEST_DIR
+	dir_to_copy="$PUBLIC_DIR/$DEPLOY_DIR/$PROJECT_DIR"
+	. ./bin/dreamhost_copy.sh $dir_to_copy "$GAMES_DIR/$TARGET_DIR"
 
 	# echo "REMOVING TEMP DIR"
-	# rm -r $PUBLIC_DIR/$TEMP_DIR
+	# rm -r $PUBLIC_DIR/$PROJECT_DIR
 }
 
 function commit_to_target_git_branch {
@@ -65,11 +62,14 @@ function commit_to_target_git_branch {
 	echo "PUSHED GIT COMMIT TO $git_branch"
 }
 
-while getopts "t:rigc" opt; do
+while getopts "p:t:rigc" opt; do
 	case $opt in
-	    t)
+	    p)
 			TARGET_PROJECT=$OPTARG
 	    	;;
+		t)
+			TARGET_DIRECTOR="$OPTARG/"
+			;;
 		r)
 			REMOVE_DEPLOY=1
 			;;
@@ -93,10 +93,10 @@ while getopts "t:rigc" opt; do
   esac
 done
 
-if([ "$SKIP_IMAGES" = 1 ])
-	then
-	REMOVE_DEPLOY=1
-fi
+# if([ "$SKIP_IMAGES" = 1 ])
+# 	then
+# 	REMOVE_DEPLOY=1
+# fi
 
 if([ "$REMOVE_DEPLOY" = 1 -a "$SKIP_GRUNT" = 1 ])
 	then 
@@ -110,7 +110,11 @@ if([ "$TARGET_PROJECT" = "" ])
 	echo "ERROR: CAN NOT DEPLOY WITHOUT TARGET PROJECT"
 	exit 1
 else 
-	TEMP_DIR="$TARGET_PROJECT/"
+	PROJECT_DIR="$TARGET_PROJECT/"
+	if([ "TARGET_DIRECTORY" = "" ])
+		then
+		TARGET_DIRECTOY="$PROJECT_DIR"
+	fi
 fi
 
 echo "DEPLOYING GAME"

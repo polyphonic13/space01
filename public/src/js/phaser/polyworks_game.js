@@ -88,9 +88,9 @@ PolyworksGame = (function() {
 						PolyworksGame.currentState = id;
 						trace('PolyworksGame/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
 						// trace(_states);
-						if(_firstStateChanged) {
+						// if(_firstStateChanged) {
 							PolyworksGame.addLoadingDiv();
-						}
+						// }
 						PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
 						_firstStateChanged = true;
 					} else {
