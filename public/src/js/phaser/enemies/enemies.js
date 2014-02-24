@@ -18,6 +18,19 @@ Polyworks.Enemies = (function() {
 		);
 	};
 	
+	Enemies.prototype.activateGravity = function() {
+		trace('Enemies['+this.model.name+']/activateGravity, collection');
+		trace(this.model.collection);
+		Enemies._super.activateGravity.call(this);
+	};
+
+	Enemies.prototype.killEnemy = function(name) {
+		// this = me;
+		// trace('Enemies['+this.model.name+']/killEnemy, name = ' + name);
+		// trace(this);
+		this.removeChild(name);
+	};
+	
 	Enemies.prototype.destroyEnemy = function(name, ancestor) {
 		// trace('Enemies/destroyEnemy, name = ' + name);
 		// trace(this);

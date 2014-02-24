@@ -10,8 +10,13 @@ Polyworks.InputButton = (function() {
 		// trace('\tinput button model = ');
 		// trace(this.model);
 		var attrs = this.model.attrs;
-		// Phaser.Button.call(this, params.game, attrs.x, attrs.y, attrs.img, null, this);
-		InputButton._super.constructor.call(this, params.game, attrs.x, attrs.y, attrs.img, null, this);
+		var frames = attrs.frames;
+		if(frames) {
+			// trace('InputButton['+this.model.name+'] has frames: ' + frames);
+			InputButton._super.constructor.call(this, params.game, attrs.x, attrs.y, attrs.img, null, this, frames[0], frames[1], frames[2]);
+		} else {
+			InputButton._super.constructor.call(this, params.game, attrs.x, attrs.y, attrs.img, null, this);
+		}
 	};
 	
 	InputButton.prototype.begin = function() {

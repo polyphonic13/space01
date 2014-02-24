@@ -1,4 +1,8 @@
 PolyworksGame = (function() {
+	// var _gameTitle = 'Keke vs. the Caterpillars';
+	var _gameTitle = '';
+	var _isTouchDevice = false;
+
 	var _model = {};
 	var _player = {};
 	var _controls = {};
@@ -13,11 +17,16 @@ PolyworksGame = (function() {
 		totalLevels: 0,
 		currentState: '',
 		previousState: '',
+		isLandscape: false,
 		gameOver: false,
 		isQuit: false,
 
 		begin: function(params) {
-			window.scrollTo(0,0);
+			_isTouchDevice = (navigator.userAgent.match(/ipad|iphone|android/i) !== null);
+			trace('PolyworksGame/begin, _isTouchDevice = ' + _isTouchDevice);
+			_checkOrientation();
+			_beginWindow();
+
 			// trace('PolyworksGame/begin, stage w/h = ' + PolyworksStage.width + '/' + PolyworksStage.height);
 			// trace((PolyworksStage.height * 2) + ' ' + ((-PolyworksStage.height) + 10));
 			_model = params;
@@ -28,7 +37,8 @@ PolyworksGame = (function() {
 		},
 
 		get: function(prop) {
-			if(_model.hasOwnProperty(prop)) {
+			// if(_model.hasOwnProperty(prop)) {
+			if(Utils.has(_model, prop)) {
 				return _model[prop];
 			} else {
 				return null;
@@ -49,6 +59,7 @@ PolyworksGame = (function() {
 							id = 'level' + PolyworksGame.currentLevel;
 						} else {
 							PolyworksGame.currentLevel = 1;
+							trace('ALL COMPLETED, CURRENT LEVEL = ' + PolyworksGame.currentLevel);
 							id = 'completed';
 						}
 					break;
@@ -57,6 +68,8 @@ PolyworksGame = (function() {
 						if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels)) {
 							id = 'intermission';
 						} else {
+							PolyworksGame.currentLevel = 1;
+							trace('ALL COMPLETED, CURRENT LEVEL = ' + PolyworksGame.currentLevel);
 							id = 'completed';
 						}
 					break;
@@ -78,7 +91,7 @@ PolyworksGame = (function() {
 						PolyworksGame.currentState = id;
 						trace('PolyworksGame/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
 						// trace(_states);
-						PolyworksGame.showLoadingDiv();
+						PolyworksGame.addLoadingDiv();
 						PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
 					} else {
 						// trace('ERROR: state['+id+'] not found');
@@ -97,18 +110,24 @@ PolyworksGame = (function() {
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.HEALTH_UPDATED });
 		},
 
-		hideLoadingDiv: function() {
+		removeLoadingDiv: function() {
 			var loading = document.getElementById('loading');
-			loading.style.visibility = 'hidden';
-			loading.style.display = 'none';
+			var loadingHolder = document.getElementById('loadingHolder');
+			trace(loading);
+			trace(loadingHolder);
+			loadingHolder.removeChild(loading);
+			trace(loadingHolder);
 		},
-		
-		showLoadingDiv: function() {
-			var loading = document.getElementById('loading');
-			loading.style.visibility = 'visible';
-			loading.style.display = 'block';
+
+		addLoadingDiv: function() {
+			var loading = document.createElement('div');
+			loading.setAttribute('id', 'loading');
+			loading.innerHTML = _gameTitle;
+
+			var loadingHolder = document.getElementById('loadingHolder');
+			loadingHolder.appendChild(loading);
 		},
-		
+
 		quit: function() {
 			// trace('PolyworksGame/quit');
 			if(!PolyworksGame.isQuit) {
@@ -117,6 +136,32 @@ PolyworksGame = (function() {
 		}
 	};
 
+	function _checkOrientation() {
+		var w = window.innerWidth;
+		var h = window.innerHeight;
+		PolyworksGame.isLandscape = (w > h) ? true : false;
+	}
+	
+	function _beginWindow() {
+		window.scrollTo(0,0);
+		window.onorientationchange = function(event) {
+			_orientationChange(event);
+		};
+		window.onresize = function(event) {
+			if(_isTouchDevice) {
+				_orientationChange(event);
+			}
+		};
+	}
+
+	function _orientationChange(event) {
+		_checkOrientation();
+		trace('PolyworksGame/_orientationChange, isLandscape = ' + PolyworksGame.isLandscape + ', currentState' + PolyworksGame.currentState); 
+		if(PolyworksGame.currentState !== '') {
+			_states[PolyworksGame.currentState].orientationSet(PolyworksGame.isLandscape);
+		}
+	}
+	
 	function _preload() {
 		// trace('_preload');
 		var phaser = PolyworksGame.phaser;
@@ -137,6 +182,7 @@ PolyworksGame = (function() {
 		// trace('preload sprites');
 		Utils.each(sprites,
 			function(sprite, key) {
+				// trace('PolyworksGame setting sprite['+key+'] loaded to false');
 				// phaser.load.spritesheet(key, sprite.url, sprite.width, sprite.height, sprite.frames);
 				loadedSprites[key] = false;
 			},
@@ -149,7 +195,7 @@ PolyworksGame = (function() {
 	
 	function _create() {
 		// _removeLoadingAnimation();
-		// PolyworksGame.hideLoadingDiv();
+		// PolyworksGame.removeLoadingDiv();
 		_addListeners();
 		_beginControls();
 		_beginStates();

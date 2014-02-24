@@ -23,7 +23,6 @@ Polyworks.Player = (function() {
 		this.damageInterval = 250;
 		this.justDamaged = false;
 
-		this.beginGetterSetters();
 		this.beginWorld();
 		this.beginEvents();
 		this.beginControls();
@@ -36,24 +35,6 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.setGroup = function(group) {
 		this.group = group;
-	};
-	
-	Player.prototype.beginGetterSetters = function() {
-		this.__defineGetter__('facingForward', function() {
-			return this.model.attrs.facingForward;
-		});
-		this.__defineSetter__('facingForward', function(val) {
-			this.model.attrs.facingForward = val;
-		});
-		this.__defineGetter__('attack', function() {
-			return this.model.attrs.attack;
-		});
-		this.__defineGetter__('isJumping', function() {
-			return this.model.attrs.jumping;
-		});
-		this.__defineGetter__('sprite', function() {
-			return this;
-		});
 	};
 	
 	Player.prototype.beginWorld = function() {
@@ -128,13 +109,11 @@ Polyworks.Player = (function() {
 			attrs.facingForward = true;
 		}
 
-		// this.velocityX = this.velX;
 		this.body.velocity.x = this.velX;
 
 		if(this.activeControls[Polyworks.InputCodes.UP]) {
 			if(attrs.grounded && !attrs.justJumped) {
 				this.velY = -attrs.speed.y;
-				// this.velocityY = this.velY;
 				this.body.velocity.y = this.velY;
 				attrs.grounded = false;
 				attrs.jumping = true;
@@ -145,7 +124,6 @@ Polyworks.Player = (function() {
 		} else if(this.activeControls[Polyworks.InputCodes.DOWN]) {
 			// trace('Player/updatePosition, down is active')
 		}
-		// trace('end player update input, velX = ' + this.velocityX + ', velY = ' + this.velocityY);
 	};
 	
 	Player.prototype.updatePositionFromCollision = function() {
@@ -154,6 +132,7 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.pwUpdate = function(params) {
+		// trace('Player/update, x/y = ' + this.body.screenX + '/' + this.body.screenY);
 		// trace('Player/update, health = ' + this.health);
 		// trace(params);
 		if(this.alive) {
@@ -214,15 +193,15 @@ Polyworks.Player = (function() {
 		var playerY = player.body.y + (player.body.height);
 		var enemyX = enemy.body.x + (enemy.body.width);
 		var enemyY = enemy.body.y + (enemy.body.height);
-		// trace('Player/enemyCollision, player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
+		// trace('Player/enemyCollision['+enemy.model.name+'], player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
 		// trace(enemy);
 
 		if(playerY < (enemyY - 15)) { // player is above enemy
 			this.updatePositionFromCollision();
 			//enemy.receiveDamage(this.damage);
-			enemy.damage(this.attack);
+			enemy.damage(this.model.attrs.attack);
 		} else {
-			this.receiveDamage(enemy.attack);
+			this.receiveDamage(enemy.model.attrs.attack);
 		}
 	};
 	

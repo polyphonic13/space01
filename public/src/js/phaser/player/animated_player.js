@@ -30,20 +30,18 @@ Polyworks.AnimatedPlayer = (function() {
 		} else {
 			if(attrs.jumping) {										// JUMPING
 				// trace('player jumping');
-				if(this.facingForward) {
+				if(attrs.facingForward) {
 					// trace('playing jump r animation');
 					this.stop();
-					// this.frame = 9;
 					this.play(AnimationTypes.JUMP_R, animations[AnimationTypes.JUMP_R].frameRate, animations[AnimationTypes.JUMP_R].loop);
 				} else {
 					this.stop();
-					// this.frame = 24;
 					this.play(AnimationTypes.JUMP_L, animations[AnimationTypes.JUMP_L].frameRate, animations[AnimationTypes.JUMP_L].loop);
 				}
 			} else {
 				if(!attrs.grounded && (this.body.y > this.previousY) && !this.collided) {
 					// trace('player grounded = ' + attrs.grounded + ', collided = ' + this.collided);
-					if(this.facingForward) {
+					if(attrs.facingForward) {
 						this.play(AnimationTypes.FALLING_R, animations[AnimationTypes.FALLING_R].frameRate, animations[AnimationTypes.FALLING_R].loop);
 					} else {
 						this.play(AnimationTypes.FALLING_L, animations[AnimationTypes.FALLING_L].frameRate, animations[AnimationTypes.FALLING_L].loop);
@@ -51,7 +49,7 @@ Polyworks.AnimatedPlayer = (function() {
 				} else {
 					if(this.velX === 0) {												// IDLE
 						this.stop();
-						if(this.facingForward) {
+						if(attrs.facingForward) {
 							this.play(AnimationTypes.IDLE_R, animations[AnimationTypes.IDLE_R].frameRate, animations[AnimationTypes.IDLE_R].loop);
 						} else {
 							this.play(AnimationTypes.IDLE_L, animations[AnimationTypes.IDLE_L].frameRate, animations[AnimationTypes.IDLE_L].loop);

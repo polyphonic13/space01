@@ -35,10 +35,15 @@ Utils = (function() {
 		return a;
 	};
 
+	utils.has = function(obj, prop) {
+		return Object.prototype.hasOwnProperty.call(obj, prop);
+	};
+	
 	utils.objLength = function(obj) {
 		var length = 0;
 		for(var key in obj) {
-			if(obj.hasOwnProperty(key)) { length++; }
+			// if(obj.hasOwnProperty(key)) { length++; }
+			if(Utils.has(obj, key)) { length++; }
 		}
 		return length;
 	};
@@ -58,6 +63,22 @@ Utils = (function() {
 	    c.prototype = new f();
 	};
 
+	utils.defineGetter = function(obj, prop, func) {
+		Object.defineProperty(obj, prop, {
+			get: function() {
+				func();
+			}
+		});
+	};
+	
+	utils.defineSetter = function(obj, prop, func) {
+		Object.defineProperty(obj, prop, {
+			set: function(val) {
+				func(val);
+			}
+		});
+	};
+	
 	utils.isInView = function(pos) {
 		if(pos.x > 0 && pos.x < stageConfig.width && pos.y > 0 && pos.y < stageConfig.height) {
 			return true;

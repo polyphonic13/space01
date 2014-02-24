@@ -13,7 +13,6 @@ Polyworks.LevelState = (function() {
 		this.cursors;
 		this.player; 
 		this.quitButton;
-		// PolyworksGame.score = 0;
 	};
 	
 	LevelState.prototype.preload = function() {
@@ -32,6 +31,7 @@ Polyworks.LevelState = (function() {
 
 		this.terrain = this.getChildByName('terrain');
 		this.sectorManager = this.getChildByName('sectors');
+		this.sectorManager.setState(this);
 		this.sectorManager.setActiveSector(0);
 
 		this.createPlayer();
@@ -54,24 +54,16 @@ Polyworks.LevelState = (function() {
 		trace('LevelState['+this.model.name+']/player created, jump = ' + playerConfig.attrs.speed.y, playerConfig);
 	};
 	
-	LevelState.prototype.addOvalMask = function() {
-		var mask = PolyworksGame.phaser.add.sprite(-5, -5, 'ovalMask');
-		mask.width = PolyworksStage.width + 10;
-		mask.height = PolyworksStage.height + 10;
-		mask.fixedToCamera = true;
-	};
-	
 	LevelState.prototype.update = function() {
 		if(!this.paused) {
 			// trace('LevelState['+this.model.name+']/update');
 			if(this.player.body.x >= this.model.bounds.end) {
 				PolyworksGame.changeState('intermission');
 			} else {
-				// update active sector via sector manager
-				var sector = this.sectorManager.activeSector;
+				var sector = this.activeSector;
 
 				var updateParams = {
-					player: this.player.sprite,
+					player: this.player,
 					terrain: this.terrain.group,
 					dynamicTerrain: sector.dynamicTerrain.getActive(),
 					position: {

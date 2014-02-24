@@ -5,20 +5,36 @@ Polyworks.SectorManager = (function() {
 		// trace('SectorManager['+params.name+']/constructor, params = ');
 		// trace(params);
 		SectorManager._super.constructor.call(this, params);
-		this.activeSectorId = 0;
-
-		this.__defineGetter__('activeSector', function() {
-			return this.model.collection[this.activeSectorId];
-		});
+		// this.setActiveSector(0);
 	}
+
+	SectorManager.prototype.setState = function(state) {
+		this.model.set({ state: state });
+	};
+	
+	SectorManager.prototype.setActiveSector = function(idx) {
+		this.deactivateAll();
+		this.activeSectorId = idx;
+		this.model.collection[idx].setActive(true);
+
+		var state = this.model.get('state');
+		state.activeSector = this.model.collection[idx];
+	};
+	
+	SectorManager.prototype.getActiveSector = function() {
+		return this.model.collection[this.activeSectorId];
+	};
 	
 	SectorManager.prototype.checkTerrainCollision = function(terrain) {
+		this.model.collection[this.activeSectorId].checkTerrainCollision(terrain);
+		/*
 		Utils.each(this.model.collection,
 			function(c) {
 				c.checkTerrainCollision(terrain);
 			},
 			this
 		);
+		*/
 	};
 	
 	SectorManager.prototype.pwUpdate = function(params) {
@@ -27,34 +43,26 @@ Polyworks.SectorManager = (function() {
 		this.model.collection[this.activeSectorId].pwUpdate(params);
 	};
 	
-	SectorManager.prototype.setActiveSector = function(idx) {
-		this.deactivateAll();
-		this.activeSectorId = idx;
-		this.model.collection[idx].setActive(true);
-	};
-	
 	SectorManager.prototype.findActiveSector = function(position) {
 		// trace('SectorManager/findActiveSector, this = ');
 		// trace(this);
 		var bounds;
 		// reset all sectors to off
-		this.deactivateAll();
+		// this.deactivateAll();
 
-		// find sector within bounds
-		Utils.each(this.model.collection, 
-			function(c, i) {
-				bounds = c.bounds;
-				// trace('bounds['+i+'] start/end = ' + bounds.start + '/' + bounds.end + ', x = ' + position.x);
-				if(position.x > bounds.start && position.x < bounds.end) {
-					if(this.activeSectorId !== i) {
-						trace('new sector id = ' + i + ', name = ' + c.model.name);
-						this.activeSectorId = i;
-						c.setActive(true);
-					}
+		var c = this.model.collection;
+		var length = c.length;
+
+		for(var i = 0; i < length; i++) {
+			bounds = c[i].model.bounds;
+			if(position.x > bounds.start && position.x < bounds.end) {
+				if(this.activeSectorId !== i) {
+					trace('new sector id = ' + i + ', name = ' + c[i].model.name);
+					this.setActiveSector(i);
+					break;
 				}
-			},
-			this
-		);
+			}
+		}
 	};
 	
 	SectorManager.prototype.deactivateAll = function() {

@@ -9,33 +9,19 @@ Polyworks.Enemy = (function() {
 		Enemy._super.constructor.call(this, params);
 		// trace(this);
 		// trace(_this);
+		// this.deactivateGravity();
 	}
 
 	Enemy.prototype.begin = function() {
 		// trace('Enemy['+this.model.name+']/begin');
 		// trace(this);
 		Enemy._super.begin.call(this);
-		this.beginGetterSetters();
 		// trace('Enemy['+this.model.name+']/begin, size = ' + this.width + '/' + this.height + ', body size = ' + this.body.width + '/' + this.body.height);
 	};
 
-	Enemy.prototype.beginGetterSetters = function() {
-		Enemy._super.beginGetterSetters.call(this);
-
-		this.__defineGetter__('active', function() {
-			return this.model.active;
-		});
-		this.__defineSetter__('active', function(val) {
-			this.model.active = val;
-		});
-		this.__defineGetter__('score', function() {
-			return this.model.attrs.score;
-		});
-	};
-	
 	Enemy.prototype.pwUpdate = function(params) {
 		if(this.alive) {
-			// trace('Enemy['+this.model.name+']/pwUpdate');
+			// trace('Enemy['+this.model.name+']/pwUpdate, x/y = ' + this.body.screenX + '/' + this.body.screenY);
 			// trace(this);
 			var enemyX = this.body.screenX;
 			var playerX = params.player.body.screenX;
@@ -45,7 +31,6 @@ Polyworks.Enemy = (function() {
 			} else {
 				this.isInView = false;
 			}
-			
 			this.checkDynamicTerrainCollision(params.dynamicTerrain);
 		}
 	};
@@ -59,8 +44,10 @@ Polyworks.Enemy = (function() {
 	};
 	
 	Enemy.prototype.kill = function() {
-		trace('Enemy['+this.model.name+']/kill');
-		PolyworksGame.setScore(this.score);
+		trace('Enemy['+this.model.name+']/kill, ancestor = ');
+		// trace(this.model);
+		PolyworksGame.setScore(this.model.attrs.score);
+		this.model.ancestor.killEnemy.call(this.model.ancestor, this.model.name);
 		Enemy._super.kill.call(this);
 	};
 	

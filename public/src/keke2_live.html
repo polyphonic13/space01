@@ -2,15 +2,16 @@
 <html lang="en"> 
 <head> 
 	<meta charset="UTF-8" />
-	<title>keke vs. caterpillars (phaserjs)</title>
+	<title>keke vs. caterpillars</title>
 	<link rel="stylesheet" href="css/keke.css" />
 	<script type="text/javascript" src="js/third_party/phaser.min.js"></script>
 </head>
 <body onload="start();">
-	<div id="loading">Keke vs. the Caterpillars</div>
+	<div id="loadingHolder"></div>
 	<div id="gameContainer"></div>
+
 	<script type="text/javascript" src="js/stage.min.js"></script>
-	<script type="text/javascript" src="js/keke2_game.min.js"></script>
+	<script type="text/javascript" src="js/keke2_game.js"></script>
 	<script type="text/javascript">
 		function start() {
 			PolyworksGame.begin(config);			
