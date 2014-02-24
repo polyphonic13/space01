@@ -1,6 +1,6 @@
 Polyworks.State = (function() {
-	Utils.inherits(State, Polyworks.Collection);
-	// Utils.inherits(State, Phaser.State); 
+	Polyworks.Utils.inherits(State, Polyworks.Collection);
+	// Polyworks.Utils.inherits(State, Phaser.State); 
 	
 	function State(params) {
 		// trace('State['+params.name+']/constructor');
@@ -44,7 +44,7 @@ Polyworks.State = (function() {
 			// trace(this.model.images);
 			if(this.model.images.length > 0) {
 				var images = PolyworksGame.get('images');
-				Utils.each(this.model.images,
+				Polyworks.Utils.each(this.model.images,
 					function(img) {
 						trace('\t\timage['+img+'] loaded = ' + PolyworksGame.loadedImages[img]);
 						if(!PolyworksGame.loadedImages[img]) {
@@ -58,7 +58,7 @@ Polyworks.State = (function() {
 			}
 			if(this.model.sprites.length > 0) {
 				var sprites = PolyworksGame.get('sprites');
-				Utils.each(this.model.sprites,
+				Polyworks.Utils.each(this.model.sprites,
 					function(spr) {
 						trace('\t\tsprite['+spr+'] loaded = ' + PolyworksGame.loadedSprites[spr]);
 						if(!PolyworksGame.loadedImages[spr]) {

@@ -32,7 +32,7 @@ Polyworks.EventCenter = (function() {
 	eventCenter.trigger = function(params) {
 		var list = _listeners[params.type];
 		if(list) {
-			Utils.each(list,
+			Polyworks.Utils.each(list,
 				function(l) {
 					if(l && l.callback) { // in case callback is destroyed during course of trigger
 						l.callback.call(l.context, params);
@@ -46,7 +46,7 @@ Polyworks.EventCenter = (function() {
 	eventCenter.unbind = function(type, callback) {
 		var listeners = _listeners[type];
 		if(listeners) {
-			Utils.each(listeners,
+			Polyworks.Utils.each(listeners,
 				function(l, i) {
 					if(l && l.callback === callback) {
 						listeners.splice(i, 1);
@@ -61,7 +61,7 @@ Polyworks.EventCenter = (function() {
 		// iterate thru _listeners object
 		// for each type, remove all array elements
 		// then delete type from _listeners
-		Utils.each(_listeners,
+		Polyworks.Utils.each(_listeners,
 			function(l, key) {
 				l = [];
 				delete _listeners[key];

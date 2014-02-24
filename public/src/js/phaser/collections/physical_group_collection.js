@@ -1,5 +1,5 @@
 Polyworks.PhysicalGroupCollection = (function() {
-	Utils.inherits(PhysicalGroupCollection, Polyworks.GroupCollection);
+	Polyworks.Utils.inherits(PhysicalGroupCollection, Polyworks.GroupCollection);
 	
 	function PhysicalGroupCollection(params) {
 		PhysicalGroupCollection._super.constructor.call(this, params);
@@ -9,7 +9,7 @@ Polyworks.PhysicalGroupCollection = (function() {
 		// trace('PhysicalGroupCollection['+this.model.name+']/checkTerrainCollsion');
 		// trace(terrain);
 		// trace(this);
-		Utils.each(this.model.collection,
+		Polyworks.Utils.each(this.model.collection,
 			function(c) {
 				c.checkTerrainCollision(terrain);
 			},
@@ -21,7 +21,7 @@ Polyworks.PhysicalGroupCollection = (function() {
 		// trace('PhysicalGroupCollection['+this.model.name+']/checkDyanmicTerrainCollision');
 		// trace(terrain);
 		// trace(this);
-		Utils.each(this.model.collection,
+		Polyworks.Utils.each(this.model.collection,
 			function(c) {
 				c.checkDynamicTerrainCollision(terrain);
 			},
@@ -30,7 +30,7 @@ Polyworks.PhysicalGroupCollection = (function() {
 	};
 	
 	PhysicalGroupCollection.prototype.deactivateGravity = function() {
-		Utils.each(this.model.collection,
+		Polyworks.Utils.each(this.model.collection,
 			function(c) {
 				c.deactivateGravity();
 			},
@@ -40,7 +40,7 @@ Polyworks.PhysicalGroupCollection = (function() {
 	
 	PhysicalGroupCollection.prototype.activateGravity = function() {
 		// trace('PhysicalGroupCollection['+this.model.name+']/activateGravity, collection length = ' + collection.length);
-		Utils.each(this.model.collection,
+		Polyworks.Utils.each(this.model.collection,
 			function(c) {
 				c.activateGravity();
 			},
@@ -51,7 +51,7 @@ Polyworks.PhysicalGroupCollection = (function() {
 	PhysicalGroupCollection.prototype.getActive = function() {
 		// trace('PhysicalGroupCollection['+this.model.name+']/getActive, collection length = ' + this.model.collection.length);
 		var activeElements = [];
-		Utils.each(this.model.collection,
+		Polyworks.Utils.each(this.model.collection,
 			function(c) {
 				// trace('c['+c.model.name+'].active = ' + c.active);
 				if(c.active) {

@@ -16,7 +16,7 @@ Polyworks.Collection = (function() {
 		var child;
 		var params;
 
-		Utils.each(children,
+		Polyworks.Utils.each(children,
 			function(c, i) {
 				c.game = game;
 				c.ancestor = this;

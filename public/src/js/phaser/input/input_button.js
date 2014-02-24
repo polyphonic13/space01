@@ -1,5 +1,5 @@
 Polyworks.InputButton = (function() {
-	Utils.inherits(InputButton, Phaser.Button);
+	Polyworks.Utils.inherits(InputButton, Phaser.Button);
 	
 	var _this;
 	function InputButton(params) {

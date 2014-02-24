@@ -1,4 +1,4 @@
-Utils = (function() {
+Polyworks.Utils = (function() {
 	var utils = {};
 
 	utils.each = function(list, callback, context) {

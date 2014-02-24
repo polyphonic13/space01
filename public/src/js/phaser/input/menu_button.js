@@ -1,5 +1,5 @@
 Polyworks.MenuButton = (function() {
-	Utils.inherits(MenuButton, Polyworks.InputButton);
+	Polyworks.Utils.inherits(MenuButton, Polyworks.InputButton);
 	
 	var _this;
 	function MenuButton(params) {

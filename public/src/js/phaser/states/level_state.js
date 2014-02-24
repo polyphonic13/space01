@@ -1,5 +1,5 @@
 Polyworks.LevelState = (function() {
-	Utils.inherits(LevelState, Polyworks.State); 
+	Polyworks.Utils.inherits(LevelState, Polyworks.State); 
 	
 	var _this;
 	function LevelState(params) {
@@ -40,7 +40,7 @@ Polyworks.LevelState = (function() {
 	};
 
 	LevelState.prototype.createPlayer = function() {
-		var playerConfig = Utils.clone(PolyworksGame.get('player'));
+		var playerConfig = Polyworks.Utils.clone(PolyworksGame.get('player'));
 		// trace('Level['+this.model.name+']/createPlyaer, playerConfig = ');
 		// trace(playerConfig);
 
@@ -89,7 +89,7 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.shutdown = function() {
-		Utils.each(this.model.collection,
+		Polyworks.Utils.each(this.model.collection,
 			function(c) {
 				c.destroy();
 			},

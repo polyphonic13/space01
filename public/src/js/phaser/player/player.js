@@ -1,6 +1,6 @@
 Polyworks.Player = (function() {
-	// Utils.inherits(Player, Polyworks.AnimatedSprite);
-	Utils.inherits(Player, Polyworks.Sprite);
+	// Polyworks.Utils.inherits(Player, Polyworks.AnimatedSprite);
+	Polyworks.Utils.inherits(Player, Polyworks.Sprite);
 
 	var _this;
 	function Player(params) {
@@ -172,7 +172,7 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.checkCollision = function(collection, callback, physics, context) {
 		// trace('Player/checkCollision, health = ' + this.health);
-		Utils.each(collection,
+		Polyworks.Utils.each(collection,
 			function(c) {
 				physics.overlap(this, c, callback, null, context);
 			},

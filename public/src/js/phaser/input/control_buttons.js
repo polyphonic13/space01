@@ -1,5 +1,5 @@
 Polyworks.ControlButtons = (function() {
-	Utils.inherits(ControlButtons, Polyworks.GroupCollection);
+	Polyworks.Utils.inherits(ControlButtons, Polyworks.GroupCollection);
 	
 	var _this = this;
 	function ControlButtons(params) {
@@ -25,7 +25,7 @@ Polyworks.ControlButtons = (function() {
 		// trace('ControlButtons['+this.model.name+']/destroy');
 		// trace(this);
 //		ControlButtons._super.destroy.call(this);
-		Utils.each(this.model.collection,
+		Polyworks.Utils.each(this.model.collection,
 			function(c) {
 				c.destroy();
 			},

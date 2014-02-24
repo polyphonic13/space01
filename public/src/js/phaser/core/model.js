@@ -6,7 +6,7 @@ Polyworks.Model = (function() {
 		// trace(params);
 		_this = this;
 		this.active = true;
-		Utils.each(params,
+		Polyworks.Utils.each(params,
 			function(p, key) {
 				this[key] = p;
 			},
@@ -25,7 +25,7 @@ Polyworks.Model = (function() {
 	};
 	
 	Model.prototype.set = function(params) {
-		Utils.each(params,
+		Polyworks.Utils.each(params,
 			function(p, key) {
 				this[key] = p;
 			},

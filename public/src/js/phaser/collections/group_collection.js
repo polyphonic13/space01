@@ -1,6 +1,6 @@
 // collection of Phaser group objects
 Polyworks.GroupCollection = (function() {
-	Utils.inherits(GroupCollection, Polyworks.Collection);
+	Polyworks.Utils.inherits(GroupCollection, Polyworks.Collection);
 	
 	function GroupCollection(params, groupContext) {
 		// trace('GroupCollection['+params.name+']/constructor, groupContext = ' + groupContext);
@@ -28,7 +28,7 @@ Polyworks.GroupCollection = (function() {
 			group = game.add.group();
 		}
 
-		Utils.each(collection,
+		Polyworks.Utils.each(collection,
 			function(c) {
 				group.add(c);
 			},

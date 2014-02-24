@@ -1,5 +1,5 @@
 Polyworks.Enemies = (function() {
-	Utils.inherits(Enemies, Polyworks.PhysicalGroupCollection);
+	Polyworks.Utils.inherits(Enemies, Polyworks.PhysicalGroupCollection);
 	
 	function Enemies(params) {
 		// trace('Enemies['+params.name+']/constructor');
@@ -8,7 +8,7 @@ Polyworks.Enemies = (function() {
 	}
 	
 	Enemies.prototype.pwUpdate = function(params) {
-		Utils.each(this.model.collection,
+		Polyworks.Utils.each(this.model.collection,
 			function(c) {
 				if(c.alive) {
 					c.pwUpdate(params);

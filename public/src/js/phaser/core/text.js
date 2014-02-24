@@ -1,5 +1,5 @@
 Polyworks.Text = (function() {
-	Utils.inherits(Text, Phaser.Text);
+	Polyworks.Utils.inherits(Text, Phaser.Text);
 	var _this; 
 	
 	function Text(params) {
@@ -8,7 +8,7 @@ Polyworks.Text = (function() {
 		var attrs = this.model.attrs;
 		// trace('Text['+params.name+']/constructor, this = ');
 		// trace(this);
-		var content = Utils.parseMarkup(attrs.defaultContent, PolyworksGame);
+		var content = Polyworks.Utils.parseMarkup(attrs.defaultContent, PolyworksGame);
 		Text._super.constructor.call(this, params.game, attrs.x, attrs.y, content, attrs.style);
 
 	}

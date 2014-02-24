@@ -32,7 +32,7 @@ PolyworksGame = (function() {
 
 		get: function(prop) {
 			// if(_model.hasOwnProperty(prop)) {
-			if(Utils.has(_model, prop)) {
+			if(Polyworks.Utils.has(_model, prop)) {
 				return _model[prop];
 			} else {
 				return null;
@@ -158,7 +158,7 @@ PolyworksGame = (function() {
 		// trace('preload images');
 		var loadedImages = {};
 
-		Utils.each(images,
+		Polyworks.Utils.each(images,
 			function(image, key) {
 				// phaser.load.image(key, image);
 				loadedImages[key] = false;
@@ -169,7 +169,7 @@ PolyworksGame = (function() {
 		var sprites = _model.sprites;
 		var loadedSprites = {};
 		// trace('preload sprites');
-		Utils.each(sprites,
+		Polyworks.Utils.each(sprites,
 			function(sprite, key) {
 				// trace('PolyworksGame setting sprite['+key+'] loaded to false');
 				// phaser.load.spritesheet(key, sprite.url, sprite.width, sprite.height, sprite.frames);
@@ -216,7 +216,7 @@ PolyworksGame = (function() {
 		// trace((Polyworks.Stage.height * 2) + ' ' + ((-Polyworks.Stage.height) + 10));
 		// _checkPhaserBoot();
 
-		Utils.loadScript(_configURL, { type: Polyworks.Events.CONFIG_LOADED });
+		Polyworks.Utils.loadScript(_configURL, { type: Polyworks.Events.CONFIG_LOADED });
 	}
 	
 	function _onConfigLoaded() {
@@ -253,7 +253,7 @@ PolyworksGame = (function() {
 		var states = _model.states;
 		var state;
 
-		Utils.each(states,
+		Polyworks.Utils.each(states,
 			function(s) {
 				state = new Polyworks[s.cl](s, s.name);
 				_states[s.name] = state;
@@ -298,7 +298,7 @@ PolyworksGame = (function() {
 	
 	function _killStates() {
 		// trace('PolyworksGame/_killStates');
-		Utils.each(_states,
+		Polyworks.Utils.each(_states,
 			function(s) {
 				s.shutdown();
 			},

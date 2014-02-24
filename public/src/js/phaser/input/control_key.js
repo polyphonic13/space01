@@ -1,5 +1,5 @@
 Polyworks.ControlKey = (function() {
-	Utils.inherits(ControlKey, Polyworks.Control);
+	Polyworks.Utils.inherits(ControlKey, Polyworks.Control);
 	
 	function ControlKey(params) {
 		// trace('ControlKey/constructor, params = ');

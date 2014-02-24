@@ -1,5 +1,5 @@
 Polyworks.Enemy = (function() {
-	Utils.inherits(Enemy, Polyworks.Sprite);
+	Polyworks.Utils.inherits(Enemy, Polyworks.Sprite);
 	
 	var _this;
 	function Enemy(params) {

@@ -1,5 +1,5 @@
 Polyworks.SectorManager = (function() {
-	Utils.inherits(SectorManager, Polyworks.Collection);
+	Polyworks.Utils.inherits(SectorManager, Polyworks.Collection);
 	
 	function SectorManager(params) {
 		// trace('SectorManager['+params.name+']/constructor, params = ');
@@ -28,7 +28,7 @@ Polyworks.SectorManager = (function() {
 	SectorManager.prototype.checkTerrainCollision = function(terrain) {
 		this.model.collection[this.activeSectorId].checkTerrainCollision(terrain);
 		/*
-		Utils.each(this.model.collection,
+		Polyworks.Utils.each(this.model.collection,
 			function(c) {
 				c.checkTerrainCollision(terrain);
 			},
@@ -66,7 +66,7 @@ Polyworks.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.deactivateAll = function() {
-		Utils.each(this.model.collection,
+		Polyworks.Utils.each(this.model.collection,
 			function(c) {
 				c.setActive(false);
 			},
@@ -75,7 +75,7 @@ Polyworks.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.destroy = function() {
-		Utils.each(this.model.collection,
+		Polyworks.Utils.each(this.model.collection,
 			function(c) {
 				c.destroy();
 			},

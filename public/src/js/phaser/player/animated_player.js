@@ -1,5 +1,5 @@
 Polyworks.AnimatedPlayer = (function() {
-	Utils.inherits(AnimatedPlayer, Polyworks.Player);
+	Polyworks.Utils.inherits(AnimatedPlayer, Polyworks.Player);
 	
 	function AnimatedPlayer(params) {
 		// trace('AnimatedPlayer, params = ');

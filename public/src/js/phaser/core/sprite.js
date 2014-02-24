@@ -1,5 +1,5 @@
 Polyworks.Sprite = (function() {
-	Utils.inherits(Sprite, Phaser.Sprite);
+	Polyworks.Utils.inherits(Sprite, Phaser.Sprite);
 
 	function Sprite(params) {
 		this.model = new Polyworks.Model(params);
@@ -123,7 +123,7 @@ Polyworks.Sprite = (function() {
 		var physics = PolyworksGame.phaser.physics;
 		var _this = this;
 
-		Utils.each(dynamicTerrain,
+		Polyworks.Utils.each(dynamicTerrain,
 			function(c) {
 				physics.overlap(this, c, _this.dynamicTerrainCollision, null, _this);
 			},
@@ -142,7 +142,7 @@ Polyworks.Sprite = (function() {
 	};
 	
 	Sprite.prototype.beginAnimations = function(animations) {
-			Utils.each(animations,
+			Polyworks.Utils.each(animations,
 			function(a, key) {
 				this.animations.add(key, a.keyFrames, a.frameRate);
 			},
@@ -172,7 +172,7 @@ Polyworks.Sprite = (function() {
 	Sprite.prototype.move = function(params) {
 		var movement = this.model.attrs.movement;
 		if(movement) {
-			Utils.moveView(this, movement, params);
+			Polyworks.Utils.moveView(this, movement, params);
 		}
 	};
 

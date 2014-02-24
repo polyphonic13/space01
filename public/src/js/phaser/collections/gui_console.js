@@ -1,5 +1,5 @@
 Polyworks.GUIConsole = (function() {
-	Utils.inherits(GUIConsole, Polyworks.GroupCollection);
+	Polyworks.Utils.inherits(GUIConsole, Polyworks.GroupCollection);
 	
 	var _this;
 	function GUIConsole(params) {
@@ -11,7 +11,7 @@ Polyworks.GUIConsole = (function() {
 		GUIConsole._super.begin.call(this);
 		// trace('GUIConsole/begin')
 		// trace(this);
-		Utils.each(this.collection,
+		Polyworks.Utils.each(this.collection,
 			function(c) {
 				if(c.text) {
 					this.parseAndSetContent(c.name);
@@ -44,7 +44,7 @@ Polyworks.GUIConsole = (function() {
 		// trace(text);
 		if(text) {
 			var context = (context) ? context : PolyworksGame;
-			text.content = Utils.parseMarkup(text.model.attrs.defaultContent, context);
+			text.content = Polyworks.Utils.parseMarkup(text.model.attrs.defaultContent, context);
 		}
 	};
 	
