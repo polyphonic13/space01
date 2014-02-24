@@ -67,8 +67,8 @@ Polyworks.LevelState = (function() {
 					terrain: this.terrain.group,
 					dynamicTerrain: sector.dynamicTerrain.getActive(),
 					position: {
-						x: this.game.camera.x + (PolyworksStage.winW/2),
-						y: this.game.camera.y + (PolyworksStage.winH/2)
+						x: this.game.camera.x + (Polyworks.Stage.winW/2),
+						y: this.game.camera.y + (Polyworks.Stage.winH/2)
 					}
 				};
 				this.sectorManager.pwUpdate(updateParams);

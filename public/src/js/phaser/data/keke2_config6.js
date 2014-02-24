@@ -1,9 +1,9 @@
 var config = (function() {
-	var winW = PolyworksStage.winW; 
-	var winH = PolyworksStage.winH;
-	var stageWidth = PolyworksStage.width;
-	var stageHeight = PolyworksStage.height;
-	var stageUnit = PolyworksStage.unit;
+	var winW = Polyworks.Stage.winW; 
+	var winH = Polyworks.Stage.winH;
+	var stageWidth = Polyworks.Stage.width;
+	var stageHeight = Polyworks.Stage.height;
+	var stageUnit = Polyworks.Stage.unit;
 
 	var enemy01 = {
 		width: (stageUnit) * 1.5,

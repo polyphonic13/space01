@@ -20,7 +20,7 @@ Polyworks.State = (function() {
 	}
 	
 	State.prototype.start = function() {
-		trace('Stage['+this.model.name+']/start');
+		trace('State['+this.model.name+']/start');
 	};
 	
 	State.prototype.orientationSet = function(isLandscape) {
@@ -38,7 +38,7 @@ Polyworks.State = (function() {
 	State.prototype.preload = function() {
 		this.toLoad = 0;
 		this.loaded = 0;
-		trace('Stage['+this.model.name+']/preLoad, loaded = ' + this.model.loaded);
+		trace('State['+this.model.name+']/preLoad, loaded = ' + this.model.loaded);
 		if(!this.model.loaded) {
 			// trace('\tstate images = ');
 			// trace(this.model.images);
@@ -123,7 +123,7 @@ Polyworks.State = (function() {
 	
 	State.prototype.createWorld = function() {
 		var world = this.model.world;
-		trace('Stage['+this.model.name+']/createWorld, world = ', world, PolyworksStage);
+		trace('State['+this.model.name+']/createWorld, world = ', world, Polyworks.Stage);
 		PolyworksGame.phaser.world.setBounds(world.x, world.y, world.width, world.height);
 	};
 

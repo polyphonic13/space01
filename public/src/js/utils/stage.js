@@ -19,7 +19,7 @@ nexus 5:
 2940x940 = 3x2
 5880x940 = 6x2 (level)
 */
-PolyworksStage = (function() {
+Polyworks.Stage = (function() {
 	var stage = {};
 	
 	stage.winW = 0;
@@ -42,7 +42,7 @@ PolyworksStage = (function() {
 		});
 	};
 	
-	function _init() {
+	stage.init = function() {
 
 		_calculateSizes();
 
@@ -54,13 +54,14 @@ PolyworksStage = (function() {
 			_onSizeChange(event);
 			// _calculateSizes();
 		});
-	}
+
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.STAGE_INITIALIZED });
+	};
 
 	function _calculateSizes() {
 		stage.winW = document.documentElement.clientWidth; 
 		stage.winH = document.documentElement.clientHeight;
-		// stage.width = stage.winW;
-		// stage.height = stage.winH;
+
 		stage.height = (document.documentElement.clientHeight > 800) ? 800 : document.documentElement.clientHeight;
 		stage.width = ((document.documentElement.clientHeight/_ar[1]) * _ar[0]);
 
@@ -73,7 +74,7 @@ PolyworksStage = (function() {
 		var left = (document.documentElement.clientWidth/2) - (stage.width/2);
 		var top = (document.documentElement.clientHeight/2) - (stage.height/2);
 
-		console.log('\nwinW = ' + stage.winW + ', winH = ' + stage.winH 
+		trace('\nwinW = ' + stage.winW + ', winH = ' + stage.winH 
 				+  '\nstage.width = ' + stage.width + ', stage.height = ' + stage.height
 				+ '\nunit = ' + stage.unit
 				+ '\nleft = ' + left + ', top = ' + top);
@@ -108,7 +109,5 @@ PolyworksStage = (function() {
 		containerDiv.style.top = top + 'px';
 	}
 
-	_init();
-	
 	return stage;
 }());

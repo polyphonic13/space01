@@ -52,7 +52,7 @@ Polyworks.Sector = (function() {
 		var bounds = this.model.attrs.bounds;
 	    this.emitter = game.add.emitter(bounds.start, game.world.bounds.y, 400);
 
-		// this.emitter.width = PolyworksStage.width;
+		// this.emitter.width = Polyworks.Stage.width;
 		this.emitter.width = bounds.end;
 	    this.emitter.makeParticles('particle');
 		// SNOW

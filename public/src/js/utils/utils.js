@@ -178,6 +178,26 @@ Utils = (function() {
 			break;
 		}
 	};
-	
+
+	utils.loadScript = function(url, evt) {
+        var scriptTag = document.createElement('script');
+        scriptTag.setAttribute('type', 'text/javascript');
+
+        if(scriptTag.readyState) {
+            scriptTag.onreadystatechange = function() {
+                if(scriptTag.readyState == 'loaded' || scriptTag.readyState == 'complete') {
+                    // callback.call(evt);
+					Polyworks.EventCenter.trigger(evt);
+                }
+            };
+        } else {
+            scriptTag.onload = function() {
+                // callback.call(evt);
+				Polyworks.EventCenter.trigger(evt);
+            };
+        }
+        scriptTag.setAttribute('src', url);
+        document.getElementsByTagName('head')[0].appendChild(scriptTag);
+	}
 	return utils;
 }());

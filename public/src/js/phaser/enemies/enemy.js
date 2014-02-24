@@ -26,7 +26,7 @@ Polyworks.Enemy = (function() {
 			var enemyX = this.body.screenX;
 			var playerX = params.player.body.screenX;
 
-			if(enemyX < (playerX + PolyworksStage.width/2) && enemyX > (playerX - PolyworksStage.width/2)) {
+			if(enemyX < (playerX + Polyworks.Stage.width/2) && enemyX > (playerX - Polyworks.Stage.width/2)) {
 				this.isInView = true;
 			} else {
 				this.isInView = false;
