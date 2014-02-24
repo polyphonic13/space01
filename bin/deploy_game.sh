@@ -68,7 +68,7 @@ while getopts "p:t:rigc" opt; do
 			TARGET_PROJECT=$OPTARG
 	    	;;
 		t)
-			TARGET_DIRECTOR="$OPTARG/"
+			TARGET_DIR=$OPTARG
 			;;
 		r)
 			REMOVE_DEPLOY=1
@@ -111,9 +111,9 @@ if([ "$TARGET_PROJECT" = "" ])
 	exit 1
 else 
 	PROJECT_DIR="$TARGET_PROJECT/"
-	if([ "TARGET_DIRECTORY" = "" ])
+	if([ "$TARGET_DIR" = "" ])
 		then
-		TARGET_DIRECTOY="$PROJECT_DIR"
+		TARGET_DIR="$TARGET_PROJECT"
 	fi
 fi
 
