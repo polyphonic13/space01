@@ -62,15 +62,15 @@ Polyworks.State = (function() {
 		}
 	};
 	
-	State.prototype.loadUpdate = function(event) {
-		this.loaded++;
-		trace('State['+this.model.name+']/loadUpate, loaded = ' + this.loaded + ', toLoad = ' + this.toLoad);
-		// trace(event);
-	};
+	// State.prototype.loadUpdate = function(event) {
+	// 	this.loaded++;
+	// 	trace('State['+this.model.name+']/loadUpate, loaded = ' + this.loaded + ', toLoad = ' + this.toLoad);
+	// 	// trace(event);
+	// };
 	
 	State.prototype.create = function() {
-		trace('Stage['+this.model.name+']/create, created = ' + this.model.created);
-		PolyworksGame.hideLoadingDiv();
+		trace('State['+this.model.name+']/create, created = ' + this.model.created);
+		PolyworksGame.removeLoadingDiv();
 		// if(!this.model.created) {
 			this.createState();
 			this.model.created = true;

@@ -1,4 +1,6 @@
 PolyworksGame = (function() {
+	// var _gameTitle = 'Keke vs. the Caterpillars';
+	var _gameTitle = '';
 	var _model = {};
 	var _player = {};
 	var _controls = {};
@@ -82,7 +84,7 @@ PolyworksGame = (function() {
 						PolyworksGame.currentState = id;
 						trace('PolyworksGame/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
 						// trace(_states);
-						PolyworksGame.showLoadingDiv();
+						PolyworksGame.addLoadingDiv();
 						PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
 					} else {
 						// trace('ERROR: state['+id+'] not found');
@@ -101,18 +103,24 @@ PolyworksGame = (function() {
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.HEALTH_UPDATED });
 		},
 
-		hideLoadingDiv: function() {
+		removeLoadingDiv: function() {
 			var loading = document.getElementById('loading');
-			loading.style.visibility = 'hidden';
-			loading.style.display = 'none';
+			var loadingHolder = document.getElementById('loadingHolder');
+			trace(loading);
+			trace(loadingHolder);
+			loadingHolder.removeChild(loading);
+			trace(loadingHolder);
 		},
-		
-		showLoadingDiv: function() {
-			var loading = document.getElementById('loading');
-			loading.style.visibility = 'visible';
-			loading.style.display = 'block';
+
+		addLoadingDiv: function() {
+			var loading = document.createElement('div');
+			loading.setAttribute('id', 'loading');
+			loading.innerHTML = _gameTitle;
+
+			var loadingHolder = document.getElementById('loadingHolder');
+			loadingHolder.appendChild(loading);
 		},
-		
+
 		quit: function() {
 			// trace('PolyworksGame/quit');
 			if(!PolyworksGame.isQuit) {
@@ -130,8 +138,8 @@ PolyworksGame = (function() {
 
 		Utils.each(images,
 			function(image, key) {
-				phaser.load.image(key, image);
-				// loadedImages[key] = false;
+				// phaser.load.image(key, image);
+				loadedImages[key] = false;
 			},
 			this
 		);
@@ -154,7 +162,7 @@ PolyworksGame = (function() {
 	
 	function _create() {
 		// _removeLoadingAnimation();
-		// PolyworksGame.hideLoadingDiv();
+		// PolyworksGame.removeLoadingDiv();
 		_addListeners();
 		_beginControls();
 		_beginStates();
