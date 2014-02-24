@@ -34,6 +34,9 @@ var config = (function() {
 			ovalMask: 'images/oval_mask.png',
 
 			grass03: 'images/grass03.png',
+			grass03a: 'images/grass03a.png',
+			grass03b: 'images/grass03b.png',
+			grass03c: 'images/grass03c.png',
 
 			tree01: 'images/tree04a.png',
 			tree02: 'images/tree04a.png',
@@ -4069,7 +4072,9 @@ var config = (function() {
 				'forestBackground01',
 				'forestBackground02',
 				'forestBackground03',
-				'grass03',
+				'grass03a',
+				'grass03b',
+				'grass03c',
 				'tree01',
 				'platformV',
 				'platform',
@@ -4192,9 +4197,9 @@ var config = (function() {
 					name: 'grass01',
 					cl: 'Sprite',
 					attrs: {
-						img: 'grass03',
+						img: 'grass03a',
 						phaser: {
-							width: (stageWidth * 3),
+							width: (stageWidth),
 							height: (stageUnit * 2)
 						},
 						start: {
@@ -4207,14 +4212,74 @@ var config = (function() {
 					name: 'grass02',
 					cl: 'Sprite',
 					attrs: {
-						img: 'grass03',
+						img: 'grass03b',
 						phaser: {
-							width: (stageWidth * 3),
+							width: (stageWidth),
+							height: (stageUnit * 2)
+						},
+						start: {
+							x: (stageWidth),
+							y: winH - (stageUnit * 2)
+						}
+					}
+				},
+				{
+					name: 'grass03',
+					cl: 'Sprite',
+					attrs: {
+						img: 'grass03c',
+						phaser: {
+							width: (stageWidth),
+							height: (stageUnit * 2)
+						},
+						start: {
+							x: (stageWidth * 2),
+							y: winH - (stageUnit * 4)
+						}
+					}
+				},
+				{
+					name: 'grass04',
+					cl: 'Sprite',
+					attrs: {
+						img: 'grass03a',
+						phaser: {
+							width: (stageWidth),
 							height: (stageUnit * 2)
 						},
 						start: {
 							x: (stageWidth * 3),
-							y: winH - (stageUnit * 2)
+							y: winH - (stageUnit * 4)
+						}
+					}
+				},
+				{
+					name: 'grass05',
+					cl: 'Sprite',
+					attrs: {
+						img: 'grass03b',
+						phaser: {
+							width: (stageWidth),
+							height: (stageUnit * 2)
+						},
+						start: {
+							x: (stageWidth * 4),
+							y: winH - (stageUnit * 6)
+						}
+					}
+				},
+				{
+					name: 'grass06',
+					cl: 'Sprite',
+					attrs: {
+						img: 'grass03c',
+						phaser: {
+							width: (stageWidth),
+							height: (stageUnit * 2)
+						},
+						start: {
+							x: (stageWidth * 5),
+							y: winH - (stageUnit * 6)
 						}
 					}
 				},
