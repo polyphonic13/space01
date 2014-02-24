@@ -130,7 +130,7 @@ PolyworksGame = (function() {
 
 		Utils.each(images,
 			function(image, key) {
-				phaser.load.image(key, image);
+				// phaser.load.image(key, image);
 				loadedImages[key] = false;
 			},
 			this
@@ -142,7 +142,7 @@ PolyworksGame = (function() {
 		Utils.each(sprites,
 			function(sprite, key) {
 				// trace('PolyworksGame setting sprite['+key+'] loaded to false');
-				phaser.load.spritesheet(key, sprite.url, sprite.width, sprite.height, sprite.frames);
+				// phaser.load.spritesheet(key, sprite.url, sprite.width, sprite.height, sprite.frames);
 				loadedSprites[key] = false;
 			},
 			this

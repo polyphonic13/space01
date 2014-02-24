@@ -20,26 +20,21 @@ var config = (function() {
 		images: {
 			sky: 'images/night_sky.jpg',
 
-			forestBackground01: 'images/pencil_forest_background01a.png',
-			forestBackground02: 'images/pencil_forest_background01b.png',
-			forestBackground03: 'images/pencil_forest_background01c.png',
+			forestBackground01: 'images/pencil_forest01a.png',
+			forestBackground02: 'images/pencil_forest01b.png',
+			forestBackground03: 'images/pencil_forest01c.png',
 
-			// mountainBackground01a: 'images/mountain_background01a.png',
-			// mountainBackground01b: 'images/mountain_background01b.png',
-			// mountainBackground01c: 'images/mountain_background01c.png',
-			// mountainBackground01d: 'images/mountain_background01d.png',
-			// mountainBackground01e: 'images/mountain_background01e.png',
-			// mountainBackground01f: 'images/mountain_background01f.png',
-
-			mountainBackground01a: 'images/pencil_mountain03a.png',
-			mountainBackground01b: 'images/pencil_mountain03b.png',
-			mountainBackground01c: 'images/pencil_mountain03c.png',
-			mountainBackground01d: 'images/pencil_mountain03d.png',
-			mountainBackground01e: 'images/pencil_mountain03e.png',
-			mountainBackground01f: 'images/pencil_mountain03f.png',
+			mountainBackground01a: 'images/pencil_mountain01a.png',
+			mountainBackground01b: 'images/pencil_mountain01b.png',
+			mountainBackground01c: 'images/pencil_mountain01c.png',
+			mountainBackground01d: 'images/pencil_mountain01d.png',
+			mountainBackground01e: 'images/pencil_mountain01e.png',
+			mountainBackground01f: 'images/pencil_mountain01f.png',
 
 			ovalMask: 'images/oval_mask.png',
-			
+
+			grass03: 'images/grass03.png',
+
 			tree01: 'images/tree04a.png',
 			tree02: 'images/tree04a.png',
 			tree03: 'images/tree04a.png',
@@ -48,7 +43,7 @@ var config = (function() {
 			platformGrey: 'images/platform_grey.png',
 			platformRed: 'images/platform_red.png',
 			platformV: 'images/platform_v.png',
-			
+
 			branch02Left: 'images/branch03_left.png',
 			branch02aLeft: 'images/branch03a_left.png',
 			vine01Left: 'images/vine01a_left.png',
@@ -103,22 +98,22 @@ var config = (function() {
 			pauseButton: 
 			{
 				url: 'images/pause_button2.png',
-				width: 100,
-				height: 100,
+				width: 50,
+				height: 50,
 				frames: 2
 			},
 			menuButton: 
 			{
 				url: 'images/menu_button2.png',
-				width: 100,
-				height: 100,
+				width: 50,
+				height: 50,
 				frames: 2
 			},
 			quitButton: 
 			{
 				url: 'images/quit_button2.png',
-				width: 100,
-				height: 100,
+				width: 50,
+				height: 50,
 				frames: 2
 			},
 
@@ -459,7 +454,7 @@ var config = (function() {
 			}
 		},
 		// STATES
-		initialState: 'level5',
+		initialState: 'menu',
 		states: [
 		// menu
 		{
@@ -552,10 +547,11 @@ var config = (function() {
 			},
 			pausable: true,
 			images: [
+				'ovalMask',
 				'forestBackground01',
 				'forestBackground02',
 				'forestBackground03',
-				'ovalMask',
+				'grass03',
 				'tree01',
 				'platformV',
 				'platform',
@@ -668,6 +664,36 @@ var config = (function() {
 						start: {
 							x: (stageWidth * 5),
 							y: winH - (stageHeight * 2)
+						}
+					}
+				},
+				{
+					name: 'grass01',
+					cl: 'Sprite',
+					attrs: {
+						img: 'grass03',
+						phaser: {
+							width: (stageWidth * 3),
+							height: (stageUnit * 2)
+						},
+						start: {
+							x: 0,
+							y: winH - (stageUnit * 2)
+						}
+					}
+				},
+				{
+					name: 'grass02',
+					cl: 'Sprite',
+					attrs: {
+						img: 'grass03',
+						phaser: {
+							width: (stageWidth * 3),
+							height: (stageUnit * 2)
+						},
+						start: {
+							x: (stageWidth * 3),
+							y: winH - (stageUnit * 2)
 						}
 					}
 				},
@@ -1569,9 +1595,11 @@ var config = (function() {
 				end: (stageWidth * 6) - (stageUnit * 1)
 			},
 			images: [
+				'ovalMask',
 				'forestBackground01',
 				'forestBackground02',
 				'forestBackground03',
+				'grass03',
 				'tree01',
 				'trunk01',
 				'platformV',
@@ -1686,6 +1714,36 @@ var config = (function() {
 						start: {
 							x: (stageWidth * 5),
 							y: winH - (stageHeight * 2)
+						}
+					}
+				},
+				{
+					name: 'grass01',
+					cl: 'Sprite',
+					attrs: {
+						img: 'grass03',
+						phaser: {
+							width: (stageWidth * 3),
+							height: (stageUnit * 2)
+						},
+						start: {
+							x: 0,
+							y: winH - (stageUnit * 2)
+						}
+					}
+				},
+				{
+					name: 'grass02',
+					cl: 'Sprite',
+					attrs: {
+						img: 'grass03',
+						phaser: {
+							width: (stageWidth * 3),
+							height: (stageUnit * 2)
+						},
+						start: {
+							x: (stageWidth * 3),
+							y: winH - (stageUnit * 2)
 						}
 					}
 				},
@@ -2697,10 +2755,11 @@ var config = (function() {
 				end: (stageWidth * 6) - (stageUnit * 1)
 			},
 			images: [
+				'ovalMask',
 				'forestBackground01',
 				'forestBackground02',
 				'forestBackground03',
-				'tree01',
+				'grass03',
 				'platformV',
 				'platform',
 				'branch02Left',
@@ -2815,6 +2874,36 @@ var config = (function() {
 						start: {
 							x: (stageWidth * 5),
 							y: winH - (stageHeight * 2)
+						}
+					}
+				},
+				{
+					name: 'grass01',
+					cl: 'Sprite',
+					attrs: {
+						img: 'grass03',
+						phaser: {
+							width: (stageWidth * 3),
+							height: (stageUnit * 2)
+						},
+						start: {
+							x: 0,
+							y: winH - (stageUnit * 2)
+						}
+					}
+				},
+				{
+					name: 'grass02',
+					cl: 'Sprite',
+					attrs: {
+						img: 'grass03',
+						phaser: {
+							width: (stageWidth * 3),
+							height: (stageUnit * 2)
+						},
+						start: {
+							x: (stageWidth * 3),
+							y: winH - (stageUnit * 2)
 						}
 					}
 				},
@@ -3976,9 +4065,11 @@ var config = (function() {
 				end: (stageWidth * 6) - (stageUnit * 1)
 			},
 			images: [
+				'ovalMask',
 				'forestBackground01',
 				'forestBackground02',
 				'forestBackground03',
+				'grass03',
 				'tree01',
 				'platformV',
 				'platform',
@@ -4094,6 +4185,36 @@ var config = (function() {
 						start: {
 							x: (stageWidth * 5),
 							y: winH - (stageHeight * 2)
+						}
+					}
+				},
+				{
+					name: 'grass01',
+					cl: 'Sprite',
+					attrs: {
+						img: 'grass03',
+						phaser: {
+							width: (stageWidth * 3),
+							height: (stageUnit * 2)
+						},
+						start: {
+							x: 0,
+							y: winH - (stageUnit * 2)
+						}
+					}
+				},
+				{
+					name: 'grass02',
+					cl: 'Sprite',
+					attrs: {
+						img: 'grass03',
+						phaser: {
+							width: (stageWidth * 3),
+							height: (stageUnit * 2)
+						},
+						start: {
+							x: (stageWidth * 3),
+							y: winH - (stageUnit * 2)
 						}
 					}
 				},
