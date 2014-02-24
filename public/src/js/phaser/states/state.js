@@ -8,7 +8,9 @@ Polyworks.State = (function() {
 
 		this.model = new Polyworks.Model(params);
 		this.model.set({
+			isLandscape: true,
 			loaded: false,
+			createCalled: false,
 			created: false,
 			active: false
 		});
@@ -19,6 +21,18 @@ Polyworks.State = (function() {
 	
 	State.prototype.start = function() {
 		trace('Stage['+this.model.name+']/start');
+	};
+	
+	State.prototype.orientationSet = function(isLandscape) {
+		this.model.set({ isLandscape: isLandscape });
+		if(isLandscape) {
+			var created = this.model.get('created');
+			var createCalled = this.model.get('createCalled'); 
+			if(createCalled && !created) {
+				// the state was read to build but device not in landscape orientation
+				this.createState();
+			}
+		}
 	};
 	
 	State.prototype.preload = function() {
@@ -69,24 +83,31 @@ Polyworks.State = (function() {
 	// };
 	
 	State.prototype.create = function() {
-		trace('State['+this.model.name+']/create, created = ' + this.model.created);
+		trace('State['+this.model.name+']/create');
 		PolyworksGame.removeLoadingDiv();
-		// if(!this.model.created) {
+		if(PolyworksGame.isLandscape) {
 			this.createState();
-			this.model.created = true;
-		// }
+		} else {
+			trace('WARNING: not in landscape orientation, can not create state');
+		}
+		this.model.set({ createCalled: true });
 	};
 
 	State.prototype.createState = function() {
 		trace('State['+this.model.name+']/createState');
-		this.gameOver = PolyworksGame.gameOver; 
-		this.createWorld();
+		if(!this.model.get('created')) {
+			this.gameOver = PolyworksGame.gameOver; 
+			this.createWorld();
 
-		if(this.model.pausable) {
-			Polyworks.EventCenter.bind(Polyworks.Events.PAUSE_STATE, this.onPauseState, this);
-			Polyworks.EventCenter.bind(Polyworks.Events.RESUME_STATE, this.onResumeState, this);
+			if(this.model.pausable) {
+				Polyworks.EventCenter.bind(Polyworks.Events.PAUSE_STATE, this.onPauseState, this);
+				Polyworks.EventCenter.bind(Polyworks.Events.RESUME_STATE, this.onResumeState, this);
+			}
+			this.begin();
+			this.model.set({ created: true });
+		} else {
+			trace('WARNING: state already created');
 		}
-		this.begin();
 	};
 	
 	State.prototype.onPauseState = function() {
@@ -116,7 +137,14 @@ Polyworks.State = (function() {
 		Polyworks.EventCenter.unbind(Polyworks.Events.PAUSE_STATE, this.onPauseState);
 		Polyworks.EventCenter.unbind(Polyworks.Events.RESUME_STATE, this.onResumeState);
 
-		this.model.created = false;
+		this.model.set({
+			isLandscape: true,
+			loaded: false,
+			createCalled: false,
+			created: false,
+			active: false
+		});
+
 		this.destroy();
 	};
 

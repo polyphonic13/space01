@@ -1,6 +1,8 @@
 PolyworksGame = (function() {
 	// var _gameTitle = 'Keke vs. the Caterpillars';
 	var _gameTitle = '';
+	var _isTouchDevice = false;
+
 	var _model = {};
 	var _player = {};
 	var _controls = {};
@@ -15,11 +17,16 @@ PolyworksGame = (function() {
 		totalLevels: 0,
 		currentState: '',
 		previousState: '',
+		isLandscape: false,
 		gameOver: false,
 		isQuit: false,
 
 		begin: function(params) {
-			window.scrollTo(0,0);
+			_isTouchDevice = (navigator.userAgent.match(/ipad|iphone|android/i) !== null);
+			trace('PolyworksGame/begin, _isTouchDevice = ' + _isTouchDevice);
+			_checkOrientation();
+			_beginWindow();
+
 			// trace('PolyworksGame/begin, stage w/h = ' + PolyworksStage.width + '/' + PolyworksStage.height);
 			// trace((PolyworksStage.height * 2) + ' ' + ((-PolyworksStage.height) + 10));
 			_model = params;
@@ -129,6 +136,32 @@ PolyworksGame = (function() {
 		}
 	};
 
+	function _checkOrientation() {
+		var w = window.innerWidth;
+		var h = window.innerHeight;
+		PolyworksGame.isLandscape = (w > h) ? true : false;
+	}
+	
+	function _beginWindow() {
+		window.scrollTo(0,0);
+		window.onorientationchange = function(event) {
+			_orientationChange(event);
+		};
+		window.onresize = function(event) {
+			if(_isTouchDevice) {
+				_orientationChange(event);
+			}
+		};
+	}
+
+	function _orientationChange(event) {
+		_checkOrientation();
+		trace('PolyworksGame/_orientationChange, isLandscape = ' + PolyworksGame.isLandscape + ', currentState' + PolyworksGame.currentState); 
+		if(PolyworksGame.currentState !== '') {
+			_states[PolyworksGame.currentState].orientationSet(PolyworksGame.isLandscape);
+		}
+	}
+	
 	function _preload() {
 		// trace('_preload');
 		var phaser = PolyworksGame.phaser;
