@@ -1,13 +1,30 @@
 module.exports = function(grunt) {
 
-	grunt.log.writeln('Starting Grunt Processing:');
+	var project = grunt.option('pjt');
+	var srcDir = 'public/src';
+	var deployDir = 'public/deploy';
+	var projectSrcDir;
+	
+	if(typeof(project) !== 'undefined') {
+		// srcDir += '/' + project;
+		projectSrcDir = srcDir + '/' + project;
+		deployDir += '/' + project;
+	}
+	grunt.log.writeln('Starting Grunt Processing');
+	grunt.log.writeln('\tproject = ' + project 
+						+ '\n\tsrcDir = ' + srcDir 
+						+ '\n\tdeployDir = ' + deployDir 
+						+ '\n\tprojectSrcDir = ' + projectSrcDir);
+
 
 	grunt.initConfig({
 
 		pkg: grunt.file.readJSON('package.json'),
 
-		srcDir: 'public/src',
-		deployDir: 'public/deploy',
+		project: project,
+		srcDir: srcDir,
+		deployDir: deployDir,
+		projectSrcDir: projectSrcDir,
 
 /////// CONCAT 
 		concat: {
@@ -32,6 +49,14 @@ module.exports = function(grunt) {
 
 			},
 
+			project: {
+				options: {
+					banner: "(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- <%= project %> created: <%= grunt.template.today(\"isoDateTime\") %>')})();\n"
+				},
+				src: '<%= projectJavascripts %>',
+				dest: '<%= deployDir %>/js/<%= project %>.js'
+			},
+
 			keke2_game: {
 				options: {
 					banner: "(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- KEKE2_GAME.JS v<%= pkg.version %> created: <%= grunt.template.today(\"isoDateTime\") %>')})();\n"
@@ -48,9 +73,8 @@ module.exports = function(grunt) {
 				'<%= srcDir %>/js/phaser/events/event_center.js',
 				'<%= srcDir %>/js/phaser/data/keke_animations3.js',
 				'<%= srcDir %>/js/phaser/data/caterpillar_animations3.js',
-				// '<%= srcDir %>/js/phaser/data/keke2_config3.js', // absolute
-				// '<%= srcDir %>/js/phaser/data/keke2_config4_stage_dimensions.js', // relative
-				'<%= srcDir %>/js/phaser/data/keke2_config6.js', // relative
+				// '<%= srcDir %>/js/phaser/data/keke2_config6.js',
+				'<%= srcDir %>/js/phaser/data/keke2_config7.js',
 				'<%= srcDir %>/js/phaser/core/model.js',
 				'<%= srcDir %>/js/phaser/shapes/rectangle.js',
 				'<%= srcDir %>/js/phaser/core/text.js',
@@ -153,6 +177,11 @@ module.exports = function(grunt) {
 				report: 'min'
 			},
 
+			project: {
+				src: [ '<%= deployDir %>/js/<%= project %>.js' ],
+				dest: '<%= deployDir %>/js/<%= project %>.min.js'
+			},
+
 			stage: {
 				src: [ '<%= srcDir %>/js/utils/stage.js' ],
 				dest: '<%= deployDir %>/keke2/js/stage.min.js'
@@ -175,6 +204,24 @@ module.exports = function(grunt) {
 /////// COPYING
 		copy: {
 			// task docs: https://github.com/gruntjs/grunt-contrib-copy
+
+			project: {
+				files: [
+				{
+					expand: true,
+					cwd: '<%= projectSrcDir %>/images/',
+					src: [ '**' ],
+					dest: '<%= deployDir %>/images/'
+				},
+				{
+					expand: true, 
+					cwd: '<%= projectSrcDir %>/css/',
+					src: [ '**' ],
+					dest: '<%= deployDir %>/css'
+				}
+				]
+			},
+
 			keke2_game_html: {
 				src: [ '<%= srcDir %>/keke2_live.html' ],
 				dest: '<%= deployDir %>/keke2/index.html'
@@ -253,12 +300,14 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-connect');
+	grunt.loadTasks('grunt/tasks');
 	
-	grunt.registerTask('default', ['concat', 'uglify', 'copy']);
-	grunt.registerTask('keke2', ['concat:keke2_game', 'uglify:keke2_game', 'uglify:stage', 'copy:keke2_game_html', 'copy:keke2_game_js', 'copy:keke2_game_css:files']);
-	grunt.registerTask('keke2-images', ['copy:keke2_game_images:files'])
-	grunt.registerTask('keke', ['concat:keke_game', 'uglify:keke_game', 'copy:keke_game_html', 'copy:keke_game_css:files']);
-	grunt.registerTask('keke-images', ['copy:keke_game_images:files']);
-	grunt.registerTask('canvas_test', ['concat:canvas_test', 'uglify:canvas_test', 'copy:canvas_test_html', 'copy:canvas_test_css:files']);
+	grunt.registerTask('default', ['projectDeploySetup', 'concat:project', 'uglify:project', 'copy:project', 'createProjectHtml']);
+	// grunt.registerTask('default', ['concat', 'uglify', 'copy']);
+	// grunt.registerTask('keke2', ['concat:keke2_game', 'uglify:keke2_game', 'uglify:stage', 'copy:keke2_game_html', 'copy:keke2_game_js', 'copy:keke2_game_css:files']);
+	// grunt.registerTask('keke2-images', ['copy:keke2_game_images:files'])
+	// grunt.registerTask('keke', ['concat:keke_game', 'uglify:keke_game', 'copy:keke_game_html', 'copy:keke_game_css:files']);
+	// grunt.registerTask('keke-images', ['copy:keke_game_images:files']);
+	// grunt.registerTask('canvas_test', ['concat:canvas_test', 'uglify:canvas_test', 'copy:canvas_test_html', 'copy:canvas_test_css:files']);
 
 };

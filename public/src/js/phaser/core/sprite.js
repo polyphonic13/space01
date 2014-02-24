@@ -66,7 +66,7 @@ Polyworks.Sprite = (function() {
 
 		if(!physics.deferredGravity && !physics.immovable) {
 			if(!physics.gravity) {
-				this.body.gravity = config.gravity;
+				this.body.gravity = PolyworksGame.get('gravity');
 			}
 		}
 	};
@@ -103,7 +103,7 @@ Polyworks.Sprite = (function() {
 		// trace('Sprite['+this.model.name+']/activateGravity, y = ' + this.body.screenY);
 		var physics = this.model.attrs.physics;
 		if(physics && physics.deferredGravity) {
-			var gravity = (physics.gravity) ? physics.gravity : config.gravity;
+			var gravity = (physics.gravity) ? physics.gravity : PolyworksGame.get('gravity');
 			// trace('gravity = ');
 			// trace(gravity);
 			this.body.gravity = gravity;

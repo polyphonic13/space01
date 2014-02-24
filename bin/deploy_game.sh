@@ -3,7 +3,7 @@
 #
 # 	-r	remove previous deploy directory prior to running grunt
 #	-g	skip grunt
-#	-t	target grunt task (for selective deployment)
+#	-p	target project (for selective deployment)
 #	-c 	commit repo to target git branch
 #
 set -e
@@ -11,7 +11,7 @@ set -e
 REMOVE_DEPLOY=0
 SKIP_GRUNT=0
 SKIP_IMAGES=0
-TARGET_GRUNT_TASK=""
+TARGET_PROJECT=""
 TEMP_DIR=""
 PUBLIC_DIR="public"
 DEPLOY_DIR="deploy"
@@ -29,12 +29,12 @@ function remove_deploy_dir {
 }
 
 function run_grunt_tasks {
-	echo "RUNNING GRUNT, TASK = $TARGET_GRUNT_TASK"
-	grunt $TARGET_GRUNT_TASK
+	echo "RUNNING GRUNT, PROJECT = $TARGET_PROJECT"
+	grunt -pjt $TARGET_PROJECT
 
 	if([ "$SKIP_IMAGES" = 0 ])
 		then
-		grunt "$TARGET_GRUNT_TASK-images"
+		grunt "$TARGET_PROJECT-images"
 	fi
 	
 	make_temp_dir_and_copy_files_to_server
@@ -68,7 +68,7 @@ function commit_to_target_git_branch {
 while getopts "t:rigc" opt; do
 	case $opt in
 	    t)
-			TARGET_GRUNT_TASK=$OPTARG
+			TARGET_PROJECT=$OPTARG
 	    	;;
 		r)
 			REMOVE_DEPLOY=1
@@ -105,12 +105,12 @@ if([ "$REMOVE_DEPLOY" = 1 -a "$SKIP_GRUNT" = 1 ])
 	exit 1
 fi
 
-if([ "$TARGET_GRUNT_TASK" = "" ]) 
+if([ "$TARGET_PROJECT" = "" ]) 
 	then
-	echo "ERROR: CAN NOT DEPLOY WITHOUT TARGET GRUNT TASK"
+	echo "ERROR: CAN NOT DEPLOY WITHOUT TARGET PROJECT"
 	exit 1
 else 
-	TEMP_DIR="$TARGET_GRUNT_TASK/"
+	TEMP_DIR="$TARGET_PROJECT/"
 fi
 
 echo "DEPLOYING GAME"
