@@ -15,9 +15,9 @@ SKIP_IMAGES=0
 TARGET_PROJECT=""
 PROJECT_DIR=""
 TARGET_DIR=""
+GAMES_DIR="games"
 PUBLIC_DIR="public"
 DEPLOY_DIR="deploy"
-GAMES_DIR="games"
 
 function remove_deploy_dir {
 	deploy_dir=$PUBLIC_DIR/$DEPLOY_DIR
