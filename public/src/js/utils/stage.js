@@ -46,14 +46,14 @@ Polyworks.Stage = (function() {
 
 		_calculateSizes();
 
-		window.addEventListener('resize', function(event) {
-			_onSizeChange(event);
-			// _calculateSizes();
-		});
-		window.addEventListener('orientationchagne', function(event) {
-			_onSizeChange(event);
-			// _calculateSizes();
-		});
+		// window.addEventListener('resize', function(event) {
+		// 	_onSizeChange(event);
+		// 	// _calculateSizes();
+		// });
+		// window.addEventListener('orientationchagne', function(event) {
+		// 	_onSizeChange(event);
+		// 	// _calculateSizes();
+		// });
 
 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.STAGE_INITIALIZED });
 	};
