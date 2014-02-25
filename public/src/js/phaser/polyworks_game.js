@@ -1,3 +1,4 @@
+
 PolyworksGame = (function() {
 	var _model = {};
 	var _player = {};
@@ -125,6 +126,16 @@ PolyworksGame = (function() {
 			loadingHolder.removeChild(loading);
 		},
 
+		showOrientationMessage: function() {
+			var orientationMessage = document.getElementById('orientationMessage');
+			orientationMessage.style.display = 'block';
+		},
+
+		hideOrientationMessage: function() {
+			var orientationMessage = document.getElementById('orientationMessage');
+			orientationMessage.style.display = 'none';
+		},
+
 		quit: function() {
 			// trace('PolyworksGame/quit');
 			if(!PolyworksGame.isQuit) {
@@ -138,8 +149,13 @@ PolyworksGame = (function() {
 		var h = window.innerHeight;
 		PolyworksGame.isLandscape = (w > h) ? true : false;
 		trace('PolyworksGame/_checkOrientation, isLandscape = ' + PolyworksGame.isLandscape, '\t_stageInitialized = ' + _stageInitialized);
-		if(PolyworksGame.isLandscape && !_stageInitialized) {
-			Polyworks.Stage.init();
+		if(PolyworksGame.isLandscape) {
+			PolyworksGame.hideOrientationMessage();
+			if(!_stageInitialized) {
+				Polyworks.Stage.init();
+			}
+		} else {
+			PolyworksGame.showOrientationMessage();
 		}
 	}
 	

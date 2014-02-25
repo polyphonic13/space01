@@ -1,42 +1,58 @@
-body, canvas {
+body, canvas, div {
     margin: 0;
 	background: #000000;
-}
-/*#loadingHolder {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	z-index: 2;
-	left: 0px;
-	top: 0px;
-}
-*/
-#loading {
-	background: #000000 url("../images/loading_black.gif") no-repeat center;
-	background-size: 75px;
-	width: 100%;
-	height: 100%;
-	left: 0px;
-	top: 0px;
-	position: absolute;
-	z-index: 2;
+
 	text-align: center;
-/*	padding: 20px;*/
 	font-size: 30px;
 	font-family: 'Arial', sans-serif;
 	color: #ffffff;
 }
-#gameContainer {
-	position: absolute;
-	z-index: 1;
-	left: 0px;
-	top: 0px;
-}
-#ovalMask {
-	background: url("../images/oval_mask.png") no-repeat center;
-	background-size: cover;
-	position: absolute;
-	z-index: 3;
+
+#loading {
 	width: 100%;
 	height: 100%;
+	left: 0px;
+	top: 0px;
+
+	position: absolute;
+	z-index: 2;
+
+	/*	padding: 20px;*/
+
+	background: #000000 url("../images/loading_black.gif") no-repeat center;
+	background-size: 75px;
+}
+
+#gameContainer {
+	width: 100%;
+	height: 100%;
+	left: 0px;
+	top: 0px;
+
+	position: absolute;
+	z-index: 1;
+}
+#orientationMessage {
+	width: 100%;
+	height: 100%;
+	left: 0px;
+	top: 0px;
+	
+	position: absolute;
+	z-index: 2;
+	
+	background: #000000 url("../../images/reorient_message_v.gif") no-repeat center;
+	background-size: contain;
+
+	display: none;
+}
+#ovalMask {
+	width: 100%;
+	height: 100%;
+
+	position: absolute;
+	z-index: 3;
+
+	background: url("../images/oval_mask.png") no-repeat center;
+	background-size: cover;
 }
