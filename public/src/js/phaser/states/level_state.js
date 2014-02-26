@@ -104,6 +104,19 @@ Polyworks.LevelState = (function() {
 		this.resumeState();
 	};
 	
+	LevelState.prototype.addRemovePauseGUI = function() {
+		if(this.paused) {
+			// add gui
+			this.pauseGUIGroup = PolyworksGame.phaser.add.group();
+			this.pauseGUI = new Polyworks[playerConfig.cl](playerConfig);
+			this.pauseGUI.begin();
+			this.pauseGUIGroup.add(this.pauseGUI);
+		} else {
+			// remove gui
+			this.pauseGUIGroup.destroy();
+		}
+	};
+	
 	LevelState.prototype.pauseState = function() {
 		this.sectorManager.deactivateAll();
 		// this.player.deactivateGravity();

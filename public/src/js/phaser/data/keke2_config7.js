@@ -71,6 +71,7 @@ Polyworks.Config = (function() {
 				retryButton: 'images/retry_button.png',
 
 				blackRect: 'images/black_rect32x32.png',
+				greyRect: 'images/grey_rect32x32.png',
 
 				// icons
 				heart: 'images/heart.png',
@@ -460,6 +461,32 @@ Polyworks.Config = (function() {
 					]
 				}
 			},
+			// GLOBAL GUI
+			pauseGUI: {
+				name: 'pauseGUI',
+				cl: 'GroupCollection',
+				attrs: [
+				{
+					name: 'background',
+					cl: 'Sprite',
+					attrs: {
+						img: 'greyRect',
+						phaser: {
+							width: stageWidth,
+							height: stageHeight
+						},
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				},
+				{
+					name: 'menuButton',
+					
+				}
+				]
+			},
 			// STATES
 			initialState: 'menu',
 			states: [
@@ -477,6 +504,8 @@ Polyworks.Config = (function() {
 				clearCache: false,
 				images: [
 					'blackRect',
+					'greyRect',
+					'retryButton',
 					'nextButton',
 					'startButton'
 				],
@@ -569,7 +598,8 @@ Polyworks.Config = (function() {
 					'branch02aRight',
 					'lollipop',
 					'invisibleBg',
-					'heart'
+					'heart',
+					'greyRect'
 				],
 				sprites: [
 					'leftButton',
