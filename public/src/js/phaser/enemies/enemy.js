@@ -10,6 +10,9 @@ Polyworks.Enemy = (function() {
 		// trace(this);
 		// trace(_this);
 		// this.deactivateGravity();
+
+		// pause state debugging
+		this.reactivated = false; 
 	}
 
 	Enemy.prototype.begin = function() {
@@ -19,8 +22,17 @@ Polyworks.Enemy = (function() {
 		// trace('Enemy['+this.model.name+']/begin, size = ' + this.width + '/' + this.height + ', body size = ' + this.body.width + '/' + this.body.height);
 	};
 
+	// Enemy.prototype.activateGravity = function() {
+	// 	trace('Enemy['+this.model.name+']/activateGravity');
+	// 	this.reactivated = true;
+	// 	Enemy._super.activateGravity.call(this);
+	// };
+
 	Enemy.prototype.pwUpdate = function(params) {
 		if(this.alive) {
+			if(this.reactivated) {
+				trace('Player/update, x/y = ' + this.body.screenX + '/' + this.body.screenY, this);
+			}
 			// trace('Enemy['+this.model.name+']/pwUpdate, x/y = ' + this.body.screenX + '/' + this.body.screenY);
 			// trace(this);
 			var enemyX = this.body.screenX;

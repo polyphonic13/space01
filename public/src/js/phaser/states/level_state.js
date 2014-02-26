@@ -34,24 +34,24 @@ Polyworks.LevelState = (function() {
 		this.sectorManager.setState(this);
 		this.sectorManager.setActiveSector(0);
 
-		this.createPlayer();
+		this.createPlayer(PolyworksGame.get('player').attrs.start, PolyworksGame.startingHealth);
 
 		// this.addOvalMask();
 	};
 
-	LevelState.prototype.createPlayer = function() {
+	LevelState.prototype.createPlayer = function(start, health) {
 		var playerConfig = Polyworks.Utils.clone(PolyworksGame.get('player'));
-		// trace('Level['+this.model.name+']/createPlyaer, playerConfig = ');
-		// trace(playerConfig);
+		playerConfig.attrs.start = start;
+		trace('Level['+this.model.name+']/createPlyaer, playerConfig = ', playerConfig, '\n\tstart = ', start);
 
 		playerConfig.game = PolyworksGame.phaser;
 		playerConfig.sectorManager = this.sectorManager;
 
 		this.playerGroup = PolyworksGame.phaser.add.group();
 		this.player = new Polyworks[playerConfig.cl](playerConfig);
-		this.player.begin();
+		this.player.begin(health);
 		this.playerGroup.add(this.player);
-		trace('LevelState['+this.model.name+']/player created, jump = ' + playerConfig.attrs.speed.y, playerConfig);
+		// trace('LevelState['+this.model.name+']/player created, jump = ' + playerConfig.attrs.speed.y, playerConfig);
 	};
 	
 	LevelState.prototype.update = function() {
@@ -86,6 +86,39 @@ Polyworks.LevelState = (function() {
 			}
 			LevelState._super.update.call(this);
 		}
+	};
+	
+	LevelState.prototype.onPauseState = function() {
+		trace('LevelState['+this.model.name+']/onPauseState');
+		LevelState._super.onPauseState.call(this);
+		if(this.paused) {
+			this.pauseState();
+		} else {
+			this.resumeState();
+		}
+	};
+	
+	LevelState.prototype.onResumeState = function() {
+		trace('LevelState['+this.model.name+']/onResumeState');
+		LevelState._super.onPauseState.call(this);
+		this.resumeState();
+	};
+	
+	LevelState.prototype.pauseState = function() {
+		this.sectorManager.deactivateAll();
+		// this.player.deactivateGravity();
+		this.playerPosition = {
+			x: this.player.body.x,
+			y: this.player.body.y
+		};
+		trace('LevelState/pauseState, playerPosition = ', this.playerPosition);
+		this.player.destroy();
+	};
+	
+	LevelState.prototype.resumeState = function() {
+		this.sectorManager.setActiveSector(this.sectorManager.activeSectorId);
+		this.createPlayer(this.playerPosition, PolyworksGame.health);
+		// this.player.activateGravity();
 	};
 	
 	LevelState.prototype.shutdown = function() {

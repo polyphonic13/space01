@@ -11,10 +11,11 @@ Polyworks.Player = (function() {
 		trace('player body size = ' + this.body.width + '/' + this.body.height);
 	}
 	
-	Player.prototype.begin = function() {
+	Player.prototype.begin = function(health) {
 		Player._super.begin.call(this);
 
-		this.health = PolyworksGame.startingHealth;
+		// this.health = PolyworksGame.startingHealth;
+		this.health = health;
 
 		this.velX = 0;
 		this.velY = 0;
@@ -22,6 +23,9 @@ Polyworks.Player = (function() {
 		this.damageTimer = 0;
 		this.damageInterval = 250;
 		this.justDamaged = false;
+
+		// pause state debugging
+		this.reactivated = false; 
 
 		this.beginWorld();
 		this.beginEvents();
@@ -131,8 +135,16 @@ Polyworks.Player = (function() {
 		this.body.velocity.y = this.velY;
 	};
 	
+	Player.prototype.activateGravity = function() {
+		trace('Player/activateGravity');
+		this.reactivated = true;
+		Player._super.activateGravity.call(this);
+	};
+
 	Player.prototype.pwUpdate = function(params) {
-		// trace('Player/update, x/y = ' + this.body.screenX + '/' + this.body.screenY);
+		if(this.reactivated) {
+			trace('Player/update, x/y = ' + this.body.screenX + '/' + this.body.screenY, this);
+		}
 		// trace('Player/update, health = ' + this.health);
 		// trace(params);
 		if(this.alive) {

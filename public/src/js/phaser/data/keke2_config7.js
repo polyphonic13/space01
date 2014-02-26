@@ -214,7 +214,8 @@ Polyworks.Config = (function() {
 							inputCode: Polyworks.InputCodes.PAUSE,
 							events: {
 								pressed: {
-									type: Polyworks.Events.CHANGE_STATE,
+ 									type: Polyworks.Events.PAUSE_STATE,
+ 									// type: Polyworks.Events.CHANGE_STATE,
 									value: 'menu'
 								}
 							}
@@ -449,8 +450,8 @@ Polyworks.Config = (function() {
 							inputCode: Polyworks.InputCodes.PAUSE,
 							events: {
 								pressed: {
-									// type: Polyworks.Events.PAUSE_STATE
-									type: Polyworks.Events.CHANGE_STATE,
+ 									type: Polyworks.Events.PAUSE_STATE,
+ 									// type: Polyworks.Events.CHANGE_STATE,
 									value: 'menu'
 								}
 							}

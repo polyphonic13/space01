@@ -27,20 +27,14 @@ Polyworks.Sector = (function() {
 				if(this.enemies) {
 					this.enemies.activateGravity();
 				}
-				// if(this.bonuses) {
-				// 	this.bonuses.activateGravity();
-				// }
 			// }
 			this.deactivated = false;
-			
+
 		} else if(!this.deactivated){
-			
+
 			if(this.enemies) {
 				this.enemies.deactivateGravity();
 			} 
-			// if(this.bonuses) {
-			// 	this.bonuses.deactivateGravity();
-			// }
 			this.deactivated = true;
 		}
 	};
