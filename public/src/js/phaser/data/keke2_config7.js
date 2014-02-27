@@ -482,8 +482,42 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
-					name: 'menuButton',
-					
+					name: 'menuBtn',
+					cl: 'InputButton',
+					attrs: {
+						img: 'menuButton',
+						start: {
+							x: 30,
+							y: 15
+						},
+						frames: [0, 0, 1],
+						inputCode: Polyworks.InputCodes.MENU,
+						events: {
+							pressed: {
+								type: Polyworks.Events.CHANGE_STATE,
+								value: 'menu'
+							}
+						}
+					}
+				},
+				{
+					name: 'resumeButton',
+					cl: 'InputButton',
+					attrs: {
+						img: 'pauseButton',
+						start: {
+							x: 30,
+							y: 60
+						},
+						frames: [0, 0, 1],
+						inputCode: Polyworks.InputCodes.RESUME,
+						events: {
+							pressed: {
+								type: Polyworks.Events.RESUME_STATE,
+								value: 'menu'
+							}
+						}
+					}
 				}
 				]
 			},
