@@ -109,6 +109,13 @@ Polyworks.Config = (function() {
 					height: 50,
 					frames: 2
 				},
+				playButton: 
+				{
+					url: 'images/play_button.png',
+					width: 50,
+					height: 50,
+					frames: 2
+				},
 				menuButton: 
 				{
 					url: 'images/menu_button2.png',
@@ -465,6 +472,7 @@ Polyworks.Config = (function() {
 			pauseGUI: {
 				name: 'pauseGUI',
 				cl: 'GroupCollection',
+				addTo: 'null',
 				attrs: [
 				{
 					name: 'background',
@@ -501,20 +509,19 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
-					name: 'resumeButton',
+					name: 'playButton',
 					cl: 'InputButton',
 					attrs: {
-						img: 'pauseButton',
+						img: 'playButton',
 						start: {
 							x: 30,
 							y: 60
 						},
 						frames: [0, 0, 1],
-						inputCode: Polyworks.InputCodes.RESUME,
+						inputCode: Polyworks.InputCodes.PLAY,
 						events: {
 							pressed: {
-								type: Polyworks.Events.RESUME_STATE,
-								value: 'menu'
+								type: Polyworks.Events.RESUME_STATE
 							}
 						}
 					}
@@ -545,6 +552,9 @@ Polyworks.Config = (function() {
 				],
 				sprites: [
 					'keke',
+					'pauseButton',
+					'playButton',
+					'retryButton',
 					'menuButton',
 					'quitButton'
 				],

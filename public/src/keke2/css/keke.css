@@ -41,7 +41,7 @@ body, canvas, div {
 	position: absolute;
 	z-index: 2;
 	
-	background: #000000 url("../../images/reorient_message_v.gif") no-repeat center;
+	background: #000000 url("../images/reorient_message_v.gif") no-repeat center;
 	background-size: contain;
 
 	display: none;

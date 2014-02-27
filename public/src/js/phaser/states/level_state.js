@@ -51,6 +51,7 @@ Polyworks.LevelState = (function() {
 		this.player = new Polyworks[playerConfig.cl](playerConfig);
 		this.player.begin(health);
 		this.playerGroup.add(this.player);
+		this.playerPresent = true;
 		// trace('LevelState['+this.model.name+']/player created, jump = ' + playerConfig.attrs.speed.y, playerConfig);
 	};
 	
@@ -107,31 +108,33 @@ Polyworks.LevelState = (function() {
 	LevelState.prototype.addRemovePauseGUI = function() {
 		if(this.paused) {
 			// add gui
-			this.pauseGUIGroup = PolyworksGame.phaser.add.group();
-			this.pauseGUI = new Polyworks[playerConfig.cl](playerConfig);
+			var pauseGUIConfig = PolyworksGame.get('pauseGUI');
+			this.pauseGUI = new Polyworks[pauseGUIConfig.cl](pauseGUIConfig);
 			this.pauseGUI.begin();
-			this.pauseGUIGroup.add(this.pauseGUI);
+			this.pauseGUIPresent = true;
 		} else {
 			// remove gui
-			this.pauseGUIGroup.destroy();
+			this.pauseGUI.destroy();
+			this.pauseGUIPresent = false;
 		}
 	};
 	
 	LevelState.prototype.pauseState = function() {
 		this.sectorManager.deactivateAll();
-		// this.player.deactivateGravity();
 		this.playerPosition = {
 			x: this.player.body.x,
 			y: this.player.body.y
 		};
 		trace('LevelState/pauseState, playerPosition = ', this.playerPosition);
 		this.player.destroy();
+		this.playerPresent = false;
+		this.addRemovePauseGUI();
 	};
 	
 	LevelState.prototype.resumeState = function() {
 		this.sectorManager.setActiveSector(this.sectorManager.activeSectorId);
 		this.createPlayer(this.playerPosition, PolyworksGame.health);
-		// this.player.activateGravity();
+		this.addRemovePauseGUI();
 	};
 	
 	LevelState.prototype.shutdown = function() {
@@ -143,7 +146,11 @@ Polyworks.LevelState = (function() {
 		);
 
 		this.playerGroup.destroy();
-		this.player.destroy();
+		if(this.playerPresent) {
+			this.player.destroy();
+		} else if(this.pauseGUIPresent) {
+			this.pauseGUI.destroy();
+		}
 		LevelState._super.shutdown.call(this);
 	};
 
