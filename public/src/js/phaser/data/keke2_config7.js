@@ -263,7 +263,7 @@ Polyworks.Config = (function() {
 								x: winW/2 - 128,
 								y: winH/2 - 64
 							},
-							inputCode: Polyworks.InputCodes.PLAY,
+							inputCode: Polyworks.InputCodes.START,
 							events: {
 								pressed: {
 									type: Polyworks.Events.CHANGE_STATE,
@@ -468,12 +468,8 @@ Polyworks.Config = (function() {
 					]
 				}
 			},
-			// GLOBAL GUI
-			pauseGUI: {
-				name: 'pauseGUI',
-				cl: 'GroupCollection',
-				addTo: 'null',
-				attrs: [
+			sharedGroups: {
+				pauseGUI:  [
 				{
 					name: 'background',
 					cl: 'Sprite',
@@ -481,7 +477,8 @@ Polyworks.Config = (function() {
 						img: 'greyRect',
 						phaser: {
 							width: stageWidth,
-							height: stageHeight
+							height: stageHeight,
+							alpha: 0.5
 						},
 						start: {
 							x: 0,
@@ -515,7 +512,7 @@ Polyworks.Config = (function() {
 						img: 'playButton',
 						start: {
 							x: 30,
-							y: 60
+							y: 80
 						},
 						frames: [0, 0, 1],
 						inputCode: Polyworks.InputCodes.PLAY,
@@ -1602,7 +1599,7 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
-					name: 'gui',
+					name: 'levelGUI',
 					cl: 'GUIConsole',
 					addTo: 'null',
 					attrs: [{
@@ -1631,10 +1628,23 @@ Polyworks.Config = (function() {
 					}]
 				},
 				{
-					name: 'level-controls',
+					name: 'levelControls',
 					cl: 'ControlButtons',
 					type: 'level',
 					addTo: 'null',
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				},
+				{
+					name: 'pauseGUI',
+					cl: 'SharedGroupCollection',
+					type: 'pauseGUI',
+					addTo: 'null',
+					visible: false,
 					attrs: {
 						start: {
 							x: 0,
@@ -2762,7 +2772,7 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
-					name: 'gui',
+					name: 'levelGUI',
 					cl: 'GUIConsole',
 					addTo: 'null',
 					attrs: [{
@@ -2791,7 +2801,7 @@ Polyworks.Config = (function() {
 					}]
 				},
 				{
-					name: 'level-controls',
+					name: 'levelControls',
 					cl: 'ControlButtons',
 					type: 'level',
 					addTo: 'null',
@@ -4072,7 +4082,7 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
-					name: 'gui',
+					name: 'levelGUI',
 					cl: 'GUIConsole',
 					addTo: 'null',
 					attrs: [{
@@ -4101,7 +4111,7 @@ Polyworks.Config = (function() {
 					}]
 				},
 				{
-					name: 'level-controls',
+					name: 'levelControls',
 					cl: 'ControlButtons',
 					type: 'level',
 					addTo: 'null',
@@ -5688,7 +5698,7 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
-					name: 'gui',
+					name: 'levelGUI',
 					cl: 'GUIConsole',
 					addTo: 'null',
 					attrs: [{
@@ -5717,7 +5727,7 @@ Polyworks.Config = (function() {
 					}]
 				},
 				{
-					name: 'level-controls',
+					name: 'levelControls',
 					cl: 'ControlButtons',
 					type: 'level',
 					addTo: 'null',
@@ -6782,7 +6792,7 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
-					name: 'gui',
+					name: 'levelGUI',
 					cl: 'GUIConsole',
 					addTo: 'null',
 					attrs: [{
@@ -6811,7 +6821,7 @@ Polyworks.Config = (function() {
 					}]
 				},
 				{
-					name: 'level-controls',
+					name: 'levelControls',
 					cl: 'ControlButtons',
 					type: 'level',
 					addTo: 'null',

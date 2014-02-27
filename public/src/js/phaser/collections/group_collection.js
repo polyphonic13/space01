@@ -3,7 +3,7 @@ Polyworks.GroupCollection = (function() {
 	Polyworks.Utils.inherits(GroupCollection, Polyworks.Collection);
 	
 	function GroupCollection(params, groupContext) {
-		trace('GroupCollection['+params.name+']/constructor, groupContext = ' + groupContext);
+		// trace('GroupCollection['+params.name+']/constructor, groupContext = ' + groupContext);
 		GroupCollection._super.constructor.call(this, params);
 		// if(groupContext === 'null') {
 		// 	// trace('GroupCollection['+params.name+'], adding group with context of null');
@@ -14,8 +14,8 @@ Polyworks.GroupCollection = (function() {
 	}
 	
 	GroupCollection.prototype.begin = function() {
-		trace('GroupCollection['+this.model.name+']/begin');
-		trace(this);
+		// trace('GroupCollection['+this.model.name+']/begin');
+		// trace(this);
 		GroupCollection._super.begin.call(this);
 
 		var game = PolyworksGame.phaser;
@@ -37,8 +37,8 @@ Polyworks.GroupCollection = (function() {
 
 		this.group = group;
 
-		trace('GROUP NOW = ');
-		trace(this.group);
+		// trace('group now = ');
+		// trace(this.group);
 	};
 
 	GroupCollection.prototype.remove = function(child) {
@@ -50,6 +50,9 @@ Polyworks.GroupCollection = (function() {
 		// trace('GroupCollection['+this.model.name+']/remove, collection = ');
 		// trace(this.collection);
 		this.model.group.removeAll();
+		while(this.model.collection.length > 0) {
+				this.model.collection.pop();
+		};
 	};
 
 	GroupCollection.prototype.destroy = function() {

@@ -1,12 +1,10 @@
 Polyworks.ControlButtons = (function() {
 	Polyworks.Utils.inherits(ControlButtons, Polyworks.GroupCollection);
 	
-	var _this = this;
 	function ControlButtons(params) {
-		_this = this;
 		// params.collection = this;
-		this.name = params.name;
-		this.model = new Polyworks.Model(params);
+		// this.name = params.name;
+		// this.model = new Polyworks.Model(params);
 		ControlButtons._super.constructor.call(this, params);
 	}
 	

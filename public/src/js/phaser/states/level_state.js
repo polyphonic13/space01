@@ -36,6 +36,7 @@ Polyworks.LevelState = (function() {
 
 		this.createPlayer(PolyworksGame.get('player').attrs.start, PolyworksGame.startingHealth);
 
+		this.hideShowGroupView('pauseGUI', false);
 		// this.addOvalMask();
 	};
 
@@ -52,6 +53,7 @@ Polyworks.LevelState = (function() {
 		this.player.begin(health);
 		this.playerGroup.add(this.player);
 		this.playerPresent = true;
+		trace('playerGroup = ', this.playerGroup);
 		// trace('LevelState['+this.model.name+']/player created, jump = ' + playerConfig.attrs.speed.y, playerConfig);
 	};
 	
@@ -101,22 +103,8 @@ Polyworks.LevelState = (function() {
 	
 	LevelState.prototype.onResumeState = function() {
 		trace('LevelState['+this.model.name+']/onResumeState');
-		LevelState._super.onPauseState.call(this);
+		LevelState._super.onResumeState.call(this);
 		this.resumeState();
-	};
-	
-	LevelState.prototype.addRemovePauseGUI = function() {
-		if(this.paused) {
-			// add gui
-			var pauseGUIConfig = PolyworksGame.get('pauseGUI');
-			this.pauseGUI = new Polyworks[pauseGUIConfig.cl](pauseGUIConfig);
-			this.pauseGUI.begin();
-			this.pauseGUIPresent = true;
-		} else {
-			// remove gui
-			this.pauseGUI.destroy();
-			this.pauseGUIPresent = false;
-		}
 	};
 	
 	LevelState.prototype.pauseState = function() {
@@ -125,16 +113,38 @@ Polyworks.LevelState = (function() {
 			x: this.player.body.x,
 			y: this.player.body.y
 		};
-		trace('LevelState/pauseState, playerPosition = ', this.playerPosition);
 		this.player.destroy();
 		this.playerPresent = false;
-		this.addRemovePauseGUI();
+		// this.playerGroup.visible = false;
+		trace('LevelState/pauseState, playerPosition = ', this.playerPosition);
+
+		this.hideShowGroupView('levelGUI', false);
+		this.hideShowGroupView('levelControls', false);
+		this.hideShowGroupView('pauseGUI', true);
 	};
 	
 	LevelState.prototype.resumeState = function() {
+		// this.player.body.x = this.playerPosition.x;
+		// this.player.body.y = this.playerPosition.y;
+		// this.playerPosition = {
+		// 	x: this.player.body.x,
+		// 	y: this.player.body.y
+		// };
+		trace('LevelState/resumeState, playerPosition = ', this.playerPosition);
+
 		this.sectorManager.setActiveSector(this.sectorManager.activeSectorId);
 		this.createPlayer(this.playerPosition, PolyworksGame.health);
-		this.addRemovePauseGUI();
+		this.playerGroup.visible = true; 
+
+		this.hideShowGroupView('levelGUI', true);
+		this.hideShowGroupView('levelControls', true);
+		this.hideShowGroupView('pauseGUI', false);
+	};
+	
+	LevelState.prototype.hideShowGroupView = function(name, visible) {
+		var view = this.getChildByName(name);
+		// trace('LevelState/hideShowGroupView, view = ', view);
+		view.group.visible = visible;
 	};
 	
 	LevelState.prototype.shutdown = function() {
@@ -148,7 +158,8 @@ Polyworks.LevelState = (function() {
 		this.playerGroup.destroy();
 		if(this.playerPresent) {
 			this.player.destroy();
-		} else if(this.pauseGUIPresent) {
+		} 
+		if(this.pauseGUIPresent) {
 			this.pauseGUI.destroy();
 		}
 		LevelState._super.shutdown.call(this);
