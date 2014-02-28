@@ -24,6 +24,9 @@ Polyworks.Sprite = (function() {
 		// set phaser.sprite specific attributes
 		for(var key in phaser) {
 			this[key] = phaser[key];
+			if(key === 'rotation') {
+				this.addBodyRotation(phaser[key]);
+			}
 		}
 
 		// call phaser.sprite methods on other attributes
@@ -58,6 +61,10 @@ Polyworks.Sprite = (function() {
 		}
 	};
 
+	Sprite.prototype.addBodyRotation = function(rot) {
+		this.body.polygon.rotate(rot);
+	};
+	
 	Sprite.prototype.beginPhysics = function(physics) {
 		// trace('\n\nSprite['+this.model.name+']/beginPhysics');
 		for(var key in physics) {
