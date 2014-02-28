@@ -63,6 +63,8 @@ Polyworks.Config = (function() {
 				// bonuses
 				lollipop: 'images/lollipop.png',
 				cupcake: 'images/cupcake.png',
+
+				// effects
 				particle: 'images/particle01.png',
 
 				// buttons
@@ -538,9 +540,10 @@ Polyworks.Config = (function() {
 				}
 				]
 			},
-			preloadAll: true,
+			// preloadAll: true,
+			preloadAll: false,
 			// STATES
-			initialState: 'level5',
+			initialState: 'menu',
 			states: [
 			// menu
 			{
@@ -5815,7 +5818,8 @@ Polyworks.Config = (function() {
 					'platform',
 					'rockPlatform1',
 					'invisibleBg',
-					'heart'
+					'heart',
+					'particle01'
 				],
 				sprites: [
 					'leftButton',
@@ -6196,6 +6200,11 @@ Polyworks.Config = (function() {
 							attrs: [] 
 						},
 						{
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						},
+						{
 							name: 'effects',
 							cl: 'Collection',
 							attrs: [
@@ -6212,11 +6221,6 @@ Polyworks.Config = (function() {
 								}
 							}
 							]
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						}
 						]
 					},
@@ -6319,6 +6323,11 @@ Polyworks.Config = (function() {
 							attrs: [] 
 						},
 						{
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						},
+						{
 							name: 'effects',
 							cl: 'Collection',
 							attrs: [
@@ -6335,11 +6344,6 @@ Polyworks.Config = (function() {
 								}
 							}
 							]
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						}
 						]
 					},
@@ -6460,6 +6464,11 @@ Polyworks.Config = (function() {
 							attrs: [] 
 						},
 						{
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						},
+						{
 							name: 'effects',
 							cl: 'Collection',
 							attrs: [
@@ -6476,11 +6485,6 @@ Polyworks.Config = (function() {
 								}
 							}
 							]
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						}
 						]
 					},
@@ -6601,6 +6605,11 @@ Polyworks.Config = (function() {
 							attrs: [] 
 						},
 						{
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						},
+						{
 							name: 'effects',
 							cl: 'Collection',
 							attrs: [
@@ -6617,11 +6626,6 @@ Polyworks.Config = (function() {
 								}
 							}
 							]
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						}
 						]
 					},
@@ -6742,6 +6746,11 @@ Polyworks.Config = (function() {
 							attrs: [] 
 						},
 						{
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						},
+						{
 							name: 'effects',
 							cl: 'Collection',
 							attrs: [
@@ -6758,11 +6767,6 @@ Polyworks.Config = (function() {
 								}
 							}
 							]
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						}
 						]
 					},
@@ -6883,6 +6887,11 @@ Polyworks.Config = (function() {
 							attrs: [] 
 						},
 						{
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						},
+						{
 							name: 'effects',
 							cl: 'Collection',
 							attrs: [
@@ -6899,11 +6908,6 @@ Polyworks.Config = (function() {
 								}
 							}
 							]
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						}
 						]
 					}
