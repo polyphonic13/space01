@@ -36,6 +36,10 @@ PolyworksGame = (function() {
 			_checkOrientation();
 		},
 
+		getModel: function() {
+			return _model;
+		},
+
 		get: function(prop) {
 			// if(_model.hasOwnProperty(prop)) {
 			if(Polyworks.Utils.has(_model, prop)) {

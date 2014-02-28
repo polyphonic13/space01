@@ -43,6 +43,7 @@ Polyworks.LevelState = (function() {
 
 	LevelState.prototype.createPlayer = function(start, health) {
 		var playerConfig = Polyworks.Utils.clone(PolyworksGame.get('player'));
+		playerConfig.attrs.attack = 10;
 		playerConfig.attrs.start = start;
 		trace('Level['+this.model.name+']/createPlayer, playerConfig = ', playerConfig, '\n\tstart = ', start);
 
