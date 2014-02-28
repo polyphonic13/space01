@@ -111,7 +111,6 @@ Polyworks.State = (function() {
 	};
 	
 	State.prototype.onPauseState = function() {
-		trace(this);
 		// trace('State['+this.model.name+']/onPauseState');
 		if(this.paused) {
 			this.paused = false;

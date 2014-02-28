@@ -1684,6 +1684,7 @@ Polyworks.Config = (function() {
 					start: 0,
 					end: (stageWidth * 6) - (stageUnit * 1)
 				},
+				pausable: true,
 				images: [
 					'ovalMask',
 					'forestBackground01',
@@ -2858,6 +2859,7 @@ Polyworks.Config = (function() {
 					start: 0,
 					end: (stageWidth * 6) - (stageUnit * 1)
 				},
+				pausable: true,
 				images: [
 					'ovalMask',
 					'forestBackground01',
@@ -4182,6 +4184,7 @@ Polyworks.Config = (function() {
 					start: 0,
 					end: (stageWidth * 6) - (stageUnit * 1)
 				},
+				pausable: true,
 				images: [
 					'ovalMask',
 					'forestBackground01',
@@ -5812,6 +5815,7 @@ Polyworks.Config = (function() {
 					start: 0,
 					end: (stageWidth * 6) - (stageUnit * 1)
 				},
+				pausable: true,
 				images: [
 					// 'sky',
 					'mountainBackground01a',
