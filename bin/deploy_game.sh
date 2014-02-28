@@ -1,7 +1,7 @@
 
 # flags:
 #
-#	-p	target project (required)
+#	-p	project (required)
 #	-t	target directory: optional directory target; defaults to target project value
 # 	-r	remove previous deploy directory prior to running grunt
 #	-g	skip grunt

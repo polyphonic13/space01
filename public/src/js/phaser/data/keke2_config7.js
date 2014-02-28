@@ -500,13 +500,31 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
+					name: 'playButton',
+					cl: 'InputButton',
+					attrs: {
+						img: 'playButton',
+						start: {
+							x: 30,
+							y: 15
+						},
+						frames: [0, 0, 1],
+						inputCode: Polyworks.InputCodes.PLAY,
+						events: {
+							released: {
+								type: Polyworks.Events.RESUME_STATE
+							}
+						}
+					}
+				},
+				{
 					name: 'menuBtn',
 					cl: 'InputButton',
 					attrs: {
 						img: 'menuButton',
 						start: {
 							x: 30,
-							y: 15
+							y: 80
 						},
 						frames: [0, 0, 1],
 						inputCode: Polyworks.InputCodes.MENU,
@@ -514,24 +532,6 @@ Polyworks.Config = (function() {
 							released: {
 								type: Polyworks.Events.CHANGE_STATE,
 								value: 'menu'
-							}
-						}
-					}
-				},
-				{
-					name: 'playButton',
-					cl: 'InputButton',
-					attrs: {
-						img: 'playButton',
-						start: {
-							x: 30,
-							y: 80
-						},
-						frames: [0, 0, 1],
-						inputCode: Polyworks.InputCodes.PLAY,
-						events: {
-							released: {
-								type: Polyworks.Events.RESUME_STATE
 							}
 						}
 					}
