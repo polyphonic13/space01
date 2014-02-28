@@ -34,16 +34,17 @@ Polyworks.LevelState = (function() {
 		this.sectorManager.setState(this);
 		this.sectorManager.setActiveSector(0);
 
-		this.createPlayer(PolyworksGame.get('player').attrs.start, PolyworksGame.startingHealth);
+		var playerStart = Polyworks.Utils.clone(PolyworksGame.get('player').attrs.start);
+		trace('LevelState['+this.model.name+']/createState\n\t-------------- playerStart = ', playerStart);
+		this.createPlayer(playerStart, PolyworksGame.startingHealth);
 
-		this.hideShowGroupView('pauseGUI', false);
-		// this.addOvalMask();
+		this.getChildByName('pauseGUI').hide();
 	};
 
 	LevelState.prototype.createPlayer = function(start, health) {
 		var playerConfig = Polyworks.Utils.clone(PolyworksGame.get('player'));
 		playerConfig.attrs.start = start;
-		trace('Level['+this.model.name+']/createPlyaer, playerConfig = ', playerConfig, '\n\tstart = ', start);
+		trace('Level['+this.model.name+']/createPlayer, playerConfig = ', playerConfig, '\n\tstart = ', start);
 
 		playerConfig.game = PolyworksGame.phaser;
 		playerConfig.sectorManager = this.sectorManager;
@@ -118,33 +119,19 @@ Polyworks.LevelState = (function() {
 		this.playerPresent = false;
 		// this.playerGroup.visible = false;
 
-		this.hideShowGroupView('levelGUI', false);
-		this.hideShowGroupView('levelControls', false);
-		this.hideShowGroupView('pauseGUI', true);
+		this.getChildByName('levelGUI').hide();
+		this.getChildByName('levelControls').hide();
+		this.getChildByName('pauseGUI').show();
 	};
 	
 	LevelState.prototype.resumeState = function() {
-		// this.player.body.x = this.playerPosition.x;
-		// this.player.body.y = this.playerPosition.y;
-		// this.playerPosition = {
-		// 	x: this.player.body.x,
-		// 	y: this.player.body.y
-		// };
-		// trace('LevelState/resumeState, playerPosition = ', this.playerPosition);
-
 		this.sectorManager.setActiveSector(this.sectorManager.activeSectorId);
 		this.createPlayer(this.playerPosition, PolyworksGame.health);
 		this.playerGroup.visible = true; 
 
-		this.hideShowGroupView('levelGUI', true);
-		this.hideShowGroupView('levelControls', true);
-		this.hideShowGroupView('pauseGUI', false);
-	};
-	
-	LevelState.prototype.hideShowGroupView = function(name, visible) {
-		var view = this.getChildByName(name);
-		// trace('LevelState/hideShowGroupView, view = ', view);
-		view.group.visible = visible;
+		this.getChildByName('levelGUI').show();
+		this.getChildByName('levelControls').show();
+		this.getChildByName('pauseGUI').hide();
 	};
 	
 	LevelState.prototype.shutdown = function() {

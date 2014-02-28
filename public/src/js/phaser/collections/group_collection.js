@@ -41,15 +41,23 @@ Polyworks.GroupCollection = (function() {
 		// trace(this.group);
 	};
 
+	GroupCollection.prototype.hide = function() {
+		this.group.visible = false;
+	};
+	
+	GroupCollection.prototype.show = function() {
+		this.group.visible = true;
+	};
+	
 	GroupCollection.prototype.remove = function(child) {
-		this.model.group.remove(child);
+		this.group.remove(child);
 		delete this.model.collection[child];
 	};
 	
 	GroupCollection.prototype.removeAll = function() {
 		// trace('GroupCollection['+this.model.name+']/remove, collection = ');
 		// trace(this.collection);
-		this.model.group.removeAll();
+		this.group.removeAll();
 		while(this.model.collection.length > 0) {
 				this.model.collection.pop();
 		};

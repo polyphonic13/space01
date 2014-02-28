@@ -820,6 +820,7 @@ Polyworks.Config = (function() {
 					}
 					]
 				},
+
 				{
 					name: 'terrain',
 					cl: 'PhysicalGroupCollection',
