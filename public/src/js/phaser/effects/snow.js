@@ -2,10 +2,9 @@ Polyworks.Snow = (function() {
 	Polyworks.Utils.inherits(Snow, Polyworks.Emitter);
 	
 	function Snow(params) {
-		trace('Snow/constructor');
+		trace('Snow/constructor, params = ', params);
 		var defaults = {
-				attrs: {
-				maxParticles: 5000,
+				maxParticles: 400,
 				particles: {
 					keys: 'particle',
 					frames: 0,
@@ -21,6 +20,8 @@ Polyworks.Snow = (function() {
 					x: {
 						min: -100,
 						max: -90
+						// min: 0,
+						// max: 0
 					},
 					y: {
 						min: 50,
@@ -38,10 +39,10 @@ Polyworks.Snow = (function() {
 					frequency: 10,
 					quantity: false
 				}
-			}
 		};
 
-		params = Polyworks.Utils.extend(params, defaults);
+		params.attrs = Polyworks.Utils.extend(params.attrs, defaults);
+		trace('\tparams now = ', params);
 		Snow._super.constructor.call(this, params);
 	}
 	

@@ -11,7 +11,7 @@ Polyworks.Emitter = (function() {
 		var attrs = this.model.attrs;
 		var bounds = (attrs.bounds) ? attrs.bounds : game.world.bounds;
 
-		trace('Emitter/begin, attrs = ', attrs);
+		trace('------------------ Emitter/begin, attrs = ', attrs, '\tbounds = ', bounds);
 	    this.emitter = game.add.emitter(bounds.x, bounds.y, attrs.maxParticles);
 		this.emitter.width = bounds.width;
 		this.emitter.height = bounds.height;

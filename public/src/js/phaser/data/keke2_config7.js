@@ -5854,7 +5854,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
-								alpha: 0.5
+								alpha: 0.85
 							},
 							start: {
 								x: 0,
@@ -5870,7 +5870,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
-								alpha: 0.5
+								alpha: 0.85
 							},
 							start: {
 								x: stageWidth,
@@ -5886,7 +5886,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
-								alpha: 0.5
+								alpha: 0.85
 							},
 							start: {
 								x: (stageWidth * 2),
@@ -5902,7 +5902,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
-								alpha: 0.5
+								alpha: 0.85
 							},
 							start: {
 								x: (stageWidth * 3),
@@ -5918,7 +5918,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
-								alpha: 0.5
+								alpha: 0.85
 							},
 							start: {
 								x: (stageWidth * 4),
@@ -5934,7 +5934,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
-								alpha: 0.5
+								alpha: 0.85
 							},
 							start: {
 								x: (stageWidth * 5),
@@ -6175,7 +6175,7 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'invisibleBg',
 									phaser: {
-										width: stageWidth,
+										width: stageWidth + stageUnit,
 										height: 32
 									},
 									start: {
@@ -6204,7 +6204,7 @@ Polyworks.Config = (function() {
 								cl: 'Snow',
 								attrs: {
 									bounds: {
-										x: 0,
+										x: (stageWidth/2),
 										y: -(stageHeight * 2) + winH,
 										width: stageWidth,
 										height: (stageHeight * 2)
@@ -6298,11 +6298,11 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'invisibleBg',
 									phaser: {
-										width: stageWidth,
+										width: stageWidth + (stageUnit * 2),
 										height: 32
 									},
 									start: {
-										x: stageWidth,
+										x: stageWidth - (stageUnit),
 										y: winH + 100
 									},
 									physics: {
@@ -6327,9 +6327,9 @@ Polyworks.Config = (function() {
 								cl: 'Snow',
 								attrs: {
 									bounds: {
-										x: stageWidth,
+										x: (stageWidth * 1.5),
 										y: -(stageHeight * 2) + winH,
-										width: (stageWidth * 2),
+										width: stageWidth,
 										height: (stageHeight * 2)
 									}
 								}
@@ -6439,11 +6439,11 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'invisibleBg',
 									phaser: {
-										width: stageWidth,
+										width: stageWidth + (stageUnit * 2),
 										height: 32
 									},
 									start: {
-										x: (stageWidth * 2),
+										x: (stageWidth * 2) - (stageUnit),
 										y: winH + 100
 									},
 									physics: {
@@ -6468,9 +6468,9 @@ Polyworks.Config = (function() {
 								cl: 'Snow',
 								attrs: {
 									bounds: {
-										x: (stageWidth * 2),
+										x: (stageWidth * 2.5),
 										y: -(stageHeight * 2) + winH,
-										width: (stageWidth * 3),
+										width: stageWidth,
 										height: (stageHeight * 2)
 									}
 								}
@@ -6580,11 +6580,11 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'invisibleBg',
 									phaser: {
-										width: stageWidth,
+										width: stageWidth + (stageUnit * 2),
 										height: 32
 									},
 									start: {
-										x: (stageWidth * 3),
+										x: (stageWidth * 3) - (stageUnit),
 										y: winH + 100
 									},
 									physics: {
@@ -6609,9 +6609,9 @@ Polyworks.Config = (function() {
 								cl: 'Snow',
 								attrs: {
 									bounds: {
-										x: (stageWidth * 3),
+										x: (stageWidth * 3.5),
 										y: -(stageHeight * 2) + winH,
-										width: (stageWidth * 4),
+										width: stageWidth,
 										height: (stageHeight * 2)
 									}
 								}
@@ -6721,11 +6721,11 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'invisibleBg',
 									phaser: {
-										width: stageWidth + stageUnit,
+										width: stageWidth + (stageUnit * 2),
 										height: 32
 									},
 									start: {
-										x: (stageWidth * 4),
+										x: (stageWidth * 4) - (stageUnit),
 										y: winH + 100
 									},
 									physics: {
@@ -6750,9 +6750,9 @@ Polyworks.Config = (function() {
 								cl: 'Snow',
 								attrs: {
 									bounds: {
-										x: (stageWidth * 4),
+										x: (stageWidth * 4.5),
 										y: -(stageHeight * 2) + winH,
-										width: (stageWidth * 5),
+										width: stageWidth,
 										height: (stageHeight * 2)
 									}
 								}
@@ -6862,11 +6862,11 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'invisibleBg',
 									phaser: {
-										width: stageWidth,
+										width: stageWidth + (stageUnit * 2),
 										height: 32
 									},
 									start: {
-										x: (stageWidth * 5),
+										x: (stageWidth * 5) - (stageUnit),
 										y: winH + 100
 									},
 									physics: {
@@ -6881,6 +6881,24 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [] 
+						},
+						{
+							name: 'effects',
+							cl: 'Collection',
+							attrs: [
+							{
+								name: 'snow',
+								cl: 'Snow',
+								attrs: {
+									bounds: {
+										x: (stageWidth * 5.5),
+										y: -(stageHeight * 2) + winH,
+										width: stageWidth,
+										height: (stageHeight * 2)
+									}
+								}
+							}
+							]
 						},
 						{
 							name: 'bonuses',

@@ -35,7 +35,7 @@ Polyworks.LevelState = (function() {
 		this.sectorManager.setActiveSector(0);
 
 		var playerStart = Polyworks.Utils.clone(PolyworksGame.get('player').attrs.start);
-		trace('LevelState['+this.model.name+']/createState\n\t-------------- playerStart = ', playerStart);
+		// trace('LevelState['+this.model.name+']/createState\n\tplayerStart = ', playerStart);
 		this.createPlayer(playerStart, PolyworksGame.startingHealth);
 
 		this.getChildByName('pauseGUI').hide();
@@ -46,7 +46,7 @@ Polyworks.LevelState = (function() {
 		var playerConfig = Polyworks.Utils.clone(PolyworksGame.get('player'));
 		playerConfig.attrs.attack = 10;
 		playerConfig.attrs.start = start;
-		trace('Level['+this.model.name+']/createPlayer, playerConfig = ', playerConfig, '\n\tstart = ', start);
+		// trace('Level['+this.model.name+']/createPlayer, playerConfig = ', playerConfig, '\n\tstart = ', start);
 
 		playerConfig.game = PolyworksGame.phaser;
 		playerConfig.sectorManager = this.sectorManager;
@@ -56,7 +56,6 @@ Polyworks.LevelState = (function() {
 		this.player.begin(health);
 		this.playerGroup.add(this.player);
 		this.playerPresent = true;
-		trace('playerGroup = ', this.playerGroup);
 		// trace('LevelState['+this.model.name+']/player created, jump = ' + playerConfig.attrs.speed.y, playerConfig);
 	};
 	
