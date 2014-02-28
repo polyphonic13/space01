@@ -573,21 +573,21 @@ Polyworks.Config = (function() {
 					name: 'menu-group',
 					cl: 'GroupCollection',
 					attrs: [
-					{
-						name: 'bg',
-						cl: 'Sprite',
-						attrs: {
-							img: 'blackRect',
-							start: {
-								x: 20,
-								y: 20 
-							},
-							phaser: {
-								width: winW - 40,
-								height: winH - 40
-							}
-						}
-					},
+					// {
+					// 	name: 'bg',
+					// 	cl: 'Sprite',
+					// 	attrs: {
+					// 		img: 'blackRect',
+					// 		start: {
+					// 			x: 20,
+					// 			y: 20 
+					// 		},
+					// 		phaser: {
+					// 			width: winW - 40,
+					// 			height: winH - 40
+					// 		}
+					// 	}
+					// },
 					{
 						name: 'title',
 						cl: 'Text',
@@ -6899,6 +6899,90 @@ Polyworks.Config = (function() {
 					type: 'pauseGUI',
 					addTo: 'null',
 					visible: false,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				}
+				]
+			},
+			{
+				name: 'map',
+				cl: 'MenuState',
+				world: {
+					x: 0,
+					y: 0,
+					width: winW,
+					height: winH
+				},
+				clearWorld: true,
+				clearCache: false,
+				images: [
+					'blackRect',
+					'nextButton',
+					'menuButton'
+				],
+				sprites: [],
+				attrs: [
+				{
+					name: 'map-group',
+					cl: 'GroupCollection',
+					attrs: [
+					{
+						name: 'bg',
+						cl: 'Sprite',
+						attrs: {
+							img: 'blackRect',
+							start: {
+								x: 20,
+								y: 20 
+							},
+							phaser: {
+								width: winW - 40,
+								height: winH - 40
+							}
+						}
+					},
+					{
+						name: 'title',
+						cl: 'Text',
+						attrs: {
+							centerX: true,
+							centerY: false,
+							x: 0,
+							y: 40,
+							defaultContent: 'Level ~{currentLevel}~ Completed',
+							style: { 
+								font: '30px Arial', 
+								fill: '#ffffff',
+								align: 'center'
+							}
+						}
+					},
+					{
+						name: 'score',
+						cl: 'Text',
+						attrs: {
+							centerX: true,
+							centerY: false,
+							x: 0,
+							y: 100,
+							defaultContent: 'Score: ~{score}~',
+							style: { 
+								font: '18px Arial', 
+								fill: '#ffffff',
+								align: 'center'
+							}
+						}
+					}
+					]
+				},
+				{
+					name: 'menu-controls',
+					cl: 'ControlButtons',
+					type: 'intermission',
 					attrs: {
 						start: {
 							x: 0,
