@@ -230,6 +230,19 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'menu', // m
+						cl: 'ControlKey',
+						attrs: {
+							inputCode: Polyworks.InputCodes.MENU,
+							events: {
+								pressed: {
+ 									type: Polyworks.Events.CHANGE_STATE,
+									value: 'menu'
+								}
+							}
+						}
+					},
+					{
 						name: 'left',
 						cl: 'ControlKey',
 						attrs: {
@@ -498,7 +511,7 @@ Polyworks.Config = (function() {
 						frames: [0, 0, 1],
 						inputCode: Polyworks.InputCodes.MENU,
 						events: {
-							pressed: {
+							released: {
 								type: Polyworks.Events.CHANGE_STATE,
 								value: 'menu'
 							}
@@ -517,7 +530,7 @@ Polyworks.Config = (function() {
 						frames: [0, 0, 1],
 						inputCode: Polyworks.InputCodes.PLAY,
 						events: {
-							pressed: {
+							released: {
 								type: Polyworks.Events.RESUME_STATE
 							}
 						}
@@ -1651,7 +1664,8 @@ Polyworks.Config = (function() {
 							y: 0
 						}
 					}
-				}]
+				}
+				]
 			},
 			// level 2
 			{
@@ -2811,7 +2825,21 @@ Polyworks.Config = (function() {
 							y: 0
 						}
 					}
-				}]
+				},
+				{
+					name: 'pauseGUI',
+					cl: 'SharedGroupCollection',
+					type: 'pauseGUI',
+					addTo: 'null',
+					visible: false,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				}
+				]
 			},
 			// level 3
 			{
@@ -4121,7 +4149,21 @@ Polyworks.Config = (function() {
 							y: 0
 						}
 					}
-				}]
+				},
+				{
+					name: 'pauseGUI',
+					cl: 'SharedGroupCollection',
+					type: 'pauseGUI',
+					addTo: 'null',
+					visible: false,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				}
+				]
 			},
 			// level 4
 			{
@@ -5737,7 +5779,21 @@ Polyworks.Config = (function() {
 							y: 0
 						}
 					}
-				}]
+				},
+				{
+					name: 'pauseGUI',
+					cl: 'SharedGroupCollection',
+					type: 'pauseGUI',
+					addTo: 'null',
+					visible: false,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				}
+				]
 			},
 			// level 5
 			{
@@ -6831,7 +6887,21 @@ Polyworks.Config = (function() {
 							y: 0
 						}
 					}
-				}]
+				},
+				{
+					name: 'pauseGUI',
+					cl: 'SharedGroupCollection',
+					type: 'pauseGUI',
+					addTo: 'null',
+					visible: false,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				}
+				]
 			},
 			// intermission
 			{

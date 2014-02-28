@@ -154,14 +154,10 @@ Polyworks.LevelState = (function() {
 			},
 			this
 		);
-
 		this.playerGroup.destroy();
 		if(this.playerPresent) {
 			this.player.destroy();
 		} 
-		if(this.pauseGUIPresent) {
-			this.pauseGUI.destroy();
-		}
 		LevelState._super.shutdown.call(this);
 	};
 

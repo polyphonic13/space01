@@ -66,26 +66,25 @@ Polyworks.InputButton = (function() {
 	};
 	
 	InputButton.prototype.inputPressed = function(params) {
-		// trace('InputButton/inputPressed, value = ' + params.value + ', type = ' + params.type);
-		// trace(this);
-		var event;
 		var events = this.model.attrs.events;
-		// trace(events);
-		if(events && events.pressed) {
-			// trace('\tabout to dispatch ' + events.pressed.type);
-			event = { type: events.pressed.type, value: events.pressed.value };
+		// trace('InputButton/inputPressed\n\tvalue = ' + params.value + ', type = ' + params.type + ', events = ', events);
+		if(events) {
+			if(events.pressed) {
+				// trace('\tabout to dispatch ' + events.pressed.type);
+				_trigger({ type: events.pressed.type, value: events.pressed.value });
+			}
 		} else {
-			event = { type: params.type, value: params.value }
+			_trigger({ type: params.type, value: params.value });
 		}
-		// trace(event);
-		_trigger(event);
 	};
 	
 	InputButton.prototype.inputReleased = function(params) {
-		// trace('InputButton/inputReleased, value = ' + params.value + ', type = ' + params.type);
-		var events = this.model.events;
-		if(events && events.released) {
-			_trigger({ type: events.released.type, value: events.released.value });
+		var events = this.model.attrs.events;
+		// trace('InputButton/inputReleased\n\tvalue = ' + params.value + ', type = ' + params.type + ', events = ', events);
+		if(events) {
+			if(events.released) {
+				_trigger({ type: events.released.type, value: events.released.value });
+			}
 		} else {
 			_trigger({ type: params.type, value: params.value });
 		}

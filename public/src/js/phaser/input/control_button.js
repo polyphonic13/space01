@@ -10,13 +10,17 @@ Polyworks.ControlButton = (function() {
 	};
 	
 	ControlButton.prototype.inputDown = function(event, pointer) {
-		// trace('ControlButton['+this.model.inputCode+']/inputDown');
-		this.inputPressed.call(this, { type: Polyworks.Events.CONTROL_PRESSED, value: this.model.inputCode });
+		trace('ControlButton['+this.model.inputCode+']/inputDown');
+		if(this.model.inputCode) {
+			this.inputPressed.call(this, { type: Polyworks.Events.CONTROL_PRESSED, value: this.model.inputCode });
+		}
 	};
 	
 	ControlButton.prototype.inputUp = function(event, pointer) {
 		// trace('ControlButton['+this.model.inputCode+']/inputUp');
-		this.inputReleased.call(this, { type: Polyworks.Events.CONTROL_RELEASED, value: this.model.inputCode });
+		if(this.model.inputCode) {
+			this.inputReleased.call(this, { type: Polyworks.Events.CONTROL_RELEASED, value: this.model.inputCode });
+		}
 	};
 	
 	ControlButton.prototype.destroy = function() {
