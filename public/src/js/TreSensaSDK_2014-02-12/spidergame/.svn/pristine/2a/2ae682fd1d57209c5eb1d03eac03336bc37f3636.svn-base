@@ -1,0 +1,337 @@
+# Build Script $Rev: 1261 $
+
+module.exports = (grunt) ->
+
+	# Parse game config into gameConfigContext
+	vm = require("vm")	
+	try
+		gameConfigTxt = grunt.file.read("js/GameConfig.js")
+		gameConfigContext = {}
+		vm.runInNewContext gameConfigTxt, gameConfigContext
+		path = gameConfigContext.GameConfig.PATH
+		if path[0] == '/'
+			gameConfigContext.GameConfig.PATH = path.substr(1)
+		gameConfigContext.GameConfig.RESOURCES ?= []
+	catch e
+		grunt.fail.fatal "Failed to load GameConfig:\n" + e
+
+	# Parse adapter definitions into adapterDefsContext
+	try
+		adapterDefsText = grunt.file.read("js/lib/TGS/tgs-adapters-#{gameConfigContext.GameConfig.TGS.VERSION}.min.js")
+		adapterDefsContext = {}
+		vm.runInNewContext adapterDefsText, adapterDefsContext
+	catch e
+		grunt.fail.fatal "Failed to load adapter definitions:\n" + e
+
+	# Load up users personal build config
+	try
+		homeDir = process.env.HOME || process.env.USERPROFILE
+		personalConfig = grunt.file.readJSON(homeDir + '/.tresensa/buildConfig.json')
+	catch e
+		grunt.fail.fatal "Failed to load buildConfig.json:\n #{e} \n Make sure you have a a personal buildConfig.json in ~/.tresensa/"
+
+
+	# this should probably live in its own file, but trying to keep file 
+	# dependancies down since we cant add single file externals
+	manifestTemplate = """
+		CACHE MANIFEST
+		# Updated: <%= dateStamp %>
+
+		<%= cdnDomain %>lib/tgl/tgl-<%= tglVersion %>.min.js
+		<%= cdnDomain %>lib/tge/tge-<%= tgeVersion %>.min.js
+		<%= cdnDomain %>lib/tgs/tgs-<%= tgsVersion %>.min.js
+		<%= cdnDomain %>lib/tgs/tgs-adapters-<%= tgsVersion %>.min.js
+		<%= cdnDomain %>lib/viewporter.min.js
+		<%= cdnDomain %>lib/PxLoader.min.js
+		<%= cdnDomain %>lib/PxLoaderImage.min.js
+		<%= cdnDomain %>lib/iscroll-lite.min.js
+		<%= cdnDomain %>lib/cards.min.js
+		<%= cdnDomain %>lib/bugsense.1.1.min.js
+
+		<%= cdnDomain %>lib/tgs/A0020/A0020-<%= adapters.A0020.version %>.min.js
+
+		//static.tresensa.com/tgs/images/amazoncoin.png
+		//static.tresensa.com/tgs/images/facebookcredit.png
+		//static.tresensa.com/tgs/images/gamesdotcom.png
+		//static.tresensa.com/tgs/images/kik_login.png
+		//static.tresensa.com/tgs/images/kik.png
+		//static.tresensa.com/tgs/images/logout.png
+		//static.tresensa.com/tgs/images/mocogold.png
+		//static.tresensa.com/tgs/images/processing.gif
+		//static.tresensa.com/tgs/images/test_login.png
+		//static.tresensa.com/tgs/images/testicon.png
+		//static.tresensa.com/tgs/images/more_games.png
+
+		<%= files %>
+
+		NETWORK:
+		*
+	"""
+
+	# Configure tasks
+	grunt.initConfig
+		gameConfig: gameConfigContext.GameConfig
+		personalConfig: personalConfig
+		distDir: "dist/"
+
+		clean: ["<%= distDir %>"]
+
+		copy:
+			game:
+				src: [
+					"manifest.webapp"
+					"cache.manifest"
+					"web-app-manifest.json"
+					"index.html"
+					"index-firefox.html"
+					"kik-icon.png"
+					"favicon.ico"
+					"web-image.jpg"
+					"apple-touch-icon.png"
+					"reorient-message.jpg"
+					"background.jpg"
+					"style.css"
+					"leaderboard/**"
+				]
+				dest: "<%= distDir %>"
+			resources:
+				src: "<%= gameConfig.RESOURCES %>"
+				dest: "<%= distDir %>"
+			# Only run for QA builds
+			assetsQA:
+				src: ["assets/**", "!assets/source-images/**", "!assets/images-source/**"]
+				dest: "<%= distDir %>"
+			jsQA:
+				src: "js/**"
+				dest: "<%= distDir %>"
+			# Only run for PROD builds
+			assetsProd:
+				expand: true
+				cwd: "assets/"
+				src: ["**", "!source-images/**", "!images-source/**"]
+				dest: "<%= distDir %>assets-<%= gameConfig.VERSION %>/"
+			jsProd:
+				src: [
+					"js/lib/head.load.min.js",
+					"js/lib/tgl/tgl.boot.min.js"
+					"js/GameConfig.js"
+				]
+				dest: "<%= distDir %>"
+			# Only run for PROD builds if CDN is disabled
+			tgSDK:
+				src: "js/lib/**"
+				dest: "<%= distDir %>"
+
+		# Only used in QA builds, prod builds are concated by uglify
+		concat:
+			options:
+				separator: ";"
+
+			game:
+				src: "<%= gameConfig.SOURCE %>"
+				dest: "<%= distDir %>js/game/game-<%= gameConfig.VERSION %>.js"
+
+		# Only used in PROD builds, QA builds are concated by concat
+		uglify:
+			game:
+				src: "<%= gameConfig.SOURCE %>"
+				dest: "<%= distDir %>js/game/game-<%= gameConfig.VERSION %>.min.js"
+
+		# Used for both PROD and QA
+		s3Files: [{
+			expand: true
+			cwd: '<%= distDir %>'
+			# copy all files in dist except for manifest files 
+			# and GameConfig which is copied in next step
+			src: [
+				'**'
+				"!manifest.webapp"
+				"!cache.manifest"
+				"!web-app-manifest.json"
+				"!js/GameConfig.js"
+				"!index.html"
+				"!index-firefox.html"
+			]
+			dest: '<%= gameConfig.PATH %>'
+		}, {						
+			expand: true
+			cwd: '<%= distDir %>'
+			# Copy manifests and index file with CacheControl set
+			src: [
+				"manifest.webapp"
+				"web-app-manifest.json"
+				"index.html"
+				"index-firefox.html"
+				"js/GameConfig.js"
+				"cache.manifest"
+			]
+			dest: '<%= gameConfig.PATH %>'
+			params:
+				CacheControl: 'max-age=0, private'
+		}]
+
+
+		aws_s3:
+			options: 
+				accessKeyId: '<%= personalConfig.aws.accessKeyId %>'
+				secretAccessKey: '<%= personalConfig.aws.secretAccessKey %>'
+				uploadConcurrency: 5
+				downloadConcurrency: 5
+			qa:
+				options:
+					bucket: 'qa-games.tresensa.com'
+				files: '<%= s3Files %>'
+			prod:
+				options:
+					bucket: 'games.tresensa.com'
+				files: '<%= s3Files %>'
+
+		appcache:
+			prod: 
+				localFiles: [
+					"apple-touch-icon.png"
+					"background.jpg"
+					"favicon.ico"
+					"kik-icon.png"
+					"preloader.jpg"
+					"reorient-message.jpg"
+					"style.css"
+					"web-image.jpg"
+					"style.css"
+					"leaderboard/**"
+					'js/**'
+					"assets-<%= gameConfig.VERSION %>/**"
+				]
+				indexFiles: [
+					"index.html"
+					"index-firefox.html"
+				]
+		shell:
+			update:
+				options:
+					stdout: true
+				command: [
+					'svn export https://svn.tresensa.com/TresensaCoreClient/ClientSDKs/trunk/GameBuild/Gruntfile.coffee --force'
+					'svn export https://svn.tresensa.com/TresensaCoreClient/ClientSDKs/trunk/GameBuild/package.json --force'
+					'npm install'
+				].join('&&')
+		watch:
+			options:
+				livereload: 35729
+			tgs:
+				files: ["<%= gameConfig.SOURCE %>"]
+				tasks: ["copy:jsQA"]
+
+	# Load external libraries
+	grunt.loadNpmTasks "grunt-contrib-uglify"
+	grunt.loadNpmTasks "grunt-contrib-clean"
+	grunt.loadNpmTasks "grunt-contrib-concat"
+	grunt.loadNpmTasks "grunt-contrib-copy"
+	grunt.loadNpmTasks "grunt-contrib-watch"
+	grunt.loadNpmTasks 'grunt-aws-s3'
+	grunt.loadNpmTasks 'grunt-shell'
+
+	# Create server task with special handling for lib-debug
+	connect = require('connect')
+	injectLiveReload = require('connect-livereload')
+	open = require('open')
+	grunt.registerTask 'connect', 'Start a custom static web server.', ->
+		server = connect()
+
+		if grunt.config("gameConfig.DEBUG")
+			clientSDKDir = grunt.config("personalConfig.clientSDKDir")
+			if clientSDKDir
+				grunt.log.writeln("GameConfig set to DEBUG, mounting #{clientSDKDir}/dist as lib-debug and enabling livereload")
+				grunt.log.writeln("Run `grunt dev` in client SDK folder to update automatically while editing")
+				server.use(injectLiveReload(port: 35729))
+				server.use('/js/lib-debug/', connect.static(clientSDKDir + "/dist"))
+			else
+				grunt.log.writeln("GameConfig set to DEBUG but no `clientSDKDir` found in ~/.tresensa/buildConfig.json, using local lib-debug folder")
+
+
+		server.use(connect.static('dist'))
+		server.listen(8080).on 'listening', ->
+			grunt.log.ok('Started static web server on http://localhost:8080');
+			open("http://localhost:8080")
+
+	# Migrate project to new lib external
+	SVN = require 'svn-spawn'
+	grunt.registerTask 'migrate', ->
+		done = this.async()
+		svn = new SVN(silent: true)
+		grunt.log.write("Updating externals for lib...")
+		svn.cmd ["propget", "svn:externals", "js"], (e, data) ->
+			grunt.fatal("Error getting current externals: " + e) if e
+			curExternals = data.trim().replace("/TGL/lib", "/GameTemplate/lib")
+			svn.cmd ["propset", "svn:externals", curExternals, "js"], (e, data) ->
+				grunt.fatal("Error setting new externals: " + e) if e
+				grunt.log.ok()
+				grunt.log.write("Downloading updates from svn...")
+				svn.update (e, data) ->
+					grunt.fatal("Error updating: " + e ) if e
+					grunt.log.ok()
+					done()
+
+	# Create tasks
+	grunt.registerTask "copy:qa", ["copy:game", "copy:resources", "copy:assetsQA" , "copy:jsQA"]
+	grunt.registerTask "copy:prod", ->
+		grunt.task.run ["copy:game", "copy:resources", "copy:assetsProd" , "copy:jsProd"]
+		unless grunt.config("gameConfig.CDN.ENABLED")
+			grunt.log.writeln "CDN disabled in GameConfig, including lib dir"
+			grunt.task.run "copy:tgSDK"
+
+	grunt.registerTask "build:qa", ["clean", "copy:qa" , "concat"]
+	grunt.registerTask "build:prod", ["clean", "copy:prod" , "uglify"]
+	grunt.registerTask "build", ->
+		if grunt.config("gameConfig.PROD_ENV")
+			grunt.log.writeln "Defaulting to PROD based on GameConfig"
+			grunt.task.run("build:prod")
+		else
+			grunt.log.writeln "Defaulting to QA based on GameConfig"
+			grunt.task.run("build:qa")
+
+	grunt.registerTask "server", ["build", "connect"]
+
+	grunt.registerTask "update", ["shell:update"]
+
+	grunt.registerTask "deploy", (env = "qa") ->
+		env = env.toLowerCase()
+		if env is 'prod' and (!grunt.config("gameConfig.PROD_ENV") or !grunt.config("gameConfig.CDN.ENABLED"))
+			grunt.fail.warn "Attempting to deploy to PROD environment with PROD_ENV or CDN.ENABLED set to false in GameConfig"
+		grunt.task.run ["build", "appcache", "aws_s3:#{env}"]
+
+	grunt.registerMultiTask "appcache", ->
+		if !grunt.config("gameConfig.PROD_ENV") or grunt.config("gameConfig.APPCACHE.ENABLED") == false
+			grunt.log.writeln "Skip generating appcache: not a production build or APPCHACE.ENABLED == false"
+			return
+
+		assetDir = grunt.config.process("assets-<%= gameConfig.VERSION %>/")
+		extraFiles = grunt.config("gameConfig.RESOURCES") || []
+		excludedAssets = grunt.config("gameConfig.APPCACHE.EXCLUDE") || []
+		excludedAssets = excludedAssets.map (file) ->"!" + file.replace("assets/", assetDir)
+
+		# Gather files and variables to fill the template
+		files = grunt.file.expand {filter: "isFile", cwd: grunt.config("distDir")}, @data.localFiles.concat(extraFiles, excludedAssets)
+		appCacheText = grunt.template.process manifestTemplate, data:
+			dateStamp: new Date()
+			files: files.join('\n')
+			cdnDomain: if grunt.config("gameConfig.CDN.ENABLED") then "//static.tresensa.com/" else "js/"
+			tglVersion: grunt.config("gameConfig.TGL.VERSION")
+			tgeVersion: grunt.config("gameConfig.TGE.VERSION")
+			tgsVersion: grunt.config("gameConfig.TGS.VERSION")
+			adapters: adapterDefsContext.TGS.AdapterDefinitions
+
+		# Write out cache.manifest
+		grunt.log.write("Writing cache.manifest...")
+		grunt.file.write grunt.config.process('<%= distDir%>/cache.manifest'), appCacheText
+		grunt.log.ok()
+
+		# Add manifest to index.html (Note: this is assuming a <html> tag with no attributes, not very robust)
+		grunt.log.write("Rewriting index.html to include appcache...")
+		for index in @data.indexFiles when grunt.file.exists(index)
+			indexHtml = grunt.file.read index
+			indexHtml = indexHtml.replace("<html>", '<html manifest="cache.manifest">')
+			grunt.file.write grunt.config.process('<%= distDir%>/' + index), indexHtml
+		grunt.log.ok()
+
+	grunt.registerTask "default", ["server", "watch"]

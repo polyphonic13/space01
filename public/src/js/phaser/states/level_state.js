@@ -39,6 +39,7 @@ Polyworks.LevelState = (function() {
 		this.createPlayer(playerStart, PolyworksGame.startingHealth);
 
 		this.getChildByName('pauseGUI').hide();
+
 	};
 
 	LevelState.prototype.createPlayer = function(start, health) {

@@ -538,8 +538,9 @@ Polyworks.Config = (function() {
 				}
 				]
 			},
+			preloadAll: true,
 			// STATES
-			initialState: 'menu',
+			initialState: 'level5',
 			states: [
 			// menu
 			{
@@ -573,21 +574,6 @@ Polyworks.Config = (function() {
 					name: 'menu-group',
 					cl: 'GroupCollection',
 					attrs: [
-					// {
-					// 	name: 'bg',
-					// 	cl: 'Sprite',
-					// 	attrs: {
-					// 		img: 'blackRect',
-					// 		start: {
-					// 			x: 20,
-					// 			y: 20 
-					// 		},
-					// 		phaser: {
-					// 			width: winW - 40,
-					// 			height: winH - 40
-					// 		}
-					// 	}
-					// },
 					{
 						name: 'title',
 						cl: 'Text',
@@ -1606,7 +1592,7 @@ Polyworks.Config = (function() {
 							},
 							phaser: {
 								width: winW + 100,
-								height: winH + 100,
+								height: winH + 100
 							}
 						}
 					}
@@ -2781,7 +2767,7 @@ Polyworks.Config = (function() {
 							},
 							phaser: {
 								width: winW + 100,
-								height: winH + 100,
+								height: winH + 100
 							}
 						}
 					}
@@ -3760,7 +3746,7 @@ Polyworks.Config = (function() {
 									},
 									attack: 10
 								}
-							},
+							}
 							]
 						},
 						{
@@ -4106,7 +4092,7 @@ Polyworks.Config = (function() {
 							},
 							phaser: {
 								width: winW + 100,
-								height: winH + 100,
+								height: winH + 100
 							}
 						}
 					}
@@ -5737,7 +5723,7 @@ Polyworks.Config = (function() {
 							},
 							phaser: {
 								width: winW + 100,
-								height: winH + 100,
+								height: winH + 100
 							}
 						}
 					}
@@ -5838,7 +5824,8 @@ Polyworks.Config = (function() {
 					'pauseButton',
 					'keke'
 				],
-				attrs: [{
+				attrs: [
+				{
 					name: 'scenery',
 					cl: 'GroupCollection',
 					attrs: [
@@ -5866,7 +5853,8 @@ Polyworks.Config = (function() {
 							img: 'mountainBackground01a',
 							phaser: {
 								width: stageWidth,
-								height: stageHeight * 2
+								height: stageHeight * 2,
+								alpha: 0.5
 							},
 							start: {
 								x: 0,
@@ -5881,7 +5869,8 @@ Polyworks.Config = (function() {
 							img: 'mountainBackground01b',
 							phaser: {
 								width: stageWidth,
-								height: stageHeight * 2
+								height: stageHeight * 2,
+								alpha: 0.5
 							},
 							start: {
 								x: stageWidth,
@@ -5896,7 +5885,8 @@ Polyworks.Config = (function() {
 							img: 'mountainBackground01c',
 							phaser: {
 								width: stageWidth,
-								height: stageHeight * 2
+								height: stageHeight * 2,
+								alpha: 0.5
 							},
 							start: {
 								x: (stageWidth * 2),
@@ -5908,10 +5898,11 @@ Polyworks.Config = (function() {
 						name: 'mountainBackground01d',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackground01d',
+							img: 'mountainBackground01a',
 							phaser: {
 								width: stageWidth,
-								height: stageHeight * 2
+								height: stageHeight * 2,
+								alpha: 0.5
 							},
 							start: {
 								x: (stageWidth * 3),
@@ -5923,10 +5914,11 @@ Polyworks.Config = (function() {
 						name: 'mountainBackground01e',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackground01e',
+							img: 'mountainBackground01b',
 							phaser: {
 								width: stageWidth,
-								height: stageHeight * 2
+								height: stageHeight * 2,
+								alpha: 0.5
 							},
 							start: {
 								x: (stageWidth * 4),
@@ -5938,10 +5930,11 @@ Polyworks.Config = (function() {
 						name: 'mountainBackground01f',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackground01f',
+							img: 'mountainBackground01c',
 							phaser: {
 								width: stageWidth,
-								height: stageHeight * 2
+								height: stageHeight * 2,
+								alpha: 0.5
 							},
 							start: {
 								x: (stageWidth * 5),
@@ -5963,7 +5956,7 @@ Polyworks.Config = (function() {
 								y: winH - (stageHeight * 3)
 							}
 						}
-					},
+					}
 					]
 				},
 				{
@@ -6203,6 +6196,24 @@ Polyworks.Config = (function() {
 							attrs: [] 
 						},
 						{
+							name: 'effects',
+							cl: 'Collection',
+							attrs: [
+							{
+								name: 'snow',
+								cl: 'Snow',
+								attrs: {
+									bounds: {
+										x: 0,
+										y: -(stageHeight * 2) + winH,
+										width: stageWidth,
+										height: (stageHeight * 2)
+									}
+								}
+							}
+							]
+						},
+						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -6306,6 +6317,24 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [] 
+						},
+						{
+							name: 'effects',
+							cl: 'Collection',
+							attrs: [
+							{
+								name: 'snow',
+								cl: 'Snow',
+								attrs: {
+									bounds: {
+										x: stageWidth,
+										y: -(stageHeight * 2) + winH,
+										width: (stageWidth * 2),
+										height: (stageHeight * 2)
+									}
+								}
+							}
+							]
 						},
 						{
 							name: 'bonuses',
@@ -6431,6 +6460,24 @@ Polyworks.Config = (function() {
 							attrs: [] 
 						},
 						{
+							name: 'effects',
+							cl: 'Collection',
+							attrs: [
+							{
+								name: 'snow',
+								cl: 'Snow',
+								attrs: {
+									bounds: {
+										x: (stageWidth * 2),
+										y: -(stageHeight * 2) + winH,
+										width: (stageWidth * 3),
+										height: (stageHeight * 2)
+									}
+								}
+							}
+							]
+						},
+						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -6554,6 +6601,24 @@ Polyworks.Config = (function() {
 							attrs: [] 
 						},
 						{
+							name: 'effects',
+							cl: 'Collection',
+							attrs: [
+							{
+								name: 'snow',
+								cl: 'Snow',
+								attrs: {
+									bounds: {
+										x: (stageWidth * 3),
+										y: -(stageHeight * 2) + winH,
+										width: (stageWidth * 4),
+										height: (stageHeight * 2)
+									}
+								}
+							}
+							]
+						},
+						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -6675,6 +6740,24 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [] 
+						},
+						{
+							name: 'effects',
+							cl: 'Collection',
+							attrs: [
+							{
+								name: 'snow',
+								cl: 'Snow',
+								attrs: {
+									bounds: {
+										x: (stageWidth * 4),
+										y: -(stageHeight * 2) + winH,
+										width: (stageWidth * 5),
+										height: (stageHeight * 2)
+									}
+								}
+							}
+							]
 						},
 						{
 							name: 'bonuses',
@@ -6824,7 +6907,7 @@ Polyworks.Config = (function() {
 							},
 							phaser: {
 								width: winW + 100,
-								height: winH + 100,
+								height: winH + 100
 							}
 						}
 					}
@@ -6846,7 +6929,7 @@ Polyworks.Config = (function() {
 							},
 							phaser: {
 								width: winW + 100,
-								height: winH + 100,
+								height: winH + 100
 							}
 						}
 					}
@@ -7216,7 +7299,7 @@ Polyworks.Config = (function() {
 								align: 'center'
 							}
 						}
-					},
+					}
 					]
 				},
 				{

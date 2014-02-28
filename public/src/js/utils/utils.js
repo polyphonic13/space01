@@ -48,7 +48,9 @@ Polyworks.Utils = (function() {
 
 	utils.extend = function(a, b) {
 		for(var key in b) {
-			a[key] = b[key];
+			if(b.hasOwnProperty(key)) {
+				a[key] = b[key];
+			}
 		} 
 		return a;
 	};
@@ -222,6 +224,7 @@ Polyworks.Utils = (function() {
         }
         scriptTag.setAttribute('src', url);
         document.getElementsByTagName('head')[0].appendChild(scriptTag);
-	}
+	};
+
 	return utils;
 }());

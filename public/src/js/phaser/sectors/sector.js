@@ -43,7 +43,7 @@ Polyworks.Sector = (function() {
 		var game = PolyworksGame.phaser;
 		// var world = this.model.attrs.world;
 		// trace(game.world);
-		var bounds = this.model.attrs.bounds;
+		var bounds = this.model.bounds;
 	    this.emitter = game.add.emitter(bounds.start, game.world.bounds.y, 400);
 
 		// this.emitter.width = Polyworks.Stage.width;
@@ -53,23 +53,13 @@ Polyworks.Sector = (function() {
 		this.emitter.maxParticleScale = 0.5;
 		this.emitter.minParticleScale = 0.1;
 		this.emitter.setYSpeed(50, 100);
-		this.emitter.setXSpeed(-5, 5);
+		this.emitter.setXSpeed(-100, -90);
 		this.emitter.gravity = 0;
 		this.emitter.minRotation = 0;
 		this.emitter.maxRotation = 0;
-		this.emitter.start(false, 7000, 10, false);
-/*
+		// this.emitter.start(false, 7000, 10, false);
+		this.emitter.start(false, 8000, 10, false);
 
-		// RANDOM
-	    this.emitter.minParticleSpeed.setTo(-200, -300);
-	    this.emitter.maxParticleSpeed.setTo(200, -400);
-	    this.emitter.gravity = 8;
-	    this.emitter.bounce.setTo(0.5, 0.5);
-	    this.emitter.particleDrag.x = 10;
-	    this.emitter.angularDrag = 30;
-		// this.emitter.rotation = -0.5;
-	    this.emitter.start(false, 1600, 400);
-*/
 	};
 	
 	Sector.prototype.pwUpdate = function(params) {

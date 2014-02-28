@@ -1,0 +1,52 @@
+// Game Config Global
+var GameConfig = {
+
+    PROD_ENV: true,
+
+    LOG_LEVEL: 3,
+
+    ORIENTATION: 'landscape',
+
+    CONSTRUCTOR: 'SpiderGame',
+    SOURCE: [
+        "js/game/SpiderGame.js",
+		"js/game/screens/LoadingScreen.js",
+        "js/game/screens/MainMenu.js",
+        "js/game/screens/ShopScreen.js",
+        "js/game/screens/GameScreen.js",
+        "js/game/screens/PauseScreen.js",
+        "js/game/screens/GameOver.js"
+    ],
+
+    CSS: [
+        "css/spider.css"
+    ],
+
+    GAME_ID: 'com.tresensa.test-game',
+    TITLE: 'Spider!',
+    HOST: 'http://games.tresensa.com',
+    PATH: '/spider-game/',
+    VERSION: '1.0.3',
+
+    CDN: {
+        ENABLED: true
+    },
+
+    ADS: {
+        INTERSTITIAL_INTERVAL: 30
+    },
+
+    TGL: {
+        VERSION: '1.0.22'
+    },
+
+    TGS: {
+        ENABLED: true,
+        VERSION: '0.3.4'
+    },
+
+    TGE: {
+        ENABLED: true,
+        VERSION: '1.0.18'
+    }
+};
