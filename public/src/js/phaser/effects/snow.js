@@ -6,7 +6,7 @@ Polyworks.Snow = (function() {
 		var defaults = {
 				maxParticles: 400,
 				particles: {
-					keys: 'particle',
+					keys: 'snowFlake01',
 					frames: 0,
 					quantity: 0,
 					collide: '',

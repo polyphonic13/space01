@@ -65,7 +65,7 @@ Polyworks.Config = (function() {
 				cupcake: 'images/cupcake.png',
 
 				// effects
-				particle: 'images/particle01.png',
+				snowFlake01: 'images/particle01.png',
 
 				// buttons
 				startButton: 'images/start_button.png',
@@ -5819,7 +5819,7 @@ Polyworks.Config = (function() {
 					'rockPlatform1',
 					'invisibleBg',
 					'heart',
-					'particle01'
+					'snowFlake01'
 				],
 				sprites: [
 					'leftButton',
@@ -5858,7 +5858,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
-								alpha: 0.85
+								alpha: 1
 							},
 							start: {
 								x: 0,
@@ -5874,7 +5874,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
-								alpha: 0.85
+								alpha: 1
 							},
 							start: {
 								x: stageWidth,
@@ -5890,7 +5890,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
-								alpha: 0.85
+								alpha: 1
 							},
 							start: {
 								x: (stageWidth * 2),
@@ -5906,7 +5906,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
-								alpha: 0.85
+								alpha: 1
 							},
 							start: {
 								x: (stageWidth * 3),
@@ -5922,7 +5922,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
-								alpha: 0.85
+								alpha: 1
 							},
 							start: {
 								x: (stageWidth * 4),
@@ -5938,7 +5938,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
-								alpha: 0.85
+								alpha: 1
 							},
 							start: {
 								x: (stageWidth * 5),
