@@ -476,8 +476,8 @@ Polyworks.Config = (function() {
 					attrs: {
 						img: 'greyRect',
 						phaser: {
-							width: stageWidth,
-							height: stageHeight,
+							width: winW,
+							height: winH,
 							alpha: 0.5
 						},
 						start: {

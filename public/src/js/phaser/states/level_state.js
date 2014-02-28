@@ -110,13 +110,13 @@ Polyworks.LevelState = (function() {
 	LevelState.prototype.pauseState = function() {
 		this.sectorManager.deactivateAll();
 		this.playerPosition = {
-			x: this.player.body.x,
-			y: this.player.body.y
+			x: this.player.x,
+			y: this.player.y
 		};
+		// trace('LevelState/pauseState, playerPosition = ', this.playerPosition, this.player);
 		this.player.destroy();
 		this.playerPresent = false;
 		// this.playerGroup.visible = false;
-		trace('LevelState/pauseState, playerPosition = ', this.playerPosition);
 
 		this.hideShowGroupView('levelGUI', false);
 		this.hideShowGroupView('levelControls', false);
@@ -130,7 +130,7 @@ Polyworks.LevelState = (function() {
 		// 	x: this.player.body.x,
 		// 	y: this.player.body.y
 		// };
-		trace('LevelState/resumeState, playerPosition = ', this.playerPosition);
+		// trace('LevelState/resumeState, playerPosition = ', this.playerPosition);
 
 		this.sectorManager.setActiveSector(this.sectorManager.activeSectorId);
 		this.createPlayer(this.playerPosition, PolyworksGame.health);
