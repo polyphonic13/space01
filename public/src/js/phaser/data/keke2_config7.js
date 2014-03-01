@@ -7659,24 +7659,6 @@ Polyworks.Config = (function() {
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
-						},
-						{
-							name: 'effects',
-							cl: 'Collection',
-							attrs: [
-							{
-								name: 'snow',
-								cl: 'Snow',
-								attrs: {
-									bounds: {
-										x: (stageWidth/2),
-										y: -(stageHeight * 2) + winH,
-										width: stageWidth,
-										height: (stageHeight * 2)
-									}
-								}
-							}
-							]
 						}
 						]
 					},
@@ -7782,24 +7764,6 @@ Polyworks.Config = (function() {
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
-						},
-						{
-							name: 'effects',
-							cl: 'Collection',
-							attrs: [
-							{
-								name: 'snow',
-								cl: 'Snow',
-								attrs: {
-									bounds: {
-										x: (stageWidth * 1.5),
-										y: -(stageHeight * 2) + winH,
-										width: stageWidth,
-										height: (stageHeight * 2)
-									}
-								}
-							}
-							]
 						}
 						]
 					},
@@ -7923,24 +7887,6 @@ Polyworks.Config = (function() {
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
-						},
-						{
-							name: 'effects',
-							cl: 'Collection',
-							attrs: [
-							{
-								name: 'snow',
-								cl: 'Snow',
-								attrs: {
-									bounds: {
-										x: (stageWidth * 2.5),
-										y: -(stageHeight * 2) + winH,
-										width: stageWidth,
-										height: (stageHeight * 2)
-									}
-								}
-							}
-							]
 						}
 						]
 					},
@@ -8064,24 +8010,6 @@ Polyworks.Config = (function() {
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
-						},
-						{
-							name: 'effects',
-							cl: 'Collection',
-							attrs: [
-							{
-								name: 'snow',
-								cl: 'Snow',
-								attrs: {
-									bounds: {
-										x: (stageWidth * 3.5),
-										y: -(stageHeight * 2) + winH,
-										width: stageWidth,
-										height: (stageHeight * 2)
-									}
-								}
-							}
-							]
 						}
 						]
 					},
@@ -8205,24 +8133,6 @@ Polyworks.Config = (function() {
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
-						},
-						{
-							name: 'effects',
-							cl: 'Collection',
-							attrs: [
-							{
-								name: 'snow',
-								cl: 'Snow',
-								attrs: {
-									bounds: {
-										x: (stageWidth * 4.5),
-										y: -(stageHeight * 2) + winH,
-										width: stageWidth,
-										height: (stageHeight * 2)
-									}
-								}
-							}
-							]
 						}
 						]
 					},
@@ -8345,25 +8255,6 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'effects',
-							cl: 'Collection',
-							attrs: [
-							{
-								name: 'snow',
-								cl: 'Snow',
-								attrs: {
-									bounds: {
-										x: (stageWidth * 5.5),
-										y: -(stageHeight * 2) + winH,
-										width: stageWidth,
-										height: (stageHeight * 2)
-									}
-								}
-							}
-							]
 						}
 						]
 					}
