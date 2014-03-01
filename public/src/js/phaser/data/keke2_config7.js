@@ -27,13 +27,22 @@ Polyworks.Config = (function() {
 				forestBackground02: 'images/pencil_forest01b.png',
 				forestBackground03: 'images/pencil_forest01c.png',
 
-				mountainBackground01a: 'images/pencil_mountain01a.png',
-				mountainBackground01b: 'images/pencil_mountain01b.png',
-				mountainBackground01c: 'images/pencil_mountain01c.png',
-				mountainBackground01d: 'images/pencil_mountain01d.png',
-				mountainBackground01e: 'images/pencil_mountain01e.png',
-				mountainBackground01f: 'images/pencil_mountain01f.png',
+				mountainBackground01a: 'images/pencil_mountain04a.png',
+				mountainBackground01b: 'images/pencil_mountain04b.png',
+				mountainBackground01c: 'images/pencil_mountain04c.png',
+				mountainBackground01d: 'images/pencil_mountain04d.png',
+				mountainBackground01e: 'images/pencil_mountain04e.png',
+				mountainBackground01f: 'images/pencil_mountain04f.png',
 
+				// mountainBackground01a: 'images/pencil_mountain01a.png',
+				// mountainBackground01b: 'images/pencil_mountain01b.png',
+				// mountainBackground01c: 'images/pencil_mountain01c.png',
+				// mountainBackground01d: 'images/pencil_mountain01d.png',
+				// mountainBackground01e: 'images/pencil_mountain01e.png',
+				// mountainBackground01f: 'images/pencil_mountain01f.png',
+
+				fog01: 'images/fog01.png',
+				
 				ovalMask: 'images/oval_mask.png',
 
 				grass03: 'images/grass03.png',
@@ -543,7 +552,7 @@ Polyworks.Config = (function() {
 			preloadAll: true,
 			// preloadAll: false,
 			// STATES
-			initialState: 'level5',
+			initialState: 'menu',
 			states: [
 			// menu
 			{
@@ -7349,7 +7358,7 @@ Polyworks.Config = (function() {
 						name: 'mountainBackground01d',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackground01a',
+							img: 'mountainBackground01d',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
@@ -7365,7 +7374,7 @@ Polyworks.Config = (function() {
 						name: 'mountainBackground01e',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackground01b',
+							img: 'mountainBackground01e',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
@@ -7381,7 +7390,7 @@ Polyworks.Config = (function() {
 						name: 'mountainBackground01f',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackground01c',
+							img: 'mountainBackground01f',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
