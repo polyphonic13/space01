@@ -40,8 +40,10 @@ Polyworks.Config = (function() {
 				mountainBackground05d: 'images/pencil_mountain05d.png',
 				mountainBackground05e: 'images/pencil_mountain05e.png',
 				mountainBackground05f: 'images/pencil_mountain05f.png',
-				mountainBackground05g: 'images/pencil_mountain05g.png',
 				mountainBackground05h: 'images/pencil_mountain05h.png',
+				mountainBackground05i: 'images/pencil_mountain05i.png',
+				mountainBackground05k: 'images/pencil_mountain05k.png',
+				mountainBackground05l: 'images/pencil_mountain05l.png',
 				
 				// mountainBackground01a: 'images/pencil_mountain01a.png',
 				// mountainBackground01b: 'images/pencil_mountain01b.png',
@@ -632,27 +634,29 @@ Polyworks.Config = (function() {
 				cl: 'LevelState',
 				world: {
 					x: 0,
-					y: -(stageHeight * 6) + winH,
+					y: -(stageHeight * 8) + winH,
 					width: stageWidth * 2,
-					height: stageHeight * 6
+					height: stageHeight * 8
 				},
 				clearWorld: true,
 				clearCache: false,
 				bounds: {
 					start: 0,
-					end: (stageWidth * 6) - (stageUnit * 1)
+					end: (stageWidth * 3) - (stageUnit * 1)
 				},
 				pausable: true,
 				images: [
-					// 'sky',
+					'sky',
 					'mountainBackground05a',
 					'mountainBackground05b',
 					'mountainBackground05c',
 					'mountainBackground05d',
 					'mountainBackground05e',
 					'mountainBackground05f',
-					'mountainBackground05g',
 					'mountainBackground05h',
+					'mountainBackground05i',
+					'mountainBackground05k',
+					'mountainBackground05l',
 					'tree01',
 					'platformV',
 					'platform',
@@ -673,6 +677,23 @@ Polyworks.Config = (function() {
 					name: 'scenery',
 					cl: 'GroupCollection',
 					attrs: [
+					{
+						name: 'sky',
+						cl: 'Sprite',
+						attrs: {
+							img: 'sky',
+							name: 'sky',
+							start: {
+								x: 0,
+								y: 0
+							},
+							phaser: {
+								width: winW,
+								height: winH,
+								fixedToCamera: true
+							}
+						}
+					},
 					{
 						name: 'mountainBackground01a',
 						cl: 'Sprite',
@@ -716,8 +737,8 @@ Polyworks.Config = (function() {
 								alpha: 1
 							},
 							start: {
-								x: 0,
-								y: winH - (stageHeight * 4)
+								x: (stageWidth * 2),
+								y: winH - (stageHeight * 2)
 							}
 						}
 					},
@@ -732,29 +753,13 @@ Polyworks.Config = (function() {
 								alpha: 1
 							},
 							start: {
-								x: (stageWidth),
+								x: 0,
 								y: winH - (stageHeight * 4)
 							}
 						}
 					},
 					{
 						name: 'mountainBackground01e',
-						cl: 'Sprite',
-						attrs: {
-							img: 'mountainBackground05g',
-							phaser: {
-								width: stageWidth,
-								height: stageHeight * 2,
-								alpha: 1
-							},
-							start: {
-								x: 0,
-								y: winH - (stageHeight * 6)
-							}
-						}
-					},
-					{
-						name: 'mountainBackground01f',
 						cl: 'Sprite',
 						attrs: {
 							img: 'mountainBackground05e',
@@ -765,6 +770,54 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth),
+								y: winH - (stageHeight * 4)
+							}
+						}
+					},
+					{
+						name: 'mountainBackground01f',
+						cl: 'Sprite',
+						attrs: {
+							img: 'mountainBackground05f',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight * 2,
+								alpha: 1
+							},
+							start: {
+								x: (stageWidth * 2),
+								y: winH - (stageHeight * 4)
+							}
+						}
+					},
+					{
+						name: 'mountainBackground01e',
+						cl: 'Sprite',
+						attrs: {
+							img: 'mountainBackground05h',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight * 2,
+								alpha: 1
+							},
+							start: {
+								x: (stageWidth),
+								y: winH - (stageHeight * 6)
+							}
+						}
+					},
+					{
+						name: 'mountainBackground01f',
+						cl: 'Sprite',
+						attrs: {
+							img: 'mountainBackground05i',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight * 2,
+								alpha: 1
+							},
+							start: {
+								x: (stageWidth * 2),
 								y: winH - (stageHeight * 6)
 							}
 						}
@@ -773,14 +826,14 @@ Polyworks.Config = (function() {
 						name: 'mountainBackground01e',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackground05g',
+							img: 'mountainBackground05k',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
 								alpha: 1
 							},
 							start: {
-								x: 0,
+								x: (stageWidth),
 								y: winH - (stageHeight * 8)
 							}
 						}
@@ -789,14 +842,14 @@ Polyworks.Config = (function() {
 						name: 'mountainBackground01f',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackground05g',
+							img: 'mountainBackground05l',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
 								alpha: 1
 							},
 							start: {
-								x: (stageWidth),
+								x: (stageWidth * 2),
 								y: winH - (stageHeight * 8)
 							}
 						}
@@ -1220,655 +1273,657 @@ Polyworks.Config = (function() {
 							name: 'dynamicTerrain',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 0.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 1.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 3.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 4.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 6.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 7.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 9.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 10.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 12.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 13.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 15.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 16.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 18.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 19.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 21.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 22.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 24.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 25.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 27.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 28.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 30.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 31.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 33.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 34.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 35.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 36.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 38.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 39.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 40.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 41.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 43.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 44.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 46.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 47.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 49.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'platform',
-									phaser: {
-										width: stageWidth/3,
-										height: (stageUnit/4)
-									},
-									start: {
-										x: (stageWidth * 1.5),
-										y: winH - (stageUnit * 51.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							}
+// start sector 2 terrain
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 0.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 1.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 3.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 4.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 6.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 7.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 9.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 10.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 12.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 13.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 15.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 16.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 18.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 19.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 21.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 22.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 24.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 25.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 27.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 28.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 30.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 31.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 33.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 34.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 35.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 36.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 38.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 39.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 41.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 42.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 44.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 45.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 47.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 48.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth) + (stageUnit * 1),
+			y: winH - (stageUnit * 50.0)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+},
+{
+	name: 'ground0',
+	cl: 'Sprite',
+	attrs: {
+		img: 'platform',
+		phaser: {
+			width: stageWidth/3,
+			height: (stageUnit/4)
+		},
+		start: {
+			x: (stageWidth * 1.5),
+			y: winH - (stageUnit * 51.5)
+		},
+		physics: {
+			immovable: true
+		}
+	}
+}
 
+// end sector 3 terrain
 
 							]
 						},
