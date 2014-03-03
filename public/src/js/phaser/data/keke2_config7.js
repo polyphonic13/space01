@@ -619,8 +619,8 @@ Polyworks.Config = (function() {
 							centerX: true,
 							centerY: false,
 							x: 0,
-							y: stageUnit,
-							defaultContent: 'Keke vs. the Caterpillars',
+							y: (stageUnit * 0.5),
+							defaultContent: 'Keke and The Colorless Country',
 							style: { 
 								font: '30px Arial', 
 								fill: '#ffffff',
@@ -8508,7 +8508,8 @@ Polyworks.Config = (function() {
 							},
 							phaser: {
 								width: winW - 40,
-								height: winH - 40
+								height: winH - 40,
+								alpha: 0.33
 							}
 						}
 					},
@@ -8519,8 +8520,8 @@ Polyworks.Config = (function() {
 							centerX: true,
 							centerY: false,
 							x: 0,
-							y: stageUnit,
-							defaultContent: 'The Colorless Country',
+							y: (stageUnit * 0.5),
+							defaultContent: 'Keke and The Colorless Country',
 							style: { 
 								font: '30px Arial', 
 								fill: '#ffffff',
@@ -8528,14 +8529,21 @@ Polyworks.Config = (function() {
 							}
 						}
 					},
-					]
-				},
-				{
-					name: 'levels',
-					cl: 'Collection',
-					attrs: [
 					{
-						
+						name: 'subtitle',
+						cl: 'Text',
+						attrs: {
+							centerX: true,
+							centerY: false,
+							x: 0,
+							y: stageUnit * 2,
+							defaultContent: 'The Foggy Forest',
+							style: {
+								font: '22px Arial',
+								fill: '#ffffff',
+								align: 'center'
+							}
+						}
 					}
 					]
 				},

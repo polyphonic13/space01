@@ -288,6 +288,8 @@ PolyworksGame = (function() {
 	function _beginStates() {
 		_states = {};
 
+		PolyworksGame.levels = [];
+		
 		var states = _model.states;
 		var state;
 
@@ -298,6 +300,10 @@ PolyworksGame = (function() {
 				PolyworksGame.phaser.state.add(s.name, state, false);
 				if(s.name.indexOf('level') > -1) {
 					PolyworksGame.totalLevels++;
+					PolyworksGame.levels[s.name] = {
+						cleared: false,
+						locked: true
+					}
 				}
 			},
 			this

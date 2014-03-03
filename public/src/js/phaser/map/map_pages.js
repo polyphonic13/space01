@@ -6,13 +6,12 @@ Polyworks.MapPages = (function() {
 	}
 	
 	MapPages.prototype.begin = function() {
-		var levels = PolyworksGames.totalLevels;
-		Polyworks.Utils.each(levels,
-			function(l, idx) {
-				trace('create page');
-			},
+		var totalLevels = PolyworksGames.totalLevels;
+		this.levels = [];
+		
+		for(var i = 0; i < totalLevels; i++) {
 			this
-		);
+		}
 	};
 	
 	return MapPages;
