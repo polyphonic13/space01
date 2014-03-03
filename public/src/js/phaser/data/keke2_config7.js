@@ -21,6 +21,10 @@ Polyworks.Config = (function() {
 		var c = {
 			// IMAGES
 			images: {
+				mapLocationIcon: 'images/map/location_icon.png',
+				mapSelectedIcon: 'images/map/location_selected.png',
+				lockIcon: 'images/map/lock_icon.png',
+				
 				sky: 'images/night_sky.jpg',
 
 				forestBackground01: 'images/pencil_forest01a.png',
@@ -208,7 +212,7 @@ Polyworks.Config = (function() {
 							events: {
 								pressed: {
 									type: Polyworks.Events.CHANGE_STATE,
-									value: 'level'
+									value: 'map'
 								}
 							}
 						}
@@ -226,19 +230,6 @@ Polyworks.Config = (function() {
 							}
 						}
 					},
-					// {
-					// 	name: 'retry', // r
-					// 	cl: 'ControlKey',
-					// 	attrs: {
-					// 		inputCode: Polyworks.InputCodes.RETRY,
-					// 		events: {
-					// 			pressed: {
-					// 				type: Polyworks.Events.CHANGE_STATE,
-					// 				value: 'level'
-					// 			}
-					// 		}
-					// 	}
-					// },
 					{
 						name: 'pause', // p
 						cl: 'ControlKey',
@@ -304,7 +295,7 @@ Polyworks.Config = (function() {
 							events: {
 								pressed: {
 									type: Polyworks.Events.CHANGE_STATE,
-									value: 'level'
+									value: 'map'
 								}
 							}
 						}
@@ -348,6 +339,27 @@ Polyworks.Config = (function() {
 							}
 						}
 					},
+					{
+						name: 'menuBtn',
+						cl: 'InputButton',
+						attrs: {
+							img: 'menuButton',
+							start: {
+								x: 30,
+								y: 15
+							},
+							frames: [0, 0, 1],
+							inputCode: Polyworks.InputCodes.MENU,
+							events: {
+								pressed: {
+									type: Polyworks.Events.CHANGE_STATE,
+									value: 'menu'
+								}
+							}
+						}
+					}
+					],
+					map: [
 					{
 						name: 'menuBtn',
 						cl: 'InputButton',
@@ -607,7 +619,7 @@ Polyworks.Config = (function() {
 							centerX: true,
 							centerY: false,
 							x: 0,
-							y: 40,
+							y: stageUnit,
 							defaultContent: 'Keke vs. the Caterpillars',
 							style: { 
 								font: '30px Arial', 
@@ -619,7 +631,7 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
-					name: 'menu-controls',
+					name: 'menuControls',
 					cl: 'ControlButtons',
 					type: 'menu',
 					attrs: {
@@ -8462,7 +8474,7 @@ Polyworks.Config = (function() {
 			// map
 			{
 				name: 'map',
-				cl: 'MenuState',
+				cl: 'MapState',
 				world: {
 					x: 0,
 					y: 0,
@@ -8474,7 +8486,10 @@ Polyworks.Config = (function() {
 				images: [
 					'blackRect',
 					'nextButton',
-					'menuButton'
+					'menuButton',
+					'mapSelectedIcon',
+					'mapLocationIcon',
+					'lockIcon'
 				],
 				sprites: [],
 				attrs: [
@@ -8486,7 +8501,7 @@ Polyworks.Config = (function() {
 						name: 'bg',
 						cl: 'Sprite',
 						attrs: {
-							img: 'blackRect',
+							img: 'greyRect',
 							start: {
 								x: 20,
 								y: 20 
@@ -8504,8 +8519,8 @@ Polyworks.Config = (function() {
 							centerX: true,
 							centerY: false,
 							x: 0,
-							y: 40,
-							defaultContent: 'Level ~{currentLevel}~ Completed',
+							y: stageUnit,
+							defaultContent: 'The Colorless Country',
 							style: { 
 								font: '30px Arial', 
 								fill: '#ffffff',
@@ -8513,28 +8528,21 @@ Polyworks.Config = (function() {
 							}
 						}
 					},
+					]
+				},
+				{
+					name: 'levels',
+					cl: 'Collection',
+					attrs: [
 					{
-						name: 'score',
-						cl: 'Text',
-						attrs: {
-							centerX: true,
-							centerY: false,
-							x: 0,
-							y: 100,
-							defaultContent: 'Score: ~{score}~',
-							style: { 
-								font: '18px Arial', 
-								fill: '#ffffff',
-								align: 'center'
-							}
-						}
+						
 					}
 					]
 				},
 				{
-					name: 'menu-controls',
+					name: 'mapControls',
 					cl: 'ControlButtons',
-					type: 'intermission',
+					type: 'map',
 					attrs: {
 						start: {
 							x: 0,
@@ -8589,7 +8597,7 @@ Polyworks.Config = (function() {
 							centerX: true,
 							centerY: false,
 							x: 0,
-							y: 40,
+							y: stageUnit,
 							defaultContent: 'Level ~{currentLevel}~ Completed',
 							style: { 
 								font: '30px Arial', 
@@ -8617,7 +8625,7 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
-					name: 'menu-controls',
+					name: 'menuControls',
 					cl: 'ControlButtons',
 					type: 'intermission',
 					attrs: {
@@ -8674,7 +8682,7 @@ Polyworks.Config = (function() {
 							centerX: true,
 							centerY: false,
 							x: 0,
-							y: 40,
+							y: stageUnit,
 							defaultContent: 'All Completed',
 							style: { 
 								font: '30px Arial', 
@@ -8760,7 +8768,7 @@ Polyworks.Config = (function() {
 							centerX: true,
 							centerY: false,
 							x: 0,
-							y: 40,
+							y: stageUnit,
 							defaultContent: 'Game Over',
 							style: { 
 								font: '30px Arial', 
