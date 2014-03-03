@@ -562,8 +562,9 @@ Polyworks.Config = (function() {
 				}
 				]
 			},
+			// USE FOR LOCAL TESTING:
 			// preloadAll: true,
-			preloadAll: false,
+
 			// STATES
 			initialState: 'menu',
 			states: [
