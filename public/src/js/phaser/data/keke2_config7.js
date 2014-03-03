@@ -517,6 +517,7 @@ Polyworks.Config = (function() {
 					]
 				}
 			},
+			// SHARED GROUPS
 			sharedGroups: {
 				pauseGUI:  [
 				{
@@ -609,9 +610,25 @@ Polyworks.Config = (function() {
 				],
 				attrs: [
 				{
-					name: 'menu-group',
+					name: 'menuGroup',
 					cl: 'GroupCollection',
 					attrs: [
+					// {
+					// 	name: 'bg',
+					// 	cl: 'Sprite',
+					// 	attrs: {
+					// 		img: 'greyRect',
+					// 		start: {
+					// 			x: (stageUnit/10),
+					// 			y: (stageUnit/10)
+					// 		},
+					// 		phaser: {
+					// 			width: winW - (stageUnit/5),
+					// 			height: winH - (stageUnit/5),
+					// 			alpha: 0.25
+					// 		}
+					// 	}
+					// },
 					{
 						name: 'title',
 						cl: 'Text',
@@ -620,7 +637,7 @@ Polyworks.Config = (function() {
 							centerY: false,
 							x: 0,
 							y: (stageUnit * 0.5),
-							defaultContent: 'Keke and The Colorless Country',
+							defaultContent: 'Keke in The Colorless Country',
 							style: { 
 								font: '30px Arial', 
 								fill: '#ffffff',
@@ -8484,7 +8501,6 @@ Polyworks.Config = (function() {
 				clearWorld: true,
 				clearCache: false,
 				images: [
-					'blackRect',
 					'nextButton',
 					'menuButton',
 					'mapSelectedIcon',
@@ -8494,25 +8510,25 @@ Polyworks.Config = (function() {
 				sprites: [],
 				attrs: [
 				{
-					name: 'map-group',
+					name: 'mapGroup',
 					cl: 'GroupCollection',
 					attrs: [
-					{
-						name: 'bg',
-						cl: 'Sprite',
-						attrs: {
-							img: 'greyRect',
-							start: {
-								x: 20,
-								y: 20 
-							},
-							phaser: {
-								width: winW - 40,
-								height: winH - 40,
-								alpha: 0.33
-							}
-						}
-					},
+					// {
+					// 	name: 'bg',
+					// 	cl: 'Sprite',
+					// 	attrs: {
+					// 		img: 'greyRect',
+					// 		start: {
+					// 			x: (stageUnit/10),
+					// 			y: (stageUnit/10)
+					// 		},
+					// 		phaser: {
+					// 			width: winW - (stageUnit/5),
+					// 			height: winH - (stageUnit/5),
+					// 			alpha: 0.25
+					// 		}
+					// 	}
+					// },
 					{
 						name: 'title',
 						cl: 'Text',
@@ -8521,7 +8537,7 @@ Polyworks.Config = (function() {
 							centerY: false,
 							x: 0,
 							y: (stageUnit * 0.5),
-							defaultContent: 'Keke and The Colorless Country',
+							defaultContent: 'Keke in The Colorless Country',
 							style: { 
 								font: '30px Arial', 
 								fill: '#ffffff',
@@ -8536,8 +8552,8 @@ Polyworks.Config = (function() {
 							centerX: true,
 							centerY: false,
 							x: 0,
-							y: stageUnit * 2,
-							defaultContent: 'The Foggy Forest',
+							y: (stageUnit * 1.5),
+							defaultContent: 'Chapter 1: The Foggy Forest',
 							style: {
 								font: '22px Arial',
 								fill: '#ffffff',
