@@ -3,7 +3,7 @@ Polyworks.InputButton = (function() {
 	
 	var _this;
 	function InputButton(params) {
-		trace('InputButton/constructor, params = ', params);
+		// trace('InputButton/constructor, params = ', params);
 		_this = this;
 		this.model = new Polyworks.Model(params);
 		// trace('\tinput button model = ');
@@ -22,7 +22,7 @@ Polyworks.InputButton = (function() {
 		var start = this.model.attrs.start;
 		this.x = start.x;
 		this.y = start.y;
-		trace('InputButton['+this.model.img+']/begin, start x/y = ' + start.x + '/' + start.y);
+		trace('InputButton['+this.model.img+']/begin, start x/y = ' + start.x + '/' + start.y, this.model);
 		if(this.model.width) {
 			this.width = this.model.width;
 		}

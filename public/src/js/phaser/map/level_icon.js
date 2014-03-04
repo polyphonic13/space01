@@ -73,6 +73,7 @@ Polyworks.LevelIcon = (function() {
 			cl: 'InputButton',
 			attrs: {
 				img: 'greyRect',
+				// img: this.model.name + 'Icon',
 				start: this.model.start,
 				phaser: {
 					width: levelIconWidth,
