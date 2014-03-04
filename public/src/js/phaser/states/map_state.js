@@ -6,6 +6,7 @@ Polyworks.MapState = (function() {
 	}
 
 	MapState.prototype.createState = function() {
+		trace('MapState/createState, this = ', this);
 		MapState._super.createState.call(this);
 	};
 	

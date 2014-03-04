@@ -21,9 +21,15 @@ Polyworks.Config = (function() {
 		var c = {
 			// IMAGES
 			images: {
-				mapLocationIcon: 'images/map/location_icon.png',
+				level1Icon: 'images/map/level_1_icon.png',
+				level2Icon: 'images/map/level_2_icon.png',
+				level3Icon: 'images/map/level_3_icon.png',
+				level4Icon: 'images/map/level_4_icon.png',
+				level5Icon: 'images/map/level_5_icon.png',
+				level6Icon: 'images/map/level_6_icon.png',
 				mapSelectedIcon: 'images/map/location_selected.png',
 				lockIcon: 'images/map/lock_icon.png',
+				completedIcon: 'images/map/completed_icon.png',
 				
 				sky: 'images/night_sky.jpg',
 
@@ -8503,14 +8509,22 @@ Polyworks.Config = (function() {
 				images: [
 					'nextButton',
 					'menuButton',
+					'level1Icon',
+					'level2Icon',
+					'level3Icon',
+					'level4Icon',
+					'level5Icon',
+					'level6Icon',
 					'mapSelectedIcon',
-					'mapLocationIcon',
+					'lockIcon',
+					'completedIcon',
 					'lockIcon'
 				],
 				sprites: [],
+				initialPage: 0,
 				attrs: [
 				{
-					name: 'mapGroup',
+					name: 'mapBackground',
 					cl: 'GroupCollection',
 					attrs: [
 					// {
@@ -8544,22 +8558,67 @@ Polyworks.Config = (function() {
 								align: 'center'
 							}
 						}
-					},
+					}
+					]
+				},
+				{
+					name: 'pages',
+					cl: 'Collection',
+					attrs: [
 					{
-						name: 'subtitle',
-						cl: 'Text',
-						attrs: {
-							centerX: true,
-							centerY: false,
-							x: 0,
-							y: (stageUnit * 1.5),
-							defaultContent: 'Chapter 1: The Foggy Forest',
-							style: {
-								font: '22px Arial',
-								fill: '#ffffff',
-								align: 'center'
+						name: 'page1',
+						cl: 'MapPage',
+						levels: [
+							'level1',
+							'level2',
+							'level3',
+							'level4'
+						],
+						attrs: [
+						{
+							name: 'subtitle',
+							cl: 'Text',
+							attrs: {
+								centerX: true,
+								centerY: false,
+								x: 0,
+								y: (stageUnit * 1.5),
+								defaultContent: 'Chapter 1: The Foggy Forest',
+								style: {
+									font: '22px Arial',
+									fill: '#ffffff',
+									align: 'center'
+								}
 							}
 						}
+						]
+					},
+					{
+						name: 'page2',
+						cl: 'MapPage',
+						levels: [
+							'level5',
+							'level6'
+						],
+						attrs: [
+						{
+							name: 'subtitle',
+							cl: 'Text',
+							attrs: {
+								centerX: true,
+								centerY: false,
+								x: 0,
+								y: (stageUnit * 1.5),
+								defaultContent: 'Chapter 1: The Misty Mountain',
+								style: {
+									font: '22px Arial',
+									fill: '#ffffff',
+									align: 'center'
+								}
+							}
+							
+						}
+						]
 					}
 					]
 				},
