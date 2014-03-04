@@ -27,9 +27,9 @@ Polyworks.Config = (function() {
 				level4Icon: 'images/map/level_4_icon.png',
 				level5Icon: 'images/map/level_5_icon.png',
 				level6Icon: 'images/map/level_6_icon.png',
-				mapSelectedIcon: 'images/map/location_selected.png',
-				lockIcon: 'images/map/lock_icon.png',
-				completedIcon: 'images/map/completed_icon.png',
+				levelSelectedIcon: 'images/map/level_selected_icon.png',
+				levelLockedIcon: 'images/map/level_locked_icon.png',
+				levelClearedIcon: 'images/map/level_cleared_icon.png',
 				
 				sky: 'images/night_sky.jpg',
 
@@ -8515,13 +8515,70 @@ Polyworks.Config = (function() {
 					'level4Icon',
 					'level5Icon',
 					'level6Icon',
-					'mapSelectedIcon',
-					'lockIcon',
-					'completedIcon',
-					'lockIcon'
+					'levelSelectedIcon',
+					'levelLockedIcon',
+					'levelClearedIcon',
+					'levelLockedIcon'
 				],
 				sprites: [],
 				initialPage: 0,
+				pages: [
+				{
+					name: 'page1',
+					cl: 'MapPage',
+					levels: [
+						'level1',
+						'level2',
+						'level3',
+						'level4'
+					],
+					attrs: [
+					{
+						name: 'subtitle',
+						cl: 'Text',
+						attrs: {
+							centerX: true,
+							centerY: false,
+							x: 0,
+							y: (stageUnit * 1.5),
+							defaultContent: 'Chapter 1: The Foggy Forest',
+							style: {
+								font: '22px Arial',
+								fill: '#ffffff',
+								align: 'center'
+							}
+						}
+					}
+					]
+				},
+				{
+					name: 'page2',
+					cl: 'MapPage',
+					levels: [
+						'level5',
+						'level6'
+					],
+					attrs: [
+					{
+						name: 'subtitle',
+						cl: 'Text',
+						attrs: {
+							centerX: true,
+							centerY: false,
+							x: 0,
+							y: (stageUnit * 1.5),
+							defaultContent: 'Chapter 1: The Misty Mountain',
+							style: {
+								font: '22px Arial',
+								fill: '#ffffff',
+								align: 'center'
+							}
+						}
+
+					}
+					]
+				}
+				],
 				attrs: [
 				{
 					name: 'mapBackground',
@@ -8558,67 +8615,6 @@ Polyworks.Config = (function() {
 								align: 'center'
 							}
 						}
-					}
-					]
-				},
-				{
-					name: 'pages',
-					cl: 'Collection',
-					attrs: [
-					{
-						name: 'page1',
-						cl: 'MapPage',
-						levels: [
-							'level1',
-							'level2',
-							'level3',
-							'level4'
-						],
-						attrs: [
-						{
-							name: 'subtitle',
-							cl: 'Text',
-							attrs: {
-								centerX: true,
-								centerY: false,
-								x: 0,
-								y: (stageUnit * 1.5),
-								defaultContent: 'Chapter 1: The Foggy Forest',
-								style: {
-									font: '22px Arial',
-									fill: '#ffffff',
-									align: 'center'
-								}
-							}
-						}
-						]
-					},
-					{
-						name: 'page2',
-						cl: 'MapPage',
-						levels: [
-							'level5',
-							'level6'
-						],
-						attrs: [
-						{
-							name: 'subtitle',
-							cl: 'Text',
-							attrs: {
-								centerX: true,
-								centerY: false,
-								x: 0,
-								y: (stageUnit * 1.5),
-								defaultContent: 'Chapter 1: The Misty Mountain',
-								style: {
-									font: '22px Arial',
-									fill: '#ffffff',
-									align: 'center'
-								}
-							}
-							
-						}
-						]
 					}
 					]
 				},

@@ -2,13 +2,11 @@ Polyworks.Collection = (function() {
 	
 	function Collection(params) {
 		this.model = new Polyworks.Model(params);
-		// trace('Collection['+params.name+']/constructor');
-		// trace(params);
+		// trace('Collection['+params.name+']/constructor', params);
 	}
 	
 	Collection.prototype.begin = function() {
-		// trace('Collection['+this.model.name+']/begin');
-		// trace(this);
+		// trace('Collection['+this.model.name+']/begin', this);
 		var game = PolyworksGame.phaser;
 		var collection = [];
 		var nameIndex = {};
@@ -35,8 +33,7 @@ Polyworks.Collection = (function() {
 	};
 	
 	Collection.prototype.getChildByName = function(name) {
-		// trace('Collection/getChildByName, name = ' + name);
-		// trace(this.model);
+		// trace('Collection/getChildByName, name = ' + name + 'model = ', this.model);
 		var child; 
 		
 		var collection = this.model.collection;

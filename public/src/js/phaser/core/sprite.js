@@ -3,10 +3,10 @@ Polyworks.Sprite = (function() {
 
 	function Sprite(params) {
 		this.model = new Polyworks.Model(params);
-		// trace('Sprite['+this.model.name+']/constructor, this = ');
-		// trace(this);
+		trace('Sprite['+this.model.name+']/constructor, model = ', this.model);
 		var attrs = this.model.attrs;
 		var start = attrs.start;
+		trace('\t\t\tstart = x: ' + start.x + ', y: ' + start.y + ', img = ' + attrs.img);
 		Sprite._super.constructor.call(this, params.game, start.x, start.y, attrs.img);
 		this.active = true;
 		// this.active = false;
@@ -15,8 +15,7 @@ Polyworks.Sprite = (function() {
 	}
 	
 	Sprite.prototype.begin = function() {
-		// trace('Sprite['+this.model.name+']/begin, this = ');
-		// trace(this);
+		// trace('Sprite['+this.model.name+']/begin, this = ', this);
 
 		var attrs = this.model.attrs;
 		var phaser = attrs.phaser; 

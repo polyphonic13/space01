@@ -14,8 +14,7 @@ Polyworks.GroupCollection = (function() {
 	}
 	
 	GroupCollection.prototype.begin = function() {
-		// trace('GroupCollection['+this.model.name+']/begin');
-		// trace(this);
+		trace('GroupCollection['+this.model.name+']/begin, this = ', this);
 		GroupCollection._super.begin.call(this);
 
 		var game = PolyworksGame.phaser;

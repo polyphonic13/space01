@@ -21,16 +21,15 @@ Polyworks.MapPage = (function() {
 		var currentLevel = 'level' + (PolyworksGame.currentLevel);
 		var selected;
 		var locked;
+		var cleared; 
 		
 		Polyworks.Utils.each(levels,
 			function(level, idx) {
 				
-				selected = false;
-				locked = (!PolyworksGame.levels[level].cleared) ? true : false;
-				if(level === currentLevel) {
-					selected = true;
-					locked = false;
-				}
+				selected = (level === currentLevel) ? true: false;
+				locked = (PolyworksGame.levels[level].locked) ? true : false;
+				cleared = (PolyworksGame.levels[level].cleared) ? true: false;
+
 				trace('\t\tidx = ' + idx);
 				var start = {};
 				start.x = (stageUnit) + ((stageUnit * 2) * idx);
@@ -41,7 +40,8 @@ Polyworks.MapPage = (function() {
 					cl: 'LevelIcon',
 					selected: selected,
 					locked: locked,
-					start: start
+					start: start,
+					cleared: cleared
 				});
 			},
 			this
