@@ -21,14 +21,24 @@ Polyworks.GroupCollection = (function() {
 		var collection = this.model.collection;
 		var group;
 
-		if(this.model.addTo && this.model.addTo === 'null') {
-			group = game.add.group(null);
+		var addTo = this.model.addTo;
+
+		if(addTo) {
+			if(addTo === 'null') {
+				group = game.add.group(null);
+			} else {
+				group = game.add.group();
+				// retrieve parent group from model based on addTo value
+				trace('----------------- finding parent group: ' + addTo + ' on ', this.model);
+				this.model[addTo].add(group._container);
+			}
 		} else {
 			group = game.add.group();
 		}
 
 		Polyworks.Utils.each(collection,
 			function(c) {
+				trace('\t\tc = ', c);
 				group.add(c);
 			},
 			this

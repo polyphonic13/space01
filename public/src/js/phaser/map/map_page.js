@@ -7,9 +7,9 @@ Polyworks.MapPage = (function() {
 	}
 	
 	MapPage.prototype.begin = function() {
-		trace('MapPage['+this.model.name+']/begin');
+		trace('MapPage['+this.model.name+']/begin, model = ', this.model);
 		this.parseLevels();
-		
+
 		trace('\tattrs now = ', this.model.attrs);
 		MapPage._super.begin.call(this);
 	};
@@ -22,26 +22,29 @@ Polyworks.MapPage = (function() {
 		var selected;
 		var locked;
 		var cleared; 
-		
+		var stateGroup = this.model.stateGroup;
+
 		Polyworks.Utils.each(levels,
 			function(level, idx) {
-				
+
 				selected = (level === currentLevel) ? true: false;
 				locked = (PolyworksGame.levels[level].locked) ? true : false;
 				cleared = (PolyworksGame.levels[level].cleared) ? true: false;
 
 				trace('\t\tidx = ' + idx);
 				var start = {};
-				start.x = (stageUnit) + ((stageUnit * 2) * idx);
-				start.y = (stageUnit * 2);
-				
+				start.x = ((stageUnit * 4) * idx) + (stageUnit * 2);
+				start.y = (stageUnit * 3);
+
 				attrs.push({
 					name: level,
 					cl: 'LevelIcon',
 					selected: selected,
 					locked: locked,
 					start: start,
-					cleared: cleared
+					cleared: cleared,
+					addTo: 'stateGroup',
+					stateGroup: stateGroup
 				});
 			},
 			this

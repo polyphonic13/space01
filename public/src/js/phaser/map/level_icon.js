@@ -1,8 +1,6 @@
 Polyworks.LevelIcon = (function() {
 	Polyworks.Utils.inherits(LevelIcon, Polyworks.GroupCollection);
 	
-	LevelIcon.width = (Polyworks.Stage.stageUnit * 2);
-	LevelIcon.height = (Polyworks.Stage.stageUnit * 1.5);
 	
 	function LevelIcon(params) {
 		LevelIcon._super.constructor.call(this, params);
@@ -15,6 +13,9 @@ Polyworks.LevelIcon = (function() {
 	};
 	
 	LevelIcon.prototype.initAttributes = function() {
+		var levelIconWidth = (Polyworks.Stage.unit * 2);
+		var levelIconHeight = (Polyworks.Stage.unit * 3);
+
 		var attributes = [
 		{
 			name: 'levelIcon',
@@ -23,8 +24,8 @@ Polyworks.LevelIcon = (function() {
 				img: this.model.name + 'Icon',
 				start: this.model.start,
 				phaser: {
-					width: LevelIcon.width,
-					height: LevelIcon.height,
+					width: levelIconWidth,
+					height: levelIconHeight,
 				}
 			}
 		},
@@ -35,8 +36,8 @@ Polyworks.LevelIcon = (function() {
 				img: 'levelSelectedIcon',
 				start: this.model.start,
 				phaser: {
-					width: LevelIcon.width,
-					height: LevelIcon.height,
+					width: levelIconWidth,
+					height: levelIconHeight,
 					visible: this.model.selected
 				}
 			}
@@ -48,8 +49,8 @@ Polyworks.LevelIcon = (function() {
 				img: 'levelLockedIcon',
 				start: this.model.start,
 				phaser: {
-					width: LevelIcon.width,
-					height: LevelIcon.height,
+					width: levelIconWidth,
+					height: levelIconHeight,
 					visible: this.model.locked
 				}
 			}
@@ -61,8 +62,8 @@ Polyworks.LevelIcon = (function() {
 				img: 'levelClearedIcon',
 				start: this.model.start,
 				phaser: {
-					width: LevelIcon.width,
-					height: LevelIcon.height,
+					width: levelIconWidth,
+					height: levelIconHeight,
 					visible: this.model.cleared
 				}
 			}
