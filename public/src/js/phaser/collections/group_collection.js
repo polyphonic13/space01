@@ -29,7 +29,7 @@ Polyworks.GroupCollection = (function() {
 			} else {
 				group = game.add.group();
 				// retrieve parent group from model based on addTo value
-				trace('----------------- finding parent group: ' + addTo + ' on ', this.model);
+				// trace('----------------- finding parent group: ' + addTo + ' on ', this.model);
 				this.model[addTo].add(group._container);
 			}
 		} else {
@@ -38,7 +38,7 @@ Polyworks.GroupCollection = (function() {
 
 		Polyworks.Utils.each(collection,
 			function(c) {
-				trace('\t\tc = ', c);
+				// trace('\t\tc = ', c);
 				group.add(c);
 			},
 			this

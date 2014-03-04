@@ -12,15 +12,23 @@ Polyworks.MapState = (function() {
 		this.model.stateGroup = stateGroup;
 
 		var pages = this.model.pages;
+		var winW = Polyworks.Stage.winW;
 		trace('\tpages = ', pages);
+
+		this.model.world.width = (pages.length * winW);
+
 		this.model.pageCollection = [];
 		var mapPage;
 
 		Polyworks.Utils.each(pages,
-			function(page) {
+			function(page, idx) {
 				trace('\tcreating MapPage with: ', page);
 				page.addTo = 'stateGroup';
 				page.stateGroup = stateGroup;
+				page.start = {
+					x: (idx * winW),
+					y: 0
+				};
 				mapPage = new Polyworks.MapPage(page);
 				mapPage.begin();
 				this.model.pageCollection.push(mapPage);

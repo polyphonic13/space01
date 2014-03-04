@@ -6,16 +6,14 @@ Polyworks.Text = (function() {
 		_this = this;
 		this.model = new Polyworks.Model(params);
 		var attrs = this.model.attrs;
-		// trace('Text['+params.name+']/constructor, this = ');
-		// trace(this);
+		trace('Text['+this.model.name+']/constructor, this = ', this);
 		var content = Polyworks.Utils.parseMarkup(attrs.defaultContent, PolyworksGame);
 		Text._super.constructor.call(this, params.game, attrs.x, attrs.y, content, attrs.style);
 
 	}
 	
 	Text.prototype.begin = function() {
-		// trace('Text['+this.model.name+']/begin, this = ');
-		// trace(this);
+		// trace('Text['+this.model.name+']/begin, this = ', this);
 		var attrs = this.model.attrs;
 		var content = attrs.defaultContent;
 
@@ -27,7 +25,7 @@ Polyworks.Text = (function() {
 			this.y = Polyworks.Stage.winH/2 - this.height/2;
 		}
 
-	}
+	};
 
 	return Text;
 })();
