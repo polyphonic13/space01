@@ -8619,6 +8619,67 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
+					name: 'mapPages',
+					cl: 'GroupCollection',
+					attrs: [
+					{
+						name: 'page1',
+						cl: 'MapPage',
+						levels: [
+							'level1',
+							'level2',
+							'level3',
+							'level4'
+						],
+						attrs: [
+						{
+							name: 'subtitle',
+							cl: 'Text',
+							attrs: {
+								centerX: true,
+								centerY: false,
+								x: 0,
+								y: (stageUnit * 1.5),
+								defaultContent: 'Chapter 1: The Foggy Forest',
+								style: {
+									font: '22px Arial',
+									fill: '#ffffff',
+									align: 'center'
+								}
+							}
+						}
+						]
+					},
+					{
+						name: 'page2',
+						cl: 'MapPage',
+						levels: [
+							'level5',
+							'level6'
+						],
+						attrs: [
+						{
+							name: 'subtitle',
+							cl: 'Text',
+							attrs: {
+								centerX: true,
+								centerY: false,
+								x: 0,
+								y: (stageUnit * 1.5),
+								defaultContent: 'Chapter 1: The Misty Mountain',
+								style: {
+									font: '22px Arial',
+									fill: '#ffffff',
+									align: 'center'
+								}
+							}
+
+						}
+						]
+					}
+					]
+				},
+				{
 					name: 'mapControls',
 					cl: 'ControlButtons',
 					type: 'map',
