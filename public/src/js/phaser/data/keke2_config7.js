@@ -66,8 +66,6 @@ Polyworks.Config = (function() {
 				// mountainBackground01e: 'images/pencil_mountain01e.png',
 				// mountainBackground01f: 'images/pencil_mountain01f.png',
 
-				fog01: 'images/fog01.png',
-
 				ovalMask: 'images/oval_mask.png',
 
 				grass03: 'images/grass03.png',
@@ -114,7 +112,7 @@ Polyworks.Config = (function() {
 				// icons
 				heart: 'images/heart.png',
 				damageIcon: 'images/alarm_icon.png',
-				invisibleBg: 'images/invisible.png'
+				invisibleRect: 'images/invisible.png'
 			},
 			// SPRITES
 			sprites: {
@@ -455,7 +453,7 @@ Polyworks.Config = (function() {
 						name: 'invisBtn',
 						cl: 'InputButton',
 						attrs: {
-							img: 'invisibleBg',
+							img: 'invisibleRect',
 							start: {
 								x: 0,
 								y: 0
@@ -718,7 +716,7 @@ Polyworks.Config = (function() {
 					'branch02aLeft',
 					'branch02aRight',
 					'lollipop',
-					'invisibleBg',
+					'invisibleRect',
 					'heart',
 					'greyRect'
 				],
@@ -1769,7 +1767,7 @@ Polyworks.Config = (function() {
 					'vine01Left',
 					'vine01Right',
 					'lollipop',
-					'invisibleBg',
+					'invisibleRect',
 					'heart'
 				],
 				sprites: [
@@ -2943,7 +2941,7 @@ Polyworks.Config = (function() {
 					'vine01Right',
 					'thorns01',
 					'lollipop',
-					'invisibleBg',
+					'invisibleRect',
 					'heart'
 				],
 				sprites: [
@@ -4271,7 +4269,7 @@ Polyworks.Config = (function() {
 					'vine01Right',
 					'thorns01',
 					'lollipop',
-					'invisibleBg',
+					'invisibleRect',
 					'heart'
 				],
 				sprites: [
@@ -5895,7 +5893,7 @@ Polyworks.Config = (function() {
 					'platformV',
 					'platform',
 					'rockPlatform01',
-					'invisibleBg',
+					'invisibleRect',
 					'heart'
 				],
 				sprites: [
@@ -6254,7 +6252,7 @@ Polyworks.Config = (function() {
 								name: 'death',
 								cl: 'Sprite',
 								attrs: {
-									img: 'invisibleBg',
+									img: 'invisibleRect',
 									phaser: {
 										width: stageWidth + stageUnit,
 										height: 32
@@ -6359,7 +6357,7 @@ Polyworks.Config = (function() {
 								name: 'death',
 								cl: 'Sprite',
 								attrs: {
-									img: 'invisibleBg',
+									img: 'invisibleRect',
 									phaser: {
 										width: stageWidth + (stageUnit * 2),
 										height: 32
@@ -6482,7 +6480,7 @@ Polyworks.Config = (function() {
 								name: 'death',
 								cl: 'Sprite',
 								attrs: {
-									img: 'invisibleBg',
+									img: 'invisibleRect',
 									phaser: {
 										width: stageWidth + (stageUnit * 2),
 										height: 32
@@ -6605,7 +6603,7 @@ Polyworks.Config = (function() {
 								name: 'death',
 								cl: 'Sprite',
 								attrs: {
-									img: 'invisibleBg',
+									img: 'invisibleRect',
 									phaser: {
 										width: stageWidth + (stageUnit * 2),
 										height: 32
@@ -6728,7 +6726,7 @@ Polyworks.Config = (function() {
 								name: 'death',
 								cl: 'Sprite',
 								attrs: {
-									img: 'invisibleBg',
+									img: 'invisibleRect',
 									phaser: {
 										width: stageWidth + (stageUnit * 2),
 										height: 32
@@ -6851,7 +6849,7 @@ Polyworks.Config = (function() {
 								name: 'death',
 								cl: 'Sprite',
 								attrs: {
-									img: 'invisibleBg',
+									img: 'invisibleRect',
 									phaser: {
 										width: stageWidth + (stageUnit * 2),
 										height: 32
@@ -7015,7 +7013,7 @@ Polyworks.Config = (function() {
 					'platformV',
 					'rockPlatform01',
 					'rockPlatform01',
-					'invisibleBg',
+					'invisibleRect',
 					'heart',
 					'snowFlake01'
 				],
@@ -7550,7 +7548,7 @@ Polyworks.Config = (function() {
 								name: 'death',
 								cl: 'Sprite',
 								attrs: {
-									img: 'invisibleBg',
+									img: 'invisibleRect',
 									phaser: {
 										width: stageWidth + stageUnit,
 										height: 32
@@ -7948,7 +7946,7 @@ Polyworks.Config = (function() {
 								name: 'death',
 								cl: 'Sprite',
 								attrs: {
-									img: 'invisibleBg',
+									img: 'invisibleRect',
 									phaser: {
 										width: stageWidth + (stageUnit * 2),
 										height: 32
@@ -8401,7 +8399,7 @@ Polyworks.Config = (function() {
 								name: 'death',
 								cl: 'Sprite',
 								attrs: {
-									img: 'invisibleBg',
+									img: 'invisibleRect',
 									phaser: {
 										width: (stageWidth) + (stageUnit * 2),
 										height: 32
@@ -8535,6 +8533,7 @@ Polyworks.Config = (function() {
 					'level4Icon',
 					'level5Icon',
 					'level6Icon',
+					'invisibleRect',
 					'chapter1Title',
 					'chapter2Title',
 					'levelSelectedIcon',

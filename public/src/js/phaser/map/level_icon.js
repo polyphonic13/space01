@@ -67,6 +67,25 @@ Polyworks.LevelIcon = (function() {
 					visible: this.model.cleared
 				}
 			}
+		},
+		{
+			name: 'invisButton',
+			cl: 'InputButton',
+			attrs: {
+				img: 'greyRect',
+				start: this.model.start,
+				phaser: {
+					width: levelIconWidth,
+					height: levelIconHeight,
+					visible: !this.model.locked
+				},
+				events: {
+					pressed: {
+						type: Polyworks.Events.CHANGE_STATE,
+						value: this.model.name
+					}
+				}
+			}
 		}
 		];
 
