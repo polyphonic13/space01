@@ -21,16 +21,20 @@ Polyworks.Config = (function() {
 		var c = {
 			// IMAGES
 			images: {
+				gameTitle: 'images/keke_title.png',
+
 				level1Icon: 'images/map/level_1_icon.png',
 				level2Icon: 'images/map/level_2_icon.png',
 				level3Icon: 'images/map/level_3_icon.png',
 				level4Icon: 'images/map/level_4_icon.png',
 				level5Icon: 'images/map/level_5_icon.png',
 				level6Icon: 'images/map/level_6_icon.png',
+				chapter1Title: 'images/map/chapter_1_title.png',
+				chapter2Title: 'images/map/chapter_2_title.png',
 				levelSelectedIcon: 'images/map/level_selected_icon.png',
 				levelLockedIcon: 'images/map/level_locked_icon.png',
 				levelClearedIcon: 'images/map/level_cleared_icon.png',
-				
+
 				sky: 'images/night_sky.jpg',
 
 				forestBackground01: 'images/pencil_forest01a.png',
@@ -54,7 +58,7 @@ Polyworks.Config = (function() {
 				mountainBackground05i: 'images/pencil_mountain05i.png',
 				mountainBackground05k: 'images/pencil_mountain05k.png',
 				mountainBackground05l: 'images/pencil_mountain05l.png',
-				
+
 				// mountainBackground01a: 'images/pencil_mountain01a.png',
 				// mountainBackground01b: 'images/pencil_mountain01b.png',
 				// mountainBackground01c: 'images/pencil_mountain01c.png',
@@ -63,7 +67,7 @@ Polyworks.Config = (function() {
 				// mountainBackground01f: 'images/pencil_mountain01f.png',
 
 				fog01: 'images/fog01.png',
-				
+
 				ovalMask: 'images/oval_mask.png',
 
 				grass03: 'images/grass03.png',
@@ -75,7 +79,7 @@ Polyworks.Config = (function() {
 				tree02: 'images/tree04a.png',
 				tree03: 'images/tree04a.png',
 				tree04: 'images/tree04a.png',
-				
+
 				platform: 'images/platform.png',
 				platformGrey: 'images/platform_grey.png',
 				platformRed: 'images/platform_red.png',
@@ -602,6 +606,7 @@ Polyworks.Config = (function() {
 				images: [
 					'blackRect',
 					'greyRect',
+					'gameTitle',
 					'retryButton',
 					'nextButton',
 					'startButton'
@@ -635,19 +640,34 @@ Polyworks.Config = (function() {
 					// 		}
 					// 	}
 					// },
+					// {
+					// 	name: 'title',
+					// 	cl: 'Text',
+					// 	attrs: {
+					// 		centerX: true,
+					// 		centerY: false,
+					// 		x: 0,
+					// 		y: (stageUnit * 0.5),
+					// 		defaultContent: 'Keke in The Colorless Country',
+					// 		style: { 
+					// 			font: '30px Arial', 
+					// 			fill: '#ffffff',
+					// 			align: 'center'
+					// 		}
+					// 	}
+					// }
 					{
-						name: 'title',
-						cl: 'Text',
+						name: 'gameTitle',
+						cl: 'Sprite',
 						attrs: {
-							centerX: true,
-							centerY: false,
-							x: 0,
-							y: (stageUnit * 0.5),
-							defaultContent: 'Keke in The Colorless Country',
-							style: { 
-								font: '30px Arial', 
-								fill: '#ffffff',
-								align: 'center'
+							img: 'gameTitle',
+							phaser: {
+								width: winW,
+								// height: stageUnit
+							},
+							start: {
+								x: 0,
+								y: 0
 							}
 						}
 					}
@@ -6855,7 +6875,7 @@ Polyworks.Config = (function() {
 						},
 						{
 							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
+							cl: 'PhysicalGroupCollection'
 						}
 						]
 					}
@@ -8515,6 +8535,8 @@ Polyworks.Config = (function() {
 					'level4Icon',
 					'level5Icon',
 					'level6Icon',
+					'chapter1Title',
+					'chapter2Title',
 					'levelSelectedIcon',
 					'levelLockedIcon',
 					'levelClearedIcon',
@@ -8532,24 +8554,21 @@ Polyworks.Config = (function() {
 						'level3',
 						'level4'
 					],
-					attrs: [
-					{
-						name: 'subtitle',
-						cl: 'Text',
+					title: {
+						name: 'pageTitle',
+						cl: 'Sprite',
 						attrs: {
-							centerX: true,
-							centerY: false,
-							x: 0,
-							y: (stageUnit * 1.5),
-							defaultContent: 'Chapter 1: The Foggy Forest',
-							style: {
-								font: '22px Arial',
-								fill: '#ffffff',
-								align: 'center'
+							img: 'chapter1Title',
+							phaser: {
+								width: winW,
+								// height: stageUnit
+							},
+							start: {
+								x: 0,
+								y: (stageUnit * 3.5)
 							}
 						}
 					}
-					]
 				},
 				{
 					name: 'page2',
@@ -8558,25 +8577,21 @@ Polyworks.Config = (function() {
 						'level5',
 						'level6'
 					],
-					attrs: [
-					{
-						name: 'subtitle',
-						cl: 'Text',
+					title: {
+						name: 'pageTitle',
+						cl: 'Sprite',
 						attrs: {
-							centerX: true,
-							centerY: false,
-							x: 0,
-							y: (stageUnit * 1.5),
-							defaultContent: 'Chapter 1: The Misty Mountain',
-							style: {
-								font: '22px Arial',
-								fill: '#ffffff',
-								align: 'center'
+							img: 'chapter2Title',
+							phaser: {
+								width: winW,
+								// height: stageUnit
+							},
+							start: {
+								x: 0,
+								y: (stageUnit * 3.5)
 							}
 						}
-
 					}
-					]
 				}
 				],
 				attrs: [
@@ -8601,19 +8616,34 @@ Polyworks.Config = (function() {
 					// 		}
 					// 	}
 					// },
+					// {
+					// 	name: 'title',
+					// 	cl: 'Text',
+					// 	attrs: {
+					// 		centerX: true,
+					// 		centerY: false,
+					// 		x: 0,
+					// 		y: (stageUnit * 0.5),
+					// 		defaultContent: 'Keke in The Colorless Country',
+					// 		style: { 
+					// 			font: '30px Arial', 
+					// 			fill: '#ffffff',
+					// 			align: 'center'
+					// 		}
+					// 	}
+					// }
 					{
-						name: 'title',
-						cl: 'Text',
+						name: 'gameTitle',
+						cl: 'Sprite',
 						attrs: {
-							centerX: true,
-							centerY: false,
-							x: 0,
-							y: (stageUnit * 0.5),
-							defaultContent: 'Keke in The Colorless Country',
-							style: { 
-								font: '30px Arial', 
-								fill: '#ffffff',
-								align: 'center'
+							img: 'gameTitle',
+							phaser: {
+								width: winW,
+								// height: stageUnit
+							},
+							start: {
+								x: 0,
+								y: 0
 							}
 						}
 					}

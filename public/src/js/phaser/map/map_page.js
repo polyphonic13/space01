@@ -8,22 +8,26 @@ Polyworks.MapPage = (function() {
 	
 	MapPage.prototype.begin = function() {
 		trace('MapPage['+this.model.name+']/begin, model = ', this.model);
-		this.parseLevels();
-
+		var stateGroup = this.model.stateGroup;
+		this.model.attrs = this.parseLevels(stateGroup);
+		this.model.attrs.push(this.addTitle(stateGroup));
 		trace('\tattrs now = ', this.model.attrs);
 		MapPage._super.begin.call(this);
+
+		var title = this.getChildByName('pageTitle');
+		stateGroup.add(title);
 	};
 	
-	MapPage.prototype.parseLevels = function() {
+	MapPage.prototype.parseLevels = function(stateGroup) {
 		var stageUnit = Polyworks.Stage.unit;
 		var levels = this.model.levels;
-		var attrs = this.model.attrs;
+		// var attrs = this.model.attrs;
+		var attributes = [];
 		var pageStartX = this.model.start.x;
 		var currentLevel = 'level' + (PolyworksGame.currentLevel);
 		var selected;
 		var locked;
 		var cleared; 
-		var stateGroup = this.model.stateGroup;
 
 		Polyworks.Utils.each(levels,
 			function(level, idx) {
@@ -39,9 +43,9 @@ Polyworks.MapPage = (function() {
 				trace('\t\tidx = ' + idx);
 				var start = {};
 				start.x = (((stageUnit * 4) * idx) + (stageUnit * 2)) + pageStartX;
-				start.y = (stageUnit * 3);
+				start.y = (stageUnit * 5);
 
-				attrs.push({
+				attributes.push({
 					name: level,
 					cl: 'LevelIcon',
 					selected: selected,
@@ -54,7 +58,14 @@ Polyworks.MapPage = (function() {
 			},
 			this
 		);
+		return attributes;
 	};
 	
+	MapPage.prototype.addTitle = function(stateGroup) {
+		var title = this.model.title;
+		title.attrs.start.x = this.model.start.x;
+		return title;
+	};
+
 	return MapPage;
 })();
