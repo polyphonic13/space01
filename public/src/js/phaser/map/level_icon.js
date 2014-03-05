@@ -78,7 +78,8 @@ Polyworks.LevelIcon = (function() {
 				phaser: {
 					width: levelIconWidth,
 					height: levelIconHeight,
-					visible: !this.model.locked
+					alpha: 0.1,
+					visible: ((this.model.locked) ? false : true)
 				},
 				events: {
 					pressed: {

@@ -7,27 +7,26 @@ Polyworks.MapPage = (function() {
 	}
 	
 	MapPage.prototype.begin = function() {
-		trace('MapPage['+this.model.name+']/begin, model = ', this.model);
+		trace('----------------------- MapPage['+this.model.name+']/begin, model = ', this.model);
 		var stateGroup = this.model.stateGroup;
 		var pageStartX = this.model.start.x;
 		this.model.attrs = this.parseLevels(stateGroup, pageStartX);
 		this.model.attrs.push(this.addTitle(stateGroup));
-		
+
 		// if(this.model.leftArrow) {
 		// 	var lBtn = this.addArrowButton('left', pageStartX);
 		// 	trace('============= LEFT BUTTON');
 		// 	trace(lBtn);
 		// 	this.model.attrs.push(lBtn);
 		// }
-		// if(this.model.rightArrow) {
-		// 	var rBtn = this.addArrowButton('right', pageStartX);
-		// 	trace('============= RIGHT BUTTON');
-		// 	trace(rBtn);
-		// 	this.model.attrs.push();
-		// }
+		if(this.model.rightArrow) {
+			var rBtn = this.addArrowButton('right', pageStartX);
+			trace('\t\trBtn', rBtn);
+			this.model.attrs.push(rBtn);
+		}
 		trace('\tattrs now = ', this.model.attrs);
 		MapPage._super.begin.call(this);
-
+		trace(this);
 		var title = this.getChildByName('pageTitle');
 		stateGroup.add(title);
 		// 
@@ -35,10 +34,11 @@ Polyworks.MapPage = (function() {
 		// if(leftArrow) {
 		// 	stateGroup.add(leftArrow);
 		// }
-		// var rightArrow = this.getChildByName('rightArrowButton');
-		// if(rightArrow) {
-		// 	stateGroup.add(rightArrow);
-		// }
+		var rightArrow = this.getChildByName('rightArrowButton');
+		trace('\t\trightArrow: ', rightArrow);
+		if(rightArrow) {
+			stateGroup.add(rightArrow);
+		}
 	};
 	
 	MapPage.prototype.parseLevels = function(stateGroup, pageStartX) {
@@ -65,7 +65,7 @@ Polyworks.MapPage = (function() {
 				// trace('\t\tidx = ' + idx);
 				var start = {};
 				start.x = (((stageUnit * 3.5) * idx) + (stageUnit * 2)) + pageStartX;
-				start.y = (stageUnit * 5);
+				start.y = (stageUnit * 4);
 
 				attributes.push({
 					name: level,
@@ -107,18 +107,19 @@ Polyworks.MapPage = (function() {
 		var arrowButton = {
 			name: direction + 'ArrowButton',
 			cl: 'InputButton',
-			img: img,
-			start: {
-				x: buttonX,
-				y: (stageUnit * 5)
-			},
-			events: {
-				pressed: {
-					type: Polyworks.Events.CHANGE_STATE,
-					value: eventValue
+			attrs: {
+				img: img,
+				start: {
+					x: buttonX,
+					y: (stageUnit * 5)
+				},
+				events: {
+					pressed: {
+						type: Polyworks.Events.CHANGE_STATE,
+						value: eventValue
+					}
 				}
 			}
-			
 		}
 		return arrowButton;
 	};

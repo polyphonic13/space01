@@ -13,6 +13,7 @@ Polyworks.MapState = (function() {
 
 		var pages = this.model.pages;
 		var winW = Polyworks.Stage.winW;
+		var stageWidth = Polyworks.Stage.width;
 		trace('\tpages = ', pages);
 
 		this.model.world.width = (pages.length * winW);
@@ -26,7 +27,7 @@ Polyworks.MapState = (function() {
 				page.addTo = 'stateGroup';
 				page.stateGroup = stateGroup;
 				page.start = {
-					x: (idx * winW),
+					x: (winW/2 - stageWidth/2) + (idx * winW),
 					y: 0
 				};
 				if(idx > 0) {

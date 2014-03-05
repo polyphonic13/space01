@@ -6,8 +6,7 @@ Polyworks.InputButton = (function() {
 		// trace('InputButton/constructor, params = ', params);
 		_this = this;
 		this.model = new Polyworks.Model(params);
-		// trace('\tinput button model = ');
-		// trace(this.model);
+		trace('\tinput button model = ', this.model);
 		var attrs = this.model.attrs;
 		var frames = attrs.frames;
 		if(frames) {
@@ -22,12 +21,24 @@ Polyworks.InputButton = (function() {
 		var start = this.model.attrs.start;
 		this.x = start.x;
 		this.y = start.y;
-		trace('InputButton['+this.model.img+']/begin, start x/y = ' + start.x + '/' + start.y, this.model);
+		trace('InputButton['+this.model.name+']/begin, start x/y = ' + start.x + '/' + start.y, this.model);
+		/*
 		if(this.model.width) {
 			this.width = this.model.width;
 		}
 		if(this.model.height) {
 			this.height = this.model.height;
+		}
+		*/
+		var phaser = this.model.attrs.phaser;
+		if(phaser) {
+			var _this = this;
+			Polyworks.Utils.each(phaser,
+				function(prop, key) {
+					_this[key] = prop;
+				},
+				this
+			);
 		}
 		this.pressed = false;
 		this.addListeners();

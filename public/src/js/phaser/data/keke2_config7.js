@@ -8563,12 +8563,12 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'chapter1Title',
 							phaser: {
-								width: winW,
+								width: stageWidth,
 								// height: stageUnit
 							},
 							start: {
 								x: 0,
-								y: (stageUnit * 3.0)
+								y: (stageUnit * 2.5)
 							}
 						}
 					}
@@ -8586,12 +8586,12 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'chapter2Title',
 							phaser: {
-								width: winW,
+								width: stageWidth,
 								// height: stageUnit
 							},
 							start: {
 								x: 0,
-								y: (stageUnit * 3.0)
+								y: (stageUnit * 2.5)
 							}
 						}
 					}
