@@ -1779,19 +1779,19 @@ Polyworks.Config = (function() {
 							y: 0
 						}
 					}
-				// },
-				// {
-				// 	name: 'completedGUI',
-				// 	cl: 'SharedGroupCollection',
-				// 	type: 'completedGUI',
-				// 	addTo: 'null',
-				// 	visible: false,
-				// 	attrs: {
-				// 		start: {
-				// 			x: 0,
-				// 			y: 0
-				// 		}
-				// 	}
+				},
+				{
+					name: 'completedGUI',
+					cl: 'SharedGroupCollection',
+					type: 'completedGUI',
+					addTo: 'null',
+					visible: false,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
 				}
 				]
 			},
