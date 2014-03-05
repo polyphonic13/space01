@@ -225,20 +225,27 @@ PolyworksGame = (function() {
 
 		Polyworks.EventCenter.begin();
 		Polyworks.EventCenter.bind(Polyworks.Events.STAGE_INITIALIZED, _onStageInitialized, this);
-		// Polyworks.EventCenter.bind(Polyworks.Events.CONFIG_LOADED, _onConfigLoaded, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.BUTTON_PRESSED, _onControlPressed, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_PRESSED, _onControlPressed, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_STATE, _onChangeState, this);
+		Polyworks.EventCenter.bind(Polyworks.Events.LEVEL_CLEARED, _onLevelCleared, this);
 	}
 
 	function _removeListeners() {
 		window.onorientationchange = null;
 		window.onresize = null;
 		Polyworks.EventCenter.unbind(Polyworks.Events.STAGE_INITIALIZED, _onStageInitialized, this);
-		// Polyworks.EventCenter.unbind(Polyworks.Events.CONFIG_LOADED, _onConfigLoaded, this);
 		Polyworks.EventCenter.unbind(Polyworks.Events.BUTTON_PRESSED, _onControlPressed, this);
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_PRESSED, _onControlPressed, this);
 		Polyworks.EventCenter.unbind(Polyworks.Events.CHANGE_STATE, _onChangeState, this);
+		Polyworks.EventCenter.unbind(Polyworks.Events.LEVEL_CLEARED, _onLevelCleared, this);
+	}
+
+	function _onLevelCleared(event) {
+		trace('PolyworksGame/_onLevelCleared, event = ', event);
+		PolyworksGame.levels[event.value].cleared = true;
+		PolyworksGame.levels[event.value].locked = false;
+		// PolyworksGame.changeState('intermission');
 	}
 
 	function _onStageInitialized(event) {

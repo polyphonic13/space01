@@ -9,12 +9,12 @@ Polyworks.SharedGroupCollection = (function() {
 		trace('SharedGroupCollection['+this.model.name+']/begin');
 		var sharedGroups = PolyworksGame.get('sharedGroups');
 		this.model.attrs = sharedGroups[this.model.type];
-		trace('sharedGroups = ', sharedGroups, ' attrs = ', this.model.attrs);
+		trace('\tsharedGroups = ', sharedGroups, '\tmodel = ', this.model);
 		SharedGroupCollection._super.begin.call(this);
-
-		if(this.model.visible) {
+		trace('\tpost super call, model.visible = ' + this.model.visible);
+		// if(this.model.visible) {
 			this.group.visible = this.model.visible;
-		}
+		// }
 	};
 	
 	return SharedGroupCollection;

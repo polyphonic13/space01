@@ -583,6 +583,71 @@ Polyworks.Config = (function() {
 						}
 					}
 				}
+				],
+				completedGUI: [
+				{
+					name: 'background',
+					cl: 'Sprite',
+					attrs: {
+						img: 'greyRect',
+						phaser: {
+							width: winW,
+							height: winH,
+							alpha: 0.5
+						},
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				},
+				{
+					name: 'title',
+					cl: 'Text',
+					attrs: {
+						centerX: true,
+						centerY: false,
+						x: 0,
+						y: stageUnit,
+						defaultContent: 'Level ~{currentLevel}~ Completed',
+						style: { 
+							font: '30px Arial', 
+							fill: '#ffffff',
+							align: 'center'
+						}
+					}
+				},
+				{
+					name: 'score',
+					cl: 'Text',
+					attrs: {
+						centerX: true,
+						centerY: false,
+						x: 0,
+						y: 100,
+						style: { 
+							font: '18px Arial', 
+							fill: '#ffffff',
+							align: 'center'
+						},
+						defaultContent: 'Score: ~{score}~',
+						listeners: [
+							Polyworks.Events.LEVEL_CLEARED
+						]
+					}
+				},
+				{
+					name: 'completedControls',
+					cl: 'ControlButtons',
+					type: 'intermission',
+					addTo: 'null',
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				}
 				]
 			},
 			// USE FOR LOCAL TESTING:
@@ -609,11 +674,27 @@ Polyworks.Config = (function() {
 					'gameTitle',
 					'retryButton',
 					'nextButton',
+					'level1Icon',
+					'level2Icon',
+					'level3Icon',
+					'level4Icon',
+					'level5Icon',
+					'level6Icon',
+					'invisibleRect',
+					'chapter1Title',
+					'chapter2Title',
+					'levelSelectedIcon',
+					'levelLockedIcon',
+					'levelClearedIcon',
+					'levelLockedIcon',
+					'pageLeftArrow',
+					'pageRightArrow',
 					'startButton'
 				],
 				sprites: [
 					'keke',
 					'pauseButton',
+					'menuButton',
 					'playButton',
 					'retryButton',
 					'menuButton',
@@ -624,46 +705,13 @@ Polyworks.Config = (function() {
 					name: 'menuGroup',
 					cl: 'GroupCollection',
 					attrs: [
-					// {
-					// 	name: 'bg',
-					// 	cl: 'Sprite',
-					// 	attrs: {
-					// 		img: 'greyRect',
-					// 		start: {
-					// 			x: (stageUnit/10),
-					// 			y: (stageUnit/10)
-					// 		},
-					// 		phaser: {
-					// 			width: winW - (stageUnit/5),
-					// 			height: winH - (stageUnit/5),
-					// 			alpha: 0.25
-					// 		}
-					// 	}
-					// },
-					// {
-					// 	name: 'title',
-					// 	cl: 'Text',
-					// 	attrs: {
-					// 		centerX: true,
-					// 		centerY: false,
-					// 		x: 0,
-					// 		y: (stageUnit * 0.5),
-					// 		defaultContent: 'Keke in The Colorless Country',
-					// 		style: { 
-					// 			font: '30px Arial', 
-					// 			fill: '#ffffff',
-					// 			align: 'center'
-					// 		}
-					// 	}
-					// }
 					{
 						name: 'gameTitle',
 						cl: 'Sprite',
 						attrs: {
 							img: 'gameTitle',
 							phaser: {
-								width: winW,
-								// height: stageUnit
+								width: winW
 							},
 							start: {
 								x: 0,
@@ -727,6 +775,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'menuButton',
 					'keke',
 					'caterpillar01'
 				],
@@ -980,11 +1029,6 @@ Polyworks.Config = (function() {
 									speed: 0.5,
 									attack: 5,
 									score: 2500,
-									// movement: {
-									// 	speed: 0.5,
-									// 	type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-									// 	formula: null
-									// },
 									defaultAnimation: '',
 									animations: caterpillarAnimations
 								}
@@ -1704,7 +1748,10 @@ Polyworks.Config = (function() {
 							style: { 
 								font: '26px Arial', 
 								fill: '#ffffff' 
-							}
+							},
+							listeners: [
+								Polyworks.Events.HEALTH_UPDATED
+							]
 						}
 					}]
 				},
@@ -1732,6 +1779,19 @@ Polyworks.Config = (function() {
 							y: 0
 						}
 					}
+				// },
+				// {
+				// 	name: 'completedGUI',
+				// 	cl: 'SharedGroupCollection',
+				// 	type: 'completedGUI',
+				// 	addTo: 'null',
+				// 	visible: false,
+				// 	attrs: {
+				// 		start: {
+				// 			x: 0,
+				// 			y: 0
+				// 		}
+				// 	}
 				}
 				]
 			},
@@ -2951,6 +3011,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'menuButton',
 					'keke',
 					'caterpillar01',
 					'caterpillar02'
@@ -5903,6 +5964,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'menuButton',
 					'keke'
 				],
 				attrs: [
@@ -7024,6 +7086,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'menuButton',
 					'keke'
 				],
 				attrs: [
@@ -8528,7 +8591,6 @@ Polyworks.Config = (function() {
 				clearCache: false,
 				images: [
 					'nextButton',
-					'menuButton',
 					'level1Icon',
 					'level2Icon',
 					'level3Icon',
@@ -8545,7 +8607,9 @@ Polyworks.Config = (function() {
 					'pageLeftArrow',
 					'pageRightArrow'
 				],
-				sprites: [],
+				sprites: [
+					'menuButton',
+				],
 				initialPage: 0,
 				pages: [
 				{
@@ -8563,7 +8627,7 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'chapter1Title',
 							phaser: {
-								width: stageWidth,
+								width: stageWidth
 							},
 							start: {
 								x: 0,
@@ -8585,7 +8649,7 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'chapter2Title',
 							phaser: {
-								width: stageWidth,
+								width: stageWidth
 							},
 							start: {
 								x: 0,
@@ -8601,29 +8665,13 @@ Polyworks.Config = (function() {
 					cl: 'GroupCollection',
 					// addTo: 'stateGroup',
 					attrs: [
-					// {
-					// 	name: 'bg',
-					// 	cl: 'Sprite',
-					// 	attrs: {
-					// 		img: 'greyRect',
-					// 		start: {
-					// 			x: (stageUnit/10),
-					// 			y: (stageUnit/10)
-					// 		},
-					// 		phaser: {
-					// 			width: winW - (stageUnit/5),
-					// 			height: winH - (stageUnit/5),
-					// 			alpha: 0.25
-					// 		}
-					// 	}
-					// },
 					{
 						name: 'gameTitle',
 						cl: 'Sprite',
 						attrs: {
 							img: 'gameTitle',
 							phaser: {
-								width: winW,
+								width: winW
 							},
 							start: {
 								x: 0,

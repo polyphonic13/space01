@@ -7,7 +7,8 @@ Polyworks.Text = (function() {
 		this.model = new Polyworks.Model(params);
 		var attrs = this.model.attrs;
 		trace('Text['+this.model.name+']/constructor, this = ', this);
-		var content = Polyworks.Utils.parseMarkup(attrs.defaultContent, PolyworksGame);
+		var context = (attrs.dynamicContentContext) ? attrs.dynamicContentContext : PolyworksGame;
+		var content = Polyworks.Utils.parseMarkup(attrs.defaultContent, context);
 		Text._super.constructor.call(this, params.game, attrs.x, attrs.y, content, attrs.style);
 
 	}
@@ -25,7 +26,31 @@ Polyworks.Text = (function() {
 			this.y = Polyworks.Stage.winH/2 - this.height/2;
 		}
 
+		var listeners = attrs.listeners;
+		if(listeners) {
+			var _this = this;
+			Polyworks.Utils.each(listeners,
+				function(listener) {
+					Polyworks.EventCenter.bind(listener, _this.onUpdate, _this);
+				},
+				_this
+			);
+		}
 	};
 
+	Text.prototype.onUpdate = function(event) {
+		trace('Text['+this.model.name+']/onUpdate, event = ', event);
+		var context;
+		if(event.context) {
+			context = event.context;
+		} else if(this.model.attrs.dynamicContentContext) {
+			context = this.model.attrs.dynamicContentContext;
+		} else {
+			context = PolyworksGame;
+		}
+
+		this.content = Polyworks.Utils.parseMarkup(this.model.attrs.defaultContent, context);
+	};
+	
 	return Text;
 })();

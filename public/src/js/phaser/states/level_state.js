@@ -38,8 +38,8 @@ Polyworks.LevelState = (function() {
 		// trace('LevelState['+this.model.name+']/createState\n\tplayerStart = ', playerStart);
 		this.createPlayer(playerStart, PolyworksGame.startingHealth);
 
-		this.getChildByName('pauseGUI').hide();
-
+		// this.getChildByName('pauseGUI').hide();
+		// this.getChildByName('completedGUI').hide();
 	};
 
 	LevelState.prototype.createPlayer = function(start, health) {
@@ -63,9 +63,8 @@ Polyworks.LevelState = (function() {
 		if(!this.paused) {
 			// trace('LevelState['+this.model.name+']/update');
 			if(this.player.body.x >= this.model.bounds.end) {
-				PolyworksGame.levels[this.model.name].cleared = true;
-				PolyworksGame.levels[this.model.name].locked = false;
-				PolyworksGame.changeState('intermission');
+				Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_CLEARED, value: this.model.name });
+				this.showCompletedGUI();
 			} else {
 				var sector = this.activeSector;
 
@@ -121,20 +120,32 @@ Polyworks.LevelState = (function() {
 		this.player.destroy();
 		this.playerPresent = false;
 		// this.playerGroup.visible = false;
-
-		this.getChildByName('levelGUI').hide();
-		this.getChildByName('levelControls').hide();
-		this.getChildByName('pauseGUI').show();
+		this.showPauseGUI(true);
 	};
 	
 	LevelState.prototype.resumeState = function() {
 		this.sectorManager.setActiveSector(this.sectorManager.activeSectorId);
 		this.createPlayer(this.playerPosition, PolyworksGame.health);
 		this.playerGroup.visible = true; 
-
-		this.getChildByName('levelGUI').show();
-		this.getChildByName('levelControls').show();
-		this.getChildByName('pauseGUI').hide();
+		this.showPauseGUI(false);
+	};
+	
+	LevelState.prototype.showPauseGUI = function(show) {
+		if(show) {
+			this.getChildByName('levelGUI').hide();
+			this.getChildByName('levelControls').hide();
+			this.getChildByName('pauseGUI').show();
+		} else {
+			this.getChildByName('levelGUI').show();
+			this.getChildByName('levelControls').show();
+			this.getChildByName('pauseGUI').hide();
+		}
+	};
+	
+	LevelState.prototype.showCompletedGUI = function() {
+		this.getChildByName('levelGUI').hide();
+		this.getChildByName('levelControls').hide();
+		this.getChildByName('completedGUI').show();
 	};
 	
 	LevelState.prototype.shutdown = function() {

@@ -1,9 +1,7 @@
 Polyworks.GUIConsole = (function() {
 	Polyworks.Utils.inherits(GUIConsole, Polyworks.GroupCollection);
 	
-	var _this;
 	function GUIConsole(params) {
-		_this = this;
 		GUIConsole._super.constructor.call(this, params);
 	}
 
@@ -11,21 +9,21 @@ Polyworks.GUIConsole = (function() {
 		GUIConsole._super.begin.call(this);
 		// trace('GUIConsole/begin')
 		// trace(this);
-		Polyworks.Utils.each(this.collection,
-			function(c) {
-				if(c.text) {
-					this.parseAndSetContent(c.name);
-				}
-			},
-			this
-		);
-
-		this.addListeners();
+		// Polyworks.Utils.each(this.collection,
+		// 	function(c) {
+		// 		if(c.text) {
+		// 			this.parseAndSetContent(c.name);
+		// 		}
+		// 	},
+		// 	this
+		// );
+		// 
+		// this.addListeners();
 	};
 	
 	GUIConsole.prototype.addListeners = function() {
 		// trace('GUIConsole/addListeners');
-		Polyworks.EventCenter.bind(Polyworks.Events.SCORE_UPDATED, this.onScoreUpdated, this);
+		// Polyworks.EventCenter.bind(Polyworks.Events.SCORE_UPDATED, this.onScoreUpdated, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
 	};
 	
@@ -35,7 +33,7 @@ Polyworks.GUIConsole = (function() {
 	};
 	
 	GUIConsole.prototype.onHealthUpdated = function() {
-		_this.parseAndSetContent('health');
+		this.parseAndSetContent('health');
 	};
 	
 	GUIConsole.prototype.parseAndSetContent = function(field, context) {
@@ -49,7 +47,7 @@ Polyworks.GUIConsole = (function() {
 	};
 	
 	GUIConsole.prototype.destroy = function() {
-		Polyworks.EventCenter.unbind(Polyworks.Events.SCORE_UPDATED, this.onScoreUpdated, this);
+		// Polyworks.EventCenter.unbind(Polyworks.Events.SCORE_UPDATED, this.onScoreUpdated, this);
 		Polyworks.EventCenter.unbind(Polyworks.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
 		GUIConsole._super.destroy.call(this);
 	};
