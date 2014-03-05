@@ -29,6 +29,12 @@ Polyworks.MapState = (function() {
 					x: (idx * winW),
 					y: 0
 				};
+				if(idx > 0) {
+					page.leftArrow = true;
+				}
+				if(idx < (pages.length - 1)) {
+					page.rightArrow = true;
+				}
 				mapPage = new Polyworks.MapPage(page);
 				mapPage.begin();
 				this.model.pageCollection.push(mapPage);

@@ -34,7 +34,9 @@ Polyworks.Config = (function() {
 				levelSelectedIcon: 'images/map/level_selected_icon.png',
 				levelLockedIcon: 'images/map/level_locked_icon.png',
 				levelClearedIcon: 'images/map/level_cleared_icon.png',
-
+				pageLeftArrow: 'images/map/page_left_arrow.png',
+				pageRightArrow: 'images/map/page_right_arrow.png',
+				
 				sky: 'images/night_sky.jpg',
 
 				forestBackground01: 'images/pencil_forest01a.png',
@@ -8539,7 +8541,9 @@ Polyworks.Config = (function() {
 					'levelSelectedIcon',
 					'levelLockedIcon',
 					'levelClearedIcon',
-					'levelLockedIcon'
+					'levelLockedIcon',
+					'pageLeftArrow',
+					'pageRightArrow'
 				],
 				sprites: [],
 				initialPage: 0,
@@ -8564,7 +8568,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: 0,
-								y: (stageUnit * 3.5)
+								y: (stageUnit * 3.0)
 							}
 						}
 					}
@@ -8587,7 +8591,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: 0,
-								y: (stageUnit * 3.5)
+								y: (stageUnit * 3.0)
 							}
 						}
 					}
