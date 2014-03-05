@@ -63,6 +63,8 @@ Polyworks.LevelState = (function() {
 		if(!this.paused) {
 			// trace('LevelState['+this.model.name+']/update');
 			if(this.player.body.x >= this.model.bounds.end) {
+				PolyworksGame.levels[this.model.name].cleared = true;
+				PolyworksGame.levels[this.model.name].locked = false;
 				PolyworksGame.changeState('intermission');
 			} else {
 				var sector = this.activeSector;
