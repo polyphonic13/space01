@@ -8,17 +8,28 @@ Polyworks.MapPage = (function() {
 	
 	MapPage.prototype.begin = function() {
 		trace('----------------------- MapPage['+this.model.name+']/begin, model = ', this.model);
-		var stateGroup = this.model.stateGroup;
-		var pageStartX = this.model.start.x;
-		this.model.attrs = this.parseLevels(stateGroup, pageStartX);
-		this.model.attrs.push(this.addTitle(stateGroup));
+		this.addListeners();
 
-		// if(this.model.leftArrow) {
-		// 	var lBtn = this.addArrowButton('left', pageStartX);
-		// 	trace('============= LEFT BUTTON');
-		// 	trace(lBtn);
-		// 	this.model.attrs.push(lBtn);
-		// }
+		var pageStartX = this.model.start.x;
+		var stateGroup = this.model.stateGroup;
+		this.pageGroup = PolyworksGame.phaser.add.group();
+		stateGroup.add(this.pageGroup._container);
+
+		this.model.attrs = this.parseLevels(pageStartX);
+
+		if(this.model.selected) {
+			this.pageGroup.visible = true;
+		} else {
+			this.pageGroup.visible = false;
+		}
+
+		this.model.attrs.push(this.addTitle());
+
+		if(this.model.leftArrow) {
+			var lBtn = this.addArrowButton('left', pageStartX);
+			trace('\t\tlBtn', lBtn);
+			this.model.attrs.push(lBtn);
+		}
 		if(this.model.rightArrow) {
 			var rBtn = this.addArrowButton('right', pageStartX);
 			trace('\t\trBtn', rBtn);
@@ -28,20 +39,36 @@ Polyworks.MapPage = (function() {
 		MapPage._super.begin.call(this);
 		trace(this);
 		var title = this.getChildByName('pageTitle');
-		stateGroup.add(title);
-		// 
-		// var leftArrow = this.getChildByName('leftArrowButton');
-		// if(leftArrow) {
-		// 	stateGroup.add(leftArrow);
-		// }
+		this.pageGroup.add(title);
+
+		var leftArrow = this.getChildByName('leftArrowButton');
+		trace('\t\tleftArrow: ', leftArrow);
+		if(leftArrow) {
+			trace('\t\t\tadding left arrow to state group');
+			this.pageGroup.add(leftArrow);
+		}
 		var rightArrow = this.getChildByName('rightArrowButton');
 		trace('\t\trightArrow: ', rightArrow);
 		if(rightArrow) {
-			stateGroup.add(rightArrow);
+			trace('\t\t\tadding right arrow to state group');
+			this.pageGroup.add(rightArrow);
 		}
 	};
 	
-	MapPage.prototype.parseLevels = function(stateGroup, pageStartX) {
+	MapPage.prototype.addListeners = function() {
+		Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_MAP_PAGE, this.onChangeMapPage, this);
+	};
+	
+	MapPage.prototype.onChangeMapPage = function(event) {
+		trace('MapPage['+this.model.name+']/onChangeMapPage, event = ', event);
+		if(event.value === this.model.idx) {
+			this.pageGroup.visible = true;
+		} else {
+			this.pageGroup.visible = false;
+		}
+	};
+	
+	MapPage.prototype.parseLevels = function(pageStartX) {
 		var stageUnit = Polyworks.Stage.unit;
 		var levels = this.model.levels;
 		// var attrs = this.model.attrs;
@@ -50,11 +77,15 @@ Polyworks.MapPage = (function() {
 		var selected;
 		var locked;
 		var cleared; 
+		var _this = this; 
+		_this.model.selected = false; 
 
 		Polyworks.Utils.each(levels,
 			function(level, idx) {
-
 				selected = (level === currentLevel) ? true: false;
+				if(selected) {
+					_this.model.selected = true;
+				}
 				cleared = (PolyworksGame.levels[level].cleared) ? true: false;
 				if(!selected) {
 					locked = (PolyworksGame.levels[level].locked) ? true : false;
@@ -74,18 +105,20 @@ Polyworks.MapPage = (function() {
 					locked: locked,
 					start: start,
 					cleared: cleared,
-					addTo: 'stateGroup',
-					stateGroup: stateGroup
+					addTo: 'pageGroup',
+					pageGroup: _this.pageGroup
 				});
 			},
 			this
 		);
+
 		return attributes;
 	};
 	
-	MapPage.prototype.addTitle = function(stateGroup, pageStartX) {
+	MapPage.prototype.addTitle = function() {
 		var title = this.model.title;
 		title.attrs.start.x = this.model.start.x;
+
 		return title;
 	};
 
@@ -94,33 +127,43 @@ Polyworks.MapPage = (function() {
 		var img;
 		var eventValue;
 		var buttonX; 
-		
+		var levelIconWidth = (Polyworks.Stage.unit * 1);
+		var levelIconHeight = (Polyworks.Stage.unit * 3);
+
 		if(direction === 'left') {
 			img = 'pageLeftArrow';
-			eventValue = 'backward';
+			// eventValue = 'backward';
+			eventValue = ((this.model.idx) - 1);
 			buttonX = 0 + pageStartX;
 		} else {
 			img = 'pageRightArrow';
-			eventValue = 'forward';
-			buttonX = (Polyworks.Stage.winW - (stageUnit * 3.5)) + pageStartX;
+			// eventValue = 'forward';
+			eventValue = ((this.model.idx) + 1);
+			// buttonX = (Polyworks.Stage.winW - (stageUnit * 3.5)) + pageStartX;
+			buttonX = (((stageUnit * 3.5) * 4) + (stageUnit * 2)) + pageStartX;
 		}
 		var arrowButton = {
 			name: direction + 'ArrowButton',
 			cl: 'InputButton',
 			attrs: {
 				img: img,
+				phaser: {
+					width: levelIconWidth,
+					height: levelIconHeight
+				},
 				start: {
 					x: buttonX,
-					y: (stageUnit * 5)
+					y: (stageUnit * 3.5)
 				},
 				events: {
 					pressed: {
-						type: Polyworks.Events.CHANGE_STATE,
+						type: Polyworks.Events.CHANGE_MAP_PAGE,
 						value: eventValue
 					}
 				}
 			}
-		}
+		};
+
 		return arrowButton;
 	};
 	

@@ -8564,7 +8564,6 @@ Polyworks.Config = (function() {
 							img: 'chapter1Title',
 							phaser: {
 								width: stageWidth,
-								// height: stageUnit
 							},
 							start: {
 								x: 0,
@@ -8587,7 +8586,6 @@ Polyworks.Config = (function() {
 							img: 'chapter2Title',
 							phaser: {
 								width: stageWidth,
-								// height: stageUnit
 							},
 							start: {
 								x: 0,
@@ -8619,22 +8617,6 @@ Polyworks.Config = (function() {
 					// 		}
 					// 	}
 					// },
-					// {
-					// 	name: 'title',
-					// 	cl: 'Text',
-					// 	attrs: {
-					// 		centerX: true,
-					// 		centerY: false,
-					// 		x: 0,
-					// 		y: (stageUnit * 0.5),
-					// 		defaultContent: 'Keke in The Colorless Country',
-					// 		style: { 
-					// 			font: '30px Arial', 
-					// 			fill: '#ffffff',
-					// 			align: 'center'
-					// 		}
-					// 	}
-					// }
 					{
 						name: 'gameTitle',
 						cl: 'Sprite',
@@ -8642,7 +8624,6 @@ Polyworks.Config = (function() {
 							img: 'gameTitle',
 							phaser: {
 								width: winW,
-								// height: stageUnit
 							},
 							start: {
 								x: 0,

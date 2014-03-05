@@ -8,7 +8,7 @@ Polyworks.LevelIcon = (function() {
 	
 	LevelIcon.prototype.begin = function() {
 		this.model.attrs = this.initAttributes();
-		// trace('LevelIcon['+this.model.name+']/begin', this.model);
+		trace('LevelIcon['+this.model.name+']/begin', this.model);
 		LevelIcon._super.begin.call(this);
 	};
 	
@@ -73,7 +73,6 @@ Polyworks.LevelIcon = (function() {
 			cl: 'InputButton',
 			attrs: {
 				img: 'greyRect',
-				// img: this.model.name + 'Icon',
 				start: this.model.start,
 				phaser: {
 					width: levelIconWidth,

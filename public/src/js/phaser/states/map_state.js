@@ -26,8 +26,10 @@ Polyworks.MapState = (function() {
 				trace('\tcreating MapPage with: ', page);
 				page.addTo = 'stateGroup';
 				page.stateGroup = stateGroup;
+				page.idx = idx;
 				page.start = {
-					x: (winW/2 - stageWidth/2) + (idx * winW),
+					x: (winW/2) - (stageWidth/2),
+					// x: (winW/2 - stageWidth/2) + (idx * winW),
 					y: 0
 				};
 				if(idx > 0) {

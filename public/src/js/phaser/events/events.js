@@ -8,6 +8,7 @@ Polyworks.Events = {
 	CHANGE_STATE: 'changeState',
 	PAUSE_STATE: 'pauseState',
 	RESUME_STATE: 'resumeState',
+	CHANGE_MAP_PAGE: 'changeMapPage',
 	ENEMY_COLLISION: 'enemyCollision',
 	ENEMY_DESTROYED: 'enemyDestroyed',
 	BONUS_COLLISION: 'bonusCollision',
