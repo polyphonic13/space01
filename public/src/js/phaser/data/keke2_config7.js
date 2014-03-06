@@ -636,18 +636,18 @@ Polyworks.Config = (function() {
 						]
 					}
 				},
-				{
-					name: 'completedControls',
-					cl: 'ControlButtons',
-					type: 'intermission',
-					addTo: 'null',
-					attrs: {
-						start: {
-							x: 0,
-							y: 0
-						}
-					}
-				}
+				// {
+				// 	name: 'completedControls',
+				// 	cl: 'ControlButtons',
+				// 	type: 'intermission',
+				// 	addTo: 'null',
+				// 	attrs: {
+				// 		start: {
+				// 			x: 0,
+				// 			y: 0
+				// 		}
+				// 	}
+				// }
 				]
 			},
 			// USE FOR LOCAL TESTING:
@@ -936,7 +936,6 @@ Polyworks.Config = (function() {
 					}
 					]
 				},
-
 				{
 					name: 'terrain',
 					cl: 'PhysicalGroupCollection',
