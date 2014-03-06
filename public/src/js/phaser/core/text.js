@@ -52,5 +52,8 @@ Polyworks.Text = (function() {
 		this.content = Polyworks.Utils.parseMarkup(this.model.attrs.defaultContent, context);
 	};
 	
+	Text.prototype.destroy = function() {
+		trace('Text['+this.model.name+']/destroy');
+	}
 	return Text;
 })();

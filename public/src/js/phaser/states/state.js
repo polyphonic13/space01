@@ -137,6 +137,7 @@ Polyworks.State = (function() {
 	};
 	
 	State.prototype.shutdown = function() {
+		trace('State['+this.model.name+']/shutdown');
 		Polyworks.EventCenter.unbind(Polyworks.Events.PAUSE_STATE, this.onPauseState);
 		Polyworks.EventCenter.unbind(Polyworks.Events.RESUME_STATE, this.onResumeState);
 
@@ -150,6 +151,7 @@ Polyworks.State = (function() {
 		});
 
 		this.destroy();
+		trace('\tstate shutdown completed');
 	};
 
 	return State;

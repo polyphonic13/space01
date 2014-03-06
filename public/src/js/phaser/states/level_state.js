@@ -136,6 +136,7 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.showPauseGUI = function(show) {
+		trace('LevelState['+this.model.name+']/showPauseGUI, show = ' + show);
 		if(show) {
 			this.getChildByName('levelGUI').hide();
 			this.getChildByName('levelControls').hide();
@@ -148,12 +149,14 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.showCompletedGUI = function() {
+		trace('LevelState['+this.model.name+']/showCompletedGUI');
 		this.getChildByName('levelGUI').hide();
 		this.getChildByName('levelControls').hide();
 		this.getChildByName('completedGUI').show();
 	};
 	
 	LevelState.prototype.shutdown = function() {
+		trace('LevelState['+this.model.name+']/shutdown')
 		Polyworks.Utils.each(this.model.collection,
 			function(c) {
 				c.destroy();

@@ -647,7 +647,7 @@ Polyworks.Config = (function() {
 						},
 						inputCode: Polyworks.InputCodes.NEXT,
 						events: {
-							pressed: {
+							released: {
 								type: Polyworks.Events.CHANGE_STATE,
 								value: 'nextLevel'
 							}
@@ -785,7 +785,8 @@ Polyworks.Config = (function() {
 				clearCache: false,
 				bounds: {
 					start: 0,
-					end: (stageWidth * 6) - (stageUnit * 1)
+					// end: (stageWidth * 6) - (stageUnit * 1)
+					end: stageWidth
 				},
 				pausable: true,
 				images: [
@@ -3003,6 +3004,19 @@ Polyworks.Config = (function() {
 							y: 0
 						}
 					}
+				},
+				{
+					name: 'completedGUI',
+					cl: 'SharedGroupCollection',
+					type: 'completedGUI',
+					addTo: 'null',
+					visible: false,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
 				}
 				]
 			},
@@ -4321,6 +4335,19 @@ Polyworks.Config = (function() {
 					name: 'pauseGUI',
 					cl: 'SharedGroupCollection',
 					type: 'pauseGUI',
+					addTo: 'null',
+					visible: false,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				},
+				{
+					name: 'completedGUI',
+					cl: 'SharedGroupCollection',
+					type: 'completedGUI',
 					addTo: 'null',
 					visible: false,
 					attrs: {
@@ -5960,6 +5987,19 @@ Polyworks.Config = (function() {
 							y: 0
 						}
 					}
+				},
+				{
+					name: 'completedGUI',
+					cl: 'SharedGroupCollection',
+					type: 'completedGUI',
+					addTo: 'null',
+					visible: false,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
 				}
 				]
 			},
@@ -7068,6 +7108,19 @@ Polyworks.Config = (function() {
 					name: 'pauseGUI',
 					cl: 'SharedGroupCollection',
 					type: 'pauseGUI',
+					addTo: 'null',
+					visible: false,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				},
+				{
+					name: 'completedGUI',
+					cl: 'SharedGroupCollection',
+					type: 'completedGUI',
 					addTo: 'null',
 					visible: false,
 					attrs: {
@@ -8608,6 +8661,19 @@ Polyworks.Config = (function() {
 							y: 0
 						}
 					}
+				},
+				{
+					name: 'completedGUI',
+					cl: 'SharedGroupCollection',
+					type: 'completedGUI',
+					addTo: 'null',
+					visible: false,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
 				}
 				]
 			},
@@ -8644,7 +8710,7 @@ Polyworks.Config = (function() {
 					'pageRightArrow'
 				],
 				sprites: [
-					'menuButton',
+					'menuButton'
 				],
 				initialPage: 0,
 				pages: [
