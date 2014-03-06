@@ -636,6 +636,43 @@ Polyworks.Config = (function() {
 						]
 					}
 				},
+				{
+					name: 'next',
+					cl: 'InputButton',
+					attrs: {
+						img: 'nextButton',
+						start: {
+							x: winW/2 - 128,
+							y: winH/2 - 64
+						},
+						inputCode: Polyworks.InputCodes.NEXT,
+						events: {
+							pressed: {
+								type: Polyworks.Events.CHANGE_STATE,
+								value: 'nextLevel'
+							}
+						}
+					}
+				},
+				{
+					name: 'menuBtn',
+					cl: 'InputButton',
+					attrs: {
+						img: 'menuButton',
+						start: {
+							x: 30,
+							y: 15
+						},
+						frames: [0, 0, 1],
+						inputCode: Polyworks.InputCodes.MENU,
+						events: {
+							pressed: {
+								type: Polyworks.Events.CHANGE_STATE,
+								value: 'menu'
+							}
+						}
+					}
+				}
 				// {
 				// 	name: 'completedControls',
 				// 	cl: 'ControlButtons',

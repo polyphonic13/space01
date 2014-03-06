@@ -26,6 +26,8 @@ Polyworks.LevelState = (function() {
 	
 	LevelState.prototype.createState = function() {
 
+		this.triggeredCleared = false;
+
 		// create views and controls with super
 		LevelState._super.createState.call(this);
 
@@ -63,8 +65,11 @@ Polyworks.LevelState = (function() {
 		if(!this.paused) {
 			// trace('LevelState['+this.model.name+']/update');
 			if(this.player.body.x >= this.model.bounds.end) {
-				Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_CLEARED, value: this.model.name });
-				this.showCompletedGUI();
+				if(!this.triggeredCleared) {
+					this.triggeredCleared = true;
+					Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_CLEARED, value: this.model.name });
+					this.showCompletedGUI();
+				}
 			} else {
 				var sector = this.activeSector;
 
