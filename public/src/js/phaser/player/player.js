@@ -154,8 +154,12 @@ Polyworks.Player = (function() {
 
 			this.checkTerrainCollision(params.terrain);
 
+			if(params.requirements !== null) {
+				this.checkRequirementsCollision(params.requirements, physics);
+			}
+
 			this.checkDynamicTerrainCollision(params.dynamicTerrain);
-			
+
 			this.checkHazardCollision(params.hazards, physics);
 			this.checkEnemyCollision(params.enemies, physics);
 			this.checkBonusCollision(params.bonuses, physics);
@@ -168,44 +172,53 @@ Polyworks.Player = (function() {
 				attrs.grounded = false;
 			}
 		}
+		traced = true;
 	};
 
 	Player.prototype.checkHazardCollision = function(hazards, physics) {
-		this.checkCollision(hazards, this.hazardCollision, physics, this);
+		this.checkCollision(hazards, this.onHazradCollision, physics, this);
 	};
 	
 	Player.prototype.checkEnemyCollision = function(enemies, physics) {
-		this.checkCollision(enemies, this.enemyCollision, physics, this);
+		this.checkCollision(enemies, this.onEnemyCollision, physics, this);
 	};
 	
 	Player.prototype.checkBonusCollision = function(bonuses, physics) {
-		this.checkCollision(bonuses, this.bonusCollision, physics, this);
+		this.checkCollision(bonuses, this.onBonusCollision, physics, this);
+	};
+	
+	var traced = false;
+	Player.prototype.checkRequirementsCollision = function(requirements, physics) {
+		this.checkCollision(requirements, this.onRequirementCollision, physics, this);
 	};
 	
 	Player.prototype.checkCollision = function(collection, callback, physics, context) {
 		// trace('Player/checkCollision, health = ' + this.health);
 		Polyworks.Utils.each(collection,
 			function(c) {
+				if(!traced) {
+					trace('------------- Player/checkCollision, c = ', c, 'this = ', this);
+				}
 				physics.overlap(this, c, callback, null, context);
 			},
 			this
 		);
 	};
-		
-	Player.prototype.hazardCollision = function(player, hazard) {
-		// trace('Player/hazardCollision, hazard = ');
+
+	Player.prototype.onHazradCollision = function(player, hazard) {
+		// trace('Player/onHazradCollision, hazard = ');
 		// trace(hazard);
 		this.collided = true;
 		this.receiveDamage(hazard.model.attrs.attack);
 	};
 	
-	Player.prototype.enemyCollision = function(player, enemy) {
+	Player.prototype.onEnemyCollision = function(player, enemy) {
 		this.collided = true;
 		var playerX = player.body.x + (player.body.width);
 		var playerY = player.body.y + (player.body.height);
 		var enemyX = enemy.body.x + (enemy.body.width);
 		var enemyY = enemy.body.y + (enemy.body.height);
-		// trace('Player/enemyCollision['+enemy.model.name+'], player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
+		// trace('Player/onEnemyCollision['+enemy.model.name+'], player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
 		// trace(enemy);
 
 		if(playerY < (enemyY - 15)) { // player is above enemy
@@ -217,9 +230,9 @@ Polyworks.Player = (function() {
 		}
 	};
 	
-	Player.prototype.bonusCollision = function(player, bonus) {
+	Player.prototype.onBonusCollision = function(player, bonus) {
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.BONUS_COLLISION, player: player, bonus: bonus });
-		// trace('Player/bonusCollision, bonus = ');
+		// trace('Player/onBonusCollision, bonus = ');
 		// trace(bonus);
 		this.collided = true;
 	    PolyworksGame.setScore(bonus.model.attrs.score);
@@ -232,6 +245,26 @@ Polyworks.Player = (function() {
 
 		bonus.active = false; 
 		bonus.destroy();
+	};
+	
+	Player.prototype.onRequirementCollision = function(player, requirement) {
+		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.BONUS_COLLISION, player: player, bonus: bonus });
+		trace('Player/onRequirementCollision, bonus = ', requirement);
+
+		this.collided = true;
+		requirement.collect();
+/*
+	    PolyworksGame.setScore(bonus.model.attrs.score);
+
+		var health = bonus.model.attrs.health;
+		if(health) {
+			this.health += health;
+			PolyworksGame.setHealth(this.health);
+		}
+
+		bonus.active = false; 
+		bonus.destroy();
+*/
 	};
 	
 	Player.prototype.receiveDamage = function(damage) {

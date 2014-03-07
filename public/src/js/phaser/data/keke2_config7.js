@@ -36,7 +36,7 @@ Polyworks.Config = (function() {
 				levelClearedIcon: 'images/map/level_cleared_icon.png',
 				pageLeftArrow: 'images/map/page_left_arrow.png',
 				pageRightArrow: 'images/map/page_right_arrow.png',
-				
+
 				sky: 'images/night_sky.jpg',
 
 				forestBackground01: 'images/pencil_forest01a.png',
@@ -97,6 +97,7 @@ Polyworks.Config = (function() {
 				thorns01: 'images/thorns02.png',
 
 				// bonuses
+				candyCane01: 'images/candy_cane01.png',
 				lollipop: 'images/lollipop.png',
 				cupcake: 'images/cupcake.png',
 
@@ -836,6 +837,7 @@ Polyworks.Config = (function() {
 					'branch02Right',
 					'branch02aLeft',
 					'branch02aRight',
+					'candyCane01',
 					'lollipop',
 					'invisibleRect',
 					'heart',
@@ -1070,7 +1072,7 @@ Polyworks.Config = (function() {
 				},
 				{
 					name: 'requirements',
-					cl: 'RequirementCollection',
+					cl: 'Requirements',
 					attrs: [
 					{
 						name: 'requirement1',
@@ -1082,8 +1084,8 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 2)
 							},
 							start: {
-								x: (stageUnit * 14),
-								y: winH - (stageUnit * 3)
+								x: (stageWidth * 2) + (stageUnit * 13),
+								y: winH - (stageUnit * 13.5)
 							}
 						}
 					}

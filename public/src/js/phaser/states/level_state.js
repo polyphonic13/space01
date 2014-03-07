@@ -33,6 +33,7 @@ Polyworks.LevelState = (function() {
 		LevelState._super.createState.call(this);
 
 		this.requirements = this.getChildByName('requirements');
+		trace('\n\n\trequirements = ', this.requirements, '\tgroup = ', this.requirements.group);
 		if(this.requirements) {
 			Polyworks.EventCenter.bind(Polyworks.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
 		}
@@ -65,7 +66,7 @@ Polyworks.LevelState = (function() {
 		this.playerPresent = true;
 		// trace('LevelState['+this.model.name+']/player created, jump = ' + playerConfig.attrs.speed.y, playerConfig);
 	};
-	
+	var traced = false;
 	LevelState.prototype.update = function() {
 		if(!this.paused) {
 			// trace('LevelState['+this.model.name+']/update');
@@ -89,9 +90,11 @@ Polyworks.LevelState = (function() {
 				this.sectorManager.pwUpdate(updateParams);
 
 				// update player with active sector members & terrain
+				var requirementsGroup = (this.requirements) ? this.requirements.getActive() : null;
 
 				this.player.pwUpdate({
 					terrain: this.terrain.group,
+					requirements: requirementsGroup,
 					dynamicTerrain: sector.dynamicTerrain.getActive(),
 					hazards: sector.hazards.getActive(),
 					enemies: sector.enemies.getActive(),

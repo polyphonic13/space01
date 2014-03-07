@@ -19,7 +19,7 @@ Polyworks.Collection = (function() {
 				c.game = game;
 				c.ancestor = this;
 				c.idx = i;
-				
+
 				child = new Polyworks[c.cl](c);
 				child.begin();
 
