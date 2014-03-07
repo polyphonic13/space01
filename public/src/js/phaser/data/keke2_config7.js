@@ -161,6 +161,13 @@ Polyworks.Config = (function() {
 					height: 50,
 					frames: 2
 				},
+				mapButton: 
+				{
+					url: 'images/map_button.png',
+					width: 50,
+					height: 50,
+					frames: 2
+				},
 				quitButton: 
 				{
 					url: 'images/quit_button2.png',
@@ -582,6 +589,25 @@ Polyworks.Config = (function() {
 							}
 						}
 					}
+				},
+				{
+					name: 'mapButton',
+					cl: 'InputButton',
+					attrs: {
+						img: 'mapButton',
+						start: {
+							x: 30,
+							y: 145
+						},
+						frames: [0, 0, 1],
+						// inputCode: Polyworks.InputCodes.START,
+						events: {
+							released: {
+								type: Polyworks.Events.CHANGE_STATE,
+								value: 'map'
+							}
+						}
+					}
 				}
 				],
 				completedGUI: [
@@ -672,19 +698,26 @@ Polyworks.Config = (function() {
 							}
 						}
 					}
+				},
+				{
+					name: 'mapButton',
+					cl: 'InputButton',
+					attrs: {
+						img: 'mapButton',
+						start: {
+							x: 30,
+							y: 80
+						},
+						frames: [0, 0, 1],
+						// inputCode: Polyworks.InputCodes.START,
+						events: {
+							released: {
+								type: Polyworks.Events.CHANGE_STATE,
+								value: 'map'
+							}
+						}
+					}
 				}
-				// {
-				// 	name: 'completedControls',
-				// 	cl: 'ControlButtons',
-				// 	type: 'intermission',
-				// 	addTo: 'null',
-				// 	attrs: {
-				// 		start: {
-				// 			x: 0,
-				// 			y: 0
-				// 		}
-				// 	}
-				// }
 				]
 			},
 			// USE FOR LOCAL TESTING:
@@ -732,9 +765,9 @@ Polyworks.Config = (function() {
 					'keke',
 					'pauseButton',
 					'menuButton',
+					'mapButton',
 					'playButton',
 					'retryButton',
-					'menuButton',
 					'quitButton'
 				],
 				attrs: [
@@ -814,6 +847,7 @@ Polyworks.Config = (function() {
 					'upButton',
 					'pauseButton',
 					'menuButton',
+					'mapButton',
 					'keke',
 					'caterpillar01'
 				],
@@ -3062,6 +3096,7 @@ Polyworks.Config = (function() {
 					'upButton',
 					'pauseButton',
 					'menuButton',
+					'mapButton',
 					'keke',
 					'caterpillar01',
 					'caterpillar02'
@@ -6041,6 +6076,7 @@ Polyworks.Config = (function() {
 					'upButton',
 					'pauseButton',
 					'menuButton',
+					'mapButton',
 					'keke'
 				],
 				attrs: [
@@ -7176,6 +7212,7 @@ Polyworks.Config = (function() {
 					'upButton',
 					'pauseButton',
 					'menuButton',
+					'mapButton',
 					'keke'
 				],
 				attrs: [
@@ -9059,7 +9096,7 @@ Polyworks.Config = (function() {
 							y: 0.2
 						},
 						*/
-						collideWorldBounds: true
+						collideWorldBounds: false
 					},
 					anchor: {
 						x: 0.5,
