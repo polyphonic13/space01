@@ -572,32 +572,13 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
-					name: 'menuBtn',
-					cl: 'InputButton',
-					attrs: {
-						img: 'menuButton',
-						start: {
-							x: 30,
-							y: 80
-						},
-						frames: [0, 0, 1],
-						// inputCode: Polyworks.InputCodes.MENU,
-						events: {
-							released: {
-								type: Polyworks.Events.CHANGE_STATE,
-								value: 'menu'
-							}
-						}
-					}
-				},
-				{
 					name: 'mapButton',
 					cl: 'InputButton',
 					attrs: {
 						img: 'mapButton',
 						start: {
 							x: 30,
-							y: 145
+							y: 80
 						},
 						frames: [0, 0, 1],
 						// inputCode: Polyworks.InputCodes.START,
@@ -605,6 +586,25 @@ Polyworks.Config = (function() {
 							released: {
 								type: Polyworks.Events.CHANGE_STATE,
 								value: 'map'
+							}
+						}
+					}
+				},
+				{
+					name: 'menuBtn',
+					cl: 'InputButton',
+					attrs: {
+						img: 'menuButton',
+						start: {
+							x: 30,
+							y: 145
+						},
+						frames: [0, 0, 1],
+						// inputCode: Polyworks.InputCodes.MENU,
+						events: {
+							released: {
+								type: Polyworks.Events.CHANGE_STATE,
+								value: 'menu'
 							}
 						}
 					}
@@ -681,32 +681,13 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
-					name: 'menuBtn',
-					cl: 'InputButton',
-					attrs: {
-						img: 'menuButton',
-						start: {
-							x: 30,
-							y: 15
-						},
-						frames: [0, 0, 1],
-						// inputCode: Polyworks.InputCodes.MENU,
-						events: {
-							released: {
-								type: Polyworks.Events.CHANGE_STATE,
-								value: 'menu'
-							}
-						}
-					}
-				},
-				{
 					name: 'mapButton',
 					cl: 'InputButton',
 					attrs: {
 						img: 'mapButton',
 						start: {
 							x: 30,
-							y: 80
+							y: 15
 						},
 						frames: [0, 0, 1],
 						// inputCode: Polyworks.InputCodes.START,
@@ -714,6 +695,25 @@ Polyworks.Config = (function() {
 							released: {
 								type: Polyworks.Events.CHANGE_STATE,
 								value: 'map'
+							}
+						}
+					}
+				},
+				{
+					name: 'menuBtn',
+					cl: 'InputButton',
+					attrs: {
+						img: 'menuButton',
+						start: {
+							x: 30,
+							y: 80
+						},
+						frames: [0, 0, 1],
+						// inputCode: Polyworks.InputCodes.MENU,
+						events: {
+							released: {
+								type: Polyworks.Events.CHANGE_STATE,
+								value: 'menu'
 							}
 						}
 					}
