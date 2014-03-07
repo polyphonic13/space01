@@ -6,8 +6,8 @@ Polyworks.MapState = (function() {
 	}
 
 	MapState.prototype.createState = function() {
+		this.createWorld();
 		trace('MapState/createState, this = ', this);
-		// MapState._super.createState.call(this);
 		var stateGroup = PolyworksGame.phaser.add.group();
 		this.model.stateGroup = stateGroup;
 

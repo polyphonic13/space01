@@ -126,6 +126,7 @@ Polyworks.State = (function() {
 	
 	State.prototype.createWorld = function() {
 		var world = this.model.world;
+		trace('State['+this.model.name+']/createWorld, x = ' + world.x + ', world.y = ' + world.y + ', width = ' + world.width + ', height = ' + world.height);
 		// trace('State['+this.model.name+']/createWorld, world = ', world, Polyworks.Stage);
 		PolyworksGame.phaser.world.setBounds(world.x, world.y, world.width, world.height);
 	};
