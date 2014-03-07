@@ -320,9 +320,9 @@ Polyworks.Config = (function() {
 								y: 15
 							},
 							frames: [0, 0, 1],
-							inputCode: Polyworks.InputCodes.QUIT,
+							// inputCode: Polyworks.InputCodes.QUIT,
 							events: {
-								pressed: {
+								released: {
 									type: Polyworks.Events.CHANGE_STATE,
 									value: 'quit'
 								}
@@ -340,9 +340,9 @@ Polyworks.Config = (function() {
 								x: winW/2 - 128,
 								y: winH/2 - 64
 							},
-							inputCode: Polyworks.InputCodes.NEXT,
+							// inputCode: Polyworks.InputCodes.NEXT,
 							events: {
-								pressed: {
+								released: {
 									type: Polyworks.Events.CHANGE_STATE,
 									value: 'nextLevel'
 								}
@@ -359,9 +359,9 @@ Polyworks.Config = (function() {
 								y: 15
 							},
 							frames: [0, 0, 1],
-							inputCode: Polyworks.InputCodes.MENU,
+							// inputCode: Polyworks.InputCodes.MENU,
 							events: {
-								pressed: {
+								released: {
 									type: Polyworks.Events.CHANGE_STATE,
 									value: 'menu'
 								}
@@ -380,9 +380,9 @@ Polyworks.Config = (function() {
 								y: 15
 							},
 							frames: [0, 0, 1],
-							inputCode: Polyworks.InputCodes.MENU,
+							// inputCode: Polyworks.InputCodes.MENU,
 							events: {
-								pressed: {
+								released: {
 									type: Polyworks.Events.CHANGE_STATE,
 									value: 'menu'
 								}
@@ -401,9 +401,9 @@ Polyworks.Config = (function() {
 								y: 15
 							},
 							frames: [0, 0, 1],
-							inputCode: Polyworks.InputCodes.MENU,
+							// inputCode: Polyworks.InputCodes.MENU,
 							events: {
-								pressed: {
+								released: {
 									type: Polyworks.Events.CHANGE_STATE,
 									value: 'menu'
 								}
@@ -421,9 +421,9 @@ Polyworks.Config = (function() {
 								x: winW/2 - 128,
 								y: winH/2 - 64
 							},
-							inputCode: Polyworks.InputCodes.RETRY,
+							// inputCode: Polyworks.InputCodes.RETRY,
 							events: {
-								pressed: {
+								released: {
 									type: Polyworks.Events.CHANGE_STATE,
 									value: 'level'
 								}
@@ -440,9 +440,9 @@ Polyworks.Config = (function() {
 								y: 15
 							},
 							frames: [0, 0, 1],
-							inputCode: Polyworks.InputCodes.MENU,
+							// inputCode: Polyworks.InputCodes.MENU,
 							events: {
-								pressed: {
+								released: {
 									type: Polyworks.Events.CHANGE_STATE,
 									value: 'menu'
 								}
@@ -514,9 +514,9 @@ Polyworks.Config = (function() {
 								y: 15
 							},
 							frames: [0, 0, 1],
-							inputCode: Polyworks.InputCodes.PAUSE,
+							// inputCode: Polyworks.InputCodes.PAUSE,
 							events: {
-								pressed: {
+								released: {
  									type: Polyworks.Events.PAUSE_STATE,
  									// type: Polyworks.Events.CHANGE_STATE,
 									value: 'menu'
@@ -556,7 +556,7 @@ Polyworks.Config = (function() {
 							y: 15
 						},
 						frames: [0, 0, 1],
-						inputCode: Polyworks.InputCodes.PLAY,
+						// inputCode: Polyworks.InputCodes.PLAY,
 						events: {
 							released: {
 								type: Polyworks.Events.RESUME_STATE
@@ -574,7 +574,7 @@ Polyworks.Config = (function() {
 							y: 80
 						},
 						frames: [0, 0, 1],
-						inputCode: Polyworks.InputCodes.MENU,
+						// inputCode: Polyworks.InputCodes.MENU,
 						events: {
 							released: {
 								type: Polyworks.Events.CHANGE_STATE,
@@ -664,9 +664,9 @@ Polyworks.Config = (function() {
 							y: 15
 						},
 						frames: [0, 0, 1],
-						inputCode: Polyworks.InputCodes.MENU,
+						// inputCode: Polyworks.InputCodes.MENU,
 						events: {
-							pressed: {
+							released: {
 								type: Polyworks.Events.CHANGE_STATE,
 								value: 'menu'
 							}
@@ -785,8 +785,8 @@ Polyworks.Config = (function() {
 				clearCache: false,
 				bounds: {
 					start: 0,
-					// end: (stageWidth * 6) - (stageUnit * 1)
-					end: stageWidth
+					end: (stageWidth * 6) - (stageUnit * 1)
+					// end: stageWidth
 				},
 				pausable: true,
 				images: [
@@ -978,31 +978,31 @@ Polyworks.Config = (function() {
 					name: 'terrain',
 					cl: 'PhysicalGroupCollection',
 					attrs: [
-					{
-						name: 'leftWall',
-						cl: 'Sprite',
-						attrs: {
-							img: 'platformV',
-							start: {
-								x: -16,
-								y: winH - (stageHeight * 2)
-							},
-							phaser: {
-								width: 16,
-								height: stageHeight * 2
-							},
-							physics: {
-								immovable: true
-							}
-						}
-					},
+					// {
+					// 	name: 'leftWall',
+					// 	cl: 'Sprite',
+					// 	attrs: {
+					// 		img: 'platformV',
+					// 		start: {
+					// 			x: -16,
+					// 			y: winH - (stageHeight * 2)
+					// 		},
+					// 		phaser: {
+					// 			width: 16,
+					// 			height: stageHeight * 2
+					// 		},
+					// 		physics: {
+					// 			immovable: true
+					// 		}
+					// 	}
+					// },
 					{
 						name: 'ground0',
 						cl: 'Sprite',
 						attrs: {
 							img: 'platform',
 							phaser: {
-								width: stageWidth * 6,
+								width: (stageWidth * 6) + (stageUnit * 8),
 								height: (stageUnit * 0.5)
 							},
 							start: {
@@ -9059,7 +9059,7 @@ Polyworks.Config = (function() {
 							y: 0.2
 						},
 						*/
-						collideWorldBounds: false
+						collideWorldBounds: true
 					},
 					anchor: {
 						x: 0.5,

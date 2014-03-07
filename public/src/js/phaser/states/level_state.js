@@ -67,8 +67,7 @@ Polyworks.LevelState = (function() {
 			if(this.player.body.x >= this.model.bounds.end) {
 				if(!this.triggeredCleared) {
 					this.triggeredCleared = true;
-					Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_CLEARED, value: this.model.name });
-					this.showCompletedGUI();
+					this.levelCleared();
 				}
 			} else {
 				var sector = this.activeSector;
@@ -155,6 +154,13 @@ Polyworks.LevelState = (function() {
 		this.getChildByName('completedGUI').show();
 	};
 	
+	LevelState.prototype.levelCleared = function() {
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_CLEARED, value: this.model.name });
+		this.player.destroy();
+		this.playerPresent = false;
+		this.showCompletedGUI();
+	};
+	
 	LevelState.prototype.shutdown = function() {
 		trace('LevelState['+this.model.name+']/shutdown')
 		Polyworks.Utils.each(this.model.collection,
@@ -163,6 +169,7 @@ Polyworks.LevelState = (function() {
 			},
 			this
 		);
+		
 		this.playerGroup.destroy();
 		if(this.playerPresent) {
 			this.player.destroy();
