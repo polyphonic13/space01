@@ -7,21 +7,27 @@ POLYWORKS_DIR="polyworksgames.com"
 TO_COPY=$1
 DEST_DIR=$2
 
-# ssh -o "StrictHostKeyChecking no" $USER@$DREAMHOST_SERVER << ENDHERE
-# 	cd $POLYWORKS_DIR
-# 	echo "CONTENTS OF POLWORKS DIR: "
-# 	ls -l
-# 	echo "TESTING FOR EXISTENCE OF $DEST_DIR"
-# 	if [ ! -d "$DEST_DIR" ]; then
-# 	  # Control will enter here if $DIRECTORY doesn't exist.
-# 		echo "MAKING NEW DIR $DEST_DIR"
-# 		mkdir $DEST_DIR
-# 	else
-# 		echo "$DEST_DIR EXISTS"
-# 	fi	
-# 	exit
-# 	
-# ENDHERE
+ssh -o "StrictHostKeyChecking no" $USER@$DREAMHOST_SERVER << ENDHERE
+	cd $POLYWORKS_DIR
+	echo "CONTENTS OF POLWORKS DIR: "
+	ls -l
+	echo "TESTING FOR EXISTENCE OF $DEST_DIR"
+	# if [ ! -d "$DEST_DIR" ]; then
+	#   # Control will enter here if $DIRECTORY doesn't exist.
+	# 	echo "MAKING NEW DIR $DEST_DIR"
+	# 	mkdir $DEST_DIR
+	# else
+	# 	echo "$DEST_DIR EXISTS. REMOVING THEN RE-ADDING"
+	# 	
+	# fi	
+	if [ -d "$DEST_DIR" ]; then
+		echo "REMOVING EXISTING $DEST_DIR"
+		rm -r $DEST_DIR
+	fi
+	mkdir $DEST_DIR
+	exit
+	
+ENDHERE
 echo "SCP'ING $TO_COPY TO $USER@$DREAMHOST_SERVER:/$SSH_PATH/$POLYWORKS_DIR/$DEST_DIR/"
 
 if [[ -d $TO_COPY ]]; then
