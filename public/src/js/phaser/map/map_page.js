@@ -3,11 +3,11 @@ Polyworks.MapPage = (function() {
 	
 	function MapPage(params) {
 		this.model = new Polyworks.Model(params);
-		trace('MapPage['+this.model.name+']/constructor');
+		// trace('MapPage['+this.model.name+']/constructor');
 	}
 	
 	MapPage.prototype.begin = function() {
-		trace('----------------------- MapPage['+this.model.name+']/begin, model = ', this.model);
+		// trace('----------------------- MapPage['+this.model.name+']/begin, model = ', this.model);
 		this.addListeners();
 
 		var pageStartX = this.model.start.x;
@@ -27,30 +27,30 @@ Polyworks.MapPage = (function() {
 
 		if(this.model.leftArrow) {
 			var lBtn = this.addArrowButton('left', pageStartX);
-			trace('\t\tlBtn', lBtn);
+			// trace('\t\tlBtn', lBtn);
 			this.model.attrs.push(lBtn);
 		}
 		if(this.model.rightArrow) {
 			var rBtn = this.addArrowButton('right', pageStartX);
-			trace('\t\trBtn', rBtn);
+			// trace('\t\trBtn', rBtn);
 			this.model.attrs.push(rBtn);
 		}
-		trace('\tattrs now = ', this.model.attrs);
+		// trace('\tattrs now = ', this.model.attrs);
 		MapPage._super.begin.call(this);
-		trace(this);
+		// trace(this);
 		var title = this.getChildByName('pageTitle');
 		this.pageGroup.add(title);
 
 		var leftArrow = this.getChildByName('leftArrowButton');
-		trace('\t\tleftArrow: ', leftArrow);
+		// trace('\t\tleftArrow: ', leftArrow);
 		if(leftArrow) {
-			trace('\t\t\tadding left arrow to state group');
+			// trace('\t\t\tadding left arrow to state group');
 			this.pageGroup.add(leftArrow);
 		}
 		var rightArrow = this.getChildByName('rightArrowButton');
-		trace('\t\trightArrow: ', rightArrow);
+		// trace('\t\trightArrow: ', rightArrow);
 		if(rightArrow) {
-			trace('\t\t\tadding right arrow to state group');
+			// trace('\t\t\tadding right arrow to state group');
 			this.pageGroup.add(rightArrow);
 		}
 	};
@@ -60,7 +60,7 @@ Polyworks.MapPage = (function() {
 	};
 	
 	MapPage.prototype.onChangeMapPage = function(event) {
-		trace('MapPage['+this.model.name+']/onChangeMapPage, event = ', event);
+		// trace('MapPage['+this.model.name+']/onChangeMapPage, event = ', event);
 		if(event.value === this.model.idx) {
 			this.pageGroup.visible = true;
 		} else {
@@ -93,7 +93,7 @@ Polyworks.MapPage = (function() {
 					locked = false;
 				}
 
-				// trace('\t\tidx = ' + idx);
+				// // trace('\t\tidx = ' + idx);
 				var start = {};
 				start.x = (((stageUnit * 3.5) * idx) + (stageUnit * 2)) + pageStartX;
 				start.y = (stageUnit * 4);
@@ -132,16 +132,14 @@ Polyworks.MapPage = (function() {
 
 		if(direction === 'left') {
 			img = 'pageLeftArrow';
-			// eventValue = 'backward';
 			eventValue = ((this.model.idx) - 1);
 			buttonX = 0 + pageStartX;
 		} else {
 			img = 'pageRightArrow';
-			// eventValue = 'forward';
 			eventValue = ((this.model.idx) + 1);
-			// buttonX = (Polyworks.Stage.winW - (stageUnit * 3.5)) + pageStartX;
 			buttonX = (((stageUnit * 3.5) * 4) + (stageUnit * 2)) + pageStartX;
 		}
+
 		var arrowButton = {
 			name: direction + 'ArrowButton',
 			cl: 'InputButton',

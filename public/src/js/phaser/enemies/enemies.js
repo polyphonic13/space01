@@ -24,22 +24,5 @@ Polyworks.Enemies = (function() {
 		Enemies._super.activateGravity.call(this);
 	};
 
-	Enemies.prototype.killEnemy = function(name) {
-		// this = me;
-		// trace('Enemies['+this.model.name+']/killEnemy, name = ' + name);
-		// trace(this);
-		this.removeChild(name);
-	};
-	
-	Enemies.prototype.destroyEnemy = function(name, ancestor) {
-		// trace('Enemies/destroyEnemy, name = ' + name);
-		// trace(this);
-		// trace(ancestor);
-		var enemy = ancestor.model.collection[ancestor.nameIndex[name]];
-		// trace(enemy);
-		enemy.alive = false;
-		enemy.destroy();
-	};
-	
 	return Enemies;
 })();

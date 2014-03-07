@@ -105,6 +105,7 @@ Polyworks.State = (function() {
 			}
 			this.begin();
 			this.model.set({ created: true });
+			trace('\tend of state['+this.model.name+'] createState, world = ', this.model.world);
 		} else {
 			trace('WARNING: state already created');
 		}

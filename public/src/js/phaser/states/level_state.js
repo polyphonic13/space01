@@ -27,10 +27,15 @@ Polyworks.LevelState = (function() {
 	LevelState.prototype.createState = function() {
 
 		this.triggeredCleared = false;
+		this.requirementsMet = false; 
 
 		// create views and controls with super
 		LevelState._super.createState.call(this);
 
+		this.requirements = this.getChildByName('requirements');
+		if(this.requirements) {
+			Polyworks.EventCenter.bind(Polyworks.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
+		}
 		this.terrain = this.getChildByName('terrain');
 		this.sectorManager = this.getChildByName('sectors');
 		this.sectorManager.setState(this);
@@ -64,7 +69,7 @@ Polyworks.LevelState = (function() {
 	LevelState.prototype.update = function() {
 		if(!this.paused) {
 			// trace('LevelState['+this.model.name+']/update');
-			if(this.player.body.x >= this.model.bounds.end) {
+			if(this.requirementsMet && (this.player.body.x >= this.model.bounds.end)) {
 				if(!this.triggeredCleared) {
 					this.triggeredCleared = true;
 					this.levelCleared();
@@ -97,9 +102,14 @@ Polyworks.LevelState = (function() {
 			LevelState._super.update.call(this);
 		}
 	};
+
+	LevelState.prototype.onLevelRequirementsMet = function() {
+		trace('LevelState['+this.model.name+']/onLevelRequirementsMet');
+		this.requirementsMet = true;
+	};
 	
 	LevelState.prototype.onPauseState = function() {
-		trace('LevelState['+this.model.name+']/onPauseState');
+		// trace('LevelState['+this.model.name+']/onPauseState');
 		LevelState._super.onPauseState.call(this);
 		if(this.paused) {
 			this.pauseState();
@@ -109,7 +119,7 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.onResumeState = function() {
-		trace('LevelState['+this.model.name+']/onResumeState');
+		// trace('LevelState['+this.model.name+']/onResumeState');
 		LevelState._super.onResumeState.call(this);
 		this.resumeState();
 	};
@@ -162,14 +172,16 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.shutdown = function() {
-		trace('LevelState['+this.model.name+']/shutdown')
+		trace('LevelState['+this.model.name+']/shutdown');
+		Polyworks.EventCenter.unbind(Polyworks.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
+
 		Polyworks.Utils.each(this.model.collection,
 			function(c) {
 				c.destroy();
 			},
 			this
 		);
-		
+
 		this.playerGroup.destroy();
 		if(this.playerPresent) {
 			this.player.destroy();

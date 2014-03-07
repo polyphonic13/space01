@@ -6,7 +6,7 @@ Polyworks.InputButton = (function() {
 		// trace('InputButton/constructor, params = ', params);
 		_this = this;
 		this.model = new Polyworks.Model(params);
-		trace('\tinput button model = ', this.model);
+		// trace('\tinput button model = ', this.model);
 		var attrs = this.model.attrs;
 		var frames = attrs.frames;
 		if(frames) {
@@ -21,7 +21,7 @@ Polyworks.InputButton = (function() {
 		var start = this.model.attrs.start;
 		this.x = start.x;
 		this.y = start.y;
-		trace('InputButton['+this.model.name+']/begin, start x/y = ' + start.x + '/' + start.y, this.model);
+		// trace('InputButton['+this.model.name+']/begin, start x/y = ' + start.x + '/' + start.y, this.model);
 		/*
 		if(this.model.width) {
 			this.width = this.model.width;
@@ -59,12 +59,12 @@ Polyworks.InputButton = (function() {
 	};
 	
 	InputButton.prototype.inputDown = function(event, pointer, ctx) {
-		trace('InputButton['+this.model.name+']/inputDown');
-		trace(event);
-		trace('\tpointer = ');
-		trace(pointer);
-		trace('\tcontext = ');
-		trace(ctx);
+		// trace('InputButton['+this.model.name+']/inputDown');
+		// trace(event);
+		// trace('\tpointer = ');
+		// trace(pointer);
+		// trace('\tcontext = ');
+		// trace(ctx);
 		ctx.inputPressed.call(ctx, { type: Polyworks.Events.CONTROL_PRESSED, value: ctx.model.attrs.inputCode });
 		ctx.pressed = true;
 	};

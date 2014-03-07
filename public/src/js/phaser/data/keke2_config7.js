@@ -1012,24 +1012,42 @@ Polyworks.Config = (function() {
 					name: 'terrain',
 					cl: 'PhysicalGroupCollection',
 					attrs: [
-					// {
-					// 	name: 'leftWall',
-					// 	cl: 'Sprite',
-					// 	attrs: {
-					// 		img: 'platformV',
-					// 		start: {
-					// 			x: -16,
-					// 			y: winH - (stageHeight * 2)
-					// 		},
-					// 		phaser: {
-					// 			width: 16,
-					// 			height: stageHeight * 2
-					// 		},
-					// 		physics: {
-					// 			immovable: true
-					// 		}
-					// 	}
-					// },
+					{
+						name: 'leftWall',
+						cl: 'Sprite',
+						attrs: {
+							img: 'platformV',
+							start: {
+								x: -16,
+								y: winH - (stageHeight * 2)
+							},
+							phaser: {
+								width: 16,
+								height: stageHeight * 2
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
+						name: 'rightWall',
+						cl: 'Sprite',
+						attrs: {
+							img: 'platformV',
+							start: {
+								x: stageWidth * 6,
+								y: winH - (stageHeight * 2)
+							},
+							phaser: {
+								width: 16,
+								height: stageHeight * 2
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
 					{
 						name: 'ground0',
 						cl: 'Sprite',
@@ -1045,6 +1063,27 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
+							}
+						}
+					}
+					]
+				},
+				{
+					name: 'requirements',
+					cl: 'RequirementCollection',
+					attrs: [
+					{
+						name: 'requirement1',
+						cl: 'Requirement',
+						attrs: {
+							img: 'candyCane01',
+							phaser: {
+								width: stageUnit,
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageUnit * 14),
+								y: winH - (stageUnit * 3)
 							}
 						}
 					}
