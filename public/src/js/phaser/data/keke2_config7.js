@@ -321,7 +321,7 @@ Polyworks.Config = (function() {
 							img: 'playButton',
 							start: {
 								x: winW/2 - 25,
-								y: winH/2 - 25
+								y: winH/2
 							},
 							inputCode: Polyworks.InputCodes.START,
 							events: {
