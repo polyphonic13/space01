@@ -97,7 +97,7 @@ Polyworks.Config = (function() {
 				thorns01: 'images/thorns02.png',
 
 				// bonuses
-				candyCane01: 'images/candy_cane01.png',
+				crystal01Green: 'images/crystal01_green.png',
 				lollipop: 'images/lollipop.png',
 				cupcake: 'images/cupcake.png',
 
@@ -837,7 +837,7 @@ Polyworks.Config = (function() {
 					'branch02Right',
 					'branch02aLeft',
 					'branch02aRight',
-					'candyCane01',
+					'crystal01Green',
 					'lollipop',
 					'invisibleRect',
 					'heart',
@@ -1078,10 +1078,10 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'candyCane01',
+							img: 'crystal01Green',
 							phaser: {
-								width: stageUnit,
-								height: (stageUnit * 2)
+								width: (stageUnit * 0.5),
+								height: (stageUnit * 1)
 							},
 							start: {
 								x: (stageWidth * 2) + (stageUnit * 13),
@@ -2235,7 +2235,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'candyCane01',
+							img: 'crystal01Green',
 							phaser: {
 								width: stageUnit,
 								height: (stageUnit * 2)
@@ -3463,7 +3463,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'candyCane01',
+							img: 'crystal01Green',
 							phaser: {
 								width: stageUnit,
 								height: (stageUnit * 2)
@@ -4921,7 +4921,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'candyCane01',
+							img: 'crystal01Green',
 							phaser: {
 								width: stageUnit,
 								height: (stageUnit * 2)
@@ -6370,7 +6370,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'candyCane01',
+							img: 'crystal01Green',
 							phaser: {
 								width: stageUnit,
 								height: (stageUnit * 2)
@@ -7576,7 +7576,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'candyCane01',
+							img: 'crystal01Green',
 							phaser: {
 								width: stageUnit,
 								height: (stageUnit * 2)
