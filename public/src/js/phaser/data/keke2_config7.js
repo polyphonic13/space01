@@ -23,7 +23,8 @@ Polyworks.Config = (function() {
 			images: {
 				// gameTitle: 'images/keke_title.png',
 				gameTitle: 'images/keke_grey_expanse_title.png',
-
+				greyExpanseTitle: 'images/grey_expanse_title.png',
+				
 				blackRect: 'images/black_rect32x32.png',
 				greyRect: 'images/grey_rect32x32.png',
 				whiteRect: 'images/white_rect32x32.png',
@@ -153,8 +154,8 @@ Polyworks.Config = (function() {
 				playButton: 
 				{
 					url: 'images/play_button.png',
-					width: 50,
-					height: 50,
+					width: 100,
+					height: 100,
 					frames: 2
 				},
 				menuButton: 
@@ -169,6 +170,13 @@ Polyworks.Config = (function() {
 					url: 'images/map_button.png',
 					width: 50,
 					height: 50,
+					frames: 2
+				},
+				restartButton: 
+				{
+					url: 'images/restart_button.png',
+					width: 100,
+					height: 100,
 					frames: 2
 				},
 				quitButton: 
@@ -320,7 +328,7 @@ Polyworks.Config = (function() {
 							// img: 'startButton',
 							img: 'playButton',
 							start: {
-								x: winW/2 - 25,
+								x: winW/2 - 50,
 								y: winH/2
 							},
 							inputCode: Polyworks.InputCodes.START,
@@ -438,10 +446,10 @@ Polyworks.Config = (function() {
 						name: 'retry',
 						cl: 'InputButton',
 						attrs: {
-							img: 'retryButton',
+							img: 'restartButton',
 							start: {
-								x: winW/2 - 128,
-								y: winH/2 - 64
+								x: winW/2 - 50,
+								y: winH/2
 							},
 							// inputCode: Polyworks.InputCodes.RETRY,
 							events: {
@@ -758,7 +766,7 @@ Polyworks.Config = (function() {
 					'greyRect',
 					'whiteRect',
 					'gameTitle',
-					'retryButton',
+					'greyExpanseTitle',
 					'nextButton',
 					'level1Icon',
 					'level2Icon',
@@ -783,7 +791,7 @@ Polyworks.Config = (function() {
 					'menuButton',
 					'mapButton',
 					'playButton',
-					'retryButton',
+					'restartButton',
 					'quitButton'
 				],
 				attrs: [
@@ -829,6 +837,125 @@ Polyworks.Config = (function() {
 					name: 'menuControls',
 					cl: 'ControlButtons',
 					type: 'menu',
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				}
+				]
+			},
+
+			// map
+			{
+				name: 'map',
+				cl: 'MapState',
+				world: {
+					x: 0,
+					y: 0,
+					width: winW,
+					height: winH
+				},
+				clearWorld: true,
+				clearCache: false,
+				images: [
+					'nextButton',
+					'level1Icon',
+					'level2Icon',
+					'level3Icon',
+					'level4Icon',
+					'level5Icon',
+					'level6Icon',
+					'invisibleRect',
+					'chapter1Title',
+					'chapter2Title',
+					'levelSelectedIcon',
+					'levelLockedIcon',
+					'levelClearedIcon',
+					'levelLockedIcon',
+					'pageLeftArrow',
+					'pageRightArrow'
+				],
+				sprites: [
+					'menuButton'
+				],
+				initialPage: 0,
+				pages: [
+				{
+					name: 'page1',
+					cl: 'MapPage',
+					levels: [
+						'level1',
+						'level2',
+						'level3',
+						'level4'
+					],
+					title: {
+						name: 'pageTitle',
+						cl: 'Sprite',
+						attrs: {
+							img: 'chapter1Title',
+							phaser: {
+								width: stageWidth
+							},
+							start: {
+								x: 0,
+								y: (stageUnit * 2.5)
+							}
+						}
+					}
+				},
+				{
+					name: 'page2',
+					cl: 'MapPage',
+					levels: [
+						'level5',
+						'level6'
+					],
+					title: {
+						name: 'pageTitle',
+						cl: 'Sprite',
+						attrs: {
+							img: 'chapter2Title',
+							phaser: {
+								width: stageWidth
+							},
+							start: {
+								x: 0,
+								y: (stageUnit * 2.5)
+							}
+						}
+					}
+				}
+				],
+				attrs: [
+				{
+					name: 'mapBackground',
+					cl: 'GroupCollection',
+					// addTo: 'stateGroup',
+					attrs: [
+					{
+						name: 'gameTitle',
+						cl: 'Sprite',
+						attrs: {
+							img: 'greyExpanseTitle',
+							phaser: {
+								width: (stageUnit * 8),
+								height: (stageUnit * 1)
+							},
+							start: {
+								x: (winW/2 - (stageUnit * 4)),
+								y: (stageUnit * 1)
+							}
+						}
+					}
+					]
+				},
+				{
+					name: 'mapControls',
+					cl: 'ControlButtons',
+					type: 'map',
 					attrs: {
 						start: {
 							x: 0,
@@ -8896,139 +9023,6 @@ Polyworks.Config = (function() {
 				]
 			},
 
-			// map
-			{
-				name: 'map',
-				cl: 'MapState',
-				world: {
-					x: 0,
-					y: 0,
-					width: winW,
-					height: winH
-				},
-				clearWorld: true,
-				clearCache: false,
-				images: [
-					'nextButton',
-					'level1Icon',
-					'level2Icon',
-					'level3Icon',
-					'level4Icon',
-					'level5Icon',
-					'level6Icon',
-					'invisibleRect',
-					'chapter1Title',
-					'chapter2Title',
-					'levelSelectedIcon',
-					'levelLockedIcon',
-					'levelClearedIcon',
-					'levelLockedIcon',
-					'pageLeftArrow',
-					'pageRightArrow'
-				],
-				sprites: [
-					'menuButton'
-				],
-				initialPage: 0,
-				pages: [
-				{
-					name: 'page1',
-					cl: 'MapPage',
-					levels: [
-						'level1',
-						'level2',
-						'level3',
-						'level4'
-					],
-					title: {
-						name: 'pageTitle',
-						cl: 'Sprite',
-						attrs: {
-							img: 'chapter1Title',
-							phaser: {
-								width: stageWidth
-							},
-							start: {
-								x: 0,
-								y: (stageUnit * 2.5)
-							}
-						}
-					}
-				},
-				{
-					name: 'page2',
-					cl: 'MapPage',
-					levels: [
-						'level5',
-						'level6'
-					],
-					title: {
-						name: 'pageTitle',
-						cl: 'Sprite',
-						attrs: {
-							img: 'chapter2Title',
-							phaser: {
-								width: stageWidth
-							},
-							start: {
-								x: 0,
-								y: (stageUnit * 2.5)
-							}
-						}
-					}
-				}
-				],
-				attrs: [
-				{
-					name: 'mapBackground',
-					cl: 'GroupCollection',
-					// addTo: 'stateGroup',
-					attrs: [
-					// {
-					// 	name: 'whiteBg',
-					// 	cl: 'Sprite',
-					// 	attrs: {
-					// 		img: 'whiteRect',
-					// 		phaser: {
-					// 			width: winW,
-					// 			height: winH
-					// 		},
-					// 		start: {
-					// 			x: 0,
-					// 			y: 0
-					// 		}
-					// 	}
-					// },
-					{
-						name: 'gameTitle',
-						cl: 'Sprite',
-						attrs: {
-							img: 'gameTitle',
-							phaser: {
-								width: stageUnit * 6,
-								height: stageUnit * 6
-							},
-							start: {
-								x: (winW/2 - (stageUnit * 3)),
-								y: 0
-							}
-						}
-					}
-					]
-				},
-				{
-					name: 'mapControls',
-					cl: 'ControlButtons',
-					type: 'map',
-					attrs: {
-						start: {
-							x: 0,
-							y: 0
-						}
-					}
-				}
-				]
-			},
 			// intermission
 			{
 				name: 'intermission',
@@ -9042,7 +9036,6 @@ Polyworks.Config = (function() {
 				clearWorld: true,
 				clearCache: false,
 				images: [
-					'blackRect',
 					'nextButton',
 					'menuButton'
 				],
@@ -9052,21 +9045,6 @@ Polyworks.Config = (function() {
 					name: 'intermission-group',
 					cl: 'GroupCollection',
 					attrs: [
-					{
-						name: 'bg',
-						cl: 'Sprite',
-						attrs: {
-							img: 'blackRect',
-							start: {
-								x: 20,
-								y: 20 
-							},
-							phaser: {
-								width: winW - 40,
-								height: winH - 40
-							}
-						}
-					},
 					{
 						name: 'title',
 						cl: 'Text',
@@ -9127,7 +9105,6 @@ Polyworks.Config = (function() {
 				clearWorld: true,
 				clearCache: false,
 				images: [
-					'blackRect',
 					'menuButton',
 					'quitButton'
 				],
@@ -9137,21 +9114,6 @@ Polyworks.Config = (function() {
 					name: 'completed-group',
 					cl: 'GroupCollection',
 					attrs: [
-					{
-						name: 'bg',
-						cl: 'Sprite',
-						attrs: {
-							img: 'blackRect',
-							start: {
-								x: 20,
-								y: 20 
-							},
-							phaser: {
-								width: winW - 40,
-								height: winH - 40
-							}
-						}
-					},
 					{
 						name: 'title',
 						cl: 'Text',
@@ -9224,21 +9186,6 @@ Polyworks.Config = (function() {
 					cl: 'GroupCollection',
 					attrs: [
 					{
-						name: 'bg',
-						cl: 'Sprite',
-						attrs: {
-							img: 'blackRect',
-							start: {
-								x: 20,
-								y: 20
-							},
-							phaser: {
-								width: winW - 40,
-								height: winH - 40
-							}
-						}
-					},
-					{
 						name: 'title',
 						cl: 'Text',
 						attrs: {
@@ -9246,10 +9193,10 @@ Polyworks.Config = (function() {
 							centerY: false,
 							x: 0,
 							y: stageUnit,
-							defaultContent: 'Game Over',
+							defaultContent: 'game over',
 							style: { 
-								font: '30px Arial', 
-								fill: '#ffffff',
+								font: '48px "Waiting for the Sunrise"', 
+								fill: '#000000',
 								align: 'center'
 							}
 						}

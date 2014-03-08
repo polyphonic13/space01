@@ -123,6 +123,7 @@ Polyworks.MapPage = (function() {
 	};
 
 	MapPage.prototype.addArrowButton = function(direction, pageStartX) {
+		trace('MapPage['+this.model.name+']/addArrow, direction = ' + direction + ', start x = ' + pageStartX);
 		var stageUnit = Polyworks.Stage.unit;
 		var img;
 		var eventValue;
