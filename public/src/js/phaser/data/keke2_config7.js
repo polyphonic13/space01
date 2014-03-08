@@ -181,7 +181,7 @@ Polyworks.Config = (function() {
 				},
 				quitButton: 
 				{
-					url: 'images/quit_button2.png',
+					url: 'images/quit_button.png',
 					width: 50,
 					height: 50,
 					frames: 2
