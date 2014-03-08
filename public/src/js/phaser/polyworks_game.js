@@ -4,7 +4,8 @@ PolyworksGame = (function() {
 	var _player = {};
 	var _controls = {};
 	var _states = {};
-	
+	var _loadingTitleHTML = '<div class="kekeText">keke</div><br /><div class="gameText1"><b>and the</b></div><div class="gameText2"><b>&nbsp;G R E Y&nbsp;&nbsp;&nbsp;E X P A N S E</b></div></div>';
+
 	var _configURL = 'js/phaser/data/keke2_config6.js';
 	
 	var _gameTitle = '';
@@ -117,7 +118,8 @@ PolyworksGame = (function() {
 		addLoadingDiv: function() {
 			var loading = document.createElement('div');
 			loading.setAttribute('id', 'loading');
-			loading.innerHTML = _gameTitle;
+			//loading.innerHTML = _gameTitle;
+			loading.innerHTML = _loadingTitleHTML;
 
 			var loadingHolder = document.getElementById('loadingHolder');
 			loadingHolder.appendChild(loading);

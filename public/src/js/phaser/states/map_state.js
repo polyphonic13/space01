@@ -9,6 +9,8 @@ Polyworks.MapState = (function() {
 		var stateGroup = PolyworksGame.phaser.add.group();
 		this.model.stateGroup = stateGroup;
 
+		MapState._super.createState.call(this);
+
 		var pages = this.model.pages;
 		var winW = Polyworks.Stage.winW;
 		var stageWidth = Polyworks.Stage.width;
@@ -38,7 +40,7 @@ Polyworks.MapState = (function() {
 			this
 		);
 
-		MapState._super.createState.call(this);
+		// MapState._super.createState.call(this);
 
 	};
 	

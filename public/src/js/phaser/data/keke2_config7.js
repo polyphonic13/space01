@@ -21,7 +21,12 @@ Polyworks.Config = (function() {
 		var c = {
 			// IMAGES
 			images: {
-				gameTitle: 'images/keke_title.png',
+				// gameTitle: 'images/keke_title.png',
+				gameTitle: 'images/keke_grey_expanse_title.png',
+
+				blackRect: 'images/black_rect32x32.png',
+				greyRect: 'images/grey_rect32x32.png',
+				whiteRect: 'images/white_rect32x32.png',
 
 				level1Icon: 'images/map/level_1_icon.png',
 				level2Icon: 'images/map/level_2_icon.png',
@@ -108,9 +113,6 @@ Polyworks.Config = (function() {
 				startButton: 'images/start_button.png',
 				nextButton: 'images/next_button.png',
 				retryButton: 'images/retry_button.png',
-
-				blackRect: 'images/black_rect32x32.png',
-				greyRect: 'images/grey_rect32x32.png',
 
 				// icons
 				heart: 'images/heart.png',
@@ -315,10 +317,11 @@ Polyworks.Config = (function() {
 						name: 'start',
 						cl: 'InputButton',
 						attrs: {
-							img: 'startButton',
+							// img: 'startButton',
+							img: 'playButton',
 							start: {
-								x: winW/2 - 128,
-								y: winH/2 - 64
+								x: winW/2 - 25,
+								y: winH/2 - 25
 							},
 							inputCode: Polyworks.InputCodes.START,
 							events: {
@@ -753,6 +756,7 @@ Polyworks.Config = (function() {
 				images: [
 					'blackRect',
 					'greyRect',
+					'whiteRect',
 					'gameTitle',
 					'retryButton',
 					'nextButton',
@@ -788,46 +792,37 @@ Polyworks.Config = (function() {
 					cl: 'GroupCollection',
 					attrs: [
 					{
-						name: 'title',
-						cl: 'Text',
+						name: 'whiteBg',
+						cl: 'Sprite',
 						attrs: {
-							x: 'center',
-							y: 25,
-							defaultContent: 'keke',
-							style: { 
-								font: '26px "Sue Ellen Francisco"', 
-								fill: '#ffffff' 
-							}//,
+							img: 'whiteRect',
+							phaser: {
+								width: winW,
+								height: winH
+							},
+							start: {
+								x: 0,
+								y: 0
+							}
 						}
 					},
 					{
-						name: 'subtitle',
-						cl: 'Text',
+						name: 'gameTitle',
+						cl: 'Sprite',
 						attrs: {
-							x: 'center',
-							y: 50,
-							defaultContent: 'and the GREY EXPANSE',
-							style: { 
-								font: '26px Smythe', 
-								fill: '#ffffff' 
-							}//,
+							img: 'gameTitle',
+							phaser: {
+								// width: winW
+								width: stageUnit * 6,
+								height: stageUnit * 4
+							},
+							start: {
+								// x: 0,
+								x: (winW/2 - (stageUnit * 3)),
+								y: 0
+							}
 						}
 					}
-					
-					// {
-					// 	name: 'gameTitle',
-					// 	cl: 'Sprite',
-					// 	attrs: {
-					// 		img: 'gameTitle',
-					// 		phaser: {
-					// 			width: winW
-					// 		},
-					// 		start: {
-					// 			x: 0,
-					// 			y: 0
-					// 		}
-					// 	}
-					// }
 					]
 				},
 				{
@@ -8989,16 +8984,32 @@ Polyworks.Config = (function() {
 					cl: 'GroupCollection',
 					// addTo: 'stateGroup',
 					attrs: [
+					// {
+					// 	name: 'whiteBg',
+					// 	cl: 'Sprite',
+					// 	attrs: {
+					// 		img: 'whiteRect',
+					// 		phaser: {
+					// 			width: winW,
+					// 			height: winH
+					// 		},
+					// 		start: {
+					// 			x: 0,
+					// 			y: 0
+					// 		}
+					// 	}
+					// },
 					{
 						name: 'gameTitle',
 						cl: 'Sprite',
 						attrs: {
 							img: 'gameTitle',
 							phaser: {
-								width: winW
+								width: stageUnit * 6,
+								height: stageUnit * 4
 							},
 							start: {
-								x: 0,
+								x: (winW/2 - (stageUnit * 3)),
 								y: 0
 							}
 						}
