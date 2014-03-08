@@ -1,5 +1,6 @@
 Polyworks.InputCodes = {
 	PLAY: 1,
+	LEVEL: 76,		// l
 	NEXT: 78,		// n
 	PAUSE: 80,		// p
 	MENU: 77,		// m

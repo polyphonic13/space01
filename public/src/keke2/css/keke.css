@@ -8,7 +8,21 @@ body, canvas, div {
 	color: #ffffff;
 }
 
-#loading {
+.kekeText {
+	text-align: center;
+	font-size: 2em;
+	font-family: 'Sue Ellen Francisco' cursive; 
+	color: #ffffff;
+}
+
+.gameText {
+	text-align: center;
+	font-size: 1.3em;
+	font-family: 'Smythe' cursive;
+	color: #ffffff;
+}
+
+#loadingHolder {
 	width: 100%;
 	height: 100%;
 	left: 0px;

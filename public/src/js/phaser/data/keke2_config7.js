@@ -249,15 +249,26 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'level',
+						cl: 'ControlKey',
+						attrs: {
+							inputCode: Polyworks.InputCodes.LEVEL,
+							events: {
+								pressed: {
+									type: Polyworks.Events.CHANGE_STATE,
+									value: 'level'
+								}
+							}
+						}
+					},
+					{
 						name: 'pause', // p
 						cl: 'ControlKey',
 						attrs: {
 							inputCode: Polyworks.InputCodes.PAUSE,
 							events: {
 								pressed: {
- 									type: Polyworks.Events.PAUSE_STATE,
- 									// type: Polyworks.Events.CHANGE_STATE,
-									value: 'menu'
+ 									type: Polyworks.Events.PAUSE_STATE
 								}
 							}
 						}
@@ -777,19 +788,46 @@ Polyworks.Config = (function() {
 					cl: 'GroupCollection',
 					attrs: [
 					{
-						name: 'gameTitle',
-						cl: 'Sprite',
+						name: 'title',
+						cl: 'Text',
 						attrs: {
-							img: 'gameTitle',
-							phaser: {
-								width: winW
-							},
-							start: {
-								x: 0,
-								y: 0
-							}
+							x: 'center',
+							y: 25,
+							defaultContent: 'keke',
+							style: { 
+								font: '26px "Sue Ellen Francisco"', 
+								fill: '#ffffff' 
+							}//,
+						}
+					},
+					{
+						name: 'subtitle',
+						cl: 'Text',
+						attrs: {
+							x: 'center',
+							y: 50,
+							defaultContent: 'and the GREY EXPANSE',
+							style: { 
+								font: '26px Smythe', 
+								fill: '#ffffff' 
+							}//,
 						}
 					}
+					
+					// {
+					// 	name: 'gameTitle',
+					// 	cl: 'Sprite',
+					// 	attrs: {
+					// 		img: 'gameTitle',
+					// 		phaser: {
+					// 			width: winW
+					// 		},
+					// 		start: {
+					// 			x: 0,
+					// 			y: 0
+					// 		}
+					// 	}
+					// }
 					]
 				},
 				{
@@ -8862,7 +8900,6 @@ Polyworks.Config = (function() {
 				}
 				]
 			},
-
 
 			// map
 			{

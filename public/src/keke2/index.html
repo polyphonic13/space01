@@ -3,13 +3,30 @@
 <head> 
 <!--	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"> -->
 	<title>keke vs. caterpillars</title>
+<link href='http://fonts.googleapis.com/css?family=Sue+Ellen+Francisco|Smythe|Waiting+for+the+Sunrise|Rochester|Astigmatic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/keke.css" />
 </head>
 <body onload="start();">
-	<div id="loadingHolder">
+	<div id="loadingAnimation">
+		<span class="kekeText">keke</span><span class="gameText"> and the <b>Grey Expanse</b></span>
 	</div>
 	<div id="gameContainer"></div>
 	<div id="orientationMessage"></div>
+	<script type="text/javascript">
+	  WebFontConfig = {
+	    google: { families: [ 'Sue+Ellen+Francisco::latin', 'Smythe::latin' ] }
+	  };
+	  (function() {
+	    var wf = document.createElement('script');
+	    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+	      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+	    wf.type = 'text/javascript';
+	    wf.async = 'true';
+	    var s = document.getElementsByTagName('script')[0];
+	    s.parentNode.insertBefore(wf, s);
+	  })(); 
+	</script>
+	
 	<!--START JS INCLUDES-->
 	<script type="text/javascript" src="../js/third_party/phaser-1.1.3.js"></script>
 
