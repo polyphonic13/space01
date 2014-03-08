@@ -352,7 +352,7 @@ Polyworks.Config = (function() {
 							events: {
 								released: {
 									type: Polyworks.Events.CHANGE_STATE,
-									value: 'nextLevel'
+									value: 'level'
 								}
 							}
 						}
@@ -676,7 +676,7 @@ Polyworks.Config = (function() {
 						events: {
 							released: {
 								type: Polyworks.Events.CHANGE_STATE,
-								value: 'nextLevel'
+								value: 'level'
 							}
 						}
 					}
@@ -2227,6 +2227,27 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
+					name: 'requirements',
+					cl: 'Requirements',
+					attrs: [
+					{
+						name: 'requirement1',
+						cl: 'Requirement',
+						attrs: {
+							img: 'candyCane01',
+							phaser: {
+								width: stageUnit,
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageWidth * 2) + (stageUnit * 13),
+								y: winH - (stageUnit * 3)
+							}
+						}
+					}
+					]
+				},
+				{
 					name: 'sectors',
 					cl: 'SectorManager',
 					attrs: [
@@ -3427,6 +3448,27 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
+							}
+						}
+					}
+					]
+				},
+				{
+					name: 'requirements',
+					cl: 'Requirements',
+					attrs: [
+					{
+						name: 'requirement1',
+						cl: 'Requirement',
+						attrs: {
+							img: 'candyCane01',
+							phaser: {
+								width: stageUnit,
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageWidth * 2) + (stageUnit * 13),
+								y: winH - (stageUnit * 3)
 							}
 						}
 					}
@@ -4870,6 +4912,27 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
+					name: 'requirements',
+					cl: 'Requirements',
+					attrs: [
+					{
+						name: 'requirement1',
+						cl: 'Requirement',
+						attrs: {
+							img: 'candyCane01',
+							phaser: {
+								width: stageUnit,
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageWidth * 2) + (stageUnit * 13),
+								y: winH - (stageUnit * 3)
+							}
+						}
+					}
+					]
+				},
+				{
 					name: 'sectors',
 					cl: 'SectorManager',
 					attrs: [
@@ -6298,6 +6361,27 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
+					name: 'requirements',
+					cl: 'Requirements',
+					attrs: [
+					{
+						name: 'requirement1',
+						cl: 'Requirement',
+						attrs: {
+							img: 'candyCane01',
+							phaser: {
+								width: stageUnit,
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageWidth * 2) + (stageUnit * 13),
+								y: winH - (stageUnit * 3)
+							}
+						}
+					}
+					]
+				},
+				{
 					name: 'sectors',
 					cl: 'SectorManager',
 					attrs: [
@@ -7477,6 +7561,27 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
+							}
+						}
+					}
+					]
+				},
+				{
+					name: 'requirements',
+					cl: 'Requirements',
+					attrs: [
+					{
+						name: 'requirement1',
+						cl: 'Requirement',
+						attrs: {
+							img: 'candyCane01',
+							phaser: {
+								width: stageUnit,
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageWidth * 2) + (stageUnit * 13),
+								y: winH - (stageUnit * 3)
 							}
 						}
 					}

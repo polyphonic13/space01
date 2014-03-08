@@ -66,7 +66,7 @@ Polyworks.LevelState = (function() {
 		this.playerPresent = true;
 		// trace('LevelState['+this.model.name+']/player created, jump = ' + playerConfig.attrs.speed.y, playerConfig);
 	};
-	var traced = false;
+
 	LevelState.prototype.update = function() {
 		if(!this.paused) {
 			// trace('LevelState['+this.model.name+']/update');
@@ -162,6 +162,7 @@ Polyworks.LevelState = (function() {
 	
 	LevelState.prototype.showCompletedGUI = function() {
 		trace('LevelState['+this.model.name+']/showCompletedGUI');
+
 		this.getChildByName('levelGUI').hide();
 		this.getChildByName('levelControls').hide();
 		this.getChildByName('completedGUI').show();
@@ -171,6 +172,14 @@ Polyworks.LevelState = (function() {
 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_CLEARED, value: this.model.name });
 		this.player.destroy();
 		this.playerPresent = false;
+
+		if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels)) {
+			PolyworksGame.currentLevel++;
+		} else {
+			PolyworksGame.currentLevel = 1;
+		}
+		this.sectorManager.deactivateAll();
+		
 		this.showCompletedGUI();
 	};
 	
