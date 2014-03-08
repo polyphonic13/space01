@@ -814,7 +814,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								// width: winW
 								width: stageUnit * 6,
-								height: stageUnit * 4
+								height: stageUnit * 6
 							},
 							start: {
 								// x: 0,
@@ -9006,7 +9006,7 @@ Polyworks.Config = (function() {
 							img: 'gameTitle',
 							phaser: {
 								width: stageUnit * 6,
-								height: stageUnit * 4
+								height: stageUnit * 6
 							},
 							start: {
 								x: (winW/2 - (stageUnit * 3)),
