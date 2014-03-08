@@ -7,18 +7,18 @@ Polyworks.GUIConsole = (function() {
 
 	GUIConsole.prototype.begin = function() {
 		GUIConsole._super.begin.call(this);
-		// trace('GUIConsole/begin')
-		// trace(this);
-		// Polyworks.Utils.each(this.collection,
-		// 	function(c) {
-		// 		if(c.text) {
-		// 			this.parseAndSetContent(c.name);
-		// 		}
-		// 	},
-		// 	this
-		// );
-		// 
-		// this.addListeners();
+		trace('GUIConsole/begin')
+
+		Polyworks.Utils.each(this.collection,
+			function(c) {
+				if(c.text) {
+					this.parseAndSetContent(c.name);
+				}
+			},
+			this
+		);
+		
+		this.addListeners();
 	};
 	
 	GUIConsole.prototype.addListeners = function() {

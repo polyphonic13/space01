@@ -115,8 +115,8 @@ Polyworks.Utils = (function() {
 	
 	utils.parseMarkup = function(str, reference) {
 		var parsedString = str;
-		// trace('Utils/parseMarkup, str = ' + str + ', reference = ');
-		// trace(reference);
+		// trace('Utils/parseMarkup, str = ' + str + ', reference = ', reference);
+
 		if(str.indexOf('~{') > -1) {
 			var pattern = /~\{[A-Z]*\}~/gi;
 			var patternMatch = str.match(pattern);

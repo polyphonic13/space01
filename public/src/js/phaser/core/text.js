@@ -39,7 +39,7 @@ Polyworks.Text = (function() {
 	};
 
 	Text.prototype.onUpdate = function(event) {
-		trace('Text['+this.model.name+']/onUpdate, event = ', event);
+		// trace('Text['+this.model.name+']/onUpdate, event = ', event);
 		var context;
 		if(event.context) {
 			context = event.context;
@@ -53,7 +53,9 @@ Polyworks.Text = (function() {
 	};
 	
 	Text.prototype.destroy = function() {
-		trace('Text['+this.model.name+']/destroy');
-	}
+		// trace('Text['+this.model.name+']/destroy');
+		this._super.destroy();
+	};
+	
 	return Text;
 })();

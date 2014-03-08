@@ -1838,6 +1838,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'levelGUI',
 					cl: 'GUIConsole',
+					// cl: 'GroupCollection',
 					addTo: 'null',
 					attrs: [{
 						name: 'heartIcon',
@@ -1860,10 +1861,10 @@ Polyworks.Config = (function() {
 							style: { 
 								font: '26px Arial', 
 								fill: '#ffffff' 
-							},
-							listeners: [
-								Polyworks.Events.HEALTH_UPDATED
-							]
+							}//,
+							// listeners: [
+							// 	Polyworks.Events.HEALTH_UPDATED
+							// ]
 						}
 					}]
 				},
@@ -3049,6 +3050,7 @@ Polyworks.Config = (function() {
 				},
 				{
 					name: 'levelGUI',
+					// cl: 'GroupCollection',
 					cl: 'GUIConsole',
 					addTo: 'null',
 					attrs: [{
