@@ -187,7 +187,6 @@ Polyworks.Player = (function() {
 		this.checkCollision(bonuses, this.onBonusCollision, physics, this);
 	};
 	
-	var traced = false;
 	Player.prototype.checkRequirementsCollision = function(requirements, physics) {
 		this.checkCollision(requirements, this.onRequirementCollision, physics, this);
 	};
@@ -196,9 +195,6 @@ Polyworks.Player = (function() {
 		// trace('Player/checkCollision, health = ' + this.health);
 		Polyworks.Utils.each(collection,
 			function(c) {
-				if(!traced) {
-					trace('------------- Player/checkCollision, c = ', c, 'this = ', this);
-				}
 				physics.overlap(this, c, callback, null, context);
 			},
 			this

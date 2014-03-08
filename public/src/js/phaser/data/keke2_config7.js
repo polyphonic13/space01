@@ -556,7 +556,7 @@ Polyworks.Config = (function() {
 					name: 'background',
 					cl: 'Sprite',
 					attrs: {
-						img: 'greyRect',
+						img: 'whiteRect',
 						phaser: {
 							width: winW,
 							height: winH,
@@ -630,7 +630,7 @@ Polyworks.Config = (function() {
 					name: 'background',
 					cl: 'Sprite',
 					attrs: {
-						img: 'greyRect',
+						img: 'whiteRect',
 						phaser: {
 							width: winW,
 							height: winH,
@@ -791,21 +791,21 @@ Polyworks.Config = (function() {
 					name: 'menuGroup',
 					cl: 'GroupCollection',
 					attrs: [
-					{
-						name: 'whiteBg',
-						cl: 'Sprite',
-						attrs: {
-							img: 'whiteRect',
-							phaser: {
-								width: winW,
-								height: winH
-							},
-							start: {
-								x: 0,
-								y: 0
-							}
-						}
-					},
+					// {
+					// 	name: 'whiteBg',
+					// 	cl: 'Sprite',
+					// 	attrs: {
+					// 		img: 'whiteRect',
+					// 		phaser: {
+					// 			width: winW,
+					// 			height: winH
+					// 		},
+					// 		start: {
+					// 			x: 0,
+					// 			y: 0
+					// 		}
+					// 	}
+					// },
 					{
 						name: 'gameTitle',
 						cl: 'Sprite',
@@ -9282,8 +9282,11 @@ Polyworks.Config = (function() {
 					},
 					setSize: [((stageUnit * 3) * 0.3), 220],
 					start: {
-						x: winW/2 - ((stageUnit * 3) * 0.84)/2,
-						y: winH - 300
+						// x: winW/2 - ((stageUnit * 3) * 0.84)/2,
+						// y: winH - 300
+						// y: winH - (226)
+						x: winW/2,
+						y: winH - (stageUnit * 2.3)
 					},
 					physics: {
 						/*
@@ -9322,7 +9325,6 @@ Polyworks.Config = (function() {
 			// PHYSICS
 			gravity: {
 				x: 0,
-				// y: 15
 				y: stageUnit/2.5
 			}
 		};

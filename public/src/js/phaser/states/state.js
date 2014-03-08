@@ -84,6 +84,7 @@ Polyworks.State = (function() {
 	
 	State.prototype.create = function() {
 		trace('State['+this.model.name+']/create');
+		PolyworksGame.phaser.stage.backgroundColor = '#ffffff';
 		PolyworksGame.removeLoadingDiv();
 		if(PolyworksGame.isLandscape) {
 			this.createState();
