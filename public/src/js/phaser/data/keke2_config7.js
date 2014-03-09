@@ -732,6 +732,7 @@ Polyworks.Config = (function() {
 				},
 				clearWorld: true,
 				clearCache: false,
+				backgroundColor: '#ffffff',
 				images: [
 					'blackRect',
 					'greyRect',
@@ -804,7 +805,6 @@ Polyworks.Config = (function() {
 				}
 				]
 			},
-
 			// map
 			{
 				name: 'map',
@@ -817,6 +817,7 @@ Polyworks.Config = (function() {
 				},
 				clearWorld: true,
 				clearCache: false,
+				backgroundColor: '#ffffff',
 				images: [
 					'nextButton',
 					'level1Icon',
@@ -977,6 +978,7 @@ Polyworks.Config = (function() {
 					// end: stageWidth
 				},
 				pausable: true,
+				backgroundColor: '#000000',
 				images: [
 					'ovalMask',
 					'forestBackground01',
@@ -2061,6 +2063,7 @@ Polyworks.Config = (function() {
 					end: (stageWidth * 6) - (stageUnit * 1)
 				},
 				pausable: true,
+				backgroundColor: '#000000',
 				images: [
 					'ovalMask',
 					'forestBackground01',
@@ -3271,6 +3274,7 @@ Polyworks.Config = (function() {
 					end: (stageWidth * 6) - (stageUnit * 1)
 				},
 				pausable: true,
+				backgroundColor: '#000000',
 				images: [
 					'ovalMask',
 					'forestBackground01',
@@ -4632,6 +4636,7 @@ Polyworks.Config = (function() {
 					end: (stageWidth * 6) - (stageUnit * 1)
 				},
 				pausable: true,
+				backgroundColor: '#000000',
 				images: [
 					'ovalMask',
 					'forestBackground01',
@@ -6297,6 +6302,7 @@ Polyworks.Config = (function() {
 					end: (stageWidth * 6) - (stageUnit * 1)
 				},
 				pausable: true,
+				backgroundColor: '#000000',
 				images: [
 					'ovalMask',
 					'forestBackground01',
@@ -7962,6 +7968,7 @@ Polyworks.Config = (function() {
 					end: (stageWidth * 6) - (stageUnit * 1)
 				},
 				pausable: true,
+				backgroundColor: '#000000',
 				images: [
 					// 'sky',
 					'mountainBackground01a',
@@ -9113,6 +9120,7 @@ Polyworks.Config = (function() {
 					end: (stageWidth * 3) - (stageUnit * 1)
 				},
 				pausable: true,
+				backgroundColor: '#000000',
 				images: [
 					'sky',
 					'mountainBackground05a',
@@ -10662,7 +10670,6 @@ Polyworks.Config = (function() {
 				}
 				]
 			},
-
 			// completed
 			{
 				name: 'completed',
@@ -10675,6 +10682,7 @@ Polyworks.Config = (function() {
 				},
 				clearWorld: true,
 				clearCache: false,
+				backgroundColor: '#ffffff',
 				images: [
 					'menuButton',
 					'quitButton'
@@ -10744,6 +10752,7 @@ Polyworks.Config = (function() {
 				},
 				clearWorld: true,
 				clearCache: false,
+				backgroundColor: '#ffffff',
 				images: [
 					'blackRect',
 					'menuButton',
