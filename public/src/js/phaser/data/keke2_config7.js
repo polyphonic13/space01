@@ -860,13 +860,13 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'mapForest',
 							phaser: {
-								width: (stageWidth * 0.75),
-								height: (stageHeight * 0.75)
+								width: (stageWidth * 0.85),
+								height: (stageHeight * 0.85)
 							},
 							start: {
 								// x: (winW/2) - (stageWidth/2),
 								// y: (winH/2) - (stageHeight/2)
-								x: (winW/2) - ((stageWidth * 0.75)/2),
+								x: (winW/2) - ((stageWidth * 0.85)/2),
 								y: (winH/2) - ((stageHeight * 0.75)/2)
 							}
 						}
@@ -901,11 +901,13 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'mapMountains',
 							phaser: {
-								width: (stageWidth * 0.75),
-								height: (stageHeight * 0.75)
+								width: (stageWidth * 0.85),
+								height: (stageHeight * 0.85)
 							},
 							start: {
-								x: (winW/2) - ((stageWidth * 0.75)/2),
+								// x: (winW/2) - (stageWidth/2),
+								// y: (winH/2) - (stageHeight/2)
+								x: (winW/2) - ((stageWidth * 0.85)/2),
 								y: (winH/2) - ((stageHeight * 0.75)/2)
 							}
 						}
@@ -1995,8 +1997,8 @@ Polyworks.Config = (function() {
 						name: 'health',
 						cl: 'Text',
 						attrs: {
-							x: winW - 100,
-							y: 25,
+							x: winW - 95,
+							y: 20,
 							defaultContent: '~{health}~',
 							style: { 
 								font: '26px Arial', 
@@ -9364,7 +9366,7 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'platform',
 							phaser: {
-								width: stageWidth/2,
+								width: (stageWidth * 0.75),
 								height: (stageUnit)
 							},
 							start: {
