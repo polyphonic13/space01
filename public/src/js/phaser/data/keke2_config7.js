@@ -860,12 +860,14 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'mapForest',
 							phaser: {
-								width: stageWidth,
-								height: stageHeight
+								width: (stageWidth * 0.75),
+								height: (stageHeight * 0.75)
 							},
 							start: {
-								x: (winW/2) - (stageWidth/2),
-								y: (winH/2) - (stageHeight/2)
+								// x: (winW/2) - (stageWidth/2),
+								// y: (winH/2) - (stageHeight/2)
+								x: (winW/2) - ((stageWidth * 0.75)/2),
+								y: (winH/2) - ((stageHeight * 0.75)/2)
 							}
 						}
 					}
@@ -880,7 +882,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: 0,
-								y: (stageUnit * 1.2)
+								y: (stageUnit * 1)
 							}
 						}
 					}
@@ -899,12 +901,12 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'mapMountains',
 							phaser: {
-								width: stageWidth,
-								height: stageHeight
+								width: (stageWidth * 0.75),
+								height: (stageHeight * 0.75)
 							},
 							start: {
-								x: (winW/2) - (stageWidth/2),
-								y: (winH/2) - (stageHeight/2)
+								x: (winW/2) - ((stageWidth * 0.75)/2),
+								y: (winH/2) - ((stageHeight * 0.75)/2)
 							}
 						}
 					}
@@ -919,7 +921,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: 0,
-								y: (stageUnit * 1.2)
+								y: (stageUnit * 1)
 							}
 						}
 					}
@@ -941,7 +943,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (winW/2 - (stageUnit * 6)),
-								y: (stageUnit * 0.3)
+								y: (stageUnit * 0.1)
 							}
 						}
 					}

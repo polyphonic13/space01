@@ -135,7 +135,10 @@ Polyworks.MapPage = (function() {
 			attrs: {
 				img: params.name + 'Icon',
 				start: params.start,
-				phaser: params.phaser
+				phaser: {
+					width: params.phaser.width,
+					height: params.phaser.height
+				}
 			}
 		},
 		{
