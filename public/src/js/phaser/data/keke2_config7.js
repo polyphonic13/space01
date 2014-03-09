@@ -809,21 +809,6 @@ Polyworks.Config = (function() {
 					name: 'menuGroup',
 					cl: 'GroupCollection',
 					attrs: [
-					// {
-					// 	name: 'whiteBg',
-					// 	cl: 'Sprite',
-					// 	attrs: {
-					// 		img: 'whiteRect',
-					// 		phaser: {
-					// 			width: winW,
-					// 			height: winH
-					// 		},
-					// 		start: {
-					// 			x: 0,
-					// 			y: 0
-					// 		}
-					// 	}
-					// },
 					{
 						name: 'gameTitle',
 						cl: 'Sprite',
@@ -903,8 +888,9 @@ Polyworks.Config = (function() {
 						'level3',
 						'level4'
 					],
-					background: {
-						name: 'forestMap',
+					attrs: [
+					{
+						name: 'background',
 						cl: 'Sprite',
 						attrs: {
 							img: 'mapForest',
@@ -917,7 +903,23 @@ Polyworks.Config = (function() {
 								y: (winH/2) - (stageHeight/2)
 							}
 						}
-					},
+					}
+					],
+					// background: {
+					// 	name: 'forestMap',
+					// 	cl: 'Sprite',
+					// 	attrs: {
+					// 		img: 'mapForest',
+					// 		phaser: {
+					// 			width: stageWidth,
+					// 			height: stageHeight
+					// 		},
+					// 		start: {
+					// 			x: (winW/2) - (stageWidth/2),
+					// 			y: (winH/2) - (stageHeight/2)
+					// 		}
+					// 	}
+					// },
 					title: {
 						name: 'pageTitle',
 						cl: 'Sprite',
@@ -928,7 +930,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: 0,
-								y: (stageUnit * 2.5)
+								y: (stageUnit * 1.5)
 							}
 						}
 					}
@@ -940,8 +942,9 @@ Polyworks.Config = (function() {
 						'level5',
 						'level6'
 					],
-					background: {
-						name: 'mountainsMap',
+					attrs: [
+					{
+						name: 'background',
 						cl: 'Sprite',
 						attrs: {
 							img: 'mapMountains',
@@ -954,7 +957,23 @@ Polyworks.Config = (function() {
 								y: (winH/2) - (stageHeight/2)
 							}
 						}
-					},
+					}
+					],
+					// background: {
+					// 	name: 'mountainsMap',
+					// 	cl: 'Sprite',
+					// 	attrs: {
+					// 		img: 'mapMountains',
+					// 		phaser: {
+					// 			width: stageWidth,
+					// 			height: stageHeight
+					// 		},
+					// 		start: {
+					// 			x: (winW/2) - (stageWidth/2),
+					// 			y: (winH/2) - (stageHeight/2)
+					// 		}
+					// 	}
+					// },
 					title: {
 						name: 'pageTitle',
 						cl: 'Sprite',
@@ -965,7 +984,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: 0,
-								y: (stageUnit * 2.5)
+								y: (stageUnit * 1.5)
 							}
 						}
 					}
@@ -978,17 +997,17 @@ Polyworks.Config = (function() {
 					// addTo: 'stateGroup',
 					attrs: [
 					{
-						name: 'gameTitle',
+						name: 'mapTitle',
 						cl: 'Sprite',
 						attrs: {
 							img: 'greyExpanseTitle',
 							phaser: {
-								width: (stageUnit * 8),
-								height: (stageUnit * 1)
+								width: (stageUnit * 12),
+								height: (stageUnit * 1.5)
 							},
 							start: {
-								x: (winW/2 - (stageUnit * 4)),
-								y: (stageUnit * 1)
+								x: (winW/2 - (stageUnit * 6)),
+								y: (stageUnit * 0.1)
 							}
 						}
 					}

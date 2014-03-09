@@ -15,13 +15,9 @@ Polyworks.MapPage = (function() {
 		this.pageGroup = PolyworksGame.phaser.add.group();
 		stateGroup.add(this.pageGroup._container);
 
-		// this.model.attrs = [];
-		// var bg = [this.model.background];
-		// 
-		// this.model.attrs = bg.concat(this.parseLevels(pageStartX));
-		// this.model.attrs = [this.model.background];
-		this.model.attrs = this.parseLevels(pageStartX);
-		this.model.attrs.unshift(this.model.background);
+		this.parseLevels(pageStartX);
+		
+		trace('\n\npost concat, attrs = ', this.model.attrs, '\n\n');
 		
 		if(this.model.selected) {
 			this.pageGroup.visible = true;
@@ -44,21 +40,32 @@ Polyworks.MapPage = (function() {
 		trace('\tattrs now = ', this.model.attrs);
 		MapPage._super.begin.call(this);
 		// trace(this);
-		var title = this.getChildByName('pageTitle');
-		this.pageGroup.add(title);
 
-		var leftArrow = this.getChildByName('leftArrowButton');
-		// trace('\t\tleftArrow: ', leftArrow);
-		if(leftArrow) {
-			// trace('\t\t\tadding left arrow to state group');
-			this.pageGroup.add(leftArrow);
-		}
-		var rightArrow = this.getChildByName('rightArrowButton');
-		// trace('\t\trightArrow: ', rightArrow);
-		if(rightArrow) {
-			// trace('\t\t\tadding right arrow to state group');
-			this.pageGroup.add(rightArrow);
-		}
+		var _this = this;
+		Polyworks.Utils.each(this.model.collection,
+			function(child) {
+				_this.pageGroup.add(child);
+			},
+			this
+		);
+		// var background = this.getChildByName('background');
+		// this.pageGroup.add(background);
+		// 
+		// var title = this.getChildByName('pageTitle');
+		// this.pageGroup.add(title);
+		// 
+		// var leftArrow = this.getChildByName('leftArrowButton');
+		// // trace('\t\tleftArrow: ', leftArrow);
+		// if(leftArrow) {
+		// 	// trace('\t\t\tadding left arrow to state group');
+		// 	this.pageGroup.add(leftArrow);
+		// }
+		// var rightArrow = this.getChildByName('rightArrowButton');
+		// // trace('\t\trightArrow: ', rightArrow);
+		// if(rightArrow) {
+		// 	// trace('\t\t\tadding right arrow to state group');
+		// 	this.pageGroup.add(rightArrow);
+		// }
 	};
 	
 	MapPage.prototype.addListeners = function() {
@@ -104,21 +111,123 @@ Polyworks.MapPage = (function() {
 				start.x = (((stageUnit * 3.5) * idx) + (stageUnit * 2)) + pageStartX;
 				start.y = (stageUnit * 4);
 
-				attributes.push({
-					name: level,
-					cl: 'LevelIcon',
-					selected: selected,
-					locked: locked,
-					start: start,
-					cleared: cleared,
-					addTo: 'pageGroup',
-					pageGroup: _this.pageGroup
-				});
+				// _this.model.attrs.push({
+				// 	name: level,
+				// 	cl: 'LevelIcon',
+				// 	selected: selected,
+				// 	locked: locked,
+				// 	start: start,
+				// 	cleared: cleared,
+				// 	addTo: 'pageGroup',
+				// 	pageGroup: _this.pageGroup
+				// });
+				var tempA = _this.model.attrs;
+				var tempB = _this.addLevelIcon(
+					{
+						name: level,
+						selected: selected,
+						locked: locked,
+						start: start,
+						cleared: cleared
+					}
+				);
+				_this.model.attrs = tempA.concat(tempB);
+				trace('\t\t_this.model.attrs = ', _this.model.attrs);
+				// _this.model.attrs.concat(_this.addLevelIcon({
+				// 	name: level,
+				// 	selected: selected,
+				// 	locked: locked,
+				// 	start: start,
+				// 	cleared: cleared
+				// }));
 			},
 			this
 		);
 
-		return attributes;
+		// return attributes;
+	};
+	
+	MapPage.prototype.addLevelIcon = function(params) {
+		trace('MapPage['+this.model.name+']/addLevelIcon, params = ', params);
+		var levelIconWidth = (Polyworks.Stage.unit * 2);
+		var levelIconHeight = (Polyworks.Stage.unit * 3);
+
+		var levelIcon = [
+		{
+			name: 'levelIcon',
+			cl: 'Sprite',
+			attrs: {
+				img: params.name + 'Icon',
+				start: params.start,
+				phaser: {
+					width: levelIconWidth,
+					height: levelIconHeight,
+				}
+			}
+		},
+		{
+			name: 'selected',
+			cl: 'Sprite',
+			attrs: {
+				img: 'levelSelectedIcon',
+				start: params.start,
+				phaser: {
+					width: levelIconWidth,
+					height: levelIconHeight,
+					visible: params.selected
+				}
+			}
+		},
+		{
+			name: 'locked',
+			cl: 'Sprite',
+			attrs: {
+				img: 'levelLockedIcon',
+				start: params.start,
+				phaser: {
+					width: levelIconWidth,
+					height: levelIconHeight,
+					visible: params.locked
+				}
+			}
+		},
+		{
+			name: 'cleared',
+			cl: 'Sprite',
+			attrs: {
+				img: 'levelClearedIcon',
+				start: params.start,
+				phaser: {
+					width: levelIconWidth,
+					height: levelIconHeight,
+					visible: params.cleared
+				}
+			}
+		},
+		{
+			name: 'invisButton',
+			cl: 'InputButton',
+			attrs: {
+				img: 'greyRect',
+				start: params.start,
+				phaser: {
+					width: levelIconWidth,
+					height: levelIconHeight,
+					alpha: 0.1,
+					visible: ((params.locked) ? false : true)
+				},
+				events: {
+					pressed: {
+						type: Polyworks.Events.CHANGE_STATE,
+						value: params.name
+					}
+				}
+			}
+		}
+		];
+		
+		
+		return levelIcon;
 	};
 	
 	MapPage.prototype.addTitle = function() {
