@@ -7,7 +7,7 @@ Polyworks.MapPage = (function() {
 	}
 	
 	MapPage.prototype.begin = function() {
-		// trace('----------------------- MapPage['+this.model.name+']/begin, model = ', this.model);
+		trace('----------------------- MapPage['+this.model.name+']/begin, model = ', this.model);
 		this.addListeners();
 
 		var pageStartX = this.model.start.x;
@@ -15,8 +15,14 @@ Polyworks.MapPage = (function() {
 		this.pageGroup = PolyworksGame.phaser.add.group();
 		stateGroup.add(this.pageGroup._container);
 
+		// this.model.attrs = [];
+		// var bg = [this.model.background];
+		// 
+		// this.model.attrs = bg.concat(this.parseLevels(pageStartX));
+		// this.model.attrs = [this.model.background];
 		this.model.attrs = this.parseLevels(pageStartX);
-
+		this.model.attrs.unshift(this.model.background);
+		
 		if(this.model.selected) {
 			this.pageGroup.visible = true;
 		} else {
@@ -24,7 +30,7 @@ Polyworks.MapPage = (function() {
 		}
 
 		this.model.attrs.push(this.addTitle());
-
+		
 		if(this.model.leftArrow) {
 			var lBtn = this.addArrowButton('left', pageStartX);
 			// trace('\t\tlBtn', lBtn);
@@ -35,7 +41,7 @@ Polyworks.MapPage = (function() {
 			// trace('\t\trBtn', rBtn);
 			this.model.attrs.push(rBtn);
 		}
-		// trace('\tattrs now = ', this.model.attrs);
+		trace('\tattrs now = ', this.model.attrs);
 		MapPage._super.begin.call(this);
 		// trace(this);
 		var title = this.getChildByName('pageTitle');
@@ -78,7 +84,7 @@ Polyworks.MapPage = (function() {
 		var locked;
 		var cleared; 
 		var _this = this; 
-		_this.model.selected = false; 
+		this.model.selected = false; 
 
 		Polyworks.Utils.each(levels,
 			function(level, idx) {
@@ -121,7 +127,7 @@ Polyworks.MapPage = (function() {
 
 		return title;
 	};
-
+	
 	MapPage.prototype.addArrowButton = function(direction, pageStartX) {
 		trace('MapPage['+this.model.name+']/addArrow, direction = ' + direction + ', start x = ' + pageStartX);
 		var stageUnit = Polyworks.Stage.unit;

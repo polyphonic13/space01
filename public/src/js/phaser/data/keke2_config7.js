@@ -42,7 +42,9 @@ Polyworks.Config = (function() {
 				levelClearedIcon: 'images/map/level_cleared_icon.png',
 				pageLeftArrow: 'images/map/page_left_arrow.png',
 				pageRightArrow: 'images/map/page_right_arrow.png',
-
+				mapForest: 'images/map/map_forest.png',
+				mapMountains: 'images/map/map_mountains.png',
+				
 				sky: 'images/night_sky.jpg',
 
 				forestBackground01: 'images/pencil_forest01a.png',
@@ -156,6 +158,13 @@ Polyworks.Config = (function() {
 					url: 'images/play_button.png',
 					width: 100,
 					height: 100,
+					frames: 2
+				},
+				playButtonSmall: 
+				{
+					url: 'images/play_button_sm.png',
+					width: 50,
+					height: 50,
 					frames: 2
 				},
 				menuButton: 
@@ -577,10 +586,10 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
-					name: 'playButton',
+					name: 'playButtonSmall',
 					cl: 'InputButton',
 					attrs: {
-						img: 'playButton',
+						img: 'playButtonSmall',
 						start: {
 							x: 30,
 							y: 15
@@ -657,11 +666,11 @@ Polyworks.Config = (function() {
 						centerX: true,
 						centerY: false,
 						x: 0,
-						y: stageUnit,
+						y: (stageUnit * 0.5),
 						defaultContent: 'Level ~{currentLevel}~ Completed',
 						style: { 
-							font: '30px Arial', 
-							fill: '#ffffff',
+							font: '48px "Waiting for the Sunrise"', 
+							fill: '#000000',
 							align: 'center'
 						}
 					}
@@ -673,10 +682,10 @@ Polyworks.Config = (function() {
 						centerX: true,
 						centerY: false,
 						x: 0,
-						y: 100,
+						y: (stageUnit * 2),
 						style: { 
-							font: '18px Arial', 
-							fill: '#ffffff',
+							font: '24px "Waiting for the Sunrise"', 
+							fill: '#000000',
 							align: 'center'
 						},
 						defaultContent: 'Score: ~{score}~',
@@ -689,10 +698,10 @@ Polyworks.Config = (function() {
 					name: 'next',
 					cl: 'InputButton',
 					attrs: {
-						img: 'nextButton',
+						img: 'playButton',
 						start: {
-							x: winW/2 - 128,
-							y: winH/2 - 64
+							x: winW/2 - 50,
+							y: winH/2
 						},
 						inputCode: Polyworks.InputCodes.NEXT,
 						events: {
@@ -791,6 +800,7 @@ Polyworks.Config = (function() {
 					'menuButton',
 					'mapButton',
 					'playButton',
+					'playButtonSmall',
 					'restartButton',
 					'quitButton'
 				],
@@ -875,7 +885,9 @@ Polyworks.Config = (function() {
 					'levelClearedIcon',
 					'levelLockedIcon',
 					'pageLeftArrow',
-					'pageRightArrow'
+					'pageRightArrow',
+					'mapForest',
+					'mapMountains'
 				],
 				sprites: [
 					'menuButton'
@@ -891,6 +903,21 @@ Polyworks.Config = (function() {
 						'level3',
 						'level4'
 					],
+					background: {
+						name: 'forestMap',
+						cl: 'Sprite',
+						attrs: {
+							img: 'mapForest',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight
+							},
+							start: {
+								x: (winW/2) - (stageWidth/2),
+								y: (winH/2) - (stageHeight/2)
+							}
+						}
+					},
 					title: {
 						name: 'pageTitle',
 						cl: 'Sprite',
@@ -913,6 +940,21 @@ Polyworks.Config = (function() {
 						'level5',
 						'level6'
 					],
+					background: {
+						name: 'mountainsMap',
+						cl: 'Sprite',
+						attrs: {
+							img: 'mapMountains',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight
+							},
+							start: {
+								x: (winW/2) - (stageWidth/2),
+								y: (winH/2) - (stageHeight/2)
+							}
+						}
+					},
 					title: {
 						name: 'pageTitle',
 						cl: 'Sprite',
@@ -1564,25 +1606,7 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs:  [
-							{
-								name: 'level1-sector3-bonus1',
-								cl: 'Sprite',
-								attrs: {
-									img: 'lollipop',
-									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 15),
-										y: winH - (stageUnit * 12.5)
-									},
-									physics: {
-										immovable: true
-									},
-									score: 100,
-									health: 10
-								}
-							}
-							]
+							attrs:  []
 						}
 						]
 					},
