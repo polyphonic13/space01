@@ -7,7 +7,7 @@ Polyworks.MapPage = (function() {
 	}
 	
 	MapPage.prototype.begin = function() {
-		trace('----------------------- MapPage['+this.model.name+']/begin, model = ', this.model);
+		// trace('MapPage['+this.model.name+']/begin, model = ', this.model);
 		this.addListeners();
 
 		var pageStartX = this.model.start.x;
@@ -16,8 +16,6 @@ Polyworks.MapPage = (function() {
 		stateGroup.add(this.pageGroup._container);
 
 		this.parseLevels(pageStartX);
-		
-		trace('\n\npost concat, attrs = ', this.model.attrs, '\n\n');
 		
 		if(this.model.selected) {
 			this.pageGroup.visible = true;
@@ -37,7 +35,7 @@ Polyworks.MapPage = (function() {
 			// trace('\t\trBtn', rBtn);
 			this.model.attrs.push(rBtn);
 		}
-		trace('\tattrs now = ', this.model.attrs);
+
 		MapPage._super.begin.call(this);
 		// trace(this);
 
@@ -48,24 +46,6 @@ Polyworks.MapPage = (function() {
 			},
 			this
 		);
-		// var background = this.getChildByName('background');
-		// this.pageGroup.add(background);
-		// 
-		// var title = this.getChildByName('pageTitle');
-		// this.pageGroup.add(title);
-		// 
-		// var leftArrow = this.getChildByName('leftArrowButton');
-		// // trace('\t\tleftArrow: ', leftArrow);
-		// if(leftArrow) {
-		// 	// trace('\t\t\tadding left arrow to state group');
-		// 	this.pageGroup.add(leftArrow);
-		// }
-		// var rightArrow = this.getChildByName('rightArrowButton');
-		// // trace('\t\trightArrow: ', rightArrow);
-		// if(rightArrow) {
-		// 	// trace('\t\t\tadding right arrow to state group');
-		// 	this.pageGroup.add(rightArrow);
-		// }
 	};
 	
 	MapPage.prototype.addListeners = function() {
@@ -82,8 +62,15 @@ Polyworks.MapPage = (function() {
 	};
 	
 	MapPage.prototype.parseLevels = function(pageStartX) {
-		var stageUnit = Polyworks.Stage.unit;
 		var levels = this.model.levels;
+		var levelsLength = levels.length;
+		var levelIconWidth = (Polyworks.Stage.unit * 1.5);
+		var levelIconHeight = (Polyworks.Stage.unit * 2.25);
+		var stageWidth = Polyworks.Stage.width;
+		var stageFifth = stageWidth/5;
+		var stageUnit = Polyworks.Stage.unit;
+		var iconWidthUnit = (stageFifth/2) - (levelIconWidth/2);
+		trace('============= iconWidthUnit = ' + iconWidthUnit + '\n\tstageWidth = ' + stageWidth + ', / 5 = ' + (stageWidth/5) + '\n\tlevelIconWidth = ' + levelIconWidth);
 		// var attrs = this.model.attrs;
 		var attributes = [];
 		var currentLevel = 'level' + (PolyworksGame.currentLevel);
@@ -108,19 +95,12 @@ Polyworks.MapPage = (function() {
 
 				// // trace('\t\tidx = ' + idx);
 				var start = {};
-				start.x = (((stageUnit * 3.5) * idx) + (stageUnit * 2)) + pageStartX;
+				// start.x = (((stageUnit * 3.5) * idx) + (stageUnit * 2)) + pageStartX;
+				// start.x = (iconWidthUnit * idx) + pageStartX;
+				start.x = (stageFifth * idx) + pageStartX;
+				trace('\t\t\tstart.x = ' + start.x);
 				start.y = (stageUnit * 4);
 
-				// _this.model.attrs.push({
-				// 	name: level,
-				// 	cl: 'LevelIcon',
-				// 	selected: selected,
-				// 	locked: locked,
-				// 	start: start,
-				// 	cleared: cleared,
-				// 	addTo: 'pageGroup',
-				// 	pageGroup: _this.pageGroup
-				// });
 				var tempA = _this.model.attrs;
 				var tempB = _this.addLevelIcon(
 					{
@@ -128,18 +108,15 @@ Polyworks.MapPage = (function() {
 						selected: selected,
 						locked: locked,
 						start: start,
-						cleared: cleared
+						cleared: cleared,
+						phaser: {
+							width: levelIconWidth,
+							height: levelIconHeight
+						}
 					}
 				);
 				_this.model.attrs = tempA.concat(tempB);
 				trace('\t\t_this.model.attrs = ', _this.model.attrs);
-				// _this.model.attrs.concat(_this.addLevelIcon({
-				// 	name: level,
-				// 	selected: selected,
-				// 	locked: locked,
-				// 	start: start,
-				// 	cleared: cleared
-				// }));
 			},
 			this
 		);
@@ -149,8 +126,6 @@ Polyworks.MapPage = (function() {
 	
 	MapPage.prototype.addLevelIcon = function(params) {
 		trace('MapPage['+this.model.name+']/addLevelIcon, params = ', params);
-		var levelIconWidth = (Polyworks.Stage.unit * 2);
-		var levelIconHeight = (Polyworks.Stage.unit * 3);
 
 		var levelIcon = [
 		{
@@ -159,10 +134,7 @@ Polyworks.MapPage = (function() {
 			attrs: {
 				img: params.name + 'Icon',
 				start: params.start,
-				phaser: {
-					width: levelIconWidth,
-					height: levelIconHeight,
-				}
+				phaser: params.phaser
 			}
 		},
 		{
@@ -172,8 +144,8 @@ Polyworks.MapPage = (function() {
 				img: 'levelSelectedIcon',
 				start: params.start,
 				phaser: {
-					width: levelIconWidth,
-					height: levelIconHeight,
+					width: params.phaser.width,
+					height: params.phaser.height,
 					visible: params.selected
 				}
 			}
@@ -185,8 +157,9 @@ Polyworks.MapPage = (function() {
 				img: 'levelLockedIcon',
 				start: params.start,
 				phaser: {
-					width: levelIconWidth,
-					height: levelIconHeight,
+					width: params.phaser.width,
+					height: params.phaser.height,
+					alpha: 0.9,
 					visible: params.locked
 				}
 			}
@@ -198,8 +171,8 @@ Polyworks.MapPage = (function() {
 				img: 'levelClearedIcon',
 				start: params.start,
 				phaser: {
-					width: levelIconWidth,
-					height: levelIconHeight,
+					width: params.phaser.width,
+					height: params.phaser.height,
 					visible: params.cleared
 				}
 			}
@@ -211,8 +184,8 @@ Polyworks.MapPage = (function() {
 				img: 'greyRect',
 				start: params.start,
 				phaser: {
-					width: levelIconWidth,
-					height: levelIconHeight,
+					width: params.phaser.width,
+					height: params.phaser.height,
 					alpha: 0.1,
 					visible: ((params.locked) ? false : true)
 				},
