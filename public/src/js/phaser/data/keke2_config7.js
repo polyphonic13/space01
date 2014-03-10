@@ -765,7 +765,7 @@ Polyworks.Config = (function() {
 			// preloadAll: true,
 
 			// STATES
-			initialState: 'level2',
+			initialState: 'menu',
 			states: [
 			// menu
 			{
@@ -908,7 +908,8 @@ Polyworks.Config = (function() {
 							img: 'mapForest',
 							phaser: {
 								width: (stageWidth * 0.85),
-								height: (stageHeight * 0.85)
+								height: (stageHeight * 0.85),
+								visible: false
 							},
 							start: {
 								// x: (winW/2) - (stageWidth/2),
@@ -949,7 +950,8 @@ Polyworks.Config = (function() {
 							img: 'mapMountains',
 							phaser: {
 								width: (stageWidth * 0.85),
-								height: (stageHeight * 0.85)
+								height: (stageHeight * 0.85),
+								visible: false
 							},
 							start: {
 								// x: (winW/2) - (stageWidth/2),
@@ -1045,6 +1047,7 @@ Polyworks.Config = (function() {
 					'branch02aLeft',
 					'branch02aRight',
 					'crystals02Green',
+					'crystals02Grey',
 					'lollipop',
 					'invisibleRect',
 					'heart',

@@ -33,7 +33,22 @@ PolyworksGame = (function() {
 
 		begin: function() {
 			// _model = params;
-			window.scrollTo(0,0);
+			// window.scrollTo(0,0);
+			window.addEventListener("load", 
+				function() { 
+					trace('window.load');
+					if(!window.pageYOffset) { 
+						_hideAddressBar(); 
+					} 
+				} 
+			);
+			window.addEventListener("orientationchange", 
+				function() {
+					trace('window.orientationchange');
+					_hideAddressBar();
+				}
+			);
+
 			_addListeners();
 			_checkOrientation();
 		},
@@ -149,6 +164,21 @@ PolyworksGame = (function() {
 			}
 		}
 	};
+
+	function _hideAddressBar() {
+		trace('PolyworksGame/_hideAddressBar');
+		if(!window.location.hash) {
+			if(document.height < window.outerHeight) {
+				document.body.style.height = (window.outerHeight + 50) + 'px';
+			}
+			setTimeout(
+				function() { 
+					window.scrollTo(0, 1); 
+				}, 
+				50 
+			);
+		}
+	}
 
 	function _checkOrientation() {
 		var w = window.innerWidth;
