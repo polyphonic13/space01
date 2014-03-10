@@ -56,7 +56,7 @@ function commit_to_target_git_branch {
 	echo "PLEASE ENTER GIT COMMIT MESSAGE:" 
 	read msg
 	
-	git add --all
+	git add --all :/
 	git commit -am "${msg}"
 	git push origin $git_branch
 	echo "PUSHED GIT COMMIT TO $git_branch"
