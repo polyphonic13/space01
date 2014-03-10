@@ -129,23 +129,32 @@ Polyworks.Config = (function() {
 				// buttons
 				leftButton: 
 				{
-					url: 'images/arrow_left2.png',
-					width: 100,
-					height: 341,
+					// url: 'images/arrow_left2.png',
+					url: 'images/arrow_left2_sm.png',
+					// width: 100,
+					// height: 341,
+					width: 50,
+					height: 171,
 					frames: 2
 				},
 				rightButton: 
 				{
-					url: 'images/arrow_right2.png',
-					width: 100,
-					height: 341,
+					// url: 'images/arrow_right2.png',
+					url: 'images/arrow_right2_sm.png',
+					// width: 100,
+					// height: 341,
+					width: 50,
+					height: 171,
 					frames: 2
 				},
 				upButton: 
 				{
-					url: 'images/arrow_up2.png',
-					width: 100,
-					height: 341,
+					// url: 'images/arrow_up2.png',
+					url: 'images/arrow_up2_sm.png',
+					// width: 100,
+					// height: 341,
+					width: 50,
+					height: 171,
 					frames: 2
 				},
 				pauseButton: 
@@ -473,8 +482,9 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'leftButton',
 							start: {
-								x: 30,
-								y: winH - 356
+								x: 15,
+								// y: winH - 356
+								y: winH - 186
 							},
 							frames: [0, 0, 1],
 							inputCode: Polyworks.InputCodes.LEFT
@@ -486,8 +496,10 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'rightButton',
 							start: {
-								x: 170,
-								y: winH - 356
+								// x: 170,
+								x: 80,
+								// y: winH - 356
+								y: winH - 186
 							},
 							frames: [0, 0, 1],
 							inputCode: Polyworks.InputCodes.RIGHT
@@ -499,8 +511,10 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'upButton',
 							start: {
-								x: winW - 130,
-								y: winH - 356
+								// x: winW - 130,
+								x: winW - 65,
+								// y: winH - 356
+								y: winH - 186
 							},
 							frames: [0, 0, 1],
 							inputCode: Polyworks.InputCodes.UP
