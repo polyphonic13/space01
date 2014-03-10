@@ -9,6 +9,7 @@ Polyworks.Events = {
 	PAUSE_STATE: 'pauseState',
 	RESUME_STATE: 'resumeState',
 	CHANGE_MAP_PAGE: 'changeMapPage',
+	REQUIREMENT_INITIALIZED: 'requirementInitialized',
 	REQUIREMENT_MET: 'requirementMet',
 	LEVEL_REQUIREMENTS_MET: 'levelRequirementsMet',
 	LEVEL_CLEARED: 'levelCleared',

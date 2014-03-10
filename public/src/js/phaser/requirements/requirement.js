@@ -8,6 +8,8 @@ Polyworks.Requirement = (function() {
 	Requirement.prototype.begin = function() {
 		trace('Requirement['+this.model.name+']/begin');
 		Requirement._super.begin.call(this);
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.REQUIREMENT_INITIALIZED, value: this.model });
+		trace('--------- requirement dispatched requirements initialized');
 	};
 	
 	Requirement.prototype.collect = function() {

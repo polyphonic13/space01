@@ -24,7 +24,7 @@ Polyworks.Config = (function() {
 				// gameTitle: 'images/keke_title.png',
 				gameTitle: 'images/keke_grey_expanse_title.png',
 				greyExpanseTitle: 'images/grey_expanse_title.png',
-				
+
 				blackRect: 'images/black_rect32x32.png',
 				greyRect: 'images/grey_rect32x32.png',
 				whiteRect: 'images/white_rect32x32.png',
@@ -45,7 +45,7 @@ Polyworks.Config = (function() {
 				pageRightArrow: 'images/map/page_right_arrow.png',
 				mapForest: 'images/map/map_forest.png',
 				mapMountains: 'images/map/map_mountains.png',
-				
+
 				sky: 'images/night_sky.jpg',
 
 				forestBackground01: 'images/pencil_forest01a.png',
@@ -69,13 +69,6 @@ Polyworks.Config = (function() {
 				mountainBackground05i: 'images/pencil_mountain05i.png',
 				mountainBackground05k: 'images/pencil_mountain05k.png',
 				mountainBackground05l: 'images/pencil_mountain05l.png',
-
-				// mountainBackground01a: 'images/pencil_mountain01a.png',
-				// mountainBackground01b: 'images/pencil_mountain01b.png',
-				// mountainBackground01c: 'images/pencil_mountain01c.png',
-				// mountainBackground01d: 'images/pencil_mountain01d.png',
-				// mountainBackground01e: 'images/pencil_mountain01e.png',
-				// mountainBackground01f: 'images/pencil_mountain01f.png',
 
 				ovalMask: 'images/oval_mask.png',
 
@@ -105,8 +98,16 @@ Polyworks.Config = (function() {
 				trunk01: 'images/trunk01.png',
 				thorns01: 'images/thorns02.png',
 
+				// requirements
+				crystals02Grey: 'images/crystals02_grey.png',
+				crystals02Green: 'images/crystals02_green.png',
+				crystals02Blue: 'images/crystals02_blue.png',
+				crystals02Red: 'images/crystals02_red.png',
+				crystals02Aqua: 'images/crystals02_aqua.png',
+				crystals02Purple: 'images/crystals02_purple.png',
+				crystals02Orange: 'images/crystals02_orange.png',
+
 				// bonuses
-				crystal01Green: 'images/crystal01_green.png',
 				lollipop: 'images/lollipop.png',
 				cupcake: 'images/cupcake.png',
 
@@ -530,6 +531,55 @@ Polyworks.Config = (function() {
 			},
 			// SHARED GROUPS
 			sharedGroups: {
+				levelGUI: [
+				{
+					name: 'levelGUI',
+					// cl: 'GroupCollection',
+					cl: 'GUIConsole',
+					addTo: 'null',
+					attrs: [
+					{
+						name: 'heartIcon',
+						cl: 'Sprite',
+						attrs: {
+							img: 'heart',
+							start: {
+								x: winW - (stageUnit * 1.3),
+								y: (stageUnit * 0.3)
+							}
+						}
+					},
+					{
+						name: 'health',
+						cl: 'Text',
+						attrs: {
+							x: winW - (stageUnit * 2.7),
+							y: (stageUnit * 0.3),
+							defaultContent: '~{health}~',
+							style: { 
+								font: '26px Arial', 
+								fill: '#ffffff' 
+							}
+						}
+					},
+					{
+						name: 'requirementsPlaceHolder',
+						cl: 'RequirementPlaceHolder',
+						attrs: {
+							img: 'crystals02Grey',
+							phaser: {
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: winW - (stageUnit * 1.2),
+								y: (stageUnit * 1.3)
+							}
+						}
+					}
+					]
+				}
+				],
 				pauseGUI:  [
 				{
 					name: 'background',
@@ -557,7 +607,6 @@ Polyworks.Config = (function() {
 							y: 15
 						},
 						frames: [0, 0, 1],
-						// inputCode: Polyworks.InputCodes.PLAY,
 						events: {
 							released: {
 								type: Polyworks.Events.RESUME_STATE
@@ -575,7 +624,6 @@ Polyworks.Config = (function() {
 							y: 80
 						},
 						frames: [0, 0, 1],
-						// inputCode: Polyworks.InputCodes.START,
 						events: {
 							released: {
 								type: Polyworks.Events.CHANGE_STATE,
@@ -594,7 +642,6 @@ Polyworks.Config = (function() {
 							y: 145
 						},
 						frames: [0, 0, 1],
-						// inputCode: Polyworks.InputCodes.MENU,
 						events: {
 							released: {
 								type: Polyworks.Events.CHANGE_STATE,
@@ -718,7 +765,7 @@ Polyworks.Config = (function() {
 			// preloadAll: true,
 
 			// STATES
-			initialState: 'menu',
+			initialState: 'level2',
 			states: [
 			// menu
 			{
@@ -997,7 +1044,7 @@ Polyworks.Config = (function() {
 					'branch02Right',
 					'branch02aLeft',
 					'branch02aRight',
-					'crystal01Green',
+					'crystals02Green',
 					'lollipop',
 					'invisibleRect',
 					'heart',
@@ -1238,7 +1285,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystal01Green',
+							img: 'crystals02Green',
 							phaser: {
 								width: (stageUnit * 0.5),
 								height: (stageUnit * 1)
@@ -1982,7 +2029,8 @@ Polyworks.Config = (function() {
 					cl: 'GUIConsole',
 					// cl: 'GroupCollection',
 					addTo: 'null',
-					attrs: [{
+					attrs: [
+					{
 						name: 'heartIcon',
 						cl: 'Sprite',
 						attrs: {
@@ -2003,12 +2051,25 @@ Polyworks.Config = (function() {
 							style: { 
 								font: '26px Arial', 
 								fill: '#ffffff' 
-							}//,
-							// listeners: [
-							// 	Polyworks.Events.HEALTH_UPDATED
-							// ]
+							}
 						}
-					}]
+					},
+					{
+						name: 'requirementsPlaceHolder',
+						cl: 'RequirementPlaceHolder',
+						attrs: {
+							img: 'crystals02Grey',
+							phaser: {
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: winW - 50,
+								y: 50
+							}
+						}
+					}
+					]
 				},
 				{
 					name: 'levelControls',
@@ -2084,6 +2145,8 @@ Polyworks.Config = (function() {
 					'branch02aRight',
 					'vine01Left',
 					'vine01Right',
+					'crystals02Grey',
+					'crystals02Blue',
 					'lollipop',
 					'invisibleRect',
 					'heart'
@@ -2365,27 +2428,6 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
-							}
-						}
-					}
-					]
-				},
-				{
-					name: 'requirements',
-					cl: 'Requirements',
-					attrs: [
-					{
-						name: 'requirement1',
-						cl: 'Requirement',
-						attrs: {
-							img: 'crystal01Green',
-							phaser: {
-								width: stageUnit,
-								height: (stageUnit * 2)
-							},
-							start: {
-								x: (stageWidth * 2) + (stageUnit * 13),
-								y: winH - (stageUnit * 3)
 							}
 						}
 					}
@@ -3192,36 +3234,6 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
-					name: 'levelGUI',
-					// cl: 'GroupCollection',
-					cl: 'GUIConsole',
-					addTo: 'null',
-					attrs: [{
-						name: 'heartIcon',
-						cl: 'Sprite',
-						attrs: {
-							img: 'heart',
-							start: {
-								x: winW - 50,
-								y: 20
-							}
-						}
-					},
-					{
-						name: 'health',
-						cl: 'Text',
-						attrs: {
-							x: winW - 100,
-							y: 25,
-							defaultContent: '~{health}~',
-							style: { 
-								font: '26px Arial', 
-								fill: '#ffffff' 
-							}
-						}
-					}]
-				},
-				{
 					name: 'levelControls',
 					cl: 'ControlButtons',
 					type: 'level',
@@ -3232,6 +3244,75 @@ Polyworks.Config = (function() {
 							y: 0
 						}
 					}
+				},
+				{
+					name: 'levelGUI',
+					// cl: 'GroupCollection',
+					cl: 'GUIConsole',
+					addTo: 'null',
+					attrs: [
+					{
+						name: 'heartIcon',
+						cl: 'Sprite',
+						attrs: {
+							img: 'heart',
+							start: {
+								x: winW - (stageUnit * 1.3),
+								y: (stageUnit * 0.3)
+							}
+						}
+					},
+					{
+						name: 'health',
+						cl: 'Text',
+						attrs: {
+							x: winW - (stageUnit * 2.7),
+							y: (stageUnit * 0.3),
+							defaultContent: '~{health}~',
+							style: { 
+								font: '26px Arial', 
+								fill: '#ffffff' 
+							}
+						}
+					},
+					{
+						name: 'requirementsPlaceHolder',
+						cl: 'RequirementPlaceHolder',
+						attrs: {
+							img: 'crystals02Grey',
+							phaser: {
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: winW - (stageUnit * 1.2),
+								y: (stageUnit * 1.3)
+							}
+						}
+					}
+					]
+				},
+				{
+					name: 'requirements',
+					cl: 'Requirements',
+					attrs: [
+					{
+						name: 'requirement1',
+						cl: 'Requirement',
+						attrs: {
+							img: 'crystals02Blue',
+							phaser: {
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageWidth * 4) + (stageUnit * 15),
+								// y: winH - (stageUnit * 3)
+								y: -(stageUnit * 5)
+							}
+						}
+					}
+					]
 				},
 				{
 					name: 'pauseGUI',
@@ -3607,7 +3688,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystal01Green',
+							img: 'crystals02Green',
 							phaser: {
 								width: stageUnit,
 								height: (stageUnit * 2)
@@ -5066,7 +5147,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystal01Green',
+							img: 'crystals02Green',
 							phaser: {
 								width: stageUnit,
 								height: (stageUnit * 2)
@@ -6732,7 +6813,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystal01Green',
+							img: 'crystals02Green',
 							phaser: {
 								width: stageUnit,
 								height: (stageUnit * 2)
@@ -8182,7 +8263,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystal01Green',
+							img: 'crystals02Green',
 							phaser: {
 								width: stageUnit,
 								height: (stageUnit * 2)
@@ -9388,7 +9469,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystal01Green',
+							img: 'crystals02Green',
 							phaser: {
 								width: stageUnit,
 								height: (stageUnit * 2)

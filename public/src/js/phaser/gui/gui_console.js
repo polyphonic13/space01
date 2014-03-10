@@ -17,7 +17,7 @@ Polyworks.GUIConsole = (function() {
 			},
 			this
 		);
-		
+
 		this.addListeners();
 	};
 	

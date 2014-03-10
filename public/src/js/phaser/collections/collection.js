@@ -20,6 +20,7 @@ Polyworks.Collection = (function() {
 				c.ancestor = this;
 				c.idx = i;
 
+				// trace('c['+c.name+'] cl = ' + c.cl)
 				child = new Polyworks[c.cl](c);
 				child.begin();
 
