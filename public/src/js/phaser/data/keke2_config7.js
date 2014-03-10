@@ -129,32 +129,32 @@ Polyworks.Config = (function() {
 				// buttons
 				leftButton: 
 				{
-					// url: 'images/arrow_left2.png',
-					url: 'images/arrow_left2_sm.png',
-					// width: 100,
-					// height: 341,
-					width: 50,
-					height: 171,
+					url: 'images/arrow_left2.png',
+					// url: 'images/arrow_left2_sm.png',
+					width: 100,
+					height: 341,
+					// width: 50,
+					// height: 171,
 					frames: 2
 				},
 				rightButton: 
 				{
-					// url: 'images/arrow_right2.png',
-					url: 'images/arrow_right2_sm.png',
-					// width: 100,
-					// height: 341,
-					width: 50,
-					height: 171,
+					url: 'images/arrow_right2.png',
+					// url: 'images/arrow_right2_sm.png',
+					width: 100,
+					height: 341,
+					// width: 50,
+					// height: 171,
 					frames: 2
 				},
 				upButton: 
 				{
-					// url: 'images/arrow_up2.png',
-					url: 'images/arrow_up2_sm.png',
-					// width: 100,
-					// height: 341,
-					width: 50,
-					height: 171,
+					url: 'images/arrow_up2.png',
+					// url: 'images/arrow_up2_sm.png',
+					width: 100,
+					height: 341,
+					// width: 50,
+					// height: 171,
 					frames: 2
 				},
 				pauseButton: 
@@ -482,9 +482,9 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'leftButton',
 							start: {
-								x: 15,
-								// y: winH - 356
-								y: winH - 186
+								x: 30,
+								y: winH - 366
+								// y: winH - 186
 							},
 							frames: [0, 0, 1],
 							inputCode: Polyworks.InputCodes.LEFT
@@ -496,10 +496,10 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'rightButton',
 							start: {
-								// x: 170,
-								x: 80,
-								// y: winH - 356
-								y: winH - 186
+								x: 170,
+								// x: 80,
+								y: winH - 366
+								// y: winH - 186
 							},
 							frames: [0, 0, 1],
 							inputCode: Polyworks.InputCodes.RIGHT
@@ -511,10 +511,10 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'upButton',
 							start: {
-								// x: winW - 130,
-								x: winW - 65,
-								// y: winH - 356
-								y: winH - 186
+								x: winW - 130,
+								// x: winW - 65,
+								y: winH - 366
+								// y: winH - 186
 							},
 							frames: [0, 0, 1],
 							inputCode: Polyworks.InputCodes.UP
@@ -526,8 +526,8 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'pauseButton',
 							start: {
-								x: 15,
-								y: 15
+								x: 30,
+								y: 30
 							},
 							frames: [0, 0, 1],
 							// inputCode: Polyworks.InputCodes.PAUSE,
@@ -567,7 +567,7 @@ Polyworks.Config = (function() {
 						name: 'health',
 						cl: 'Text',
 						attrs: {
-							x: winW - (stageUnit * 2.7),
+							x: winW - (stageUnit * 2.8),
 							y: (stageUnit * 0.3),
 							defaultContent: '~{health}~',
 							style: { 
@@ -583,11 +583,12 @@ Polyworks.Config = (function() {
 							img: 'crystals02Grey',
 							phaser: {
 								width: (stageUnit * 0.75),
-								height: (stageUnit * 1.5)
+								height: (stageUnit * 1.5),
+								alpha: 0.5
 							},
 							start: {
 								x: winW - (stageUnit * 1.2),
-								y: (stageUnit * 1.3)
+								y: (stageUnit * 1.4)
 							}
 						}
 					}
@@ -2062,7 +2063,7 @@ Polyworks.Config = (function() {
 						name: 'health',
 						cl: 'Text',
 						attrs: {
-							x: winW - 95,
+							x: winW - 100,
 							y: 20,
 							defaultContent: '~{health}~',
 							style: { 
@@ -2078,11 +2079,12 @@ Polyworks.Config = (function() {
 							img: 'crystals02Grey',
 							phaser: {
 								width: (stageUnit * 0.75),
-								height: (stageUnit * 1.5)
+								height: (stageUnit * 1.5),
+								alpha: 0.5
 							},
 							start: {
-								x: winW - 50,
-								y: 50
+								x: winW - (stageUnit * 1.2),
+								y: (stageUnit * 1.4)
 							}
 						}
 					}
