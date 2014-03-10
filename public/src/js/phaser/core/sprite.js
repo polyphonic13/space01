@@ -79,21 +79,21 @@ Polyworks.Sprite = (function() {
 
 	// Sprite.prototype.preUpdate = function() {
 	// 	if(this.active) {
-	// 		trace('Sprite['+this.model.name+']/preUpdate');
-	// 		trace(this);
+	// 		// trace('Sprite['+this.model.name+']/preUpdate');
+	// 		// trace(this);
 	// 		Sprite._super.preUpdate.call(this);
 	// 	}
 	// };
 
 	// Sprite.prototype.update = function() {
-	// 	trace('Sprite['+this.model.name+']/update, active = ' + this.active + ', alive = ' + this.alive);
+	// 	// trace('Sprite['+this.model.name+']/update, active = ' + this.active + ', alive = ' + this.alive);
 	// 	// if(this.active) {
 	// 	// }
 	// };
 
 	// Sprite.prototype.postUpdate = function() {
 	// 	if(this.active) {
-	// 		trace('Sprite['+this.model.name+']/postUpdate');
+	// 		// trace('Sprite['+this.model.name+']/postUpdate');
 	// 		Sprite._super.postUpdate.call(this);
 	// 	}
 	// };
@@ -107,7 +107,7 @@ Polyworks.Sprite = (function() {
 	
 	Sprite.prototype.activateGravity = function() {
 		// trace(this);
-		trace('Sprite['+this.model.name+']/activateGravity, y = ' + this.body.screenY);
+		// trace('Sprite['+this.model.name+']/activateGravity, y = ' + this.body.screenY);
 		var physics = this.model.attrs.physics;
 		if(physics && physics.deferredGravity) {
 			var gravity = (physics.gravity) ? physics.gravity : PolyworksGame.get('gravity');

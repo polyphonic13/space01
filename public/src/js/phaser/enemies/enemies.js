@@ -2,8 +2,7 @@ Polyworks.Enemies = (function() {
 	Polyworks.Utils.inherits(Enemies, Polyworks.PhysicalGroupCollection);
 	
 	function Enemies(params) {
-		// trace('Enemies['+params.name+']/constructor');
-		// trace(params);
+		// trace('Enemies['+params.name+']/constructor, params = ', params);
 		Enemies._super.constructor.call(this, params);
 	}
 	
@@ -19,8 +18,7 @@ Polyworks.Enemies = (function() {
 	};
 	
 	Enemies.prototype.activateGravity = function() {
-		trace('Enemies['+this.model.name+']/activateGravity, collection');
-		trace(this.model.collection);
+		// trace('Enemies['+this.model.name+']/activateGravity, collection', this.model.collection);
 		Enemies._super.activateGravity.call(this);
 	};
 

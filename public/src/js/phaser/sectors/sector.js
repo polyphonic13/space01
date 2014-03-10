@@ -21,7 +21,7 @@ Polyworks.Sector = (function() {
 
 		this.active = active;
 		if(active) {
-			trace('Sector['+this.model.name+']/setActive: active = ' + active + ', activatedOnce = ' + this.activatedOnce);
+			// trace('Sector['+this.model.name+']/setActive: active = ' + active + ', activatedOnce = ' + this.activatedOnce);
 			// if(!this.activatedOnce) {
 				this.activateOnce = true;
 				if(this.enemies) {

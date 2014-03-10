@@ -577,7 +577,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'requirementsPlaceHolder',
+						name: 'requirementPlaceHolder',
 						cl: 'RequirementPlaceHolder',
 						attrs: {
 							img: 'crystals02Grey',
@@ -924,7 +924,8 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: (stageWidth * 0.85),
 								height: (stageHeight * 0.85),
-								visible: false
+								alpha: 0.5
+								// visible: false
 							},
 							start: {
 								// x: (winW/2) - (stageWidth/2),
@@ -966,7 +967,8 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: (stageWidth * 0.85),
 								height: (stageHeight * 0.85),
-								visible: false
+								alpha: 0.5
+								// visible: false
 							},
 							start: {
 								// x: (winW/2) - (stageWidth/2),
@@ -1290,27 +1292,6 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
-							}
-						}
-					}
-					]
-				},
-				{
-					name: 'requirements',
-					cl: 'Requirements',
-					attrs: [
-					{
-						name: 'requirement1',
-						cl: 'Requirement',
-						attrs: {
-							img: 'crystals02Green',
-							phaser: {
-								width: (stageUnit * 0.5),
-								height: (stageUnit * 1)
-							},
-							start: {
-								x: (stageWidth * 2) + (stageUnit * 13),
-								y: winH - (stageUnit * 13.5)
 							}
 						}
 					}
@@ -2043,6 +2024,18 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
+					name: 'levelControls',
+					cl: 'ControlButtons',
+					type: 'level',
+					addTo: 'null',
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				},
+				{
 					name: 'levelGUI',
 					cl: 'GUIConsole',
 					// cl: 'GroupCollection',
@@ -2073,7 +2066,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'requirementsPlaceHolder',
+						name: 'requirementPlaceHolder',
 						cl: 'RequirementPlaceHolder',
 						attrs: {
 							img: 'crystals02Grey',
@@ -2091,16 +2084,25 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
-					name: 'levelControls',
-					cl: 'ControlButtons',
-					type: 'level',
-					addTo: 'null',
-					attrs: {
-						start: {
-							x: 0,
-							y: 0
+					name: 'requirements',
+					cl: 'Requirements',
+					attrs: [
+					{
+						name: 'requirement1',
+						cl: 'Requirement',
+						attrs: {
+							img: 'crystals02Green',
+							phaser: {
+								width: (stageUnit * 0.5),
+								height: (stageUnit * 1)
+							},
+							start: {
+								x: (stageWidth * 2) + (stageUnit * 13),
+								y: winH - (stageUnit * 13.5)
+							}
 						}
 					}
+					]
 				},
 				{
 					name: 'pauseGUI',
@@ -3295,7 +3297,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'requirementsPlaceHolder',
+						name: 'requirementPlaceHolder',
 						cl: 'RequirementPlaceHolder',
 						attrs: {
 							img: 'crystals02Grey',
@@ -4657,8 +4659,10 @@ Polyworks.Config = (function() {
 				{
 					name: 'levelGUI',
 					cl: 'GUIConsole',
+					// cl: 'GroupCollection',
 					addTo: 'null',
-					attrs: [{
+					attrs: [
+					{
 						name: 'heartIcon',
 						cl: 'Sprite',
 						attrs: {
@@ -4674,14 +4678,31 @@ Polyworks.Config = (function() {
 						cl: 'Text',
 						attrs: {
 							x: winW - 100,
-							y: 25,
+							y: 20,
 							defaultContent: '~{health}~',
 							style: { 
 								font: '26px Arial', 
 								fill: '#ffffff' 
 							}
 						}
-					}]
+					},
+					{
+						name: 'requirementPlaceHolder',
+						cl: 'RequirementPlaceHolder',
+						attrs: {
+							img: 'crystals02Grey',
+							phaser: {
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5),
+								alpha: 0.5
+							},
+							start: {
+								x: winW - (stageUnit * 1.2),
+								y: (stageUnit * 1.4)
+							}
+						}
+					}
+					]
 				},
 				{
 					name: 'levelControls',
@@ -6323,8 +6344,10 @@ Polyworks.Config = (function() {
 				{
 					name: 'levelGUI',
 					cl: 'GUIConsole',
+					// cl: 'GroupCollection',
 					addTo: 'null',
-					attrs: [{
+					attrs: [
+					{
 						name: 'heartIcon',
 						cl: 'Sprite',
 						attrs: {
@@ -6340,14 +6363,31 @@ Polyworks.Config = (function() {
 						cl: 'Text',
 						attrs: {
 							x: winW - 100,
-							y: 25,
+							y: 20,
 							defaultContent: '~{health}~',
 							style: { 
 								font: '26px Arial', 
 								fill: '#ffffff' 
 							}
 						}
-					}]
+					},
+					{
+						name: 'requirementPlaceHolder',
+						cl: 'RequirementPlaceHolder',
+						attrs: {
+							img: 'crystals02Grey',
+							phaser: {
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5),
+								alpha: 0.5
+							},
+							start: {
+								x: winW - (stageUnit * 1.2),
+								y: (stageUnit * 1.4)
+							}
+						}
+					}
+					]
 				},
 				{
 					name: 'levelControls',
@@ -7989,8 +8029,10 @@ Polyworks.Config = (function() {
 				{
 					name: 'levelGUI',
 					cl: 'GUIConsole',
+					// cl: 'GroupCollection',
 					addTo: 'null',
-					attrs: [{
+					attrs: [
+					{
 						name: 'heartIcon',
 						cl: 'Sprite',
 						attrs: {
@@ -8006,14 +8048,31 @@ Polyworks.Config = (function() {
 						cl: 'Text',
 						attrs: {
 							x: winW - 100,
-							y: 25,
+							y: 20,
 							defaultContent: '~{health}~',
 							style: { 
 								font: '26px Arial', 
 								fill: '#ffffff' 
 							}
 						}
-					}]
+					},
+					{
+						name: 'requirementPlaceHolder',
+						cl: 'RequirementPlaceHolder',
+						attrs: {
+							img: 'crystals02Grey',
+							phaser: {
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5),
+								alpha: 0.5
+							},
+							start: {
+								x: winW - (stageUnit * 1.2),
+								y: (stageUnit * 1.4)
+							}
+						}
+					}
+					]
 				},
 				{
 					name: 'levelControls',
@@ -9141,8 +9200,10 @@ Polyworks.Config = (function() {
 				{
 					name: 'levelGUI',
 					cl: 'GUIConsole',
+					// cl: 'GroupCollection',
 					addTo: 'null',
-					attrs: [{
+					attrs: [
+					{
 						name: 'heartIcon',
 						cl: 'Sprite',
 						attrs: {
@@ -9158,14 +9219,31 @@ Polyworks.Config = (function() {
 						cl: 'Text',
 						attrs: {
 							x: winW - 100,
-							y: 25,
+							y: 20,
 							defaultContent: '~{health}~',
 							style: { 
 								font: '26px Arial', 
 								fill: '#ffffff' 
 							}
 						}
-					}]
+					},
+					{
+						name: 'requirementPlaceHolder',
+						cl: 'RequirementPlaceHolder',
+						attrs: {
+							img: 'crystals02Grey',
+							phaser: {
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5),
+								alpha: 0.5
+							},
+							start: {
+								x: winW - (stageUnit * 1.2),
+								y: (stageUnit * 1.4)
+							}
+						}
+					}
+					]
 				},
 				{
 					name: 'levelControls',
@@ -10708,8 +10786,10 @@ Polyworks.Config = (function() {
 				{
 					name: 'levelGUI',
 					cl: 'GUIConsole',
+					// cl: 'GroupCollection',
 					addTo: 'null',
-					attrs: [{
+					attrs: [
+					{
 						name: 'heartIcon',
 						cl: 'Sprite',
 						attrs: {
@@ -10725,14 +10805,31 @@ Polyworks.Config = (function() {
 						cl: 'Text',
 						attrs: {
 							x: winW - 100,
-							y: 25,
+							y: 20,
 							defaultContent: '~{health}~',
 							style: { 
 								font: '26px Arial', 
 								fill: '#ffffff' 
 							}
 						}
-					}]
+					},
+					{
+						name: 'requirementPlaceHolder',
+						cl: 'RequirementPlaceHolder',
+						attrs: {
+							img: 'crystals02Grey',
+							phaser: {
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5),
+								alpha: 0.5
+							},
+							start: {
+								x: winW - (stageUnit * 1.2),
+								y: (stageUnit * 1.4)
+							}
+						}
+					}
+					]
 				},
 				{
 					name: 'levelControls',

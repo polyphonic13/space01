@@ -30,9 +30,9 @@ Polyworks.Enemy = (function() {
 
 	Enemy.prototype.pwUpdate = function(params) {
 		if(this.alive) {
-			if(this.reactivated) {
-				trace('Player/update, x/y = ' + this.body.screenX + '/' + this.body.screenY, this);
-			}
+			// if(this.reactivated) {
+			// 	trace('Player/update, x/y = ' + this.body.screenX + '/' + this.body.screenY, this);
+			// }
 			// trace('Enemy['+this.model.name+']/pwUpdate, x/y = ' + this.body.screenX + '/' + this.body.screenY);
 			// trace(this);
 			var enemyX = this.body.screenX;
@@ -56,7 +56,7 @@ Polyworks.Enemy = (function() {
 	};
 	
 	Enemy.prototype.kill = function() {
-		trace('Enemy['+this.model.name+']/kill, ancestor = ');
+		// trace('Enemy['+this.model.name+']/kill, ancestor = ');
 		// trace(this.model);
 		PolyworksGame.setScore(this.model.attrs.score);
 		this.model.ancestor.killChild.call(this.model.ancestor, this.model.name);
