@@ -6,14 +6,13 @@ Polyworks.Requirement = (function() {
 	}
 	
 	Requirement.prototype.begin = function() {
-		trace('Requirement['+this.model.name+']/begin');
+		// trace('Requirement['+this.model.name+']/begin, model = ', this.model);
 		Requirement._super.begin.call(this);
 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.REQUIREMENT_INITIALIZED, value: this.model });
-		trace('--------- requirement dispatched requirements initialized');
 	};
 	
 	Requirement.prototype.collect = function() {
-		trace('Requirement['+this.model.name+']/collect');
+		// trace('Requirement['+this.model.name+']/collect');
 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.REQUIREMENT_MET, value: this.model.name });
 		this.model.ancestor.killChild.call(this.model.ancestor, this.model.name);
 		Requirement._super.kill.call(this);

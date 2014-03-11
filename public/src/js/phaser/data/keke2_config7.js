@@ -109,7 +109,6 @@ Polyworks.Config = (function() {
 
 				// bonuses
 				lollipop: 'images/lollipop.png',
-				cupcake: 'images/cupcake.png',
 
 				// effects
 				snowFlake01: 'images/particle01.png',
@@ -121,7 +120,6 @@ Polyworks.Config = (function() {
 
 				// icons
 				heart: 'images/heart.png',
-				damageIcon: 'images/alarm_icon.png',
 				invisibleRect: 'images/invisible.png'
 			},
 			// SPRITES
@@ -693,7 +691,7 @@ Polyworks.Config = (function() {
 						y: (stageUnit * 0.5),
 						defaultContent: 'Level ~{currentLevel}~ Completed',
 						style: { 
-							font: '48px "Waiting for the Sunrise"', 
+							font: '60px "Waiting for the Sunrise"', 
 							fill: '#000000',
 							align: 'center'
 						}
@@ -708,7 +706,7 @@ Polyworks.Config = (function() {
 						x: 0,
 						y: (stageUnit * 2),
 						style: { 
-							font: '24px "Waiting for the Sunrise"', 
+							font: '48px "Waiting for the Sunrise"', 
 							fill: '#000000',
 							align: 'center'
 						},
@@ -777,7 +775,7 @@ Polyworks.Config = (function() {
 				]
 			},
 			// USE FOR LOCAL TESTING:
-			// preloadAll: true,
+			preloadAll: true,
 
 			// STATES
 			initialState: 'menu',
@@ -3329,7 +3327,6 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 4) + (stageUnit * 15),
-								// y: winH - (stageUnit * 3)
 								y: -(stageUnit * 5)
 							}
 						}
@@ -3698,29 +3695,6 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
-							}
-						}
-					}
-					]
-				},
-				{
-					name: 'requirements',
-					cl: 'Requirements',
-					attrs: [
-					{
-						name: 'requirement1',
-						cl: 'Requirement',
-						attrs: {
-							img: 'crystals02Red',
-							phaser: {
-								phaser: {
-									width: (stageUnit * 0.75),
-									height: (stageUnit * 1.5)
-								},
-							},
-							start: {
-								x: (stageWidth * 2) + (stageUnit * 13),
-								y: winH - (stageUnit * 3)
 							}
 						}
 					}
@@ -4664,6 +4638,18 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
+					name: 'levelControls',
+					cl: 'ControlButtons',
+					type: 'level',
+					addTo: 'null',
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				},
+				{
 					name: 'levelGUI',
 					cl: 'GUIConsole',
 					// cl: 'GroupCollection',
@@ -4712,16 +4698,25 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
-					name: 'levelControls',
-					cl: 'ControlButtons',
-					type: 'level',
-					addTo: 'null',
-					attrs: {
-						start: {
-							x: 0,
-							y: 0
+					name: 'requirements',
+					cl: 'Requirements',
+					attrs: [
+					{
+						name: 'requirement1',
+						cl: 'Requirement',
+						attrs: {
+							img: 'crystals02Red',
+							phaser: {
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageWidth * 2) + (stageUnit * 13),
+								y: winH - (stageUnit * 7)
+							}
 						}
 					}
+					]
 				},
 				{
 					name: 'pauseGUI',
@@ -5197,14 +5192,12 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'crystals02Orange',
 							phaser: {
-								phaser: {
-									width: (stageUnit * 0.75),
-									height: (stageUnit * 1.5)
-								},
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5)
 							},
 							start: {
 								x: (stageWidth * 2) + (stageUnit * 13),
-								y: winH - (stageUnit * 3)
+								y: winH - (stageUnit * 12)
 							}
 						}
 					}
@@ -6887,14 +6880,12 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'crystals02Purple',
 							phaser: {
-								phaser: {
-									width: (stageUnit * 0.75),
-									height: (stageUnit * 1.5)
-								},
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5)
 							},
 							start: {
-								x: (stageWidth * 2) + (stageUnit * 13),
-								y: winH - (stageUnit * 3)
+								x: (stageWidth * 4) + (stageUnit * 11),
+								y: winH - (stageUnit * 16)
 							}
 						}
 					}
@@ -9248,8 +9239,8 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'crystals02Aqua',
 							phaser: {
-								width: stageUnit,
-								height: (stageUnit * 2)
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5)
 							},
 							start: {
 								x: (stageWidth * 2) + (stageUnit * 13),
@@ -9570,8 +9561,8 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'crystals02Green',
 							phaser: {
-								width: stageUnit,
-								height: (stageUnit * 2)
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5)
 							},
 							start: {
 								x: (stageWidth * 2) + (stageUnit * 13),
