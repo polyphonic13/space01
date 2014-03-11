@@ -575,7 +575,7 @@ Polyworks.Config = (function() {
 						y: 0,
 						defaultContent: '~{health}~',
 						style: { 
-							font: fontSizes.sm + 'px "Waiting for the Sunrise"',
+							font: fontSizes.sm + 'px "Sue Ellen Francisco"',
 							align: 'right', 
 							fill: '#ffffff' 
 						},
@@ -699,7 +699,7 @@ Polyworks.Config = (function() {
 						y: (stageUnit * 0.5),
 						defaultContent: 'Level ~{currentLevel}~ Completed',
 						style: { 
-							font: 'bold 60px "Waiting for the Sunrise"', 
+							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
 							align: 'center'
 						}
@@ -714,7 +714,7 @@ Polyworks.Config = (function() {
 						x: 0,
 						y: (stageUnit * 2),
 						style: { 
-							font: 'bold 48px "Waiting for the Sunrise"', 
+							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
 							align: 'center'
 						},
@@ -10663,7 +10663,7 @@ Polyworks.Config = (function() {
 							y: stageUnit,
 							defaultContent: 'All Completed',
 							style: { 
-								font: 'bold 60px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
 								fill: '#ffffff',
 								align: 'center'
 							}
@@ -10679,7 +10679,7 @@ Polyworks.Config = (function() {
 							y: 100,
 							defaultContent: 'Score: ~{score}~',
 							style: { 
-								font: 'bold 48px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 								fill: '#ffffff',
 								align: 'center'
 							}
@@ -10735,7 +10735,7 @@ Polyworks.Config = (function() {
 							y: stageUnit,
 							defaultContent: 'game over',
 							style: { 
-								font: '48px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
 								align: 'center'
 							}
