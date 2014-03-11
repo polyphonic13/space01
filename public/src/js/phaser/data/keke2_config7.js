@@ -578,7 +578,10 @@ Polyworks.Config = (function() {
 							font: fontSizes.sm + 'px "Waiting for the Sunrise"',
 							align: 'right', 
 							fill: '#ffffff' 
-						}
+						},
+						listeners: [
+							Polyworks.Events.HEALTH_UPDATED
+						]
 					}
 				},
 				{
@@ -3239,49 +3242,16 @@ Polyworks.Config = (function() {
 				},
 				{
 					name: 'levelGUI',
-					cl: 'GUIConsole',
+					cl: 'SharedGroupCollection',
+					type: 'levelGUI',
 					addTo: 'null',
-					attrs: [
-					{
-						name: 'heartIcon',
-						cl: 'Sprite',
-						attrs: {
-							img: 'heart',
-							start: {
-								x: winW - (stageUnit * 1.3),
-								y: (stageUnit * 0.3)
-							}
-						}
-					},
-					{
-						name: 'health',
-						cl: 'Text',
-						attrs: {
-							x: winW - (stageUnit * 2.7),
-							y: (stageUnit * 0.2),
-							defaultContent: '~{health}~',
-							style: { 
-								font: 'bold 48px "Waiting for the Sunrise"', 
-								fill: '#ffffff' 
-							}
-						}
-					},
-					{
-						name: 'level2-requirementPlaceHolder',
-						cl: 'RequirementPlaceHolder',
-						attrs: {
-							img: 'crystals02Grey',
-							phaser: {
-								width: (stageUnit * 0.75),
-								height: (stageUnit * 1.5)
-							},
-							start: {
-								x: winW - (stageUnit * 1.2),
-								y: (stageUnit * 1.3)
-							}
+					visible: true,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
 						}
 					}
-					]
 				},
 				{
 					name: 'requirements',
@@ -4622,51 +4592,16 @@ Polyworks.Config = (function() {
 				},
 				{
 					name: 'levelGUI',
-					cl: 'GUIConsole',
-					// cl: 'GroupCollection',
+					cl: 'SharedGroupCollection',
+					type: 'levelGUI',
 					addTo: 'null',
-					attrs: [
-					{
-						name: 'heartIcon',
-						cl: 'Sprite',
-						attrs: {
-							img: 'heart',
-							start: {
-								x: winW - 50,
-								y: 20
-							}
-						}
-					},
-					{
-						name: 'health',
-						cl: 'Text',
-						attrs: {
-							x: winW - 100,
-							y: 20,
-							defaultContent: '~{health}~',
-							style: { 
-								font: 'bold 48px "Waiting for the Sunrise"', 
-								fill: '#ffffff' 
-							}
-						}
-					},
-					{
-						name: 'level3-requirementPlaceHolder',
-						cl: 'RequirementPlaceHolder',
-						attrs: {
-							img: 'crystals02Grey',
-							phaser: {
-								width: (stageUnit * 0.75),
-								height: (stageUnit * 1.5),
-								alpha: 0.5
-							},
-							start: {
-								x: winW - (stageUnit * 1.2),
-								y: (stageUnit * 1.4)
-							}
+					visible: true,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
 						}
 					}
-					]
 				},
 				{
 					name: 'requirements',
@@ -6319,51 +6254,16 @@ Polyworks.Config = (function() {
 				},
 				{
 					name: 'levelGUI',
-					cl: 'GUIConsole',
-					// cl: 'GroupCollection',
+					cl: 'SharedGroupCollection',
+					type: 'levelGUI',
 					addTo: 'null',
-					attrs: [
-					{
-						name: 'heartIcon',
-						cl: 'Sprite',
-						attrs: {
-							img: 'heart',
-							start: {
-								x: winW - 50,
-								y: 20
-							}
-						}
-					},
-					{
-						name: 'health',
-						cl: 'Text',
-						attrs: {
-							x: winW - 100,
-							y: 20,
-							defaultContent: '~{health}~',
-							style: { 
-								font: 'bold 48px "Waiting for the Sunrise"', 
-								fill: '#ffffff' 
-							}
-						}
-					},
-					{
-						name: 'level4-requirementPlaceHolder',
-						cl: 'RequirementPlaceHolder',
-						attrs: {
-							img: 'crystals02Grey',
-							phaser: {
-								width: (stageUnit * 0.75),
-								height: (stageUnit * 1.5),
-								alpha: 0.5
-							},
-							start: {
-								x: winW - (stageUnit * 1.2),
-								y: (stageUnit * 1.4)
-							}
+					visible: true,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
 						}
 					}
-					]
 				},
 				{
 					name: 'levelControls',
@@ -8007,51 +7907,16 @@ Polyworks.Config = (function() {
 				},
 				{
 					name: 'levelGUI',
-					cl: 'GUIConsole',
-					// cl: 'GroupCollection',
+					cl: 'SharedGroupCollection',
+					type: 'levelGUI',
 					addTo: 'null',
-					attrs: [
-					{
-						name: 'heartIcon',
-						cl: 'Sprite',
-						attrs: {
-							img: 'heart',
-							start: {
-								x: winW - 50,
-								y: 20
-							}
-						}
-					},
-					{
-						name: 'health',
-						cl: 'Text',
-						attrs: {
-							x: winW - 100,
-							y: 20,
-							defaultContent: '~{health}~',
-							style: { 
-								font: 'bold 48px "Waiting for the Sunrise"', 
-								fill: '#ffffff' 
-							}
-						}
-					},
-					{
-						name: 'level5-requirementPlaceHolder',
-						cl: 'RequirementPlaceHolder',
-						attrs: {
-							img: 'crystals02Grey',
-							phaser: {
-								width: (stageUnit * 0.75),
-								height: (stageUnit * 1.5),
-								alpha: 0.5
-							},
-							start: {
-								x: winW - (stageUnit * 1.2),
-								y: (stageUnit * 1.4)
-							}
+					visible: true,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
 						}
 					}
-					]
 				},
 				{
 					name: 'levelControls',
@@ -9154,51 +9019,16 @@ Polyworks.Config = (function() {
 				},
 				{
 					name: 'levelGUI',
-					cl: 'GUIConsole',
-					// cl: 'GroupCollection',
+					cl: 'SharedGroupCollection',
+					type: 'levelGUI',
 					addTo: 'null',
-					attrs: [
-					{
-						name: 'heartIcon',
-						cl: 'Sprite',
-						attrs: {
-							img: 'heart',
-							start: {
-								x: winW - 50,
-								y: 20
-							}
-						}
-					},
-					{
-						name: 'health',
-						cl: 'Text',
-						attrs: {
-							x: winW - 100,
-							y: 20,
-							defaultContent: '~{health}~',
-							style: { 
-								font: 'bold 48px "Waiting for the Sunrise"', 
-								fill: '#ffffff' 
-							}
-						}
-					},
-					{
-						name: 'level6-requirementPlaceHolder',
-						cl: 'RequirementPlaceHolder',
-						attrs: {
-							img: 'crystals02Grey',
-							phaser: {
-								width: (stageUnit * 0.75),
-								height: (stageUnit * 1.5),
-								alpha: 0.5
-							},
-							start: {
-								x: winW - (stageUnit * 1.2),
-								y: (stageUnit * 1.4)
-							}
+					visible: true,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
 						}
 					}
-					]
 				},
 				{
 					name: 'requirements',
@@ -10749,51 +10579,16 @@ Polyworks.Config = (function() {
 				},
 				{
 					name: 'levelGUI',
-					cl: 'GUIConsole',
-					// cl: 'GroupCollection',
+					cl: 'SharedGroupCollection',
+					type: 'levelGUI',
 					addTo: 'null',
-					attrs: [
-					{
-						name: 'heartIcon',
-						cl: 'Sprite',
-						attrs: {
-							img: 'heart',
-							start: {
-								x: winW - 50,
-								y: 20
-							}
-						}
-					},
-					{
-						name: 'health',
-						cl: 'Text',
-						attrs: {
-							x: winW - 100,
-							y: 20,
-							defaultContent: '~{health}~',
-							style: { 
-								font: 'bold 48px "Waiting for the Sunrise"', 
-								fill: '#ffffff' 
-							}
-						}
-					},
-					{
-						name: 'level7-requirementPlaceHolder',
-						cl: 'RequirementPlaceHolder',
-						attrs: {
-							img: 'crystals02Grey',
-							phaser: {
-								width: (stageUnit * 0.75),
-								height: (stageUnit * 1.5),
-								alpha: 0.5
-							},
-							start: {
-								x: winW - (stageUnit * 1.2),
-								y: (stageUnit * 1.4)
-							}
+					visible: true,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
 						}
 					}
-					]
 				},
 				{
 					name: 'levelControls',

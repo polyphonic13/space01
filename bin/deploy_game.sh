@@ -1,8 +1,8 @@
 
 # flags:
 #
-#	-p	project (required)
-#	-t	target directory: optional directory target; defaults to target project value
+#	-t	target project (required)
+#	-d	end server directory: optional directory target; defaults to target project value
 # 	-r	remove previous deploy directory prior to running grunt
 #	-g	skip grunt
 #	-c 	commit repo to target git branch
@@ -62,12 +62,12 @@ function commit_to_target_git_branch {
 	echo "PUSHED GIT COMMIT TO $git_branch"
 }
 
-while getopts "p:t:rigc" opt; do
+while getopts "t:d:rigc" opt; do
 	case $opt in
-	    p)
+	    t)
 			TARGET_PROJECT=$OPTARG
 	    	;;
-		t)
+		d)
 			TARGET_DIR=$OPTARG
 			;;
 		r)

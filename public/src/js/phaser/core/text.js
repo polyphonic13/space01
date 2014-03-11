@@ -6,7 +6,7 @@ Polyworks.Text = (function() {
 		_this = this;
 		this.model = new Polyworks.Model(params);
 		var attrs = this.model.attrs;
-		trace('Text['+this.model.name+']/constructor, this = ', this);
+		// trace('Text['+this.model.name+']/constructor, this = ', this);
 		var context = (attrs.dynamicContentContext) ? attrs.dynamicContentContext : PolyworksGame;
 		var content = Polyworks.Utils.parseMarkup(attrs.defaultContent, context);
 		Text._super.constructor.call(this, params.game, attrs.x, attrs.y, content, attrs.style);
@@ -14,7 +14,7 @@ Polyworks.Text = (function() {
 	}
 	
 	Text.prototype.begin = function() {
-		// trace('Text['+this.model.name+']/begin, this = ', this);
+		// trace('Text['+this.model.name+']/begin, listeners = ', this.model.attrs.listeners);
 		var attrs = this.model.attrs;
 		var content = attrs.defaultContent;
 
@@ -52,10 +52,21 @@ Polyworks.Text = (function() {
 		this.content = Polyworks.Utils.parseMarkup(this.model.attrs.defaultContent, context);
 	};
 	
-	// Text.prototype.destroy = function() {
-	// 	trace('Text['+this.model.name+']/destroy, this = ' + this);
-	// 	Text._super.destroy();
-	// };
+	Text.prototype.destroy = function() {
+		// trace('Text['+this.model.name+']/destroy, this = ', this, '\tlisteners = ', this.model.attrs.listeners);
+		// Text._super.destroy();
+		var listeners = this.model.listeners;
+		var _this = this;
+
+		if(listeners) {
+			Polyworks.Utils.each(listners,
+				function(listener) {
+					Polyworks.EventCenter.unbind(listener, _this.onUpdate, _this);
+				},
+				_this
+			);
+		}
+	};
 	
 	return Text;
 })();
