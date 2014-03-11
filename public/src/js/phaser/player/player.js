@@ -231,7 +231,6 @@ Polyworks.Player = (function() {
 		// trace('Player/onBonusCollision, bonus = ');
 		// trace(bonus);
 		this.collided = true;
-	    PolyworksGame.setScore(bonus.model.attrs.score);
 
 		var health = bonus.model.attrs.health;
 		if(health) {

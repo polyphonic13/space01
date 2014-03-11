@@ -184,8 +184,10 @@ Polyworks.Sprite = (function() {
 	};
 
 	Sprite.prototype.destroy = function() {
-		trace('Sprite['+this.model.name+']/destroy');
-		Sprite._super.destroy.call(this);
+		// trace('Sprite['+this.model.name+']/destroy, alive = ' + this.alive);
+		if(this.alive) {
+			Sprite._super.destroy.call(this);
+		}
 	};
 	
 	return Sprite;

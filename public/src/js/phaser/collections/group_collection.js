@@ -73,8 +73,7 @@ Polyworks.GroupCollection = (function() {
 	};
 
 	GroupCollection.prototype.destroy = function() {
-		trace('GroupCollection['+this.model.name+']/destroy');
-		
+		// trace('GroupCollection['+this.model.name+']/destroy');
 		this.group.destroy(true);
 		GroupCollection._super.destroy.call(this);
 	};

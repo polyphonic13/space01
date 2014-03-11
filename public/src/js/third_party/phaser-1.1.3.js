@@ -19674,7 +19674,7 @@ Phaser.Sprite.prototype.kill = function() {
 * @memberof Phaser.Sprite
 */
 Phaser.Sprite.prototype.destroy = function() {
-
+	// console.log('Phaser.Sprite/destroy, this = ', this);
     if (this.group)
     {
         this.group.remove(this);

@@ -36,7 +36,7 @@ Polyworks.Collection = (function() {
 	Collection.prototype.getChildByName = function(name) {
 		// trace('Collection/getChildByName, name = ' + name + 'model = ', this.model);
 		var child; 
-		
+
 		var collection = this.model.collection;
 		var length = collection.length;
 		for(var i = 0; i < length; i++) {
@@ -73,23 +73,24 @@ Polyworks.Collection = (function() {
 	
 	Collection.prototype.destroy = function() {
 		var collection = this.model.collection;
-		trace('Collection['+this.model.name+']/destroy, collection = ', collection);
+		// trace('Collection['+this.model.name+']/destroy, collection = ', collection);
 		Polyworks.Utils.each(collection,
 			function(child) {
-				trace('\tattempting to call destroy on child['+child.model.name+']');
+				// trace('\tattempting to call destroy on child['+child.model.name+']');
 				if(child.destroy) {
 					child.destroy();
 				}
 			},
 			this
 		);
-		trace('\tthis.model.name children destroyed, collection = ', collection);
+		// trace('\tthis.model.name children destroyed, collection = ', collection);
 		if(collection) {
 			while(collection.length > 0) {
 				collection.pop();
 			}
 		}
-		trace('\tpost pop, collection = ', collection);
+		// trace('\tpost pop, collection = ', collection);
+		this.destroyed = true;
 	};
 	
 	return Collection;

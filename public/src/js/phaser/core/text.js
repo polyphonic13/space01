@@ -52,10 +52,10 @@ Polyworks.Text = (function() {
 		this.content = Polyworks.Utils.parseMarkup(this.model.attrs.defaultContent, context);
 	};
 	
-	Text.prototype.destroy = function() {
-		// trace('Text['+this.model.name+']/destroy');
-		this._super.destroy();
-	};
+	// Text.prototype.destroy = function() {
+	// 	trace('Text['+this.model.name+']/destroy, this = ' + this);
+	// 	Text._super.destroy();
+	// };
 	
 	return Text;
 })();

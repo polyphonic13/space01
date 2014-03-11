@@ -1523,7 +1523,7 @@ Polyworks.Config = (function() {
 									img: 'branch02Right',
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 9.5),
-										y: winH - (stageUnit * 12)
+										y: winH - (stageUnit * 11.75)
 									},
 									phaser: { width: (stageUnit * 7), height: (stageUnit * 0.5) },
 									physics: {
@@ -1610,7 +1610,7 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs:  []
+							attrs: []
 						}
 						]
 					},
@@ -1676,7 +1676,7 @@ Polyworks.Config = (function() {
 							attrs: [
 							{
 								name: 'level1-sector4-bonus1',
-								cl: 'Sprite',
+								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
@@ -1897,10 +1897,10 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs:  [
+							attrs: [
 							{
 								name: 'level1-sector5-bonus1',
-								cl: 'Sprite',
+								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
@@ -1981,7 +1981,7 @@ Polyworks.Config = (function() {
 							attrs: [
 							{
 								name: 'level1-sector6-bonus1',
-								cl: 'Sprite',
+								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
@@ -2815,7 +2815,7 @@ Polyworks.Config = (function() {
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs:  [{
-								cl: 'Sprite',
+								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
@@ -2966,8 +2966,9 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs: [{
-								cl: 'Sprite',
+							attrs: [
+							{
+								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
@@ -3135,8 +3136,9 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs:  [{
-								cl: 'Sprite',
+							attrs: [
+							{
+								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
@@ -3211,8 +3213,9 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs: [{
-								cl: 'Sprite',
+							attrs: [
+							{
+								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
@@ -3944,8 +3947,9 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs:  [{
-								cl: 'Sprite',
+							attrs: [
+							{
+								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
@@ -4147,7 +4151,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								cl: 'Sprite',
+								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
@@ -4379,8 +4383,9 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs:  [{
-								cl: 'Sprite',
+							attrs: [
+							{
+								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
@@ -4551,8 +4556,9 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs: [{
-								cl: 'Sprite',
+							attrs: [
+							{
+								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
@@ -5487,7 +5493,7 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs:  []
+							attrs: []
 						}
 						]
 					},
@@ -5708,7 +5714,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								cl: 'Sprite',
+								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
@@ -6034,8 +6040,9 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs:  [{
-								cl: 'Sprite',
+							attrs: [
+							{
+								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
@@ -6238,8 +6245,9 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs: [{
-								cl: 'Sprite',
+							attrs: [
+							{
+								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
@@ -7175,7 +7183,7 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs:  []
+							attrs: []
 						}
 						]
 					},
@@ -7396,7 +7404,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								cl: 'Sprite',
+								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
@@ -7722,8 +7730,9 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs:  [{
-								cl: 'Sprite',
+							attrs: [
+							{
+								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
@@ -7926,8 +7935,9 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs: [{
-								cl: 'Sprite',
+							attrs: [
+							{
+								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
@@ -9117,7 +9127,8 @@ Polyworks.Config = (function() {
 						},
 						{
 							name: 'bonuses',
-							cl: 'PhysicalGroupCollection'
+							cl: 'PhysicalGroupCollection',
+							attrs: []
 						}
 						]
 					}
@@ -11005,7 +11016,7 @@ Polyworks.Config = (function() {
 						// y: winH - 300
 						// y: winH - (226)
 						x: winW/2,
-						y: winH - (stageUnit * 2.3)
+						y: winH - (stageUnit * 2.5)
 					},
 					physics: {
 						/*

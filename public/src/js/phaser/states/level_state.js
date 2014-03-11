@@ -179,20 +179,13 @@ Polyworks.LevelState = (function() {
 			PolyworksGame.currentLevel = 1;
 		}
 		this.sectorManager.deactivateAll();
-		
+
 		this.showCompletedGUI();
 	};
 	
 	LevelState.prototype.shutdown = function() {
 		trace('LevelState['+this.model.name+']/shutdown');
 		Polyworks.EventCenter.unbind(Polyworks.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
-
-		Polyworks.Utils.each(this.model.collection,
-			function(c) {
-				c.destroy();
-			},
-			this
-		);
 
 		this.playerGroup.destroy();
 		if(this.playerPresent) {

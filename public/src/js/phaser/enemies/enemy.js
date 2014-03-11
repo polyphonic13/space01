@@ -59,7 +59,8 @@ Polyworks.Enemy = (function() {
 		// trace('Enemy['+this.model.name+']/kill, ancestor = ');
 		// trace(this.model);
 		PolyworksGame.setScore(this.model.attrs.score);
-		this.model.ancestor.killChild.call(this.model.ancestor, this.model.name);
+		// this.model.ancestor.killChild.call(this.model.ancestor, this.model.name);
+		this.model.ancestor.removeChild.call(this.model.ancestor, this.model.name);
 		Enemy._super.kill.call(this);
 	};
 	
