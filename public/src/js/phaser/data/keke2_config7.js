@@ -9,13 +9,21 @@ Polyworks.Config = (function() {
 		var stageUnit = stage.unit;
 
 		var enemy01 = {
-			width: (stageUnit) * 1.5,
+			width: (stageUnit * 1.5),
 			height: stageUnit * 0.5
 		};
 
 		var enemy02 = {
-			width: (stageUnit) * 2,
+			width: (stageUnit * 2),
 			height: stageUnit * 0.67
+		};
+
+		var fontSizes = {
+			xs: (stageUnit * 0.5),
+			sm: (stageUnit * 0.8),
+			md: (stageUnit),
+			lg: (stageUnit * 1.5),
+			xl: (stageUnit * 2)
 		};
 
 		var c = {
@@ -545,52 +553,49 @@ Polyworks.Config = (function() {
 			sharedGroups: {
 				levelGUI: [
 				{
-					name: 'levelGUI',
-					// cl: 'GroupCollection',
-					cl: 'GUIConsole',
-					addTo: 'null',
-					attrs: [
-					{
-						name: 'heartIcon',
-						cl: 'Sprite',
-						attrs: {
-							img: 'heart',
-							start: {
-								x: winW - (stageUnit * 1.3),
-								y: (stageUnit * 0.3)
-							}
-						}
-					},
-					{
-						name: 'health',
-						cl: 'Text',
-						attrs: {
-							x: winW - (stageUnit * 2.8),
-							y: (stageUnit * 0.3),
-							defaultContent: '~{health}~',
-							style: { 
-								font: '26px Arial', 
-								fill: '#ffffff' 
-							}
-						}
-					},
-					{
-						name: 'requirementPlaceHolder',
-						cl: 'RequirementPlaceHolder',
-						attrs: {
-							img: 'crystals02Grey',
-							phaser: {
-								width: (stageUnit * 0.75),
-								height: (stageUnit * 1.5),
-								alpha: 0.5
-							},
-							start: {
-								x: winW - (stageUnit * 1.2),
-								y: (stageUnit * 1.4)
-							}
+					name: 'heartIcon',
+					cl: 'Sprite',
+					attrs: {
+						img: 'heart',
+						phaser: {
+							width: (stageUnit * 0.75),
+							height: (stageUnit * 0.75)
+						},
+						start: {
+							x: winW - (stageUnit * 1.2),
+							y: (stageUnit * 0.3)
 						}
 					}
-					]
+				},
+				{
+					name: 'health',
+					cl: 'Text',
+					attrs: {
+						x: winW - (stageUnit * 2.1),
+						y: 0,
+						defaultContent: '~{health}~',
+						style: { 
+							font: fontSizes.sm + 'px "Waiting for the Sunrise"',
+							align: 'right', 
+							fill: '#ffffff' 
+						}
+					}
+				},
+				{
+					name: 'level1-requirementPlaceHolder',
+					cl: 'RequirementPlaceHolder',
+					attrs: {
+						img: 'crystals02Grey',
+						phaser: {
+							width: (stageUnit * 0.75),
+							height: (stageUnit * 1.5),
+							alpha: 0.3
+						},
+						start: {
+							x: winW - (stageUnit * 1.2),
+							y: (stageUnit * 1.4)
+						}
+					}
 				}
 				],
 				pauseGUI:  [
@@ -691,7 +696,7 @@ Polyworks.Config = (function() {
 						y: (stageUnit * 0.5),
 						defaultContent: 'Level ~{currentLevel}~ Completed',
 						style: { 
-							font: '60px "Waiting for the Sunrise"', 
+							font: 'bold 60px "Waiting for the Sunrise"', 
 							fill: '#000000',
 							align: 'center'
 						}
@@ -706,7 +711,7 @@ Polyworks.Config = (function() {
 						x: 0,
 						y: (stageUnit * 2),
 						style: { 
-							font: '48px "Waiting for the Sunrise"', 
+							font: 'bold 48px "Waiting for the Sunrise"', 
 							fill: '#000000',
 							align: 'center'
 						},
@@ -2035,50 +2040,16 @@ Polyworks.Config = (function() {
 				},
 				{
 					name: 'levelGUI',
-					cl: 'GUIConsole',
+					cl: 'SharedGroupCollection',
+					type: 'levelGUI',
 					addTo: 'null',
-					attrs: [
-					{
-						name: 'heartIcon',
-						cl: 'Sprite',
-						attrs: {
-							img: 'heart',
-							start: {
-								x: winW - 50,
-								y: 20
-							}
-						}
-					},
-					{
-						name: 'health',
-						cl: 'Text',
-						attrs: {
-							x: winW - 100,
-							y: 20,
-							defaultContent: '~{health}~',
-							style: { 
-								font: '26px Arial', 
-								fill: '#ffffff' 
-							}
-						}
-					},
-					{
-						name: 'level1-requirementPlaceHolder',
-						cl: 'RequirementPlaceHolder',
-						attrs: {
-							img: 'crystals02Grey',
-							phaser: {
-								width: (stageUnit * 0.75),
-								height: (stageUnit * 1.5),
-								alpha: 0.5
-							},
-							start: {
-								x: winW - (stageUnit * 1.2),
-								y: (stageUnit * 1.4)
-							}
+					visible: true,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
 						}
 					}
-					]
 				},
 				{
 					name: 'requirements',
@@ -3287,10 +3258,10 @@ Polyworks.Config = (function() {
 						cl: 'Text',
 						attrs: {
 							x: winW - (stageUnit * 2.7),
-							y: (stageUnit * 0.3),
+							y: (stageUnit * 0.2),
 							defaultContent: '~{health}~',
 							style: { 
-								font: '26px Arial', 
+								font: 'bold 48px "Waiting for the Sunrise"', 
 								fill: '#ffffff' 
 							}
 						}
@@ -4674,7 +4645,7 @@ Polyworks.Config = (function() {
 							y: 20,
 							defaultContent: '~{health}~',
 							style: { 
-								font: '26px Arial', 
+								font: 'bold 48px "Waiting for the Sunrise"', 
 								fill: '#ffffff' 
 							}
 						}
@@ -6371,7 +6342,7 @@ Polyworks.Config = (function() {
 							y: 20,
 							defaultContent: '~{health}~',
 							style: { 
-								font: '26px Arial', 
+								font: 'bold 48px "Waiting for the Sunrise"', 
 								fill: '#ffffff' 
 							}
 						}
@@ -8059,7 +8030,7 @@ Polyworks.Config = (function() {
 							y: 20,
 							defaultContent: '~{health}~',
 							style: { 
-								font: '26px Arial', 
+								font: 'bold 48px "Waiting for the Sunrise"', 
 								fill: '#ffffff' 
 							}
 						}
@@ -9206,7 +9177,7 @@ Polyworks.Config = (function() {
 							y: 20,
 							defaultContent: '~{health}~',
 							style: { 
-								font: '26px Arial', 
+								font: 'bold 48px "Waiting for the Sunrise"', 
 								fill: '#ffffff' 
 							}
 						}
@@ -10801,7 +10772,7 @@ Polyworks.Config = (function() {
 							y: 20,
 							defaultContent: '~{health}~',
 							style: { 
-								font: '26px Arial', 
+								font: 'bold 48px "Waiting for the Sunrise"', 
 								fill: '#ffffff' 
 							}
 						}
@@ -10897,7 +10868,7 @@ Polyworks.Config = (function() {
 							y: stageUnit,
 							defaultContent: 'All Completed',
 							style: { 
-								font: '30px Arial', 
+								font: 'bold 60px "Waiting for the Sunrise"', 
 								fill: '#ffffff',
 								align: 'center'
 							}
@@ -10913,7 +10884,7 @@ Polyworks.Config = (function() {
 							y: 100,
 							defaultContent: 'Score: ~{score}~',
 							style: { 
-								font: '18px Arial', 
+								font: 'bold 48px "Waiting for the Sunrise"', 
 								fill: '#ffffff',
 								align: 'center'
 							}
