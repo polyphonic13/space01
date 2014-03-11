@@ -76,12 +76,6 @@ Polyworks.State = (function() {
 		}
 	};
 	
-	// State.prototype.loadUpdate = function(event) {
-	// 	this.loaded++;
-	// 	trace('State['+this.model.name+']/loadUpate, loaded = ' + this.loaded + ', toLoad = ' + this.toLoad);
-	// 	// trace(event);
-	// };
-	
 	State.prototype.create = function() {
 		trace('State['+this.model.name+']/create');
 		PolyworksGame.phaser.stage.backgroundColor = this.model.backgroundColor;

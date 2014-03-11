@@ -128,14 +128,14 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.pauseState = function() {
+		this.player.destroy();
+		this.playerPresent = false;
 		this.sectorManager.deactivateAll();
 		this.playerPosition = {
 			x: this.player.x,
 			y: this.player.y
 		};
 		// trace('LevelState/pauseState, playerPosition = ', this.playerPosition, this.player);
-		this.player.destroy();
-		this.playerPresent = false;
 		// this.playerGroup.visible = false;
 		this.showPauseGUI(true);
 	};
