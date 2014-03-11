@@ -2,21 +2,21 @@ Polyworks.RequirementPlaceHolder = (function() {
 	Polyworks.Utils.inherits(RequirementPlaceHolder, Polyworks.Sprite); 
 	
 	function RequirementPlaceHolder(params) {
-		trace('RequirementPlaceHolder/constructor, this = ', this);
+		// trace('RequirementPlaceHolder/constructor, this = ', this);
 		RequirementPlaceHolder._super.constructor.call(this, params);
 		Polyworks.EventCenter.bind(Polyworks.Events.REQUIREMENT_INITIALIZED, this.onRequirementsInitialized, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet, this);
 	}
 	
 	RequirementPlaceHolder.prototype.begin = function() {
-		trace('RequirementPlaceHolder/begin, this = ', this);
+		// trace('RequirementPlaceHolder/begin, this = ', this);
 		RequirementPlaceHolder._super.begin.call(this);
 	};
 
 	RequirementPlaceHolder.prototype.onRequirementsInitialized = function(params) {
-		trace('RequirementPlaceHolder/onRequirementsInitialized, params = ', params);
+		// trace('RequirementPlaceHolder/onRequirementsInitialized, params = ', params);
 		var requirementImg = params.value.attrs.img;
-		trace('\trequirementImg = ' + requirementImg);
+		// trace('\trequirementImg = ' + requirementImg);
 		var phaserAttrs = this.model.attrs.phaser;
 		phaserAttrs.visible = false;
 		this.requirement = new Polyworks.Sprite({
@@ -29,13 +29,19 @@ Polyworks.RequirementPlaceHolder = (function() {
 		});
 		// this.requirement.visible = false;
 		this.requirement.begin();
-		Polyworks.EventCenter.bind(Polyworks.Events.REQUIREMENT_INITIALIZED, this.onRequirementsInitialized);
+		Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_INITIALIZED, this.onRequirementsInitialized);
 	};
 	
 	RequirementPlaceHolder.prototype.onRequirementMet = function(params) {
-		trace('RequirementPlaceHolder/onRequirementMet, params = ', params);
-		Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet);
+		trace('RequirementPlaceHolder['+this.model.name+']/onRequirementMet, params = ', params);
+		// Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet);
 		this.requirement.visible = true;
+	};
+
+	RequirementPlaceHolder.prototype.destroy = function() {
+		trace('RequirementPlaceHolder['+this.model.name+']/destroy');
+		Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet);
+		RequirementPlaceHolder._super.destroy.call(this);
 	};
 	
 	return RequirementPlaceHolder;

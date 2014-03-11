@@ -68,13 +68,14 @@ Polyworks.GroupCollection = (function() {
 		// trace(this.collection);
 		this.group.removeAll();
 		while(this.model.collection.length > 0) {
-				this.model.collection.pop();
+			this.model.collection.pop();
 		};
 	};
 
 	GroupCollection.prototype.destroy = function() {
-		// trace('GroupCollection['+this.model.name+']/destroy');
-		this.group.destroy();
+		trace('GroupCollection['+this.model.name+']/destroy');
+		
+		this.group.destroy(true);
 		GroupCollection._super.destroy.call(this);
 	};
 	

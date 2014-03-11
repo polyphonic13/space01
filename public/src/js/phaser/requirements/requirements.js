@@ -17,6 +17,7 @@ Polyworks.Requirements = (function() {
 	
 	Requirements.prototype.onRequirementMet = function() {
 		this.requirementsFilled++;
+		trace('Requirements/onRequirementMet, requirementsFill = ' + this.requirementsFilled + ', total = ' + this.totalRequirements);
 		if(this.requirementsFilled >= this.totalRequirements) {
 			Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet, this);
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_REQUIREMENTS_MET });

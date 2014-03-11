@@ -31,9 +31,11 @@ Polyworks.EventCenter = (function() {
 	
 	eventCenter.trigger = function(params) {
 		var list = _listeners[params.type];
+		// trace('----- EventCenter/trigger, type = ' + params.type + ', list = ', list);
 		if(list) {
 			Polyworks.Utils.each(list,
 				function(l) {
+					// trace('\t\tl = ', l);
 					if(l && l.callback) { // in case callback is destroyed during course of trigger
 						l.callback.call(l.context, params);
 					}

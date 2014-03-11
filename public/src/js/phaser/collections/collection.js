@@ -73,10 +73,23 @@ Polyworks.Collection = (function() {
 	
 	Collection.prototype.destroy = function() {
 		var collection = this.model.collection;
-
-		while(collection.length > 0) {
-			collection.pop();
+		trace('Collection['+this.model.name+']/destroy, collection = ', collection);
+		Polyworks.Utils.each(collection,
+			function(child) {
+				trace('\tattempting to call destroy on child['+child.model.name+']');
+				if(child.destroy) {
+					child.destroy();
+				}
+			},
+			this
+		);
+		trace('\tthis.model.name children destroyed, collection = ', collection);
+		if(collection) {
+			while(collection.length > 0) {
+				collection.pop();
+			}
 		}
+		trace('\tpost pop, collection = ', collection);
 	};
 	
 	return Collection;
