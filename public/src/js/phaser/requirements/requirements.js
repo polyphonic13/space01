@@ -9,16 +9,18 @@ Polyworks.Requirements = (function() {
 	Requirements.prototype.begin = function() {
 		Requirements._super.begin.call(this);
 
-		this.requirementsFilled = 0;
+		this.requirementsMet = 0;
 		this.totalRequirements = this.model.collection.length;
-
+		trace('Requirements/begin, about to set on pw game, total = ' + this.totalRequirements);
+		PolyworksGame.setRequirements(this.requirementsMet, this.totalRequirements);
 		Polyworks.EventCenter.bind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet, this);
 	};
 	
 	Requirements.prototype.onRequirementMet = function() {
-		this.requirementsFilled++;
-		trace('Requirements/onRequirementMet, requirementsFill = ' + this.requirementsFilled + ', total = ' + this.totalRequirements);
-		if(this.requirementsFilled >= this.totalRequirements) {
+		this.requirementsMet++;
+		trace('Requirements/onRequirementMet, requirementsFill = ' + this.requirementsMet + ', total = ' + this.totalRequirements);
+		PolyworksGame.setRequirements(this.requirementsMet, this.totalRequirements);
+		if(this.requirementsMet >= this.totalRequirements) {
 			Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet, this);
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_REQUIREMENTS_MET });
 		}

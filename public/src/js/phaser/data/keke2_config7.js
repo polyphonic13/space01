@@ -596,8 +596,25 @@ Polyworks.Config = (function() {
 						},
 						start: {
 							x: winW - (stageUnit * 1.2),
-							y: (stageUnit * 1.4)
+							y: (stageUnit * 1.3)
 						}
+					}
+				},
+				{
+					name: 'requirementsMet',
+					cl: 'Text',
+					attrs: {
+						x: winW - (stageUnit * 2.4),
+						y: (stageUnit * 1),
+						defaultContent: '~{requirementsMet}~ / ~{totalRequirements}~',
+						style: { 
+							font: fontSizes.sm + 'px "Sue Ellen Francisco"',
+							align: 'right', 
+							fill: '#ffffff' 
+						},
+						listeners: [
+							Polyworks.Events.REQUIREMENTS_UPDATED
+						]
 					}
 				}
 				],
@@ -1328,36 +1345,7 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level1-sector1-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
-										health: 3
-									},
-									start: {
-										x: (stageUnit * 12),
-										y: winH - (33 + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									speed: 0.5,
-									attack: 5,
-									score: 2500,
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}
-							] 
+							attrs: [] 
 						},
 						{
 							name: 'bonuses',
@@ -1559,8 +1547,8 @@ Polyworks.Config = (function() {
 										health: 3
 									},
 									start: {
-										x: (stageWidth * 2) + (stageUnit * 6),
-										y: -(stageHeight/4) 
+										x: (stageWidth * 2) + (stageUnit * 8),
+										y: -((stageHeight/4) + 33)
 									},
 									physics: {
 										deferredGravity: true,
@@ -1573,38 +1561,6 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							},
-							{
-								name: 'level1-sector3-enemy2',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
-										health: 3
-									},
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 13),
-										y: winH - (33 + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 15,
-									score: 2000,
-									movement: {
-										speed: 2,
 										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 										formula: null
 									},

@@ -25,6 +25,8 @@ PolyworksGame = (function() {
 		health: 0,
 		currentLevel: 1,
 		totalLevels: 0,
+		requirementsMet: 0,
+		totalRequirements: 0,
 		currentState: '',
 		previousState: '',
 		isLandscape: false,
@@ -129,6 +131,15 @@ PolyworksGame = (function() {
 		setHealth: function(val) {
 			PolyworksGame.health = val;
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.HEALTH_UPDATED });
+		},
+
+		setRequirements: function(met, total) {
+			PolyworksGame.requirementsMet = met;
+			PolyworksGame.totalRequirements = total;
+			trace('PolyworksGame.setRequirements, requirementsMet = ' + PolyworksGame.requirementsMet + ', total = ' + PolyworksGame.totalRequirements);
+			if(total > 0) {
+				Polyworks.EventCenter.trigger({ type: Polyworks.Events.REQUIREMENTS_UPDATED });
+			}
 		},
 
 		addLoadingDiv: function() {
