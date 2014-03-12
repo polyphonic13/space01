@@ -10729,7 +10729,7 @@ Polyworks.Config = (function() {
 						// y: winH - 300
 						// y: winH - (226)
 						x: winW/2,
-						y: winH - (stageUnit * 2.5)
+						y: winH - (stageUnit * 3)
 					},
 					physics: {
 						/*
