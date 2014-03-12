@@ -33,8 +33,10 @@ Polyworks.RequirementPlaceHolder = (function() {
 	};
 	
 	RequirementPlaceHolder.prototype.onRequirementMet = function(params) {
-		trace('RequirementPlaceHolder['+this.model.name+']/onRequirementMet, params = ', params);
+		trace('RequirementPlaceHolder['+this.model.name+']/onRequirementMet, params = ', params, '\tthis = ', this);
 		// Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet);
+		this.model.ancestor.group.add(this.requirement);
+		this.requirement.alpha = 1;
 		this.requirement.visible = true;
 	};
 
