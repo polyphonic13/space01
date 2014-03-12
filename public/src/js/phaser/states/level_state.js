@@ -128,6 +128,7 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.pauseState = function() {
+		this.player.visible = false;
 		this.player.destroy();
 		this.playerPresent = false;
 		this.sectorManager.deactivateAll();
@@ -170,6 +171,7 @@ Polyworks.LevelState = (function() {
 	
 	LevelState.prototype.levelCleared = function() {
 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_CLEARED, value: this.model.name });
+		this.player.visible = false;
 		this.player.destroy();
 		this.playerPresent = false;
 
