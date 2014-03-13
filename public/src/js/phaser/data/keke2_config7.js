@@ -636,8 +636,8 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'quitButton',
 							start: {
-								x: 15,
-								y: 15
+								x: 30,
+								y: 30
 							},
 							frames: [0, 0, 1],
 							// inputCode: Polyworks.InputCodes.QUIT,
@@ -657,8 +657,8 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'menuButton',
 							start: {
-								x: 15,
-								y: 15
+								x: 30,
+								y: 30
 							},
 							frames: [0, 0, 1],
 							// inputCode: Polyworks.InputCodes.MENU,
@@ -678,8 +678,8 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'menuButton',
 							start: {
-								x: 15,
-								y: 15
+								x: 30,
+								y: 30
 							},
 							frames: [0, 0, 1],
 							// inputCode: Polyworks.InputCodes.MENU,
@@ -717,8 +717,8 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'menuButton',
 							start: {
-								x: 15,
-								y: 15
+								x: 30,
+								y: 30
 							},
 							frames: [0, 0, 1],
 							// inputCode: Polyworks.InputCodes.MENU,
@@ -905,8 +905,8 @@ Polyworks.Config = (function() {
 					attrs: {
 						img: 'playButtonSmall',
 						start: {
-							x: 15,
-							y: 15
+							x: 30,
+							y: 30
 						},
 						frames: [0, 0, 1],
 						events: {
@@ -922,8 +922,8 @@ Polyworks.Config = (function() {
 					attrs: {
 						img: 'mapButton',
 						start: {
-							x: 15,
-							y: 80
+							x: 30,
+							y: 95
 						},
 						frames: [0, 0, 1],
 						events: {
@@ -940,8 +940,8 @@ Polyworks.Config = (function() {
 					attrs: {
 						img: 'menuButton',
 						start: {
-							x: 15,
-							y: 145
+							x: 30,
+							y: 160
 						},
 						frames: [0, 0, 1],
 						events: {
@@ -1029,8 +1029,8 @@ Polyworks.Config = (function() {
 					attrs: {
 						img: 'mapButton',
 						start: {
-							x: 15,
-							y: 15
+							x: 30,
+							y: 30
 						},
 						frames: [0, 0, 1],
 						// inputCode: Polyworks.InputCodes.START,
@@ -1048,7 +1048,7 @@ Polyworks.Config = (function() {
 					attrs: {
 						img: 'menuButton',
 						start: {
-							x: 15,
+							x: 30,
 							y: 80
 						},
 						frames: [0, 0, 1],
