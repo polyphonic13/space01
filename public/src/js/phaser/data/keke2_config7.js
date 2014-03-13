@@ -51,8 +51,10 @@ Polyworks.Config = (function() {
 				levelClearedIcon: 'images/map/level_cleared_icon.png',
 				pageLeftArrow: 'images/map/page_left_arrow.png',
 				pageRightArrow: 'images/map/page_right_arrow.png',
-				mapForest: 'images/map/map_forest.png',
-				mapMountains: 'images/map/map_mountains.png',
+				mapForest: 'images/map/map04_forest.png',
+				// mapForest: 'images/map/map_forest.png',
+				mapMountains: 'images/map/map04_mountains.png',
+				// mapMountains: 'images/map/map_mountains.png',
 
 				sky: 'images/night_sky.jpg',
 
@@ -969,7 +971,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: 0,
-								y: (stageUnit * 1)
+								y: (stageUnit * 1.6)
 							}
 						}
 					}
@@ -1012,7 +1014,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: 0,
-								y: (stageUnit * 1)
+								y: (stageUnit * 1.6)
 							}
 						}
 					}
