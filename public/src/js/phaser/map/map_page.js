@@ -67,9 +67,9 @@ Polyworks.MapPage = (function() {
 	MapPage.prototype.parseLevels = function(pageStartX, stageSeventh) {
 		var levels = this.model.levels;
 		var levelsLength = levels.length;
-		var levelIconWidth = (Polyworks.Stage.unit * 1.5);
+		var levelIconWidth = (Polyworks.Stage.unit * 1.6);
 		var levelIconXOffset = (stageSeventh/2) - (levelIconWidth/2);
-		var levelIconHeight = (Polyworks.Stage.unit * 2.25);
+		var levelIconHeight = (Polyworks.Stage.unit * 2);
 		var stageUnit = Polyworks.Stage.unit;
 		var iconWidthUnit = (stageSeventh/2) - (levelIconWidth/2);
 		// trace('============= iconWidthUnit = ' + iconWidthUnit + '\n\tstageSeventh = ' + stageSeventh + '\n\tlevelIconWidth = ' + levelIconWidth);
@@ -221,9 +221,9 @@ Polyworks.MapPage = (function() {
 		var img;
 		var eventValue;
 		var buttonX; 
-		var levelIconWidth = (Polyworks.Stage.unit * 1.5);
+		var levelIconWidth = (Polyworks.Stage.unit * 1.6);
 		var levelIconXOffset = (stageSeventh/2) - (levelIconWidth/2);
-		var levelIconHeight = (Polyworks.Stage.unit * 2.25);
+		var levelIconHeight = (Polyworks.Stage.unit * 2);
 
 		if(direction === 'left') {
 			img = 'pageLeftArrow';
