@@ -1,6 +1,268 @@
 Polyworks.Config = (function() {
 	function Config() {}
 	
+	var _images = {
+		// gameTitle: 'images/keke_title.png',
+		gameTitle: 'images/keke_grey_expanse_title.png',
+		greyExpanseTitle: 'images/grey_expanse_title.png',
+
+		blackRect: 'images/black_rect32x32.png',
+		greyRect: 'images/grey_rect32x32.png',
+		whiteRect: 'images/white_rect32x32.png',
+
+		level1Icon: 'images/map/level_1_icon.png',
+		level2Icon: 'images/map/level_2_icon.png',
+		level3Icon: 'images/map/level_3_icon.png',
+		level4Icon: 'images/map/level_4_icon.png',
+		level5Icon: 'images/map/level_5_icon.png',
+		level6Icon: 'images/map/level_6_icon.png',
+		level7Icon: 'images/map/level_7_icon.png',
+		chapter1Title: 'images/map/chapter_1_title.png',
+		chapter2Title: 'images/map/chapter_2_title.png',
+		levelSelectedIcon: 'images/map/level_selected_icon.png',
+		levelLockedIcon: 'images/map/level_locked_icon.png',
+		levelClearedIcon: 'images/map/level_cleared_icon.png',
+		pageLeftArrow: 'images/map/page_left_arrow.png',
+		pageRightArrow: 'images/map/page_right_arrow.png',
+		mapForest: 'images/map/map04_forest.png',
+		// mapForest: 'images/map/map_forest.png',
+		mapMountains: 'images/map/map04_mountains.png',
+		// mapMountains: 'images/map/map_mountains.png',
+
+		sky: 'images/night_sky.jpg',
+
+		forestBackground01: 'images/pencil_forest01a.png',
+		forestBackground02: 'images/pencil_forest01b.png',
+		forestBackground03: 'images/pencil_forest01c.png',
+
+		mountainBackground01a: 'images/pencil_mountain04a.png',
+		mountainBackground01b: 'images/pencil_mountain04b.png',
+		mountainBackground01c: 'images/pencil_mountain04c.png',
+		mountainBackground01d: 'images/pencil_mountain04d.png',
+		mountainBackground01e: 'images/pencil_mountain04e.png',
+		mountainBackground01f: 'images/pencil_mountain04f.png',
+
+		mountainBackground05a: 'images/pencil_mountain05a.png',
+		mountainBackground05b: 'images/pencil_mountain05b.png',
+		mountainBackground05c: 'images/pencil_mountain05c.png',
+		mountainBackground05d: 'images/pencil_mountain05d.png',
+		mountainBackground05e: 'images/pencil_mountain05e.png',
+		mountainBackground05f: 'images/pencil_mountain05f.png',
+		mountainBackground05h: 'images/pencil_mountain05h.png',
+		mountainBackground05i: 'images/pencil_mountain05i.png',
+		mountainBackground05k: 'images/pencil_mountain05k.png',
+		mountainBackground05l: 'images/pencil_mountain05l.png',
+
+		ovalMask: 'images/oval_mask.png',
+
+		grass03: 'images/grass03.png',
+		grass03a: 'images/grass03a.png',
+		grass03b: 'images/grass03b.png',
+		grass03c: 'images/grass03c.png',
+
+		tree01: 'images/tree04a.png',
+		tree02: 'images/tree04a.png',
+		tree03: 'images/tree04a.png',
+		tree04: 'images/tree04a.png',
+
+		platform: 'images/platform.png',
+		platformGrey: 'images/platform_grey.png',
+		platformRed: 'images/platform_red.png',
+		platformV: 'images/platform_v.png',
+
+		rockPlatform01: 'images/rock_platform01.png',
+
+		branch02Left: 'images/branch03_left.png',
+		branch02aLeft: 'images/branch03a_left.png',
+		vine01Left: 'images/vine01a_left.png',
+		branch02Right: 'images/branch03_right.png',
+		branch02aRight: 'images/branch03a_right.png',
+		vine01Right: 'images/vine01a_right.png',
+		trunk01: 'images/trunk01.png',
+		thorns01: 'images/thorns02.png',
+
+		// requirements
+		crystals02Grey: 'images/crystals02_grey.png',
+		crystals02Green: 'images/crystals02_green.png',
+		crystals02Blue: 'images/crystals02_blue.png',
+		crystals02Red: 'images/crystals02_red.png',
+		crystals02Aqua: 'images/crystals02_aqua.png',
+		crystals02Purple: 'images/crystals02_purple.png',
+		crystals02Orange: 'images/crystals02_orange.png',
+
+		// bonuses
+		lollipop: 'images/lollipop.png',
+
+		// effects
+		snowFlake01: 'images/particle01.png',
+
+		// buttons
+		startButton: 'images/start_button.png',
+		nextButton: 'images/next_button.png',
+		retryButton: 'images/retry_button.png',
+
+		// icons
+		heart: 'images/heart.png',
+		invisibleRect: 'images/invisible.png'
+	};
+
+	var _sprites = {
+		leftButton: 
+		{
+			url: 'images/arrow_left2.png',
+			// url: 'images/arrow_left2_sm.png',
+			width: 100,
+			height: 341,
+			// width: 50,
+			// height: 171,
+			frames: 2
+		},
+		rightButton: 
+		{
+			url: 'images/arrow_right2.png',
+			// url: 'images/arrow_right2_sm.png',
+			width: 100,
+			height: 341,
+			// width: 50,
+			// height: 171,
+			frames: 2
+		},
+		upButton: 
+		{
+			url: 'images/arrow_up2.png',
+			// url: 'images/arrow_up2_sm.png',
+			width: 100,
+			height: 341,
+			// width: 50,
+			// height: 171,
+			frames: 2
+		},
+		pauseButton: 
+		{
+			url: 'images/pause_button2.png',
+			width: 50,
+			height: 50,
+			frames: 2
+		},
+		playButton: 
+		{
+			url: 'images/play_button.png',
+			width: 100,
+			height: 100,
+			frames: 2
+		},
+		playButtonSmall: 
+		{
+			url: 'images/play_button_sm.png',
+			width: 50,
+			height: 50,
+			frames: 2
+		},
+		menuButton: 
+		{
+			url: 'images/menu_button2.png',
+			width: 50,
+			height: 50,
+			frames: 2
+		},
+		mapButton: 
+		{
+			url: 'images/map_button.png',
+			width: 50,
+			height: 50,
+			frames: 2
+		},
+		restartButton: 
+		{
+			url: 'images/restart_button.png',
+			width: 100,
+			height: 100,
+			frames: 2
+		},
+		quitButton: 
+		{
+			url: 'images/quit_button.png',
+			width: 50,
+			height: 50,
+			frames: 2
+		},
+
+		// player
+		keke: 
+		{
+			url: 'images/keke_character3c.png', 
+			// width: 95, 
+			// height: 113, 
+			width: 190,
+			height: 226,
+			frames: 35
+		},
+		// enemies
+		caterpillar01: 
+		{
+			url: 'images/caterpillar02a.png',
+			width: 104, 
+			height: 32, 
+			frames: 14
+		},
+		caterpillar02: 
+		{
+			url: 'images/caterpillar02b.png',
+			width: 104, 
+			height: 32, 
+			frames: 14
+		}
+	};
+	
+	Config.prototype.getImages = function() {
+		return _images;
+	};
+	
+	Config.prototype.getSprites = function() {
+		return _sprites;
+	};
+	
+	Config.prototype.getInitialStateImages = function() {
+		return [
+			'blackRect',
+			'greyRect',
+			'whiteRect',
+			'gameTitle',
+			'greyExpanseTitle',
+			'nextButton',
+			'level1Icon',
+			'level2Icon',
+			'level3Icon',
+			'level4Icon',
+			'level5Icon',
+			'level6Icon',
+			'level7Icon',
+			'invisibleRect',
+			'chapter1Title',
+			'chapter2Title',
+			'levelSelectedIcon',
+			'levelLockedIcon',
+			'levelClearedIcon',
+			'levelLockedIcon',
+			'pageLeftArrow',
+			'pageRightArrow',
+			'startButton'
+		];
+	};
+	
+	Config.prototype.getInitialStateSprites = function() {
+		return [
+			'keke',
+			'pauseButton',
+			'menuButton',
+			'mapButton',
+			'playButton',
+			'playButtonSmall',
+			'restartButton',
+			'quitButton'
+		];
+	};
+	
 	Config.prototype.init = function(stage) {
 		var winW = stage.winW; 
 		var winH = stage.winH;
@@ -4576,7 +4838,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 2) + (stageUnit * 13),
-								y: winH - (stageUnit * 7)
+								y: winH - (stageUnit * 9)
 							}
 						}
 					}
@@ -5041,27 +5303,6 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
-							}
-						}
-					}
-					]
-				},
-				{
-					name: 'requirements',
-					cl: 'Requirements',
-					attrs: [
-					{
-						name: 'requirement1',
-						cl: 'Requirement',
-						attrs: {
-							img: 'crystals02Orange',
-							phaser: {
-								width: (stageUnit * 0.75),
-								height: (stageUnit * 1.5)
-							},
-							start: {
-								x: (stageWidth * 2) + (stageUnit * 13),
-								y: winH - (stageUnit * 12)
 							}
 						}
 					}
@@ -6211,6 +6452,18 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
+					name: 'levelControls',
+					cl: 'ControlButtons',
+					type: 'level',
+					addTo: 'null',
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				},
+				{
 					name: 'levelGUI',
 					cl: 'SharedGroupCollection',
 					type: 'levelGUI',
@@ -6224,16 +6477,25 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
-					name: 'levelControls',
-					cl: 'ControlButtons',
-					type: 'level',
-					addTo: 'null',
-					attrs: {
-						start: {
-							x: 0,
-							y: 0
+					name: 'requirements',
+					cl: 'Requirements',
+					attrs: [
+					{
+						name: 'requirement1',
+						cl: 'Requirement',
+						attrs: {
+							img: 'crystals02Orange',
+							phaser: {
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageWidth * 2) + (stageUnit * 13),
+								y: winH - (stageUnit * 12)
+							}
 						}
 					}
+					]
 				},
 				{
 					name: 'pauseGUI',
@@ -6694,27 +6956,6 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
-							}
-						}
-					}
-					]
-				},
-				{
-					name: 'requirements',
-					cl: 'Requirements',
-					attrs: [
-					{
-						name: 'requirement1',
-						cl: 'Requirement',
-						attrs: {
-							img: 'crystals02Purple',
-							phaser: {
-								width: (stageUnit * 0.75),
-								height: (stageUnit * 1.5)
-							},
-							start: {
-								x: (stageWidth * 4) + (stageUnit * 11),
-								y: winH - (stageUnit * 16)
 							}
 						}
 					}
@@ -7864,6 +8105,18 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
+					name: 'levelControls',
+					cl: 'ControlButtons',
+					type: 'level',
+					addTo: 'null',
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				},
+				{
 					name: 'levelGUI',
 					cl: 'SharedGroupCollection',
 					type: 'levelGUI',
@@ -7877,16 +8130,25 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
-					name: 'levelControls',
-					cl: 'ControlButtons',
-					type: 'level',
-					addTo: 'null',
-					attrs: {
-						start: {
-							x: 0,
-							y: 0
+					name: 'requirements',
+					cl: 'Requirements',
+					attrs: [
+					{
+						name: 'requirement1',
+						cl: 'Requirement',
+						attrs: {
+							img: 'crystals02Purple',
+							phaser: {
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageWidth * 4) + (stageUnit * 11),
+								y: winH - (stageUnit * 16)
+							}
 						}
 					}
+					]
 				},
 				{
 					name: 'pauseGUI',
@@ -9311,27 +9573,6 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
-					name: 'requirements',
-					cl: 'Requirements',
-					attrs: [
-					{
-						name: 'requirement1',
-						cl: 'Requirement',
-						attrs: {
-							img: 'crystals02Green',
-							phaser: {
-								width: (stageUnit * 0.75),
-								height: (stageUnit * 1.5)
-							},
-							start: {
-								x: (stageWidth * 2) + (stageUnit * 13),
-								y: winH - (stageUnit * 3)
-							}
-						}
-					}
-					]
-				},
-				{
 					name: 'sectors',
 					cl: 'SectorManager',
 					attrs: [
@@ -10536,6 +10777,18 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
+					name: 'levelControls',
+					cl: 'ControlButtons',
+					type: 'level',
+					addTo: 'null',
+					attrs: {
+						start: {
+							x: (stageUnit * 4),
+							y: 0
+						}
+					}
+				},
+				{
 					name: 'levelGUI',
 					cl: 'SharedGroupCollection',
 					type: 'levelGUI',
@@ -10549,16 +10802,25 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
-					name: 'levelControls',
-					cl: 'ControlButtons',
-					type: 'level',
-					addTo: 'null',
-					attrs: {
-						start: {
-							x: (stageUnit * 4),
-							y: 0
+					name: 'requirements',
+					cl: 'Requirements',
+					attrs: [
+					{
+						name: 'requirement1',
+						cl: 'Requirement',
+						attrs: {
+							img: 'crystals02Green',
+							phaser: {
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageWidth * 2) + (stageUnit * 13),
+								y: winH - (stageUnit * 3)
+							}
 						}
 					}
+					]
 				},
 				{
 					name: 'pauseGUI',

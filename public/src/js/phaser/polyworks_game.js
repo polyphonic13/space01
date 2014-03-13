@@ -11,6 +11,7 @@ PolyworksGame = (function() {
 	
 	var _gameTitle = '';
 	var _isTouchDevice = false;
+	var _preloaded = false;
 	var _stageInitialized = false;
 	var _statesInitialized = false;
 	var _firstStateChanged = false; 
@@ -51,6 +52,7 @@ PolyworksGame = (function() {
 				}
 			);
 
+			PolyworksGame.phaser = new Phaser.Game(Polyworks.Stage.winW, Polyworks.Stage.winH, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
 			_addListeners();
 			_checkOrientation();
 		},
@@ -217,8 +219,11 @@ PolyworksGame = (function() {
 	function _preload() {
 		trace('PolyworksGame/_preload');
 		var phaser = PolyworksGame.phaser;
-		var images = _model.images;
-		// trace('preload images');
+		var config = new Polyworks.Config();
+		var images = config.getInitialStateImages();
+		var sprites = config.getInitialStateSprites();
+		// var images = _model.images;
+		trace('preload images', images);
 		var loadedImages = {};
 
 		Polyworks.Utils.each(images,
@@ -231,9 +236,9 @@ PolyworksGame = (function() {
 			this
 		);
 
-		var sprites = _model.sprites;
+		// var sprites = _model.sprites;
 		var loadedSprites = {};
-		// trace('preload sprites');
+		trace('preload sprites', sprites);
 		Polyworks.Utils.each(sprites,
 			function(sprite, key) {
 				// trace('PolyworksGame setting sprite['+key+'] loaded to false');
@@ -247,12 +252,15 @@ PolyworksGame = (function() {
 
 		PolyworksGame.loadedImages = loadedImages;
 		PolyworksGame.loadedSprites = loadedSprites;
+		PolyworksGame.config = config;
 	}
 	
 	function _create() {
 		trace('PolyworksGame/_create');
-		_beginControls();
-		_beginStates();
+		_preloaded = true;
+		if(_stageInitialized) {
+			_finishInitialization();
+		}
 	}
 	
 	function _addListeners() {
@@ -296,27 +304,23 @@ PolyworksGame = (function() {
 		_isTouchDevice = (navigator.userAgent.match(/ipad|iphone|android/i) !== null);
 		trace('PolyworksGame/_onStageInitialized, _isTouchDevice = ' + _isTouchDevice);
 
-		// trace('PolyworksGame/begin, stage w/h = ' + Polyworks.Stage.width + '/' + Polyworks.Stage.height);
-		// trace((Polyworks.Stage.height * 2) + ' ' + ((-Polyworks.Stage.height) + 10));
-		// _checkPhaserBoot();
+		if(_preloaded) {
+			_finishInitialization();
+		}
+	}
 
-	// 	Polyworks.Utils.loadScript(_configURL, { type: Polyworks.Events.CONFIG_LOADED });
-	// }
-	// 
-	// function _onConfigLoaded() {
-	// 	trace('PolyworksGame/_onConfigLoaded, _statesInitialized = ' + _statesInitialized);
-
-		var config = new Polyworks.Config();
-
-		_model = config.init(Polyworks.Stage);
+	function _finishInitialization() {
+		trace('PolyworksGame/_finishInitialization, phaser w/h: ' + Polyworks.Stage.winW + '/' + Polyworks.Stage.winH);
+		PolyworksGame.phaser.width = Polyworks.Stage.winW;
+		PolyworksGame.phaser.height = Polyworks.Stage.winH; 
+		trace('\tphaser w/h now set to: ' + PolyworksGame.phaser.width + '/' + PolyworksGame.phaser.height);
+		_model = PolyworksGame.config.init(Polyworks.Stage);
 		trace(_model);
 		PolyworksGame.startingHealth = _model.player.attrs.phaser.health;
-		PolyworksGame.phaser = new Phaser.Game(Polyworks.Stage.winW, Polyworks.Stage.winH, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
-
-		// if(_statesInitialized) {
-		// 	PolyworksGame.changeState(_model.initialState);
-		// }
+		_beginControls();
+		_beginStates();
 	}
+	
 	function _onControlPressed(event) {
 		switch(event.value) {
 			case Polyworks.InputCodes.QUIT:
@@ -339,7 +343,7 @@ PolyworksGame = (function() {
 		_states = {};
 
 		PolyworksGame.levels = {};
-		
+
 		var states = _model.states;
 		var state;
 

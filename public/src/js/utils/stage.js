@@ -22,7 +22,7 @@ nexus 5:
 Polyworks.Stage = (function() {
 	var stage = {};
 	
-	stage.winW = 0;
+	stage.winW = 0; 
 	stage.winH = 0;
 	stage.width = 0;
 	stage.height = 0;
@@ -64,11 +64,14 @@ Polyworks.Stage = (function() {
 
 		stage.height = (document.documentElement.clientHeight > 800) ? 800 : document.documentElement.clientHeight;
 		stage.width = ((document.documentElement.clientHeight/_ar[1]) * _ar[0]);
-
+		
 		if(stage.width > document.documentElement.clientWidth) {
 			stage.width = document.documentElement.clientWidth;
 			stage.height = (stage.width/_ar[0]) * _ar[1];
 		}
+
+		// stage.width = 700;
+		// stage.height = 300;
 
 		stage.unit = stage.height/_ar[1];
 		var left = (document.documentElement.clientWidth/2) - (stage.width/2);
