@@ -24,9 +24,6 @@ Polyworks.Player = (function() {
 		this.damageInterval = 250;
 		this.justDamaged = false;
 
-		// pause state debugging
-		this.reactivated = false; 
-
 		this.beginWorld();
 		this.beginEvents();
 		this.beginControls();
@@ -137,32 +134,32 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.activateGravity = function() {
 		trace('Player/activateGravity');
-		this.reactivated = true;
 		Player._super.activateGravity.call(this);
 	};
 
 	Player.prototype.pwUpdate = function(params) {
-		if(this.reactivated) {
-			trace('Player/update, x/y = ' + this.body.screenX + '/' + this.body.screenY, this);
-		}
 		// trace('Player/update, health = ' + this.health);
 		// trace(params);
 		if(this.alive) {
 			this.collided = false;
 			var physics = PolyworksGame.phaser.physics;
 			var attrs = this.model.attrs;
+			var physicalItems = params.physicalItems; 
 
-			this.checkTerrainCollision(params.terrain);
-
-			if(params.requirements !== null) {
-				this.checkRequirementsCollision(params.requirements, physics);
+			for(var key in physicalItems) {
+				this[('check' + key + 'Collision')](physicalItems[key], physics);
 			}
-
-			this.checkDynamicTerrainCollision(params.dynamicTerrain);
-
-			this.checkHazardCollision(params.hazards, physics);
-			this.checkEnemyCollision(params.enemies, physics);
-			this.checkBonusCollision(params.bonuses, physics);
+			// this.checkTerrainCollision(params.terrain);
+			// 
+			// if(params.requirements !== null) {
+			// 	this.checkRequirementsCollision(params.requirements, physics);
+			// }
+			// 
+			// this.checkDynamicTerrainCollision(params.dynamicTerrain);
+			// 
+			// this.checkHazardsCollision(params.hazards, physics);
+			// this.checkEnemiesCollision(params.enemies, physics);
+			// this.checkBonusesCollision(params.bonuses, physics);
 
 			if(this.body.touching.down) {
 				attrs.grounded = true;
@@ -172,18 +169,17 @@ Polyworks.Player = (function() {
 				attrs.grounded = false;
 			}
 		}
-		traced = true;
 	};
 
-	Player.prototype.checkHazardCollision = function(hazards, physics) {
+	Player.prototype.checkHazardsCollision = function(hazards, physics) {
 		this.checkCollision(hazards, this.onHazradCollision, physics, this);
 	};
 	
-	Player.prototype.checkEnemyCollision = function(enemies, physics) {
+	Player.prototype.checkEnemiesCollision = function(enemies, physics) {
 		this.checkCollision(enemies, this.onEnemyCollision, physics, this);
 	};
 	
-	Player.prototype.checkBonusCollision = function(bonuses, physics) {
+	Player.prototype.checkBonusesCollision = function(bonuses, physics) {
 		this.checkCollision(bonuses, this.onBonusCollision, physics, this);
 	};
 	

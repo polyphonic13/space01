@@ -90,15 +90,24 @@ Polyworks.LevelState = (function() {
 				this.sectorManager.pwUpdate(updateParams);
 
 				// update player with active sector members & terrain
+				var terrainGroup = this.terrain.group;
 				var requirementsGroup = (this.requirements) ? this.requirements.getActive() : null;
+				var dynamicTerrainGroup = sector.dynamicTerrain.getActive();
+				var hazards = sector.hazards.getActive();
+				var enemies = sector.enemies.getActive();
+				var bonuses = sector.bonuses.getActive();
+				var physicalItems = {};
+
+				physicalItems.Terrain = terrainGroup;
+
+				if(requirementsGroup) physicalItems.Requirements = requirementsGroup;
+				if(dynamicTerrainGroup) physicalItems.DynamicTerrain = dynamicTerrainGroup;
+				if(hazards) physicalItems.Hazards = hazards;
+				if(enemies) physicalItems.Enemies = enemies;
+				if(bonuses) physicalItems.Bonuses = bonuses;
 
 				this.player.pwUpdate({
-					terrain: this.terrain.group,
-					requirements: requirementsGroup,
-					dynamicTerrain: sector.dynamicTerrain.getActive(),
-					hazards: sector.hazards.getActive(),
-					enemies: sector.enemies.getActive(),
-					bonuses: sector.bonuses.getActive(),
+					physicalItems: physicalItems,
 					context: this
 				});
 			}
