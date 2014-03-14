@@ -70,42 +70,33 @@ PolyworksGame = (function() {
 
 		changeState: function(id) {
 			trace('change state, id = ' + id);
-				switch(id) {
-					case 'level':
-						id += PolyworksGame.currentLevel;
-					break;
-
-					case 'nextLevel':
-						trace('next level, current = ' + PolyworksGame.currentLevel + ', total = ' + PolyworksGame.totalLevels);
-						if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels)) {
-							PolyworksGame.currentLevel++;
-							id = 'level' + PolyworksGame.currentLevel;
-						} else {
-							PolyworksGame.currentLevel = 1;
-							id = 'completed';
-						}
-					break;
-
-					case 'intermission':
-						if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels)) {
-							id = 'intermission';
-						} else {
-							PolyworksGame.currentLevel = 1;
-							id = 'completed';
-						}
-					break;
-
-					case 'gameOver':
-						// PolyworksGame.currentLevel = 1;
-					break;
-
-					default:
-					break;
-				}
-
 				if(id === 'quit') {
 					PolyworksGame.quit();
 				} else {
+					switch(id) {
+						case 'level':
+							id += ((PolyworksGame.currentLevel < 10) ? '0' : '') + PolyworksGame.currentLevel;
+						break;
+
+						case 'nextLevel':
+							trace('next level, current = ' + PolyworksGame.currentLevel + ', total = ' + PolyworksGame.totalLevels);
+							if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels)) {
+								PolyworksGame.currentLevel++;
+								id = 'level' + ((PolyworksGame.currentLevel < 10) ? '0' : '') + PolyworksGame.currentLevel;
+							} else {
+								PolyworksGame.currentLevel = 1;
+								id = 'completed';
+							}
+						break;
+
+						case 'gameOver':
+							// PolyworksGame.currentLevel = 1;
+						break;
+
+						default:
+						break;
+					}
+
 					var state = _states[id];
 					if(state) {
 						PolyworksGame.previousState = PolyworksGame.currentState;
@@ -339,21 +330,24 @@ PolyworksGame = (function() {
 		_states = {};
 
 		PolyworksGame.levels = {};
-		
+
 		var states = _model.states;
 		var state;
+		var firstLevel = true; 
 
 		Polyworks.Utils.each(states,
-			function(s) {
+			function(s, idx) {
 				state = new Polyworks[s.cl](s, s.name);
 				_states[s.name] = state;
 				PolyworksGame.phaser.state.add(s.name, state, false);
 				if(s.name.indexOf('level') > -1) {
+					trace('\tstate['+s.name+']');
 					PolyworksGame.totalLevels++;
 					PolyworksGame.levels[s.name] = {
 						cleared: false,
-						locked: true
+						locked: ((firstLevel) ? false : true)
 					};
+					firstLevel = false;
 				}
 			},
 			this

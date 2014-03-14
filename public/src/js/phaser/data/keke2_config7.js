@@ -38,13 +38,13 @@ Polyworks.Config = (function() {
 				whiteRect: 'images/white_rect32x32.png',
 
 				kekeSmall: 'images/map/new_keke4a_sm.png',
-				level1Icon: 'images/map/level_1_icon.png',
-				level2Icon: 'images/map/level_2_icon.png',
-				level3Icon: 'images/map/level_3_icon.png',
-				level4Icon: 'images/map/level_4_icon.png',
-				level5Icon: 'images/map/level_5_icon.png',
-				level6Icon: 'images/map/level_6_icon.png',
-				level7Icon: 'images/map/level_7_icon.png',
+				level01Icon: 'images/map/level_1_icon.png',
+				level02Icon: 'images/map/level_2_icon.png',
+				level03Icon: 'images/map/level_3_icon.png',
+				level04Icon: 'images/map/level_4_icon.png',
+				level05Icon: 'images/map/level_5_icon.png',
+				level06Icon: 'images/map/level_6_icon.png',
+				level07Icon: 'images/map/level_7_icon.png',
 				chapter1Title: 'images/map/chapter_1_title.png',
 				chapter2Title: 'images/map/chapter_2_title.png',
 				levelSelectedIcon: 'images/map/level_selected_icon.png',
@@ -139,8 +139,8 @@ Polyworks.Config = (function() {
 				mapLocationMarker: 
 				{
 					url: 'images/map/map_location_marker.png',
-					width: 256,
-					height: 256,
+					width: 128,
+					height: 128,
 					frames: 4
 				},
 				// buttons
@@ -596,7 +596,7 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
-					name: 'level1-requirementPlaceHolder',
+					name: 'level01-requirementPlaceHolder',
 					cl: 'RequirementPlaceHolder',
 					attrs: {
 						img: 'crystals02Grey',
@@ -831,20 +831,19 @@ Polyworks.Config = (function() {
 				backgroundColor: '#ffffff',
 				images: [
 					'kekeSmall',
-					'mapLocationMarker',
 					'blackRect',
 					'greyRect',
 					'whiteRect',
 					'gameTitle',
 					'greyExpanseTitle',
 					'nextButton',
-					'level1Icon',
-					'level2Icon',
-					'level3Icon',
-					'level4Icon',
-					'level5Icon',
-					'level6Icon',
-					'level7Icon',
+					'level01Icon',
+					'level02Icon',
+					'level03Icon',
+					'level04Icon',
+					'level05Icon',
+					'level06Icon',
+					'level07Icon',
 					'invisibleRect',
 					'chapter1Title',
 					'chapter2Title',
@@ -858,6 +857,7 @@ Polyworks.Config = (function() {
 				],
 				sprites: [
 					'keke',
+					'mapLocationMarker',
 					'pauseButton',
 					'menuButton',
 					'mapButton',
@@ -918,12 +918,12 @@ Polyworks.Config = (function() {
 				backgroundColor: '#ffffff',
 				images: [
 					'nextButton',
-					'level1Icon',
-					'level2Icon',
-					'level3Icon',
-					'level4Icon',
-					'level6Icon',
-					'level7Icon',
+					'level01Icon',
+					'level02Icon',
+					'level03Icon',
+					'level04Icon',
+					'level06Icon',
+					'level07Icon',
 					'invisibleRect',
 					'chapter1Title',
 					'chapter2Title',
@@ -937,6 +937,7 @@ Polyworks.Config = (function() {
 					'mapMountains'
 				],
 				sprites: [
+					'mapLocationMarker',
 					'menuButton'
 				],
 				initialPage: 0,
@@ -945,11 +946,11 @@ Polyworks.Config = (function() {
 					name: 'page1',
 					cl: 'MapPage',
 					levels: [
-						'level1',
-						'level2',
-						'level3',
-						'level4',
-						'level5'
+						'level01',
+						'level02',
+						'level03',
+						'level04',
+						'level05'
 					],
 					attrs: [
 					{
@@ -961,73 +962,14 @@ Polyworks.Config = (function() {
 								width: (stageWidth * 0.85),
 								height: (stageHeight * 0.85),
 								alpha: 0.5
-								// visible: false
 							},
 							start: {
-								// x: (winW/2) - (stageWidth/2),
-								// y: (winH/2) - (stageHeight/2)
 								x: (winW/2) - ((stageWidth * 0.85)/2),
 								y: (winH/2) - ((stageHeight * 0.75)/2)
 							}
 						}
 					},
 					{
-						name: 'level1-locationMarker',
-						cl: 'Sprite',
-						attrs: {
-							img: 'mapLocationMarker',
-							start: {
-								x: (winW - stageW) + (stageUnit * 1),
-								y: (winH/2 - stageH/2) + (stageUnit * 1) 
-							}
-						}
-					},
-					{
-						name: 'level2-locationMarker',
-						cl: 'Sprite',
-						attrs: {
-							img: 'mapLocationMarker',
-							start: {
-								x: (winW - stageW) + (stageUnit * 3),
-								y: (winH/2 - stageH/2) + (stageUnit * 1.5) 
-							}
-						}
-					},
-					{
-						name: 'level3-locationMarker',
-						cl: 'Sprite',
-						attrs: {
-							img: 'mapLocationMarker',
-							start: {
-								x: (winW - stageW) + (stageUnit * 5),
-								y: (winH/2 - stageH/2) + (stageUnit * 0.5) 
-							}
-						}
-					},
-					{
-						name: 'level4-locationMarker',
-						cl: 'Sprite',
-						attrs: {
-							img: 'mapLocationMarker',
-							start: {
-								x: (winW - stageW) + (stageUnit * 7),
-								y: (winH/2 - stageH/2) + (stageUnit * 1) 
-							}
-						}
-					},
-					{
-						name: 'level5-locationMarker',
-						cl: 'Sprite',
-						attrs: {
-							img: 'mapLocationMarker',
-							start: {
-								x: (winW - stageW) + (stageUnit * 9),
-								y: (winH/2 - stageH/2) + (stageUnit * 1) 
-							}
-						}
-					}
-					],
-					title: {
 						name: 'pageTitle',
 						cl: 'Sprite',
 						attrs: {
@@ -1040,14 +982,90 @@ Polyworks.Config = (function() {
 								y: (stageUnit * 1.6)
 							}
 						}
+					},
+					{
+						name: 'level01-mapMarker',
+						cl: 'MapMarker',
+						attrs: {
+							img: 'mapLocationMarker',
+							phaser: {
+								width: (stageUnit * 1),
+								height: (stageUnit * 1)
+							},
+							start: {
+								x: (winW - stageWidth) + (stageUnit * 3),
+								y: (winH/2)
+							}
+						}
+					},
+					{
+						name: 'level02-mapMarker',
+						cl: 'MapMarker',
+						attrs: {
+							img: 'mapLocationMarker',
+							phaser: {
+								width: (stageUnit * 1),
+								height: (stageUnit * 1)
+							},
+							start: {
+								x: (winW - stageWidth) + (stageUnit * 5),
+								y: (winH/2) - (stageUnit * 1.5) 
+							}
+						}
+					},
+					{
+						name: 'level03-mapMarker',
+						cl: 'MapMarker',
+						attrs: {
+							img: 'mapLocationMarker',
+							phaser: {
+								width: (stageUnit * 1),
+								height: (stageUnit * 1)
+							},
+							start: {
+								x: (winW - stageWidth) + (stageUnit * 7.5),
+								y: (winH/2) + (stageUnit * 0.5) 
+							}
+						}
+					},
+					{
+						name: 'level04-mapMarker',
+						cl: 'MapMarker',
+						attrs: {
+							img: 'mapLocationMarker',
+							phaser: {
+								width: (stageUnit * 1),
+								height: (stageUnit * 1)
+							},
+							start: {
+								x: (winW - stageWidth) + (stageUnit * 10),
+								y: (winH/2) - (stageUnit * 1) 
+							}
+						}
+					},
+					{
+						name: 'level05-mapMarker',
+						cl: 'MapMarker',
+						attrs: {
+							img: 'mapLocationMarker',
+							phaser: {
+								width: (stageUnit * 1),
+								height: (stageUnit * 1)
+							},
+							start: {
+								x: (winW - stageWidth) + (stageUnit * 12),
+								y: (winH/2) + (stageUnit * 1.5) 
+							}
+						}
 					}
+					]
 				},
 				{
 					name: 'page2',
 					cl: 'MapPage',
 					levels: [
-						'level6',
-						'level7'
+						'level06',
+						'level07'
 					],
 					attrs: [
 					{
@@ -1059,18 +1077,14 @@ Polyworks.Config = (function() {
 								width: (stageWidth * 0.85),
 								height: (stageHeight * 0.85),
 								alpha: 0.5
-								// visible: false
 							},
 							start: {
-								// x: (winW/2) - (stageWidth/2),
-								// y: (winH/2) - (stageHeight/2)
 								x: (winW/2) - ((stageWidth * 0.85)/2),
 								y: (winH/2) - ((stageHeight * 0.75)/2)
 							}
 						}
-					}
-					],
-					title: {
+					},
+					{
 						name: 'pageTitle',
 						cl: 'Sprite',
 						attrs: {
@@ -1083,7 +1097,83 @@ Polyworks.Config = (function() {
 								y: (stageUnit * 1.6)
 							}
 						}
+					},
+					{
+						name: 'level06-mapMarker',
+						cl: 'MapMarker',
+						attrs: {
+							img: 'mapLocationMarker',
+							phaser: {
+								width: (stageUnit * 1),
+								height: (stageUnit * 1)
+							},
+							start: {
+								x: (winW - stageWidth) + (stageUnit * 3),
+								y: (winH/2)
+							}
+						}
+					},
+					{
+						name: 'level07-mapMarker',
+						cl: 'MapMarker',
+						attrs: {
+							img: 'mapLocationMarker',
+							phaser: {
+								width: (stageUnit * 1),
+								height: (stageUnit * 1)
+							},
+							start: {
+								x: (winW - stageWidth) + (stageUnit * 5),
+								y: (winH/2) - (stageUnit * 1.5) 
+							}
+						}
+					// },
+					// {
+					// 	name: 'level08-mapMarker',
+					// 	cl: 'MapMarker',
+					// 	attrs: {
+					// 		img: 'mapLocationMarker',
+					// 		phaser: {
+					// 			width: (stageUnit * 1),
+					// 			height: (stageUnit * 1)
+					// 		},
+					// 		start: {
+					// 			x: (winW - stageWidth) + (stageUnit * 7.5),
+					// 			y: (winH/2) + (stageUnit * 0.5) 
+					// 		}
+					// 	}
+					// },
+					// {
+					// 	name: 'level09-mapMarker',
+					// 	cl: 'MapMarker',
+					// 	attrs: {
+					// 		img: 'mapLocationMarker',
+					// 		phaser: {
+					// 			width: (stageUnit * 1),
+					// 			height: (stageUnit * 1)
+					// 		},
+					// 		start: {
+					// 			x: (winW - stageWidth) + (stageUnit * 10),
+					// 			y: (winH/2) - (stageUnit * 1) 
+					// 		}
+					// 	}
+					// },
+					// {
+					// 	name: 'level10-mapMarker',
+					// 	cl: 'MapMarker',
+					// 	attrs: {
+					// 		img: 'mapLocationMarker',
+					// 		phaser: {
+					// 			width: (stageUnit * 1),
+					// 			height: (stageUnit * 1)
+					// 		},
+					// 		start: {
+					// 			x: (winW - stageWidth) + (stageUnit * 12),
+					// 			y: (winH/2) + (stageUnit * 1.5) 
+					// 		}
+					// 	}
 					}
+					]
 				}
 				],
 				attrs: [
@@ -1123,7 +1213,7 @@ Polyworks.Config = (function() {
 			},
 			// level 1
 			{
-				name: 'level1',
+				name: 'level01',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -1445,7 +1535,7 @@ Polyworks.Config = (function() {
 							cl: 'Enemies',
 							attrs: [
 							{
-								name: 'level1-sector2-enemy1',
+								name: 'level01-sector2-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -1605,7 +1695,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level1-sector3-enemy1',
+								name: 'level01-sector3-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -1667,7 +1757,7 @@ Polyworks.Config = (function() {
 							cl: 'Enemies',
 							attrs: [
 							{
-								name: 'level1-sector4-enemy1',
+								name: 'level01-sector4-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -1705,7 +1795,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'level1-sector4-bonus1',
+								name: 'level01-sector4-bonus1',
 								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
@@ -1860,7 +1950,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level1-sector5-enemy1',
+								name: 'level01-sector5-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -1892,7 +1982,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level1-sector5-enemy2',
+								name: 'level01-sector5-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -1929,7 +2019,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'level1-sector5-bonus1',
+								name: 'level01-sector5-bonus1',
 								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
@@ -1972,7 +2062,7 @@ Polyworks.Config = (function() {
 							cl: 'Enemies',
 							attrs: [
 							{
-								name: 'level1-sector6-enemy1',
+								name: 'level01-sector6-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -2010,7 +2100,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'level1-sector6-bonus1',
+								name: 'level01-sector6-bonus1',
 								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
@@ -2129,7 +2219,7 @@ Polyworks.Config = (function() {
 			},
 			// level 2
 			{
-				name: 'level2',
+				name: 'level02',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -2618,7 +2708,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level2-sector2-enemy1',
+								name: 'level02-sector2-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -2743,7 +2833,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level2-sector3-enemy1',
+								name: 'level02-sector3-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -2775,7 +2865,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level2-sector3-enemy2',
+								name: 'level02-sector3-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -2927,7 +3017,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level2-sector4-enemy1',
+								name: 'level02-sector4-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -3065,7 +3155,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level2-sector5-enemy1',
+								name: 'level02-sector5-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -3097,7 +3187,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level2-sector5-enemy2',
+								name: 'level02-sector5-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -3174,7 +3264,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level2-sector6-enemy1',
+								name: 'level02-sector6-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -3328,7 +3418,7 @@ Polyworks.Config = (function() {
 			},
 			// level 3
 			{
-				name: 'level3',
+				name: 'level03',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -3782,7 +3872,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'level3-sector2-hazard0',
+								name: 'level03-sector2-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -3798,7 +3888,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level3-sector2-hazard0',
+								name: 'level03-sector2-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -3819,7 +3909,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level3-sector2-enemy1',
+								name: 'level03-sector2-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar02',
@@ -3851,7 +3941,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level3-sector2-enemy2',
+								name: 'level03-sector2-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -4016,7 +4106,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'level3-sector3-hazard0',
+								name: 'level03-sector3-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -4032,7 +4122,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level3-sector3-hazard0',
+								name: 'level03-sector3-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -4053,7 +4143,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level3-sector3-enemy1',
+								name: 'level03-sector3-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar02',
@@ -4234,7 +4324,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'level3-sector4-hazard0',
+								name: 'level03-sector4-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -4255,7 +4345,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level3-sector4-enemy1',
+								name: 'level03-sector4-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -4287,7 +4377,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level3-sector4-enemy2',
+								name: 'level03-sector4-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar02',
@@ -4422,7 +4512,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'level3-sector5-hazard1',
+								name: 'level03-sector5-hazard1',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -4439,7 +4529,7 @@ Polyworks.Config = (function() {
 							},	
 
 							{
-								name: 'level3-sector5-hazard1',
+								name: 'level03-sector5-hazard1',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -4460,7 +4550,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level3-sector5-enemy1',
+								name: 'level03-sector5-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar02',
@@ -4538,7 +4628,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level3-sector6-enemy1',
+								name: 'level03-sector6-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -4678,7 +4768,7 @@ Polyworks.Config = (function() {
 			},
 			// level 4
 			{
-				name: 'level4',
+				name: 'level04',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -5280,7 +5370,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'level4-sector2-hazard1',
+								name: 'level04-sector2-hazard1',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -5296,7 +5386,7 @@ Polyworks.Config = (function() {
 								}
 							},	
 							{
-								name: 'level4-sector2-hazard2',
+								name: 'level04-sector2-hazard2',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -5312,7 +5402,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level4-sector2-hazard3',
+								name: 'level04-sector2-hazard3',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -5328,7 +5418,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level4-sector2-hazard4',
+								name: 'level04-sector2-hazard4',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -5349,7 +5439,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level4-sector2-enemy1',
+								name: 'level04-sector2-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar02',
@@ -5381,7 +5471,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level4-sector2-enemy2',
+								name: 'level04-sector2-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -5530,7 +5620,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'level4-sector3-hazard0',
+								name: 'level04-sector3-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -5546,7 +5636,7 @@ Polyworks.Config = (function() {
 								}
 							},	
 							{
-								name: 'level4-sector3-hazard0',
+								name: 'level04-sector3-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -5562,7 +5652,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level4-sector3-hazard0',
+								name: 'level04-sector3-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -5578,7 +5668,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level4-sector3-hazard0',
+								name: 'level04-sector3-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -5599,7 +5689,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level4-sector3-enemy1',
+								name: 'level04-sector3-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar02',
@@ -5841,7 +5931,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'level4-sector4-hazard0',
+								name: 'level04-sector4-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -5857,7 +5947,7 @@ Polyworks.Config = (function() {
 								}
 							},	
 							{
-								name: 'level4-sector4-hazard0',
+								name: 'level04-sector4-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -5873,7 +5963,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level4-sector4-hazard0',
+								name: 'level04-sector4-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -5894,7 +5984,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level4-sector4-enemy1',
+								name: 'level04-sector4-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -5927,7 +6017,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level4-sector4-enemy2',
+								name: 'level04-sector4-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar02',
@@ -6063,7 +6153,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'level4-sector5-hazard1',
+								name: 'level04-sector5-hazard1',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -6079,7 +6169,7 @@ Polyworks.Config = (function() {
 								}
 							},	
 							{
-								name: 'level4-sector5-hazard1',
+								name: 'level04-sector5-hazard1',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -6095,7 +6185,7 @@ Polyworks.Config = (function() {
 								}
 							},	
 							{
-								name: 'level4-sector5-hazard1',
+								name: 'level04-sector5-hazard1',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -6111,7 +6201,7 @@ Polyworks.Config = (function() {
 								}
 							},	
 							{
-								name: 'level4-sector5-hazard1',
+								name: 'level04-sector5-hazard1',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -6132,7 +6222,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level4-sector5-enemy1',
+								name: 'level04-sector5-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar02',
@@ -6211,7 +6301,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level4-sector6-enemy1',
+								name: 'level04-sector6-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -6331,7 +6421,7 @@ Polyworks.Config = (function() {
 			},
 			// level 5
 			{
-				name: 'level5',
+				name: 'level05',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -6933,7 +7023,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'level5-sector2-hazard1',
+								name: 'level05-sector2-hazard1',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -6949,7 +7039,7 @@ Polyworks.Config = (function() {
 								}
 							},	
 							{
-								name: 'level5-sector2-hazard2',
+								name: 'level05-sector2-hazard2',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -6965,7 +7055,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level5-sector2-hazard3',
+								name: 'level05-sector2-hazard3',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -6981,7 +7071,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level5-sector2-hazard4',
+								name: 'level05-sector2-hazard4',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -7002,7 +7092,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level5-sector2-enemy1',
+								name: 'level05-sector2-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar02',
@@ -7034,7 +7124,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level5-sector2-enemy2',
+								name: 'level05-sector2-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -7183,7 +7273,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'level5-sector3-hazard0',
+								name: 'level05-sector3-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -7199,7 +7289,7 @@ Polyworks.Config = (function() {
 								}
 							},	
 							{
-								name: 'level5-sector3-hazard0',
+								name: 'level05-sector3-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -7215,7 +7305,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level5-sector3-hazard0',
+								name: 'level05-sector3-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -7231,7 +7321,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level5-sector3-hazard0',
+								name: 'level05-sector3-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -7252,7 +7342,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level5-sector3-enemy1',
+								name: 'level05-sector3-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar02',
@@ -7494,7 +7584,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'level5-sector4-hazard0',
+								name: 'level05-sector4-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -7510,7 +7600,7 @@ Polyworks.Config = (function() {
 								}
 							},	
 							{
-								name: 'level5-sector4-hazard0',
+								name: 'level05-sector4-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -7526,7 +7616,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level5-sector4-hazard0',
+								name: 'level05-sector4-hazard0',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -7547,7 +7637,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level5-sector4-enemy1',
+								name: 'level05-sector4-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -7580,7 +7670,7 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level5-sector4-enemy2',
+								name: 'level05-sector4-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar02',
@@ -7716,7 +7806,7 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'level5-sector5-hazard1',
+								name: 'level05-sector5-hazard1',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -7732,7 +7822,7 @@ Polyworks.Config = (function() {
 								}
 							},	
 							{
-								name: 'level5-sector5-hazard1',
+								name: 'level05-sector5-hazard1',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -7748,7 +7838,7 @@ Polyworks.Config = (function() {
 								}
 							},	
 							{
-								name: 'level5-sector5-hazard1',
+								name: 'level05-sector5-hazard1',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -7764,7 +7854,7 @@ Polyworks.Config = (function() {
 								}
 							},	
 							{
-								name: 'level5-sector5-hazard1',
+								name: 'level05-sector5-hazard1',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
@@ -7785,7 +7875,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level5-sector5-enemy1',
+								name: 'level05-sector5-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar02',
@@ -7864,7 +7954,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level5-sector6-enemy1',
+								name: 'level05-sector6-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -7984,7 +8074,7 @@ Polyworks.Config = (function() {
 			},
 			// level 6
 			{
-				name: 'level6',
+				name: 'level06',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -9105,7 +9195,7 @@ Polyworks.Config = (function() {
 			},
 			// level 7
 			{
-				name: 'level7',
+				name: 'level07',
 				cl: 'LevelState',
 				world: {
 					x: 0,

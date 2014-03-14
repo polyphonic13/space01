@@ -3,11 +3,11 @@ Polyworks.MapPage = (function() {
 	
 	function MapPage(params) {
 		this.model = new Polyworks.Model(params);
-		// // trace('MapPage['+this.model.name+']/constructor');
+		// trace('MapPage['+this.model.name+']/constructor');
 	}
 	
 	MapPage.prototype.begin = function() {
-		// // trace('MapPage['+this.model.name+']/begin, model = ', this.model);
+		// trace('================ MapPage['+this.model.name+']/begin, model = ', this.model);
 		this.addListeners();
 
 		var pageStartX = this.model.start.x;
@@ -19,32 +19,46 @@ Polyworks.MapPage = (function() {
 		stateGroup.add(this.pageGroup._container);
 
 		this.parseLevels(pageStartX, stageSeventh);
-		
+
+		var currentLevel = PolyworksGame.currentLevel;
+		var currentLevelString = 'level' + ((currentLevel < 10) ? '0' : '') + currentLevel;
+		var levels = this.model.levels;
+		Polyworks.Utils.each(levels,
+			function(level) {
+				// trace('\tlevel = ' + level + ', currentLevelString = ' + currentLevelString);
+				if(level === currentLevelString) {
+					this.model.selected = true;
+				}
+			},
+			this
+		);
+
 		if(this.model.selected) {
 			this.pageGroup.visible = true;
 		} else {
 			this.pageGroup.visible = false;
 		}
+		// trace('\tgroup.visible = ' + this.pageGroup.visible);
+		// this.model.attrs.push(this.addTitle());
 
-		this.model.attrs.push(this.addTitle());
-		
 		if(this.model.leftArrow) {
 			var lBtn = this.addArrowButton('left', pageStartX, stageSeventh);
-			// // trace('\t\tlBtn', lBtn);
+			// trace('\t\tlBtn', lBtn);
 			this.model.attrs.push(lBtn);
 		}
 		if(this.model.rightArrow) {
 			var rBtn = this.addArrowButton('right', pageStartX, stageSeventh);
-			// // trace('\t\trBtn', rBtn);
+			// trace('\t\trBtn', rBtn);
 			this.model.attrs.push(rBtn);
 		}
 
 		MapPage._super.begin.call(this);
-		// // trace(this);
-
+		// trace(this);
+		// trace('end of MapPage super begin, collection = ', this.model.collection);
 		var _this = this;
 		Polyworks.Utils.each(this.model.collection,
 			function(child) {
+				// trace('\tadding child['+child.model.name+'] to group');
 				_this.pageGroup.add(child);
 			},
 			this
@@ -56,7 +70,7 @@ Polyworks.MapPage = (function() {
 	};
 	
 	MapPage.prototype.onChangeMapPage = function(event) {
-		// // trace('MapPage['+this.model.name+']/onChangeMapPage, event = ', event);
+		// trace('MapPage['+this.model.name+']/onChangeMapPage, event = ', event);
 		if(event.value === this.model.idx) {
 			this.pageGroup.visible = true;
 		} else {
@@ -95,7 +109,7 @@ Polyworks.MapPage = (function() {
 					locked = false;
 				}
 
-				// // // trace('\t\tidx = ' + idx);
+				// // trace('\t\tidx = ' + idx);
 				var start = {};
 				// start.x = (((stageUnit * 3.5) * idx) + (stageUnit * 2)) + pageStartX;
 				// start.x = (iconWidthUnit * idx) + pageStartX;
@@ -103,7 +117,7 @@ Polyworks.MapPage = (function() {
 				// trace('\t\t\tstart.x = ' + start.x);
 				start.y = (stageUnit * 4);
 
-				var tempA = _this.model.attrs;
+				// var tempA = _this.model.attrs;
 
 				/*
 				var tempB = _this.addLevelIcon(
@@ -120,7 +134,7 @@ Polyworks.MapPage = (function() {
 					}
 				);
 				*/
-				_this.model.attrs = tempA.concat(tempB);
+				// _this.model.attrs = tempA.concat(tempB);
 				// trace('\t\t_this.model.attrs = ', _this.model.attrs);
 			},
 			this
@@ -206,8 +220,7 @@ Polyworks.MapPage = (function() {
 			}
 		}
 		];
-		
-		
+
 		return levelIcon;
 	};
 	
