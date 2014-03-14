@@ -104,6 +104,8 @@ Polyworks.MapPage = (function() {
 				start.y = (stageUnit * 4);
 
 				var tempA = _this.model.attrs;
+
+				/*
 				var tempB = _this.addLevelIcon(
 					{
 						name: level,
@@ -117,6 +119,7 @@ Polyworks.MapPage = (function() {
 						}
 					}
 				);
+				*/
 				_this.model.attrs = tempA.concat(tempB);
 				// trace('\t\t_this.model.attrs = ', _this.model.attrs);
 			},

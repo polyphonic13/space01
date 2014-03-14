@@ -37,6 +37,7 @@ Polyworks.Config = (function() {
 				greyRect: 'images/grey_rect32x32.png',
 				whiteRect: 'images/white_rect32x32.png',
 
+				kekeSmall: 'images/map/new_keke4a_sm.png',
 				level1Icon: 'images/map/level_1_icon.png',
 				level2Icon: 'images/map/level_2_icon.png',
 				level3Icon: 'images/map/level_3_icon.png',
@@ -134,6 +135,14 @@ Polyworks.Config = (function() {
 			},
 			// SPRITES
 			sprites: {
+				// map
+				mapLocationMarker: 
+				{
+					url: 'images/map/map_location_marker.png',
+					width: 256,
+					height: 256,
+					frames: 4
+				},
 				// buttons
 				leftButton: 
 				{
@@ -821,6 +830,8 @@ Polyworks.Config = (function() {
 				clearCache: false,
 				backgroundColor: '#ffffff',
 				images: [
+					'kekeSmall',
+					'mapLocationMarker',
 					'blackRect',
 					'greyRect',
 					'whiteRect',
@@ -957,6 +968,61 @@ Polyworks.Config = (function() {
 								// y: (winH/2) - (stageHeight/2)
 								x: (winW/2) - ((stageWidth * 0.85)/2),
 								y: (winH/2) - ((stageHeight * 0.75)/2)
+							}
+						}
+					},
+					{
+						name: 'level1-locationMarker',
+						cl: 'Sprite',
+						attrs: {
+							img: 'mapLocationMarker',
+							start: {
+								x: (winW - stageW) + (stageUnit * 1),
+								y: (winH/2 - stageH/2) + (stageUnit * 1) 
+							}
+						}
+					},
+					{
+						name: 'level2-locationMarker',
+						cl: 'Sprite',
+						attrs: {
+							img: 'mapLocationMarker',
+							start: {
+								x: (winW - stageW) + (stageUnit * 3),
+								y: (winH/2 - stageH/2) + (stageUnit * 1.5) 
+							}
+						}
+					},
+					{
+						name: 'level3-locationMarker',
+						cl: 'Sprite',
+						attrs: {
+							img: 'mapLocationMarker',
+							start: {
+								x: (winW - stageW) + (stageUnit * 5),
+								y: (winH/2 - stageH/2) + (stageUnit * 0.5) 
+							}
+						}
+					},
+					{
+						name: 'level4-locationMarker',
+						cl: 'Sprite',
+						attrs: {
+							img: 'mapLocationMarker',
+							start: {
+								x: (winW - stageW) + (stageUnit * 7),
+								y: (winH/2 - stageH/2) + (stageUnit * 1) 
+							}
+						}
+					},
+					{
+						name: 'level5-locationMarker',
+						cl: 'Sprite',
+						attrs: {
+							img: 'mapLocationMarker',
+							start: {
+								x: (winW - stageW) + (stageUnit * 9),
+								y: (winH/2 - stageH/2) + (stageUnit * 1) 
 							}
 						}
 					}
