@@ -51,8 +51,10 @@ PolyworksGame = (function() {
 					_hideAddressBar();
 				}
 			);
+			var winW = document.documentElement.clientWidth; 
+			var winH = document.documentElement.clientHeight;
 
-			PolyworksGame.phaser = new Phaser.Game(Polyworks.Stage.winW, Polyworks.Stage.winH, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
+			PolyworksGame.phaser = new Phaser.Game(winW, winH, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
 			_addListeners();
 			_checkOrientation();
 		},
@@ -310,10 +312,10 @@ PolyworksGame = (function() {
 	}
 
 	function _finishInitialization() {
-		trace('PolyworksGame/_finishInitialization, phaser w/h: ' + Polyworks.Stage.winW + '/' + Polyworks.Stage.winH);
-		PolyworksGame.phaser.width = Polyworks.Stage.winW;
-		PolyworksGame.phaser.height = Polyworks.Stage.winH; 
-		trace('\tphaser w/h now set to: ' + PolyworksGame.phaser.width + '/' + PolyworksGame.phaser.height);
+		trace('PolyworksGame/_finishInitialization, phaser w/h: ' + PolyworksGame.phaser.width + '/' + PolyworksGame.phaser.height);
+		PolyworksGame.phaser.width = PolyworksGame.phaser.canvas.width = Polyworks.Stage.winW;
+		PolyworksGame.phaser.height = PolyworksGame.phaser.canvas.height = Polyworks.Stage.winH; 
+		trace('\tphaser w/h now set to: ' + PolyworksGame.phaser.width + '/' + PolyworksGame.phaser.height, Polyworks.Stage);
 		_model = PolyworksGame.config.init(Polyworks.Stage);
 		trace(_model);
 		PolyworksGame.startingHealth = _model.player.attrs.phaser.health;
