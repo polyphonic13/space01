@@ -993,8 +993,8 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1)
 							},
 							start: {
-								x: (winW - stageWidth) + (stageUnit * 3),
-								y: (winH/2)
+								x: (winW/2 - stageWidth/2) + (stageUnit * 2.5),
+								y: (winH/2) + (stageUnit * 1.2)
 							}
 						}
 					},
@@ -1008,8 +1008,8 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1)
 							},
 							start: {
-								x: (winW - stageWidth) + (stageUnit * 5),
-								y: (winH/2) - (stageUnit * 1.5) 
+								x: (winW/2 - stageWidth/2) + (stageUnit * 5),
+								y: (winH/2) - (stageUnit * 0.3) 
 							}
 						}
 					},
@@ -1023,8 +1023,8 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1)
 							},
 							start: {
-								x: (winW - stageWidth) + (stageUnit * 7.5),
-								y: (winH/2) + (stageUnit * 0.5) 
+								x: (winW/2 - stageWidth/2) + (stageUnit * 7.5),
+								y: (winH/2) + (stageUnit * 0.7) 
 							}
 						}
 					},
@@ -1038,8 +1038,8 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1)
 							},
 							start: {
-								x: (winW - stageWidth) + (stageUnit * 10),
-								y: (winH/2) - (stageUnit * 1) 
+								x: (winW/2 - stageWidth/2) + (stageUnit * 10),
+								y: (winH/2) - (stageUnit * 0.6) 
 							}
 						}
 					},
@@ -1053,7 +1053,7 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1)
 							},
 							start: {
-								x: (winW - stageWidth) + (stageUnit * 12),
+								x: (winW/2 - stageWidth/2) + (stageUnit * 12.5),
 								y: (winH/2) + (stageUnit * 1.5) 
 							}
 						}
@@ -1108,7 +1108,7 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1)
 							},
 							start: {
-								x: (winW - stageWidth) + (stageUnit * 3),
+								x: (winW/2 - stageWidth/2) + (stageUnit * 3),
 								y: (winH/2)
 							}
 						}
@@ -1123,7 +1123,7 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1)
 							},
 							start: {
-								x: (winW - stageWidth) + (stageUnit * 5),
+								x: (winW/2 - stageWidth/2) + (stageUnit * 5),
 								y: (winH/2) - (stageUnit * 1.5) 
 							}
 						}
@@ -1138,7 +1138,7 @@ Polyworks.Config = (function() {
 					// 			height: (stageUnit * 1)
 					// 		},
 					// 		start: {
-					// 			x: (winW - stageWidth) + (stageUnit * 7.5),
+					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 7.5),
 					// 			y: (winH/2) + (stageUnit * 0.5) 
 					// 		}
 					// 	}
@@ -1153,7 +1153,7 @@ Polyworks.Config = (function() {
 					// 			height: (stageUnit * 1)
 					// 		},
 					// 		start: {
-					// 			x: (winW - stageWidth) + (stageUnit * 10),
+					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 10),
 					// 			y: (winH/2) - (stageUnit * 1) 
 					// 		}
 					// 	}
@@ -1168,7 +1168,7 @@ Polyworks.Config = (function() {
 					// 			height: (stageUnit * 1)
 					// 		},
 					// 		start: {
-					// 			x: (winW - stageWidth) + (stageUnit * 12),
+					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 12),
 					// 			y: (winH/2) + (stageUnit * 1.5) 
 					// 		}
 					// 	}
