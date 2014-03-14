@@ -287,27 +287,14 @@ PolyworksGame = (function() {
 		_isTouchDevice = (navigator.userAgent.match(/ipad|iphone|android/i) !== null);
 		trace('PolyworksGame/_onStageInitialized, _isTouchDevice = ' + _isTouchDevice);
 
-		// trace('PolyworksGame/begin, stage w/h = ' + Polyworks.Stage.width + '/' + Polyworks.Stage.height);
-		// trace((Polyworks.Stage.height * 2) + ' ' + ((-Polyworks.Stage.height) + 10));
-		// _checkPhaserBoot();
-
-	// 	Polyworks.Utils.loadScript(_configURL, { type: Polyworks.Events.CONFIG_LOADED });
-	// }
-	// 
-	// function _onConfigLoaded() {
-	// 	trace('PolyworksGame/_onConfigLoaded, _statesInitialized = ' + _statesInitialized);
-
 		var config = new Polyworks.Config();
 
 		_model = config.init(Polyworks.Stage);
 		trace(_model);
 		PolyworksGame.startingHealth = _model.player.attrs.phaser.health;
 		PolyworksGame.phaser = new Phaser.Game(Polyworks.Stage.winW, Polyworks.Stage.winH, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
-
-		// if(_statesInitialized) {
-		// 	PolyworksGame.changeState(_model.initialState);
-		// }
 	}
+
 	function _onControlPressed(event) {
 		switch(event.value) {
 			case Polyworks.InputCodes.QUIT:

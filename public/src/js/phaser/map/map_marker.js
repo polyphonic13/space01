@@ -11,18 +11,20 @@ Polyworks.MapMarker = (function() {
 
 		var name = this.model.name;
 		this.model.level = (name.substring(0, name.indexOf('-mapMarker')));
+		var currentLevel = 'level' + ((PolyworksGame.currentLevel < 10) ? '0' : '') + PolyworksGame.currentLevel;
 		var levelAttrs = PolyworksGame.levels[this.model.level];
-		// trace('\tlevelAttrs = ', levelAttrs);
-		if(!levelAttrs.locked) {
+
+		// trace('\tlevelAttrs = ', levelAttrs, '\tlevel = ' + this.model.level + ', currentLevel = ' + currentLevel);
+		if(!levelAttrs.locked || (this.model.level === currentLevel)) {
 			if(levelAttrs.cleared) {
-				this.frame = 1
+				this.frame = 0;
 			} else {
-				this.frame = 0
+				this.frame = 1;
 			}
 			this.input.start();
 			this.addListeners();
 		} else {
-			this.frame = 2
+			this.frame = 2;
 		}
 	};
 	
