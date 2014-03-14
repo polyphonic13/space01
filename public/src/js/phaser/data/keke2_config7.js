@@ -796,7 +796,7 @@ Polyworks.Config = (function() {
 						img: 'menuButton',
 						start: {
 							x: 30,
-							y: 80
+							y: 95
 						},
 						frames: [0, 0, 1],
 						// inputCode: Polyworks.InputCodes.MENU,
