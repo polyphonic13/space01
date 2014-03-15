@@ -811,10 +811,10 @@ Polyworks.Config = (function() {
 				]
 			},
 			// USE FOR LOCAL TESTING:
-			preloadAll: true,
+			// preloadAll: true,
 
 			// STATES
-			initialState: 'level07',
+			initialState: 'menu',
 			states: [
 			// menu
 			{
@@ -9638,7 +9638,7 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'rockPlatform01',
 									phaser: {
-										width: (stageUnit * 2),
+										width: (stageUnit * 3),
 										height: (stageUnit * 0.5)
 									},
 									start: {
@@ -9656,7 +9656,7 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'rockPlatform01',
 									phaser: {
-										width: (stageUnit * 2),
+										width: (stageUnit * 4),
 										height: (stageUnit * 0.5)
 									},
 									start: {
@@ -9931,7 +9931,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 10),
-										y: winH - (stageUnit * 40.0)
+										y: winH - (stageUnit * 37.0)
 									},
 									physics: {
 										immovable: true
@@ -9944,11 +9944,29 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'rockPlatform01',
 									phaser: {
-										width: (stageUnit * 3),
+										width: (stageUnit * 2),
 										height: (stageUnit * 1)
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 13.5),
+										y: winH - (stageUnit * 36)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'ground0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2.5),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageWidth) + (stageUnit * 12.5),
 										y: winH - (stageUnit * 39)
 									},
 									physics: {
@@ -10166,7 +10184,7 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.5)
 									},
 									start: {
-										x: (stageWidth * 2) + (stageUnit),
+										x: (stageWidth * 2) + (stageUnit * 0.5),
 										y: winH - (stageUnit * 39.5)
 									},
 									physics: {
