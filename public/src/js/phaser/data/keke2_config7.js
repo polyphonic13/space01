@@ -603,29 +603,12 @@ Polyworks.Config = (function() {
 						phaser: {
 							width: (stageUnit * 0.75),
 							height: (stageUnit * 1.5),
-							alpha: 0.3
+							alpha: 0.85
 						},
 						start: {
 							x: winW - (stageUnit * 1.2),
 							y: (stageUnit * 1.3)
 						}
-					}
-				},
-				{
-					name: 'requirementsMet',
-					cl: 'Text',
-					attrs: {
-						x: winW - (stageUnit * 2.4),
-						y: (stageUnit * 1),
-						defaultContent: '~{requirementsMet}~ / ~{totalRequirements}~',
-						style: { 
-							font: fontSizes.sm + 'px "Sue Ellen Francisco"',
-							align: 'right', 
-							fill: '#ffffff' 
-						},
-						listeners: [
-							Polyworks.Events.REQUIREMENTS_UPDATED
-						]
 					}
 				}
 				],
@@ -643,6 +626,22 @@ Polyworks.Config = (function() {
 						start: {
 							x: 0,
 							y: 0
+						}
+					}
+				},
+				{
+					name: 'title',
+					cl: 'Text',
+					attrs: {
+						centerX: true,
+						centerY: false,
+						x: 0,
+						y: (stageUnit * 0.5),
+						defaultContent: 'Paused',
+						style: { 
+							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
+							fill: '#000000',
+							align: 'center'
 						}
 					}
 				},
@@ -740,7 +739,7 @@ Polyworks.Config = (function() {
 						centerX: true,
 						centerY: false,
 						x: 0,
-						y: (stageUnit * 2),
+						y: (stageUnit * 2.5),
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -1221,6 +1220,22 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: (stageUnit),
 								height: (stageUnit * 1.17)
+							}
+						}
+					},
+					{
+						name: 'crystalsTitle',
+						cl: 'Text',
+						attrs: {
+							centerX: true,
+							centerY: false,
+							x: 0,
+							y: winH - (stageUnit * 1.5),
+							defaultContent: 'collect all of the color shards to restore the land',
+							style: { 
+								font: fontSizes.xs + 'px "Sue Ellen Francisco"',
+								align: 'center', 
+								fill: '#000000' 
 							}
 						}
 					}

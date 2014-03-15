@@ -286,6 +286,18 @@ PolyworksGame = (function() {
 
 	function _onLevelCleared(event) {
 		trace('PolyworksGame/_onLevelCleared, event = ', event);
+		// var levels = PolyworksGame.levels;
+		// Polyworks.Utils.each(levels,
+		// 	function(level, idx) {
+		// 		if(idx <= event.value) {
+		// 			level.cleared = true;
+		// 			level.locked = false;
+		// 		}
+		// 	},
+		// 	this
+		// );
+		// PolyworksGame.levels = levels;
+		
 		PolyworksGame.levels[event.value].cleared = true;
 		PolyworksGame.levels[event.value].locked = false;
 		// PolyworksGame.changeState('intermission');
