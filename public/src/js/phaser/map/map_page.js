@@ -18,15 +18,13 @@ Polyworks.MapPage = (function() {
 		this.pageGroup = PolyworksGame.phaser.add.group();
 		stateGroup.add(this.pageGroup._container);
 
-		this.parseLevels(pageStartX, stageSeventh);
-
-		var currentLevel = PolyworksGame.currentLevel;
-		var currentLevelString = 'level' + ((currentLevel < 10) ? '0' : '') + currentLevel;
+		var currentLevel = PolyworksGame.getCurrentLevelText();
 		var levels = this.model.levels;
+
 		Polyworks.Utils.each(levels,
 			function(level) {
 				// trace('\tlevel = ' + level + ', currentLevelString = ' + currentLevelString);
-				if(level === currentLevelString) {
+				if(level === currentLevel) {
 					this.model.selected = true;
 				}
 			},
@@ -38,8 +36,6 @@ Polyworks.MapPage = (function() {
 		} else {
 			this.pageGroup.visible = false;
 		}
-		// trace('\tgroup.visible = ' + this.pageGroup.visible);
-		// this.model.attrs.push(this.addTitle());
 
 		if(this.model.leftArrow) {
 			var lBtn = this.addArrowButton('left', pageStartX, stageSeventh);
@@ -76,71 +72,6 @@ Polyworks.MapPage = (function() {
 		} else {
 			this.pageGroup.visible = false;
 		}
-	};
-	
-	MapPage.prototype.parseLevels = function(pageStartX, stageSeventh) {
-		var levels = this.model.levels;
-		var levelsLength = levels.length;
-		var levelIconWidth = (Polyworks.Stage.unit * 1.6);
-		var levelIconXOffset = (stageSeventh/2) - (levelIconWidth/2);
-		var levelIconHeight = (Polyworks.Stage.unit * 2);
-		var stageUnit = Polyworks.Stage.unit;
-		var iconWidthUnit = (stageSeventh/2) - (levelIconWidth/2);
-		// trace('============= iconWidthUnit = ' + iconWidthUnit + '\n\tstageSeventh = ' + stageSeventh + '\n\tlevelIconWidth = ' + levelIconWidth);
-		// var attrs = this.model.attrs;
-		var attributes = [];
-		var currentLevel = 'level' + (PolyworksGame.currentLevel);
-		var selected;
-		var locked;
-		var cleared; 
-		var _this = this; 
-		this.model.selected = false; 
-
-		Polyworks.Utils.each(levels,
-			function(level, idx) {
-				selected = (level === currentLevel) ? true: false;
-				if(selected) {
-					_this.model.selected = true;
-				}
-				cleared = (PolyworksGame.levels[level].cleared) ? true: false;
-				if(!selected) {
-					locked = (PolyworksGame.levels[level].locked) ? true : false;
-				} else {
-					locked = false;
-				}
-
-				// // trace('\t\tidx = ' + idx);
-				var start = {};
-				// start.x = (((stageUnit * 3.5) * idx) + (stageUnit * 2)) + pageStartX;
-				// start.x = (iconWidthUnit * idx) + pageStartX;
-				start.x = (stageSeventh * idx) + pageStartX + stageSeventh + levelIconXOffset;
-				// trace('\t\t\tstart.x = ' + start.x);
-				start.y = (stageUnit * 4);
-
-				// var tempA = _this.model.attrs;
-
-				/*
-				var tempB = _this.addLevelIcon(
-					{
-						name: level,
-						selected: selected,
-						locked: locked,
-						start: start,
-						cleared: cleared,
-						phaser: {
-							width: levelIconWidth,
-							height: levelIconHeight
-						}
-					}
-				);
-				*/
-				// _this.model.attrs = tempA.concat(tempB);
-				// trace('\t\t_this.model.attrs = ', _this.model.attrs);
-			},
-			this
-		);
-
-		// return attributes;
 	};
 	
 	MapPage.prototype.addLevelIcon = function(params) {
@@ -244,12 +175,13 @@ Polyworks.MapPage = (function() {
 		if(direction === 'left') {
 			img = 'pageLeftArrow';
 			eventValue = ((this.model.idx) - 1);
-			buttonX = 0 + pageStartX + levelIconXOffset;
+			// buttonX = 0 + pageStartX + levelIconXOffset;
+			buttonX = 0 + pageStartX;
 		} else {
 			img = 'pageRightArrow';
 			eventValue = ((this.model.idx) + 1);
 			// buttonX = (((stageUnit * 3.5) * 4) + (stageUnit * 2)) + pageStartX;
-			buttonX = (stageSeventh * 6) + pageStartX + levelIconXOffset;
+			buttonX = (stageSeventh * 6) + pageStartX + (levelIconXOffset * 2);
 		}
 
 		var arrowButton = {

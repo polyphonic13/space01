@@ -59,6 +59,15 @@ PolyworksGame = (function() {
 			return _model;
 		},
 
+		getCurrentLevelText: function() {
+			var level = PolyworksGame.currentLevel;
+			if(level < 10) {
+				return 'level0' + level;
+			} else {
+				return 'level' + level;
+			}
+		},
+		
 		get: function(prop) {
 			// if(_model.hasOwnProperty(prop)) {
 			if(Polyworks.Utils.has(_model, prop)) {
