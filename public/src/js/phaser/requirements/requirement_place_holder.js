@@ -9,16 +9,16 @@ Polyworks.RequirementPlaceHolder = (function() {
 	}
 	
 	RequirementPlaceHolder.prototype.begin = function() {
-		// trace('RequirementPlaceHolder/begin, this = ', this);
+		trace('RequirementPlaceHolder/begin, this = ', this);
 		RequirementPlaceHolder._super.begin.call(this);
 	};
 
 	RequirementPlaceHolder.prototype.onRequirementsInitialized = function(params) {
-		// trace('RequirementPlaceHolder/onRequirementsInitialized, params = ', params);
+		trace('RequirementPlaceHolder/onRequirementsInitialized, params = ', params);
 		var requirementImg = params.value.attrs.img;
 		// trace('\trequirementImg = ' + requirementImg);
 		var phaserAttrs = this.model.attrs.phaser;
-		phaserAttrs.visible = false;
+		// phaserAttrs.visible = false;
 		this.requirement = new Polyworks.Sprite({
 			game: this.model.game,
 			attrs: {
@@ -27,13 +27,13 @@ Polyworks.RequirementPlaceHolder = (function() {
 				phaser: this.model.attrs.phaser
 			}
 		});
-		// this.requirement.visible = false;
+		this.requirement.visible = false;
 		this.requirement.begin();
 		Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_INITIALIZED, this.onRequirementsInitialized);
 	};
 	
 	RequirementPlaceHolder.prototype.onRequirementMet = function(params) {
-		trace('RequirementPlaceHolder['+this.model.name+']/onRequirementMet, params = ', params, '\tthis = ', this);
+		trace('RequirementPlaceHolder/onRequirementMet, params = ', params, '\tthis = ', this);
 		// Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet);
 		this.model.ancestor.group.add(this.requirement);
 		this.requirement.alpha = 1;
