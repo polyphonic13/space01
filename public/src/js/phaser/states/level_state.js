@@ -33,7 +33,7 @@ Polyworks.LevelState = (function() {
 		LevelState._super.createState.call(this);
 
 		this.requirements = this.getChildByName('requirements');
-		trace('\n\n\trequirements = ', this.requirements, '\tgroup = ', this.requirements.group);
+		// trace('\n\n\trequirements = ', this.requirements, '\tgroup = ', this.requirements.group);
 		if(this.requirements) {
 			Polyworks.EventCenter.bind(Polyworks.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
 		}
@@ -116,7 +116,7 @@ Polyworks.LevelState = (function() {
 	};
 
 	LevelState.prototype.onLevelRequirementsMet = function() {
-		trace('LevelState['+this.model.name+']/onLevelRequirementsMet');
+		// trace('LevelState['+this.model.name+']/onLevelRequirementsMet');
 		this.requirementsMet = true;
 	};
 	
@@ -158,7 +158,7 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.showPauseGUI = function(show) {
-		trace('LevelState['+this.model.name+']/showPauseGUI, show = ' + show);
+		// trace('LevelState['+this.model.name+']/showPauseGUI, show = ' + show);
 		if(show) {
 			this.getChildByName('levelGUI').hide();
 			this.getChildByName('levelControls').hide();
@@ -171,7 +171,7 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.showCompletedGUI = function() {
-		trace('LevelState['+this.model.name+']/showCompletedGUI');
+		// trace('LevelState['+this.model.name+']/showCompletedGUI');
 
 		this.getChildByName('levelGUI').hide();
 		this.getChildByName('levelControls').hide();
@@ -187,7 +187,7 @@ Polyworks.LevelState = (function() {
 		if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels)) {
 			PolyworksGame.currentLevel++;
 		} else {
-			PolyworksGame.currentLevel = 1;
+			PolyworksGame.currentLevel = -1;
 		}
 		this.sectorManager.deactivateAll();
 
@@ -195,7 +195,7 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.shutdown = function() {
-		trace('LevelState['+this.model.name+']/shutdown');
+		// trace('LevelState['+this.model.name+']/shutdown');
 		Polyworks.EventCenter.unbind(Polyworks.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
 
 		this.playerGroup.destroy();

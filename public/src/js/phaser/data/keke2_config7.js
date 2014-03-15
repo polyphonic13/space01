@@ -110,13 +110,17 @@ Polyworks.Config = (function() {
 				thorns01: 'images/thorns02.png',
 
 				// requirements
-				crystals02Grey: 'images/crystals02_grey.png',
-				crystals02Green: 'images/crystals02_green.png',
-				crystals02Blue: 'images/crystals02_blue.png',
-				crystals02Red: 'images/crystals02_red.png',
-				crystals02Aqua: 'images/crystals02_aqua.png',
-				crystals02Purple: 'images/crystals02_purple.png',
-				crystals02Orange: 'images/crystals02_orange.png',
+				crystals02Grey: 'images/crystals02a_grey.png',
+				crystals02Blue: 'images/crystals02a_blue.png',
+				crystals02Green: 'images/crystals02a_green.png',
+				crystals02Garnet: 'images/crystals02a_garnet.png',
+				crystals02Purple: 'images/crystals02a_purple.png',
+				crystals02Aqua: 'images/crystals02a_aqua.png',
+				crystals02Orange: 'images/crystals02a_orange.png',
+				crystals02Pink: 'images/crystals02a_pink.png',
+				crystals02Teal: 'images/crystals02a_teal.png',
+				crystals02Yellow: 'images/crystals02a_yellow.png',
+				crystals02Red: 'images/crystals02a_red.png',
 
 				// bonuses
 				lollipop: 'images/lollipop.png',
@@ -1287,7 +1291,7 @@ Polyworks.Config = (function() {
 					'branch02Right',
 					'branch02aLeft',
 					'branch02aRight',
-					'crystals02Green',
+					'crystals02Blue',
 					'crystals02Grey',
 					'lollipop',
 					'invisibleRect',
@@ -2188,7 +2192,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystals02Green',
+							img: 'crystals02Blue',
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -2264,7 +2268,7 @@ Polyworks.Config = (function() {
 					'vine01Left',
 					'vine01Right',
 					'crystals02Grey',
-					'crystals02Blue',
+					'crystals02Green',
 					'lollipop',
 					'invisibleRect',
 					'heart'
@@ -3387,7 +3391,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystals02Blue',
+							img: 'crystals02Green',
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -3462,7 +3466,7 @@ Polyworks.Config = (function() {
 					'vine01Right',
 					'thorns01',
 					'lollipop',
-					'crystals02Red',
+					'crystals02Garnet',
 					'invisibleRect',
 					'heart'
 				],
@@ -4737,7 +4741,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystals02Red',
+							img: 'crystals02Garnet',
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -4815,7 +4819,7 @@ Polyworks.Config = (function() {
 					'vine01Right',
 					'thorns01',
 					'lollipop',
-					'crystals02Orange',
+					'crystals02Purple',
 					'invisibleRect',
 					'heart'
 				],
@@ -6390,7 +6394,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystals02Orange',
+							img: 'crystals02Purple',
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -6468,7 +6472,7 @@ Polyworks.Config = (function() {
 					'vine01Right',
 					'thorns01',
 					'lollipop',
-					'crystals02Purple',
+					'crystals02Aqua',
 					'invisibleRect',
 					'heart'
 				],
@@ -8043,7 +8047,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystals02Purple',
+							img: 'crystals02Aqua',
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -8114,7 +8118,7 @@ Polyworks.Config = (function() {
 					'platformV',
 					'platform',
 					'rockPlatform01',
-					'crystals02Aqua',
+					'crystals02Orange',
 					'invisibleRect',
 					'heart'
 				],
@@ -9142,7 +9146,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystals02Aqua',
+							img: 'crystals02Orange',
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -9219,7 +9223,7 @@ Polyworks.Config = (function() {
 					'rockPlatform01',
 					'invisibleRect',
 					'heart',
-					'snowFlake01'
+					'crystals02Pink'
 				],
 				sprites: [
 					'leftButton',
@@ -10729,7 +10733,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystals02Green',
+							img: 'crystals02Pink',
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -10806,7 +10810,7 @@ Polyworks.Config = (function() {
 					'rockPlatform01',
 					'invisibleRect',
 					'heart',
-					'snowFlake01'
+					'crystals02Teal'
 				],
 				sprites: [
 					'leftButton',
@@ -12316,7 +12320,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystals02Green',
+							img: 'crystals02Teal',
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -12393,7 +12397,7 @@ Polyworks.Config = (function() {
 					'rockPlatform01',
 					'invisibleRect',
 					'heart',
-					'snowFlake01'
+					'crystals02Yellow'
 				],
 				sprites: [
 					'leftButton',
@@ -13903,7 +13907,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystals02Green',
+							img: 'crystals02Yellow',
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -13980,7 +13984,7 @@ Polyworks.Config = (function() {
 					'rockPlatform01',
 					'invisibleRect',
 					'heart',
-					'snowFlake01'
+					'crystals02Red'
 				],
 				sprites: [
 					'leftButton',
@@ -15490,7 +15494,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystals02Green',
+							img: 'crystals02Red',
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)

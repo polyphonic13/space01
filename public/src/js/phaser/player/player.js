@@ -8,7 +8,7 @@ Polyworks.Player = (function() {
 		_this = this;
 		this.model = new Polyworks.Model(params);
 		Player._super.constructor.call(this, params);
-		trace('player body size = ' + this.body.width + '/' + this.body.height);
+		// trace('player body size = ' + this.body.width + '/' + this.body.height);
 	}
 	
 	Player.prototype.begin = function(health) {
@@ -29,7 +29,7 @@ Polyworks.Player = (function() {
 		this.beginControls();
 
 		PolyworksGame.setHealth(this.health);
-		trace(this);
+		// trace(this);
 		// this.body.setSize(50, 113, 22.5, 0);
 
 	};
@@ -133,7 +133,7 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.activateGravity = function() {
-		trace('Player/activateGravity');
+		// trace('Player/activateGravity');
 		Player._super.activateGravity.call(this);
 	};
 
@@ -240,7 +240,7 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.onRequirementCollision = function(player, requirement) {
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.BONUS_COLLISION, player: player, bonus: bonus });
-		trace('Player/onRequirementCollision, bonus = ', requirement);
+		// trace('Player/onRequirementCollision, bonus = ', requirement);
 
 		this.collided = true;
 		requirement.collect();

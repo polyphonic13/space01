@@ -84,7 +84,11 @@ PolyworksGame = (function() {
 				} else {
 					switch(id) {
 						case 'level':
-							id += ((PolyworksGame.currentLevel < 10) ? '0' : '') + PolyworksGame.currentLevel;
+							if(PolyworksGame.currentLevel === -1) {
+								id = 'map'
+							} else {
+								id += ((PolyworksGame.currentLevel < 10) ? '0' : '') + PolyworksGame.currentLevel;
+							}
 						break;
 
 						case 'nextLevel':
