@@ -970,31 +970,17 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'pageTitle',
-						cl: 'Sprite',
-						attrs: {
-							img: 'chapter1Title',
-							phaser: {
-								width: stageWidth
-							},
-							start: {
-								x: 0,
-								y: (stageUnit * 1.6)
-							}
-						}
-					},
-					{
 						name: 'level01-mapMarker',
 						cl: 'MapMarker',
 						attrs: {
 							img: 'mapLocationMarker',
 							phaser: {
-								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								width: (stageUnit * 0.5),
+								height: (stageUnit * 0.5)
 							},
 							start: {
-								x: (winW/2 - stageWidth/2) + (stageUnit * 2.5),
-								y: (winH/2) + (stageUnit * 1.2)
+								x: (winW/2 - stageWidth/2) + (stageUnit * 2.75),
+								y: (winH/2) + (stageUnit * 1.3)
 							}
 						}
 					},
@@ -1004,12 +990,12 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'mapLocationMarker',
 							phaser: {
-								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								width: (stageUnit * 0.5),
+								height: (stageUnit * 0.5)
 							},
 							start: {
-								x: (winW/2 - stageWidth/2) + (stageUnit * 5),
-								y: (winH/2) - (stageUnit * 0.3) 
+								x: (winW/2 - stageWidth/2) + (stageUnit * 4.8),
+								y: (winH/2) + (stageUnit * 0.6) 
 							}
 						}
 					},
@@ -1019,11 +1005,11 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'mapLocationMarker',
 							phaser: {
-								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								width: (stageUnit * 0.5),
+								height: (stageUnit * 0.5)
 							},
 							start: {
-								x: (winW/2 - stageWidth/2) + (stageUnit * 7.5),
+								x: (winW/2 - stageWidth/2) + (stageUnit * 8.25),
 								y: (winH/2) + (stageUnit * 0.7) 
 							}
 						}
@@ -1034,12 +1020,12 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'mapLocationMarker',
 							phaser: {
-								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								width: (stageUnit * 0.5),
+								height: (stageUnit * 0.5)
 							},
 							start: {
-								x: (winW/2 - stageWidth/2) + (stageUnit * 10),
-								y: (winH/2) - (stageUnit * 0.6) 
+								x: (winW/2 - stageWidth/2) + (stageUnit * 10.1),
+								y: (winH/2) + (stageUnit * 1.4) 
 							}
 						}
 					},
@@ -1049,12 +1035,12 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'mapLocationMarker',
 							phaser: {
-								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								width: (stageUnit * 0.5),
+								height: (stageUnit * 0.5)
 							},
 							start: {
-								x: (winW/2 - stageWidth/2) + (stageUnit * 12.5),
-								y: (winH/2) + (stageUnit * 1.5) 
+								x: (winW/2 - stageWidth/2) + (stageUnit * 12.3),
+								y: (winH/2) + (stageUnit * 0.8) 
 							}
 						}
 					}
@@ -1085,31 +1071,17 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'pageTitle',
-						cl: 'Sprite',
-						attrs: {
-							img: 'chapter2Title',
-							phaser: {
-								width: stageWidth
-							},
-							start: {
-								x: 0,
-								y: (stageUnit * 1.6)
-							}
-						}
-					},
-					{
 						name: 'level06-mapMarker',
 						cl: 'MapMarker',
 						attrs: {
 							img: 'mapLocationMarker',
 							phaser: {
-								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								width: (stageUnit * 0.5),
+								height: (stageUnit * 0.5)
 							},
 							start: {
-								x: (winW/2 - stageWidth/2) + (stageUnit * 3),
-								y: (winH/2)
+								x: (winW/2 - stageWidth/2) + (stageUnit * 2),
+								y: (winH/2) + (stageUnit * 1)
 							}
 						}
 					},
@@ -1119,12 +1091,12 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'mapLocationMarker',
 							phaser: {
-								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								width: (stageUnit * 0.5),
+								height: (stageUnit * 0.5)
 							},
 							start: {
-								x: (winW/2 - stageWidth/2) + (stageUnit * 5),
-								y: (winH/2) - (stageUnit * 1.5) 
+								x: (winW/2 - stageWidth/2) + (stageUnit * 4.3),
+								y: (winH/2) + (stageUnit * 0.9) 
 							}
 						}
 					// },
