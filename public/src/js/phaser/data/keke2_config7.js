@@ -81,7 +81,7 @@ Polyworks.Config = (function() {
 				mountainBackground05k: 'images/pencil_mountain05k.png',
 				mountainBackground05l: 'images/pencil_mountain05l.png',
 
-				ovalMask: 'images/oval_mask.png',
+				ovalMask: 'images/oval_mask2.png',
 
 				grass03: 'images/grass03.png',
 				grass03a: 'images/grass03a.png',
@@ -940,7 +940,6 @@ Polyworks.Config = (function() {
 					'mapLocationMarker',
 					'menuButton'
 				],
-				initialPage: 0,
 				pages: [
 				{
 					name: 'page1',
@@ -1167,6 +1166,21 @@ Polyworks.Config = (function() {
 								y: (stageUnit * 0.1)
 							}
 						}
+					// },
+					// {
+					// 	name: 'kekeIcon',
+					// 	cl: 'Sprite',
+					// 	attrs: {
+					// 		img: 'kekeSmall',
+					// 		phaser: {
+					// 			width: (stageUnit),
+					// 			height: (stageUnit * 1.17)
+					// 		},
+					// 		start: {
+					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 2.5),
+					// 			y: (winH/2) + (stageUnit * 0.1) 
+					// 		}
+					// 	}
 					}
 					]
 				},
@@ -5189,7 +5203,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 2) + (stageUnit * 13),
-								y: winH - (stageUnit * 12)
+								y: winH - (stageUnit * 16)
 							}
 						}
 					}
