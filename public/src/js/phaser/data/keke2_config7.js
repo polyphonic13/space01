@@ -811,10 +811,10 @@ Polyworks.Config = (function() {
 				]
 			},
 			// USE FOR LOCAL TESTING:
-			// preloadAll: true,
+			preloadAll: true,
 
 			// STATES
-			initialState: 'menu',
+			initialState: 'level07',
 			states: [
 			// menu
 			{
@@ -9638,7 +9638,7 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'rockPlatform01',
 									phaser: {
-										width: (stageUnit * 3),
+										width: (stageUnit * 2),
 										height: (stageUnit * 0.5)
 									},
 									start: {
@@ -9657,7 +9657,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 4),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 1)
 									},
 									start: {
 										x: (stageUnit * 10),
