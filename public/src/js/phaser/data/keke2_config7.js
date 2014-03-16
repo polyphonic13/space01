@@ -59,16 +59,26 @@ Polyworks.Config = (function() {
 
 				sky: 'images/night_sky.jpg',
 
-				forestBackground01: 'images/pencil_forest01a.png',
-				forestBackground02: 'images/pencil_forest01b.png',
-				forestBackground03: 'images/pencil_forest01c.png',
+				// forestBackground01: 'images/pencil_forest01a.png',
+				// forestBackground02: 'images/pencil_forest01b.png',
+				// forestBackground03: 'images/pencil_forest01c.png',
+				forestBackground01: 'images/pencil_forest01a.gif',
+				forestBackground02: 'images/pencil_forest01b.gif',
+				forestBackground03: 'images/pencil_forest01c.gif',
 
-				mountainBackground01a: 'images/pencil_mountain04a.png',
-				mountainBackground01b: 'images/pencil_mountain04b.png',
-				mountainBackground01c: 'images/pencil_mountain04c.png',
-				mountainBackground01d: 'images/pencil_mountain04d.png',
-				mountainBackground01e: 'images/pencil_mountain04e.png',
-				mountainBackground01f: 'images/pencil_mountain04f.png',
+				mountainBackground01a: 'images/pencil_river01a.gif',
+				mountainBackground01b: 'images/pencil_river01b.gif',
+				mountainBackground01c: 'images/pencil_river01c.gif',
+				mountainBackground01d: 'images/pencil_river01d.gif',
+				mountainBackground01e: 'images/pencil_river01e.gif',
+				mountainBackground01f: 'images/pencil_river01f.gif',
+
+				// mountainBackground01a: 'images/pencil_mountain04a.png',
+				// mountainBackground01b: 'images/pencil_mountain04b.png',
+				// mountainBackground01c: 'images/pencil_mountain04c.png',
+				// mountainBackground01d: 'images/pencil_mountain04d.png',
+				// mountainBackground01e: 'images/pencil_mountain04e.png',
+				// mountainBackground01f: 'images/pencil_mountain04f.png',
 
 				mountainBackground05a: 'images/pencil_mountain05a.png',
 				mountainBackground05b: 'images/pencil_mountain05b.png',
@@ -814,10 +824,10 @@ Polyworks.Config = (function() {
 				]
 			},
 			// USE FOR LOCAL TESTING:
-			// preloadAll: true,
+			preloadAll: true,
 
 			// STATES
-			initialState: 'menu',
+			initialState: 'level06',
 			states: [
 			// menu
 			{
