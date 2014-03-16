@@ -72,6 +72,9 @@ Polyworks.LevelState = (function() {
 			// trace('LevelState['+this.model.name+']/update');
 			if(this.requirementsMet && (this.player.body.x >= this.model.bounds.end)) {
 				if(!this.triggeredCleared) {
+					this.player.allowGravity = false;
+					// this.player.destroy();
+					this.playerGroup.destroy(true);
 					this.triggeredCleared = true;
 					this.levelCleared();
 				}
@@ -180,8 +183,8 @@ Polyworks.LevelState = (function() {
 	
 	LevelState.prototype.levelCleared = function() {
 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_CLEARED, value: this.model.name });
-		this.player.visible = false;
-		this.player.destroy();
+		// this.player.visible = false;
+		// this.player.destroy();
 		this.playerPresent = false;
 
 		if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels)) {
@@ -198,10 +201,10 @@ Polyworks.LevelState = (function() {
 		// trace('LevelState['+this.model.name+']/shutdown');
 		Polyworks.EventCenter.unbind(Polyworks.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
 
-		this.playerGroup.destroy();
-		if(this.playerPresent) {
-			this.player.destroy();
-		} 
+		// this.playerGroup.destroy();
+		// if(this.playerPresent) {
+		// 	this.player.destroy();
+		// } 
 		LevelState._super.shutdown.call(this);
 	};
 
