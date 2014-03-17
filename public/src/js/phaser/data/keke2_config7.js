@@ -52,8 +52,8 @@ Polyworks.Config = (function() {
 				levelClearedIcon: 'images/map/level_cleared_icon.png',
 				pageLeftArrow: 'images/map/page_left_arrow.png',
 				pageRightArrow: 'images/map/page_right_arrow.png',
-				mapForest: 'images/map/map04_forest.png',
-				mapMountains: 'images/map/map04_mountains.png',
+				mapForest: 'images/map/map04_forest.gif',
+				mapMountains: 'images/map/map04_mountains.gif',
 
 				sky: 'images/night_sky.jpg',
 
