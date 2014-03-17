@@ -57,12 +57,12 @@ Polyworks.Config = (function() {
 
 				sky: 'images/night_sky.jpg',
 
-				forestBackground02a: 'images/pencil_forest02a.png',
-				forestBackground02b: 'images/pencil_forest02b.png',
-				forestBackground02c: 'images/pencil_forest02c.png',
-				forestBackground02d: 'images/pencil_forest02d.png',
-				forestBackground02e: 'images/pencil_forest02e.png',
-				forestBackground02f: 'images/pencil_forest02f.png',
+				forestBackground02a: 'images/pencil_forest02a.gif',
+				forestBackground02b: 'images/pencil_forest02b.gif',
+				forestBackground02c: 'images/pencil_forest02c.gif',
+				forestBackground02d: 'images/pencil_forest02d.gif',
+				forestBackground02e: 'images/pencil_forest02e.gif',
+				forestBackground02f: 'images/pencil_forest02f.gif',
 
 				forestBackground01a: 'images/pencil_forest01a.gif',
 				forestBackground01b: 'images/pencil_forest01b.gif',
@@ -92,6 +92,8 @@ Polyworks.Config = (function() {
 				grass03a: 'images/grass03a.png',
 				grass03b: 'images/grass03b.png',
 				grass03c: 'images/grass03c.png',
+				grass03ci: 'images/grass03ci.png',
+				grassClump01: 'images/grass_clump01.png',
 
 				tree01: 'images/tree04a.png',
 				tree02: 'images/tree04a.png',
@@ -106,6 +108,9 @@ Polyworks.Config = (function() {
 				rockPlatform01: 'images/rock_platform01.png',
 				rockPlatform02: 'images/rock_platform02.png',
 				rockPlatform03: 'images/rock_platform03.png',
+				rockPlatform04: 'images/rock_platform04.png',
+
+				river01: 'images/river_water01.png',
 
 				branch02Left: 'images/branch03_left.png',
 				branch02aLeft: 'images/branch03a_left.png',
@@ -856,6 +861,17 @@ Polyworks.Config = (function() {
 					'invisibleRect',
 					'chapter1Title',
 					'chapter2Title',
+					'crystals02Grey',
+					'crystals02Blue',
+					'crystals02Green',
+					'crystals02Garnet',
+					'crystals02Purple',
+					'crystals02Aqua',
+					'crystals02Orange',
+					'crystals02Pink',
+					'crystals02Teal',
+					'crystals02Yellow',
+					'crystals02Red',
 					'levelSelectedIcon',
 					'levelLockedIcon',
 					'levelClearedIcon',
@@ -2006,62 +2022,12 @@ Polyworks.Config = (function() {
 									defaultAnimation: '',
 									animations: caterpillarAnimations
 								}
-							},
-							{
-								name: 'level01-sector5-enemy2',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
-										health: 3
-									},
-									start: {
-										x: (stageWidth * 4) + (stageUnit * 8),
-										y: winH - (33 + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 15,
-									score: 2000,
-									movement: {
-										speed: 2,
-										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
 							}]
 						},
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'level01-sector5-bonus1',
-								cl: 'Bonus',
-								attrs: {
-									img: 'lollipop',
-									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
-									start: {
-										x: (stageWidth * 4) + (stageUnit),
-										y: winH - (stageUnit * 12.5)
-									},
-									physics: {
-										immovable: true
-									},
-									score: 100,
-									health: 10
-								}
-							}
-							]
+							attrs: []
 						}
 						]
 					},
@@ -2208,8 +2174,8 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1.5)
 							},
 							start: {
-								x: (stageWidth * 2) + (stageUnit * 13),
-								y: winH - (stageUnit * 13.5)
+								x: (stageWidth * 4) + (stageUnit * 2),
+								y: winH - (stageUnit * 13)
 							}
 						}
 					}
@@ -3178,7 +3144,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystals02Blue',
+							img: 'crystals02Green',
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -4377,7 +4343,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystals02Green',
+							img: 'crystals02Garnet',
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -5727,7 +5693,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystals02Garnet',
+							img: 'crystals02Purple',
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -5794,6 +5760,7 @@ Polyworks.Config = (function() {
 					'grass03a',
 					'grass03b',
 					'grass03c',
+					'grassClump01',
 					'tree01',
 					'platformV',
 					'platform',
@@ -5944,6 +5911,21 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'grassClump01',
+						cl: 'Sprite',
+						attrs: {
+							img: 'grassClump01',
+							phaser: {
+								width: (stageUnit * 2),
+								height: (stageUnit * 4)
+							},
+							start: {
+								x: (stageWidth * 2) - (stageUnit * 1),
+								y: winH - (stageUnit * 4.5)
+							}
+						}
+					},
+					{
 						name: 'grass03',
 						cl: 'Sprite',
 						attrs: {
@@ -5970,6 +5952,21 @@ Polyworks.Config = (function() {
 							start: {
 								x: (stageWidth * 3),
 								y: winH - (stageUnit * 4)
+							}
+						}
+					},
+					{
+						name: 'grassClump02',
+						cl: 'Sprite',
+						attrs: {
+							img: 'grassClump01',
+							phaser: {
+								width: (stageUnit * 2),
+								height: (stageUnit * 4)
+							},
+							start: {
+								x: (stageWidth * 4) - (stageUnit * 1),
+								y: winH - (stageUnit * 6.5)
 							}
 						}
 					},
@@ -7380,7 +7377,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystals02Purple',
+							img: 'crystals02Aqua',
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -7450,7 +7447,10 @@ Polyworks.Config = (function() {
 					'tree01',
 					'platformV',
 					'platform',
-					'rockPlatform01',
+					'rockPlatform04',
+					'grass03ci',
+					'grassClump01',
+					'river01',
 					'crystals02Orange',
 					'invisibleRect',
 					'heart'
@@ -7566,6 +7566,126 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'grass01',
+						cl: 'Sprite',
+						attrs: {
+							img: 'grass03a',
+							phaser: {
+								width: stageWidth,
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: 0,
+								y: winH - (stageUnit * 2)
+							}
+						}
+					},
+					{
+						name: 'grass02',
+						cl: 'Sprite',
+						attrs: {
+							img: 'grass03b',
+							phaser: {
+								width: stageWidth,
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: stageWidth,
+								y: winH - (stageUnit * 2)
+							}
+						}
+					},
+					{
+						name: 'grass03',
+						cl: 'Sprite',
+						attrs: {
+							img: 'grass03ci',
+							phaser: {
+								width: (stageWidth * 0.5),
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageWidth * 2),
+								y: winH - (stageUnit * 2)
+							}
+						}
+					},
+					{
+						name: 'grassClumpLeft',
+						cl: 'Sprite',
+						attrs: {
+							img: 'grassClump01',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageWidth * 2.5) - (stageUnit * 1),
+								y: winH - (stageUnit * 3)
+							}
+						}
+					},
+					{
+						name: 'river',
+						cl: 'Sprite',
+						attrs: {
+							img: 'river01',
+							phaser: {
+								width: (stageWidth * 1.5),
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageWidth * 2.5),
+								y: winH - (stageUnit * 2)
+							}
+						}
+					},
+					{
+						name: 'grassClumpRight',
+						cl: 'Sprite',
+						attrs: {
+							img: 'grassClump01',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageWidth * 4) - (stageUnit),
+								y: winH - (stageUnit * 3)
+							}
+						}
+					},
+					{
+						name: 'grass04',
+						cl: 'Sprite',
+						attrs: {
+							img: 'grass03a',
+							phaser: {
+								width: stageWidth,
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageWidth * 4),
+								y: winH - (stageUnit * 2)
+							}
+						}
+					},
+					{
+						name: 'grass05',
+						cl: 'Sprite',
+						attrs: {
+							img: 'grass03b',
+							phaser: {
+								width: stageWidth,
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageWidth * 5),
+								y: winH - (stageUnit * 2)
+							}
+						}
+					},
+					{
 						name: 'tree01',
 						cl: 'Sprite',
 						attrs: {
@@ -7610,11 +7730,29 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'platform',
 							phaser: {
-								width: stageWidth - (stageUnit),
+								width: (stageWidth * 2.5),
 								height: (stageUnit)
 							},
 							start: {
 								x: 0,
+								y: winH - (stageUnit * 0.5)
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
+						name: 'ground1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'platform',
+							phaser: {
+								width: (stageWidth * 2),
+								height: (stageUnit)
+							},
+							start: {
+								x: (stageWidth * 4),
 								y: winH - (stageUnit * 0.5)
 							},
 							physics: {
@@ -7767,51 +7905,13 @@ Polyworks.Config = (function() {
 										allowGravity: false
 									}
 								}
-							},
-							{
-								name: 'rockPlatform01',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform01',
-									phaser: {
-										width: (stageUnit * 3),
-										height: (stageUnit * 1.5)
-									},
-									start: {
-										x: (stageUnit * 13),
-										y: winH - (stageUnit * 1.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
 							}
 							]
 						},
 						{
 							name: 'hazards',
 							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'death',
-								cl: 'Sprite',
-								attrs: {
-									img: 'invisibleRect',
-									phaser: {
-										width: stageWidth + stageUnit,
-										height: 32
-									},
-									start: {
-										x: 0,
-										y: winH + 100
-									},
-									physics: {
-										immovable: true
-									},
-									attack: 1000
-								}
-							}
-							]
+							attrs: []
 						},
 						{
 							name: 'enemies',
@@ -7838,13 +7938,13 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'rockPlatform01',
+								name: 'rockPlatform04',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 3),
-										height: (stageUnit)
+										height: (stageUnit * 1.5)
 									},
 									start: {
 										x: (stageWidth) + (stageUnit),
@@ -7859,7 +7959,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform2',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 3),
 										height: (stageUnit)
@@ -7877,7 +7977,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform3',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 2),
 										height: (stageUnit)
@@ -7946,10 +8046,10 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform4',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 3),
-										height: (stageUnit)
+										height: (stageUnit * 1)
 									},
 									start: {
 										x: (stageWidth * 2),
@@ -7964,10 +8064,10 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform5',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 2.5),
-										height: (stageUnit)
+										height: (stageUnit * 1)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 6),
@@ -7982,10 +8082,10 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform6',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit)
+										height: (stageUnit * 1.5)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 10),
@@ -8000,7 +8100,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform7',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 2.5),
 										height: (stageUnit)
@@ -8069,7 +8169,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform8',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 2),
 										height: (stageUnit)
@@ -8087,7 +8187,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform9',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 2.5),
 										height: (stageUnit)
@@ -8102,10 +8202,10 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'rockPlatform010',
+								name: 'rockPlatform040',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 2),
 										height: (stageUnit)
@@ -8120,13 +8220,13 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'rockPlatform011',
+								name: 'rockPlatform041',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 2.5),
-										height: (stageUnit)
+										height: (stageUnit * 1.5)
 									},
 									start: {
 										x: (stageWidth * 3) + (stageUnit * 13),
@@ -8189,10 +8289,10 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'rockPlatform012',
+								name: 'rockPlatform042',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 2),
 										height: (stageUnit)
@@ -8207,10 +8307,10 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'rockPlatform013',
+								name: 'rockPlatform043',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 2.5),
 										height: (stageUnit)
@@ -8225,10 +8325,10 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'rockPlatform014',
+								name: 'rockPlatform044',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 2),
 										height: (stageUnit)
@@ -8243,10 +8343,10 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'rockPlatform015',
+								name: 'rockPlatform045',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 2),
 										height: (stageUnit)
@@ -8312,10 +8412,10 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'rockPlatform016',
+								name: 'rockPlatform046',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 1.5),
 										height: (stageUnit)
@@ -8330,13 +8430,13 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'rockPlatform017',
+								name: 'rockPlatform047',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
-										width: (stageUnit * 3),
-										height: (stageUnit)
+										width: (stageUnit * 2.5),
+										height: (stageUnit * 1.5)
 									},
 									start: {
 										x: (stageWidth * 5) + (stageUnit * 5),
@@ -8348,17 +8448,17 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'rockPlatform018',
+								name: 'rockPlatform048',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 2),
 										height: (stageUnit)
 									},
 									start: {
 										x: (stageWidth * 5) + (stageUnit * 9),
-										y: winH - (stageUnit * 12.5)
+										y: winH - (stageUnit * 7.5)
 									},
 									physics: {
 										immovable: true
@@ -8366,17 +8466,17 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'rockPlatform019',
+								name: 'rockPlatform049',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 3),
-										height: (stageUnit)
+										height: (stageUnit * 2)
 									},
 									start: {
 										x: (stageWidth * 5) + (stageUnit * 13),
-										y: winH - (stageUnit * 14.5)
+										y: winH - (stageUnit * 8.5)
 									},
 									physics: {
 										immovable: true
@@ -8485,8 +8585,8 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1.5)
 							},
 							start: {
-								x: (stageWidth * 2) + (stageUnit * 13),
-								y: winH - (stageUnit * 10)
+								x: (stageWidth * 4) + (stageUnit * 9),
+								y: winH - (stageUnit * 12)
 							}
 						}
 					}
