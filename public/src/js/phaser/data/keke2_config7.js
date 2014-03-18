@@ -74,38 +74,38 @@ Polyworks.Config = (function() {
 				mountainBackground05k: 'images/backgrounds/pencil_mountain05k.png',
 				mountainBackground05l: 'images/backgrounds/pencil_mountain05l.png',
 
-				platform: 'images/platform.png',
-				platformGrey: 'images/platform_grey.png',
-				platformRed: 'images/platform_red.png',
-				platformV: 'images/platform_v.png',
+				platform: 'images/scenery/platform.png',
+				platformGrey: 'images/scenery/platform_grey.png',
+				platformRed: 'images/scenery/platform_red.png',
+				platformV: 'images/scenery/platform_v.png',
 
-				rockPlatform01: 'images/rock_platform01.png',
-				rockPlatform02: 'images/rock_platform02.png',
-				rockPlatform03: 'images/rock_platform03.png',
-				rockPlatform04: 'images/rock_platform04.png',
+				rockPlatform01: 'images/scenery/rock_platform01.png',
+				rockPlatform02: 'images/scenery/rock_platform02.png',
+				rockPlatform03: 'images/scenery/rock_platform03.png',
+				rockPlatform04: 'images/scenery/rock_platform04.png',
 
-				grass03: 'images/grass03.png',
-				grass03a: 'images/grass03a.png',
-				grass03b: 'images/grass03b.png',
-				grass03c: 'images/grass03c.png',
-				grass03ci: 'images/grass03ci.png',
-				grassClump01: 'images/grass_clump01.png',
+				grass03: 'images/scenery/grass03.png',
+				grass03a: 'images/scenery/grass03a.png',
+				grass03b: 'images/scenery/grass03b.png',
+				grass03c: 'images/scenery/grass03c.png',
+				grass03ci: 'images/scenery/grass03ci.png',
+				grassClump01: 'images/scenery/grass_clump01.png',
 
-				tree01: 'images/tree04a.png',
-				tree02: 'images/tree04a.png',
-				tree03: 'images/tree04a.png',
-				tree04: 'images/tree04a.png',
+				tree01: 'images/scenery/tree04a.png',
+				tree02: 'images/scenery/tree04a.png',
+				tree03: 'images/scenery/tree04a.png',
+				tree04: 'images/scenery/tree04a.png',
 
-				river01: 'images/river_water01.png',
+				river01: 'images/scenery/river_water01.png',
 
-				branch02Left: 'images/branch03_left.png',
-				branch02Right: 'images/branch03_right.png',
-				branch02aLeft: 'images/branch03a_left.png',
-				branch02aRight: 'images/branch03a_right.png',
-				vine01Left: 'images/vine01a_left.png',
-				vine01Right: 'images/vine01a_right.png',
-				trunk01: 'images/trunk01.png',
-				thorns01: 'images/thorns02.png',
+				branch02Left: 'images/scenery/branch03_left.png',
+				branch02Right: 'images/scenery/branch03_right.png',
+				branch02aLeft: 'images/scenery/branch03a_left.png',
+				branch02aRight: 'images/scenery/branch03a_right.png',
+				vine01Left: 'images/scenery/vine01a_left.png',
+				vine01Right: 'images/scenery/vine01a_right.png',
+				trunk01: 'images/scenery/trunk01.png',
+				thorns01: 'images/scenery/thorns02.png',
 
 				// requirements
 				crystals02Grey: 'images/crystals02a_grey.png',
@@ -124,8 +124,8 @@ Polyworks.Config = (function() {
 				lollipop: 'images/lollipop.png',
 
 				// buttons
-				startButton: 'images/start_button.png',
-				nextButton: 'images/next_button.png',
+				startButton: 'images/controls/start_button.png',
+				nextButton: 'images/controls/next_button.png',
 
 				// misc
 				heart: 'images/heart.png',
@@ -154,7 +154,7 @@ Polyworks.Config = (function() {
 				// buttons
 				leftButton: 
 				{
-					url: 'images/arrow_left2.png',
+					url: 'images/controls/arrow_left2.png',
 					// url: 'images/arrow_left2_sm.png',
 					width: 100,
 					height: 341,
@@ -164,7 +164,7 @@ Polyworks.Config = (function() {
 				},
 				rightButton: 
 				{
-					url: 'images/arrow_right2.png',
+					url: 'images/controls/arrow_right2.png',
 					// url: 'images/arrow_right2_sm.png',
 					width: 100,
 					height: 341,
@@ -174,7 +174,7 @@ Polyworks.Config = (function() {
 				},
 				upButton: 
 				{
-					url: 'images/arrow_up2.png',
+					url: 'images/controls/arrow_up2.png',
 					// url: 'images/arrow_up2_sm.png',
 					width: 100,
 					height: 341,
@@ -184,49 +184,49 @@ Polyworks.Config = (function() {
 				},
 				pauseButton: 
 				{
-					url: 'images/pause_button2.png',
+					url: 'images/controls/pause_button2.png',
 					width: 50,
 					height: 50,
 					frames: 2
 				},
 				playButton: 
 				{
-					url: 'images/play_button.png',
+					url: 'images/controls/play_button.png',
 					width: 100,
 					height: 100,
 					frames: 2
 				},
 				playButtonSmall: 
 				{
-					url: 'images/play_button_sm.png',
+					url: 'images/controls/play_button_sm.png',
 					width: 50,
 					height: 50,
 					frames: 2
 				},
 				menuButton: 
 				{
-					url: 'images/menu_button2.png',
+					url: 'images/controls/menu_button2.png',
 					width: 50,
 					height: 50,
 					frames: 2
 				},
 				mapButton: 
 				{
-					url: 'images/map_button.png',
+					url: 'images/controls/map_button.png',
 					width: 50,
 					height: 50,
 					frames: 2
 				},
 				restartButton: 
 				{
-					url: 'images/restart_button.png',
+					url: 'images/controls/restart_button.png',
 					width: 100,
 					height: 100,
 					frames: 2
 				},
 				quitButton: 
 				{
-					url: 'images/quit_button.png',
+					url: 'images/controls/quit_button.png',
 					width: 50,
 					height: 50,
 					frames: 2
