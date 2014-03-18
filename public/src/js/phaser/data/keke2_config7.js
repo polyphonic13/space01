@@ -158,6 +158,14 @@ Polyworks.Config = (function() {
 					height: 128,
 					frames: 4
 				},
+				// map
+				crystalsWheel: 
+				{
+					url: 'images/map/crystals_wheel_sprite.png',
+					width: 128,
+					height: 128,
+					frames: 12
+				},
 				// buttons
 				leftButton: 
 				{
@@ -962,6 +970,7 @@ Polyworks.Config = (function() {
 					'mapMountains'
 				],
 				sprites: [
+					'crystalsWheel',
 					'mapLocationMarker',
 					'menuButton'
 				],
@@ -1239,13 +1248,27 @@ Polyworks.Config = (function() {
 								x: (winW/2 - stageWidth/2) + (stageUnit * 2.5),
 								y: (winH/2) + (stageUnit * 0.4)
 							}
-							
 						},
 						attrs: {
 							img: 'kekeSmall',
 							phaser: {
 								width: (stageUnit),
 								height: (stageUnit * 1.17)
+							}
+						}
+					},
+					{
+						name: 'crystalsWheel',
+						cl: 'CrystalsWheel',
+						attrs: {
+							img: 'crystalsWheel',
+							phaser: {
+								width: (stageUnit * 1.25),
+								height: (stageUnit * 1.25)
+							},
+							start: {
+								x: (winW) - (stageUnit * 2.75),
+								y: (winH) - (stageUnit * 1.75)
 							}
 						}
 					},
@@ -8899,7 +8922,7 @@ Polyworks.Config = (function() {
 							img: 'rockPlatform02',
 							phaser: {
 								width: (stageUnit * 3),
-								height: (stageUnit * 6),
+								height: (stageUnit * 6)
 							},
 							start: {
 								x: (stageUnit * 0.1),

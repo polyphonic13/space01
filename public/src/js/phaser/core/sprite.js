@@ -77,27 +77,6 @@ Polyworks.Sprite = (function() {
 		}
 	};
 
-	// Sprite.prototype.preUpdate = function() {
-	// 	if(this.active) {
-	// 		// trace('Sprite['+this.model.name+']/preUpdate');
-	// 		// trace(this);
-	// 		Sprite._super.preUpdate.call(this);
-	// 	}
-	// };
-
-	// Sprite.prototype.update = function() {
-	// 	// trace('Sprite['+this.model.name+']/update, active = ' + this.active + ', alive = ' + this.alive);
-	// 	// if(this.active) {
-	// 	// }
-	// };
-
-	// Sprite.prototype.postUpdate = function() {
-	// 	if(this.active) {
-	// 		// trace('Sprite['+this.model.name+']/postUpdate');
-	// 		Sprite._super.postUpdate.call(this);
-	// 	}
-	// };
-
 	Sprite.prototype.deactivateGravity = function() {
 		// trace('Sprte['+this.model.name+']/deactivateGravity');
 		this.exists = false;
