@@ -818,10 +818,10 @@ Polyworks.Config = (function() {
 				]
 			},
 			// USE FOR LOCAL TESTING:
-			preloadAll: true,
+			// preloadAll: true,
 
 			// STATES
-			initialState: 'level06',
+			initialState: 'menu',
 			states: [
 			// menu
 			{

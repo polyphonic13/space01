@@ -6,7 +6,7 @@
 
 	<link rel="stylesheet" href="css/keke.css" />
 </head>
-<body onload="start();">
+<!-- <body onload="start();"> -->
 	<div id="loadingHolder"></div>
 	<div id="gameContainer"></div>
 	<div id="orientationMessage"></div>
@@ -35,6 +35,8 @@
 	<script type="text/javascript" src="../js/utils/logger.js"></script>
 
 	<script type="text/javascript" src="../js/utils/utils.js"></script>
+	<script type="text/javascript" src="../js/utils/fullscreen_manager.js"></script>
+
 	<script type="text/javascript" src="../js/phaser/events/events.js"></script>
 	<script type="text/javascript" src="../js/phaser/events/event_center.js"></script>
 
@@ -90,8 +92,15 @@
 
 	<script type="text/javascript">
 		function start() {
+			var gameContainer = document.getElementById('gameContainer');
+			var startFullscreen = document.getElementById('startFullscreen');
+			startFullscreen.parentNode.removeChild(startFullscreen);
+			console.log('fullScreenApi = ', fullScreenApi);
+			// window.fullScreenApi.requestFullScreen(gameContainer);
+			window.fullScreenApi.requestFullScreen(document.documentElement);
 			PolyworksGame.begin();			
 		}
 	</script>
+	<button id="startFullscreen" type="button" onclick="start()">Start</button>
 </body>
 </html>

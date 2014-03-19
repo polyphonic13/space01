@@ -8,6 +8,10 @@ body, canvas, div {
 	color: #000000;
 }
 
+#startFullscreen {
+	position: absolute;
+	z-index: 3;
+}
 .kekeText {
 	text-align: center;
 	font-size: 5em;
