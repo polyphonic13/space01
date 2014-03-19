@@ -9,7 +9,7 @@
 #
 set -e
 
-REMOVE_DEPLOY=0
+REMOVE_DEPLOY=1
 SKIP_GRUNT=0
 SKIP_IMAGES=0
 TARGET_PROJECT=""
@@ -62,7 +62,7 @@ function commit_to_target_git_branch {
 	echo "PUSHED GIT COMMIT TO $git_branch"
 }
 
-while getopts "t:d:rigc" opt; do
+while getopts "t:d:r:igc" opt; do
 	case $opt in
 	    t)
 			TARGET_PROJECT=$OPTARG
@@ -126,7 +126,7 @@ if([ "$REMOVE_DEPLOY" = 1 ])
 fi
 
 if([ "$SKIP_GRUNT" = 0 ])
-	then 
+	then
 	run_grunt_tasks
 else
 	make_temp_dir_and_copy_files_to_server

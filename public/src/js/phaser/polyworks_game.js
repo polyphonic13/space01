@@ -1,4 +1,3 @@
-
 PolyworksGame = (function() {
 	var _model = {};
 	var _player = {};
@@ -67,7 +66,7 @@ PolyworksGame = (function() {
 				return 'level' + level;
 			}
 		},
-		
+
 		get: function(prop) {
 			// if(_model.hasOwnProperty(prop)) {
 			if(Polyworks.Utils.has(_model, prop)) {
@@ -85,7 +84,7 @@ PolyworksGame = (function() {
 					switch(id) {
 						case 'level':
 							if(PolyworksGame.currentLevel === -1) {
-								id = 'map'
+								id = 'map';
 							} else {
 								id += ((PolyworksGame.currentLevel < 10) ? '0' : '') + PolyworksGame.currentLevel;
 							}
@@ -181,13 +180,15 @@ PolyworksGame = (function() {
 	};
 
 	function _hideAddressBar() {
-		trace('PolyworksGame/_hideAddressBar');
+		trace('------------ PolyworksGame/_hideAddressBar, window.location.hash = ', window.location.hash);
 		if(!window.location.hash) {
+			trace('\tdocument.height = ' + document.height + ', window.outerHeight = ' + window.outerHeight);
 			if(document.height < window.outerHeight) {
 				document.body.style.height = (window.outerHeight + 50) + 'px';
 			}
 			setTimeout(
-				function() { 
+				function() {
+					trace('\tabout to scrollTo 0/1');
 					window.scrollTo(0, 1); 
 				}, 
 				50 
