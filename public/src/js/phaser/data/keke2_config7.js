@@ -154,30 +154,39 @@ Polyworks.Config = (function() {
 				// buttons
 				leftButton: 
 				{
-					url: 'images/controls/arrow_left3.png',
+					url: 'images/controls/arrow_left_8x4.png',
+					width: 400,
+					height: 200,
+					// url: 'images/controls/arrow_left3.png',
+					// width: 50,
+					// height: 50,
 					// url: 'images/arrow_left2_sm.png',
-					width: 50,
-					height: 50,
 					// width: 50,
 					// height: 171,
 					frames: 2
 				},
 				rightButton: 
 				{
-					url: 'images/controls/arrow_right3.png',
+					url: 'images/controls/arrow_right_8x4.png',
+					width: 400, 
+					height: 200,
+					// url: 'images/controls/arrow_right3.png',
+					// width: 50,
+					// height: 50,
 					// url: 'images/arrow_right2_sm.png',
-					width: 50,
-					height: 50,
 					// width: 50,
 					// height: 171,
 					frames: 2
 				},
 				upButton: 
 				{
-					url: 'images/controls/arrow_up3.png',
+					url: 'images/controls/arrow_up_4x8.png',
+					width: 200,
+					height: 400,
+					// url: 'images/controls/arrow_up3.png',
+					// width: 50,
+					// height: 50,
 					// url: 'images/arrow_up2_sm.png',
-					width: 50,
-					height: 50,
 					// width: 50,
 					// height: 171,
 					frames: 2
@@ -390,9 +399,13 @@ Polyworks.Config = (function() {
 						cl: 'InputButton',
 						attrs: {
 							img: 'quitButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
 							start: {
-								x: 30,
-								y: 30
+								x: (stageUnit * 0.5),
+								y: (winH/2) - (stageUnit * 3)
 							},
 							frames: [0, 0, 1],
 							// inputCode: Polyworks.InputCodes.QUIT,
@@ -411,9 +424,13 @@ Polyworks.Config = (function() {
 						cl: 'InputButton',
 						attrs: {
 							img: 'menuButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
 							start: {
-								x: 30,
-								y: 30
+								x: (stageUnit * 0.5),
+								y: (winH/2) - (stageUnit * 3)
 							},
 							frames: [0, 0, 1],
 							// inputCode: Polyworks.InputCodes.MENU,
@@ -432,9 +449,13 @@ Polyworks.Config = (function() {
 						cl: 'InputButton',
 						attrs: {
 							img: 'menuButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
 							start: {
-								x: 30,
-								y: 30
+								x: (stageUnit * 0.5),
+								y: (winH/2) - (stageUnit * 3)
 							},
 							frames: [0, 0, 1],
 							// inputCode: Polyworks.InputCodes.MENU,
@@ -471,12 +492,15 @@ Polyworks.Config = (function() {
 						cl: 'InputButton',
 						attrs: {
 							img: 'menuButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
 							start: {
-								x: 30,
-								y: 30
+								x: (stageUnit * 0.5),
+								y: (winH/2) - (stageUnit * 3)
 							},
 							frames: [0, 0, 1],
-							// inputCode: Polyworks.InputCodes.MENU,
 							events: {
 								released: {
 									type: Polyworks.Events.CHANGE_STATE,
@@ -507,15 +531,13 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'leftButton',
 							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 1.5)
+								width: (stageUnit * 8),
+								height: (stageUnit * 4)
 							},
 							start: {
 								x: (stageUnit * 0.5),
-								// y: (winH/2) - (stageUnit * 2.5)
-								y: (winH/2) - (stageUnit * 1.5)
-								// x: 30,
-								// y: winH - 366
+								y: (winH/2) - (stageUnit * 4.5)
+								// y: (stageUnit * 0.5)
 							},
 							frames: [0, 0, 1],
 							inputCode: Polyworks.InputCodes.LEFT
@@ -527,14 +549,13 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'rightButton',
 							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 1.5)
+								width: (stageUnit * 8),
+								height: (stageUnit * 4)
 							},
 							start: {
 								x: (stageUnit * 0.5),
 								y: (winH/2) + (stageUnit * 0.5)
-								// x: 170,
-								// y: winH - 366
+								// y: (stageUnit * 4.5)
 							},
 							frames: [0, 0, 1],
 							inputCode: Polyworks.InputCodes.RIGHT
@@ -546,14 +567,13 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'upButton',
 							phaser: { 
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 1.5)
+								width: (stageUnit * 4),
+								height: (stageUnit * 8)
 							},
 							start: {
-								x: winW - (stageUnit * 2),
-								y: (winH/2) - (stageUnit * 0.75)
-								// x: winW - 130,
-								// y: winH - 366
+								x: winW - (stageUnit * 4.5),
+								// y: (winH/2) - (stageUnit * 0.5)
+								y: (stageUnit * 0.5)
 							},
 							frames: [0, 0, 1],
 							inputCode: Polyworks.InputCodes.UP
@@ -564,9 +584,13 @@ Polyworks.Config = (function() {
 						cl: 'InputButton',
 						attrs: {
 							img: 'pauseButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
 							start: {
-								x: 30,
-								y: 30
+								x: (stageUnit * 0.5),
+								y: (winH/2) - (stageUnit * 3)
 							},
 							frames: [0, 0, 1],
 							events: {
@@ -669,9 +693,13 @@ Polyworks.Config = (function() {
 					cl: 'InputButton',
 					attrs: {
 						img: 'playButtonSmall',
+						phaser: {
+							width: (stageUnit * 1.5),
+							height: (stageUnit * 1.5)
+						},
 						start: {
-							x: 30,
-							y: 30
+							x: (stageUnit * 0.5),
+							y: (winH/2) - (stageUnit * 3)
 						},
 						frames: [0, 0, 1],
 						events: {
@@ -686,9 +714,13 @@ Polyworks.Config = (function() {
 					cl: 'InputButton',
 					attrs: {
 						img: 'mapButton',
+						phaser: {
+							width: (stageUnit * 1.5),
+							height: (stageUnit * 1.5)
+						},
 						start: {
-							x: 30,
-							y: 95
+							x: (stageUnit * 0.5),
+							y: (winH/2) - (stageUnit * 1.25)
 						},
 						frames: [0, 0, 1],
 						events: {
@@ -704,9 +736,13 @@ Polyworks.Config = (function() {
 					cl: 'InputButton',
 					attrs: {
 						img: 'menuButton',
+						phaser: {
+							width: (stageUnit * 1.5),
+							height: (stageUnit * 1.5)
+						},
 						start: {
-							x: 30,
-							y: 160
+							x: (stageUnit * 0.5),
+							y: (winH/2) + (stageUnit * 0.5)
 						},
 						frames: [0, 0, 1],
 						events: {
@@ -793,12 +829,15 @@ Polyworks.Config = (function() {
 					cl: 'InputButton',
 					attrs: {
 						img: 'mapButton',
+						phaser: {
+							width: (stageUnit * 1.5),
+							height: (stageUnit * 1.5)
+						},
 						start: {
-							x: 30,
-							y: 30
+							x: (stageUnit * 0.5),
+							y: (winH/2) - (stageUnit * 1.25)
 						},
 						frames: [0, 0, 1],
-						// inputCode: Polyworks.InputCodes.START,
 						events: {
 							released: {
 								type: Polyworks.Events.CHANGE_STATE,
@@ -812,12 +851,15 @@ Polyworks.Config = (function() {
 					cl: 'InputButton',
 					attrs: {
 						img: 'menuButton',
+						phaser: {
+							width: (stageUnit * 1.5),
+							height: (stageUnit * 1.5)
+						},
 						start: {
-							x: 30,
-							y: 95
+							x: (stageUnit * 0.5),
+							y: (winH/2) + (stageUnit * 0.5)
 						},
 						frames: [0, 0, 1],
-						// inputCode: Polyworks.InputCodes.MENU,
 						events: {
 							released: {
 								type: Polyworks.Events.CHANGE_STATE,

@@ -1,4 +1,10 @@
 /*
+basic unit: 36px (576w x 324h)
+
+level buttons:
+	l/r 8x4 = 288x144
+	up	4x8 = 144x288
+
 level backgrounds (2)
 640x180
 1280x360
