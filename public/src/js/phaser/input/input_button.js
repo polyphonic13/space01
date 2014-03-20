@@ -59,7 +59,7 @@ Polyworks.InputButton = (function() {
 	};
 	
 	InputButton.prototype.inputDown = function(event, pointer, ctx) {
-		// trace('InputButton['+this.model.name+']/inputDown');
+		trace('InputButton['+this.model.name+']/inputDown');
 		// trace(event);
 		// trace('\tpointer = ');
 		// trace(pointer);

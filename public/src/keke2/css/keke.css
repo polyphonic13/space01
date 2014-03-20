@@ -10,6 +10,7 @@ body, canvas, div {
 
 #startFullscreen {
 	position: absolute;
+	top: 50%;
 	z-index: 3;
 }
 .kekeText {
