@@ -154,9 +154,12 @@ Polyworks.Config = (function() {
 				// buttons
 				leftButton: 
 				{
-					url: 'images/controls/arrow_left_8x4.png',
-					width: 400,
-					height: 200,
+					url: 'images/controls/arrow_left_2x8.png',
+					width: 75,
+					height: 400,
+					// url: 'images/controls/arrow_left_8x4.png',
+					// width: 400,
+					// height: 200,
 					// url: 'images/controls/arrow_left3.png',
 					// width: 50,
 					// height: 50,
@@ -167,9 +170,9 @@ Polyworks.Config = (function() {
 				},
 				rightButton: 
 				{
-					url: 'images/controls/arrow_right_8x4.png',
-					width: 400, 
-					height: 200,
+					url: 'images/controls/arrow_right_4x8.png',
+					width: 200, 
+					height: 400,
 					// url: 'images/controls/arrow_right3.png',
 					// width: 50,
 					// height: 50,
@@ -531,13 +534,12 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'leftButton',
 							phaser: {
-								width: (stageUnit * 8),
-								height: (stageUnit * 4)
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 8)
 							},
 							start: {
 								x: (stageUnit * 0.5),
-								y: (winH/2) - (stageUnit * 4.5)
-								// y: (stageUnit * 0.5)
+								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
 							},
 							frames: [0, 0, 1],
 							inputCode: Polyworks.InputCodes.LEFT
@@ -549,13 +551,12 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'rightButton',
 							phaser: {
-								width: (stageUnit * 8),
-								height: (stageUnit * 4)
+								width: (stageUnit * 4),
+								height: (stageUnit * 8)
 							},
 							start: {
-								x: (stageUnit * 0.5),
-								y: (winH/2) + (stageUnit * 0.5)
-								// y: (stageUnit * 4.5)
+								x: (stageUnit * 2.5),
+								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
 							},
 							frames: [0, 0, 1],
 							inputCode: Polyworks.InputCodes.RIGHT
@@ -572,8 +573,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: winW - (stageUnit * 4.5),
-								// y: (winH/2) - (stageUnit * 0.5)
-								y: (stageUnit * 0.5)
+								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
 							},
 							frames: [0, 0, 1],
 							inputCode: Polyworks.InputCodes.UP
