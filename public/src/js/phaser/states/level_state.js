@@ -68,16 +68,24 @@ Polyworks.LevelState = (function() {
 		// trace('LevelState['+this.model.name+']/player created, jump = ' + playerConfig.attrs.speed.y, playerConfig);
 	};
 
+	LevelState.prototype.destroyPlayer = function() {
+		if(this.playerGroupPresent) {
+			this.playerGroup.destroy(true);
+			this.playerGroupPresent = false;
+		}
+		if(this.playerPresent) {
+			this.player.destroy();
+			this.playerPresent = false;
+		} 
+	};
+	
 	LevelState.prototype.update = function() {
 		if(!this.paused) {
 			// trace('LevelState['+this.model.name+']/update');
 			if(this.requirementsMet && (this.player.body.x >= this.model.bounds.end)) {
 				if(!this.triggeredCleared) {
 					// immediately stop player from updating by killing group
-					if(this.playerGroupPresent) {
-						this.playerGroup.destroy(true);
-						this.playerGroupPresent = false;
-					}
+					this.destroyPlayer();
 
 					this.triggeredCleared = true;
 					this.levelCleared();
@@ -144,17 +152,8 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.pauseState = function() {
-		this.player.visible = false;
-		// this.player.destroy();
-		// this.playerPresent = false;
-		if(this.playerGroupPresent) {
-			this.playerGroup.destroy(true);
-			this.playerGroupPresent = false;
-		}
-		if(this.playerPresent) {
-			this.player.destroy();
-			this.playerPresent = false;
-		} 
+		this.destroyPlayer();
+
 		this.sectorManager.deactivateAll();
 		this.playerPosition = {
 			x: this.player.x,
@@ -195,9 +194,6 @@ Polyworks.LevelState = (function() {
 	
 	LevelState.prototype.levelCleared = function() {
 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_CLEARED, value: this.model.name });
-		// this.player.visible = false;
-		// this.player.destroy();
-		// this.playerPresent = false;
 
 		if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels)) {
 			PolyworksGame.currentLevel++;
@@ -212,18 +208,7 @@ Polyworks.LevelState = (function() {
 	LevelState.prototype.shutdown = function() {
 		// trace('LevelState['+this.model.name+']/shutdown');
 		Polyworks.EventCenter.unbind(Polyworks.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
-		if(this.playerGroupPresent) {
-			this.playerGroup.destroy(true);
-			this.playerGroupPresent = false;
-		}
-		if(this.playerPresent) {
-			this.player.destroy();
-			this.playerPresent = false;
-		} 
-		// if(this.playerGroupPresent) {
-		// 	this.playerGroup.destroy();
-		// 	this.playerGroupPresent = false;
-		// }
+		this.destroyPlayer();
 		LevelState._super.shutdown.call(this);
 	};
 
