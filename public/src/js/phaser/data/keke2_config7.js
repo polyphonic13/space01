@@ -1373,6 +1373,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButton',
 					'playButtonSmall',
 					'menuButton',
 					'mapButton',
@@ -2215,6 +2216,7 @@ Polyworks.Config = (function() {
 						cl: 'Requirement',
 						attrs: {
 							img: 'crystals02Blue',
+							score: 10000,
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -2300,6 +2302,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButton',
 					'playButtonSmall',
 					'menuButton',
 					'mapButton',
@@ -3192,6 +3195,7 @@ Polyworks.Config = (function() {
 						cl: 'Requirement',
 						attrs: {
 							img: 'crystals02Green',
+							score: 10000,
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -3278,6 +3282,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButton',
 					'playButtonSmall',
 					'menuButton',
 					'mapButton',
@@ -4395,6 +4400,7 @@ Polyworks.Config = (function() {
 						cl: 'Requirement',
 						attrs: {
 							img: 'crystals02Garnet',
+							score: 10000,
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -4482,6 +4488,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButton',
 					'playButtonSmall',
 					'menuButton',
 					'mapButton',
@@ -5750,6 +5757,7 @@ Polyworks.Config = (function() {
 						cl: 'Requirement',
 						attrs: {
 							img: 'crystals02Purple',
+							score: 10000,
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -5840,6 +5848,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButton',
 					'playButtonSmall',
 					'menuButton',
 					'mapButton',
@@ -7440,6 +7449,7 @@ Polyworks.Config = (function() {
 						cl: 'Requirement',
 						attrs: {
 							img: 'crystals02Aqua',
+							score: 10000,
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -7524,6 +7534,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButton',
 					'playButtonSmall',
 					'menuButton',
 					'mapButton',
@@ -8645,6 +8656,7 @@ Polyworks.Config = (function() {
 						cl: 'Requirement',
 						attrs: {
 							img: 'crystals02Orange',
+							score: 10000,
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -8732,6 +8744,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButton',
 					'playButtonSmall',
 					'menuButton',
 					'mapButton',
@@ -10256,6 +10269,7 @@ Polyworks.Config = (function() {
 						cl: 'Requirement',
 						attrs: {
 							img: 'crystals02Pink',
+							score: 10000,
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -10342,6 +10356,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButton',
 					'playButtonSmall',
 					'menuButton',
 					'mapButton',
@@ -11847,6 +11862,7 @@ Polyworks.Config = (function() {
 						cl: 'Requirement',
 						attrs: {
 							img: 'crystals02Teal',
+							score: 10000,
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -11933,6 +11949,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButton',
 					'playButtonSmall',
 					'menuButton',
 					'mapButton',
@@ -13438,6 +13455,7 @@ Polyworks.Config = (function() {
 						cl: 'Requirement',
 						attrs: {
 							img: 'crystals02Yellow',
+							score: 10000,
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)
@@ -13524,6 +13542,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButton',
 					'playButtonSmall',
 					'menuButton',
 					'mapButton',
@@ -15029,6 +15048,7 @@ Polyworks.Config = (function() {
 						cl: 'Requirement',
 						attrs: {
 							img: 'crystals02Red',
+							score: 10000,
 							phaser: {
 								width: (stageUnit * 0.75),
 								height: (stageUnit * 1.5)

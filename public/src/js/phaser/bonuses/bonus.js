@@ -10,7 +10,9 @@ Polyworks.Bonus = (function() {
 	};
 	
 	Bonus.prototype.collect = function() {
-	    PolyworksGame.setScore(this.model.attrs.score);
+		if(this.model.attrs.score) {
+		    PolyworksGame.setScore(this.model.attrs.score);
+		}
 		this.model.ancestor.removeChild.call(this.model.ancestor, this.model.name);
 		Bonus._super.kill.call(this);
 	};
