@@ -1288,9 +1288,8 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1.25)
 							},
 							start: {
-								x: (winW) - (stageUnit * 2.75),
-								// y: (winH) - (stageUnit * 1.75)
-								y: (winW/2 - stageWidth/2) + (stageWidth - (stageUnit * 2))
+								x: (winW/2) + (stageWidth/2) - (stageUnit * 2.75),
+								y: (winH/2) + (stageHeight/2) - (stageUnit * 1.75)
 							}
 						}
 					},
@@ -13542,7 +13541,6 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
-					'playButton',
 					'playButtonSmall',
 					'menuButton',
 					'mapButton',
