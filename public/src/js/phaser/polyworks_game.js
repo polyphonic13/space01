@@ -100,7 +100,7 @@ PolyworksGame = (function() {
 				score: PolyworksGame.score,
 				currentLevel: PolyworksGame.currentLevel,
 				savedState: PolyworksGame.currentState,
-				levels: PolyworksGame.levels
+				levelStatus: PolyworksGame.levelStatus
 			};
 
 			Polyworks.Storage.set(params);
@@ -117,16 +117,16 @@ PolyworksGame = (function() {
 							id = 'map';
 						} else {
 							id += ((PolyworksGame.currentLevel < 10) ? '0' : '') + PolyworksGame.currentLevel;
-							PolyworksGame.levels[id].locked = false;
+							PolyworksGame.levelStatus[PolyworksGame.currentLevel] = 'u';
 						}
 					break;
 
 					case 'nextLevel':
-						trace('next level, current = ' + PolyworksGame.currentLevel + ', total = ' + PolyworksGame.totalLevels);
-						if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels)) {
+						trace('next level, current = ' + PolyworksGame.currentLevel + ', total = ' + PolyworksGame.levelCount);
+						if(PolyworksGame.currentLevel < (PolyworksGame.levelCount)) {
 							PolyworksGame.currentLevel++;
 							id = 'level' + ((PolyworksGame.currentLevel < 10) ? '0' : '') + PolyworksGame.currentLevel;
-							PolyworksGame.levels[id].locked = false;
+							PolyworksGame.levelStatus[PolyworksGame.currentLevel] = 'u';
 						} else {
 							PolyworksGame.currentLevel = 1;
 							id = 'completed';
@@ -306,6 +306,7 @@ PolyworksGame = (function() {
 		Polyworks.EventCenter.bind(Polyworks.Events.BUTTON_PRESSED, _onControlPressed, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_PRESSED, _onControlPressed, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_STATE, _onChangeState, this);
+		Polyworks.EventCenter.bind(Polyworks.Events.START_LEVEL, _onStartLevel, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.LEVEL_CLEARED, _onLevelCleared, this);
 	}
 
@@ -316,13 +317,17 @@ PolyworksGame = (function() {
 		Polyworks.EventCenter.unbind(Polyworks.Events.BUTTON_PRESSED, _onControlPressed, this);
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_PRESSED, _onControlPressed, this);
 		Polyworks.EventCenter.unbind(Polyworks.Events.CHANGE_STATE, _onChangeState, this);
+		Polyworks.EventCenter.unbind(Polyworks.Events.START_LEVEL, _onStartLevel, this);
 		Polyworks.EventCenter.unbind(Polyworks.Events.LEVEL_CLEARED, _onLevelCleared, this);
 	}
 
 	function _onLevelCleared(event) {
 		trace('PolyworksGame/_onLevelCleared, event = ', event);
-		PolyworksGame.levels[event.value].cleared = true;
-		PolyworksGame.levels[event.value].locked = false;
+		PolyworksGame.levelStatus[event.idx] = 'c';
+		var nextLevel = event.idx++;
+		if(PolyworksGame.levelStatus[nextLevel] === 'l') {
+			PolyworksGame.levelStatus[nextLevel] = 'u';
+		}
 	}
 
 	function _onStageInitialized(event) {
@@ -350,20 +355,33 @@ PolyworksGame = (function() {
 		PolyworksGame.changeState(event.value);
 	}
 	
+	function _onStartLevel(event) {
+		var idx = event.value + 1;
+		var stateId = 'level' + ((idx < 10) ? '0' : '') + (idx);
+		PolyworksGame.changeState(stateId);
+	}
+	
 	function _beginControls() {
 	
 		_controls = new Polyworks.Collection(_model.controls.keys);
 		_controls.begin();
 	}
-	
+	/*
+		state state codes
+		l: locked
+		u: unlocked
+		c: cl
+		
+	*/
 	function _beginStates() {
 		_states = {};
 
-		PolyworksGame.levels = {};
+		PolyworksGame.levelStatus = [];
 
 		var states = _model.states;
 		var state;
 		var firstLevel = true; 
+		var levelCount = 0;
 
 		Polyworks.Utils.each(states,
 			function(s, idx) {
@@ -372,17 +390,18 @@ PolyworksGame = (function() {
 				PolyworksGame.phaser.state.add(s.name, state, false);
 				if(s.name.indexOf('level') > -1) {
 					trace('\tstate['+s.name+']');
-					PolyworksGame.totalLevels++;
-					PolyworksGame.levels[s.name] = {
-						cleared: false,
-						locked: ((firstLevel) ? false : true)
-					};
+					PolyworksGame.levelStatus[levelCount] = (levelCount === 0) ? 'u' : 'l';
+					levelCount++;
+					// PolyworksGame.levels[s.name] = {
+					// 	cleared: false,
+					// 	locked: ((firstLevel) ? false : true)
+					// };
 					firstLevel = false;
 				}
 			},
 			this
 		);
-
+		PolyworksGame.levelCount = levelCount;
 		trace('PolyworksGame/_beginStates, _stageInitialized = ' + _stageInitialized + ', _states = ');
 		trace(_states);
 		if(_stageInitialized) {

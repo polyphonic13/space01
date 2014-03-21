@@ -10,22 +10,35 @@ Polyworks.MapMarker = (function() {
 		MapMarker._super.begin.call(this);
 
 		var name = this.model.name;
-		this.model.level = (name.substring(0, name.indexOf('-mapMarker')));
-		var currentLevel = 'level' + ((PolyworksGame.currentLevel < 10) ? '0' : '') + PolyworksGame.currentLevel;
-		var levelAttrs = PolyworksGame.levels[this.model.level];
+		// this.model.level = (name.substring(0, name.indexOf('-mapMarker')));
+		this.model.level = parseInt(name.replace('mapLevelMarker', ''));
+		// var currentLevel = 'level' + ((PolyworksGame.currentLevel < 10) ? '0' : '') + PolyworksGame.currentLevel;
+		var currentLevel = PolyworksGame.currentLevel;
+		var levelStatus = PolyworksGame.levelStatus[this.model.level];
 
-		// trace('\tlevelAttrs = ', levelAttrs, '\tlevel = ' + this.model.level + ', currentLevel = ' + currentLevel);
-		if(!levelAttrs.locked || (this.model.level === currentLevel)) {
-			if(levelAttrs.cleared) {
-				this.frame = 0;
-			} else {
+		trace('\tlevelStatus = ', levelStatus, '\tlevel = ' + this.model.level + ', currentLevel = ' + currentLevel);
+		if(levelStatus === 'l') {
+			this.frame = 2;
+		} else {
+			if(levelStatus === 'u') {
 				this.frame = 1;
+			} else {
+				this.frame = 0; // c (cleared)
 			}
 			this.input.start();
 			this.addListeners();
-		} else {
-			this.frame = 2;
 		}
+		// if(!levelStatus.locked || (this.model.level === currentLevel)) {
+		// 	if(levelStatus.cleared) {
+		// 		this.frame = 0;
+		// 	} else {
+		// 		this.frame = 1;
+		// 	}
+		// 	this.input.start();
+		// 	this.addListeners();
+		// } else {
+		// 	this.frame = 2;
+		// }
 	};
 	
 	MapMarker.prototype.addListeners = function() {
@@ -46,7 +59,7 @@ Polyworks.MapMarker = (function() {
 	MapMarker.prototype.inputUp = function(event, pointer, ctx) {
 		// trace('MapMarker['+this.model.name+']/inputUp');
 		ctx.pressed = false;
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CHANGE_STATE, value: this.model.level });
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.START_LEVEL, value: this.model.level });
 	};
 	
 	return MapMarker;

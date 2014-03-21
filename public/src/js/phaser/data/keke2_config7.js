@@ -1025,7 +1025,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'level01-mapMarker',
+						name: 'mapLevelMarker0',
 						cl: 'MapMarker',
 						attrs: {
 							img: 'mapLocationMarker',
@@ -1040,7 +1040,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'level02-mapMarker',
+						name: 'mapLevelMarker1',
 						cl: 'MapMarker',
 						attrs: {
 							img: 'mapLocationMarker',
@@ -1055,7 +1055,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'level03-mapMarker',
+						name: 'mapLevelMarker2',
 						cl: 'MapMarker',
 						attrs: {
 							img: 'mapLocationMarker',
@@ -1070,7 +1070,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'level04-mapMarker',
+						name: 'mapLevelMarker3',
 						cl: 'MapMarker',
 						attrs: {
 							img: 'mapLocationMarker',
@@ -1085,7 +1085,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'level05-mapMarker',
+						name: 'mapLevelMarker4',
 						cl: 'MapMarker',
 						attrs: {
 							img: 'mapLocationMarker',
@@ -1129,7 +1129,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'level06-mapMarker',
+						name: 'mapLevelMarker5',
 						cl: 'MapMarker',
 						attrs: {
 							img: 'mapLocationMarker',
@@ -1144,7 +1144,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'level07-mapMarker',
+						name: 'mapLevelMarker6',
 						cl: 'MapMarker',
 						attrs: {
 							img: 'mapLocationMarker',
@@ -1159,7 +1159,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'level08-mapMarker',
+						name: 'mapLevelMarker7',
 						cl: 'MapMarker',
 						attrs: {
 							img: 'mapLocationMarker',
@@ -1174,7 +1174,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'level09-mapMarker',
+						name: 'mapLevelMarker8',
 						cl: 'MapMarker',
 						attrs: {
 							img: 'mapLocationMarker',
@@ -1189,7 +1189,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'level10-mapMarker',
+						name: 'mapLevelMarker9',
 						cl: 'MapMarker',
 						attrs: {
 							img: 'mapLocationMarker',

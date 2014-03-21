@@ -193,9 +193,9 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.levelCleared = function() {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_CLEARED, value: this.model.name });
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_CLEARED, value: this.model.name, idx: PolyworksGame.currentLevel });
 
-		if(PolyworksGame.currentLevel < (PolyworksGame.totalLevels)) {
+		if(PolyworksGame.currentLevel < (PolyworksGame.levelCount)) {
 			PolyworksGame.currentLevel++;
 		} else {
 			PolyworksGame.currentLevel = -1;
