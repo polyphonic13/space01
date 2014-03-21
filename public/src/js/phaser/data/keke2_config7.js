@@ -1585,6 +1585,24 @@ Polyworks.Config = (function() {
 								immovable: true
 							}
 						}
+					},
+					{
+						name: 'backupGround',
+						cl: 'Sprite',
+						attrs: {
+							img: 'platformRed',
+							phaser: {
+								width: (winW),
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: 0,
+								y: winH - (stageUnit * 0.5)
+							},
+							physics: {
+								immovable: true
+							}
+						}
 					}
 					]
 				},
@@ -2502,6 +2520,24 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: (stageWidth * 6) + (stageUnit * 8),
 								height: (stageUnit * 0.5)
+							},
+							start: {
+								x: 0,
+								y: winH - (stageUnit * 0.5)
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
+						name: 'backupGround',
+						cl: 'Sprite',
+						attrs: {
+							img: 'platformRed',
+							phaser: {
+								width: (winW),
+								height: (stageUnit * 2)
 							},
 							start: {
 								x: 0,
@@ -3536,6 +3572,24 @@ Polyworks.Config = (function() {
 							start: {
 								x: 0,
 								y: winH - 16
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
+						name: 'backupGround',
+						cl: 'Sprite',
+						attrs: {
+							img: 'platformRed',
+							phaser: {
+								width: (winW),
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: 0,
+								y: winH - (stageUnit * 0.5)
 							},
 							physics: {
 								immovable: true
@@ -4752,6 +4806,24 @@ Polyworks.Config = (function() {
 							start: {
 								x: 0,
 								y: winH - 16
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
+						name: 'backupGround',
+						cl: 'Sprite',
+						attrs: {
+							img: 'platformRed',
+							phaser: {
+								width: (winW),
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: 0,
+								y: winH - (stageUnit * 0.5)
 							},
 							physics: {
 								immovable: true
@@ -7780,6 +7852,24 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'backupGround',
+						cl: 'Sprite',
+						attrs: {
+							img: 'platformRed',
+							phaser: {
+								width: (winW),
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: 0,
+								y: winH - (stageUnit * 0.5)
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
 						name: 'ground1',
 						cl: 'Sprite',
 						attrs: {
@@ -8923,6 +9013,24 @@ Polyworks.Config = (function() {
 							start: {
 								x: 0,
 								y: winH - (stageUnit * 0.1)
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
+						name: 'backupGround',
+						cl: 'Sprite',
+						attrs: {
+							img: 'platformRed',
+							phaser: {
+								width: (winW),
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: 0,
+								y: winH - (stageUnit * 0.5)
 							},
 							physics: {
 								immovable: true
