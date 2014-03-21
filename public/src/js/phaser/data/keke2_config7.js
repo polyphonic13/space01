@@ -373,6 +373,13 @@ Polyworks.Config = (function() {
 						attrs: {
 							inputCode: Polyworks.InputCodes.UP
 						}
+					},
+					{
+						name: 'space',
+						cl: 'ControlKey',
+						attrs: {
+							inputCode: Polyworks.InputCodes.SPACE
+						}
 					}
 					]
 				},
@@ -914,7 +921,6 @@ Polyworks.Config = (function() {
 				],
 				sprites: [
 					'keke',
-					'mapLocationMarker',
 					'pauseButton',
 					'menuButton',
 					'mapButton',
@@ -975,8 +981,10 @@ Polyworks.Config = (function() {
 				backgroundColor: '#ffffff',
 				images: [
 					'kekeSmall',
+					'greyExpanseTitle',
 					'nextButton',
 					'invisibleRect',
+					'whiteRect',
 					'pageLeftArrow',
 					'pageRightArrow',
 					'mapForest',
@@ -1337,6 +1345,7 @@ Polyworks.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				images: [
+					'whiteRect',
 					'ovalMask',
 					'forestBackground02a',
 					'forestBackground02b',
@@ -1348,7 +1357,6 @@ Polyworks.Config = (function() {
 					'tree01',
 					'platformV',
 					'platform',
-					'platformRed',
 					'branch02Left',
 					'branch02Right',
 					'branch02aLeft',
@@ -1365,6 +1373,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButtonSmall',
 					'menuButton',
 					'mapButton',
 					'keke',
@@ -1576,24 +1585,6 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: (stageWidth * 6) + (stageUnit * 8),
 								height: (stageUnit * 0.5)
-							},
-							start: {
-								x: 0,
-								y: winH - (stageUnit * 0.5)
-							},
-							physics: {
-								immovable: true
-							}
-						}
-					},
-					{
-						name: 'backupGround',
-						cl: 'Sprite',
-						attrs: {
-							img: 'platformRed',
-							phaser: {
-								width: (winW),
-								height: (stageUnit * 2)
 							},
 							start: {
 								x: 0,
@@ -2284,6 +2275,7 @@ Polyworks.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				images: [
+					'whiteRect',
 					'ovalMask',
 					'forestBackground01a',
 					'forestBackground01b',
@@ -2292,7 +2284,6 @@ Polyworks.Config = (function() {
 					'tree01',
 					'platformV',
 					'platform',
-					'platformRed',
 					'branch02Left',
 					'branch02Right',
 					'branch02aLeft',
@@ -2309,6 +2300,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButtonSmall',
 					'menuButton',
 					'mapButton',
 					'keke',
@@ -2520,24 +2512,6 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: (stageWidth * 6) + (stageUnit * 8),
 								height: (stageUnit * 0.5)
-							},
-							start: {
-								x: 0,
-								y: winH - (stageUnit * 0.5)
-							},
-							physics: {
-								immovable: true
-							}
-						}
-					},
-					{
-						name: 'backupGround',
-						cl: 'Sprite',
-						attrs: {
-							img: 'platformRed',
-							phaser: {
-								width: (winW),
-								height: (stageUnit * 2)
 							},
 							start: {
 								x: 0,
@@ -3277,6 +3251,7 @@ Polyworks.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				images: [
+					'whiteRect',
 					'ovalMask',
 					'forestBackground01a',
 					'forestBackground01b',
@@ -3303,6 +3278,9 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButtonSmall',
+					'menuButton',
+					'mapButton',
 					'keke',
 					'caterpillar01'
 				],
@@ -3572,24 +3550,6 @@ Polyworks.Config = (function() {
 							start: {
 								x: 0,
 								y: winH - 16
-							},
-							physics: {
-								immovable: true
-							}
-						}
-					},
-					{
-						name: 'backupGround',
-						cl: 'Sprite',
-						attrs: {
-							img: 'platformRed',
-							phaser: {
-								width: (winW),
-								height: (stageUnit * 2)
-							},
-							start: {
-								x: 0,
-								y: winH - (stageUnit * 0.5)
 							},
 							physics: {
 								immovable: true
@@ -4494,11 +4454,14 @@ Polyworks.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				images: [
+					'whiteRect',
 					'ovalMask',
 					'forestBackground01a',
 					'forestBackground01b',
 					'forestBackground01c',
 					'grass03',
+					'tree01',
+					'trunk01',
 					'platformV',
 					'platform',
 					'branch02Left',
@@ -4509,6 +4472,7 @@ Polyworks.Config = (function() {
 					'vine01Right',
 					'thorns01',
 					'lollipop',
+					'crystals02Grey',
 					'crystals02Garnet',
 					'invisibleRect',
 					'heart'
@@ -4518,6 +4482,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButtonSmall',
 					'menuButton',
 					'mapButton',
 					'keke',
@@ -4806,24 +4771,6 @@ Polyworks.Config = (function() {
 							start: {
 								x: 0,
 								y: winH - 16
-							},
-							physics: {
-								immovable: true
-							}
-						}
-					},
-					{
-						name: 'backupGround',
-						cl: 'Sprite',
-						attrs: {
-							img: 'platformRed',
-							phaser: {
-								width: (winW),
-								height: (stageUnit * 2)
-							},
-							start: {
-								x: 0,
-								y: winH - (stageUnit * 0.5)
 							},
 							physics: {
 								immovable: true
@@ -5862,6 +5809,7 @@ Polyworks.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				images: [
+					'whiteRect',
 					'ovalMask',
 					'forestBackground01a',
 					'forestBackground01b',
@@ -5870,6 +5818,7 @@ Polyworks.Config = (function() {
 					'grass03b',
 					'grass03c',
 					'grassClump01',
+					'trunk01',
 					'tree01',
 					'platformV',
 					'platform',
@@ -5881,6 +5830,7 @@ Polyworks.Config = (function() {
 					'vine01Right',
 					'thorns01',
 					'lollipop',
+					'crystals02Grey',
 					'crystals02Purple',
 					'invisibleRect',
 					'heart'
@@ -5890,6 +5840,9 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButtonSmall',
+					'menuButton',
+					'mapButton',
 					'keke',
 					'caterpillar01',
 					'caterpillar02'
@@ -7546,7 +7499,8 @@ Polyworks.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				images: [
-					// 'sky',
+					'whiteRect',
+					'ovalMask',
 					'riverBackground01a',
 					'riverBackground01b',
 					'riverBackground01c',
@@ -7560,6 +7514,7 @@ Polyworks.Config = (function() {
 					'grass03ci',
 					'grassClump01',
 					'river01',
+					'crystals02Grey',
 					'crystals02Orange',
 					'invisibleRect',
 					'heart'
@@ -7569,6 +7524,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButtonSmall',
 					'menuButton',
 					'mapButton',
 					'keke'
@@ -7841,24 +7797,6 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: (stageWidth * 2.5),
 								height: (stageUnit)
-							},
-							start: {
-								x: 0,
-								y: winH - (stageUnit * 0.5)
-							},
-							physics: {
-								immovable: true
-							}
-						}
-					},
-					{
-						name: 'backupGround',
-						cl: 'Sprite',
-						attrs: {
-							img: 'platformRed',
-							phaser: {
-								width: (winW),
-								height: (stageUnit * 2)
 							},
 							start: {
 								x: 0,
@@ -8766,6 +8704,8 @@ Polyworks.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				images: [
+					'whiteRect',
+					'ovalMask',
 					'sky',
 					'mountainBackground05a',
 					'mountainBackground05b',
@@ -8784,6 +8724,7 @@ Polyworks.Config = (function() {
 					'rockPlatform03',
 					'invisibleRect',
 					'heart',
+					'crystals02Grey',
 					'crystals02Pink'
 				],
 				sprites: [
@@ -8791,6 +8732,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButtonSmall',
 					'menuButton',
 					'mapButton',
 					'keke'
@@ -9013,24 +8955,6 @@ Polyworks.Config = (function() {
 							start: {
 								x: 0,
 								y: winH - (stageUnit * 0.1)
-							},
-							physics: {
-								immovable: true
-							}
-						}
-					},
-					{
-						name: 'backupGround',
-						cl: 'Sprite',
-						attrs: {
-							img: 'platformRed',
-							phaser: {
-								width: (winW),
-								height: (stageUnit * 2)
-							},
-							start: {
-								x: 0,
-								y: winH - (stageUnit * 0.5)
 							},
 							physics: {
 								immovable: true
@@ -10391,6 +10315,8 @@ Polyworks.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				images: [
+					'whiteRect',
+					'ovalMask',
 					'sky',
 					'mountainBackground05a',
 					'mountainBackground05b',
@@ -10408,6 +10334,7 @@ Polyworks.Config = (function() {
 					'rockPlatform01',
 					'invisibleRect',
 					'heart',
+					'crystals02Grey',
 					'crystals02Teal'
 				],
 				sprites: [
@@ -10415,6 +10342,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButtonSmall',
 					'menuButton',
 					'mapButton',
 					'keke'
@@ -11978,6 +11906,8 @@ Polyworks.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				images: [
+					'whiteRect',
+					'ovalMask',
 					'sky',
 					'mountainBackground05a',
 					'mountainBackground05b',
@@ -11995,6 +11925,7 @@ Polyworks.Config = (function() {
 					'rockPlatform01',
 					'invisibleRect',
 					'heart',
+					'crystals02Grey',
 					'crystals02Yellow'
 				],
 				sprites: [
@@ -12002,6 +11933,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButtonSmall',
 					'menuButton',
 					'mapButton',
 					'keke'
@@ -13565,6 +13497,8 @@ Polyworks.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				images: [
+					'whiteRect',
+					'ovalMask',
 					'sky',
 					'mountainBackground05a',
 					'mountainBackground05b',
@@ -13582,6 +13516,7 @@ Polyworks.Config = (function() {
 					'rockPlatform01',
 					'invisibleRect',
 					'heart',
+					'crystals02Grey',
 					'crystals02Red'
 				],
 				sprites: [
@@ -13589,6 +13524,7 @@ Polyworks.Config = (function() {
 					'rightButton',
 					'upButton',
 					'pauseButton',
+					'playButtonSmall',
 					'menuButton',
 					'mapButton',
 					'keke'

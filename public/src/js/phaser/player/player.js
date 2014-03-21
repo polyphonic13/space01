@@ -60,6 +60,7 @@ Polyworks.Player = (function() {
 		this.activeControls[Polyworks.InputCodes.LEFT] = false;
 		this.activeControls[Polyworks.InputCodes.RIGHT] = false;
 		this.activeControls[Polyworks.InputCodes.UP] = false;
+		this.activeControls[Polyworks.InputCodes.SPACE] = false;
 		this.activeControls[Polyworks.InputCodes.DOWN] = false;
 		// trace('activeControls');
 		// trace(this.activeControls);
@@ -112,7 +113,7 @@ Polyworks.Player = (function() {
 
 		this.body.velocity.x = this.velX;
 
-		if(this.activeControls[Polyworks.InputCodes.UP]) {
+		if(this.activeControls[Polyworks.InputCodes.UP] || this.activeControls[Polyworks.InputCodes.SPACE]) {
 			if(attrs.grounded && !attrs.justJumped) {
 				this.velY = -attrs.speed.y;
 				this.body.velocity.y = this.velY;
@@ -172,7 +173,7 @@ Polyworks.Player = (function() {
 	};
 
 	Player.prototype.checkHazardsCollision = function(hazards, physics) {
-		this.checkCollision(hazards, this.onHazradCollision, physics, this);
+		this.checkCollision(hazards, this.onHazardCollision, physics, this);
 	};
 	
 	Player.prototype.checkEnemiesCollision = function(enemies, physics) {
@@ -197,8 +198,8 @@ Polyworks.Player = (function() {
 		);
 	};
 
-	Player.prototype.onHazradCollision = function(player, hazard) {
-		// trace('Player/onHazradCollision, hazard = ');
+	Player.prototype.onHazardCollision = function(player, hazard) {
+		// trace('Player/onHazardCollision, hazard = ');
 		// trace(hazard);
 		this.collided = true;
 		this.receiveDamage(hazard.model.attrs.attack);
@@ -213,9 +214,8 @@ Polyworks.Player = (function() {
 		// trace('Player/onEnemyCollision['+enemy.model.name+'], player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
 		// trace(enemy);
 
-		if(playerY < (enemyY - 15)) { // player is above enemy
+		if(playerY < (enemyY)) { // player is above enemy
 			this.updatePositionFromCollision();
-			//enemy.receiveDamage(this.damage);
 			enemy.damage(this.model.attrs.attack);
 		} else {
 			this.receiveDamage(enemy.model.attrs.attack);
