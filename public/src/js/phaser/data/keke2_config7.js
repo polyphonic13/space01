@@ -415,7 +415,8 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 0.5),
-								y: (winH/2) - (stageUnit * 3)
+								// y: (winH/2) - (stageUnit * 2)
+								y: (stageUnit * 1)
 							},
 							frames: [0, 0, 1],
 							// inputCode: Polyworks.InputCodes.QUIT,
