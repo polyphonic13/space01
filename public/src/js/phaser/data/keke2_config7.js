@@ -143,7 +143,6 @@ Polyworks.Config = (function() {
 					height: 128,
 					frames: 4
 				},
-				// map
 				crystalsWheel: 
 				{
 					url: 'images/map/crystals_wheel_sprite.png',
@@ -217,7 +216,7 @@ Polyworks.Config = (function() {
 				},
 				menuButton: 
 				{
-					url: 'images/controls/menu_button2.png',
+					url: 'images/controls/menu_button3.png',
 					width: 50,
 					height: 50,
 					frames: 2
@@ -421,8 +420,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 0.5),
-								// y: (winH/2) - (stageUnit * 2)
-								y: (stageUnit * 1)
+								y: (stageUnit * 0.5)
 							},
 							frames: [0, 0, 1],
 							// inputCode: Polyworks.InputCodes.QUIT,
@@ -447,7 +445,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 0.5),
-								y: (winH/2) - (stageUnit * 3)
+								y: (stageUnit * 0.5)
 							},
 							frames: [0, 0, 1],
 							// inputCode: Polyworks.InputCodes.MENU,
@@ -472,7 +470,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 0.5),
-								y: (winH/2) - (stageUnit * 3)
+								y: (stageUnit * 0.5)
 							},
 							frames: [0, 0, 1],
 							// inputCode: Polyworks.InputCodes.MENU,
@@ -515,7 +513,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 0.5),
-								y: (winH/2) - (stageUnit * 3)
+								y: (stageUnit * 0.5)
 							},
 							frames: [0, 0, 1],
 							events: {
@@ -604,7 +602,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 0.5),
-								y: (winH/2) - (stageUnit * 3)
+								y: (stageUnit * 0.5)
 							},
 							frames: [0, 0, 1],
 							events: {
@@ -717,7 +715,7 @@ Polyworks.Config = (function() {
 						},
 						defaultContent: 'Score: ~{score}~',
 						listeners: [
-							Polyworks.Events.LEVEL_CLEARED
+							Polyworks.Events.SCORE_UPDATED
 						]
 					}
 				},
@@ -732,7 +730,7 @@ Polyworks.Config = (function() {
 						},
 						start: {
 							x: (stageUnit * 0.5),
-							y: (winH/2) - (stageUnit * 3)
+							y: (stageUnit * 0.5)
 						},
 						frames: [0, 0, 1],
 						events: {
@@ -753,7 +751,7 @@ Polyworks.Config = (function() {
 						},
 						start: {
 							x: (stageUnit * 0.5),
-							y: (winH/2) - (stageUnit * 1.25)
+							y: (stageUnit * 2.5)
 						},
 						frames: [0, 0, 1],
 						events: {
@@ -775,7 +773,7 @@ Polyworks.Config = (function() {
 						},
 						start: {
 							x: (stageUnit * 0.5),
-							y: (winH/2) + (stageUnit * 0.5)
+							y: (stageUnit * 4.5)
 						},
 						frames: [0, 0, 1],
 						events: {
@@ -867,7 +865,7 @@ Polyworks.Config = (function() {
 						},
 						start: {
 							x: (stageUnit * 0.5),
-							y: (winH/2) - (stageUnit * 1.25)
+							y: (stageUnit * 0.5)
 						},
 						frames: [0, 0, 1],
 						events: {
@@ -889,7 +887,7 @@ Polyworks.Config = (function() {
 						},
 						start: {
 							x: (stageUnit * 0.5),
-							y: (winH/2) + (stageUnit * 0.5)
+							y: (stageUnit * 2.5)
 						},
 						frames: [0, 0, 1],
 						events: {

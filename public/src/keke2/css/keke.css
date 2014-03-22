@@ -64,7 +64,7 @@ body, canvas, div {
 	/*	padding: 20px;*/
 
 	background: #ffffff url("../images/loading_white.gif") no-repeat center;
-	background-size: 33px;
+	background-size: 50px;
 }
 
 #gameContainer {

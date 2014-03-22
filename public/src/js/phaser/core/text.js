@@ -39,7 +39,7 @@ Polyworks.Text = (function() {
 	};
 
 	Text.prototype.onUpdate = function(event) {
-		// trace('Text['+this.model.name+']/onUpdate, event = ', event);
+		trace('Text['+this.model.name+']/onUpdate, event = ', event);
 		var context;
 		if(event.context) {
 			context = event.context;
