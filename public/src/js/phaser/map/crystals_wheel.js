@@ -9,7 +9,7 @@ Polyworks.CrystalsWheel = (function() {
 		CrystalsWheel._super.begin.call(this);
 		trace('crystals wheel begin, this = ', this);
 		if(PolyworksGame.currentLevel > -1) {
-			this.frame = (PolyworksGame.currentLevel - 1);
+			this.frame = (PolyworksGame.currentLevel);
 		}
 	};
 	

@@ -24,6 +24,7 @@ Polyworks.Storage = (function() {
 			}
 		},
 		destroy: function() {
+			trace('Storage/destroy');
 			localStorage.clear();
 		},
 		addListener: function(listener) {

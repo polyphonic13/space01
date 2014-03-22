@@ -12,5 +12,6 @@ Polyworks.InputCodes = {
 	DOWN: 40,		// down arrow
 	SPACE: 32,		// space bar
 	QUIT: 81,		// q
-	START: 83		// s
+	START: 83,		// s
+	CLEAR_DATA: 67	// c
 }

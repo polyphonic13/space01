@@ -290,6 +290,13 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'clearData', // c
+						cl: 'ControlKey',
+						attrs: {
+							inputCode: Polyworks.InputCodes.CLEAR_DATA
+						}
+					},
+					{
 						name: 'start', // s
 						cl: 'ControlKey',
 						attrs: {
@@ -309,8 +316,7 @@ Polyworks.Config = (function() {
 							inputCode: Polyworks.InputCodes.NEXT,
 							events: {
 								pressed: {
-									type: Polyworks.Events.CHANGE_STATE,
-									value: 'nextLevel'
+									type: Polyworks.Events.NEXT_LEVEL
 								}
 							}
 						}
@@ -322,8 +328,8 @@ Polyworks.Config = (function() {
 							inputCode: Polyworks.InputCodes.LEVEL,
 							events: {
 								pressed: {
-									type: Polyworks.Events.CHANGE_STATE,
-									value: 'level'
+									type: Polyworks.Events.START_LEVEL,
+									value: PolyworksGame.currentLevel
 								}
 							}
 						}
@@ -492,8 +498,8 @@ Polyworks.Config = (function() {
 							// inputCode: Polyworks.InputCodes.RETRY,
 							events: {
 								released: {
-									type: Polyworks.Events.CHANGE_STATE,
-									value: 'level'
+									type: Polyworks.Events.START_LEVEL,
+									value: PolyworksGame.currentLevel
 								}
 							}
 						}
@@ -697,6 +703,25 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
+					name: 'score',
+					cl: 'Text',
+					attrs: {
+						centerX: true,
+						centerY: false,
+						x: 0,
+						y: (stageUnit * 2.5),
+						style: { 
+							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
+							fill: '#000000',
+							align: 'center'
+						},
+						defaultContent: 'Score: ~{score}~',
+						listeners: [
+							Polyworks.Events.LEVEL_CLEARED
+						]
+					}
+				},
+				{
 					name: 'playButtonSmall',
 					cl: 'InputButton',
 					attrs: {
@@ -823,11 +848,10 @@ Polyworks.Config = (function() {
 							x: winW/2 - 50,
 							y: winH/2
 						},
-						inputCode: Polyworks.InputCodes.NEXT,
+						// inputCode: Polyworks.InputCodes.NEXT,
 						events: {
 							released: {
-								type: Polyworks.Events.CHANGE_STATE,
-								value: 'level'
+								type: Polyworks.Events.NEXT_LEVEL
 							}
 						}
 					}
@@ -1000,13 +1024,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'page1',
 					cl: 'MapPage',
-					levels: [
-						'level01',
-						'level02',
-						'level03',
-						'level04',
-						'level05'
-					],
+					levels: [0, 1, 2, 2, 4],
 					attrs: [
 					{
 						name: 'background',
@@ -1104,13 +1122,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'page2',
 					cl: 'MapPage',
-					levels: [
-						'level06',
-						'level07',
-						'level08',
-						'level09',
-						'level10'
-					],
+					levels: [5, 6, 7, 8, 9],
 					attrs: [
 					{
 						name: 'background',
@@ -1229,48 +1241,49 @@ Polyworks.Config = (function() {
 					{
 						name: 'kekeIcon',
 						cl: 'KekeIcon',
-						positions: {
-							level01: {
+						positions: 
+						[
+							{
 								x: (winW/2 - stageWidth/2) + (stageUnit * 2.5),
 								y: (winH/2) + (stageUnit * 0.4)
 							},
-							level02: {
+							{
 								x: (winW/2 - stageWidth/2) + (stageUnit * 4.6),
 								y: (winH/2) - (stageUnit * 0.4)
 							},
-							level03: {
+							{
 								x: (winW/2 - stageWidth/2) + (stageUnit * 8),
 								y: (winH/2) - (stageUnit * 0.3)
 							},
-							level04: {
+							{
 								x: (winW/2 - stageWidth/2) + (stageUnit * 9.9),
 								y: (winH/2) + (stageUnit * 0.4)
 							},
-							level05: {
+							{
 								x: (winW/2 - stageWidth/2) + (stageUnit * 12.1),
 								y: (winH/2) - (stageUnit * 0.1)
 							},
-							level06: {
+							{
 								x: (winW/2 - stageWidth/2) + (stageUnit * 1.7),
 								y: (winH/2) - (stageUnit * 0.1)
 							},
-							level07: {
+							{
 								x: (winW/2 - stageWidth/2) + (stageUnit * 4.1),
 								y: (winH/2) - (stageUnit * 0.2)
 							},
-							level08: {
+							{
 								x: (winW/2 - stageWidth/2) + (stageUnit * 7),
 								y: (winH/2) - (stageUnit * 1.3)
 							},
-							level09: {
+							{
 								x: (winW/2 - stageWidth/2) + (stageUnit * 8.3),
 								y: (winH/2) - (stageUnit * 0.5)
 							},
-							level10: {
+							{
 								x: (winW/2 - stageWidth/2) + (stageUnit * 2.5),
 								y: (winH/2) + (stageUnit * 0.4)
 							}
-						},
+						],
 						attrs: {
 							img: 'kekeSmall',
 							phaser: {

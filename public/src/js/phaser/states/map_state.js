@@ -39,9 +39,6 @@ Polyworks.MapState = (function() {
 			},
 			this
 		);
-
-		// MapState._super.createState.call(this);
-
 	};
 	
 	return MapState;

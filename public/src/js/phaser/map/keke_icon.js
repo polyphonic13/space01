@@ -7,8 +7,7 @@ Polyworks.KekeIcon = (function() {
 	}
 	
 	KekeIcon.prototype.initPosition = function(positions) {
-		var level = PolyworksGame.getCurrentLevelText();
-		return positions[level];
+		return positions[PolyworksGame.currentLevel];
 	};
 	
 	KekeIcon.prototype.begin = function() {
@@ -16,9 +15,7 @@ Polyworks.KekeIcon = (function() {
 		this.addListeners();
 		KekeIcon._super.begin.call(this);
 
-		var currentLevel = PolyworksGame.getCurrentLevelText();
 		var grandfather = this.model.ancestor.model.ancestor;
-		trace('KekeIcon/begin, currentLevel = ' + currentLevel, this);
 		trace('\tgrandfather = ', grandfather);
 		var pages = grandfather.model.pages;
 		trace('\tpages = ', pages);
@@ -27,7 +24,7 @@ Polyworks.KekeIcon = (function() {
 			var levels = pages[i].levels;
 			var levelsLength = levels.length
 			for(var j = 0; j < levelsLength; j++) {
-				if(levels[j] === currentLevel) {
+				if(levels[j] === PolyworksGame.currentLevel) {
 					this.pageIndex = i;
 					break;
 				}
@@ -55,7 +52,7 @@ Polyworks.KekeIcon = (function() {
 	KekeIcon.prototype.inputUp = function(event, pointer, ctx) {
 		// trace('KekeIcon['+this.model.name+']/inputUp');
 		ctx.pressed = false;
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.CHANGE_STATE, value: 'level' });
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.START_LEVEL, value: PolyworksGame.currentLevel });
 	};
 	
 	KekeIcon.prototype.onChangeMapPage = function(event) {

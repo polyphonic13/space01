@@ -18,13 +18,12 @@ Polyworks.MapPage = (function() {
 		this.pageGroup = PolyworksGame.phaser.add.group();
 		stateGroup.add(this.pageGroup._container);
 
-		var currentLevel = PolyworksGame.getCurrentLevelText();
 		var levels = this.model.levels;
 
 		Polyworks.Utils.each(levels,
 			function(level) {
 				// trace('\tlevel = ' + level + ', currentLevelString = ' + currentLevelString);
-				if(level === currentLevel) {
+				if(level === PolyworksGame.currentLevel) {
 					this.model.selected = true;
 				}
 			},
@@ -72,87 +71,6 @@ Polyworks.MapPage = (function() {
 		} else {
 			this.pageGroup.visible = false;
 		}
-	};
-	
-	MapPage.prototype.addLevelIcon = function(params) {
-		// trace('MapPage['+this.model.name+']/addLevelIcon, params = ', params);
-
-		var levelIcon = [
-		{
-			name: 'levelIcon',
-			cl: 'Sprite',
-			attrs: {
-				img: params.name + 'Icon',
-				start: params.start,
-				phaser: {
-					width: params.phaser.width,
-					height: params.phaser.height
-				}
-			}
-		},
-		{
-			name: 'selected',
-			cl: 'Sprite',
-			attrs: {
-				img: 'levelSelectedIcon',
-				start: params.start,
-				phaser: {
-					width: params.phaser.width,
-					height: params.phaser.height,
-					visible: params.selected
-				}
-			}
-		},
-		{
-			name: 'locked',
-			cl: 'Sprite',
-			attrs: {
-				img: 'levelLockedIcon',
-				start: params.start,
-				phaser: {
-					width: params.phaser.width,
-					height: params.phaser.height,
-					alpha: 0.9,
-					visible: params.locked
-				}
-			}
-		},
-		{
-			name: 'cleared',
-			cl: 'Sprite',
-			attrs: {
-				img: 'levelClearedIcon',
-				start: params.start,
-				phaser: {
-					width: params.phaser.width,
-					height: params.phaser.height,
-					visible: params.cleared
-				}
-			}
-		},
-		{
-			name: 'invisButton',
-			cl: 'InputButton',
-			attrs: {
-				img: 'greyRect',
-				start: params.start,
-				phaser: {
-					width: params.phaser.width,
-					height: params.phaser.height,
-					alpha: 0.1,
-					visible: ((params.locked) ? false : true)
-				},
-				events: {
-					pressed: {
-						type: Polyworks.Events.CHANGE_STATE,
-						value: params.name
-					}
-				}
-			}
-		}
-		];
-
-		return levelIcon;
 	};
 	
 	MapPage.prototype.addTitle = function() {
