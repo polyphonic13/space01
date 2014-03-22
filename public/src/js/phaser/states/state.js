@@ -20,7 +20,7 @@ Polyworks.State = (function() {
 	}
 	
 	State.prototype.start = function() {
-		trace('State['+this.model.name+']/start');
+		// trace('State['+this.model.name+']/start');
 	};
 	
 	State.prototype.orientationSet = function(isLandscape) {
@@ -77,7 +77,7 @@ Polyworks.State = (function() {
 	};
 	
 	State.prototype.create = function() {
-		trace('State['+this.model.name+']/create');
+		// trace('State['+this.model.name+']/create');
 		PolyworksGame.phaser.stage.backgroundColor = this.model.backgroundColor;
 		PolyworksGame.removeLoadingDiv();
 		if(PolyworksGame.isLandscape) {
@@ -100,7 +100,6 @@ Polyworks.State = (function() {
 			}
 			this.begin();
 			this.model.set({ created: true });
-			trace('\tend of state['+this.model.name+'] createState, world = ', this.model.world);
 		} else {
 			trace('WARNING: state already created');
 		}
@@ -122,8 +121,7 @@ Polyworks.State = (function() {
 	
 	State.prototype.createWorld = function() {
 		var world = this.model.world;
-		trace('State['+this.model.name+']/createWorld, x = ' + world.x + ', world.y = ' + world.y + ', width = ' + world.width + ', height = ' + world.height);
-		// trace('State['+this.model.name+']/createWorld, world = ', world, Polyworks.Stage);
+		// trace('State['+this.model.name+']/createWorld, x = ' + world.x + ', world.y = ' + world.y + ', width = ' + world.width + ', height = ' + world.height);
 		PolyworksGame.phaser.world.setBounds(world.x, world.y, world.width, world.height);
 	};
 
@@ -134,7 +132,7 @@ Polyworks.State = (function() {
 	};
 	
 	State.prototype.shutdown = function() {
-		trace('State['+this.model.name+']/shutdown');
+		// trace('State['+this.model.name+']/shutdown');
 		Polyworks.EventCenter.unbind(Polyworks.Events.PAUSE_STATE, this.onPauseState);
 		Polyworks.EventCenter.unbind(Polyworks.Events.RESUME_STATE, this.onResumeState);
 
@@ -148,7 +146,6 @@ Polyworks.State = (function() {
 		});
 
 		this.destroy();
-		trace('\tstate shutdown completed');
 	};
 
 	return State;

@@ -13,7 +13,7 @@ Polyworks.Storage = (function() {
 					if(params[key] instanceof Object || params[key] instanceof Array) {
 						params[key] = JSON.stringify(params[key]);
 					}
-					trace('Storage, about to set ' + key + ', to value ' + params[key]);
+					// trace('Storage, about to set ' + key + ', to value ' + params[key]);
 					localStorage[key] = params[key];
 				}
 			}

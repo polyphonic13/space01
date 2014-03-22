@@ -24,6 +24,7 @@ PolyworksGame = (function() {
 		player: null,
 		score: 0,
 		health: 0,
+		levelText: '',
 		currentLevel: 0,
 		totalLevels: 0,
 		requirementsMet: 0,
@@ -322,6 +323,7 @@ PolyworksGame = (function() {
 		var stateId = _levels[idx].model.name;
 		PolyworksGame.currentLevel = idx;
 		trace('\tstateId = ' + stateId);
+		PolyworksGame.levelText = _levels[idx].model.text;
 		PolyworksGame.changeState(stateId);
 	}
 	
@@ -330,8 +332,10 @@ PolyworksGame = (function() {
 		var stateId;
 		if(PolyworksGame.currentLevel < PolyworksGame.levelCount) {
 			stateId = _levels[PolyworksGame.currentLevel].model.name;
+			PolyworksGame.levelText = _levels[PolyworksGame.currentLevel].model.text;
 		} else {
 			PolyworksGame.currentLevel = 0;
+			PolyworksGame.levelText = '';
 			stateId = 'completed'
 		}
 		PolyworksGame.changeState(stateId);

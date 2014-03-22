@@ -56,7 +56,7 @@ Polyworks.KekeIcon = (function() {
 	};
 	
 	KekeIcon.prototype.onChangeMapPage = function(event) {
-		trace('KekeIcon/onChangeMapPage, event = ', event);
+		// trace('KekeIcon/onChangeMapPage, event = ', event);
 		if(event.value === this.pageIndex) {
 			this.visible = true;
 		} else {

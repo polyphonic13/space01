@@ -692,7 +692,7 @@ Polyworks.Config = (function() {
 						centerY: false,
 						x: 0,
 						y: (stageUnit * 0.5),
-						defaultContent: 'Paused',
+						defaultContent: '~{levelText}~ paused',
 						style: { 
 							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -713,7 +713,7 @@ Polyworks.Config = (function() {
 							fill: '#000000',
 							align: 'center'
 						},
-						defaultContent: 'Score: ~{score}~',
+						defaultContent: 'score: ~{score}~',
 						listeners: [
 							Polyworks.Events.SCORE_UPDATED
 						]
@@ -810,7 +810,7 @@ Polyworks.Config = (function() {
 						centerY: false,
 						x: 0,
 						y: (stageUnit * 0.5),
-						defaultContent: 'Level ~{currentLevel}~ Completed',
+						defaultContent: '~{levelText}~ completed',
 						style: { 
 							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -831,7 +831,7 @@ Polyworks.Config = (function() {
 							fill: '#000000',
 							align: 'center'
 						},
-						defaultContent: 'Score: ~{score}~',
+						defaultContent: 'score: ~{score}~',
 						listeners: [
 							Polyworks.Events.LEVEL_CLEARED
 						]
@@ -926,24 +926,11 @@ Polyworks.Config = (function() {
 					'gameTitle',
 					'greyExpanseTitle',
 					'nextButton',
-					'invisibleRect',
-					'crystals02Grey',
-					'crystals02Blue',
-					'crystals02Green',
-					'crystals02Garnet',
-					'crystals02Purple',
-					'crystals02Aqua',
-					'crystals02Orange',
-					'crystals02Pink',
-					'crystals02Teal',
-					'crystals02Yellow',
-					'crystals02Red',
 					'pageLeftArrow',
 					'pageRightArrow',
 					'startButton'
 				],
 				sprites: [
-					'keke',
 					'pauseButton',
 					'menuButton',
 					'mapButton',
@@ -1022,7 +1009,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'page1',
 					cl: 'MapPage',
-					levels: [0, 1, 2, 2, 4],
+					levels: [0, 1, 2, 3, 4],
 					attrs: [
 					{
 						name: 'background',
@@ -1291,6 +1278,22 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'textBackground',
+						cl: 'Sprite',
+						attrs: {
+							img: 'whiteRect',
+							phaser: {
+								width: winW,
+								height: (stageUnit * 2),
+								alpha: 0.5
+							},
+							start: {
+								x: 0,
+								y: (winH/2) + (stageHeight/2) - (stageUnit * 2)
+							}
+						}
+					},
+					{
 						name: 'crystalsWheel',
 						cl: 'CrystalsWheel',
 						attrs: {
@@ -1306,17 +1309,33 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'score',
+						cl: 'Text',
+						attrs: {
+							centerX: false,
+							centerY: false,
+							x: (winW/2) - (stageWidth/2) + (stageUnit * 1.5),
+							y: (winH/2) + (stageHeight/2) - (stageUnit * 1.33),
+							defaultContent: 'score: ~{score}~',
+							style: { 
+								font: fontSizes.xs + 'px "Sue Ellen Francisco"',
+								align: 'left', 
+								fill: '#000000' 
+							}
+						}
+					},
+					{
 						name: 'crystalsTitle',
 						cl: 'Text',
 						attrs: {
-							centerX: true,
+							centerX: false,
 							centerY: false,
-							x: 0,
-							y: winH - (stageUnit * 1.5),
-							defaultContent: 'collect all of the color shards to restore the land',
+							x: (winW/2) + (stageWidth/2) - (stageUnit * 6.25),
+							y: (winH/2) + (stageHeight/2) - (stageUnit * 1.33),
+							defaultContent: 'crystal shards collected:',
 							style: { 
 								font: fontSizes.xs + 'px "Sue Ellen Francisco"',
-								align: 'center', 
+								align: 'right', 
 								fill: '#000000' 
 							}
 						}
@@ -1339,6 +1358,7 @@ Polyworks.Config = (function() {
 			// level 1
 			{
 				name: 'level01',
+				text: 'level 1',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -2271,6 +2291,7 @@ Polyworks.Config = (function() {
 			// level 2
 			{
 				name: 'level02',
+				text: 'level 2',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -3250,6 +3271,7 @@ Polyworks.Config = (function() {
 			// level 3
 			{
 				name: 'level03',
+				text: 'level 3',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -4455,6 +4477,7 @@ Polyworks.Config = (function() {
 			// level 4
 			{
 				name: 'level04',
+				text: 'level 4',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -5812,6 +5835,7 @@ Polyworks.Config = (function() {
 			// level 5
 			{
 				name: 'level05',
+				text: 'level 5',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -7505,6 +7529,7 @@ Polyworks.Config = (function() {
 			// level 6
 			{
 				name: 'level06',
+				text: 'level 6',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -8718,6 +8743,7 @@ Polyworks.Config = (function() {
 			// level 7
 			{
 				name: 'level07',
+				text: 'level 8',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -10331,6 +10357,7 @@ Polyworks.Config = (function() {
 			// level 8
 			{
 				name: 'level08',
+				text: 'level 8',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -11924,6 +11951,7 @@ Polyworks.Config = (function() {
 			// level 9
 			{
 				name: 'level09',
+				text: 'level 9',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -13517,6 +13545,7 @@ Polyworks.Config = (function() {
 			// level 10
 			{
 				name: 'level10',
+				text: 'level 10',
 				cl: 'LevelState',
 				world: {
 					x: 0,
