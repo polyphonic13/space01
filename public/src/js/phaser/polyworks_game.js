@@ -327,7 +327,13 @@ PolyworksGame = (function() {
 	
 	function _onNextLevel(event) {
 		trace('PolyworksGame/_onNextLevel, currentLevel = ', PolyworksGame.currentLevel);
-		var stateId = _levels[PolyworksGame.currentLevel].model.name;
+		var stateId;
+		if(PolyworksGame.currentLevel < PolyworksGame.levelCount) {
+			stateId = _levels[PolyworksGame.currentLevel].model.name;
+		} else {
+			PolyworksGame.currentLevel = 0;
+			stateId = 'completed'
+		}
 		PolyworksGame.changeState(stateId);
 	}
 	
@@ -382,11 +388,11 @@ PolyworksGame = (function() {
 		PolyworksGame.levelCount = levelCount;
 		trace('PolyworksGame/_beginStates, _stageInitialized = ' + _stageInitialized + ', _states = ', _states, '\t_levels = ', _levels);
 		if(_stageInitialized) {
-			if(PolyworksGame.savedState !== '' && PolyworksGame.currentState !== _model.initialState) {
-				PolyworksGame.changeState(PolyworksGame.savedState);
-			} else {
+			// if(PolyworksGame.savedState !== '' && PolyworksGame.currentState !== _model.initialState) {
+			// 	PolyworksGame.changeState(PolyworksGame.savedState);
+			// } else {
 				PolyworksGame.changeState(_model.initialState);
-			}
+			// }
 		}
 		_statesInialized = true;
 	}
