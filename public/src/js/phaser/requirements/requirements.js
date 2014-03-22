@@ -11,7 +11,7 @@ Polyworks.Requirements = (function() {
 
 		this.requirementsMet = 0;
 		this.totalRequirements = this.model.collection.length;
-		trace('Requirements/begin, about to set on pw game, total = ' + this.totalRequirements);
+		// trace('Requirements/begin, about to set on pw game, total = ' + this.totalRequirements);
 		PolyworksGame.setRequirements(this.requirementsMet, this.totalRequirements);
 		Polyworks.EventCenter.bind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet, this);
 	};

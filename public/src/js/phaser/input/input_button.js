@@ -59,12 +59,7 @@ Polyworks.InputButton = (function() {
 	};
 	
 	InputButton.prototype.inputDown = function(event, pointer, ctx) {
-		trace('InputButton['+this.model.name+']/inputDown');
-		// trace(event);
-		// trace('\tpointer = ');
-		// trace(pointer);
-		// trace('\tcontext = ');
-		// trace(ctx);
+		// trace('InputButton['+this.model.name+']/inputDown');
 		ctx.inputPressed.call(ctx, { type: Polyworks.Events.CONTROL_PRESSED, value: ctx.model.attrs.inputCode });
 		ctx.pressed = true;
 	};

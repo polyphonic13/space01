@@ -319,7 +319,7 @@ PolyworksGame = (function() {
 	
 	function _onStartLevel(event) {
 		trace('PolyworksGame/_onStartLevel, event = ', event);
-		var idx = event.value;
+		var idx = (event.value) ? event.value : PolyworksGame.currentLevel;
 		var stateId = _levels[idx].model.name;
 		PolyworksGame.currentLevel = idx;
 		trace('\tstateId = ' + stateId);

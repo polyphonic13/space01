@@ -323,7 +323,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'level',
+						name: 'level', // l
 						cl: 'ControlKey',
 						attrs: {
 							inputCode: Polyworks.InputCodes.LEVEL,
@@ -495,11 +495,9 @@ Polyworks.Config = (function() {
 								x: winW/2 - 50,
 								y: winH/2
 							},
-							// inputCode: Polyworks.InputCodes.RETRY,
 							events: {
 								released: {
-									type: Polyworks.Events.START_LEVEL,
-									value: PolyworksGame.currentLevel
+									type: Polyworks.Events.START_LEVEL
 								}
 							}
 						}
@@ -1535,7 +1533,7 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 2)
 							},
 							start: {
-								x: (stageWidth * 2) + (stageUnit * 11),
+								x: (stageWidth * 2) + (stageUnit * 9.3),
 								y: winH - (stageUnit * 2.5)
 							}
 						}
@@ -8761,7 +8759,7 @@ Polyworks.Config = (function() {
 			// level 7
 			{
 				name: 'level07',
-				text: 'level 8',
+				text: 'level 7',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -8793,6 +8791,7 @@ Polyworks.Config = (function() {
 					'mountainBackground05l',
 					'tree01',
 					'platformV',
+					'platform',
 					'rockPlatform01',
 					'rockPlatform02',
 					'rockPlatform03',
@@ -10406,6 +10405,7 @@ Polyworks.Config = (function() {
 					'mountainBackground05k',
 					'mountainBackground05l',
 					'tree01',
+					'platform',
 					'platformV',
 					'rockPlatform01',
 					'rockPlatform01',
@@ -11999,7 +11999,7 @@ Polyworks.Config = (function() {
 					'mountainBackground05i',
 					'mountainBackground05k',
 					'mountainBackground05l',
-					'tree01',
+					'platform',
 					'platformV',
 					'rockPlatform01',
 					'rockPlatform01',
@@ -13593,7 +13593,7 @@ Polyworks.Config = (function() {
 					'mountainBackground05i',
 					'mountainBackground05k',
 					'mountainBackground05l',
-					'tree01',
+					'platform',
 					'platformV',
 					'rockPlatform01',
 					'rockPlatform01',
