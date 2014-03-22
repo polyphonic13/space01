@@ -98,6 +98,8 @@ Polyworks.Config = (function() {
 
 				river01: 'images/scenery/river_water01.png',
 
+				woodenArrowSign01: 'images/scenery/wooden_arrow_sign01.png',
+				
 				branch02Left: 'images/scenery/branch03_left.png',
 				branch02Right: 'images/scenery/branch03_right.png',
 				branch02aLeft: 'images/scenery/branch03a_left.png',
@@ -1285,7 +1287,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: winW,
 								height: (stageUnit * 2),
-								alpha: 0.5
+								alpha: 0.3
 							},
 							start: {
 								x: 0,
@@ -1386,6 +1388,7 @@ Polyworks.Config = (function() {
 					'forestBackground02f',
 					'grass03',
 					'tree01',
+					'woodenArrowSign01',
 					'platformV',
 					'platform',
 					'branch02Left',
@@ -1508,6 +1511,51 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'tree01',
+						cl: 'Sprite',
+						attrs: {
+							img: 'tree01',
+							phaser: {
+								width: (stageHeight * 2),
+								height: (stageHeight * 3)
+							},
+							start: {
+								x: (stageWidth * 2),
+								y: winH - (stageHeight * 3)
+							}
+						}
+					},
+					{
+						name: 'woodenArrow',
+						cl: 'Sprite',
+						attrs: {
+							img: 'woodenArrowSign01',
+							phaser: {
+								width: (stageUnit * 2),
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageWidth * 2) + (stageUnit * 11),
+								y: winH - (stageUnit * 2.5)
+							}
+						}
+					},
+					{
+						name: 'tree02',
+						cl: 'Sprite',
+						attrs: {
+							img: 'tree01',
+							phaser: {
+								width: (stageHeight * 2),
+								height: (stageHeight * 3)
+							},
+							start: {
+								x: (stageWidth * 4),
+								y: winH - (stageHeight * 3)
+							}
+						}
+					},
+					{
 						name: 'grass01',
 						cl: 'Sprite',
 						attrs: {
@@ -1534,36 +1582,6 @@ Polyworks.Config = (function() {
 							start: {
 								x: (stageWidth * 3),
 								y: winH - (stageUnit * 2)
-							}
-						}
-					},
-					{
-						name: 'tree01',
-						cl: 'Sprite',
-						attrs: {
-							img: 'tree01',
-							phaser: {
-								width: (stageHeight * 2),
-								height: (stageHeight * 3)
-							},
-							start: {
-								x: (stageWidth * 2),
-								y: winH - (stageHeight * 3)
-							}
-						}
-					},
-					{
-						name: 'tree02',
-						cl: 'Sprite',
-						attrs: {
-							img: 'tree01',
-							phaser: {
-								width: (stageHeight * 2),
-								height: (stageHeight * 3)
-							},
-							start: {
-								x: (stageWidth * 4),
-								y: winH - (stageHeight * 3)
 							}
 						}
 					}
@@ -1850,7 +1868,25 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs: []
+							attrs: [
+							{
+								name: 'level01-sector4-bonus1',
+								cl: 'Bonus',
+								attrs: {
+									img: 'lollipop',
+									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
+									start: {
+										x: (stageWidth * 2) + (stageUnit * 14),
+										y: winH - (stageUnit * 13)
+									},
+									physics: {
+										immovable: true
+									},
+									score: 100,
+									health: 10
+								}
+							}
+							]
 						}
 						]
 					},
@@ -1913,25 +1949,7 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'level01-sector4-bonus1',
-								cl: 'Bonus',
-								attrs: {
-									img: 'lollipop',
-									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
-									start: {
-										x: (stageWidth * 3) + (stageUnit * 5),
-										y: winH - (stageUnit * 1.5)
-									},
-									physics: {
-										immovable: true
-									},
-									score: 100,
-									health: 10
-								}
-							}
-							]
+							attrs: []
 						}
 						]
 					},
