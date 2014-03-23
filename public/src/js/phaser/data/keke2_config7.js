@@ -99,6 +99,7 @@ Polyworks.Config = (function() {
 				river01: 'images/scenery/river_water01.png',
 
 				woodenArrowSign01: 'images/scenery/wooden_arrow_sign01.png',
+				woodenXSign01: 'images/scenery/wooden_x_sign01.png',
 				
 				branch02Left: 'images/scenery/branch03_left.png',
 				branch02Right: 'images/scenery/branch03_right.png',
@@ -7571,6 +7572,7 @@ Polyworks.Config = (function() {
 					'riverBackground01e',
 					'riverBackground01f',
 					'tree01',
+					'woodenXSign01',
 					'platformV',
 					'platform',
 					'branch02Left',
@@ -7731,6 +7733,21 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'woodenX',
+						cl: 'Sprite',
+						attrs: {
+							img: 'woodenXSign01',
+							phaser: {
+								width: (stageUnit * 2),
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageWidth * 2.5) - (stageUnit * 3.5),
+								y: winH - (stageUnit * 2.7)
+							}
+						}
+					},
+					{
 						name: 'grass03',
 						cl: 'Sprite',
 						attrs: {
@@ -7787,6 +7804,21 @@ Polyworks.Config = (function() {
 							start: {
 								x: (stageWidth * 4) - (stageUnit),
 								y: winH - (stageUnit * 3)
+							}
+						}
+					},
+					{
+						name: 'woodenX',
+						cl: 'Sprite',
+						attrs: {
+							img: 'woodenXSign01',
+							phaser: {
+								width: (stageUnit * 2),
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageWidth * 4) + (stageUnit * 0.5),
+								y: winH - (stageUnit * 2.75)
 							}
 						}
 					},
@@ -8183,12 +8215,12 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'rockPlatform04',
 									phaser: {
-										width: (stageUnit * 3),
+										width: (stageUnit * 3) + (stageUnit * 0.5),
 										height: (stageUnit * 1)
 									},
 									start: {
 										x: (stageWidth * 2),
-										y: winH - (stageUnit * 2)
+										y: winH - (stageUnit * 2.5)
 									},
 									physics: {
 										immovable: true
@@ -8205,8 +8237,8 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 1)
 									},
 									start: {
-										x: (stageWidth * 2) + (stageUnit * 6),
-										y: winH - (stageUnit * 2.5)
+										x: (stageWidth * 2) + (stageUnit * 5),
+										y: winH - (stageUnit * 4.25)
 									},
 									physics: {
 										immovable: true
