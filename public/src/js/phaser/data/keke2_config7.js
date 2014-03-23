@@ -642,7 +642,7 @@ Polyworks.Config = (function() {
 						y: 0,
 						defaultContent: '~{health}~',
 						style: { 
-							font: fontSizes.sm + 'px "Sue Ellen Francisco"',
+							font: fontSizes.sm + 'px "Waiting for the Sunrise"',
 							align: 'right', 
 							fill: '#ffffff' 
 						},
@@ -1319,7 +1319,7 @@ Polyworks.Config = (function() {
 							y: (winH/2) + (stageHeight/2) - (stageUnit * 1.33),
 							defaultContent: 'score: ~{score}~',
 							style: { 
-								font: fontSizes.xs + 'px "Sue Ellen Francisco"',
+								font: fontSizes.xs + 'px "Waiting for the Sunrise"',
 								align: 'left', 
 								fill: '#000000' 
 							}
@@ -1331,11 +1331,11 @@ Polyworks.Config = (function() {
 						attrs: {
 							centerX: false,
 							centerY: false,
-							x: (winW/2) + (stageWidth/2) - (stageUnit * 6.25),
+							x: (winW/2) + (stageWidth/2) - (stageUnit * 6),
 							y: (winH/2) + (stageHeight/2) - (stageUnit * 1.33),
-							defaultContent: 'crystal shards collected:',
+							defaultContent: 'crystals collected:',
 							style: { 
-								font: fontSizes.xs + 'px "Sue Ellen Francisco"',
+								font: fontSizes.xs + 'px "Waiting for the Sunrise"',
 								align: 'right', 
 								fill: '#000000' 
 							}
