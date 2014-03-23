@@ -244,18 +244,6 @@ Polyworks.Player = (function() {
 
 		this.collided = true;
 		requirement.collect();
-/*
-	    PolyworksGame.setScore(bonus.model.attrs.score);
-
-		var health = bonus.model.attrs.health;
-		if(health) {
-			this.health += health;
-			PolyworksGame.setHealth(this.health);
-		}
-
-		bonus.active = false; 
-		bonus.destroy();
-*/
 	};
 	
 	Player.prototype.receiveDamage = function(damage) {
@@ -264,6 +252,7 @@ Polyworks.Player = (function() {
 			this.health -= damage;
 			PolyworksGame.setHealth(this.health);
 			if(this.health <= 0) {
+				PolyworksGame.levelScore = 0;
 				PolyworksGame.changeState('gameOver');
 			} else {
 				_this.justDamaged = true;

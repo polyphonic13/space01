@@ -23,6 +23,7 @@ PolyworksGame = (function() {
 		phaser: null,
 		player: null,
 		score: 0,
+		levelScore: 0,
 		health: 0,
 		levelText: '',
 		currentLevel: 0,
@@ -98,6 +99,11 @@ PolyworksGame = (function() {
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.SCORE_UPDATED });
 		},
 
+		setLevelScore: function(val) {
+			PolyworksGame.levelScore += val;
+			Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_SCORE_UPDATED });
+		},
+		
 		setHealth: function(val) {
 			PolyworksGame.health = val;
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.HEALTH_UPDATED });
@@ -352,6 +358,8 @@ PolyworksGame = (function() {
 			PolyworksGame.levelStatus[idx] = 'u';
 		}
 		PolyworksGame.currentLevel = idx;
+		PolyworksGame.score += PolyworksGame.levelScore;
+		PolyworksGame.levelScore = 0;
 		trace('\tend of level cleared, idx = ' + idx + ', currentLevel = ' + PolyworksGame.currentLevel);
 	}
 

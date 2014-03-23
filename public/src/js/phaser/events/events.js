@@ -18,6 +18,7 @@ Polyworks.Events = {
 	ENEMY_COLLISION: 'enemyCollision',
 	ENEMY_DESTROYED: 'enemyDestroyed',
 	BONUS_COLLISION: 'bonusCollision',
+	LEVEL_SCORE_UPDATED: 'levelScoreUpdated',
 	SCORE_UPDATED: 'scoreUpdated',
 	HEALTH_UPDATED: 'healthUpdated',
 	REQUIREMENTS_UPDATED: 'requirementsUpdated',

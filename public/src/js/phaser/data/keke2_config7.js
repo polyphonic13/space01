@@ -714,9 +714,9 @@ Polyworks.Config = (function() {
 							fill: '#000000',
 							align: 'center'
 						},
-						defaultContent: 'score: ~{score}~',
+						defaultContent: 'level score: ~{levelScore}~',
 						listeners: [
-							Polyworks.Events.SCORE_UPDATED
+							Polyworks.Events.LEVEL_SCORE_UPDATED
 						]
 					}
 				},
