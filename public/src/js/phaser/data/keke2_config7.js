@@ -63,11 +63,16 @@ Polyworks.Config = (function() {
 				riverBackground01e: 'images/backgrounds/pencil_river01e.gif',
 				riverBackground01f: 'images/backgrounds/pencil_river01f.gif',
 
-				mountainBackground05a: 'images/backgrounds/pencil_mountain05a.png',
-				mountainBackground05b: 'images/backgrounds/pencil_mountain05b.png',
+				mountainBackground05a: 'images/backgrounds/pencil_mountain06a.gif',
+				mountainBackground05b: 'images/backgrounds/pencil_mountain06b.gif',
+				mountainBackground05d: 'images/backgrounds/pencil_mountain06d.gif',
+				mountainBackground05e: 'images/backgrounds/pencil_mountain06e.gif',
+
+				// mountainBackground05a: 'images/backgrounds/pencil_mountain05a.png',
+				// mountainBackground05b: 'images/backgrounds/pencil_mountain05b.png',
 				mountainBackground05c: 'images/backgrounds/pencil_mountain05c.png',
-				mountainBackground05d: 'images/backgrounds/pencil_mountain05d.png',
-				mountainBackground05e: 'images/backgrounds/pencil_mountain05e.png',
+				// mountainBackground05d: 'images/backgrounds/pencil_mountain05d.png',
+				// mountainBackground05e: 'images/backgrounds/pencil_mountain05e.png',
 				mountainBackground05f: 'images/backgrounds/pencil_mountain05f.png',
 				mountainBackground05h: 'images/backgrounds/pencil_mountain05h.png',
 				mountainBackground05i: 'images/backgrounds/pencil_mountain05i.png',
@@ -15216,11 +15221,11 @@ Polyworks.Config = (function() {
 							centerX: true,
 							centerY: false,
 							x: 0,
-							y: stageUnit,
-							defaultContent: 'All Completed!',
+							y: (stageUnit * 0.5),
+							defaultContent: 'all completed!',
 							style: { 
 								font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
-								fill: '#ffffff',
+								fill: '#000000',
 								align: 'center'
 							}
 						}
@@ -15232,15 +15237,15 @@ Polyworks.Config = (function() {
 							centerX: true,
 							centerY: false,
 							x: 0,
-							y: 100,
-							defaultContent: 'Score: ~{score}~',
+							y: (stageUnit * 2.5),
 							style: { 
 								font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
-								fill: '#ffffff',
+								fill: '#000000',
 								align: 'center'
-							}
+							},
+							defaultContent: 'score: ~{score}~'
 						}
-					}
+					},
 					]
 				},
 				{

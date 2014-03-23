@@ -6,7 +6,7 @@ Polyworks.Collection = (function() {
 	}
 	
 	Collection.prototype.begin = function() {
-		// trace('Collection['+this.model.name+']/begin', this);
+		trace('Collection['+this.model.name+']/begin', this);
 		var game = PolyworksGame.phaser;
 		var collection = [];
 		var nameIndex = {};
@@ -20,7 +20,7 @@ Polyworks.Collection = (function() {
 				c.ancestor = this;
 				c.idx = i;
 
-				// trace('c['+c.name+'] cl = ' + c.cl)
+				trace('\tc['+c.name+'] cl = ' + c.cl)
 				child = new Polyworks[c.cl](c);
 				child.begin();
 
