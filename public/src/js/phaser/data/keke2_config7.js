@@ -283,13 +283,13 @@ Polyworks.Config = (function() {
 			},
 			// TILEMAPS
 			tilemaps: {
-				forestBackgroundMap: {
+				forest01BackgroundMap: {
 					
 				}
 			},
 			// TILESETS
 			tilesets: {
-				forestBackgroundTiles: {
+				forest01BackgroundTiles: {
 					
 				}
 			},
@@ -15287,7 +15287,7 @@ Polyworks.Config = (function() {
 							},
 							defaultContent: 'score: ~{score}~'
 						}
-					},
+					}
 					]
 				},
 				{
@@ -15322,6 +15322,8 @@ Polyworks.Config = (function() {
 					'quitButton'
 				],
 				sprites: [],
+				tilemaps: [],
+				tilesets: [],
 				attrs: [
 				{
 					name: 'gameOver-group',
