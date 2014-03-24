@@ -281,6 +281,18 @@ Polyworks.Config = (function() {
 					frames: 14
 				}
 			},
+			// TILEMAPS
+			tilemaps: {
+				forestBackgroundMap: {
+					
+				}
+			},
+			// TILESETS
+			tilesets: {
+				forestBackgroundTiles: {
+					
+				}
+			},
 			// CONTROLS
 			controls: {
 				keys: {

@@ -38,6 +38,14 @@ Polyworks.State = (function() {
 	State.prototype.preload = function() {
 		this.toLoad = 0;
 		this.loaded = 0;
+		var phaser = PolyworksGame.phaser;
+		var loaded = {
+			images: {},
+			sprites: {},
+			tilemaps: {},
+			tilesets: {}
+		};
+		
 		// trace('State['+this.model.name+']/preLoad, loaded = ' + this.model.loaded);
 		if(!this.model.loaded) {
 			// trace('\tstate images = ');
@@ -47,10 +55,10 @@ Polyworks.State = (function() {
 				Polyworks.Utils.each(this.model.images,
 					function(img) {
 						// trace('\t\timage['+img+'] loaded = ' + PolyworksGame.loadedImages[img]);
-						if(!PolyworksGame.loadedImages[img]) {
+						if(!PolyworksGame.loaded.images[img]) {
 							this.toLoad++;
-							PolyworksGame.phaser.load.image(img, images[img]);
-							PolyworksGame.loadedImages[img] = true;
+							phaser.load.image(img, images[img]);
+							loaded.images[img] = true;
 						}
 					},
 					this
@@ -61,17 +69,51 @@ Polyworks.State = (function() {
 				Polyworks.Utils.each(this.model.sprites,
 					function(spr) {
 						// trace('\t\tsprite['+spr+'] loaded = ' + PolyworksGame.loadedSprites[spr]);
-						if(!PolyworksGame.loadedImages[spr]) {
+						if(!PolyworksGame.loaded.sprites[spr]) {
 							var sprite = sprites[spr];
 							// trace('\t\t\tsprite = ', sprite);
 							this.toLoad++;
-							PolyworksGame.phaser.load.spritesheet(spr, sprite.url, sprite.width, sprite.height, sprite.frames);
-							PolyworksGame.loadedImages[spr] = true;
+							phaser.load.spritesheet(spr, sprite.url, sprite.width, sprite.height, sprite.frames);
+							loaded.sprites[spr] = true;
 						}
 					},
 					this
 				);
 			}
+			if(this.model.tilemaps.length > 0) {
+				var tilemaps = PolyworksGame.get('tilemaps');
+				Polyworks.Utils.each(this.model.tilemaps,
+					function(map, key) {
+						// trace('\t\ttilemap['+map+'] loaded = ' + PolyworksGame.loadedTilemaps[map]);
+						if(!PolyworksGame.loaded.tilemaps[map]) {
+							var tilemap = tilemaps[map];
+							// trace('\t\t\ttilemap = ', tilemap);
+							this.toLoad++;
+							phaser.load.tilemap(key, tilemap.url, null, Phaser.Tilemap.TILED_JSON);
+							loaded.tilemaps[map] = true;
+						}
+					},
+					this
+				);
+			}
+			if(this.model.tilesets.length > 0) {
+				var tilesets = PolyworksGame.get('tilesets');
+				Polyworks.Utils.each(this.model.tilesets,
+					function(set, key) {
+						// trace('\t\ttileset['+set+'] loaded = ' + PolyworksGame.loadedTilesets[set]);
+						if(!PolyworksGame.loaded.tilesets[set]) {
+							var tileset = tilesets[set];
+							// trace('\t\t\ttileset = ', tileset);
+							this.toLoad++;
+							phaser.load.tileset(key, tileset.url, tileset.width, tileset.height, tileset.margin, tileset.spacing);
+							loaded.tilesets[set] = true;
+						}
+					},
+					this
+				);
+			}
+
+			PolyworksGame.loaded = Polyworks.Utils.extend(PolyworksGame.loaded, loaded);
 			this.model.loaded = true;
 		}
 	};

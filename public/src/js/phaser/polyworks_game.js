@@ -103,7 +103,7 @@ PolyworksGame = (function() {
 			PolyworksGame.levelScore += val;
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_SCORE_UPDATED });
 		},
-		
+
 		setHealth: function(val) {
 			PolyworksGame.health = val;
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.HEALTH_UPDATED });
@@ -254,21 +254,26 @@ PolyworksGame = (function() {
 	function _preload() {
 		var phaser = PolyworksGame.phaser;
 		var images = _model.images;
-		// trace('preload images');
-		var loadedImages = {};
+		var sprites = _model.sprites;
+		var tilemaps = _model.tilemaps;
+		var tileset = _model.tilesets;
+		var loaded = {
+			images: {},
+			sprites: {},
+			tilemaps: {},
+			tilesets: {}
+		};
 
 		Polyworks.Utils.each(images,
 			function(image, key) {
 				if(_model.preloadAll) {
 					phaser.load.image(key, image);
 				}
-				loadedImages[key] = false;
+				loaded.images[key] = false;
 			},
 			this
 		);
 
-		var sprites = _model.sprites;
-		var loadedSprites = {};
 		// trace('preload sprites');
 		Polyworks.Utils.each(sprites,
 			function(sprite, key) {
@@ -276,13 +281,33 @@ PolyworksGame = (function() {
 				if(_model.preloadAll) {
 					phaser.load.spritesheet(key, sprite.url, sprite.width, sprite.height, sprite.frames);
 				}
-				loadedSprites[key] = false;
+				loaded.sprites[key] = false;
 			},
 			this
 		);
 
-		PolyworksGame.loadedImages = loadedImages;
-		PolyworksGame.loadedSprites = loadedSprites;
+		Polyworks.Utils.each(tilemaps,
+			function(tilemap, key) {
+				if(_model.preloadAll) {
+					phaser.load.tilemap(key, tilemap.url, null, Phaser.Tilemap.TILED_JSON);
+				}
+				loaded.tilemaps[key] = false;
+			},
+			this
+		);
+
+		// trace('preload sprites');
+		Polyworks.Utils.each(tilesets,
+			function(tileset, key) {
+				if(_model.preloadAll) {
+					phaser.load.tileset(key, tileset.url, tileset.width, tileset.height, tileset.margin, tileset.spacing);
+				}
+				loaded.tilesets[key] = false;
+			},
+			this
+		);
+
+		PolyworksGame.loaded = loaded;
 	}
 	
 	function _create() {
@@ -342,7 +367,7 @@ PolyworksGame = (function() {
 		} else {
 			PolyworksGame.currentLevel = 0;
 			PolyworksGame.levelText = '';
-			stateId = 'completed'
+			stateId = 'completed';
 		}
 		PolyworksGame.changeState(stateId);
 	}
