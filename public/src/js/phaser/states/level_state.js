@@ -45,9 +45,6 @@ Polyworks.LevelState = (function() {
 		var playerStart = Polyworks.Utils.clone(PolyworksGame.get('player').attrs.start);
 		// trace('LevelState['+this.model.name+']/createState\n\tplayerStart = ', playerStart);
 		this.createPlayer(playerStart, PolyworksGame.startingHealth);
-
-		// this.getChildByName('pauseGUI').hide();
-		// this.getChildByName('completedGUI').hide();
 	};
 
 	LevelState.prototype.createPlayer = function(start, health) {
