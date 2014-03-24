@@ -150,17 +150,6 @@ Polyworks.Player = (function() {
 			for(var key in physicalItems) {
 				this[('check' + key + 'Collision')](physicalItems[key], physics);
 			}
-			// this.checkTerrainCollision(params.terrain);
-			// 
-			// if(params.requirements !== null) {
-			// 	this.checkRequirementsCollision(params.requirements, physics);
-			// }
-			// 
-			// this.checkDynamicTerrainCollision(params.dynamicTerrain);
-			// 
-			// this.checkHazardsCollision(params.hazards, physics);
-			// this.checkEnemiesCollision(params.enemies, physics);
-			// this.checkBonusesCollision(params.bonuses, physics);
 
 			if(this.body.touching.down) {
 				attrs.grounded = true;

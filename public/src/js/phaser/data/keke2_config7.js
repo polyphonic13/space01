@@ -15337,7 +15337,7 @@ Polyworks.Config = (function() {
 						// y: winH - 300
 						// y: winH - (226)
 						x: winW/2,
-						y: winH - (stageUnit * 4)
+						y: winH - (stageUnit * 3)
 					},
 					physics: {
 						/*
@@ -15346,6 +15346,7 @@ Polyworks.Config = (function() {
 							y: 0.2
 						},
 						*/
+						deferredGravity: true,
 						collideWorldBounds: false
 					},
 					anchor: {
