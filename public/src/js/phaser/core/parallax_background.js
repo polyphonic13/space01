@@ -32,6 +32,7 @@ Polyworks.ParallaxBackground = (function() {
 
 		this.tilemap = game.add.tilemap(attrs.tilemap);
 	    this.tileset = game.add.tileset(attrs.tileset);
+		trace('\tadding map layer x/y: ' + attrs.start.x + '/' + attrs.start.y + ', w/h: ' + attrs.width + '/' + attrs.height);
 	    this.layer = game.add.tilemapLayer(attrs.start.x, attrs.start.y, attrs.width, attrs.height, this.tileset, this.tilemap, attrs.layerIndex);
 	
 		Polyworks.Utils.each(attrs.layer,

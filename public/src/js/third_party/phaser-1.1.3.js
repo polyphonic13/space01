@@ -19286,6 +19286,20 @@ Phaser.Sprite.prototype.updateCache = function() {
         this.y = this.game.camera.view.y + this.cameraOffset.y;
     }
 
+	// POLYWORKS:
+	// var worldX;
+	// var worldY;
+	// if(this.scrollFactorX) {
+	// 	worldX = (this.worldTransform[2] * this.scrollFactorX) + this.game.camera.x;
+	// } else {
+	// 	worldX = this.worldTransform[2] + this.game.camera.x;
+	// }
+	// if(this.scrollFactorY) {
+	// 	worldY = (this.worldTransform[5] * this.scrollFactorY) + this.game.camera.y;
+	// } else {
+	// 	worldY = this.worldTransform[5] + this.game.camera.y;
+	// }
+	// this.world.setTo(worldX, worldY);
     this.world.setTo(this.game.camera.x + this.worldTransform[2], this.game.camera.y + this.worldTransform[5]);
 
     if (this.worldTransform[1] != this._cache.i01 || this.worldTransform[3] != this._cache.i10 || this.worldTransform[0] != this._cache.a00 || this.worldTransform[41] != this._cache.a11)
@@ -19528,6 +19542,20 @@ Phaser.Sprite.prototype.postUpdate = function() {
             this._cache.y = this.y;
         }
 
+		// POLYWORKS:
+		// var worldX;
+		// var worldY;
+		// if(this.scrollFactorX) {
+		// 	worldX = (this.worldTransform[2] * this.scrollFactorX) + this.game.camera.x;
+		// } else {
+		// 	worldX = this.worldTransform[2] + this.game.camera.x;
+		// }
+		// if(this.scrollFactorY) {
+		// 	worldY = (this.worldTransform[5] * this.scrollFactorY) + this.game.camera.y;
+		// } else {
+		// 	worldY = this.worldTransform[5] + this.game.camera.y;
+		// }
+		// this.world.setTo(worldX, worldY);
         this.world.setTo(this.game.camera.x + this.worldTransform[2], this.game.camera.y + this.worldTransform[5]);
 
         this.position.x = this._cache.x;

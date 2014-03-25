@@ -285,8 +285,6 @@ Polyworks.Config = (function() {
 			tilemaps: {
 				forest01BackgroundMap: {
 					url: 'data/tilemaps/forest01.json'
-					// url: 'data/tilemaps/desert2.json'
-					// url: 'http://localhost:9998/examples/assets/maps/desert.json'
 				}
 			},
 			// TILESETS
@@ -1445,36 +1443,38 @@ Polyworks.Config = (function() {
 					'caterpillar01'
 				],
 				tilemaps: [
-					// 'forest01BackgroundMap'
+					'forest01BackgroundMap'
 				],
 				tilesets: [
-					// 'forest01BackgroundTiles'
+					'forest01BackgroundTiles'
 				],
 				attrs: [
-				// {
-				// 	name: 'ForestBackground',
-				// 	cl: 'ParallaxBackground',
-				// 	attrs: {
-				// 		tilemap: 'forest01BackgroundMap',
-				// 		tileset: 'forest01BackgroundTiles',
-				// 		width: (stageWidth * 3),
-				// 		height: (stageHeight * 2),
-				// 		start: {
-				// 			x: 0,
-				// 			y: winH - (stageHeight * 2)
-				// 		},
-				// 		layerIndex: 0,
-				// 		layer: {
-				// 			scrollFactorX: 0.5,
-				// 			scrollFactorY: 0.5
-				// 		}
-				// 	}
-				// },
+				{
+					name: 'ForestBackground',
+					cl: 'ParallaxBackground',
+					attrs: {
+						tilemap: 'forest01BackgroundMap',
+						tileset: 'forest01BackgroundTiles',
+						// width: (stageWidth * 3),
+						// height: (stageHeight * 2),
+						width: 3456,
+						height: 648,
+						start: {
+							x: 0,
+							y: winH - (stageHeight * 2)
+						},
+						layerIndex: 0,
+						layer: {
+							scrollFactorX: 0.5,
+							scrollFactorY: 0.5
+						}
+					}
+				},
 				{
 					name: 'scenery',
 					cl: 'GroupCollection',
 					attrs: [
-
+/*
 					{
 						name: 'background01',
 						cl: 'Sprite',
@@ -1577,7 +1577,7 @@ Polyworks.Config = (function() {
 							}
 						}
 					},
-
+*/
 					{
 						name: 'tree01',
 						cl: 'Sprite',
