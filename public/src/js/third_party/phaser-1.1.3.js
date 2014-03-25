@@ -38036,7 +38036,6 @@ Phaser.Tilemap = function (game, key) {
     if (typeof key === 'string')
     {
         this.key = key;
-
         this.layers = game.cache.getTilemapData(key).layers;
         this.calculateIndexes();
     }

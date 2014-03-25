@@ -102,13 +102,35 @@ module.exports = function(grunt) {
 		},
 /////// LOCAL SERVER
 		connect: {
+			/*
 			// docs: https://github.com/iammerrick/grunt-connect
 			devel: {
 				port: 9999,
 				base: 'public',
 				keepAlive: true
 			}
-		}
+			*/
+			server: { 
+				port: 9999,
+				base: 'public',
+				keepAlive: true,
+				options: {
+					middleware: function(connect, options) {
+						return [
+							function(req, res, next) {
+								// If path has .json, accept json
+								if (url.parse(req.url).pathname.match(/\.json$/)) {
+									req.headers.accept = 'application/json';
+								}
+								next();
+							},
+								// then serve a static folder
+								connect.static('base/folder/')
+							]
+						}
+					} 
+				} 
+			}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-concat');

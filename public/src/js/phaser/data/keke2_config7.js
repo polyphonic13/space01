@@ -284,13 +284,19 @@ Polyworks.Config = (function() {
 			// TILEMAPS
 			tilemaps: {
 				forest01BackgroundMap: {
-					
+					url: 'data/tilemaps/forest01.json'
+					// url: 'data/tilemaps/desert2.json'
+					// url: 'http://localhost:9998/examples/assets/maps/desert.json'
 				}
 			},
 			// TILESETS
 			tilesets: {
 				forest01BackgroundTiles: {
-					
+					url: 'images/backgrounds/pencil_forest02.gif',
+					width: 3456,
+					height: 648,
+					margin: 0,
+					spacing: 0
 				}
 			},
 			// CONTROLS
@@ -1438,14 +1444,37 @@ Polyworks.Config = (function() {
 					'keke',
 					'caterpillar01'
 				],
-				tilemaps: [],
-				tilesets: [],
+				tilemaps: [
+					// 'forest01BackgroundMap'
+				],
+				tilesets: [
+					// 'forest01BackgroundTiles'
+				],
 				attrs: [
+				// {
+				// 	name: 'ForestBackground',
+				// 	cl: 'ParallaxBackground',
+				// 	attrs: {
+				// 		tilemap: 'forest01BackgroundMap',
+				// 		tileset: 'forest01BackgroundTiles',
+				// 		width: (stageWidth * 3),
+				// 		height: (stageHeight * 2),
+				// 		start: {
+				// 			x: 0,
+				// 			y: winH - (stageHeight * 2)
+				// 		},
+				// 		layerIndex: 0,
+				// 		layer: {
+				// 			scrollFactorX: 0.5,
+				// 			scrollFactorY: 0.5
+				// 		}
+				// 	}
+				// },
 				{
 					name: 'scenery',
 					cl: 'GroupCollection',
-					// addTo: 'null',
 					attrs: [
+
 					{
 						name: 'background01',
 						cl: 'Sprite',
@@ -1536,6 +1565,7 @@ Polyworks.Config = (function() {
 							}
 						}
 					},
+
 					{
 						name: 'tree01',
 						cl: 'Sprite',
