@@ -31935,7 +31935,6 @@ Phaser.Loader.prototype = {
                 break;
 
             case 'tileset':
-
                 this.game.cache.addTileset(file.key, file.url, file.data, file.tileWidth, file.tileHeight, file.tileMax, file.tileMargin, file.tileSpacing);
                 break;
 
@@ -39535,11 +39534,17 @@ Phaser.TilemapParser = {
         var row = Math.round(width / tileWidth);
         var column = Math.round(height / tileHeight);
         var total = row * column;
-        
+
         if (tileMax !== -1)
         {
             total = tileMax;
         }
+
+		// POLYWORKS TILES
+		console.log('TILES SET\n\ttile w/h = ' + tileWidth + '/' + tileHeight 
+							+ '\n\timages w/h = ' + width + '/' + height
+							+ '\n\trow = ' + row + ', column = ' + column
+							+ '\n\ntotal = ' + total + ', tileMax = ' + tileMax);
 
         //  Zero or smaller than tile sizes?
         if (width === 0 || height === 0 || width < tileWidth || height < tileHeight || total === 0)

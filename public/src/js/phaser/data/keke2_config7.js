@@ -293,6 +293,7 @@ Polyworks.Config = (function() {
 					url: 'images/backgrounds/pencil_forest02.gif',
 					width: 3456,
 					height: 648,
+					tileMax: 12,
 					margin: 0,
 					spacing: 0
 				}

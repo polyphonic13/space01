@@ -105,7 +105,7 @@ Polyworks.State = (function() {
 							var tileset = tilesets[tiles];
 							trace('\t\t\ttileset = ', tileset);
 							this.toLoad++;
-							phaser.load.tileset(tiles, tileset.url, tileset.width, tileset.height, tileset.margin, tileset.spacing);
+							phaser.load.tileset(tiles, tileset.url, tileset.width, tileset.height, tileset.tileMax, tileset.margin, tileset.spacing);
 							loaded.tilesets[tiles] = true;
 						}
 					},
