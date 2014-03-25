@@ -256,7 +256,7 @@ PolyworksGame = (function() {
 		var images = _model.images;
 		var sprites = _model.sprites;
 		var tilemaps = _model.tilemaps;
-		var tileset = _model.tilesets;
+		var tilesets = _model.tilesets;
 		var loaded = {
 			images: {},
 			sprites: {},
