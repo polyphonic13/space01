@@ -8903,6 +8903,8 @@ Polyworks.Config = (function() {
 					'mountainBackground05i',
 					'mountainBackground05k',
 					'mountainBackground05l',
+					'grass03a',
+					'woodenXSign01',
 					'tree01',
 					'platformV',
 					'platform',
@@ -8932,23 +8934,6 @@ Polyworks.Config = (function() {
 					name: 'scenery',
 					cl: 'GroupCollection',
 					attrs: [
-					{
-						name: 'sky',
-						cl: 'Sprite',
-						attrs: {
-							img: 'sky',
-							name: 'sky',
-							start: {
-								x: 0,
-								y: 0
-							},
-							phaser: {
-								width: winW,
-								height: winH,
-								fixedToCamera: true
-							}
-						}
-					},
 					{
 						name: 'riverBackground01a',
 						cl: 'Sprite',
@@ -9108,6 +9093,36 @@ Polyworks.Config = (function() {
 								y: winH - (stageHeight * 8)
 							}
 						}
+					},
+					{
+						name: 'woodenX',
+						cl: 'Sprite',
+						attrs: {
+							img: 'woodenXSign01',
+							phaser: {
+								width: (stageUnit * 2),
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageUnit * 14.5),
+								y: winH - (stageUnit * 2.6)
+							}
+						}
+					},
+					{
+						name: 'grass01',
+						cl: 'Sprite',
+						attrs: {
+							img: 'grass03a',
+							phaser: {
+								width: stageWidth,
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: 0,
+								y: winH - (stageUnit * 2)
+							}
+						}
 					}
 					]
 				},
@@ -9144,7 +9159,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: 0,
-								y: winH - (stageUnit * 0.1)
+								y: winH - (stageUnit * 0.5)
 							},
 							physics: {
 								immovable: true
@@ -15422,7 +15437,7 @@ Polyworks.Config = (function() {
 						// y: winH - 300
 						// y: winH - (226)
 						x: winW/2,
-						y: winH - (stageUnit * 3)
+						y: winH - (stageUnit * 1.8)
 					},
 					physics: {
 						/*

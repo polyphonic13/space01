@@ -62,7 +62,7 @@ Polyworks.LevelState = (function() {
 		this.playerGroup.add(this.player);
 		this.playerPresent = true;
 		this.playerGroupPresent = true;
-		this.player.activateGravity();
+		// this.player.activateGravity();
 		// trace('LevelState['+this.model.name+']/player created, jump = ' + playerConfig.attrs.speed.y, playerConfig);
 	};
 

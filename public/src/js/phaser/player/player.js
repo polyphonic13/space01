@@ -7,6 +7,8 @@ Polyworks.Player = (function() {
 		// trace('Player/constructor');
 		_this = this;
 		this.model = new Polyworks.Model(params);
+		this.initialPosition = true;
+		this.oneUpdate = false;
 		Player._super.constructor.call(this, params);
 		// trace('player body size = ' + this.body.width + '/' + this.body.height);
 	}
@@ -98,6 +100,11 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.updatePosition = function() {
 		// trace('Player/updatePosition, x = ' + this.body.x);
+		if(this.initialPosition) {
+			this.initialPosition = false;
+			this.activateGravity();
+		}
+
 		this.velX = 0;
 		this.velY = 0;
 		var attrs = this.model.attrs;
@@ -142,6 +149,12 @@ Polyworks.Player = (function() {
 		// trace('Player/update, health = ' + this.health);
 		// trace(params);
 		if(this.alive) {
+			// if(this.initialPosition) {
+			// 	var start = this.model.attrs.start;
+			// 	trace('Player/update x/y = ' + this.x + '/' + this.y 
+			// 			+ '\n\tx/y = ' + this.body.x + '/' + this.body.y 
+			// 			+ '\n\tstart = ' + start.x + '/' + start.y);
+			// }
 			this.collided = false;
 			var physics = PolyworksGame.phaser.physics;
 			var attrs = this.model.attrs;
