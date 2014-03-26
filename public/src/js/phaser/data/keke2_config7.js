@@ -1443,12 +1443,8 @@ Polyworks.Config = (function() {
 					'keke',
 					'caterpillar01'
 				],
-				tilemaps: [
-					'forest01BackgroundMap'
-				],
-				tilesets: [
-					'forest01BackgroundTiles'
-				],
+				tilemaps: [],
+				tilesets: [],
 				attrs: [
 				/*
 				{
@@ -8911,6 +8907,7 @@ Polyworks.Config = (function() {
 					'rockPlatform01',
 					'rockPlatform02',
 					'rockPlatform03',
+					'rockPlatform04',
 					'invisibleRect',
 					'heart',
 					'crystals02Grey',
@@ -9154,7 +9151,7 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'platform',
 							phaser: {
-								width: (stageWidth * 0.75),
+								width: (stageWidth),
 								height: (stageUnit)
 							},
 							start: {
@@ -9165,26 +9162,7 @@ Polyworks.Config = (function() {
 								immovable: true
 							}
 						}
-					},
-					{
-						name: 'beginningRock',
-						cl: 'Sprite',
-						attrs: {
-							img: 'rockPlatform02',
-							phaser: {
-								width: (stageUnit * 3),
-								height: (stageUnit * 6)
-							},
-							start: {
-								x: (stageUnit * 0.1),
-								y: winH - (stageUnit * 6)
-							},
-							physics: {
-								immovable: true
-							}
-						}
 					}
-					
 					]
 				},
 				{
@@ -9208,10 +9186,10 @@ Polyworks.Config = (function() {
 								name: 'ground0',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										width: (stageUnit * 3),
+										height: (stageUnit * 1.5)
 									},
 									start: {
 										x: (stageUnit * 8),
@@ -9229,7 +9207,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 1)
 									},
 									start: {
 										x: (stageUnit * 12),
@@ -9247,7 +9225,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.7)
 									},
 									start: {
 										x: (stageUnit * 9),
@@ -9283,7 +9261,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.6)
 									},
 									start: {
 										x: (stageUnit * 9.2),
@@ -9319,7 +9297,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.8)
 									},
 									start: {
 										x: (stageUnit * 6),
@@ -9337,7 +9315,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.6)
 									},
 									start: {
 										x: (stageUnit * 8.9),
@@ -9391,7 +9369,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.7)
 									},
 									start: {
 										x: (stageUnit * 14),
@@ -9409,7 +9387,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.8)
 									},
 									start: {
 										x: (stageUnit * 10),
@@ -9463,7 +9441,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.9)
 									},
 									start: {
 										x: (stageUnit * 13.5),
@@ -9487,7 +9465,7 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'invisibleRect',
 									phaser: {
-										width: stageWidth + stageUnit,
+										width: stageWidth + (stageUnit * 3),
 										height: 32
 									},
 									start: {
@@ -9535,7 +9513,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 1)
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 1),
@@ -9553,7 +9531,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.8)
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 5),
@@ -9607,7 +9585,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.8)
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 10),
@@ -9625,7 +9603,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.9)
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 6),
@@ -9643,7 +9621,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.7)
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 8),
@@ -9661,7 +9639,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.6)
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 5),
@@ -9697,7 +9675,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.7)
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 6),
@@ -9751,7 +9729,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2.5),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.9)
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 12.5),
@@ -9769,7 +9747,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.7)
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 12),
@@ -9787,7 +9765,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.8)
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 9),
@@ -9805,7 +9783,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.9)
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 5),
@@ -9841,7 +9819,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.6)
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 10),
@@ -9877,7 +9855,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.6)
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 9),
@@ -9895,7 +9873,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.8)
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 13),
@@ -9969,7 +9947,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.8)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 0.5),
@@ -9987,7 +9965,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.7)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 4),
@@ -10005,7 +9983,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.9)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 7),
@@ -10023,7 +10001,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.9)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 5),
@@ -10059,7 +10037,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.8)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 6),
@@ -10077,7 +10055,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.7)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit),
@@ -10095,7 +10073,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.6)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 4),
@@ -10131,7 +10109,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.4)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 9),
@@ -10167,7 +10145,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.4)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 2),
@@ -10203,7 +10181,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.4)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 3),
@@ -10239,7 +10217,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.6)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 11),
@@ -10257,7 +10235,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.4)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 8),
@@ -10293,7 +10271,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.4)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 6),
@@ -10311,7 +10289,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.3)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 8),
@@ -10329,7 +10307,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.4)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 11),
@@ -10347,7 +10325,7 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
+										height: (stageUnit * 0.8)
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 15),

@@ -351,7 +351,7 @@ PolyworksGame = (function() {
 	function _onStartLevel(event) {
 		idx = PolyworksGame.currentLevel;
 		for(var key in event) {
-			if(key === 'value') {
+			if(key === 'value' && typeof(event[key]) !== 'undefined') {
 				idx = event[key];
 				break;
 			}
