@@ -186,7 +186,7 @@ PolyworksGame = (function() {
 	}
 
 	function _hideAddressBar() {
-		trace('------------ PolyworksGame/_hideAddressBar, window.location.hash = ', window.location.hash);
+		// trace('------------ PolyworksGame/_hideAddressBar, window.location.hash = ', window.location.hash);
 		if(!window.location.hash) {
 			trace('\tdocument.height = ' + document.height + ', window.outerHeight = ' + window.outerHeight);
 			if(document.height < window.outerHeight) {
@@ -206,7 +206,7 @@ PolyworksGame = (function() {
 		var w = window.innerWidth;
 		var h = window.innerHeight;
 		PolyworksGame.isLandscape = (w > h) ? true : false;
-		trace('PolyworksGame/_checkOrientation, isLandscape = ' + PolyworksGame.isLandscape, '\t_stageInitialized = ' + _stageInitialized);
+		// trace('PolyworksGame/_checkOrientation, isLandscape = ' + PolyworksGame.isLandscape, '\t_stageInitialized = ' + _stageInitialized);
 		if(PolyworksGame.isLandscape) {
 			PolyworksGame.hideOrientationMessage();
 			if(!_stageInitialized) {
@@ -219,7 +219,7 @@ PolyworksGame = (function() {
 	
 	function _orientationChange() {
 		_checkOrientation();
-		trace('PolyworksGame/_orientationChange, isLandscape = ' + PolyworksGame.isLandscape + ', currentState' + PolyworksGame.currentState); 
+		// trace('PolyworksGame/_orientationChange, isLandscape = ' + PolyworksGame.isLandscape + ', currentState' + PolyworksGame.currentState); 
 		if(PolyworksGame.currentState !== '') {
 			_states[PolyworksGame.currentState].orientationSet(PolyworksGame.isLandscape);
 		}
@@ -230,7 +230,7 @@ PolyworksGame = (function() {
 		trace('PolyworksGame/_getSavedData, savedData = ', savedData);
 		if(typeof(savedData) !== 'undefined') {
 			if(savedData.indexOf('{') > -1) {
-				trace('\tdata saved was an object, parsing...');
+				// trace('\tdata saved was an object, parsing...');
 				savedData = JSON.parse(savedData);
 				for(var key in savedData) {
 					PolyworksGame[key] = savedData[key];
@@ -311,7 +311,7 @@ PolyworksGame = (function() {
 	}
 	
 	function _create() {
-		trace('PolyworksGame/_create');
+		// trace('PolyworksGame/_create');
 		_beginControls();
 		_beginStates();
 	}
@@ -319,7 +319,7 @@ PolyworksGame = (function() {
 	function _onStageInitialized(event) {
 		_stageInitialized = true;
 		_isTouchDevice = (navigator.userAgent.match(/ipad|iphone|android/i) !== null);
-		trace('PolyworksGame/_onStageInitialized, _isTouchDevice = ' + _isTouchDevice);
+		// trace('PolyworksGame/_onStageInitialized, _isTouchDevice = ' + _isTouchDevice);
 
 		var config = new Polyworks.Config();
 
@@ -334,11 +334,11 @@ PolyworksGame = (function() {
 			case Polyworks.InputCodes.QUIT:
 				PolyworksGame.changeState('quit');
 			break;
-			
+
 			case Polyworks.InputCodes.CLEAR_DATA: 
 				Polyworks.Storage.destroy();
 			break;
-			
+
 			default: 
 			break;
 		}
@@ -349,8 +349,14 @@ PolyworksGame = (function() {
 	}
 	
 	function _onStartLevel(event) {
-		trace('PolyworksGame/_onStartLevel, event = ', event);
-		var idx = (event.value) ? event.value : PolyworksGame.currentLevel;
+		idx = PolyworksGame.currentLevel;
+		for(var key in event) {
+			if(key === 'value') {
+				idx = event[key];
+				break;
+			}
+		}
+		trace('\tidx = ' + idx);
 		var stateId = _levels[idx].model.name;
 		PolyworksGame.currentLevel = idx;
 		trace('\tstateId = ' + stateId);

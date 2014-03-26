@@ -16,13 +16,13 @@ Polyworks.KekeIcon = (function() {
 		KekeIcon._super.begin.call(this);
 
 		var grandfather = this.model.ancestor.model.ancestor;
-		trace('\tgrandfather = ', grandfather);
+		// trace('\tgrandfather = ', grandfather);
 		var pages = grandfather.model.pages;
-		trace('\tpages = ', pages);
+		// trace('\tpages = ', pages);
 		var pagesLength = pages.length;
 		for(var i = 0; i < pagesLength; i++) {
 			var levels = pages[i].levels;
-			var levelsLength = levels.length
+			var levelsLength = levels.length;
 			for(var j = 0; j < levelsLength; j++) {
 				if(levels[j] === PolyworksGame.currentLevel) {
 					this.pageIndex = i;
@@ -30,7 +30,7 @@ Polyworks.KekeIcon = (function() {
 				}
 			}
 		}
-		trace('\tpageIndex = ' + this.pageIndex);
+		// trace('\tpageIndex = ' + this.pageIndex);
 	};
 	
 	KekeIcon.prototype.addListeners = function() {

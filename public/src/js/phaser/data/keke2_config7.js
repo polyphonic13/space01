@@ -1450,6 +1450,7 @@ Polyworks.Config = (function() {
 					'forest01BackgroundTiles'
 				],
 				attrs: [
+				/*
 				{
 					name: 'ForestBackground',
 					cl: 'ParallaxBackground',
@@ -1471,11 +1472,12 @@ Polyworks.Config = (function() {
 						}
 					}
 				},
+				*/
 				{
 					name: 'scenery',
 					cl: 'GroupCollection',
 					attrs: [
-/*
+
 					{
 						name: 'background01',
 						cl: 'Sprite',
@@ -1578,7 +1580,7 @@ Polyworks.Config = (function() {
 							}
 						}
 					},
-*/
+
 					{
 						name: 'tree01',
 						cl: 'Sprite',
@@ -5087,7 +5089,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 20,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -5321,7 +5323,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 20,
 									score: 500,
 									movement: {
 										speed: 1,
@@ -5555,7 +5557,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 20,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -5728,7 +5730,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 20,
 									score: 500,
 									movement: {
 										speed: 1,
@@ -6639,7 +6641,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 25,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -6890,7 +6892,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 25,
 									score: 500,
 									movement: {
 										speed: 1,
@@ -7218,7 +7220,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 25,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -7423,7 +7425,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 25,
 									score: 500,
 									movement: {
 										speed: 1,
@@ -15436,13 +15438,10 @@ Polyworks.Config = (function() {
 						x: 0.5,
 						y: 0.5
 					},
-					// followStyle: Phaser.Camera.FOLLOW_PLATFORMER,
 					followStyle: Phaser.Camera.FOLLOW_TOPDOWN,
-					// followStyle: Phaser.Camera.FOLLOW_TOPDOWN_TIGHT,
-					// followStyle: Phaser.Camera.FOLLOW_LOCKON,
 					speed: {
 						x: (stageUnit * 4),
-						y: (stageUnit * 10.1)
+						y: (stageUnit * 10.2)
 					},
 					controls: {
 						left: Polyworks.InputCodes.LEFT,
