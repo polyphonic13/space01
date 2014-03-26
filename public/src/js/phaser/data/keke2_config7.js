@@ -8947,7 +8947,7 @@ Polyworks.Config = (function() {
 					cl: 'GroupCollection',
 					attrs: [
 					{
-						name: 'riverBackground01a',
+						name: 'mountainBackground06a',
 						cl: 'Sprite',
 						attrs: {
 							img: 'mountainBackground06a',
@@ -8963,7 +8963,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'riverBackground01b',
+						name: 'mountainBackground06b',
 						cl: 'Sprite',
 						attrs: {
 							img: 'mountainBackground06b',
@@ -8979,7 +8979,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'riverBackground01c',
+						name: 'mountainBackground06c',
 						cl: 'Sprite',
 						attrs: {
 							img: 'mountainBackground05c',
@@ -8995,7 +8995,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'riverBackground01d',
+						name: 'mountainBackground06d',
 						cl: 'Sprite',
 						attrs: {
 							img: 'mountainBackground06d',
@@ -9011,7 +9011,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'riverBackground01e',
+						name: 'mountainBackground06e',
 						cl: 'Sprite',
 						attrs: {
 							img: 'mountainBackground06e',
@@ -9027,7 +9027,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'riverBackground01f',
+						name: 'mountainBackground05f',
 						cl: 'Sprite',
 						attrs: {
 							img: 'mountainBackground05f',
@@ -9043,7 +9043,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'riverBackground01g',
+						name: 'mountainBackground06g',
 						cl: 'Sprite',
 						attrs: {
 							img: 'mountainBackground06g',
@@ -9059,7 +9059,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'riverBackground01h',
+						name: 'mountainBackground06h',
 						cl: 'Sprite',
 						attrs: {
 							img: 'mountainBackground06h',
@@ -9075,7 +9075,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'riverBackground01i',
+						name: 'mountainBackground06i',
 						cl: 'Sprite',
 						attrs: {
 							img: 'mountainBackground06i',
@@ -9091,7 +9091,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'riverBackground01j',
+						name: 'mountainBackground06j',
 						cl: 'Sprite',
 						attrs: {
 							img: 'mountainBackground06j',
@@ -9107,7 +9107,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'riverBackground01k',
+						name: 'mountainBackground06k',
 						cl: 'Sprite',
 						attrs: {
 							img: 'mountainBackground06k',
@@ -9123,7 +9123,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'riverBackground01l',
+						name: 'mountainBackground06l',
 						cl: 'Sprite',
 						attrs: {
 							img: 'mountainBackground06l',
