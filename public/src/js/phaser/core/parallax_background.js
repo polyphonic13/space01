@@ -31,6 +31,7 @@ Polyworks.ParallaxBackground = (function() {
 		var game = this.model.game;
 
 		this.tilemap = game.add.tilemap(attrs.tilemap);
+		// this.tilemap.addTilesetImage(attrs.tileset);
 	    this.tileset = game.add.tileset(attrs.tileset);
 	    this.layer = game.add.tilemapLayer(attrs.start.x, attrs.start.y, attrs.width, attrs.height, this.tileset, this.tilemap, attrs.layerIndex);
 	

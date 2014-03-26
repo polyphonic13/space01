@@ -63,14 +63,16 @@ Polyworks.Config = (function() {
 				riverBackground01e: 'images/backgrounds/pencil_river01e.gif',
 				riverBackground01f: 'images/backgrounds/pencil_river01f.gif',
 
-				mountainBackground05a: 'images/backgrounds/pencil_mountain06a.gif',
-				mountainBackground05b: 'images/backgrounds/pencil_mountain06b.gif',
-				mountainBackground05d: 'images/backgrounds/pencil_mountain06d.gif',
-				mountainBackground05e: 'images/backgrounds/pencil_mountain06e.gif',
-				mountainBackground05h: 'images/backgrounds/pencil_mountain06h.gif',
-				mountainBackground05i: 'images/backgrounds/pencil_mountain06i.gif',
-				mountainBackground05k: 'images/backgrounds/pencil_mountain06k.gif',
-				mountainBackground05l: 'images/backgrounds/pencil_mountain06l.gif',
+				mountainBackground06a: 'images/backgrounds/pencil_mountain06a.gif',
+				mountainBackground06b: 'images/backgrounds/pencil_mountain06b.gif',
+				mountainBackground06d: 'images/backgrounds/pencil_mountain06d.gif',
+				mountainBackground06e: 'images/backgrounds/pencil_mountain06e.gif',
+				mountainBackground06g: 'images/backgrounds/pencil_mountain06g.gif',
+				mountainBackground06h: 'images/backgrounds/pencil_mountain06h.gif',
+				mountainBackground06i: 'images/backgrounds/pencil_mountain06i.gif',
+				mountainBackground06j: 'images/backgrounds/pencil_mountain06j.gif',
+				mountainBackground06k: 'images/backgrounds/pencil_mountain06k.gif',
+				mountainBackground06l: 'images/backgrounds/pencil_mountain06l.gif',
 
 				// mountainBackground05a: 'images/backgrounds/pencil_mountain05a.png',
 				// mountainBackground05b: 'images/backgrounds/pencil_mountain05b.png',
@@ -285,6 +287,9 @@ Polyworks.Config = (function() {
 			tilemaps: {
 				forest01BackgroundMap: {
 					url: 'data/tilemaps/forest01.json'
+				},
+				desertTest: {
+					url: 'data/tilemaps/desert.json'
 				}
 			},
 			// TILESETS
@@ -294,6 +299,14 @@ Polyworks.Config = (function() {
 					width: 3456,
 					height: 648,
 					tileMax: 12,
+					margin: 0,
+					spacing: 0
+				},
+				desertTest: {
+					url: 'images/tmw_desert_spacing.png',
+					width: 265,
+					height: 199,
+					tileMax: 48,
 					margin: 0,
 					spacing: 0
 				}
@@ -8889,16 +8902,18 @@ Polyworks.Config = (function() {
 					'whiteRect',
 					'ovalMask',
 					'sky',
-					'mountainBackground05a',
-					'mountainBackground05b',
+					'mountainBackground06a',
+					'mountainBackground06b',
 					'mountainBackground05c',
-					'mountainBackground05d',
-					'mountainBackground05e',
+					'mountainBackground06d',
+					'mountainBackground06e',
 					'mountainBackground05f',
-					'mountainBackground05h',
-					'mountainBackground05i',
-					'mountainBackground05k',
-					'mountainBackground05l',
+					'mountainBackground06g',
+					'mountainBackground06h',
+					'mountainBackground06i',
+					'mountainBackground06j',
+					'mountainBackground06k',
+					'mountainBackground06l',
 					'grass03a',
 					'woodenXSign01',
 					'tree01',
@@ -8935,7 +8950,7 @@ Polyworks.Config = (function() {
 						name: 'riverBackground01a',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackground05a',
+							img: 'mountainBackground06a',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
@@ -8951,7 +8966,7 @@ Polyworks.Config = (function() {
 						name: 'riverBackground01b',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackground05b',
+							img: 'mountainBackground06b',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
@@ -8983,7 +8998,7 @@ Polyworks.Config = (function() {
 						name: 'riverBackground01d',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackground05d',
+							img: 'mountainBackground06d',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
@@ -8999,7 +9014,7 @@ Polyworks.Config = (function() {
 						name: 'riverBackground01e',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackground05e',
+							img: 'mountainBackground06e',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
@@ -9028,10 +9043,26 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'riverBackground01e',
+						name: 'riverBackground01g',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackground05h',
+							img: 'mountainBackground06g',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight * 2,
+								alpha: 1
+							},
+							start: {
+								x: 0,
+								y: winH - (stageHeight * 6)
+							}
+						}
+					},
+					{
+						name: 'riverBackground01h',
+						cl: 'Sprite',
+						attrs: {
+							img: 'mountainBackground06h',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
@@ -9044,10 +9075,10 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'riverBackground01f',
+						name: 'riverBackground01i',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackground05i',
+							img: 'mountainBackground06i',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
@@ -9060,10 +9091,26 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'riverBackground01e',
+						name: 'riverBackground01j',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackground05k',
+							img: 'mountainBackground06j',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight * 2,
+								alpha: 1
+							},
+							start: {
+								x: 0,
+								y: winH - (stageHeight * 8)
+							}
+						}
+					},
+					{
+						name: 'riverBackground01k',
+						cl: 'Sprite',
+						attrs: {
+							img: 'mountainBackground06k',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
@@ -9076,10 +9123,10 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'riverBackground01f',
+						name: 'riverBackground01l',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackground05l',
+							img: 'mountainBackground06l',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
