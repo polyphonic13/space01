@@ -6,6 +6,7 @@ Polyworks.SectorManager = (function() {
 		// trace(params);
 		SectorManager._super.constructor.call(this, params);
 		// this.setActiveSector(0);
+		this.positionAxis = (this.model.type === Polyworks.SectorTypes.HORIZONTAL) ? 'x' : 'y';
 	}
 
 	SectorManager.prototype.setState = function(state) {
@@ -46,16 +47,17 @@ Polyworks.SectorManager = (function() {
 	SectorManager.prototype.findActiveSector = function(position) {
 		// trace('SectorManager/findActiveSector, this = ');
 		// trace(this);
-		var bounds;
 		// reset all sectors to off
 		// this.deactivateAll();
 
 		var c = this.model.collection;
 		var length = c.length;
+		var bounds;
+		var pos = position[this.positionAxis];
 
 		for(var i = 0; i < length; i++) {
 			bounds = c[i].model.bounds;
-			if(position.x > bounds.start && position.x < bounds.end) {
+			if(pos > bounds.start && pos < bounds.end) {
 				if(this.activeSectorId !== i) {
 					trace('new sector id = ' + i + ', name = ' + c[i].model.name);
 					this.setActiveSector(i);

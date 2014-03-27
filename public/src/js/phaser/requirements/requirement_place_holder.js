@@ -9,7 +9,7 @@ Polyworks.RequirementPlaceHolder = (function() {
 	}
 	
 	RequirementPlaceHolder.prototype.begin = function() {
-		trace('RequirementPlaceHolder/begin, this = ', this);
+		// trace('RequirementPlaceHolder/begin, this = ', this);
 		RequirementPlaceHolder._super.begin.call(this);
 	};
 
@@ -41,7 +41,7 @@ Polyworks.RequirementPlaceHolder = (function() {
 	};
 
 	RequirementPlaceHolder.prototype.destroy = function() {
-		trace('RequirementPlaceHolder['+this.model.name+']/destroy');
+		// trace('RequirementPlaceHolder['+this.model.name+']/destroy');
 		Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet);
 		RequirementPlaceHolder._super.destroy.call(this);
 	};

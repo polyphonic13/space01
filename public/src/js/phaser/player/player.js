@@ -269,7 +269,7 @@ Polyworks.Player = (function() {
 	};
 	
 	Player.prototype.destroy = function() {
-		trace('Player/destroy');
+		// trace('Player/destroy');
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_PRESSED, this.onControlButtonPressed);
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_RELEASED, this.onControlButtonReleased);
 
@@ -277,7 +277,6 @@ Polyworks.Player = (function() {
 		this.update = null;
 		this.updatePosition = null;
 		Player._super.destroy.call(this);
-		trace('end player destroy');
 	};
 	
 	return Player;
