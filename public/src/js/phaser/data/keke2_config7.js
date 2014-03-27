@@ -9215,15 +9215,15 @@ Polyworks.Config = (function() {
 						name: 'sector1',
 						cl: 'Sector',
 						bounds: {
-							start: -(stageHeight),
-							end: 0
+							start: winH - (stageHeight),
+							end: winH
 						},
 						attrs: [
 						{
 							name: 'dynamicTerrain',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
-							// sector1
+							// start sector 1 terrain
 							{
 								name: 'ground0',
 								cl: 'Sprite',
@@ -9342,6 +9342,77 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.8)
 									},
 									start: {
+										x: (stageUnit * 5),
+										y: winH - (stageUnit * 8.5)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							}
+							// end sector 1 terrain
+							]
+						},
+						{
+							name: 'hazards',
+							cl: 'PhysicalGroupCollection',
+							attrs: [
+							{
+								name: 'death',
+								cl: 'Sprite',
+								attrs: {
+									img: 'invisibleRect',
+									phaser: {
+										width: (stageWidth * 3),
+										height: 32
+									},
+									start: {
+										x: 0,
+										y: winH + 100
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 1000
+								}
+							}
+							]
+						},
+						{
+							name: 'enemies',
+							cl: 'Enemies',
+							attrs: [] 
+						},
+						{
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						}
+						]
+					},
+					{
+						name: 'sector2',
+						cl: 'Sector',
+						bounds: {
+							start: winH - (stageHeight * 2),
+							end: winH - (stageHeight)
+						},
+						attrs: [
+						{
+							name: 'dynamicTerrain',
+							cl: 'PhysicalGroupCollection',
+							attrs: [
+							// start sector 2 terrain
+							{
+								name: 'ground0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.8)
+									},
+									start: {
 										x: (stageUnit * 6),
 										y: winH - (stageUnit * 9.0)
 									},
@@ -9439,7 +9510,40 @@ Polyworks.Config = (function() {
 										immovable: true
 									}
 								}
-							},
+							}
+							// end sector 2 terrain
+							]
+						},
+						{
+							name: 'hazards',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						},
+						{
+							name: 'enemies',
+							cl: 'Enemies',
+							attrs: [] 
+						},
+						{
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						}
+						]
+					},
+					{
+						name: 'sector3',
+						cl: 'Sector',
+						bounds: {
+							start: winH - (stageHeight * 3),
+							end: winH - (stageHeight * 2)
+						},
+						attrs: [
+						{
+							name: 'dynamicTerrain',
+							cl: 'PhysicalGroupCollection',
+							attrs: [
+							// start sector 3 terrain
 							{
 								name: 'ground0',
 								cl: 'Sprite',
@@ -9493,60 +9597,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									}
 								}
-							}
-
-							]
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'death',
-								cl: 'Sprite',
-								attrs: {
-									img: 'invisibleRect',
-									phaser: {
-										width: (stageWidth * 3),
-										height: 32
-									},
-									start: {
-										x: 0,
-										y: winH + 100
-									},
-									physics: {
-										immovable: true
-									},
-									attack: 1000
-								}
-							}
-							]
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						}
-						]
-					},
-					{
-						name: 'sector2',
-						cl: 'Sector',
-						bounds: {
-							start: -(stageHeight * 2),
-							end: -(stageHeight)
-						},
-						attrs: [
-						{
-							name: 'dynamicTerrain',
-							cl: 'PhysicalGroupCollection',
-							attrs: [
-							// start sector 2 terrain
+							},
 							{
 								name: 'ground0',
 								cl: 'Sprite',
@@ -9582,7 +9633,40 @@ Polyworks.Config = (function() {
 										immovable: true
 									}
 								}
-							},
+							}
+							// end sector 3 terrain
+							]
+						},
+						{
+							name: 'hazards',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						},
+						{
+							name: 'enemies',
+							cl: 'Enemies',
+							attrs: [] 
+						},
+						{
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						}
+						]
+					},
+					{
+						name: 'sector4',
+						cl: 'Sector',
+						bounds: {
+							start: winH - (stageHeight * 4),
+							end: winH - (stageHeight * 3)
+						},
+						attrs: [
+						{
+							name: 'dynamicTerrain',
+							cl: 'PhysicalGroupCollection',
+							attrs: [
+							// start sector 4 terrain
 							{
 								name: 'ground0',
 								cl: 'Sprite',
@@ -9690,6 +9774,57 @@ Polyworks.Config = (function() {
 										immovable: true
 									}
 								}
+							}
+							// end sector 4 terrain
+							]
+						},
+						{
+							name: 'hazards',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						},
+						{
+							name: 'enemies',
+							cl: 'Enemies',
+							attrs: [] 
+						},
+						{
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						}
+						]
+					},
+					{
+						name: 'sector5',
+						cl: 'Sector',
+						bounds: {
+							start: winH - (stageHeight * 5),
+							end: winH - (stageHeight * 4)
+						},
+						attrs: [
+						{
+							name: 'dynamicTerrain',
+							cl: 'PhysicalGroupCollection',
+							attrs: [
+							// start sector 5 terrain
+							{
+								name: 'ground0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform03',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 2)
+									},
+									start: {
+										x: (stageWidth) + (stageUnit * 13.5),
+										y: winH - (stageUnit * 36)
+									},
+									physics: {
+										immovable: true
+									}
+								}
 							},
 							{
 								name: 'ground0',
@@ -9702,6 +9837,24 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 9),
+										y: winH - (stageUnit * 37.0)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'ground0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageWidth) + (stageUnit * 10),
 										y: winH - (stageUnit * 37.0)
 									},
 									physics: {
@@ -9733,42 +9886,6 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'rockPlatform01',
 									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 10),
-										y: winH - (stageUnit * 37.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform03',
-									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit * 2)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 13.5),
-										y: winH - (stageUnit * 36)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform01',
-									phaser: {
 										width: (stageUnit * 2.5),
 										height: (stageUnit * 0.9)
 									},
@@ -9788,11 +9905,65 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
+										height: (stageUnit * 0.8)
+									},
+									start: {
+										x: (stageWidth * 2) + (stageUnit * 0.5),
+										y: winH - (stageUnit * 39.5)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'ground0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
 										height: (stageUnit * 0.7)
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 12),
 										y: winH - (stageUnit * 41)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'ground0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.7)
+									},
+									start: {
+										x: (stageWidth * 2) + (stageUnit * 4),
+										y: winH - (stageUnit * 41)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'ground0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.9)
+									},
+									start: {
+										x: (stageWidth * 2) + (stageUnit * 7),
+										y: winH - (stageUnit * 42.5)
 									},
 									physics: {
 										immovable: true
@@ -9827,8 +9998,77 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.9)
 									},
 									start: {
+										x: (stageWidth * 2) + (stageUnit * 5),
+										y: winH - (stageUnit * 44.0)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'ground0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.9)
+									},
+									start: {
 										x: (stageWidth) + (stageUnit * 5),
 										y: winH - (stageUnit * 44.5)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							}
+							// end sector 5 terrain
+							]
+						},
+						{
+							name: 'hazards',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						},
+						{
+							name: 'enemies',
+							cl: 'Enemies',
+							attrs: [] 
+						},
+						{
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						}
+						]
+					},
+					{
+						name: 'sector6',
+						cl: 'Sector',
+						bounds: {
+							start: winH - (stageHeight * 6),
+							end: winH - (stageHeight * 5)
+						},
+						attrs: [
+						{
+							name: 'dynamicTerrain',
+							cl: 'PhysicalGroupCollection',
+							attrs: [
+							// start sector 6 terrain
+							{
+								name: 'ground0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 3),
+										height: (stageUnit * 1)
+									},
+									start: {
+										x: (stageWidth * 2) + (stageUnit * 9),
+										y: winH - (stageUnit * 45.5)
 									},
 									physics: {
 										immovable: true
@@ -9847,6 +10087,24 @@ Polyworks.Config = (function() {
 									start: {
 										x: (stageWidth) + (stageUnit * 8),
 										y: winH - (stageUnit * 46.0)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'ground0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.8)
+									},
+									start: {
+										x: (stageWidth * 2) + (stageUnit * 6),
+										y: winH - (stageUnit * 47.0)
 									},
 									physics: {
 										immovable: true
@@ -9896,185 +10154,6 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 2),
-										height: (stageUnit * 0.6)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 9),
-										y: winH - (stageUnit * 50.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform01',
-									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit * 0.8)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 13),
-										y: winH - (stageUnit * 51.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							}
-
-							// end sector 2 terrain
-
-							]
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						}
-						]
-					},
-					{
-						name: 'sector3',
-						cl: 'Sector',
-						bounds: {
-							start: -(stageHeight * 3),
-							end: -(stageHeight * 2)
-						},
-						attrs: [
-						{
-							name: 'dynamicTerrain',
-							cl: 'PhysicalGroupCollection',
-							attrs: [
-							// start sector 3 terrain
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform01',
-									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit * 0.8)
-									},
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 0.5),
-										y: winH - (stageUnit * 39.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform01',
-									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit * 0.7)
-									},
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 4),
-										y: winH - (stageUnit * 41.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform01',
-									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit * 0.9)
-									},
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 7),
-										y: winH - (stageUnit * 42.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform01',
-									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit * 0.9)
-									},
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 5),
-										y: winH - (stageUnit * 44.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform01',
-									phaser: {
-										width: (stageUnit * 3),
-										height: (stageUnit * 1)
-									},
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 9),
-										y: winH - (stageUnit * 45.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform01',
-									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit * 0.8)
-									},
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 6),
-										y: winH - (stageUnit * 47.0)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'ground0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform01',
-									phaser: {
-										width: (stageUnit * 2),
 										height: (stageUnit * 0.7)
 									},
 									start: {
@@ -10096,8 +10175,44 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.6)
 									},
 									start: {
+										x: (stageWidth) + (stageUnit * 9),
+										y: winH - (stageUnit * 50.0)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'ground0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.6)
+									},
+									start: {
 										x: (stageWidth * 2) + (stageUnit * 4),
 										y: winH - (stageUnit * 50.0)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'ground0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.8)
+									},
+									start: {
+										x: (stageWidth) + (stageUnit * 13),
+										y: winH - (stageUnit * 51.5)
 									},
 									physics: {
 										immovable: true
@@ -10139,7 +10254,40 @@ Polyworks.Config = (function() {
 										immovable: true
 									}
 								}
-							},
+							}
+							// end sector 6 terrain
+							]
+						},
+						{
+							name: 'hazards',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						},
+						{
+							name: 'enemies',
+							cl: 'Enemies',
+							attrs: [] 
+						},
+						{
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						}
+						]
+					},
+					{
+						name: 'sector7',
+						cl: 'Sector',
+						bounds: {
+							start: winH - (stageHeight * 7),
+							end: winH - (stageHeight * 6)
+						},
+						attrs: [
+						{
+							name: 'dynamicTerrain',
+							cl: 'PhysicalGroupCollection',
+							attrs: [
+							// start sector 7 terrain
 							{
 								name: 'ground0',
 								cl: 'Sprite',
@@ -10247,7 +10395,40 @@ Polyworks.Config = (function() {
 										immovable: true
 									}
 								}
-							},
+							}
+							// end sector 7 terrain
+							]
+						},
+						{
+							name: 'hazards',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						},
+						{
+							name: 'enemies',
+							cl: 'Enemies',
+							attrs: [] 
+						},
+						{
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						}
+						]
+					},
+					{
+						name: 'sector8',
+						cl: 'Sector',
+						bounds: {
+							start: winH - (stageHeight * 8),
+							end: winH - (stageHeight * 7)
+						},
+						attrs: [
+						{
+							name: 'dynamicTerrain',
+							cl: 'PhysicalGroupCollection',
+							attrs: [
+							// start sector 8 terrain
 							{
 								name: 'ground0',
 								cl: 'Sprite',
@@ -10356,10 +10537,7 @@ Polyworks.Config = (function() {
 									}
 								}
 							}
-
-
-							// end sector 3 terrain
-
+							// end sector 8 terrain
 							]
 						},
 						{
