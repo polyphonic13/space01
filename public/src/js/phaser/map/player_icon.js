@@ -1,19 +1,19 @@
-Polyworks.KekeIcon = (function() {
-	Polyworks.Utils.inherits(KekeIcon, Polyworks.Sprite);
+Polyworks.PlayerIcon = (function() {
+	Polyworks.Utils.inherits(PlayerIcon, Polyworks.Sprite);
 	
-	function KekeIcon(params) {
+	function PlayerIcon(params) {
 		params.attrs.start = this.initPosition(params.positions);
-		KekeIcon._super.constructor.call(this, params);
+		PlayerIcon._super.constructor.call(this, params);
 	}
 	
-	KekeIcon.prototype.initPosition = function(positions) {
+	PlayerIcon.prototype.initPosition = function(positions) {
 		return positions[PolyworksGame.currentLevel];
 	};
 	
-	KekeIcon.prototype.begin = function() {
+	PlayerIcon.prototype.begin = function() {
 		this.input.start();
 		this.addListeners();
-		KekeIcon._super.begin.call(this);
+		PlayerIcon._super.begin.call(this);
 
 		var grandfather = this.model.ancestor.model.ancestor;
 		// trace('\tgrandfather = ', grandfather);
@@ -33,7 +33,7 @@ Polyworks.KekeIcon = (function() {
 		// trace('\tpageIndex = ' + this.pageIndex);
 	};
 	
-	KekeIcon.prototype.addListeners = function() {
+	PlayerIcon.prototype.addListeners = function() {
 		Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_MAP_PAGE, this.onChangeMapPage, this);
 		var ctx = this;
 		this.events.onInputDown.add(function(event, pointer) {
@@ -44,19 +44,19 @@ Polyworks.KekeIcon = (function() {
 		}, this);
 	};
 	
-	KekeIcon.prototype.inputDown = function(event, pointer, ctx) {
-		// trace('KekeIcon['+this.model.name+']/inputDown');
+	PlayerIcon.prototype.inputDown = function(event, pointer, ctx) {
+		// trace('PlayerIcon['+this.model.name+']/inputDown');
 		ctx.pressed = true;
 	};
 	
-	KekeIcon.prototype.inputUp = function(event, pointer, ctx) {
-		// trace('KekeIcon['+this.model.name+']/inputUp');
+	PlayerIcon.prototype.inputUp = function(event, pointer, ctx) {
+		// trace('PlayerIcon['+this.model.name+']/inputUp');
 		ctx.pressed = false;
 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.START_LEVEL, value: PolyworksGame.currentLevel });
 	};
 	
-	KekeIcon.prototype.onChangeMapPage = function(event) {
-		// trace('KekeIcon/onChangeMapPage, event = ', event);
+	PlayerIcon.prototype.onChangeMapPage = function(event) {
+		// trace('PlayerIcon/onChangeMapPage, event = ', event);
 		if(event.value === this.pageIndex) {
 			this.visible = true;
 		} else {
@@ -64,10 +64,10 @@ Polyworks.KekeIcon = (function() {
 		}
 	};
 	
-	KekeIcon.prototype.destroy = function() {
+	PlayerIcon.prototype.destroy = function() {
 		Polyworks.EventCenter.unbind(Polyworks.Events.CHANGE_MAP_PAGE, this.onChangeMapPage, this);
-		KekeIcon._super.destroy.call(this);
+		PlayerIcon._super.destroy.call(this);
 	};
 	
-	return KekeIcon;
+	return PlayerIcon;
 })();

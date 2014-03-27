@@ -1269,7 +1269,7 @@ Polyworks.Config = (function() {
 					},
 					{
 						name: 'kekeIcon',
-						cl: 'KekeIcon',
+						cl: 'PlayerIcon',
 						positions: 
 						[
 							{
@@ -1494,9 +1494,7 @@ Polyworks.Config = (function() {
 							img: 'forestBackground02a',
 							phaser: {
 								width: stageWidth,
-								height: stageHeight * 2,
-								scrollFactorX: 0.5,
-								scrollFactorY: 0.5
+								height: stageHeight * 2
 							},
 							start: {
 								x: 0,
@@ -1511,9 +1509,7 @@ Polyworks.Config = (function() {
 							img: 'forestBackground02b',
 							phaser: {
 								width: stageWidth,
-								height: stageHeight * 2,
-								// scrollFactorX: 0.5,
-								// scrollFactorY: 0.5
+								height: stageHeight * 2
 							},
 							start: {
 								x: stageWidth,
@@ -1528,9 +1524,7 @@ Polyworks.Config = (function() {
 							img: 'forestBackground02c',
 							phaser: {
 								width: stageWidth,
-								height: stageHeight * 2,
-								// scrollFactorX: 0.5,
-								// scrollFactorY: 0.5
+								height: stageHeight * 2
 							},
 							start: {
 								x: (stageWidth * 2),
@@ -1545,9 +1539,7 @@ Polyworks.Config = (function() {
 							img: 'forestBackground02d',
 							phaser: {
 								width: stageWidth,
-								height: stageHeight * 2,
-								// scrollFactorX: 0.5,
-								// scrollFactorY: 0.5
+								height: stageHeight * 2
 							},
 							start: {
 								x: (stageWidth * 3),
@@ -1562,9 +1554,7 @@ Polyworks.Config = (function() {
 							img: 'forestBackground02e',
 							phaser: {
 								width: stageWidth,
-								height: stageHeight * 2,
-								// scrollFactorX: 0.5,
-								// scrollFactorY: 0.5
+								height: stageHeight * 2
 							},
 							start: {
 								x: (stageWidth * 4),
@@ -1579,9 +1569,7 @@ Polyworks.Config = (function() {
 							img: 'forestBackground02f',
 							phaser: {
 								width: stageWidth,
-								height: stageHeight * 2,
-								// scrollFactorX: 0.5,
-								// scrollFactorY: 0.5
+								height: stageHeight * 2
 							},
 							start: {
 								x: (stageWidth * 5),
@@ -1730,6 +1718,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
+					type: Polyworks.SectorTypes.HORIZONTAL,
 					attrs: [
 					{
 						name: 'sector1',
@@ -2662,6 +2651,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
+					type: Polyworks.SectorTypes.HORIZONTAL,
 					attrs: [
 					{
 						name: 'sector1',
@@ -3701,6 +3691,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
+					type: Polyworks.SectorTypes.HORIZONTAL,
 					attrs: [
 					{
 						name: 'sector1',
@@ -4927,6 +4918,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
+					type: Polyworks.SectorTypes.HORIZONTAL,
 					attrs: [
 					// sector1
 					{
@@ -6417,6 +6409,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
+					type: Polyworks.SectorTypes.HORIZONTAL,
 					attrs: [
 					// sector1
 					{
@@ -8023,6 +8016,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
+					type: Polyworks.SectorTypes.HORIZONTAL,
 					attrs: [
 					{
 						name: 'sector1',
@@ -9215,6 +9209,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
+					type: Polyworks.SectorTypes.HORIZONTAL,
 					attrs: [
 					{
 						name: 'sector1',
@@ -10812,6 +10807,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
+					type: Polyworks.SectorTypes.HORIZONTAL,
 					attrs: [
 					{
 						name: 'sector1',
@@ -12408,6 +12404,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
+					type: Polyworks.SectorTypes.HORIZONTAL,
 					attrs: [
 					{
 						name: 'sector1',
@@ -14004,6 +14001,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
+					type: Polyworks.SectorTypes.HORIZONTAL,
 					attrs: [
 					{
 						name: 'sector1',

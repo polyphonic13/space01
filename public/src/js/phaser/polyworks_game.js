@@ -7,8 +7,6 @@ PolyworksGame = (function() {
 	// var _loadingTitleHTML = '<div class="kekeText">keke</div><br /><div class="gameText1"><b>and</b></div><div class="gameText2">T H E&nbsp;&nbsp;G R E Y&nbsp;&nbsp;&nbsp;E X P A N S E</div></div>';
 	var _loadingTitleHTML = '';
 	
-	var _configURL = 'js/phaser/data/keke2_config6.js';
-	
 	var _gameTitle = '';
 	var _isTouchDevice = false;
 	var _stageInitialized = false;
@@ -382,9 +380,9 @@ PolyworksGame = (function() {
 		trace('PolyworksGame/_onLevelCleared, event = ', event);
 		var idx = event.value;
 		PolyworksGame.levelStatus[idx] = 'c';
-		
+
 		idx++;
-		
+
 		if(PolyworksGame.levelStatus[idx] === 'l') {
 			PolyworksGame.levelStatus[idx] = 'u';
 		}
