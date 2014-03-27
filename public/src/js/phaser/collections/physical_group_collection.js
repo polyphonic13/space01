@@ -17,18 +17,6 @@ Polyworks.PhysicalGroupCollection = (function() {
 		);
 	};
 	
-	PhysicalGroupCollection.prototype.checkDyanmicTerrainCollision = function(terrain) {
-		// trace('PhysicalGroupCollection['+this.model.name+']/checkDyanmicTerrainCollision');
-		// trace(terrain);
-		// trace(this);
-		Polyworks.Utils.each(this.model.collection,
-			function(c) {
-				c.checkDynamicTerrainCollision(terrain);
-			},
-			this
-		);
-	};
-	
 	PhysicalGroupCollection.prototype.deactivateGravity = function() {
 		Polyworks.Utils.each(this.model.collection,
 			function(c) {
