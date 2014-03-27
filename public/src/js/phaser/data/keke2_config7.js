@@ -9247,7 +9247,7 @@ Polyworks.Config = (function() {
 								name: 'sector1-platform02',
 								cl: 'Sprite',
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform04',
 									phaser: {
 										width: (stageUnit * 2),
 										height: (stageUnit * 1)
@@ -9271,7 +9271,7 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.7)
 									},
 									start: {
-										x: (stageUnit * 9),
+										x: (stageUnit * 11),
 										y: winH - (stageUnit * 4.5)
 									},
 									physics: {
@@ -9289,8 +9289,8 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.5)
 									},
 									start: {
-										x: (stageUnit * 5),
-										y: winH - (stageUnit * 6.0)
+										x: (stageUnit * 15),
+										y: winH - (stageUnit * 6.5)
 									},
 									physics: {
 										immovable: true
@@ -9307,7 +9307,7 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.6)
 									},
 									start: {
-										x: (stageUnit * 9.2),
+										x: (stageUnit * 11),
 										y: winH - (stageUnit * 8)
 									},
 									physics: {
@@ -9325,7 +9325,7 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.5)
 									},
 									start: {
-										x: (stageUnit * 2),
+										x: (stageUnit * 9),
 										y: winH - (stageUnit * 7.5)
 									},
 									physics: {
@@ -9343,7 +9343,7 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.8)
 									},
 									start: {
-										x: (stageUnit * 5),
+										x: (stageUnit * 7),
 										y: winH - (stageUnit * 8.5)
 									},
 									physics: {
@@ -9512,6 +9512,24 @@ Polyworks.Config = (function() {
 										immovable: true
 									}
 								}
+							},
+							{
+								name: 'sector2-platform06',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 13),
+										y: winH - (stageUnit * 17.9)
+									},
+									physics: {
+										immovable: true
+									}
+								}
 							}
 							// end sector 2 terrain
 							]
@@ -9631,6 +9649,24 @@ Polyworks.Config = (function() {
 									start: {
 										x: (stageWidth) + (stageUnit * 5),
 										y: winH - (stageUnit * 25.5)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector3-platform06',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageWidth) + (stageUnit * 9),
+										y: winH - (stageUnit * 26.9)
 									},
 									physics: {
 										immovable: true
@@ -15605,12 +15641,10 @@ Polyworks.Config = (function() {
 						y: winH - (stageUnit * 1.8)
 					},
 					physics: {
-						/*
-						bounce: {
-							x: 0,
-							y: 0.2
-						},
-						*/
+						// bounce: {
+						// 	x: 0,
+						// 	y: 0.2
+						// },
 						deferredGravity: true,
 						collideWorldBounds: false
 					},

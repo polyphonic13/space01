@@ -55,13 +55,13 @@ Polyworks.SectorManager = (function() {
 		var length = c.length;
 		var bounds;
 		var pos = position[this.positionAxis];
-		trace('pos = ' + pos);
+		// trace('pos = ' + pos);
 		for(var i = 0; i < length; i++) {
 			bounds = c[i].model.bounds;
-			trace('\tc['+i+'] start/end = ' + bounds.start + '/' + bounds.end);
+			// trace('\tc['+i+'] start/end = ' + bounds.start + '/' + bounds.end);
 			if(pos > bounds.start && pos < bounds.end) {
 				if(this.activeSectorId !== i) {
-					trace('new sector id = ' + i + ', name = ' + c[i].model.name);
+					trace('new sector id = ' + i + ', name = ' + c[i].model.name + ', pos = ' + pos);
 					this.setActiveSector(i);
 					break;
 				}
