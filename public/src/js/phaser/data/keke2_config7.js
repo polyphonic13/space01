@@ -9239,8 +9239,8 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 1.5)
 									},
 									start: {
-										x: (stageUnit * 8),
-										y: winH - (stageUnit * 1.5)
+										x: (stageUnit * 2),
+										y: winH - (stageUnit * 2)
 									},
 									physics: {
 										immovable: true
@@ -9257,8 +9257,8 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 1)
 									},
 									start: {
-										x: (stageUnit * 12),
-										y: winH - (stageUnit * 3.0)
+										x: (stageUnit * 6),
+										y: winH - (stageUnit * 4.0)
 									},
 									physics: {
 										immovable: true
