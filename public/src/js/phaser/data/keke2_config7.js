@@ -109,7 +109,8 @@ Polyworks.Config = (function() {
 
 				river01: 'images/scenery/river_water01.png',
 
-				woodenArrowSign01: 'images/scenery/wooden_arrow_sign01.png',
+				woodenArrowSign01Left: 'images/scenery/wooden_arrow_sign01_left.png',
+				woodenArrowSign01Right: 'images/scenery/wooden_arrow_sign01_right.png',
 				woodenXSign01: 'images/scenery/wooden_x_sign01.png',
 				
 				branch02Left: 'images/scenery/branch03_left.png',
@@ -1430,7 +1431,7 @@ Polyworks.Config = (function() {
 					'forestBackground02f',
 					'grass03',
 					'tree01',
-					'woodenArrowSign01',
+					'woodenArrowSign01Left',
 					'platformV',
 					'platform',
 					'branch02Left',
@@ -1597,7 +1598,7 @@ Polyworks.Config = (function() {
 						name: 'woodenArrow',
 						cl: 'Sprite',
 						attrs: {
-							img: 'woodenArrowSign01',
+							img: 'woodenArrowSign01Left',
 							phaser: {
 								width: (stageUnit * 2),
 								height: (stageUnit * 2)
@@ -8910,6 +8911,7 @@ Polyworks.Config = (function() {
 					'mountainBackground06l',
 					'grass03a',
 					'woodenXSign01',
+					'woodenArrowSign01Right',
 					'tree01',
 					'platformV',
 					'platform',
@@ -9161,6 +9163,21 @@ Polyworks.Config = (function() {
 								y: winH - (stageUnit * 2)
 							}
 						}
+					},
+					{
+						name: 'arrow',
+						cl: 'Sprite',
+						attrs: {
+							img: 'woodenArrowSign01Right',
+							phaser: {
+								width: (stageUnit * 2),
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageWidth * 2) + (stageUnit * 11),
+								y: winH - (stageUnit * 70.75)
+							}
+						}
 					}
 					]
 				},
@@ -9206,6 +9223,7 @@ Polyworks.Config = (function() {
 					}
 					]
 				},
+				// sectors
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
@@ -10433,6 +10451,24 @@ Polyworks.Config = (function() {
 									start: {
 										x: (stageWidth) + (stageUnit * 10),
 										y: winH - (stageUnit * 57.0)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector7-platform02',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform02',
+									phaser: {
+										width: (stageUnit * 1.5),
+										height: (stageUnit * 1)
+									},
+									start: {
+										x: (stageWidth) + (stageUnit * 6),
+										y: winH - (stageUnit * 58.0)
 									},
 									physics: {
 										immovable: true
