@@ -102,3 +102,9 @@ body, canvas, div {
 	background: url("../images/oval_mask.png") no-repeat center;
 	background-size: cover;
 }
+#facebook {
+	position: absolute;
+	z-index: 5;
+	bottom: 5px;
+	right: 5px;
+}
