@@ -473,6 +473,8 @@ PolyworksGame = (function() {
 		var gameContainer = document.getElementById('gameContainer');
 		gameContainer.parentNode.removeChild(gameContainer);
 
+		_hideSocialBar();
+
 		PolyworksGame.phaser = null;
 		Polyworks.Stage.destroy();
 		Polyworks.Stage = null;
