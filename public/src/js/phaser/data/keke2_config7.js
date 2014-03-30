@@ -252,6 +252,13 @@ Polyworks.Config = (function() {
 					height: 100,
 					frames: 2
 				},
+				mailButton: 
+				{
+					url: 'images/controls/mail_button.png',
+					width: 50,
+					height: 50,
+					frames: 2
+				},
 				quitButton: 
 				{
 					url: 'images/controls/quit_button.png',
