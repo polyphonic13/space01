@@ -85,6 +85,12 @@ PolyworksGame = (function() {
 					// trace(_states);
 					PolyworksGame.addLoadingDiv();
 					PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
+					
+					if(id === 'menu') {
+						_showMailIcon();
+					} else {
+						_hideMailIcon();
+					}
 				} else {
 					trace('ERROR: state['+id+'] not found');
 				}
@@ -150,6 +156,16 @@ PolyworksGame = (function() {
 		}
 	};
 
+	function _showMailIcon() {
+		var mailIcon = document.getElementById('mailIcon');
+		mailIcon.style.display = "block";
+	};
+	
+	function _hideMailIcon() {
+		var mailIcon = document.getElementById('mailIcon');
+		mailIcon.style.display = "none";
+	};
+	
 	function _addListeners() {
 		window.onorientationchange = function(event) {
 			_orientationChange();
