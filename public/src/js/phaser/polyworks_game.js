@@ -87,9 +87,9 @@ PolyworksGame = (function() {
 					PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
 					
 					if(id === 'menu') {
-						_showMailIcon();
+						_showSocialBar();
 					} else {
-						_hideMailIcon();
+						_hideSocialBar();
 					}
 				} else {
 					trace('ERROR: state['+id+'] not found');
@@ -156,14 +156,18 @@ PolyworksGame = (function() {
 		}
 	};
 
-	function _showMailIcon() {
+	function _showSocialBar() {
 		var mailIcon = document.getElementById('mailIcon');
 		mailIcon.style.display = "block";
+		var fbShare = document.getElementById('fbShare');
+		fbShare.style.display = "block";
 	};
 	
-	function _hideMailIcon() {
+	function _hideSocialBar() {
 		var mailIcon = document.getElementById('mailIcon');
 		mailIcon.style.display = "none";
+		var fbShare = document.getElementById('fbShare');
+		fbShare.style.display = "none";
 	};
 	
 	function _addListeners() {

@@ -1,9 +1,14 @@
 <!DOCTYPE html> 
 <html> 
 <head> 
-	<title>keke</title>
+	<title>keke and T H E  G R E Y  E X P A N S E</title>
 <!--	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" /> -->
-
+	<meta property="og:title" content="keke and T H E  G R E Y  E X P A N S E" />
+	<meta property="og:url" content="http://www.polyworksgames.com/games/keke2/" />
+	<meta property="og:image" content="http://www.polyworksgames.com/games/keke2/images/keke2_title1200x745.png" />
+	<meta property="og:site_name" content="Polyworks Games" />
+	<meta property="og:type" content="games" />
+	<meta property="fb:app_id" content="371443576332187" />
 	<link rel="stylesheet" href="css/keke.css" />
 </head>
 	<body onload="start();">
@@ -16,6 +21,28 @@
 	          status: true,
 	          xfbml: true
 	        });
+
+			// FB.ui(
+			//       {
+			//        method: 'feed',
+			//        name: 'The Facebook SDK for Javascript',
+			//        caption: 'Bringing Facebook to the desktop and mobile web',
+			//        description: (
+			//           'A small JavaScript library that allows you to harness ' +
+			//           'the power of Facebook, bringing the user\'s identity, ' +
+			//           'social graph and distribution power to your site.'
+			//        ),
+			//        link: 'https://developers.facebook.com/docs/reference/javascript/',
+			//        picture: 'http://www.fbrell.com/public/f8.jpg'
+			//       },
+			//       function(response) {
+			//         if (response && response.post_id) {
+			//           console.log('Post was published.');
+			//         } else {
+			//           console.warn('Post was not published.');
+			//         }
+			//       }
+			//     )
 	      };
 
 	      (function(d, s, id) {
@@ -27,14 +54,16 @@
 	       } (document, 'script', 'facebook-jssdk'));
 	    </script>
 	<!-- END FB -->
-	<!-- LIKE
-	<div id="facebook">
-		<div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div>
-	</div>
-	-->
+		<!-- LIKE
+		<div id="fbLike">
+			<div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div>
+		</div>
+		-->
+		<!-- share -->
+		<div id="fbShare" class="fb-share-button" data-href="http://www.polyworksgames.com/games/keke2/" data-type="button_count"></div>	
+		<a id="mailIcon" href="mailto:keke@polyworksgames.com?subject=keke+and+the+grey+expanse" target="blank"></a>
 	<div id="loadingHolder"></div>
 	<div id="gameContainer"></div>
-	<a id="mailIcon" href="mailto:keke@polyworksgames.com" target="blank"></a>
 	<div id="orientationMessage"></div>
 	<script type="text/javascript">
 
