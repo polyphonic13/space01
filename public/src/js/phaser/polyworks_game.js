@@ -157,19 +157,26 @@ PolyworksGame = (function() {
 	};
 
 	function _showSocialBar() {
-		var mailIcon = document.getElementById('mailIcon');
-		mailIcon.style.display = "block";
-		var fbShare = document.getElementById('fbShare');
-		fbShare.style.display = "block";
-	};
+		_showHideSocialBar('block');
+	}
 	
 	function _hideSocialBar() {
-		var mailIcon = document.getElementById('mailIcon');
-		mailIcon.style.display = "none";
-		var fbShare = document.getElementById('fbShare');
-		fbShare.style.display = "none";
-	};
-	
+		_showHideSocialBar('none');
+	}
+
+	function _showHideSocialBar(display) {
+		trace('PolyworksGame/_showHideSocialBar, display = ' + display);
+		var length = socialBar.length;
+		var el;
+		for(var i = 0; i < length; i++) { 
+			trace('\tsocialBar['+i+'] = ' + socialBar[i]);
+			el = document.getElementById(socialBar[i]);
+			if(el !== null) {
+				el.style.display = display; 
+			}
+		}
+	}
+
 	function _addListeners() {
 		window.onorientationchange = function(event) {
 			_orientationChange();
