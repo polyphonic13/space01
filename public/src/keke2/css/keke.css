@@ -115,20 +115,20 @@ body, canvas, div {
 	bottom: 25px;
 	right: 174px;
 	
-	display: none;
+/*	display: none;*/
 	
 	position: absolute;
 	z-index 5;
 }
 
 #mailIcon {
-	width: 64px;
-	height: 64px;
-	right: 10px;
-	bottom: 5px;
+	width: 45px;
+	height: 45px;
+	right: 25px;
+	bottom: 12px;
 	
 	background: #ffffff url("../images/controls/mail_icon.png") no-repeat center;
-
+	background-size: 45px;
 	position: absolute;
 	z-index: 2;
 	
