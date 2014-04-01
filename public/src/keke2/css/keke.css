@@ -101,9 +101,20 @@ body, canvas, div {
 	z-index: 5;
 }
 
-#fbShare {
+#twFollow {
 	bottom: 25px;
 	right: 84px;
+
+	display: none;
+
+	position: absolute;
+	z-index: 5;
+}
+
+
+#fbShare {
+	bottom: 25px;
+	right: 79px;
 
 	display: none;
 
