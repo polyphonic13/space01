@@ -11331,6 +11331,42 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 1)
 									},
 									start: {
+										x: (stageUnit * 1),
+										y: winH - (stageUnit * 8.0)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector1-platform02',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 1),
+										height: (stageUnit * 1)
+									},
+									start: {
+										x: (stageUnit * 4),
+										y: winH - (stageUnit * 9.0)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector1-platform02',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 1),
+										height: (stageUnit * 1)
+									},
+									start: {
 										x: (stageUnit * 7),
 										y: winH - (stageUnit * 4.0)
 									},
@@ -11410,24 +11446,24 @@ Polyworks.Config = (function() {
 										immovable: true
 									}
 								}
-							},
-							{
-								name: 'sector1-platform07',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform01',
-									phaser: {
-										width: (stageUnit * 1),
-										height: (stageUnit * 0.8)
-									},
-									start: {
-										x: (stageUnit * 6),
-										y: winH - (stageUnit * 9)
-									},
-									physics: {
-										immovable: true
-									}
-								}
+							// },
+							// {
+							// 	name: 'sector1-platform07',
+							// 	cl: 'Sprite',
+							// 	attrs: {
+							// 		img: 'rockPlatform01',
+							// 		phaser: {
+							// 			width: (stageUnit * 1),
+							// 			height: (stageUnit * 0.8)
+							// 		},
+							// 		start: {
+							// 			x: (stageUnit * 2),
+							// 			y: winH - (stageUnit * 9)
+							// 		},
+							// 		physics: {
+							// 			immovable: true
+							// 		}
+							// 	}
 							}
 							// end sector 1 terrain
 							]
@@ -11493,7 +11529,7 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.8)
 									},
 									start: {
-										x: (stageUnit * 6),
+										x: (stageUnit * 2),
 										y: winH - (stageUnit * 9.0)
 									},
 									physics: {
