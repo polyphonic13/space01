@@ -85,7 +85,7 @@ PolyworksGame = (function() {
 					// trace(_states);
 					PolyworksGame.addLoadingDiv();
 					PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
-					
+
 					if(id === 'menu') {
 						_showSocialBar();
 					} else {

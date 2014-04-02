@@ -16,49 +16,31 @@
 		<!-- FACEBOOK -->
 	    <div id="fb-root"></div>
 	    <script>
-	      window.fbAsyncInit = function() {
-	        FB.init({
-	          appId: '371443576332187',
-	          status: true,
-	          xfbml: true
-	        });
-
-			// FB.ui(
-			//       {
-			//        method: 'feed',
-			//        name: 'The Facebook SDK for Javascript',
-			//        caption: 'Bringing Facebook to the desktop and mobile web',
-			//        description: (
-			//           'A small JavaScript library that allows you to harness ' +
-			//           'the power of Facebook, bringing the user\'s identity, ' +
-			//           'social graph and distribution power to your site.'
-			//        ),
-			//        link: 'https://developers.facebook.com/docs/reference/javascript/',
-			//        picture: 'http://www.fbrell.com/public/f8.jpg'
-			//       },
-			//       function(response) {
-			//         if (response && response.post_id) {
-			//           console.log('Post was published.');
-			//         } else {
-			//           console.warn('Post was not published.');
-			//         }
-			//       }
-			//     )
-	      };
-
-	      (function(d, s, id) {
-	         var js, fjs = d.getElementsByTagName(s)[0];
-	         if (d.getElementById(id)) {return;}
-	         js = d.createElement(s); js.id = id;
-	         js.src = "//connect.facebook.net/en_US/all.js";
-	         fjs.parentNode.insertBefore(js, fjs);
-	       } (document, 'script', 'facebook-jssdk'));
+	      // window.fbAsyncInit = function() {
+	      //   FB.init({
+	      //     appId: '371443576332187',
+	      //     status: true,
+	      //     xfbml: true
+	      //   });
+	      // 
+	      // };
+	      // 
+	      // (function(d, s, id) {
+	      //    var js, fjs = d.getElementsByTagName(s)[0];
+	      //    if (d.getElementById(id)) {return;}
+	      //    js = d.createElement(s); js.id = id;
+	      //    js.src = "//connect.facebook.net/en_US/all.js";
+	      //    fjs.parentNode.insertBefore(js, fjs);
+	      //  } (document, 'script', 'facebook-jssdk'));
 	    </script>
 	<!-- END FB script-->
 	<div id="socialButtons">
 	<!-- twitter follow -->
 	<a id="twFollow" href="https://twitter.com/KekePolyworks" class="twitter-follow-button" data-show-count="false">Follow @KekePolyworks</a>
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>		<!-- LIKE
+	<script>
+	// !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+	</script>		
+	<!-- LIKE
 		<div id="fbLike">
 			<div class="fb-like" data-send="true" data-width="450" data-show-faces="true"></div>
 		</div>

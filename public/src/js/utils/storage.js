@@ -1,3 +1,7 @@
+/*
+Polyworks.Storage.set({ currentLevel: 9, savedStatus: ["u","u","u","u","u","u","u","u","u","u"] });
+PolyworksGame.currentLevel = 9;
+*/
 Polyworks.Storage = (function() {
 	var _listeners = [];
 	
