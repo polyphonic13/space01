@@ -11238,7 +11238,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (winW/2 - stageWidth/8),
-								y: winH - (stageUnit * 0.6)
+								y: winH - (stageUnit * 0.7)
 							},
 							physics: {
 								immovable: true
@@ -11532,6 +11532,24 @@ Polyworks.Config = (function() {
 									start: {
 										x: (stageUnit * 2),
 										y: winH - (stageUnit * 9)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector2-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 1),
+										height: (stageUnit * 0.8)
+									},
+									start: {
+										x: (stageUnit * 0.5),
+										y: winH - (stageUnit * 10.5)
 									},
 									physics: {
 										immovable: true
