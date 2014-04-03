@@ -7824,7 +7824,7 @@ Polyworks.Config = (function() {
 				}
 				]
 			},
-			// level 6
+			// level 6 (river)
 			{
 				name: 'level06',
 				text: 'level 6',
