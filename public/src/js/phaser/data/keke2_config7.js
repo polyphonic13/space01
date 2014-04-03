@@ -27,6 +27,60 @@ Polyworks.Config = (function() {
 		};
 
 		var c = {
+			// PLAYER
+			player: {
+				name: 'keke',
+				cl: 'AnimatedPlayer',
+				attrs: {
+					img: 'keke',
+					phaser: {
+						health: 100,
+						width: (stageUnit * 2.3) * 0.84,
+						height: (stageUnit * 2.3)
+					},
+					setSize: [((stageUnit * 3) * 0.3), 220],
+					start: {
+						// x: winW/2 - ((stageUnit * 3) * 0.84)/2,
+						// y: winH - 300
+						// y: winH - (226)
+						x: winW/2,
+						y: winH - (stageUnit * 1.8)
+					},
+					physics: {
+						// bounce: {
+						// 	x: 0,
+						// 	y: 0.2
+						// },
+						deferredGravity: true,
+						collideWorldBounds: false
+					},
+					anchor: {
+						x: 0.5,
+						y: 0.5
+					},
+					followStyle: Phaser.Camera.FOLLOW_TOPDOWN,
+					speed: {
+						x: (stageUnit * 4),
+						y: (stageUnit * 10.2)
+					},
+					controls: {
+						left: Polyworks.InputCodes.LEFT,
+						right: Polyworks.InputCodes.RIGHT,
+						jump: Polyworks.InputCodes.UP
+					},
+					attack: 5,
+					jumping: false,
+					justJumped: false,
+					defaultAnimation: AnimationTypes.IDLE_L,
+					animations: kekeAnimations,
+					facingForward: true
+				}
+			},
+			// PHYSICS
+			gravity: {
+				x: 0,
+				y: stageUnit/2.5
+			},
 			// IMAGES
 			images: {
 				// gameTitle: 'images/keke_title.png',
@@ -11216,11 +11270,11 @@ Polyworks.Config = (function() {
 							img: 'platformV',
 							start: {
 								x: -16,
-								y: winH - (stageHeight * 2)
+								y: winH - (stageHeight * 8)
 							},
 							phaser: {
 								width: 16,
-								height: stageHeight * 2
+								height: stageHeight * 8
 							},
 							physics: {
 								immovable: true
@@ -11274,11 +11328,11 @@ Polyworks.Config = (function() {
 									img: 'rockPlatform01',
 									phaser: {
 										width: (stageUnit * 1),
-										height: (stageUnit * 1.5)
+										height: (stageUnit * 1)
 									},
 									start: {
 										x: (stageUnit * 2),
-										y: winH - (stageUnit * 2.5)
+										y: winH - (stageUnit * 3)
 									},
 									physics: {
 										immovable: true
@@ -11844,6 +11898,24 @@ Polyworks.Config = (function() {
 									}
 								}
 							},
+							{
+								name: 'sector3-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 1),
+										height: (stageUnit * 0.8)
+									},
+									start: {
+										x: (stageUnit * 0.5),
+										y: winH - (stageUnit * 26)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
 							/////////// end left / start right
 							{
 								name: 'sector3-platform01',
@@ -11987,6 +12059,98 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							// start sector 4 terrain
+							/////////// start left
+							{
+								name: 'sector4-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 1),
+										height: (stageUnit * 0.8)
+									},
+									start: {
+										x: (stageUnit * 0.5),
+										y: winH - (stageUnit * 27)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector4-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 4),
+										height: (stageUnit * 0.8)
+									},
+									start: {
+										x: (stageUnit * 0.5),
+										y: winH - (stageUnit * 29)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector4-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 1),
+										height: (stageUnit * 0.8)
+									},
+									start: {
+										x: (stageUnit * 0.5),
+										y: winH - (stageUnit * 31)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector4-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 3),
+										height: (stageUnit * 0.8)
+									},
+									start: {
+										x: (stageUnit * 0.5),
+										y: winH - (stageUnit * 33)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector4-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 1),
+										height: (stageUnit * 0.8)
+									},
+									start: {
+										x: (stageUnit * 0.5),
+										y: winH - (stageUnit * 35)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							/////////// end left / start right
 							{
 								name: 'sector4-platform01',
 								cl: 'Sprite',
@@ -13050,6 +13214,7 @@ Polyworks.Config = (function() {
 					}
 					]
 				},
+				// level controls
 				{
 					name: 'levelControls',
 					cl: 'ControlButtons',
@@ -13062,6 +13227,7 @@ Polyworks.Config = (function() {
 						}
 					}
 				},
+				// level gui
 				{
 					name: 'levelGUI',
 					cl: 'SharedGroupCollection',
@@ -13075,6 +13241,7 @@ Polyworks.Config = (function() {
 						}
 					}
 				},
+				// requirements
 				{
 					name: 'requirements',
 					cl: 'Requirements',
@@ -13090,13 +13257,14 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1.5)
 							},
 							start: {
-								x: (stageWidth * 2) + (stageUnit * 11.5),
-								y: winH - (stageUnit * 47)
+								x: (stageUnit * 1.5),
+								y: winH - (stageUnit * 37)
 							}
 						}
 					}
 					]
 				},
+				// pause gui
 				{
 					name: 'pauseGUI',
 					cl: 'SharedGroupCollection',
@@ -13110,6 +13278,7 @@ Polyworks.Config = (function() {
 						}
 					}
 				},
+				// completed gui
 				{
 					name: 'completedGUI',
 					cl: 'SharedGroupCollection',
@@ -17166,61 +17335,7 @@ Polyworks.Config = (function() {
 					}
 				}
 				]
-			}],
-			// PLAYER
-			player: {
-				name: 'keke',
-				cl: 'AnimatedPlayer',
-				attrs: {
-					img: 'keke',
-					phaser: {
-						health: 100,
-						width: (stageUnit * 2.3) * 0.84,
-						height: (stageUnit * 2.3)
-					},
-					setSize: [((stageUnit * 3) * 0.3), 220],
-					start: {
-						// x: winW/2 - ((stageUnit * 3) * 0.84)/2,
-						// y: winH - 300
-						// y: winH - (226)
-						x: winW/2,
-						y: winH - (stageUnit * 1.8)
-					},
-					physics: {
-						// bounce: {
-						// 	x: 0,
-						// 	y: 0.2
-						// },
-						deferredGravity: true,
-						collideWorldBounds: false
-					},
-					anchor: {
-						x: 0.5,
-						y: 0.5
-					},
-					followStyle: Phaser.Camera.FOLLOW_TOPDOWN,
-					speed: {
-						x: (stageUnit * 4),
-						y: (stageUnit * 10.2)
-					},
-					controls: {
-						left: Polyworks.InputCodes.LEFT,
-						right: Polyworks.InputCodes.RIGHT,
-						jump: Polyworks.InputCodes.UP
-					},
-					attack: 5,
-					jumping: false,
-					justJumped: false,
-					defaultAnimation: AnimationTypes.IDLE_L,
-					animations: kekeAnimations,
-					facingForward: true
-				}
-			},
-			// PHYSICS
-			gravity: {
-				x: 0,
-				y: stageUnit/2.5
-			}
+			}]
 		};
 
 		return c;
