@@ -36,7 +36,11 @@ Polyworks.LevelState = (function() {
 		// trace('\n\n\trequirements = ', this.requirements, '\tgroup = ', this.requirements.group);
 		if(this.requirements) {
 			Polyworks.EventCenter.bind(Polyworks.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
+		} else {
+			// no requirements; allow level completion at end bounds
+			this.requirementsMet = true;
 		}
+
 		this.terrain = this.getChildByName('terrain');
 		this.sectorManager = this.getChildByName('sectors');
 		this.sectorManager.setState(this);
