@@ -7,6 +7,7 @@ Polyworks.PlayerIcon = (function() {
 	}
 	
 	PlayerIcon.prototype.initPosition = function(positions) {
+		trace('PlayerIcon/initPosition, position = ', positions, '\tcurrentLevel = ' + PolyworksGame.currentLevel);
 		return positions[PolyworksGame.currentLevel];
 	};
 	

@@ -1416,8 +1416,8 @@ Polyworks.Config = (function() {
 								y: (winH/2) - (stageUnit * 0.5)
 							},
 							{
-								x: (winW/2 - stageWidth/2) + (stageUnit * 2.5),
-								y: (winH/2) + (stageUnit * 0.4)
+								x: (winW/2 - stageWidth/2) + (stageUnit * 10.3),
+								y: (winH/2) + (stageUnit * 0.6)
 							}
 						],
 						attrs: {
