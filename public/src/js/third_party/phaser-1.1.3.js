@@ -35520,7 +35520,7 @@ Phaser.Physics.Arcade.prototype = {
     * @private
     */
     collideSpriteVsSprite: function (sprite1, sprite2, collideCallback, processCallback, callbackContext) {
-
+		// trace('phaser collide sprite vs. sprite', sprite1, sprite2, collideCallback, processCallback, callbackContext);
         this.separate(sprite1.body, sprite2.body);
 
         if (this._result)

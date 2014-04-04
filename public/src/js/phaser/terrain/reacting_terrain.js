@@ -1,5 +1,5 @@
 Polyworks.ReactingTerrain = (function() {
-	Polyworks.Utils.inherits(ReactingTerrian, Polyworks.Sprite); 
+	Polyworks.Utils.inherits(ReactingTerrain, Polyworks.Sprite); 
 	
 	ReactingTerrain.DEACTIVATED = -1;
 	ReactingTerrain.IDLE = 0;
@@ -12,25 +12,43 @@ Polyworks.ReactingTerrain = (function() {
 	}
 	
 	ReactingTerrain.prototype.begin = function() {
+		trace('ReactingTerrain['+this.model.name+']/begin');
 		ReactingTerrain._super.begin.call(this);
+		// this.body.collisionCallback = this.collided;
 	};
 	
-	ReactingTerrain.prototype.dynamicTerrainCollision = function(sprite, terrain) {
-		trace('ReactingTerrain['+this.model.name+']/dynamiceTerrainCollision, hasCollided = ' + this.hasCollided + '\n\tsprite = ', sprite, '\tterrain = ', terrain);
-		ReactingTerrain._super.dynamiceTerrainCollision.call(sprite, terrain);
+	ReactingTerrain.prototype.update = function() {
+		// trace('ReactingTerrain['+this.model.name+']/update', this);
+		if(this.body.overlapX !== 0) {
+			// trace('ReactingTerrain['+this.model.name+']/overlapX: ' + this.body.overlapX);
+		}
+		if(this.body.overlapY !== 0) {
+			// trace('ReactingTerrain['+this.model.name+']/overlapY: ' + this.body.overlapY);
+			this.collided();
+		}
+		// ReactingTerrain._super.update.call(this);
+	};
+	
+	ReactingTerrain.prototype.collided = function(a, b) {
+		trace('ReactingTerrain['+this.model.name+']/collided, a = ', a, '\tb = ', b);
+	// };
+	// 
+	// ReactingTerrain.prototype.dynamicTerrainCollision = function(sprite, terrain) {
+	// 	trace('ReactingTerrain['+this.model.name+']/dynamiceTerrainCollision, hasCollided = ' + this.hasCollided + '\n\tsprite = ', sprite, '\tterrain = ', terrain);
+		// ReactingTerrain._super.dynamiceTerrainCollision.call(sprite, terrain);
 
 		if(this.state === ReactingTerrain.IDLE) {
 			trace('\tsomething collided with terrain, switching state');
 
 			var reaction = this.model.reaction;
-			trace('\treaction = ', reaction);
-			switch(reaction) {
-				case TerrainReactions.ADD_GRAVITY:
-					this.addGravity();
+			trace('\treaction = ', reaction.type);
+			switch(reaction.type) {
+				case Polyworks.TerrainReactions.ADD_GRAVITY:
+					this.addGravity(this);
 				break;
 
-				case TerrainReactions.ADD_GRAVITY_AFTER_X_SECONDS: 
-					this.addGravityAfterTimer();
+				case Polyworks.TerrainReactions.ADD_GRAVITY_AFTER_X_SECONDS: 
+					this.addGravityAfterXSeconds();
 				break; 
 
 				default:
@@ -41,13 +59,13 @@ Polyworks.ReactingTerrain = (function() {
 			if(this.model.attrs.animations) {
 				this.playAnimation();
 			}
-		} else if(this.state === ReactingTerrain.ACTIVATED) {
-			trace('\treacting terrain collided with something, destroy it');
-			this.state = ReactingTerrain.DEACTIVATED;
-			if(this.model.attrs.animations) {
-				this.playAnimation();
-			}
-			this.destroy();
+		// } else if(this.state === ReactingTerrain.ACTIVATED) {
+		// 	trace('\treacting terrain collided with something, destroy it');
+		// 	this.state = ReactingTerrain.DEACTIVATED;
+		// 	if(this.model.attrs.animations) {
+		// 		this.playAnimation();
+		// 	}
+		// 	this.destroy();
 		}
 	};
 	
@@ -58,11 +76,11 @@ Polyworks.ReactingTerrain = (function() {
 		}
 	};
 
-	ReactingTerrain.prototype.addGravity = function() {
-		trace('ReactingTerrain['+this.model.name+']/addGravity');
-		this.state = ReactingTerrain.ACTIVATED;
-		this.immovable = false; 
-		this.activateGravity();
+	ReactingTerrain.prototype.addGravity = function(context) {
+		trace('ReactingTerrain['+context.model.name+']/addGravity');
+		context.state = ReactingTerrain.ACTIVATED;
+		context.immovable = false; 
+		context.activateGravity();
 	};
 	
 	ReactingTerrain.prototype.addGravityAfterXSeconds = function() {
@@ -70,7 +88,7 @@ Polyworks.ReactingTerrain = (function() {
 		this.state = ReactingTerrain.COLLIDED;
 
 		this.timer = setTimeout(
-			this.addGravity,
+			this.addGravity(this),
 			this.model.reaction.time
 		);
 	};

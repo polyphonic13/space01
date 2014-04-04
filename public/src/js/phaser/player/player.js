@@ -33,7 +33,12 @@ Polyworks.Player = (function() {
 		PolyworksGame.setHealth(this.health);
 		// trace(this);
 		// this.body.setSize(50, 113, 22.5, 0);
+		// this.body.collideCallback = this.collided;
+		trace('PLAYER:', this);
+	};
 
+	Player.prototype.collided = function(a, b, c) {
+		trace('Player/collided', a, b, c);
 	};
 	
 	Player.prototype.setGroup = function(group) {

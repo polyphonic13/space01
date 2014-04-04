@@ -9447,7 +9447,11 @@ Polyworks.Config = (function() {
 							},
 							{
 								name: 'sector1-platform02',
-								cl: 'Sprite',
+								cl: 'ReactingTerrain',
+								reaction: {
+									type: Polyworks.TerrainReactions.ADD_GRAVITY_AFTER_X_SECONDS,
+									time: 5000
+								},
 								attrs: {
 									img: 'rockPlatform03',
 									phaser: {
