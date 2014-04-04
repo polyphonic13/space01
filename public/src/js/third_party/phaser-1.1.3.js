@@ -19224,6 +19224,7 @@ Phaser.Sprite.prototype.preUpdate = function() {
 
     if (!this.exists || (this.group && !this.group.exists))
     {
+		// trace('Phaser/Sprite skipping update for ', this);
         this.renderOrderID = -1;
         
         // Skip children if not exists
