@@ -163,7 +163,7 @@ Polyworks.Sprite = (function() {
 	};
 
 	Sprite.prototype.destroy = function() {
-		trace('Sprite['+this.model.name+']/destroy, alive = ' + this.alive + ', exists = ' + this.exits);
+		// trace('Sprite['+this.model.name+']/destroy, alive = ' + this.alive + ', exists = ' + this.exits);
 		this.exists = false; // keeps phaser update core from running on this sprite;
 
 		if(this.alive) {

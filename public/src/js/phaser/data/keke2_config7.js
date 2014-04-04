@@ -5225,7 +5225,8 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [{
+							attrs: [
+							{
 								name: 'level04-sector2-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
@@ -9584,7 +9585,32 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [] 
+							attrs: [
+							{
+								name: 'level07-sector2-enemy1',
+								cl: 'Enemy',
+								attrs: {
+									img: 'rockPlatform04',
+									phaser: {
+										width: stageUnit * 2,
+										height: stageUnit * 2
+									},
+									start: {
+										x: (stageUnit * 6),
+										y: winH - (stageUnit * 4.0)
+									},
+									physics: {
+										deferredGravity: true,
+										gravity: 10,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									attack: 20
+								}
+							}
+							] 
 						},
 						{
 							name: 'bonuses',
@@ -9744,7 +9770,8 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [] 
+							attrs: [
+							] 
 						},
 						{
 							name: 'bonuses',

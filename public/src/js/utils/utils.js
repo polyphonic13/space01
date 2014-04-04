@@ -164,25 +164,30 @@ Polyworks.Utils = (function() {
 	};
 	
 	utils.moveView = function(sprite, movement, params) {
+		trace('Utils/moveView, movement = ', movement, '\tparams = ', params);
 		switch(movement.type) {
 			case Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED:
-				this.moveDirectionalBySpeed(sprite, movement, params.direction);
+				this.moveDirectionalBySpeed(sprite, movement, params);
 			break;
 
 			case Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED:
 				if(sprite.body.touching.down) {
-					this.moveDirectionalBySpeed(sprite, movement, params.direction);
+					this.moveDirectionalBySpeed(sprite, movement, params);
 				}
 			break;
 
+			case Polyworks.MovementTypes.TWEEN_PROPERTY:
+				this.tweenProperty(sprite, movement, params);
+			break;
+			
 			default: 
-			console.log('WARNING: unknown movement type: ' + movement.type);
+				console.log('WARNING: unknown movement type: ' + movement.type);
 			break;
 		}
 	};
 	
 	utils.moveDirectionalBySpeed = function(sprite, movement, direction) {
-		switch(direction) {
+		switch(params.direction) {
 			case Polyworks.Directions.LEFT: 
 			sprite.x -= movement.speed;
 			break;
@@ -205,6 +210,10 @@ Polyworks.Utils = (function() {
 		}
 	};
 
+	utils.tweenProperty = function(sprite, movement, params) {
+		
+	};
+	
 	utils.loadScript = function(url, evt) {
         var scriptTag = document.createElement('script');
         scriptTag.setAttribute('type', 'text/javascript');
