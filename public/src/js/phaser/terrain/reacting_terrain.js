@@ -14,20 +14,15 @@ Polyworks.ReactingTerrain = (function() {
 	ReactingTerrain.prototype.begin = function() {
 		trace('ReactingTerrain['+this.model.name+']/begin');
 		ReactingTerrain._super.begin.call(this);
-		// this.body.collisionCallback = this.collided;
 	};
 	
-	ReactingTerrain.prototype.update = function() {
-		// trace('ReactingTerrain['+this.model.name+']/update', this);
-		if(this.body.overlapX !== 0) {
-			// trace('ReactingTerrain['+this.model.name+']/overlapX: ' + this.body.overlapX);
-		}
-		if(this.body.overlapY !== 0) {
-			// trace('ReactingTerrain['+this.model.name+']/overlapY: ' + this.body.overlapY);
-			this.collided();
-		}
-		// ReactingTerrain._super.update.call(this);
-	};
+	// ReactingTerrain.prototype.update = function() {
+	// 	if(this.body.overlapX !== 0) {
+	// 	}
+	// 	if(this.body.overlapY !== 0) {
+	// 		this.collided();
+	// 	}
+	// };
 	
 	ReactingTerrain.prototype.collided = function(a, b) {
 		trace('ReactingTerrain['+this.model.name+']/collided, a = ', a, '\tb = ', b);
