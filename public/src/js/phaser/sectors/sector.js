@@ -10,6 +10,8 @@ Polyworks.Sector = (function() {
 	
 	Sector.prototype.begin = function() {
 		Sector._super.begin.call(this);
+		this.setChildrenExists(false);
+
 		this.dynamicTerrain = this.getChildByName('dynamicTerrain');
 		this.hazards = this.getChildByName('hazards');
 		this.enemies = this.getChildByName('enemies');
@@ -18,6 +20,9 @@ Polyworks.Sector = (function() {
 
 	Sector.prototype.setActive = function(active) {
 		// trace('Sector['+this.model.name+']/setActive: active = ' + active + ', activatedOnce = ' + this.activatedOnce);
+		if(this.active || active) {
+			this.setChildrenExists(active);
+		}
 
 		this.active = active;
 		if(active) {

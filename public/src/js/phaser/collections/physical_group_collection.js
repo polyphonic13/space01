@@ -53,7 +53,9 @@ Polyworks.PhysicalGroupCollection = (function() {
 	};
 	
 	PhysicalGroupCollection.prototype.killChild = function(name) {
-		// trace('PhysicalGroupCollection['+this.model.name+']/killChild, name = ' + name);
+		trace('PhysicalGroupCollection['+this.model.name+']/killChild, name = ' + name);
+		var child = this.getChildByName(name); 
+		child.exists = child.alive = false;
 		this.removeChild(name);
 	};
 	

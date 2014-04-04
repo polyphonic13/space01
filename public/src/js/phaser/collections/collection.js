@@ -33,6 +33,22 @@ Polyworks.Collection = (function() {
 		this.model.set({ collection: collection, nameIndex: nameIndex });
 	};
 	
+	Collection.prototype.setChildrenExists = function(exists) {
+		// trace('Collection['+this.model.name+']/setChildrenExists, exists = ' + exists);
+		Polyworks.Utils.each(this.model.collection,
+			function(child) {
+				if(child.setChildrenExists) {
+					// trace('\tcalling setChildExists on: '+child.model.name);
+					child.setChildrenExists(exists);
+				} else {
+					// trace('\tchild['+child.model.name+'].exists = ' + child.exists);
+					child.exists = exists;
+				}
+			},
+			this
+		);
+	};
+	
 	Collection.prototype.getChildByName = function(name) {
 		// trace('Collection/getChildByName, name = ' + name + 'model = ', this.model);
 		var child; 
@@ -49,9 +65,8 @@ Polyworks.Collection = (function() {
 	};
 	
 	Collection.prototype.removeChild = function(name) {
-		// trace('Collection/removeChild, name = ' + name + ', pre splice collection: ');
-		// trace(this.model.collection);
-		// this.model.collection.splice(idx, 1);
+		trace('Collection/removeChild, name = ' + name + ', pre splice collection: ');
+		trace(this.model.collection);
 
 		var collection = this.model.collection;
 		var length = collection.length;
