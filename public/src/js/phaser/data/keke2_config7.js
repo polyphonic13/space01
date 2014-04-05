@@ -135,10 +135,14 @@ Polyworks.Config = (function() {
 				mountainBackgroundD6: 'images/backgrounds/pencil_mountain06-d6.gif',
 				mountainBackgroundD7: 'images/backgrounds/pencil_mountain06-d7.gif',
 				mountainBackgroundD8: 'images/backgrounds/pencil_mountain06-d8.gif',
+				mountainBackgroundE1: 'images/backgrounds/pencil_mountain06-e1.gif',
+				mountainBackgroundE2: 'images/backgrounds/pencil_mountain06-e2.gif',
 				mountainBackgroundE3: 'images/backgrounds/pencil_mountain06-e3.gif',
 				mountainBackgroundE4: 'images/backgrounds/pencil_mountain06-e4.gif',
 				mountainBackgroundE5: 'images/backgrounds/pencil_mountain06-e5.gif',
 				mountainBackgroundE6: 'images/backgrounds/pencil_mountain06-e6.gif',
+				mountainBackgroundF1: 'images/backgrounds/pencil_mountain06-f1.gif',
+				mountainBackgroundF2: 'images/backgrounds/pencil_mountain06-f2.gif',
 				mountainBackgroundF3: 'images/backgrounds/pencil_mountain06-f3.gif',
 				mountainBackgroundF4: 'images/backgrounds/pencil_mountain06-f4.gif',
 				mountainBackgroundF3: 'images/backgrounds/pencil_mountain06-f5.gif',
@@ -156,7 +160,7 @@ Polyworks.Config = (function() {
 
 				grass03: 'images/scenery/grass03.png',
 				grass03a: 'images/scenery/grass03a.png',
-				grass03b: 'images/scenery/grass03b.png',
+				grass03b: 'images/scenery/grass	03b.png',
 				grass03c: 'images/scenery/grass03c.png',
 				grass03ci: 'images/scenery/grass03ci.png',
 				grassClump01: 'images/scenery/grass_clump01.png',
@@ -9068,14 +9072,14 @@ Polyworks.Config = (function() {
 				world: {
 					x: 0,
 					y: -(stageHeight * 8) + winH,
-					width: stageWidth * 4,
+					width: stageWidth * 3,
 					height: stageHeight * 8
 				},
 				clearWorld: true,
 				clearCache: false,
 				bounds: {
 					start: 0,
-					end: (stageWidth * 4) - (stageUnit * 1)
+					end: (stageWidth * 3) - (stageUnit * 1)
 				},
 				pausable: true,
 				backgroundColor: '#000000',
@@ -9094,10 +9098,6 @@ Polyworks.Config = (function() {
 					'mountainBackgroundC6',
 					'mountainBackgroundC7',
 					'mountainBackgroundC8',
-					'mountainBackgroundD5',
-					'mountainBackgroundD6',
-					'mountainBackgroundD7',
-					'mountainBackgroundD8',
 					'grass03a',
 					'woodenXSign01',
 					'woodenArrowSign01Right',
@@ -9600,24 +9600,6 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageUnit * 9),
-										y: winH - (stageUnit * 7.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'sector1-platform06',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform01',
-									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit * 0.5)
-									},
-									start: {
-										x: stageWidth + (stageUnit * 3),
 										y: winH - (stageUnit * 7.5)
 									},
 									physics: {
