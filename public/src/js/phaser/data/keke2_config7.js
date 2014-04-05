@@ -141,6 +141,8 @@ Polyworks.Config = (function() {
 				mountainBackgroundE6: 'images/backgrounds/pencil_mountain06-e6.gif',
 				mountainBackgroundF3: 'images/backgrounds/pencil_mountain06-f3.gif',
 				mountainBackgroundF4: 'images/backgrounds/pencil_mountain06-f4.gif',
+				mountainBackgroundF3: 'images/backgrounds/pencil_mountain06-f5.gif',
+				mountainBackgroundF4: 'images/backgrounds/pencil_mountain06-f6.gif',
 
 				platform: 'images/scenery/platform.png',
 				platformGrey: 'images/scenery/platform_grey.png',
@@ -9066,14 +9068,14 @@ Polyworks.Config = (function() {
 				world: {
 					x: 0,
 					y: -(stageHeight * 8) + winH,
-					width: stageWidth * 3,
+					width: stageWidth * 4,
 					height: stageHeight * 8
 				},
 				clearWorld: true,
 				clearCache: false,
 				bounds: {
 					start: 0,
-					end: (stageWidth * 3) - (stageUnit * 1)
+					end: (stageWidth * 4) - (stageUnit * 1)
 				},
 				pausable: true,
 				backgroundColor: '#000000',
@@ -9092,6 +9094,10 @@ Polyworks.Config = (function() {
 					'mountainBackgroundC6',
 					'mountainBackgroundC7',
 					'mountainBackgroundC8',
+					'mountainBackgroundD5',
+					'mountainBackgroundD6',
+					'mountainBackgroundD7',
+					'mountainBackgroundD8',
 					'grass03a',
 					'woodenXSign01',
 					'woodenArrowSign01Right',
@@ -9160,10 +9166,10 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'mountainBackgroundB8',
+						name: 'mountainBackgroundC8',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackgroundB8',
+							img: 'mountainBackgroundC8',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
@@ -9171,6 +9177,22 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 2),
+								y: winH - (stageHeight * 2)
+							}
+						}
+					},
+					{
+						name: 'mountainBackgroundD8',
+						cl: 'Sprite',
+						attrs: {
+							img: 'mountainBackgroundD8',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight * 2,
+								alpha: 1
+							},
+							start: {
+								x: (stageWidth * 3),
 								y: winH - (stageHeight * 2)
 							}
 						}
@@ -9224,6 +9246,22 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'mountainBackgroundD7',
+						cl: 'Sprite',
+						attrs: {
+							img: 'mountainBackgroundD7',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight * 2,
+								alpha: 1
+							},
+							start: {
+								x: (stageWidth * 3),
+								y: winH - (stageHeight * 4)
+							}
+						}
+					},
+					{
 						name: 'mountainBackgroundA6',
 						cl: 'Sprite',
 						attrs: {
@@ -9272,6 +9310,22 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'mountainBackgroundD6',
+						cl: 'Sprite',
+						attrs: {
+							img: 'mountainBackgroundD6',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight * 2,
+								alpha: 1
+							},
+							start: {
+								x: (stageWidth * 3),
+								y: winH - (stageHeight * 6)
+							}
+						}
+					},
+					{
 						name: 'mountainBackgroundA5',
 						cl: 'Sprite',
 						attrs: {
@@ -9315,6 +9369,22 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 2),
+								y: winH - (stageHeight * 8)
+							}
+						}
+					},
+					{
+						name: 'mountainBackgroundD5',
+						cl: 'Sprite',
+						attrs: {
+							img: 'mountainBackgroundD5',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight * 2,
+								alpha: 1
+							},
+							start: {
+								x: (stageWidth * 3),
 								y: winH - (stageHeight * 8)
 							}
 						}
@@ -9530,6 +9600,24 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageUnit * 9),
+										y: winH - (stageUnit * 7.5)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector1-platform06',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: stageWidth + (stageUnit * 3),
 										y: winH - (stageUnit * 7.5)
 									},
 									physics: {
