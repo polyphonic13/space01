@@ -9108,6 +9108,7 @@ Polyworks.Config = (function() {
 					'crystals02Orange'
 				],
 				sprites: [
+					'caterpillar02',
 					'leftButton',
 					'rightButton',
 					'upButton',
@@ -9588,26 +9589,33 @@ Polyworks.Config = (function() {
 							attrs: [
 							{
 								name: 'level07-sector2-enemy1',
-								cl: 'Enemy',
+								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'rockPlatform04',
+									img: 'caterpillar02',
 									phaser: {
-										width: stageUnit * 2,
-										height: stageUnit * 2
+										width: enemy02.width,
+										height: enemy02.height
 									},
 									start: {
 										x: (stageUnit * 6),
-										y: winH - (stageUnit * 4.0)
+										y: winH - ((stageHeight * 4) + (stageUnit * 8))
 									},
 									physics: {
 										deferredGravity: true,
-										gravity: 10,
 										bounce: {
 											x: 0,
 											y: 0.2
 										}
 									},
-									attack: 20
+									attack: 20,
+									score: 2000,
+									movement: {
+										speed: 1,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: caterpillarAnimations
 								}
 							}
 							] 
