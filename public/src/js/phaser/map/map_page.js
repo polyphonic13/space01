@@ -2,7 +2,7 @@ Polyworks.MapPage = (function() {
 	Polyworks.Utils.inherits(MapPage, Polyworks.Collection);
 	
 	function MapPage(params) {
-		this.model = new Polyworks.Model(params);
+		MapPage._super.constructor.call(this, params);
 		// trace('MapPage['+this.model.name+']/constructor');
 	}
 	

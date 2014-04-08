@@ -20,7 +20,7 @@ PolyworksGame = (function() {
 		name: '',
 		phaser: null,
 		player: null,
-		score: 0,
+		highScores: [],
 		levelScore: 0,
 		health: 0,
 		levelText: '',
@@ -270,7 +270,8 @@ PolyworksGame = (function() {
 			score: PolyworksGame.score,
 			currentLevel: PolyworksGame.currentLevel,
 			savedState: PolyworksGame.currentState,
-			savedStatus: PolyworksGame.levelStatus
+			savedStatus: PolyworksGame.levelStatus,
+			highScores: PolyworksGame.highScores
 		};
 
 		Polyworks.Storage.set(params);
@@ -386,6 +387,7 @@ PolyworksGame = (function() {
 		PolyworksGame.currentLevel = idx;
 		trace('\tstateId = ' + stateId);
 		PolyworksGame.levelText = _levels[idx].model.text;
+		PolyworksGame.levelScore = 0;
 		PolyworksGame.changeState(stateId);
 	}
 	
@@ -400,6 +402,7 @@ PolyworksGame = (function() {
 			PolyworksGame.levelText = '';
 			stateId = 'completed';
 		}
+		PolyworksGame.levelScore = 0;
 		PolyworksGame.changeState(stateId);
 	}
 	
@@ -414,8 +417,9 @@ PolyworksGame = (function() {
 			PolyworksGame.levelStatus[idx] = 'u';
 		}
 		PolyworksGame.currentLevel = idx;
-		PolyworksGame.score += PolyworksGame.levelScore;
-		PolyworksGame.levelScore = 0;
+		if(PolyworksGame.levelScore > PolyworksGames.scores[idx]) {
+			PolyworksGame.highScores[idx] = PolyworksGame.levelScore;
+		}
 		trace('\tend of level cleared, idx = ' + idx + ', currentLevel = ' + PolyworksGame.currentLevel);
 	}
 
@@ -447,7 +451,7 @@ PolyworksGame = (function() {
 					}
 					levelCount++;
 					_levels.push(state);
-
+					PolyworksGame.highScores[idx] = 0;
 					firstLevel = false;
 				}
 			},

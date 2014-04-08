@@ -97,6 +97,18 @@ Polyworks.Config = (function() {
 				mapForest: 'images/map/map04_forest.gif',
 				mapMountains: 'images/map/map04_mountains.gif',
 
+				level01Preview: 'images/backgrounds/level01_preview.gif',
+				level02Preview: 'images/backgrounds/level01_preview.gif',
+				level03Preview: 'images/backgrounds/level01_preview.gif',
+				level04Preview: 'images/backgrounds/level01_preview.gif',
+				level05Preview: 'images/backgrounds/level01_preview.gif',
+				level06Preview: 'images/backgrounds/level06_preview.gif',
+				level07Preview: 'images/backgrounds/level07_preview.gif',
+				level08Preview: 'images/backgrounds/level08_preview.gif',
+				level09Preview: 'images/backgrounds/level09_preview.gif',
+				level10Preview: 'images/backgrounds/level09_preview.gif',
+				level11Preview: 'images/backgrounds/level09_preview.gif',
+
 				forestBackground02a: 'images/backgrounds/pencil_forest02a.gif',
 				forestBackground02b: 'images/backgrounds/pencil_forest02b.gif',
 				forestBackground02c: 'images/backgrounds/pencil_forest02c.gif',
@@ -749,6 +761,108 @@ Polyworks.Config = (function() {
 			},
 			// SHARED GROUPS
 			sharedGroups: {
+				levelInfo: [
+				{
+					name: 'background',
+					cl: 'Sprite',
+					attrs: {
+						img: 'whiteRect',
+						phaser: {
+							width: winW,
+							height: winH,
+							alpha: 0.5
+						},
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				},
+				{
+					name: 'levelPreview',
+					cl: 'Sprite',
+					attrs: {
+						img: '',
+						phaser: {
+							width: 0,
+							height: 0
+						},
+						start: {
+							x: (winW/2 - stageWidth/2),
+							y: (winH/2 - stageHeight/2)
+						}
+					}
+				},
+				{
+					name: 'title',
+					cl: 'Text',
+					attrs: {
+						centerX: true,
+						centerY: false,
+						x: 0,
+						y: (stageUnit * 0.5),
+						defaultContent: '',
+						style: { 
+							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
+							fill: '#000000',
+							align: 'center'
+						}
+					}
+				},
+				{
+					name: 'score',
+					cl: 'Text',
+					attrs: {
+						centerX: true,
+						centerY: false,
+						x: 0,
+						y: (stageUnit * 2.5),
+						style: { 
+							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
+							fill: '#000000',
+							align: 'center'
+						},
+						defaultContent: ''
+					}
+				},
+				{
+					name: 'play',
+					cl: 'InputButton',
+					attrs: {
+						img: 'playButton',
+						start: {
+							x: winW/2 - 50,
+							y: winH/2
+						},
+						events: {
+							pressed: {
+								type: Polyworks.Events.START_LEVEL
+							}
+						}
+					}
+				},
+				{
+					name: 'closeButton',
+					cl: 'InputButton',
+					attrs: {
+						img: 'quitButton',
+						phaser: {
+							width: (stageUnit * 1),
+							height: (stageUnit * 1)
+						},
+						start: {
+							x: (winW/2 - stageWidth/2) + (stageWidth/2 - stageUnit * 1.5),
+							y: (stageUnit * 0.5)
+						},
+						frames: [0, 0, 1],
+						events: {
+							released: {
+								type: Polyworks.Events.HIDE_LEVEL_INFO
+							}
+						}
+					}
+				}
+				],
 				levelGUI: [
 				{
 					name: 'heartIcon',
@@ -965,7 +1079,7 @@ Polyworks.Config = (function() {
 							fill: '#000000',
 							align: 'center'
 						},
-						defaultContent: 'score: ~{score}~',
+						defaultContent: 'level score: ~{levelScore}~',
 						listeners: [
 							Polyworks.Events.LEVEL_CLEARED
 						]
@@ -1133,6 +1247,17 @@ Polyworks.Config = (function() {
 					'whiteRect',
 					'pageLeftArrow',
 					'pageRightArrow',
+					'level01Preview',
+					'level02Preview',
+					'level03Preview',
+					'level04Preview',
+					'level05Preview',
+					'level06Preview',
+					'level07Preview',
+					'level08Preview',
+					'level09Preview',
+					'level10Preview',
+					'level11Preview',
 					'mapForest',
 					'mapMountains'
 				],
