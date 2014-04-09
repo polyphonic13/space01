@@ -411,15 +411,16 @@ PolyworksGame = (function() {
 		var idx = event.value;
 		PolyworksGame.levelStatus[idx] = 'c';
 
+		if(PolyworksGame.levelScore > PolyworksGame.highScores[idx]) {
+			PolyworksGame.highScores[idx] = PolyworksGame.levelScore;
+		}
+
 		idx++;
 
 		if(PolyworksGame.levelStatus[idx] === 'l') {
 			PolyworksGame.levelStatus[idx] = 'u';
 		}
 		PolyworksGame.currentLevel = idx;
-		if(PolyworksGame.levelScore > PolyworksGame.highScores[idx]) {
-			PolyworksGame.highScores[idx] = PolyworksGame.levelScore;
-		}
 		trace('\tend of level cleared, idx = ' + idx + ', currentLevel = ' + PolyworksGame.currentLevel);
 	}
 
@@ -443,15 +444,16 @@ PolyworksGame = (function() {
 				_states[s.name] = state;
 				PolyworksGame.phaser.state.add(s.name, state, false);
 				if(s.name.indexOf('level') > -1) {
-					trace('\tstate['+s.name+']');
+					trace('\tstate['+s.name+'] levelCount = ' + levelCount);
 					if(PolyworksGame.savedStatus) {
 						PolyworksGame.levelStatus[levelCount] = PolyworksGame.savedStatus[levelCount];
+						PolyworksGame.highScores[levelCount] = PolyworksGame.highScores[levelCount];
 					} else {
 						PolyworksGame.levelStatus[levelCount] = (levelCount === 0) ? 'u' : 'l';
+						PolyworksGame.highScores[levelCount] = 0;
 					}
 					levelCount++;
 					_levels.push(state);
-					PolyworksGame.highScores[idx] = 0;
 					firstLevel = false;
 				}
 			},
