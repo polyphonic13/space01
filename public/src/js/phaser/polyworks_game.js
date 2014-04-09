@@ -417,7 +417,7 @@ PolyworksGame = (function() {
 			PolyworksGame.levelStatus[idx] = 'u';
 		}
 		PolyworksGame.currentLevel = idx;
-		if(PolyworksGame.levelScore > PolyworksGames.scores[idx]) {
+		if(PolyworksGame.levelScore > PolyworksGame.highScores[idx]) {
 			PolyworksGame.highScores[idx] = PolyworksGame.levelScore;
 		}
 		trace('\tend of level cleared, idx = ' + idx + ', currentLevel = ' + PolyworksGame.currentLevel);
