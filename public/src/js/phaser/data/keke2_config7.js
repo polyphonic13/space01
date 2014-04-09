@@ -817,8 +817,8 @@ Polyworks.Config = (function() {
 					attrs: {
 						img: '',
 						phaser: {
-							width: 0,
-							height: 0
+							width: stageWidth,
+							height: stageHeight
 						},
 						start: {
 							x: (winW/2 - stageWidth/2),
@@ -859,7 +859,7 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
-					name: 'play',
+					name: 'playButton',
 					cl: 'InputButton',
 					attrs: {
 						img: 'playButton',
@@ -868,7 +868,7 @@ Polyworks.Config = (function() {
 							y: winH/2
 						},
 						events: {
-							pressed: {
+							released: {
 								type: Polyworks.Events.START_LEVEL
 							}
 						}
@@ -884,7 +884,7 @@ Polyworks.Config = (function() {
 							height: (stageUnit * 1)
 						},
 						start: {
-							x: (winW/2 - stageWidth/2) + (stageWidth/2 - stageUnit * 1.5),
+							x: (winW/2 - stageWidth/2) + (stageWidth - stageUnit * 1.5),
 							y: (stageUnit * 0.5)
 						},
 						frames: [0, 0, 1],
@@ -1127,7 +1127,6 @@ Polyworks.Config = (function() {
 							x: winW/2 - 50,
 							y: winH/2
 						},
-						// inputCode: Polyworks.InputCodes.NEXT,
 						events: {
 							released: {
 								type: Polyworks.Events.NEXT_LEVEL

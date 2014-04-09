@@ -59,13 +59,13 @@ Polyworks.InputButton = (function() {
 	};
 	
 	InputButton.prototype.inputDown = function(event, pointer, ctx) {
-		// trace('InputButton['+this.model.name+']/inputDown');
+		trace('InputButton['+this.model.name+']/inputDown');
 		ctx.inputPressed.call(ctx, { type: Polyworks.Events.CONTROL_PRESSED, value: ctx.model.attrs.inputCode });
 		ctx.pressed = true;
 	};
 	
 	InputButton.prototype.inputUp = function(event, pointer, ctx) {
-		// trace('InputButton['+this.model.name+']/inputUp');
+		trace('InputButton['+this.model.name+']/inputUp');
 		ctx.inputReleased.call(ctx, { type: Polyworks.Events.CONTROL_RELEASED, value: ctx.model.attrs.inputCode });
 		ctx.pressed = false;
 	};

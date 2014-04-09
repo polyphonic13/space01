@@ -11,11 +11,17 @@ Polyworks.MapState = (function() {
 
 		MapState._super.createState.call(this);
 
-		var pages = this.model.pages;
 		var winW = Polyworks.Stage.winW;
 		var stageWidth = Polyworks.Stage.width;
 
+		this.createPages(winW, stageWidth, stateGroup);
+		this.createLevelInfo(winW, stageWidth, stateGroup);
+		this.addListeners();
+	};
+
+	MapState.prototype.createPages = function(winW, stageWidth, stateGroup) {
 		this.model.pageCollection = [];
+		var pages = this.model.pages;
 		var mapPage;
 
 		Polyworks.Utils.each(pages,
@@ -39,6 +45,70 @@ Polyworks.MapState = (function() {
 			},
 			this
 		);
+	};
+	
+	MapState.prototype.createLevelInfo = function(winW, stageWidth, stateGroup) {
+		this.model.levelInfoCollection = [];
+		var levelCount = PolyworksGame.levelCount;
+		var levelInfoConfig;
+		var levelIdx;
+		trace('MapState/createLevelInfo, levelCount = ' + levelCount + ', levelInfoGroup = ', levelInfoGroup);
+		for(var i = 0; i < levelCount; i++) {
+			var levelInfoGroup = Polyworks.Utils.clone(PolyworksGame.get('sharedGroups').levelInfo);
+			trace('\ti = ' + i);
+			levelIdx = (i < 10) ? ('0' + (i+1)) : (i+1);
+
+			// set the image attribute for this level
+			Polyworks.Utils.each(levelInfoGroup,
+				function(levelInfoAttrs, idx) {
+					trace('\t\tname = ' + levelInfoAttrs.name);
+					if(levelInfoAttrs.name === 'levelPreview') {
+						levelInfoGroup[idx].attrs.img = 'level' + levelIdx + 'Preview';
+					} else if(levelInfoAttrs.name === 'playButton') {
+						levelInfoGroup[idx].attrs.events.released.value = i;
+					} else if(levelInfoAttrs.name === 'closeButton') {
+						levelInfoGroup[idx].attrs.events.released.value = i;
+					}
+				},
+				this
+			);
+			trace('\t\tlevelInfoGroup now: ', levelInfoGroup);
+			levelInfoConfig = {
+				name: 'level' + levelIdx + 'Info',
+				// cl: 'LevelInfo',
+				cl: 'GroupCollection',
+				addTo: 'stateGroup',
+				stateGroup: stateGroup,
+				attrs: levelInfoGroup
+			};
+			levelInfo = new Polyworks.LevelInfo(levelInfoConfig);
+			levelInfo.begin(); 
+			this.model.levelInfoCollection.push(levelInfo);
+		}
+	};
+	
+	MapState.prototype.addListeners = function() {
+		Polyworks.EventCenter.bind(Polyworks.Events.SHOW_LEVEL_INFO, this.onShowLevelInfo, this);
+		Polyworks.EventCenter.bind(Polyworks.Events.HIDE_LEVEL_INFO, this.onHideLevelInfo, this);
+	};
+	
+	MapState.prototype.removeListeners = function() {
+		Polyworks.EventCenter.unbind(Polyworks.Events.SHOW_LEVEL_INFO, this.onShowLevelInfo, this);
+		Polyworks.EventCenter.unbind(Polyworks.Events.HIDE_LEVEL_INFO, this.onHideLevelInfo, this);
+	};
+	
+	MapState.prototype.onShowLevelInfo = function(event) {
+		trace('MapState/onShowLevelInfo, event = ', event);
+		this.model.levelInfoCollection[event.value].show();
+	};
+	
+	MapState.prototype.onHideLevelInfo = function(event) {
+		this.model.levelInfoCollection[event.value].hide();
+	};
+	
+	MapState.prototype.shutdown = function() {
+		this.removeListeners();
+		MapState._super.shutdown.call(this);
 	};
 	
 	return MapState;
