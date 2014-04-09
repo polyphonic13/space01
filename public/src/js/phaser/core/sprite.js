@@ -111,14 +111,18 @@ Polyworks.Sprite = (function() {
 
 		Polyworks.Utils.each(dynamicTerrain,
 			function(c) {
-				physics.overlap(this, c, _this.dynamicTerrainCollision, null, _this);
+				physics.overlap(this, c, _this.onDynamicTerrainCollision, null, _this);
 			},
 			_this
 		);
 	};
 	
-	Sprite.prototype.dynamicTerrainCollision = function(sprite, terrain) {
-		// trace('Sprite['+this.model.name+']/dynamicTerrainCollision, terrain = ' + terrain.model.name);
+	Sprite.prototype.onDynamicTerrainCollision = function(sprite, terrain) {
+		// trace('Sprite['+this.model.name+']/onDynamicTerrainCollision, terrain = ' + terrain.model.name);
+		if(terrain.collidedWithSprite) {
+			// trace('Sprite['+this.model.name+']/onDynamicTerrainCollision, calling collidedWithSprite on ', terrain);
+			terrain.collidedWithSprite(sprite);
+		}
 		var terrainY = terrain.body.y + terrain.body.height;
 		var spriteOffsetY = this.body.y + (this.body.height);
 
@@ -128,8 +132,10 @@ Polyworks.Sprite = (function() {
 	};
 	
 	Sprite.prototype.beginAnimations = function(animations) {
-			Polyworks.Utils.each(animations,
+		trace('Sprite['+this.model.name+']/beginAnimations, animations = ', animations);
+		Polyworks.Utils.each(animations,
 			function(a, key) {
+				trace('\ta['+key+'] = ', a);
 				this.animations.add(key, a.keyFrames, a.frameRate);
 			},
 			this
@@ -137,16 +143,22 @@ Polyworks.Sprite = (function() {
 
 		var defaultAnimation = this.model.defaultAnimation;
 		if(defaultAnimation) {
+			trace('\tgoing to be defaultAnimation: ' + defaultAnimation);
 			this.play();
 			this.model.currentAnimation = defaultAnimation;
 		} else {
+			trace('\tgoing to frame 0');
 			this.animations.frame = 0;
 			this.model.currentAnimation = '';
 		}
 	};
 	
-	Sprite.prototype.play = function(name, frameRate, looped) {
-		this.animations.play(name, frameRate, looped);
+	Sprite.prototype.play = function(name, frameRate, looped, killOnComplete) {
+		// var kill = (typeof(killOnCompleted) === 'undefined') ? false : killOnComplete;
+		// if(this.model.name !== 'keke') {
+		// 	trace('KILL = ' + kill + ', killOnComplete = ' + killOnComplete);
+		// }
+		this.animations.play(name, frameRate, looped, killOnComplete);
 		this.model.currentAnimation = name;
 	};
 	
@@ -167,6 +179,11 @@ Polyworks.Sprite = (function() {
 		this.exists = false; // keeps phaser update core from running on this sprite;
 
 		if(this.alive) {
+			if(this.animations) {
+				trace('\tdestroying animations');
+				this.animations.stop();
+				this.animations.destroy();
+			}
 			Sprite._super.destroy.call(this);
 		}
 	};
