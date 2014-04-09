@@ -177,7 +177,10 @@
 			// startFullscreen.parentNode.removeChild(startFullscreen);
 			// console.log('fullScreenApi = ', fullScreenApi);
 			// window.fullScreenApi.requestFullScreen(document.documentElement);
-			PolyworksGame.begin('kekeAndTheGreyExpanse');			
+			PolyworksGame.begin({
+				title: 'kekeAndTheGreyExpanse',
+				aspectRatio: [16, 9]
+			});			
 		}
 	</script>
 <!--	<button id="startFullscreen" type="button" onclick="start()">Start</button> -->

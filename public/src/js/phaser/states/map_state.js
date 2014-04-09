@@ -58,16 +58,25 @@ Polyworks.MapState = (function() {
 			trace('\ti = ' + i);
 			levelIdx = (i < 9) ? ('0' + (i+1)) : (i+1);
 
-			// set the image attribute for this level
+			// set the specific attribute values for this level
 			Polyworks.Utils.each(levelInfoGroup,
 				function(levelInfoAttrs, idx) {
 					trace('\t\tname = ' + levelInfoAttrs.name);
-					if(levelInfoAttrs.name === 'levelPreview') {
+					switch(levelInfoAttrs.name) {
+						case 'levelPreview': 
 						levelInfoGroup[idx].attrs.img = 'level' + levelIdx + 'Preview';
-					} else if(levelInfoAttrs.name === 'playButton') {
+						break;
+
+						case 'playButton':
 						levelInfoGroup[idx].attrs.events.released.value = i;
-					} else if(levelInfoAttrs.name === 'closeButton') {
+						break;
+
+						case 'closeButton':
 						levelInfoGroup[idx].attrs.events.released.value = i;
+						break;
+
+						default: 
+						break;
 					}
 				},
 				this

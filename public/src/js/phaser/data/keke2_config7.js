@@ -1513,6 +1513,18 @@ Polyworks.Config = (function() {
 					]
 				}
 				],
+				levelPreviewAttrs: [
+				{
+					img: 'level01Preview',
+					cl: 'Sprite',
+					attrs: {
+						phaser: {
+							width: stageWidth/2,
+							height: 
+						}
+					}
+				}
+				],
 				attrs: [
 				{
 					name: 'mapBackground',

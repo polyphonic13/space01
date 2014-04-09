@@ -35,8 +35,9 @@ PolyworksGame = (function() {
 		gameOver: false,
 		isQuit: false,
 
-		begin: function(name) {
-			PolyworksGame.name = name;
+		begin: function(params) {
+			PolyworksGame.name = params.name;
+			PoylworksGame.aspectRatio = params.aspectRatio;
 			// _model = params;
 			// window.scrollTo(0,0);
 			window.addEventListener("load", 
@@ -235,7 +236,7 @@ PolyworksGame = (function() {
 		if(PolyworksGame.isLandscape) {
 			PolyworksGame.hideOrientationMessage();
 			if(!_stageInitialized) {
-				Polyworks.Stage.init();
+				Polyworks.Stage.init(PolyworksGame.aspectRatio);
 			}
 		} else {
 			PolyworksGame.showOrientationMessage();

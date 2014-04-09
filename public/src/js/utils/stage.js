@@ -35,9 +35,7 @@ Polyworks.Stage = (function() {
 	stage.unit = 0;
 	
 	// set aspect ratio (width/height)
-	// var _ar = [16, 10];
-	var _ar = [16, 9];
-	// var _ar = [3, 2];
+	var _aspectRatio = [16, 9];
 	
 	stage.destroy = function() {
 		window.removeEventListener('resize', function(event) {
@@ -48,8 +46,10 @@ Polyworks.Stage = (function() {
 		});
 	};
 	
-	stage.init = function() {
-
+	stage.init = function(aspectRatio) {
+		if(typeof(aspectRatio) !== 'undefined') {
+			_aspectRatio = aspectRatio;
+		}
 		_calculateSizes();
 
 		// window.addEventListener('resize', function(event) {
@@ -69,14 +69,14 @@ Polyworks.Stage = (function() {
 		stage.winH = document.documentElement.clientHeight;
 
 		stage.height = (document.documentElement.clientHeight > 800) ? 800 : document.documentElement.clientHeight;
-		stage.width = ((document.documentElement.clientHeight/_ar[1]) * _ar[0]);
+		stage.width = ((document.documentElement.clientHeight/_aspectRatio[1]) * _aspectRatio[0]);
 
 		if(stage.width > document.documentElement.clientWidth) {
 			stage.width = document.documentElement.clientWidth;
-			stage.height = (stage.width/_ar[0]) * _ar[1];
+			stage.height = (stage.width/_aspectRatio[0]) * _aspectRatio[1];
 		}
 
-		stage.unit = stage.height/_ar[1];
+		stage.unit = stage.height/_aspectRatio[1];
 		var left = (document.documentElement.clientWidth/2) - (stage.width/2);
 		var top = (document.documentElement.clientHeight/2) - (stage.height/2);
 
