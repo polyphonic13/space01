@@ -98,10 +98,10 @@ Polyworks.Config = (function() {
 				mapMountains: 'images/map/map04_mountains.gif',
 
 				level01Preview: 'images/backgrounds/level01_preview.gif',
-				level02Preview: 'images/backgrounds/level01_preview.gif',
-				level03Preview: 'images/backgrounds/level01_preview.gif',
-				level04Preview: 'images/backgrounds/level01_preview.gif',
-				level05Preview: 'images/backgrounds/level01_preview.gif',
+				level02Preview: 'images/backgrounds/level02_preview.gif',
+				level03Preview: 'images/backgrounds/level02_preview.gif',
+				level04Preview: 'images/backgrounds/level02_preview.gif',
+				level05Preview: 'images/backgrounds/level02_preview.gif',
 				level06Preview: 'images/backgrounds/level06_preview.gif',
 				level07Preview: 'images/backgrounds/level07_preview.gif',
 				level08Preview: 'images/backgrounds/level08_preview.gif',
@@ -1592,22 +1592,6 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'textBackground',
-						cl: 'Sprite',
-						attrs: {
-							img: 'whiteRect',
-							phaser: {
-								width: winW,
-								height: (stageUnit * 2),
-								alpha: 0.3
-							},
-							start: {
-								x: 0,
-								y: (winH/2) + (stageHeight/2) - (stageUnit * 2)
-							}
-						}
-					},
-					{
 						name: 'crystalsWheel',
 						cl: 'CrystalsWheel',
 						attrs: {
@@ -1619,22 +1603,6 @@ Polyworks.Config = (function() {
 							start: {
 								x: (winW/2) + (stageWidth/2) - (stageUnit * 2.75),
 								y: (winH/2) + (stageHeight/2) - (stageUnit * 1.75)
-							}
-						}
-					},
-					{
-						name: 'score',
-						cl: 'Text',
-						attrs: {
-							centerX: false,
-							centerY: false,
-							x: (winW/2) - (stageWidth/2) + (stageUnit * 1.5),
-							y: (winH/2) + (stageHeight/2) - (stageUnit * 1.33),
-							defaultContent: 'score: ~{score}~',
-							style: { 
-								font: fontSizes.xs + 'px "Waiting for the Sunrise"',
-								align: 'left', 
-								fill: '#000000' 
 							}
 						}
 					},
