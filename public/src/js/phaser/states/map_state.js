@@ -49,6 +49,7 @@ Polyworks.MapState = (function() {
 	
 	MapState.prototype.createLevelInfo = function(winW, stageWidth, stateGroup) {
 		this.model.levelInfoCollection = [];
+		var levelPreviewAttrs = this.model.levelPreviewAttrs;
 		var levelCount = PolyworksGame.levelCount;
 		var levelInfoConfig;
 		var levelIdx;
@@ -64,7 +65,7 @@ Polyworks.MapState = (function() {
 					trace('\t\tname = ' + levelInfoAttrs.name);
 					switch(levelInfoAttrs.name) {
 						case 'levelPreview': 
-						levelInfoGroup[idx].attrs.img = 'level' + levelIdx + 'Preview';
+						levelInfoGroup[idx] = levelPreviewAttrs[i];
 						break;
 
 						case 'playButton':

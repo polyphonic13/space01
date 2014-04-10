@@ -1518,9 +1518,164 @@ Polyworks.Config = (function() {
 					img: 'level01Preview',
 					cl: 'Sprite',
 					attrs: {
+						img: 'level01Preview',
 						phaser: {
-							width: stageWidth/2,
-							height: 
+							width: stageUnit * 12,
+							height: stageUnit * 4
+						},
+						start: {
+							x: (winW/2 - stageUnit * 6),
+							y: (winH/2)
+						}
+					}
+				},
+				{
+					img: 'level02Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level02Preview',
+						phaser: {
+							width: stageUnit * 12,
+							height: stageUnit * 4
+						},
+						start: {
+							x: (winW/2 - stageUnit * 6),
+							y: (winH/2)
+						}
+					}
+				},
+				{
+					img: 'level03Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level03Preview',
+						phaser: {
+							width: stageUnit * 12,
+							height: stageUnit * 4
+						},
+						start: {
+							x: (winW/2 - stageUnit * 6),
+							y: (winH/2)
+						}
+					}
+				},
+				{
+					img: 'level04Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level04Preview',
+						phaser: {
+							width: stageUnit * 12,
+							height: stageUnit * 4
+						},
+						start: {
+							x: (winW/2 - stageUnit * 6),
+							y: (winH/2)
+						}
+					}
+				},
+				{
+					img: 'level05Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level05Preview',
+						phaser: {
+							width: stageUnit * 12,
+							height: stageUnit * 4
+						},
+						start: {
+							x: (winW/2 - stageUnit * 6),
+							y: (winH/2)
+						}
+					}
+				},
+				{
+					img: 'level06Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level06Preview',
+						phaser: {
+							width: stageUnit * 12,
+							height: stageUnit * 4
+						},
+						start: {
+							x: (winW/2 - stageUnit * 6),
+							y: (winH/2)
+						}
+					}
+				},
+				{
+					img: 'level07Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level07Preview',
+						phaser: {
+							width: stageUnit * 4,
+							height: stageUnit * 8
+						},
+						start: {
+							x: (winW/2 + stageUnit * 3),
+							y: (winH/2 - stageUnit * 4)
+						}
+					}
+				},
+				{
+					img: 'level08Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level08Preview',
+						phaser: {
+							width: stageUnit * 4,
+							height: stageUnit * 8
+						},
+						start: {
+							x: (winW/2 + stageUnit * 3),
+							y: (winH/2 - stageUnit * 4)
+						}
+					}
+				},
+				{
+					img: 'level09Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level09Preview',
+						phaser: {
+							width: stageUnit * 4,
+							height: stageUnit * 8
+						},
+						start: {
+							x: (winW/2 + stageUnit * 3),
+							y: (winH/2 - stageUnit * 4)
+						}
+					}
+				},
+				{
+					img: 'level10Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level10Preview',
+						phaser: {
+							width: stageUnit * 4,
+							height: stageUnit * 8
+						},
+						start: {
+							x: (winW/2 + stageUnit * 3),
+							y: (winH/2 - stageUnit * 4)
+						}
+					}
+				},
+				{
+					img: 'level11Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level11Preview',
+						phaser: {
+							width: stageUnit * 4,
+							height: stageUnit * 8
+						},
+						start: {
+							x: (winW/2 + stageUnit * 3),
+							y: (winH/2 - stageUnit * 4)
 						}
 					}
 				}

@@ -37,7 +37,7 @@ PolyworksGame = (function() {
 
 		begin: function(params) {
 			PolyworksGame.name = params.name;
-			PoylworksGame.aspectRatio = params.aspectRatio;
+			PolyworksGame.aspectRatio = params.aspectRatio;
 			// _model = params;
 			// window.scrollTo(0,0);
 			window.addEventListener("load", 
