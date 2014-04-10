@@ -78,7 +78,7 @@ Polyworks.MapState = (function() {
 						break;
 
 						case 'title': 
-						levelInfoGroup[idx].attrs.defaultContent = levelInfo.levelText + ' info';
+						levelInfoGroup[idx].attrs.defaultContent = levelInfo.levelText + ' ';
 						break;
 
 						case 'highScore': 

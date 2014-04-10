@@ -53,7 +53,7 @@ Polyworks.PlayerIcon = (function() {
 	PlayerIcon.prototype.inputUp = function(event, pointer, ctx) {
 		// trace('PlayerIcon['+this.model.name+']/inputUp');
 		ctx.pressed = false;
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.START_LEVEL, value: PolyworksGame.currentLevel });
+		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.START_LEVEL, value: PolyworksGame.currentLevel });
 	};
 	
 	PlayerIcon.prototype.onChangeMapPage = function(event) {

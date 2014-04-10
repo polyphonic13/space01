@@ -801,14 +801,14 @@ Polyworks.Config = (function() {
 					attrs: {
 						img: 'blackRect',
 						phaser: {
-							width: stageWidth,
-							height: stageHeight,
-							// alpha: 0.5
-							alpha: 1
+							width: winW,
+							height: winH,
+							alpha: 0.75
+							// alpha: 1
 						},
 						start: {
-							x: (winW/2 - (stageWidth/2)),
-							y: (winH/2 - (stageHeight/2))
+							x: 0,
+							y: 0
 						}
 					}
 				},
@@ -831,15 +831,15 @@ Polyworks.Config = (function() {
 					name: 'title',
 					cl: 'Text',
 					attrs: {
-						centerX: true,
+						centerX: false,
 						centerY: false,
-						x: 0,
+						x: (winW - stageWidth),
 						y: (stageUnit * 0.5),
 						defaultContent: '',
 						style: { 
 							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
-							fill: '#000000',
-							align: 'center'
+							fill: '#ffffff',
+							align: 'right'
 						}
 					}
 				},
@@ -847,15 +847,15 @@ Polyworks.Config = (function() {
 					name: 'highScore',
 					cl: 'Text',
 					attrs: {
-						centerX: true,
+						centerX: false,
 						centerY: false,
-						x: 0,
+						x: (winW - stageWidth),
 						y: (stageUnit * 2.5),
 						defaultContent: '',
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
-							fill: '#000000',
-							align: 'center'
+							fill: '#ffffff',
+							align: 'right'
 						}
 					}
 				},
@@ -864,9 +864,13 @@ Polyworks.Config = (function() {
 					cl: 'InputButton',
 					attrs: {
 						img: 'playButton',
+						phaser: {
+							width: (stageUnit * 1),
+							height: (stageUnit * 1)
+						},
 						start: {
-							x: winW/2 - 50,
-							y: winH/2
+							x: (winW/2 - stageWidth/2) + (stageWidth - stageUnit * 1.5),
+							y: (stageUnit * 2)
 						},
 						events: {
 							released: {
@@ -1617,7 +1621,7 @@ Polyworks.Config = (function() {
 							height: stageUnit * 8
 						},
 						start: {
-							x: (winW/2 + stageUnit * 3),
+							x: (winW/2 + stageUnit * 2),
 							y: (winH/2 - stageUnit * 4)
 						}
 					}
@@ -1632,7 +1636,7 @@ Polyworks.Config = (function() {
 							height: stageUnit * 8
 						},
 						start: {
-							x: (winW/2 + stageUnit * 3),
+							x: (winW/2 + stageUnit * 2),
 							y: (winH/2 - stageUnit * 4)
 						}
 					}
@@ -1647,7 +1651,7 @@ Polyworks.Config = (function() {
 							height: stageUnit * 8
 						},
 						start: {
-							x: (winW/2 + stageUnit * 3),
+							x: (winW/2 + stageUnit * 2),
 							y: (winH/2 - stageUnit * 4)
 						}
 					}
@@ -1662,7 +1666,7 @@ Polyworks.Config = (function() {
 							height: stageUnit * 8
 						},
 						start: {
-							x: (winW/2 + stageUnit * 3),
+							x: (winW/2 + stageUnit * 2),
 							y: (winH/2 - stageUnit * 4)
 						}
 					}
@@ -1677,7 +1681,7 @@ Polyworks.Config = (function() {
 							height: stageUnit * 8
 						},
 						start: {
-							x: (winW/2 + stageUnit * 3),
+							x: (winW/2 + stageUnit * 2),
 							y: (winH/2 - stageUnit * 4)
 						}
 					}
