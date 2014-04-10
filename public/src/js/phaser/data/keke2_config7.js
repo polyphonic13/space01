@@ -799,11 +799,12 @@ Polyworks.Config = (function() {
 					name: 'background',
 					cl: 'Sprite',
 					attrs: {
-						img: 'whiteRect',
+						img: 'blackRect',
 						phaser: {
 							width: stageWidth,
 							height: stageHeight,
-							alpha: 0.5
+							// alpha: 0.5
+							alpha: 1
 						},
 						start: {
 							x: (winW/2 - (stageWidth/2)),
@@ -1278,6 +1279,7 @@ Polyworks.Config = (function() {
 					'invisibleRect',
 					'whiteRect',
 					'greyRect',
+					'blackRect',
 					'pageLeftArrow',
 					'pageRightArrow',
 					'level01Preview',
