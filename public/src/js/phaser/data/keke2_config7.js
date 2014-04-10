@@ -801,18 +801,18 @@ Polyworks.Config = (function() {
 					attrs: {
 						img: 'whiteRect',
 						phaser: {
-							width: winW,
-							height: winH,
+							width: stageWidth,
+							height: stageHeight,
 							alpha: 0.5
 						},
 						start: {
-							x: 0,
-							y: 0
+							x: (winW/2 - (stageWidth/2)),
+							y: (winH/2 - (stageHeight/2))
 						}
 					}
 				},
 				{
-					name: 'levelPreview',
+					name: 'levelInfoBackground',
 					cl: 'Sprite',
 					attrs: {
 						img: '',
@@ -843,19 +843,19 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
-					name: 'score',
+					name: 'highScore',
 					cl: 'Text',
 					attrs: {
 						centerX: true,
 						centerY: false,
 						x: 0,
 						y: (stageUnit * 2.5),
+						defaultContent: '',
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
 							align: 'center'
-						},
-						defaultContent: ''
+						}
 					}
 				},
 				{
@@ -1277,6 +1277,7 @@ Polyworks.Config = (function() {
 					'nextButton',
 					'invisibleRect',
 					'whiteRect',
+					'greyRect',
 					'pageLeftArrow',
 					'pageRightArrow',
 					'level01Preview',
@@ -1513,7 +1514,7 @@ Polyworks.Config = (function() {
 					]
 				}
 				],
-				levelPreviewAttrs: [
+				levelInfoBackgroundAttrs: [
 				{
 					img: 'level01Preview',
 					cl: 'Sprite',

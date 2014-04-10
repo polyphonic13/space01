@@ -4,9 +4,7 @@ PolyworksGame = (function() {
 	var _controls = {};
 	var _states = {};
 	var _levels = [];
-	// var _loadingTitleHTML = '<div class="kekeText">keke</div><br /><div class="gameText1"><b>and</b></div><div class="gameText2">T H E&nbsp;&nbsp;G R E Y&nbsp;&nbsp;&nbsp;E X P A N S E</div></div>';
-	var _loadingTitleHTML = '';
-	
+
 	var _gameTitle = '';
 	var _isTouchDevice = false;
 	var _stageInitialized = false;
@@ -73,6 +71,15 @@ PolyworksGame = (function() {
 			}
 		},
 
+		getLevelInfo: function(idx) {
+			trace('polyworks game/getLevelInfo, idx = ' + idx);
+			var levelInfo = {
+				levelText: _levels[idx].model.text,
+				highScore: PolyworksGame.highScores[idx]
+			};
+			return levelInfo;
+		},
+
 		changeState: function(id) {
 			trace('change state, id = ' + id);
 			if(id === 'quit') {
@@ -126,8 +133,6 @@ PolyworksGame = (function() {
 		addLoadingDiv: function() {
 			var loading = document.createElement('div');
 			loading.setAttribute('id', 'loading');
-			//loading.innerHTML = _gameTitle;
-			loading.innerHTML = _loadingTitleHTML;
 
 			var loadingHolder = document.getElementById('loadingHolder');
 			loadingHolder.appendChild(loading);

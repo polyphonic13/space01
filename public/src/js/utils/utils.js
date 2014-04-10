@@ -120,7 +120,6 @@ Polyworks.Utils = (function() {
 		if(str.indexOf('~{') > -1) {
 			var pattern = /~\{[A-Z]*\}~/gi;
 			var patternMatch = str.match(pattern);
-
 			if(patternMatch) {
 				for (var matchNum in patternMatch) {
 					var match = String(patternMatch[matchNum]);

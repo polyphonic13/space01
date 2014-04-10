@@ -49,13 +49,14 @@ Polyworks.MapState = (function() {
 	
 	MapState.prototype.createLevelInfo = function(winW, stageWidth, stateGroup) {
 		this.model.levelInfoCollection = [];
-		var levelPreviewAttrs = this.model.levelPreviewAttrs;
+		var levelInfoBackgroundAttrs = this.model.levelInfoBackgroundAttrs;
 		var levelCount = PolyworksGame.levelCount;
 		var levelInfoConfig;
 		var levelIdx;
 		trace('MapState/createLevelInfo, levelCount = ' + levelCount + ', levelInfoGroup = ', levelInfoGroup);
 		for(var i = 0; i < levelCount; i++) {
 			var levelInfoGroup = Polyworks.Utils.clone(PolyworksGame.get('sharedGroups').levelInfo);
+			var levelInfo = PolyworksGame.getLevelInfo(i);
 			trace('\ti = ' + i);
 			levelIdx = (i < 9) ? ('0' + (i+1)) : (i+1);
 
@@ -64,8 +65,8 @@ Polyworks.MapState = (function() {
 				function(levelInfoAttrs, idx) {
 					trace('\t\tname = ' + levelInfoAttrs.name);
 					switch(levelInfoAttrs.name) {
-						case 'levelPreview': 
-						levelInfoGroup[idx] = levelPreviewAttrs[i];
+						case 'levelInfoBackground': 
+						levelInfoGroup[idx] = levelInfoBackgroundAttrs[i];
 						break;
 
 						case 'playButton':
@@ -74,6 +75,14 @@ Polyworks.MapState = (function() {
 
 						case 'closeButton':
 						levelInfoGroup[idx].attrs.events.released.value = i;
+						break;
+
+						case 'title': 
+						levelInfoGroup[idx].attrs.defaultContent = levelInfo.levelText + ' info';
+						break;
+
+						case 'highScore': 
+						levelInfoGroup[idx].attrs.defaultContent = 'high score: ' + levelInfo.highScore;
 						break;
 
 						default: 
