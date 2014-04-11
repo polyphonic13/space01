@@ -22,7 +22,7 @@ Polyworks.Config = (function() {
 			xs: (stageUnit * 0.5),
 			sm: (stageUnit * 0.8),
 			md: (stageUnit * 0.75),
-			lg: (stageUnit * 1.25),
+			lg: (stageUnit * 1.0),
 			xl: (stageUnit * 1.75)
 		};
 
@@ -36,7 +36,7 @@ Polyworks.Config = (function() {
 				start: {
 					// x: (winW/2 - stageUnit * 6),
 					x: (winW/2) - (stageUnit * 15)/2,
-					y: (winH - ((stageUnit * 15) * 0.1875) - (stageUnit * 0.5))
+					y: (winH - ((stageUnit * 15) * 0.1875) - (stageUnit * 1))
 				}
 			},
 			// h = w * 1.5
@@ -46,7 +46,7 @@ Polyworks.Config = (function() {
 					height: (stageUnit * 8)
 				},
 				start: {
-					x: (winW - ((stageUnit * 8) / 1.5) - (stageUnit * 0.5)),
+					x: (winW - ((stageUnit * 8) / 1.5) - (stageUnit * 1)),
 					y: (winH - (stageUnit * 8) - (stageUnit * 0.5))
 				}
 			}
@@ -825,7 +825,7 @@ Polyworks.Config = (function() {
 					name: 'background',
 					cl: 'Sprite',
 					attrs: {
-						img: 'blackRect',
+						img: 'whiteRect',
 						phaser: {
 							width: winW,
 							height: winH,
@@ -835,6 +835,21 @@ Polyworks.Config = (function() {
 						start: {
 							x: 0,
 							y: 0
+						}
+					}
+				},
+				{
+					name: 'ovalMask',
+					cl: 'Sprite',
+					attrs: {
+						img: 'ovalMask',
+						start: {
+							x: -50,
+							y: -50
+						},
+						phaser: {
+							width: winW + 100,
+							height: winH + 100
 						}
 					}
 				},
@@ -862,7 +877,7 @@ Polyworks.Config = (function() {
 						defaultContent: '',
 						style: { 
 							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
-							fill: '#ffffff',
+							fill: '#000000',
 							align: 'left'
 						}
 					}
@@ -876,7 +891,7 @@ Polyworks.Config = (function() {
 						defaultContent: '',
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
-							fill: '#ffffff',
+							fill: '#000000',
 							align: 'left'
 						}
 					}
@@ -1298,6 +1313,7 @@ Polyworks.Config = (function() {
 					'whiteRect',
 					'greyRect',
 					'blackRect',
+					'ovalMask',
 					'pageLeftArrow',
 					'pageRightArrow',
 					'level01Preview',
@@ -1763,7 +1779,7 @@ Polyworks.Config = (function() {
 			// level 1
 			{
 				name: 'level01',
-				text: 'level 1',
+				text: 'the forest entrance',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -2739,7 +2755,7 @@ Polyworks.Config = (function() {
 			// level 2
 			{
 				name: 'level02',
-				text: 'level 2',
+				text: 'the pale sentinels',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -3745,7 +3761,7 @@ Polyworks.Config = (function() {
 			// level 3
 			{
 				name: 'level03',
-				text: 'level 3',
+				text: 'heart of the wildwood',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -4977,7 +4993,7 @@ Polyworks.Config = (function() {
 			// level 4
 			{
 				name: 'level04',
-				text: 'level 4',
+				text: 'the tangled thorns',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -6362,7 +6378,7 @@ Polyworks.Config = (function() {
 			// level 5
 			{
 				name: 'level05',
-				text: 'level 5',
+				text: 'the last knoll',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -8094,7 +8110,7 @@ Polyworks.Config = (function() {
 			// level 6 (river)
 			{
 				name: 'level06',
-				text: 'level 6',
+				text: 'the silver river',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -9378,7 +9394,7 @@ Polyworks.Config = (function() {
 			// level 7
 			{
 				name: 'level07',
-				text: 'level 7',
+				text: 'the dusty cliffs',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -11502,7 +11518,7 @@ Polyworks.Config = (function() {
 			// level 8
 			{
 				name: 'level08',
-				text: 'level 8',
+				text: 'the ashen ridge',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -13811,7 +13827,7 @@ Polyworks.Config = (function() {
 			// level 9
 			{
 				name: 'level09',
-				text: 'level 9',
+				text: 'somber summit',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -15788,7 +15804,7 @@ Polyworks.Config = (function() {
 			// level 10
 			{
 				name: 'level10',
-				text: 'level 10',
+				text: 'the clouded bluff',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -17765,7 +17781,7 @@ Polyworks.Config = (function() {
 			// level 11
 			{
 				name: 'level11',
-				text: 'level 11',
+				text: 'the ashen boot',
 				cl: 'LevelState',
 				world: {
 					x: 0,

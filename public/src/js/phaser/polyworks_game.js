@@ -446,6 +446,7 @@ PolyworksGame = (function() {
 
 		Polyworks.Utils.each(states,
 			function(s, idx) {
+				trace(s);
 				state = new Polyworks[s.cl](s, s.name);
 				_states[s.name] = state;
 				PolyworksGame.phaser.state.add(s.name, state, false);

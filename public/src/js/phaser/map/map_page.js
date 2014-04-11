@@ -7,7 +7,7 @@ Polyworks.MapPage = (function() {
 	}
 	
 	MapPage.prototype.begin = function() {
-		// trace('================ MapPage['+this.model.name+']/begin, model = ', this.model);
+		// trace('MapPage['+this.model.name+']/begin, model = ', this.model);
 		this.addListeners();
 
 		var pageStartX = this.model.start.x;
