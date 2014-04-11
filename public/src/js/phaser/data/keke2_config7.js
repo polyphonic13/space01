@@ -35,7 +35,7 @@ Polyworks.Config = (function() {
 				},
 				start: {
 					// x: (winW/2 - stageUnit * 6),
-					x: (winW - (stageUnit * 15) - (stageUnit * 0.5)),
+					x: (winW/2) - (stageUnit * 15)/2,
 					y: (winH - ((stageUnit * 15) * 0.1875) - (stageUnit * 0.5))
 				}
 			},
