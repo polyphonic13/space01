@@ -334,6 +334,13 @@ Polyworks.Config = (function() {
 					height: 50,
 					frames: 2
 				},
+				nextButton: 
+				{
+					url: 'images/controls/next_button.png',
+					width: 50,
+					height: 50,
+					frames: 2
+				},
 				menuButton: 
 				{
 					url: 'images/controls/menu_button3.png',
@@ -873,7 +880,7 @@ Polyworks.Config = (function() {
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
-						y: (stageUnit * 0.5),
+						y: (stageUnit * 0.25),
 						defaultContent: '',
 						style: { 
 							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
@@ -887,7 +894,7 @@ Polyworks.Config = (function() {
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
-						y: (stageUnit * 2.5),
+						y: (stageUnit * 1.5),
 						defaultContent: '',
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
@@ -1012,8 +1019,8 @@ Polyworks.Config = (function() {
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
-						y: (stageUnit * 0.5),
-						defaultContent: '~{levelText}~ paused',
+						y: (stageUnit * 0.25),
+						defaultContent: '~{levelText}~',
 						style: { 
 							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -1026,7 +1033,7 @@ Polyworks.Config = (function() {
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
-						y: (stageUnit * 2.5),
+						y: (stageUnit * 1.5),
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -1036,6 +1043,20 @@ Polyworks.Config = (function() {
 						listeners: [
 							Polyworks.Events.LEVEL_SCORE_UPDATED
 						]
+					}
+				},
+				{
+					name: 'paused',
+					cl: 'Text',
+					attrs: {
+						centerX: true,
+						centerY: true,
+						style: { 
+							font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise"', 
+							fill: '#000000',
+							align: 'left'
+						},
+						defaultContent: 'paused',
 					}
 				},
 				{
@@ -1126,8 +1147,8 @@ Polyworks.Config = (function() {
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
-						y: (stageUnit * 0.5),
-						defaultContent: '~{levelText}~ completed',
+						y: (stageUnit * 0.25),
+						defaultContent: '~{levelText}~',
 						style: { 
 							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -1140,7 +1161,7 @@ Polyworks.Config = (function() {
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
-						y: (stageUnit * 2.5),
+						y: (stageUnit * 1.5),
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -1153,14 +1174,33 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
+					name: 'completed',
+					cl: 'Text',
+					attrs: {
+						centerX: true,
+						centerY: true,
+						style: { 
+							font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise"', 
+							fill: '#000000',
+							align: 'left'
+						},
+						defaultContent: 'completed',
+					}
+				},
+				{
 					name: 'next',
 					cl: 'InputButton',
 					attrs: {
-						img: 'playButton',
-						start: {
-							x: winW/2 - 50,
-							y: winH/2
+						img: 'nextButton',
+						phaser: {
+							width: (stageUnit * 1.5),
+							height: (stageUnit * 1.5)
 						},
+						start: {
+							x: (stageUnit * 0.5),
+							y: (stageUnit * 0.5)
+						},
+						frames: [0, 0, 1],
 						events: {
 							released: {
 								type: Polyworks.Events.NEXT_LEVEL
@@ -1179,7 +1219,7 @@ Polyworks.Config = (function() {
 						},
 						start: {
 							x: (stageUnit * 0.5),
-							y: (stageUnit * 0.5)
+							y: (stageUnit * 2.5)
 						},
 						frames: [0, 0, 1],
 						events: {
@@ -1201,7 +1241,7 @@ Polyworks.Config = (function() {
 						},
 						start: {
 							x: (stageUnit * 0.5),
-							y: (stageUnit * 2.5)
+							y: (stageUnit * 4.5)
 						},
 						frames: [0, 0, 1],
 						events: {
