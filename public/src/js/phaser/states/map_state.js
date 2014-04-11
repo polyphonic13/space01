@@ -69,7 +69,7 @@ Polyworks.MapState = (function() {
 						levelInfoGroup[idx] = levelInfoBackgroundAttrs[i];
 						break;
 
-						case 'playButton':
+						case 'playButtonSmall':
 						levelInfoGroup[idx].attrs.events.released.value = i;
 						break;
 

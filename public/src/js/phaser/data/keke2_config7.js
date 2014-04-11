@@ -886,6 +886,27 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
+					name: 'closeButton',
+					cl: 'InputButton',
+					attrs: {
+						img: 'quitButton',
+						phaser: {
+							width: (stageUnit * 1.5),
+							height: (stageUnit * 1.5)
+						},
+						start: {
+							x: (stageUnit * 0.5),
+							y: (stageUnit * 0.5)
+						},
+						frames: [0, 0, 1],
+						events: {
+							released: {
+								type: Polyworks.Events.HIDE_LEVEL_INFO
+							}
+						}
+					}
+				},
+				{
 					name: 'playButtonSmall',
 					cl: 'InputButton',
 					attrs: {
@@ -896,33 +917,11 @@ Polyworks.Config = (function() {
 						},
 						start: {
 							x: (stageUnit * 0.5),
-							y: (stageUnit * 0.5)
+							y: (stageUnit * 2.5)
 						},
 						events: {
 							released: {
 								type: Polyworks.Events.START_LEVEL
-							}
-						}
-					}
-				},
-				{
-					name: 'closeButton',
-					cl: 'InputButton',
-					attrs: {
-						img: 'quitButton',
-						phaser: {
-							width: (stageUnit * 1),
-							height: (stageUnit * 1)
-						},
-						start: {
-							// x: (winW/2 - stageWidth/2) + (stageWidth - stageUnit * 1.5),
-							x: (stageUnit * 0.5),
-							y: (stageUnit * 0.5)
-						},
-						frames: [0, 0, 1],
-						events: {
-							released: {
-								type: Polyworks.Events.HIDE_LEVEL_INFO
 							}
 						}
 					}
