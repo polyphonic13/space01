@@ -131,8 +131,8 @@ Polyworks.Config = (function() {
 				level07Preview: 'images/backgrounds/level07_preview.gif',
 				level08Preview: 'images/backgrounds/level08_preview.gif',
 				level09Preview: 'images/backgrounds/level09_preview.gif',
-				level10Preview: 'images/backgrounds/level09_preview.gif',
-				level11Preview: 'images/backgrounds/level09_preview.gif',
+				level10Preview: 'images/backgrounds/level10_preview.gif',
+				level11Preview: 'images/backgrounds/level11_preview.gif',
 
 				forestBackground02a: 'images/backgrounds/pencil_forest02a.gif',
 				forestBackground02b: 'images/backgrounds/pencil_forest02b.gif',
@@ -9438,7 +9438,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 4) + (stageUnit * 13),
-								y: winH - (stageUnit * 9)
+								y: winH - (stageUnit * 11)
 							}
 						}
 					}
