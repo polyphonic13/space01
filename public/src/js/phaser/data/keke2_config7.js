@@ -1363,7 +1363,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: (stageWidth * 0.85),
 								height: (stageHeight * 0.85),
-								alpha: 0.75
+								alpha: 0.5
 							},
 							start: {
 								x: (winW/2) - ((stageWidth * 0.85)/2),
@@ -1476,7 +1476,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: (stageWidth * 0.85),
 								height: (stageHeight * 0.85),
-								alpha: 0.75
+								alpha: 0.5
 							},
 							start: {
 								x: (winW/2) - ((stageWidth * 0.85)/2),

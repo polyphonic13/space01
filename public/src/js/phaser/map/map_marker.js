@@ -14,21 +14,21 @@ Polyworks.MapMarker = (function() {
 		var currentLevel = PolyworksGame.currentLevel;
 		var levelStatus = PolyworksGame.levelStatus[this.model.level];
 
-		// if(levelStatus === 'l') {
-		// 	this.frame = 2;
-		// } else {
-		// 	if(levelStatus === 'u') {
-		// 		this.frame = 1;
-		// 	} else {
-		// 		this.frame = 0; // c (cleared)
-		// 	}
-		// 	this.input.start();
-		// 	this.addListeners();
-		// }
+		if(levelStatus === 'l') {
+			this.frame = 2;
+		} else {
+			if(levelStatus === 'u') {
+				this.frame = 1;
+			} else {
+				this.frame = 0; // c (cleared)
+			}
+			this.input.start();
+			this.addListeners();
+		}
 		// TESTING
-		this.frame = 1;
-		this.input.start();
-		this.addListeners();
+		// this.frame = 1;
+		// this.input.start();
+		// this.addListeners();
 	};
 	
 	MapMarker.prototype.addListeners = function() {
