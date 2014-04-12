@@ -175,13 +175,17 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.showPauseGUI = function(show) {
-		// trace('LevelState['+this.model.name+']/showPauseGUI, show = ' + show);
+		trace('LevelState['+this.model.name+']/showPauseGUI, show = ' + show, this);
 		if(show) {
 			this.getChildByName('levelGUI').hide();
+			this.getChildByName('requirementsGUI').hide();
+			this.getChildByName('requirements').hide();
 			this.getChildByName('levelControls').hide();
 			this.getChildByName('pauseGUI').show();
 		} else {
 			this.getChildByName('levelGUI').show();
+			this.getChildByName('requirementsGUI').show();
+			this.getChildByName('requirements').show();
 			this.getChildByName('levelControls').show();
 			this.getChildByName('pauseGUI').hide();
 		}
