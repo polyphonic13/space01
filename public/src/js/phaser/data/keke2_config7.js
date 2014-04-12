@@ -232,6 +232,7 @@ Polyworks.Config = (function() {
 				crystals02Green: 'images/crystals02a_green.png',
 				crystals02Garnet: 'images/crystals02a_garnet.png',
 				crystals02Purple: 'images/crystals02a_purple.png',
+				crystals02Silver: 'images/crystals02a_silver.png',
 				crystals02Aqua: 'images/crystals02a_aqua.png',
 				crystals02Orange: 'images/crystals02a_orange.png',
 				crystals02Pink: 'images/crystals02a_pink.png',
@@ -244,7 +245,6 @@ Polyworks.Config = (function() {
 
 				// buttons
 				startButton: 'images/controls/start_button.png',
-				nextButton: 'images/controls/next_button.png',
 
 				// misc
 				heart: 'images/heart.png',
@@ -261,6 +261,13 @@ Polyworks.Config = (function() {
 					width: 128,
 					height: 128,
 					frames: 4
+				},
+				mapLocationMarkerCrystals: 
+				{
+					url: 'images/map/map_location_marker_crystals.gif',
+					width: 64,
+					height: 128,
+					frames: 16
 				},
 				crystalsWheel: 
 				{
@@ -1251,7 +1258,6 @@ Polyworks.Config = (function() {
 					'whiteRect',
 					'gameTitle',
 					'greyExpanseTitle',
-					'nextButton',
 					'pageLeftArrow',
 					'pageRightArrow',
 					'startButton'
@@ -1260,6 +1266,7 @@ Polyworks.Config = (function() {
 					'pauseButton',
 					'menuButton',
 					'mapButton',
+					'nextButton',
 					'playButton',
 					'playButtonSmall',
 					'restartButton',
@@ -1320,7 +1327,6 @@ Polyworks.Config = (function() {
 				images: [
 					'kekeSmall',
 					'greyExpanseTitle',
-					'nextButton',
 					'invisibleRect',
 					'whiteRect',
 					'greyRect',
@@ -1343,8 +1349,7 @@ Polyworks.Config = (function() {
 					'mapMountains'
 				],
 				sprites: [
-					'crystalsWheel',
-					'mapLocationMarker',
+					'mapLocationMarkerCrystals',
 					'menuButton'
 				],
 				tilemaps: [],
@@ -1375,14 +1380,14 @@ Polyworks.Config = (function() {
 						name: 'mapLevelMarker0',
 						cl: 'MapMarker',
 						attrs: {
-							img: 'mapLocationMarker',
+							img: 'mapLocationMarkerCrystals',
 							phaser: {
 								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								height: (stageUnit * 2)
 							},
 							start: {
 								x: (winW/2 - stageWidth/2) + (stageUnit * 2.5),
-								y: (winH/2) + (stageUnit * 1.2)
+								y: (winH/2) + (stageUnit * 0.1)
 							}
 						}
 					},
@@ -1390,14 +1395,14 @@ Polyworks.Config = (function() {
 						name: 'mapLevelMarker1',
 						cl: 'MapMarker',
 						attrs: {
-							img: 'mapLocationMarker',
+							img: 'mapLocationMarkerCrystals',
 							phaser: {
 								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								height: (stageUnit * 2)
 							},
 							start: {
 								x: (winW/2 - stageWidth/2) + (stageUnit * 4.6),
-								y: (winH/2) + (stageUnit * 0.4) 
+								y: (winH/2) - (stageUnit * 0.6) 
 							}
 						}
 					},
@@ -1405,14 +1410,14 @@ Polyworks.Config = (function() {
 						name: 'mapLevelMarker2',
 						cl: 'MapMarker',
 						attrs: {
-							img: 'mapLocationMarker',
+							img: 'mapLocationMarkerCrystals',
 							phaser: {
 								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								height: (stageUnit * 2)
 							},
 							start: {
 								x: (winW/2 - stageWidth/2) + (stageUnit * 5.8),
-								y: (winH/2) + (stageUnit * 1) 
+								y: (winH/2)
 							}
 						}
 					},
@@ -1420,14 +1425,14 @@ Polyworks.Config = (function() {
 						name: 'mapLevelMarker3',
 						cl: 'MapMarker',
 						attrs: {
-							img: 'mapLocationMarker',
+							img: 'mapLocationMarkerCrystals',
 							phaser: {
 								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								height: (stageUnit * 2)
 							},
 							start: {
 								x: (winW/2 - stageWidth/2) + (stageUnit * 8),
-								y: (winH/2) + (stageUnit * 0.5) 
+								y: (winH/2) - (stageUnit * 0.5) 
 							}
 						}
 					},
@@ -1435,14 +1440,14 @@ Polyworks.Config = (function() {
 						name: 'mapLevelMarker4',
 						cl: 'MapMarker',
 						attrs: {
-							img: 'mapLocationMarker',
+							img: 'mapLocationMarkerCrystals',
 							phaser: {
 								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								height: (stageUnit * 2)
 							},
 							start: {
 								x: (winW/2 - stageWidth/2) + (stageUnit * 9.9),
-								y: (winH/2) + (stageUnit * 1.2) 
+								y: (winH/2) + (stageUnit * 0.2) 
 							}
 						}
 					},
@@ -1450,14 +1455,14 @@ Polyworks.Config = (function() {
 						name: 'mapLevelMarker5',
 						cl: 'MapMarker',
 						attrs: {
-							img: 'mapLocationMarker',
+							img: 'mapLocationMarkerCrystals',
 							phaser: {
 								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								height: (stageUnit * 2)
 							},
 							start: {
 								x: (winW/2 - stageWidth/2) + (stageUnit * 12.1),
-								y: (winH/2) + (stageUnit * 0.7) 
+								y: (winH/2) - (stageUnit * 0.3) 
 							}
 						}
 					}
@@ -1488,14 +1493,14 @@ Polyworks.Config = (function() {
 						name: 'mapLevelMarker6',
 						cl: 'MapMarker',
 						attrs: {
-							img: 'mapLocationMarker',
+							img: 'mapLocationMarkerCrystals',
 							phaser: {
 								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								height: (stageUnit * 2)
 							},
 							start: {
 								x: (winW/2 - stageWidth/2) + (stageUnit * 1.7),
-								y: (winH/2) + (stageUnit * 0.6)
+								y: (winH/2) - (stageUnit * 0.4)
 							}
 						}
 					},
@@ -1503,14 +1508,14 @@ Polyworks.Config = (function() {
 						name: 'mapLevelMarker7',
 						cl: 'MapMarker',
 						attrs: {
-							img: 'mapLocationMarker',
+							img: 'mapLocationMarkerCrystals',
 							phaser: {
 								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								height: (stageUnit * 2)
 							},
 							start: {
 								x: (winW/2 - stageWidth/2) + (stageUnit * 4.1),
-								y: (winH/2) + (stageUnit * 0.6) 
+								y: (winH/2) - (stageUnit * 0.4) 
 							}
 						}
 					},
@@ -1518,14 +1523,14 @@ Polyworks.Config = (function() {
 						name: 'mapLevelMarker8',
 						cl: 'MapMarker',
 						attrs: {
-							img: 'mapLocationMarker',
+							img: 'mapLocationMarkerCrystals',
 							phaser: {
 								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								height: (stageUnit * 2)
 							},
 							start: {
 								x: (winW/2 - stageWidth/2) + (stageUnit * 7),
-								y: (winH/2) - (stageUnit * 0.5) 
+								y: (winH/2) - (stageUnit * 1.5) 
 							}
 						}
 					},
@@ -1533,14 +1538,14 @@ Polyworks.Config = (function() {
 						name: 'mapLevelMarker9',
 						cl: 'MapMarker',
 						attrs: {
-							img: 'mapLocationMarker',
+							img: 'mapLocationMarkerCrystals',
 							phaser: {
 								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								height: (stageUnit * 2)
 							},
 							start: {
 								x: (winW/2 - stageWidth/2) + (stageUnit * 8.3),
-								y: (winH/2) + (stageUnit * 0.3) 
+								y: (winH/2) - (stageUnit * 0.7) 
 							}
 						}
 					},
@@ -1548,14 +1553,14 @@ Polyworks.Config = (function() {
 						name: 'mapLevelMarker10',
 						cl: 'MapMarker',
 						attrs: {
-							img: 'mapLocationMarker',
+							img: 'mapLocationMarkerCrystals',
 							phaser: {
 								width: (stageUnit * 1),
-								height: (stageUnit * 1)
+								height: (stageUnit * 2)
 							},
 							start: {
 								x: (winW/2 - stageWidth/2) + (stageUnit * 10.3),
-								y: (winH/2) + (stageUnit * 1.4) 
+								y: (winH/2) + (stageUnit * 0.4) 
 							}
 						}
 					}
@@ -1683,96 +1688,96 @@ Polyworks.Config = (function() {
 								y: (stageUnit * 0.1)
 							}
 						}
-					},
-					{
-						name: 'kekeIcon',
-						cl: 'PlayerIcon',
-						positions: 
-						[
-							{
-								x: (winW/2 - stageWidth/2) + (stageUnit * 2.5),
-								y: (winH/2) + (stageUnit * 0.4)
-							},
-							{
-								x: (winW/2 - stageWidth/2) + (stageUnit * 4.6),
-								y: (winH/2) - (stageUnit * 0.4)
-							},
-							{
-								x: (winW/2 - stageWidth/2) + (stageUnit * 5.8),
-								y: (winH/2) + (stageUnit * 0.2)
-							},
-							{
-								x: (winW/2 - stageWidth/2) + (stageUnit * 8),
-								y: (winH/2) - (stageUnit * 0.3)
-							},
-							{
-								x: (winW/2 - stageWidth/2) + (stageUnit * 9.9),
-								y: (winH/2) + (stageUnit * 0.4)
-							},
-							{
-								x: (winW/2 - stageWidth/2) + (stageUnit * 12.1),
-								y: (winH/2) - (stageUnit * 0.1)
-							},
-							{
-								x: (winW/2 - stageWidth/2) + (stageUnit * 1.7),
-								y: (winH/2) - (stageUnit * 0.1)
-							},
-							{
-								x: (winW/2 - stageWidth/2) + (stageUnit * 4.1),
-								y: (winH/2) - (stageUnit * 0.2)
-							},
-							{
-								x: (winW/2 - stageWidth/2) + (stageUnit * 7),
-								y: (winH/2) - (stageUnit * 1.3)
-							},
-							{
-								x: (winW/2 - stageWidth/2) + (stageUnit * 8.3),
-								y: (winH/2) - (stageUnit * 0.5)
-							},
-							{
-								x: (winW/2 - stageWidth/2) + (stageUnit * 10.3),
-								y: (winH/2) + (stageUnit * 0.6)
-							}
-						],
-						attrs: {
-							img: 'kekeSmall',
-							phaser: {
-								width: (stageUnit),
-								height: (stageUnit * 1.17)
-							}
-						}
-					},
-					{
-						name: 'crystalsWheel',
-						cl: 'CrystalsWheel',
-						attrs: {
-							img: 'crystalsWheel',
-							phaser: {
-								width: (stageUnit * 1.25),
-								height: (stageUnit * 1.25)
-							},
-							start: {
-								x: (winW/2) + (stageWidth/2) - (stageUnit * 2.75),
-								y: (winH/2) + (stageHeight/2) - (stageUnit * 1.75)
-							}
-						}
-					},
-					{
-						name: 'crystalsTitle',
-						cl: 'Text',
-						attrs: {
-							centerX: false,
-							centerY: false,
-							x: (winW/2) + (stageWidth/2) - (stageUnit * 6),
-							y: (winH/2) + (stageHeight/2) - (stageUnit * 1.33),
-							defaultContent: 'crystals collected:',
-							style: { 
-								font: fontSizes.xs + 'px "Waiting for the Sunrise"',
-								align: 'right', 
-								fill: '#000000' 
-							}
-						}
 					}
+					// {
+					// 	name: 'kekeIcon',
+					// 	cl: 'PlayerIcon',
+					// 	positions: 
+					// 	[
+					// 		{
+					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 2.5),
+					// 			y: (winH/2) + (stageUnit * 0.4)
+					// 		},
+					// 		{
+					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 4.6),
+					// 			y: (winH/2) - (stageUnit * 0.4)
+					// 		},
+					// 		{
+					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 5.8),
+					// 			y: (winH/2) + (stageUnit * 0.2)
+					// 		},
+					// 		{
+					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 8),
+					// 			y: (winH/2) - (stageUnit * 0.3)
+					// 		},
+					// 		{
+					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 9.9),
+					// 			y: (winH/2) + (stageUnit * 0.4)
+					// 		},
+					// 		{
+					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 12.1),
+					// 			y: (winH/2) - (stageUnit * 0.1)
+					// 		},
+					// 		{
+					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 1.7),
+					// 			y: (winH/2) - (stageUnit * 0.1)
+					// 		},
+					// 		{
+					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 4.1),
+					// 			y: (winH/2) - (stageUnit * 0.2)
+					// 		},
+					// 		{
+					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 7),
+					// 			y: (winH/2) - (stageUnit * 1.3)
+					// 		},
+					// 		{
+					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 8.3),
+					// 			y: (winH/2) - (stageUnit * 0.5)
+					// 		},
+					// 		{
+					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 10.3),
+					// 			y: (winH/2) + (stageUnit * 0.6)
+					// 		}
+					// 	],
+					// 	attrs: {
+					// 		img: 'kekeSmall',
+					// 		phaser: {
+					// 			width: (stageUnit),
+					// 			height: (stageUnit * 1.17)
+					// 		}
+					// 	}
+					// },
+					// {
+					// 	name: 'crystalsWheel',
+					// 	cl: 'CrystalsWheel',
+					// 	attrs: {
+					// 		img: 'crystalsWheel',
+					// 		phaser: {
+					// 			width: (stageUnit * 1.25),
+					// 			height: (stageUnit * 1.25)
+					// 		},
+					// 		start: {
+					// 			x: (winW/2) + (stageWidth/2) - (stageUnit * 2.75),
+					// 			y: (winH/2) + (stageHeight/2) - (stageUnit * 1.75)
+					// 		}
+					// 	}
+					// },
+					// {
+					// 	name: 'crystalsTitle',
+					// 	cl: 'Text',
+					// 	attrs: {
+					// 		centerX: false,
+					// 		centerY: false,
+					// 		x: (winW/2) + (stageWidth/2) - (stageUnit * 6),
+					// 		y: (winH/2) + (stageHeight/2) - (stageUnit * 1.33),
+					// 		defaultContent: 'crystals collected:',
+					// 		style: { 
+					// 			font: fontSizes.xs + 'px "Waiting for the Sunrise"',
+					// 			align: 'right', 
+					// 			fill: '#000000' 
+					// 		}
+					// 	}
+					// }
 					]
 				},
 				{
@@ -8162,6 +8167,8 @@ Polyworks.Config = (function() {
 					'grassClump01',
 					'river01',
 					'invisibleRect',
+					'crystals02Grey',
+					'crystals02Silver',
 					'heart'
 				],
 				sprites: [
@@ -9399,8 +9406,44 @@ Polyworks.Config = (function() {
 							y: 0
 						}
 					}
-				}
+				},
+				// requirements gui
+				{
+					name: 'requirementsGUI',
+					cl: 'SharedGroupCollection',
+					type: 'requirementsGUI',
+					addTo: 'null',
+					visible: true,
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				},
 				// requirements
+				{
+					name: 'requirements',
+					cl: 'Requirements',
+					attrs: [
+					{
+						name: 'requirement1',
+						cl: 'Requirement',
+						attrs: {
+							img: 'crystals02Silver',
+							score: 10000,
+							phaser: {
+								width: (stageUnit * 0.75),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageWidth * 4) + (stageUnit * 13),
+								y: winH - (stageUnit * 9)
+							}
+						}
+					}
+					]
+				}
 				]
 			},
 			// level 7

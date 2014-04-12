@@ -6,7 +6,7 @@ Polyworks.MapMarker = (function() {
 	}
 	
 	MapMarker.prototype.begin = function() {
-		// trace('MapMarker['+this.model.name+']/begin');
+		trace('MapMarker['+this.model.name+']/begin, level = ' + this.model.level);
 		MapMarker._super.begin.call(this);
 
 		var name = this.model.name;
@@ -14,19 +14,19 @@ Polyworks.MapMarker = (function() {
 		var currentLevel = PolyworksGame.currentLevel;
 		var levelStatus = PolyworksGame.levelStatus[this.model.level];
 
-		if(levelStatus === 'l') {
-			this.frame = 2;
-		} else {
-			if(levelStatus === 'u') {
-				this.frame = 1;
+		// if(levelStatus === 'l') {
+		// 	this.frame = 14;
+		// } else {
+			if(levelStatus === 'c') {
+				this.frame = this.model.level;
 			} else {
-				this.frame = 0; // c (cleared)
+				this.frame = 15; // u (cleared)
 			}
 			this.input.start();
 			this.addListeners();
-		}
+		// }
 		// TESTING
-		// this.frame = 1;
+		// this.frame = 15;
 		// this.input.start();
 		// this.addListeners();
 	};
