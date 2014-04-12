@@ -30,24 +30,23 @@ Polyworks.Config = (function() {
 			// h = w * 0.1875
 			horizontal: {
 				phaser: {
-					width: (stageUnit * 15),
-					height: (stageUnit * 15) * 0.1875
+					width: stageWidth * 0.85,
+					height: stageHeight * 0.85
 				},
 				start: {
-					// x: (winW/2 - stageUnit * 6),
-					x: (winW/2) - (stageUnit * 15)/2,
-					y: (winH - ((stageUnit * 15) * 0.1875) - (stageUnit * 1))
+					x: (winW/2) - ((stageWidth * 0.85)/2),
+					y: (winH/2) - ((stageHeight * 0.75)/2)
 				}
 			},
 			// h = w * 1.5
 			vertical: {
 				phaser: {
-					width: (stageUnit * 8) / 1.5,
-					height: (stageUnit * 8)
+					width: stageWidth * 0.85,
+					height: stageHeight * 0.85
 				},
 				start: {
-					x: (winW - ((stageUnit * 8) / 1.5) - (stageUnit * 1)),
-					y: (winH - (stageUnit * 8) - (stageUnit * 0.5))
+					x: (winW/2) - ((stageWidth * 0.85)/2),
+					y: (winH/2) - ((stageHeight * 0.75)/2)
 				}
 			}
 		};
@@ -432,34 +431,6 @@ Polyworks.Config = (function() {
 				}
 				
 			},
-			// TILEMAPS
-			tilemaps: {
-				forest01BackgroundMap: {
-					url: 'data/tilemaps/forest01.json'
-				},
-				desertTest: {
-					url: 'data/tilemaps/desert.json'
-				}
-			},
-			// TILESETS
-			tilesets: {
-				forest01BackgroundTiles: {
-					url: 'images/backgrounds/pencil_forest02.gif',
-					width: 3456,
-					height: 648,
-					tileMax: 12,
-					margin: 0,
-					spacing: 0
-				},
-				desertTest: {
-					url: 'images/tmw_desert_spacing.png',
-					width: 265,
-					height: 199,
-					tileMax: 48,
-					margin: 0,
-					spacing: 0
-				}
-			},
 			// CONTROLS
 			controls: {
 				keys: {
@@ -836,27 +807,12 @@ Polyworks.Config = (function() {
 						phaser: {
 							width: winW,
 							height: winH,
-							alpha: 0.75
-							// alpha: 1
+							// alpha: 0.75
+							alpha: 1
 						},
 						start: {
 							x: 0,
 							y: 0
-						}
-					}
-				},
-				{
-					name: 'ovalMask',
-					cl: 'Sprite',
-					attrs: {
-						img: 'ovalMask',
-						start: {
-							x: -50,
-							y: -50
-						},
-						phaser: {
-							width: winW + 100,
-							height: winH + 100
 						}
 					}
 				},
@@ -867,7 +823,8 @@ Polyworks.Config = (function() {
 						img: '',
 						phaser: {
 							width: stageWidth,
-							height: stageHeight
+							height: stageHeight,
+							alpha: 0.75
 						},
 						start: {
 							x: (winW/2 - stageWidth/2),
@@ -876,11 +833,26 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
+					name: 'mapTitle',
+					cl: 'Sprite',
+					attrs: {
+						img: 'greyExpanseTitle',
+						phaser: {
+							width: (stageUnit * 12),
+							height: (stageUnit * 1.5)
+						},
+						start: {
+							x: (winW/2 - (stageUnit * 6)),
+							y: (stageUnit * 0.1)
+						}
+					}
+				},
+				{
 					name: 'title',
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
-						y: (stageUnit * 0.25),
+						y: (stageUnit * 1),
 						defaultContent: '',
 						style: { 
 							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
@@ -894,7 +866,7 @@ Polyworks.Config = (function() {
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
-						y: (stageUnit * 1.5),
+						y: (stageUnit * 2.25),
 						defaultContent: '',
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
@@ -1019,7 +991,7 @@ Polyworks.Config = (function() {
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
-						y: (stageUnit * 0.25),
+						y: (stageUnit * 1),
 						defaultContent: '~{levelText}~',
 						style: { 
 							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
@@ -1033,7 +1005,7 @@ Polyworks.Config = (function() {
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
-						y: (stageUnit * 1.5),
+						y: (stageUnit * 2.25),
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -1147,7 +1119,7 @@ Polyworks.Config = (function() {
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
-						y: (stageUnit * 0.25),
+						y: (stageUnit * 1),
 						defaultContent: '~{levelText}~',
 						style: { 
 							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
@@ -1161,7 +1133,7 @@ Polyworks.Config = (function() {
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
-						y: (stageUnit * 1.5),
+						y: (stageUnit * 2.25),
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -1391,7 +1363,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: (stageWidth * 0.85),
 								height: (stageHeight * 0.85),
-								alpha: 0.5
+								alpha: 0.75
 							},
 							start: {
 								x: (winW/2) - ((stageWidth * 0.85)/2),
@@ -1504,7 +1476,7 @@ Polyworks.Config = (function() {
 							phaser: {
 								width: (stageWidth * 0.85),
 								height: (stageHeight * 0.85),
-								alpha: 0.5
+								alpha: 0.75
 							},
 							start: {
 								x: (winW/2) - ((stageWidth * 0.85)/2),
@@ -9434,7 +9406,7 @@ Polyworks.Config = (function() {
 			// level 7
 			{
 				name: 'level07',
-				text: 'the dusty cliffs',
+				text: 'the ashen cliffs',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -11558,7 +11530,7 @@ Polyworks.Config = (function() {
 			// level 8
 			{
 				name: 'level08',
-				text: 'the ashen ridge',
+				text: 'the smokey ridge',
 				cl: 'LevelState',
 				world: {
 					x: 0,
