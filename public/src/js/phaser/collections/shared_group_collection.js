@@ -13,7 +13,7 @@ Polyworks.SharedGroupCollection = (function() {
 		SharedGroupCollection._super.begin.call(this);
 		// trace('\tpost super call, model.visible = ' + this.model.visible);
 
-		this.group.visible = this.model.visible;
+		// this.group.visible = this.model.visible;
 	};
 
 	return SharedGroupCollection;

@@ -14,7 +14,7 @@ Polyworks.GroupCollection = (function() {
 	}
 	
 	GroupCollection.prototype.begin = function() {
-		// trace('GroupCollection['+this.model.name+']/begin, this = ', this);
+		trace('GroupCollection['+this.model.name+']/begin, this = ', this);
 		GroupCollection._super.begin.call(this);
 
 		var game = PolyworksGame.phaser;
@@ -44,6 +44,10 @@ Polyworks.GroupCollection = (function() {
 			this
 		);
 
+		if(typeof(this.model.visible) !== 'undefined') {
+			trace('==================== setting group visibility to: ' + this.model.visible);
+			group.visible = this.model.visible;
+		}
 		this.group = group;
 
 		// trace('group now = ');

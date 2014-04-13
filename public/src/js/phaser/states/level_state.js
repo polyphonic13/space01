@@ -182,12 +182,14 @@ Polyworks.LevelState = (function() {
 			this.getChildByName('requirements').hide();
 			this.getChildByName('levelControls').hide();
 			this.getChildByName('pauseGUI').show();
+			this.getChildByName('title').show();
 		} else {
 			this.getChildByName('levelGUI').show();
 			this.getChildByName('requirementsGUI').show();
 			this.getChildByName('requirements').show();
 			this.getChildByName('levelControls').show();
 			this.getChildByName('pauseGUI').hide();
+			this.getChildByName('title').hide();
 		}
 	};
 	
@@ -199,6 +201,7 @@ Polyworks.LevelState = (function() {
 		this.getChildByName('requirements').hide();
 		this.getChildByName('levelControls').hide();
 		this.getChildByName('completedGUI').show();
+		this.getChildByName('title').show();
 	};
 	
 	LevelState.prototype.levelCleared = function() {

@@ -224,6 +224,18 @@ Polyworks.Config = (function() {
 				level10Preview: 'images/backgrounds/level10_preview.gif',
 				level11Preview: 'images/backgrounds/level11_preview.gif',
 
+				level01Title: 'images/titles/level_title01.png',
+				level02Title: 'images/titles/level_title02.png',
+				level03Title: 'images/titles/level_title03.png',
+				level04Title: 'images/titles/level_title04.png',
+				level05Title: 'images/titles/level_title05.png',
+				level06Title: 'images/titles/level_title06.png',
+				level07Title: 'images/titles/level_title07.png',
+				level08Title: 'images/titles/level_title08.png',
+				level09Title: 'images/titles/level_title09.png',
+				level10Title: 'images/titles/level_title10.png',
+				level11Title: 'images/titles/level_title11.png',
+				
 				forestBackground02a: 'images/backgrounds/pencil_forest02a.gif',
 				forestBackground02b: 'images/backgrounds/pencil_forest02b.gif',
 				forestBackground02c: 'images/backgrounds/pencil_forest02c.gif',
@@ -1699,95 +1711,6 @@ Polyworks.Config = (function() {
 							}
 						}
 					}
-					// {
-					// 	name: 'kekeIcon',
-					// 	cl: 'PlayerIcon',
-					// 	positions: 
-					// 	[
-					// 		{
-					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 2.5),
-					// 			y: (winH/2) + (stageUnit * 0.4)
-					// 		},
-					// 		{
-					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 4.6),
-					// 			y: (winH/2) - (stageUnit * 0.4)
-					// 		},
-					// 		{
-					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 5.8),
-					// 			y: (winH/2) + (stageUnit * 0.2)
-					// 		},
-					// 		{
-					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 8),
-					// 			y: (winH/2) - (stageUnit * 0.3)
-					// 		},
-					// 		{
-					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 9.9),
-					// 			y: (winH/2) + (stageUnit * 0.4)
-					// 		},
-					// 		{
-					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 12.1),
-					// 			y: (winH/2) - (stageUnit * 0.1)
-					// 		},
-					// 		{
-					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 1.7),
-					// 			y: (winH/2) - (stageUnit * 0.1)
-					// 		},
-					// 		{
-					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 4.1),
-					// 			y: (winH/2) - (stageUnit * 0.2)
-					// 		},
-					// 		{
-					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 7),
-					// 			y: (winH/2) - (stageUnit * 1.3)
-					// 		},
-					// 		{
-					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 8.3),
-					// 			y: (winH/2) - (stageUnit * 0.5)
-					// 		},
-					// 		{
-					// 			x: (winW/2 - stageWidth/2) + (stageUnit * 10.3),
-					// 			y: (winH/2) + (stageUnit * 0.6)
-					// 		}
-					// 	],
-					// 	attrs: {
-					// 		img: 'kekeSmall',
-					// 		phaser: {
-					// 			width: (stageUnit),
-					// 			height: (stageUnit * 1.17)
-					// 		}
-					// 	}
-					// },
-					// {
-					// 	name: 'crystalsWheel',
-					// 	cl: 'CrystalsWheel',
-					// 	attrs: {
-					// 		img: 'crystalsWheel',
-					// 		phaser: {
-					// 			width: (stageUnit * 1.25),
-					// 			height: (stageUnit * 1.25)
-					// 		},
-					// 		start: {
-					// 			x: (winW/2) + (stageWidth/2) - (stageUnit * 2.75),
-					// 			y: (winH/2) + (stageHeight/2) - (stageUnit * 1.75)
-					// 		}
-					// 	}
-					// },
-					// {
-					// 	name: 'crystalsTitle',
-					// 	cl: 'Text',
-					// 	attrs: {
-					// 		alignX: 'none',
-					// 		alignY: 'none',
-					// 		x: (winW/2) + (stageWidth/2) - (stageUnit * 6),
-					// 		y: (winH/2) + (stageHeight/2) - (stageUnit * 1.33),
-					// 		defaultContent: 'crystals collected:',
-					// 		style: { 
-					// 			font: fontSizes.xs + 'px "Waiting for the Sunrise"',
-					// 			align: 'right', 
-					// 			fill: '#000000' 
-					// 		}
-					// 	}
-					// }
 					]
 				},
 				{
@@ -1826,6 +1749,7 @@ Polyworks.Config = (function() {
 				images: [
 					'whiteRect',
 					'ovalMask',
+					'level01Title',
 					'forestBackground02a',
 					'forestBackground02b',
 					'forestBackground02c',
@@ -2738,6 +2662,32 @@ Polyworks.Config = (function() {
 						}
 					}
 				},
+				// level title
+				{
+					name: 'title',
+					cl: 'GroupCollection',
+					addTo: 'null',
+					visible: false,
+					attrs: [
+					{
+						name: 'level01Title',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'level01Title',
+							phaser: {
+								width: (stageUnit * 6) * 1.5,
+								height: (stageUnit * 1) * 1.5,
+								alpha: 0.75
+							},
+							start: {
+								x: winW - (stageUnit * 6) * 1.5,
+								y: (stageUnit * 1)
+							}
+						}
+					}
+					]
+				},
 				// requirements gui
 				{
 					name: 'requirementsGUI',
@@ -2800,6 +2750,7 @@ Polyworks.Config = (function() {
 				images: [
 					'whiteRect',
 					'ovalMask',
+					'level02Title',
 					'forestBackground01a',
 					'forestBackground01b',
 					'forestBackground01c',
@@ -2989,6 +2940,21 @@ Polyworks.Config = (function() {
 					},
 					{
 						name: 'tree03',
+						cl: 'Sprite',
+						attrs: {
+							img: 'tree01',
+							phaser: {
+								width: (stageHeight * 2),
+								height: (stageHeight * 3)
+							},
+							start: {
+								x: (stageWidth * 3),
+								y: winH - (stageHeight * 3)
+							}
+						}
+					},
+					{
+						name: 'tree04',
 						cl: 'Sprite',
 						attrs: {
 							img: 'tree01',
@@ -3416,7 +3382,120 @@ Polyworks.Config = (function() {
 						{
 							name: 'dynamicTerrain',
 							cl: 'PhysicalGroupCollection',
-							attrs: []
+							attrs: [
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aLeft',
+									start: {
+										x: (stageWidth * 3) + (stageUnit * 7),
+										y: winH - (stageUnit * 2.25)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aRight',
+									start: {
+										x: (stageWidth * 3) + (stageUnit * 10),
+										y: winH - (stageUnit * 4)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aLeft',
+									start: {
+										x: (stageWidth * 3) + (stageUnit * 7),
+										y: winH - (stageUnit * 5.5)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aRight',
+									start: {
+										x: (stageWidth * 3) + (stageUnit * 10),
+										y: winH - (stageUnit * 7)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Left',
+									start: {
+										x: (stageWidth * 3) + (stageUnit * 7),
+										y: winH - (stageUnit * 8.5)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									start: {
+										x: (stageWidth * 3) + (stageUnit * 10),
+										y: winH - (stageUnit * 10)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									start: {
+										x: (stageWidth * 3) + (stageUnit * 9.5),
+										y: winH - (stageUnit * 12)
+									},
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.4) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							}
+							]
 						},
 						{
 							name: 'hazards',
@@ -3870,6 +3949,32 @@ Polyworks.Config = (function() {
 						}
 					}
 				},
+				// level title
+				{
+					name: 'title',
+					cl: 'GroupCollection',
+					addTo: 'null',
+					visible: false,
+					attrs: [
+					{
+						name: 'level02Title',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'level02Title',
+							phaser: {
+								width: (stageUnit * 6) * 1.5,
+								height: (stageUnit * 1) * 1.5,
+								alpha: 0.75
+							},
+							start: {
+								x: winW - (stageUnit * 6) * 1.5,
+								y: (stageUnit * 1)
+							}
+						}
+					}
+					]
+				},
 				// requirements gui
 				{
 					name: 'requirementsGUI',
@@ -3931,6 +4036,7 @@ Polyworks.Config = (function() {
 				images: [
 					'whiteRect',
 					'ovalMask',
+					'level03Title',
 					'forestBackground01a',
 					'forestBackground01b',
 					'forestBackground01c',
@@ -5100,6 +5206,32 @@ Polyworks.Config = (function() {
 						}
 					}
 				},
+				// level title
+				{
+					name: 'title',
+					cl: 'GroupCollection',
+					addTo: 'null',
+					visible: false,
+					attrs: [
+					{
+						name: 'level03Title',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'level03Title',
+							phaser: {
+								width: (stageUnit * 6) * 1.5,
+								height: (stageUnit * 1) * 1.5,
+								alpha: 0.75
+							},
+							start: {
+								x: winW - (stageUnit * 6) * 1.5,
+								y: (stageUnit * 1)
+							}
+						}
+					}
+					]
+				},
 				// requirements gui
 				{
 					name: 'requirementsGUI',
@@ -5161,6 +5293,7 @@ Polyworks.Config = (function() {
 				images: [
 					'whiteRect',
 					'ovalMask',
+					'level04Title',
 					'forestBackground01a',
 					'forestBackground01b',
 					'forestBackground01c',
@@ -6483,6 +6616,32 @@ Polyworks.Config = (function() {
 						}
 					}
 				},
+				// level title
+				{
+					name: 'title',
+					cl: 'GroupCollection',
+					addTo: 'null',
+					visible: false,
+					attrs: [
+					{
+						name: 'level04Title',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'level04Title',
+							phaser: {
+								width: (stageUnit * 6) * 1.5,
+								height: (stageUnit * 1) * 1.5,
+								alpha: 0.75
+							},
+							start: {
+								x: winW - (stageUnit * 6) * 1.5,
+								y: (stageUnit * 1)
+							}
+						}
+					}
+					]
+				},
 				// requirements gui
 				{
 					name: 'requirementsGUI',
@@ -6544,6 +6703,7 @@ Polyworks.Config = (function() {
 				images: [
 					'whiteRect',
 					'ovalMask',
+					'level05Title',
 					'forestBackground01a',
 					'forestBackground01b',
 					'forestBackground01c',
@@ -8213,6 +8373,32 @@ Polyworks.Config = (function() {
 						}
 					}
 				},
+				// level title
+				{
+					name: 'title',
+					cl: 'GroupCollection',
+					addTo: 'null',
+					visible: false,
+					attrs: [
+					{
+						name: 'level05Title',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'level05Title',
+							phaser: {
+								width: (stageUnit * 6) * 1.5,
+								height: (stageUnit * 1) * 1.5,
+								alpha: 0.75
+							},
+							start: {
+								x: winW - (stageUnit * 6) * 1.5,
+								y: (stageUnit * 1)
+							}
+						}
+					}
+					]
+				},
 				// requirements gui
 				{
 					name: 'requirementsGUI',
@@ -8274,6 +8460,7 @@ Polyworks.Config = (function() {
 				images: [
 					'whiteRect',
 					'ovalMask',
+					'level06Title',
 					'riverBackground01a',
 					'riverBackground01b',
 					'riverBackground01c',
@@ -9533,6 +9720,32 @@ Polyworks.Config = (function() {
 						}
 					}
 				},
+				// level title
+				{
+					name: 'title',
+					cl: 'GroupCollection',
+					addTo: 'null',
+					visible: false,
+					attrs: [
+					{
+						name: 'level06Title',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'level06Title',
+							phaser: {
+								width: (stageUnit * 6) * 1.5,
+								height: (stageUnit * 1) * 1.5,
+								alpha: 0.75
+							},
+							start: {
+								x: winW - (stageUnit * 6) * 1.5,
+								y: (stageUnit * 1)
+							}
+						}
+					}
+					]
+				},
 				// requirements gui
 				{
 					name: 'requirementsGUI',
@@ -9594,6 +9807,7 @@ Polyworks.Config = (function() {
 				images: [
 					'whiteRect',
 					'ovalMask',
+					'level07Title',
 					'mountainBackgroundA5',
 					'mountainBackgroundA6',
 					'mountainBackgroundA7',
@@ -11655,6 +11869,32 @@ Polyworks.Config = (function() {
 						}
 					}
 				},
+				// level title
+				{
+					name: 'title',
+					cl: 'GroupCollection',
+					addTo: 'null',
+					visible: false,
+					attrs: [
+					{
+						name: 'level07Title',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'level07Title',
+							phaser: {
+								width: (stageUnit * 6) * 1.5,
+								height: (stageUnit * 1) * 1.5,
+								alpha: 0.75
+							},
+							start: {
+								x: winW - (stageUnit * 6) * 1.5,
+								y: (stageUnit * 1)
+							}
+						}
+					}
+					]
+				},
 				// requirements gui
 				{
 					name: 'requirementsGUI',
@@ -11716,6 +11956,7 @@ Polyworks.Config = (function() {
 				images: [
 					'whiteRect',
 					'ovalMask',
+					'level08Title',
 					'mountainBackgroundC3',
 					'mountainBackgroundC4',
 					'mountainBackgroundC5',
@@ -13962,6 +14203,32 @@ Polyworks.Config = (function() {
 						}
 					}
 				},
+				// level title
+				{
+					name: 'title',
+					cl: 'GroupCollection',
+					addTo: 'null',
+					visible: false,
+					attrs: [
+					{
+						name: 'level08Title',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'level08Title',
+							phaser: {
+								width: (stageUnit * 6) * 1.5,
+								height: (stageUnit * 1) * 1.5,
+								alpha: 0.75
+							},
+							start: {
+								x: winW - (stageUnit * 6) * 1.5,
+								y: (stageUnit * 1)
+							}
+						}
+					}
+					]
+				},
 				// requirements gui
 				{
 					name: 'requirementsGUI',
@@ -14023,6 +14290,7 @@ Polyworks.Config = (function() {
 				images: [
 					'whiteRect',
 					'ovalMask',
+					'level09Title',
 					'mountainBackgroundE1',
 					'mountainBackgroundE2',
 					'mountainBackgroundE3',
@@ -15937,6 +16205,32 @@ Polyworks.Config = (function() {
 						}
 					}
 				},
+				// level title
+				{
+					name: 'title',
+					cl: 'GroupCollection',
+					addTo: 'null',
+					visible: false,
+					attrs: [
+					{
+						name: 'level09Title',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'level09Title',
+							phaser: {
+								width: (stageUnit * 6) * 1.5,
+								height: (stageUnit * 1) * 1.5,
+								alpha: 0.75
+							},
+							start: {
+								x: winW - (stageUnit * 6) * 1.5,
+								y: (stageUnit * 1)
+							}
+						}
+					}
+					]
+				},
 				// requirements gui
 				{
 					name: 'requirementsGUI',
@@ -15998,6 +16292,7 @@ Polyworks.Config = (function() {
 				images: [
 					'whiteRect',
 					'ovalMask',
+					'level10Title',
 					'mountainBackgroundC3',
 					'mountainBackgroundC4',
 					'mountainBackgroundC5',
@@ -17912,6 +18207,32 @@ Polyworks.Config = (function() {
 						}
 					}
 				},
+				// level title
+				{
+					name: 'title',
+					cl: 'GroupCollection',
+					addTo: 'null',
+					visible: false,
+					attrs: [
+					{
+						name: 'level10Title',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'level10Title',
+							phaser: {
+								width: (stageUnit * 6) * 1.5,
+								height: (stageUnit * 1) * 1.5,
+								alpha: 0.75
+							},
+							start: {
+								x: winW - (stageUnit * 6) * 1.5,
+								y: (stageUnit * 1)
+							}
+						}
+					}
+					]
+				},
 				// requirements gui
 				{
 					name: 'requirementsGUI',
@@ -17973,6 +18294,7 @@ Polyworks.Config = (function() {
 				images: [
 					'whiteRect',
 					'ovalMask',
+					'level11Title',
 					'mountainBackgroundC3',
 					'mountainBackgroundC4',
 					'mountainBackgroundC5',
@@ -19886,6 +20208,32 @@ Polyworks.Config = (function() {
 							y: 0
 						}
 					}
+				},
+				// level title
+				{
+					name: 'title',
+					cl: 'GroupCollection',
+					addTo: 'null',
+					visible: false,
+					attrs: [
+					{
+						name: 'level11Title',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'level11Title',
+							phaser: {
+								width: (stageUnit * 6) * 1.5,
+								height: (stageUnit * 1) * 1.5,
+								alpha: 0.75
+							},
+							start: {
+								x: winW - (stageUnit * 6) * 1.5,
+								y: (stageUnit * 1)
+							}
+						}
+					}
+					]
 				},
 				// requirements gui
 				{
