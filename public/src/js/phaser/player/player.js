@@ -237,7 +237,9 @@ Polyworks.Player = (function() {
 			this.health += health;
 			PolyworksGame.setHealth(this.health);
 		}
-
+		if(bonus.model.attrs.score) {
+		    PolyworksGame.setLevelScore(bonus.model.attrs.score);
+		}
 		bonus.active = false; 
 		bonus.destroy();
 	};

@@ -20,6 +20,7 @@ PolyworksGame = (function() {
 		player: null,
 		highScores: [],
 		levelScore: 0,
+		currentLevelHighScore: 0,
 		health: 0,
 		levelText: '',
 		currentLevel: 0,
@@ -397,6 +398,7 @@ PolyworksGame = (function() {
 		trace('\tstateId = ' + stateId);
 		PolyworksGame.levelText = _levels[idx].model.text;
 		PolyworksGame.levelScore = 0;
+		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
 		PolyworksGame.changeState(stateId);
 	}
 	
@@ -412,6 +414,7 @@ PolyworksGame = (function() {
 			stateId = 'completed';
 		}
 		PolyworksGame.levelScore = 0;
+		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
 		PolyworksGame.changeState(stateId);
 	}
 	
@@ -422,15 +425,15 @@ PolyworksGame = (function() {
 
 		if(PolyworksGame.levelScore > PolyworksGame.highScores[idx]) {
 			PolyworksGame.highScores[idx] = PolyworksGame.levelScore;
+			PolyworksGame.currentLevelHighScore = 'new high score: ' + PolyworksGame.levelScore + '!';
+			Polyworks.EventCenter.trigger(Polyworks.Events.HIGH_SCORE_UPDATED);
 		}
-
 		idx++;
 
 		if(PolyworksGame.levelStatus[idx] === 'l') {
 			PolyworksGame.levelStatus[idx] = 'u';
 		}
 		PolyworksGame.currentLevel = idx;
-		trace('\tend of level cleared, idx = ' + idx + ', currentLevel = ' + PolyworksGame.currentLevel);
 	}
 
 	function _beginControls() {

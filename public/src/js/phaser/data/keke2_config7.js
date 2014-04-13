@@ -1091,31 +1091,17 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
-					name: 'title',
-					cl: 'Text',
-					attrs: {
-						x: (stageUnit * 3),
-						y: (stageUnit * 1),
-						defaultContent: '~{levelText}~',
-						style: { 
-							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
-							fill: '#000000',
-							align: 'left'
-						}
-					}
-				},
-				{
 					name: 'score',
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
 						y: winH - (stageUnit * 3),
 						style: { 
-							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
+							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
 							align: 'left'
 						},
-						defaultContent: 'current score: ~{levelScore}~',
+						defaultContent: 'score: ~{levelScore}~',
 						listeners: [
 							Polyworks.Events.LEVEL_SCORE_UPDATED
 						]
@@ -1128,7 +1114,7 @@ Polyworks.Config = (function() {
 						// centerX: true,
 						x: (stageUnit * 3),
 						y: winH - (stageUnit * 1.75),
-						defaultContent: '',
+						defaultContent: '~{currentLevelHighScore}~',
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -1234,34 +1220,38 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
-					name: 'title',
-					cl: 'Text',
-					attrs: {
-						x: (stageUnit * 3),
-						y: (stageUnit * 1),
-						defaultContent: '~{levelText}~',
-						style: { 
-							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
-							fill: '#000000',
-							align: 'left'
-						}
-					}
-				},
-				{
 					name: 'score',
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
-						y: (stageUnit * 2.25),
+						y: winH - (stageUnit * 3),
 						style: { 
-							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
+							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
 							align: 'left'
 						},
-						defaultContent: 'level score: ~{levelScore}~',
+						defaultContent: 'score: ~{levelScore}~',
 						listeners: [
 							Polyworks.Events.LEVEL_CLEARED
 						]
+					}
+				},
+				{
+					name: 'highScore',
+					cl: 'Text',
+					attrs: {
+						// centerX: true,
+						x: (stageUnit * 3),
+						y: winH - (stageUnit * 1.75),
+						defaultContent: '~{currentLevelHighScore}~',
+						listeners: [
+							Polyworks.Events.LEVEL_CLEARED
+						],
+						style: { 
+							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
+							fill: '#000000',
+							align: 'right'
+						}
 					}
 				},
 				{
@@ -1275,7 +1265,7 @@ Polyworks.Config = (function() {
 							fill: '#000000',
 							align: 'left'
 						},
-						defaultContent: 'cleared!',
+						defaultContent: 'cleared',
 					}
 				},
 				{

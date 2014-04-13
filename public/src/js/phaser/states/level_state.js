@@ -195,6 +195,8 @@ Polyworks.LevelState = (function() {
 		// trace('LevelState['+this.model.name+']/showCompletedGUI');
 
 		this.getChildByName('levelGUI').hide();
+		this.getChildByName('requirementsGUI').hide();
+		this.getChildByName('requirements').hide();
 		this.getChildByName('levelControls').hide();
 		this.getChildByName('completedGUI').show();
 	};

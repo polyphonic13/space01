@@ -10,6 +10,7 @@ Polyworks.Bonus = (function() {
 	};
 	
 	Bonus.prototype.collect = function() {
+		trace('Bonus['+this.model.name+']/collect, score = ' + this.model.attrs.score,  this.model);
 		if(this.model.attrs.score) {
 		    PolyworksGame.setLevelScore(this.model.attrs.score);
 		}
