@@ -69,16 +69,21 @@ Polyworks.MapState = (function() {
 						levelInfoGroup[idx] = levelInfoBackgrounds[i];
 						break;
 
-						case 'playButtonSmall':
-						levelInfoGroup[idx].attrs.events.released.value = i;
-						break;
-
 						case 'closeButton':
 						levelInfoGroup[idx].attrs.events.released.value = i;
 						break;
 
-						case 'title': 
-						levelInfoGroup[idx].attrs.defaultContent = levelInfo.levelText + ' ';
+						case 'playButtonSmall':
+						// remove play button if level is locked else set level index to its released value
+						if(levelInfo.status === 'l') {
+							delete levelInfoGroup[idx];
+						} else {
+							levelInfoGroup[idx].attrs.events.released.value = i;
+						}
+						break;
+
+						case 'levelStatus': 
+						levelInfoGroup[idx].attrs.defaultContent = levelInfo.statusText;
 						break;
 
 						case 'highScore': 

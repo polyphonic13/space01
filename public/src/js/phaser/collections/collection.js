@@ -13,19 +13,22 @@ Polyworks.Collection = (function() {
 		var children = this.model.attrs;
 		var child;
 		var params;
-
+		trace('children.length = ' + children.length);
 		Polyworks.Utils.each(children,
 			function(c, i) {
-				c.game = game;
-				c.ancestor = this;
-				c.idx = i;
+				trace('\t\ti = ' + i + ', c = ', c);
+				if(typeof(c) !== 'undefined') {
+					c.game = game;
+					c.ancestor = this;
+					c.idx = i;
 
-				// trace('\tc['+c.name+'] cl = ' + c.cl)
-				child = new Polyworks[c.cl](c);
-				child.begin();
+					// trace('\tc['+c.name+'] cl = ' + c.cl)
+					child = new Polyworks[c.cl](c);
+					child.begin();
 
-				collection.push(child);
-				nameIndex[c.name] = i;
+					collection.push(child);
+					nameIndex[c.name] = i;
+				}
 			},
 			this
 		);

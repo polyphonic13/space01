@@ -14,21 +14,21 @@ Polyworks.MapMarker = (function() {
 		var currentLevel = PolyworksGame.currentLevel;
 		var levelStatus = PolyworksGame.levelStatus[this.model.level];
 
-		// if(levelStatus === 'l') {
-		// 	this.frame = 14;
-		// } else {
+		if(levelStatus === 'l') {
+			this.frame = 14;
+		} else {
 			if(levelStatus === 'c') {
 				this.frame = this.model.level;
 			} else {
 				this.frame = 15; // u (cleared)
 			}
-			this.input.start();
-			this.addListeners();
-		// }
+			// this.input.start();
+			// this.addListeners();
+		}
 		// TESTING
 		// this.frame = 15;
-		// this.input.start();
-		// this.addListeners();
+		this.input.start();
+		this.addListeners();
 	};
 	
 	MapMarker.prototype.addListeners = function() {

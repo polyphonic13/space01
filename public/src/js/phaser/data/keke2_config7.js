@@ -26,11 +26,6 @@ Polyworks.Config = (function() {
 			xl: (stageUnit * 1.75)
 		};
 
-		var levelStateText = {
-			c: 'cleared',
-			u: 'unlocked',
-			l: 'locked'
-		};
 		
 		var levelInfoBackgroundAttrs = {
 			phaser: {
@@ -899,6 +894,11 @@ Polyworks.Config = (function() {
 				}
 			},
 			// SHARED GROUPS
+			levelStatusText: {
+				c: 'cleared',
+				u: 'unlocked',
+				l: 'locked'
+			},
 			sharedGroups: {
 				levelInfo: [
 				{
@@ -935,7 +935,7 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
-					name: 'mapTitle',
+					name: 'gameTitle',
 					cl: 'Sprite',
 					attrs: {
 						img: 'greyExpanseTitle',
@@ -950,17 +950,32 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
+					name: 'levelStatus',
+					cl: 'Text',
+					attrs: {
+						// centerX: true,
+						x: (stageUnit * 3),
+						y: winH - (stageUnit * 3),
+						defaultContent: '',
+						style: { 
+							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
+							fill: '#000000',
+							align: 'right'
+						}
+					}
+				},
+				{
 					name: 'highScore',
 					cl: 'Text',
 					attrs: {
-						centerX: true,
+						// centerX: true,
 						x: (stageUnit * 3),
-						y: (stageUnit * 2.25),
+						y: winH - (stageUnit * 1.75),
 						defaultContent: '',
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
-							align: 'center'
+							align: 'right'
 						}
 					}
 				},
@@ -1094,16 +1109,31 @@ Polyworks.Config = (function() {
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
-						y: (stageUnit * 2.25),
+						y: winH - (stageUnit * 3),
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
 							align: 'left'
 						},
-						defaultContent: 'level score: ~{levelScore}~',
+						defaultContent: 'current score: ~{levelScore}~',
 						listeners: [
 							Polyworks.Events.LEVEL_SCORE_UPDATED
 						]
+					}
+				},
+				{
+					name: 'highScore',
+					cl: 'Text',
+					attrs: {
+						// centerX: true,
+						x: (stageUnit * 3),
+						y: winH - (stageUnit * 1.75),
+						defaultContent: '',
+						style: { 
+							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
+							fill: '#000000',
+							align: 'right'
+						}
 					}
 				},
 				{
@@ -2765,7 +2795,7 @@ Polyworks.Config = (function() {
 			// level 2
 			{
 				name: 'level02',
-				text: 'pale sentinels',
+				text: 'shaded sentinels',
 				cl: 'LevelState',
 				world: {
 					x: 0,

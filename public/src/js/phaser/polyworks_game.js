@@ -73,9 +73,12 @@ PolyworksGame = (function() {
 
 		getLevelInfo: function(idx) {
 			trace('polyworks game/getLevelInfo, idx = ' + idx);
+			
 			var levelInfo = {
 				levelText: _levels[idx].model.text,
-				highScore: PolyworksGame.highScores[idx]
+				highScore: PolyworksGame.highScores[idx],
+				status: PolyworksGame.levelStatus[idx],
+				statusText: _model.levelStatusText[PolyworksGame.levelStatus[idx]]
 			};
 			return levelInfo;
 		},
