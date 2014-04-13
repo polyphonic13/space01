@@ -26,6 +26,12 @@ Polyworks.Config = (function() {
 			xl: (stageUnit * 1.75)
 		};
 
+		var levelStateText = {
+			c: 'cleared',
+			u: 'unlocked',
+			l: 'locked'
+		};
+		
 		var levelInfoBackgroundAttrs = {
 			phaser: {
 				width: stageWidth * 0.85,
@@ -37,6 +43,108 @@ Polyworks.Config = (function() {
 				y: (winH/2) - ((stageHeight * 0.75)/2)
 			}
 		};
+
+		var levelInfoBackgrounds = [
+		{
+			img: 'level01Preview',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level01Preview',
+				phaser: levelInfoBackgroundAttrs.phaser,
+				start: levelInfoBackgroundAttrs.start
+			}
+		},
+		{
+			img: 'level02Preview',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level02Preview',
+				phaser: levelInfoBackgroundAttrs.phaser,
+				start: levelInfoBackgroundAttrs.start
+			}
+		},
+		{
+			img: 'level03Preview',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level03Preview',
+				phaser: levelInfoBackgroundAttrs.phaser,
+				start: levelInfoBackgroundAttrs.start
+			}
+		},
+		{
+			img: 'level04Preview',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level04Preview',
+				phaser: levelInfoBackgroundAttrs.phaser,
+				start: levelInfoBackgroundAttrs.start
+			}
+		},
+		{
+			img: 'level05Preview',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level05Preview',
+				phaser: levelInfoBackgroundAttrs.phaser,
+				start: levelInfoBackgroundAttrs.start
+			}
+		},
+		{
+			img: 'level06Preview',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level06Preview',
+				phaser: levelInfoBackgroundAttrs.phaser,
+				start: levelInfoBackgroundAttrs.start
+			}
+		},
+		{
+			img: 'level07Preview',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level07Preview',
+				phaser: levelInfoBackgroundAttrs.phaser,
+				start: levelInfoBackgroundAttrs.start
+			}
+		},
+		{
+			img: 'level08Preview',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level08Preview',
+				phaser: levelInfoBackgroundAttrs.phaser,
+				start: levelInfoBackgroundAttrs.start
+			}
+		},
+		{
+			img: 'level09Preview',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level09Preview',
+				phaser: levelInfoBackgroundAttrs.phaser,
+				start: levelInfoBackgroundAttrs.start
+			}
+		},
+		{
+			img: 'level10Preview',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level10Preview',
+				phaser: levelInfoBackgroundAttrs.phaser,
+				start: levelInfoBackgroundAttrs.start
+			}
+		},
+		{
+			img: 'level11Preview',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level11Preview',
+				phaser: levelInfoBackgroundAttrs.phaser,
+				start: levelInfoBackgroundAttrs.start
+			}
+		}
+		];
 
 		var c = {
 			// PLAYER
@@ -845,13 +953,14 @@ Polyworks.Config = (function() {
 					name: 'highScore',
 					cl: 'Text',
 					attrs: {
+						centerX: true,
 						x: (stageUnit * 3),
 						y: (stageUnit * 2.25),
 						defaultContent: '',
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
-							align: 'left'
+							align: 'center'
 						}
 					}
 				},
@@ -1136,7 +1245,7 @@ Polyworks.Config = (function() {
 							fill: '#000000',
 							align: 'left'
 						},
-						defaultContent: 'completed',
+						defaultContent: 'cleared!',
 					}
 				},
 				{
@@ -1540,107 +1649,18 @@ Polyworks.Config = (function() {
 					]
 				}
 				],
-				// 0.1875
-				levelInfoBackgroundAttrs: [
-				{
-					img: 'level01Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level01Preview',
-						phaser: levelInfoBackgroundAttrs.phaser,
-						start: levelInfoBackgroundAttrs.start
-					}
-				},
-				{
-					img: 'level02Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level02Preview',
-						phaser: levelInfoBackgroundAttrs.phaser,
-						start: levelInfoBackgroundAttrs.start
-					}
-				},
-				{
-					img: 'level03Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level03Preview',
-						phaser: levelInfoBackgroundAttrs.phaser,
-						start: levelInfoBackgroundAttrs.start
-					}
-				},
-				{
-					img: 'level04Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level04Preview',
-						phaser: levelInfoBackgroundAttrs.phaser,
-						start: levelInfoBackgroundAttrs.start
-					}
-				},
-				{
-					img: 'level05Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level05Preview',
-						phaser: levelInfoBackgroundAttrs.phaser,
-						start: levelInfoBackgroundAttrs.start
-					}
-				},
-				{
-					img: 'level06Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level06Preview',
-						phaser: levelInfoBackgroundAttrs.phaser,
-						start: levelInfoBackgroundAttrs.start
-					}
-				},
-				{
-					img: 'level07Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level07Preview',
-						phaser: levelInfoBackgroundAttrs.phaser,
-						start: levelInfoBackgroundAttrs.start
-					}
-				},
-				{
-					img: 'level08Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level08Preview',
-						phaser: levelInfoBackgroundAttrs.phaser,
-						start: levelInfoBackgroundAttrs.start
-					}
-				},
-				{
-					img: 'level09Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level09Preview',
-						phaser: levelInfoBackgroundAttrs.phaser,
-						start: levelInfoBackgroundAttrs.start
-					}
-				},
-				{
-					img: 'level10Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level10Preview',
-						phaser: levelInfoBackgroundAttrs.phaser,
-						start: levelInfoBackgroundAttrs.start
-					}
-				},
-				{
-					img: 'level11Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level11Preview',
-						phaser: levelInfoBackgroundAttrs.phaser,
-						start: levelInfoBackgroundAttrs.start
-					}
-				}
+				levelInfoBackgrounds: [
+					levelInfoBackgrounds[0],
+					levelInfoBackgrounds[1],
+					levelInfoBackgrounds[2],
+					levelInfoBackgrounds[3],
+					levelInfoBackgrounds[4],
+					levelInfoBackgrounds[5],
+					levelInfoBackgrounds[6],
+					levelInfoBackgrounds[7],
+					levelInfoBackgrounds[8],
+					levelInfoBackgrounds[9],
+					levelInfoBackgrounds[10],
 				],
 				attrs: [
 				{
@@ -3751,7 +3771,7 @@ Polyworks.Config = (function() {
 			// level 3
 			{
 				name: 'level03',
-				text: 'the tangled thorns',
+				text: 'heart of the wildwood',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -4983,7 +5003,7 @@ Polyworks.Config = (function() {
 			// level 4
 			{
 				name: 'level04',
-				text: 'heart of the wildwood',
+				text: 'the tangled thorns',
 				cl: 'LevelState',
 				world: {
 					x: 0,

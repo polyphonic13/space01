@@ -49,7 +49,7 @@ Polyworks.MapState = (function() {
 	
 	MapState.prototype.createLevelInfo = function(winW, stageWidth, stateGroup) {
 		this.model.levelInfoCollection = [];
-		var levelInfoBackgroundAttrs = this.model.levelInfoBackgroundAttrs;
+		var levelInfoBackgrounds = this.model.levelInfoBackgrounds;
 		var levelCount = PolyworksGame.levelCount;
 		var levelInfoConfig;
 		var levelIdx;
@@ -66,7 +66,7 @@ Polyworks.MapState = (function() {
 					trace('\t\tname = ' + levelInfoAttrs.name);
 					switch(levelInfoAttrs.name) {
 						case 'levelInfoBackground': 
-						levelInfoGroup[idx] = levelInfoBackgroundAttrs[i];
+						levelInfoGroup[idx] = levelInfoBackgrounds[i];
 						break;
 
 						case 'playButtonSmall':
