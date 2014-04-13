@@ -14,7 +14,7 @@ Polyworks.Text = (function() {
 	}
 	
 	Text.prototype.begin = function() {
-		trace('Text['+this.model.name+']/begin, listeners = ', this.model.attrs.listeners);
+		// trace('Text['+this.model.name+']/begin, listeners = ', this.model.attrs.listeners);
 		var attrs = this.model.attrs;
 		var content = attrs.defaultContent;
 		this.alignAndPosition();;
@@ -32,7 +32,7 @@ Polyworks.Text = (function() {
 	};
 
 	Text.prototype.alignAndPosition = function() {
-		trace('============= Text['+this.model.name+']/position')
+		// trace('============= Text['+this.model.name+']/position')
 		// trace('\ttext width = ' + this.width);
 		var attrs = this.model.attrs;
 		if(attrs.alignX) {
@@ -42,15 +42,15 @@ Polyworks.Text = (function() {
 				break;
 				
 				case 'windowRight':
-				trace('\taligning right to window, x = ' + this.x + ', width = ' + this.width);
+				// trace('\taligning right to window, x = ' + this.x + ', width = ' + this.width);
 				this.x = Polyworks.Stage.winW - this.width;
-				trace('\tx now = ' + this.x);
+				// trace('\tx now = ' + this.x);
 				break;
 				
 				case 'stageRight':
-				trace('\taligning right to stage, x = ' + this.x + ', width = ' + this.width);
+				// trace('\taligning right to stage, x = ' + this.x + ', width = ' + this.width);
 				this.x = Polyworks.Stage.width - this.width;
-				trace('\tx now = ' + this.x);
+				// trace('\tx now = ' + this.x);
 				break;
 				
 				default: 
@@ -71,7 +71,7 @@ Polyworks.Text = (function() {
 	};
 	
 	Text.prototype.onUpdate = function(event) {
-		trace('Text['+this.model.name+']/onUpdate, width = ' + this.width + ', event = ', event);
+		// trace('Text['+this.model.name+']/onUpdate, width = ' + this.width + ', event = ', event);
 		var context;
 		if(event.context) {
 			context = event.context;
@@ -82,7 +82,7 @@ Polyworks.Text = (function() {
 		}
 
 		this.content = Polyworks.Utils.parseMarkup(this.model.attrs.defaultContent, context);
-		trace('\twidth now = ' + this.width);
+		// trace('\twidth now = ' + this.width);
 		// this.alignAndPosition();
 	};
 	

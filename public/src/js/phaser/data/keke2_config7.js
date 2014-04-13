@@ -1375,8 +1375,6 @@ Polyworks.Config = (function() {
 					'restartButton',
 					'quitButton'
 				],
-				tilemaps: [],
-				tilesets: [],
 				attrs: [
 				{
 					name: 'menuGroup',
@@ -1455,8 +1453,6 @@ Polyworks.Config = (function() {
 					'mapLocationMarkerCrystals',
 					'menuButton'
 				],
-				tilemaps: [],
-				tilesets: [],
 				pages: [
 				{
 					name: 'page1',
@@ -1864,8 +1860,6 @@ Polyworks.Config = (function() {
 					'keke',
 					'caterpillar01'
 				],
-				tilemaps: [],
-				tilesets: [],
 				attrs: [
 				// scenery
 				{
@@ -2836,8 +2830,6 @@ Polyworks.Config = (function() {
 					'keke',
 					'caterpillar01'
 				],
-				tilemaps: [],
-				tilesets: [],
 				attrs: [
 				// scenery
 				{
@@ -3971,8 +3963,6 @@ Polyworks.Config = (function() {
 					'keke',
 					'caterpillar01'
 				],
-				tilemaps: [],
-				tilesets: [],
 				attrs: [
 				// scenery
 				{
@@ -5205,8 +5195,6 @@ Polyworks.Config = (function() {
 					'caterpillar01',
 					'caterpillar02'
 				],
-				tilemaps: [],
-				tilesets: [],
 				attrs: [
 				// scenery
 				{
@@ -6596,8 +6584,6 @@ Polyworks.Config = (function() {
 					'branch03LeftAnimated',
 					'branch03RightAnimated'
 				],
-				tilemaps: [],
-				tilesets: [],
 				attrs: [
 				// scenery
 				{
@@ -8325,8 +8311,6 @@ Polyworks.Config = (function() {
 					'rockPlatform04Animated',
 					'keke'
 				],
-				tilemaps: [],
-				tilesets: [],
 				attrs: [
 				// scenery
 				{
@@ -9651,8 +9635,6 @@ Polyworks.Config = (function() {
 					'mapButton',
 					'keke'
 				],
-				tilemaps: [],
-				tilesets: [],
 				attrs: [
 				// scenery
 				{
@@ -11769,8 +11751,6 @@ Polyworks.Config = (function() {
 					'mapButton',
 					'keke'
 				],
-				tilemaps: [],
-				tilesets: [],
 				attrs: [
 				// scenery
 				{
@@ -14079,8 +14059,6 @@ Polyworks.Config = (function() {
 					'mapButton',
 					'keke'
 				],
-				tilemaps: [],
-				tilesets: [],
 				attrs: [
 				// scenery
 				{
@@ -16056,8 +16034,6 @@ Polyworks.Config = (function() {
 					'mapButton',
 					'keke'
 				],
-				tilemaps: [],
-				tilesets: [],
 				attrs: [
 				// scenery
 				{
@@ -18033,8 +18009,6 @@ Polyworks.Config = (function() {
 					'mapButton',
 					'keke'
 				],
-				tilemaps: [],
-				tilesets: [],
 				attrs: [
 				// scenery
 				{
@@ -19970,8 +19944,6 @@ Polyworks.Config = (function() {
 					'mapButton',
 					'menuButton'
 				],
-				tilemaps: [],
-				tilesets: [],
 				attrs: [
 				{
 					name: 'completed-group',
@@ -20042,8 +20014,6 @@ Polyworks.Config = (function() {
 					'menuButton',
 					'restartButton'
 				],
-				tilemaps: [],
-				tilesets: [],
 				attrs: [
 				{
 					name: 'gameOver-group',

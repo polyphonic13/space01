@@ -41,9 +41,7 @@ Polyworks.State = (function() {
 		var phaser = PolyworksGame.phaser;
 		var loaded = {
 			images: {},
-			sprites: {},
-			tilemaps: {},
-			tilesets: {}
+			sprites: {}
 		};
 		
 		// trace('State['+this.model.name+']/preLoad, loaded = ' + this.model.loaded);
@@ -80,39 +78,6 @@ Polyworks.State = (function() {
 					this
 				);
 			}
-			if(this.model.tilemaps.length > 0) {
-				var tilemaps = PolyworksGame.get('tilemaps');
-				Polyworks.Utils.each(this.model.tilemaps,
-					function(map, key) {
-						trace('\t\ttilemap['+map+'] loaded = ' + PolyworksGame.loaded.tilemaps[map]);
-						if(!PolyworksGame.loaded.tilemaps[map]) {
-							var tilemap = tilemaps[map];
-							trace('\t\t\ttilemap = ', tilemap);
-							this.toLoad++;
-							phaser.load.tilemap(map, tilemap.url, null, Phaser.Tilemap.TILED_JSON);
-							loaded.tilemaps[map] = true;
-						}
-					},
-					this
-				);
-			}
-			if(this.model.tilesets.length > 0) {
-				var tilesets = PolyworksGame.get('tilesets');
-				Polyworks.Utils.each(this.model.tilesets,
-					function(tiles, key) {
-						trace('\t\ttileset['+tiles+'] loaded = ' + PolyworksGame.loaded.tilesets[tiles]);
-						if(!PolyworksGame.loaded.tilesets[tiles]) {
-							var tileset = tilesets[tiles];
-							trace('\t\t\ttileset = ', tileset);
-							this.toLoad++;
-							phaser.load.tileset(tiles, tileset.url, tileset.width, tileset.height, tileset.tileMax, tileset.margin, tileset.spacing);
-							loaded.tilesets[tiles] = true;
-						}
-					},
-					this
-				);
-			}
-
 			PolyworksGame.loaded = Polyworks.Utils.extend(PolyworksGame.loaded, loaded);
 			this.model.loaded = true;
 		}

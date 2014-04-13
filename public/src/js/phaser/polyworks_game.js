@@ -291,13 +291,9 @@ PolyworksGame = (function() {
 		var phaser = PolyworksGame.phaser;
 		var images = _model.images;
 		var sprites = _model.sprites;
-		var tilemaps = _model.tilemaps;
-		var tilesets = _model.tilesets;
 		var loaded = {
 			images: {},
-			sprites: {},
-			tilemaps: {},
-			tilesets: {}
+			sprites: {}
 		};
 
 		Polyworks.Utils.each(images,
@@ -318,27 +314,6 @@ PolyworksGame = (function() {
 					phaser.load.spritesheet(key, sprite.url, sprite.width, sprite.height, sprite.frames);
 				}
 				loaded.sprites[key] = false;
-			},
-			this
-		);
-
-		Polyworks.Utils.each(tilemaps,
-			function(tilemap, key) {
-				if(_model.preloadAll) {
-					phaser.load.tilemap(key, tilemap.url, null, Phaser.Tilemap.TILED_JSON);
-				}
-				loaded.tilemaps[key] = false;
-			},
-			this
-		);
-
-		// trace('preload sprites');
-		Polyworks.Utils.each(tilesets,
-			function(tileset, key) {
-				if(_model.preloadAll) {
-					phaser.load.tileset(key, tileset.url, tileset.width, tileset.height, tileset.margin, tileset.spacing);
-				}
-				loaded.tilesets[key] = false;
 			},
 			this
 		);
