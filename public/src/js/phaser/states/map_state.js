@@ -57,13 +57,13 @@ Polyworks.MapState = (function() {
 		for(var i = 0; i < levelCount; i++) {
 			var levelInfoGroup = Polyworks.Utils.clone(PolyworksGame.get('sharedGroups').levelInfo);
 			var levelInfo = PolyworksGame.getLevelInfo(i);
-			trace('\ti = ' + i);
+			// trace('\ti = ' + i);
 			levelIdx = (i < 9) ? ('0' + (i+1)) : (i+1);
 
 			// set the specific attribute values for this level
 			Polyworks.Utils.each(levelInfoGroup,
 				function(levelInfoAttrs, idx) {
-					trace('\t\tname = ' + levelInfoAttrs.name);
+					// trace('\t\tname = ' + levelInfoAttrs.name);
 					switch(levelInfoAttrs.name) {
 						case 'levelInfoBackground': 
 						levelInfoGroup[idx] = levelInfoBackgrounds[i];
@@ -121,7 +121,7 @@ Polyworks.MapState = (function() {
 	};
 	
 	MapState.prototype.onShowLevelInfo = function(event) {
-		trace('MapState/onShowLevelInfo, event = ', event, this);
+		// trace('MapState/onShowLevelInfo, event = ', event, this);
 		var collection = this.model.collection;
 		Polyworks.Utils.each(collection,
 			function(child) {
@@ -136,7 +136,7 @@ Polyworks.MapState = (function() {
 	};
 	
 	MapState.prototype.onHideLevelInfo = function(event) {
-		trace('MapState/onHideLevelInfo, event = ', event);
+		// trace('MapState/onHideLevelInfo, event = ', event);
 		var collection = this.model.collection;
 		Polyworks.Utils.each(collection,
 			function(child) {

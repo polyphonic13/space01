@@ -14,18 +14,11 @@ Polyworks.Text = (function() {
 	}
 	
 	Text.prototype.begin = function() {
-		// trace('Text['+this.model.name+']/begin, listeners = ', this.model.attrs.listeners);
+		trace('Text['+this.model.name+']/begin, listeners = ', this.model.attrs.listeners);
 		var attrs = this.model.attrs;
 		var content = attrs.defaultContent;
-
-		// trace('\ttext width = ' + this.width);
-		if(attrs.centerX) {
-			this.x = Polyworks.Stage.winW/2 - this.width/2;
-		}
-		if(attrs.centerY) {
-			this.y = Polyworks.Stage.winH/2 - this.height/2;
-		}
-
+		this.alignAndPosition();;
+		
 		var listeners = attrs.listeners;
 		if(listeners) {
 			var _this = this;
@@ -38,8 +31,47 @@ Polyworks.Text = (function() {
 		}
 	};
 
+	Text.prototype.alignAndPosition = function() {
+		trace('============= Text['+this.model.name+']/position')
+		// trace('\ttext width = ' + this.width);
+		var attrs = this.model.attrs;
+		if(attrs.alignX) {
+			switch(attrs.alignX) {
+				case 'center':
+				this.x = Polyworks.Stage.winW/2 - this.width/2;
+				break;
+				
+				case 'windowRight':
+				trace('\taligning right to window, x = ' + this.x + ', width = ' + this.width);
+				this.x = Polyworks.Stage.winW - this.width;
+				trace('\tx now = ' + this.x);
+				break;
+				
+				case 'stageRight':
+				trace('\taligning right to stage, x = ' + this.x + ', width = ' + this.width);
+				this.x = Polyworks.Stage.width - this.width;
+				trace('\tx now = ' + this.x);
+				break;
+				
+				default: 
+				break;
+			}
+		}
+		if(attrs.alignY) {
+			switch(attrs.alignY) {
+				case 'center':
+				this.y = Polyworks.Stage.winH/2 - this.height/2;
+				break;
+				
+				default:
+				break;
+			}
+		}
+
+	};
+	
 	Text.prototype.onUpdate = function(event) {
-		// trace('Text['+this.model.name+']/onUpdate, event = ', event);
+		trace('Text['+this.model.name+']/onUpdate, width = ' + this.width + ', event = ', event);
 		var context;
 		if(event.context) {
 			context = event.context;
@@ -50,6 +82,8 @@ Polyworks.Text = (function() {
 		}
 
 		this.content = Polyworks.Utils.parseMarkup(this.model.attrs.defaultContent, context);
+		trace('\twidth now = ' + this.width);
+		// this.alignAndPosition();
 	};
 	
 	Text.prototype.destroy = function() {

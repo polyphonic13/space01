@@ -23,7 +23,7 @@ Polyworks.Config = (function() {
 			sm: (stageUnit * 0.8),
 			md: (stageUnit * 0.75),
 			lg: (stageUnit * 1.0),
-			xl: (stageUnit * 1.75)
+			xl: (stageUnit * 1.5)
 		};
 
 		
@@ -31,7 +31,7 @@ Polyworks.Config = (function() {
 			phaser: {
 				width: stageWidth * 0.85,
 				height: stageHeight * 0.85,
-				alpha: 0.50
+				alpha: 0.60
 			},
 			start: {
 				x: (winW/2) - ((stageWidth * 0.85)/2),
@@ -41,7 +41,7 @@ Polyworks.Config = (function() {
 
 		var levelInfoBackgrounds = [
 		{
-			img: 'level01Preview',
+			name: 'level01Preview',
 			cl: 'Sprite',
 			attrs: {
 				img: 'level01Preview',
@@ -50,7 +50,7 @@ Polyworks.Config = (function() {
 			}
 		},
 		{
-			img: 'level02Preview',
+			name: 'level02Preview',
 			cl: 'Sprite',
 			attrs: {
 				img: 'level02Preview',
@@ -59,7 +59,7 @@ Polyworks.Config = (function() {
 			}
 		},
 		{
-			img: 'level03Preview',
+			name: 'level03Preview',
 			cl: 'Sprite',
 			attrs: {
 				img: 'level03Preview',
@@ -68,7 +68,7 @@ Polyworks.Config = (function() {
 			}
 		},
 		{
-			img: 'level04Preview',
+			name: 'level04Preview',
 			cl: 'Sprite',
 			attrs: {
 				img: 'level04Preview',
@@ -77,7 +77,7 @@ Polyworks.Config = (function() {
 			}
 		},
 		{
-			img: 'level05Preview',
+			name: 'level05Preview',
 			cl: 'Sprite',
 			attrs: {
 				img: 'level05Preview',
@@ -86,7 +86,7 @@ Polyworks.Config = (function() {
 			}
 		},
 		{
-			img: 'level06Preview',
+			name: 'level06Preview',
 			cl: 'Sprite',
 			attrs: {
 				img: 'level06Preview',
@@ -95,7 +95,7 @@ Polyworks.Config = (function() {
 			}
 		},
 		{
-			img: 'level07Preview',
+			name: 'level07Preview',
 			cl: 'Sprite',
 			attrs: {
 				img: 'level07Preview',
@@ -104,7 +104,7 @@ Polyworks.Config = (function() {
 			}
 		},
 		{
-			img: 'level08Preview',
+			name: 'level08Preview',
 			cl: 'Sprite',
 			attrs: {
 				img: 'level08Preview',
@@ -113,7 +113,7 @@ Polyworks.Config = (function() {
 			}
 		},
 		{
-			img: 'level09Preview',
+			name: 'level09Preview',
 			cl: 'Sprite',
 			attrs: {
 				img: 'level09Preview',
@@ -122,7 +122,7 @@ Polyworks.Config = (function() {
 			}
 		},
 		{
-			img: 'level10Preview',
+			name: 'level10Preview',
 			cl: 'Sprite',
 			attrs: {
 				img: 'level10Preview',
@@ -131,7 +131,7 @@ Polyworks.Config = (function() {
 			}
 		},
 		{
-			img: 'level11Preview',
+			name: 'level11Preview',
 			cl: 'Sprite',
 			attrs: {
 				img: 'level11Preview',
@@ -953,7 +953,7 @@ Polyworks.Config = (function() {
 					name: 'levelStatus',
 					cl: 'Text',
 					attrs: {
-						// centerX: true,
+						// alignX: 'stageRight',
 						x: (stageUnit * 3),
 						y: winH - (stageUnit * 3),
 						defaultContent: '',
@@ -968,7 +968,7 @@ Polyworks.Config = (function() {
 					name: 'highScore',
 					cl: 'Text',
 					attrs: {
-						// centerX: true,
+						// alignX: 'stageRight',
 						x: (stageUnit * 3),
 						y: winH - (stageUnit * 1.75),
 						defaultContent: '',
@@ -1094,6 +1094,7 @@ Polyworks.Config = (function() {
 					name: 'score',
 					cl: 'Text',
 					attrs: {
+						// alignX: 'stageRight',
 						x: (stageUnit * 3),
 						y: winH - (stageUnit * 3),
 						style: { 
@@ -1111,7 +1112,7 @@ Polyworks.Config = (function() {
 					name: 'highScore',
 					cl: 'Text',
 					attrs: {
-						// centerX: true,
+						// alignX: 'stageRight',
 						x: (stageUnit * 3),
 						y: winH - (stageUnit * 1.75),
 						defaultContent: '~{currentLevelHighScore}~',
@@ -1126,12 +1127,12 @@ Polyworks.Config = (function() {
 					name: 'paused',
 					cl: 'Text',
 					attrs: {
-						centerX: true,
-						centerY: true,
+						alignX: 'center',
+						alignY: 'center',
 						style: { 
 							font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
-							align: 'left'
+							align: 'center'
 						},
 						defaultContent: 'paused',
 					}
@@ -1240,7 +1241,7 @@ Polyworks.Config = (function() {
 					name: 'highScore',
 					cl: 'Text',
 					attrs: {
-						// centerX: true,
+						// alignX: 'center',
 						x: (stageUnit * 3),
 						y: winH - (stageUnit * 1.75),
 						defaultContent: '~{currentLevelHighScore}~',
@@ -1258,12 +1259,12 @@ Polyworks.Config = (function() {
 					name: 'completed',
 					cl: 'Text',
 					attrs: {
-						centerX: true,
-						centerY: true,
+						alignX: 'center',
+						alignY: 'center',
 						style: { 
 							font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
-							align: 'left'
+							align: 'center'
 						},
 						defaultContent: 'cleared',
 					}
@@ -1779,8 +1780,8 @@ Polyworks.Config = (function() {
 					// 	name: 'crystalsTitle',
 					// 	cl: 'Text',
 					// 	attrs: {
-					// 		centerX: false,
-					// 		centerY: false,
+					// 		alignX: 'none',
+					// 		alignY: 'none',
 					// 		x: (winW/2) + (stageWidth/2) - (stageUnit * 6),
 					// 		y: (winH/2) + (stageHeight/2) - (stageUnit * 1.33),
 					// 		defaultContent: 'crystals collected:',
@@ -1809,7 +1810,7 @@ Polyworks.Config = (function() {
 			// level 1
 			{
 				name: 'level01',
-				text: 'the forest entrance',
+				text: 'forest entrance',
 				cl: 'LevelState',
 				world: {
 					x: 0,
@@ -2974,13 +2975,28 @@ Polyworks.Config = (function() {
 								height: (stageHeight * 3)
 							},
 							start: {
-								x: (stageWidth * 2),
+								x: (stageWidth),
 								y: winH - (stageHeight * 3)
 							}
 						}
 					},
 					{
 						name: 'tree02',
+						cl: 'Sprite',
+						attrs: {
+							img: 'tree01',
+							phaser: {
+								width: (stageHeight * 2),
+								height: (stageHeight * 3)
+							},
+							start: {
+								x: (stageWidth * 2),
+								y: winH - (stageHeight * 3)
+							}
+						}
+					},
+					{
+						name: 'tree03',
 						cl: 'Sprite',
 						attrs: {
 							img: 'tree01',
@@ -3104,7 +3120,120 @@ Polyworks.Config = (function() {
 						{
 							name: 'dynamicTerrain',
 							cl: 'PhysicalGroupCollection',
-							attrs: []
+							attrs: [
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aLeft',
+									start: {
+										x: (stageWidth) + (stageUnit * 7),
+										y: winH - (stageUnit * 2.25)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aRight',
+									start: {
+										x: (stageWidth) + (stageUnit * 10),
+										y: winH - (stageUnit * 4)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aLeft',
+									start: {
+										x: (stageWidth) + (stageUnit * 7),
+										y: winH - (stageUnit * 5.5)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aRight',
+									start: {
+										x: (stageWidth) + (stageUnit * 10),
+										y: winH - (stageUnit * 7)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Left',
+									start: {
+										x: (stageWidth) + (stageUnit * 7),
+										y: winH - (stageUnit * 8.5)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									start: {
+										x: (stageWidth) + (stageUnit * 10),
+										y: winH - (stageUnit * 10)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									start: {
+										x: (stageWidth) + (stageUnit * 9.5),
+										y: winH - (stageUnit * 12)
+									},
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.4) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							}
+							]
 						},
 						{
 							name: 'hazards',
@@ -19852,8 +19981,8 @@ Polyworks.Config = (function() {
 						name: 'title',
 						cl: 'Text',
 						attrs: {
-							centerX: true,
-							centerY: false,
+							alignX: 'center',
+							alignY: 'none',
 							x: 0,
 							y: (stageUnit * 0.5),
 							defaultContent: 'all completed!',
@@ -19868,8 +19997,8 @@ Polyworks.Config = (function() {
 						name: 'score',
 						cl: 'Text',
 						attrs: {
-							centerX: true,
-							centerY: false,
+							alignX: 'center',
+							alignY: 'none',
 							x: 0,
 							y: (stageUnit * 2.5),
 							style: { 
@@ -19924,8 +20053,8 @@ Polyworks.Config = (function() {
 						name: 'title',
 						cl: 'Text',
 						attrs: {
-							centerX: true,
-							centerY: false,
+							alignX: 'center',
+							alignY: 'none',
 							x: 0,
 							y: stageUnit,
 							defaultContent: 'game over',

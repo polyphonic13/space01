@@ -16,7 +16,7 @@ Polyworks.Collection = (function() {
 		trace('children.length = ' + children.length);
 		Polyworks.Utils.each(children,
 			function(c, i) {
-				trace('\t\ti = ' + i + ', c = ', c);
+				// trace('\t\ti = ' + i + ', c = ', c);
 				if(typeof(c) !== 'undefined') {
 					c.game = game;
 					c.ancestor = this;
