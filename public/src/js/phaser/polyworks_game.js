@@ -462,8 +462,7 @@ PolyworksGame = (function() {
 	}
 
 	function _beginSocial() {
-		// Polyworks.SocialManager.init(_model.social);
-		_socialManager = new Polyworks.SocialManager(_model.social);
+		Polyworks.SocialManager.init(_model.social);
 	}
 	
 	function _quit() {

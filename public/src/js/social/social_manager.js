@@ -7,19 +7,13 @@ Polyworks.SocialManager = (function() {
 		twitter: '../js/social/twitter.js'
 	};
 
-	function SocialManager(params) {
-		_model = Polyworks.Utils.extend(_model, params);
-		trace('SocialManager/init, _model = ', _model);
-		_loadSocialScripts();
-	}
-
-	// var socialManager = {
-	// 	init: function(params) {
-	// 		_model = Polyworks.Utils.extend(_model, params);
-	// 		trace('SocialManager/init, _model = ', _model);
-	// 		_loadSocialScripts();
-	// 	}
-	// };
+	var socialManager = {
+		init: function(params) {
+			_model = Polyworks.Utils.extend(_model, params);
+			trace('SocialManager/init, _model = ', _model);
+			_loadSocialScripts();
+		}
+	};
 	
 	function _loadSocialScripts() {
 		var loader = new Polyworks.Loader();
@@ -42,7 +36,5 @@ Polyworks.SocialManager = (function() {
 		trace('SocialManager/_allApisLoaded');
 	}
 	
-	return SocialManager;
-})();
-// 	return socialManager;
-// }());
+	return socialManager;
+}());
