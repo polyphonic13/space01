@@ -11,9 +11,14 @@ Polyworks.SocialManager = (function() {
 		init: function(params) {
 			_model = Polyworks.Utils.extend(_model, params);
 			trace('SocialManager/init, _model = ', _model);
+			_initElements();
 			_loadSocialScripts();
 		}
 	};
+	
+	function _initElements() {
+		
+	}
 	
 	function _loadSocialScripts() {
 		var loader = new Polyworks.Loader();
