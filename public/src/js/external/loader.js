@@ -1,6 +1,7 @@
 Polyworks.Loader = (function() {
 	
 	function Loader() {
+		trace('Loader/constructor');
 		this.numToLoad = 0;
 		this.numLoaded = 0;
 		this.fileCallback;
@@ -9,7 +10,8 @@ Polyworks.Loader = (function() {
 		this.head = document.getElementsByTagName('head')[0];
 	}
 	
-	Loader.prototype.batchJS = function(files, fileCallback, batchCallback, context) {
+	Loader.prototype.batchLoadJS = function(files, fileCallback, batchCallback, context) {
+		trace('Loader/batchLoadJS, files = ', files, '\tcontext = ', context);
 		this.fileCallback = fileCallback || null;
 		this.batchCallback = batchCallback || null;
 		this.context = context || window;

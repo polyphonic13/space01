@@ -4,7 +4,8 @@ PolyworksGame = (function() {
 	var _controls = {};
 	var _states = {};
 	var _levels = [];
-
+	var _socialManager; 
+	
 	var _gameTitle = '';
 	var _isTouchDevice = false;
 	var _stageInitialized = false;
@@ -325,6 +326,7 @@ PolyworksGame = (function() {
 		// trace('PolyworksGame/_create');
 		_beginControls();
 		_beginStates();
+		_beginSocial();
 	}
 	
 	function _onStageInitialized(event) {
@@ -459,6 +461,11 @@ PolyworksGame = (function() {
 		_statesInialized = true;
 	}
 
+	function _beginSocial() {
+		// Polyworks.SocialManager.init(_model.social);
+		_socialManager = new Polyworks.SocialManager(_model.social);
+	}
+	
 	function _quit() {
 		_removeListeners();
 		PolyworksGame.isQuit = true;

@@ -141,6 +141,14 @@ Polyworks.Config = (function() {
 		];
 
 		var c = {
+			// SOCIAL
+			social: {
+				apis: [
+					'facebook',
+					'gplus',
+					'twitter'
+				]
+			},
 			// PLAYER
 			player: {
 				name: 'keke',
@@ -1144,7 +1152,7 @@ Polyworks.Config = (function() {
 							fill: '#000000',
 							align: 'center'
 						},
-						defaultContent: 'paused',
+						defaultContent: 'paused'
 					}
 				},
 				{
@@ -1189,28 +1197,6 @@ Polyworks.Config = (function() {
 							}
 						}
 					}
-				// },
-				// {
-				// 	name: 'menuBtn',
-				// 	cl: 'InputButton',
-				// 	attrs: {
-				// 		img: 'menuButton',
-				// 		phaser: {
-				// 			width: (stageUnit * 1.5),
-				// 			height: (stageUnit * 1.5)
-				// 		},
-				// 		start: {
-				// 			x: (stageUnit * 0.5),
-				// 			y: (stageUnit * 4.5)
-				// 		},
-				// 		frames: [0, 0, 1],
-				// 		events: {
-				// 			released: {
-				// 				type: Polyworks.Events.CHANGE_STATE,
-				// 				value: 'menu'
-				// 			}
-				// 		}
-				// 	}
 				}
 				],
 				completedGUI: [
@@ -1244,7 +1230,7 @@ Polyworks.Config = (function() {
 						defaultContent: '~{currentLevelHighScore}~',
 						listeners: [
 							Polyworks.Events.LEVEL_CLEARED
-						],
+						]
 					}
 				},
 				{
@@ -1275,7 +1261,7 @@ Polyworks.Config = (function() {
 							fill: '#000000',
 							align: 'center'
 						},
-						defaultContent: 'cleared',
+						defaultContent: 'cleared'
 					}
 				},
 				{
@@ -1686,7 +1672,7 @@ Polyworks.Config = (function() {
 					levelInfoBackgrounds[7],
 					levelInfoBackgrounds[8],
 					levelInfoBackgrounds[9],
-					levelInfoBackgrounds[10],
+					levelInfoBackgrounds[10]
 				],
 				attrs: [
 				{
