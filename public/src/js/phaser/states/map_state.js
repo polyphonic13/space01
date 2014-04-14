@@ -69,7 +69,7 @@ Polyworks.MapState = (function() {
 						levelInfoGroup[idx] = levelInfoBackgrounds[i];
 						break;
 
-						case 'closeButton':
+						case 'mapButton':
 						levelInfoGroup[idx].attrs.events.released.value = i;
 						break;
 

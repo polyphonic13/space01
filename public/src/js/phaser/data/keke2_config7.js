@@ -26,7 +26,6 @@ Polyworks.Config = (function() {
 			xl: (stageUnit * 1.5)
 		};
 
-		
 		var levelInfoBackgroundAttrs = {
 			phaser: {
 				width: stageWidth * 0.85,
@@ -905,12 +904,13 @@ Polyworks.Config = (function() {
 					]
 				}
 			},
-			// SHARED GROUPS
+			// LEVEL STATUS TEXT	
 			levelStatusText: {
 				c: 'cleared',
 				u: 'unlocked',
 				l: 'locked'
 			},
+			// SHARED GROUPS
 			sharedGroups: {
 				levelInfo: [
 				{
@@ -962,53 +962,30 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
-					name: 'levelStatus',
+					name: 'highScore',
 					cl: 'Text',
 					attrs: {
-						// alignX: 'stageRight',
 						x: (stageUnit * 3),
 						y: winH - (stageUnit * 3),
 						defaultContent: '',
 						style: { 
 							font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
-							align: 'right'
+							align: 'left'
 						}
 					}
 				},
 				{
-					name: 'highScore',
+					name: 'levelStatus',
 					cl: 'Text',
 					attrs: {
-						// alignX: 'stageRight',
 						x: (stageUnit * 3),
 						y: winH - (stageUnit * 1.75),
 						defaultContent: '',
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
-							align: 'right'
-						}
-					}
-				},
-				{
-					name: 'closeButton',
-					cl: 'InputButton',
-					attrs: {
-						img: 'quitButton',
-						phaser: {
-							width: (stageUnit * 1.5),
-							height: (stageUnit * 1.5)
-						},
-						start: {
-							x: (stageUnit * 0.5),
-							y: (stageUnit * 0.5)
-						},
-						frames: [0, 0, 1],
-						events: {
-							released: {
-								type: Polyworks.Events.HIDE_LEVEL_INFO
-							}
+							align: 'left'
 						}
 					}
 				},
@@ -1023,11 +1000,32 @@ Polyworks.Config = (function() {
 						},
 						start: {
 							x: (stageUnit * 0.5),
-							y: (stageUnit * 2.5)
+							y: (stageUnit * 0.5)
 						},
 						events: {
 							released: {
 								type: Polyworks.Events.START_LEVEL
+							}
+						}
+					}
+				},
+				{
+					name: 'mapButton',
+					cl: 'InputButton',
+					attrs: {
+						img: 'mapButton',
+						phaser: {
+							width: (stageUnit * 1.5),
+							height: (stageUnit * 1.5)
+						},
+						start: {
+							x: (stageUnit * 0.5),
+							y: (stageUnit * 2.5)
+						},
+						frames: [0, 0, 1],
+						events: {
+							released: {
+								type: Polyworks.Events.HIDE_LEVEL_INFO
 							}
 						}
 					}
@@ -1103,7 +1101,7 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
-					name: 'score',
+					name: 'highScore',
 					cl: 'Text',
 					attrs: {
 						// alignX: 'stageRight',
@@ -1114,25 +1112,25 @@ Polyworks.Config = (function() {
 							fill: '#000000',
 							align: 'left'
 						},
-						defaultContent: 'score: ~{levelScore}~',
-						listeners: [
-							Polyworks.Events.LEVEL_SCORE_UPDATED
-						]
+						defaultContent: '~{currentLevelHighScore}~'
 					}
 				},
 				{
-					name: 'highScore',
+					name: 'score',
 					cl: 'Text',
 					attrs: {
 						// alignX: 'stageRight',
 						x: (stageUnit * 3),
 						y: winH - (stageUnit * 1.75),
-						defaultContent: '~{currentLevelHighScore}~',
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
 							align: 'right'
-						}
+						},
+						defaultContent: 'score: ~{levelScore}~',
+						listeners: [
+							Polyworks.Events.LEVEL_SCORE_UPDATED
+						]
 					}
 				},
 				{
@@ -1191,28 +1189,28 @@ Polyworks.Config = (function() {
 							}
 						}
 					}
-				},
-				{
-					name: 'menuBtn',
-					cl: 'InputButton',
-					attrs: {
-						img: 'menuButton',
-						phaser: {
-							width: (stageUnit * 1.5),
-							height: (stageUnit * 1.5)
-						},
-						start: {
-							x: (stageUnit * 0.5),
-							y: (stageUnit * 4.5)
-						},
-						frames: [0, 0, 1],
-						events: {
-							released: {
-								type: Polyworks.Events.CHANGE_STATE,
-								value: 'menu'
-							}
-						}
-					}
+				// },
+				// {
+				// 	name: 'menuBtn',
+				// 	cl: 'InputButton',
+				// 	attrs: {
+				// 		img: 'menuButton',
+				// 		phaser: {
+				// 			width: (stageUnit * 1.5),
+				// 			height: (stageUnit * 1.5)
+				// 		},
+				// 		start: {
+				// 			x: (stageUnit * 0.5),
+				// 			y: (stageUnit * 4.5)
+				// 		},
+				// 		frames: [0, 0, 1],
+				// 		events: {
+				// 			released: {
+				// 				type: Polyworks.Events.CHANGE_STATE,
+				// 				value: 'menu'
+				// 			}
+				// 		}
+				// 	}
 				}
 				],
 				completedGUI: [
@@ -1233,7 +1231,7 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
-					name: 'score',
+					name: 'highScore',
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
@@ -1243,28 +1241,27 @@ Polyworks.Config = (function() {
 							fill: '#000000',
 							align: 'left'
 						},
-						defaultContent: 'score: ~{levelScore}~',
-						listeners: [
-							Polyworks.Events.LEVEL_CLEARED
-						]
-					}
-				},
-				{
-					name: 'highScore',
-					cl: 'Text',
-					attrs: {
-						// alignX: 'center',
-						x: (stageUnit * 3),
-						y: winH - (stageUnit * 1.75),
 						defaultContent: '~{currentLevelHighScore}~',
 						listeners: [
 							Polyworks.Events.LEVEL_CLEARED
 						],
+					}
+				},
+				{
+					name: 'score',
+					cl: 'Text',
+					attrs: {
+						x: (stageUnit * 3),
+						y: winH - (stageUnit * 1.75),
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
 							align: 'right'
-						}
+						},
+						defaultContent: 'score: ~{levelScore}~',
+						listeners: [
+							Polyworks.Events.LEVEL_CLEARED
+						]
 					}
 				},
 				{

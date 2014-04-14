@@ -400,7 +400,7 @@ PolyworksGame = (function() {
 
 		if(PolyworksGame.levelScore > PolyworksGame.highScores[idx]) {
 			PolyworksGame.highScores[idx] = PolyworksGame.levelScore;
-			PolyworksGame.currentLevelHighScore = 'new high score: ' + PolyworksGame.levelScore + '!';
+			PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.levelScore + ' NEW';
 			Polyworks.EventCenter.trigger(Polyworks.Events.HIGH_SCORE_UPDATED);
 		}
 		idx++;
