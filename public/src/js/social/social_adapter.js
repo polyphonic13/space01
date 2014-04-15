@@ -3,7 +3,6 @@ Polyworks.SocialAdapter = (function() {
 	function SocialAdapter(params) {
 		this.model = params;
 		trace('SocialAdapter/init, this.model = ', this.model);
-		
 	}
 	
 	SocialAdapter.prototype.addRootDiv = function() {
@@ -13,17 +12,21 @@ Polyworks.SocialAdapter = (function() {
 		for (var key in attrs) {
 			div.setAttribute(key, attrs[key]);
 		}
-		div.className = this.model.rootEl.className;
+		if(this.model.rootEl.className) {
+			div.className = this.model.rootEl.className;
+		}
 		pops.appendChild(div);
 	};
 
-	 SocialAdapter.prototype.loadApi = function() {
-		var po = document.createElement('script'); 
-		po.type = 'text/javascript'; 
-		po.async = true;
-		po.src = 'https://apis.google.com/js/platform.js';
-		var s = document.getElementsByTagName('script')[0]; 
-		s.parentNode.insertBefore(po, s);
+	 SocialAdapter.prototype.loadApi = function(url, id) {
+		if(!document.getElementById('id')) {
+			var script = document.createElement('script'); 
+			script.type = 'text/javascript'; 
+			script.async = true;
+			script.src = url;
+			var s = document.getElementsByTagName('script')[0]; 
+			s.parentNode.insertBefore(script, s);
+		}
 	};
 
 	return SocialAdapter;

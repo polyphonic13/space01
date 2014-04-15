@@ -6,14 +6,7 @@
 Polyworks.GoogleAdapter = (function() {
 	Polyworks.Utils.inherits(GoogleAdapter, Polyworks.SocialAdapter);
 	
-	function GoogleAdapter(params) {
-		GoogleAdapter._super.constructor.call(this, params);
-	}
-	
-	return GoogleAdapter;
-	
-	
-	var this.model = {
+	var _defaults = {
 		rootEl: {
 			el: 'div',
 			attrs: {
@@ -21,17 +14,19 @@ Polyworks.GoogleAdapter = (function() {
 				'data-size': 'small'
 			},
 			className: 'g-plusone'
-		}
-	};
-	var adapter = {
-		init: function(params) {
-			this.model = Polyworks.Utils.extend(this.model, params);
-			trace('TwitterAdapter/init, this.model = ', this.model);
-			_addRootDiv();
-			_loadApi();
+		},
+		api: {
+			url: 'https://apis.google.com/js/platform.js',
+			id: 'google-jssdk'
 		}
 	};
 
-
-	return adapter;
+	function GoogleAdapter(params) {
+		params = Polyworks.Utils.extend(_defaults, params);
+		GoogleAdapter._super.constructor.call(this, params);
+		this.addRootDiv();
+		this.loadApi(this.model.api.url, this.model.api.id);
+	}
+	
+	return GoogleAdapter;
 }());

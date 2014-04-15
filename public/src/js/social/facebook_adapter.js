@@ -14,6 +14,8 @@
 -->
 */
 Polyworks.FacebookAdapter = (function() {
+	Polyworks.Utils.inherits(FacebookAdapter, Polyworks.SocialAdapter);
+
 	var POLYWORKS_APP_ID = '371443576332187';
 	var _defaults = {
 		rootEl: {
@@ -22,51 +24,32 @@ Polyworks.FacebookAdapter = (function() {
 				id: 'fb-root'
 			}
 		},
-		apiInitParams: {
+		adapterInitParams: {
 			appId: POLYWORKS_APP_ID,
 			status: true,
 			xfbml: true
+		},
+		api: {
+			url: "//connect.facebook.net/en_US/all.js",
+			id: 'facebook-jssdk'
 		}
 	};
 	
 	function FacebookAdapter(params) {
 		params = Polyworks.Utils.extend(_defaults, params);
 		FacebookAdapter._super.constructor.call(this, params);
+		this.addRootDiv();
+		this.addMethodToWindow();
+		this.loadApi(this.model.api.url, this.model.api.id);
 	}
 	
-	var adapter = {
-		init: function(params) {
-			this.model = Polyworks.Utils.extend(this.model, params);
-			_addRootDiv();
-			_addMethodToWindow();
-			_loadApi(document, 'script', 'facebook-jssdk');
-		}
-	}
-	
-	function _addRootDiv() {
-		var pops = this.model.parentEl || document.getElementsByTagName('body')[0];
-		var div = document.createElement(this.model.rootEl.el);
-		var attrs = this.model.rootEl.attrs;
-		for (var key in attrs) {
-			div.setAttribute(key, attrs[key]);
-		}
-		pops.appendChild(div);
-	}
-	
-	function _addMethodToWindow() {
+	FacebookAdapter.prototype.addMethodToWindow = function() {
+		var initParams = this.model.adapterInitParams;
 		window.fbAsyncInit = function() {
-			FB.init(this.model.apiInitParams);
+			FB.init(initParams);
 		};
-	}
+	};
 	
-	function _loadApi(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) {return;}
-		js = d.createElement(s); js.id = id;
-		js.src = "//connect.facebook.net/en_US/all.js";
-		fjs.parentNode.insertBefore(js, fjs);
-	}
-
 	return FacebookAdapter;
 })();
 

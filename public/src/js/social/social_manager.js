@@ -35,7 +35,7 @@ Polyworks.SocialManager = (function() {
 			},
 			this
 		);
-		
+
 		trace('SocialManager/_loadSocialScripts, urls = ', urls);
 		loader.batchLoadJS(urls, _apiLoaded, _allApisLoaded, this);
 	}
@@ -43,24 +43,15 @@ Polyworks.SocialManager = (function() {
 	function _apiLoaded(url, success, key) {
 		trace('SocialManager/_adapterLoaded, key = ' + key + ', success = ' + success);
 		if(success) {
-			_model.adapters.push(Polyworks[key]);
+			var adapter = new Polyworks[key]({
+				parentEl: _model.parentEl
+			});
+			_model.adapters.push(adapter);
 		}
 	}
 	
 	function _allApisLoaded() {
 		trace('SocialManager/_allAdaptersLoaded, adapters = ', _model.adapters);
-		_initAdapters();
-	}
-	
-	function _initAdapters() {
-		Polyworks.Utils.each(_model.adapters,
-			function(adapter) {
-				adapter.init({
-					parentEl: _model.parentEl
-				});
-			},
-			this
-		);
 	}
 	
 	return socialManager;
