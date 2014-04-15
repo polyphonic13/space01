@@ -14,9 +14,10 @@ Polyworks.TwitterAdapter = (function() {
 			attrs: {
 				id: 'twFollow',
 				href: 'https://twitter.com/KekePolyworks',
-				"data-show-count": false
+				'data-show-count': false
 			},
-			className: 'twitter-follow-button'
+			className: 'twitter-follow-button',
+			html: 'Follow @KekePolyworks'
 		},
 		api: {
 			url: '//platform.twitter.com/widgets.js',

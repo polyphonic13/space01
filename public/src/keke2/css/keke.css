@@ -105,8 +105,6 @@ body, canvas, div {
 	bottom: 25px;
 	right: 84px;
 
-	display: none;
-
 	position: absolute;
 	z-index: 5;
 }
@@ -116,8 +114,6 @@ body, canvas, div {
 	bottom: 25px;
 	right: 79px;
 
-	display: none;
-
 	position: absolute;
 	z-index: 5;
 }
@@ -125,8 +121,6 @@ body, canvas, div {
 #gPlusOne {
 	bottom: 25px;
 	right: 174px;
-	
-/*	display: none;*/
 	
 	position: absolute;
 	z-index 5;
@@ -143,6 +137,6 @@ body, canvas, div {
 	position: absolute;
 	z-index: 2;
 	
-	display: none;
+
 }
 

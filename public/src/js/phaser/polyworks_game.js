@@ -98,12 +98,6 @@ PolyworksGame = (function() {
 					// trace(_states);
 					PolyworksGame.addLoadingDiv();
 					PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
-
-					if(id === 'menu') {
-						_showSocialBar();
-					} else {
-						_hideSocialBar();
-					}
 				} else {
 					trace('ERROR: state['+id+'] not found');
 				}
@@ -166,27 +160,6 @@ PolyworksGame = (function() {
 			}
 		}
 	};
-
-	function _showSocialBar() {
-		_showHideSocialBar('block');
-	}
-	
-	function _hideSocialBar() {
-		_showHideSocialBar('none');
-	}
-
-	function _showHideSocialBar(display) {
-		trace('PolyworksGame/_showHideSocialBar, display = ' + display);
-		var length = socialBar.length;
-		var el;
-		for(var i = 0; i < length; i++) { 
-			trace('\tsocialBar['+i+'] = ' + socialBar[i]);
-			el = document.getElementById(socialBar[i]);
-			if(el !== null) {
-				el.style.display = display; 
-			}
-		}
-	}
 
 	function _addListeners() {
 		window.onorientationchange = function(event) {
