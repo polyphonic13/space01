@@ -24,7 +24,7 @@ Polyworks.GoogleAdapter = (function() {
 	function GoogleAdapter(params) {
 		params = Polyworks.Utils.extend(_defaults, params);
 		GoogleAdapter._super.constructor.call(this, params);
-		this.addRootDiv();
+		this.addRootElement();
 		this.loadApi(this.model.api.url, this.model.api.id);
 	}
 	

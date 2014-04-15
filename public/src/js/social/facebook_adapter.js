@@ -38,7 +38,7 @@ Polyworks.FacebookAdapter = (function() {
 	function FacebookAdapter(params) {
 		params = Polyworks.Utils.extend(_defaults, params);
 		FacebookAdapter._super.constructor.call(this, params);
-		this.addRootDiv();
+		this.addRootElement();
 		this.addMethodToWindow();
 		this.loadApi(this.model.api.url, this.model.api.id);
 	}

@@ -5,7 +5,7 @@ Polyworks.SocialAdapter = (function() {
 		trace('SocialAdapter/init, this.model = ', this.model);
 	}
 	
-	SocialAdapter.prototype.addRootDiv = function() {
+	SocialAdapter.prototype.addRootElement = function() {
 		var pops = this.model.parentEl || document.getElementsByTagName('body')[0];
 		var div = document.createElement(this.model.rootEl.el);
 		var attrs = this.model.rootEl.attrs;
@@ -16,6 +16,8 @@ Polyworks.SocialAdapter = (function() {
 			div.className = this.model.rootEl.className;
 		}
 		pops.appendChild(div);
+
+		this.rootEl = div;
 	};
 
 	 SocialAdapter.prototype.loadApi = function(url, id) {

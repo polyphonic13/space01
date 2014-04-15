@@ -15,7 +15,20 @@ Polyworks.SocialManager = (function() {
 			_model = Polyworks.Utils.extend(_model, params);
 			trace('SocialManager/init, _model = ', _model);
 			_initParentEl();
+			// this.hide();
 			_loadSocialScripts();
+		},
+		show: function() {
+			trace('SocialManager/show');
+			if(_model.parentEl) {
+				_model.parentEl.style.display = 'block';
+			}
+		},
+		hide: function() {
+			trace('SocialManager/hide');
+			if(_model.parentEl) {
+				_model.parentEl.style.display = 'none';
+			}
 		}
 	};
 	

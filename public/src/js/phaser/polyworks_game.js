@@ -98,6 +98,12 @@ PolyworksGame = (function() {
 					// trace(_states);
 					PolyworksGame.addLoadingDiv();
 					PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
+
+					if(id === 'menu') {
+						Polyworks.SocialManager.show();
+					} else {
+						Polyworks.SocialManager.hide();
+					}
 				} else {
 					trace('ERROR: state['+id+'] not found');
 				}

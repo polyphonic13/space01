@@ -16,8 +16,7 @@ Polyworks.TwitterAdapter = (function() {
 				href: 'https://twitter.com/KekePolyworks',
 				'data-show-count': false
 			},
-			className: 'twitter-follow-button',
-			html: 'Follow @KekePolyworks'
+			className: 'twitter-follow-button'
 		},
 		api: {
 			url: '//platform.twitter.com/widgets.js',
@@ -28,7 +27,7 @@ Polyworks.TwitterAdapter = (function() {
 	function TwitterAdapter(params) {
 		params = Polyworks.Utils.extend(_defaults, params);
 		TwitterAdapter._super.constructor.call(this, params);
-		this.addRootDiv();
+		this.addRootElement();
 		this.loadApi(this.model.api.url, this.model.api.id);
 	}
 
