@@ -2,21 +2,8 @@ body, canvas {
     margin: 0;
 	background: #ffffff;
 
-	text-align: center;
-/*	font-size: 30px; */
 	font-family: 'Arial', sans-serif;
 	color: #000000;
-}
-
-.socialButtons: {
-	background: #0000ff;
-	width: 100%;
-	height: 10%;
-	bottom: 5px;
-	right: 5px;
-	
-	position: absolute;
-	z-index: 5;
 }
 
 #startFullscreen {
@@ -29,7 +16,6 @@ body, canvas {
 	font-size: 5em;
 	font-family: 'Sue Ellen Francisco' cursive; 
 	color: #000000;
-/*	padding: -50px; */
 	margin: 0;
 	
 	position: absolute;
@@ -41,8 +27,6 @@ body, canvas {
 	text-align: center;
 	font-size: 1.5em;
 	font-family: 'Waiting for the Sunrise';
-/*	font-family: 'Sue Ellen Francisco' cursive; */
-/*	font-family: 'Smythe' cursive; */
 	color: #000000;
 	margin: 0;
 	
@@ -64,6 +48,7 @@ body, canvas {
 }
 
 #loading {
+	text-align: center;
 	width: 100%;
 	height: 100%;
 	left: 0px;
@@ -104,6 +89,18 @@ body, canvas {
 	z-index: 10;
 }
 
+#socialButtons {
+	width: 100%;
+	height: 10%;
+	bottom: 5px;
+	right: 5px;
+	text-align: right;
+	
+	position: absolute;
+	z-index: 5;
+	overflow: hidden;
+}
+
 /*
 #fbLike {
 	bottom: 5px;
@@ -139,13 +136,15 @@ body, canvas {
 }
 */
 #mailIcon {
-	width: 45px;
-	height: 45px;
-
-	background: url("../images/controls/mail_icon.png") no-repeat center;
-	background-size: 45px;
+	width: 38px;
+	height: 20px;
 	
-	display: block;
-
+	padding-right: 10px;
+	padding-left: 10px;
+	
+	background: url("../images/controls/mail_icon.png") no-repeat center;
+	background-size: 38px 20px;
+	
+	display: inline-block;
 }
 

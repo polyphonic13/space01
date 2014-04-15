@@ -145,7 +145,7 @@ Polyworks.Config = (function() {
 			social: {
 				parentId: 'socialButtons',
 				apis: [
-					// 'FacebookAdapter',
+					'FacebookAdapter',
 					'GoogleAdapter',
 					'TwitterAdapter'
 				],
