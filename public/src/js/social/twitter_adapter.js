@@ -6,7 +6,7 @@
 
 */
 Polyworks.TwitterAdapter = (function() {
-	var _model = {
+	var this.model = {
 		rootEl: {
 			el: 'a',
 			attrs: {
@@ -18,23 +18,26 @@ Polyworks.TwitterAdapter = (function() {
 		}
 	};
 
+	function TwitterAdapter(params) {
+		
+	}
 	var adapter = {
 		init: function(params) {
-			_model = Polyworks.Utils.extend(_model, params);
-			trace('TwitterAdapter/init, _model = ', _model);
+			this.model = Polyworks.Utils.extend(this.model, params);
+			trace('TwitterAdapter/init, this.model = ', this.model);
 			_addRootDiv();
 			_loadApi(document, 'script', 'twitter-wjs');
 		}
 	}
 
 	function _addRootDiv() {
-		var pops = _model.parentEl || document.getElementsByTagName('body')[0];
-		var div = document.createElement(_model.rootEl.el);
-		var attrs = _model.rootEl.attrs;
+		var pops = this.model.parentEl || document.getElementsByTagName('body')[0];
+		var div = document.createElement(this.model.rootEl.el);
+		var attrs = this.model.rootEl.attrs;
 		for (var key in attrs) {
 			div.setAttribute(key, attrs[key]);
 		}
-		div.className = _model.rootEl.className;
+		div.className = this.model.rootEl.className;
 		pops.appendChild(div);
 	}
 
@@ -49,5 +52,5 @@ Polyworks.TwitterAdapter = (function() {
 		}
 	}
 
-	return adapter;
+	return TwitterAdapter;
 }());

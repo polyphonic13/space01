@@ -4,7 +4,16 @@
 
 */
 Polyworks.GoogleAdapter = (function() {
-	var _model = {
+	Polyworks.Utils.inherits(GoogleAdapter, Polyworks.SocialAdapter);
+	
+	function GoogleAdapter(params) {
+		GoogleAdapter._super.constructor.call(this, params);
+	}
+	
+	return GoogleAdapter;
+	
+	
+	var this.model = {
 		rootEl: {
 			el: 'div',
 			attrs: {
@@ -16,32 +25,13 @@ Polyworks.GoogleAdapter = (function() {
 	};
 	var adapter = {
 		init: function(params) {
-			_model = Polyworks.Utils.extend(_model, params);
-			trace('TwitterAdapter/init, _model = ', _model);
+			this.model = Polyworks.Utils.extend(this.model, params);
+			trace('TwitterAdapter/init, this.model = ', this.model);
 			_addRootDiv();
 			_loadApi();
 		}
 	};
 
-	function _addRootDiv() {
-		var pops = _model.parentEl || document.getElementsByTagName('body')[0];
-		var div = document.createElement(_model.rootEl.el);
-		var attrs = _model.rootEl.attrs;
-		for (var key in attrs) {
-			div.setAttribute(key, attrs[key]);
-		}
-		div.className = _model.rootEl.className;
-		pops.appendChild(div);
-	}
-
-	function _loadApi() {
-		var po = document.createElement('script'); 
-		po.type = 'text/javascript'; 
-		po.async = true;
-		po.src = 'https://apis.google.com/js/platform.js';
-		var s = document.getElementsByTagName('script')[0]; 
-		s.parentNode.insertBefore(po, s);
-	}
 
 	return adapter;
 }());
