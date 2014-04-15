@@ -143,11 +143,11 @@ Polyworks.Config = (function() {
 		var c = {
 			// SOCIAL
 			social: {
-				parentEl: 'socialButtons',
+				parentId: 'socialButtons',
 				apis: [
-					'facebook',
-					'gplus',
-					'twitter'
+					'FacebookAdapter',
+					'GoogleAdapter',
+					'TwitterAdapter'
 				]
 			},
 			// PLAYER

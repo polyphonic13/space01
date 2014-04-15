@@ -1,44 +1,66 @@
 Polyworks.SocialManager = (function() {
 
-	var _model = {};
+	var _model = {
+		adapters: []
+	};
+	
 	var _urls = {
-		facebook: '../js/social/facebook.js',
-		gplus: '../js/social/gplus.js',
-		twitter: '../js/social/twitter.js'
+		FacebookAdapter: '../js/social/facebook_adapter.js',
+		GoogleAdapter: '../js/social/google_adapter.js',
+		TwitterAdapter: '../js/social/twitter_adapter.js'
 	};
 
 	var socialManager = {
 		init: function(params) {
 			_model = Polyworks.Utils.extend(_model, params);
 			trace('SocialManager/init, _model = ', _model);
-			_initElements();
+			_initParentEl();
 			_loadSocialScripts();
 		}
 	};
 	
-	function _initElements() {
-		
+	function _initParentEl() {
+		_model.parentEl = document.getElementById(_model.parentId) || document.getElementsByTagName('body')[0];
 	}
-	
+
 	function _loadSocialScripts() {
 		var loader = new Polyworks.Loader();
 		var urls = {};
-		var apis = _model.apis;
-		var length = apis.length;
 
-		for(var i = 0; i < length; i++) {
-			urls[apis[i]] = _urls[apis[i]];
-		}
+		Polyworks.Utils.each(_model.apis,
+			function(api, idx) {
+				if(_urls[api]) {
+					urls[api] = _urls[api];
+				}
+			},
+			this
+		);
+		
 		trace('SocialManager/_loadSocialScripts, urls = ', urls);
 		loader.batchLoadJS(urls, _apiLoaded, _allApisLoaded, this);
 	}
 	
 	function _apiLoaded(url, success, key) {
-		trace('SocialManager/_apiLoaded, key = ' + key + ', success = ' + success);
+		trace('SocialManager/_adapterLoaded, key = ' + key + ', success = ' + success);
+		if(success) {
+			_model.adapters.push(Polyworks[key]);
+		}
 	}
 	
 	function _allApisLoaded() {
-		trace('SocialManager/_allApisLoaded');
+		trace('SocialManager/_allAdaptersLoaded, adapters = ', _model.adapters);
+		_initAdapters();
+	}
+	
+	function _initAdapters() {
+		Polyworks.Utils.each(_model.adapters,
+			function(adapter) {
+				adapter.init({
+					parentEl: _model.parentEl
+				});
+			},
+			this
+		);
 	}
 	
 	return socialManager;
