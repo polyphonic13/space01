@@ -132,7 +132,7 @@ body, canvas, div {
 	right: 25px;
 	bottom: 12px;
 	
-	background: #ffffff url("../images/controls/mail_icon.png") no-repeat center;
+	background: url("../images/controls/mail_icon.png") no-repeat center;
 	background-size: 45px;
 	position: absolute;
 	z-index: 2;

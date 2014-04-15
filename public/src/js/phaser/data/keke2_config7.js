@@ -148,7 +148,36 @@ Polyworks.Config = (function() {
 					// 'FacebookAdapter',
 					'GoogleAdapter',
 					'TwitterAdapter'
-				]
+				],
+				listeners: {
+					changeState: {
+						match: {
+							value: 'menu',
+							action: {
+								method: 'show',
+								value: ''
+							}
+						},
+						nonmatch: {
+							action: {
+								method: 'hide',
+								value: ''
+							}
+						}
+					},
+					levelCleared: {
+						action: {
+							method: 'show',
+							value: ''
+						}
+					},
+					nextLevel: {
+						action: {
+							method: 'hide',
+							value: ''
+						}
+					}
+				}
 			},
 			// PLAYER
 			player: {

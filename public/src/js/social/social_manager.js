@@ -15,6 +15,7 @@ Polyworks.SocialManager = (function() {
 			_model = Polyworks.Utils.extend(_model, params);
 			trace('SocialManager/init, _model = ', _model);
 			_initParentEl();
+			_addListeners();
 			// this.hide();
 			_loadSocialScripts();
 		},
@@ -36,6 +37,31 @@ Polyworks.SocialManager = (function() {
 		_model.parentEl = document.getElementById(_model.parentId) || document.getElementsByTagName('body')[0];
 	}
 
+	function _addListeners() {
+		for(var key in _model.listeners) {
+			Polyworks.EventCenter.bind(key, _eventResponder, this);
+		}
+		// Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_STATE, _eventResponder, this);
+	}
+
+	function _eventResponder(event) {
+		trace('SocialManager/_eventResponder event = ', event);
+		var listener = _model.listeners[event.type];
+		var match = listener.match;
+		if(match) {
+			trace('\tthere is a match');
+			if(match.value === event.value) {
+				trace('\t\tvalue matches the event value, calling: ' + match.action.method);
+				Polyworks.SocialManager[match.action.method](match.action.value);
+			} else if(listener.nonmatch) {
+				trace('\t\tnonmatch calling: ' + listener.nonmatch.action.method);
+				Polyworks.SocialManager[listener.nonmatch.action.method](listener.nonmatch.action.value);
+			}
+		} else {
+			Polyworks.SocialManager[listener.action.method](listener.action.value);
+		}
+	}
+	
 	function _loadSocialScripts() {
 		var loader = new Polyworks.Loader();
 		var urls = {};
