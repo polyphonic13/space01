@@ -184,7 +184,12 @@ Polyworks.Config = (function() {
 							value: ''
 						}
 					}
-				}
+				},
+				initialElements: [
+					'fbLike',
+					'twFollow',
+					'gPlusOne'
+				]
 			},
 			// PLAYER
 			player: {

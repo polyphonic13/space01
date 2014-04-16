@@ -134,6 +134,9 @@ Polyworks.SocialManager = (function() {
 	function _allApisLoaded() {
 		trace('SocialManager/_allAdaptersLoaded, adapters = ', _model.adapters);
 		_initElementMap();
+		if(_model.initialElements) {
+			Polyworks.SocialManager.show(_model.initialElements);
+		}
 	}
 	
 	function _initElementMap() {

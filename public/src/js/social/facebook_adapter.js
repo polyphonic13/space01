@@ -1,6 +1,8 @@
 /*
 https://developers.facebook.com/docs/plugins/like-button
 https://developers.facebook.com/docs/plugins/share-button
+
+alertnate like button: http://stackoverflow.com/questions/4920945/facebook-how-to-change-like-button-image
 	<!-- FACEBOOK -->
     <div id='fb-root'></div>
 	<!-- END FB script-->
