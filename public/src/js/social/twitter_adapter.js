@@ -1,5 +1,10 @@
+
 /*
 https://about.twitter.com/resources/buttons
+
+http://www.graphicline.co.za/webmaster_tech/codesnippets/custom_tweet_button.htm
+https://dev.twitter.com/discussions/2441
+
 <!-- twitter follow -->
 <!--
 <a id="twFollow" href="https://twitter.com/KekePolyworks" class="twitter-follow-button" data-show-count="false">Follow @KekePolyworks</a>
