@@ -154,21 +154,28 @@ Polyworks.Config = (function() {
 						match: {
 							value: 'menu',
 							action: {
-								method: 'show',
-								value: ''
+								method: 'showSelected',
+								value: [
+									'fbLike',
+									'twitterFollow',
+									'googlePlusOne'
+								]
 							}
 						},
 						nonmatch: {
 							action: {
-								method: 'hide',
+								method: 'hideAll',
 								value: ''
 							}
 						}
 					},
 					levelCleared: {
 						action: {
-							method: 'show',
-							value: ''
+							method: 'showSelected',
+							value: [
+								'fbShare',
+								'twitterTweet'
+							]
 						}
 					},
 					nextLevel: {
