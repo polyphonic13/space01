@@ -74,8 +74,7 @@ PolyworksGame = (function() {
 		},
 
 		getLevelInfo: function(idx) {
-			trace('polyworks game/getLevelInfo, idx = ' + idx);
-			
+			// trace('polyworks game/getLevelInfo, idx = ' + idx);
 			var levelInfo = {
 				levelText: _levels[idx].model.text,
 				highScore: PolyworksGame.highScores[idx],
@@ -449,11 +448,13 @@ PolyworksGame = (function() {
 		PolyworksGame.isQuit = true;
 		// _killStates();
 		// Polyworks.EventCenter.reset();
+
 		_states[PolyworksGame.currentState].shutdown();
 		PolyworksGame.gameOver = true;
 		if(PolyworksGame.player) {
 			PolyworksGame.player.destroy();
 		}
+		Polyworks.SocialManager.destroy();
 		PolyworksGame.phaser.destroy();
 
 		var gameContainer = document.getElementById('gameContainer');

@@ -34,7 +34,7 @@ Polyworks.TwitterAdapter = (function() {
 		{
 			el: 'a',
 			attrs: {
-				'id': 'twFollow',
+				'id': 'twTweet',
 				'href': POLYWORKS_TWEET_URL,
 				'data-url': POLYWORKS_TWEET_DESTINATION_URL,
 				'data-via': 'KekePolyworks',

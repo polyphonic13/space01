@@ -25,7 +25,7 @@ Polyworks.GoogleAdapter = (function() {
 		{
 			el: 'div',
 			attrs: {
-				'id': 'googlePlusOne',
+				'id': 'gPlusOne',
 				'data-href': POLYWORKS_PLUS_ONE_URL,
 				'data-size': 'medium',
 				'data-annotation': 'none'

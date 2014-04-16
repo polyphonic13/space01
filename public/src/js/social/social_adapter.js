@@ -4,9 +4,36 @@ Polyworks.SocialAdapter = (function() {
 	function SocialAdapter(params) {
 		this.model = params;
 		this.parentEl = this.model.parentEl || document.getElementsByTagName('body')[0];
-		this.elements = [];
-		trace('SocialAdapter/init, this.model = ', this.model);
+		this.elements = {};
+		trace('SocialAdapter['+this.model.name+']/init, this.model = ', this.model);
 	}
+	
+	SocialAdapter.prototype.show = function(id) {
+		trace('SocialAdapter['+this.model.name+']/show, id = ' + id);
+		if(this.elements[id]) {
+			this.elements[id].style.display = 'block';
+		}
+	};
+	
+	SocialAdapter.prototype.hide = function(id) {
+		if(this.elements[id]) {
+			this.elements[id].style.display = 'none';
+		}
+	};
+	
+	SocialAdapter.prototype.showAll = function() {
+		for(var key in this.elements) {
+			this.elements[key].style.display = 'block';
+		}
+	};
+	
+	SocialAdapter.prototype.hideAll = function() {
+		trace('SocialAdapter['+this.model.name+']/hideAll');
+		for(var key in this.elements) {
+			trace('\telement['+key+'] = ', this.elements[key]);
+			this.elements[key].style.display = 'none';
+		}
+	};
 	
 	SocialAdapter.prototype.addElements = function() {
 		for(var key in this.model.elements) {
@@ -19,8 +46,10 @@ Polyworks.SocialAdapter = (function() {
 
 		var container = document.createElement('div');
 		container.className = SOCIAL_ELEMENT_CONTAINER;
-		container.setAttribute('id', attrs.id + '-container');
-		
+		var id = attrs.id;
+		container.setAttribute('id', id);
+		container.style.display = 'none';
+
 		var div = document.createElement(params.el);
 		for (var key in attrs) {
 			div.setAttribute(key, attrs[key]);
@@ -33,11 +62,11 @@ Polyworks.SocialAdapter = (function() {
 				div.style[key] = params.style[key];
 			}
 		}
-		
-		container.appendChild(div)
+
+		container.appendChild(div);
 		pops.appendChild(container);
 
-		this.elements.push(div);
+		this.elements[id] = container;
 	};
 
 	 SocialAdapter.prototype.loadApi = function(url, id) {
@@ -51,5 +80,12 @@ Polyworks.SocialAdapter = (function() {
 		}
 	};
 
+	SocialAdapter.prototype.destroy = function() {
+		for(var key in this.elements) {
+			this.parentEl.removeChild(this.elements[key]);
+		}
+		// this.parentEl.parentNode.removeChild(this.parentEl);
+	};
+	
 	return SocialAdapter;
 })();

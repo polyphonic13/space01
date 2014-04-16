@@ -53,7 +53,7 @@ Polyworks.MapState = (function() {
 		var levelCount = PolyworksGame.levelCount;
 		var levelInfoConfig;
 		var levelIdx;
-		trace('MapState/createLevelInfo, levelCount = ' + levelCount + ', levelInfoGroup = ', levelInfoGroup);
+		// trace('MapState/createLevelInfo, levelCount = ' + levelCount + ', levelInfoGroup = ', levelInfoGroup);
 		for(var i = 0; i < levelCount; i++) {
 			var levelInfoGroup = Polyworks.Utils.clone(PolyworksGame.get('sharedGroups').levelInfo);
 			var levelInfo = PolyworksGame.getLevelInfo(i);
@@ -96,7 +96,7 @@ Polyworks.MapState = (function() {
 				},
 				this
 			);
-			trace('\t\tlevelInfoGroup now: ', levelInfoGroup);
+			// trace('\t\tlevelInfoGroup now: ', levelInfoGroup);
 			levelInfoConfig = {
 				name: 'level' + levelIdx + 'Info',
 				cl: 'LevelInfo',

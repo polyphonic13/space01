@@ -154,11 +154,11 @@ Polyworks.Config = (function() {
 						match: {
 							value: 'menu',
 							action: {
-								method: 'showSelected',
+								method: 'show',
 								value: [
 									'fbLike',
-									'twitterFollow',
-									'googlePlusOne'
+									'twFollow',
+									'gPlusOne'
 								]
 							}
 						},
@@ -171,10 +171,10 @@ Polyworks.Config = (function() {
 					},
 					levelCleared: {
 						action: {
-							method: 'showSelected',
+							method: 'show',
 							value: [
 								'fbShare',
-								'twitterTweet'
+								'twTweet'
 							]
 						}
 					},
@@ -2739,7 +2739,8 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 4) + (stageUnit * 2),
-								y: winH - (stageUnit * 13)
+								// y: winH - (stageUnit * 13)
+								y: winH - (stageUnit * 2)
 							}
 						}
 					}

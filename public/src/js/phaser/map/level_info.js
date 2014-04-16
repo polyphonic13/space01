@@ -6,7 +6,7 @@ Polyworks.LevelInfo = (function() {
 	}
 	
 	LevelInfo.prototype.begin = function() {
-		trace('LevelInfo['+this.model.name+']/begin');
+		// trace('LevelInfo['+this.model.name+']/begin');
 		LevelInfo._super.begin.call(this);
 		this.hide();
 	};

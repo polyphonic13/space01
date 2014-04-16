@@ -1,7 +1,7 @@
 Polyworks.SocialManager = (function() {
 
 	var _model = {
-		adapters: []
+		adapters: {}
 	};
 	
 	var _urls = {
@@ -19,20 +19,47 @@ Polyworks.SocialManager = (function() {
 			// this.hide();
 			_loadSocialScripts();
 		},
-		show: function() {
-			trace('SocialManager/show');
-			if(_model.parentEl) {
-				_model.parentEl.style.display = 'block';
-			}
+		show: function(elements) {
+			trace('SocialManager/show, elements = ' + elements);
+			Polyworks.Utils.each(elements,
+				function(element) {
+					trace('\telement = ' + element);
+					if(_model.elementMap[element]) {
+						trace('\t\tadapter = ' + _model.elementMap[element]);
+						_model.adapters[_model.elementMap[element]].show(element);
+					}
+				},
+				this
+			);
 		},
-		showSelected: function() {
-			trace('SocialManager/showSelected');
+		hide: function(elements) {
+			trace('SocialManager/hide, elements = ' + elements);
+			Polyworks.Utils.each(elements,
+				function(element) {
+					trace('\telement = ' + element);
+					if(_model.elementMap[element]) {
+						_model.adapters[_model.elementMap[element]].hide(element);
+					}
+				},
+				this
+			);
+		},
+
+		showAll: function() {
+			trace('SocialManager/showAll');
+			for(var key in _model.adapters) {
+				_model.adapters[key].showAll();
+			}
 		},
 		hideAll: function() {
-			trace('SocialManager/hide');
-			if(_model.parentEl) {
-				_model.parentEl.style.display = 'none';
+			trace('SocialManager/hideAll');
+			for(var key in _model.adapters) {
+				_model.adapters[key].hideAll();
 			}
+		},
+		destroy: function() {
+			_removeListeners();
+			_destroyAdapters();
 		}
 	};
 	
@@ -44,7 +71,18 @@ Polyworks.SocialManager = (function() {
 		for(var key in _model.listeners) {
 			Polyworks.EventCenter.bind(key, _eventResponder, this);
 		}
-		// Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_STATE, _eventResponder, this);
+	}
+
+	function _removeListeners() {
+		for(var key in _model.listeners) {
+			Polyworks.EventCenter.unbind(key, _eventResponder, this);
+		}
+	}
+
+	function _destroyAdapters() {
+		for(var key in _model.adapters) {
+			_model.adapters[key].destroy();
+		}
 	}
 
 	function _eventResponder(event) {
@@ -86,14 +124,25 @@ Polyworks.SocialManager = (function() {
 		trace('SocialManager/_adapterLoaded, key = ' + key + ', success = ' + success);
 		if(success) {
 			var adapter = new Polyworks[key]({
+				name: key,
 				parentEl: _model.parentEl
 			});
-			_model.adapters.push(adapter);
+			_model.adapters[key] = adapter;
 		}
 	}
 	
 	function _allApisLoaded() {
 		trace('SocialManager/_allAdaptersLoaded, adapters = ', _model.adapters);
+		_initElementMap();
+	}
+	
+	function _initElementMap() {
+		_model.elementMap = {};
+		for(var adapter in _model.adapters) {
+			for(var element in _model.adapters[adapter].elements) {
+				_model.elementMap[element] = adapter;
+			}
+		}
 	}
 	
 	return socialManager;
