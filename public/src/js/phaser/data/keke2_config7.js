@@ -146,8 +146,8 @@ Polyworks.Config = (function() {
 				parentId: 'socialButtons',
 				apis: [
 					'FacebookAdapter',
-					'GoogleAdapter',
-					'TwitterAdapter'
+					'TwitterAdapter',
+					'GoogleAdapter'
 				],
 				listeners: {
 					changeState: {

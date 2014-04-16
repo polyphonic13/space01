@@ -8,16 +8,23 @@
 Polyworks.TwitterAdapter = (function() {
 	Polyworks.Utils.inherits(TwitterAdapter, Polyworks.SocialAdapter);
 
+	var POLYWORKS_FOLLOW_URL = 'https://twitter.com/KekePolyworks';
+	
 	var _defaults = {
-		rootEl: {
+		elements: [
+		{
 			el: 'a',
 			attrs: {
 				id: 'twFollow',
-				href: 'https://twitter.com/KekePolyworks',
+				href: POLYWORKS_FOLLOW_URL,
 				'data-show-count': false
 			},
-			className: 'twitter-follow-button'
-		},
+			className: 'twitter-follow-button',
+			style: {
+				padding: '2px',
+				position: 'absolute'
+			}
+		}],
 		api: {
 			url: '//platform.twitter.com/widgets.js',
 			id: 'twitter-wjs'
@@ -27,7 +34,7 @@ Polyworks.TwitterAdapter = (function() {
 	function TwitterAdapter(params) {
 		params = Polyworks.Utils.extend(_defaults, params);
 		TwitterAdapter._super.constructor.call(this, params);
-		this.addRootElement();
+		this.addElements();
 		this.loadApi(this.model.api.url, this.model.api.id);
 	}
 
