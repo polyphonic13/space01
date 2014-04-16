@@ -16,6 +16,14 @@ Polyworks.SocialManager = (function() {
 			trace('SocialManager/init, _model = ', _model);
 			_initParentEl();
 			_loadSocialScripts();
+		},
+		
+		show: function() {
+			
+		},
+		
+		hide: function() {
+			
 		}
 	};
 	

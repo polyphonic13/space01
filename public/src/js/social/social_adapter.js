@@ -1,4 +1,5 @@
 Polyworks.SocialAdapter = (function() {
+	var SOCIAL_ELEMENT_CONTAINER = 'buttonContainer';
 	
 	function SocialAdapter(params) {
 		this.model = params;
@@ -14,8 +15,13 @@ Polyworks.SocialAdapter = (function() {
 	};
 	
 	SocialAdapter.prototype.addElement = function(params, pops) {
-		var div = document.createElement(params.el);
 		var attrs = params.attrs;
+
+		var container = document.createElement('div');
+		container.className = SOCIAL_ELEMENT_CONTAINER;
+		container.setAttribute('id', attrs.id + '-container');
+		
+		var div = document.createElement(params.el);
 		for (var key in attrs) {
 			div.setAttribute(key, attrs[key]);
 		}
@@ -27,7 +33,9 @@ Polyworks.SocialAdapter = (function() {
 				div.style[key] = params.style[key];
 			}
 		}
-		pops.appendChild(div);
+		
+		container.appendChild(div)
+		pops.appendChild(container);
 
 		this.elements.push(div);
 	};

@@ -1,4 +1,6 @@
 /*
+https://developers.facebook.com/docs/plugins/like-button
+https://developers.facebook.com/docs/plugins/share-button
 	<!-- FACEBOOK -->
     <div id='fb-root'></div>
 	<!-- END FB script-->
@@ -23,15 +25,16 @@ Polyworks.FacebookAdapter = (function() {
 	
 	var _defaults = {
 		elements: [
+		// {
+		// 	el: 'div',
+		// 	attrs: {
+		// 		id: 'fb-root'
+		// 	}
+		// },
 		{
 			el: 'div',
 			attrs: {
-				id: 'fb-root'
-			}
-		},
-		{
-			el: 'div',
-			attrs: {
+				'id': 'fbLike',
 				'data-href': POLYWORKS_LIKE_URL,
 				'data-send': true,
 				'data-width': 450,
@@ -39,24 +42,16 @@ Polyworks.FacebookAdapter = (function() {
 				'data-show-faces': false,
 				'data-share': false
 			},
-			className: 'fb-like',
-			style: {
-				// padding: '2px',
-				// position: 'absolute'
-			}
-		// },
-		// {
-		// 	el: 'div',
-		// 	attrs: {
-		// 		id: 'fbShare',
-		// 		'data-href': POLYWORKS_SHARE_URL,
-		// 		'data-type': 'button_count'
-		// 	},
-		// 	className: 'fb-share-button',
-		// 	style: {
-		// 		padding: '2px',
-		// 		position: 'absolute'
-		// 	}
+			className: 'fb-like'
+		},
+		{
+			el: 'div',
+			attrs: {
+				id: 'fbShare',
+				'data-href': POLYWORKS_SHARE_URL,
+				'data-type': 'button'
+			},
+			className: 'fb-share-button'
 		}
 		],
 		adapterInitParams: {

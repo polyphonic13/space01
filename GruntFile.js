@@ -75,8 +75,22 @@ module.exports = function(grunt) {
 			project: {
 				src: [ '<%= deployDir %>/js/<%= project %>.js' ],
 				dest: '<%= deployDir %>/js/<%= project %>.min.js'
-			}
+			},
+			
+			facebook: {
+				src: [ '<%= srcDir %>/js/social/facebook_adapter.js' ],
+				dest: '<%= deployDir %>/js/social/facebook_adapter.js'
+			},
 
+			twitter: {
+				src: [ '<%= srcDir %>/js/social/twitter_adapter.js' ],
+				dest: '<%= deployDir %>/js/social/twitter_adapter.js'
+			},
+
+			google: {
+				src: [ '<%= srcDir %>/js/social/google_adapter.js' ],
+				dest: '<%= deployDir %>/js/social/google_adapter.js'
+			},
 		},
 /////// COPYING
 		copy: {
@@ -139,7 +153,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-connect');
 	grunt.loadTasks('grunt/tasks');
 	
-	grunt.registerTask('default', ['projectDeploySetup', 'concat:project', 'uglify:project', 'copy:project', 'createProjectHtml']);
+	grunt.registerTask('default', ['projectDeploySetup', 'concat:project', 'uglify', 'copy:project', 'createProjectHtml']);
 	// grunt.registerTask('default', ['concat', 'uglify', 'copy']);
 	// grunt.registerTask('keke2', ['concat:keke2_game', 'uglify:keke2_game', 'uglify:stage', 'copy:keke2_game_html', 'copy:keke2_game_js', 'copy:keke2_game_css:files']);
 	// grunt.registerTask('keke2-images', ['copy:keke2_game_images:files'])

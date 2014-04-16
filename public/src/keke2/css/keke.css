@@ -101,40 +101,14 @@ body, canvas {
 	overflow: hidden;
 }
 
-/*
-#fbLike {
-	bottom: 5px;
-	right: 5px;
-
-	position: absolute;
-	z-index: 5;
+.buttonContainer {
+	width: 50px;
+	height: 20px;
+	padding: 10px;
+	text-align: center;
+	display: inline-block;
 }
 
-#twFollow {
-	bottom: 25px;
-	right: 84px;
-
-	position: absolute;
-	z-index: 5;
-}
-
-
-#fbShare {
-	bottom: 25px;
-	right: 79px;
-
-	position: absolute;
-	z-index: 5;
-}
-
-#gPlusOne {
-	bottom: 25px;
-	right: 174px;
-	
-	position: absolute;
-	z-index 5;
-}
-*/
 #mailIcon {
 	width: 38px;
 	height: 20px;
