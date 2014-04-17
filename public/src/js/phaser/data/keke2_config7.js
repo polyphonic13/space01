@@ -144,11 +144,17 @@ Polyworks.Config = (function() {
 			// SOCIAL
 			social: {
 				parentId: 'socialButtons',
-				apis: [
-					'FacebookAdapter',
-					'TwitterAdapter',
-					'GoogleAdapter'
+				imagePath: 'images/social/',
+				networks: [
+					'facebook',
+					'twitter',
+					'google'
 				],
+				// apis: [
+				// 	'FacebookAdapter',
+				// 	'TwitterAdapter'//,
+				// 	// 'GoogleAdapter'
+				// ],
 				listeners: {
 					changeState: {
 						match: {

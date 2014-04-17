@@ -144,6 +144,27 @@ Polyworks.Utils = (function() {
 		return parsedString;
 	};
 	
+	utils.addElement = function(params) {
+		trace('\tutils/addElement, params = ', params);
+		var attrs = params.attrs;
+		var el = document.createElement(params.el);
+		for (var key in attrs) {
+			el.setAttribute(key, attrs[key]);
+		}
+		if(params.className) {
+			el.className = params.className;
+		}
+		if(params.style) {
+			for(var key in params.style) {
+				el.style[key] = params.style[key];
+			}
+		}
+		if(params.pops) {
+			params.pops.appendChild(el);
+		}
+		return el;
+	};
+	
 	utils.addSprite = function(params) {
 		var sprite;
 		if(params.parentType === 'group') {

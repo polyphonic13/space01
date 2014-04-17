@@ -39,7 +39,7 @@ Polyworks.FacebookAdapter = (function() {
 				'id': 'fbLike',
 				'data-href': POLYWORKS_LIKE_URL,
 				'data-send': true,
-				'data-width': 450,
+				'data-width': 50,
 				'data-layout': 'button',
 				'data-show-faces': false,
 				'data-share': false

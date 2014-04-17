@@ -98,11 +98,6 @@ PolyworksGame = (function() {
 					PolyworksGame.addLoadingDiv();
 					PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
 
-					// if(id === 'menu') {
-					// 	Polyworks.SocialManager.show();
-					// } else {
-					// 	Polyworks.SocialManager.hide();
-					// }
 				} else {
 					trace('ERROR: state['+id+'] not found');
 				}
@@ -302,9 +297,9 @@ PolyworksGame = (function() {
 	
 	function _create() {
 		// trace('PolyworksGame/_create');
-		_beginControls();
-		_beginStates();
-		_beginSocial();
+		_initControls();
+		_initStates();
+		_initSocial();
 	}
 	
 	function _onStageInitialized(event) {
@@ -391,13 +386,13 @@ PolyworksGame = (function() {
 		PolyworksGame.currentLevel = idx;
 	}
 
-	function _beginControls() {
+	function _initControls() {
 	
 		_controls = new Polyworks.Collection(_model.controls.keys);
 		_controls.begin();
 	}
 
-	function _beginStates() {
+	function _initStates() {
 		trace('currentLevel = ' + PolyworksGame.currentLevel);
 		PolyworksGame.levelStatus = [];
 
@@ -428,7 +423,7 @@ PolyworksGame = (function() {
 			this
 		);
 		PolyworksGame.levelCount = levelCount;
-		trace('PolyworksGame/_beginStates, _stageInitialized = ' + _stageInitialized + ', _states = ', _states, '\t_levels = ', _levels);
+		trace('PolyworksGame/_initStates, _stageInitialized = ' + _stageInitialized + ', _states = ', _states, '\t_levels = ', _levels);
 		if(_stageInitialized) {
 			// if(PolyworksGame.savedState !== '' && PolyworksGame.currentState !== _model.initialState) {
 			// 	PolyworksGame.changeState(PolyworksGame.savedState);
@@ -439,8 +434,9 @@ PolyworksGame = (function() {
 		_statesInialized = true;
 	}
 
-	function _beginSocial() {
-		Polyworks.SocialManager.init(_model.social);
+	function _initSocial() {
+		// Polyworks.SocialManager.init(_model.social);
+		Polyworks.SocialPanel.init(_model.social);
 	}
 	
 	function _quit() {
@@ -454,7 +450,7 @@ PolyworksGame = (function() {
 		if(PolyworksGame.player) {
 			PolyworksGame.player.destroy();
 		}
-		Polyworks.SocialManager.destroy();
+		Polyworks.SocialPanel.destroy();
 		PolyworksGame.phaser.destroy();
 
 		var gameContainer = document.getElementById('gameContainer');
