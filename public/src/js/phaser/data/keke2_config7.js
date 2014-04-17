@@ -150,51 +150,37 @@ Polyworks.Config = (function() {
 					'twitter',
 					'google'
 				],
-				// apis: [
-				// 	'FacebookAdapter',
-				// 	'TwitterAdapter'//,
-				// 	// 'GoogleAdapter'
-				// ],
-				listeners: {
-					changeState: {
-						match: {
-							value: 'menu',
-							action: {
-								method: 'show',
-								value: [
-									'fbLike',
-									'twFollow',
-									'gPlusOne'
-								]
-							}
-						},
-						nonmatch: {
-							action: {
-								method: 'hideAll',
-								value: ''
-							}
-						}
-					},
-					levelCleared: {
+				listeners: [
+				{
+					type: Polyworks.Events.CHANGE_STATE,
+					match: {
+						value: 'menu',
 						action: {
 							method: 'show',
-							value: [
-								'fbShare',
-								'twTweet'
-							]
+							value: ''
 						}
 					},
-					nextLevel: {
+					nonmatch: {
 						action: {
 							method: 'hide',
 							value: ''
 						}
 					}
 				},
-				initialElements: [
-					'fbLike',
-					'twFollow',
-					'gPlusOne'
+				{
+					type: Polyworks.Events.LEVEL_CLEARED,
+					action: {
+						method: 'show',
+						value: ''
+					}
+				},
+				{
+					type: Polyworks.Events.NEXT_LEVEL,
+					action: {
+						method: 'hide',
+						value: ''
+					}
+				}
 				]
 			},
 			// PLAYER

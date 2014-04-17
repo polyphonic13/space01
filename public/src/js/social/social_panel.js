@@ -15,8 +15,17 @@ Polyworks.SocialPanel = (function() {
 			_addListeners();
 		},
 
+		show: function() {
+			_model.parentEl.style.visibility = 'visible';
+		},
+
+		hide: function() {
+			_model.parentEl.style.visibility = 'hidden';
+		},
+
 		buttonClick: function(network) {
 			trace('SocialPanel/buttonClick, network = ' + network);
+
 		},
 
 		destroy: function() {
@@ -51,7 +60,7 @@ Polyworks.SocialPanel = (function() {
 						onclick: 'Polyworks.SocialPanel.buttonClick("'+network+'");'
 					},
 					className: buttonClass
-				}
+				};
 				_model.buttons[network] = Polyworks.Utils.addElement(button);
 			},
 			this
@@ -59,7 +68,7 @@ Polyworks.SocialPanel = (function() {
 	}
 
 	function _destroyViews() {
-		var buttons = _model.buttons
+		var buttons = _model.buttons;
 		var button;
 		for(var key in buttons) {
 			button = buttons[key];
@@ -71,32 +80,46 @@ Polyworks.SocialPanel = (function() {
 	}
 
 	function _addListeners() {
-		for(var key in _model.listeners) {
-			Polyworks.EventCenter.bind(key, _eventResponder, this);
-		}
+		Polyworks.Utils.each(_model.listeners,
+			function(listener) {
+				Polyworks.EventCenter.bind(listener.type, _eventResponder, this);
+			},
+			this
+		);
 	}
 
 	function _removeListeners() {
-		for(var key in _model.listeners) {
-			Polyworks.EventCenter.unbind(key, _eventResponder, this);
-		}
+		Polyworks.Utils.each(_model.listeners,
+			function(listener) {
+				Polyworks.EventCenter.unbind(listener.type, _eventResponder, this);
+			},
+			this
+		);
 	}
 
 	function _eventResponder(event) {
 		trace('SocialPanel/_eventResponder event = ', event);
-		var listener = _model.listeners[event.type];
+		var listener;
+		Polyworks.Utils.each(_model.listeners,
+			function(l) {
+				if(l.type === event.type) {
+					listener = l;
+				}
+			},
+			this
+		);
 		var match = listener.match;
 		if(match) {
 			trace('\tthere is a match');
 			if(match.value === event.value) {
 				trace('\t\tvalue matches the event value, calling: ' + match.action.method);
-				Polyworks.SocialManager[match.action.method](match.action.value);
+				Polyworks.SocialPanel[match.action.method](match.action.value);
 			} else if(listener.nonmatch) {
 				trace('\t\tnonmatch calling: ' + listener.nonmatch.action.method);
-				Polyworks.SocialManager[listener.nonmatch.action.method](listener.nonmatch.action.value);
+				Polyworks.SocialPanel[listener.nonmatch.action.method](listener.nonmatch.action.value);
 			}
 		} else {
-			Polyworks.SocialManager[listener.action.method](listener.action.value);
+			Polyworks.SocialPanel[listener.action.method](listener.action.value);
 		}
 	}
 	
