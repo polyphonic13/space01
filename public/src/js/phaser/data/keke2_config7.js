@@ -150,7 +150,8 @@ Polyworks.Config = (function() {
 				networks: [
 					'facebook',
 					'twitter',
-					'google'
+					'google',
+					'mail'
 				],
 				listeners: [
 				{

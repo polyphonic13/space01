@@ -11,6 +11,10 @@ Polyworks.SocialPanel = (function() {
 		google: {
 			url: 'https://plus.google.com/share?',
 			params: 'url=~{shareURL}~'
+		},
+		mail: {
+			url: 'mailto:keke@polyworksgames.com?',
+			params: 'subject=~{shareTitle}~'
 		}
 	};
 	var SHARE_PARAMS = {
