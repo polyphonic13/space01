@@ -1250,28 +1250,6 @@ Polyworks.Config = (function() {
 							}
 						}
 					}
-				},
-				{
-					name: 'menuBtn',
-					cl: 'InputButton',
-					attrs: {
-						img: 'menuButton',
-						phaser: {
-							width: (stageUnit * 1.5),
-							height: (stageUnit * 1.5)
-						},
-						start: {
-							x: (stageUnit * 0.5),
-							y: (winH/2) + ((stageUnit * 1.5)/2) + (stageUnit * 0.5)
-						},
-						frames: [0, 0, 1],
-						events: {
-							released: {
-								type: Polyworks.Events.CHANGE_STATE,
-								value: 'menu'
-							}
-						}
-					}
 				}
 				],
 				completedGUI: [
@@ -1378,28 +1356,6 @@ Polyworks.Config = (function() {
 							released: {
 								type: Polyworks.Events.CHANGE_STATE,
 								value: 'map'
-							}
-						}
-					}
-				},
-				{
-					name: 'menuBtn',
-					cl: 'InputButton',
-					attrs: {
-						img: 'menuButton',
-						phaser: {
-							width: (stageUnit * 1.5),
-							height: (stageUnit * 1.5)
-						},
-						start: {
-							x: (stageUnit * 0.5),
-							y: (winH/2) + ((stageUnit * 1.5)/2) + (stageUnit * 0.5)
-						},
-						frames: [0, 0, 1],
-						events: {
-							released: {
-								type: Polyworks.Events.CHANGE_STATE,
-								value: 'menu'
 							}
 						}
 					}
