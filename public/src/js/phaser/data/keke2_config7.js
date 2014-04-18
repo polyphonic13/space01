@@ -740,7 +740,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 0.5),
-								y: (stageUnit * 0.5)
+								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
 							},
 							frames: [0, 0, 1],
 							// inputCode: Polyworks.InputCodes.QUIT,
@@ -765,7 +765,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 0.5),
-								y: (stageUnit * 0.5)
+								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
 							},
 							frames: [0, 0, 1],
 							// inputCode: Polyworks.InputCodes.MENU,
@@ -790,7 +790,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 0.5),
-								y: (stageUnit * 0.5)
+								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
 							},
 							frames: [0, 0, 1],
 							events: {
@@ -812,7 +812,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 0.5),
-								y: (stageUnit * 2.5)
+								y: (winH/2) - ((stageUnit * 1.5)/2)
 							},
 							frames: [0, 0, 1],
 							events: {
@@ -852,7 +852,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 0.5),
-								y: (stageUnit * 0.5)
+								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
 							},
 							frames: [0, 0, 1],
 							events: {
@@ -941,7 +941,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 0.5),
-								y: (stageUnit * 0.5)
+								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
 							},
 							frames: [0, 0, 1],
 							events: {
@@ -1050,7 +1050,7 @@ Polyworks.Config = (function() {
 						},
 						start: {
 							x: (stageUnit * 0.5),
-							y: (stageUnit * 0.5)
+							y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
 						},
 						events: {
 							released: {
@@ -1070,7 +1070,7 @@ Polyworks.Config = (function() {
 						},
 						start: {
 							x: (stageUnit * 0.5),
-							y: (stageUnit * 2.5)
+							y: (winH/2) - ((stageUnit * 1.5)/2)
 						},
 						frames: [0, 0, 1],
 						events: {
@@ -1208,7 +1208,7 @@ Polyworks.Config = (function() {
 						},
 						start: {
 							x: (stageUnit * 0.5),
-							y: (stageUnit * 0.5)
+							y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
 						},
 						frames: [0, 0, 1],
 						events: {
@@ -1229,13 +1229,35 @@ Polyworks.Config = (function() {
 						},
 						start: {
 							x: (stageUnit * 0.5),
-							y: (stageUnit * 2.5)
+							y: (winH/2) - ((stageUnit * 1.5)/2)
 						},
 						frames: [0, 0, 1],
 						events: {
 							released: {
 								type: Polyworks.Events.CHANGE_STATE,
 								value: 'map'
+							}
+						}
+					}
+				},
+				{
+					name: 'menuBtn',
+					cl: 'InputButton',
+					attrs: {
+						img: 'menuButton',
+						phaser: {
+							width: (stageUnit * 1.5),
+							height: (stageUnit * 1.5)
+						},
+						start: {
+							x: (stageUnit * 0.5),
+							y: (winH/2) + ((stageUnit * 1.5)/2) + (stageUnit * 0.5)
+						},
+						frames: [0, 0, 1],
+						events: {
+							released: {
+								type: Polyworks.Events.CHANGE_STATE,
+								value: 'menu'
 							}
 						}
 					}
@@ -1317,7 +1339,7 @@ Polyworks.Config = (function() {
 						},
 						start: {
 							x: (stageUnit * 0.5),
-							y: (stageUnit * 0.5)
+							y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
 						},
 						frames: [0, 0, 1],
 						events: {
@@ -1338,7 +1360,7 @@ Polyworks.Config = (function() {
 						},
 						start: {
 							x: (stageUnit * 0.5),
-							y: (stageUnit * 2.5)
+							y: (winH/2) - ((stageUnit * 1.5)/2)
 						},
 						frames: [0, 0, 1],
 						events: {
@@ -1360,7 +1382,7 @@ Polyworks.Config = (function() {
 						},
 						start: {
 							x: (stageUnit * 0.5),
-							y: (stageUnit * 4.5)
+							y: (winH/2) + ((stageUnit * 1.5)/2) + (stageUnit * 0.5)
 						},
 						frames: [0, 0, 1],
 						events: {

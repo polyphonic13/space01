@@ -130,7 +130,7 @@ Polyworks.Utils = (function() {
 					if(encodeMarkup) {
 						output = encodeURIComponent(output);
 					}
-					trace('output = ' + output);
+					// trace('output = ' + output);
 					if(output === undefined || output === null) {
 						output = match;
 					} else {
