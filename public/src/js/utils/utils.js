@@ -113,7 +113,7 @@ Polyworks.Utils = (function() {
 		}
 	};
 	
-	utils.parseMarkup = function(str, reference) {
+	utils.parseMarkup = function(str, reference, encodeMarkup) {
 		var parsedString = str;
 		// trace('Utils/parseMarkup, str = ' + str + ', reference = ', reference);
 
@@ -127,7 +127,10 @@ Polyworks.Utils = (function() {
 					var matchLength = match.length;
 					var matchKey = match.substring(2, matchLength - 2);
 					var output = reference[matchKey];
-					// trace('output = ' + output);
+					if(encodeMarkup) {
+						output = encodeURIComponent(output);
+					}
+					trace('output = ' + output);
 					if(output === undefined || output === null) {
 						output = match;
 					} else {

@@ -145,6 +145,8 @@ Polyworks.Config = (function() {
 			social: {
 				parentId: 'socialButtons',
 				imagePath: 'images/social/',
+				shareTitle: 'keke and the G R E Y  E X P A N S E',
+				shareURL: document.location.href,
 				networks: [
 					'facebook',
 					'twitter',

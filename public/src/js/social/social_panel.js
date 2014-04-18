@@ -1,10 +1,21 @@
 Polyworks.SocialPanel = (function() {
-	var SHARE_URLS = {
-		facebook: 'http://www.facebook.com/share.php?u=~{url}~&title=~{title}~',
-		google: 'https://plus.google.com/share?url=~{url}~',
-		twitter: 'http://twitter.com/home?status=~{title}~+~{url}~'
+	var SHARE_ACTIONS = {
+		facebook: {
+			url: 'http://www.facebook.com/share.php?',
+			params: 'u=~{shareURL}~&title=~{shareTitle}~'
+		},
+		twitter: {
+			url: 'http://twitter.com/home?',
+			params: 'status=~{shareTitle}~+~{shareURL}~'
+		},
+		google: {
+			url: 'https://plus.google.com/share?',
+			params: 'url=~{shareURL}~'
+		}
 	};
-	
+	var SHARE_PARAMS = {
+		
+	}
 	var _model = {};
 	
 	var module = {
@@ -25,6 +36,9 @@ Polyworks.SocialPanel = (function() {
 
 		buttonClick: function(network) {
 			trace('SocialPanel/buttonClick, network = ' + network);
+			url = SHARE_ACTIONS[network].url + Polyworks.Utils.parseMarkup(SHARE_ACTIONS[network].params, _model, true);
+			trace('\turl = ' + url);
+			window.open(url);
 
 		},
 
@@ -59,7 +73,10 @@ Polyworks.SocialPanel = (function() {
 						src: _model.imagePath + network + '.png',
 						onclick: 'Polyworks.SocialPanel.buttonClick("'+network+'");'
 					},
-					className: buttonClass
+					className: buttonClass,
+					css: {
+						cursor: 'pointer'
+					}
 				};
 				_model.buttons[network] = Polyworks.Utils.addElement(button);
 			},
