@@ -146,7 +146,8 @@ Polyworks.Config = (function() {
 				parentId: 'socialButtons',
 				imagePath: 'images/social/',
 				shareTitle: 'keke and the G R E Y  E X P A N S E',
-				shareURL: document.location.href,
+				// shareURL: document.location.href,
+				shareURL: 'www.polyworksgames.com/games/keke2/',
 				networks: [
 					'facebook',
 					'twitter',
@@ -159,13 +160,13 @@ Polyworks.Config = (function() {
 					match: {
 						value: 'menu',
 						action: {
-							method: 'show',
+							method: 'showAll',
 							value: ''
 						}
 					},
 					nonmatch: {
 						action: {
-							method: 'hide',
+							method: 'hideAll',
 							value: ''
 						}
 					}
@@ -174,13 +175,17 @@ Polyworks.Config = (function() {
 					type: Polyworks.Events.LEVEL_CLEARED,
 					action: {
 						method: 'show',
-						value: ''
+						value: [
+							'facebook',
+							'twitter',
+							'google'
+						]
 					}
 				},
 				{
 					type: Polyworks.Events.NEXT_LEVEL,
 					action: {
-						method: 'hide',
+						method: 'hideAll',
 						value: ''
 					}
 				}

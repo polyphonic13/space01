@@ -18,32 +18,48 @@ Polyworks.SocialPanel = (function() {
 		}
 	};
 	var SHARE_PARAMS = {
-		
-	}
+
+	};
+
 	var _model = {};
 	
 	var module = {
 		init: function(params) {
-			trace('SocialPanel/init, params = ', params);
+			// trace('SocialPanel/init, params = ', params);
 			_model = Polyworks.Utils.extend(_model, params);
 			_initViews();
 			_addListeners();
 		},
 
-		show: function() {
-			_model.parentEl.style.visibility = 'visible';
+		show: function(elements) {
+			Polyworks.Utils.each(elements,
+				function(element) {
+					if(_model.buttons.hasOwnProperty(element)) {
+						_model.buttons[element].style.visibility = 'visible';
+					}
+				},
+				this
+			);
 		},
 
-		hide: function() {
-			_model.parentEl.style.visibility = 'hidden';
+		showAll: function() {
+			for(var key in _model.buttons) {
+				_model.buttons[key].style.visibility = 'visible';
+			}
+			// _model.parentEl.style.visibility = 'visible';
+		},
+
+		hideAll: function() {
+			for(var key in _model.buttons) {
+				_model.buttons[key].style.visibility = 'hidden';
+			}
+			// _model.parentEl.style.visibility = 'hidden';
 		},
 
 		buttonClick: function(network) {
 			trace('SocialPanel/buttonClick, network = ' + network);
 			url = SHARE_ACTIONS[network].url + Polyworks.Utils.parseMarkup(SHARE_ACTIONS[network].params, _model, true);
-			trace('\turl = ' + url);
 			window.open(url);
-
 		},
 
 		destroy: function() {
@@ -103,7 +119,7 @@ Polyworks.SocialPanel = (function() {
 	function _addListeners() {
 		Polyworks.Utils.each(_model.listeners,
 			function(listener) {
-				Polyworks.EventCenter.bind(listener.type, _eventResponder, this);
+				Polyworks.EventCenter.bind(listener.type, _eventHandler, this);
 			},
 			this
 		);
@@ -112,14 +128,14 @@ Polyworks.SocialPanel = (function() {
 	function _removeListeners() {
 		Polyworks.Utils.each(_model.listeners,
 			function(listener) {
-				Polyworks.EventCenter.unbind(listener.type, _eventResponder, this);
+				Polyworks.EventCenter.unbind(listener.type, _eventHandler, this);
 			},
 			this
 		);
 	}
 
-	function _eventResponder(event) {
-		trace('SocialPanel/_eventResponder event = ', event);
+	function _eventHandler(event) {
+		trace('SocialPanel/_eventHandler event = ', event);
 		var listener;
 		Polyworks.Utils.each(_model.listeners,
 			function(l) {
