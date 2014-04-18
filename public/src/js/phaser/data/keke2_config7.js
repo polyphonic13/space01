@@ -148,11 +148,22 @@ Polyworks.Config = (function() {
 				shareTitle: 'keke and the G R E Y  E X P A N S E',
 				// shareURL: document.location.href,
 				shareURL: 'www.polyworksgames.com/games/keke2/',
+				buttonStyle: {
+					position: {
+						horizontal: -(stageUnit * 0.5),
+						vertical: 'center'
+					},
+					offset: (stageUnit * 0.5),
+					size: {
+						width: (stageUnit * 1.25),
+						height: (stageUnit * 1.25)
+					}
+				},
 				networks: [
+					'mail',
 					'facebook',
 					'twitter',
-					'google',
-					'mail'
+					'google'
 				],
 				listeners: [
 				{

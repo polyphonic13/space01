@@ -80,11 +80,16 @@ Polyworks.SocialPanel = (function() {
 	function _addButtons() {
 		_model.buttons = {};
 
+		var buttonStyle = _model.buttonStyle;
+
 		var buttonClass = _model.buttonClass || 'socialButton';
 		var button;
+		var style; 
+		var length = _model.networks.length; 
 
 		Polyworks.Utils.each(_model.networks,
-			function(network) {
+			function(network, idx) {
+				style = _calculateButtonStyle(buttonStyle, idx, length);
 				button = {
 					pops: _model.parentEl,
 					id: network,
@@ -94,9 +99,7 @@ Polyworks.SocialPanel = (function() {
 						onclick: 'Polyworks.SocialPanel.buttonClick("'+network+'");'
 					},
 					className: buttonClass,
-					css: {
-						cursor: 'pointer'
-					}
+					style: style
 				};
 				_model.buttons[network] = Polyworks.Utils.addElement(button);
 			},
@@ -104,6 +107,53 @@ Polyworks.SocialPanel = (function() {
 		);
 	}
 
+	function _calculateButtonStyle(attrs, idx, length) {
+		var winW = Polyworks.Stage.winW;
+		var winH = Polyworks.Stage.winH;
+		var horizontal = attrs.position.horizontal;
+		var vertical = attrs.position.vertical;
+		var offset = attrs.offset; 
+
+		var style = {
+			width: attrs.size.width + 'px',
+			height: attrs.size.height + 'px'
+		};
+
+		if(horizontal === 'center') {
+			var horizontalTotal;
+			for(var i = 0; i < length; i++) {
+				if(i > 0) {
+					horizontalTotal += attrs.offset;
+				}
+				horizontalTotal += attrs.size.width;
+			}
+
+			style.left = ((winW/2) - (horizontalTotal/2) + (idx * attrs.size.width)) + 'px';
+		} else if(horizontal < 0) {
+			style.right = -(horizontal) + 'px';
+		} else {
+			style.left = horizontal + 'px';
+		}
+
+		if(vertical === 'center') {
+			var verticalTotal = 0;
+			for(var i = 0; i < length; i++) {
+				if(i > 0) {
+					verticalTotal += attrs.offset;
+				}
+				verticalTotal += attrs.size.height;
+			}
+			trace('\tVERTICAL TOTal = ' + verticalTotal);
+			var btnOffset = (idx * attrs.size.height) +  (idx * attrs.offset);
+			style.top = ((winH/2) - (verticalTotal/2) + (btnOffset)) + 'px';
+		} else if(vertical < 0) {
+			style.bottom = -(vertical) + 'px';
+		} else {
+			style.top = vertical + 'px';
+		}
+		trace('RETURNING: ', style);
+		return style;
+	}
 	function _destroyViews() {
 		var buttons = _model.buttons;
 		var button;
