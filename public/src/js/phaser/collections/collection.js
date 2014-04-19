@@ -13,7 +13,7 @@ Polyworks.Collection = (function() {
 		var children = this.model.attrs;
 		var child;
 		var params;
-		trace('children.length = ' + children.length);
+		// trace('children.length = ' + children.length);
 		Polyworks.Utils.each(children,
 			function(c, i) {
 				// trace('\t\ti = ' + i + ', c = ', c);

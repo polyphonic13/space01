@@ -26,5 +26,6 @@ Polyworks.Events = {
 	HEALTH_UPDATED: 'healthUpdated',
 	REQUIREMENTS_UPDATED: 'requirementsUpdated',
 	PLAYER_DAMAGED: 'playerDamaged',
-	DAMAGE_RESET: 'damageReset'
+	DAMAGE_RESET: 'damageReset',
+	UPDATE_OG_DESCRIPTION: 'updateOGDescription'
 };

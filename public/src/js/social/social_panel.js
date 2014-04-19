@@ -13,7 +13,7 @@ Polyworks.SocialPanel = (function() {
 			params: 'url=~{shareURL}~'
 		},
 		mail: {
-			url: 'mailto:keke@polyworksgames.com?',
+			url: 'mailto:keke@Polyworksgames.com?',
 			params: 'subject=~{shareTitle}~'
 		}
 	};
@@ -22,7 +22,7 @@ Polyworks.SocialPanel = (function() {
 	};
 
 	var _model = {};
-	
+
 	var module = {
 		init: function(params) {
 			// trace('SocialPanel/init, params = ', params);
@@ -32,6 +32,7 @@ Polyworks.SocialPanel = (function() {
 		},
 
 		show: function(elements) {
+			_model.parentEl.style.display = 'block';
 			Polyworks.Utils.each(elements,
 				function(element) {
 					if(_model.buttons.hasOwnProperty(element)) {
@@ -43,17 +44,17 @@ Polyworks.SocialPanel = (function() {
 		},
 
 		showAll: function() {
+			_model.parentEl.style.display = 'block';
 			for(var key in _model.buttons) {
 				_model.buttons[key].style.visibility = 'visible';
 			}
-			// _model.parentEl.style.visibility = 'visible';
 		},
 
 		hideAll: function() {
+			_model.parentEl.style.display = 'none';
 			for(var key in _model.buttons) {
 				_model.buttons[key].style.visibility = 'hidden';
 			}
-			// _model.parentEl.style.visibility = 'hidden';
 		},
 
 		buttonClick: function(network) {
@@ -67,7 +68,7 @@ Polyworks.SocialPanel = (function() {
 			_destroyViews();
 		}
 	};
-	
+
 	function _initViews() {
 		_initParentEl(); 
 		_addButtons();
@@ -75,6 +76,7 @@ Polyworks.SocialPanel = (function() {
 
 	function _initParentEl() {
 		_model.parentEl = document.getElementById(_model.parentId) || document.getElementsByTagName('body')[0];
+		_model.grandParentEl = _model.parentEl.parentNode;
 	}
 
 	function _addButtons() {
@@ -209,6 +211,6 @@ Polyworks.SocialPanel = (function() {
 			Polyworks.SocialPanel[listener.action.method](listener.action.value);
 		}
 	}
-	
+
 	return module;
 }());

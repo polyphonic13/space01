@@ -45,7 +45,6 @@ Polyworks.GroupCollection = (function() {
 		);
 
 		if(typeof(this.model.visible) !== 'undefined') {
-			trace('==================== setting group visibility to: ' + this.model.visible);
 			group.visible = this.model.visible;
 		}
 		this.group = group;
