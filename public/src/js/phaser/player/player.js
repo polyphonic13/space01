@@ -151,12 +151,6 @@ Polyworks.Player = (function() {
 		// trace('Player/update, health = ' + this.health);
 		// trace(params);
 		if(this.alive) {
-			// if(this.initialPosition) {
-			// 	var start = this.model.attrs.start;
-			// 	trace('Player/update x/y = ' + this.x + '/' + this.y 
-			// 			+ '\n\tx/y = ' + this.body.x + '/' + this.body.y 
-			// 			+ '\n\tstart = ' + start.x + '/' + start.y);
-			// }
 			this.collided = false;
 			var physics = PolyworksGame.phaser.physics;
 			var attrs = this.model.attrs;
@@ -176,6 +170,10 @@ Polyworks.Player = (function() {
 		}
 	};
 
+	Player.prototype.checkGoalsCollision = function(goals, physics) {
+		this.checkCollision(goals, this.onGoalCollision, physics, this);
+	};
+	
 	Player.prototype.checkHazardsCollision = function(hazards, physics) {
 		this.checkCollision(hazards, this.onHazardCollision, physics, this);
 	};
@@ -200,6 +198,12 @@ Polyworks.Player = (function() {
 			},
 			this
 		);
+	};
+	
+	Player.prototype.onGoalCollision = function(player, goal) {
+		trace('Player/onGoalCollision, goal = ' + goal.model.name);
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.GOAL_REACHED, value: goal.model.name });
+		goal.destroy();
 	};
 
 	Player.prototype.onHazardCollision = function(player, hazard) {

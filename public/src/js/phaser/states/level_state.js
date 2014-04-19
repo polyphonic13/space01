@@ -42,6 +42,14 @@ Polyworks.LevelState = (function() {
 		}
 
 		this.terrain = this.getChildByName('terrain');
+		
+		this.goals = this.getChildByName('goals');
+		this.goalsReached = 0;
+		this.totalGoals = this.goals.getLength(); 
+		this.allGoalsReached = false;
+		Polyworks.EventCenter.bind(Polyworks.Events.GOAL_REACHED, this.onGoalReached, this);
+		
+		trace('LevelState['+this.model.name+']/createState, totalGoals = ' + this.totalGoals);
 		this.sectorManager = this.getChildByName('sectors');
 		this.sectorManager.setState(this);
 		this.sectorManager.setActiveSector(0);
@@ -85,7 +93,8 @@ Polyworks.LevelState = (function() {
 	LevelState.prototype.update = function() {
 		if(!this.paused) {
 			// trace('LevelState['+this.model.name+']/update');
-			if(this.requirementsMet && (this.player.body.x >= this.model.bounds.end)) {
+			// if(this.requirementsMet && (this.player.body.x >= this.model.bounds.end)) {
+			if(this.requirementsMet && this.allGoalsReached) {
 				if(!this.triggeredCleared) {
 					// immediately stop player from updating by killing group
 					this.destroyPlayer();
@@ -109,6 +118,7 @@ Polyworks.LevelState = (function() {
 
 				// update player with active sector members & terrain
 				var terrainGroup = this.terrain.group;
+				var goalGroup = this.goals.group;
 				var requirementsGroup = (this.requirements) ? this.requirements.getActive() : null;
 				var dynamicTerrainGroup = sector.dynamicTerrain.getActive();
 				var hazards = sector.hazards.getActive();
@@ -117,7 +127,8 @@ Polyworks.LevelState = (function() {
 				var physicalItems = {};
 
 				physicalItems.Terrain = terrainGroup;
-
+				physicalItems.Goals = goalGroup;
+				
 				if(requirementsGroup) physicalItems.Requirements = requirementsGroup;
 				if(dynamicTerrainGroup) physicalItems.DynamicTerrain = dynamicTerrainGroup;
 				if(hazards) physicalItems.Hazards = hazards;
@@ -138,6 +149,13 @@ Polyworks.LevelState = (function() {
 		this.requirementsMet = true;
 	};
 	
+	LevelState.prototype.onGoalReached = function() {
+		this.goalsReached++;
+		if(this.goalsReached >= this.totalGoals) {
+			this.allGoalsReached = true;
+		}
+	};
+
 	LevelState.prototype.onPauseState = function() {
 		// trace('LevelState['+this.model.name+']/onPauseState');
 		LevelState._super.onPauseState.call(this);

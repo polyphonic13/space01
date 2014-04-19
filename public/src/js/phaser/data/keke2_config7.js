@@ -388,6 +388,8 @@ Polyworks.Config = (function() {
 				trunk01: 'images/scenery/trunk01.png',
 				thorns01: 'images/scenery/thorns02.png',
 
+				goalFlag: 'images/goal_flag.png',
+
 				// requirements
 				crystals02Grey: 'images/crystals02a_grey.png',
 				crystals02Blue: 'images/crystals02a_blue.png',
@@ -1764,6 +1766,7 @@ Polyworks.Config = (function() {
 					'whiteRect',
 					'ovalMask',
 					'level01Title',
+					'goalFlag',
 					'forestBackground02a',
 					'forestBackground02b',
 					'forestBackground02c',
@@ -1773,6 +1776,7 @@ Polyworks.Config = (function() {
 					'grass03',
 					'tree01',
 					'woodenArrowSign01Left',
+					'woodenArrowSign01Right',
 					'platformV',
 					'platform',
 					'branch03Left',
@@ -1804,7 +1808,6 @@ Polyworks.Config = (function() {
 					name: 'scenery',
 					cl: 'GroupCollection',
 					attrs: [
-
 					{
 						name: 'background01',
 						cl: 'Sprite',
@@ -2029,6 +2032,29 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
+							}
+						}
+					}
+					]
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageWidth * 6) - (stageUnit * 4),
+								y: winH - (stageUnit * 3.5)
 							}
 						}
 					}
@@ -2766,6 +2792,7 @@ Polyworks.Config = (function() {
 					'whiteRect',
 					'ovalMask',
 					'level02Title',
+					'goalFlag',
 					'forestBackground01a',
 					'forestBackground01b',
 					'forestBackground01c',
@@ -3041,6 +3068,29 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
+							}
+						}
+					}
+					]
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageWidth * 6) - (stageUnit * 4),
+								y: winH - (stageUnit * 3.5)
 							}
 						}
 					}
@@ -4052,6 +4102,7 @@ Polyworks.Config = (function() {
 					'whiteRect',
 					'ovalMask',
 					'level03Title',
+					'goalFlag',
 					'forestBackground01a',
 					'forestBackground01b',
 					'forestBackground01c',
@@ -4355,6 +4406,29 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
+							}
+						}
+					}
+					]
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageWidth * 6) - (stageUnit * 4),
+								y: winH - (stageUnit * 3.5)
 							}
 						}
 					}
@@ -5309,6 +5383,7 @@ Polyworks.Config = (function() {
 					'whiteRect',
 					'ovalMask',
 					'level04Title',
+					'goalFlag',
 					'forestBackground01a',
 					'forestBackground01b',
 					'forestBackground01c',
@@ -5630,6 +5705,29 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
+							}
+						}
+					}
+					]
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageWidth * 6) - (stageUnit * 4),
+								y: winH - (stageUnit * 3.5)
 							}
 						}
 					}
@@ -6719,6 +6817,7 @@ Polyworks.Config = (function() {
 					'whiteRect',
 					'ovalMask',
 					'level05Title',
+					'goalFlag',
 					'forestBackground01a',
 					'forestBackground01b',
 					'forestBackground01c',
@@ -7172,6 +7271,29 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
+							}
+						}
+					}
+					]
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageWidth * 6) - (stageUnit * 4),
+								y: winH - (stageUnit * 3.5)
 							}
 						}
 					}
@@ -8476,6 +8598,7 @@ Polyworks.Config = (function() {
 					'whiteRect',
 					'ovalMask',
 					'level06Title',
+					'goalFlag',
 					'riverBackground01a',
 					'riverBackground01b',
 					'riverBackground01c',
@@ -8838,6 +8961,29 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
+							}
+						}
+					}
+					]
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageWidth * 6) - (stageUnit * 2),
+								y: winH - (stageUnit * 11.5)
 							}
 						}
 					}
@@ -9823,6 +9969,7 @@ Polyworks.Config = (function() {
 					'whiteRect',
 					'ovalMask',
 					'level07Title',
+					'goalFlag',
 					'mountainBackgroundA5',
 					'mountainBackgroundA6',
 					'mountainBackgroundA7',
@@ -11972,6 +12119,7 @@ Polyworks.Config = (function() {
 					'whiteRect',
 					'ovalMask',
 					'level08Title',
+					'goalFlag',
 					'mountainBackgroundC3',
 					'mountainBackgroundC4',
 					'mountainBackgroundC5',
@@ -14231,6 +14379,7 @@ Polyworks.Config = (function() {
 					'whiteRect',
 					'ovalMask',
 					'level09Title',
+					'goalFlag',
 					'mountainBackgroundE1',
 					'mountainBackgroundE2',
 					'mountainBackgroundE3',
@@ -16233,6 +16382,7 @@ Polyworks.Config = (function() {
 					'whiteRect',
 					'ovalMask',
 					'level10Title',
+					'goalFlag',
 					'mountainBackgroundC3',
 					'mountainBackgroundC4',
 					'mountainBackgroundC5',
@@ -18235,6 +18385,7 @@ Polyworks.Config = (function() {
 					'whiteRect',
 					'ovalMask',
 					'level11Title',
+					'goalFlag',
 					'mountainBackgroundC3',
 					'mountainBackgroundC4',
 					'mountainBackgroundC5',

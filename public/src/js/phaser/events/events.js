@@ -13,6 +13,7 @@ Polyworks.Events = {
 	HIDE_LEVEL_INFO: 'hideLevelInfo',
 	START_LEVEL: 'startLevel',
 	NEXT_LEVEL: 'nextLevel',
+	GOAL_REACHED: 'goalReached',
 	REQUIREMENT_INITIALIZED: 'requirementInitialized',
 	REQUIREMENT_MET: 'requirementMet',
 	LEVEL_REQUIREMENTS_MET: 'levelRequirementsMet',

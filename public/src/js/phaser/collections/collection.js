@@ -36,6 +36,10 @@ Polyworks.Collection = (function() {
 		this.model.set({ collection: collection, nameIndex: nameIndex });
 	};
 	
+	Collection.prototype.getLength = function() {
+		return this.model.collection.length;
+	};
+	
 	Collection.prototype.setChildrenExists = function(exists) {
 		// trace('Collection['+this.model.name+']/setChildrenExists, exists = ' + exists);
 		Polyworks.Utils.each(this.model.collection,
