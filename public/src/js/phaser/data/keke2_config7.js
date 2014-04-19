@@ -14658,8 +14658,8 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 3)
 							},
 							start: {
-								x: (stageWidth * 6) - (stageUnit * 2),
-								y: winH - (stageUnit * 11.5)
+								x: (stageUnit * 33),
+								y: winH - (stageUnit * 72)
 							}
 						}
 					}
@@ -14694,7 +14694,7 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'platformV',
 							start: {
-								x: (stageWidth * 2),
+								x: (stageWidth * 4),
 								y: winH - (stageHeight * 8)
 							},
 							phaser: {
@@ -14818,7 +14818,64 @@ Polyworks.Config = (function() {
 								immovable: true
 							}
 						}
-					} 
+					},
+					// last left sector 6 platform
+					{
+						name: 'sector3-endPlatform1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'rockPlatform02',
+							phaser: {
+								width: (stageUnit * 2),
+								height: (stageUnit * 1)
+							},
+							start: {
+								x: (stageUnit * 18),
+								y: winH - (stageUnit * 54)
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					// last left sector 7 platform
+					{
+						name: 'sector3-endPlatform1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'rockPlatform02',
+							phaser: {
+								width: (stageUnit * 2),
+								height: (stageUnit * 1)
+							},
+							start: {
+								x: (stageUnit * 30),
+								y: winH - (stageUnit * 63)
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					// last right sector 7 platform
+					{
+						name: 'sector3-endPlatform1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'rockPlatform02',
+							phaser: {
+								width: (stageUnit * 2),
+								height: (stageUnit * 1)
+							},
+							start: {
+								x: (stageUnit * 35),
+								y: winH - (stageUnit * 63)
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					}
 					]
 				},
 				// sectors
@@ -15697,6 +15754,150 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							// start sector 6 terrain
+							{
+								name: 'sector6-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 21),
+										y: winH - (stageUnit * 47)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector6-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 26),
+										y: winH - (stageUnit * 47)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector6-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 18),
+										y: winH - (stageUnit * 48)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector6-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 15),
+										y: winH - (stageUnit * 49)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector6-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 23),
+										y: winH - (stageUnit * 50)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector6-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 28),
+										y: winH - (stageUnit * 49)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector6-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 11),
+										y: winH - (stageUnit * 51)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector6-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 20),
+										y: winH - (stageUnit * 52)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							}
 							// end sector 6 terrain
 							]
 						},
@@ -15731,6 +15932,114 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							// start sector 7 terrain
+							{
+								name: 'sector7-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 22),
+										y: winH - (stageUnit * 55)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector7-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 15),
+										y: winH - (stageUnit * 56)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector7-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 24),
+										y: winH - (stageUnit * 57)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector7-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 17),
+										y: winH - (stageUnit * 59)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector7-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 22),
+										y: winH - (stageUnit * 59)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector7-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 26),
+										y: winH - (stageUnit * 61)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							}
 							// end sector 7 terrain
 							]
 						},
@@ -15765,6 +16074,114 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							// start sector 8 terrain
+							{
+								name: 'sector8-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 27),
+										y: winH - (stageUnit * 64)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector8-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 38),
+										y: winH - (stageUnit * 64)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector8-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 33),
+										y: winH - (stageUnit * 65)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector8-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 35),
+										y: winH - (stageUnit * 66)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector8-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 30),
+										y: winH - (stageUnit * 67)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector8-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 33),
+										y: winH - (stageUnit * 69)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
 							// end sector 8 terrain
 							]
 						},
@@ -16243,6 +16660,29 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
+							}
+						}
+					}
+					]
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageUnit * 35),
+								y: winH - (stageUnit * 71)
 							}
 						}
 					}
@@ -18246,6 +18686,29 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
+							}
+						}
+					}
+					]
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageUnit * 35),
+								y: winH - (stageUnit * 71)
 							}
 						}
 					}
