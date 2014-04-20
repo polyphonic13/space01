@@ -15211,32 +15211,28 @@ Polyworks.Config = (function() {
 							cl: 'Enemies',
 							attrs: [
 							{
-								name: 'level01-sector2-enemy1',
+								name: 'level09-sector1-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'spider01',
 									phaser: {
 										width: spider01.width,
 										height: spider01.height,
-										health: 100
+										health: 30
 									},
 									start: {
 										x: (stageUnit * 6),
 										y: winH - (stageUnit * 9)
 									},
 									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
+										allowGravity: false
 									},
 									speed: 0.5,
-									attack: 20,
+									attack: 15,
 									score: 2500,
 									movement: {
 										speed: 2,
-										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -15405,7 +15401,37 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [] 
+							attrs: [
+							{
+								name: 'level09-sector2-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'spider01',
+									phaser: {
+										width: spider01.width,
+										height: spider01.height,
+										health: 30
+									},
+									start: {
+										x: (stageUnit * 16),
+										y: winH - (stageUnit * 16)
+									},
+									physics: {
+										allowGravity: false
+									},
+									speed: 0.5,
+									attack: 15,
+									score: 2500,
+									movement: {
+										speed: 2,
+										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: spiderAnimations
+								}
+							}
+							] 
 						},
 						{
 							name: 'bonuses',

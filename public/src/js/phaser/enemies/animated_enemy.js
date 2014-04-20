@@ -30,17 +30,17 @@ Polyworks.AnimatedEnemy = (function() {
 				} else if(enemyX > (playerX + 25)) {
 					relationToPlayer = 'left';
 				}
-				if(!this.body.touching.down) {
-					if(relationToPlayer == 'left') {
-						if(this.currentAnimation !== AnimationTypes.FALLING_L) {
-							this.play(AnimationTypes.FALLING_L, animations[AnimationTypes.FALLING_L].frameRate, animations[AnimationTypes.FALLING_L].loop)
-						}
-					} else {
-						if(this.currentAnimation !== AnimationTypes.FALLING_R) {
-							this.play(AnimationTypes.FALLING_R, animations[AnimationTypes.FALLING_R].frameRate, animations[AnimationTypes.FALLING_R].loop)
-						}
-					}
-				} else {
+				// if(!this.body.touching.down) {
+				// 	if(relationToPlayer == 'left') {
+				// 		if(this.currentAnimation !== AnimationTypes.FALLING_L) {
+				// 			this.play(AnimationTypes.FALLING_L, animations[AnimationTypes.FALLING_L].frameRate, animations[AnimationTypes.FALLING_L].loop)
+				// 		}
+				// 	} else {
+				// 		if(this.currentAnimation !== AnimationTypes.FALLING_R) {
+				// 			this.play(AnimationTypes.FALLING_R, animations[AnimationTypes.FALLING_R].frameRate, animations[AnimationTypes.FALLING_R].loop)
+				// 		}
+				// 	}
+				// } else {
 					switch(relationToPlayer) {
 						case 'near':
 						if(this.currentAnimation !== AnimationTypes.IDLE) {
@@ -76,7 +76,7 @@ Polyworks.AnimatedEnemy = (function() {
 					// 	}
 					// 	this.move({ direction: Polyworks.Directions.RIGHT });
 					// }
-				}
+				// }
 			}
 		}
 	};
