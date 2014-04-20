@@ -16819,7 +16819,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 60),
-								y: winH - (stageUnit * 10)
+								y: winH - (stageUnit * 11)
 							}
 						}
 					}
