@@ -19,13 +19,19 @@ Polyworks.AnimatedEnemy = (function() {
 				var playerX = params.player.body.screenX;
 				var animations = this.model.attrs.animations; 
 
-				var playerToLeft = true;
-				if(enemyX < (playerX - 10)) {
-					playerToLeft = false;
-				}
+				// var playerToLeft = true;
+				// if(enemyX < (playerX - 10)) {
+				// 	playerToLeft = false;
+				// }
 
+				var relationToPlayer = 'near';
+				if(enemyX < (playerX - 25)) {
+					relationToPlayer = 'right';
+				} else if(enemyX > (playerX + 25)) {
+					relationToPlayer = 'left';
+				}
 				if(!this.body.touching.down) {
-					if(playerToLeft) {
+					if(relationToPlayer == 'left') {
 						if(this.currentAnimation !== AnimationTypes.FALLING_L) {
 							this.play(AnimationTypes.FALLING_L, animations[AnimationTypes.FALLING_L].frameRate, animations[AnimationTypes.FALLING_L].loop)
 						}
@@ -35,17 +41,41 @@ Polyworks.AnimatedEnemy = (function() {
 						}
 					}
 				} else {
-					if(playerToLeft) {
-						if(this.currentAnimation !== AnimationTypes.WALK_L) {
-							this.play(AnimationTypes.WALK_L, animations[AnimationTypes.WALK_L].frameRate, animations[AnimationTypes.WALK_L].loop)
+					switch(relationToPlayer) {
+						case 'near':
+						if(this.currentAnimation !== AnimationTypes.IDLE) {
+							this.play(AnimationTypes.IDLE, animations[AnimationTypes.IDLE].frameRate, animations[AnimationTypes.IDLE].loop)
 						}
-						this.move({ direction: Polyworks.Directions.LEFT });
-					} else {
-						if(this.currentAnimation !== AnimationTypes.WALK_R) {
-							this.play(AnimationTypes.WALK_R, animations[AnimationTypes.WALK_R].frameRate, animations[AnimationTypes.WALK_R].loop)
-						}
-						this.move({ direction: Polyworks.Directions.RIGHT });
+						break;
+						
+						case 'left': 
+							if(this.currentAnimation !== AnimationTypes.WALK_L) {
+								this.play(AnimationTypes.WALK_L, animations[AnimationTypes.WALK_L].frameRate, animations[AnimationTypes.WALK_L].loop)
+							}
+							this.move({ direction: Polyworks.Directions.LEFT });
+						break;
+						
+						case 'right': 
+							if(this.currentAnimation !== AnimationTypes.WALK_R) {
+								this.play(AnimationTypes.WALK_R, animations[AnimationTypes.WALK_R].frameRate, animations[AnimationTypes.WALK_R].loop)
+							}
+							this.move({ direction: Polyworks.Directions.RIGHT });
+						break;
+						
+						default:
+						break;
 					}
+					// if(playerToLeft) {
+					// 	if(this.currentAnimation !== AnimationTypes.WALK_L) {
+					// 		this.play(AnimationTypes.WALK_L, animations[AnimationTypes.WALK_L].frameRate, animations[AnimationTypes.WALK_L].loop)
+					// 	}
+					// 	this.move({ direction: Polyworks.Directions.LEFT });
+					// } else {
+					// 	if(this.currentAnimation !== AnimationTypes.WALK_R) {
+					// 		this.play(AnimationTypes.WALK_R, animations[AnimationTypes.WALK_R].frameRate, animations[AnimationTypes.WALK_R].loop)
+					// 	}
+					// 	this.move({ direction: Polyworks.Directions.RIGHT });
+					// }
 				}
 			}
 		}

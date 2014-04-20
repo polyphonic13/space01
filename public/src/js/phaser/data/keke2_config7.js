@@ -12,16 +12,21 @@ Polyworks.Config = (function() {
 		var stageHeight = stage.height;
 		var stageUnit = stage.unit;
 
-		var enemy01 = {
+		var caterpillar01 = {
 			width: (stageUnit * 1.5),
-			height: stageUnit * 0.5
+			height: (stageUnit * 0.5)
 		};
 
-		var enemy02 = {
+		var caterpillar02 = {
 			width: (stageUnit * 2),
-			height: stageUnit * 0.67
+			height: (stageUnit * 0.67)
 		};
 
+		var spider01 = {
+			width: (stageUnit * 2),
+			height: (stageUnit * 2)
+		};
+		
 		var fontSizes = {
 			xs: (stageUnit * 0.5),
 			sm: (stageUnit * 0.8),
@@ -568,18 +573,26 @@ Polyworks.Config = (function() {
 				// enemies
 				caterpillar01: 
 				{
-					url: 'images/caterpillar02a.png',
+					url: 'images/enemies/caterpillar02a.png',
 					width: 104, 
 					height: 32, 
 					frames: 14
 				},
 				caterpillar02: 
 				{
-					url: 'images/caterpillar02b.png',
+					url: 'images/enemies/caterpillar02b.png',
 					width: 104, 
 					height: 32, 
 					frames: 14
 				},
+				spider01: 
+				{
+					url: 'images/enemies/spider01b.png',
+					width: 128, 
+					height: 128, 
+					frames: 16
+				},
+				// reacting terrain
 				branch03LeftAnimated: 
 				{
 					url: 'images/scenery/branch03_left_animated.png',
@@ -2045,29 +2058,6 @@ Polyworks.Config = (function() {
 					}
 					]
 				},
-				// goals
-				{
-					name: 'goals',
-					cl: 'PhysicalGroupCollection',
-					attrs: [
-					{
-						name: 'level1-goal1',
-						cl: 'Sprite',
-						attrs: 
-						{
-							img: 'goalFlag',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 3)
-							},
-							start: {
-								x: (stageWidth * 6) - (stageUnit * 4),
-								y: winH - (stageUnit * 3.5)
-							}
-						}
-					}
-					]
-				},
 				// sectors
 				{
 					name: 'sectors',
@@ -2132,8 +2122,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 3
 									},
 									start: {
@@ -2341,8 +2331,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 3
 									},
 									start: {
@@ -2516,8 +2506,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 3
 									},
 									start: {
@@ -2578,8 +2568,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 3
 									},
 									start: {
@@ -2769,6 +2759,29 @@ Polyworks.Config = (function() {
 								x: (stageWidth * 4) + (stageUnit * 2),
 								// y: winH - (stageUnit * 13)
 								y: winH - (stageUnit * 2)
+							}
+						}
+					}
+					]
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageWidth * 6) - (stageUnit * 4),
+								y: winH - (stageUnit * 3.5)
 							}
 						}
 					}
@@ -3281,8 +3294,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 3
 									},
 									start: {
@@ -3585,8 +3598,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 3
 									},
 									start: {
@@ -3778,8 +3791,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 3
 									},
 									start: {
@@ -3810,8 +3823,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 3
 									},
 									start: {
@@ -3890,8 +3903,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 3
 									},
 									start: {
@@ -4618,8 +4631,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 6
 									},
 									start: {
@@ -4743,8 +4756,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 4
 									},
 									start: {
@@ -4775,8 +4788,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 10
 									},
 									start: {
@@ -4927,8 +4940,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 6
 									},
 									start: {
@@ -5065,8 +5078,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 6
 									},
 									start: {
@@ -5097,8 +5110,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 6
 									},
 									start: {
@@ -5174,8 +5187,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 6
 									},
 									start: {
@@ -5903,8 +5916,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar02',
 									phaser: {
-										width: enemy02.width,
-										height: enemy02.height,
+										width: caterpillar02.width,
+										height: caterpillar02.height,
 										health: 4
 									},
 									start: {
@@ -5935,8 +5948,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 10
 									},
 									start: {
@@ -6137,8 +6150,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar02',
 									phaser: {
-										width: enemy02.width,
-										height: enemy02.height,
+										width: caterpillar02.width,
+										height: caterpillar02.height,
 										health: 6
 									},
 									start: {
@@ -6339,8 +6352,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 6
 									},
 									start: {
@@ -6371,8 +6384,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar02',
 									phaser: {
-										width: enemy02.width,
-										height: enemy02.height,
+										width: caterpillar02.width,
+										height: caterpillar02.height,
 										health: 6
 									},
 									start: {
@@ -6544,8 +6557,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar02',
 									phaser: {
-										width: enemy02.width,
-										height: enemy02.height,
+										width: caterpillar02.width,
+										height: caterpillar02.height,
 										health: 6
 									},
 									start: {
@@ -6622,8 +6635,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 6
 									},
 									start: {
@@ -7535,8 +7548,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar02',
 									phaser: {
-										width: enemy02.width,
-										height: enemy02.height,
+										width: caterpillar02.width,
+										height: caterpillar02.height,
 										health: 4
 									},
 									start: {
@@ -7567,8 +7580,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 10
 									},
 									start: {
@@ -7790,8 +7803,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar02',
 									phaser: {
-										width: enemy02.width,
-										height: enemy02.height,
+										width: caterpillar02.width,
+										height: caterpillar02.height,
 										health: 6
 									},
 									start: {
@@ -8085,8 +8098,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 6
 									},
 									start: {
@@ -8118,8 +8131,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar02',
 									phaser: {
-										width: enemy02.width,
-										height: enemy02.height,
+										width: caterpillar02.width,
+										height: caterpillar02.height,
 										health: 6
 									},
 									start: {
@@ -8323,8 +8336,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar02',
 									phaser: {
-										width: enemy02.width,
-										height: enemy02.height,
+										width: caterpillar02.width,
+										height: caterpillar02.height,
 										health: 6
 									},
 									start: {
@@ -8402,8 +8415,8 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'caterpillar01',
 									phaser: {
-										width: enemy01.width,
-										height: enemy01.height,
+										width: caterpillar01.width,
+										height: caterpillar01.height,
 										health: 6
 									},
 									start: {
@@ -10560,8 +10573,8 @@ Polyworks.Config = (function() {
 							// 	attrs: {
 							// 		img: 'caterpillar02',
 							// 		phaser: {
-							// 			width: enemy02.width,
-							// 			height: enemy02.height
+							// 			width: caterpillar02.width,
+							// 			height: caterpillar02.height
 							// 		},
 							// 		start: {
 							// 			x: (stageUnit * 6),
@@ -14426,6 +14439,7 @@ Polyworks.Config = (function() {
 					'playButtonSmall',
 					'menuButton',
 					'mapButton',
+					'spider01',
 					'keke'
 				],
 				attrs: [
@@ -15195,7 +15209,41 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [] 
+							attrs: [
+							{
+								name: 'level01-sector2-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'spider01',
+									phaser: {
+										width: spider01.width,
+										height: spider01.height,
+										health: 100
+									},
+									start: {
+										x: (stageUnit * 6),
+										y: winH - (stageUnit * 9)
+									},
+									physics: {
+										deferredGravity: true,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									speed: 0.5,
+									attack: 20,
+									score: 2500,
+									movement: {
+										speed: 2,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: spiderAnimations
+								}
+							}
+							] 
 						},
 						{
 							name: 'bonuses',
@@ -17145,29 +17193,6 @@ Polyworks.Config = (function() {
 					}
 					]
 				},
-				// goals
-				{
-					name: 'goals',
-					cl: 'PhysicalGroupCollection',
-					attrs: [
-					{
-						name: 'level1-goal1',
-						cl: 'Sprite',
-						attrs: 
-						{
-							img: 'goalFlag',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 3)
-							},
-							start: {
-								x: (stageUnit * 35),
-								y: winH - (stageUnit * 71)
-							}
-						}
-					}
-					]
-				},
 				// sectors
 				{
 					name: 'sectors',
@@ -18846,6 +18871,29 @@ Polyworks.Config = (function() {
 							start: {
 								x: (stageWidth * 2) + (stageUnit * 11.5),
 								y: winH - (stageUnit * 47)
+							}
+						}
+					}
+					]
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageUnit * 35),
+								y: winH - (stageUnit * 71)
 							}
 						}
 					}
