@@ -6,7 +6,7 @@ Polyworks.MapMarker = (function() {
 	}
 	
 	MapMarker.prototype.begin = function() {
-		trace('MapMarker['+this.model.name+']/begin, level = ' + this.model.level);
+		// trace('MapMarker['+this.model.name+']/begin, level = ' + this.model.level);
 		MapMarker._super.begin.call(this);
 
 		var name = this.model.name;
@@ -26,7 +26,7 @@ Polyworks.MapMarker = (function() {
 			// this.addListeners();
 		}
 		// TESTING
-		// this.frame = 15;
+		this.frame = 15;
 		this.input.start();
 		this.addListeners();
 	};
@@ -47,7 +47,7 @@ Polyworks.MapMarker = (function() {
 	};
 	
 	MapMarker.prototype.inputUp = function(event, pointer, ctx) {
-		trace('MapMarker['+this.model.name+']/inputUp');
+		// trace('MapMarker['+this.model.name+']/inputUp');
 		ctx.pressed = false;
 		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.START_LEVEL, value: this.model.level });
 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.SHOW_LEVEL_INFO, value: this.model.level });
