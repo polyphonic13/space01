@@ -3094,29 +3094,6 @@ Polyworks.Config = (function() {
 					}
 					]
 				},
-				// goals
-				{
-					name: 'goals',
-					cl: 'PhysicalGroupCollection',
-					attrs: [
-					{
-						name: 'level1-goal1',
-						cl: 'Sprite',
-						attrs: 
-						{
-							img: 'goalFlag',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 3)
-							},
-							start: {
-								x: (stageWidth * 6) - (stageUnit * 4),
-								y: winH - (stageUnit * 3.5)
-							}
-						}
-					}
-					]
-				},
 				// sectors
 				{
 					name: 'sectors',
@@ -4097,6 +4074,29 @@ Polyworks.Config = (function() {
 						}
 					}
 					]
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageWidth * 6) - (stageUnit * 4),
+								y: winH - (stageUnit * 3.5)
+							}
+						}
+					}
+					]
 				}
 				]
 			},
@@ -4427,29 +4427,6 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
-							}
-						}
-					}
-					]
-				},
-				// goals
-				{
-					name: 'goals',
-					cl: 'PhysicalGroupCollection',
-					attrs: [
-					{
-						name: 'level1-goal1',
-						cl: 'Sprite',
-						attrs: 
-						{
-							img: 'goalFlag',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 3)
-							},
-							start: {
-								x: (stageWidth * 6) - (stageUnit * 4),
-								y: winH - (stageUnit * 3.5)
 							}
 						}
 					}
@@ -5378,6 +5355,29 @@ Polyworks.Config = (function() {
 						}
 					}
 					]
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageWidth * 6) - (stageUnit * 4),
+								y: winH - (stageUnit * 3.5)
+							}
+						}
+					}
+					]
 				}
 				]
 			},
@@ -5726,29 +5726,6 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
-							}
-						}
-					}
-					]
-				},
-				// goals
-				{
-					name: 'goals',
-					cl: 'PhysicalGroupCollection',
-					attrs: [
-					{
-						name: 'level1-goal1',
-						cl: 'Sprite',
-						attrs: 
-						{
-							img: 'goalFlag',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 3)
-							},
-							start: {
-								x: (stageWidth * 6) - (stageUnit * 4),
-								y: winH - (stageUnit * 3.5)
 							}
 						}
 					}
@@ -6812,6 +6789,29 @@ Polyworks.Config = (function() {
 						}
 					}
 					]
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageWidth * 6) - (stageUnit * 4),
+								y: winH - (stageUnit * 3.5)
+							}
+						}
+					}
+					]
 				}
 				]
 			},
@@ -7292,29 +7292,6 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
-							}
-						}
-					}
-					]
-				},
-				// goals
-				{
-					name: 'goals',
-					cl: 'PhysicalGroupCollection',
-					attrs: [
-					{
-						name: 'level1-goal1',
-						cl: 'Sprite',
-						attrs: 
-						{
-							img: 'goalFlag',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 3)
-							},
-							start: {
-								x: (stageWidth * 6) - (stageUnit * 4),
-								y: winH - (stageUnit * 3.5)
 							}
 						}
 					}
@@ -8593,7 +8570,30 @@ Polyworks.Config = (function() {
 						}
 					}
 					]
-				}
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageWidth * 6) - (stageUnit * 4),
+								y: winH - (stageUnit * 7.5)
+							}
+						}
+					}
+					]
+				},
 				]
 			},
 			// level 6 (river)
@@ -8982,29 +8982,6 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
-							}
-						}
-					}
-					]
-				},
-				// goals
-				{
-					name: 'goals',
-					cl: 'PhysicalGroupCollection',
-					attrs: [
-					{
-						name: 'level1-goal1',
-						cl: 'Sprite',
-						attrs: 
-						{
-							img: 'goalFlag',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 3)
-							},
-							start: {
-								x: (stageWidth * 6) - (stageUnit * 2),
-								y: winH - (stageUnit * 11.5)
 							}
 						}
 					}
@@ -9960,6 +9937,29 @@ Polyworks.Config = (function() {
 							start: {
 								x: (stageWidth * 4) + (stageUnit * 13),
 								y: winH - (stageUnit * 11)
+							}
+						}
+					}
+					]
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageWidth * 6) - (stageUnit * 2),
+								y: winH - (stageUnit * 3.5)
 							}
 						}
 					}
@@ -12110,6 +12110,29 @@ Polyworks.Config = (function() {
 							start: {
 								x: (stageWidth * 2) + (stageUnit * 11.5),
 								y: winH - (stageUnit * 47)
+							}
+						}
+					}
+					]
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageWidth * 2) + (stageUnit * 15),
+								y: winH - (stageUnit * 72)
 							}
 						}
 					}
@@ -14374,6 +14397,29 @@ Polyworks.Config = (function() {
 						}
 					}
 					]
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageWidth * 2) + (stageUnit * 15),
+								y: winH - (stageUnit * 72)
+							}
+						}
+					}
+					]
 				}
 				]
 			},
@@ -14417,7 +14463,6 @@ Polyworks.Config = (function() {
 					'mountainBackgroundH2',
 					'mountainBackgroundH3',
 					'mountainBackgroundH4',
-					'woodenArrowSign01Right',
 					'tree01',
 					'platformV',
 					'platform',
@@ -14701,21 +14746,6 @@ Polyworks.Config = (function() {
 							start: {
 								x: (stageWidth * 3),
 								y: winH - (stageHeight * 8)
-							}
-						}
-					},
-					{
-						name: 'arrow',
-						cl: 'Sprite',
-						attrs: {
-							img: 'woodenArrowSign01Right',
-							phaser: {
-								width: (stageUnit * 2),
-								height: (stageUnit * 2)
-							},
-							start: {
-								x: (stageWidth * 2) + (stageUnit * 11),
-								y: winH - (stageUnit * 70.75)
 							}
 						}
 					}
@@ -15191,7 +15221,7 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'invisibleRect',
 									phaser: {
-										width: (stageWidth * 3),
+										width: (stageWidth * 4),
 										height: 32
 									},
 									start: {

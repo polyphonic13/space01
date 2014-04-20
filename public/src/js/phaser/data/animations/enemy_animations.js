@@ -1,4 +1,9 @@
 var caterpillarAnimations = {
+	idle: {
+		keyFrames: [0],
+		loop: true,
+		frameRate: 10
+	},
 	walkL: {
 		keyFrames: [0, 2, 4, 6, 8, 10],
 		loop: true,

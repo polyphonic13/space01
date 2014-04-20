@@ -26,7 +26,7 @@ Polyworks.MapMarker = (function() {
 			// this.addListeners();
 		}
 		// TESTING
-		this.frame = 15;
+		// this.frame = 15;
 		this.input.start();
 		this.addListeners();
 	};

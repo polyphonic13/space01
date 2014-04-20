@@ -5,7 +5,7 @@ var rockPlatformDisintegrating = {
 		frameRate: 10
 	},
 	collided: {
-		keyFrames: [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 4, 5, 6, 7],
+		keyFrames: [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 4, 5, 6, 7],
 		looped: false,
 		frameRate: 10
 	}
