@@ -22,42 +22,44 @@ Polyworks.ReactingTerrain = (function() {
 	ReactingTerrain.prototype.collidedWithSprite = function(sprite) {
 		if(!this.hasCollided) {
 			// trace('ReactingTerrain['+this.model.name+']/collidedWithSprite, hasCollided = ' + this.hasCollided + '\tsprite = ', sprite, '\tthis: ', this);
-			this.hasCollided = true;
+			if(sprite.body.x >= this.body.x) {
+				this.hasCollided = true;
 
-			if(this.state === ReactingTerrain.IDLE) {
-				// trace('\tsomething collided with terrain, switching state');
+				if(this.state === ReactingTerrain.IDLE) {
+					// trace('\tsomething collided with terrain, switching state');
 
-				var reaction = this.model.reaction;
-				// trace('\treaction = ', reaction.type);
-				switch(reaction.type) {
-					case Polyworks.TerrainReactions.ADD_GRAVITY:
-						this.addGravity(this);
-					break;
+					var reaction = this.model.reaction;
+					// trace('\treaction = ', reaction.type);
+					switch(reaction.type) {
+						case Polyworks.TerrainReactions.ADD_GRAVITY:
+							this.addGravity(this);
+						break;
 
-					case Polyworks.TerrainReactions.ADD_GRAVITY_AFTER_X_SECONDS: 
-						this.callMethodAfterXSeconds('addGravity');
-					break; 
+						case Polyworks.TerrainReactions.ADD_GRAVITY_AFTER_X_SECONDS: 
+							this.callMethodAfterXSeconds('addGravity');
+						break; 
 
-					case Polyworks.TerrainReactions.DESTROY_AFTER_X_SECONDS: 
-						this.callMethodAfterXSeconds('removeTerrain');
-					break;
-					
-					case Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION:
-						this.destroyAfterAnimation();
-					break; 
+						case Polyworks.TerrainReactions.DESTROY_AFTER_X_SECONDS: 
+							this.callMethodAfterXSeconds('removeTerrain');
+						break;
 
-					default:
-						// trace('\tunknown reaction type');
-					break;
+						case Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION:
+							this.destroyAfterAnimation();
+						break; 
+
+						default:
+							// trace('\tunknown reaction type');
+						break;
+					}
+
+				// } else if(this.state === ReactingTerrain.ACTIVATED) {
+				// 	// trace('\treacting terrain collided with something, destroy it');
+				// 	this.state = ReactingTerrain.DEACTIVATED;
+				// 	if(this.model.attrs.animations) {
+				// 		this.playAnimation();
+				// 	}
+				// 	this.destroy();
 				}
-
-			// } else if(this.state === ReactingTerrain.ACTIVATED) {
-			// 	// trace('\treacting terrain collided with something, destroy it');
-			// 	this.state = ReactingTerrain.DEACTIVATED;
-			// 	if(this.model.attrs.animations) {
-			// 		this.playAnimation();
-			// 	}
-			// 	this.destroy();
 			}
 		}
 	};
