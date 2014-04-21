@@ -1,5 +1,5 @@
 /* local storage override
-Polyworks.Storage.set({kekeAndTheGreyExpanse: {"currentLevel":9,"savedState":"menu","savedStatus":["c","c","c","c","c","c","c","c","c","c","c"],"highScores":[0,0,0,0,0,0,0,0,0,0,0]}}); 
+Polyworks.Storage.set({kekeAndTheGreyExpanse: {"currentLevel":9,"savedState":"menu","savedStatus":["c","u","u","u","u","u","u","u","u","u","u","l"],"highScores":[0,0,0,0,0,0,0,0,0,0,0,0]}}); 
 */
 
 Polyworks.Config = (function() {
@@ -151,6 +151,15 @@ Polyworks.Config = (function() {
 				phaser: levelInfoBackgroundAttrs.phaser,
 				start: levelInfoBackgroundAttrs.start
 			}
+		},
+		{
+			name: 'level12Preview',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level12Preview',
+				phaser: levelInfoBackgroundAttrs.phaser,
+				start: levelInfoBackgroundAttrs.start
+			}
 		}
 		];
 
@@ -297,6 +306,7 @@ Polyworks.Config = (function() {
 				level09Preview: 'images/backgrounds/level09_preview.gif',
 				level10Preview: 'images/backgrounds/level10_preview.gif',
 				level11Preview: 'images/backgrounds/level11_preview.gif',
+				level12Preview: 'images/backgrounds/level12_preview.gif',
 
 				level01Title: 'images/titles/level_title01.png',
 				level02Title: 'images/titles/level_title02.png',
@@ -1507,6 +1517,7 @@ Polyworks.Config = (function() {
 					'level09Preview',
 					'level10Preview',
 					'level11Preview',
+					'level12Preview',
 					'mapForest',
 					'mapMountains'
 				],
@@ -1725,7 +1736,7 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'mapLevelMarker12',
+						name: 'mapLevelMarker11',
 						cl: 'MapMarker',
 						attrs: {
 							img: 'mapLocationMarkerCrystals',
@@ -1734,8 +1745,8 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 2)
 							},
 							start: {
-								x: (winW/2 - stageWidth/2) + (stageUnit * 12),
-								y: (winH/2) + (stageUnit * 0.4) 
+								x: (winW/2 - stageWidth/2) + (stageUnit * 12.3),
+								y: (winH/2) + (stageUnit * 0.7) 
 							}
 						}
 					}
@@ -1753,7 +1764,8 @@ Polyworks.Config = (function() {
 					levelInfoBackgrounds[7],
 					levelInfoBackgrounds[8],
 					levelInfoBackgrounds[9],
-					levelInfoBackgrounds[10]
+					levelInfoBackgrounds[10],
+					levelInfoBackgrounds[11]
 				],
 				attrs: [
 				{
