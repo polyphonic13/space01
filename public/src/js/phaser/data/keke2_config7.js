@@ -13244,7 +13244,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageUnit * 10),
-										y: (stageUnit * 21)
+										y: (stageUnit * 20)
 									},
 									physics: {
 										immovable: true
@@ -13366,7 +13366,7 @@ Polyworks.Config = (function() {
 							end: winH - (stageHeight * 3)
 						},
 						attrs: [
-						{
+						{	
 							name: 'dynamicTerrain',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
@@ -13409,47 +13409,6 @@ Polyworks.Config = (function() {
 								}
 							},
 							/////////// end left / start right
-							{
-								name: 'sector4-platform01',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform01',
-									phaser: {
-										width: (stageUnit * 1.5),
-										height: (stageUnit * 0.5)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 4),
-										y: winH - (stageUnit * 27)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'sector4-platform01',
-								cl: 'ReactingTerrain',
-								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
-								},
-								attrs: {
-									img: 'rockPlatform01Animated',
-									phaser: {
-										width: (stageUnit * 1.5),
-										height: (stageUnit * 0.8)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 1),
-										y: winH - (stageUnit * 28.5)
-									},
-									physics: {
-										immovable: true
-									},
-									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
-								}
-							},
 							{
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
