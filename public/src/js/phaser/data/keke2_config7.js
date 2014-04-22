@@ -2360,25 +2360,7 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'level01-sector4-bonus1',
-								cl: 'Bonus',
-								attrs: {
-									img: 'lollipop',
-									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 14),
-										y: winH - (stageUnit * 13)
-									},
-									physics: {
-										immovable: true
-									},
-									score: 100,
-									health: 10
-								}
-							}
-							]
+							attrs: []
 						}
 						]
 					},
@@ -2838,9 +2820,8 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1.5)
 							},
 							start: {
-								x: (stageWidth * 4) + (stageUnit * 2),
-								// y: winH - (stageUnit * 13)
-								y: winH - (stageUnit * 2)
+								x: (stageWidth * 2) + (stageUnit * 13),
+								y: winH - (stageUnit * 13.5)
 							}
 						}
 					}
@@ -3514,7 +3495,25 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs: []
+							attrs: [
+							{
+								name: 'level02-sector6-bonus1',
+								cl: 'Bonus',
+								attrs: {
+									img: 'lollipop',
+									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
+									start: {
+										x: (stageWidth * 2) + (stageUnit * 15),
+										y: winH - (stageUnit * 13)
+									},
+									physics: {
+										immovable: true
+									},
+									score: 100,
+									health: 10
+								}
+							}
+							]
 						}
 						]
 					},
@@ -3691,25 +3690,7 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'level02-sector4-bonus1',
-								cl: 'Bonus',
-								attrs: {
-									img: 'lollipop',
-									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
-									start: {
-										x: (stageWidth * 3) + (stageUnit * 5),
-										y: winH - (stageUnit * 1.5)
-									},
-									physics: {
-										immovable: true
-									},
-									score: 100,
-									health: 10
-								}
-							}
-							]
+							attrs: []
 						}
 						]
 					},
@@ -3917,25 +3898,7 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'level02-sector5-bonus1',
-								cl: 'Bonus',
-								attrs: {
-									img: 'lollipop',
-									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
-									start: {
-										x: (stageWidth * 4) + (stageUnit),
-										y: winH - (stageUnit * 12.5)
-									},
-									physics: {
-										immovable: true
-									},
-									score: 100,
-									health: 10
-								}
-							}
-							]
+							attrs: []
 						}
 						]
 					},
@@ -3999,25 +3962,7 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'level02-sector6-bonus1',
-								cl: 'Bonus',
-								attrs: {
-									img: 'lollipop',
-									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
-									start: {
-										x: (stageWidth * 5) + (stageUnit * 5),
-										y: winH - (stageUnit * 2)
-									},
-									physics: {
-										immovable: true
-									},
-									score: 100,
-									health: 10
-								}
-							}
-							]
+							attrs: []
 						}
 						]
 					}]
@@ -4156,8 +4101,8 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1.5)
 							},
 							start: {
-								x: (stageWidth * 2) + (stageUnit * 13),
-								y: winH - (stageUnit * 13.5)
+								x: (stageWidth * 4) + (stageUnit * 2),
+								y: winH - (stageUnit * 13)
 							}
 						}
 					}
