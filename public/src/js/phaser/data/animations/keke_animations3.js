@@ -50,3 +50,21 @@ var kekeAnimations = {
 		frameRate: 14
 	}
 };
+
+var heartIconAnimations = {
+	normal: {
+		keyFrames: [0],
+		loop: false,
+		frameRate: 14
+	},
+	increased: {
+		keyFrames: [1, 1, 1, 2, 2, 3, 0],
+		loop: false,
+		frameRate: 14
+	},
+	low: {
+		keyFrames: [4, 4, 5, 5, 6, 6, 7, 7],
+		loop: true,
+		frameRate: 15
+	}
+}

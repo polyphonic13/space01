@@ -577,6 +577,14 @@ Polyworks.Config = (function() {
 					frames: 2
 				},
 
+				// heart
+				heartSprite: 
+				{
+					url: 'images/heart_sprite.png',
+					width: 128,
+					height: 128,
+					frames: 8
+				},
 				// player
 				keke: 
 				{
@@ -1146,9 +1154,11 @@ Polyworks.Config = (function() {
 				levelGUI: [
 				{
 					name: 'heartIcon',
-					cl: 'Sprite',
+					cl: 'HeartIcon',
+					health: 0,
+					lowHealth: 33,
 					attrs: {
-						img: 'heart',
+						img: 'heartSprite',
 						phaser: {
 							width: (stageUnit * 0.75),
 							height: (stageUnit * 0.75)
@@ -1156,7 +1166,9 @@ Polyworks.Config = (function() {
 						start: {
 							x: winW - (stageUnit * 1.2),
 							y: (stageUnit * 0.3)
-						}
+						},
+						defaultAnimation: 'normal',
+						animations: heartIconAnimations
 					}
 				},
 				{
@@ -1427,26 +1439,6 @@ Polyworks.Config = (function() {
 							released: {
 								type: Polyworks.Events.CHANGE_STATE,
 								value: 'map'
-							}
-						}
-					}
-				},
-				{
-					name: 'restart',
-					cl: 'InputButton',
-					attrs: {
-						img: 'restartButton',
-						phaser: {
-							width: (stageUnit * 1.5),
-							height: (stageUnit * 1.5)
-						},
-						start: {
-							x: (stageUnit * 0.5),
-							y: (winH/2) + ((stageUnit * 1.5)/2) + (stageUnit * 0.5)
-						},
-						events: {
-							released: {
-								type: Polyworks.Events.START_LEVEL
 							}
 						}
 					}
@@ -1893,7 +1885,6 @@ Polyworks.Config = (function() {
 					'crystals02Grey',
 					'lollipop',
 					'invisibleRect',
-					'heart',
 					'greyRect'
 				],
 				sprites: [
@@ -1906,6 +1897,7 @@ Polyworks.Config = (function() {
 					'restartButton',
 					'menuButton',
 					'mapButton',
+					'heartSprite',
 					'keke',
 					'caterpillar01'
 				],
@@ -2919,7 +2911,6 @@ Polyworks.Config = (function() {
 					'crystals02Grey',
 					'lollipop',
 					'invisibleRect',
-					'heart',
 					'greyRect'
 				],
 				sprites: [
@@ -2932,6 +2923,7 @@ Polyworks.Config = (function() {
 					'restartButton',
 					'menuButton',
 					'mapButton',
+					'heartSprite',
 					'keke',
 					'caterpillar01'
 				],
@@ -4237,8 +4229,7 @@ Polyworks.Config = (function() {
 					'crystals02Grey',
 					'crystals02Garnet',
 					'lollipop',
-					'invisibleRect',
-					'heart'
+					'invisibleRect'
 				],
 				sprites: [
 					'leftButton',
@@ -4250,6 +4241,7 @@ Polyworks.Config = (function() {
 					'restartButton',
 					'menuButton',
 					'mapButton',
+					'heartSprite',
 					'keke',
 					'caterpillar01'
 				],
@@ -5527,8 +5519,7 @@ Polyworks.Config = (function() {
 					'lollipop',
 					'crystals02Grey',
 					'crystals02Purple',
-					'invisibleRect',
-					'heart'
+					'invisibleRect'
 				],
 				sprites: [
 					'leftButton',
@@ -5540,6 +5531,7 @@ Polyworks.Config = (function() {
 					'restartButton',
 					'menuButton',
 					'mapButton',
+					'heartSprite',
 					'keke',
 					'caterpillar01',
 					'caterpillar02'
@@ -6973,8 +6965,7 @@ Polyworks.Config = (function() {
 					'lollipop',
 					'crystals02Grey',
 					'crystals02Aqua',
-					'invisibleRect',
-					'heart'
+					'invisibleRect'
 				],
 				sprites: [
 					'leftButton',
@@ -6986,6 +6977,7 @@ Polyworks.Config = (function() {
 					'restartButton',
 					'menuButton',
 					'mapButton',
+					'heartSprite',
 					'keke',
 					'caterpillar01',
 					'caterpillar02',
@@ -8762,8 +8754,7 @@ Polyworks.Config = (function() {
 					'river01',
 					'invisibleRect',
 					'crystals02Grey',
-					'crystals02Silver',
-					'heart'
+					'crystals02Silver'
 				],
 				sprites: [
 					'leftButton',
@@ -8776,6 +8767,7 @@ Polyworks.Config = (function() {
 					'menuButton',
 					'mapButton',
 					'rockPlatform04Animated',
+					'heartSprite',
 					'keke'
 				],
 				attrs: [
@@ -10135,7 +10127,6 @@ Polyworks.Config = (function() {
 					'rockPlatform03',
 					'rockPlatform04',
 					'invisibleRect',
-					'heart',
 					'crystals02Grey',
 					'crystals02Orange'
 				],
@@ -10152,6 +10143,7 @@ Polyworks.Config = (function() {
 					'restartButton',
 					'menuButton',
 					'mapButton',
+					'heartSprite',
 					'keke'
 				],
 				attrs: [
@@ -14694,7 +14686,6 @@ Polyworks.Config = (function() {
 					'rockPlatform03',
 					'rockPlatform04',
 					'invisibleRect',
-					'heart',
 					'lollipop',
 					'crystals02Grey',
 					'crystals02Teal'
@@ -14711,6 +14702,7 @@ Polyworks.Config = (function() {
 					'mapButton',
 					'rockPlatform01Animated',
 					'spider02',
+					'heartSprite',
 					'keke'
 				],
 				attrs: [
@@ -17457,7 +17449,6 @@ Polyworks.Config = (function() {
 					'rockPlatform03',
 					'rockPlatform04',
 					'invisibleRect',
-					'heart',
 					'crystals02Grey',
 					'crystals02Yellow'
 				],
@@ -17471,6 +17462,7 @@ Polyworks.Config = (function() {
 					'restartButton',
 					'menuButton',
 					'mapButton',
+					'heartSprite',
 					'keke'
 				],
 				attrs: [
@@ -19484,7 +19476,6 @@ Polyworks.Config = (function() {
 					'rockPlatform03',
 					'rockPlatform04',
 					'invisibleRect',
-					'heart',
 					'crystals02Grey',
 					'crystals02Red'
 				],
@@ -19498,6 +19489,7 @@ Polyworks.Config = (function() {
 					'restartButton',
 					'menuButton',
 					'mapButton',
+					'heartSprite',
 					'keke'
 				],
 				attrs: [
@@ -21511,7 +21503,6 @@ Polyworks.Config = (function() {
 					'rockPlatform03',
 					'rockPlatform04',
 					'invisibleRect',
-					'heart',
 					'crystals02Grey',
 					'crystals02Red'
 				],
@@ -21525,6 +21516,7 @@ Polyworks.Config = (function() {
 					'restartButton',
 					'menuButton',
 					'mapButton',
+					'heartSprite',
 					'keke'
 				],
 				attrs: [
