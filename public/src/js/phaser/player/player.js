@@ -216,7 +216,7 @@ Polyworks.Player = (function() {
 	Player.prototype.onEnemyCollision = function(player, enemy) {
 		this.collided = true;
 		var playerX = player.body.x + (player.body.width);
-		var playerY = player.body.y + (player.body.height) - 5; // need a little bit of "wiggle room" to get the collision to take
+		var playerY = player.body.y + (player.body.height) - 10; // need a little bit of "wiggle room" to get the collision to take
 		var enemyX = enemy.body.x + (enemy.body.width);
 		var enemyY = enemy.body.y + (enemy.body.height);
 		// trace('Player/onEnemyCollision['+enemy.model.name+'], player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));

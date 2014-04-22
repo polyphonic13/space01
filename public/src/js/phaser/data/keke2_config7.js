@@ -10364,21 +10364,6 @@ Polyworks.Config = (function() {
 								y: winH - (stageUnit * 2)
 							}
 						}
-					},
-					{
-						name: 'arrow',
-						cl: 'Sprite',
-						attrs: {
-							img: 'woodenArrowSign01Right',
-							phaser: {
-								width: (stageUnit * 2),
-								height: (stageUnit * 2)
-							},
-							start: {
-								x: (stageWidth * 2) + (stageUnit * 11),
-								y: winH - (stageUnit * 70.75)
-							}
-						}
 					}
 					]
 				},
@@ -12595,7 +12580,7 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1)
 							},
 							start: {
-								x: (stageWidth) + (stageUnit * 5),
+								x: (stageUnit * 25),
 								y: winH - (stageUnit * 36)
 							},
 							physics: {
@@ -13716,7 +13701,7 @@ Polyworks.Config = (function() {
 										health: 5
 									},
 									start: {
-										x: (stageUnit * 23),
+										x: (stageUnit * 17),
 										y: winH - (stageUnit * 40)
 									},
 									physics: {
@@ -14228,7 +14213,7 @@ Polyworks.Config = (function() {
 										health: 5
 									},
 									start: {
-										x: (stageWidth * 2),
+										x: (stageUnit * 42),
 										y: winH - (stageUnit * 61)
 									},
 									physics: {
