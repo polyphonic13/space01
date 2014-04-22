@@ -1,4 +1,5 @@
 /* local storage override
+Polyworks.Storage.destroy();
 Polyworks.Storage.set({kekeAndTheGreyExpanse: {"currentLevel":9,"savedState":"menu","savedStatus":["c","u","u","u","u","u","u","u","u","u","u","l"],"highScores":[0,0,0,0,0,0,0,0,0,0,0,0]}}); 
 */
 
@@ -319,6 +320,7 @@ Polyworks.Config = (function() {
 				level09Title: 'images/titles/level_title09.png',
 				level10Title: 'images/titles/level_title10.png',
 				level11Title: 'images/titles/level_title11.png',
+				level12Title: 'images/titles/level_title12.png',
 				
 				forestBackground02a: 'images/backgrounds/pencil_forest02a.gif',
 				forestBackground02b: 'images/backgrounds/pencil_forest02b.gif',
