@@ -2180,6 +2180,7 @@ Polyworks.Config = (function() {
 									},
 									speed: 0.5,
 									attack: 5,
+									testInView: true,
 									score: 2500,
 									movement: {
 										speed: 0.5,
@@ -2388,6 +2389,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 5,
+									testInView: true,
 									score: 500,
 									movement: {
 										speed: 1,
@@ -2563,6 +2565,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 5,
+									testInView: true,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -2625,6 +2628,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 5,
+									testInView: true,
 									score: 500,
 									movement: {
 										speed: 1,
@@ -3329,6 +3333,7 @@ Polyworks.Config = (function() {
 									},
 									speed: 0.5,
 									attack: 5,
+									testInView: true,
 									score: 2500,
 									movement: {
 										speed: 0.5,
@@ -3632,6 +3637,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 5,
+									testInView: true,
 									score: 500,
 									movement: {
 										speed: 1,
@@ -3825,6 +3831,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 5,
+									testInView: true,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -3857,6 +3864,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 15,
+									testInView: true,
 									score: 2000,
 									movement: {
 										speed: 2,
@@ -3937,6 +3945,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 5,
+									testInView: true,
 									score: 500,
 									movement: {
 										speed: 1,
@@ -4666,6 +4675,7 @@ Polyworks.Config = (function() {
 									},
 									speed: 0.5,
 									attack: 5,
+									testInView: true,
 									score: 1000,
 									movement: {
 										speed: 0.25,
@@ -4790,6 +4800,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 5,
+									testInView: true,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -4822,6 +4833,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 5,
+									testInView: true,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -4974,6 +4986,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 5,
+									testInView: true,
 									score: 500,
 									movement: {
 										speed: 1,
@@ -5112,6 +5125,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 5,
+									testInView: true,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -5144,6 +5158,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 5,
+									testInView: true,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -5221,6 +5236,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 5,
+									testInView: true,
 									score: 500,
 									movement: {
 										speed: 1,
@@ -5950,6 +5966,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 20,
+									testInView: true,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -5982,6 +5999,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 5,
+									testInView: true,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -6184,6 +6202,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 20,
+									testInView: true,
 									score: 500,
 									movement: {
 										speed: 1,
@@ -6386,6 +6405,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 5,
+									testInView: true,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -6418,6 +6438,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 20,
+									testInView: true,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -6591,6 +6612,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 20,
+									testInView: true,
 									score: 500,
 									movement: {
 										speed: 1,
@@ -6670,6 +6692,7 @@ Polyworks.Config = (function() {
 									},
 									speed: 0.5,
 									attack: 5,
+									testInView: true,
 									score: 1000,
 									movement: {
 										speed: 0.25,
@@ -7582,6 +7605,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 25,
+									testInView: true,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -7614,6 +7638,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 5,
+									testInView: true,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -7838,6 +7863,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 25,
+									testInView: true,
 									score: 500,
 									movement: {
 										speed: 1,
@@ -8133,6 +8159,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 5,
+									testInView: true,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -8166,6 +8193,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 25,
+									testInView: true,
 									score: 2000,
 									movement: {
 										speed: 1,
@@ -8371,6 +8399,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 25,
+									testInView: true,
 									score: 500,
 									movement: {
 										speed: 1,
@@ -8451,6 +8480,7 @@ Polyworks.Config = (function() {
 									},
 									speed: 0.5,
 									attack: 5,
+									testInView: true,
 									score: 1000,
 									movement: {
 										speed: 0.25,

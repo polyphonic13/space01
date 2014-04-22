@@ -5,6 +5,7 @@ Polyworks.Enemy = (function() {
 	function Enemy(params) {
 		Enemy._super.constructor.call(this, params);
 		this.reactivated = false; 
+		this.isInView = true;
 	}
 
 	Enemy.prototype.begin = function() {
@@ -18,10 +19,12 @@ Polyworks.Enemy = (function() {
 			var enemyX = this.body.screenX;
 			var playerX = params.player.body.screenX;
 
-			if(enemyX < (playerX + Polyworks.Stage.width/2) && enemyX > (playerX - Polyworks.Stage.width/2)) {
-				this.isInView = true;
-			} else {
-				this.isInView = false;
+			if(this.model.attrs.testInView) {
+				if(enemyX < (playerX + Polyworks.Stage.width/2) && enemyX > (playerX - Polyworks.Stage.width/2)) {
+					this.isInView = true;
+				} else {
+					this.isInView = false;
+				}
 			}
 			this.checkDynamicTerrainCollision(params.dynamicTerrain);
 		}
