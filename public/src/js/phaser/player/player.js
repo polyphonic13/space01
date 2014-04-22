@@ -221,7 +221,7 @@ Polyworks.Player = (function() {
 		var enemyY = enemy.body.y + (enemy.body.height);
 		// trace('Player/onEnemyCollision['+enemy.model.name+'], player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
 		// trace(enemy);
-trace('enemy collision\n\tplayerY = ' + playerY + ', enemy.body.y = ' + enemy.body.y);
+// trace('enemy collision\n\tplayerY = ' + playerY + ', enemy.body.y = ' + enemy.body.y + '\n\tenemy.overlapY = ' + enemy.body.overlapY + ', enemy touching = ', enemy.body.touching);
 		// if(playerY < (enemyY)) { // player is above enemy
 		if(playerY <= enemy.body.y) {
 			trace('damage hims');
