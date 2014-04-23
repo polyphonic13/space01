@@ -235,6 +235,7 @@ PolyworksGame = (function() {
 	}
 	
 	function _getSavedData() {
+		// Polywork.Storage.destroy();
 		var savedData = Polyworks.Storage.get(PolyworksGame.name);
 		trace('PolyworksGame/_getSavedData, savedData = ', savedData);
 		if(typeof(savedData) !== 'undefined') {
