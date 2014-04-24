@@ -17662,7 +17662,7 @@ Polyworks.Config = (function() {
 								height: (stageUnit)
 							},
 							start: {
-								x: (stageUnit * 6),
+								x: (stageUnit * 7),
 								y: winH - (stageUnit * 0.5)
 							},
 							physics: {
@@ -17701,7 +17701,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 32),
-								y: winH + (stageUnit * 10)
+								y: winH + (stageUnit * 9)
 							},
 							physics: {
 								immovable: true
@@ -17720,7 +17720,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 35),
-								y: winH + (stageUnit * 19)
+								y: winH + (stageUnit * 18)
 							},
 							physics: {
 								immovable: true
@@ -17739,7 +17739,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 21),
-								y: winH + (stageUnit * 28)
+								y: winH + (stageUnit * 27)
 							},
 							physics: {
 								immovable: true
@@ -17758,7 +17758,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 32),
-								y: winH + (stageUnit * 28)
+								y: winH + (stageUnit * 27)
 							},
 							physics: {
 								immovable: true
@@ -17777,7 +17777,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 18),
-								y: winH + (stageUnit * 37)
+								y: winH + (stageUnit * 36)
 							},
 							physics: {
 								immovable: true
@@ -17796,7 +17796,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 42),
-								y: winH + (stageUnit * 37)
+								y: winH + (stageUnit * 36)
 							},
 							physics: {
 								immovable: true
@@ -17815,7 +17815,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 37),
-								y: winH + (stageUnit * 46)
+								y: winH + (stageUnit * 45)
 							},
 							physics: {
 								immovable: true
@@ -17834,7 +17834,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageUnit * 36),
-								y: winH + (stageUnit * 55)
+								y: winH + (stageUnit * 54)
 							},
 							physics: {
 								immovable: true
@@ -17908,7 +17908,7 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.5)
 									},
 									start: {
-										x: (stageUnit * 11),
+										x: (stageUnit * 12),
 										y: winH - (stageUnit * 1)
 									},
 									physics: {
@@ -18765,24 +18765,6 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.5)
 									},
 									start: {
-										x: (stageUnit * 21),
-										y: winH + (stageUnit * 28)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'sector5-platform01',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform01',
-									phaser: {
-										width: (stageUnit * 1.5),
-										height: (stageUnit * 0.5)
-									},
-									start: {
 										x: (stageUnit * 18),
 										y: winH + (stageUnit * 30)
 									},
@@ -18935,6 +18917,24 @@ Polyworks.Config = (function() {
 									}
 								}
 							},
+							// {
+							// 	name: 'sector5-platform01',
+							// 	cl: 'Sprite',
+							// 	attrs: {
+							// 		img: 'rockPlatform01',
+							// 		phaser: {
+							// 			width: (stageUnit * 1.5),
+							// 			height: (stageUnit * 0.5)
+							// 		},
+							// 		start: {
+							// 			x: (stageUnit * 16),
+							// 			y: winH + (stageUnit * 35)
+							// 		},
+							// 		physics: {
+							// 			immovable: true
+							// 		}
+							// 	}
+							// },
 							{
 								name: 'sector5-platform01',
 								cl: 'Sprite',
@@ -19013,6 +19013,24 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.5)
 									},
 									start: {
+										x: (stageUnit * 14.5),
+										y: winH + (stageUnit * 38)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'sector5-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 1.5),
+										height: (stageUnit * 0.5)
+									},
+									start: {
 										x: (stageUnit * 39),
 										y: winH + (stageUnit * 38)
 									},
@@ -19031,7 +19049,7 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.5)
 									},
 									start: {
-										x: (stageUnit * 15),
+										x: (stageUnit * 11),
 										y: winH + (stageUnit * 39)
 									},
 									physics: {
@@ -19067,7 +19085,7 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.5)
 									},
 									start: {
-										x: (stageUnit * 16),
+										x: (stageUnit * 13),
 										y: winH + (stageUnit * 41)
 									},
 									physics: {
@@ -19358,6 +19376,24 @@ Polyworks.Config = (function() {
 							name: 'dynamicTerrain',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
+							{
+								name: 'sector8-platform01',
+								cl: 'Sprite',
+								attrs: {
+									img: 'rockPlatform01',
+									phaser: {
+										width: (stageUnit * 1.5),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: (stageUnit * 31),
+										y: winH + (stageUnit * 56)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
 							{
 								name: 'sector8-platform01',
 								cl: 'Sprite',
