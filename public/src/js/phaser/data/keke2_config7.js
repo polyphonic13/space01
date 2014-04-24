@@ -4161,7 +4161,7 @@ Polyworks.Config = (function() {
 				world: {
 					x: 0,
 					y: -(stageHeight * 2) + winH,
-					width: stageWidth * 6,
+					width: stageWidth * 9,
 					height: stageHeight * 2
 				},
 				clearWorld: true,
@@ -4208,7 +4208,9 @@ Polyworks.Config = (function() {
 					'mapButton',
 					'heartSprite',
 					'keke',
-					'caterpillar01'
+					'caterpillar01',
+					'branch03LeftAnimated',
+					'branch03RightAnimated'
 				],
 				attrs: [
 				// scenery
@@ -4307,6 +4309,51 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'background07',
+						cl: 'Sprite',
+						attrs: {
+							img: 'forestBackground01c',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight * 2
+							},
+							start: {
+								x: (stageWidth * 6),
+								y: winH - (stageHeight * 2)
+							}
+						}
+					},
+					{
+						name: 'background08',
+						cl: 'Sprite',
+						attrs: {
+							img: 'forestBackground01c',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight * 2
+							},
+							start: {
+								x: (stageWidth * 7),
+								y: winH - (stageHeight * 2)
+							}
+						}
+					},
+					{
+						name: 'background09',
+						cl: 'Sprite',
+						attrs: {
+							img: 'forestBackground01c',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight * 2
+							},
+							start: {
+								x: (stageWidth * 8),
+								y: winH - (stageHeight * 2)
+							}
+						}
+					},
+					{
 						name: 'grass01',
 						cl: 'Sprite',
 						attrs: {
@@ -4332,6 +4379,21 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 3),
+								y: winH - (stageUnit * 2)
+							}
+						}
+					},
+					{
+						name: 'grass02',
+						cl: 'Sprite',
+						attrs: {
+							img: 'grass03',
+							phaser: {
+								width: (stageWidth * 3),
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageWidth * 6),
 								y: winH - (stageUnit * 2)
 							}
 						}
@@ -4440,6 +4502,51 @@ Polyworks.Config = (function() {
 								y: winH - (stageHeight * 3)
 							}
 						}
+					},
+					{
+						name: 'tree07',
+						cl: 'Sprite',
+						attrs: {
+							img: 'tree01',
+							phaser: {
+								width: (stageHeight * 2),
+								height: (stageHeight * 3)
+							},
+							start: {
+								x: (stageWidth * 5) + (stageUnit * 3),
+								y: winH - (stageHeight * 3)
+							}
+						}
+					},
+					{
+						name: 'tree08',
+						cl: 'Sprite',
+						attrs: {
+							img: 'tree01',
+							phaser: {
+								width: (stageHeight * 2),
+								height: (stageHeight * 3)
+							},
+							start: {
+								x: (stageWidth * 5) + (stageUnit * 11),
+								y: winH - (stageHeight * 3)
+							}
+						}
+					},
+					{
+						name: 'tree09',
+						cl: 'Sprite',
+						attrs: {
+							img: 'tree01',
+							phaser: {
+								width: (stageHeight * 2),
+								height: (stageHeight * 3)
+							},
+							start: {
+								x: (stageWidth * 6) + (stageUnit * 4),
+								y: winH - (stageHeight * 3)
+							}
+						}
 					}
 					]
 				},
@@ -4472,7 +4579,7 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'platform',
 							phaser: {
-								width: stageWidth * 6,
+								width: stageWidth * 9,
 								height: 32
 							},
 							start: {
@@ -4599,19 +4706,23 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'plat1',
-								cl: 'Sprite',
+								name: 'tree01-branch01',
+								cl: 'ReactingTerrain',
+								reaction: {
+									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+								},
 								attrs: {
-									img: 'branch03Left',
+									img: 'branch03LeftAnimated',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 									start: {
 										x: (stageWidth) + (stageUnit * 7),
 										y: winH - (stageUnit * 8.5)
 									},
-									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
 									physics: {
-										immovable: true,
-										allowGravity: false
-									}
+										immovable: true
+									},
+									defaultAnimation: '',
+									animations: treeBranchBreaking
 								}
 							},
 							{
@@ -4914,10 +5025,13 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'platform8',
-								cl: 'Sprite',
+								name: 'tree01-branch01',
+								cl: 'ReactingTerrain',
+								reaction: {
+									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+								},
 								attrs: {
-									img: 'branch03Left',
+									img: 'branch03LeftAnimated',
 									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 									start: {
 										x: (stageWidth * 3) + (stageUnit * 9),
@@ -4925,7 +5039,9 @@ Polyworks.Config = (function() {
 									},
 									physics: {
 										immovable: true
-									}
+									},
+									defaultAnimation: '',
+									animations: treeBranchBreaking
 								}
 							},
 							{
@@ -5068,10 +5184,13 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'platform8',
-								cl: 'Sprite',
+								name: 'tree01-branch01',
+								cl: 'ReactingTerrain',
+								reaction: {
+									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+								},
 								attrs: {
-									img: 'branch03Left',
+									img: 'branch03LeftAnimated',
 									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 									start: {
 										x: (stageWidth * 4) + (stageUnit * 10),
@@ -5079,14 +5198,19 @@ Polyworks.Config = (function() {
 									},
 									physics: {
 										immovable: true
-									}
+									},
+									defaultAnimation: '',
+									animations: treeBranchBreaking
 								}
 							},
 							{
-								name: 'platform9',
-								cl: 'Sprite',
+								name: 'tree01-branch01',
+								cl: 'ReactingTerrain',
+								reaction: {
+									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+								},
 								attrs: {
-									img: 'branch03Right',
+									img: 'branch03RightAnimated',
 									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 									start: {
 										x: (stageWidth * 4) + (stageUnit * 13),
@@ -5094,7 +5218,9 @@ Polyworks.Config = (function() {
 									},
 									physics: {
 										immovable: true
-									}
+									},
+									defaultAnimation: '',
+									animations: treeBranchBreaking
 								}
 							}
 							]
@@ -5208,7 +5334,88 @@ Polyworks.Config = (function() {
 						{
 							name: 'dynamicTerrain',
 							cl: 'PhysicalGroupCollection',
-							attrs: []
+							attrs: [
+							{
+								name: 'platform6',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aLeft',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 5) + (stageUnit),
+										y: winH - (stageUnit * 7.5)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'platform7',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aRight',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 5) + (stageUnit * 5),
+										y: winH - (stageUnit * 9)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'tree01-branch01',
+								cl: 'ReactingTerrain',
+								reaction: {
+									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+								},
+								attrs: {
+									img: 'branch03LeftAnimated',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 5) + (stageUnit * 9),
+										y: winH - (stageUnit * 10.5)
+									},
+									physics: {
+										immovable: true
+									},
+									defaultAnimation: '',
+									animations: treeBranchBreaking
+								}
+							},
+							{
+								name: 'platform9',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 5) + (stageUnit * 4.5),
+										y: winH - (stageUnit * 12)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'platform10',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 5) + (stageUnit * 12.5),
+										y: winH - (stageUnit * 10.5)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							}
+							]
 						},
 						{
 							name: 'hazards',
@@ -5219,7 +5426,7 @@ Polyworks.Config = (function() {
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
-								name: 'level03-sector6-enemy1',
+								name: 'level03-sector4-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar01',
@@ -5229,7 +5436,7 @@ Polyworks.Config = (function() {
 										health: 6
 									},
 									start: {
-										x: (stageWidth * 5) + (stageUnit),
+										x: (stageWidth * 5),
 										y: winH - (33 + (stageUnit * 0.5))
 									},
 									physics: {
@@ -5255,26 +5462,440 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
+							attrs: []
+						}
+						]
+					},
+					{
+						name: 'sector7',
+						cl: 'Sector',
+						bounds: {
+							start: stageWidth * 5,
+							end: stageWidth * 6
+						},
+						attrs: [
+						{
+							name: 'dynamicTerrain',
+							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								cl: 'Bonus',
+								name: 'platform6',
+								cl: 'Sprite',
 								attrs: {
-									img: 'lollipop',
-									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
+									img: 'branch03aLeft',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 									start: {
-										x: (stageWidth * 5) + (stageUnit * 9),
-										y: winH - (stageUnit * 1.5)
+										x: (stageWidth * 6) + (stageUnit),
+										y: winH - (stageUnit * 7.5)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'platform7',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aRight',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 6) + (stageUnit * 5),
+										y: winH - (stageUnit * 9)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'tree01-branch01',
+								cl: 'ReactingTerrain',
+								reaction: {
+									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+								},
+								attrs: {
+									img: 'branch03LeftAnimated',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 6) + (stageUnit * 9),
+										y: winH - (stageUnit * 10.5)
 									},
 									physics: {
 										immovable: true
 									},
-									score: 100,
-									health: 10
+									defaultAnimation: '',
+									animations: treeBranchBreaking
+								}
+							},
+							{
+								name: 'platform9',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 6) + (stageUnit * 4.5),
+										y: winH - (stageUnit * 12)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'platform10',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 6) + (stageUnit * 12.5),
+										y: winH - (stageUnit * 10.5)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							}
+							]
+						},
+						{
+							name: 'hazards',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						},
+						{
+							name: 'enemies',
+							cl: 'Enemies',
+							attrs: [{
+								name: 'level03-sector4-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'caterpillar01',
+									phaser: {
+										width: caterpillar01.width,
+										height: caterpillar01.height,
+										health: 6
+									},
+									start: {
+										x: (stageWidth * 6),
+										y: winH - (33 + (stageUnit * 0.5))
+									},
+									physics: {
+										deferredGravity: true,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									attack: 5,
+									testInView: true,
+									score: 500,
+									movement: {
+										speed: 1,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: caterpillarAnimations
 								}
 							}]
+						},
+						{
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
 						}
 						]
-					}]
+					},
+					{
+						name: 'sector8',
+						cl: 'Sector',
+						bounds: {
+							start: stageWidth * 5,
+							end: stageWidth * 6
+						},
+						attrs: [
+						{
+							name: 'dynamicTerrain',
+							cl: 'PhysicalGroupCollection',
+							attrs: [
+							{
+								name: 'platform6',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aLeft',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 7) + (stageUnit),
+										y: winH - (stageUnit * 7.5)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'platform7',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aRight',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 7) + (stageUnit * 5),
+										y: winH - (stageUnit * 9)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'tree01-branch01',
+								cl: 'ReactingTerrain',
+								reaction: {
+									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+								},
+								attrs: {
+									img: 'branch03LeftAnimated',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 7) + (stageUnit * 9),
+										y: winH - (stageUnit * 10.5)
+									},
+									physics: {
+										immovable: true
+									},
+									defaultAnimation: '',
+									animations: treeBranchBreaking
+								}
+							},
+							{
+								name: 'platform9',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 7) + (stageUnit * 4.5),
+										y: winH - (stageUnit * 12)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'platform10',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 7) + (stageUnit * 12.5),
+										y: winH - (stageUnit * 10.5)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							}
+							]
+						},
+						{
+							name: 'hazards',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						},
+						{
+							name: 'enemies',
+							cl: 'Enemies',
+							attrs: [{
+								name: 'level03-sector4-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'caterpillar01',
+									phaser: {
+										width: caterpillar01.width,
+										height: caterpillar01.height,
+										health: 6
+									},
+									start: {
+										x: (stageWidth * 7),
+										y: winH - (33 + (stageUnit * 0.5))
+									},
+									physics: {
+										deferredGravity: true,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									attack: 5,
+									testInView: true,
+									score: 500,
+									movement: {
+										speed: 1,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: caterpillarAnimations
+								}
+							}]
+						},
+						{
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						}
+						]
+					},
+					{
+						name: 'sector9',
+						cl: 'Sector',
+						bounds: {
+							start: stageWidth * 5,
+							end: stageWidth * 6
+						},
+						attrs: [
+						{
+							name: 'dynamicTerrain',
+							cl: 'PhysicalGroupCollection',
+							attrs: [
+							{
+								name: 'platform6',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aLeft',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 8) + (stageUnit),
+										y: winH - (stageUnit * 7.5)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'platform7',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aRight',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 8) + (stageUnit * 5),
+										y: winH - (stageUnit * 9)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'tree01-branch01',
+								cl: 'ReactingTerrain',
+								reaction: {
+									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+								},
+								attrs: {
+									img: 'branch03LeftAnimated',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 8) + (stageUnit * 9),
+										y: winH - (stageUnit * 10.5)
+									},
+									physics: {
+										immovable: true
+									},
+									defaultAnimation: '',
+									animations: treeBranchBreaking
+								}
+							},
+							{
+								name: 'platform9',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 8) + (stageUnit * 4.5),
+										y: winH - (stageUnit * 12)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
+							{
+								name: 'platform10',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 8) + (stageUnit * 12.5),
+										y: winH - (stageUnit * 10.5)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							}
+							]
+						},
+						{
+							name: 'hazards',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						},
+						{
+							name: 'enemies',
+							cl: 'Enemies',
+							attrs: [{
+								name: 'level03-sector4-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'caterpillar01',
+									phaser: {
+										width: caterpillar01.width,
+										height: caterpillar01.height,
+										health: 6
+									},
+									start: {
+										x: (stageWidth * 8),
+										y: winH - (33 + (stageUnit * 0.5))
+									},
+									physics: {
+										deferredGravity: true,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									attack: 5,
+									testInView: true,
+									score: 500,
+									movement: {
+										speed: 1,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: caterpillarAnimations
+								}
+							}]
+						},
+						{
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						}
+						]
+					}
+					]
 				},
 				// foreground
 				{
@@ -5410,7 +6031,7 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1.5)
 							},
 							start: {
-								x: (stageWidth * 4) + (stageUnit * 15),
+								x: (stageWidth * 5) + (stageUnit * 15),
 								y: -(stageUnit * 5)
 							}
 						}
@@ -5433,7 +6054,7 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 3)
 							},
 							start: {
-								x: (stageWidth * 6) - (stageUnit * 4),
+								x: (stageWidth * 9) - (stageUnit * 4),
 								y: winH - (stageUnit * 3.5)
 							}
 						}
@@ -5499,7 +6120,9 @@ Polyworks.Config = (function() {
 					'heartSprite',
 					'keke',
 					'caterpillar01',
-					'caterpillar02'
+					'caterpillar02',
+					'branch03LeftAnimated',
+					'branch03RightAnimated'
 				],
 				attrs: [
 				// scenery
