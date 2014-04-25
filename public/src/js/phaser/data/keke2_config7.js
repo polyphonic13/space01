@@ -27,12 +27,12 @@ Polyworks.Config = (function() {
 			width: (stageUnit * 2),
 			height: (stageUnit * 2)
 		};
-		
+
 		var spider02 = {
 			width: (stageUnit * 2.5),
 			height: (stageUnit * 2.5)
 		};
-		
+
 		var fontSizes = {
 			xs: (stageUnit * 0.5),
 			sm: (stageUnit * 0.8),
@@ -381,15 +381,6 @@ Polyworks.Config = (function() {
 					url: 'images/controls/arrow_left_2x8.png',
 					width: 75,
 					height: 400,
-					// url: 'images/controls/arrow_left_8x4.png',
-					// width: 400,
-					// height: 200,
-					// url: 'images/controls/arrow_left3.png',
-					// width: 50,
-					// height: 50,
-					// url: 'images/arrow_left2_sm.png',
-					// width: 50,
-					// height: 171,
 					frames: 2
 				},
 				rightButton: 
@@ -397,12 +388,6 @@ Polyworks.Config = (function() {
 					url: 'images/controls/arrow_right_4x8.png',
 					width: 200, 
 					height: 400,
-					// url: 'images/controls/arrow_right3.png',
-					// width: 50,
-					// height: 50,
-					// url: 'images/arrow_right2_sm.png',
-					// width: 50,
-					// height: 171,
 					frames: 2
 				},
 				upButton: 
@@ -410,12 +395,6 @@ Polyworks.Config = (function() {
 					url: 'images/controls/arrow_up_4x8.png',
 					width: 200,
 					height: 400,
-					// url: 'images/controls/arrow_up3.png',
-					// width: 50,
-					// height: 50,
-					// url: 'images/arrow_up2_sm.png',
-					// width: 50,
-					// height: 171,
 					frames: 2
 				},
 				pauseButton: 
@@ -493,8 +472,8 @@ Polyworks.Config = (function() {
 				// player
 				keke: 
 				{
-					// url: 'images/keke_character3c.png', 
-					url: 'images/keke_character3c_bw.png', 
+					url: 'images/keke_character3c.png', 
+					// url: 'images/keke_character3c_bw.png', 
 					width: 190,
 					height: 226,
 					frames: 35
@@ -4208,6 +4187,7 @@ Polyworks.Config = (function() {
 					'heartSprite',
 					'keke',
 					'caterpillar01',
+					'caterpillar02',
 					'branch03LeftAnimated',
 					'branch03RightAnimated'
 				],
@@ -5387,15 +5367,15 @@ Polyworks.Config = (function() {
 								name: 'level03-sector5-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar01',
+									img: 'caterpillar02',
 									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 6
+										width: caterpillar02.width,
+										height: caterpillar02.height,
+										health: 20
 									},
 									start: {
 										x: (stageWidth * 4) + (stageUnit),
-										y: 0
+										y: (winH) - (stageHeight * 2)
 									},
 									physics: {
 										deferredGravity: true,
@@ -5404,9 +5384,9 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 15,
 									testInView: true,
-									score: 2000,
+									score: 5000,
 									movement: {
 										speed: 1,
 										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
@@ -5427,8 +5407,8 @@ Polyworks.Config = (function() {
 										health: 6
 									},
 									start: {
-										x: (stageWidth * 4) + (stageUnit * 4),
-										y: 0
+										x: (stageWidth * 4) + (stageUnit * 8),
+										y: (winH) - (stageHeight * 2)
 									},
 									physics: {
 										deferredGravity: true,
@@ -5703,39 +5683,8 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [{
-								name: 'level03-sector4-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 6
-									},
-									start: {
-										x: (stageWidth * 6),
-										y: winH - (33 + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 5,
-									testInView: true,
-									score: 500,
-									movement: {
-										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}]
+							attrs: [
+							]
 						},
 						{
 							name: 'bonuses',
@@ -5847,7 +5796,8 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [{
+							attrs: [
+							{
 								name: 'level03-sector4-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
@@ -5879,7 +5829,8 @@ Polyworks.Config = (function() {
 									defaultAnimation: '',
 									animations: caterpillarAnimations
 								}
-							}]
+							}
+							]
 						},
 						{
 							name: 'bonuses',
@@ -5981,7 +5932,107 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: []
+							attrs: [
+							{
+								name: 'level03-sector9-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'caterpillar02',
+									phaser: {
+										width: caterpillar02.width,
+										height: caterpillar02.height,
+										health: 20
+									},
+									start: {
+										x: (stageWidth * 8),
+										y: winH - (stageHeight * 2)
+									},
+									physics: {
+										deferredGravity: true,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									attack: 25,
+									testInView: true,
+									score: 10000,
+									movement: {
+										speed: 1,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: caterpillarAnimations
+								}
+							},
+							{
+								name: 'level03-sector9-enemy2',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'caterpillar02',
+									phaser: {
+										width: caterpillar02.width,
+										height: caterpillar02.height,
+										health: 20
+									},
+									start: {
+										x: (stageWidth * 8),
+										y: winH - (33 + (stageUnit * 0.5))
+									},
+									physics: {
+										deferredGravity: true,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									attack: 25,
+									testInView: true,
+									score: 10000,
+									movement: {
+										speed: 1,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: caterpillarAnimations
+								}
+							},
+							{
+								name: 'level03-sector9-enemy3',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'caterpillar02',
+									phaser: {
+										width: caterpillar02.width,
+										height: caterpillar02.height,
+										health: 20
+									},
+									start: {
+										x: (stageWidth * 8) + (stageUnit * 8),
+										y: winH - (33 + (stageUnit * 0.5))
+									},
+									physics: {
+										deferredGravity: true,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									attack: 25,
+									testInView: true,
+									score: 10000,
+									movement: {
+										speed: 1,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: caterpillarAnimations
+								}
+							}
+							]
 						},
 						{
 							name: 'bonuses',
