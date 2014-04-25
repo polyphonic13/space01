@@ -20,8 +20,8 @@ Polyworks.ReactingTerrain = (function() {
 	};
 	
 	ReactingTerrain.prototype.collidedWithSprite = function(sprite) {
-		if(!this.hasCollided) {
-			// trace('ReactingTerrain['+this.model.name+']/collidedWithSprite, hasCollided = ' + this.hasCollided + '\n\tsprite.height = ' + sprite.body.height + '\n\tsprite.y = ' + sprite.body.y + '\n\tsprite bottom = ' + (sprite.body.y + sprite.body.height - 1) + '\n\tthis.y = ', this.body.y);
+		if(!this.hasCollided && sprite.model.name === 'player') {
+			trace('ReactingTerrain['+this.model.name+']/collidedWithSprite, hasCollided = ' + this.hasCollided + ', sprite.model.name = ' + sprite.model.name + '\n\tsprite.height = ' + sprite.body.height + '\n\tsprite.y = ' + sprite.body.y + '\n\tsprite bottom = ' + (sprite.body.y + sprite.body.height - 1) + '\n\tthis.y = ', this.body.y);
 			if((sprite.body.y + sprite.body.height - 1) <= this.body.y) {
 				this.hasCollided = true;
 

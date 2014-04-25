@@ -27,7 +27,7 @@ Polyworks.HeartIcon = (function() {
 	
 	HeartIcon.prototype.onHealthUpdated = function(params) {
 		var newHealth = PolyworksGame.health;
-		trace('HeartIcon/onHealthUpdate, this.model.health = ' + this.model.health + ', health = ', newHealth);
+		// trace('HeartIcon/onHealthUpdate, this.model.health = ' + this.model.health + ', health = ', newHealth);
 		if(this.healthSet) {
 			var animations = this.model.attrs.animations;
 			if(newHealth < this.model.lowHealth) {

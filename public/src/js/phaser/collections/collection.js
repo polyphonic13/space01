@@ -72,7 +72,7 @@ Polyworks.Collection = (function() {
 	};
 	
 	Collection.prototype.removeChild = function(name) {
-		trace('Collection/removeChild, name = ' + name + ', pre splice collection: ');
+		// trace('Collection/removeChild, name = ' + name + ', pre splice collection: ');
 		trace(this.model.collection);
 
 		var collection = this.model.collection;
