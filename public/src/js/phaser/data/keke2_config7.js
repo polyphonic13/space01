@@ -4864,7 +4864,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									speed: 0.5,
-									attack: 5,
+									attack: 10,
 									testInView: true,
 									score: 1000,
 									movement: {
@@ -4990,7 +4990,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 10,
 									testInView: true,
 									score: 2000,
 									movement: {
@@ -5023,7 +5023,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 10,
 									testInView: true,
 									score: 2000,
 									movement: {
@@ -5182,7 +5182,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 10,
 									testInView: true,
 									score: 500,
 									movement: {
@@ -5578,7 +5578,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 10,
 									testInView: true,
 									score: 500,
 									movement: {
@@ -5818,7 +5818,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 10,
 									testInView: true,
 									score: 500,
 									movement: {
