@@ -165,121 +165,6 @@ Polyworks.Config = (function() {
 		];
 
 		var c = {
-			// SOCIAL
-			social: {
-				parentId: 'socialButtons',
-				imagePath: 'images/social/',
-				shareTitle: 'keke and the G R E Y  E X P A N S E',
-				// shareURL: document.location.href,
-				shareURL: 'www.polyworksgames.com/games/keke2/',
-				buttonStyle: {
-					position: {
-						horizontal: -(stageUnit * 0.5),
-						vertical: 'center'
-					},
-					offset: (stageUnit * 0.5),
-					size: {
-						width: (stageUnit * 1.25),
-						height: (stageUnit * 1.25)
-					}
-				},
-				networks: [
-					'mail',
-					'facebook',
-					'twitter',
-					'google'
-				],
-				listeners: [
-				{
-					type: Polyworks.Events.CHANGE_STATE,
-					match: {
-						value: 'menu',
-						action: {
-							method: 'showAll',
-							value: ''
-						}
-					},
-					nonmatch: {
-						action: {
-							method: 'hideAll',
-							value: ''
-						}
-					}
-				},
-				{
-					type: Polyworks.Events.LEVEL_CLEARED,
-					action: {
-						method: 'show',
-						value: [
-							'facebook',
-							'twitter',
-							'google'
-						]
-					}
-				},
-				{
-					type: Polyworks.Events.NEXT_LEVEL,
-					action: {
-						method: 'hideAll',
-						value: ''
-					}
-				}
-				]
-			},
-			// PLAYER
-			player: {
-				name: 'player',
-				cl: 'AnimatedPlayer',
-				attrs: {
-					img: 'keke',
-					phaser: {
-						health: 100,
-						width: (stageUnit * 2.3) * 0.84,
-						height: (stageUnit * 2.3)
-					},
-					setSize: [((stageUnit * 3) * 0.3), 220],
-					start: {
-						// x: winW/2 - ((stageUnit * 3) * 0.84)/2,
-						// y: winH - 300
-						// y: winH - (226)
-						x: winW/2,
-						y: winH - (stageUnit * 1.8)
-					},
-					physics: {
-						// bounce: {
-						// 	x: 0,
-						// 	y: 0.2
-						// },
-						deferredGravity: true,
-						collideWorldBounds: false
-					},
-					anchor: {
-						x: 0.5,
-						y: 0.5
-					},
-					followStyle: Phaser.Camera.FOLLOW_TOPDOWN,
-					speed: {
-						x: (stageUnit * 4),
-						y: (stageUnit * 10.2)
-					},
-					controls: {
-						left: Polyworks.InputCodes.LEFT,
-						right: Polyworks.InputCodes.RIGHT,
-						jump: Polyworks.InputCodes.UP
-					},
-					attack: 5,
-					jumping: false,
-					justJumped: false,
-					defaultAnimation: AnimationTypes.IDLE_L,
-					animations: kekeAnimations,
-					facingForward: true
-				}
-			},
-			// PHYSICS
-			gravity: {
-				x: 0,
-				y: stageUnit/2.5
-			},
 			// IMAGES
 			images: {
 				// gameTitle: 'images/keke_title.png',
@@ -608,9 +493,8 @@ Polyworks.Config = (function() {
 				// player
 				keke: 
 				{
-					url: 'images/keke_character3c.png', 
-					// width: 95, 
-					// height: 113, 
+					// url: 'images/keke_character3c.png', 
+					url: 'images/keke_character3c_bw.png', 
 					width: 190,
 					height: 226,
 					frames: 35
@@ -674,6 +558,121 @@ Polyworks.Config = (function() {
 					frames: 8
 				}
 				
+			},
+			// SOCIAL
+			social: {
+				parentId: 'socialButtons',
+				imagePath: 'images/social/',
+				shareTitle: 'keke and the G R E Y  E X P A N S E',
+				// shareURL: document.location.href,
+				shareURL: 'www.polyworksgames.com/games/keke2/',
+				buttonStyle: {
+					position: {
+						horizontal: -(stageUnit * 0.5),
+						vertical: 'center'
+					},
+					offset: (stageUnit * 0.5),
+					size: {
+						width: (stageUnit * 1.25),
+						height: (stageUnit * 1.25)
+					}
+				},
+				networks: [
+					'mail',
+					'facebook',
+					'twitter',
+					'google'
+				],
+				listeners: [
+				{
+					type: Polyworks.Events.CHANGE_STATE,
+					match: {
+						value: 'menu',
+						action: {
+							method: 'showAll',
+							value: ''
+						}
+					},
+					nonmatch: {
+						action: {
+							method: 'hideAll',
+							value: ''
+						}
+					}
+				},
+				{
+					type: Polyworks.Events.LEVEL_CLEARED,
+					action: {
+						method: 'show',
+						value: [
+							'facebook',
+							'twitter',
+							'google'
+						]
+					}
+				},
+				{
+					type: Polyworks.Events.NEXT_LEVEL,
+					action: {
+						method: 'hideAll',
+						value: ''
+					}
+				}
+				]
+			},
+			// PLAYER
+			player: {
+				name: 'player',
+				cl: 'AnimatedPlayer',
+				attrs: {
+					img: 'keke',
+					phaser: {
+						health: 100,
+						width: (stageUnit * 2.3) * 0.84,
+						height: (stageUnit * 2.3)
+					},
+					setSize: [((stageUnit * 3) * 0.3), 220],
+					start: {
+						// x: winW/2 - ((stageUnit * 3) * 0.84)/2,
+						// y: winH - 300
+						// y: winH - (226)
+						x: winW/2,
+						y: winH - (stageUnit * 1.8)
+					},
+					physics: {
+						// bounce: {
+						// 	x: 0,
+						// 	y: 0.2
+						// },
+						deferredGravity: true,
+						collideWorldBounds: false
+					},
+					anchor: {
+						x: 0.5,
+						y: 0.5
+					},
+					followStyle: Phaser.Camera.FOLLOW_TOPDOWN,
+					speed: {
+						x: (stageUnit * 4),
+						y: (stageUnit * 10.2)
+					},
+					controls: {
+						left: Polyworks.InputCodes.LEFT,
+						right: Polyworks.InputCodes.RIGHT,
+						jump: Polyworks.InputCodes.UP
+					},
+					attack: 5,
+					jumping: false,
+					justJumped: false,
+					defaultAnimation: AnimationTypes.IDLE_L,
+					animations: kekeAnimations,
+					facingForward: true
+				}
+			},
+			// PHYSICS
+			gravity: {
+				x: 0,
+				y: stageUnit/2.5
 			},
 			// CONTROLS
 			controls: {
@@ -4398,6 +4397,7 @@ Polyworks.Config = (function() {
 							}
 						}
 					},
+					// trees
 					{
 						name: 'tree01',
 						cl: 'Sprite',
@@ -4533,21 +4533,6 @@ Polyworks.Config = (function() {
 							}
 						}
 					},
-					// {
-					// 	name: 'tree09',
-					// 	cl: 'Sprite',
-					// 	attrs: {
-					// 		img: 'tree01',
-					// 		phaser: {
-					// 			width: (stageHeight * 2),
-					// 			height: (stageHeight * 3)
-					// 		},
-					// 		start: {
-					// 			x: (stageWidth * 5) + (stageUnit * 11),
-					// 			y: winH - (stageHeight * 3)
-					// 		}
-					// 	}
-					// },
 					{
 						name: 'trunk01',
 						cl: 'Sprite',
@@ -5270,10 +5255,10 @@ Polyworks.Config = (function() {
 								name: 'plat1',
 								cl: 'Sprite',
 								attrs: {
-									img: 'branch03aLeft',
+									img: 'branch03aRight',
 									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
 									start: {
-										x: (stageWidth * 4) + (stageUnit * 2),
+										x: (stageWidth * 4) + (stageUnit * 5),
 										y: winH - (stageUnit * 2.25)
 									},
 									physics: {
@@ -5286,10 +5271,10 @@ Polyworks.Config = (function() {
 								name: 'plat1',
 								cl: 'Sprite',
 								attrs: {
-									img: 'branch03aRight',
+									img: 'branch03aLeft',
 									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
 									start: {
-										x: (stageWidth * 4) + (stageUnit * 5),
+										x: (stageWidth * 4) + (stageUnit * 2),
 										y: winH - (stageUnit * 4)
 									},
 									physics: {
@@ -5305,10 +5290,10 @@ Polyworks.Config = (function() {
 									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
-									img: 'branch03LeftAnimated',
+									img: 'branch03RightAnimated',
 									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 									start: {
-										x: (stageWidth * 4) + (stageUnit),
+										x: (stageWidth * 4) + (stageUnit * 5),
 										y: winH - (stageUnit * 6)
 									},
 									physics: {
@@ -5318,21 +5303,21 @@ Polyworks.Config = (function() {
 									animations: treeBranchBreaking
 								}
 							},
-							// {
-							// 	name: 'platform6',
-							// 	cl: 'Sprite',
-							// 	attrs: {
-							// 		img: 'branch03aLeft',
-							// 		phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
-							// 		start: {
-							// 			x: (stageWidth * 4) + (stageUnit),
-							// 			y: winH - (stageUnit * 7.5)
-							// 		},
-							// 		physics: {
-							// 			immovable: true
-							// 		}
-							// 	}
-							// },
+							{
+								name: 'platform6',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aLeft',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
+									start: {
+										x: (stageWidth * 4) + (stageUnit),
+										y: winH - (stageUnit * 7.5)
+									},
+									physics: {
+										immovable: true
+									}
+								}
+							},
 							{
 								name: 'platform7',
 								cl: 'Sprite',
