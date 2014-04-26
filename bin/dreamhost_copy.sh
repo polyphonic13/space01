@@ -1,7 +1,8 @@
 set -e
 
 USER="phds"
-DREAMHOST_SERVER="dhaka.dreamhost.com"
+# DREAMHOST_SERVER="dhaka.dreamhost.com"
+DREAMHOST_SERVER="franck.dreamhost.com"
 SSH_PATH="home/phds"
 POLYWORKS_DIR="polyworksgames.com"
 TO_COPY=$1
