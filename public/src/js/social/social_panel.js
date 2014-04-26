@@ -114,8 +114,9 @@ Polyworks.SocialPanel = (function() {
 		var winH = Polyworks.Stage.winH;
 		var horizontal = attrs.position.horizontal;
 		var vertical = attrs.position.vertical;
-		var offset = attrs.offset; 
-
+		var spacer = attrs.spacer; 
+		var offset = attrs.offset || 0;
+		
 		var style = {
 			width: attrs.size.width + 'px',
 			height: attrs.size.height + 'px'
@@ -125,7 +126,7 @@ Polyworks.SocialPanel = (function() {
 			var horizontalTotal;
 			for(var i = 0; i < length; i++) {
 				if(i > 0) {
-					horizontalTotal += attrs.offset;
+					horizontalTotal += attrs.spacer;
 				}
 				horizontalTotal += attrs.size.width;
 			}
@@ -141,12 +142,12 @@ Polyworks.SocialPanel = (function() {
 			var verticalTotal = 0;
 			for(var i = 0; i < length; i++) {
 				if(i > 0) {
-					verticalTotal += attrs.offset;
+					verticalTotal += attrs.spacer;
 				}
 				verticalTotal += attrs.size.height;
 			}
 			trace('\tVERTICAL TOTal = ' + verticalTotal);
-			var btnOffset = (idx * attrs.size.height) +  (idx * attrs.offset);
+			var btnOffset = (idx * attrs.size.height) +  (idx * attrs.spacer) + offset;
 			style.top = ((winH/2) - (verticalTotal/2) + (btnOffset)) + 'px';
 		} else if(vertical < 0) {
 			style.bottom = -(vertical) + 'px';

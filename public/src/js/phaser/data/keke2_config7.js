@@ -41,15 +41,28 @@ Polyworks.Config = (function() {
 			xl: (stageUnit * 1.5)
 		};
 
-		var levelInfoBackgroundAttrs = {
-			phaser: {
-				width: stageWidth * 0.85,
-				height: stageHeight * 0.85,
-				alpha: 0.60
+		var levelInfoAttrs = {
+			background: {
+				phaser: {
+					width: stageWidth * 0.85,
+					height: stageHeight * 0.85,
+					alpha: 0.60
+				},
+				start: {
+					x: (winW/2) - ((stageWidth * 0.85)/2),
+					y: (winH/2) - ((stageHeight * 0.75)/2)
+				}
 			},
-			start: {
-				x: (winW/2) - ((stageWidth * 0.85)/2),
-				y: (winH/2) - ((stageHeight * 0.75)/2)
+			title: {
+				phaser: {
+					width: (stageUnit * 6) * 1.5,
+					height: (stageUnit * 1) * 1.5,
+					alpha: 0.75
+				},
+				start: {
+					x: winW - (stageUnit * 6) * 1.5,
+					y: (stageUnit * 1.5)
+				}
 			}
 		};
 
@@ -59,8 +72,8 @@ Polyworks.Config = (function() {
 			cl: 'Sprite',
 			attrs: {
 				img: 'level01Preview',
-				phaser: levelInfoBackgroundAttrs.phaser,
-				start: levelInfoBackgroundAttrs.start
+				phaser: levelInfoAttrs.background.phaser,
+				start: levelInfoAttrs.background.start
 			}
 		},
 		{
@@ -68,8 +81,8 @@ Polyworks.Config = (function() {
 			cl: 'Sprite',
 			attrs: {
 				img: 'level02Preview',
-				phaser: levelInfoBackgroundAttrs.phaser,
-				start: levelInfoBackgroundAttrs.start
+				phaser: levelInfoAttrs.background.phaser,
+				start: levelInfoAttrs.background.start
 			}
 		},
 		{
@@ -77,8 +90,8 @@ Polyworks.Config = (function() {
 			cl: 'Sprite',
 			attrs: {
 				img: 'level03Preview',
-				phaser: levelInfoBackgroundAttrs.phaser,
-				start: levelInfoBackgroundAttrs.start
+				phaser: levelInfoAttrs.background.phaser,
+				start: levelInfoAttrs.background.start
 			}
 		},
 		{
@@ -86,8 +99,8 @@ Polyworks.Config = (function() {
 			cl: 'Sprite',
 			attrs: {
 				img: 'level04Preview',
-				phaser: levelInfoBackgroundAttrs.phaser,
-				start: levelInfoBackgroundAttrs.start
+				phaser: levelInfoAttrs.background.phaser,
+				start: levelInfoAttrs.background.start
 			}
 		},
 		{
@@ -95,8 +108,8 @@ Polyworks.Config = (function() {
 			cl: 'Sprite',
 			attrs: {
 				img: 'level05Preview',
-				phaser: levelInfoBackgroundAttrs.phaser,
-				start: levelInfoBackgroundAttrs.start
+				phaser: levelInfoAttrs.background.phaser,
+				start: levelInfoAttrs.background.start
 			}
 		},
 		{
@@ -104,8 +117,8 @@ Polyworks.Config = (function() {
 			cl: 'Sprite',
 			attrs: {
 				img: 'level06Preview',
-				phaser: levelInfoBackgroundAttrs.phaser,
-				start: levelInfoBackgroundAttrs.start
+				phaser: levelInfoAttrs.background.phaser,
+				start: levelInfoAttrs.background.start
 			}
 		},
 		{
@@ -113,8 +126,8 @@ Polyworks.Config = (function() {
 			cl: 'Sprite',
 			attrs: {
 				img: 'level07Preview',
-				phaser: levelInfoBackgroundAttrs.phaser,
-				start: levelInfoBackgroundAttrs.start
+				phaser: levelInfoAttrs.background.phaser,
+				start: levelInfoAttrs.background.start
 			}
 		},
 		{
@@ -122,8 +135,8 @@ Polyworks.Config = (function() {
 			cl: 'Sprite',
 			attrs: {
 				img: 'level08Preview',
-				phaser: levelInfoBackgroundAttrs.phaser,
-				start: levelInfoBackgroundAttrs.start
+				phaser: levelInfoAttrs.background.phaser,
+				start: levelInfoAttrs.background.start
 			}
 		},
 		{
@@ -131,8 +144,8 @@ Polyworks.Config = (function() {
 			cl: 'Sprite',
 			attrs: {
 				img: 'level09Preview',
-				phaser: levelInfoBackgroundAttrs.phaser,
-				start: levelInfoBackgroundAttrs.start
+				phaser: levelInfoAttrs.background.phaser,
+				start: levelInfoAttrs.background.start
 			}
 		},
 		{
@@ -140,8 +153,8 @@ Polyworks.Config = (function() {
 			cl: 'Sprite',
 			attrs: {
 				img: 'level10Preview',
-				phaser: levelInfoBackgroundAttrs.phaser,
-				start: levelInfoBackgroundAttrs.start
+				phaser: levelInfoAttrs.background.phaser,
+				start: levelInfoAttrs.background.start
 			}
 		},
 		{
@@ -149,8 +162,8 @@ Polyworks.Config = (function() {
 			cl: 'Sprite',
 			attrs: {
 				img: 'level11Preview',
-				phaser: levelInfoBackgroundAttrs.phaser,
-				start: levelInfoBackgroundAttrs.start
+				phaser: levelInfoAttrs.background.phaser,
+				start: levelInfoAttrs.background.start
 			}
 		},
 		{
@@ -158,8 +171,119 @@ Polyworks.Config = (function() {
 			cl: 'Sprite',
 			attrs: {
 				img: 'level12Preview',
-				phaser: levelInfoBackgroundAttrs.phaser,
-				start: levelInfoBackgroundAttrs.start
+				phaser: levelInfoAttrs.background.phaser,
+				start: levelInfoAttrs.background.start
+			}
+		}
+		];
+
+		var levelInfoTitles = [
+		{
+			name: 'level01Title',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level01Title',
+				phaser: levelInfoAttrs.title.phaser,
+				start: levelInfoAttrs.title.start
+			}
+		},
+		{
+			name: 'level02Title',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level02Title',
+				phaser: levelInfoAttrs.title.phaser,
+				start: levelInfoAttrs.title.start
+			}
+		},
+		{
+			name: 'level03Title',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level03Title',
+				phaser: levelInfoAttrs.title.phaser,
+				start: levelInfoAttrs.title.start
+			}
+		},
+		{
+			name: 'level04Title',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level04Title',
+				phaser: levelInfoAttrs.title.phaser,
+				start: levelInfoAttrs.title.start
+			}
+		},
+		{
+			name: 'level05Title',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level05Title',
+				phaser: levelInfoAttrs.title.phaser,
+				start: levelInfoAttrs.title.start
+			}
+		},
+		{
+			name: 'level06Title',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level06Title',
+				phaser: levelInfoAttrs.title.phaser,
+				start: levelInfoAttrs.title.start
+			}
+		},
+		{
+			name: 'level07Title',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level07Title',
+				phaser: levelInfoAttrs.title.phaser,
+				start: levelInfoAttrs.title.start
+			}
+		},
+		{
+			name: 'level08Title',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level08Title',
+				phaser: levelInfoAttrs.title.phaser,
+				start: levelInfoAttrs.title.start
+			}
+		},
+		{
+			name: 'level09Title',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level09Title',
+				phaser: levelInfoAttrs.title.phaser,
+				start: levelInfoAttrs.title.start
+			}
+		},
+		{
+			name: 'level10Title',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level10Title',
+				phaser: levelInfoAttrs.title.phaser,
+				start: levelInfoAttrs.title.start
+			}
+		},
+		{
+			name: 'level11Title',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level11Title',
+				phaser: levelInfoAttrs.title.phaser,
+				start: levelInfoAttrs.title.start
+			}
+		},
+		{
+			name: 'level12Title',
+			cl: 'Sprite',
+			attrs: {
+				img: 'level12Title',
+				phaser: levelInfoAttrs.title.phaser,
+				start: levelInfoAttrs.title.start
 			}
 		}
 		];
@@ -181,19 +305,6 @@ Polyworks.Config = (function() {
 				mapForest: 'images/map/map04_forest.gif',
 				mapMountains: 'images/map/map04_mountains.gif',
 
-				level01Preview: 'images/backgrounds/level01_preview.gif',
-				level02Preview: 'images/backgrounds/level02_preview.gif',
-				level03Preview: 'images/backgrounds/level03_preview.gif',
-				level04Preview: 'images/backgrounds/level04_preview.gif',
-				level05Preview: 'images/backgrounds/level05_preview.gif',
-				level06Preview: 'images/backgrounds/level06_preview.gif',
-				level07Preview: 'images/backgrounds/level07_preview.gif',
-				level08Preview: 'images/backgrounds/level08_preview.gif',
-				level09Preview: 'images/backgrounds/level09_preview.gif',
-				level10Preview: 'images/backgrounds/level10_preview.gif',
-				level11Preview: 'images/backgrounds/level11_preview.gif',
-				level12Preview: 'images/backgrounds/level12_preview.gif',
-
 				level01Title: 'images/titles/level_title01.png',
 				level02Title: 'images/titles/level_title02.png',
 				level03Title: 'images/titles/level_title03.png',
@@ -207,23 +318,36 @@ Polyworks.Config = (function() {
 				level11Title: 'images/titles/level_title11.png',
 				level12Title: 'images/titles/level_title12.png',
 				
-				forestBackground02a: 'images/backgrounds/pencil_forest02a.gif',
-				forestBackground02b: 'images/backgrounds/pencil_forest02b.gif',
-				forestBackground02c: 'images/backgrounds/pencil_forest02c.gif',
-				forestBackground02d: 'images/backgrounds/pencil_forest02d.gif',
-				forestBackground02e: 'images/backgrounds/pencil_forest02e.gif',
-				forestBackground02f: 'images/backgrounds/pencil_forest02f.gif',
+				level01Preview: 'images/backgrounds/level01_preview-sm.gif',
+				level02Preview: 'images/backgrounds/level02_preview-sm.gif',
+				level03Preview: 'images/backgrounds/level03_preview-sm.gif',
+				level04Preview: 'images/backgrounds/level04_preview-sm.gif',
+				level05Preview: 'images/backgrounds/level05_preview-sm.gif',
+				level06Preview: 'images/backgrounds/level06_preview-sm.gif',
+				level07Preview: 'images/backgrounds/level07_preview-sm.gif',
+				level08Preview: 'images/backgrounds/level08_preview-sm.gif',
+				level09Preview: 'images/backgrounds/level09_preview-sm.gif',
+				level10Preview: 'images/backgrounds/level10_preview-sm.gif',
+				level11Preview: 'images/backgrounds/level11_preview-sm.gif',
+				level12Preview: 'images/backgrounds/level12_preview-sm.gif',
 
-				forestBackground01a: 'images/backgrounds/pencil_forest01a.gif',
-				forestBackground01b: 'images/backgrounds/pencil_forest01b.gif',
-				forestBackground01c: 'images/backgrounds/pencil_forest01c.gif',
+				forestBackground02a: 'images/backgrounds/pencil_forest02a-sm.gif',
+				forestBackground02b: 'images/backgrounds/pencil_forest02b-sm.gif',
+				forestBackground02c: 'images/backgrounds/pencil_forest02c-sm.gif',
+				forestBackground02d: 'images/backgrounds/pencil_forest02d-sm.gif',
+				forestBackground02e: 'images/backgrounds/pencil_forest02e-sm.gif',
+				forestBackground02f: 'images/backgrounds/pencil_forest02f-sm.gif',
 
-				riverBackground01a: 'images/backgrounds/pencil_river01a.gif',
-				riverBackground01b: 'images/backgrounds/pencil_river01b.gif',
-				riverBackground01c: 'images/backgrounds/pencil_river01c.gif',
-				riverBackground01d: 'images/backgrounds/pencil_river01d.gif',
-				riverBackground01e: 'images/backgrounds/pencil_river01e.gif',
-				riverBackground01f: 'images/backgrounds/pencil_river01f.gif',
+				forestBackground01a: 'images/backgrounds/pencil_forest01a-sm.gif',
+				forestBackground01b: 'images/backgrounds/pencil_forest01b-sm.gif',
+				forestBackground01c: 'images/backgrounds/pencil_forest01c-sm.gif',
+
+				riverBackground01a: 'images/backgrounds/pencil_river01a-sm.gif',
+				riverBackground01b: 'images/backgrounds/pencil_river01b-sm.gif',
+				riverBackground01c: 'images/backgrounds/pencil_river01c-sm.gif',
+				riverBackground01d: 'images/backgrounds/pencil_river01d-sm.gif',
+				riverBackground01e: 'images/backgrounds/pencil_river01e-sm.gif',
+				riverBackground01f: 'images/backgrounds/pencil_river01f-sm.gif',
 
 				mountainBackgroundA5: 'images/backgrounds/pencil_mountain06-a5-sm.gif',
 				mountainBackgroundA6: 'images/backgrounds/pencil_mountain06-a6-sm.gif',
@@ -550,7 +674,8 @@ Polyworks.Config = (function() {
 						horizontal: -(stageUnit * 0.5),
 						vertical: 'center'
 					},
-					offset: (stageUnit * 0.5),
+					spacer: (stageUnit * 0.5),
+					offset: (stageUnit * 0.66),
 					size: {
 						width: (stageUnit * 1.25),
 						height: (stageUnit * 1.25)
@@ -1065,6 +1190,22 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
+					name: 'levelInfoTitle',
+					cl: 'Sprite',
+					attrs: {
+						img: '',
+						phaser: {
+							width: stageWidth,
+							height: stageHeight,
+							alpha: 0.25
+						},
+						start: {
+							x: (winW/2 - stageWidth/2),
+							y: (winH/2 - stageHeight/2)
+						}
+					}
+				},
+				{
 					name: 'gameTitle',
 					cl: 'Sprite',
 					attrs: {
@@ -1554,6 +1695,18 @@ Polyworks.Config = (function() {
 					'level10Preview',
 					'level11Preview',
 					'level12Preview',
+					'level01Title',
+					'level02Title',
+					'level03Title',
+					'level04Title',
+					'level05Title',
+					'level06Title',
+					'level07Title',
+					'level08Title',
+					'level09Title',
+					'level10Title',
+					'level11Title',
+					'level12Title',
 					'mapForest',
 					'mapMountains'
 				],
@@ -1802,6 +1955,20 @@ Polyworks.Config = (function() {
 					levelInfoBackgrounds[9],
 					levelInfoBackgrounds[10],
 					levelInfoBackgrounds[11]
+				],
+				levelInfoTitles: [
+					levelInfoTitles[0],
+					levelInfoTitles[1],
+					levelInfoTitles[2],
+					levelInfoTitles[3],
+					levelInfoTitles[4],
+					levelInfoTitles[5],
+					levelInfoTitles[6],
+					levelInfoTitles[7],
+					levelInfoTitles[8],
+					levelInfoTitles[9],
+					levelInfoTitles[10],
+					levelInfoTitles[11]
 				],
 				attrs: [
 				{
@@ -2782,7 +2949,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: winW - (stageUnit * 6) * 1.5,
-								y: (stageUnit * 1)
+								y: (stageUnit * 1.5)
 							}
 						}
 					}
