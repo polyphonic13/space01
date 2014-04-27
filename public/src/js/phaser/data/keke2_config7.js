@@ -15,7 +15,7 @@ Polyworks.Config = (function() {
 
 		var caterpillar01 = {
 			width: (stageUnit * 2),
-			height: (stageUnit),
+			height: (stageUnit * 2) * 0.375,
 			imgHeight: 64
 			// width: (stageUnit * 1.5),
 			// height: (stageUnit * 0.5)
@@ -23,7 +23,7 @@ Polyworks.Config = (function() {
 
 		var caterpillar02 = {
 			width: (stageUnit * 3),
-			height: (stageUnit * 1.5),
+			height: (stageUnit * 3) * 0.375,
 			imgHeight: 64
 		};
 
@@ -616,9 +616,9 @@ Polyworks.Config = (function() {
 				// },
 				caterpillar01: 
 				{
-					url: 'images/enemies/caterpillar03_sprite.png',
+					url: 'images/enemies/caterpillar03_sprite_2.png',
 					width: 128, 
-					height: 64, 
+					height: 48, 
 					frames: 16
 				},
 				// caterpillar02: 
@@ -630,9 +630,9 @@ Polyworks.Config = (function() {
 				// },
 				caterpillar02: 
 				{
-					url: 'images/enemies/caterpillar03_sprite.png',
+					url: 'images/enemies/caterpillar03_sprite_2.png',
 					width: 128, 
-					height: 64, 
+					height: 48, 
 					frames: 16
 				},
 				spider01: 
