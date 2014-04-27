@@ -14,8 +14,10 @@ Polyworks.Config = (function() {
 		var stageUnit = stage.unit;
 
 		var caterpillar01 = {
-			width: (stageUnit * 1.5),
-			height: (stageUnit * 0.5)
+			width: (stageUnit * 2),
+			height: (stageUnit)
+			// width: (stageUnit * 1.5),
+			// height: (stageUnit * 0.5)
 		};
 
 		var caterpillar02 = {
@@ -603,12 +605,19 @@ Polyworks.Config = (function() {
 					frames: 35
 				},
 				// enemies
+				// caterpillar01: 
+				// {
+				// 	url: 'images/enemies/caterpillar02a.png',
+				// 	width: 104, 
+				// 	height: 32, 
+				// 	frames: 14
+				// },
 				caterpillar01: 
 				{
-					url: 'images/enemies/caterpillar02a.png',
-					width: 104, 
-					height: 32, 
-					frames: 14
+					url: 'images/enemies/caterpillar03_sprite.png',
+					width: 128, 
+					height: 64, 
+					frames: 16
 				},
 				caterpillar02: 
 				{
@@ -758,7 +767,7 @@ Polyworks.Config = (function() {
 					followStyle: Phaser.Camera.FOLLOW_TOPDOWN,
 					speed: {
 						x: (stageUnit * 4),
-						y: (stageUnit * 10.2)
+						y: (stageUnit * 10.4)
 					},
 					controls: {
 						left: Polyworks.InputCodes.LEFT,
@@ -2371,7 +2380,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 12),
-										y: winH - (33 + (stageUnit * 0.5))
+										y: winH - (64 + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -2563,7 +2572,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 3) + (stageUnit),
-										y: winH - (33 + (stageUnit * 0.5))
+										y: winH - (64 + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -2802,7 +2811,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 5) + (stageUnit),
-										y: winH - (33 + (stageUnit * 0.5))
+										y: winH - (64 + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -3506,7 +3515,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 12),
-										y: winH - (33 + (stageUnit * 0.5))
+										y: winH - (64 + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -3829,7 +3838,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 3) + (stageUnit),
-										y: winH - (33 + (stageUnit * 0.5))
+										y: winH - (64 + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -4038,7 +4047,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 4) + (stageUnit * 8),
-										y: winH - (33 + (stageUnit * 0.5))
+										y: winH - (64 + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -4101,7 +4110,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 5) + (stageUnit),
-										y: winH - (33 + (stageUnit * 0.5))
+										y: winH - (64 + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -5021,7 +5030,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 4),
-										y: winH - (33 + (stageUnit * 0.5))
+										y: winH - (64 + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -5340,7 +5349,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 3),
-										y: winH - (33 + (stageUnit * 0.5))
+										y: winH - (64 + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -5736,7 +5745,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 5),
-										y: winH - (33 + (stageUnit * 0.5))
+										y: winH - (64 + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -5976,7 +5985,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 7),
-										y: winH - (33 + (stageUnit * 0.5))
+										y: winH - (64 + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -6145,7 +6154,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 8),
-										y: winH - (33 + (stageUnit * 0.5))
+										y: winH - (64 + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -6178,7 +6187,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 8) + (stageUnit * 8),
-										y: winH - (33 + (stageUnit * 0.5))
+										y: winH - (64 + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -7160,7 +7169,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 2),
-										y: winH - (33 + (stageUnit * 0.5))
+										y: winH - (64 + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -7570,7 +7579,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 4) + (stageUnit),
-										y: winH - (33 + (stageUnit * 0.5))
+										y: winH - (64 + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -7649,7 +7658,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 5) + (stageUnit * 4),
-										y: winH - (33 + (stageUnit * 0.5))
+										y: winH - (64 + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
