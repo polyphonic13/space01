@@ -15,14 +15,16 @@ Polyworks.Config = (function() {
 
 		var caterpillar01 = {
 			width: (stageUnit * 2),
-			height: (stageUnit)
+			height: (stageUnit),
+			imgHeight: 64
 			// width: (stageUnit * 1.5),
 			// height: (stageUnit * 0.5)
 		};
 
 		var caterpillar02 = {
-			width: (stageUnit * 2),
-			height: (stageUnit * 0.67)
+			width: (stageUnit * 3),
+			height: (stageUnit * 1.5),
+			imgHeight: 64
 		};
 
 		var spider01 = {
@@ -619,12 +621,19 @@ Polyworks.Config = (function() {
 					height: 64, 
 					frames: 16
 				},
+				// caterpillar02: 
+				// {
+				// 	url: 'images/enemies/caterpillar02b.png',
+				// 	width: 104, 
+				// 	height: 32, 
+				// 	frames: 14
+				// },
 				caterpillar02: 
 				{
-					url: 'images/enemies/caterpillar02b.png',
-					width: 104, 
-					height: 32, 
-					frames: 14
+					url: 'images/enemies/caterpillar03_sprite.png',
+					width: 128, 
+					height: 64, 
+					frames: 16
 				},
 				spider01: 
 				{
@@ -2380,7 +2389,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 12),
-										y: winH - (64 + (stageUnit * 0.5))
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -2572,7 +2581,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 3) + (stageUnit),
-										y: winH - (64 + (stageUnit * 0.5))
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -2811,7 +2820,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 5) + (stageUnit),
-										y: winH - (64 + (stageUnit * 0.5))
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -3515,7 +3524,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 12),
-										y: winH - (64 + (stageUnit * 0.5))
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -3838,7 +3847,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 3) + (stageUnit),
-										y: winH - (64 + (stageUnit * 0.5))
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -4047,7 +4056,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 4) + (stageUnit * 8),
-										y: winH - (64 + (stageUnit * 0.5))
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -4110,7 +4119,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 5) + (stageUnit),
-										y: winH - (64 + (stageUnit * 0.5))
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -5030,7 +5039,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 4),
-										y: winH - (64 + (stageUnit * 0.5))
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -5349,7 +5358,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 3),
-										y: winH - (64 + (stageUnit * 0.5))
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -5551,7 +5560,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 4) + (stageUnit),
-										y: (winH) - (stageHeight * 2)
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -5576,7 +5585,7 @@ Polyworks.Config = (function() {
 								name: 'level03-sector5-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar01',
+									img: 'caterpillar02',
 									phaser: {
 										width: caterpillar01.width,
 										height: caterpillar01.height,
@@ -5584,7 +5593,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 4) + (stageUnit * 8),
-										y: (winH) - (stageHeight * 2)
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -5745,7 +5754,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 5),
-										y: winH - (64 + (stageUnit * 0.5))
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -5985,7 +5994,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 7),
-										y: winH - (64 + (stageUnit * 0.5))
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -6154,7 +6163,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 8),
-										y: winH - (64 + (stageUnit * 0.5))
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -6187,7 +6196,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 8) + (stageUnit * 8),
-										y: winH - (64 + (stageUnit * 0.5))
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -7169,7 +7178,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 2),
-										y: winH - (64 + (stageUnit * 0.5))
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -7579,7 +7588,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 4) + (stageUnit),
-										y: winH - (64 + (stageUnit * 0.5))
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -7658,7 +7667,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 5) + (stageUnit * 4),
-										y: winH - (64 + (stageUnit * 0.5))
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
