@@ -724,7 +724,7 @@ Polyworks.Config = (function() {
 					},
 					twitter: {
 						follow: {
-							url: 'https://www.facebook.com/kekevscaterpillars'
+							url: 'https://twitter.com/kekenews'
 						},
 						share: {
 							url: 'http://twitter.com/home?',
@@ -733,7 +733,7 @@ Polyworks.Config = (function() {
 					},
 					google: {
 						follow: {
-							url: 'https://www.facebook.com/kekevscaterpillars'
+							url: 'https://plus.google.com/103794850800876367181/about?hl=en'
 						},
 						share: {
 							url: 'https://plus.google.com/share?',
