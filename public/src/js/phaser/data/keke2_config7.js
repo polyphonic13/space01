@@ -685,8 +685,8 @@ Polyworks.Config = (function() {
 				parentId: 'socialButtons',
 				imagePath: 'images/social/',
 				shareTitle: 'keke and the G R E Y  E X P A N S E',
-				// shareURL: document.location.href,
-				shareURL: 'www.polyworksgames.com/games/keke2/',
+				// appURL: encodeURIComponent(document.location.href),
+				appURL: encodeURIComponent('http://www.polyworksgames.com/games/keke2/'),
 				buttonStyle: {
 					position: {
 						horizontal: -(stageUnit * 0.5),
@@ -705,40 +705,104 @@ Polyworks.Config = (function() {
 					'twitter',
 					'google'
 				],
+				currentActionType: 'follow',
+				socialActions: {
+					mail: {
+						follow: {
+							url: 'mailto:keke@Polyworksgames.com?',
+							params: 'subject=~{shareTitle}~'
+						}
+					},
+					facebook: {
+						follow: {
+							url: 'https://www.facebook.com/kekevscaterpillars'
+						},
+						share: {
+							url: 'http://www.facebook.com/share.php?',
+							params: 'u=~{appURL}~&title=~{shareTitle}~'
+						}
+					},
+					twitter: {
+						follow: {
+							url: 'https://www.facebook.com/kekevscaterpillars'
+						},
+						share: {
+							url: 'http://twitter.com/home?',
+							params: 'status=~{shareTitle}~+~{appURL}~'
+						}
+					},
+					google: {
+						follow: {
+							url: 'https://www.facebook.com/kekevscaterpillars'
+						},
+						share: {
+							url: 'https://plus.google.com/share?',
+							params: 'url=~{appURL}~'
+						}
+					}
+				},
 				listeners: [
 				{
 					type: Polyworks.Events.CHANGE_STATE,
 					match: {
 						value: 'menu',
-						action: {
-							method: 'showAll',
-							value: ''
+						actions: [
+						{
+							method: 'changeData',
+							data: {
+								type: 'currentActionType',
+								value: 'follow'
+							}
+						},
+						{
+							method: 'show',
+							data: {
+								value: [
+									'mail',
+									'facebook',
+									'twitter',
+									'google'
+								]
+							}
 						}
+						]
 					},
 					nonmatch: {
-						action: {
+						actions: [
+						{
 							method: 'hideAll',
-							value: ''
-						}
+							data: {}
+						}]
 					}
 				},
 				{
 					type: Polyworks.Events.LEVEL_CLEARED,
-					action: {
+					actions: [
+					{
+						method: 'changeData',
+						data: {
+							type: 'currentActionType',
+							value: 'share'
+						}
+					},
+					{
 						method: 'show',
-						value: [
-							'facebook',
-							'twitter',
-							'google'
-						]
-					}
+						data: {
+							value: [
+								'facebook',
+								'twitter',
+								'google'
+							]
+						}
+					}]
 				},
 				{
 					type: Polyworks.Events.NEXT_LEVEL,
-					action: {
+					actions: [
+					{
 						method: 'hideAll',
-						value: ''
-					}
+						data: {}
+					}]
 				}
 				]
 			},

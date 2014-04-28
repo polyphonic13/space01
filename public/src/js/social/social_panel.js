@@ -1,25 +1,4 @@
 Polyworks.SocialPanel = (function() {
-	var SHARE_ACTIONS = {
-		facebook: {
-			url: 'http://www.facebook.com/share.php?',
-			params: 'u=~{shareURL}~&title=~{shareTitle}~'
-		},
-		twitter: {
-			url: 'http://twitter.com/home?',
-			params: 'status=~{shareTitle}~+~{shareURL}~'
-		},
-		google: {
-			url: 'https://plus.google.com/share?',
-			params: 'url=~{shareURL}~'
-		},
-		mail: {
-			url: 'mailto:keke@Polyworksgames.com?',
-			params: 'subject=~{shareTitle}~'
-		}
-	};
-	var SHARE_PARAMS = {
-
-	};
 
 	var _model = {};
 
@@ -31,7 +10,9 @@ Polyworks.SocialPanel = (function() {
 			_addListeners();
 		},
 
-		show: function(elements) {
+		show: function(params) {
+			trace('SocialPanel/show, params = ', params);
+			var elements = params.value;
 			_model.parentEl.style.display = 'block';
 			Polyworks.Utils.each(elements,
 				function(element) {
@@ -58,9 +39,27 @@ Polyworks.SocialPanel = (function() {
 		},
 
 		buttonClick: function(network) {
-			trace('SocialPanel/buttonClick, network = ' + network);
-			url = SHARE_ACTIONS[network].url + Polyworks.Utils.parseMarkup(SHARE_ACTIONS[network].params, _model, true);
-			window.open(url);
+			trace('SocialPanel/buttonClick, network = ' + network + '\n\tcurrentActionType = ' + _model.currentActionType);
+			var networkActions = _model.socialActions[network];
+			if(networkActions) {
+				trace('\tnetworkActions = ', networkActions);
+				var socialAction = networkActions[_model.currentActionType];
+				if(socialAction) {
+					trace('\tsocialAction = ', socialAction);
+					var url;
+					if(socialAction['params']) {
+						url = socialAction['url'] + Polyworks.Utils.parseMarkup(socialAction['params'], _model, true);
+					} else {
+						url = socialAction['url'];
+					}
+					trace('\turl = ' + url);
+					// window.open(url);
+				}
+			}
+		},
+
+		changeData: function(params) {
+			_model[params.type] = params.value;
 		},
 
 		destroy: function() {
@@ -157,6 +156,7 @@ Polyworks.SocialPanel = (function() {
 		trace('RETURNING: ', style);
 		return style;
 	}
+	
 	function _destroyViews() {
 		var buttons = _model.buttons;
 		var button;
@@ -202,15 +202,26 @@ Polyworks.SocialPanel = (function() {
 		if(match) {
 			trace('\tthere is a match');
 			if(match.value === event.value) {
-				trace('\t\tvalue matches the event value, calling: ' + match.action.method);
-				Polyworks.SocialPanel[match.action.method](match.action.value);
+				trace('\t\tvalue matches the event value');
+				_executeActions(match.actions);
 			} else if(listener.nonmatch) {
-				trace('\t\tnonmatch calling: ' + listener.nonmatch.action.method);
-				Polyworks.SocialPanel[listener.nonmatch.action.method](listener.nonmatch.action.value);
+				trace('\t\tnonmatch');
+				_executeActions(listener.nonmatch.actions);
 			}
 		} else {
-			Polyworks.SocialPanel[listener.action.method](listener.action.value);
+			_executeActions(listener.actions);
 		}
+	}
+	
+	function _executeActions(actions) {
+		trace('SocialPanel/_executeActions');
+		Polyworks.Utils.each(actions,
+			function(action) {
+				trace('\tcalling: ' + action.method + ', passing: ', action.data);
+				Polyworks.SocialPanel[action.method](action.data);
+			},
+			this
+		);
 	}
 
 	return module;
