@@ -8768,7 +8768,7 @@ Polyworks.Config = (function() {
 									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
-									img: 'branch03LeftAnimated',
+									img: 'branch03RightAnimated',
 									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 4.5),
@@ -8818,7 +8818,7 @@ Polyworks.Config = (function() {
 									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
-									img: 'branch03LeftAnimated',
+									img: 'branch03RightAnimated',
 									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 12.5),
