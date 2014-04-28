@@ -53,7 +53,7 @@ Polyworks.SocialPanel = (function() {
 						url = socialAction['url'];
 					}
 					trace('\turl = ' + url);
-					// window.open(url);
+					window.open(url);
 				}
 			}
 		},
