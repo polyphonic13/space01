@@ -2571,13 +2571,13 @@ Polyworks.Config = (function() {
 							attrs: [
 							{
 								name: 'head',
-								cl: 'Sprite',
+								cl: 'Enemy',
 								attrs: {
 									img: 'caterpillarBoss1Head',
 									phaser: {
 										width: (stageUnit * 3) * 0.71,
 										height: (stageUnit * 3),
-										health: 50
+										health: 100
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 2),
@@ -2591,10 +2591,9 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 15,
-									testInView: true,
 									score: 500,
 									movement: {
-										speed: 1,
+										speed: 5,
 										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 										formula: null
 									}
@@ -2602,13 +2601,13 @@ Polyworks.Config = (function() {
 							},
 							{
 								name: 'body',
-								cl: 'Sprite',
+								cl: 'Enemy',
 								attrs: {
 									img: 'caterpillarBoss1Body',
 									phaser: {
 										width: (stageUnit * 3) * 3.29,
 										height: (stageUnit * 3),
-										health: 50
+										health: 100
 									},
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 3),
@@ -2622,10 +2621,9 @@ Polyworks.Config = (function() {
 										}
 									},
 									attack: 0,
-									testInView: true,
 									score: 500,
 									movement: {
-										speed: 1,
+										speed: 5,
 										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 										formula: null
 									}
