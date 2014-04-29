@@ -607,30 +607,16 @@ Polyworks.Config = (function() {
 					frames: 35
 				},
 				// enemies
-				// caterpillar01: 
-				// {
-				// 	url: 'images/enemies/caterpillar02a.png',
-				// 	width: 104, 
-				// 	height: 32, 
-				// 	frames: 14
-				// },
 				caterpillar01: 
 				{
-					url: 'images/enemies/caterpillar03_sprite_2.png',
+					url: 'images/enemies/caterpillar03_sprite.png',
 					width: 128, 
 					height: 48, 
 					frames: 16
 				},
-				// caterpillar02: 
-				// {
-				// 	url: 'images/enemies/caterpillar02b.png',
-				// 	width: 104, 
-				// 	height: 32, 
-				// 	frames: 14
-				// },
 				caterpillar02: 
 				{
-					url: 'images/enemies/caterpillar03_sprite_2.png',
+					url: 'images/enemies/caterpillar03a_sprite.png',
 					width: 128, 
 					height: 48, 
 					frames: 16
