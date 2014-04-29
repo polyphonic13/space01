@@ -14,7 +14,7 @@ Polyworks.RequirementPlaceHolder = (function() {
 	};
 
 	RequirementPlaceHolder.prototype.onRequirementsInitialized = function(params) {
-		trace('RequirementPlaceHolder/onRequirementsInitialized, params = ', params);
+		// trace('RequirementPlaceHolder/onRequirementsInitialized, params = ', params);
 		var requirementImg = params.value.attrs.img;
 		// trace('\trequirementImg = ' + requirementImg);
 		var phaserAttrs = this.model.attrs.phaser;
@@ -33,7 +33,7 @@ Polyworks.RequirementPlaceHolder = (function() {
 	};
 	
 	RequirementPlaceHolder.prototype.onRequirementMet = function(params) {
-		trace('RequirementPlaceHolder/onRequirementMet, params = ', params, '\tthis = ', this);
+		// trace('RequirementPlaceHolder/onRequirementMet, params = ', params, '\tthis = ', this);
 		// Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet);
 		this.model.ancestor.group.add(this.requirement);
 		this.requirement.alpha = 1;

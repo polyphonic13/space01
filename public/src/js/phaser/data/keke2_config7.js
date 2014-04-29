@@ -473,6 +473,10 @@ Polyworks.Config = (function() {
 				// buttons
 				startButton: 'images/controls/start_button.png',
 
+				// boss
+				caterpillarBoss1Head: 'images/enemies/caterpillar03b_head.png',
+				caterpillarBoss1Body: 'images/enemies/caterpillar03b_body.png',
+
 				// misc
 				heart: 'images/heart.png',
 				invisibleRect: 'images/invisible.png',
@@ -728,6 +732,35 @@ Polyworks.Config = (function() {
 					}
 				},
 				listeners: [
+				// {
+				// 	type: Polyworks.Events.LEVEL_CLEARED,
+				// 	actions: [
+				// 	{
+				// 		method: 'changeData',
+				// 		data: {
+				// 			type: 'currentActionType',
+				// 			value: 'share'
+				// 		}
+				// 	},
+				// 	{
+				// 		method: 'show',
+				// 		data: {
+				// 			value: [
+				// 				'facebook',
+				// 				'twitter',
+				// 				'google'
+				// 			]
+				// 		}
+				// 	}]
+				// },
+				// {
+				// 	type: Polyworks.Events.NEXT_LEVEL,
+				// 	actions: [
+				// 	{
+				// 		method: 'hideAll',
+				// 		data: {}
+				// 	}]
+				// },
 				{
 					type: Polyworks.Events.CHANGE_STATE,
 					match: {
@@ -760,35 +793,6 @@ Polyworks.Config = (function() {
 							data: {}
 						}]
 					}
-				},
-				{
-					type: Polyworks.Events.LEVEL_CLEARED,
-					actions: [
-					{
-						method: 'changeData',
-						data: {
-							type: 'currentActionType',
-							value: 'share'
-						}
-					},
-					{
-						method: 'show',
-						data: {
-							value: [
-								'facebook',
-								'twitter',
-								'google'
-							]
-						}
-					}]
-				},
-				{
-					type: Polyworks.Events.NEXT_LEVEL,
-					actions: [
-					{
-						method: 'hideAll',
-						data: {}
-					}]
 				}
 				]
 			},
@@ -2118,6 +2122,8 @@ Polyworks.Config = (function() {
 					'crystals02Grey',
 					'lollipop',
 					'invisibleRect',
+					'caterpillarBoss1Head',
+					'caterpillarBoss1Body',
 					'greyRect'
 				],
 				sprites: [
@@ -2382,28 +2388,7 @@ Polyworks.Config = (function() {
 							start: 0,
 							end: stageWidth
 						},
-						attrs: [
-						{
-							name: 'dynamicTerrain',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						}
-						]
+						attrs: []
 					},
 					{
 						name: 'sector2',
@@ -2581,19 +2566,72 @@ Polyworks.Config = (function() {
 							]
 						},
 						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: []
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
+							name: 'groupEnemies',
+							cl: 'GroupEnemy',
+							attrs: [
+							{
+								name: 'head',
+								cl: 'Sprite',
+								attrs: {
+									img: 'caterpillarBoss1Head',
+									phaser: {
+										width: (stageUnit * 3) * 0.71,
+										height: (stageUnit * 3),
+										health: 50
+									},
+									start: {
+										x: (stageWidth * 2) + (stageUnit * 2),
+										y: winH - (stageUnit * 3.6)
+									},
+									physics: {
+										deferredGravity: true,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									attack: 15,
+									testInView: true,
+									score: 500,
+									movement: {
+										speed: 1,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									}
+								}
+							},
+							{
+								name: 'body',
+								cl: 'Sprite',
+								attrs: {
+									img: 'caterpillarBoss1Body',
+									phaser: {
+										width: (stageUnit * 3) * 3.29,
+										height: (stageUnit * 3),
+										health: 50
+									},
+									start: {
+										x: (stageWidth * 2) + (stageUnit * 3),
+										y: winH - (stageUnit * 3.5)
+									},
+									physics: {
+										deferredGravity: true,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									attack: 0,
+									testInView: true,
+									score: 500,
+									movement: {
+										speed: 1,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									}
+								}
+							}
+							]
 						}
 						]
 					},
@@ -2605,16 +2643,6 @@ Polyworks.Config = (function() {
 							end: stageWidth * 4
 						},
 						attrs: [
-						{
-							name: 'dynamicTerrain',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
 						{
 							name: 'enemies',
 							cl: 'Enemies',
@@ -2653,11 +2681,6 @@ Polyworks.Config = (function() {
 								}
 							}
 							]
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						}
 						]
 					},
@@ -2788,11 +2811,6 @@ Polyworks.Config = (function() {
 							]
 						},
 						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [{
@@ -2828,11 +2846,6 @@ Polyworks.Config = (function() {
 									animations: caterpillarAnimations
 								}
 							}]
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						}
 						]
 					},
@@ -2844,16 +2857,6 @@ Polyworks.Config = (function() {
 							end: stageWidth * 6
 						},
 						attrs: [
-						{
-							name: 'dynamicTerrain',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
 						{
 							name: 'enemies',
 							cl: 'Enemies',

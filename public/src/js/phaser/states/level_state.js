@@ -108,7 +108,7 @@ Polyworks.LevelState = (function() {
 				var updateParams = {
 					player: this.player,
 					terrain: this.terrain.group,
-					dynamicTerrain: sector.dynamicTerrain.getActive(),
+					dynamicTerrain: (sector.dynamicTerrain) ? sector.dynamicTerrain.getActive() : null,
 					position: {
 						x: this.game.camera.x + (Polyworks.Stage.winW/2),
 						y: this.game.camera.y + (Polyworks.Stage.winH/2)
@@ -119,20 +119,24 @@ Polyworks.LevelState = (function() {
 				// update player with active sector members & terrain
 				var terrainGroup = this.terrain.group;
 				var goalGroup = this.goals.group;
-				var requirementsGroup = (this.requirements) ? this.requirements.getActive() : null;
-				var dynamicTerrainGroup = sector.dynamicTerrain.getActive();
-				var hazards = sector.hazards.getActive();
-				var enemies = sector.enemies.getActive();
-				var bonuses = sector.bonuses.getActive();
+				var requirementsGroup = (this.requirements) ? this.requirements.group : null;
+
+				var dynamicTerrainGroup = (sector.dynamicTerrain) ? sector.dynamicTerrain.getActive() : null;
+				var groupEnemies = (sector.groupEnemies) ? sector.groupEnemies.getActive() : null;
+				var enemies = (sector.enemies) ? sector.enemies.getActive() : null;
+				var hazards = (sector.hazards) ? sector.hazards.getActive() : null;
+				var bonuses = (sector.bonuses) ? sector.bonuses.getActive() : null;
+
 				var physicalItems = {};
 
 				physicalItems.Terrain = terrainGroup;
 				physicalItems.Goals = goalGroup;
-				
+
 				if(requirementsGroup) physicalItems.Requirements = requirementsGroup;
 				if(dynamicTerrainGroup) physicalItems.DynamicTerrain = dynamicTerrainGroup;
-				if(hazards) physicalItems.Hazards = hazards;
+				if(groupEnemies) physicalItems.GroupEnemies = groupEnemies;
 				if(enemies) physicalItems.Enemies = enemies;
+				if(hazards) physicalItems.Hazards = hazards;
 				if(bonuses) physicalItems.Bonuses = bonuses;
 
 				this.player.pwUpdate({

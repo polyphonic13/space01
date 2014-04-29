@@ -157,6 +157,7 @@ Polyworks.Player = (function() {
 			var physicalItems = params.physicalItems; 
 
 			for(var key in physicalItems) {
+				// trace('physicalItems['+key+'] = ', physicalItems[key]);
 				this[('check' + key + 'Collision')](physicalItems[key], physics);
 			}
 
@@ -170,8 +171,8 @@ Polyworks.Player = (function() {
 		}
 	};
 
-	Player.prototype.checkGoalsCollision = function(goals, physics) {
-		this.checkCollision(goals, this.onGoalCollision, physics, this);
+	Player.prototype.checkBonusesCollision = function(bonuses, physics) {
+		this.checkCollision(bonuses, this.onBonusCollision, physics, this);
 	};
 	
 	Player.prototype.checkHazardsCollision = function(hazards, physics) {
@@ -182,16 +183,23 @@ Polyworks.Player = (function() {
 		this.checkCollision(enemies, this.onEnemyCollision, physics, this);
 	};
 	
-	Player.prototype.checkBonusesCollision = function(bonuses, physics) {
-		this.checkCollision(bonuses, this.onBonusCollision, physics, this);
+	Player.prototype.checkGroupEnemiesCollision = function(group, physics) {
+		// trace('Player/checkGroupEnemiesCollision, group = ', group);
+		// this.checkGroupCollision(group, this.onGroupEnemyCollision, physics, this);
+		this.checkCollision(group, this.onGroupEnemyCollision, physics, this);
 	};
 	
-	Player.prototype.checkRequirementsCollision = function(requirements, physics) {
-		this.checkCollision(requirements, this.onRequirementCollision, physics, this);
+	Player.prototype.checkRequirementsCollision = function(group, physics) {
+		this.checkGroupCollision(group, this.onRequirementCollision, physics, this);
+	};
+	
+	Player.prototype.checkGoalsCollision = function(group, physics) {
+		this.checkGroupCollision(group, this.onGoalCollision, physics, this);
 	};
 	
 	Player.prototype.checkCollision = function(collection, callback, physics, context) {
 		// trace('Player/checkCollision, health = ' + this.health);
+		// physics.overlap(this, collection, callback, null, context);
 		Polyworks.Utils.each(collection,
 			function(c) {
 				physics.overlap(this, c, callback, null, context);
@@ -200,39 +208,11 @@ Polyworks.Player = (function() {
 		);
 	};
 	
-	Player.prototype.onGoalCollision = function(player, goal) {
-		trace('Player/onGoalCollision, goal = ' + goal.model.name);
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.GOAL_REACHED, value: goal.model.name });
-		goal.destroy();
-	};
-
-	Player.prototype.onHazardCollision = function(player, hazard) {
-		// trace('Player/onHazardCollision, hazard = ');
-		// trace(hazard);
-		this.collided = true;
-		this.receiveDamage(hazard.model.attrs.attack);
-	};
-	
-	Player.prototype.onEnemyCollision = function(player, enemy) {
-		this.collided = true;
-		var playerX = player.body.x + (player.body.width);
-		var playerY = player.body.y + (player.body.height) - 10; // need a little bit of "wiggle room" to get the collision to take
-		var enemyX = enemy.body.x + (enemy.body.width);
-		var enemyY = enemy.body.y + (enemy.body.height);
-		// trace('Player/onEnemyCollision['+enemy.model.name+'], player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
-		// trace(enemy);
-// trace('enemy collision\n\tplayerY = ' + playerY + ', enemy.body.y = ' + enemy.body.y + '\n\tenemy.overlapY = ' + enemy.body.overlapY + ', enemy touching = ', enemy.body.touching);
-		// if(playerY < (enemyY)) { // player is above enemy
-		if(playerY <= enemy.body.y) {
-			this.updatePositionFromCollision();
-			enemy.damage(this.model.attrs.attack);
-		} else {
-			this.receiveDamage(enemy.model.attrs.attack);
-		}
+	Player.prototype.checkGroupCollision = function(group, callback, physics, context) {
+		physics.overlap(this, group, callback, null, context);
 	};
 	
 	Player.prototype.onBonusCollision = function(player, bonus) {
-		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.BONUS_COLLISION, player: player, bonus: bonus });
 		// trace('Player/onBonusCollision, bonus = ');
 		// trace(bonus);
 		this.collided = true;
@@ -249,14 +229,64 @@ Polyworks.Player = (function() {
 		bonus.destroy();
 	};
 	
+	Player.prototype.onHazardCollision = function(player, hazard) {
+		// trace('Player/onHazardCollision, hazard = ', hazard);
+		this.collided = true;
+		this.receiveDamage(hazard.model.attrs.attack);
+	};
+	
+	Player.prototype.onEnemyCollision = function(player, enemy) {
+		this.collided = true;
+		var playerX = player.body.x + (player.body.width);
+		var playerY = player.body.y + (player.body.height) - 10; // need a little bit of "wiggle room" to get the collision to take
+		var enemyX = enemy.body.x + (enemy.body.width);
+		var enemyY = enemy.body.y + (enemy.body.height);
+		trace('Player/onEnemyCollision['+enemy.model.name+'], player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
+		// trace(enemy);
+// trace('enemy collision\n\tplayerY = ' + playerY + ', enemy.body.y = ' + enemy.body.y + '\n\tenemy.overlapY = ' + enemy.body.overlapY + ', enemy touching = ', enemy.body.touching);
+		// if(playerY < (enemyY)) { // player is above enemy
+		if(playerY <= enemy.body.y) {
+			this.updatePositionFromCollision();
+			enemy.damage(this.model.attrs.attack);
+		} else {
+			this.receiveDamage(enemy.model.attrs.attack);
+		}
+	};
+	
+	Player.prototype.onGroupEnemyCollision = function(player, enemy) {
+		// trace('Player/onGroupEnemyCollision, enemy = ' + enemy.model.name);
+		this.collided = true;
+		var playerX = player.body.x + (player.body.width);
+		var playerY = player.body.y + (player.body.height) - 10; // need a little bit of "wiggle room" to get the collision to take
+		var enemyX = enemy.body.x + (enemy.body.width);
+		var enemyY = enemy.body.y + (enemy.body.height);
+		// trace('Player/onGroupEnemyCollision['+enemy.model.name+'], player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
+		// trace(enemy);
+		// trace('enemy collision\n\tplayerY = ' + playerY + ', enemy.body.y = ' + enemy.body.y + '\n\tenemy.overlapY = ' + enemy.body.overlapY + ', enemy touching = ', enemy.body.touching);
+		// if(playerY < (enemyY)) { // player is above enemy
+		if(playerY <= enemy.body.y) {
+			this.updatePositionFromCollision();
+			enemy.damage(this.model.attrs.attack);
+		} else {
+			if(enemy.model.attrs.attack > 0) {
+				this.receiveDamage(enemy.model.attrs.attack);
+			}
+		}
+	};
+
 	Player.prototype.onRequirementCollision = function(player, requirement) {
-		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.BONUS_COLLISION, player: player, bonus: bonus });
-		// trace('Player/onRequirementCollision, bonus = ', requirement);
+		// trace('Player/onRequirementCollision, requirement = ', requirement);
 
 		this.collided = true;
 		requirement.collect();
 	};
 	
+	Player.prototype.onGoalCollision = function(player, goal) {
+		// trace('Player/onGoalCollision, goal = ' + goal.model.name);
+		Polyworks.EventCenter.trigger({ type: Polyworks.Events.GOAL_REACHED, value: goal.model.name });
+		goal.destroy();
+	};
+
 	Player.prototype.receiveDamage = function(damage) {
 		// trace('Player/receiveDamage, justDamaged = ' + this.justDamaged);
 		if(!this.justDamaged) {

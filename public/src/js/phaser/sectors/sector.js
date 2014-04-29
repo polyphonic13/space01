@@ -13,8 +13,9 @@ Polyworks.Sector = (function() {
 		this.setChildrenExists(false);
 
 		this.dynamicTerrain = this.getChildByName('dynamicTerrain');
-		this.hazards = this.getChildByName('hazards');
+		this.groupEnemies = this.getChildByName('groupEnemies');
 		this.enemies = this.getChildByName('enemies');
+		this.hazards = this.getChildByName('hazards');
 		this.bonuses = this.getChildByName('bonuses');
 	};
 

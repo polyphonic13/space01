@@ -49,7 +49,9 @@ Polyworks.PhysicalGroupCollection = (function() {
 			this
 		);
 
+		// trace('PhysicalGroupCollection['+this.model.name+']/getActive, activeElements = ', activeElements);
 		return activeElements;
+		// return this.group;
 	};
 	
 	PhysicalGroupCollection.prototype.killChild = function(name) {

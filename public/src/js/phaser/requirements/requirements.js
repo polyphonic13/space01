@@ -18,7 +18,7 @@ Polyworks.Requirements = (function() {
 	
 	Requirements.prototype.onRequirementMet = function() {
 		this.requirementsMet++;
-		trace('Requirements/onRequirementMet, requirementsFill = ' + this.requirementsMet + ', total = ' + this.requirementsCount);
+		// trace('Requirements/onRequirementMet, requirementsFill = ' + this.requirementsMet + ', total = ' + this.requirementsCount);
 		PolyworksGame.setRequirements(this.requirementsMet, this.requirementsCount);
 		if(this.requirementsMet >= this.requirementsCount) {
 			Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet, this);
