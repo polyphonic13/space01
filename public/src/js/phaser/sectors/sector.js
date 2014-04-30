@@ -45,33 +45,13 @@ Polyworks.Sector = (function() {
 		}
 	};
 	
-	Sector.prototype.addParticles = function() {
-		var game = PolyworksGame.phaser;
-		// var world = this.model.attrs.world;
-		// trace(game.world);
-		var bounds = this.model.bounds;
-	    this.emitter = game.add.emitter(bounds.start, game.world.bounds.y, 400);
-
-		// this.emitter.width = Polyworks.Stage.width;
-		this.emitter.width = bounds.end;
-	    this.emitter.makeParticles('particle');
-		// SNOW
-		this.emitter.maxParticleScale = 0.5;
-		this.emitter.minParticleScale = 0.1;
-		this.emitter.setYSpeed(50, 100);
-		this.emitter.setXSpeed(-100, -90);
-		this.emitter.gravity = 0;
-		this.emitter.minRotation = 0;
-		this.emitter.maxRotation = 0;
-		// this.emitter.start(false, 7000, 10, false);
-		this.emitter.start(false, 8000, 10, false);
-
-	};
-	
 	Sector.prototype.pwUpdate = function(params) {
 		// this.checkTerrainCollision(params.terrain);
 		if(this.enemies) {
 			this.enemies.pwUpdate(params);
+		}
+		if(this.groupEnemies) {
+			this.groupEnemies.pwUpdate(params);
 		}
 	};
 	

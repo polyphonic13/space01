@@ -5,9 +5,8 @@ Polyworks.GroupEnemy = (function() {
 		GroupEnemy._super.constructor.call(this, params);
 	}
 	
-	GroupEnemy.prototype.begin = function() {
-		trace('GroupEnemy['+this.model.name+']/begin');
-		GroupEnemy._super.begin.call(this);
+	GroupEnemy.prototype.pwUpdate = function(params) {
+		trace('GroupEnemy['+this.model.name+']/pwUpdate');
 	};
 	
 	return GroupEnemy;

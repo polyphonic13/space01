@@ -8,12 +8,6 @@ Polyworks.Enemy = (function() {
 		this.isInView = true;
 	}
 
-	Enemy.prototype.begin = function() {
-		// trace('Enemy['+this.model.name+']/begin');
-		// trace(this);
-		Enemy._super.begin.call(this);
-	};
-
 	Enemy.prototype.pwUpdate = function(params) {
 		if(this.alive) {
 			var enemyX = this.body.screenX;

@@ -1,7 +1,7 @@
 var caterpillarAnimations = {
 	idle: {
 		keyFrames: [0],
-		loop: true,
+		loop: false,
 		frameRate: 10
 	},
 	walkL: {
@@ -54,7 +54,7 @@ var caterpillarAnimations = {
 var spiderAnimations = {
 	idle: {
 		keyFrames: [0],
-		loop: true,
+		loop: false,
 		frameRate: 10
 	},
 	walkL: {
@@ -78,3 +78,19 @@ var spiderAnimations = {
 		frameRate: 10
 	}
 };
+
+var caterpillarBossHeadAnimations = {
+	idle: {
+		keyFrames: [0],
+		loop: false,
+		frameRate: 10
+	},
+	attackL: {
+		keyFrames: [1, 2, 3],
+		loop: true,
+		frameRate: 10
+	},
+	attackR: {
+		
+	}
+}
