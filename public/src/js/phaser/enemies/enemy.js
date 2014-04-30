@@ -6,12 +6,23 @@ Polyworks.Enemy = (function() {
 		Enemy._super.constructor.call(this, params);
 		this.reactivated = false; 
 		this.isInView = true;
+		this.relationToPlayer = '';
 	}
 
 	Enemy.prototype.pwUpdate = function(params) {
 		if(this.alive) {
 			var enemyX = this.body.screenX;
 			var playerX = params.player.body.screenX;
+
+			this.relationToPlayer = 'near';
+			if(enemyX < (playerX - 25)) {
+				this.relationToPlayer = 'right';
+				this.move({ direction: Polyworks.Directions.RIGHT });
+			} else if(enemyX > (playerX + 25)) {
+				this.relationToPlayer = 'left';
+				this.move({ direction: Polyworks.Directions.LEFT });
+			}
+			trace('Enemy/pwUpdate, relationToPlayer = ' + this.relationToPlayer);
 
 			if(this.model.attrs.testInView) {
 				if(enemyX < (playerX + Polyworks.Stage.width/2) && enemyX > (playerX - Polyworks.Stage.width/2)) {

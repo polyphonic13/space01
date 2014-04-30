@@ -625,15 +625,19 @@ Polyworks.Config = (function() {
 					height: 48, 
 					frames: 16
 				},
-				caterpillarBoss1Head: {
+				caterpillarBoss1Head: 
+				{
 					url: 'images/enemies/caterpillar03b_head_sprite.png',
 					width: 200, 
 					height: 260, 
 					frames: 8
 				},
-				caterpillarBoss1Body: {
+				caterpillarBoss1Body: 
+				{
 					url: 'images/enemies/caterpillar03b_body_sprite.png',
-					
+					width: 475,
+					height: 256,
+					frames: 8
 				},
 				spider01: 
 				{
@@ -2132,8 +2136,6 @@ Polyworks.Config = (function() {
 					'crystals02Grey',
 					'lollipop',
 					'invisibleRect',
-					// 'caterpillarBoss1Head',
-					// 'caterpillarBoss1Body',
 					'greyRect'
 				],
 				sprites: [
@@ -2410,46 +2412,46 @@ Polyworks.Config = (function() {
 							end: stageWidth * 2
 						},
 						attrs: [
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level01-sector2-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 3
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 12),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									speed: 0.5,
-									attack: 5,
-									testInView: true,
-									score: 2500,
-									movement: {
-										speed: 0.5,
-										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}
-							]
-						}
+						// {
+						// 	name: 'enemies',
+						// 	cl: 'Enemies',
+						// 	attrs: [
+						// 	{
+						// 		name: 'level01-sector2-enemy1',
+						// 		cl: 'AnimatedEnemy',
+						// 		attrs: {
+						// 			img: 'caterpillar01',
+						// 			phaser: {
+						// 				width: caterpillar01.width,
+						// 				height: caterpillar01.height,
+						// 				health: 3
+						// 			},
+						// 			start: {
+						// 				x: (stageWidth) + (stageUnit * 12),
+						// 				y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+						// 			},
+						// 			physics: {
+						// 				deferredGravity: true,
+						// 				bounce: {
+						// 					x: 0,
+						// 					y: 0.2
+						// 				}
+						// 			},
+						// 			speed: 0.5,
+						// 			attack: 5,
+						// 			testInView: true,
+						// 			score: 2500,
+						// 			movement: {
+						// 				speed: 0.5,
+						// 				type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+						// 				formula: null
+						// 			},
+						// 			defaultAnimation: '',
+						// 			animations: caterpillarAnimations
+						// 		}
+						// 	}
+						// 	]
+						// }
 						]
 					},
 					{
@@ -2567,6 +2569,40 @@ Polyworks.Config = (function() {
 							cl: 'GroupEnemy',
 							attrs: [
 							{
+								name: 'body',
+								cl: 'Enemy',
+								attrs: {
+									img: 'caterpillarBoss1Body',
+									phaser: {
+										width: (stageUnit * 5) * 1.85,
+										height: (stageUnit * 5),
+										health: 100
+									},
+									// setSize: 
+									// [
+									// 
+									// ],
+									start: {
+										x: (stageWidth * 2) + (stageUnit * 3),
+										y: winH - (stageUnit * 5.5)
+									},
+									physics: {
+										deferredGravity: true,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									attack: 0,
+									score: 500,
+									movement: {
+										speed: 5,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									}
+								}
+							},
+							{
 								name: 'head',
 								cl: 'Enemy',
 								attrs: {
@@ -2603,36 +2639,6 @@ Polyworks.Config = (function() {
 									},
 									defaultAnimation: 'idle',
 									animations: caterpillarBossHeadAnimations
-								}
-							},
-							{
-								name: 'body',
-								cl: 'Enemy',
-								attrs: {
-									img: 'caterpillarBoss1Body',
-									phaser: {
-										width: (stageUnit * 3) * 3.29,
-										height: (stageUnit * 3),
-										health: 100
-									},
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 3),
-										y: winH - (stageUnit * 3.5)
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 0,
-									score: 500,
-									movement: {
-										speed: 5,
-										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-										formula: null
-									}
 								}
 							}
 							]

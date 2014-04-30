@@ -6,7 +6,13 @@ Polyworks.GroupEnemy = (function() {
 	}
 	
 	GroupEnemy.prototype.pwUpdate = function(params) {
-		trace('GroupEnemy['+this.model.name+']/pwUpdate');
+		// trace('GroupEnemy['+this.model.name+']/pwUpdate, this.collection = ', this.model.collection);
+		Polyworks.Utils.each(this.model.collection,
+			function(child) {
+				child.pwUpdate(params);
+			},
+			this
+		);
 	};
 	
 	return GroupEnemy;
