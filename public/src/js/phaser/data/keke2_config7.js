@@ -3292,6 +3292,21 @@ Polyworks.Config = (function() {
 								height: (stageHeight * 3)
 							},
 							start: {
+								x: -(stageUnit * 6),
+								y: winH - (stageHeight * 3)
+							}
+						}
+					},
+					{
+						name: 'tree01',
+						cl: 'Sprite',
+						attrs: {
+							img: 'tree01',
+							phaser: {
+								width: (stageHeight * 2),
+								height: (stageHeight * 3)
+							},
+							start: {
 								x: (stageWidth),
 								y: winH - (stageHeight * 3)
 							}
@@ -3422,7 +3437,120 @@ Polyworks.Config = (function() {
 						{
 							name: 'dynamicTerrain',
 							cl: 'PhysicalGroupCollection',
-							attrs: []
+							attrs: [
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aLeft',
+									start: {
+										x: (stageUnit * 1),
+										y: winH - (stageUnit * 2.25)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aRight',
+									start: {
+										x: (stageUnit * 4),
+										y: winH - (stageUnit * 4)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aLeft',
+									start: {
+										x: (stageUnit * 1),
+										y: winH - (stageUnit * 5.5)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aRight',
+									start: {
+										x: (stageUnit * 4),
+										y: winH - (stageUnit * 7)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Left',
+									start: {
+										x: (stageUnit * 1),
+										y: winH - (stageUnit * 8.5)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									start: {
+										x: (stageUnit * 4),
+										y: winH - (stageUnit * 10)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									start: {
+										x: (stageUnit * 3.5),
+										y: winH - (stageUnit * 12)
+									},
+									phaser: { width: (stageUnit * 5), height: (stageUnit * 0.4) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							}
+							]
 						},
 						{
 							name: 'hazards',
@@ -4581,6 +4709,7 @@ Polyworks.Config = (function() {
 							}
 						}
 					},
+					// grass
 					{
 						name: 'grass01',
 						cl: 'Sprite',
@@ -4592,7 +4721,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: 0,
-								y: winH - (stageUnit * 2)
+								y: winH - (stageUnit * 2.5)
 							}
 						}
 					},
@@ -4607,7 +4736,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 3),
-								y: winH - (stageUnit * 2)
+								y: winH - (stageUnit * 2.5)
 							}
 						}
 					},
@@ -4622,11 +4751,26 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 6),
-								y: winH - (stageUnit * 2)
+								y: winH - (stageUnit * 2.5)
 							}
 						}
 					},
 					// trees
+					{
+						name: 'tree01',
+						cl: 'Sprite',
+						attrs: {
+							img: 'tree01',
+							phaser: {
+								width: (stageHeight * 2),
+								height: (stageHeight * 3)
+							},
+							start: {
+								x: -(stageUnit * 6),
+								y: winH - (stageHeight * 3)
+							}
+						}
+					},
 					{
 						name: 'tree01',
 						cl: 'Sprite',
@@ -4933,7 +5077,120 @@ Polyworks.Config = (function() {
 						{
 							name: 'dynamicTerrain',
 							cl: 'PhysicalGroupCollection',
-							attrs: []
+							attrs: [
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aLeft',
+									start: {
+										x: (stageUnit * 1),
+										y: winH - (stageUnit * 2.25)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aRight',
+									start: {
+										x: (stageUnit * 4),
+										y: winH - (stageUnit * 4)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aLeft',
+									start: {
+										x: (stageUnit * 1),
+										y: winH - (stageUnit * 5.5)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aRight',
+									start: {
+										x: (stageUnit * 4),
+										y: winH - (stageUnit * 7)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Left',
+									start: {
+										x: (stageUnit * 1),
+										y: winH - (stageUnit * 8.5)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									start: {
+										x: (stageUnit * 4),
+										y: winH - (stageUnit * 10)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									start: {
+										x: (stageUnit * 3.5),
+										y: winH - (stageUnit * 12)
+									},
+									phaser: { width: (stageUnit * 5), height: (stageUnit * 0.4) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							}
+							]
 						},
 						{
 							name: 'hazards',
@@ -4948,7 +5205,24 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs: []
+							attrs: [
+							{
+								cl: 'Bonus',
+								attrs: {
+									img: 'lollipop',
+									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
+									start: {
+										x: (stageUnit * 7),
+										y: winH - (stageUnit * 13)
+									},
+									physics: {
+										immovable: true
+									},
+									score: 100,
+									health: 10
+								}
+							}
+							]
 						}
 						]
 					},
@@ -5288,7 +5562,8 @@ Polyworks.Config = (function() {
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
-							attrs:  [{
+							attrs:  [
+							{
 								cl: 'Bonus',
 								attrs: {
 									img: 'lollipop',
@@ -5303,7 +5578,8 @@ Polyworks.Config = (function() {
 									score: 100,
 									health: 10
 								}
-							}]
+							}
+							]
 						}
 						]
 					},
@@ -6663,6 +6939,21 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'tree01',
+						cl: 'Sprite',
+						attrs: {
+							img: 'tree01',
+							phaser: {
+								width: (stageHeight * 2),
+								height: (stageHeight * 3)
+							},
+							start: {
+								x: -(stageUnit * 6),
+								y: winH - (stageHeight * 3)
+							}
+						}
+					},
+					{
 						name: 'trunk01',
 						cl: 'Sprite',
 						attrs: {
@@ -6864,17 +7155,125 @@ Polyworks.Config = (function() {
 						{
 							name: 'dynamicTerrain',
 							cl: 'PhysicalGroupCollection',
-							attrs: []
+							attrs: [
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aLeft',
+									start: {
+										x: (stageUnit * 1),
+										y: winH - (stageUnit * 2.25)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aRight',
+									start: {
+										x: (stageUnit * 4),
+										y: winH - (stageUnit * 4)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aLeft',
+									start: {
+										x: (stageUnit * 1),
+										y: winH - (stageUnit * 5.5)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aRight',
+									start: {
+										x: (stageUnit * 4),
+										y: winH - (stageUnit * 7)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Left',
+									start: {
+										x: (stageUnit * 1),
+										y: winH - (stageUnit * 8.5)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									start: {
+										x: (stageUnit * 4),
+										y: winH - (stageUnit * 10)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									start: {
+										x: (stageUnit * 3.5),
+										y: winH - (stageUnit * 12)
+									},
+									phaser: { width: (stageUnit * 5), height: (stageUnit * 0.4) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							}
+							]
 						},
 						{
 							name: 'hazards',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
 						},
 						{
 							name: 'bonuses',
@@ -8229,6 +8628,21 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'tree01',
+						cl: 'Sprite',
+						attrs: {
+							img: 'tree01',
+							phaser: {
+								width: (stageHeight * 2),
+								height: (stageHeight * 3)
+							},
+							start: {
+								x: -(stageUnit * 6),
+								y: winH - (stageHeight * 3)
+							}
+						}
+					},
+					{
 						name: 'trunk01',
 						cl: 'Sprite',
 						attrs: {
@@ -8462,7 +8876,126 @@ Polyworks.Config = (function() {
 							start: 0,
 							end: stageWidth
 						},
-						attrs: []
+						attrs: [
+						{
+							name: 'dynamicTerrain',
+							cl: 'PhysicalGroupCollection',
+							attrs: [
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aLeft',
+									start: {
+										x: (stageUnit * 1),
+										y: winH - (stageUnit * 2.25)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aRight',
+									start: {
+										x: (stageUnit * 4),
+										y: winH - (stageUnit * 4)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aLeft',
+									start: {
+										x: (stageUnit * 1),
+										y: winH - (stageUnit * 5.5)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03aRight',
+									start: {
+										x: (stageUnit * 4),
+										y: winH - (stageUnit * 7)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Left',
+									start: {
+										x: (stageUnit * 1),
+										y: winH - (stageUnit * 8.5)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									start: {
+										x: (stageUnit * 4),
+										y: winH - (stageUnit * 10)
+									},
+									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							},
+							{
+								name: 'plat1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'branch03Right',
+									start: {
+										x: (stageUnit * 3.5),
+										y: winH - (stageUnit * 12)
+									},
+									phaser: { width: (stageUnit * 5), height: (stageUnit * 0.4) },
+									physics: {
+										immovable: true,
+										allowGravity: false
+									}
+								}
+							}
+							]
+						}
+						]
 					},
 					// sector2
 					{
@@ -9604,8 +10137,8 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1.5)
 							},
 							start: {
-								x: (stageWidth * 2) + (stageUnit * 13),
-								y: winH - (stageUnit * 16)
+								x: (stageUnit * 6.5),
+								y: winH - (stageUnit * 13.5)
 							}
 						}
 					}
