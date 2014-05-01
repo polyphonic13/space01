@@ -2150,8 +2150,8 @@ Polyworks.Config = (function() {
 					'mapButton',
 					'heartSprite',
 					'keke',
-					'caterpillarBoss1Head',
-					'caterpillarBoss1Body',
+					// 'caterpillarBoss1Head',
+					// 'caterpillarBoss1Body',
 					'caterpillar01'
 				],
 				attrs: [
@@ -2307,7 +2307,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: 0,
-								y: winH - (stageUnit * 2)
+								y: winH - (stageUnit * 2.5)
 							}
 						}
 					},
@@ -2322,7 +2322,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 3),
-								y: winH - (stageUnit * 2)
+								y: winH - (stageUnit * 2.5)
 							}
 						}
 					}
@@ -2412,46 +2412,46 @@ Polyworks.Config = (function() {
 							end: stageWidth * 2
 						},
 						attrs: [
-						// {
-						// 	name: 'enemies',
-						// 	cl: 'Enemies',
-						// 	attrs: [
-						// 	{
-						// 		name: 'level01-sector2-enemy1',
-						// 		cl: 'AnimatedEnemy',
-						// 		attrs: {
-						// 			img: 'caterpillar01',
-						// 			phaser: {
-						// 				width: caterpillar01.width,
-						// 				height: caterpillar01.height,
-						// 				health: 3
-						// 			},
-						// 			start: {
-						// 				x: (stageWidth) + (stageUnit * 12),
-						// 				y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
-						// 			},
-						// 			physics: {
-						// 				deferredGravity: true,
-						// 				bounce: {
-						// 					x: 0,
-						// 					y: 0.2
-						// 				}
-						// 			},
-						// 			speed: 0.5,
-						// 			attack: 5,
-						// 			testInView: true,
-						// 			score: 2500,
-						// 			movement: {
-						// 				speed: 0.5,
-						// 				type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-						// 				formula: null
-						// 			},
-						// 			defaultAnimation: '',
-						// 			animations: caterpillarAnimations
-						// 		}
-						// 	}
-						// 	]
-						// }
+						{
+							name: 'enemies',
+							cl: 'Enemies',
+							attrs: [
+							{
+								name: 'level01-sector2-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'caterpillar01',
+									phaser: {
+										width: caterpillar01.width,
+										height: caterpillar01.height,
+										health: 3
+									},
+									start: {
+										x: (stageWidth) + (stageUnit * 12),
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+									},
+									physics: {
+										deferredGravity: true,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									speed: 0.5,
+									attack: 5,
+									testInView: true,
+									score: 2500,
+									movement: {
+										speed: 0.5,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: caterpillarAnimations
+								}
+							}
+							]
+						}
 						]
 					},
 					{
@@ -2563,86 +2563,87 @@ Polyworks.Config = (function() {
 								}
 							}
 							]
-						},
-						{
-							name: 'groupEnemies',
-							cl: 'GroupEnemy',
-							attrs: [
-							{
-								name: 'body',
-								cl: 'Enemy',
-								attrs: {
-									img: 'caterpillarBoss1Body',
-									phaser: {
-										width: (stageUnit * 5) * 1.85,
-										height: (stageUnit * 5),
-										health: 100
-									},
-									// setSize: 
-									// [
-									// 
-									// ],
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 3),
-										y: winH - (stageUnit * 5.5)
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 0,
-									score: 500,
-									movement: {
-										speed: 5,
-										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-										formula: null
-									}
-								}
-							},
-							{
-								name: 'head',
-								cl: 'Enemy',
-								attrs: {
-									img: 'caterpillarBoss1Head',
-									phaser: {
-										width: (stageUnit * 3) * 0.71,
-										height: (stageUnit * 3),
-										health: 100
-									},
-									setSize: 
-									[
-										(stageUnit * 3) * 0.71,
-										(stageUnit * 2),
-										0,
-										(stageUnit * 1)
-									],
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 2),
-										y: winH - (stageUnit * 3.6)
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 15,
-									score: 500,
-									movement: {
-										speed: 5,
-										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: 'idle',
-									animations: caterpillarBossHeadAnimations
-								}
-							}
-							]
 						}
+						// },
+						// {
+						// 	name: 'groupEnemies',
+						// 	cl: 'GroupEnemy',
+						// 	attrs: [
+						// 	{
+						// 		name: 'body',
+						// 		cl: 'Enemy',
+						// 		attrs: {
+						// 			img: 'caterpillarBoss1Body',
+						// 			phaser: {
+						// 				width: (stageUnit * 5) * 1.85,
+						// 				height: (stageUnit * 5),
+						// 				health: 100
+						// 			},
+						// 			// setSize: 
+						// 			// [
+						// 			// 
+						// 			// ],
+						// 			start: {
+						// 				x: (stageWidth * 2) + (stageUnit * 3),
+						// 				y: winH - (stageUnit * 5.5)
+						// 			},
+						// 			physics: {
+						// 				deferredGravity: true,
+						// 				bounce: {
+						// 					x: 0,
+						// 					y: 0.2
+						// 				}
+						// 			},
+						// 			attack: 0,
+						// 			score: 500,
+						// 			movement: {
+						// 				speed: 5,
+						// 				type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+						// 				formula: null
+						// 			}
+						// 		}
+						// 	},
+						// 	{
+						// 		name: 'head',
+						// 		cl: 'Enemy',
+						// 		attrs: {
+						// 			img: 'caterpillarBoss1Head',
+						// 			phaser: {
+						// 				width: (stageUnit * 3) * 0.71,
+						// 				height: (stageUnit * 3),
+						// 				health: 100
+						// 			},
+						// 			setSize: 
+						// 			[
+						// 				(stageUnit * 3) * 0.71,
+						// 				(stageUnit * 2),
+						// 				0,
+						// 				(stageUnit * 1)
+						// 			],
+						// 			start: {
+						// 				x: (stageWidth * 2) + (stageUnit * 2),
+						// 				y: winH - (stageUnit * 3.6)
+						// 			},
+						// 			physics: {
+						// 				deferredGravity: true,
+						// 				bounce: {
+						// 					x: 0,
+						// 					y: 0.2
+						// 				}
+						// 			},
+						// 			attack: 15,
+						// 			score: 500,
+						// 			movement: {
+						// 				speed: 5,
+						// 				type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+						// 				formula: null
+						// 			},
+						// 			defaultAnimation: 'idle',
+						// 			animations: caterpillarBossHeadAnimations
+						// 		}
+						// 	}
+						// 	]
+						// }
 						]
 					},
 					{
@@ -3262,7 +3263,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: 0,
-								y: winH - (stageUnit * 2)
+								y: winH - (stageUnit * 2.5)
 							}
 						}
 					},
@@ -3277,7 +3278,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 3),
-								y: winH - (stageUnit * 2)
+								y: winH - (stageUnit * 2.5)
 							}
 						}
 					},
@@ -4901,11 +4902,11 @@ Polyworks.Config = (function() {
 							img: 'platform',
 							phaser: {
 								width: stageWidth * 9,
-								height: 32
+								height: (stageUnit * 2)
 							},
 							start: {
 								x: 0,
-								y: winH - 16
+								y: winH - (stageUnit * 0.5)
 							},
 							physics: {
 								immovable: true
@@ -6642,7 +6643,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: 0,
-								y: winH - (stageUnit * 2)
+								y: winH - (stageUnit * 2.5)
 							}
 						}
 					},
@@ -6657,7 +6658,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 3),
-								y: winH - (stageUnit * 2)
+								y: winH - (stageUnit * 2.5)
 							}
 						}
 					},
@@ -6808,17 +6809,35 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'rightWall',
+						cl: 'Sprite',
+						attrs: {
+							img: 'platformV',
+							start: {
+								x: stageWidth * 6,
+								y: winH - (stageHeight * 2)
+							},
+							phaser: {
+								width: 16,
+								height: stageHeight * 2
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
 						name: 'ground0',
 						cl: 'Sprite',
 						attrs: {
 							img: 'platform',
 							phaser: {
-								width: stageWidth * 6,
-								height: 32
+								width: (stageWidth * 6) + (stageUnit * 8),
+								height: (stageUnit * 0.5)
 							},
 							start: {
 								x: 0,
-								y: winH - 16
+								y: winH - (stageUnit * 0.5)
 							},
 							physics: {
 								immovable: true
@@ -8100,7 +8119,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: 0,
-								y: winH - (stageUnit * 2)
+								y: winH - (stageUnit * 2.5)
 							}
 						}
 					},
@@ -8115,7 +8134,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth),
-								y: winH - (stageUnit * 2)
+								y: winH - (stageUnit * 2.5)
 							}
 						}
 					},
@@ -8130,7 +8149,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 2) - (stageUnit * 1),
-								y: winH - (stageUnit * 4.5)
+								y: winH - (stageUnit * 5)
 							}
 						}
 					},
@@ -8145,7 +8164,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 2),
-								y: winH - (stageUnit * 4)
+								y: winH - (stageUnit * 4.5)
 							}
 						}
 					},
@@ -8160,7 +8179,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 3),
-								y: winH - (stageUnit * 4)
+								y: winH - (stageUnit * 4.5)
 							}
 						}
 					},
@@ -8175,7 +8194,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 4) - (stageUnit * 1),
-								y: winH - (stageUnit * 6.5)
+								y: winH - (stageUnit * 7)
 							}
 						}
 					},
@@ -8190,7 +8209,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 4),
-								y: winH - (stageUnit * 6)
+								y: winH - (stageUnit * 6.5)
 							}
 						}
 					},
@@ -8205,7 +8224,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 5),
-								y: winH - (stageUnit * 6)
+								y: winH - (stageUnit * 6.5)
 							}
 						}
 					},
@@ -8356,17 +8375,35 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'rightWall',
+						cl: 'Sprite',
+						attrs: {
+							img: 'platformV',
+							start: {
+								x: stageWidth * 6,
+								y: winH - (stageHeight * 2)
+							},
+							phaser: {
+								width: 16,
+								height: stageHeight * 2
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
 						name: 'ground1',
 						cl: 'Sprite',
 						attrs: {
 							img: 'platform',
 							phaser: {
 								width: stageWidth * 2,
-								height: 32
+								height: (stageUnit * 0.5)
 							},
 							start: {
 								x: 0,
-								y: winH - 16
+								y: winH - (stageUnit * 0.5)
 							},
 							physics: {
 								immovable: true
@@ -8380,11 +8417,11 @@ Polyworks.Config = (function() {
 							img: 'platform',
 							phaser: {
 								width: stageWidth * 2,
-								height: 32 + (stageUnit * 2)
+								height: (stageUnit * 2.5)
 							},
 							start: {
 								x: (stageWidth * 2),
-								y: winH - (16 + (stageUnit * 2))
+								y: winH - (stageUnit * 2.5)
 							},
 							physics: {
 								immovable: true
@@ -8398,11 +8435,11 @@ Polyworks.Config = (function() {
 							img: 'platform',
 							phaser: {
 								width: stageWidth * 2,
-								height: 32 + (stageUnit * 4)
+								height: (stageUnit * 4.5)
 							},
 							start: {
 								x: (stageWidth * 4),
-								y: winH - (16 + (stageUnit * 4))
+								y: winH - (stageUnit * 4.5)
 							},
 							physics: {
 								immovable: true
@@ -8425,28 +8462,7 @@ Polyworks.Config = (function() {
 							start: 0,
 							end: stageWidth
 						},
-						attrs: [
-						{
-							name: 'dynamicTerrain',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						}
-						]
+						attrs: []
 					},
 					// sector2
 					{
@@ -8569,23 +8585,7 @@ Polyworks.Config = (function() {
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
-									phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
-									start: {
-										x: (stageWidth) + (stageUnit * 4),
-										y: winH - (stageUnit * 2)
-									},
-									physics: {
-										immovable: true
-									},
-									attack: 10
-								}
-							},	
-							{
-								name: 'level05-sector2-hazard2',
-								cl: 'Sprite',
-								attrs: {
-									img: 'thorns01',
-									phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 1.5) },
 									start: {
 										x: (stageWidth) + (stageUnit * 7),
 										y: winH - (stageUnit * 2)
@@ -8597,29 +8597,13 @@ Polyworks.Config = (function() {
 								}
 							},
 							{
-								name: 'level05-sector2-hazard3',
+								name: 'level05-sector2-hazard2',
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
-									phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 1.5) },
 									start: {
-										x: (stageWidth) + (stageUnit * 10.5),
-										y: winH - (stageUnit * 2)
-									},
-									physics: {
-										immovable: true
-									},
-									attack: 10
-								}
-							},
-							{
-								name: 'level05-sector2-hazard4',
-								cl: 'Sprite',
-								attrs: {
-									img: 'thorns01',
-									phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
-									start: {
-										x: (stageWidth) + (stageUnit * 14),
+										x: (stageWidth) + (stageUnit * 13),
 										y: winH - (stageUnit * 2)
 									},
 									physics: {
@@ -8841,26 +8825,10 @@ Polyworks.Config = (function() {
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
-									phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 3.5),
-										y: winH - (stageUnit * 3.5) + 32
-									},
-									physics: {
-										immovable: true
-									},
-									attack: 10
-								}
-							},	
-							{
-								name: 'level05-sector3-hazard0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'thorns01',
-									phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 1.5) },
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 8),
-										y: winH - (stageUnit * 3.5) + 32
+										y: winH - (stageUnit * 4)
 									},
 									physics: {
 										immovable: true
@@ -8873,26 +8841,10 @@ Polyworks.Config = (function() {
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
-									phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 11.5),
-										y: winH - (stageUnit * 3.5) + 32
-									},
-									physics: {
-										immovable: true
-									},
-									attack: 10
-								}
-							},
-							{
-								name: 'level05-sector3-hazard0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'thorns01',
-									phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 1.5) },
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 15),
-										y: winH - (stageUnit * 3.5) + 32
+										y: winH - (stageUnit * 4)
 									},
 									physics: {
 										immovable: true
@@ -9153,26 +9105,10 @@ Polyworks.Config = (function() {
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
-									phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
-									start: {
-										x: (stageWidth * 3) + (stageUnit * 3.5),
-										y: winH - (stageUnit * 3.5) + 32
-									},
-									physics: {
-										immovable: true
-									},
-									attack: 10
-								}
-							},	
-							{
-								name: 'level05-sector4-hazard0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'thorns01',
-									phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 1.5) },
 									start: {
 										x: (stageWidth * 3) + (stageUnit * 8),
-										y: winH - (stageUnit * 3.5) + 32
+										y: winH - (stageUnit * 4)
 									},
 									physics: {
 										immovable: true
@@ -9180,22 +9116,6 @@ Polyworks.Config = (function() {
 									attack: 10
 								}
 							},
-							{
-								name: 'level05-sector4-hazard0',
-								cl: 'Sprite',
-								attrs: {
-									img: 'thorns01',
-									phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
-									start: {
-										x: (stageWidth * 3) + (stageUnit * 12.5),
-										y: winH - (stageUnit * 3.5) + 32
-									},
-									physics: {
-										immovable: true
-									},
-									attack: 10
-								}
-							}
 							]
 						},
 						{
@@ -9377,10 +9297,10 @@ Polyworks.Config = (function() {
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
-									phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 1.5) },
 									start: {
 										x: (stageWidth * 4),
-										y: winH - (stageUnit * 5.5) + 32
+										y: winH - (stageUnit * 6)
 									},
 									physics: {
 										immovable: true
@@ -9393,26 +9313,10 @@ Polyworks.Config = (function() {
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
-									phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
-									start: {
-										x: (stageWidth * 4) + (stageUnit * 4),
-										y: winH - (stageUnit * 5.5) + 32
-									},
-									physics: {
-										immovable: true
-									},
-									attack: 10
-								}
-							},	
-							{
-								name: 'level05-sector5-hazard1',
-								cl: 'Sprite',
-								attrs: {
-									img: 'thorns01',
-									phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 1.5) },
 									start: {
 										x: (stageWidth * 4) + (stageUnit * 9),
-										y: winH - (stageUnit * 5.5) + 32
+										y: winH - (stageUnit * 6)
 									},
 									physics: {
 										immovable: true
@@ -9425,10 +9329,10 @@ Polyworks.Config = (function() {
 								cl: 'Sprite',
 								attrs: {
 									img: 'thorns01',
-									phaser: { width: (stageUnit * 1.5), height: (stageUnit * 1.5) },
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 1.5) },
 									start: {
-										x: (stageWidth * 4) + (stageUnit * 12.5),
-										y: winH - (stageUnit * 5.5) + 32
+										x: (stageWidth * 4) + (stageUnit * 15),
+										y: winH - (stageUnit * 6)
 									},
 									physics: {
 										immovable: true

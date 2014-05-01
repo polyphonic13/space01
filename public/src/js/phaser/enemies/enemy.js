@@ -22,7 +22,7 @@ Polyworks.Enemy = (function() {
 				this.relationToPlayer = 'left';
 				this.move({ direction: Polyworks.Directions.LEFT });
 			}
-			trace('Enemy/pwUpdate, relationToPlayer = ' + this.relationToPlayer);
+			// trace('Enemy/pwUpdate, relationToPlayer = ' + this.relationToPlayer);
 
 			if(this.model.attrs.testInView) {
 				if(enemyX < (playerX + Polyworks.Stage.width/2) && enemyX > (playerX - Polyworks.Stage.width/2)) {
