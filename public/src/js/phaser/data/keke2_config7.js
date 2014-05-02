@@ -17,11 +17,15 @@ Polyworks.Config = (function() {
 			width: (stageUnit * 2),
 			height: (stageUnit * 2) * 0.375,
 			imgHeight: 64
-			// width: (stageUnit * 1.5),
-			// height: (stageUnit * 0.5)
 		};
 
 		var caterpillar02 = {
+			width: (stageUnit * 2.5),
+			height: (stageUnit * 2.5) * 0.375,
+			imgHeight: 64
+		};
+
+		var caterpillar03 = {
 			width: (stageUnit * 3),
 			height: (stageUnit * 3) * 0.375,
 			imgHeight: 64
@@ -625,19 +629,12 @@ Polyworks.Config = (function() {
 					height: 48, 
 					frames: 16
 				},
-				caterpillarBoss1Head: 
+				caterpillar03: 
 				{
-					url: 'images/enemies/caterpillar03b_head_sprite.png',
-					width: 200, 
-					height: 260, 
-					frames: 8
-				},
-				caterpillarBoss1Body: 
-				{
-					url: 'images/enemies/caterpillar03b_body_sprite.png',
-					width: 475,
-					height: 256,
-					frames: 8
+					url: 'images/enemies/caterpillar03c_sprite.png',
+					width: 128, 
+					height: 48, 
+					frames: 16
 				},
 				spider01: 
 				{
@@ -4485,6 +4482,7 @@ Polyworks.Config = (function() {
 					'keke',
 					'caterpillar01',
 					'caterpillar02',
+					'caterpillar03',
 					'branch03LeftAnimated',
 					'branch03RightAnimated'
 				],
@@ -5113,11 +5111,6 @@ Polyworks.Config = (function() {
 							]
 						},
 						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [] 
@@ -5405,14 +5398,10 @@ Polyworks.Config = (function() {
 							]
 						},
 						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [{
+							attrs: [
+							{
 								name: 'level03-sector3-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
@@ -5599,11 +5588,6 @@ Polyworks.Config = (function() {
 							]
 						},
 						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [
@@ -5611,15 +5595,15 @@ Polyworks.Config = (function() {
 								name: 'level03-sector4-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar01',
+									img: 'caterpillar02',
 									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 6
+										width: caterpillar03.width,
+										height: caterpillar03.height,
+										health: 20
 									},
 									start: {
 										x: (stageWidth * 3) + (stageUnit * 5),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+										y: winH - (caterpillar03.imgHeight + (stageUnit * 1.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -5628,7 +5612,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 10,
+									attack: 15,
 									testInView: true,
 									score: 500,
 									movement: {
@@ -5652,7 +5636,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 3) + (stageUnit * 15),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+										y: winH - (caterpillar02.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -5854,11 +5838,11 @@ Polyworks.Config = (function() {
 									phaser: {
 										width: caterpillar02.width,
 										height: caterpillar02.height,
-										health: 6
+										health: 20
 									},
 									start: {
 										x: (stageWidth * 4) + (stageUnit * 8),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+										y: winH - (caterpillar02.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -6432,7 +6416,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 8),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+										y: winH - (caterpillar02.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -6467,7 +6451,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 8) + (stageUnit * 8),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+										y: winH - (caterpillar02.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -6740,8 +6724,9 @@ Polyworks.Config = (function() {
 					'mapButton',
 					'heartSprite',
 					'keke',
-					'caterpillar01',
+					'caterpillar03',
 					'caterpillar02',
+					'caterpillar03',
 					'branch03LeftAnimated',
 					'branch03RightAnimated'
 				],
@@ -7204,14 +7189,43 @@ Polyworks.Config = (function() {
 							]
 						},
 						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
+							name: 'enemies',
+							cl: 'Enemies',
+							attrs: [
+							{
+								name: 'level03-sector4-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'caterpillar02',
+									phaser: {
+										width: caterpillar02.width,
+										height: caterpillar02.height,
+										health: 20
+									},
+									start: {
+										x: (stageUnit * 2),
+										y: winH - (stageHeight + (stageUnit * 2))
+									},
+									physics: {
+										deferredGravity: true,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									attack: 20,
+									testInView: true,
+									score: 500,
+									movement: {
+										speed: 1.5,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: caterpillarAnimations
+								}
+							}
+							]
 						}
 						]
 					},
@@ -7237,7 +7251,7 @@ Polyworks.Config = (function() {
 									setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 									start: {
 										x: (stageWidth) + (stageUnit * 0.2),
-										y: winH - (stageUnit * 3.5)
+										y: winH - (stageUnit * 3)
 									},
 									physics: {
 										immovable: true
@@ -7347,7 +7361,7 @@ Polyworks.Config = (function() {
 									phaser: {
 										width: caterpillar02.width,
 										height: caterpillar02.height,
-										health: 4
+										health: 20
 									},
 									start: {
 										x: (stageWidth) + (stageUnit),
@@ -7376,10 +7390,10 @@ Polyworks.Config = (function() {
 								name: 'level04-sector2-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar01',
+									img: 'caterpillar03',
 									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
+										width: caterpillar03.width,
+										height: caterpillar03.height,
 										health: 10
 									},
 									start: {
@@ -7393,7 +7407,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 25,
 									testInView: true,
 									score: 2000,
 									movement: {
@@ -7580,7 +7594,8 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [{
+							attrs: [
+							{
 								name: 'level04-sector3-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
@@ -7588,11 +7603,11 @@ Polyworks.Config = (function() {
 									phaser: {
 										width: caterpillar02.width,
 										height: caterpillar02.height,
-										health: 6
+										health: 20
 									},
 									start: {
 										x: (stageWidth * 2),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+										y: winH - (caterpillar02.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -7612,7 +7627,41 @@ Polyworks.Config = (function() {
 									defaultAnimation: '',
 									animations: caterpillarAnimations
 								}
-							}]
+							},
+							{
+								name: 'level04-sector3-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'caterpillar02',
+									phaser: {
+										width: caterpillar02.width,
+										height: caterpillar02.height,
+										health: 20
+									},
+									start: {
+										x: (stageWidth * 2) + (stageUnit * 5),
+										y: winH - (stageHeight * 1.25)
+									},
+									physics: {
+										deferredGravity: true,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									attack: 20,
+									testInView: true,
+									score: 500,
+									movement: {
+										speed: 1,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: caterpillarAnimations
+								}
+							}
+							]
 						},
 						{
 							name: 'bonuses',
@@ -7783,18 +7832,19 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [{
+							attrs: [
+							{
 								name: 'level04-sector4-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar01',
+									img: 'caterpillar03',
 									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
+										width: caterpillar03.width,
+										height: caterpillar03.height,
 										health: 6
 									},
 									start: {
-										x: (stageWidth * 3) + (stageUnit),
+										x: (stageWidth * 3) + (stageUnit * 4),
 										y: 0
 									},
 									physics: {
@@ -7804,7 +7854,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 25,
 									testInView: true,
 									score: 2000,
 									movement: {
@@ -7824,11 +7874,11 @@ Polyworks.Config = (function() {
 									phaser: {
 										width: caterpillar02.width,
 										height: caterpillar02.height,
-										health: 6
+										health: 20
 									},
 									start: {
-										x: (stageWidth * 3) + (stageUnit * 4),
-										y: 0
+										x: (stageWidth * 3) + (stageUnit * 14),
+										y: winH - (stageHeight * 1.5)
 									},
 									physics: {
 										deferredGravity: true,
@@ -7848,7 +7898,41 @@ Polyworks.Config = (function() {
 									defaultAnimation: '',
 									animations: caterpillarAnimations
 								}
-							}]
+							},
+							{
+								name: 'level04-sector4-enemy3',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'caterpillar02',
+									phaser: {
+										width: caterpillar02.width,
+										height: caterpillar02.height,
+										health: 20
+									},
+									start: {
+										x: (stageWidth * 3) + (stageUnit * 9),
+										y: winH - (stageHeight * 1.5)
+									},
+									physics: {
+										deferredGravity: true,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									attack: 20,
+									testInView: true,
+									score: 2000,
+									movement: {
+										speed: 1,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: caterpillarAnimations
+								}
+							}
+							]
 						},
 						{
 							name: 'bonuses',
@@ -7990,7 +8074,8 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [{
+							attrs: [
+							{
 								name: 'level04-sector5-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
@@ -7998,11 +8083,11 @@ Polyworks.Config = (function() {
 									phaser: {
 										width: caterpillar02.width,
 										height: caterpillar02.height,
-										health: 6
+										health: 20
 									},
 									start: {
 										x: (stageWidth * 4) + (stageUnit),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+										y: winH - (caterpillar02.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -8022,7 +8107,74 @@ Polyworks.Config = (function() {
 									defaultAnimation: '',
 									animations: caterpillarAnimations
 								}
-							}]
+							},
+							{
+								name: 'level04-sector5-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'caterpillar03',
+									phaser: {
+										width: caterpillar03.width,
+										height: caterpillar03.height,
+										health: 30
+									},
+									start: {
+										x: (stageWidth * 4) + (stageUnit),
+										y: winH - (stageHeight * 4)
+									},
+									physics: {
+										deferredGravity: true,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									attack: 20,
+									testInView: true,
+									score: 500,
+									movement: {
+										speed: 1,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: caterpillarAnimations
+								}
+							},
+							{
+								name: 'level04-sector5-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'caterpillar03',
+									phaser: {
+										width: caterpillar03.width,
+										height: caterpillar03.height,
+										health: 30
+									},
+									start: {
+										x: (stageWidth * 4) + (stageUnit * 6),
+										y: winH - (stageHeight * 2)
+									},
+									physics: {
+										deferredGravity: true,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									attack: 20,
+									testInView: true,
+									score: 500,
+									movement: {
+										speed: 1,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: caterpillarAnimations
+								}
+							}
+							]
 						},
 						{
 							name: 'bonuses',
@@ -8034,7 +8186,7 @@ Polyworks.Config = (function() {
 									img: 'lollipop',
 									phaser: { width: (stageUnit * 0.5), height: (stageUnit) },
 									start: {
-										x: (stageWidth * 4) + (stageUnit * 11),
+										x: (stageWidth * 4) + (stageUnit * 14),
 										y: winH - (stageUnit * 1.5)
 									},
 									physics: {
@@ -8073,15 +8225,15 @@ Polyworks.Config = (function() {
 								name: 'level04-sector6-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar01',
+									img: 'caterpillar03',
 									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
+										width: caterpillar03.width,
+										height: caterpillar03.height,
 										health: 6
 									},
 									start: {
 										x: (stageWidth * 5) + (stageUnit * 4),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+										y: winH - (caterpillar03.imgHeight + (stageUnit * 1.5))
 									},
 									physics: {
 										deferredGravity: true,
@@ -8091,7 +8243,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									speed: 0.5,
-									attack: 5,
+									attack: 25,
 									testInView: true,
 									score: 1000,
 									movement: {
@@ -9091,7 +9243,7 @@ Polyworks.Config = (function() {
 									phaser: {
 										width: caterpillar02.width,
 										height: caterpillar02.height,
-										health: 4
+										health: 20
 									},
 									start: {
 										x: (stageWidth) + (stageUnit),
@@ -9331,7 +9483,7 @@ Polyworks.Config = (function() {
 									phaser: {
 										width: caterpillar02.width,
 										height: caterpillar02.height,
-										health: 6
+										health: 20
 									},
 									start: {
 										x: (stageWidth * 2),
@@ -9581,7 +9733,7 @@ Polyworks.Config = (function() {
 									},
 									attack: 10
 								}
-							},
+							}
 							]
 						},
 						{
@@ -9629,7 +9781,7 @@ Polyworks.Config = (function() {
 									phaser: {
 										width: caterpillar02.width,
 										height: caterpillar02.height,
-										health: 6
+										health: 20
 									},
 									start: {
 										x: (stageWidth * 3) + (stageUnit * 4),
@@ -9819,7 +9971,7 @@ Polyworks.Config = (function() {
 									phaser: {
 										width: caterpillar02.width,
 										height: caterpillar02.height,
-										health: 6
+										health: 20
 									},
 									start: {
 										x: (stageWidth * 4) + (stageUnit),
@@ -11525,7 +11677,6 @@ Polyworks.Config = (function() {
 					'crystals02Orange'
 				],
 				sprites: [
-					'caterpillar02',
 					'rockPlatform01Animated',
 					'rockPlatform04Animated',
 					'leftButton',
