@@ -16,9 +16,11 @@ Polyworks.Enemy = (function() {
 
 			this.relationToPlayer = 'near';
 			if(enemyX < (playerX - 25)) {
+				// trace('move right');
 				this.relationToPlayer = 'right';
 				this.move({ direction: Polyworks.Directions.RIGHT });
 			} else if(enemyX > (playerX + 25)) {
+				// trace('move left');
 				this.relationToPlayer = 'left';
 				this.move({ direction: Polyworks.Directions.LEFT });
 			}

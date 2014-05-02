@@ -187,13 +187,14 @@ Polyworks.Utils = (function() {
 	};
 	
 	utils.moveView = function(sprite, movement, params) {
-		// trace('Utils/moveView, movement = ', movement, '\tparams = ', params);
+		// trace('Utils/moveView, '+ sprite.model.name);
 		switch(movement.type) {
 			case Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED:
 				this.moveDirectionalBySpeed(sprite, movement, params);
 			break;
 
 			case Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED:
+				trace('groundedDirectionBySpeed, touching.down = ' + sprite.body.touching.down);
 				if(sprite.body.touching.down) {
 					this.moveDirectionalBySpeed(sprite, movement, params);
 				}
@@ -210,6 +211,7 @@ Polyworks.Utils = (function() {
 	};
 	
 	utils.moveDirectionalBySpeed = function(sprite, movement, params) {
+		// trace('moveDirectionBySpeed: ' + sprite.model.name + ', direction = ' + params.direction + ', speed = ' + movement.speed);
 		switch(params.direction) {
 			case Polyworks.Directions.LEFT: 
 			sprite.x -= movement.speed;
@@ -228,7 +230,7 @@ Polyworks.Utils = (function() {
 			break;
 
 			default: 
-			// trace('WARNING: unknown movement direction: ' + direction);
+			trace('WARNING: unknown movement direction: ' + direction);
 			break;
 		}
 	};

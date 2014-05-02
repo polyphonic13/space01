@@ -170,6 +170,7 @@ Polyworks.Sprite = (function() {
 	Sprite.prototype.move = function(params) {
 		var movement = this.model.attrs.movement;
 		if(movement) {
+			// trace('Sprite['+this.model.name+']/move, movement = ', movement);
 			Polyworks.Utils.moveView(this, movement, params);
 		}
 	};
