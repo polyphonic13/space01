@@ -2564,86 +2564,6 @@ Polyworks.Config = (function() {
 							}
 							]
 						}
-						// },
-						// {
-						// 	name: 'groupEnemies',
-						// 	cl: 'GroupEnemy',
-						// 	attrs: [
-						// 	{
-						// 		name: 'body',
-						// 		cl: 'Enemy',
-						// 		attrs: {
-						// 			img: 'caterpillarBoss1Body',
-						// 			phaser: {
-						// 				width: (stageUnit * 5) * 1.85,
-						// 				height: (stageUnit * 5),
-						// 				health: 100
-						// 			},
-						// 			// setSize: 
-						// 			// [
-						// 			// 
-						// 			// ],
-						// 			start: {
-						// 				x: (stageWidth * 2) + (stageUnit * 3),
-						// 				y: winH - (stageUnit * 5.5)
-						// 			},
-						// 			physics: {
-						// 				deferredGravity: true,
-						// 				bounce: {
-						// 					x: 0,
-						// 					y: 0.2
-						// 				}
-						// 			},
-						// 			attack: 0,
-						// 			score: 500,
-						// 			movement: {
-						// 				speed: 5,
-						// 				type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-						// 				formula: null
-						// 			}
-						// 		}
-						// 	},
-						// 	{
-						// 		name: 'head',
-						// 		cl: 'Enemy',
-						// 		attrs: {
-						// 			img: 'caterpillarBoss1Head',
-						// 			phaser: {
-						// 				width: (stageUnit * 3) * 0.71,
-						// 				height: (stageUnit * 3),
-						// 				health: 100
-						// 			},
-						// 			setSize: 
-						// 			[
-						// 				(stageUnit * 3) * 0.71,
-						// 				(stageUnit * 2),
-						// 				0,
-						// 				(stageUnit * 1)
-						// 			],
-						// 			start: {
-						// 				x: (stageWidth * 2) + (stageUnit * 2),
-						// 				y: winH - (stageUnit * 3.6)
-						// 			},
-						// 			physics: {
-						// 				deferredGravity: true,
-						// 				bounce: {
-						// 					x: 0,
-						// 					y: 0.2
-						// 				}
-						// 			},
-						// 			attack: 15,
-						// 			score: 500,
-						// 			movement: {
-						// 				speed: 5,
-						// 				type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-						// 				formula: null
-						// 			},
-						// 			defaultAnimation: 'idle',
-						// 			animations: caterpillarBossHeadAnimations
-						// 		}
-						// 	}
-						// 	]
-						// }
 						]
 					},
 					{
@@ -5686,7 +5606,8 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [{
+							attrs: [
+							{
 								name: 'level03-sector4-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
@@ -5697,7 +5618,7 @@ Polyworks.Config = (function() {
 										health: 6
 									},
 									start: {
-										x: (stageWidth * 3),
+										x: (stageWidth * 3) + (stageUnit * 5),
 										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 									},
 									physics: {
@@ -5711,14 +5632,50 @@ Polyworks.Config = (function() {
 									testInView: true,
 									score: 500,
 									movement: {
-										speed: 1,
+										speed: 1.5,
 										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
 									animations: caterpillarAnimations
 								}
-							}]
+							},
+							{
+								name: 'level03-sector4-enemy2',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'caterpillar02',
+									phaser: {
+										width: caterpillar02.width,
+										height: caterpillar02.height,
+										health: 20
+									},
+									start: {
+										x: (stageWidth * 3) + (stageUnit * 15),
+										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+									},
+									physics: {
+										deferredGravity: true,
+										bounce: {
+											x: 0,
+											y: 0.2
+										}
+									},
+									attack: 15,
+									testInView: true,
+									score: 5000,
+									jumps: true,
+									jumpMultiplier: 500,
+									movement: {
+										speed: 1.25,
+										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: caterpillarAnimations
+								}
+							}
+							]
 						},
 						{
 							name: 'bonuses',
@@ -5888,47 +5845,15 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [{
-								name: 'level03-sector5-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar02',
-									phaser: {
-										width: caterpillar02.width,
-										height: caterpillar02.height,
-										health: 20
-									},
-									start: {
-										x: (stageWidth * 4) + (stageUnit),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 15,
-									testInView: true,
-									score: 5000,
-									movement: {
-										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							},
+							attrs: [
 							{
 								name: 'level03-sector5-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
 									img: 'caterpillar02',
 									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
+										width: caterpillar02.width,
+										height: caterpillar02.height,
 										health: 6
 									},
 									start: {
@@ -5945,8 +5870,10 @@ Polyworks.Config = (function() {
 									attack: 5,
 									testInView: true,
 									score: 2000,
+									jumps: true,
+									jumpMultiplier: 500,
 									movement: {
-										speed: 1,
+										speed: 1.25,
 										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 										formula: null
 									},
@@ -6482,8 +6409,10 @@ Polyworks.Config = (function() {
 									attack: 25,
 									testInView: true,
 									score: 10000,
+									jumps: true,
+									jumpMultiplier: 500,
 									movement: {
-										speed: 1,
+										speed: 1.25,
 										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 										formula: null
 									},
@@ -6515,8 +6444,10 @@ Polyworks.Config = (function() {
 									attack: 25,
 									testInView: true,
 									score: 10000,
+									jumps: true,
+									jumpMultiplier: 500,
 									movement: {
-										speed: 1,
+										speed: 1.25,
 										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 										formula: null
 									},
@@ -6548,8 +6479,10 @@ Polyworks.Config = (function() {
 									attack: 25,
 									testInView: true,
 									score: 10000,
+									jumps: true,
+									jumpMultiplier: 500,
 									movement: {
-										speed: 1,
+										speed: 1.25,
 										type: Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED,
 										formula: null
 									},

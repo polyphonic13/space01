@@ -188,18 +188,23 @@ Polyworks.Utils = (function() {
 	
 	utils.moveView = function(sprite, movement, params) {
 		// trace('Utils/moveView, '+ sprite.model.name);
-		switch(movement.type) {
+		var type = params.type || movement.type;
+		switch(type) {
 			case Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED:
 				this.moveDirectionalBySpeed(sprite, movement, params);
 			break;
 
 			case Polyworks.MovementTypes.GROUNDED_DIRECTIONAL_BY_SPEED:
-				trace('groundedDirectionBySpeed, touching.down = ' + sprite.body.touching.down);
+				// trace('groundedDirectionBySpeed, touching.down = ' + sprite.body.touching.down);
 				if(sprite.body.touching.down) {
 					this.moveDirectionalBySpeed(sprite, movement, params);
 				}
 			break;
 
+			case Polyworks.MovementTypes.JUMP:
+				this.moveDirectionalBySpeed(sprite, movement, params);
+			break; 
+			
 			case Polyworks.MovementTypes.TWEEN_PROPERTY:
 				this.tweenProperty(sprite, movement, params);
 			break;
@@ -222,7 +227,10 @@ Polyworks.Utils = (function() {
 			break;
 
 			case Polyworks.Directions.UP:
-			sprite.x -= movement.speed;
+			// sprite.x -= movement.speed;
+			sprite.body.velocity.y = -(movement.speed * sprite.model.attrs.jumpMultiplier);
+			// trace('going to jump: ' + (movement.speed * 1000));
+			// sprite.body.velocity.y = -(movement.speed * 1000);
 			break;
 
 			case Polyworks.Directions.DOWN: 

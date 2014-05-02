@@ -6,6 +6,7 @@ Polyworks.Enemy = (function() {
 		Enemy._super.constructor.call(this, params);
 		this.reactivated = false; 
 		this.isInView = true;
+		this.justJumped = false;
 		this.relationToPlayer = '';
 	}
 
@@ -14,16 +15,6 @@ Polyworks.Enemy = (function() {
 			var enemyX = this.body.screenX;
 			var playerX = params.player.body.screenX;
 
-			this.relationToPlayer = 'near';
-			if(enemyX < (playerX - 25)) {
-				// trace('move right');
-				this.relationToPlayer = 'right';
-				this.move({ direction: Polyworks.Directions.RIGHT });
-			} else if(enemyX > (playerX + 25)) {
-				// trace('move left');
-				this.relationToPlayer = 'left';
-				this.move({ direction: Polyworks.Directions.LEFT });
-			}
 			// trace('Enemy/pwUpdate, relationToPlayer = ' + this.relationToPlayer);
 
 			if(this.model.attrs.testInView) {
@@ -34,6 +25,27 @@ Polyworks.Enemy = (function() {
 				}
 			}
 			this.checkDynamicTerrainCollision(params.dynamicTerrain);
+
+			this.relationToPlayer = 'near';
+			if(enemyX < (playerX - 10)) {
+				// trace('move right');
+				this.relationToPlayer = 'right';
+				this.move({ direction: Polyworks.Directions.RIGHT, type: this.model.attrs.movement.type });
+			} else if(enemyX > (playerX + 10)) {
+				// trace('move left');
+				this.relationToPlayer = 'left';
+				this.move({ direction: Polyworks.Directions.LEFT, type: this.model.attrs.movement.type });
+			} else if(this.model.attrs.jumps) {
+				this.relationToPlayer = 'jumping';
+				if(!this.justJumped) {
+					this.justJumped = true;
+					this.move({ direction: Polyworks.Directions.UP, type: Polyworks.MovementTypes.JUMP });
+				}
+			}
+
+			if(this.body.touching.down) {
+				this.justJumped = false;
+			}
 		}
 	};
 	
