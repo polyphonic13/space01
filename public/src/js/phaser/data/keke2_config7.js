@@ -8399,7 +8399,7 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1.5)
 							},
 							start: {
-								x: (stageWidth * 2) + (stageUnit * 13),
+								x: (stageWidth * 2) + (stageUnit * 14),
 								y: winH - (stageUnit * 7)
 							}
 						}
