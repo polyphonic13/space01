@@ -514,21 +514,24 @@ Polyworks.Config = (function() {
 				// buttons
 				leftButton: 
 				{
-					url: 'images/controls/arrow_left_2x8.png',
+					// url: 'images/controls/arrow_left_2x8.png',
+					// width: 75,
+					// height: 400,
+					url: 'images/controls/arrow_left_2x8b.png',
 					width: 75,
 					height: 400,
 					frames: 2
 				},
 				rightButton: 
 				{
-					url: 'images/controls/arrow_right_4x8.png',
+					url: 'images/controls/arrow_right_4x8b.png',
 					width: 200, 
 					height: 400,
 					frames: 2
 				},
 				upButton: 
 				{
-					url: 'images/controls/arrow_up_4x8.png',
+					url: 'images/controls/arrow_up_4x8b.png',
 					width: 200,
 					height: 400,
 					frames: 2
@@ -710,7 +713,7 @@ Polyworks.Config = (function() {
 				socialActions: {
 					mail: {
 						follow: {
-							url: 'mailto:keke@Polyworksgames.com?',
+							url: 'mailto://keke@Polyworksgames.com?',
 							params: 'subject=~{shareTitle}~'
 						}
 					},
