@@ -40,6 +40,10 @@ PolyworksGame = (function() {
 			PolyworksGame.aspectRatio = params.aspectRatio;
 			// _model = params;
 			// window.scrollTo(0,0);
+			var isPhone = Polyworks.DeviceUtils.isIphone();
+			if(isPhone) {
+				alert('tip: to enter fullscreen, rotate to portrait then back to landscape');
+			}
 			window.addEventListener("load", 
 				function() { 
 					trace('window.load');
