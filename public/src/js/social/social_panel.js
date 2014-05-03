@@ -53,7 +53,15 @@ Polyworks.SocialPanel = (function() {
 						url = socialAction['url'];
 					}
 					trace('\turl = ' + url);
-					window.open(url, '_blank');
+					if(url.indexOf('mailto') > -1) {
+						if(Polyworks.DeviceUtils.isSafari() || Polyworks.DeviceUtils.isChrome()) {
+							window.location.href = url;
+						} else {
+							window.open(url, '_blank');
+						}
+					} else {
+						window.open(url, '_blank');
+					}
 				}
 			}
 		},

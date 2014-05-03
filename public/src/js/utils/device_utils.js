@@ -1,11 +1,18 @@
 Polyworks.DeviceUtils = (function() {
-	
+	var ua = navigator.userAgent.toLowerCase();
+    
 	var deviceUtils = {
 		isIphone: function() {
-			return navigator.userAgent.match(/iPhone/);
+			return ua.match(/iphone/);
 		},
 		isMobile: function() {
-			return navigator.userAgent.match(/iPhone|iPad|Android/);
+			return ua.match(/iphone|ipad|android/);
+		},
+		isChrome: function() {
+			return ua.match(/safari/);
+		},
+		isSafari: function() {
+			return ua.match(/chrome/);
 		}
 	};
 	

@@ -7216,7 +7216,9 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 20,
+									attack: 15,
+									jumps: true,
+									jumpMultiplier: 500,
 									testInView: true,
 									score: 500,
 									movement: {
@@ -7377,7 +7379,9 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 20,
+									attack: 15,
+									jumps: true,
+									jumpMultiplier: 500,
 									testInView: true,
 									score: 2000,
 									movement: {
@@ -7397,7 +7401,7 @@ Polyworks.Config = (function() {
 									phaser: {
 										width: caterpillar03.width,
 										height: caterpillar03.height,
-										health: 10
+										health: 30
 									},
 									start: {
 									x: (stageWidth) + (stageUnit * 7),
@@ -7619,7 +7623,9 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 20,
+									attack: 15,
+									jumps: true,
+									jumpMultiplier: 500,
 									testInView: true,
 									score: 500,
 									movement: {
@@ -7652,7 +7658,9 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 20,
+									attack: 15,
+									jumps: true,
+									jumpMultiplier: 500,
 									testInView: true,
 									score: 500,
 									movement: {
@@ -7844,7 +7852,7 @@ Polyworks.Config = (function() {
 									phaser: {
 										width: caterpillar03.width,
 										height: caterpillar03.height,
-										health: 6
+										health: 30
 									},
 									start: {
 										x: (stageWidth * 3) + (stageUnit * 4),
@@ -7890,7 +7898,9 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 20,
+									attack: 15,
+									jumps: true,
+									jumpMultiplier: 500,
 									testInView: true,
 									score: 2000,
 									movement: {
@@ -7923,7 +7933,9 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 20,
+									attack: 15,
+									jumps: true,
+									jumpMultiplier: 500,
 									testInView: true,
 									score: 2000,
 									movement: {
@@ -8099,7 +8111,9 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 20,
+									attack: 15,
+									jumps: true,
+									jumpMultiplier: 500,
 									testInView: true,
 									score: 500,
 									movement: {
@@ -8132,7 +8146,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 20,
+									attack: 25,
 									testInView: true,
 									score: 500,
 									movement: {
@@ -8165,7 +8179,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 20,
+									attack: 25,
 									testInView: true,
 									score: 500,
 									movement: {
@@ -8232,7 +8246,7 @@ Polyworks.Config = (function() {
 									phaser: {
 										width: caterpillar03.width,
 										height: caterpillar03.height,
-										health: 6
+										health: 30
 									},
 									start: {
 										x: (stageWidth * 5) + (stageUnit * 4),
@@ -8494,7 +8508,7 @@ Polyworks.Config = (function() {
 					'mapButton',
 					'heartSprite',
 					'keke',
-					'caterpillar01',
+					'caterpillar03',
 					'caterpillar02',
 					'branch03LeftAnimated',
 					'branch03RightAnimated'
@@ -9259,7 +9273,9 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 25,
+									attack: 15,
+									jumps: true,
+									jumpMultiplier: 500,
 									testInView: true,
 									score: 2000,
 									movement: {
@@ -9275,11 +9291,11 @@ Polyworks.Config = (function() {
 								name: 'level05-sector2-enemy2',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar01',
+									img: 'caterpillar03',
 									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 10
+										width: caterpillar03.width,
+										height: caterpillar03.height,
+										health: 30
 									},
 									start: {
 										x: (stageWidth) + (stageUnit * 7),
@@ -9292,7 +9308,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 25,
 									testInView: true,
 									score: 2000,
 									movement: {
@@ -9500,7 +9516,9 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 25,
+									attack: 15,
+									jumps: true,
+									jumpMultiplier: 500,
 									testInView: true,
 									score: 500,
 									movement: {
@@ -9746,11 +9764,11 @@ Polyworks.Config = (function() {
 								name: 'level05-sector4-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar01',
+									img: 'caterpillar03',
 									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 6
+										width: caterpillar03.width,
+										height: caterpillar03.height,
+										health: 30
 									},
 									start: {
 										x: (stageWidth * 3) + (stageUnit),
@@ -9764,7 +9782,7 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 5,
+									attack: 25,
 									testInView: true,
 									score: 2000,
 									movement: {
@@ -9798,7 +9816,9 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 25,
+									attack: 15,
+									jumps: true,
+									jumpMultiplier: 500,
 									testInView: true,
 									score: 2000,
 									movement: {
@@ -9988,7 +10008,9 @@ Polyworks.Config = (function() {
 											y: 0.2
 										}
 									},
-									attack: 25,
+									attack: 15,
+									jumps: true,
+									jumpMultiplier: 500,
 									testInView: true,
 									score: 500,
 									movement: {
@@ -10050,11 +10072,11 @@ Polyworks.Config = (function() {
 								name: 'level05-sector6-enemy1',
 								cl: 'AnimatedEnemy',
 								attrs: {
-									img: 'caterpillar01',
+									img: 'caterpillar03',
 									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 6
+										width: caterpillar03.width,
+										height: caterpillar03.height,
+										health: 30
 									},
 									start: {
 										x: (stageWidth * 5) + (stageUnit * 4),
@@ -10069,7 +10091,7 @@ Polyworks.Config = (function() {
 										}
 									},
 									speed: 0.5,
-									attack: 5,
+									attack: 25,
 									testInView: true,
 									score: 1000,
 									movement: {
