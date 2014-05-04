@@ -470,6 +470,7 @@ Polyworks.Config = (function() {
 				crystals02Teal: 'images/crystals02a_teal.png',
 				crystals02Yellow: 'images/crystals02a_yellow.png',
 				crystals02Red: 'images/crystals02a_red.png',
+				crystals02Diamond: 'images/crystals02a_diamond.png',
 
 				// bonuses
 				lollipop: 'images/lollipop.png',
@@ -23592,7 +23593,7 @@ Polyworks.Config = (function() {
 					'rockPlatform04',
 					'invisibleRect',
 					'crystals02Grey',
-					'crystals02Red'
+					'crystals02Diamond'
 				],
 				sprites: [
 					'leftButton',
@@ -23860,29 +23861,6 @@ Polyworks.Config = (function() {
 							},
 							physics: {
 								immovable: true
-							}
-						}
-					}
-					]
-				},
-				// goals
-				{
-					name: 'goals',
-					cl: 'PhysicalGroupCollection',
-					attrs: [
-					{
-						name: 'level1-goal1',
-						cl: 'Sprite',
-						attrs: 
-						{
-							img: 'goalFlag',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 3)
-							},
-							start: {
-								x: (stageUnit * 35),
-								y: winH - (stageUnit * 71)
 							}
 						}
 					}
@@ -25557,7 +25535,7 @@ Polyworks.Config = (function() {
 						name: 'requirement1',
 						cl: 'Requirement',
 						attrs: {
-							img: 'crystals02Red',
+							img: 'crystals02Diamond',
 							score: 10000,
 							phaser: {
 								width: (stageUnit * 0.75),
@@ -25566,6 +25544,29 @@ Polyworks.Config = (function() {
 							start: {
 								x: (stageWidth * 2) + (stageUnit * 11.5),
 								y: winH - (stageUnit * 47)
+							}
+						}
+					}
+					]
+				},
+				// goals
+				{
+					name: 'goals',
+					cl: 'PhysicalGroupCollection',
+					attrs: [
+					{
+						name: 'level1-goal1',
+						cl: 'Sprite',
+						attrs: 
+						{
+							img: 'goalFlag',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 3)
+							},
+							start: {
+								x: (stageUnit * 35),
+								y: winH - (stageUnit * 71)
 							}
 						}
 					}

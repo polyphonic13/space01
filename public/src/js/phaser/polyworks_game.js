@@ -40,10 +40,6 @@ PolyworksGame = (function() {
 			PolyworksGame.aspectRatio = params.aspectRatio;
 			// _model = params;
 			// window.scrollTo(0,0);
-			var isPhone = Polyworks.DeviceUtils.isIphone();
-			if(isPhone) {
-				alert('tip: to enter fullscreen, rotate to portrait then back to landscape');
-			}
 			window.addEventListener("load", 
 				function() { 
 					trace('window.load');
@@ -62,6 +58,12 @@ PolyworksGame = (function() {
 			_addListeners();
 			_checkOrientation();
 			_getSavedData();
+
+			var isPhone = Polyworks.DeviceUtils.isIphone();
+			// if(isPhone && !PolyworksGame.viewedOnce) {
+			if(!PolyworksGame.viewedOnce) {
+				alert('tip: to enter fullscreen, rotate to portrait then back to landscape');
+			}
 		},
 
 		getModel: function() {
@@ -260,7 +262,8 @@ PolyworksGame = (function() {
 			currentLevel: PolyworksGame.currentLevel,
 			savedState: PolyworksGame.currentState,
 			savedStatus: PolyworksGame.levelStatus,
-			highScores: PolyworksGame.highScores
+			highScores: PolyworksGame.highScores,
+			viewedOnce: true
 		};
 
 		Polyworks.Storage.set(params);
