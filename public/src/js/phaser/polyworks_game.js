@@ -55,7 +55,16 @@ PolyworksGame = (function() {
 					_hideAddressBar();
 				}
 			);
-
+			window.addEventListener("blur",
+				function() {
+					Polyworks.EventCenter.trigger({ type: Polyworks.Events.PAUSE_STATE });
+				}
+			);
+			window.addEventListener("pagehide",
+				function() {
+					Polyworks.EventCenter.trigger({ type: Polyworks.Events.PAUSE_STATE });
+				}
+			);
 			_addListeners();
 			_checkOrientation();
 			_getSavedData();

@@ -13847,6 +13847,7 @@ Polyworks.Config = (function() {
 					'mapButton',
 					'rockPlatform01Animated',
 					'spider01',
+					'heartSprite',
 					'keke'
 				],
 				attrs: [
