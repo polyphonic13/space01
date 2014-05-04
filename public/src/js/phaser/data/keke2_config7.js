@@ -430,6 +430,8 @@ Polyworks.Config = (function() {
 				platformRed: 'images/scenery/platform_red.png',
 				platformV: 'images/scenery/platform_v.png',
 
+				caveGround01: 'images/scenery/cave_ground01.png',
+				
 				rockPlatform01: 'images/scenery/rock_platform01.png',
 				rockPlatform02: 'images/scenery/rock_platform02.png',
 				rockPlatform03: 'images/scenery/rock_platform03.png',
@@ -23584,6 +23586,7 @@ Polyworks.Config = (function() {
 					'caveBackground01d',
 					'caveBackground01e',
 					'caveBackground01f',
+					'caveGround01',
 					'platformV',
 					'platform',
 					'rockPlatform01',
@@ -23711,7 +23714,199 @@ Polyworks.Config = (function() {
 								y: winH - (stageHeight * 2)
 							}
 						}
-					}
+					},
+					{
+						name: 'caveGround1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'caveGround01',
+							phaser: {
+								width: (stageUnit * 8),
+								height: (stageUnit * 2),
+								alpha: 1
+							},
+							start: {
+								x: (stageUnit * 8),
+								y: winH - (stageUnit * 2.5)
+							}
+						}
+					},
+					{
+						name: 'caveGround1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'caveGround01',
+							phaser: {
+								width: (stageUnit * 8),
+								height: (stageUnit * 2),
+								alpha: 1
+							},
+							start: {
+								x: 0,
+								y: winH - (stageUnit * 2.5)
+							}
+						}
+					},
+					{
+						name: 'caveGround1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'caveGround01',
+							phaser: {
+								width: (stageUnit * 8),
+								height: (stageUnit * 2),
+								alpha: 1
+							},
+							start: {
+								x: -(stageUnit * 8),
+								y: winH - (stageUnit * 2.5)
+							}
+						}
+					},
+					{
+						name: 'caveGround1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'caveGround01',
+							phaser: {
+								width: (stageUnit * 8),
+								height: (stageUnit * 2),
+								alpha: 1
+							},
+							start: {
+								x: -(stageUnit * 16),
+								y: winH - (stageUnit * 2.5)
+							}
+						}
+					},
+					{
+						name: 'caveGround1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'caveGround01',
+							phaser: {
+								width: (stageUnit * 8),
+								height: (stageUnit * 2),
+								alpha: 1
+							},
+							start: {
+								x: -(stageUnit * 24),
+								y: winH - (stageUnit * 2.5)
+							}
+						}
+					},
+					{
+						name: 'caveGround1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'caveGround01',
+							phaser: {
+								width: (stageUnit * 8),
+								height: (stageUnit * 2),
+								alpha: 1
+							},
+							start: {
+								x: -(stageUnit * 32),
+								y: winH - (stageUnit * 2.5)
+							}
+						}
+					},
+					{
+						name: 'caveGround1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'caveGround01',
+							phaser: {
+								width: (stageUnit * 8),
+								height: (stageUnit * 2),
+								alpha: 1
+							},
+							start: {
+								x: -(stageUnit * 40),
+								y: winH - (stageUnit * 2.5)
+							}
+						}
+					},
+					{
+						name: 'caveGround1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'caveGround01',
+							phaser: {
+								width: (stageUnit * 8),
+								height: (stageUnit * 2),
+								alpha: 1
+							},
+							start: {
+								x: -(stageUnit * 48),
+								y: winH - (stageUnit * 2.5)
+							}
+						}
+					},
+					{
+						name: 'caveGround1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'caveGround01',
+							phaser: {
+								width: (stageUnit * 8),
+								height: (stageUnit * 2),
+								alpha: 1
+							},
+							start: {
+								x: -(stageUnit * 56),
+								y: winH - (stageUnit * 2.5)
+							}
+						}
+					},
+					{
+						name: 'caveGround1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'caveGround01',
+							phaser: {
+								width: (stageUnit * 8),
+								height: (stageUnit * 2),
+								alpha: 1
+							},
+							start: {
+								x: -(stageUnit * 64),
+								y: winH - (stageUnit * 2.5)
+							}
+						}
+					},
+					{
+						name: 'caveGround1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'caveGround01',
+							phaser: {
+								width: (stageUnit * 8),
+								height: (stageUnit * 2),
+								alpha: 1
+							},
+							start: {
+								x: -(stageUnit * 72),
+								y: winH - (stageUnit * 2.5)
+							}
+						}
+					},
+					{
+						name: 'caveGround1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'caveGround01',
+							phaser: {
+								width: (stageUnit * 8),
+								height: (stageUnit * 2),
+								alpha: 1
+							},
+							start: {
+								x: -(stageUnit * 80),
+								y: winH - (stageUnit * 2.5)
+							}
+						}
+					},
 					]
 				},
 				// terrain
@@ -23879,155 +24074,6 @@ Polyworks.Config = (function() {
 							end: stageWidth
 						},
 						attrs: [
-						{
-							name: 'dynamicTerrain',
-							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'plat1',
-								cl: 'Sprite',
-								attrs: {
-									img: 'branch03aLeft',
-									start: {
-										x: (stageUnit * 8),
-										y: winH - (stageUnit * 2.25)
-									},
-									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
-									physics: {
-										immovable: true,
-										allowGravity: false
-									}
-								}
-							},
-							{
-								name: 'plat1',
-								cl: 'Sprite',
-								attrs: {
-									img: 'branch03aRight',
-									start: {
-										x: (stageUnit * 11),
-										y: winH - (stageUnit * 4)
-									},
-									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
-									physics: {
-										immovable: true,
-										allowGravity: false
-									}
-								}
-							},
-							{
-								name: 'plat1',
-								cl: 'Sprite',
-								attrs: {
-									img: 'branch03aLeft',
-									start: {
-										x: (stageUnit * 8),
-										y: winH - (stageUnit * 5.5)
-									},
-									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
-									physics: {
-										immovable: true,
-										allowGravity: false
-									}
-								}
-							},
-							{
-								name: 'plat1',
-								cl: 'Sprite',
-								attrs: {
-									img: 'branch03aRight',
-									start: {
-										x: (stageUnit * 11),
-										y: winH - (stageUnit * 7)
-									},
-									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
-									physics: {
-										immovable: true,
-										allowGravity: false
-									}
-								}
-							},
-							{
-								name: 'plat1',
-								cl: 'Sprite',
-								attrs: {
-									img: 'branch03aLeft',
-									start: {
-										x: (stageUnit * 8),
-										y: winH - (stageUnit * 8.5)
-									},
-									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
-									physics: {
-										immovable: true,
-										allowGravity: false
-									}
-								}
-							},
-							{
-								name: 'plat1',
-								cl: 'Sprite',
-								attrs: {
-									img: 'branch03aRight',
-									start: {
-										x: (stageUnit * 11),
-										y: winH - (stageUnit * 10)
-									},
-									phaser: { width: (stageUnit * 2), height: (stageUnit * 0.3) },
-									physics: {
-										immovable: true,
-										allowGravity: false
-									}
-								}
-							},
-							{
-								name: 'plat1',
-								cl: 'Sprite',
-								attrs: {
-									img: 'branch03Left',
-									start: {
-										x: (stageUnit * 3),
-										y: winH - (stageUnit * 11.5)
-									},
-									phaser: { width: (stageUnit * 7), height: (stageUnit * 0.5) },
-									physics: {
-										immovable: true,
-										allowGravity: false
-									}
-								}
-							},
-							{
-								name: 'plat1',
-								cl: 'Sprite',
-								attrs: {
-									img: 'branch03Right',
-									start: {
-										x: (stageUnit * 10.5),
-										y: winH - (stageUnit * 13)
-									},
-									phaser: { width: (stageUnit * 7), height: (stageUnit * 0.5) },
-									physics: {
-										immovable: true,
-										allowGravity: false
-									}
-								}
-							}
-							]
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						}
 						]
 					},
 					{
@@ -24038,106 +24084,6 @@ Polyworks.Config = (function() {
 							end: 0
 						},
 						attrs: [
-						{
-							name: 'dynamicTerrain',
-							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'rockPlatform04',
-								cl: 'ReactingTerrain',
-								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
-								},
-								attrs: {
-									img: 'rockPlatform04Animated',
-									phaser: {
-										width: (stageUnit * 3),
-										height: (stageUnit * 1.5)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit),
-										y: winH - (stageUnit * 2)
-									},
-									physics: {
-										immovable: true
-									},
-									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
-								}
-							},
-							{
-								name: 'rockPlatform2',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform04',
-									phaser: {
-										width: (stageUnit * 3),
-										height: (stageUnit)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 6),
-										y: winH - (stageUnit * 3)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'rockPlatform3',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform04',
-									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit)
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 11),
-										y: winH - (stageUnit * 4)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							}
-							]
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'death',
-								cl: 'Sprite',
-								attrs: {
-									img: 'invisibleRect',
-									phaser: {
-										width: stageWidth + (stageUnit * 2),
-										height: 32
-									},
-									start: {
-										x: stageWidth - (stageUnit),
-										y: winH + 100
-									},
-									physics: {
-										immovable: true
-									},
-									attack: 1000
-								}
-							}
-							]
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						}
 						]
 					},
 					{
@@ -24148,124 +24094,6 @@ Polyworks.Config = (function() {
 							end: -(stageWidth)
 						},
 						attrs: [
-						{
-							name: 'dynamicTerrain',
-							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'rockPlatform4',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform04',
-									phaser: {
-										width: (stageUnit * 3) + (stageUnit * 0.5),
-										height: (stageUnit * 1)
-									},
-									start: {
-										x: (stageWidth * 2),
-										y: winH - (stageUnit * 2.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'rockPlatform5',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform04',
-									phaser: {
-										width: (stageUnit * 2.5),
-										height: (stageUnit * 1)
-									},
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 5),
-										y: winH - (stageUnit * 4.25)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'rockPlatform6',
-								cl: 'ReactingTerrain',
-								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
-								},
-								attrs: {
-									img: 'rockPlatform04Animated',
-									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit * 1.5)
-									},
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 10),
-										y: winH - (stageUnit * 4)
-									},
-									physics: {
-										immovable: true
-									},
-									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
-								}
-							},
-							{
-								name: 'rockPlatform7',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform04',
-									phaser: {
-										width: (stageUnit * 2.5),
-										height: (stageUnit)
-									},
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 13),
-										y: winH - (stageUnit * 6)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							}
-							]
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'death',
-								cl: 'Sprite',
-								attrs: {
-									img: 'invisibleRect',
-									phaser: {
-										width: stageWidth + (stageUnit * 2),
-										height: 32
-									},
-									start: {
-										x: (stageWidth * 2) - (stageUnit),
-										y: winH + 100
-									},
-									physics: {
-										immovable: true
-									},
-									attack: 1000
-								}
-							}
-							]
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						}
 						]
 					},
 					{
@@ -24276,129 +24104,6 @@ Polyworks.Config = (function() {
 							end: -(stageWidth * 2)
 						},
 						attrs: [
-						{
-							name: 'dynamicTerrain',
-							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'rockPlatform8',
-								cl: 'ReactingTerrain',
-								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
-								},
-								attrs: {
-									img: 'rockPlatform04Animated',
-									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit)
-									},
-									start: {
-										x: (stageWidth * 3) + (stageUnit),
-										y: winH - (stageUnit * 5)
-									},
-									physics: {
-										immovable: true
-									},
-									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
-								}
-							},
-							{
-								name: 'rockPlatform9',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform04',
-									phaser: {
-										width: (stageUnit * 2.5),
-										height: (stageUnit)
-									},
-									start: {
-										x: (stageWidth * 3) + (stageUnit * 4),
-										y: winH - (stageUnit * 7)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'rockPlatform040',
-								cl: 'ReactingTerrain',
-								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
-								},
-								attrs: {
-									img: 'rockPlatform04Animated',
-									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit)
-									},
-									start: {
-										x: (stageWidth * 3) + (stageUnit * 9.5),
-										y: winH - (stageUnit * 6.5)
-									},
-									physics: {
-										immovable: true
-									},
-									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
-								}
-							},
-							{
-								name: 'rockPlatform041',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform04',
-									phaser: {
-										width: (stageUnit * 2.5),
-										height: (stageUnit * 1.5)
-									},
-									start: {
-										x: (stageWidth * 3) + (stageUnit * 13),
-										y: winH - (stageUnit * 8)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							}
-							]
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'death',
-								cl: 'Sprite',
-								attrs: {
-									img: 'invisibleRect',
-									phaser: {
-										width: stageWidth + (stageUnit * 2),
-										height: 32
-									},
-									start: {
-										x: (stageWidth * 3) - (stageUnit),
-										y: winH + 100
-									},
-									physics: {
-										immovable: true
-									},
-									attack: 1000
-								}
-							}
-							]
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						}
 						]
 					},
 					{
@@ -24409,129 +24114,6 @@ Polyworks.Config = (function() {
 							end: -(stageWidth * 3)
 						},
 						attrs: [
-						{
-							name: 'dynamicTerrain',
-							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'rockPlatform042',
-								cl: 'ReactingTerrain',
-								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
-								},
-								attrs: {
-									img: 'rockPlatform04Animated',
-									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit)
-									},
-									start: {
-										x: (stageWidth * 4) + (stageUnit),
-										y: winH - (stageUnit * 7)
-									},
-									physics: {
-										immovable: true
-									},
-									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
-								}
-							},
-							{
-								name: 'rockPlatform043',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform04',
-									phaser: {
-										width: (stageUnit * 2.5),
-										height: (stageUnit)
-									},
-									start: {
-										x: (stageWidth * 4) + (stageUnit * 4),
-										y: winH - (stageUnit * 8.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'rockPlatform044',
-								cl: 'ReactingTerrain',
-								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
-								},
-								attrs: {
-									img: 'rockPlatform04Animated',
-									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit)
-									},
-									start: {
-										x: (stageWidth * 4) + (stageUnit * 9),
-										y: winH - (stageUnit * 9.5)
-									},
-									physics: {
-										immovable: true
-									},
-									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
-								}
-							},
-							{
-								name: 'rockPlatform045',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform04',
-									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit)
-									},
-									start: {
-										x: (stageWidth * 4) + (stageUnit * 13),
-										y: winH - (stageUnit * 9)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							}
-							]
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'death',
-								cl: 'Sprite',
-								attrs: {
-									img: 'invisibleRect',
-									phaser: {
-										width: stageWidth + (stageUnit * 2),
-										height: 32
-									},
-									start: {
-										x: (stageWidth * 4) - (stageUnit),
-										y: winH + 100
-									},
-									physics: {
-										immovable: true
-									},
-									attack: 1000
-								}
-							}
-							]
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						}
 						]
 					},
 					{
@@ -24542,139 +24124,6 @@ Polyworks.Config = (function() {
 							end: -(stageWidth * 4)
 						},
 						attrs: [
-						{
-							name: 'dynamicTerrain',
-							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'rockPlatform046',
-								cl: 'ReactingTerrain',
-								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
-								},
-								attrs: {
-									img: 'rockPlatform04Animated',
-									phaser: {
-										width: (stageUnit * 1.5),
-										height: (stageUnit)
-									},
-									start: {
-										x: (stageWidth * 5) + (stageUnit * 2),
-										y: winH - (stageUnit * 9.5)
-									},
-									physics: {
-										immovable: true
-									},
-									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
-								}
-							},
-							{
-								name: 'rockPlatform047',
-								cl: 'ReactingTerrain',
-								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
-								},
-								attrs: {
-									img: 'rockPlatform04Animated',
-									phaser: {
-										width: (stageUnit * 2.5),
-										height: (stageUnit * 1.5)
-									},
-									start: {
-										x: (stageWidth * 5) + (stageUnit * 5),
-										y: winH - (stageUnit * 10.5)
-									},
-									physics: {
-										immovable: true
-									},
-									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
-								}
-							},
-							{
-								name: 'rockPlatform048',
-								cl: 'ReactingTerrain',
-								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
-								},
-								attrs: {
-									img: 'rockPlatform04Animated',
-									phaser: {
-										width: (stageUnit * 2),
-										height: (stageUnit)
-									},
-									start: {
-										x: (stageWidth * 5) + (stageUnit * 9),
-										y: winH - (stageUnit * 7.5)
-									},
-									physics: {
-										immovable: true
-									},
-									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
-								}
-							},
-							{
-								name: 'rockPlatform049',
-								cl: 'ReactingTerrain',
-								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
-								},
-								attrs: {
-									img: 'rockPlatform04Animated',
-									phaser: {
-										width: (stageUnit * 3),
-										height: (stageUnit * 2)
-									},
-									start: {
-										x: (stageWidth * 5) + (stageUnit * 13),
-										y: winH - (stageUnit * 8.5)
-									},
-									physics: {
-										immovable: true
-									},
-									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
-								}
-							}
-							]
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: [
-							{
-								name: 'death',
-								cl: 'Sprite',
-								attrs: {
-									img: 'invisibleRect',
-									phaser: {
-										width: stageWidth + (stageUnit * 2),
-										height: 32
-									},
-									start: {
-										x: (stageWidth * 5) - (stageUnit),
-										y: winH + 100
-									},
-									physics: {
-										immovable: true
-									},
-									attack: 1000
-								}
-							}
-							]
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						}
 						]
 					}
 					]
