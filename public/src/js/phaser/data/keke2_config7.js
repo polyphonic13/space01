@@ -723,7 +723,7 @@ Polyworks.Config = (function() {
 				socialActions: {
 					mail: {
 						follow: {
-							url: 'mailto:keke@Polyworksgames.com?',
+							url: 'mailto:keke@polyworksgames.com?',
 							params: 'subject=~{shareTitle}~'
 						}
 					},
