@@ -23584,15 +23584,9 @@ Polyworks.Config = (function() {
 					'caveBackground01d',
 					'caveBackground01e',
 					'caveBackground01f',
-					'tree01',
-					'woodenXSign01',
 					'platformV',
 					'platform',
-					'branch03Left',
-					'branch03Right',
-					'branch03aLeft',
-					'branch03aRight',
-					'rockPlatform04',
+					'rockPlatform01',
 					'grass03a',
 					'grass03b',
 					'grass03ci',
@@ -23778,6 +23772,96 @@ Polyworks.Config = (function() {
 								immovable: true
 							}
 						}
+					},
+					{
+						name: 'rockPlatform1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'rockPlatform01',
+							phaser: {
+								width: (stageUnit * 3),
+								height: (stageUnit * 0.5)
+							},
+							start: {
+								x: -(stageUnit * 78),
+								y: winH - (stageUnit * 10)
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
+						name: 'rockPlatform2',
+						cl: 'Sprite',
+						attrs: {
+							img: 'rockPlatform01',
+							phaser: {
+								width: (stageUnit * 2),
+								height: (stageUnit * 0.5)
+							},
+							start: {
+								x: -(stageUnit * 74),
+								y: winH - (stageUnit * 8)
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
+						name: 'rockPlatform3',
+						cl: 'Sprite',
+						attrs: {
+							img: 'rockPlatform01',
+							phaser: {
+								width: (stageUnit * 2),
+								height: (stageUnit * 0.5)
+							},
+							start: {
+								x: -(stageUnit * 71),
+								y: winH - (stageUnit * 6)
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
+						name: 'rockPlatform4',
+						cl: 'Sprite',
+						attrs: {
+							img: 'rockPlatform01',
+							phaser: {
+								width: (stageUnit * 2),
+								height: (stageUnit * 0.5)
+							},
+							start: {
+								x: -(stageUnit * 69),
+								y: winH - (stageUnit * 4)
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
+						name: 'rockPlatform5',
+						cl: 'Sprite',
+						attrs: {
+							img: 'rockPlatform01',
+							phaser: {
+								width: (stageUnit * 2),
+								height: (stageUnit * 0.5)
+							},
+							start: {
+								x: -(stageUnit * 66),
+								y: winH - (stageUnit * 2)
+							},
+							physics: {
+								immovable: true
+							}
+						}
 					}
 					]
 				},
@@ -23950,8 +24034,8 @@ Polyworks.Config = (function() {
 						name: 'sector2',
 						cl: 'Sector',
 						bounds: {
-							start: stageWidth,
-							end: (stageWidth * 2)
+							start: -stageWidth,
+							end: 0
 						},
 						attrs: [
 						{
@@ -24060,8 +24144,8 @@ Polyworks.Config = (function() {
 						name: 'sector3',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 2),
-							end: (stageWidth * 3)
+							start: -(stageWidth * 2),
+							end: -(stageWidth)
 						},
 						attrs: [
 						{
@@ -24188,8 +24272,8 @@ Polyworks.Config = (function() {
 						name: 'sector4',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 3),
-							end: (stageWidth * 4)
+							start: -(stageWidth * 3),
+							end: -(stageWidth * 2)
 						},
 						attrs: [
 						{
@@ -24321,8 +24405,8 @@ Polyworks.Config = (function() {
 						name: 'sector5',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 4),
-							end: (stageWidth * 5)
+							start: -(stageWidth * 4),
+							end: -(stageWidth * 3)
 						},
 						attrs: [
 						{
@@ -24454,8 +24538,8 @@ Polyworks.Config = (function() {
 						name: 'sector6',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 5),
-							end: (stageWidth * 6)
+							start: -(stageWidth * 5),
+							end: -(stageWidth * 4)
 						},
 						attrs: [
 						{
@@ -24729,8 +24813,8 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1.5)
 							},
 							start: {
-								x: (stageWidth * 4) + (stageUnit * 13),
-								y: winH - (stageUnit * 11)
+								x: -(stageUnit * 77),
+								y: winH - (stageUnit * 13)
 							}
 						}
 					}
@@ -24752,7 +24836,7 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 3)
 							},
 							start: {
-								x: (stageWidth * 6) - (stageUnit * 2),
+								x: (stageWidth) - (stageUnit * 2),
 								y: winH - (stageUnit * 3.5)
 							}
 						}
