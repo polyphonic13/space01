@@ -5,6 +5,9 @@ Polyworks.DeviceUtils = (function() {
 		isIphone: function() {
 			return ua.match(/iphone/);
 		},
+		isAndroid: function() {
+			return ua.match(/android/);
+		},
 		isMobile: function() {
 			return ua.match(/iphone|ipad|android/);
 		},

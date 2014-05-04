@@ -54,7 +54,7 @@ Polyworks.SocialPanel = (function() {
 					}
 					trace('\turl = ' + url);
 					if(url.indexOf('mailto') > -1) {
-						if(Polyworks.DeviceUtils.isSafari() || Polyworks.DeviceUtils.isChrome()) {
+						if(Polyworks.DeviceUtils.isIphone() || Polyworks.DeviceUtils.isAndroid()) {
 							window.location.href = url;
 						} else {
 							window.open(url, '_blank');
