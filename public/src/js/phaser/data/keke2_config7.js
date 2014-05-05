@@ -23947,11 +23947,11 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'platform',
 							phaser: {
-								width: (stageWidth * 2.5),
+								width: (stageWidth * 1.5),
 								height: (stageUnit)
 							},
 							start: {
-								x: stageWidth,
+								x: -(stageWidth * 0.5),
 								y: winH - (stageUnit * 0.5)
 							},
 							physics: {
@@ -23965,7 +23965,7 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'platform',
 							phaser: {
-								width: (stageWidth * 6),
+								width: (stageWidth * 4),
 								height: (stageUnit)
 							},
 							start: {
@@ -23983,12 +23983,66 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'rockPlatform01',
 							phaser: {
-								width: (stageUnit * 3),
+								width: (stageUnit * 1.5),
 								height: (stageUnit * 0.5)
 							},
 							start: {
-								x: -(stageUnit * 78),
-								y: winH - (stageUnit * 10)
+								x: -(stageUnit * 16),
+								y: winH - (stageUnit * 2)
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
+						name: 'rockPlatform1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'rockPlatform01',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 0.5)
+							},
+							start: {
+								x: -(stageUnit * 13),
+								y: winH - (stageUnit * 4)
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
+						name: 'rockPlatform1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'rockPlatform01',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 0.5)
+							},
+							start: {
+								x: -(stageUnit * 10),
+								y: winH - (stageUnit * 3)
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
+						name: 'rockPlatform1',
+						cl: 'Sprite',
+						attrs: {
+							img: 'rockPlatform01',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 0.5)
+							},
+							start: {
+								x: -(stageUnit * 7),
+								y: winH - (stageUnit * 2)
 							},
 							physics: {
 								immovable: true
@@ -24098,7 +24152,10 @@ Polyworks.Config = (function() {
 							cl: 'Sprite',
 							attrs: {
 								img: 'lava01',
-								phaser: { width: (stageUnit * 8), height: (stageUnit * 2) },
+								phaser: { 
+									width: (stageUnit * 8), 
+									height: (stageUnit * 2) 
+								},
 								start: {
 									x: -(stageUnit * 16),
 									y: winH - (stageUnit * 5.5)
