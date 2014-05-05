@@ -16,7 +16,6 @@ PolyworksGame = (function() {
 	var _resizeInterval = 200;
 	
 	var polyworks_game = {
-		viewedOnce: '0',
 		name: '',
 		phaser: null,
 		player: null,
@@ -32,6 +31,8 @@ PolyworksGame = (function() {
 		currentState: '',
 		previousState: '',
 		savedState: '',
+		viewedOnce: '0',
+		tipDisplayed: false,
 		isLandscape: false,
 		gameOver: false,
 		isQuit: false,
@@ -49,30 +50,29 @@ PolyworksGame = (function() {
 					} 
 				} 
 			);
-			window.addEventListener("orientationchange", 
-				function() {
-					trace('window.orientationchange');
-					_hideAddressBar();
-				}
-			);
-			window.addEventListener("blur",
-				function() {
-					Polyworks.EventCenter.trigger({ type: Polyworks.Events.PAUSE_STATE });
-				}
-			);
-			window.addEventListener("pagehide",
-				function() {
-					Polyworks.EventCenter.trigger({ type: Polyworks.Events.PAUSE_STATE });
-				}
-			);
+			// window.addEventListener("orientationchange", 
+			// 	function() {
+			// 		trace('window.orientationchange');
+			// 		_hideAddressBar();
+			// 	}
+			// );
+			// window.addEventListener("blur",
+			// 	function() {
+			// 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.PAUSE_STATE });
+			// 	}
+			// );
+			// window.addEventListener("pagehide",
+			// 	function() {
+			// 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.PAUSE_STATE });
+			// 	}
+			// );
 			_addListeners();
 			_checkOrientation();
 			_getSavedData();
 
-			var isPhone = Polyworks.DeviceUtils.isIphone();
-			// if(isPhone && !PolyworksGame.viewedOnce) {
-			if(PolyworksGame.viewedOnce === '0') {
-				alert('tip: to enter fullscreen, rotate to portrait then back to landscape');
+			if(Polyworks.DeviceUtils.isIphone() && viewedOnce === '0') {
+				document.getElementById('iphoneTip').style.display = 'block';
+				this.tipDisplayed = true;
 			}
 		},
 
@@ -101,7 +101,11 @@ PolyworksGame = (function() {
 		},
 
 		changeState: function(id) {
-			trace('change state, id = ' + id);
+			trace('change state, id = ' + id + ', tipDisplayed = ' + this.tipDisplayed);
+			if(this.tipDisplayed && id !== 'menu') {
+				document.getElementById('iphoneTip').style.display = 'none';
+				tipDisplayed = false;
+			}
 			if(id === 'quit') {
 				PolyworksGame.quit();
 			} else {
@@ -187,6 +191,12 @@ PolyworksGame = (function() {
 			  _resizeTimer = setTimeout(_orientationChange, _resizeInterval);
 			// }
 		};
+		window.onblur = function(event) {
+			Polyworks.EventCenter.trigger({ type: Polyworks.Events.PAUSE_STATE });
+		};
+		window.onpagehide = function(event) {
+			Polyworks.EventCenter.trigger({ type: Polyworks.Events.PAUSE_STATE });
+		};
 
 		Polyworks.EventCenter.begin();
 		Polyworks.EventCenter.bind(Polyworks.Events.STAGE_INITIALIZED, _onStageInitialized, this);
@@ -201,6 +211,8 @@ PolyworksGame = (function() {
 	function _removeListeners() {
 		window.onorientationchange = null;
 		window.onresize = null;
+		window.onblur = null;
+		window.onpagehide = null;
 		Polyworks.EventCenter.unbind(Polyworks.Events.STAGE_INITIALIZED, _onStageInitialized, this);
 		Polyworks.EventCenter.unbind(Polyworks.Events.BUTTON_PRESSED, _onControlPressed, this);
 		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_PRESSED, _onControlPressed, this);

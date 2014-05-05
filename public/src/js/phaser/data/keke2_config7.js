@@ -663,6 +663,13 @@ Polyworks.Config = (function() {
 					height: 128, 
 					frames: 16
 				},
+				lava01: 
+				{
+					url: 'images/scenery/lava01-sprite.png',
+					width: 512, 
+					height: 128, 
+					frames: 8
+				},
 				// reacting terrain
 				branch03LeftAnimated: 
 				{
@@ -23610,6 +23617,7 @@ Polyworks.Config = (function() {
 					'restartButton',
 					'menuButton',
 					'mapButton',
+					'lava01',
 					'rockPlatform04Animated',
 					'heartSprite',
 					'keke'
@@ -23764,22 +23772,22 @@ Polyworks.Config = (function() {
 							}
 						}
 					},
-					{
-						name: 'caveGround1',
-						cl: 'Sprite',
-						attrs: {
-							img: 'caveGround01',
-							phaser: {
-								width: (stageUnit * 8),
-								height: (stageUnit * 2),
-								alpha: 1
-							},
-							start: {
-								x: -(stageUnit * 16),
-								y: winH - (stageUnit * 2.5)
-							}
-						}
-					},
+					// {
+					// 	name: 'caveGround1',
+					// 	cl: 'Sprite',
+					// 	attrs: {
+					// 		img: 'caveGround01',
+					// 		phaser: {
+					// 			width: (stageUnit * 8),
+					// 			height: (stageUnit * 2),
+					// 			alpha: 1
+					// 		},
+					// 		start: {
+					// 			x: -(stageUnit * 16),
+					// 			y: winH - (stageUnit * 2.5)
+					// 		}
+					// 	}
+					// },
 					{
 						name: 'caveGround1',
 						cl: 'Sprite',
@@ -23907,7 +23915,7 @@ Polyworks.Config = (function() {
 								y: winH - (stageUnit * 2.5)
 							}
 						}
-					},
+					}
 					]
 				},
 				// terrain
@@ -24085,6 +24093,24 @@ Polyworks.Config = (function() {
 							end: 0
 						},
 						attrs: [
+						{
+							name: 'level12-sector2-hazard0',
+							cl: 'Sprite',
+							attrs: {
+								img: 'lava01',
+								phaser: { width: (stageUnit * 8), height: (stageUnit * 2) },
+								start: {
+									x: -(stageUnit * 16),
+									y: winH - (stageUnit * 5.5)
+								},
+								physics: {
+									immovable: true
+								},
+								attack: 1000,
+								defaultAnimation: 'bubble',
+								animations: lavaAnimations
+							}
+						}
 						]
 					},
 					{

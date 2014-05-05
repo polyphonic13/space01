@@ -91,6 +91,14 @@ var caterpillarBossHeadAnimations = {
 		frameRate: 10
 	},
 	attackR: {
-		
+
 	}
-}
+};
+
+var lavaAnimations = {
+	bubble: {
+		keyFrames: [0, 1, 2, 3, 4, 5, 6, 7],
+		loop: true,
+		frameRate: 10
+	}
+};
