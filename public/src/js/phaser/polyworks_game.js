@@ -14,6 +14,8 @@ PolyworksGame = (function() {
 	
 	var _resizeTimer = null;
 	var _resizeInterval = 200;
+
+	var _gaID = 'UA-50665683-1';
 	
 	var polyworks_game = {
 		name: '',
@@ -66,6 +68,7 @@ PolyworksGame = (function() {
 			// 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.PAUSE_STATE });
 			// 	}
 			// );
+			_addGoogleAnalytics();
 			_addListeners();
 			_checkOrientation();
 			_getSavedData();
@@ -180,6 +183,16 @@ PolyworksGame = (function() {
 			}
 		}
 	};
+
+	function _addGoogleAnalytics() {
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', _gaID, 'polyworksgames.com');
+	  ga('send', 'pageview');
+	}
 
 	function _addListeners() {
 		window.onorientationchange = function(event) {
