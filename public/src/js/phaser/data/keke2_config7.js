@@ -23618,7 +23618,7 @@ Polyworks.Config = (function() {
 					'menuButton',
 					'mapButton',
 					'lava01',
-					'rockPlatform04Animated',
+					'rockPlatform01Animated',
 					'heartSprite',
 					'keke'
 				],
@@ -23724,13 +23724,14 @@ Polyworks.Config = (function() {
 							}
 						}
 					},
+					// cave ground
 					{
 						name: 'caveGround1',
 						cl: 'Sprite',
 						attrs: {
 							img: 'caveGround01',
 							phaser: {
-								width: (stageUnit * 8),
+								width: (stageUnit * 16),
 								height: (stageUnit * 2),
 								alpha: 1
 							},
@@ -23746,12 +23747,12 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'caveGround01',
 							phaser: {
-								width: (stageUnit * 8),
+								width: (stageUnit * 16),
 								height: (stageUnit * 2),
 								alpha: 1
 							},
 							start: {
-								x: 0,
+								x: -(stageUnit * 4),
 								y: winH - (stageUnit * 2.5)
 							}
 						}
@@ -23762,44 +23763,12 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'caveGround01',
 							phaser: {
-								width: (stageUnit * 8),
+								width: (stageUnit * 16),
 								height: (stageUnit * 2),
 								alpha: 1
 							},
 							start: {
-								x: -(stageUnit * 8),
-								y: winH - (stageUnit * 2.5)
-							}
-						}
-					},
-					// {
-					// 	name: 'caveGround1',
-					// 	cl: 'Sprite',
-					// 	attrs: {
-					// 		img: 'caveGround01',
-					// 		phaser: {
-					// 			width: (stageUnit * 8),
-					// 			height: (stageUnit * 2),
-					// 			alpha: 1
-					// 		},
-					// 		start: {
-					// 			x: -(stageUnit * 16),
-					// 			y: winH - (stageUnit * 2.5)
-					// 		}
-					// 	}
-					// },
-					{
-						name: 'caveGround1',
-						cl: 'Sprite',
-						attrs: {
-							img: 'caveGround01',
-							phaser: {
-								width: (stageUnit * 8),
-								height: (stageUnit * 2),
-								alpha: 1
-							},
-							start: {
-								x: -(stageUnit * 24),
+								x: -(stageUnit * 28),
 								y: winH - (stageUnit * 2.5)
 							}
 						}
@@ -23810,12 +23779,12 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'caveGround01',
 							phaser: {
-								width: (stageUnit * 8),
+								width: (stageUnit * 16),
 								height: (stageUnit * 2),
 								alpha: 1
 							},
 							start: {
-								x: -(stageUnit * 32),
+								x: -(stageUnit * 44),
 								y: winH - (stageUnit * 2.5)
 							}
 						}
@@ -23826,12 +23795,12 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'caveGround01',
 							phaser: {
-								width: (stageUnit * 8),
+								width: (stageUnit * 16),
 								height: (stageUnit * 2),
 								alpha: 1
 							},
 							start: {
-								x: -(stageUnit * 40),
+								x: -(stageUnit * 50),
 								y: winH - (stageUnit * 2.5)
 							}
 						}
@@ -23842,76 +23811,12 @@ Polyworks.Config = (function() {
 						attrs: {
 							img: 'caveGround01',
 							phaser: {
-								width: (stageUnit * 8),
+								width: (stageUnit * 16),
 								height: (stageUnit * 2),
 								alpha: 1
 							},
 							start: {
-								x: -(stageUnit * 48),
-								y: winH - (stageUnit * 2.5)
-							}
-						}
-					},
-					{
-						name: 'caveGround1',
-						cl: 'Sprite',
-						attrs: {
-							img: 'caveGround01',
-							phaser: {
-								width: (stageUnit * 8),
-								height: (stageUnit * 2),
-								alpha: 1
-							},
-							start: {
-								x: -(stageUnit * 56),
-								y: winH - (stageUnit * 2.5)
-							}
-						}
-					},
-					{
-						name: 'caveGround1',
-						cl: 'Sprite',
-						attrs: {
-							img: 'caveGround01',
-							phaser: {
-								width: (stageUnit * 8),
-								height: (stageUnit * 2),
-								alpha: 1
-							},
-							start: {
-								x: -(stageUnit * 64),
-								y: winH - (stageUnit * 2.5)
-							}
-						}
-					},
-					{
-						name: 'caveGround1',
-						cl: 'Sprite',
-						attrs: {
-							img: 'caveGround01',
-							phaser: {
-								width: (stageUnit * 8),
-								height: (stageUnit * 2),
-								alpha: 1
-							},
-							start: {
-								x: -(stageUnit * 72),
-								y: winH - (stageUnit * 2.5)
-							}
-						}
-					},
-					{
-						name: 'caveGround1',
-						cl: 'Sprite',
-						attrs: {
-							img: 'caveGround01',
-							phaser: {
-								width: (stageUnit * 8),
-								height: (stageUnit * 2),
-								alpha: 1
-							},
-							start: {
-								x: -(stageUnit * 80),
+								x: -(stageUnit * 66),
 								y: winH - (stageUnit * 2.5)
 							}
 						}
@@ -23960,12 +23865,30 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
+						name: 'ground0',
+						cl: 'Sprite',
+						attrs: {
+							img: 'platform',
+							phaser: { 
+								width: (stageUnit * 8), 
+								height: (stageUnit * 2) 
+							},
+							start: {
+								x: -(stageUnit * 12),
+								y: winH
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					},
+					{
 						name: 'ground1',
 						cl: 'Sprite',
 						attrs: {
 							img: 'platform',
 							phaser: {
-								width: (stageWidth * 4),
+								width: (stageWidth * 4) + (stageUnit * 4),
 								height: (stageUnit)
 							},
 							start: {
@@ -23977,78 +23900,7 @@ Polyworks.Config = (function() {
 							}
 						}
 					},
-					{
-						name: 'rockPlatform1',
-						cl: 'Sprite',
-						attrs: {
-							img: 'rockPlatform01',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 0.5)
-							},
-							start: {
-								x: -(stageUnit * 16),
-								y: winH - (stageUnit * 2)
-							},
-							physics: {
-								immovable: true
-							}
-						}
-					},
-					{
-						name: 'rockPlatform1',
-						cl: 'Sprite',
-						attrs: {
-							img: 'rockPlatform01',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 0.5)
-							},
-							start: {
-								x: -(stageUnit * 13),
-								y: winH - (stageUnit * 4)
-							},
-							physics: {
-								immovable: true
-							}
-						}
-					},
-					{
-						name: 'rockPlatform1',
-						cl: 'Sprite',
-						attrs: {
-							img: 'rockPlatform01',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 0.5)
-							},
-							start: {
-								x: -(stageUnit * 10),
-								y: winH - (stageUnit * 3)
-							},
-							physics: {
-								immovable: true
-							}
-						}
-					},
-					{
-						name: 'rockPlatform1',
-						cl: 'Sprite',
-						attrs: {
-							img: 'rockPlatform01',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 0.5)
-							},
-							start: {
-								x: -(stageUnit * 7),
-								y: winH - (stageUnit * 2)
-							},
-							physics: {
-								immovable: true
-							}
-						}
-					},
+
 					{
 						name: 'rockPlatform2',
 						cl: 'Sprite',
@@ -24148,25 +24000,106 @@ Polyworks.Config = (function() {
 						},
 						attrs: [
 						{
-							name: 'level12-sector2-hazard0',
-							cl: 'Sprite',
-							attrs: {
-								img: 'lava01',
-								phaser: { 
-									width: (stageUnit * 8), 
-									height: (stageUnit * 2) 
+							name: 'dynamicTerrain',
+							cl: 'PhysicalGroupCollection',
+							attrs: [
+							{
+								name: 'sector2-platform01',
+								cl: 'ReactingTerrain',
+								reaction: {
+									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
-								start: {
-									x: -(stageUnit * 16),
-									y: winH - (stageUnit * 5.5)
+								attrs: {
+									img: 'rockPlatform01Animated',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.7)
+									},
+									start: {
+										x: -(stageUnit * 12),
+										y: winH - (stageUnit * 4)
+									},
+									physics: {
+										immovable: true
+									},
+									defaultAnimation: '',
+									animations: rockPlatformDisintegrating
+								}
+							},
+							{
+								name: 'sector2-platform01',
+								cl: 'ReactingTerrain',
+								reaction: {
+									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
-								physics: {
-									immovable: true
+								attrs: {
+									img: 'rockPlatform01Animated',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.7)
+									},
+									start: {
+										x: -(stageUnit * 9),
+										y: winH - (stageUnit * 3)
+									},
+									physics: {
+										immovable: true
+									},
+									defaultAnimation: '',
+									animations: rockPlatformDisintegrating
+								}
+							},
+							{
+								name: 'sector2-platform01',
+								cl: 'ReactingTerrain',
+								reaction: {
+									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
-								attack: 1000,
-								defaultAnimation: 'bubble',
-								animations: lavaAnimations
+								attrs: {
+									img: 'rockPlatform01Animated',
+									phaser: {
+										width: (stageUnit * 2),
+										height: (stageUnit * 0.7)
+									},
+									start: {
+										x: -(stageUnit * 6),
+										y: winH - (stageUnit * 2)
+									},
+									physics: {
+										immovable: true
+									},
+									defaultAnimation: '',
+									animations: rockPlatformDisintegrating
+								}
 							}
+							]
+						},
+						{
+							name: 'hazards',
+							cl: 'PhysicalGroupCollection',
+							attrs: [
+							{
+								name: 'level12-sector2-hazard0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'lava01',
+									phaser: { 
+										width: (stageUnit * 8), 
+										height: (stageUnit * 2) 
+									},
+									start: {
+										x: -(stageUnit * 12),
+										y: winH - (stageUnit * 1.9)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 25,
+									defaultAnimation: 'bubble',
+									animations: lavaAnimations
+								}
+							}
+							]
 						}
 						]
 					},
@@ -24208,6 +24141,54 @@ Polyworks.Config = (function() {
 							end: -(stageWidth * 4)
 						},
 						attrs: [
+						{
+							name: 'hazards',
+							cl: 'PhysicalGroupCollection',
+							attrs: [
+							{
+								name: 'level12-sector6-hazard1',
+								cl: 'Sprite',
+								attrs: {
+									img: 'lava01',
+									phaser: { 
+										width: (stageUnit * 8), 
+										height: (stageUnit * 2) 
+									},
+									start: {
+										x: -(stageUnit * 80),
+										y: winH - (stageUnit * 1.9)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 25,
+									defaultAnimation: 'bubble',
+									animations: lavaAnimations
+								}
+							},
+							{
+								name: 'level12-sector6-hazard2',
+								cl: 'Sprite',
+								attrs: {
+									img: 'lava01',
+									phaser: { 
+										width: (stageUnit * 8), 
+										height: (stageUnit * 2) 
+									},
+									start: {
+										x: -(stageUnit * 72),
+										y: winH - (stageUnit * 1.9)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 25,
+									defaultAnimation: 'bubble',
+									animations: lavaAnimations
+								}
+							}
+							]
+						}
 						]
 					}
 					]
