@@ -2268,7 +2268,7 @@ Polyworks.Config = (function() {
 							}
 						}
 					},
-
+					// trees and grass
 					{
 						name: 'tree01',
 						cl: 'Sprite',
@@ -10341,6 +10341,7 @@ Polyworks.Config = (function() {
 					'grass03ci',
 					'grassClump01',
 					'river01',
+					'thorns01',
 					'invisibleRect',
 					'crystals02Grey',
 					'crystals02Silver'
@@ -10461,6 +10462,7 @@ Polyworks.Config = (function() {
 							}
 						}
 					},
+					// grass
 					{
 						name: 'grass01',
 						cl: 'Sprite',
@@ -10472,7 +10474,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: 0,
-								y: winH - (stageUnit * 2)
+								y: winH - (stageUnit * 2.5)
 							}
 						}
 					},
@@ -10487,7 +10489,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: stageWidth,
-								y: winH - (stageUnit * 2)
+								y: winH - (stageUnit * 2.5)
 							}
 						}
 					},
@@ -10517,7 +10519,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 2),
-								y: winH - (stageUnit * 2)
+								y: winH - (stageUnit * 2.5)
 							}
 						}
 					},
@@ -10592,7 +10594,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 4),
-								y: winH - (stageUnit * 2)
+								y: winH - (stageUnit * 2.5)
 							}
 						}
 					},
@@ -10607,7 +10609,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 5),
-								y: winH - (stageUnit * 2)
+								y: winH - (stageUnit * 2.5)
 							}
 						}
 					},
@@ -11326,35 +11328,70 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'death',
+								name: 'level06-sector5-hazard0',
 								cl: 'Sprite',
 								attrs: {
-									img: 'invisibleRect',
-									phaser: {
-										width: stageWidth + (stageUnit * 2),
-										height: 32
-									},
+									img: 'thorns01',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 1.5) },
 									start: {
-										x: (stageWidth * 4) - (stageUnit),
-										y: winH + 100
+										x: (stageWidth * 4) + (stageUnit * 1),
+										y: winH - (stageUnit * 2)
 									},
 									physics: {
 										immovable: true
 									},
-									attack: 1000
+									attack: 10
 								}
-							}
+							},
+							{
+								name: 'level06-sector5-hazard0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'thorns01',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 1.5) },
+									start: {
+										x: (stageWidth * 4) + (stageUnit * 5),
+										y: winH - (stageUnit * 2)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 10
+								}
+							},
+							{
+								name: 'level06-sector5-hazard0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'thorns01',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 1.5) },
+									start: {
+										x: (stageWidth * 4) + (stageUnit * 9),
+										y: winH - (stageUnit * 2)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 10
+								}
+							},
+							{
+								name: 'level06-sector3-hazard0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'thorns01',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 1.5) },
+									start: {
+										x: (stageWidth * 4) + (stageUnit * 13),
+										y: winH - (stageUnit * 2)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 10
+								}
+							}	
 							]
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						}
 						]
 					},
@@ -11469,35 +11506,70 @@ Polyworks.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: [
 							{
-								name: 'death',
+								name: 'level06-sector5-hazard0',
 								cl: 'Sprite',
 								attrs: {
-									img: 'invisibleRect',
-									phaser: {
-										width: stageWidth + (stageUnit * 2),
-										height: 32
-									},
+									img: 'thorns01',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 1.5) },
 									start: {
-										x: (stageWidth * 5) - (stageUnit),
-										y: winH + 100
+										x: (stageWidth * 5) + (stageUnit * 1),
+										y: winH - (stageUnit * 2)
 									},
 									physics: {
 										immovable: true
 									},
-									attack: 1000
+									attack: 10
 								}
-							}
+							},
+							{
+								name: 'level06-sector5-hazard0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'thorns01',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 1.5) },
+									start: {
+										x: (stageWidth * 5) + (stageUnit * 5),
+										y: winH - (stageUnit * 2)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 10
+								}
+							},
+							{
+								name: 'level06-sector5-hazard0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'thorns01',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 1.5) },
+									start: {
+										x: (stageWidth * 5) + (stageUnit * 9),
+										y: winH - (stageUnit * 2)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 10
+								}
+							},
+							{
+								name: 'level06-sector3-hazard0',
+								cl: 'Sprite',
+								attrs: {
+									img: 'thorns01',
+									phaser: { width: (stageUnit * 3), height: (stageUnit * 1.5) },
+									start: {
+										x: (stageWidth * 5) + (stageUnit * 13),
+										y: winH - (stageUnit * 2)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 10
+								}
+							}	
 							]
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						}
 						]
 					}
@@ -11661,7 +11733,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 6) - (stageUnit * 2),
-								y: winH - (stageUnit * 3.5)
+								y: winH - (stageUnit * 11)
 							}
 						}
 					}
@@ -11996,6 +12068,7 @@ Polyworks.Config = (function() {
 							}
 						}
 					},
+					// x and grass
 					{
 						name: 'woodenX',
 						cl: 'Sprite',
@@ -12022,7 +12095,7 @@ Polyworks.Config = (function() {
 							},
 							start: {
 								x: 0,
-								y: winH - (stageUnit * 2)
+								y: winH - (stageUnit * 2.5)
 							}
 						}
 					}
