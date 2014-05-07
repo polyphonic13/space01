@@ -424,12 +424,8 @@ Polyworks.Config = (function() {
 				mountainBackgroundL7: 'images/backgrounds/pencil_mountain06-l7-sm.gif',
 				mountainBackgroundL8: 'images/backgrounds/pencil_mountain06-l8-sm.gif',
 
-				caveBackground01a: 'images/backgrounds/pencil_cave01a-sm.gif',
-				caveBackground01b: 'images/backgrounds/pencil_cave01b-sm.gif',
-				caveBackground01c: 'images/backgrounds/pencil_cave01c-sm.gif',
-				caveBackground01d: 'images/backgrounds/pencil_cave01d-sm.gif',
-				caveBackground01e: 'images/backgrounds/pencil_cave01e-sm.gif',
-				caveBackground01f: 'images/backgrounds/pencil_cave01f-sm.gif',
+				caveBackground02a: 'images/backgrounds/pencil_cave02a.gif',
+				caveBackground02b: 'images/backgrounds/pencil_cave02b.gif',
 
 				platform: 'images/scenery/platform.png',
 				platformGrey: 'images/scenery/platform_grey.png',
@@ -24076,12 +24072,8 @@ Polyworks.Config = (function() {
 					'ovalMask',
 					'level12Title',
 					'goalFlag',
-					'caveBackground01a',
-					'caveBackground01b',
-					'caveBackground01c',
-					'caveBackground01d',
-					'caveBackground01e',
-					'caveBackground01f',
+					'caveBackground02a',
+					'caveBackground02b',
 					'caveGround01a',
 					'caveGround01b',
 					'platformV',
@@ -24121,7 +24113,7 @@ Polyworks.Config = (function() {
 						name: 'caveBackground01a',
 						cl: 'Sprite',
 						attrs: {
-							img: 'caveBackground01a',
+							img: 'caveBackground02a',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
@@ -24137,7 +24129,7 @@ Polyworks.Config = (function() {
 						name: 'caveBackground01b',
 						cl: 'Sprite',
 						attrs: {
-							img: 'caveBackground01b',
+							img: 'caveBackground02b',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
@@ -24153,7 +24145,7 @@ Polyworks.Config = (function() {
 						name: 'caveBackground01c',
 						cl: 'Sprite',
 						attrs: {
-							img: 'caveBackground01c',
+							img: 'caveBackground02a',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
@@ -24169,7 +24161,7 @@ Polyworks.Config = (function() {
 						name: 'caveBackground01d',
 						cl: 'Sprite',
 						attrs: {
-							img: 'caveBackground01d',
+							img: 'caveBackground02b',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
@@ -24185,7 +24177,7 @@ Polyworks.Config = (function() {
 						name: 'caveBackground01e',
 						cl: 'Sprite',
 						attrs: {
-							img: 'caveBackground01e',
+							img: 'caveBackground02a',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
@@ -24201,7 +24193,7 @@ Polyworks.Config = (function() {
 						name: 'caveBackground01f',
 						cl: 'Sprite',
 						attrs: {
-							img: 'caveBackground01f',
+							img: 'caveBackground02b',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
