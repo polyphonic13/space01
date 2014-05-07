@@ -135,20 +135,20 @@ Polyworks.Sprite = (function() {
 		// trace('Sprite['+this.model.name+']/beginAnimations, animations = ', animations);
 		Polyworks.Utils.each(animations,
 			function(a, key) {
-				trace('\ta['+key+'] = ', a);
+				// trace('\ta['+key+'] = ', a);
 				this.animations.add(key, a.keyFrames, a.frameRate);
 			},
 			this
 		);
 
 		var defaultAnimation = this.model.attrs.defaultAnimation;
-		trace('------------- Sprite['+this.model.name+']/beginAnimations, defaultAnimation = ' + defaultAnimation);
+		// trace('------------- Sprite['+this.model.name+']/beginAnimations, defaultAnimation = ' + defaultAnimation);
 		if(defaultAnimation) {
-			trace('\tgoing to be defaultAnimation: ' + defaultAnimation);
+			// trace('\tgoing to be defaultAnimation: ' + defaultAnimation);
 			this.play(defaultAnimation, animations[defaultAnimation].frameRate, animations[defaultAnimation].loop);
 			this.model.currentAnimation = defaultAnimation;
 		} else {
-			trace('\tgoing to frame 0');
+			// trace('\tgoing to frame 0');
 			this.animations.frame = 0;
 			this.model.currentAnimation = '';
 		}

@@ -41,6 +41,10 @@ Polyworks.Config = (function() {
 			height: (stageUnit * 2.5)
 		};
 
+		var spider03 = {
+			width: (stageUnit * 3),
+			height: (stageUnit * 3)
+		};
 		var fontSizes = {
 			xs: (stageUnit * 0.5),
 			sm: (stageUnit * 0.8),
@@ -396,7 +400,9 @@ Polyworks.Config = (function() {
 				mountainBackgroundH1: 'images/backgrounds/pencil_mountain06-h1-sm.gif',
 				mountainBackgroundH2: 'images/backgrounds/pencil_mountain06-h2-sm.gif',
 				mountainBackgroundH3: 'images/backgrounds/pencil_mountain06-h3-sm.gif',
+				mountainBackgroundH3a: 'images/backgrounds/pencil_mountain06-h3a-sm.gif',
 				mountainBackgroundH4: 'images/backgrounds/pencil_mountain06-h4-sm.gif',
+				mountainBackgroundH4a: 'images/backgrounds/pencil_mountain06-h4a-sm.gif',
 				mountainBackgroundH5: 'images/backgrounds/pencil_mountain06-h5-sm.gif',
 				mountainBackgroundH6: 'images/backgrounds/pencil_mountain06-h6-sm.gif',
 				mountainBackgroundI3: 'images/backgrounds/pencil_mountain06-i3-sm.gif',
@@ -652,12 +658,19 @@ Polyworks.Config = (function() {
 				},
 				spider01: 
 				{
-					url: 'images/enemies/spider01b.png',
+					url: 'images/enemies/spider01a.png',
 					width: 128, 
 					height: 128, 
 					frames: 16
 				},
 				spider02: 
+				{
+					url: 'images/enemies/spider01b.png',
+					width: 128, 
+					height: 128, 
+					frames: 16
+				},
+				spider03: 
 				{
 					url: 'images/enemies/spider01c.png',
 					width: 128, 
@@ -11803,6 +11816,7 @@ Polyworks.Config = (function() {
 					'restartButton',
 					'menuButton',
 					'mapButton',
+					'spider01',
 					'heartSprite',
 					'keke'
 				],
@@ -12322,16 +12336,6 @@ Polyworks.Config = (function() {
 								}
 							}
 							]
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						}
 						]
 					},
@@ -12484,20 +12488,10 @@ Polyworks.Config = (function() {
 							]
 						},
 						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [
 							] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						}
 						]
 					},
@@ -12639,7 +12633,37 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [] 
+							attrs: [
+							{
+								name: 'level08-sector3-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'spider01',
+									phaser: {
+										width: spider01.width,
+										height: spider01.height,
+										health: 5
+									},
+									start: {
+										x: (stageUnit * 20),
+										y: winH - (stageUnit * 26)
+									},
+									physics: {
+										allowGravity: false
+									},
+									speed: 0.5,
+									attack: 5,
+									score: 1500,
+									movement: {
+										speed: 1.5,
+										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: spiderAnimations
+								}
+							}
+							] 
 						},
 						{
 							name: 'bonuses',
@@ -13031,7 +13055,37 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [] 
+							attrs: [
+							{
+								name: 'level08-sector3-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'spider01',
+									phaser: {
+										width: spider01.width,
+										height: spider01.height,
+										health: 5
+									},
+									start: {
+										x: (stageUnit * 30),
+										y: winH - (stageUnit * 39)
+									},
+									physics: {
+										allowGravity: false
+									},
+									speed: 0.5,
+									attack: 5,
+									score: 1500,
+									movement: {
+										speed: 1.5,
+										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: spiderAnimations
+								}
+							}
+							] 
 						},
 						{
 							name: 'bonuses',
@@ -13549,7 +13603,37 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [] 
+							attrs: [
+							{
+								name: 'level08-sector3-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'spider01',
+									phaser: {
+										width: spider01.width,
+										height: spider01.height,
+										health: 5
+									},
+									start: {
+										x: (stageUnit * 20),
+										y: winH - (stageUnit * 59)
+									},
+									physics: {
+										allowGravity: false
+									},
+									speed: 0.5,
+									attack: 5,
+									score: 1500,
+									movement: {
+										speed: 1.5,
+										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: spiderAnimations
+								}
+							}
+							] 
 						},
 						{
 							name: 'bonuses',
@@ -14814,19 +14898,9 @@ Polyworks.Config = (function() {
 							]
 						},
 						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
 							name: 'enemies',
 							cl: 'Enemies',
 							attrs: [] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						}
 						]
 					},
@@ -15015,11 +15089,6 @@ Polyworks.Config = (function() {
 							}
 							// end sector 3 terrain
 							]
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						},
 						{
 							name: 'enemies',
@@ -17335,6 +17404,8 @@ Polyworks.Config = (function() {
 									speed: 0.5,
 									attack: 10,
 									score: 2500,
+									jumps: true,
+									jumpMultiplier: 150,
 									movement: {
 										speed: 2,
 										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
@@ -17662,6 +17733,8 @@ Polyworks.Config = (function() {
 									speed: 0.5,
 									attack: 10,
 									score: 2500,
+									jumps: true,
+									jumpMultiplier: 150,
 									movement: {
 										speed: 2,
 										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
@@ -17954,6 +18027,8 @@ Polyworks.Config = (function() {
 									speed: 0.5,
 									attack: 10,
 									score: 2500,
+									jumps: true,
+									jumpMultiplier: 150,
 									movement: {
 										speed: 2,
 										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
@@ -18523,6 +18598,8 @@ Polyworks.Config = (function() {
 									speed: 0.5,
 									attack: 15,
 									score: 2500,
+									jumps: true,
+									jumpMultiplier: 150,
 									movement: {
 										speed: 2,
 										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
@@ -18738,6 +18815,8 @@ Polyworks.Config = (function() {
 									speed: 0.5,
 									attack: 15,
 									score: 2500,
+									jumps: true,
+									jumpMultiplier: 150,
 									movement: {
 										speed: 2,
 										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
@@ -19090,8 +19169,8 @@ Polyworks.Config = (function() {
 					'ovalMask',
 					'level10Title',
 					'goalFlag',
-					'mountainBackgroundH3',
-					'mountainBackgroundH4',
+					'mountainBackgroundH3a',
+					'mountainBackgroundH4a',
 					'mountainBackgroundH5',
 					'mountainBackgroundH6',
 					'mountainBackgroundI3',
@@ -19123,6 +19202,8 @@ Polyworks.Config = (function() {
 					'restartButton',
 					'menuButton',
 					'mapButton',
+					'spider02',
+					'spider03',
 					'heartSprite',
 					'keke'
 				],
@@ -19136,7 +19217,7 @@ Polyworks.Config = (function() {
 						name: 'mountainBackgroundH3',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackgroundH3',
+							img: 'mountainBackgroundH3a',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
@@ -19184,7 +19265,7 @@ Polyworks.Config = (function() {
 						name: 'mountainBackgroundH4',
 						cl: 'Sprite',
 						attrs: {
-							img: 'mountainBackgroundH4',
+							img: 'mountainBackgroundH4a',
 							phaser: {
 								width: stageWidth,
 								height: stageHeight * 2,
@@ -19677,7 +19758,37 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [] 
+							attrs: [
+							{
+								name: 'level10-sector1-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'spider03',
+									phaser: {
+										width: spider03.width,
+										height: spider03.height,
+										health: 50
+									},
+									start: {
+										x: (stageUnit * 16),
+										y: winH - (stageUnit * 6)
+									},
+									physics: {
+										allowGravity: false
+									},
+									speed: 0.5,
+									attack: 25,
+									score: 2500,
+									movement: {
+										speed: 2,
+										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: spiderAnimations
+								}
+							}
+							] 
 						},
 						{
 							name: 'bonuses',
@@ -19892,7 +20003,70 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [] 
+							attrs: [
+							{
+								name: 'level10-sector2-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'spider03',
+									phaser: {
+										width: spider03.width,
+										height: spider03.height,
+										health: 50
+									},
+									start: {
+										x: (stageUnit * 16),
+										y: winH + (stageUnit * 3)
+									},
+									physics: {
+										allowGravity: false
+									},
+									speed: 0.5,
+									attack: 25,
+									score: 2500,
+									movement: {
+										speed: 2,
+										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: spiderAnimations
+								}
+							},
+							{
+								name: 'level10-sector2-enemy2',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'spider02',
+									phaser: {
+										width: spider02.width,
+										height: spider02.height,
+										health: 30
+									},
+									start: {
+										x: (stageUnit * 40),
+										y: winH + (stageUnit * 8)
+									},
+									physics: {
+										allowGravity: false
+									},
+									speed: 0.5,
+									attack: 15,
+									score: 2500,
+									jumps: true,
+									jumpMultiplier: 150,
+									jumps: true,
+									jumpMultiplier: 150,
+									movement: {
+										speed: 2,
+										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: spiderAnimations
+								}
+							}
+							] 
 						},
 						{
 							name: 'bonuses',
@@ -20086,7 +20260,68 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [] 
+							attrs: [
+							{
+								name: 'level10-sector3-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'spider03',
+									phaser: {
+										width: spider03.width,
+										height: spider03.height,
+										health: 50
+									},
+									start: {
+										x: (stageUnit * 4),
+										y: winH + (stageUnit * 10)
+									},
+									physics: {
+										allowGravity: false
+									},
+									speed: 0.5,
+									attack: 25,
+									score: 2500,
+									movement: {
+										speed: 2,
+										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: spiderAnimations
+								}
+							},
+							{
+								name: 'level10-sector3-enemy2',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'spider02',
+									phaser: {
+										width: spider02.width,
+										height: spider02.height,
+										health: 30
+									},
+									start: {
+										x: (stageUnit * 40),
+										y: winH + (stageUnit * 15)
+									},
+									physics: {
+										allowGravity: false
+									},
+									speed: 0.5,
+									attack: 15,
+									score: 2500,
+									jumps: true,
+									jumpMultiplier: 150,
+									movement: {
+										speed: 2,
+										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: spiderAnimations
+								}
+							}
+							] 
 						},
 						{
 							name: 'bonuses',
@@ -20391,7 +20626,68 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [] 
+							attrs: [
+							{
+								name: 'level10-sector3-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'spider03',
+									phaser: {
+										width: spider03.width,
+										height: spider03.height,
+										health: 50
+									},
+									start: {
+										x: (stageUnit * 4),
+										y: winH + (stageUnit * 18)
+									},
+									physics: {
+										allowGravity: false
+									},
+									speed: 0.5,
+									attack: 25,
+									score: 2500,
+									movement: {
+										speed: 2,
+										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: spiderAnimations
+								}
+							},
+							{
+								name: 'level10-sector3-enemy2',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'spider02',
+									phaser: {
+										width: spider02.width,
+										height: spider02.height,
+										health: 30
+									},
+									start: {
+										x: (stageUnit * 40),
+										y: winH + (stageUnit * 25)
+									},
+									physics: {
+										allowGravity: false
+									},
+									speed: 0.5,
+									attack: 15,
+									score: 2500,
+									jumps: true,
+									jumpMultiplier: 150,
+									movement: {
+										speed: 2,
+										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: spiderAnimations
+								}
+							}
+							] 
 						},
 						{
 							name: 'bonuses',
@@ -20678,7 +20974,66 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [] 
+							attrs: [
+							{
+								name: 'level10-sector5-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'spider02',
+									phaser: {
+										width: spider02.width,
+										height: spider02.height,
+										health: 30
+									},
+									start: {
+										x: (stageUnit * 4),
+										y: winH + (stageUnit * 27)
+									},
+									physics: {
+										allowGravity: false
+									},
+									speed: 0.5,
+									attack: 15,
+									score: 2500,
+									movement: {
+										speed: 2,
+										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: spiderAnimations
+								}
+							},
+							{
+								name: 'level10-sector5-enemy2',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'spider03',
+									phaser: {
+										width: spider03.width,
+										height: spider03.height,
+										health: 50
+									},
+									start: {
+										x: (stageUnit * 40),
+										y: winH + (stageUnit * 30)
+									},
+									physics: {
+										allowGravity: false
+									},
+									speed: 0.5,
+									attack: 25,
+									score: 2500,
+									movement: {
+										speed: 2,
+										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: spiderAnimations
+								}
+							}
+							] 
 						},
 						{
 							name: 'bonuses',
@@ -20926,7 +21281,66 @@ Polyworks.Config = (function() {
 						{
 							name: 'enemies',
 							cl: 'Enemies',
-							attrs: [] 
+							attrs: [
+							{
+								name: 'level10-sector5-enemy1',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'spider03',
+									phaser: {
+										width: spider03.width,
+										height: spider03.height,
+										health: 50
+									},
+									start: {
+										x: (stageUnit * 4),
+										y: winH + (stageUnit * 38)
+									},
+									physics: {
+										allowGravity: false
+									},
+									speed: 0.5,
+									attack: 25,
+									score: 2500,
+									movement: {
+										speed: 2,
+										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: spiderAnimations
+								}
+							},
+							{
+								name: 'level10-sector5-enemy2',
+								cl: 'AnimatedEnemy',
+								attrs: {
+									img: 'spider02',
+									phaser: {
+										width: spider02.width,
+										height: spider02.height,
+										health: 30
+									},
+									start: {
+										x: (stageUnit * 40),
+										y: winH + (stageUnit * 43)
+									},
+									physics: {
+										allowGravity: false
+									},
+									speed: 0.5,
+									attack: 15,
+									score: 2500,
+									movement: {
+										speed: 2,
+										type: Polyworks.MovementTypes.DIRECTIONAL_BY_SPEED,
+										formula: null
+									},
+									defaultAnimation: '',
+									animations: spiderAnimations
+								}
+							}
+							] 
 						},
 						{
 							name: 'bonuses',

@@ -53,7 +53,7 @@ var caterpillarAnimations = {
 
 var spiderAnimations = {
 	idle: {
-		keyFrames: [0],
+		keyFrames: [0, 4, 8],
 		loop: false,
 		frameRate: 10
 	},
