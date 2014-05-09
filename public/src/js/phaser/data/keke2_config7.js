@@ -22765,11 +22765,11 @@ Polyworks.Config = (function() {
 							end: winH + (stageHeight * 3)
 						},
 						attrs: [
-						// left
 						{
 							name: 'dynamicTerrain',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
+							// left
 							{
 								name: 'sector4-platform01',
 								cl: 'Sprite',
@@ -22907,7 +22907,7 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.5)
 									},
 									start: {
-										x: (stageUnit * 38),
+										x: (stageUnit * 36),
 										y: winH + (stageUnit * 24)
 									},
 									physics: {
@@ -22979,25 +22979,7 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.5)
 									},
 									start: {
-										x: (stageUnit * 42),
-										y: winH + (stageUnit * 26)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'sector4-platform01',
-								cl: 'Sprite',
-								attrs: {
-									img: 'rockPlatform01',
-									phaser: {
-										width: (stageUnit * 1.5),
-										height: (stageUnit * 0.5)
-									},
-									start: {
-										x: (stageUnit * 46),
+										x: (stageUnit * 48),
 										y: winH + (stageUnit * 26)
 									},
 									physics: {
