@@ -398,7 +398,7 @@ PolyworksGame = (function() {
 	function _onNextLevel(event) {
 		trace('PolyworksGame/_onNextLevel, currentLevel = ', PolyworksGame.currentLevel);
 		var stateId;
-		if(PolyworksGame.currentLevel < PolyworksGame.levelCount) {
+		if(PolyworksGame.currentLevel < (PolyworksGame.levelCount - 1)) {
 			stateId = _levels[PolyworksGame.currentLevel].model.name;
 			PolyworksGame.levelText = _levels[PolyworksGame.currentLevel].model.text;
 		} else {
