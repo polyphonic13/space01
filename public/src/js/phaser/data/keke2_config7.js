@@ -19670,7 +19670,7 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.5)
 									},
 									start: {
-										x: (stageUnit * 3),
+										x: (stageUnit * 4),
 										y: winH - (stageUnit * 2)
 									},
 									physics: {
@@ -21825,6 +21825,7 @@ Polyworks.Config = (function() {
 					'menuButton',
 					'mapButton',
 					'heartSprite',
+					'rockPlatform01Animated',
 					'spider03',
 					'keke'
 				],
@@ -23467,10 +23468,13 @@ Polyworks.Config = (function() {
 							attrs: [
 							// right
 							{
-								name: 'sector5-platform01',
-								cl: 'Sprite',
+								name: 'sector5-platform05',
+								cl: 'ReactingTerrain',
+								reaction: {
+									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+								},
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform01Animated',
 									phaser: {
 										width: (stageUnit * 1.5),
 										height: (stageUnit * 0.5)
@@ -23481,14 +23485,19 @@ Polyworks.Config = (function() {
 									},
 									physics: {
 										immovable: true
-									}
+									},
+									defaultAnimation: '',
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
-								name: 'sector5-platform01',
-								cl: 'Sprite',
+								name: 'sector5-platform05',
+								cl: 'ReactingTerrain',
+								reaction: {
+									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+								},
 								attrs: {
-									img: 'rockPlatform01',
+									img: 'rockPlatform01Animated',
 									phaser: {
 										width: (stageUnit * 1.5),
 										height: (stageUnit * 0.5)
@@ -23499,7 +23508,9 @@ Polyworks.Config = (function() {
 									},
 									physics: {
 										immovable: true
-									}
+									},
+									defaultAnimation: '',
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
