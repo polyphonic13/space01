@@ -33,12 +33,14 @@ Polyworks.Config = (function() {
 
 		var spider01 = {
 			width: (stageUnit * 2),
-			height: (stageUnit * 2)
+			height: (stageUnit * 2), 
+			speed: 1.5
 		};
 
 		var spider02 = {
 			width: (stageUnit * 2.5),
-			height: (stageUnit * 2.5)
+			height: (stageUnit * 2.5),
+			speed: 2
 		};
 
 		var spider03 = {
@@ -12655,7 +12657,7 @@ Polyworks.Config = (function() {
 									attack: 5,
 									score: 1500,
 									movement: {
-										speed: 1.5,
+										speed: spider01.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
@@ -13077,7 +13079,7 @@ Polyworks.Config = (function() {
 									attack: 5,
 									score: 1500,
 									movement: {
-										speed: 1.5,
+										speed: spider01.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
@@ -13625,7 +13627,7 @@ Polyworks.Config = (function() {
 									attack: 5,
 									score: 1500,
 									movement: {
-										speed: 1.5,
+										speed: spider01.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
@@ -15115,7 +15117,7 @@ Polyworks.Config = (function() {
 									attack: 5,
 									score: 1500,
 									movement: {
-										speed: 1.5,
+										speed: spider01.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
@@ -15526,7 +15528,7 @@ Polyworks.Config = (function() {
 									attack: 5,
 									score: 1500,
 									movement: {
-										speed: 1.5,
+										speed: spider01.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
@@ -15825,7 +15827,7 @@ Polyworks.Config = (function() {
 									attack: 5,
 									score: 1500,
 									movement: {
-										speed: 1.5,
+										speed: spider01.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
@@ -16078,7 +16080,7 @@ Polyworks.Config = (function() {
 									attack: 5,
 									score: 1500,
 									movement: {
-										speed: 1.5,
+										speed: spider01.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
@@ -17407,7 +17409,7 @@ Polyworks.Config = (function() {
 									jumps: true,
 									jumpMultiplier: 150,
 									movement: {
-										speed: 2,
+										speed: spider02.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
@@ -17736,7 +17738,7 @@ Polyworks.Config = (function() {
 									jumps: true,
 									jumpMultiplier: 150,
 									movement: {
-										speed: 2,
+										speed: spider02.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
@@ -18030,7 +18032,7 @@ Polyworks.Config = (function() {
 									jumps: true,
 									jumpMultiplier: 150,
 									movement: {
-										speed: 2,
+										speed: spider02.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
@@ -18309,7 +18311,7 @@ Polyworks.Config = (function() {
 									attack: 15,
 									score: 2500,
 									movement: {
-										speed: 2,
+										speed: spider02.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
@@ -18601,7 +18603,7 @@ Polyworks.Config = (function() {
 									jumps: true,
 									jumpMultiplier: 150,
 									movement: {
-										speed: 2,
+										speed: spider02.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
@@ -18818,7 +18820,7 @@ Polyworks.Config = (function() {
 									jumps: true,
 									jumpMultiplier: 150,
 									movement: {
-										speed: 2,
+										speed: spider02.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
@@ -20053,7 +20055,7 @@ Polyworks.Config = (function() {
 									jumps: true,
 									jumpMultiplier: 150,
 									movement: {
-										speed: 2,
+										speed: spider02.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
@@ -20308,7 +20310,7 @@ Polyworks.Config = (function() {
 									jumps: true,
 									jumpMultiplier: 150,
 									movement: {
-										speed: 2,
+										speed: spider02.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
@@ -20674,7 +20676,7 @@ Polyworks.Config = (function() {
 									jumps: true,
 									jumpMultiplier: 150,
 									movement: {
-										speed: 2,
+										speed: spider02.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
@@ -20982,7 +20984,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageUnit * 4),
-										y: winH + (stageUnit * 27)
+										y: winH + (stageUnit * 29)
 									},
 									physics: {
 										allowGravity: false
@@ -20991,7 +20993,7 @@ Polyworks.Config = (function() {
 									attack: 15,
 									score: 2500,
 									movement: {
-										speed: 2,
+										speed: spider02.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
@@ -21011,7 +21013,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageUnit * 40),
-										y: winH + (stageUnit * 30)
+										y: winH + (stageUnit * 33)
 									},
 									physics: {
 										allowGravity: false
@@ -21327,7 +21329,7 @@ Polyworks.Config = (function() {
 									attack: 15,
 									score: 2500,
 									movement: {
-										speed: 2,
+										speed: spider02.speed,
 										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
