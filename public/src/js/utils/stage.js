@@ -80,10 +80,7 @@ Polyworks.Stage = (function() {
 		var left = (document.documentElement.clientWidth/2) - (stage.width/2);
 		var top = (document.documentElement.clientHeight/2) - (stage.height/2);
 
-		trace('\nwinW = ' + stage.winW + ', winH = ' + stage.winH 
-				+  '\nstage.width = ' + stage.width + ', stage.height = ' + stage.height
-				+ '\nunit = ' + stage.unit
-				+ '\nleft = ' + left + ', top = ' + top);
+		trace('\nwinW = ' + stage.winW + ', winH = ' + stage.winH + '\nstage.width = ' + stage.width + ', stage.height = ' + stage.height + '\nunit = ' + stage.unit + '\nleft = ' + left + ', top = ' + top);
 
 		var loadingWidth = stage.winW - 80;
 		var loadingHeight = stage.winH - 80;

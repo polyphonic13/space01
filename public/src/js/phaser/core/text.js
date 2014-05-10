@@ -32,7 +32,7 @@ Polyworks.Text = (function() {
 	};
 
 	Text.prototype.alignAndPosition = function() {
-		// trace('============= Text['+this.model.name+']/position')
+		// trace('============= Text['+this.model.name+']/position');
 		// trace('\ttext width = ' + this.width);
 		var attrs = this.model.attrs;
 		if(attrs.alignX) {

@@ -153,12 +153,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-connect');
 	grunt.loadTasks('grunt/tasks');
 	
-	grunt.registerTask('default', ['projectDeploySetup', 'concat:project', 'uglify', 'copy:project', 'createProjectHtml']);
-	// grunt.registerTask('default', ['concat', 'uglify', 'copy']);
-	// grunt.registerTask('keke2', ['concat:keke2_game', 'uglify:keke2_game', 'uglify:stage', 'copy:keke2_game_html', 'copy:keke2_game_js', 'copy:keke2_game_css:files']);
-	// grunt.registerTask('keke2-images', ['copy:keke2_game_images:files'])
-	// grunt.registerTask('keke', ['concat:keke_game', 'uglify:keke_game', 'copy:keke_game_html', 'copy:keke_game_css:files']);
-	// grunt.registerTask('keke-images', ['copy:keke_game_images:files']);
-	// grunt.registerTask('canvas_test', ['concat:canvas_test', 'uglify:canvas_test', 'copy:canvas_test_html', 'copy:canvas_test_css:files']);
-
+	grunt.registerTask('default', ['projectDeploySetup', 'concat:project', 'stripTraceStatements', 'uglify', 'copy:project', 'createProjectHtml']);
 };

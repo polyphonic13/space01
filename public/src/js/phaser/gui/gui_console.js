@@ -7,7 +7,7 @@ Polyworks.GUIConsole = (function() {
 
 	GUIConsole.prototype.begin = function() {
 		GUIConsole._super.begin.call(this);
-		trace('GUIConsole/begin')
+		// trace('GUIConsole/begin');
 
 		Polyworks.Utils.each(this.collection,
 			function(c) {

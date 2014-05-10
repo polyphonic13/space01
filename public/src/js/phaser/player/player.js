@@ -133,7 +133,7 @@ Polyworks.Player = (function() {
 				this.velY = 0;
 			}
 		} else if(this.activeControls[Polyworks.InputCodes.DOWN]) {
-			// trace('Player/updatePosition, down is active')
+			// trace('Player/updatePosition, down is active');
 		}
 	};
 	
