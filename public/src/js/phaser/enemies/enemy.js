@@ -50,7 +50,10 @@ Polyworks.Enemy = (function() {
 	Enemy.prototype.calculateHorizontalMovement = function(player, movementType, invert) {
 		var reverse = invert || false;
 		var enemyX = this.body.screenX;
+		var enemyY = this.body.screenY;
 		var playerX = player.body.screenX;
+		var playerY = player.body.screenY;
+
 		if(this.model.attrs.testInView) {
 			if(enemyX < (playerX + Polyworks.Stage.width/2) && enemyX > (playerX - Polyworks.Stage.width/2)) {
 				this.isInView = true;
