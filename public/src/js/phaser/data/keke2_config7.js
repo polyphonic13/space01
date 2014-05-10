@@ -22618,7 +22618,7 @@ Polyworks.Config = (function() {
 									},
 									start: {
 										x: (stageUnit * 32),
-										y: winH + (stageUnit * 12)
+										y: winH + (stageUnit * 11)
 									},
 									physics: {
 										immovable: true
@@ -22834,7 +22834,7 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.5)
 									},
 									start: {
-										x: (stageUnit * 34),
+										x: (stageUnit * 32),
 										y: winH + (stageUnit * 20)
 									},
 									physics: {
@@ -22852,7 +22852,7 @@ Polyworks.Config = (function() {
 										height: (stageUnit * 0.5)
 									},
 									start: {
-										x: (stageUnit * 36),
+										x: (stageUnit * 35),
 										y: winH + (stageUnit * 21)
 									},
 									physics: {
@@ -23046,11 +23046,11 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'rockPlatform01',
 									phaser: {
-										width: (stageUnit * 1),
+										width: (stageUnit * 1.5),
 										height: (stageUnit * 0.5)
 									},
 									start: {
-										x: (stageUnit * 25),
+										x: (stageUnit * 24),
 										y: winH + (stageUnit * 28)
 									},
 									physics: {

@@ -13,8 +13,10 @@ Polyworks.Enemy = (function() {
 	Enemy.prototype.pwUpdate = function(params) {
 		if(this.alive) {
 			var enemyX = this.body.screenX;
+			var enemyY = this.body.screenY;
 			var playerX = params.player.body.screenX;
-
+			var playerY = params.player.body.screenY;
+			
 			// trace('Enemy/pwUpdate, relationToPlayer = ' + this.relationToPlayer);
 
 			if(this.model.attrs.testInView) {
@@ -35,7 +37,7 @@ Polyworks.Enemy = (function() {
 				// trace('move left');
 				this.relationToPlayer = 'left';
 				this.move({ direction: Polyworks.Directions.LEFT, type: this.model.attrs.movement.type });
-			} else if(this.model.attrs.jumps) {
+			} else if(this.model.attrs.jumps && (enemyY > playerY)) {
 				this.relationToPlayer = 'jumping';
 				if(!this.justJumped) {
 					this.justJumped = true;
