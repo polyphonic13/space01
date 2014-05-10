@@ -12,10 +12,6 @@ Polyworks.Enemy = (function() {
 
 	Enemy.prototype.pwUpdate = function(params) {
 		if(this.alive) {
-			var enemyX = this.body.screenX;
-			var enemyY = this.body.screenY;
-			var playerX = params.player.body.screenX;
-			var playerY = params.player.body.screenY;
 			
 			// trace('Enemy/pwUpdate, relationToPlayer = ' + this.relationToPlayer);
 
@@ -28,26 +24,64 @@ Polyworks.Enemy = (function() {
 			}
 			this.checkDynamicTerrainCollision(params.dynamicTerrain);
 
-			this.relationToPlayer = 'near';
-			if(enemyX < (playerX - 10)) {
-				// trace('move right');
-				this.relationToPlayer = 'right';
-				this.move({ direction: Polyworks.Directions.RIGHT, type: this.model.attrs.movement.type });
-			} else if(enemyX > (playerX + 10)) {
-				// trace('move left');
-				this.relationToPlayer = 'left';
-				this.move({ direction: Polyworks.Directions.LEFT, type: this.model.attrs.movement.type });
-			} else if(this.model.attrs.jumps && (enemyY > playerY)) {
-				this.relationToPlayer = 'jumping';
-				if(!this.justJumped) {
-					this.justJumped = true;
-					this.move({ direction: Polyworks.Directions.UP, type: Polyworks.MovementTypes.JUMP });
+			if(this.isInView) {
+				this.relationToPlayer = 'near';
+				var movementType = this.model.attrs.movement.type;
+				switch(movementType) {
+					case: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED:
+					case: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED:
+						this.calculateHorizontalMovement(params.player);
+					break;
+					
+					case: Polyworks.MovementTypes.VERTICAL_BY_SPEED:
+						this.calculateVerticalMovement(params.player);
+					break;
+					
+					default: 
+						trace('ERROR: unknown movement type: ' + movementType);
+					break;
 				}
 			}
 
 			if(this.body.touching.down) {
 				this.justJumped = false;
 			}
+		}
+	};
+	
+	Enemy.prototype.calculateHorizontalMovement = function(player) {
+		var enemyX = this.body.screenX;
+		var playerX = player.body.screenX;
+
+		if(enemyX < (playerX - 10)) {
+			// trace('move right');
+			this.relationToPlayer = 'right';
+			this.move({ direction: Polyworks.Directions.RIGHT, type: this.model.attrs.movement.type });
+		} else if(enemyX > (playerX + 10)) {
+			// trace('move left');
+			this.relationToPlayer = 'left';
+			this.move({ direction: Polyworks.Directions.LEFT, type: this.model.attrs.movement.type });
+		} else if(this.model.attrs.jumps && (enemyY > playerY)) {
+			this.relationToPlayer = 'jumping';
+			if(!this.justJumped) {
+				this.justJumped = true;
+				this.move({ direction: Polyworks.Directions.UP, type: Polyworks.MovementTypes.JUMP });
+			}
+		}
+	};
+	
+	Enemy.prototype.calculateVerticalMovement = function(player) {
+		var enemyY = this.body.screenY;
+		var playerY = player.body.screenY;
+		
+		if(enemyY < (playerY - 10)) {
+			// trace('move right');
+			this.relationToPlayer = 'up';
+			this.move({ direction: Polyworks.Directions.UP, type: this.model.attrs.movement.type });
+		} else if(enemyY > (playerY + 10)) {
+			// trace('move left');
+			this.relationToPlayer = 'down';
+			this.move({ direction: Polyworks.Directions.DOWN, type: this.model.attrs.movement.type });
 		}
 	};
 	

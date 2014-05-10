@@ -4,5 +4,6 @@ Polyworks.Directions = {
 	UP: 'Up',
 	DOWN: 'Down',
 	TOP: 'Top',
-	BOTTOM: 'Bottom'
+	BOTTOM: 'Bottom',
+	JUMP: 'Jump'
 };

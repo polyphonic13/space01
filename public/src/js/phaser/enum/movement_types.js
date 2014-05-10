@@ -1,7 +1,8 @@
 Polyworks.MovementTypes = {
 	INCREMENTAL: 'increment',
-	DIRECTIONAL_BY_SPEED: 'directional',
-	GROUNDED_DIRECTIONAL_BY_SPEED: 'groundedDirectional',
+	HORIZONTAL_BY_SPEED: 'horizontalBySpeed',
+	GROUNDED_HORIZONTAL_BY_SPEED: 'groundedHorizontalBySpeed',
+	VERTICAL_BY_SPEED: 'verticalBySpeed',
 	JUMP: 'jump',
 	TWEEN_PROPERTY: 'tweenProperty',
 	FORMULA: 'formula'
