@@ -191,6 +191,7 @@ Polyworks.Utils = (function() {
 		var type = params.type || movement.type;
 		switch(type) {
 			case Polyworks.MovementTypes.HORIZONTAL_BY_SPEED:
+			case Polyworks.MovementTypes.VERTICAL_BY_SPEED:
 				this.moveDirectionalBySpeed(sprite, movement, params);
 			break;
 
@@ -210,7 +211,7 @@ Polyworks.Utils = (function() {
 			break;
 			
 			default: 
-				console.log('WARNING: unknown movement type: ' + movement.type);
+				console.log('ERROR: unknown movement type: ' + movement.type);
 			break;
 		}
 	};
@@ -234,10 +235,12 @@ Polyworks.Utils = (function() {
 			break;
 
 			case Polyworks.Directions.UP: 
+			// trace('moving up: ' + movement.speed);
 			sprite.y -= movement.speed;
 			break;
 			
 			case Polyworks.Directions.DOWN: 
+			// trace('moving down: ' + movement.speed);
 			sprite.y += movement.speed;
 			break;
 

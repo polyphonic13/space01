@@ -398,13 +398,13 @@ PolyworksGame = (function() {
 	function _onNextLevel(event) {
 		trace('PolyworksGame/_onNextLevel, currentLevel = ', PolyworksGame.currentLevel);
 		var stateId;
-		if(PolyworksGame.currentLevel < (PolyworksGame.levelCount - 1)) {
-			stateId = _levels[PolyworksGame.currentLevel].model.name;
-			PolyworksGame.levelText = _levels[PolyworksGame.currentLevel].model.text;
-		} else {
+		if(PolyworksGame.currentLevel === PolyworksGame.levelCount) {
 			PolyworksGame.currentLevel = 0;
 			PolyworksGame.levelText = '';
 			stateId = 'completed';
+		} else {
+			stateId = _levels[PolyworksGame.currentLevel].model.name;
+			PolyworksGame.levelText = _levels[PolyworksGame.currentLevel].model.text;
 		}
 		PolyworksGame.levelScore = 0;
 		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
@@ -421,6 +421,7 @@ PolyworksGame = (function() {
 			PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.levelScore + ' NEW';
 			Polyworks.EventCenter.trigger(Polyworks.Events.HIGH_SCORE_UPDATED);
 		}
+		
 		idx++;
 
 		if(PolyworksGame.levelStatus[idx] === 'l') {

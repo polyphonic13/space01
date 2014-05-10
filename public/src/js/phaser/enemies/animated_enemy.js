@@ -36,12 +36,14 @@ Polyworks.AnimatedEnemy = (function() {
 						break;
 
 						case 'left': 
+						case 'above':
 							if(this.currentAnimation !== AnimationTypes.WALK_L) {
 								this.play(AnimationTypes.WALK_L, animations[AnimationTypes.WALK_L].frameRate, animations[AnimationTypes.WALK_L].loop);
 							}
 						break;
 
 						case 'right': 
+						case 'below':
 							if(this.currentAnimation !== AnimationTypes.WALK_R) {
 								this.play(AnimationTypes.WALK_R, animations[AnimationTypes.WALK_R].frameRate, animations[AnimationTypes.WALK_R].loop);
 							}
