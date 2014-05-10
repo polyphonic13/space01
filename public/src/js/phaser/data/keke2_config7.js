@@ -10899,7 +10899,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -11045,7 +11045,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -11137,7 +11137,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -11178,7 +11178,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -11270,7 +11270,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -11311,7 +11311,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -11438,7 +11438,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -11461,7 +11461,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -11484,7 +11484,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -11507,7 +11507,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							}
 							]
@@ -12232,7 +12232,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -12443,7 +12443,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -12563,7 +12563,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -14798,7 +14798,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -15028,7 +15028,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -15202,7 +15202,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -15891,7 +15891,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -15950,7 +15950,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -17157,7 +17157,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -17344,7 +17344,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -17367,7 +17367,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							}
 							// end sector 2 terrain
@@ -17673,7 +17673,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -17696,7 +17696,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							}
 							// end sector 3 terrain
@@ -17825,7 +17825,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -17866,7 +17866,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -17944,7 +17944,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -17967,7 +17967,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -17990,7 +17990,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							}
 							// end sector 4 terrain
@@ -18225,7 +18225,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -18248,7 +18248,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -18271,7 +18271,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							}
 							// end sector 5 terrain
@@ -18543,7 +18543,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							},
 							{
@@ -18778,7 +18778,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							}
 							// end sector 7 terrain
@@ -24150,7 +24150,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating02
 								}
 							},
 							{
@@ -24173,7 +24173,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating02
 								}
 							},
 							{
@@ -24196,7 +24196,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							}
 							]
@@ -24263,7 +24263,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating02
 								}
 							},
 							{
@@ -24286,7 +24286,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating02
 								}
 							},
 							{
@@ -24309,7 +24309,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							}
 							]
@@ -24376,7 +24376,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating02
 								}
 							},
 							{
@@ -24399,7 +24399,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating02
 								}
 							}
 							]
@@ -24466,7 +24466,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating02
 								}
 							},
 							{
@@ -24489,7 +24489,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating01
 								}
 							}
 							]
@@ -24545,18 +24545,41 @@ Polyworks.Config = (function() {
 								attrs: {
 									img: 'rockPlatform01',
 									phaser: {
-										width: (stageUnit * 1.5),
+										width: (stageUnit * 2),
 										height: (stageUnit * 0.5)
 									},
 									start: {
-										x: -(stageUnit * 77),
+										x: -(stageUnit * 80),
 										y: winH - (stageUnit * 10)
 									},
 									physics: {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating02
+								}
+							},
+							{
+								name: 'sector6-platform01',
+								cl: 'ReactingTerrain',
+								reaction: {
+									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+								},
+								attrs: {
+									img: 'rockPlatform01Animated',
+									phaser: {
+										width: (stageUnit * 1.5),
+										height: (stageUnit * 0.5)
+									},
+									start: {
+										x: -(stageUnit * 77),
+										y: winH - (stageUnit * 9)
+									},
+									physics: {
+										immovable: true
+									},
+									defaultAnimation: '',
+									animations: rockPlatformDisintegrating02
 								}
 							},
 							{
@@ -24579,7 +24602,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating02
 								}
 							},
 							{
@@ -24602,7 +24625,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating02
 								}
 							},
 							{
@@ -24625,7 +24648,7 @@ Polyworks.Config = (function() {
 										immovable: true
 									},
 									defaultAnimation: '',
-									animations: rockPlatformDisintegrating
+									animations: rockPlatformDisintegrating02
 								}
 							}
 							]
@@ -24816,8 +24839,8 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 1.5)
 							},
 							start: {
-								x: -(stageUnit * 77),
-								y: winH - (stageUnit * 13)
+								x: -(stageUnit * 42),
+								y: winH - (stageUnit * 4.5)
 							}
 						}
 					}
@@ -24839,8 +24862,8 @@ Polyworks.Config = (function() {
 								height: (stageUnit * 3)
 							},
 							start: {
-								x: (stageWidth) - (stageUnit * 2),
-								y: winH - (stageUnit * 3.5)
+								x: -(stageUnit * 81),
+								y: winH - (stageUnit * 13)
 							}
 						}
 					}
