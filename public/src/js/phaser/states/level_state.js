@@ -162,11 +162,13 @@ Polyworks.LevelState = (function() {
 
 	LevelState.prototype.onPauseState = function() {
 		// trace('LevelState['+this.model.name+']/onPauseState');
-		LevelState._super.onPauseState.call(this);
-		if(this.paused) {
-			this.pauseState();
-		} else {
-			this.resumeState();
+		if(!this.triggeredCleared) {
+			LevelState._super.onPauseState.call(this);
+			if(this.paused) {
+				this.pauseState();
+			} else {
+				this.resumeState();
+			}
 		}
 	};
 	
