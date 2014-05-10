@@ -24911,6 +24911,26 @@ Polyworks.Config = (function() {
 					]
 				},
 				{
+					name: 'completed-group',
+					cl: 'GroupCollection',
+					attrs: [
+					{
+						name: 'completed',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							y: winH - (stageUnit * 3),
+							style: { 
+								font: 'bold ' + fontSizes.xs + 'px "Waiting for the Sunrise"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'coming soon: keke journeys into the crystal caves\nin T H E  G R E Y  E X P A N S E  2'
+						}
+					}
+					]
+				},
+				{
 					name: 'completed-controls',
 					cl: 'ControlButtons',
 					type: 'completed',
