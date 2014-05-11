@@ -51,6 +51,7 @@ Polyworks.MapState = (function() {
 		this.model.levelInfoCollection = [];
 		var levelInfoBackgrounds = this.model.levelInfoBackgrounds;
 		var levelInfoTitles = this.model.levelInfoTitles;
+		var levelInfoDescriptions = this.model.levelInfoDescriptions;
 		var levelCount = PolyworksGame.levelCount;
 		var levelInfoConfig;
 		var levelIdx;
@@ -87,6 +88,10 @@ Polyworks.MapState = (function() {
 						}
 						break;
 
+						case 'levelDescription':
+						levelInfoGroup[idx].attrs.defaultContent = levelInfoDescriptions[i];
+						break;
+						
 						case 'levelStatus': 
 						levelInfoGroup[idx].attrs.defaultContent = levelInfo.statusText;
 						break;

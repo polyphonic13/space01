@@ -50,7 +50,7 @@ Polyworks.Config = (function() {
 		};
 
 		var fontSizes = {
-			xs: (stageUnit * 0.5),
+			xs: (stageUnit * 0.6),
 			sm: (stageUnit * 0.8),
 			md: (stageUnit * 0.75),
 			lg: (stageUnit * 1.0),
@@ -302,6 +302,21 @@ Polyworks.Config = (function() {
 				start: levelInfoAttrs.title.start
 			}
 		}
+		];
+
+		var levelInfoDescriptions = [
+		'keke awakes to find herself in a colorless world.\nexplore the forest entrance and\nfind the crystal.',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		'',
+		''
 		];
 
 		var c = {
@@ -1368,6 +1383,20 @@ Polyworks.Config = (function() {
 					}
 				},
 				{
+					name: 'levelDescription',
+					cl: 'Text',
+					attrs: {
+						alignX: 'center',
+						alignY: 'center',
+						style: { 
+							font: 'bold ' + fontSizes.xs + 'px "Waiting for the Sunrise"', 
+							fill: '#000000',
+							align: 'center'
+						},
+						defaultContent: ''
+					}
+				},
+				{
 					name: 'playButtonSmall',
 					cl: 'InputButton',
 					attrs: {
@@ -2088,6 +2117,20 @@ Polyworks.Config = (function() {
 					levelInfoTitles[9],
 					levelInfoTitles[10],
 					levelInfoTitles[11]
+				],
+				levelInfoDescriptions: [
+					levelInfoDescriptions[0],
+					levelInfoDescriptions[1],
+					levelInfoDescriptions[2],
+					levelInfoDescriptions[3],
+					levelInfoDescriptions[4],
+					levelInfoDescriptions[5],
+					levelInfoDescriptions[6],
+					levelInfoDescriptions[7],
+					levelInfoDescriptions[8],
+					levelInfoDescriptions[9],
+					levelInfoDescriptions[10],
+					levelInfoDescriptions[11]
 				],
 				attrs: [
 				{
