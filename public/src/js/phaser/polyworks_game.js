@@ -73,7 +73,7 @@ PolyworksGame = (function() {
 			_checkOrientation();
 			_getSavedData();
 
-			if(Polyworks.DeviceUtils.isIphone() && viewedOnce === '0') {
+			if(Polyworks.DeviceUtils.isIphone()) {
 				document.getElementById('iphoneTip').style.display = 'block';
 				this.tipDisplayed = true;
 			}

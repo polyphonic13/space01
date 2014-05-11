@@ -92,12 +92,12 @@ Polyworks.MapState = (function() {
 						levelInfoGroup[idx].attrs.defaultContent = levelInfoDescriptions[i];
 						break;
 						
-						case 'levelStatus': 
-						levelInfoGroup[idx].attrs.defaultContent = levelInfo.statusText;
-						break;
-
 						case 'highScore': 
 						levelInfoGroup[idx].attrs.defaultContent = 'high score: ' + levelInfo.highScore;
+						break;
+
+						case 'levelStatus': 
+						levelInfoGroup[idx].attrs.defaultContent = levelInfo.statusText;
 						break;
 
 						default: 
