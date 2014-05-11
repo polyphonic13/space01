@@ -305,18 +305,18 @@ Polyworks.Config = (function() {
 		];
 
 		var levelInfoDescriptions = [
-		'where am i? where has all of the color gone?\nthis forest looks scary, but\ni see something blue up in that tree.',
-		'gross! caterpillars. they\'re the worst.\ni need to keep finding crystals and lollipops.',
-		'climbing trees is so much fun!\ncrystals of different colors are everywhere.\ni have to get more.',
-		'this forest is huge.\ni think i see thorns up ahead.\ni better avoid those.',
-		'there is a hill here.\nit looks like the forest is going up.\ni hope it ends soon.',
+		'where am i? what happened to the colors?\ni see something blue up in the tree over there.',
+		'CATERPILLARS?!\ni\'m scared.\ni want more lollipops.',
+		'climbing trees is so much fun!\ni wonder how many\ndifferent crystal colors i can find...',
+		'this is a big forest.\ni think i see thorns ahead.\ni better avoid those.',
+		'i hope this forest ends soon.',
 		'that river looks fast.\ni don\'t want to get swept away.\ni\'ll have to jump across the rocks.',
 		'wow! look at this mountain.\ni am going to have to climb it.',
-		'spiders?\nthey are almost as bad as caterpillars.',
+		'SPIDERS?!',
 		'i think i see the top of the mountain.\njust a little bit further...',
-		'climbing down the mountain is just as scary.',
-		'i have to make sure that i don\'t\nfall off of these crumbling rocks',
-		'a cave! let me see what\'s inside.'
+		'climbing down the mountain is so scary...',
+		'the rocks are crumbling! i hope i don\'t fall off...',
+		'a cave! let me see what\'s inside...'
 		];
 
 		var c = {
