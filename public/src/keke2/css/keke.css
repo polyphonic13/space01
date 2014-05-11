@@ -75,6 +75,12 @@ body, canvas {
 	z-index: 1;
 }
 
+#adContainer {
+	width: 100%;
+	height: 100%;
+
+}
+
 #iphoneTip {
 	width: 100%;
 	height: 10%;

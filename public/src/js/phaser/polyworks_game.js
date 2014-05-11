@@ -394,7 +394,7 @@ PolyworksGame = (function() {
 		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
 		PolyworksGame.changeState(stateId);
 
-		Polyworks.AdManager.displayInterstitial(stateId);
+		Polyworks.AdManager.adCheck(PolyworksGame.currentLevel);
 	}
 	
 	function _onNextLevel(event) {
@@ -412,7 +412,7 @@ PolyworksGame = (function() {
 		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
 		PolyworksGame.changeState(stateId);
 
-		Polyworks.AdManager.displayInterstitial(stateId);
+		Polyworks.AdManager.adCheck(PolyworksGame.currentLevel);
 	}
 	
 	function _onLevelCleared(event) {
@@ -471,6 +471,7 @@ PolyworksGame = (function() {
 			this
 		);
 		PolyworksGame.levelCount = levelCount;
+		Polyworks.AdManager.init(levelCount);
 		trace('PolyworksGame/_initStates, _stageInitialized = ' + _stageInitialized + ', _states = ', _states, '\t_levels = ', _levels);
 		if(_stageInitialized) {
 			// if(PolyworksGame.savedState !== '' && PolyworksGame.currentState !== _model.initialState) {

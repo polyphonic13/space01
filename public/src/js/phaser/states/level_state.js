@@ -33,8 +33,8 @@ Polyworks.LevelState = (function() {
 		// create views and controls with super
 		LevelState._super.createState.call(this);
 
-		Polyworks.EventCenter.bind(Polyworks.Events.AD_STARTED, this.onPauseState, this);
-		Polyworks.EventCenter.bind(Polyworks.Events.AD_COMPLETED, this.onResumeState, this);
+		// Polyworks.EventCenter.bind(Polyworks.Events.AD_STARTED, this.onPauseState, this);
+		// Polyworks.EventCenter.bind(Polyworks.Events.AD_COMPLETED, this.onResumeState, this);
 
 		this.requirements = this.getChildByName('requirements');
 		// trace('\n\n\trequirements = ', this.requirements, '\tgroup = ', this.requirements.group);
@@ -62,9 +62,9 @@ Polyworks.LevelState = (function() {
 		// trace('LevelState['+this.model.name+']/createState\n\tplayerStart = ', playerStart);
 		this.createPlayer(playerStart, PolyworksGame.startingHealth);
 		trace('end of create state');
-		if(PolyworksGame.adPlaying) {
-			this.onPauseState();
-		}
+		// if(PolyworksGame.adPlaying) {
+		// 	this.onPauseState();
+		// }
 	};
 
 	LevelState.prototype.createPlayer = function(start, health) {
@@ -98,7 +98,7 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.update = function() {
-		if(!this.paused) {
+		if(!this.paused && !PolyworksGame.adPlaying) {
 			// trace('LevelState['+this.model.name+']/update');
 			// if(this.requirementsMet && (this.player.body.x >= this.model.bounds.end)) {
 			if(this.requirementsMet && this.allGoalsReached) {
@@ -181,8 +181,10 @@ Polyworks.LevelState = (function() {
 	
 	LevelState.prototype.onResumeState = function() {
 		// trace('LevelState['+this.model.name+']/onResumeState');
-		LevelState._super.onResumeState.call(this);
-		this.resumeState();
+		if(!PolyworksGame.adPlaying) {
+			LevelState._super.onResumeState.call(this);
+			this.resumeState();
+		}
 	};
 	
 	LevelState.prototype.pauseState = function() {
