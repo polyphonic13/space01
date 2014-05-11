@@ -149,5 +149,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-connect');
 	grunt.loadTasks('grunt/tasks');
 	
-	grunt.registerTask('default', ['projectDeploySetup', 'concat:project', 'stripTraceStatements', 'uglify', 'copy', 'createProjectHtml']);
+	grunt.registerTask('default', ['projectDeploySetup', 'concat:project', /*'stripTraceStatements',*/ 'uglify', 'copy:project', 'createProjectHtml']);
 };

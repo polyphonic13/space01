@@ -102,38 +102,40 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.updatePosition = function() {
 		// trace('Player/updatePosition, x = ' + this.body.x);
-		if(this.initialPosition) {
-			this.initialPosition = false;
-			this.activateGravity();
-		}
-
-		this.velX = 0;
-		this.velY = 0;
-		var attrs = this.model.attrs;
-
-		if (this.activeControls[Polyworks.InputCodes.LEFT]) {
-			this.velX = -attrs.speed.x;
-			attrs.facingForward = false;
-		}
-		else if (this.activeControls[Polyworks.InputCodes.RIGHT]) {
-			this.velX = attrs.speed.x;
-			attrs.facingForward = true;
-		}
-
-		this.body.velocity.x = this.velX;
-
-		if(this.activeControls[Polyworks.InputCodes.UP] || this.activeControls[Polyworks.InputCodes.SPACE]) {
-			if(attrs.grounded && !attrs.justJumped) {
-				this.velY = -attrs.speed.y;
-				this.body.velocity.y = this.velY;
-				attrs.grounded = false;
-				attrs.jumping = true;
-				attrs.justJumped = true;
-			} else {
-				this.velY = 0;
+		if(!PolyworksGame.adPlaying) {
+			if(this.initialPosition) {
+				this.initialPosition = false;
+				this.activateGravity();
 			}
-		} else if(this.activeControls[Polyworks.InputCodes.DOWN]) {
-			// trace('Player/updatePosition, down is active');
+
+			this.velX = 0;
+			this.velY = 0;
+			var attrs = this.model.attrs;
+
+			if (this.activeControls[Polyworks.InputCodes.LEFT]) {
+				this.velX = -attrs.speed.x;
+				attrs.facingForward = false;
+			}
+			else if (this.activeControls[Polyworks.InputCodes.RIGHT]) {
+				this.velX = attrs.speed.x;
+				attrs.facingForward = true;
+			}
+
+			this.body.velocity.x = this.velX;
+
+			if(this.activeControls[Polyworks.InputCodes.UP] || this.activeControls[Polyworks.InputCodes.SPACE]) {
+				if(attrs.grounded && !attrs.justJumped) {
+					this.velY = -attrs.speed.y;
+					this.body.velocity.y = this.velY;
+					attrs.grounded = false;
+					attrs.jumping = true;
+					attrs.justJumped = true;
+				} else {
+					this.velY = 0;
+				}
+			} else if(this.activeControls[Polyworks.InputCodes.DOWN]) {
+				// trace('Player/updatePosition, down is active');
+			}
 		}
 	};
 	

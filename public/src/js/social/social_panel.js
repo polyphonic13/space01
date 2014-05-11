@@ -4,14 +4,14 @@ Polyworks.SocialPanel = (function() {
 
 	var module = {
 		init: function(params) {
-			// trace('SocialPanel/init, params = ', params);
+			// // trace('SocialPanel/init, params = ', params);
 			_model = Polyworks.Utils.extend(_model, params);
 			_initViews();
 			_addListeners();
 		},
 
 		show: function(params) {
-			trace('SocialPanel/show, params = ', params);
+			// trace('SocialPanel/show, params = ', params);
 			var elements = params.value;
 			_model.parentEl.style.display = 'block';
 			Polyworks.Utils.each(elements,
@@ -39,20 +39,20 @@ Polyworks.SocialPanel = (function() {
 		},
 
 		buttonClick: function(network) {
-			trace('SocialPanel/buttonClick, network = ' + network + '\n\tcurrentActionType = ' + _model.currentActionType);
+			// trace('SocialPanel/buttonClick, network = ' + network + '\n\tcurrentActionType = ' + _model.currentActionType);
 			var networkActions = _model.socialActions[network];
 			if(networkActions) {
-				trace('\tnetworkActions = ', networkActions);
+				// trace('\tnetworkActions = ', networkActions);
 				var socialAction = networkActions[_model.currentActionType];
 				if(socialAction) {
-					trace('\tsocialAction = ', socialAction);
+					// trace('\tsocialAction = ', socialAction);
 					var url;
 					if(socialAction['params']) {
 						url = socialAction['url'] + Polyworks.Utils.parseMarkup(socialAction['params'], _model, true);
 					} else {
 						url = socialAction['url'];
 					}
-					trace('\turl = ' + url);
+					// trace('\turl = ' + url);
 					if(url.indexOf('mailto') > -1) {
 						if(Polyworks.DeviceUtils.isIphone() || Polyworks.DeviceUtils.isAndroid()) {
 							window.location.href = url;
@@ -153,7 +153,7 @@ Polyworks.SocialPanel = (function() {
 				}
 				verticalTotal += attrs.size.height;
 			}
-			trace('\tVERTICAL TOTal = ' + verticalTotal);
+			// trace('\tVERTICAL TOTal = ' + verticalTotal);
 			var btnOffset = (idx * attrs.size.height) +  (idx * attrs.spacer) + offset;
 			style.top = ((winH/2) - (verticalTotal/2) + (btnOffset)) + 'px';
 		} else if(vertical < 0) {
@@ -161,7 +161,7 @@ Polyworks.SocialPanel = (function() {
 		} else {
 			style.top = vertical + 'px';
 		}
-		trace('RETURNING: ', style);
+		// trace('RETURNING: ', style);
 		return style;
 	}
 	
@@ -196,7 +196,7 @@ Polyworks.SocialPanel = (function() {
 	}
 
 	function _eventHandler(event) {
-		trace('SocialPanel/_eventHandler event = ', event);
+		// trace('SocialPanel/_eventHandler event = ', event);
 		var listener;
 		Polyworks.Utils.each(_model.listeners,
 			function(l) {
@@ -208,12 +208,12 @@ Polyworks.SocialPanel = (function() {
 		);
 		var match = listener.match;
 		if(match) {
-			trace('\tthere is a match');
+			// trace('\tthere is a match');
 			if(match.value === event.value) {
-				trace('\t\tvalue matches the event value');
+				// trace('\t\tvalue matches the event value');
 				_executeActions(match.actions);
 			} else if(listener.nonmatch) {
-				trace('\t\tnonmatch');
+				// trace('\t\tnonmatch');
 				_executeActions(listener.nonmatch.actions);
 			}
 		} else {
@@ -222,10 +222,10 @@ Polyworks.SocialPanel = (function() {
 	}
 	
 	function _executeActions(actions) {
-		trace('SocialPanel/_executeActions');
+		// trace('SocialPanel/_executeActions');
 		Polyworks.Utils.each(actions,
 			function(action) {
-				trace('\tcalling: ' + action.method + ', passing: ', action.data);
+				// trace('\tcalling: ' + action.method + ', passing: ', action.data);
 				Polyworks.SocialPanel[action.method](action.data);
 			},
 			this

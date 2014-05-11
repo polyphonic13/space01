@@ -24,8 +24,10 @@ Polyworks.AdManager = (function() {
 			for(var i = 0; i < levelCount; i++) {
 				_levels[i] = 0;
 			}
+			if(typeof(TGS) !== 'undefined') {
+				TGS.Init(_tgs_config);
+			}
 			trace('AdManager/init, _levels = ', _levels);
-			TGS.Init(_tgs_config);
 		},
 		
 		adCheck: function(idx) {
@@ -44,7 +46,12 @@ Polyworks.AdManager = (function() {
 			trace('AdManager/displayInterstitial');
 			PolyworksGame.adPlaying = true;
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.AD_STARTED });
-			TGS.Advertisement.DisplayInterstitialAd(_display_config);		
+			if(typeof(TGS) !== 'undefined') {
+				trace('WARNING: TGS is not defined');
+				TGS.Advertisement.DisplayInterstitialAd(_display_config);		
+			} else {
+				_finishAdSession();
+			}
 		}
 	};
 	
