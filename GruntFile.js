@@ -87,16 +87,26 @@ module.exports = function(grunt) {
 				{
 					expand: true,
 					cwd: '<%= projectSrcDir %>/images/',
-					src: [ '**' ],
+					src: [ '**/*' ],
 					dest: '<%= deployDir %>/images/'
 				},
 				{
 					expand: true, 
 					cwd: '<%= projectSrcDir %>/css/',
-					src: [ '**' ],
-					dest: '<%= deployDir %>/css'
+					src: [ '**/*' ],
+					dest: '<%= deployDir %>/css/'
 				}
 				]
+			},
+			
+			third_party: {
+				files: [
+				{
+					expand: true,
+					cwd: '<%= srcDir %>/js/third_party/',
+					src: [ '**/*' ],
+					dest: '<%= deployDir %>/js/third_party/'
+				}]
 			}
 
 		},
@@ -139,5 +149,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-connect');
 	grunt.loadTasks('grunt/tasks');
 	
-	grunt.registerTask('default', ['projectDeploySetup', 'concat:project', 'stripTraceStatements', 'uglify', 'copy:project', 'createProjectHtml']);
+	grunt.registerTask('default', ['projectDeploySetup', 'concat:project', 'stripTraceStatements', 'uglify', 'copy', 'createProjectHtml']);
 };
