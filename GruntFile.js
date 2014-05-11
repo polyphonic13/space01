@@ -75,22 +75,8 @@ module.exports = function(grunt) {
 			project: {
 				src: [ '<%= deployDir %>/js/<%= project %>.js' ],
 				dest: '<%= deployDir %>/js/<%= project %>.min.js'
-			},
+			}
 			
-			facebook: {
-				src: [ '<%= srcDir %>/js/social/facebook_adapter.js' ],
-				dest: '<%= deployDir %>/js/social/facebook_adapter.js'
-			},
-
-			twitter: {
-				src: [ '<%= srcDir %>/js/social/twitter_adapter.js' ],
-				dest: '<%= deployDir %>/js/social/twitter_adapter.js'
-			},
-
-			google: {
-				src: [ '<%= srcDir %>/js/social/google_adapter.js' ],
-				dest: '<%= deployDir %>/js/social/google_adapter.js'
-			},
 		},
 /////// COPYING
 		copy: {

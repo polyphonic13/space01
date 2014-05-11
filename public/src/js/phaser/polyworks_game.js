@@ -34,6 +34,7 @@ PolyworksGame = (function() {
 		previousState: '',
 		savedState: '',
 		viewedOnce: '0',
+		adPlaying: false,
 		tipDisplayed: false,
 		isLandscape: false,
 		gameOver: false,
@@ -120,7 +121,6 @@ PolyworksGame = (function() {
 					// trace(_states);
 					PolyworksGame.addLoadingDiv();
 					PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
-
 				} else {
 					trace('ERROR: state['+id+'] not found');
 				}
@@ -393,6 +393,8 @@ PolyworksGame = (function() {
 		PolyworksGame.levelScore = 0;
 		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
 		PolyworksGame.changeState(stateId);
+
+		Polyworks.AdManager.displayInterstitial(stateId);
 	}
 	
 	function _onNextLevel(event) {
@@ -409,6 +411,8 @@ PolyworksGame = (function() {
 		PolyworksGame.levelScore = 0;
 		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
 		PolyworksGame.changeState(stateId);
+
+		Polyworks.AdManager.displayInterstitial(stateId);
 	}
 	
 	function _onLevelCleared(event) {

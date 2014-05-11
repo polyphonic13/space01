@@ -306,13 +306,13 @@ Polyworks.Config = (function() {
 
 		var levelInfoDescriptions = [
 		'where am i? what happened to the colors?\ni see something blue up in the tree over there.',
-		'CATERPILLARS?!\ni\'m scared.\ni want more lollipops.',
+		'CATERPILLARS?!\nthey are so gross.\ni want more lollipops.',
 		'climbing trees is so much fun!\ni wonder how many\ndifferent crystal colors i can find...',
 		'this is a big forest.\ni think i see thorns ahead.\ni better avoid those.',
 		'i hope this forest ends soon.',
 		'that river looks fast.\ni don\'t want to get swept away.\ni\'ll have to jump across the rocks.',
 		'wow! look at this mountain.\ni am going to have to climb it.',
-		'SPIDERS?!',
+		'SPIDERS?!\ni hate spiders!',
 		'i think i see the top of the mountain.\njust a little bit further...',
 		'climbing down the mountain is so scary...',
 		'the rocks are crumbling! i hope i don\'t fall off...',

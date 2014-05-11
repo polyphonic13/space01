@@ -1,6 +1,8 @@
 Polyworks.Events = {
 	STAGE_INITIALIZED: 'stageInitialized',
 	CONFIG_LOADED: 'configLoaded',
+	AD_STARTED: 'adStarted',
+	AD_COMPLETED: 'adCompleted',
 	BUTTON_PRESSED: 'buttonPressed',
 	BUTTON_RELEASED: 'buttonReleased',
 	CONTROL_PRESSED: 'controlPressed',

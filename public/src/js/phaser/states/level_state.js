@@ -13,6 +13,7 @@ Polyworks.LevelState = (function() {
 		this.cursors;
 		this.player; 
 		this.quitButton;
+		
 	};
 	
 	LevelState.prototype.preload = function() {
@@ -20,17 +21,20 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.create =  function() {
-		// trace('LevelState['+this.model.name+']/create');
+		// trace('LevelState['+this.model.name+']/create, adCompleted = ' + this.adCompleted);
 		LevelState._super.create.call(this);
 	};
 	
 	LevelState.prototype.createState = function() {
-
+		// trace('LevelState['+this.model.name+']/createState');
 		this.triggeredCleared = false;
 		this.requirementsMet = false; 
 
 		// create views and controls with super
 		LevelState._super.createState.call(this);
+
+		Polyworks.EventCenter.bind(Polyworks.Events.AD_STARTED, this.onPauseState, this);
+		Polyworks.EventCenter.bind(Polyworks.Events.AD_COMPLETED, this.onResumeState, this);
 
 		this.requirements = this.getChildByName('requirements');
 		// trace('\n\n\trequirements = ', this.requirements, '\tgroup = ', this.requirements.group);
@@ -58,6 +62,9 @@ Polyworks.LevelState = (function() {
 		// trace('LevelState['+this.model.name+']/createState\n\tplayerStart = ', playerStart);
 		this.createPlayer(playerStart, PolyworksGame.startingHealth);
 		trace('end of create state');
+		if(PolyworksGame.adPlaying) {
+			this.onPauseState();
+		}
 	};
 
 	LevelState.prototype.createPlayer = function(start, health) {
@@ -239,6 +246,9 @@ Polyworks.LevelState = (function() {
 	LevelState.prototype.shutdown = function() {
 		// trace('LevelState['+this.model.name+']/shutdown');
 		Polyworks.EventCenter.unbind(Polyworks.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
+		Polyworks.EventCenter.unbind(Polyworks.Events.AD_STARTED, this.onPauseState, this);
+		Polyworks.EventCenter.unbind(Polyworks.Events.AD_COMPLETED, this.onResumeState, this);
+
 		this.destroyPlayer();
 		LevelState._super.shutdown.call(this);
 	};
