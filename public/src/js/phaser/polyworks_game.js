@@ -53,6 +53,7 @@ PolyworksGame = (function() {
 					} 
 				} 
 			);
+			
 			// window.addEventListener("orientationchange", 
 			// 	function() {
 			// 		trace('window.orientationchange');
@@ -471,7 +472,7 @@ PolyworksGame = (function() {
 			this
 		);
 		PolyworksGame.levelCount = levelCount;
-		Polyworks.AdManager.init(levelCount);
+		// Polyworks.AdManager.init(levelCount);
 		trace('PolyworksGame/_initStates, _stageInitialized = ' + _stageInitialized + ', _states = ', _states, '\t_levels = ', _levels);
 		if(_stageInitialized) {
 			// if(PolyworksGame.savedState !== '' && PolyworksGame.currentState !== _model.initialState) {
@@ -526,6 +527,10 @@ PolyworksGame = (function() {
 	
 	return polyworks_game;
 }());
+
+Polyworks.DOMManager.addElements(domConfig.head.elements, document.getElementsByTagName('head')[0]);
+Polyworks.DOMManager.addElements(domConfig.body.elements, document.getElementsByTagName('body')[0]);
+
 
 PolyworksGame.begin({
 	name: 'kekeAndTheGreyExpanse',

@@ -1,4 +1,4 @@
-Polyworks.DomManager = (function() {
+Polyworks.DOMManager = (function() {
 	var bodyEl = document.getElementsByTagName('body')[0];
 	
 	var dom_manager = {
@@ -7,11 +7,12 @@ Polyworks.DomManager = (function() {
 			Polyworks.Utils.each(
 				elements,
 				function(element) {
+					trace('DOMManager/addElements, type = ' + element.type + ', element = ', element);
 					var el = document.createElement(element.type);
 
-					if(element.attrs) { this.addAttributes(element.attrs, el); }
-					if(element.css) { this.addStyle(element.css, el); }
-					if(element.className) { el.className = className; }
+					if(element.attrs) { el = this.addAttributes(element.attrs, el); }
+					if(element.css) { el = this.addStyle(element.css, el); }
+					if(element.className) { el.className = element.className; }
 					if(element.html) { el.innerHTML = element.html; }
 
 					pops.appendChild(el);
