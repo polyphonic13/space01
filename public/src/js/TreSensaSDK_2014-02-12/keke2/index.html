@@ -1,0 +1,67 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>keke and the grey expanse</title>
+<!--	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" /> -->
+	<meta property="og:title" content="keke and the grey expanse" />
+	<meta property="og:description" content="keke enters a strange new land without color" />
+	<meta property="og:url" content="http://www.polyworksgames.com/games/keke2/" />
+	<meta property="og:image" content="http://www.polyworksgames.com/games/keke2/images/keke_posed02.png" />
+	<meta property="og:image:width" content="512" />
+	<meta property="og:image:height" content="512" />
+	<meta property="og:site_name" content="Polyworks Games" />
+	<meta property="og:type" content="games" />
+	<meta property="fb:app_id" content="371443576332187" />
+	<link rel="canonical" href="http://www.polyworksgames.com/games/keke2/">
+	<link rel="stylesheet" href="css/keke.css" />
+</head>
+	<body onload="start();">
+		<div id="fb-root"></div>
+	<div id="loadingHolder"></div>
+	<div id="gameContainer"></div>
+	<div id="socialButtons">
+<!--		<a id="mailIcon" href="mailto:keke@polyworksgames.com?subject=keke%20and%20T%20H%20E%20%20G%20R%20E%20Y%20%20E%20X%20P%20A%20N%20S%20E" target="blank"></a> -->
+	</div>
+	<div id="iphoneTip" class="gameText1 mediumFont">to enter fullscreen, rotate to portrait then back to landscape</div>
+	<div id="adContainer"></div>
+	<div id="orientationMessage"></div>
+	<script type="text/javascript">
+
+	  WebFontConfig = {
+	    // google: { families: [ 'Sue+Ellen+Francisco::latin', 'Smythe::latin', 'Waiting+for+the+Sunrise::latin' ] }
+	    google: { families: [ 'Waiting+for+the+Sunrise::latin' ] }
+	  };
+	  (function() {
+	    var wf = document.createElement('script');
+	    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+	      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+	    wf.type = 'text/javascript';
+	    wf.async = 'true';
+	    var s = document.getElementsByTagName('script')[0];
+	    s.parentNode.insertBefore(wf, s);
+	  })(); 
+
+	</script>
+<!--	<script type="text/javascripts" src="http://static.tresensa.com/lib/tgs/tgs-0.3.min.js"></script> -->
+
+
+	
+<script src="js/keke2.min.js" type="text/javascript"></script>
+
+
+	<script type="text/javascript">
+		function start() {
+			// var gameContainer = document.getElementById('gameContainer');
+			// var startFullscreen = document.getElementById('startFullscreen');
+			// startFullscreen.parentNode.removeChild(startFullscreen);
+			// console.log('fullScreenApi = ', fullScreenApi);
+			// window.fullScreenApi.requestFullScreen(document.documentElement);
+			PolyworksGame.begin({
+				name: 'kekeAndTheGreyExpanse',
+				aspectRatio: [16, 9]
+			});			
+		}
+	</script>
+<!--	<button id="startFullscreen" type="button" onclick="start()">Start</button> -->
+</body>
+</html>

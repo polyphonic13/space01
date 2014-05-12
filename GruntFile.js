@@ -97,18 +97,17 @@ module.exports = function(grunt) {
 					dest: '<%= deployDir %>/css/'
 				}
 				]
-			},
-			
-			third_party: {
-				files: [
-				{
-					expand: true,
-					cwd: '<%= srcDir %>/js/third_party/',
-					src: [ '**/*' ],
-					dest: '<%= deployDir %>/js/third_party/'
-				}]
 			}
 
+		},
+/////// CSS MINIFICATION
+		cssmin: {
+			project: {
+				expand: true,
+				cwd: '<%= deployDir %>/css/',
+				src: ['*.css', '!*.min.css'],
+				dest: '<%= deployDir %>/css/'
+			}
 		},
 /////// LOCAL SERVER
 		connect: {
@@ -123,31 +122,17 @@ module.exports = function(grunt) {
 			server: { 
 				port: 9999,
 				base: 'public',
-				keepAlive: true,
-				options: {
-					middleware: function(connect, options) {
-						return [
-							function(req, res, next) {
-								// If path has .json, accept json
-								if (url.parse(req.url).pathname.match(/\.json$/)) {
-									req.headers.accept = 'application/json';
-								}
-								next();
-							},
-								// then serve a static folder
-								connect.static('base/folder/')
-							]
-						}
-					} 
-				} 
+				keepAlive: true
 			}
+		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-connect');
 	grunt.loadTasks('grunt/tasks');
 	
-	grunt.registerTask('default', ['projectDeploySetup', 'concat:project', /*'stripTraceStatements',*/ 'uglify', 'copy:project', 'createProjectHtml']);
+	grunt.registerTask('default', ['projectDeploySetup', 'concat:project', 'stripTraceStatements', 'uglify', 'copy:project', 'cssmin', 'createProjectHtml']);
 };

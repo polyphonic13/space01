@@ -522,6 +522,12 @@ PolyworksGame = (function() {
 			this
 		);
 	}
+
 	
 	return polyworks_game;
 }());
+
+PolyworksGame.begin({
+	name: 'kekeAndTheGreyExpanse',
+	aspectRatio: [16, 9]
+});
