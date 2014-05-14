@@ -185,6 +185,10 @@ PolyworksGame = (function() {
 		}
 	};
 
+	function _addWebFonts(webFonts) {
+		Polyworks.WebFontManager.init(webFonts);
+	}
+	
 	function _addGoogleAnalytics() {
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -355,6 +359,9 @@ PolyworksGame = (function() {
 
 		_model = config.init(Polyworks.Stage);
 		trace(_model);
+		if(_model.webFonts) {
+			_addWebFonts(_model.webFonts);
+		}
 		PolyworksGame.startingHealth = _model.player.attrs.phaser.health;
 		PolyworksGame.phaser = new Phaser.Game(Polyworks.Stage.winW, Polyworks.Stage.winH, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
 	}
@@ -395,7 +402,7 @@ PolyworksGame = (function() {
 		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
 		PolyworksGame.changeState(stateId);
 
-		Polyworks.AdManager.adCheck(PolyworksGame.currentLevel);
+		Polyworks.TGSAdapter.adCheck(PolyworksGame.currentLevel);
 	}
 	
 	function _onNextLevel(event) {
@@ -413,7 +420,7 @@ PolyworksGame = (function() {
 		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
 		PolyworksGame.changeState(stateId);
 
-		Polyworks.AdManager.adCheck(PolyworksGame.currentLevel);
+		Polyworks.TGSAdapter.adCheck(PolyworksGame.currentLevel);
 	}
 	
 	function _onLevelCleared(event) {
@@ -472,14 +479,10 @@ PolyworksGame = (function() {
 			this
 		);
 		PolyworksGame.levelCount = levelCount;
-		// Polyworks.AdManager.init(levelCount);
+		Polyworks.TGSAdapter.init(levelCount);
 		trace('PolyworksGame/_initStates, _stageInitialized = ' + _stageInitialized + ', _states = ', _states, '\t_levels = ', _levels);
 		if(_stageInitialized) {
-			// if(PolyworksGame.savedState !== '' && PolyworksGame.currentState !== _model.initialState) {
-			// 	PolyworksGame.changeState(PolyworksGame.savedState);
-			// } else {
-				PolyworksGame.changeState(_model.initialState);
-			// }
+			PolyworksGame.changeState(_model.initialState);
 		}
 		_statesInialized = true;
 	}

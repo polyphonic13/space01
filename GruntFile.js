@@ -101,14 +101,14 @@ module.exports = function(grunt) {
 
 		},
 /////// CSS MINIFICATION
-		cssmin: {
-			project: {
-				expand: true,
-				cwd: '<%= deployDir %>/css/',
-				src: ['*.css', '!*.min.css'],
-				dest: '<%= deployDir %>/css/'
-			}
-		},
+		// cssmin: {
+		// 	project: {
+		// 		expand: true,
+		// 		cwd: '<%= deployDir %>/css/',
+		// 		src: ['*.css', '!*.min.css'],
+		// 		dest: '<%= deployDir %>/css/'
+		// 	}
+		// },
 /////// LOCAL SERVER
 		connect: {
 			/*
@@ -129,10 +129,10 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	// grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-connect');
 	grunt.loadTasks('grunt/tasks');
 	
-	grunt.registerTask('default', ['projectDeploySetup', 'concat:project', 'stripTraceStatements', 'uglify', 'copy:project', 'cssmin', 'createProjectHtml']);
+	grunt.registerTask('default', ['projectDeploySetup', 'concat:project', 'stripTraceStatements', 'uglify', 'copy:project', /*'cssmin',*/ 'createProjectHtml']);
 };

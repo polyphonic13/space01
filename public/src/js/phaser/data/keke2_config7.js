@@ -732,6 +732,10 @@ Polyworks.Config = (function() {
 				}
 				
 			},
+			// WEB FONTS
+			webFonts: {
+				google: [ 'Waiting+for+the+Sunrise::latin' ]
+			},
 			// SOCIAL
 			social: {
 				parentId: 'socialButtons',
