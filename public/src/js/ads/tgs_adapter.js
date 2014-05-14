@@ -1,4 +1,4 @@
-Polyworks.TGSAdapter = (function() {
+lPolyworks.TGSAdapter = (function() {
 	var LEVEL_PLAYS_PER_AD = 1;
 	
 	var _levels = [];
