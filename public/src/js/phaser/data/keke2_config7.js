@@ -25211,7 +25211,7 @@ Polyworks.Config = (function() {
 			// gameOver
 			{
 				name: 'gameOver',
-				cl: 'MenuState',
+				cl: 'GameOverState',
 				world: {
 					x: 0,
 					y: 0,

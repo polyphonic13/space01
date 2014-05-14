@@ -1,17 +1,12 @@
 Polyworks.MenuState = (function() {
 	Polyworks.Utils.inherits(MenuState, Polyworks.State);
 	
-	var _this;
 	function MenuState(params) {
-		_this = this;
 		MenuState._super.constructor.call(this, params);
 	}
 	
 	MenuState.prototype.createState = function() {
 		MenuState._super.createState.call(this);
-		// this.createControls.call(this);
-
-		// this.addListeners();
 		this.changingState = false;
 	};
 	
@@ -23,10 +18,8 @@ Polyworks.MenuState = (function() {
 		// trace('MenuState/onButtonPressed, changingState = ' + this.changingState + ', event = ');
 		// trace(event);
 		if(event.value === Polyworks.InputCodes.PLAY || event.value === Polyworks.InputCodes.NEXT) {
-			// if(!this.changingState) {
-				PolyworksGame.changeState('level'); 
-				this.changingState = true;
-			// }
+			PolyworksGame.changeState('level'); 
+			this.changingState = true;
 		}
 	};
 	

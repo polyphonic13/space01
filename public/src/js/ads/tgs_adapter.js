@@ -6,7 +6,6 @@ Polyworks.TGSAdapter = (function() {
 	var _tgs_config = {
 		GAME_ID: 'kekeandthegreyexpanse',
 		ADS: {
-			INTERSTITIAL_PLACEMENT_ID: '3092820',
 			INTERSTITIAL_INTERVAL: 5
 		}
 	};

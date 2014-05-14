@@ -96,7 +96,7 @@ Polyworks.State = (function() {
 	};
 
 	State.prototype.createState = function() {
-		trace('State['+this.model.name+']/createState, created = ' + (this.model.get('created')));
+		// trace('State['+this.model.name+']/createState, created = ' + (this.model.get('created')));
 		if(!this.model.get('created')) {
 			this.gameOver = PolyworksGame.gameOver; 
 			this.createWorld();
@@ -128,7 +128,7 @@ Polyworks.State = (function() {
 	
 	State.prototype.createWorld = function() {
 		var world = this.model.world;
-		trace('State['+this.model.name+']/createWorld, x = ' + world.x + ', world.y = ' + world.y + ', width = ' + world.width + ', height = ' + world.height);
+		// trace('State['+this.model.name+']/createWorld, x = ' + world.x + ', world.y = ' + world.y + ', width = ' + world.width + ', height = ' + world.height);
 		PolyworksGame.phaser.world.setBounds(world.x, world.y, world.width, world.height);
 	};
 
