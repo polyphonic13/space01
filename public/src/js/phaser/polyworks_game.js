@@ -532,10 +532,11 @@ PolyworksGame = (function() {
 }());
 
 Polyworks.DOMManager.addElements(domConfig.head.elements, document.getElementsByTagName('head')[0]);
-Polyworks.DOMManager.addElements(domConfig.body.elements, document.getElementsByTagName('body')[0]);
+Polyworks.DOMManager.addElements(domConfig.body.elements, document.getElementsByTagName('body')[0], onElementsAdded);
 
-
-PolyworksGame.begin({
-	name: 'kekeAndTheGreyExpanse',
-	aspectRatio: [16, 9]
-});
+function onElementsAdded() {
+	PolyworksGame.begin({
+		name: 'kekeAndTheGreyExpanse',
+		aspectRatio: [16, 9]
+	});
+}

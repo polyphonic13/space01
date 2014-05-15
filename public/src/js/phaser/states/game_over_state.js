@@ -6,38 +6,16 @@ Polyworks.GameOverState = (function() {
 	}
 	
 	GameOverState.prototype.createState = function() {
-		trace('GameOverState/createState, TGS = ', TGS);
+		// trace('GameOverState/createState, TGS = ', TGS);
 		GameOverState._super.createState.call(this);
 
-		this.addTGSWidget();
+		Polyworks.TGSAdapter.addGameOverWidget();
 	};
 	
-	GameOverState.prototype.addTGSWidget = function() {
-		var winW = Polyworks.Stage.winW; 
-		var winH = Polyworks.Stage.winH;
-		var widgetW = 300;
-		var widgetX = winW/2 - widgetW/2;
-		var widgetY = '10px';
-		var adContainerEl = document.getElementById('adContainer');
-
-		if(typeof(TGS) !== 'undefined') {
-			this.widget = TGS.Widget.CreateWidget({
-				width: widgetW,
-				x: widgetX,
-				y: widgetY,
-				shareMessage: 'i love playing keke and the grey expanse!',
-				parentDiv: adContainerEl
-			});
-		}
-
-	};
-
-	GameOverState.prototype.onButtonPressed = function(event) {
-		trace('GameOverState/onButtonPressed, widget = ', this.widget);
-		if(this.widget) {
-			this.widget.close();
-		}
-		GameOverState._super.onButtonPressed.call(this);
+	GameOverState.prototype.shutdown = function(event) {
+		// trace('GameOverState/shutdown');
+		Polyworks.TGSAdapter.hideGameOverWidget();
+		GameOverState._super.shutdown.call(this);
 	};
 
 	return GameOverState;

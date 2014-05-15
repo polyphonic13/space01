@@ -122,6 +122,12 @@ var domConfig = {
 			}
 		},
 		{
+			type: 'div',
+			attrs: {
+				id: 'endScreenContainer'
+			}
+		},
+		{
 			type: 'div', 
 			attrs: {
 				id: 'orientationMessage'

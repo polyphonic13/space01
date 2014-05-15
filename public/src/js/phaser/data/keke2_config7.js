@@ -445,8 +445,8 @@ Polyworks.Config = (function() {
 				mountainBackgroundL7: 'images/backgrounds/pencil_mountain06-l7-md.gif',
 				mountainBackgroundL8: 'images/backgrounds/pencil_mountain06-l8-md.gif',
 
-				caveBackground02a: 'images/backgrounds/pencil_cave02a.gif',
-				caveBackground02b: 'images/backgrounds/pencil_cave02b.gif',
+				caveBackground02a: 'images/backgrounds/pencil_cave02a-md.gif',
+				caveBackground02b: 'images/backgrounds/pencil_cave02b-md.gif',
 
 				platform: 'images/scenery/platform.png',
 				platformGrey: 'images/scenery/platform_grey.png',
@@ -25236,7 +25236,7 @@ Polyworks.Config = (function() {
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							alignY: 'center',
+							y: (stageUnit * 0.1),
 							style: { 
 								font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',

@@ -2,7 +2,7 @@ Polyworks.DOMManager = (function() {
 	var bodyEl = document.getElementsByTagName('body')[0];
 	
 	var dom_manager = {
-		addElements: function(elements, parentEl) {
+		addElements: function(elements, parentEl, callback, context) {
 			var pops = parentEl || bodyEl;
 			Polyworks.Utils.each(
 				elements,
@@ -19,6 +19,11 @@ Polyworks.DOMManager = (function() {
 				},
 			this
 			);
+			
+			if(callback) {
+				var ctx = context || window;
+				callback.call(ctx);
+			}
 		},
 
 		addAttributes: function(attributes, el) {

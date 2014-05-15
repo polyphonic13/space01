@@ -1,5 +1,6 @@
 Polyworks.TGSAdapter = (function() {
 	var LEVEL_PLAYS_PER_AD = 1;
+	var WIDGET_WIDTH = 300;
 	
 	var _levels = [];
 
@@ -10,7 +11,8 @@ Polyworks.TGSAdapter = (function() {
 		}
 	};
 	
-	var _display_config = {
+	var _endScreenContainer;
+	var _displayConfig = {
 		parentDiv: document.getElementById('adContainer'),
 		blurDiv: document.getElementById('gameContainter'),
 		closeCallback: function() {
@@ -20,6 +22,9 @@ Polyworks.TGSAdapter = (function() {
 	
 	var module = {
 		init: function(levelCount) {
+			_endScreenContainer = document.getElementById('endScreenContainer');
+			trace('TGSAdapter, _endScreenContainer = ', _endScreenContainer);
+			
 			for(var i = 0; i < levelCount; i++) {
 				_levels[i] = 0;
 			}
@@ -46,11 +51,41 @@ Polyworks.TGSAdapter = (function() {
 			PolyworksGame.adPlaying = true;
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.AD_STARTED });
 			if(typeof(TGS) !== 'undefined') {
-				trace('WARNING: TGS is not defined');
-				TGS.Advertisement.DisplayInterstitialAd(_display_config);		
+				TGS.Advertisement.DisplayInterstitialAd(_displayConfig);		
 			} else {
+				trace('WARNING: TGS is not defined');
 				_finishAdSession();
 			}
+		},
+		
+		addGameOverWidget: function() {
+			trace('TGSAdapter/addGameOverWidget');
+			var winW = Polyworks.Stage.winW; 
+			var winH = Polyworks.Stage.winH;
+			var widgetW = WIDGET_WIDTH;
+			var widgetX = winW/4 - widgetW/2;
+			var widgetY = '50px';
+
+			_endScreenContainer.style.display = 'block';
+			
+			if(typeof(TGS) !== 'undefined') {
+				this.widget = TGS.Widget.CreateWidget({
+					width: widgetW,
+					x: widgetX,
+					y: 0,
+					shareMessage: 'i love playing keke and the grey expanse!',
+					parentDiv: _endScreenContainer
+				});
+			}
+
+		},
+
+		hideGameOverWidget: function() {
+			trace('TGSAdapter/hideGameOverWidget');
+			if(this.widget) {
+				this.widget.close();
+			}
+			_endScreenContainer.style.display = 'none';
 		}
 	};
 	
