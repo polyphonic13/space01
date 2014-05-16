@@ -90,9 +90,9 @@ body, canvas {
 
 #endScreenContainer {
 	width: 50%;
-	height: 50%;
+	height: 60%;
 	left: 25%;
-	top: 25%;
+	top: 20%;
 	text-align: center;
 	
 	z-index: 10;

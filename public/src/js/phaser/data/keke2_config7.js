@@ -25236,9 +25236,9 @@ Polyworks.Config = (function() {
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							y: (stageUnit * 0.1),
+							y: 0,
 							style: { 
-								font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
 								align: 'center'
 							},

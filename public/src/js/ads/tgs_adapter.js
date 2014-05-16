@@ -64,7 +64,7 @@ Polyworks.TGSAdapter = (function() {
 			var winH = Polyworks.Stage.winH;
 			var widgetW = WIDGET_WIDTH;
 			var widgetX = winW/4 - widgetW/2;
-			var widgetY = '50px';
+			var widgetY = '0';
 
 			_endScreenContainer.style.display = 'block';
 			
@@ -72,7 +72,7 @@ Polyworks.TGSAdapter = (function() {
 				this.widget = TGS.Widget.CreateWidget({
 					width: widgetW,
 					x: widgetX,
-					y: 0,
+					y: widgetY,
 					shareMessage: 'i love playing keke and the grey expanse!',
 					parentDiv: _endScreenContainer
 				});
