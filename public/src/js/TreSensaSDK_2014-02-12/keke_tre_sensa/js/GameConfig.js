@@ -7,7 +7,7 @@ var GameConfig = {
                     // INFO = 3
                     // VERBOSE = 4
 
-    GAME_ID: 'com.tresensa.test-game',
+    GAME_ID: 'kekeandthegreyexpanse',
     TITLE: 'keke and T H E  G R E Y  E X P A N S E',
     VERSION: '1.0.0',
 
@@ -44,8 +44,8 @@ var GameConfig = {
     },
 
     GoogleAnalytics: {
-        QA_ID:     '',      // Provide a Google Analytics Account ID to be used during game development
-        PROD_ID:   '',      // Provide a Google Analytics Account ID to be used once the game is provided to TreSensa for distribution
-        LABEL: 'Starter Template'
+        QA_ID:     'UA-50665683-2',      // Provide a Google Analytics Account ID to be used during game development
+        PROD_ID:   'UA-50665683-2',      // Provide a Google Analytics Account ID to be used once the game is provided to TreSensa for distribution
+        LABEL: 'keke and the grey expanse'
     }
 };

@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-05-12T09:33:25')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-05-15T21:56:48')})();
 !function(root, factory) {
   if (typeof define === "function" && define.amd) {
     define(factory);
@@ -40458,6 +40458,60 @@ Polyworks.Utils = (function() {
 }());
 
 
+Polyworks.DOMManager = (function() {
+	var bodyEl = document.getElementsByTagName('body')[0];
+	
+	var dom_manager = {
+		addElements: function(elements, parentEl, callback, context) {
+			var pops = parentEl || bodyEl;
+			Polyworks.Utils.each(
+				elements,
+				function(element) {
+					
+					var el = document.createElement(element.type);
+
+					if(element.attrs) { el = this.addAttributes(element.attrs, el); }
+					if(element.css) { el = this.addStyle(element.css, el); }
+					if(element.className) { el.className = element.className; }
+					if(element.html) { el.innerHTML = element.html; }
+
+					pops.appendChild(el);
+				},
+			this
+			);
+			
+			if(callback) {
+				var ctx = context || window;
+				callback.call(ctx);
+			}
+		},
+
+		addAttributes: function(attributes, el) {
+			Polyworks.Utils.each(
+				attributes,
+				function(attribute, key) {
+					el.setAttribute(key, attribute);
+				},
+				this
+			);
+			return el;
+		},
+
+		addStyle: function(styles, el) {
+			Polyworks.Utils.each(
+				styles,
+				function(style, key) {
+					el.style[key] = style;
+				},
+				this
+			);
+			return el;
+		}
+	};
+	
+	return dom_manager;
+}());
+
 Polyworks.DeviceUtils = (function() {
 	var ua = navigator.userAgent.toLowerCase();
     
@@ -40658,6 +40712,49 @@ Polyworks.Storage = (function() {
 //- See more at: http://xme.im/display-fullscreen-website-using-javascript#sthash.7GAbDIex.dpuf
 	
 
+
+Polyworks.WebFontManager = (function() {
+	
+	var webFontManager = {
+		init: function(webFonts) {
+			Polyworks.Utils.each(
+				webFonts,
+				function(webFont, key) {
+					switch(key) {
+						case 'google':
+						this.initGoogle(webFont);
+						break;
+						
+						default: 
+						
+						break;
+					}
+				},
+				this
+			);
+		},
+		
+		initGoogle: function(families) {
+			
+			WebFontConfig = {
+		    // google: { families: [ 'Sue+Ellen+Francisco::latin', 'Smythe::latin', 'Waiting+for+the+Sunrise::latin' ] }
+		    google: { families: families }
+		  };
+		  (function() {
+		    var wf = document.createElement('script');
+		    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+		      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+		    wf.type = 'text/javascript';
+		    wf.async = 'true';
+		    var s = document.getElementsByTagName('script')[0];
+		    s.parentNode.insertBefore(wf, s);
+		  })(); 
+		  
+		}
+	}
+	
+	return webFontManager;
+}());
 
 Polyworks.Events = {
 	STAGE_INITIALIZED: 'stageInitialized',
@@ -41166,18 +41263,21 @@ Polyworks.SocialPanel = (function() {
 
 Polyworks.TGSAdapter = (function() {
 	var LEVEL_PLAYS_PER_AD = 1;
+	var WIDGET_WIDTH = 300;
+
 	
 	var _levels = [];
 
-	var _tgs_config = {
-		GAME_ID: 'com.polyworksgames.keke2',
+	var _tgsExists = false;
+	
+	var _tgsConfig = {
+		GAME_ID: 'kekeandthegreyexpanse',
 		ADS: {
-			INTERSTITIAL_PLACEMENT_ID: '3092820',
 			INTERSTITIAL_INTERVAL: 5
 		}
 	};
 	
-	var _display_config = {
+	var _displayConfig = {
 		parentDiv: document.getElementById('adContainer'),
 		blurDiv: document.getElementById('gameContainter'),
 		closeCallback: function() {
@@ -41185,24 +41285,68 @@ Polyworks.TGSAdapter = (function() {
 		}
 	};
 	
-	var adManager = {
+	var _endScreenContainer;
+
+	var module = {
+		logEvents: {
+			GAME_EVENT: 'logGameEvent',
+			LEVEL_EVENT: 'logLevelEvent',
+			CUSTOM_EVENT: 'logCustomEvent',
+			SHARE_EVENT: 'logShareEvent',
+			SCREEN: 'logScreen',
+			ACHIEVEMENT_EVENT: 'logAchievementEvent'
+		},
+		gameEvents: {
+			LOAD: 'load',
+			BEGIN: 'begin',
+			PAUSE: 'pause',
+			RESUME: 'resume',
+			END: 'end'
+		},
+		levelEvents: {
+			START: 'start',
+			COMPLETE: 'complete',
+			FAIL: 'fail',
+			REPLAY: 'replay'
+		},
+		achievementEvents: {
+			NEW_HIGH_SCORE: 'newHighScore',
+			GAME_COMPLETED: 'gameCompleted'
+		},
+		
 		init: function(levelCount) {
+			_endScreenContainer = document.getElementById('endScreenContainer');
+			
 			for(var i = 0; i < levelCount; i++) {
 				_levels[i] = 0;
 			}
+
 			if(typeof(TGS) !== 'undefined') {
-				TGS.Init(_tgs_config);
+				_tgsExists = true;
+				TGS.Init(_tgsConfig);
 			}
 			
 		},
 		
+		// http://developer.tresensa.com/docs/tgs/symbols/TGS.Analytics.html#.logGameEvent
+		logEvent: function(type, args) {
+			if(_tgsExists) {
+				
+				TGS.Analytics[type](args);
+			}
+		},
+		
 		adCheck: function(idx) {
 			
-			if(_levels[idx] === 0) {
-				_levels[idx] = LEVEL_PLAYS_PER_AD;
-				this.displayInterstitial();
+			if(_tgsExists) {
+				if(_levels[idx] === 0) {
+					_levels[idx] = LEVEL_PLAYS_PER_AD;
+					this.displayInterstitial();
+				} else {
+					_levels[idx]--;
+					_finishAdSession();
+				}
 			} else {
-				_levels[idx]--;
 				_finishAdSession();
 			}
 		},
@@ -41212,14 +41356,40 @@ Polyworks.TGSAdapter = (function() {
 			
 			PolyworksGame.adPlaying = true;
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.AD_STARTED });
-			if(typeof(TGS) !== 'undefined') {
-				
-				TGS.Advertisement.DisplayInterstitialAd(_display_config);		
-			} else {
-				_finishAdSession();
+			TGS.Advertisement.DisplayInterstitialAd(_displayConfig);		
+		},
+		
+		addGameOverWidget: function() {
+			
+			var winW = Polyworks.Stage.winW; 
+			var winH = Polyworks.Stage.winH;
+			var widgetW = WIDGET_WIDTH;
+			var widgetX = winW/4 - widgetW/2;
+			var widgetY = '0';
+
+			_endScreenContainer.style.display = 'block';
+			
+			if(_tgsExists) {
+				this.widget = TGS.Widget.CreateWidget({
+					width: widgetW,
+					x: widgetX,
+					y: widgetY,
+					shareMessage: 'i love playing keke and the grey expanse!',
+					parentDiv: _endScreenContainer
+				});
 			}
+
+		},
+
+		hideGameOverWidget: function() {
+			
+			if(this.widget) {
+				this.widget.close();
+			}
+			_endScreenContainer.style.display = 'none';
 		}
 	};
+	
 	
 	function _finishAdSession() {
 		
@@ -41227,7 +41397,7 @@ Polyworks.TGSAdapter = (function() {
 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.AD_COMPLETED });
 	}
 	
-	return adManager;
+	return module;
 }());
 
 Polyworks.InputCodes = {
@@ -41515,6 +41685,147 @@ var rockPlatformDisintegrating02 = {
 		keyFrames: [1, 2, 3, 4, 5, 6, 7],
 		looped: false,
 		frameRate: 10
+	}
+};
+
+
+
+var domConfig = {
+	head: {
+		parentEl: 'head',
+		elements: [
+		{
+			type: 'meta',
+			attrs: {
+				property: 'og:title',
+				content: 'keke and the grey expanse' 
+			}
+		},
+		{
+			type: 'meta',
+			attrs: {
+				property: 'og:description',
+				content: 'keke enters a strange new land without color' 
+			}
+		},
+		{
+			type: 'meta',
+			attrs: {
+				property: 'og:url',
+				content: 'http://www.polyworksgames.com/games/keke2/' 
+			}
+		},
+		{
+			type: 'meta',
+			attrs: {
+				property: 'og:image',
+				content: 'http://www.polyworksgames.com/games/keke2/images/keke_posed02.png' 
+			}
+		},
+		{
+			type: 'meta',
+			attrs: {
+				property: 'og:image:width',
+				content: '512' 
+			}
+		},
+		{
+			type: 'meta',
+			attrs: {
+				property: 'og:image:height',
+				content: '512' 
+			}
+		},
+		{
+			type: 'meta',
+			attrs: {
+				property: 'og:site_name',
+				content: 'Polyworks Games' 
+			}
+		},
+		{
+			type: 'meta',
+			attrs: {
+				property: 'og:type',
+				content: 'games' 
+			}
+		},
+		{
+			type: 'meta',
+			attrs: {
+				property: 'fb:app_id',
+				content: '371443576332187' 
+			}
+		},
+		{
+			type: 'link',
+			attrs: {
+				rel: 'canonical',
+				href: 'http://www.polyworksgames.com/games/keke2/'
+			}
+		},
+		{
+			type: 'link',
+			attrs: {
+				rel: 'stylesheet',
+				type: 'text/css',
+				href: 'css/keke.css'
+			}
+		}]
+	},
+	body: {
+		elements: [
+		{
+			type: 'div', 
+			attrs: {
+				id: 'fb-root'
+			}
+		},
+		{
+			type: 'div', 
+			attrs: {
+				id: 'loadingHolder'
+			}
+		},
+		{
+			type: 'div', 
+			attrs: {
+				id: 'gameContainer'
+			}
+		},
+		{
+			type: 'div', 
+			attrs: {
+				id: 'socialButtons'
+			}
+		},
+		{
+			type: 'div', 
+			attrs: {
+				id: 'iphoneTip'
+			},
+			className: 'gameText1 mediumFont',
+			html: 'to enter fullscreen, rotate to portrait then back to landscape'
+		},
+		{
+			type: 'div', 
+			attrs: {
+				id: 'adContainer'
+			}
+		},
+		{
+			type: 'div',
+			attrs: {
+				id: 'endScreenContainer'
+			}
+		},
+		{
+			type: 'div', 
+			attrs: {
+				id: 'orientationMessage'
+			}
+		}
+		]
 	}
 };
 
@@ -41866,104 +42177,104 @@ Polyworks.Config = (function() {
 				level11Title: 'images/titles/level_title11.png',
 				level12Title: 'images/titles/level_title12.png',
 				
-				level01Preview: 'images/backgrounds/level01_preview-sm.gif',
-				level02Preview: 'images/backgrounds/level02_preview-sm.gif',
-				level03Preview: 'images/backgrounds/level03_preview-sm.gif',
-				level04Preview: 'images/backgrounds/level04_preview-sm.gif',
-				level05Preview: 'images/backgrounds/level05_preview-sm.gif',
-				level06Preview: 'images/backgrounds/level06_preview-sm.gif',
-				level07Preview: 'images/backgrounds/level07_preview-sm.gif',
-				level08Preview: 'images/backgrounds/level08_preview-sm.gif',
-				level09Preview: 'images/backgrounds/level09_preview-sm.gif',
-				level10Preview: 'images/backgrounds/level10_preview-sm.gif',
-				level11Preview: 'images/backgrounds/level11_preview-sm.gif',
-				level12Preview: 'images/backgrounds/level12_preview-sm.gif',
+				level01Preview: 'images/backgrounds/level01_preview-md.gif',
+				level02Preview: 'images/backgrounds/level02_preview-md.gif',
+				level03Preview: 'images/backgrounds/level03_preview-md.gif',
+				level04Preview: 'images/backgrounds/level04_preview-md.gif',
+				level05Preview: 'images/backgrounds/level05_preview-md.gif',
+				level06Preview: 'images/backgrounds/level06_preview-md.gif',
+				level07Preview: 'images/backgrounds/level07_preview-md.gif',
+				level08Preview: 'images/backgrounds/level08_preview-md.gif',
+				level09Preview: 'images/backgrounds/level09_preview-md.gif',
+				level10Preview: 'images/backgrounds/level10_preview-md.gif',
+				level11Preview: 'images/backgrounds/level11_preview-md.gif',
+				level12Preview: 'images/backgrounds/level12_preview-md.gif',
 
-				forestBackground02a: 'images/backgrounds/pencil_forest02a-sm.gif',
-				forestBackground02b: 'images/backgrounds/pencil_forest02b-sm.gif',
-				forestBackground02c: 'images/backgrounds/pencil_forest02c-sm.gif',
-				forestBackground02d: 'images/backgrounds/pencil_forest02d-sm.gif',
-				forestBackground02e: 'images/backgrounds/pencil_forest02e-sm.gif',
-				forestBackground02f: 'images/backgrounds/pencil_forest02f-sm.gif',
+				forestBackground02a: 'images/backgrounds/pencil_forest02a-md.gif',
+				forestBackground02b: 'images/backgrounds/pencil_forest02b-md.gif',
+				forestBackground02c: 'images/backgrounds/pencil_forest02c-md.gif',
+				forestBackground02d: 'images/backgrounds/pencil_forest02d-md.gif',
+				forestBackground02e: 'images/backgrounds/pencil_forest02e-md.gif',
+				forestBackground02f: 'images/backgrounds/pencil_forest02f-md.gif',
 
-				forestBackground01a: 'images/backgrounds/pencil_forest01a-sm.gif',
-				forestBackground01b: 'images/backgrounds/pencil_forest01b-sm.gif',
-				forestBackground01c: 'images/backgrounds/pencil_forest01c-sm.gif',
+				forestBackground01a: 'images/backgrounds/pencil_forest01a-md.gif',
+				forestBackground01b: 'images/backgrounds/pencil_forest01b-md.gif',
+				forestBackground01c: 'images/backgrounds/pencil_forest01c-md.gif',
 
-				riverBackground01a: 'images/backgrounds/pencil_river01a-sm.gif',
-				riverBackground01b: 'images/backgrounds/pencil_river01b-sm.gif',
-				riverBackground01c: 'images/backgrounds/pencil_river01c-sm.gif',
-				riverBackground01d: 'images/backgrounds/pencil_river01d-sm.gif',
-				riverBackground01e: 'images/backgrounds/pencil_river01e-sm.gif',
-				riverBackground01f: 'images/backgrounds/pencil_river01f-sm.gif',
+				riverBackground01a: 'images/backgrounds/pencil_river01a-md.gif',
+				riverBackground01b: 'images/backgrounds/pencil_river01b-md.gif',
+				riverBackground01c: 'images/backgrounds/pencil_river01c-md.gif',
+				riverBackground01d: 'images/backgrounds/pencil_river01d-md.gif',
+				riverBackground01e: 'images/backgrounds/pencil_river01e-md.gif',
+				riverBackground01f: 'images/backgrounds/pencil_river01f-md.gif',
 
-				mountainBackgroundA5: 'images/backgrounds/pencil_mountain06-a5-sm.gif',
-				mountainBackgroundA6: 'images/backgrounds/pencil_mountain06-a6-sm.gif',
-				mountainBackgroundA7: 'images/backgrounds/pencil_mountain06-a7-sm.gif',
-				mountainBackgroundA8: 'images/backgrounds/pencil_mountain06-a8-sm.gif',
-				mountainBackgroundB5: 'images/backgrounds/pencil_mountain06-b5-sm.gif',
-				mountainBackgroundB6: 'images/backgrounds/pencil_mountain06-b6-sm.gif',
-				mountainBackgroundB7: 'images/backgrounds/pencil_mountain06-b7-sm.gif',
-				mountainBackgroundB8: 'images/backgrounds/pencil_mountain06-b8-sm.gif',
-				mountainBackgroundC3: 'images/backgrounds/pencil_mountain06-c3-sm.gif',
-				mountainBackgroundC4: 'images/backgrounds/pencil_mountain06-c4-sm.gif',
-				mountainBackgroundC5: 'images/backgrounds/pencil_mountain06-c5-sm.gif',
-				mountainBackgroundC6: 'images/backgrounds/pencil_mountain06-c6-sm.gif',
-				mountainBackgroundC7: 'images/backgrounds/pencil_mountain06-c7-sm.gif',
-				mountainBackgroundC8: 'images/backgrounds/pencil_mountain06-c8-sm.gif',
-				mountainBackgroundD3: 'images/backgrounds/pencil_mountain06-d3-sm.gif',
-				mountainBackgroundD4: 'images/backgrounds/pencil_mountain06-d4-sm.gif',
-				mountainBackgroundD5: 'images/backgrounds/pencil_mountain06-d5-sm.gif',
-				mountainBackgroundD6: 'images/backgrounds/pencil_mountain06-d6-sm.gif',
-				mountainBackgroundD7: 'images/backgrounds/pencil_mountain06-d7-sm.gif',
-				mountainBackgroundD8: 'images/backgrounds/pencil_mountain06-d8-sm.gif',
-				mountainBackgroundE1: 'images/backgrounds/pencil_mountain06-e1-sm.gif',
-				mountainBackgroundE2: 'images/backgrounds/pencil_mountain06-e2-sm.gif',
-				mountainBackgroundE3: 'images/backgrounds/pencil_mountain06-e3-sm.gif',
-				mountainBackgroundE4: 'images/backgrounds/pencil_mountain06-e4-sm.gif',
-				mountainBackgroundE5: 'images/backgrounds/pencil_mountain06-e5-sm.gif',
-				mountainBackgroundE6: 'images/backgrounds/pencil_mountain06-e6-sm.gif',
-				mountainBackgroundF1: 'images/backgrounds/pencil_mountain06-f1-sm.gif',
-				mountainBackgroundF2: 'images/backgrounds/pencil_mountain06-f2-sm.gif',
-				mountainBackgroundF3: 'images/backgrounds/pencil_mountain06-f3-sm.gif',
-				mountainBackgroundF4: 'images/backgrounds/pencil_mountain06-f4-sm.gif',
-				mountainBackgroundF5: 'images/backgrounds/pencil_mountain06-f5-sm.gif',
-				mountainBackgroundF6: 'images/backgrounds/pencil_mountain06-f6-sm.gif',
-				mountainBackgroundG1: 'images/backgrounds/pencil_mountain06-g1-sm.gif',
-				mountainBackgroundG2: 'images/backgrounds/pencil_mountain06-g2-sm.gif',
-				mountainBackgroundG3: 'images/backgrounds/pencil_mountain06-g3-sm.gif',
-				mountainBackgroundG4: 'images/backgrounds/pencil_mountain06-g4-sm.gif',
-				mountainBackgroundH1: 'images/backgrounds/pencil_mountain06-h1-sm.gif',
-				mountainBackgroundH2: 'images/backgrounds/pencil_mountain06-h2-sm.gif',
-				mountainBackgroundH3: 'images/backgrounds/pencil_mountain06-h3-sm.gif',
-				mountainBackgroundH3a: 'images/backgrounds/pencil_mountain06-h3a-sm.gif',
-				mountainBackgroundH4: 'images/backgrounds/pencil_mountain06-h4-sm.gif',
-				mountainBackgroundH4a: 'images/backgrounds/pencil_mountain06-h4a-sm.gif',
-				mountainBackgroundH5: 'images/backgrounds/pencil_mountain06-h5-sm.gif',
-				mountainBackgroundH6: 'images/backgrounds/pencil_mountain06-h6-sm.gif',
-				mountainBackgroundI3: 'images/backgrounds/pencil_mountain06-i3-sm.gif',
-				mountainBackgroundI4: 'images/backgrounds/pencil_mountain06-i4-sm.gif',
-				mountainBackgroundI5: 'images/backgrounds/pencil_mountain06-i5-sm.gif',
-				mountainBackgroundI6: 'images/backgrounds/pencil_mountain06-i6-sm.gif',
-				mountainBackgroundI7: 'images/backgrounds/pencil_mountain06-i7-sm.gif',
-				mountainBackgroundI8: 'images/backgrounds/pencil_mountain06-i8-sm.gif',
-				mountainBackgroundJ3: 'images/backgrounds/pencil_mountain06-j3-sm.gif',
-				mountainBackgroundJ4: 'images/backgrounds/pencil_mountain06-j4-sm.gif',
-				mountainBackgroundJ5: 'images/backgrounds/pencil_mountain06-j5-sm.gif',
-				mountainBackgroundJ6: 'images/backgrounds/pencil_mountain06-j6-sm.gif',
-				mountainBackgroundJ7: 'images/backgrounds/pencil_mountain06-j7-sm.gif',
-				mountainBackgroundJ8: 'images/backgrounds/pencil_mountain06-j8-sm.gif',
-				mountainBackgroundK5: 'images/backgrounds/pencil_mountain06-k5-sm.gif',
-				mountainBackgroundK6: 'images/backgrounds/pencil_mountain06-k6-sm.gif',
-				mountainBackgroundK7: 'images/backgrounds/pencil_mountain06-k7-sm.gif',
-				mountainBackgroundK8: 'images/backgrounds/pencil_mountain06-k8-sm.gif',
-				mountainBackgroundL5: 'images/backgrounds/pencil_mountain06-l5-sm.gif',
-				mountainBackgroundL6: 'images/backgrounds/pencil_mountain06-l6-sm.gif',
-				mountainBackgroundL7: 'images/backgrounds/pencil_mountain06-l7-sm.gif',
-				mountainBackgroundL8: 'images/backgrounds/pencil_mountain06-l8-sm.gif',
+				mountainBackgroundA5: 'images/backgrounds/pencil_mountain06-a5-md.gif',
+				mountainBackgroundA6: 'images/backgrounds/pencil_mountain06-a6-md.gif',
+				mountainBackgroundA7: 'images/backgrounds/pencil_mountain06-a7-md.gif',
+				mountainBackgroundA8: 'images/backgrounds/pencil_mountain06-a8-md.gif',
+				mountainBackgroundB5: 'images/backgrounds/pencil_mountain06-b5-md.gif',
+				mountainBackgroundB6: 'images/backgrounds/pencil_mountain06-b6-md.gif',
+				mountainBackgroundB7: 'images/backgrounds/pencil_mountain06-b7-md.gif',
+				mountainBackgroundB8: 'images/backgrounds/pencil_mountain06-b8-md.gif',
+				mountainBackgroundC3: 'images/backgrounds/pencil_mountain06-c3-md.gif',
+				mountainBackgroundC4: 'images/backgrounds/pencil_mountain06-c4-md.gif',
+				mountainBackgroundC5: 'images/backgrounds/pencil_mountain06-c5-md.gif',
+				mountainBackgroundC6: 'images/backgrounds/pencil_mountain06-c6-md.gif',
+				mountainBackgroundC7: 'images/backgrounds/pencil_mountain06-c7-md.gif',
+				mountainBackgroundC8: 'images/backgrounds/pencil_mountain06-c8-md.gif',
+				mountainBackgroundD3: 'images/backgrounds/pencil_mountain06-d3-md.gif',
+				mountainBackgroundD4: 'images/backgrounds/pencil_mountain06-d4-md.gif',
+				mountainBackgroundD5: 'images/backgrounds/pencil_mountain06-d5-md.gif',
+				mountainBackgroundD6: 'images/backgrounds/pencil_mountain06-d6-md.gif',
+				mountainBackgroundD7: 'images/backgrounds/pencil_mountain06-d7-md.gif',
+				mountainBackgroundD8: 'images/backgrounds/pencil_mountain06-d8-md.gif',
+				mountainBackgroundE1: 'images/backgrounds/pencil_mountain06-e1-md.gif',
+				mountainBackgroundE2: 'images/backgrounds/pencil_mountain06-e2-md.gif',
+				mountainBackgroundE3: 'images/backgrounds/pencil_mountain06-e3-md.gif',
+				mountainBackgroundE4: 'images/backgrounds/pencil_mountain06-e4-md.gif',
+				mountainBackgroundE5: 'images/backgrounds/pencil_mountain06-e5-md.gif',
+				mountainBackgroundE6: 'images/backgrounds/pencil_mountain06-e6-md.gif',
+				mountainBackgroundF1: 'images/backgrounds/pencil_mountain06-f1-md.gif',
+				mountainBackgroundF2: 'images/backgrounds/pencil_mountain06-f2-md.gif',
+				mountainBackgroundF3: 'images/backgrounds/pencil_mountain06-f3-md.gif',
+				mountainBackgroundF4: 'images/backgrounds/pencil_mountain06-f4-md.gif',
+				mountainBackgroundF5: 'images/backgrounds/pencil_mountain06-f5-md.gif',
+				mountainBackgroundF6: 'images/backgrounds/pencil_mountain06-f6-md.gif',
+				mountainBackgroundG1: 'images/backgrounds/pencil_mountain06-g1-md.gif',
+				mountainBackgroundG2: 'images/backgrounds/pencil_mountain06-g2-md.gif',
+				mountainBackgroundG3: 'images/backgrounds/pencil_mountain06-g3-md.gif',
+				mountainBackgroundG4: 'images/backgrounds/pencil_mountain06-g4-md.gif',
+				mountainBackgroundH1: 'images/backgrounds/pencil_mountain06-h1-md.gif',
+				mountainBackgroundH2: 'images/backgrounds/pencil_mountain06-h2-md.gif',
+				mountainBackgroundH3: 'images/backgrounds/pencil_mountain06-h3-md.gif',
+				mountainBackgroundH3a: 'images/backgrounds/pencil_mountain06-h3a-md.gif',
+				mountainBackgroundH4: 'images/backgrounds/pencil_mountain06-h4-md.gif',
+				mountainBackgroundH4a: 'images/backgrounds/pencil_mountain06-h4a-md.gif',
+				mountainBackgroundH5: 'images/backgrounds/pencil_mountain06-h5-md.gif',
+				mountainBackgroundH6: 'images/backgrounds/pencil_mountain06-h6-md.gif',
+				mountainBackgroundI3: 'images/backgrounds/pencil_mountain06-i3-md.gif',
+				mountainBackgroundI4: 'images/backgrounds/pencil_mountain06-i4-md.gif',
+				mountainBackgroundI5: 'images/backgrounds/pencil_mountain06-i5-md.gif',
+				mountainBackgroundI6: 'images/backgrounds/pencil_mountain06-i6-md.gif',
+				mountainBackgroundI7: 'images/backgrounds/pencil_mountain06-i7-md.gif',
+				mountainBackgroundI8: 'images/backgrounds/pencil_mountain06-i8-md.gif',
+				mountainBackgroundJ3: 'images/backgrounds/pencil_mountain06-j3-md.gif',
+				mountainBackgroundJ4: 'images/backgrounds/pencil_mountain06-j4-md.gif',
+				mountainBackgroundJ5: 'images/backgrounds/pencil_mountain06-j5-md.gif',
+				mountainBackgroundJ6: 'images/backgrounds/pencil_mountain06-j6-md.gif',
+				mountainBackgroundJ7: 'images/backgrounds/pencil_mountain06-j7-md.gif',
+				mountainBackgroundJ8: 'images/backgrounds/pencil_mountain06-j8-md.gif',
+				mountainBackgroundK5: 'images/backgrounds/pencil_mountain06-k5-md.gif',
+				mountainBackgroundK6: 'images/backgrounds/pencil_mountain06-k6-md.gif',
+				mountainBackgroundK7: 'images/backgrounds/pencil_mountain06-k7-md.gif',
+				mountainBackgroundK8: 'images/backgrounds/pencil_mountain06-k8-md.gif',
+				mountainBackgroundL5: 'images/backgrounds/pencil_mountain06-l5-md.gif',
+				mountainBackgroundL6: 'images/backgrounds/pencil_mountain06-l6-md.gif',
+				mountainBackgroundL7: 'images/backgrounds/pencil_mountain06-l7-md.gif',
+				mountainBackgroundL8: 'images/backgrounds/pencil_mountain06-l8-md.gif',
 
-				caveBackground02a: 'images/backgrounds/pencil_cave02a.gif',
-				caveBackground02b: 'images/backgrounds/pencil_cave02b.gif',
+				caveBackground02a: 'images/backgrounds/pencil_cave02a-md.gif',
+				caveBackground02b: 'images/backgrounds/pencil_cave02b-md.gif',
 
 				platform: 'images/scenery/platform.png',
 				platformGrey: 'images/scenery/platform_grey.png',
@@ -42248,6 +42559,10 @@ Polyworks.Config = (function() {
 					frames: 8
 				}
 				
+			},
+			// WEB FONTS
+			webFonts: {
+				google: [ 'Waiting+for+the+Sunrise::latin' ]
 			},
 			// SOCIAL
 			social: {
@@ -50735,7 +51050,7 @@ Polyworks.Config = (function() {
 									setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 									start: {
 										x: (stageWidth) + (stageUnit * 0.2),
-										y: winH - (stageUnit * 3.5)
+										y: winH - (stageUnit * 3)
 									},
 									physics: {
 										immovable: true
@@ -66724,7 +67039,7 @@ Polyworks.Config = (function() {
 			// gameOver
 			{
 				name: 'gameOver',
-				cl: 'MenuState',
+				cl: 'GameOverState',
 				world: {
 					x: 0,
 					y: 0,
@@ -66749,9 +67064,9 @@ Polyworks.Config = (function() {
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							alignY: 'center',
+							y: 0,
 							style: { 
-								font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
 								align: 'center'
 							},
@@ -69056,7 +69371,7 @@ Polyworks.State = (function() {
 	};
 
 	State.prototype.createState = function() {
-		
+		// 
 		if(!this.model.get('created')) {
 			this.gameOver = PolyworksGame.gameOver; 
 			this.createWorld();
@@ -69088,7 +69403,7 @@ Polyworks.State = (function() {
 	
 	State.prototype.createWorld = function() {
 		var world = this.model.world;
-		
+		// 
 		PolyworksGame.phaser.world.setBounds(world.x, world.y, world.width, world.height);
 	};
 
@@ -69121,17 +69436,12 @@ Polyworks.State = (function() {
 Polyworks.MenuState = (function() {
 	Polyworks.Utils.inherits(MenuState, Polyworks.State);
 	
-	var _this;
 	function MenuState(params) {
-		_this = this;
 		MenuState._super.constructor.call(this, params);
 	}
 	
 	MenuState.prototype.createState = function() {
 		MenuState._super.createState.call(this);
-		// this.createControls.call(this);
-
-		// this.addListeners();
 		this.changingState = false;
 	};
 	
@@ -69141,12 +69451,9 @@ Polyworks.MenuState = (function() {
 	
 	MenuState.prototype.onButtonPressed = function(event) {
 		// 
-		// 
 		if(event.value === Polyworks.InputCodes.PLAY || event.value === Polyworks.InputCodes.NEXT) {
-			// if(!this.changingState) {
-				PolyworksGame.changeState('level'); 
-				this.changingState = true;
-			// }
+			PolyworksGame.changeState('level'); 
+			this.changingState = true;
 		}
 	};
 	
@@ -69156,6 +69463,176 @@ Polyworks.MenuState = (function() {
 	};
 	
 	return MenuState;
+})();
+
+Polyworks.MapState = (function() {
+	Polyworks.Utils.inherits(MapState, Polyworks.MenuState); 
+	
+	function MapState(params) {
+		MapState._super.constructor.call(this, params);
+	}
+
+	MapState.prototype.createState = function() {
+		var stateGroup = PolyworksGame.phaser.add.group();
+		this.model.stateGroup = stateGroup;
+
+		MapState._super.createState.call(this);
+
+		var winW = Polyworks.Stage.winW;
+		var stageWidth = Polyworks.Stage.width;
+
+		this.createPages(winW, stageWidth, stateGroup);
+		this.createLevelInfo(winW, stageWidth, stateGroup);
+		this.addListeners();
+	};
+
+	MapState.prototype.createPages = function(winW, stageWidth, stateGroup) {
+		this.model.pageCollection = [];
+		var pages = this.model.pages;
+		var mapPage;
+
+		Polyworks.Utils.each(pages,
+			function(page, idx) {
+				page.addTo = 'stateGroup';
+				page.stateGroup = stateGroup;
+				page.idx = idx;
+				page.start = {
+					x: (winW/2) - (stageWidth/2),
+					y: 0
+				};
+				if(idx > 0) {
+					page.leftArrow = true;
+				}
+				if(idx < (pages.length - 1)) {
+					page.rightArrow = true;
+				}
+				mapPage = new Polyworks.MapPage(page);
+				mapPage.begin();
+				this.model.pageCollection.push(mapPage);
+			},
+			this
+		);
+	};
+	
+	MapState.prototype.createLevelInfo = function(winW, stageWidth, stateGroup) {
+		this.model.levelInfoCollection = [];
+		var levelInfoBackgrounds = this.model.levelInfoBackgrounds;
+		var levelInfoTitles = this.model.levelInfoTitles;
+		var levelInfoDescriptions = this.model.levelInfoDescriptions;
+		var levelCount = PolyworksGame.levelCount;
+		var levelInfoConfig;
+		var levelIdx;
+		// 
+		for(var i = 0; i < levelCount; i++) {
+			var levelInfoGroup = Polyworks.Utils.clone(PolyworksGame.get('sharedGroups').levelInfo);
+			var levelInfo = PolyworksGame.getLevelInfo(i);
+			// 
+			levelIdx = (i < 9) ? ('0' + (i+1)) : (i+1);
+
+			// set the specific attribute values for this level
+			Polyworks.Utils.each(levelInfoGroup,
+				function(levelInfoAttrs, idx) {
+					// 
+					switch(levelInfoAttrs.name) {
+						case 'levelInfoBackground': 
+						levelInfoGroup[idx] = levelInfoBackgrounds[i];
+						break;
+
+						case 'levelInfoTitle': 
+						levelInfoGroup[idx] = levelInfoTitles[i];
+						break;
+
+						case 'mapButton':
+						levelInfoGroup[idx].attrs.events.released.value = i;
+						break;
+
+						case 'playButtonSmall':
+						// remove play button if level is locked else set level index to its released value
+						if(levelInfo.status === 'l') {
+							delete levelInfoGroup[idx];
+						} else {
+							levelInfoGroup[idx].attrs.events.released.value = i;
+						}
+						break;
+
+						case 'levelDescription':
+						levelInfoGroup[idx].attrs.defaultContent = levelInfoDescriptions[i];
+						break;
+						
+						case 'highScore': 
+						levelInfoGroup[idx].attrs.defaultContent = 'high score: ' + levelInfo.highScore;
+						break;
+
+						case 'levelStatus': 
+						levelInfoGroup[idx].attrs.defaultContent = levelInfo.statusText;
+						break;
+
+						default: 
+						break;
+					}
+				},
+				this
+			);
+			// 
+			levelInfoConfig = {
+				name: 'level' + levelIdx + 'Info',
+				cl: 'LevelInfo',
+				addTo: 'stateGroup',
+				stateGroup: stateGroup,
+				attrs: levelInfoGroup
+			};
+			levelInfo = new Polyworks.LevelInfo(levelInfoConfig);
+			levelInfo.begin(); 
+			this.model.levelInfoCollection.push(levelInfo);
+		}
+	};
+	
+	MapState.prototype.addListeners = function() {
+		Polyworks.EventCenter.bind(Polyworks.Events.SHOW_LEVEL_INFO, this.onShowLevelInfo, this);
+		Polyworks.EventCenter.bind(Polyworks.Events.HIDE_LEVEL_INFO, this.onHideLevelInfo, this);
+	};
+	
+	MapState.prototype.removeListeners = function() {
+		Polyworks.EventCenter.unbind(Polyworks.Events.SHOW_LEVEL_INFO, this.onShowLevelInfo, this);
+		Polyworks.EventCenter.unbind(Polyworks.Events.HIDE_LEVEL_INFO, this.onHideLevelInfo, this);
+	};
+	
+	MapState.prototype.onShowLevelInfo = function(event) {
+		// 
+		var collection = this.model.collection;
+		Polyworks.Utils.each(collection,
+			function(child) {
+				if(child.hide) {
+					child.hide();
+				}
+			},
+			this
+		);
+
+		this.model.levelInfoCollection[event.value].show();
+	};
+	
+	MapState.prototype.onHideLevelInfo = function(event) {
+		// 
+		var collection = this.model.collection;
+		Polyworks.Utils.each(collection,
+			function(child) {
+				if(child.show) {
+					child.show();
+				}
+			},
+			this
+		);
+
+		this.model.levelInfoCollection[event.value].hide();
+	};
+	
+	MapState.prototype.shutdown = function() {
+		this.removeListeners();
+		MapState._super.shutdown.call(this);
+	};
+	
+	return MapState;
 })();
 
 Polyworks.LevelState = (function() {
@@ -69418,6 +69895,29 @@ Polyworks.LevelState = (function() {
 	return LevelState;
 })();
 
+
+Polyworks.GameOverState = (function() {
+	Polyworks.Utils.inherits(GameOverState, Polyworks.MenuState);
+
+	function GameOverState(params) {
+		GameOverState._super.constructor.call(this, params);
+	}
+	
+	GameOverState.prototype.createState = function() {
+		// 
+		GameOverState._super.createState.call(this);
+
+		Polyworks.TGSAdapter.addGameOverWidget();
+	};
+	
+	GameOverState.prototype.shutdown = function(event) {
+		// 
+		Polyworks.TGSAdapter.hideGameOverWidget();
+		GameOverState._super.shutdown.call(this);
+	};
+
+	return GameOverState;
+}());
 
 Polyworks.Player = (function() {
 	// Polyworks.Utils.inherits(Player, Polyworks.AnimatedSprite);
@@ -69744,176 +70244,6 @@ Polyworks.Player = (function() {
 	return Player;
 })();
 
-Polyworks.MapState = (function() {
-	Polyworks.Utils.inherits(MapState, Polyworks.MenuState); 
-	
-	function MapState(params) {
-		MapState._super.constructor.call(this, params);
-	}
-
-	MapState.prototype.createState = function() {
-		var stateGroup = PolyworksGame.phaser.add.group();
-		this.model.stateGroup = stateGroup;
-
-		MapState._super.createState.call(this);
-
-		var winW = Polyworks.Stage.winW;
-		var stageWidth = Polyworks.Stage.width;
-
-		this.createPages(winW, stageWidth, stateGroup);
-		this.createLevelInfo(winW, stageWidth, stateGroup);
-		this.addListeners();
-	};
-
-	MapState.prototype.createPages = function(winW, stageWidth, stateGroup) {
-		this.model.pageCollection = [];
-		var pages = this.model.pages;
-		var mapPage;
-
-		Polyworks.Utils.each(pages,
-			function(page, idx) {
-				page.addTo = 'stateGroup';
-				page.stateGroup = stateGroup;
-				page.idx = idx;
-				page.start = {
-					x: (winW/2) - (stageWidth/2),
-					y: 0
-				};
-				if(idx > 0) {
-					page.leftArrow = true;
-				}
-				if(idx < (pages.length - 1)) {
-					page.rightArrow = true;
-				}
-				mapPage = new Polyworks.MapPage(page);
-				mapPage.begin();
-				this.model.pageCollection.push(mapPage);
-			},
-			this
-		);
-	};
-	
-	MapState.prototype.createLevelInfo = function(winW, stageWidth, stateGroup) {
-		this.model.levelInfoCollection = [];
-		var levelInfoBackgrounds = this.model.levelInfoBackgrounds;
-		var levelInfoTitles = this.model.levelInfoTitles;
-		var levelInfoDescriptions = this.model.levelInfoDescriptions;
-		var levelCount = PolyworksGame.levelCount;
-		var levelInfoConfig;
-		var levelIdx;
-		// 
-		for(var i = 0; i < levelCount; i++) {
-			var levelInfoGroup = Polyworks.Utils.clone(PolyworksGame.get('sharedGroups').levelInfo);
-			var levelInfo = PolyworksGame.getLevelInfo(i);
-			// 
-			levelIdx = (i < 9) ? ('0' + (i+1)) : (i+1);
-
-			// set the specific attribute values for this level
-			Polyworks.Utils.each(levelInfoGroup,
-				function(levelInfoAttrs, idx) {
-					// 
-					switch(levelInfoAttrs.name) {
-						case 'levelInfoBackground': 
-						levelInfoGroup[idx] = levelInfoBackgrounds[i];
-						break;
-
-						case 'levelInfoTitle': 
-						levelInfoGroup[idx] = levelInfoTitles[i];
-						break;
-
-						case 'mapButton':
-						levelInfoGroup[idx].attrs.events.released.value = i;
-						break;
-
-						case 'playButtonSmall':
-						// remove play button if level is locked else set level index to its released value
-						if(levelInfo.status === 'l') {
-							delete levelInfoGroup[idx];
-						} else {
-							levelInfoGroup[idx].attrs.events.released.value = i;
-						}
-						break;
-
-						case 'levelDescription':
-						levelInfoGroup[idx].attrs.defaultContent = levelInfoDescriptions[i];
-						break;
-						
-						case 'highScore': 
-						levelInfoGroup[idx].attrs.defaultContent = 'high score: ' + levelInfo.highScore;
-						break;
-
-						case 'levelStatus': 
-						levelInfoGroup[idx].attrs.defaultContent = levelInfo.statusText;
-						break;
-
-						default: 
-						break;
-					}
-				},
-				this
-			);
-			// 
-			levelInfoConfig = {
-				name: 'level' + levelIdx + 'Info',
-				cl: 'LevelInfo',
-				addTo: 'stateGroup',
-				stateGroup: stateGroup,
-				attrs: levelInfoGroup
-			};
-			levelInfo = new Polyworks.LevelInfo(levelInfoConfig);
-			levelInfo.begin(); 
-			this.model.levelInfoCollection.push(levelInfo);
-		}
-	};
-	
-	MapState.prototype.addListeners = function() {
-		Polyworks.EventCenter.bind(Polyworks.Events.SHOW_LEVEL_INFO, this.onShowLevelInfo, this);
-		Polyworks.EventCenter.bind(Polyworks.Events.HIDE_LEVEL_INFO, this.onHideLevelInfo, this);
-	};
-	
-	MapState.prototype.removeListeners = function() {
-		Polyworks.EventCenter.unbind(Polyworks.Events.SHOW_LEVEL_INFO, this.onShowLevelInfo, this);
-		Polyworks.EventCenter.unbind(Polyworks.Events.HIDE_LEVEL_INFO, this.onHideLevelInfo, this);
-	};
-	
-	MapState.prototype.onShowLevelInfo = function(event) {
-		// 
-		var collection = this.model.collection;
-		Polyworks.Utils.each(collection,
-			function(child) {
-				if(child.hide) {
-					child.hide();
-				}
-			},
-			this
-		);
-
-		this.model.levelInfoCollection[event.value].show();
-	};
-	
-	MapState.prototype.onHideLevelInfo = function(event) {
-		// 
-		var collection = this.model.collection;
-		Polyworks.Utils.each(collection,
-			function(child) {
-				if(child.show) {
-					child.show();
-				}
-			},
-			this
-		);
-
-		this.model.levelInfoCollection[event.value].hide();
-	};
-	
-	MapState.prototype.shutdown = function() {
-		this.removeListeners();
-		MapState._super.shutdown.call(this);
-	};
-	
-	return MapState;
-})();
-
 Polyworks.AnimatedPlayer = (function() {
 	Polyworks.Utils.inherits(AnimatedPlayer, Polyworks.Player);
 	
@@ -70014,8 +70344,11 @@ PolyworksGame = (function() {
 	var _states = {};
 	var _levels = [];
 	var _socialManager; 
+
+	var _adapter = Polyworks.TGSAdapter;
 	
 	var _gameTitle = '';
+	var _gameStarted = false;
 	var _isTouchDevice = false;
 	var _stageInitialized = false;
 	var _statesInitialized = false;
@@ -70062,6 +70395,7 @@ PolyworksGame = (function() {
 					} 
 				} 
 			);
+			
 			// window.addEventListener("orientationchange", 
 			// 	function() {
 			// 		
@@ -70193,14 +70527,25 @@ PolyworksGame = (function() {
 		}
 	};
 
+	function _addWebFonts(webFonts) {
+		Polyworks.WebFontManager.init(webFonts);
+	}
+	
 	function _addGoogleAnalytics() {
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		/*
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-	  ga('create', _gaID, 'polyworksgames.com');
-	  ga('send', 'pageview');
+		var gid = 'kekeandthegreyexpanse';
+		var version = '1.0.0';
+
+		ga('create', 'UA-50665683-2', 'games.tresensa.com');
+		ga('send', 'pageview');
+		ga('set', 'dimension1', gid);
+		ga('set', 'dimension2', version);
+		*/
 	}
 
 	function _addListeners() {
@@ -70363,6 +70708,9 @@ PolyworksGame = (function() {
 
 		_model = config.init(Polyworks.Stage);
 		
+		if(_model.webFonts) {
+			_addWebFonts(_model.webFonts);
+		}
 		PolyworksGame.startingHealth = _model.player.attrs.phaser.health;
 		PolyworksGame.phaser = new Phaser.Game(Polyworks.Stage.winW, Polyworks.Stage.winH, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
 	}
@@ -70383,10 +70731,17 @@ PolyworksGame = (function() {
 	}
 	
 	function _onChangeState(event) {
+		if(event.value === 'map') {
+			if(!_gameStarted) {
+				_gameStarted = true;
+				_adapter.logEvent(_adapter.logEvents.GAME_EVENT, [_adapter.gameEvents.BEGIN]);
+			}
+		}
 		PolyworksGame.changeState(event.value);
 	}
 	
 	function _onStartLevel(event) {
+
 		idx = PolyworksGame.currentLevel;
 		for(var key in event) {
 			if(key === 'value' && typeof(event[key]) !== 'undefined') {
@@ -70403,7 +70758,8 @@ PolyworksGame = (function() {
 		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
 		PolyworksGame.changeState(stateId);
 
-		Polyworks.TGSAdapter.adCheck(PolyworksGame.currentLevel);
+		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.START, (idx+1)]);
+		_adapter.adCheck(PolyworksGame.currentLevel);
 	}
 	
 	function _onNextLevel(event) {
@@ -70413,15 +70769,20 @@ PolyworksGame = (function() {
 			PolyworksGame.currentLevel = 0;
 			PolyworksGame.levelText = '';
 			stateId = 'completed';
+
+			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.GAME_COMPLETED]);
+
 		} else {
 			stateId = _levels[PolyworksGame.currentLevel].model.name;
 			PolyworksGame.levelText = _levels[PolyworksGame.currentLevel].model.text;
+
+			_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.START, (idx+1)]);
+			_adapter.adCheck(PolyworksGame.currentLevel);
 		}
 		PolyworksGame.levelScore = 0;
 		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
 		PolyworksGame.changeState(stateId);
 
-		Polyworks.TGSAdapter.adCheck(PolyworksGame.currentLevel);
 	}
 	
 	function _onLevelCleared(event) {
@@ -70433,8 +70794,10 @@ PolyworksGame = (function() {
 			PolyworksGame.highScores[idx] = PolyworksGame.levelScore;
 			PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.levelScore + ' NEW';
 			Polyworks.EventCenter.trigger(Polyworks.Events.HIGH_SCORE_UPDATED);
+			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.NEW_HIGH_SCORE, PolyworksGame.levelScore]);
 		}
 		
+		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.COMPLETE, (idx+1)]);
 		idx++;
 
 		if(PolyworksGame.levelStatus[idx] === 'l') {
@@ -70480,14 +70843,10 @@ PolyworksGame = (function() {
 			this
 		);
 		PolyworksGame.levelCount = levelCount;
-		Polyworks.TGSAdapter.init(levelCount);
+		_adapter.init(levelCount);
 		
 		if(_stageInitialized) {
-			// if(PolyworksGame.savedState !== '' && PolyworksGame.currentState !== _model.initialState) {
-			// 	PolyworksGame.changeState(PolyworksGame.savedState);
-			// } else {
-				PolyworksGame.changeState(_model.initialState);
-			// }
+			PolyworksGame.changeState(_model.initialState);
 		}
 		_statesInialized = true;
 	}
@@ -70498,6 +70857,7 @@ PolyworksGame = (function() {
 	}
 	
 	function _quit() {
+		_adapter.logEvent(_adapter.logEvents.GAME_EVENT, [_adapter.gameEvents.END]);
 		_removeListeners();
 		PolyworksGame.isQuit = true;
 		// _killStates();
@@ -70531,6 +70891,17 @@ PolyworksGame = (function() {
 			this
 		);
 	}
+
 	
 	return polyworks_game;
 }());
+
+Polyworks.DOMManager.addElements(domConfig.head.elements, document.getElementsByTagName('head')[0]);
+Polyworks.DOMManager.addElements(domConfig.body.elements, document.getElementsByTagName('body')[0], onElementsAdded);
+
+function onElementsAdded() {
+	PolyworksGame.begin({
+		name: 'kekeAndTheGreyExpanse',
+		aspectRatio: [16, 9]
+	});
+}

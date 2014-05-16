@@ -1,17 +1,19 @@
 Polyworks.TGSAdapter = (function() {
 	var LEVEL_PLAYS_PER_AD = 1;
 	var WIDGET_WIDTH = 300;
+
 	
 	var _levels = [];
 
-	var _tgs_config = {
+	var _tgsExists = false;
+	
+	var _tgsConfig = {
 		GAME_ID: 'kekeandthegreyexpanse',
 		ADS: {
 			INTERSTITIAL_INTERVAL: 5
 		}
 	};
 	
-	var _endScreenContainer;
 	var _displayConfig = {
 		parentDiv: document.getElementById('adContainer'),
 		blurDiv: document.getElementById('gameContainter'),
@@ -20,27 +22,68 @@ Polyworks.TGSAdapter = (function() {
 		}
 	};
 	
+	var _endScreenContainer;
+
 	var module = {
+		logEvents: {
+			GAME_EVENT: 'logGameEvent',
+			LEVEL_EVENT: 'logLevelEvent',
+			CUSTOM_EVENT: 'logCustomEvent',
+			SHARE_EVENT: 'logShareEvent',
+			SCREEN: 'logScreen',
+			ACHIEVEMENT_EVENT: 'logAchievementEvent'
+		},
+		gameEvents: {
+			LOAD: 'load',
+			BEGIN: 'begin',
+			PAUSE: 'pause',
+			RESUME: 'resume',
+			END: 'end'
+		},
+		levelEvents: {
+			START: 'start',
+			COMPLETE: 'complete',
+			FAIL: 'fail',
+			REPLAY: 'replay'
+		},
+		achievementEvents: {
+			NEW_HIGH_SCORE: 'newHighScore',
+			GAME_COMPLETED: 'gameCompleted'
+		},
+		
 		init: function(levelCount) {
 			_endScreenContainer = document.getElementById('endScreenContainer');
-			trace('TGSAdapter, _endScreenContainer = ', _endScreenContainer);
 			
 			for(var i = 0; i < levelCount; i++) {
 				_levels[i] = 0;
 			}
+
 			if(typeof(TGS) !== 'undefined') {
-				TGS.Init(_tgs_config);
+				_tgsExists = true;
+				TGS.Init(_tgsConfig);
 			}
 			trace('TGSAdapter/init, _levels = ', _levels);
 		},
 		
+		// http://developer.tresensa.com/docs/tgs/symbols/TGS.Analytics.html#.logGameEvent
+		logEvent: function(type, args) {
+			if(_tgsExists) {
+				trace('TGSAdapter/logEvent, type = ' + type + ', args = ', args);
+				TGS.Analytics[type](args);
+			}
+		},
+		
 		adCheck: function(idx) {
 			trace('TGSAdapter/adCheck, _levels[' + idx + '] = ' + _levels[idx] + ', LEVELS_PLAYS_PER_AD = ' + LEVEL_PLAYS_PER_AD);
-			if(_levels[idx] === 0) {
-				_levels[idx] = LEVEL_PLAYS_PER_AD;
-				this.displayInterstitial();
+			if(_tgsExists) {
+				if(_levels[idx] === 0) {
+					_levels[idx] = LEVEL_PLAYS_PER_AD;
+					this.displayInterstitial();
+				} else {
+					_levels[idx]--;
+					_finishAdSession();
+				}
 			} else {
-				_levels[idx]--;
 				_finishAdSession();
 			}
 		},
@@ -50,12 +93,7 @@ Polyworks.TGSAdapter = (function() {
 			trace('TGSAdapter/displayInterstitial');
 			PolyworksGame.adPlaying = true;
 			Polyworks.EventCenter.trigger({ type: Polyworks.Events.AD_STARTED });
-			if(typeof(TGS) !== 'undefined') {
-				TGS.Advertisement.DisplayInterstitialAd(_displayConfig);		
-			} else {
-				trace('WARNING: TGS is not defined');
-				_finishAdSession();
-			}
+			TGS.Advertisement.DisplayInterstitialAd(_displayConfig);		
 		},
 		
 		addGameOverWidget: function() {
@@ -68,7 +106,7 @@ Polyworks.TGSAdapter = (function() {
 
 			_endScreenContainer.style.display = 'block';
 			
-			if(typeof(TGS) !== 'undefined') {
+			if(_tgsExists) {
 				this.widget = TGS.Widget.CreateWidget({
 					width: widgetW,
 					x: widgetX,
@@ -88,6 +126,7 @@ Polyworks.TGSAdapter = (function() {
 			_endScreenContainer.style.display = 'none';
 		}
 	};
+	
 	
 	function _finishAdSession() {
 		trace('TGSAdapter/_finishAdSession');

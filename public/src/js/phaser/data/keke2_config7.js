@@ -9222,7 +9222,7 @@ Polyworks.Config = (function() {
 									setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 									start: {
 										x: (stageWidth) + (stageUnit * 0.2),
-										y: winH - (stageUnit * 3.5)
+										y: winH - (stageUnit * 3)
 									},
 									physics: {
 										immovable: true

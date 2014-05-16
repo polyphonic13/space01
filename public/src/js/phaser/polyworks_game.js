@@ -5,8 +5,11 @@ PolyworksGame = (function() {
 	var _states = {};
 	var _levels = [];
 	var _socialManager; 
+
+	var _adapter = Polyworks.TGSAdapter;
 	
 	var _gameTitle = '';
+	var _gameStarted = false;
 	var _isTouchDevice = false;
 	var _stageInitialized = false;
 	var _statesInitialized = false;
@@ -190,13 +193,20 @@ PolyworksGame = (function() {
 	}
 	
 	function _addGoogleAnalytics() {
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		/*
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-	  ga('create', _gaID, 'polyworksgames.com');
-	  ga('send', 'pageview');
+		var gid = 'kekeandthegreyexpanse';
+		var version = '1.0.0';
+
+		ga('create', 'UA-50665683-2', 'games.tresensa.com');
+		ga('send', 'pageview');
+		ga('set', 'dimension1', gid);
+		ga('set', 'dimension2', version);
+		*/
 	}
 
 	function _addListeners() {
@@ -382,10 +392,17 @@ PolyworksGame = (function() {
 	}
 	
 	function _onChangeState(event) {
+		if(event.value === 'map') {
+			if(!_gameStarted) {
+				_gameStarted = true;
+				_adapter.logEvent(_adapter.logEvents.GAME_EVENT, [_adapter.gameEvents.BEGIN]);
+			}
+		}
 		PolyworksGame.changeState(event.value);
 	}
 	
 	function _onStartLevel(event) {
+
 		idx = PolyworksGame.currentLevel;
 		for(var key in event) {
 			if(key === 'value' && typeof(event[key]) !== 'undefined') {
@@ -402,7 +419,8 @@ PolyworksGame = (function() {
 		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
 		PolyworksGame.changeState(stateId);
 
-		Polyworks.TGSAdapter.adCheck(PolyworksGame.currentLevel);
+		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.START, (idx+1)]);
+		_adapter.adCheck(PolyworksGame.currentLevel);
 	}
 	
 	function _onNextLevel(event) {
@@ -412,15 +430,20 @@ PolyworksGame = (function() {
 			PolyworksGame.currentLevel = 0;
 			PolyworksGame.levelText = '';
 			stateId = 'completed';
+
+			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.GAME_COMPLETED]);
+
 		} else {
 			stateId = _levels[PolyworksGame.currentLevel].model.name;
 			PolyworksGame.levelText = _levels[PolyworksGame.currentLevel].model.text;
+
+			_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.START, (idx+1)]);
+			_adapter.adCheck(PolyworksGame.currentLevel);
 		}
 		PolyworksGame.levelScore = 0;
 		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
 		PolyworksGame.changeState(stateId);
 
-		Polyworks.TGSAdapter.adCheck(PolyworksGame.currentLevel);
 	}
 	
 	function _onLevelCleared(event) {
@@ -432,8 +455,10 @@ PolyworksGame = (function() {
 			PolyworksGame.highScores[idx] = PolyworksGame.levelScore;
 			PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.levelScore + ' NEW';
 			Polyworks.EventCenter.trigger(Polyworks.Events.HIGH_SCORE_UPDATED);
+			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.NEW_HIGH_SCORE, PolyworksGame.levelScore]);
 		}
 		
+		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.COMPLETE, (idx+1)]);
 		idx++;
 
 		if(PolyworksGame.levelStatus[idx] === 'l') {
@@ -479,7 +504,7 @@ PolyworksGame = (function() {
 			this
 		);
 		PolyworksGame.levelCount = levelCount;
-		Polyworks.TGSAdapter.init(levelCount);
+		_adapter.init(levelCount);
 		trace('PolyworksGame/_initStates, _stageInitialized = ' + _stageInitialized + ', _states = ', _states, '\t_levels = ', _levels);
 		if(_stageInitialized) {
 			PolyworksGame.changeState(_model.initialState);
@@ -493,6 +518,7 @@ PolyworksGame = (function() {
 	}
 	
 	function _quit() {
+		_adapter.logEvent(_adapter.logEvents.GAME_EVENT, [_adapter.gameEvents.END]);
 		_removeListeners();
 		PolyworksGame.isQuit = true;
 		// _killStates();
