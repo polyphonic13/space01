@@ -6,6 +6,7 @@ Polyworks.TGSAdapter = (function() {
 	var _levels = [];
 
 	var _tgsExists = false;
+	var _needAd = false;
 	
 	var _tgsConfig = {
 		GAME_ID: 'kekeandthegreyexpanse',
@@ -55,7 +56,7 @@ Polyworks.TGSAdapter = (function() {
 			_endScreenContainer = document.getElementById('endScreenContainer');
 			
 			for(var i = 0; i < levelCount; i++) {
-				_levels[i] = 0;
+				_levels[i] = LEVEL_PLAYS_PER_AD;
 			}
 
 			if(typeof(TGS) !== 'undefined') {
@@ -75,15 +76,18 @@ Polyworks.TGSAdapter = (function() {
 		
 		adCheck: function(idx) {
 			trace('TGSAdapter/adCheck, _levels[' + idx + '] = ' + _levels[idx] + ', LEVELS_PLAYS_PER_AD = ' + LEVEL_PLAYS_PER_AD);
-			if(_tgsExists) {
-				if(_levels[idx] === 0) {
-					_levels[idx] = LEVEL_PLAYS_PER_AD;
+			// if(_tgsExists) {
+			if(_needAd) {
+				// if(_levels[idx] === 0) {
+					// _levels[idx] = LEVEL_PLAYS_PER_AD;
 					this.displayInterstitial();
-				} else {
-					_levels[idx]--;
-					_finishAdSession();
-				}
+				// } else {
+				// 	_levels[idx]--;
+				// 	_finishAdSession();
+				// }
+				_needAd = false;
 			} else {
+				_needAd = true;
 				_finishAdSession();
 			}
 		},
