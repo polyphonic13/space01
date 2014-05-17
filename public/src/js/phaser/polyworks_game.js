@@ -232,6 +232,7 @@ PolyworksGame = (function() {
 		Polyworks.EventCenter.bind(Polyworks.Events.BUTTON_PRESSED, _onControlPressed, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_PRESSED, _onControlPressed, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_STATE, _onChangeState, this);
+		Polyworks.EventCenter.bind(Polyworks.Events.SHOW_LEVEL_INFO, _onShowLevelInfo, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.START_LEVEL, _onStartLevel, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.NEXT_LEVEL, _onNextLevel, this);
 		Polyworks.EventCenter.bind(Polyworks.Events.LEVEL_CLEARED, _onLevelCleared, this);
@@ -402,6 +403,13 @@ PolyworksGame = (function() {
 		PolyworksGame.changeState(event.value);
 	}
 	
+	function _onShowLevelInfo(event) {
+		trace('PolyworksGame/_onShowLevelInfo, event = ', event);
+		var levelIdx = (event.value < 9) ? ('0' + (event.value+1)) : (event.value+1);
+		var stateId = 'level' + levelIdx + 'Info';
+		PolyworksGame.changeState(stateId);
+	}
+
 	function _onStartLevel(event) {
 
 		idx = PolyworksGame.currentLevel;
@@ -557,6 +565,7 @@ PolyworksGame = (function() {
 
 				// trace('levelInfo['+levelIdx+'] levelInfoConfig = ', levelInfoConfig);
 				levelInfoState = new Polyworks.MenuState(levelInfoConfig);
+				PolyworksGame.phaser.state.add(stateName, levelInfoState, false);
 				_states[stateName] = levelInfoState;
 			},
 			this

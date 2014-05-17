@@ -15,8 +15,6 @@ Polyworks.MapState = (function() {
 		var stageWidth = Polyworks.Stage.width;
 
 		this.createPages(winW, stageWidth, stateGroup);
-		// this.createLevelInfo(winW, stageWidth, stateGroup);
-		this.addListeners();
 	};
 
 	MapState.prototype.createPages = function(winW, stageWidth, stateGroup) {
@@ -45,51 +43,6 @@ Polyworks.MapState = (function() {
 			},
 			this
 		);
-	};
-	
-	MapState.prototype.addListeners = function() {
-		Polyworks.EventCenter.bind(Polyworks.Events.SHOW_LEVEL_INFO, this.onShowLevelInfo, this);
-		Polyworks.EventCenter.bind(Polyworks.Events.HIDE_LEVEL_INFO, this.onHideLevelInfo, this);
-	};
-	
-	MapState.prototype.removeListeners = function() {
-		Polyworks.EventCenter.unbind(Polyworks.Events.SHOW_LEVEL_INFO, this.onShowLevelInfo, this);
-		Polyworks.EventCenter.unbind(Polyworks.Events.HIDE_LEVEL_INFO, this.onHideLevelInfo, this);
-	};
-	
-	MapState.prototype.onShowLevelInfo = function(event) {
-		// trace('MapState/onShowLevelInfo, event = ', event, this);
-		var collection = this.model.collection;
-		Polyworks.Utils.each(collection,
-			function(child) {
-				if(child.hide) {
-					child.hide();
-				}
-			},
-			this
-		);
-
-		this.model.levelInfoCollection[event.value].show();
-	};
-	
-	MapState.prototype.onHideLevelInfo = function(event) {
-		// trace('MapState/onHideLevelInfo, event = ', event);
-		var collection = this.model.collection;
-		Polyworks.Utils.each(collection,
-			function(child) {
-				if(child.show) {
-					child.show();
-				}
-			},
-			this
-		);
-
-		this.model.levelInfoCollection[event.value].hide();
-	};
-	
-	MapState.prototype.shutdown = function() {
-		this.removeListeners();
-		MapState._super.shutdown.call(this);
 	};
 	
 	return MapState;

@@ -2,18 +2,18 @@ module.exports = function(grunt) {
 
 	var project = grunt.option('pjt');
 	var srcDir = 'public/src';
-	var deployDir = 'public/deploy';
+	var buildDir = 'public/build';
 	var projectSrcDir;
 	
 	if(typeof(project) !== 'undefined') {
 		// srcDir += '/' + project;
 		projectSrcDir = srcDir + '/' + project;
-		deployDir += '/' + project;
+		buildDir += '/' + project;
 	}
 	grunt.log.writeln('Starting Grunt Processing');
 	grunt.log.writeln('\tproject = ' + project 
 						+ '\n\tsrcDir = ' + srcDir 
-						+ '\n\tdeployDir = ' + deployDir 
+						+ '\n\tbuildDir = ' + buildDir 
 						+ '\n\tprojectSrcDir = ' + projectSrcDir);
 
 
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 
 		project: project,
 		srcDir: srcDir,
-		deployDir: deployDir,
+		buildDir: buildDir,
 		projectSrcDir: projectSrcDir,
 
 /////// CONCAT 
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
 					banner: "(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- <%= project %> created: <%= grunt.template.today(\"isoDateTime\") %>')})();\n"
 				},
 				src: '<%= projectJavascripts %>',
-				dest: '<%= deployDir %>/js/<%= project %>.js'
+				dest: '<%= buildDir %>/js/<%= project %>.js'
 			}
 
 		},
@@ -73,8 +73,8 @@ module.exports = function(grunt) {
 			},
 
 			project: {
-				src: [ '<%= deployDir %>/js/<%= project %>.js' ],
-				dest: '<%= deployDir %>/js/<%= project %>.min.js'
+				src: [ '<%= buildDir %>/js/<%= project %>.js' ],
+				dest: '<%= buildDir %>/js/<%= project %>.min.js'
 			}
 			
 		},
@@ -88,13 +88,13 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: '<%= projectSrcDir %>/images/',
 					src: [ '**/*' ],
-					dest: '<%= deployDir %>/images/'
+					dest: '<%= buildDir %>/images/'
 				},
 				{
 					expand: true, 
 					cwd: '<%= projectSrcDir %>/css/',
 					src: [ '**/*' ],
-					dest: '<%= deployDir %>/css/'
+					dest: '<%= buildDir %>/css/'
 				}
 				]
 			}
@@ -104,9 +104,9 @@ module.exports = function(grunt) {
 		// cssmin: {
 		// 	project: {
 		// 		expand: true,
-		// 		cwd: '<%= deployDir %>/css/',
+		// 		cwd: '<%= buildDir %>/css/',
 		// 		src: ['*.css', '!*.min.css'],
-		// 		dest: '<%= deployDir %>/css/'
+		// 		dest: '<%= buildDir %>/css/'
 		// 	}
 		// },
 /////// LOCAL SERVER

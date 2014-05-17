@@ -1434,7 +1434,7 @@ Polyworks.Config = (function() {
 					// graphics
 					{
 						name: 'infoGroup',
-						type: 'GroupCollection',
+						cl: 'GroupCollection',
 						attrs: [
 						]
 					},
