@@ -3,7 +3,7 @@
 #
 #	-t	target project (required)
 #	-d	end server directory: optional directory target; defaults to target project value
-# 	-r	remove previous deploy directory prior to running grunt
+# 	-r	remove previous build directory prior to running grunt
 #	-g	skip grunt
 #	-c 	commit repo to target git branch
 #
@@ -17,16 +17,16 @@ PROJECT_DIR=""
 TARGET_DIR=""
 GAMES_DIR="games"
 PUBLIC_DIR="public"
-DEPLOY_DIR="deploy"
+DEPLOY_DIR="build"
 
-function remove_deploy_dir {
-	deploy_dir=$PUBLIC_DIR/$DEPLOY_DIR
-	if([ -d $deploy_dir ])
+function remove_build_dir {
+	build_dir=$PUBLIC_DIR/$DEPLOY_DIR
+	if([ -d $build_dir ])
 		then
 		echo "REMOVING PREVIOUS DEPLOY DIRECTORY"
-		rm -r $deploy_dir
+		rm -r $build_dir
 	else
-		echo "$deploy_dir DOES NOT EXIST"
+		echo "$build_dir DOES NOT EXIST"
 	fi
 }
 
@@ -100,7 +100,7 @@ done
 
 if([ "$REMOVE_DEPLOY" = 1 -a "$SKIP_GRUNT" = 1 ])
 	then 
-	# default to deployment of all tags types if no flag(s) specified: 
+	# default to buildment of all tags types if no flag(s) specified: 
 	echo "ERROR: CAN NOT REMOVE PREVIOUS DEPLOY DIRECTORY AND SKIP GRUNT"
 	exit 1
 fi
@@ -122,7 +122,7 @@ echo "DEPLOYING GAME"
 
 if([ "$REMOVE_DEPLOY" = 1 ])
 	then 
-	remove_deploy_dir
+	remove_build_dir
 fi
 
 if([ "$SKIP_GRUNT" = 0 ])
