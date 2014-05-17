@@ -443,14 +443,17 @@ PolyworksGame = (function() {
 			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.GAME_COMPLETED]);
 
 		} else {
-			stateId = _levels[PolyworksGame.currentLevel].model.name;
-			PolyworksGame.levelText = _levels[PolyworksGame.currentLevel].model.text;
+			// stateId = _levels[PolyworksGame.currentLevel].model.name;
+			// PolyworksGame.levelText = _levels[PolyworksGame.currentLevel].model.text;
 
-			_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.START, (idx+1)]);
-			_adapter.adCheck(PolyworksGame.currentLevel);
+			// _adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.START, (idx+1)]);
+			// _adapter.adCheck(PolyworksGame.currentLevel);
+			var idx = PolyworksGame.currentLevel;
+			var levelIdx = (idx < 9) ? ('0' + (idx+1)) : (idx+1);
+			stateId = 'level' + levelIdx + 'Info';
 		}
-		PolyworksGame.levelScore = 0;
-		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
+		// PolyworksGame.levelScore = 0;
+		// PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
 		PolyworksGame.changeState(stateId);
 
 	}
