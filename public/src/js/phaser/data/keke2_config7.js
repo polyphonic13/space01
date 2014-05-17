@@ -907,7 +907,8 @@ Polyworks.Config = (function() {
 							frames: [0, 0, 1],
 							events: {
 								released: {
-									type: Polyworks.Events.HIDE_LEVEL_INFO
+									type: Polyworks.Events.CHANGE_STATE,
+									value: 'map'
 								}
 							}
 						}
@@ -1460,14 +1461,8 @@ Polyworks.Config = (function() {
 						cl: 'Sprite',
 						attrs: {
 							img: '',
-							phaser: {
-								width: stageWidth,
-								height: stageHeight
-							},
-							start: {
-								x: (winW/2 - stageWidth/2),
-								y: (winH/2 - stageHeight/2)
-							}
+							phaser: levelInfoAttrs.background.phaser,
+							start: levelInfoAttrs.background.start
 						}
 					},
 					// game title
@@ -1492,15 +1487,8 @@ Polyworks.Config = (function() {
 						cl: 'Sprite',
 						attrs: {
 							img: '',
-							phaser: {
-								width: stageWidth,
-								height: stageHeight,
-								alpha: 0.25
-							},
-							start: {
-								x: (winW/2 - stageWidth/2),
-								y: (winH/2 - stageHeight/2)
-							}
+							phaser: levelInfoAttrs.title.phaser,
+							start: levelInfoAttrs.title.start
 						}
 					},
 					// description
