@@ -49,7 +49,6 @@ Polyworks.MapMarker = (function() {
 	MapMarker.prototype.inputUp = function(event, pointer, ctx) {
 		// trace('MapMarker['+this.model.name+']/inputUp');
 		ctx.pressed = false;
-		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.START_LEVEL, value: this.model.level });
 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.SHOW_LEVEL_INFO, value: this.model.level });
 	};
 	

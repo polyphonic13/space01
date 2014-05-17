@@ -57,268 +57,6 @@ Polyworks.Config = (function() {
 			xl: (stageUnit * 1.5)
 		};
 
-		var levelInfoAttrs = {
-			background: {
-				phaser: {
-					width: stageWidth * 0.85,
-					height: stageHeight * 0.85,
-					alpha: 0.50
-				},
-				start: {
-					x: (winW/2) - ((stageWidth * 0.85)/2),
-					y: (winH/2) - ((stageHeight * 0.75)/2)
-				}
-			},
-			title: {
-				phaser: {
-					width: (stageUnit * 6) * 1.5,
-					height: (stageUnit * 1) * 1.5,
-					alpha: 0.75
-				},
-				start: {
-					x: winW - (stageUnit * 6) * 1.5,
-					y: (stageUnit * 1.5)
-				}
-			}
-		};
-
-		var levelInfoBackgrounds = [
-		{
-			name: 'level01Preview',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level01Preview',
-				phaser: levelInfoAttrs.background.phaser,
-				start: levelInfoAttrs.background.start
-			}
-		},
-		{
-			name: 'level02Preview',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level02Preview',
-				phaser: levelInfoAttrs.background.phaser,
-				start: levelInfoAttrs.background.start
-			}
-		},
-		{
-			name: 'level03Preview',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level03Preview',
-				phaser: levelInfoAttrs.background.phaser,
-				start: levelInfoAttrs.background.start
-			}
-		},
-		{
-			name: 'level04Preview',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level04Preview',
-				phaser: levelInfoAttrs.background.phaser,
-				start: levelInfoAttrs.background.start
-			}
-		},
-		{
-			name: 'level05Preview',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level05Preview',
-				phaser: levelInfoAttrs.background.phaser,
-				start: levelInfoAttrs.background.start
-			}
-		},
-		{
-			name: 'level06Preview',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level06Preview',
-				phaser: levelInfoAttrs.background.phaser,
-				start: levelInfoAttrs.background.start
-			}
-		},
-		{
-			name: 'level07Preview',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level07Preview',
-				phaser: levelInfoAttrs.background.phaser,
-				start: levelInfoAttrs.background.start
-			}
-		},
-		{
-			name: 'level08Preview',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level08Preview',
-				phaser: levelInfoAttrs.background.phaser,
-				start: levelInfoAttrs.background.start
-			}
-		},
-		{
-			name: 'level09Preview',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level09Preview',
-				phaser: levelInfoAttrs.background.phaser,
-				start: levelInfoAttrs.background.start
-			}
-		},
-		{
-			name: 'level10Preview',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level10Preview',
-				phaser: levelInfoAttrs.background.phaser,
-				start: levelInfoAttrs.background.start
-			}
-		},
-		{
-			name: 'level11Preview',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level11Preview',
-				phaser: levelInfoAttrs.background.phaser,
-				start: levelInfoAttrs.background.start
-			}
-		},
-		{
-			name: 'level12Preview',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level12Preview',
-				phaser: levelInfoAttrs.background.phaser,
-				start: levelInfoAttrs.background.start
-			}
-		}
-		];
-
-		var levelInfoTitles = [
-		{
-			name: 'level01Title',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level01Title',
-				phaser: levelInfoAttrs.title.phaser,
-				start: levelInfoAttrs.title.start
-			}
-		},
-		{
-			name: 'level02Title',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level02Title',
-				phaser: levelInfoAttrs.title.phaser,
-				start: levelInfoAttrs.title.start
-			}
-		},
-		{
-			name: 'level03Title',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level03Title',
-				phaser: levelInfoAttrs.title.phaser,
-				start: levelInfoAttrs.title.start
-			}
-		},
-		{
-			name: 'level04Title',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level04Title',
-				phaser: levelInfoAttrs.title.phaser,
-				start: levelInfoAttrs.title.start
-			}
-		},
-		{
-			name: 'level05Title',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level05Title',
-				phaser: levelInfoAttrs.title.phaser,
-				start: levelInfoAttrs.title.start
-			}
-		},
-		{
-			name: 'level06Title',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level06Title',
-				phaser: levelInfoAttrs.title.phaser,
-				start: levelInfoAttrs.title.start
-			}
-		},
-		{
-			name: 'level07Title',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level07Title',
-				phaser: levelInfoAttrs.title.phaser,
-				start: levelInfoAttrs.title.start
-			}
-		},
-		{
-			name: 'level08Title',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level08Title',
-				phaser: levelInfoAttrs.title.phaser,
-				start: levelInfoAttrs.title.start
-			}
-		},
-		{
-			name: 'level09Title',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level09Title',
-				phaser: levelInfoAttrs.title.phaser,
-				start: levelInfoAttrs.title.start
-			}
-		},
-		{
-			name: 'level10Title',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level10Title',
-				phaser: levelInfoAttrs.title.phaser,
-				start: levelInfoAttrs.title.start
-			}
-		},
-		{
-			name: 'level11Title',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level11Title',
-				phaser: levelInfoAttrs.title.phaser,
-				start: levelInfoAttrs.title.start
-			}
-		},
-		{
-			name: 'level12Title',
-			cl: 'Sprite',
-			attrs: {
-				img: 'level12Title',
-				phaser: levelInfoAttrs.title.phaser,
-				start: levelInfoAttrs.title.start
-			}
-		}
-		];
-
-		var levelInfoDescriptions = [
-		'where am i? what happened to the colors?\ni see something blue up in the tree over there.',
-		'CATERPILLARS?!\nthey are so gross.\ni want more lollipops.',
-		'climbing trees is so much fun!\ni wonder how many\ndifferent crystal colors i can find...',
-		'this is a big forest.\ni think i see thorns ahead.\ni better avoid those.',
-		'i hope this forest ends soon.',
-		'that river looks fast.\ni don\'t want to get swept away.\ni\'ll have to jump across the rocks.',
-		'wow! look at this mountain.\ni am going to have to climb it.',
-		'SPIDERS?!\ni hate spiders!',
-		'i think i see the top of the mountain.\njust a little bit further...',
-		'climbing down the mountain is so scary...',
-		'the rocks are crumbling! i hope i don\'t fall off...',
-		'a cave! let me see what\'s inside...'
-		];
-
 		var c = {
 			// IMAGES
 			images: {
@@ -1285,12 +1023,6 @@ Polyworks.Config = (function() {
 					]
 				}
 			},
-			// LEVEL STATUS TEXT	
-			levelStatusText: {
-				c: 'cleared',
-				u: 'unlocked',
-				l: 'locked'
-			},
 			// SHARED GROUPS
 			sharedGroups: {
 				levelInfo: [
@@ -1757,6 +1489,292 @@ Polyworks.Config = (function() {
 				}
 				]
 			},
+
+			// LEVEL STATUS TEXT	
+			levelStatusText: {
+				c: 'cleared',
+				u: 'unlocked',
+				l: 'locked'
+			},
+			// LEVEL INFO
+			levelInfo: {
+				attrs: [
+				{
+					name: 'infoGroup',
+					type: 'GroupCollection',
+					attrs: [
+					{
+						name: 'background',
+						type: 'Sprite',
+						attrs: {
+							phaser: {
+								width: stageWidth * 0.85,
+								height: stageHeight * 0.85,
+								alpha: 0.50
+							},
+							start: {
+								x: (winW/2) - ((stageWidth * 0.85)/2),
+								y: (winH/2) - ((stageHeight * 0.75)/2)
+							}
+						}
+					},
+					{
+						name: 'title',
+						type: 'Sprite',
+						attrs: {
+							phaser: {
+								width: (stageUnit * 6) * 1.5,
+								height: (stageUnit * 1) * 1.5,
+								alpha: 0.75
+							},
+							start: {
+								x: winW - (stageUnit * 6) * 1.5,
+								y: (stageUnit * 1.5)
+							}
+						}
+					}
+					]
+				}
+				],
+
+				backgrounds: [
+				{
+					name: 'level01Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level01Preview',
+						phaser: levelInfoAttrs.background.phaser,
+						start: levelInfoAttrs.background.start
+					}
+				},
+				{
+					name: 'level02Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level02Preview',
+						phaser: levelInfoAttrs.background.phaser,
+						start: levelInfoAttrs.background.start
+					}
+				},
+				{
+					name: 'level03Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level03Preview',
+						phaser: levelInfoAttrs.background.phaser,
+						start: levelInfoAttrs.background.start
+					}
+				},
+				{
+					name: 'level04Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level04Preview',
+						phaser: levelInfoAttrs.background.phaser,
+						start: levelInfoAttrs.background.start
+					}
+				},
+				{
+					name: 'level05Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level05Preview',
+						phaser: levelInfoAttrs.background.phaser,
+						start: levelInfoAttrs.background.start
+					}
+				},
+				{
+					name: 'level06Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level06Preview',
+						phaser: levelInfoAttrs.background.phaser,
+						start: levelInfoAttrs.background.start
+					}
+				},
+				{
+					name: 'level07Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level07Preview',
+						phaser: levelInfoAttrs.background.phaser,
+						start: levelInfoAttrs.background.start
+					}
+				},
+				{
+					name: 'level08Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level08Preview',
+						phaser: levelInfoAttrs.background.phaser,
+						start: levelInfoAttrs.background.start
+					}
+				},
+				{
+					name: 'level09Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level09Preview',
+						phaser: levelInfoAttrs.background.phaser,
+						start: levelInfoAttrs.background.start
+					}
+				},
+				{
+					name: 'level10Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level10Preview',
+						phaser: levelInfoAttrs.background.phaser,
+						start: levelInfoAttrs.background.start
+					}
+				},
+				{
+					name: 'level11Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level11Preview',
+						phaser: levelInfoAttrs.background.phaser,
+						start: levelInfoAttrs.background.start
+					}
+				},
+				{
+					name: 'level12Preview',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level12Preview',
+						phaser: levelInfoAttrs.background.phaser,
+						start: levelInfoAttrs.background.start
+					}
+				}
+				],
+
+				titles: [
+				{
+					name: 'level01Title',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level01Title',
+						phaser: levelInfoAttrs.title.phaser,
+						start: levelInfoAttrs.title.start
+					}
+				},
+				{
+					name: 'level02Title',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level02Title',
+						phaser: levelInfoAttrs.title.phaser,
+						start: levelInfoAttrs.title.start
+					}
+				},
+				{
+					name: 'level03Title',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level03Title',
+						phaser: levelInfoAttrs.title.phaser,
+						start: levelInfoAttrs.title.start
+					}
+				},
+				{
+					name: 'level04Title',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level04Title',
+						phaser: levelInfoAttrs.title.phaser,
+						start: levelInfoAttrs.title.start
+					}
+				},
+				{
+					name: 'level05Title',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level05Title',
+						phaser: levelInfoAttrs.title.phaser,
+						start: levelInfoAttrs.title.start
+					}
+				},
+				{
+					name: 'level06Title',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level06Title',
+						phaser: levelInfoAttrs.title.phaser,
+						start: levelInfoAttrs.title.start
+					}
+				},
+				{
+					name: 'level07Title',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level07Title',
+						phaser: levelInfoAttrs.title.phaser,
+						start: levelInfoAttrs.title.start
+					}
+				},
+				{
+					name: 'level08Title',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level08Title',
+						phaser: levelInfoAttrs.title.phaser,
+						start: levelInfoAttrs.title.start
+					}
+				},
+				{
+					name: 'level09Title',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level09Title',
+						phaser: levelInfoAttrs.title.phaser,
+						start: levelInfoAttrs.title.start
+					}
+				},
+				{
+					name: 'level10Title',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level10Title',
+						phaser: levelInfoAttrs.title.phaser,
+						start: levelInfoAttrs.title.start
+					}
+				},
+				{
+					name: 'level11Title',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level11Title',
+						phaser: levelInfoAttrs.title.phaser,
+						start: levelInfoAttrs.title.start
+					}
+				},
+				{
+					name: 'level12Title',
+					cl: 'Sprite',
+					attrs: {
+						img: 'level12Title',
+						phaser: levelInfoAttrs.title.phaser,
+						start: levelInfoAttrs.title.start
+					}
+				}
+				],
+
+				descriptions: [
+				'where am i? what happened to the colors?\ni see something blue up in the tree over there.',
+				'CATERPILLARS?!\nthey are so gross.\ni want more lollipops.',
+				'climbing trees is so much fun!\ni wonder how many\ndifferent crystal colors i can find...',
+				'this is a big forest.\ni think i see thorns ahead.\ni better avoid those.',
+				'i hope this forest ends soon.',
+				'that river looks fast.\ni don\'t want to get swept away.\ni\'ll have to jump across the rocks.',
+				'wow! look at this mountain.\ni am going to have to climb it.',
+				'SPIDERS?!\ni hate spiders!',
+				'i think i see the top of the mountain.\njust a little bit further...',
+				'climbing down the mountain is so scary...',
+				'the rocks are crumbling! i hope i don\'t fall off...',
+				'a cave! let me see what\'s inside...'
+				]
+			},
+
 			// USE FOR LOCAL TESTING:
 			// preloadAll: true,
 
