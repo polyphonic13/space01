@@ -484,12 +484,12 @@ PolyworksGame = (function() {
 
 		Polyworks.Utils.each(states,
 			function(s, idx) {
-				trace(s);
+				// trace(s);
 				state = new Polyworks[s.cl](s, s.name);
 				_states[s.name] = state;
 				PolyworksGame.phaser.state.add(s.name, state, false);
 				if(s.name.indexOf('level') > -1) {
-					trace('\tstate['+s.name+'] levelCount = ' + levelCount);
+					// trace('\tstate['+s.name+'] levelCount = ' + levelCount);
 					if(PolyworksGame.savedStatus) {
 						PolyworksGame.levelStatus[levelCount] = PolyworksGame.savedStatus[levelCount];
 						PolyworksGame.highScores[levelCount] = PolyworksGame.highScores[levelCount];
@@ -505,7 +505,7 @@ PolyworksGame = (function() {
 			this
 		);
 		PolyworksGame.levelCount = levelCount;
-		_initLevelStates();
+		_initLevelInfoStates();
 		_adapter.init(levelCount);
 		trace('PolyworksGame/_initStates, _stageInitialized = ' + _stageInitialized + ', _states = ', _states, '\t_levels = ', _levels);
 		if(_stageInitialized) {
@@ -515,69 +515,52 @@ PolyworksGame = (function() {
 	}
 
 	function _initLevelInfoStates() {
-		this.model.levelInfoCollection = [];
-		var levelInfoBackgrounds = this.model.levelInfo.backgrounds;
-		var levelInfoTitles = this.model.levelInfo.titles;
-		var levelInfoDescriptions = this.model.levelInfo.descriptions;
-		var levelCount = PolyworksGame.levelCount;
-		var levelInfoState;
-		var levelIdx;
+		var template = PolyworksGame.get('levelInfoStateTemplate');
+		var controls = PolyworksGame.get('controls').levelInfo;
+		
+		Polyworks.Utils.each(
+			_levels,
+			function(level, idx) {
+				var levelInfoConfig = Polyworks.Utils.clone(template.state);
+				var groupCollection = Polyworks.Utils.clone(template.groupCollection);
+				var levelInfoState;
+				var levelIdx;
+				var levelInfo; 
+				var background;
+				var title;
 
-		for(var i = 0; i < levelCount; i++) {
-			var levelInfoAttrs = Polyworks.Utils.clone(PolyworksGame.get('sharedGroups').levelInfo);
-			var levelInfo = PolyworksGame.getLevelInfo(i);
-			// trace('\ti = ' + i);
-			levelIdx = (i < 9) ? ('0' + (i+1)) : (i+1);
+				levelInfo = PolyworksGame.getLevelInfo(idx);
+				levelIdx = (idx < 9) ? ('0' + (idx+1)) : (idx+1);
 
-			// set the specific attribute values for this level
-			Polyworks.Utils.each(levelInfoAttrs,
-				function(levelInfoAttrs, idx) {
-					// trace('\t\tname = ' + levelInfoAttrs.name);
-					switch(levelInfoAttrs.name) {
-						case 'levelInfoBackground': 
-						levelInfoAttrs[idx] = levelInfoBackgrounds[i];
-						break;
+				stateName = 'level' + levelIdx + 'Info';
+				background = 'level' + levelIdx + 'Preview';
+				title = 'level' + levelIdx + 'Title';
+				
+				levelInfoConfig.name = stateName;
+				levelInfoConfig.images.push(background);
+				levelInfoConfig.images.push(title);
 
-						case 'levelInfoTitle': 
-						levelInfoAttrs[idx] = levelInfoTitles[i];
-						break;
+				groupCollection.background.attrs.img = background;
+				groupCollection.title.attrs.img = title;
+				groupCollection.description.attrs.defaultContent = template.descriptions[idx];
+				groupCollection.highScore.attrs.defaultContent = 'high score: ' + levelInfo.highScore;
+				groupCollection.status.attrs.defaultContent = levelInfo.statusText;
 
-						case 'mapButton':
-						levelInfoAttrs[idx].attrs.events.released.value = i;
-						break;
+				Polyworks.Utils.each(
+					groupCollection,
+					function(item, key) {
+						// trace('\titem['+key+'] = ', item);
+						levelInfoConfig.attrs[0].attrs.push(item);
+					},
+					this
+				);
 
-						case 'playButtonSmall':
-						// remove play button if level is locked else set level index to its released value
-						if(levelInfo.status === 'l') {
-							delete levelInfoAttrs[idx];
-						} else {
-							levelInfoAttrs[idx].attrs.events.released.value = i;
-						}
-						break;
-
-						case 'levelDescription':
-						levelInfoAttrs[idx].attrs.defaultContent = levelInfoDescriptions[i];
-						break;
-						
-						case 'highScore': 
-						levelInfoAttrs[idx].attrs.defaultContent = 'high score: ' + levelInfo.highScore;
-						break;
-
-						case 'levelStatus': 
-						levelInfoAttrs[idx].attrs.defaultContent = levelInfo.statusText;
-						break;
-
-						default: 
-						break;
-					}
-				},
-				this
-			);
-			// trace('\t\tlevelInfoAttrs now: ', levelInfoAttrs);
-			trace('levelInfo['+levelIdx+'] levelInfoAttrs = ', levelInfoAttrs);
-			levelInfoState = new Polyworks.MenuState(levelInfoAttrs);
-			_states.push(levelInfoState);
-		}
+				// trace('levelInfo['+levelIdx+'] levelInfoConfig = ', levelInfoConfig);
+				levelInfoState = new Polyworks.MenuState(levelInfoConfig);
+				_states[stateName] = levelInfoState;
+			},
+			this
+		);
 	}
 	
 	function _initSocial() {
