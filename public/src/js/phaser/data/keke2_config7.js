@@ -1414,7 +1414,7 @@ Polyworks.Config = (function() {
 			levelInfoStateTemplate: {
 				state: {
 					name: 'level',
-					cl: 'MenuState',
+					cl: 'LevelInfoState',
 					world: {
 						x: 0,
 						y: 0,
@@ -1425,31 +1425,18 @@ Polyworks.Config = (function() {
 					clearCache: false,
 					backgroundColor: '#ffffff',
 					images: [
-
+						'greyExpanseTitle'
 					],
 					sprites: [
 						'playButtonSmall',
 						'mapButton'
 					],
 					attrs: [
-					// graphics
 					{
 						name: 'infoGroup',
 						cl: 'GroupCollection',
 						attrs: [
 						]
-					},
-					// controls
-					{
-						name: 'levelInfoControls',
-						cl: 'ControlButtons',
-						type: 'levelInfo',
-						attrs: {
-							start: {
-								x: 0,
-								y: 0
-							}
-						}
 					}
 					]
 				},
@@ -1535,8 +1522,51 @@ Polyworks.Config = (function() {
 								align: 'left'
 							}
 						}
+					},
+					// play button
+					playButton: {
+						name: 'playButtonSmall',
+						cl: 'InputButton',
+						attrs: {
+							img: 'playButtonSmall',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageUnit * 0.5),
+								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
+							},
+							events: {
+								released: {
+									type: Polyworks.Events.START_LEVEL
+								}
+							}
+						}
+					},
+					// map button
+					mapButton: {
+						name: 'mapButton',
+						cl: 'InputButton',
+						attrs: {
+							img: 'mapButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageUnit * 0.5),
+								y: (winH/2) - ((stageUnit * 1.5)/2)
+							},
+							frames: [0, 0, 1],
+							events: {
+								released: {
+									type: Polyworks.Events.CHANGE_STATE,
+									value: 'map'
+								}
+							}
+						}
 					}
-					
 				},
 
 				descriptions: [

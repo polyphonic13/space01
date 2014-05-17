@@ -22,13 +22,13 @@ Polyworks.MapMarker = (function() {
 			} else {
 				this.frame = 15; // u (cleared)
 			}
-			// this.input.start();
-			// this.addListeners();
+			this.input.start();
+			this.addListeners();
 		}
 		// TESTING
 		// this.frame = 15;
-		this.input.start();
-		this.addListeners();
+		// this.input.start();
+		// this.addListeners();
 	};
 	
 	MapMarker.prototype.addListeners = function() {
