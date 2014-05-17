@@ -15,7 +15,7 @@ Polyworks.MapState = (function() {
 		var stageWidth = Polyworks.Stage.width;
 
 		this.createPages(winW, stageWidth, stateGroup);
-		this.createLevelInfo(winW, stageWidth, stateGroup);
+		// this.createLevelInfo(winW, stageWidth, stateGroup);
 		this.addListeners();
 	};
 
@@ -45,79 +45,6 @@ Polyworks.MapState = (function() {
 			},
 			this
 		);
-	};
-	
-	MapState.prototype.createLevelInfo = function(winW, stageWidth, stateGroup) {
-		this.model.levelInfoCollection = [];
-		var levelInfoBackgrounds = this.model.levelInfoBackgrounds;
-		var levelInfoTitles = this.model.levelInfoTitles;
-		var levelInfoDescriptions = this.model.levelInfoDescriptions;
-		var levelCount = PolyworksGame.levelCount;
-		var levelInfoConfig;
-		var levelIdx;
-		// trace('MapState/createLevelInfo, levelCount = ' + levelCount + ', levelInfoGroup = ', levelInfoGroup);
-		for(var i = 0; i < levelCount; i++) {
-			var levelInfoGroup = Polyworks.Utils.clone(PolyworksGame.get('sharedGroups').levelInfo);
-			var levelInfo = PolyworksGame.getLevelInfo(i);
-			// trace('\ti = ' + i);
-			levelIdx = (i < 9) ? ('0' + (i+1)) : (i+1);
-
-			// set the specific attribute values for this level
-			Polyworks.Utils.each(levelInfoGroup,
-				function(levelInfoAttrs, idx) {
-					// trace('\t\tname = ' + levelInfoAttrs.name);
-					switch(levelInfoAttrs.name) {
-						case 'levelInfoBackground': 
-						levelInfoGroup[idx] = levelInfoBackgrounds[i];
-						break;
-
-						case 'levelInfoTitle': 
-						levelInfoGroup[idx] = levelInfoTitles[i];
-						break;
-
-						case 'mapButton':
-						levelInfoGroup[idx].attrs.events.released.value = i;
-						break;
-
-						case 'playButtonSmall':
-						// remove play button if level is locked else set level index to its released value
-						if(levelInfo.status === 'l') {
-							delete levelInfoGroup[idx];
-						} else {
-							levelInfoGroup[idx].attrs.events.released.value = i;
-						}
-						break;
-
-						case 'levelDescription':
-						levelInfoGroup[idx].attrs.defaultContent = levelInfoDescriptions[i];
-						break;
-						
-						case 'highScore': 
-						levelInfoGroup[idx].attrs.defaultContent = 'high score: ' + levelInfo.highScore;
-						break;
-
-						case 'levelStatus': 
-						levelInfoGroup[idx].attrs.defaultContent = levelInfo.statusText;
-						break;
-
-						default: 
-						break;
-					}
-				},
-				this
-			);
-			// trace('\t\tlevelInfoGroup now: ', levelInfoGroup);
-			levelInfoConfig = {
-				name: 'level' + levelIdx + 'Info',
-				cl: 'LevelInfo',
-				addTo: 'stateGroup',
-				stateGroup: stateGroup,
-				attrs: levelInfoGroup
-			};
-			levelInfo = new Polyworks.LevelInfo(levelInfoConfig);
-			levelInfo.begin(); 
-			this.model.levelInfoCollection.push(levelInfo);
-		}
 	};
 	
 	MapState.prototype.addListeners = function() {
