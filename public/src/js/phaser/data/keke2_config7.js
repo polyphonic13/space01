@@ -13,6 +13,31 @@ Polyworks.Config = (function() {
 		var stageHeight = stage.height;
 		var stageUnit = stage.unit;
 
+		var levelInfoAttrs = {
+			background: {
+				phaser: {
+					width: stageWidth * 0.85,
+					height: stageHeight * 0.85,
+					alpha: 0.50
+				},
+				start: {
+					x: (winW/2) - ((stageWidth * 0.85)/2),
+					y: (winH/2) - ((stageHeight * 0.75)/2)
+				}
+			},
+			title: {
+				phaser: {
+					width: (stageUnit * 6) * 1.5,
+					height: (stageUnit * 1) * 1.5,
+					alpha: 0.75
+				},
+				start: {
+					x: winW - (stageUnit * 6) * 1.5,
+					y: (stageUnit * 1.5)
+				}
+			}
+		};
+
 		var caterpillar01 = {
 			width: (stageUnit * 2),
 			height: (stageUnit * 2) * 0.375,
@@ -843,6 +868,51 @@ Polyworks.Config = (function() {
 						}
 					}
 					],
+					levelInfo: [
+					// play button
+					{
+						name: 'playButtonSmall',
+						cl: 'InputButton',
+						attrs: {
+							img: 'playButtonSmall',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageUnit * 0.5),
+								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
+							},
+							events: {
+								released: {
+									type: Polyworks.Events.START_LEVEL
+								}
+							}
+						}
+					},
+					// map button
+					{
+						name: 'mapButton',
+						cl: 'InputButton',
+						attrs: {
+							img: 'mapButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageUnit * 0.5),
+								y: (winH/2) - ((stageUnit * 1.5)/2)
+							},
+							frames: [0, 0, 1],
+							events: {
+								released: {
+									type: Polyworks.Events.HIDE_LEVEL_INFO
+								}
+							}
+						}
+					}
+					],
 					completed: [
 					{
 						name: 'mapButton',
@@ -1025,163 +1095,6 @@ Polyworks.Config = (function() {
 			},
 			// SHARED GROUPS
 			sharedGroups: {
-				levelInfo: [
-				// background
-				{
-					name: 'background',
-					cl: 'Sprite',
-					attrs: {
-						img: 'whiteRect',
-						phaser: {
-							width: winW,
-							height: winH,
-							// alpha: 0.75
-							alpha: 1
-						},
-						start: {
-							x: 0,
-							y: 0
-						}
-					}
-				},
-				// level background
-				{
-					name: 'levelInfoBackground',
-					cl: 'Sprite',
-					attrs: {
-						img: '',
-						phaser: {
-							width: stageWidth,
-							height: stageHeight
-						},
-						start: {
-							x: (winW/2 - stageWidth/2),
-							y: (winH/2 - stageHeight/2)
-						}
-					}
-				},
-				// game title
-				{
-					name: 'gameTitle',
-					cl: 'Sprite',
-					attrs: {
-						img: 'greyExpanseTitle',
-						phaser: {
-							width: (stageUnit * 12),
-							height: (stageUnit * 1.5)
-						},
-						start: {
-							x: (winW/2 - (stageUnit * 6)),
-							y: (stageUnit * 0.1)
-						}
-					}
-				},
-				// level title
-				{
-					name: 'levelInfoTitle',
-					cl: 'Sprite',
-					attrs: {
-						img: '',
-						phaser: {
-							width: stageWidth,
-							height: stageHeight,
-							alpha: 0.25
-						},
-						start: {
-							x: (winW/2 - stageWidth/2),
-							y: (winH/2 - stageHeight/2)
-						}
-					}
-				},
-				// description
-				{
-					name: 'levelDescription',
-					cl: 'Text',
-					attrs: {
-						alignX: 'center',
-						alignY: 'center',
-						style: { 
-							font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
-							fill: '#000000',
-							align: 'center'
-						},
-						defaultContent: ''
-					}
-				},
-				// high score
-				{
-					name: 'highScore',
-					cl: 'Text',
-					attrs: {
-						x: (stageUnit * 3),
-						y: winH - (stageUnit * 2.25),
-						defaultContent: '',
-						style: { 
-							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
-							fill: '#000000',
-							align: 'left'
-						}
-					}
-				},
-				// level status
-				{
-					name: 'levelStatus',
-					cl: 'Text',
-					attrs: {
-						x: (stageUnit * 3),
-						y: winH - (stageUnit * 1.2),
-						defaultContent: '',
-						style: { 
-							font: 'bold ' + fontSizes.xs + 'px "Waiting for the Sunrise"', 
-							fill: '#000000',
-							align: 'left'
-						}
-					}
-				},
-				// play button
-				{
-					name: 'playButtonSmall',
-					cl: 'InputButton',
-					attrs: {
-						img: 'playButtonSmall',
-						phaser: {
-							width: (stageUnit * 1.5),
-							height: (stageUnit * 1.5)
-						},
-						start: {
-							x: (stageUnit * 0.5),
-							y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
-						},
-						events: {
-							released: {
-								type: Polyworks.Events.START_LEVEL
-							}
-						}
-					}
-				},
-				// map button
-				{
-					name: 'mapButton',
-					cl: 'InputButton',
-					attrs: {
-						img: 'mapButton',
-						phaser: {
-							width: (stageUnit * 1.5),
-							height: (stageUnit * 1.5)
-						},
-						start: {
-							x: (stageUnit * 0.5),
-							y: (winH/2) - ((stageUnit * 1.5)/2)
-						},
-						frames: [0, 0, 1],
-						events: {
-							released: {
-								type: Polyworks.Events.HIDE_LEVEL_INFO
-							}
-						}
-					}
-				}
-				],
 				levelGUI: [
 				{
 					name: 'heartIcon',
@@ -1497,267 +1410,146 @@ Polyworks.Config = (function() {
 				l: 'locked'
 			},
 			// LEVEL INFO
-			levelInfo: {
-				attrs: [
-				{
-					name: 'infoGroup',
-					type: 'GroupCollection',
-					attrs: [
-					{
-						name: 'background',
-						type: 'Sprite',
-						attrs: {
-							phaser: {
-								width: stageWidth * 0.85,
-								height: stageHeight * 0.85,
-								alpha: 0.50
-							},
-							start: {
-								x: (winW/2) - ((stageWidth * 0.85)/2),
-								y: (winH/2) - ((stageHeight * 0.75)/2)
-							}
-						}
+			levelInfoStateTemplate: {
+				state: {
+					name: 'level',
+					cl: 'MenuState',
+					world: {
+						x: 0,
+						y: 0,
+						width: winW,
+						height: winH
 					},
+					clearWorld: true,
+					clearCache: false,
+					backgroundColor: '#ffffff',
+					images: [
+
+					],
+					sprites: [
+						'playButtonSmall',
+						'mapButton'
+					],
+					attrs: [
+					// graphics
 					{
-						name: 'title',
-						type: 'Sprite',
+						name: 'infoGroup',
+						type: 'GroupCollection',
+						attrs: [
+						]
+					},
+					// controls
+					{
+						name: 'levelInfoControls',
+						cl: 'ControlButtons',
+						type: 'levelInfo',
 						attrs: {
-							phaser: {
-								width: (stageUnit * 6) * 1.5,
-								height: (stageUnit * 1) * 1.5,
-								alpha: 0.75
-							},
 							start: {
-								x: winW - (stageUnit * 6) * 1.5,
-								y: (stageUnit * 1.5)
+								x: 0,
+								y: 0
 							}
 						}
 					}
 					]
-				}
-				],
+				},
 
-				backgrounds: [
-				{
-					name: 'level01Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level01Preview',
-						phaser: levelInfoAttrs.background.phaser,
-						start: levelInfoAttrs.background.start
+				groupCollection: {
+					// level background
+					background: {
+						name: 'levelInfoBackground',
+						cl: 'Sprite',
+						attrs: {
+							img: '',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight
+							},
+							start: {
+								x: (winW/2 - stageWidth/2),
+								y: (winH/2 - stageHeight/2)
+							}
+						}
+					},
+					// game title
+					gameTitle: {
+						name: 'gameTitle',
+						cl: 'Sprite',
+						attrs: {
+							img: 'greyExpanseTitle',
+							phaser: {
+								width: (stageUnit * 12),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (winW/2 - (stageUnit * 6)),
+								y: (stageUnit * 0.1)
+							}
+						}
+					},
+					// level title
+					title: {
+						name: 'levelInfoTitle',
+						cl: 'Sprite',
+						attrs: {
+							img: '',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight,
+								alpha: 0.25
+							},
+							start: {
+								x: (winW/2 - stageWidth/2),
+								y: (winH/2 - stageHeight/2)
+							}
+						}
+					},
+					// description
+					description: {
+						name: 'levelDescription',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							alignY: 'center',
+							style: { 
+								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: ''
+						}
+					},
+					// high score
+					highScore: {
+						name: 'highScore',
+						cl: 'Text',
+						attrs: {
+							x: (stageUnit * 3),
+							y: winH - (stageUnit * 2.25),
+							defaultContent: '',
+							style: { 
+								font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
+								fill: '#000000',
+								align: 'left'
+							}
+						}
+					},
+					// level status
+					status: {
+						name: 'levelStatus',
+						cl: 'Text',
+						attrs: {
+							x: (stageUnit * 3),
+							y: winH - (stageUnit * 1.2),
+							defaultContent: '',
+							style: { 
+								font: 'bold ' + fontSizes.xs + 'px "Waiting for the Sunrise"', 
+								fill: '#000000',
+								align: 'left'
+							}
+						}
 					}
+					
 				},
-				{
-					name: 'level02Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level02Preview',
-						phaser: levelInfoAttrs.background.phaser,
-						start: levelInfoAttrs.background.start
-					}
-				},
-				{
-					name: 'level03Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level03Preview',
-						phaser: levelInfoAttrs.background.phaser,
-						start: levelInfoAttrs.background.start
-					}
-				},
-				{
-					name: 'level04Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level04Preview',
-						phaser: levelInfoAttrs.background.phaser,
-						start: levelInfoAttrs.background.start
-					}
-				},
-				{
-					name: 'level05Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level05Preview',
-						phaser: levelInfoAttrs.background.phaser,
-						start: levelInfoAttrs.background.start
-					}
-				},
-				{
-					name: 'level06Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level06Preview',
-						phaser: levelInfoAttrs.background.phaser,
-						start: levelInfoAttrs.background.start
-					}
-				},
-				{
-					name: 'level07Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level07Preview',
-						phaser: levelInfoAttrs.background.phaser,
-						start: levelInfoAttrs.background.start
-					}
-				},
-				{
-					name: 'level08Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level08Preview',
-						phaser: levelInfoAttrs.background.phaser,
-						start: levelInfoAttrs.background.start
-					}
-				},
-				{
-					name: 'level09Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level09Preview',
-						phaser: levelInfoAttrs.background.phaser,
-						start: levelInfoAttrs.background.start
-					}
-				},
-				{
-					name: 'level10Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level10Preview',
-						phaser: levelInfoAttrs.background.phaser,
-						start: levelInfoAttrs.background.start
-					}
-				},
-				{
-					name: 'level11Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level11Preview',
-						phaser: levelInfoAttrs.background.phaser,
-						start: levelInfoAttrs.background.start
-					}
-				},
-				{
-					name: 'level12Preview',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level12Preview',
-						phaser: levelInfoAttrs.background.phaser,
-						start: levelInfoAttrs.background.start
-					}
-				}
-				],
-
-				titles: [
-				{
-					name: 'level01Title',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level01Title',
-						phaser: levelInfoAttrs.title.phaser,
-						start: levelInfoAttrs.title.start
-					}
-				},
-				{
-					name: 'level02Title',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level02Title',
-						phaser: levelInfoAttrs.title.phaser,
-						start: levelInfoAttrs.title.start
-					}
-				},
-				{
-					name: 'level03Title',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level03Title',
-						phaser: levelInfoAttrs.title.phaser,
-						start: levelInfoAttrs.title.start
-					}
-				},
-				{
-					name: 'level04Title',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level04Title',
-						phaser: levelInfoAttrs.title.phaser,
-						start: levelInfoAttrs.title.start
-					}
-				},
-				{
-					name: 'level05Title',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level05Title',
-						phaser: levelInfoAttrs.title.phaser,
-						start: levelInfoAttrs.title.start
-					}
-				},
-				{
-					name: 'level06Title',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level06Title',
-						phaser: levelInfoAttrs.title.phaser,
-						start: levelInfoAttrs.title.start
-					}
-				},
-				{
-					name: 'level07Title',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level07Title',
-						phaser: levelInfoAttrs.title.phaser,
-						start: levelInfoAttrs.title.start
-					}
-				},
-				{
-					name: 'level08Title',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level08Title',
-						phaser: levelInfoAttrs.title.phaser,
-						start: levelInfoAttrs.title.start
-					}
-				},
-				{
-					name: 'level09Title',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level09Title',
-						phaser: levelInfoAttrs.title.phaser,
-						start: levelInfoAttrs.title.start
-					}
-				},
-				{
-					name: 'level10Title',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level10Title',
-						phaser: levelInfoAttrs.title.phaser,
-						start: levelInfoAttrs.title.start
-					}
-				},
-				{
-					name: 'level11Title',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level11Title',
-						phaser: levelInfoAttrs.title.phaser,
-						start: levelInfoAttrs.title.start
-					}
-				},
-				{
-					name: 'level12Title',
-					cl: 'Sprite',
-					attrs: {
-						img: 'level12Title',
-						phaser: levelInfoAttrs.title.phaser,
-						start: levelInfoAttrs.title.start
-					}
-				}
-				],
 
 				descriptions: [
 				'where am i? what happened to the colors?\ni see something blue up in the tree over there.',
@@ -1869,35 +1661,9 @@ Polyworks.Config = (function() {
 					'greyExpanseTitle',
 					'invisibleRect',
 					'whiteRect',
-					'greyRect',
-					'blackRect',
 					'ovalMask',
 					'pageLeftArrow',
 					'pageRightArrow',
-					'level01Preview',
-					'level02Preview',
-					'level03Preview',
-					'level04Preview',
-					'level05Preview',
-					'level06Preview',
-					'level07Preview',
-					'level08Preview',
-					'level09Preview',
-					'level10Preview',
-					'level11Preview',
-					'level12Preview',
-					'level01Title',
-					'level02Title',
-					'level03Title',
-					'level04Title',
-					'level05Title',
-					'level06Title',
-					'level07Title',
-					'level08Title',
-					'level09Title',
-					'level10Title',
-					'level11Title',
-					'level12Title',
 					'mapForest',
 					'mapMountains'
 				],
@@ -2132,48 +1898,6 @@ Polyworks.Config = (function() {
 					}
 					]
 				}
-				],
-				levelInfoBackgrounds: [
-					levelInfoBackgrounds[0],
-					levelInfoBackgrounds[1],
-					levelInfoBackgrounds[2],
-					levelInfoBackgrounds[3],
-					levelInfoBackgrounds[4],
-					levelInfoBackgrounds[5],
-					levelInfoBackgrounds[6],
-					levelInfoBackgrounds[7],
-					levelInfoBackgrounds[8],
-					levelInfoBackgrounds[9],
-					levelInfoBackgrounds[10],
-					levelInfoBackgrounds[11]
-				],
-				levelInfoTitles: [
-					levelInfoTitles[0],
-					levelInfoTitles[1],
-					levelInfoTitles[2],
-					levelInfoTitles[3],
-					levelInfoTitles[4],
-					levelInfoTitles[5],
-					levelInfoTitles[6],
-					levelInfoTitles[7],
-					levelInfoTitles[8],
-					levelInfoTitles[9],
-					levelInfoTitles[10],
-					levelInfoTitles[11]
-				],
-				levelInfoDescriptions: [
-					levelInfoDescriptions[0],
-					levelInfoDescriptions[1],
-					levelInfoDescriptions[2],
-					levelInfoDescriptions[3],
-					levelInfoDescriptions[4],
-					levelInfoDescriptions[5],
-					levelInfoDescriptions[6],
-					levelInfoDescriptions[7],
-					levelInfoDescriptions[8],
-					levelInfoDescriptions[9],
-					levelInfoDescriptions[10],
-					levelInfoDescriptions[11]
 				],
 				attrs: [
 				{
