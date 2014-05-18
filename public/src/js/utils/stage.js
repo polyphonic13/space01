@@ -65,8 +65,8 @@ Polyworks.Stage = (function() {
 	};
 
 	function _calculateSizes() {
-		stage.winW = document.documentElement.clientWidth; 
-		stage.winH = document.documentElement.clientHeight;
+		stage.winW = document.documentElement.clientWidth - 1; 
+		stage.winH = document.documentElement.clientHeight - 1;
 
 		stage.height = (document.documentElement.clientHeight > 800) ? 800 : document.documentElement.clientHeight;
 		stage.width = ((document.documentElement.clientHeight/_aspectRatio[1]) * _aspectRatio[0]);

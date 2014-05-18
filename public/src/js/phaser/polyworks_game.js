@@ -496,7 +496,7 @@ PolyworksGame = (function() {
 					// trace('\tstate['+s.name+'] levelCount = ' + levelCount);
 					if(PolyworksGame.savedStatus) {
 						PolyworksGame.levelStatus[levelCount] = PolyworksGame.savedStatus[levelCount];
-						PolyworksGame.highScores[levelCount] = PolyworksGame.highScores[levelCount];
+						PolyworksGame.highScores[levelCount] = PolyworksGame.highScores[levelCount] || 0;
 					} else {
 						PolyworksGame.levelStatus[levelCount] = (levelCount === 0) ? 'u' : 'l';
 						PolyworksGame.highScores[levelCount] = 0;
