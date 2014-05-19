@@ -74,6 +74,13 @@ Polyworks.TGSAdapter = (function() {
 			}
 		},
 		
+		submitScore: function(params) {
+			if(_tgsExists) {
+				trace('submitting score: ', params);
+				TGS.Leaderboard.SubmitScore(params);
+			}
+		},
+		
 		adCheck: function(idx) {
 			trace('TGSAdapter/adCheck, _levels[' + idx + '] = ' + _levels[idx] + ', LEVELS_PLAYS_PER_AD = ' + LEVEL_PLAYS_PER_AD);
 			// if(_tgsExists) {

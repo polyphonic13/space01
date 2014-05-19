@@ -461,8 +461,18 @@ PolyworksGame = (function() {
 			PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.levelScore + ' NEW';
 			Polyworks.EventCenter.trigger(Polyworks.Events.HIGH_SCORE_UPDATED);
 			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.NEW_HIGH_SCORE, PolyworksGame.levelScore]);
+
+			var totalScore = 0;
+			Polyworks.Utils.each(
+				PolyworksGame.highScores,
+				function(highScore) {
+					totalScore += highScore;
+				},
+				this
+			);
+			_adapter.submitScore({ score: totalScore });
 		}
-		
+
 		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.COMPLETE, (idx+1)]);
 		idx++;
 
