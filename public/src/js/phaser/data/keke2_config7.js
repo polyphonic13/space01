@@ -85,203 +85,203 @@ Polyworks.Config = (function() {
 		var c = {
 			// IMAGES
 			images: {
-				// gameTitle: 'images/keke_title.png',
-				gameTitle: 'images/keke_grey_expanse_title.png',
-				greyExpanseTitle: 'images/grey_expanse_title.png',
+				// gameTitle: 'assets/images/keke_title.png',
+				gameTitle: 'assets/images/keke_grey_expanse_title.png',
+				greyExpanseTitle: 'assets/images/grey_expanse_title.png',
 
-				blackRect: 'images/black_rect32x32.png',
-				greyRect: 'images/grey_rect32x32.png',
-				whiteRect: 'images/white_rect32x32.png',
+				blackRect: 'assets/images/black_rect32x32.png',
+				greyRect: 'assets/images/grey_rect32x32.png',
+				whiteRect: 'assets/images/white_rect32x32.png',
 
-				kekeSmall: 'images/map/new_keke4a_sm.png',
-				pageLeftArrow: 'images/map/page_left_arrow.png',
-				pageRightArrow: 'images/map/page_right_arrow.png',
-				mapForest: 'images/map/map04_forest.gif',
-				mapMountains: 'images/map/map04_mountains.gif',
+				kekeSmall: 'assets/images/map/new_keke4a_sm.png',
+				pageLeftArrow: 'assets/images/map/page_left_arrow.png',
+				pageRightArrow: 'assets/images/map/page_right_arrow.png',
+				mapForest: 'assets/images/map/map04_forest.gif',
+				mapMountains: 'assets/images/map/map04_mountains.gif',
 
-				level01Title: 'images/titles/level_title01.png',
-				level02Title: 'images/titles/level_title02.png',
-				level03Title: 'images/titles/level_title03.png',
-				level04Title: 'images/titles/level_title04.png',
-				level05Title: 'images/titles/level_title05.png',
-				level06Title: 'images/titles/level_title06.png',
-				level07Title: 'images/titles/level_title07.png',
-				level08Title: 'images/titles/level_title08.png',
-				level09Title: 'images/titles/level_title09.png',
-				level10Title: 'images/titles/level_title10.png',
-				level11Title: 'images/titles/level_title11.png',
-				level12Title: 'images/titles/level_title12.png',
+				level01Title: 'assets/images/titles/level_title01.png',
+				level02Title: 'assets/images/titles/level_title02.png',
+				level03Title: 'assets/images/titles/level_title03.png',
+				level04Title: 'assets/images/titles/level_title04.png',
+				level05Title: 'assets/images/titles/level_title05.png',
+				level06Title: 'assets/images/titles/level_title06.png',
+				level07Title: 'assets/images/titles/level_title07.png',
+				level08Title: 'assets/images/titles/level_title08.png',
+				level09Title: 'assets/images/titles/level_title09.png',
+				level10Title: 'assets/images/titles/level_title10.png',
+				level11Title: 'assets/images/titles/level_title11.png',
+				level12Title: 'assets/images/titles/level_title12.png',
 				
-				level01Preview: 'images/backgrounds/level01_preview-md.gif',
-				level02Preview: 'images/backgrounds/level02_preview-md.gif',
-				level03Preview: 'images/backgrounds/level03_preview-md.gif',
-				level04Preview: 'images/backgrounds/level04_preview-md.gif',
-				level05Preview: 'images/backgrounds/level05_preview-md.gif',
-				level06Preview: 'images/backgrounds/level06_preview-md.gif',
-				level07Preview: 'images/backgrounds/level07_preview-md.gif',
-				level08Preview: 'images/backgrounds/level08_preview-md.gif',
-				level09Preview: 'images/backgrounds/level09_preview-md.gif',
-				level10Preview: 'images/backgrounds/level10_preview-md.gif',
-				level11Preview: 'images/backgrounds/level11_preview-md.gif',
-				level12Preview: 'images/backgrounds/level12_preview-md.gif',
+				level01Preview: 'assets/images/backgrounds/level01_preview-md.gif',
+				level02Preview: 'assets/images/backgrounds/level02_preview-md.gif',
+				level03Preview: 'assets/images/backgrounds/level03_preview-md.gif',
+				level04Preview: 'assets/images/backgrounds/level04_preview-md.gif',
+				level05Preview: 'assets/images/backgrounds/level05_preview-md.gif',
+				level06Preview: 'assets/images/backgrounds/level06_preview-md.gif',
+				level07Preview: 'assets/images/backgrounds/level07_preview-md.gif',
+				level08Preview: 'assets/images/backgrounds/level08_preview-md.gif',
+				level09Preview: 'assets/images/backgrounds/level09_preview-md.gif',
+				level10Preview: 'assets/images/backgrounds/level10_preview-md.gif',
+				level11Preview: 'assets/images/backgrounds/level11_preview-md.gif',
+				level12Preview: 'assets/images/backgrounds/level12_preview-md.gif',
 
-				forestBackground02a: 'images/backgrounds/pencil_forest02a-md.gif',
-				forestBackground02b: 'images/backgrounds/pencil_forest02b-md.gif',
-				forestBackground02c: 'images/backgrounds/pencil_forest02c-md.gif',
-				forestBackground02d: 'images/backgrounds/pencil_forest02d-md.gif',
-				forestBackground02e: 'images/backgrounds/pencil_forest02e-md.gif',
-				forestBackground02f: 'images/backgrounds/pencil_forest02f-md.gif',
+				forestBackground02a: 'assets/images/backgrounds/pencil_forest02a-md.gif',
+				forestBackground02b: 'assets/images/backgrounds/pencil_forest02b-md.gif',
+				forestBackground02c: 'assets/images/backgrounds/pencil_forest02c-md.gif',
+				forestBackground02d: 'assets/images/backgrounds/pencil_forest02d-md.gif',
+				forestBackground02e: 'assets/images/backgrounds/pencil_forest02e-md.gif',
+				forestBackground02f: 'assets/images/backgrounds/pencil_forest02f-md.gif',
 
-				forestBackground01a: 'images/backgrounds/pencil_forest01a-md.gif',
-				forestBackground01b: 'images/backgrounds/pencil_forest01b-md.gif',
-				forestBackground01c: 'images/backgrounds/pencil_forest01c-md.gif',
+				forestBackground01a: 'assets/images/backgrounds/pencil_forest01a-md.gif',
+				forestBackground01b: 'assets/images/backgrounds/pencil_forest01b-md.gif',
+				forestBackground01c: 'assets/images/backgrounds/pencil_forest01c-md.gif',
 
-				riverBackground01a: 'images/backgrounds/pencil_river01a-md.gif',
-				riverBackground01b: 'images/backgrounds/pencil_river01b-md.gif',
-				riverBackground01c: 'images/backgrounds/pencil_river01c-md.gif',
-				riverBackground01d: 'images/backgrounds/pencil_river01d-md.gif',
-				riverBackground01e: 'images/backgrounds/pencil_river01e-md.gif',
-				riverBackground01f: 'images/backgrounds/pencil_river01f-md.gif',
+				riverBackground01a: 'assets/images/backgrounds/pencil_river01a-md.gif',
+				riverBackground01b: 'assets/images/backgrounds/pencil_river01b-md.gif',
+				riverBackground01c: 'assets/images/backgrounds/pencil_river01c-md.gif',
+				riverBackground01d: 'assets/images/backgrounds/pencil_river01d-md.gif',
+				riverBackground01e: 'assets/images/backgrounds/pencil_river01e-md.gif',
+				riverBackground01f: 'assets/images/backgrounds/pencil_river01f-md.gif',
 
-				mountainBackgroundA5: 'images/backgrounds/pencil_mountain06-a5-md.gif',
-				mountainBackgroundA6: 'images/backgrounds/pencil_mountain06-a6-md.gif',
-				mountainBackgroundA7: 'images/backgrounds/pencil_mountain06-a7-md.gif',
-				mountainBackgroundA8: 'images/backgrounds/pencil_mountain06-a8-md.gif',
-				mountainBackgroundB5: 'images/backgrounds/pencil_mountain06-b5-md.gif',
-				mountainBackgroundB6: 'images/backgrounds/pencil_mountain06-b6-md.gif',
-				mountainBackgroundB7: 'images/backgrounds/pencil_mountain06-b7-md.gif',
-				mountainBackgroundB8: 'images/backgrounds/pencil_mountain06-b8-md.gif',
-				mountainBackgroundC3: 'images/backgrounds/pencil_mountain06-c3-md.gif',
-				mountainBackgroundC4: 'images/backgrounds/pencil_mountain06-c4-md.gif',
-				mountainBackgroundC5: 'images/backgrounds/pencil_mountain06-c5-md.gif',
-				mountainBackgroundC6: 'images/backgrounds/pencil_mountain06-c6-md.gif',
-				mountainBackgroundC7: 'images/backgrounds/pencil_mountain06-c7-md.gif',
-				mountainBackgroundC8: 'images/backgrounds/pencil_mountain06-c8-md.gif',
-				mountainBackgroundD3: 'images/backgrounds/pencil_mountain06-d3-md.gif',
-				mountainBackgroundD4: 'images/backgrounds/pencil_mountain06-d4-md.gif',
-				mountainBackgroundD5: 'images/backgrounds/pencil_mountain06-d5-md.gif',
-				mountainBackgroundD6: 'images/backgrounds/pencil_mountain06-d6-md.gif',
-				mountainBackgroundD7: 'images/backgrounds/pencil_mountain06-d7-md.gif',
-				mountainBackgroundD8: 'images/backgrounds/pencil_mountain06-d8-md.gif',
-				mountainBackgroundE1: 'images/backgrounds/pencil_mountain06-e1-md.gif',
-				mountainBackgroundE2: 'images/backgrounds/pencil_mountain06-e2-md.gif',
-				mountainBackgroundE3: 'images/backgrounds/pencil_mountain06-e3-md.gif',
-				mountainBackgroundE4: 'images/backgrounds/pencil_mountain06-e4-md.gif',
-				mountainBackgroundE5: 'images/backgrounds/pencil_mountain06-e5-md.gif',
-				mountainBackgroundE6: 'images/backgrounds/pencil_mountain06-e6-md.gif',
-				mountainBackgroundF1: 'images/backgrounds/pencil_mountain06-f1-md.gif',
-				mountainBackgroundF2: 'images/backgrounds/pencil_mountain06-f2-md.gif',
-				mountainBackgroundF3: 'images/backgrounds/pencil_mountain06-f3-md.gif',
-				mountainBackgroundF4: 'images/backgrounds/pencil_mountain06-f4-md.gif',
-				mountainBackgroundF5: 'images/backgrounds/pencil_mountain06-f5-md.gif',
-				mountainBackgroundF6: 'images/backgrounds/pencil_mountain06-f6-md.gif',
-				mountainBackgroundG1: 'images/backgrounds/pencil_mountain06-g1-md.gif',
-				mountainBackgroundG2: 'images/backgrounds/pencil_mountain06-g2-md.gif',
-				mountainBackgroundG3: 'images/backgrounds/pencil_mountain06-g3-md.gif',
-				mountainBackgroundG4: 'images/backgrounds/pencil_mountain06-g4-md.gif',
-				mountainBackgroundH1: 'images/backgrounds/pencil_mountain06-h1-md.gif',
-				mountainBackgroundH2: 'images/backgrounds/pencil_mountain06-h2-md.gif',
-				mountainBackgroundH3: 'images/backgrounds/pencil_mountain06-h3-md.gif',
-				mountainBackgroundH3a: 'images/backgrounds/pencil_mountain06-h3a-md.gif',
-				mountainBackgroundH4: 'images/backgrounds/pencil_mountain06-h4-md.gif',
-				mountainBackgroundH4a: 'images/backgrounds/pencil_mountain06-h4a-md.gif',
-				mountainBackgroundH5: 'images/backgrounds/pencil_mountain06-h5-md.gif',
-				mountainBackgroundH6: 'images/backgrounds/pencil_mountain06-h6-md.gif',
-				mountainBackgroundI3: 'images/backgrounds/pencil_mountain06-i3-md.gif',
-				mountainBackgroundI4: 'images/backgrounds/pencil_mountain06-i4-md.gif',
-				mountainBackgroundI5: 'images/backgrounds/pencil_mountain06-i5-md.gif',
-				mountainBackgroundI6: 'images/backgrounds/pencil_mountain06-i6-md.gif',
-				mountainBackgroundI7: 'images/backgrounds/pencil_mountain06-i7-md.gif',
-				mountainBackgroundI8: 'images/backgrounds/pencil_mountain06-i8-md.gif',
-				mountainBackgroundJ3: 'images/backgrounds/pencil_mountain06-j3-md.gif',
-				mountainBackgroundJ4: 'images/backgrounds/pencil_mountain06-j4-md.gif',
-				mountainBackgroundJ5: 'images/backgrounds/pencil_mountain06-j5-md.gif',
-				mountainBackgroundJ6: 'images/backgrounds/pencil_mountain06-j6-md.gif',
-				mountainBackgroundJ7: 'images/backgrounds/pencil_mountain06-j7-md.gif',
-				mountainBackgroundJ8: 'images/backgrounds/pencil_mountain06-j8-md.gif',
-				mountainBackgroundK5: 'images/backgrounds/pencil_mountain06-k5-md.gif',
-				mountainBackgroundK6: 'images/backgrounds/pencil_mountain06-k6-md.gif',
-				mountainBackgroundK7: 'images/backgrounds/pencil_mountain06-k7-md.gif',
-				mountainBackgroundK8: 'images/backgrounds/pencil_mountain06-k8-md.gif',
-				mountainBackgroundL5: 'images/backgrounds/pencil_mountain06-l5-md.gif',
-				mountainBackgroundL6: 'images/backgrounds/pencil_mountain06-l6-md.gif',
-				mountainBackgroundL7: 'images/backgrounds/pencil_mountain06-l7-md.gif',
-				mountainBackgroundL8: 'images/backgrounds/pencil_mountain06-l8-md.gif',
+				mountainBackgroundA5: 'assets/images/backgrounds/pencil_mountain06-a5-md.gif',
+				mountainBackgroundA6: 'assets/images/backgrounds/pencil_mountain06-a6-md.gif',
+				mountainBackgroundA7: 'assets/images/backgrounds/pencil_mountain06-a7-md.gif',
+				mountainBackgroundA8: 'assets/images/backgrounds/pencil_mountain06-a8-md.gif',
+				mountainBackgroundB5: 'assets/images/backgrounds/pencil_mountain06-b5-md.gif',
+				mountainBackgroundB6: 'assets/images/backgrounds/pencil_mountain06-b6-md.gif',
+				mountainBackgroundB7: 'assets/images/backgrounds/pencil_mountain06-b7-md.gif',
+				mountainBackgroundB8: 'assets/images/backgrounds/pencil_mountain06-b8-md.gif',
+				mountainBackgroundC3: 'assets/images/backgrounds/pencil_mountain06-c3-md.gif',
+				mountainBackgroundC4: 'assets/images/backgrounds/pencil_mountain06-c4-md.gif',
+				mountainBackgroundC5: 'assets/images/backgrounds/pencil_mountain06-c5-md.gif',
+				mountainBackgroundC6: 'assets/images/backgrounds/pencil_mountain06-c6-md.gif',
+				mountainBackgroundC7: 'assets/images/backgrounds/pencil_mountain06-c7-md.gif',
+				mountainBackgroundC8: 'assets/images/backgrounds/pencil_mountain06-c8-md.gif',
+				mountainBackgroundD3: 'assets/images/backgrounds/pencil_mountain06-d3-md.gif',
+				mountainBackgroundD4: 'assets/images/backgrounds/pencil_mountain06-d4-md.gif',
+				mountainBackgroundD5: 'assets/images/backgrounds/pencil_mountain06-d5-md.gif',
+				mountainBackgroundD6: 'assets/images/backgrounds/pencil_mountain06-d6-md.gif',
+				mountainBackgroundD7: 'assets/images/backgrounds/pencil_mountain06-d7-md.gif',
+				mountainBackgroundD8: 'assets/images/backgrounds/pencil_mountain06-d8-md.gif',
+				mountainBackgroundE1: 'assets/images/backgrounds/pencil_mountain06-e1-md.gif',
+				mountainBackgroundE2: 'assets/images/backgrounds/pencil_mountain06-e2-md.gif',
+				mountainBackgroundE3: 'assets/images/backgrounds/pencil_mountain06-e3-md.gif',
+				mountainBackgroundE4: 'assets/images/backgrounds/pencil_mountain06-e4-md.gif',
+				mountainBackgroundE5: 'assets/images/backgrounds/pencil_mountain06-e5-md.gif',
+				mountainBackgroundE6: 'assets/images/backgrounds/pencil_mountain06-e6-md.gif',
+				mountainBackgroundF1: 'assets/images/backgrounds/pencil_mountain06-f1-md.gif',
+				mountainBackgroundF2: 'assets/images/backgrounds/pencil_mountain06-f2-md.gif',
+				mountainBackgroundF3: 'assets/images/backgrounds/pencil_mountain06-f3-md.gif',
+				mountainBackgroundF4: 'assets/images/backgrounds/pencil_mountain06-f4-md.gif',
+				mountainBackgroundF5: 'assets/images/backgrounds/pencil_mountain06-f5-md.gif',
+				mountainBackgroundF6: 'assets/images/backgrounds/pencil_mountain06-f6-md.gif',
+				mountainBackgroundG1: 'assets/images/backgrounds/pencil_mountain06-g1-md.gif',
+				mountainBackgroundG2: 'assets/images/backgrounds/pencil_mountain06-g2-md.gif',
+				mountainBackgroundG3: 'assets/images/backgrounds/pencil_mountain06-g3-md.gif',
+				mountainBackgroundG4: 'assets/images/backgrounds/pencil_mountain06-g4-md.gif',
+				mountainBackgroundH1: 'assets/images/backgrounds/pencil_mountain06-h1-md.gif',
+				mountainBackgroundH2: 'assets/images/backgrounds/pencil_mountain06-h2-md.gif',
+				mountainBackgroundH3: 'assets/images/backgrounds/pencil_mountain06-h3-md.gif',
+				mountainBackgroundH3a: 'assets/images/backgrounds/pencil_mountain06-h3a-md.gif',
+				mountainBackgroundH4: 'assets/images/backgrounds/pencil_mountain06-h4-md.gif',
+				mountainBackgroundH4a: 'assets/images/backgrounds/pencil_mountain06-h4a-md.gif',
+				mountainBackgroundH5: 'assets/images/backgrounds/pencil_mountain06-h5-md.gif',
+				mountainBackgroundH6: 'assets/images/backgrounds/pencil_mountain06-h6-md.gif',
+				mountainBackgroundI3: 'assets/images/backgrounds/pencil_mountain06-i3-md.gif',
+				mountainBackgroundI4: 'assets/images/backgrounds/pencil_mountain06-i4-md.gif',
+				mountainBackgroundI5: 'assets/images/backgrounds/pencil_mountain06-i5-md.gif',
+				mountainBackgroundI6: 'assets/images/backgrounds/pencil_mountain06-i6-md.gif',
+				mountainBackgroundI7: 'assets/images/backgrounds/pencil_mountain06-i7-md.gif',
+				mountainBackgroundI8: 'assets/images/backgrounds/pencil_mountain06-i8-md.gif',
+				mountainBackgroundJ3: 'assets/images/backgrounds/pencil_mountain06-j3-md.gif',
+				mountainBackgroundJ4: 'assets/images/backgrounds/pencil_mountain06-j4-md.gif',
+				mountainBackgroundJ5: 'assets/images/backgrounds/pencil_mountain06-j5-md.gif',
+				mountainBackgroundJ6: 'assets/images/backgrounds/pencil_mountain06-j6-md.gif',
+				mountainBackgroundJ7: 'assets/images/backgrounds/pencil_mountain06-j7-md.gif',
+				mountainBackgroundJ8: 'assets/images/backgrounds/pencil_mountain06-j8-md.gif',
+				mountainBackgroundK5: 'assets/images/backgrounds/pencil_mountain06-k5-md.gif',
+				mountainBackgroundK6: 'assets/images/backgrounds/pencil_mountain06-k6-md.gif',
+				mountainBackgroundK7: 'assets/images/backgrounds/pencil_mountain06-k7-md.gif',
+				mountainBackgroundK8: 'assets/images/backgrounds/pencil_mountain06-k8-md.gif',
+				mountainBackgroundL5: 'assets/images/backgrounds/pencil_mountain06-l5-md.gif',
+				mountainBackgroundL6: 'assets/images/backgrounds/pencil_mountain06-l6-md.gif',
+				mountainBackgroundL7: 'assets/images/backgrounds/pencil_mountain06-l7-md.gif',
+				mountainBackgroundL8: 'assets/images/backgrounds/pencil_mountain06-l8-md.gif',
 
-				caveBackground02a: 'images/backgrounds/pencil_cave02a-md.gif',
-				caveBackground02b: 'images/backgrounds/pencil_cave02b-md.gif',
+				caveBackground02a: 'assets/images/backgrounds/pencil_cave02a-md.gif',
+				caveBackground02b: 'assets/images/backgrounds/pencil_cave02b-md.gif',
 
-				platform: 'images/scenery/platform.png',
-				platformGrey: 'images/scenery/platform_grey.png',
-				platformRed: 'images/scenery/platform_red.png',
-				platformV: 'images/scenery/platform_v.png',
+				platform: 'assets/images/scenery/platform.png',
+				platformGrey: 'assets/images/scenery/platform_grey.png',
+				platformRed: 'assets/images/scenery/platform_red.png',
+				platformV: 'assets/images/scenery/platform_v.png',
 
-				caveGround01a: 'images/scenery/cave_ground01a.png',
-				caveGround01b: 'images/scenery/cave_ground01b.png',
+				caveGround01a: 'assets/images/scenery/cave_ground01a.png',
+				caveGround01b: 'assets/images/scenery/cave_ground01b.png',
 				
-				rockPlatform01: 'images/scenery/rock_platform01.png',
-				rockPlatform02: 'images/scenery/rock_platform02.png',
-				rockPlatform03: 'images/scenery/rock_platform03.png',
-				rockPlatform04: 'images/scenery/rock_platform04.png',
+				rockPlatform01: 'assets/images/scenery/rock_platform01.png',
+				rockPlatform02: 'assets/images/scenery/rock_platform02.png',
+				rockPlatform03: 'assets/images/scenery/rock_platform03.png',
+				rockPlatform04: 'assets/images/scenery/rock_platform04.png',
 
-				grass03: 'images/scenery/grass03.png',
-				grass03a: 'images/scenery/grass03a.png',
-				grass03b: 'images/scenery/grass	03b.png',
-				grass03c: 'images/scenery/grass03c.png',
-				grass03ci: 'images/scenery/grass03ci.png',
-				grassClump01: 'images/scenery/grass_clump01.png',
+				grass03: 'assets/images/scenery/grass03.png',
+				grass03a: 'assets/images/scenery/grass03a.png',
+				grass03b: 'assets/images/scenery/grass	03b.png',
+				grass03c: 'assets/images/scenery/grass03c.png',
+				grass03ci: 'assets/images/scenery/grass03ci.png',
+				grassClump01: 'assets/images/scenery/grass_clump01.png',
 
-				tree01: 'images/scenery/tree04a.png',
-				tree02: 'images/scenery/tree04a.png',
-				tree03: 'images/scenery/tree04a.png',
-				tree04: 'images/scenery/tree04a.png',
+				tree01: 'assets/images/scenery/tree04a.png',
+				tree02: 'assets/images/scenery/tree04a.png',
+				tree03: 'assets/images/scenery/tree04a.png',
+				tree04: 'assets/images/scenery/tree04a.png',
 
-				river01: 'images/scenery/river_water01.png',
+				river01: 'assets/images/scenery/river_water01.png',
 
-				woodenArrowSign01Left: 'images/scenery/wooden_arrow_sign01_left.png',
-				woodenArrowSign01Right: 'images/scenery/wooden_arrow_sign01_right.png',
-				woodenXSign01: 'images/scenery/wooden_x_sign01.png',
+				woodenArrowSign01Left: 'assets/images/scenery/wooden_arrow_sign01_left.png',
+				woodenArrowSign01Right: 'assets/images/scenery/wooden_arrow_sign01_right.png',
+				woodenXSign01: 'assets/images/scenery/wooden_x_sign01.png',
 				
-				branch03Left: 'images/scenery/branch03_left.png',
-				branch03Right: 'images/scenery/branch03_right.png',
-				branch03aLeft: 'images/scenery/branch03a_left.png',
-				branch03aRight: 'images/scenery/branch03a_right.png',
-				vine01Left: 'images/scenery/vine01a_left.png',
-				vine01Right: 'images/scenery/vine01a_right.png',
-				trunk01: 'images/scenery/trunk01.png',
-				thorns01: 'images/scenery/thorns03.png',
+				branch03Left: 'assets/images/scenery/branch03_left.png',
+				branch03Right: 'assets/images/scenery/branch03_right.png',
+				branch03aLeft: 'assets/images/scenery/branch03a_left.png',
+				branch03aRight: 'assets/images/scenery/branch03a_right.png',
+				vine01Left: 'assets/images/scenery/vine01a_left.png',
+				vine01Right: 'assets/images/scenery/vine01a_right.png',
+				trunk01: 'assets/images/scenery/trunk01.png',
+				thorns01: 'assets/images/scenery/thorns03.png',
 
-				goalFlag: 'images/goal_flag.png',
+				goalFlag: 'assets/images/goal_flag.png',
 
 				// requirements
-				crystals02Grey: 'images/crystals02a_grey.png',
-				crystals02Blue: 'images/crystals02a_blue.png',
-				crystals02Green: 'images/crystals02a_green.png',
-				crystals02Garnet: 'images/crystals02a_garnet.png',
-				crystals02Purple: 'images/crystals02a_purple.png',
-				crystals02Silver: 'images/crystals02a_silver.png',
-				crystals02Aqua: 'images/crystals02a_aqua.png',
-				crystals02Orange: 'images/crystals02a_orange.png',
-				crystals02Pink: 'images/crystals02a_pink.png',
-				crystals02Teal: 'images/crystals02a_teal.png',
-				crystals02Yellow: 'images/crystals02a_yellow.png',
-				crystals02Red: 'images/crystals02a_red.png',
-				crystals02Diamond: 'images/crystals02a_diamond.png',
+				crystals02Grey: 'assets/images/crystals02a_grey.png',
+				crystals02Blue: 'assets/images/crystals02a_blue.png',
+				crystals02Green: 'assets/images/crystals02a_green.png',
+				crystals02Garnet: 'assets/images/crystals02a_garnet.png',
+				crystals02Purple: 'assets/images/crystals02a_purple.png',
+				crystals02Silver: 'assets/images/crystals02a_silver.png',
+				crystals02Aqua: 'assets/images/crystals02a_aqua.png',
+				crystals02Orange: 'assets/images/crystals02a_orange.png',
+				crystals02Pink: 'assets/images/crystals02a_pink.png',
+				crystals02Teal: 'assets/images/crystals02a_teal.png',
+				crystals02Yellow: 'assets/images/crystals02a_yellow.png',
+				crystals02Red: 'assets/images/crystals02a_red.png',
+				crystals02Diamond: 'assets/images/crystals02a_diamond.png',
 
 				// bonuses
-				lollipop: 'images/lollipop.png',
+				lollipop: 'assets/images/lollipop.png',
 
 				// buttons
-				startButton: 'images/controls/start_button.png',
+				startButton: 'assets/images/controls/start_button.png',
 
 				// boss
-				caterpillarBoss1Head: 'images/enemies/caterpillar03b_head.png',
-				caterpillarBoss1Body: 'images/enemies/caterpillar03b_body.png',
+				caterpillarBoss1Head: 'assets/images/enemies/caterpillar03b_head.png',
+				caterpillarBoss1Body: 'assets/images/enemies/caterpillar03b_body.png',
 
 				// misc
-				heart: 'images/heart.png',
-				invisibleRect: 'images/invisible.png',
-				ovalMask: 'images/oval_mask2.png'
+				heart: 'assets/images/heart.png',
+				invisibleRect: 'assets/images/invisible.png',
+				ovalMask: 'assets/images/oval_mask2.png'
 
 			},
 			// SPRITES
@@ -289,21 +289,21 @@ Polyworks.Config = (function() {
 				// map
 				mapLocationMarker: 
 				{
-					url: 'images/map/map_location_marker.png',
+					url: 'assets/images/map/map_location_marker.png',
 					width: 128,
 					height: 128,
 					frames: 4
 				},
 				mapLocationMarkerCrystals: 
 				{
-					url: 'images/map/map_location_marker_crystals.gif',
+					url: 'assets/images/map/map_location_marker_crystals.gif',
 					width: 64,
 					height: 128,
 					frames: 16
 				},
 				crystalsWheel: 
 				{
-					url: 'images/map/crystals_wheel_sprite.png',
+					url: 'assets/images/map/crystals_wheel_sprite.png',
 					width: 128,
 					height: 128,
 					frames: 12
@@ -311,87 +311,87 @@ Polyworks.Config = (function() {
 				// buttons
 				leftButton: 
 				{
-					// url: 'images/controls/arrow_left_2x8.png',
+					// url: 'assets/images/controls/arrow_left_2x8.png',
 					// width: 75,
 					// height: 400,
-					url: 'images/controls/arrow_left_2x8b.png',
+					url: 'assets/images/controls/arrow_left_2x8b.png',
 					width: 75,
 					height: 400,
 					frames: 2
 				},
 				rightButton: 
 				{
-					url: 'images/controls/arrow_right_4x8b.png',
+					url: 'assets/images/controls/arrow_right_4x8b.png',
 					width: 200, 
 					height: 400,
 					frames: 2
 				},
 				upButton: 
 				{
-					url: 'images/controls/arrow_up_4x8b.png',
+					url: 'assets/images/controls/arrow_up_4x8b.png',
 					width: 200,
 					height: 400,
 					frames: 2
 				},
 				pauseButton: 
 				{
-					url: 'images/controls/pause_button2.png',
+					url: 'assets/images/controls/pause_button2.png',
 					width: 50,
 					height: 50,
 					frames: 2
 				},
 				playButton: 
 				{
-					url: 'images/controls/play_button.png',
+					url: 'assets/images/controls/play_button.png',
 					width: 100,
 					height: 100,
 					frames: 2
 				},
 				playButtonSmall: 
 				{
-					url: 'images/controls/play_button_sm.png',
+					url: 'assets/images/controls/play_button_sm.png',
 					width: 50,
 					height: 50,
 					frames: 2
 				},
 				nextButton: 
 				{
-					url: 'images/controls/next_button.png',
+					url: 'assets/images/controls/next_button.png',
 					width: 50,
 					height: 50,
 					frames: 2
 				},
 				menuButton: 
 				{
-					url: 'images/controls/menu_button3.png',
+					url: 'assets/images/controls/menu_button3.png',
 					width: 50,
 					height: 50,
 					frames: 2
 				},
 				mapButton: 
 				{
-					url: 'images/controls/map_button.png',
+					url: 'assets/images/controls/map_button.png',
 					width: 50,
 					height: 50,
 					frames: 2
 				},
 				restartButton: 
 				{
-					url: 'images/controls/restart_button.png',
+					url: 'assets/images/controls/restart_button.png',
 					width: 100,
 					height: 100,
 					frames: 2
 				},
 				mailButton: 
 				{
-					url: 'images/controls/mail_button.png',
+					url: 'assets/images/controls/mail_button.png',
 					width: 50,
 					height: 50,
 					frames: 2
 				},
 				quitButton: 
 				{
-					url: 'images/controls/quit_button.png',
+					url: 'assets/images/controls/quit_button.png',
 					width: 50,
 					height: 50,
 					frames: 2
@@ -400,7 +400,7 @@ Polyworks.Config = (function() {
 				// heart
 				heartSprite: 
 				{
-					url: 'images/heart_sprite.png',
+					url: 'assets/images/heart_sprite.png',
 					width: 128,
 					height: 128,
 					frames: 8
@@ -408,8 +408,8 @@ Polyworks.Config = (function() {
 				// player
 				keke: 
 				{
-					url: 'images/keke_character3c.png', 
-					// url: 'images/keke_character3c_bw.png', 
+					url: 'assets/images/keke_character3c.png', 
+					// url: 'assets/images/keke_character3c_bw.png', 
 					width: 190,
 					height: 226,
 					frames: 35
@@ -417,49 +417,49 @@ Polyworks.Config = (function() {
 				// enemies
 				caterpillar01: 
 				{
-					url: 'images/enemies/caterpillar03_sprite.png',
+					url: 'assets/images/enemies/caterpillar03_sprite.png',
 					width: 128, 
 					height: 48, 
 					frames: 16
 				},
 				caterpillar02: 
 				{
-					url: 'images/enemies/caterpillar03a_sprite.png',
+					url: 'assets/images/enemies/caterpillar03a_sprite.png',
 					width: 128, 
 					height: 48, 
 					frames: 16
 				},
 				caterpillar03: 
 				{
-					url: 'images/enemies/caterpillar03c_sprite.png',
+					url: 'assets/images/enemies/caterpillar03c_sprite.png',
 					width: 128, 
 					height: 48, 
 					frames: 16
 				},
 				spider01: 
 				{
-					url: 'images/enemies/spider01a.png',
+					url: 'assets/images/enemies/spider01a.png',
 					width: 128, 
 					height: 128, 
 					frames: 16
 				},
 				spider02: 
 				{
-					url: 'images/enemies/spider01b.png',
+					url: 'assets/images/enemies/spider01b.png',
 					width: 128, 
 					height: 128, 
 					frames: 16
 				},
 				spider03: 
 				{
-					url: 'images/enemies/spider01c.png',
+					url: 'assets/images/enemies/spider01c.png',
 					width: 128, 
 					height: 128, 
 					frames: 16
 				},
 				lava01: 
 				{
-					url: 'images/scenery/lava01-sprite.png',
+					url: 'assets/images/scenery/lava01-sprite.png',
 					width: 512, 
 					height: 128, 
 					frames: 8
@@ -467,28 +467,28 @@ Polyworks.Config = (function() {
 				// reacting terrain
 				branch03LeftAnimated: 
 				{
-					url: 'images/scenery/branch03_left_animated.png',
+					url: 'assets/images/scenery/branch03_left_animated.png',
 					width: 256, 
 					height: 32, 
 					frames: 6
 				},
 				branch03RightAnimated: 
 				{
-					url: 'images/scenery/branch03_right_animated.png',
+					url: 'assets/images/scenery/branch03_right_animated.png',
 					width: 256, 
 					height: 32, 
 					frames: 6
 				},
 				rockPlatform01Animated: 
 				{
-					url: 'images/scenery/rock_platform01_animated.png',
+					url: 'assets/images/scenery/rock_platform01_animated.png',
 					width: 128, 
 					height: 64, 
 					frames: 8
 				},
 				rockPlatform04Animated: 
 				{
-					url: 'images/scenery/rock_platform04_animated.png',
+					url: 'assets/images/scenery/rock_platform04_animated.png',
 					width: 128, 
 					height: 64, 
 					frames: 8
@@ -502,7 +502,7 @@ Polyworks.Config = (function() {
 			// SOCIAL
 			social: {
 				parentId: 'socialButtons',
-				imagePath: 'images/social/',
+				imagePath: 'assets/images/social/',
 				shareTitle: 'keke and the G R E Y  E X P A N S E',
 				// appURL: encodeURIComponent(document.location.href),
 				appURL: encodeURIComponent('http://www.polyworksgames.com/games/keke2/'),

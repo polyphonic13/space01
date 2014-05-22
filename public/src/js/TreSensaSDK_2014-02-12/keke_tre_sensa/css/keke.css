@@ -55,7 +55,7 @@ body, canvas {
 	left: 0px;
 	top: 0px;
 
-	background: #ffffff url("../images/loading_white.gif") no-repeat center;
+	background: #ffffff url("../assets/images/loading_white.gif") no-repeat center;
 	background-size: 50px;
 
 	position: absolute;
@@ -120,7 +120,7 @@ body, canvas {
 	left: 0px;
 	top: 0px;
 	
-	background: #ffffff url("../images/reorient_message_v.gif") no-repeat center;
+	background: #ffffff url("../assets/images/reorient_message_v.gif") no-repeat center;
 	background-size: contain;
 
 	display: none;
@@ -172,7 +172,7 @@ body, canvas {
 	padding-right: 10px;
 	padding-left: 10px;
 	
-	background: url("../images/controls/mail_icon.png") no-repeat center;
+	background: url("../assets/images/controls/mail_icon.png") no-repeat center;
 	background-size: 38px 20px;
 	
 	display: inline-block;
