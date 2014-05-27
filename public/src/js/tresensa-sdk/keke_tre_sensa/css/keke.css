@@ -4,6 +4,7 @@ body, canvas {
 
 	font-family: 'Arial', sans-serif;
 	color: #000000;
+	overflow:hidden;
 }
 .smallFont {
 	font-size: 0.5em;
