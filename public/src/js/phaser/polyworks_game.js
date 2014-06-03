@@ -475,7 +475,7 @@ PolyworksGame = (function() {
 
 		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.COMPLETE, (idx+1)]);
 		idx++;
-
+		trace('THE NEW LEVEL STATUS IS: ' + PolyworksGame.levelStatus[idx]);
 		if(PolyworksGame.levelStatus[idx] === 'l') {
 			PolyworksGame.levelStatus[idx] = 'u';
 		}

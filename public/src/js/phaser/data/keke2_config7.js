@@ -273,7 +273,8 @@ Polyworks.Config = (function() {
 
 				// buttons
 				startButton: 'assets/images/controls/start_button.png',
-
+				creditsButton: 'assets/images/controls/credits_button.png',
+				
 				// boss
 				caterpillarBoss1Head: 'assets/images/enemies/caterpillar03b_head.png',
 				caterpillarBoss1Body: 'assets/images/enemies/caterpillar03b_body.png',
@@ -389,7 +390,7 @@ Polyworks.Config = (function() {
 					height: 50,
 					frames: 2
 				},
-				quitButton: 
+				closeButton: 
 				{
 					url: 'assets/images/controls/quit_button.png',
 					width: 50,
@@ -519,10 +520,10 @@ Polyworks.Config = (function() {
 					}
 				},
 				networks: [
-					'mail',
-					'facebook',
-					'twitter',
-					'google'
+					// 'mail',
+					// 'facebook',
+					// 'twitter',
+					// 'google'
 				],
 				currentActionType: 'follow',
 				socialActions: {
@@ -561,35 +562,6 @@ Polyworks.Config = (function() {
 					}
 				},
 				listeners: [
-				// {
-				// 	type: Polyworks.Events.LEVEL_CLEARED,
-				// 	actions: [
-				// 	{
-				// 		method: 'changeData',
-				// 		data: {
-				// 			type: 'currentActionType',
-				// 			value: 'share'
-				// 		}
-				// 	},
-				// 	{
-				// 		method: 'show',
-				// 		data: {
-				// 			value: [
-				// 				'facebook',
-				// 				'twitter',
-				// 				'google'
-				// 			]
-				// 		}
-				// 	}]
-				// },
-				// {
-				// 	type: Polyworks.Events.NEXT_LEVEL,
-				// 	actions: [
-				// 	{
-				// 		method: 'hideAll',
-				// 		data: {}
-				// 	}]
-				// },
 				{
 					type: Polyworks.Events.CHANGE_STATE,
 					match: {
@@ -685,19 +657,19 @@ Polyworks.Config = (function() {
 					name: 'controlKeys',
 					cl: 'ControlKey',
 					attrs: [
-					{
-						name: 'quit', // q
-						cl: 'ControlKey',
-						attrs: {
-							inputCode: Polyworks.InputCodes.QUIT,
-							events: {
-								pressed: {
-									type: Polyworks.Events.CHANGE_STATE,
-									value: 'quit'
-								}
-							}
-						}
-					},
+					// {
+					// 	name: 'quit', // q
+					// 	cl: 'ControlKey',
+					// 	attrs: {
+					// 		inputCode: Polyworks.InputCodes.QUIT,
+					// 		events: {
+					// 			pressed: {
+					// 				type: Polyworks.Events.CHANGE_STATE,
+					// 				value: 'quit'
+					// 			}
+					// 		}
+					// 	}
+					// },
 					{
 						name: 'clearData', // c
 						cl: 'ControlKey',
@@ -705,44 +677,44 @@ Polyworks.Config = (function() {
 							inputCode: Polyworks.InputCodes.CLEAR_DATA
 						}
 					},
-					{
-						name: 'start', // s
-						cl: 'ControlKey',
-						attrs: {
-							inputCode: Polyworks.InputCodes.START,
-							events: {
-								pressed: {
-									type: Polyworks.Events.CHANGE_STATE,
-									value: 'map'
-								}
-							}
-						}
-					},
-					{
-						name: 'next', // n
-						cl: 'ControlKey',
-						attrs: {
-							inputCode: Polyworks.InputCodes.NEXT,
-							events: {
-								pressed: {
-									type: Polyworks.Events.NEXT_LEVEL
-								}
-							}
-						}
-					},
-					{
-						name: 'level', // l
-						cl: 'ControlKey',
-						attrs: {
-							inputCode: Polyworks.InputCodes.LEVEL,
-							events: {
-								pressed: {
-									type: Polyworks.Events.START_LEVEL,
-									value: PolyworksGame.currentLevel
-								}
-							}
-						}
-					},
+					// {
+					// 	name: 'start', // s
+					// 	cl: 'ControlKey',
+					// 	attrs: {
+					// 		inputCode: Polyworks.InputCodes.START,
+					// 		events: {
+					// 			pressed: {
+					// 				type: Polyworks.Events.CHANGE_STATE,
+					// 				value: 'map'
+					// 			}
+					// 		}
+					// 	}
+					// },
+					// {
+					// 	name: 'next', // n
+					// 	cl: 'ControlKey',
+					// 	attrs: {
+					// 		inputCode: Polyworks.InputCodes.NEXT,
+					// 		events: {
+					// 			pressed: {
+					// 				type: Polyworks.Events.NEXT_LEVEL
+					// 			}
+					// 		}
+					// 	}
+					// },
+					// {
+					// 	name: 'level', // l
+					// 	cl: 'ControlKey',
+					// 	attrs: {
+					// 		inputCode: Polyworks.InputCodes.LEVEL,
+					// 		events: {
+					// 			pressed: {
+					// 				type: Polyworks.Events.START_LEVEL,
+					// 				value: PolyworksGame.currentLevel
+					// 			}
+					// 		}
+					// 	}
+					// },
 					{
 						name: 'pause', // p
 						cl: 'ControlKey',
@@ -804,7 +776,6 @@ Polyworks.Config = (function() {
 						name: 'start',
 						cl: 'InputButton',
 						attrs: {
-							// img: 'startButton',
 							img: 'playButton',
 							start: {
 								x: winW/2 - 50,
@@ -820,10 +791,33 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'quitBtn',
+						name: 'creditsBtn',
 						cl: 'InputButton',
 						attrs: {
-							img: 'quitButton',
+							img: 'creditsButton',
+							phaser: {
+								width: (stageUnit * 4),
+								height: (stageUnit * 1)
+							},
+							start: {
+								x: winW/2 - (stageUnit * 2),
+								y: winH - (stageUnit * 1.5)
+							},
+							events: {
+								released: {
+									type: Polyworks.Events.CHANGE_STATE,
+									value: 'credits'
+								}
+							}
+						}
+					}
+					],
+					credits: [
+					{
+						name: 'closeBtn',
+						cl: 'InputButton',
+						attrs: {
+							img: 'closeButton',
 							phaser: {
 								width: (stageUnit * 1.5),
 								height: (stageUnit * 1.5)
@@ -833,11 +827,10 @@ Polyworks.Config = (function() {
 								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
 							},
 							frames: [0, 0, 1],
-							// inputCode: Polyworks.InputCodes.QUIT,
 							events: {
 								released: {
 									type: Polyworks.Events.CHANGE_STATE,
-									value: 'quit'
+									value: 'menu'
 								}
 							}
 						}
@@ -1612,7 +1605,8 @@ Polyworks.Config = (function() {
 					'greyExpanseTitle',
 					'pageLeftArrow',
 					'pageRightArrow',
-					'startButton'
+					'startButton',
+					'creditsButton'
 				],
 				sprites: [
 					'pauseButton',
@@ -1622,7 +1616,7 @@ Polyworks.Config = (function() {
 					'playButton',
 					'playButtonSmall',
 					'restartButton',
-					'quitButton'
+					'closeButton'
 				],
 				attrs: [
 				{
@@ -1652,6 +1646,113 @@ Polyworks.Config = (function() {
 					name: 'menuControls',
 					cl: 'ControlButtons',
 					type: 'menu',
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
+				}
+				]
+			},
+			// credits
+			{
+				name: 'credits',
+				cl: 'MenuState',
+				world: {
+					x: 0,
+					y: 0,
+					width: winW,
+					height: winH
+				},
+				clearWorld: true,
+				clearCache: false,
+				backgroundColor: '#ffffff',
+				images: [],
+				sprites: [
+					'closeButton'
+				],
+				attrs: [
+				{
+					name: 'menuGroup',
+					cl: 'GroupCollection',
+					attrs: [
+					{
+						name: 'creditsTitle',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							y: 0,
+							style: { 
+								font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'credits'
+						}
+					},
+					{
+						name: 'code',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							y: (stageUnit * 2.5),
+							style: { 
+								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'code: paul hoover'
+						}
+					},
+					{
+						name: 'design',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							y: (stageUnit * 4),
+							style: { 
+								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'design: paul hoover & seema shariat'
+						}
+					},
+					{
+						name: 'marketing',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							y: (stageUnit * 5.5),
+							style: { 
+								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'marketing: seema shariat'
+						}
+					},
+					{
+						name: 'contact',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							y: (stageUnit * 7),
+							style: { 
+								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'contact: keke@polyworksgames.com'
+						}
+					}
+					]
+				},
+				{
+					name: 'creditsControls',
+					cl: 'ControlButtons',
+					type: 'credits',
 					attrs: {
 						start: {
 							x: 0,
