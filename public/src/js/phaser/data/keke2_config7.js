@@ -1479,7 +1479,7 @@ Polyworks.Config = (function() {
 							alignX: 'center',
 							alignY: 'center',
 							style: { 
-								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
 								align: 'center'
 							},
@@ -1563,17 +1563,17 @@ Polyworks.Config = (function() {
 				},
 
 				descriptions: [
-				'where am i? what happened to the colors?\ni see something blue up in the tree over there.',
+				'where am i? what happened to the colors?\ni see something blue in the tree over there.',
 				'CATERPILLARS?!\nthey are so gross.\ni want more lollipops.',
 				'climbing trees is so much fun!\ni wonder how many\ndifferent crystal colors i can find...',
 				'this is a big forest.\ni think i see thorns ahead.\ni better avoid those.',
 				'i hope this forest ends soon.',
-				'that river looks fast.\ni don\'t want to get swept away.\ni\'ll have to jump across the rocks.',
+				'this river looks fast.\ni don\'t want to get swept away.\ni\'ll have to jump across the rocks.',
 				'wow! look at this mountain.\ni am going to have to climb it.',
 				'SPIDERS?!\ni hate spiders!',
 				'i think i see the top of the mountain.\njust a little bit further...',
 				'climbing down the mountain is so scary...',
-				'the rocks are crumbling! i hope i don\'t fall off...',
+				'the rocks are crumbling!\ni hope i don\'t fall off...',
 				'a cave! let me see what\'s inside...'
 				]
 			},
@@ -1696,13 +1696,13 @@ Polyworks.Config = (function() {
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							y: (stageUnit * 2.5),
+							y: (stageUnit * 3),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
 								align: 'center'
 							},
-							defaultContent: 'code: paul hoover'
+							defaultContent: 'code & art: paul hoover'
 						}
 					},
 					{
@@ -1724,7 +1724,7 @@ Polyworks.Config = (function() {
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							y: (stageUnit * 5.5),
+							y: (stageUnit * 5),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
@@ -1738,13 +1738,27 @@ Polyworks.Config = (function() {
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							y: (stageUnit * 7),
+							y: (stageUnit * 6),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
 								align: 'center'
 							},
 							defaultContent: 'contact: keke@polyworksgames.com'
+						}
+					},
+					{
+						name: 'facebook',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							y: (stageUnit * 7),
+							style: { 
+								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'follow: facebook.com/kekevscaterpillars or twitter.com/kekenews' 
 						}
 					}
 					]
@@ -25051,7 +25065,7 @@ Polyworks.Config = (function() {
 								fill: '#000000',
 								align: 'center'
 							},
-							defaultContent: 'coming soon: keke journeys into the crystal caves\nin T H E  G R E Y  E X P A N S E  2'
+							defaultContent: 'coming soon: keke journeys into the crystal caves\nin T H E  G R E Y  E X P A N S E  2\nstay informed: facebook.com/kekevscaterpillars or twitter.com/kekenews'
 						}
 					}
 					]

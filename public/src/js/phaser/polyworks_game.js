@@ -21,7 +21,7 @@ PolyworksGame = (function() {
 
 	var _gaID = 'UA-50665683-1';
 	
-	var polyworks_game = {
+	var module = {
 		name: '',
 		phaser: null,
 		player: null,
@@ -83,6 +83,7 @@ PolyworksGame = (function() {
 				document.getElementById('iphoneTip').style.display = 'block';
 				this.tipDisplayed = true;
 			}
+			PolyworksGame.browser = Polyworks.DeviceUtils.getBrowser();
 		},
 
 		getModel: function() {
@@ -375,7 +376,13 @@ PolyworksGame = (function() {
 			_addWebFonts(_model.webFonts);
 		}
 		PolyworksGame.startingHealth = _model.player.attrs.phaser.health;
-		PolyworksGame.phaser = new Phaser.Game(Polyworks.Stage.winW, Polyworks.Stage.winH, Phaser.AUTO, 'gameContainer', { preload: _preload, create: _create });
+
+		var renderType = Phaser.AUTO;
+		if(Polyworks.DeviceUtils.isFirefox()) {
+			renderType = Phaser.CANVAS;
+		}
+		trace('---------- renderType = ' + renderType);
+		PolyworksGame.phaser = new Phaser.Game(Polyworks.Stage.winW, Polyworks.Stage.winH, renderType, 'gameContainer', { preload: _preload, create: _create });
 	}
 
 	function _onControlPressed(event) {
@@ -621,7 +628,7 @@ PolyworksGame = (function() {
 	}
 
 	
-	return polyworks_game;
+	return module;
 }());
 
 Polyworks.DOMManager.addElements(domConfig.head.elements, document.getElementsByTagName('head')[0]);

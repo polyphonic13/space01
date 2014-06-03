@@ -1,26 +1,63 @@
-Polyworks.DeviceUtils = (function() {
+Polyworks.DeviceUtils = function() {
 	var ua = navigator.userAgent.toLowerCase();
-    
-	var deviceUtils = {
+	var _browsers = [
+		'Iphone',
+		'Android',
+		'Chrome',
+		'Safari',
+		'Firefox',
+		'Opera',
+		'IE'
+	];
+	
+	var module = {
+		isMobile: function() {
+			return ua.match(/iphone|ipad|android/);
+		},
 		isIphone: function() {
 			return ua.match(/iphone/);
 		},
 		isAndroid: function() {
 			return ua.match(/android/);
 		},
-		isMobile: function() {
-			return ua.match(/iphone|ipad|android/);
-		},
 		isChrome: function() {
-			return ua.match(/safari/);
+			return !!window.chrome && !module.isOpera(); // Chrome 1+
+			// return ua.match(/chrome/);
 		},
 		isSafari: function() {
-			return ua.match(/chrome/);
+			return Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+		    // At least Safari 3+: "[object HTMLElementConstructor]"
+			// return ua.match(/safari/);
+		},
+		isFirefox: function() {
+			return typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
+		},
+		isOpera: function() {
+			return !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+		    // Opera 8.0+ (UA detection to detect Blink/v8-powered Opera)
+		},
+		isIE: function() {
+			return /*@cc_on!@*/false || !!document.documentMode; // At least IE6
+		},
+		getType: function(type) {
+			var method = 'is' + type;
+			return module[method]();
+		},
+		getBrowser: function() {
+			var browser = '';
+
+			for(var i = 0; i < _browsers.length; i++) {
+				if(module.getType(_browsers[i])) {
+					browser = _browsers[i];
+					break;
+				}
+			}
+			return browser;
 		}
 	};
 	
-	return deviceUtils;
-}());
+	return module;
+}();
 /*
 if (window.DeviceOrientationEvent) {
     window.addEventListener("deviceorientation", function () {
