@@ -74,16 +74,23 @@ PolyworksGame = (function() {
 			// 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.PAUSE_STATE });
 			// 	}
 			// );
-			_addGoogleAnalytics();
-			_addListeners();
-			_checkOrientation();
-			_getSavedData();
-
-			if(Polyworks.DeviceUtils.isIphone()) {
-				document.getElementById('iphoneTip').style.display = 'block';
-				this.tipDisplayed = true;
-			}
 			PolyworksGame.browser = Polyworks.DeviceUtils.getBrowser();
+			if(PolyworksGame.browser === Polyworks.DeviceUtils.browsers.FIREFOX) {
+				var ffmsg = document.createElement('div');
+				ffmsg.setAttribute('id', 'firefoxMessage');
+				ffmsg.innerHTML = "we're sorry, but firefox is not supported.<br />please switch to a different browser.";
+				document.body.appendChild(ffmsg);
+			} else {
+				_addGoogleAnalytics();
+				_addListeners();
+				_checkOrientation();
+				_getSavedData();
+
+				if(Polyworks.DeviceUtils.isIphone()) {
+					document.getElementById('iphoneTip').style.display = 'block';
+					this.tipDisplayed = true;
+				}
+			}
 		},
 
 		getModel: function() {
@@ -378,10 +385,10 @@ PolyworksGame = (function() {
 		PolyworksGame.startingHealth = _model.player.attrs.phaser.health;
 
 		var renderType = Phaser.AUTO;
-		if(Polyworks.DeviceUtils.isFirefox()) {
-			renderType = Phaser.CANVAS;
-		}
-		trace('---------- renderType = ' + renderType);
+		// if(Polyworks.DeviceUtils.isFirefox()) {
+		// 	renderType = Phaser.CANVAS;
+		// }
+		// trace('---------- renderType = ' + renderType);
 		PolyworksGame.phaser = new Phaser.Game(Polyworks.Stage.winW, Polyworks.Stage.winH, renderType, 'gameContainer', { preload: _preload, create: _create });
 	}
 

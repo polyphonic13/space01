@@ -1,16 +1,16 @@
 Polyworks.DeviceUtils = function() {
 	var ua = navigator.userAgent.toLowerCase();
-	var _browsers = [
-		'Iphone',
-		'Android',
-		'Chrome',
-		'Safari',
-		'Firefox',
-		'Opera',
-		'IE'
-	];
 	
 	var module = {
+		browsers: {
+			IPHONE: 'Iphone',
+			ANDROID: 'Android',
+			CHROME: 'Chrome',
+			SAFARI: 'Safari',
+			FIREFOX: 'Firefox',
+			OPERA: 'Opera',
+			IE: 'IE'
+		},
 		isMobile: function() {
 			return ua.match(/iphone|ipad|android/);
 		},
@@ -45,10 +45,11 @@ Polyworks.DeviceUtils = function() {
 		},
 		getBrowser: function() {
 			var browser = '';
+			var browsers = module.browsers; 
 
-			for(var i = 0; i < _browsers.length; i++) {
-				if(module.getType(_browsers[i])) {
-					browser = _browsers[i];
+			for(var key in browsers) {
+				if(module.getType(browsers[key])) {
+					browser = browsers[key];
 					break;
 				}
 			}
