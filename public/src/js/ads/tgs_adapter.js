@@ -122,6 +122,9 @@ Polyworks.TGSAdapter = (function() {
 					width: widgetW,
 					x: widgetX,
 					y: widgetY,
+					shareUrl: 'https://www.facebook.com/kekevscaterpillars',
+					shareImage: 'http://www.polyworksgames.com/games/keke2/assets/images/keke_grey_expanse_title.png',
+					shareTitle: 'keke and the grey expanse',
 					shareMessage: 'i love playing keke and the grey expanse!',
 					parentDiv: _endScreenContainer
 				});
