@@ -75,7 +75,10 @@ PolyworksGame = (function() {
 			// 	}
 			// );
 			PolyworksGame.browser = Polyworks.DeviceUtils.getBrowser();
-			if(PolyworksGame.browser === Polyworks.DeviceUtils.browsers.FIREFOX) {
+			PolyworksGame.os = Polyworks.DeviceUtils.getOs();
+			trace('browser = ' + PolyworksGame.browser + ', os = ' + PolyworksGame.os);
+			// CHECK FOR FIREFOX ON MAC, AND BLOCK -- IT CRASHES WITH WEB GL RENDERING AND IS TOO SLOW FOR CANVAS RENDERING
+			if(PolyworksGame.browser === Polyworks.DeviceUtils.browsers.FIREFOX && PolyworksGame.os === Polyworks.DeviceUtils.operatingSystems.MAC) {
 				var ffmsg = document.createElement('div');
 				ffmsg.setAttribute('id', 'firefoxMessage');
 				ffmsg.innerHTML = "we're sorry, but firefox is not supported.<br />please switch to a different browser.";

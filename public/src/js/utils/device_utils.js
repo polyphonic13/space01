@@ -1,5 +1,6 @@
 Polyworks.DeviceUtils = function() {
 	var ua = navigator.userAgent.toLowerCase();
+	var operatingSystem = '';
 	
 	var module = {
 		browsers: {
@@ -10,6 +11,12 @@ Polyworks.DeviceUtils = function() {
 			FIREFOX: 'Firefox',
 			OPERA: 'Opera',
 			IE: 'IE'
+		},
+		operatingSystems: {
+			MAC: 'MacOS',
+			WINDOWS: 'Windows',
+			UNIX: "UNIX",
+			LINUX: "Linux"
 		},
 		isMobile: function() {
 			return ua.match(/iphone|ipad|android/);
@@ -54,6 +61,16 @@ Polyworks.DeviceUtils = function() {
 				}
 			}
 			return browser;
+		},
+		getOs: function() {
+			if(operatingSystem === '') {
+				operatingSystem = "unknown";
+				if(navigator.appVersion.indexOf("Win") !== -1) operatingSystem = "Windows";
+				if(navigator.appVersion.indexOf("Mac") !== -1) operatingSystem = "MacOS";
+				if(navigator.appVersion.indexOf("X11") !== -1) operatingSystem = "UNIX";
+				if(navigator.appVersion.indexOf("Linux") !== -1) operatingSystem = "Linux";
+			}
+			return operatingSystem;
 		}
 	};
 	
