@@ -38,7 +38,8 @@ Polyworks.Text = (function() {
 		if(attrs.alignX) {
 			switch(attrs.alignX) {
 				case 'center':
-				this.x = Polyworks.Stage.winW/2 - this.width/2;
+				var centerX = (Polyworks.Stage.winW/2 - this.width/2);
+				this.x =  (attrs.x) ? centerX + attrs.x : centerX;
 				break;
 				
 				case 'windowRight':

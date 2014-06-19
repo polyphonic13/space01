@@ -498,7 +498,7 @@ Polyworks.Config = (function() {
 			},
 			// WEB FONTS
 			webFonts: {
-				google: [ 'Waiting+for+the+Sunrise::latin' ]
+				google: [ 'Waiting+for+the+Sunrise::latin', 'Smythe::latin', 'Sue+Ellen+Francisco::latin' ]
 			},
 			// SOCIAL
 			social: {
@@ -1479,7 +1479,7 @@ Polyworks.Config = (function() {
 							alignX: 'center',
 							alignY: 'center',
 							style: { 
-								font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.sm + 'px "Sue Ellen Francisco"', 
 								fill: '#000000',
 								align: 'center'
 							},
@@ -1563,7 +1563,7 @@ Polyworks.Config = (function() {
 				},
 
 				descriptions: [
-				'where am i? what happened to the colors?\ni see something blue in the tree over there.',
+				'where am i?\nwhat happened to the colors?\ni see something blue in the tree over there.',
 				'CATERPILLARS?!\nthey are so gross.\ni want more lollipops.',
 				'climbing trees is so much fun!\ni wonder how many\ndifferent crystal colors i can find...',
 				'this is a big forest.\ni think i see thorns ahead.\ni better avoid those.',
@@ -1692,73 +1692,153 @@ Polyworks.Config = (function() {
 						}
 					},
 					{
-						name: 'code',
+						name: 'code1',
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							y: (stageUnit * 3),
+							x: -(stageUnit * 1.25),
+							y: (stageUnit * 2.5),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
 								align: 'center'
 							},
-							defaultContent: 'code & art: paul hoover'
+							defaultContent: 'code & art: '
 						}
 					},
 					{
-						name: 'design',
+						name: 'code2',
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							y: (stageUnit * 4),
+							x: (stageUnit * 1.25),
+							y: (stageUnit * 2.65),
 							style: { 
-								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.xs + 'px "Smythe"', 
 								fill: '#000000',
 								align: 'center'
 							},
-							defaultContent: 'design: paul hoover & seema shariat'
+							defaultContent: 'paul hoover'
 						}
 					},
 					{
-						name: 'marketing',
+						name: 'design1',
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							y: (stageUnit * 5),
+							x: -(stageUnit * 2.5),
+							y: (stageUnit * 3.5),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
 								align: 'center'
 							},
-							defaultContent: 'marketing: seema shariat'
+							defaultContent: 'design: '
 						}
 					},
 					{
-						name: 'contact',
+						name: 'design1',
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							y: (stageUnit * 6),
+							x: (stageUnit * 0.85),
+							y: (stageUnit * 3.65),
 							style: { 
-								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.xs + 'px "Smythe"', 
 								fill: '#000000',
 								align: 'center'
 							},
-							defaultContent: 'contact: keke@polyworksgames.com'
+							defaultContent: 'paul hoover and seema shariat'
 						}
 					},
 					{
-						name: 'facebook',
+						name: 'marketing1',
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							y: (stageUnit * 7),
+							x: -(stageUnit * 1.25),
+							y: (stageUnit * 4.5),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
 								align: 'center'
 							},
-							defaultContent: 'follow: facebook.com/kekevscaterpillars or twitter.com/kekenews' 
+							defaultContent: 'marketing: '
+						}
+					},
+					{
+						name: 'marketing1',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							x: (stageUnit * 1.25),
+							y: (stageUnit * 4.65),
+							style: { 
+								font: 'bold ' + fontSizes.xs + 'px "Smythe"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'seema shariat'
+						}
+					},
+					{
+						name: 'contact1',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							x: -(stageUnit * 2.7),
+							y: (stageUnit * 5.5),
+							style: { 
+								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'contact:'
+						}
+					},
+					{
+						name: 'contact1',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							x: (stageUnit * 0.9),
+							y: (stageUnit * 5.65),
+							style: { 
+								font: 'bold ' + fontSizes.xs + 'px "Smythe"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'keke@polyworksgames.com'
+						}
+					},
+					{
+						name: 'share1',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							x: -(stageUnit * 5),
+							y: (stageUnit * 6.5),
+							style: { 
+								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'follow:' 
+						}
+					},
+					{
+						name: 'share1',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							x: (stageUnit * 0.75),
+							y: (stageUnit * 6.65),
+							style: { 
+								font: 'bold ' + fontSizes.xs + 'px "Smythe"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'facebook.com/kekevscaterpillars | twitter.com/kekenews' 
 						}
 					}
 					]

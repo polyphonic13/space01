@@ -414,7 +414,7 @@ PolyworksGame = (function() {
 		if(event.value === 'map') {
 			if(!_gameStarted) {
 				_gameStarted = true;
-				_adapter.logEvent(_adapter.logEvents.GAME_EVENT, [_adapter.gameEvents.BEGIN]);
+				// _adapter.logEvent(_adapter.logEvents.GAME_EVENT, [_adapter.gameEvents.BEGIN]);
 			}
 		}
 		PolyworksGame.changeState(event.value);
@@ -445,8 +445,8 @@ PolyworksGame = (function() {
 		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
 		PolyworksGame.changeState(stateId);
 
-		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.START, (idx+1)]);
-		_adapter.adCheck(PolyworksGame.currentLevel);
+		// _adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.START, (idx+1)]);
+		// _adapter.adCheck(PolyworksGame.currentLevel);
 	}
 	
 	function _onNextLevel(event) {
@@ -457,7 +457,7 @@ PolyworksGame = (function() {
 			PolyworksGame.levelText = '';
 			stateId = 'completed';
 
-			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.GAME_COMPLETED]);
+			// _adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.GAME_COMPLETED]);
 
 		} else {
 			var idx = PolyworksGame.currentLevel;
@@ -477,7 +477,7 @@ PolyworksGame = (function() {
 			PolyworksGame.highScores[idx] = PolyworksGame.levelScore;
 			PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.levelScore + ' NEW';
 			Polyworks.EventCenter.trigger(Polyworks.Events.HIGH_SCORE_UPDATED);
-			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.NEW_HIGH_SCORE, PolyworksGame.levelScore]);
+			// _adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.NEW_HIGH_SCORE, PolyworksGame.levelScore]);
 
 			var totalScore = 0;
 			Polyworks.Utils.each(
@@ -487,10 +487,10 @@ PolyworksGame = (function() {
 				},
 				this
 			);
-			_adapter.submitScore({ score: totalScore });
+			// _adapter.submitScore({ score: totalScore });
 		}
 
-		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.COMPLETE, (idx+1)]);
+		// _adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.COMPLETE, (idx+1)]);
 		idx++;
 		trace('THE NEW LEVEL STATUS IS: ' + PolyworksGame.levelStatus[idx]);
 		if(PolyworksGame.levelStatus[idx] === 'l') {
@@ -602,7 +602,7 @@ PolyworksGame = (function() {
 	}
 	
 	function _quit() {
-		_adapter.logEvent(_adapter.logEvents.GAME_EVENT, [_adapter.gameEvents.END]);
+		// _adapter.logEvent(_adapter.logEvents.GAME_EVENT, [_adapter.gameEvents.END]);
 		_removeListeners();
 		PolyworksGame.isQuit = true;
 		// _killStates();
