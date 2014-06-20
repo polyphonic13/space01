@@ -1,10 +1,10 @@
-Polyworks.DOMManager = (function() {
+PWG.DOMManager = (function() {
 	var bodyEl = document.getElementsByTagName('body')[0];
 	
 	var dom_manager = {
 		addElements: function(elements, parentEl, callback, context) {
 			var pops = parentEl || bodyEl;
-			Polyworks.Utils.each(
+			PWG.Utils.each(
 				elements,
 				function(element) {
 					// trace('DOMManager/addElements, type = ' + element.type + ', element = ', element);
@@ -27,7 +27,7 @@ Polyworks.DOMManager = (function() {
 		},
 
 		addAttributes: function(attributes, el) {
-			Polyworks.Utils.each(
+			PWG.Utils.each(
 				attributes,
 				function(attribute, key) {
 					el.setAttribute(key, attribute);
@@ -38,7 +38,7 @@ Polyworks.DOMManager = (function() {
 		},
 
 		addStyle: function(styles, el) {
-			Polyworks.Utils.each(
+			PWG.Utils.each(
 				styles,
 				function(style, key) {
 					el.style[key] = style;

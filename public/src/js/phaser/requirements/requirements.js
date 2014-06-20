@@ -1,5 +1,5 @@
-Polyworks.Requirements = (function() {
-	Polyworks.Utils.inherits(Requirements, Polyworks.PhysicalGroupCollection);
+PWG.Requirements = (function() {
+	PWG.Utils.inherits(Requirements, PWG.PhysicalGroupCollection);
 	
 	function Requirements(params) {
 
@@ -12,22 +12,22 @@ Polyworks.Requirements = (function() {
 		this.requirementsMet = 0;
 		this.requirementsCount = this.model.collection.length;
 		// trace('Requirements/begin, about to set on pw game, total = ' + this.requirementsCount);
-		PolyworksGame.setRequirements(this.requirementsMet, this.requirementsCount);
-		Polyworks.EventCenter.bind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet, this);
+		PWGGame.setRequirements(this.requirementsMet, this.requirementsCount);
+		PWG.EventCenter.bind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet, this);
 	};
 	
 	Requirements.prototype.onRequirementMet = function() {
 		this.requirementsMet++;
 		// trace('Requirements/onRequirementMet, requirementsFill = ' + this.requirementsMet + ', total = ' + this.requirementsCount);
-		PolyworksGame.setRequirements(this.requirementsMet, this.requirementsCount);
+		PWGGame.setRequirements(this.requirementsMet, this.requirementsCount);
 		if(this.requirementsMet >= this.requirementsCount) {
-			Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet, this);
-			Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_REQUIREMENTS_MET });
+			PWG.EventCenter.unbind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet, this);
+			PWG.EventCenter.trigger({ type: PWG.Events.LEVEL_REQUIREMENTS_MET });
 		}
 	};
 	
 	Requirements.prototype.destroy = function() {
-		Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet, this);
+		PWG.EventCenter.unbind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet, this);
 		Requirements._super.destroy.call(this);
 	};
 

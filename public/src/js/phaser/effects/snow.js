@@ -1,5 +1,5 @@
-Polyworks.Snow = (function() {
-	Polyworks.Utils.inherits(Snow, Polyworks.Emitter);
+PWG.Snow = (function() {
+	PWG.Utils.inherits(Snow, PWG.Emitter);
 	
 	function Snow(params) {
 		trace('Snow/constructor, params = ', params);
@@ -41,7 +41,7 @@ Polyworks.Snow = (function() {
 				}
 		};
 
-		params.attrs = Polyworks.Utils.extend(params.attrs, defaults);
+		params.attrs = PWG.Utils.extend(params.attrs, defaults);
 		trace('\tparams now = ', params);
 		Snow._super.constructor.call(this, params);
 	}

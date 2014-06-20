@@ -1,5 +1,5 @@
-Polyworks.Sector = (function() {
-	Polyworks.Utils.inherits(Sector, Polyworks.Collection);
+PWG.Sector = (function() {
+	PWG.Utils.inherits(Sector, PWG.Collection);
 	
 	function Sector(params) {
 		// trace('Sector['+params.name+']/constructor, params = ');
@@ -36,9 +36,10 @@ Polyworks.Sector = (function() {
 			// }
 			this.deactivated = false;
 
-		} else if(!this.deactivated){
+		} else if(!this.deactivated) {
 
 			if(this.enemies) {
+				PWG.EventCenter.trigger({ type: PWG.Events.REMOVE_ACTIVE_ENEMIES, enemies: this.enemies });
 				this.enemies.deactivateGravity();
 			} 
 			this.deactivated = true;

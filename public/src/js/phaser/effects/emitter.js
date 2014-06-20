@@ -1,13 +1,13 @@
-Polyworks.Emitter = (function() {
+PWG.Emitter = (function() {
 	
 	function Emitter(params) {
 		trace('Emitter/constructor, params = ', params);
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 	}
 	
 	
 	Emitter.prototype.begin = function() {
-		var game = PolyworksGame.phaser;
+		var game = PWGGame.phaser;
 		var attrs = this.model.attrs;
 		var bounds = (attrs.bounds) ? attrs.bounds : game.world.bounds;
 

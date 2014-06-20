@@ -15,8 +15,8 @@ https://developers.google.com/+/web/+1button/
   })();
 </script>
 */
-Polyworks.GoogleAdapter = (function() {
-	Polyworks.Utils.inherits(GoogleAdapter, Polyworks.SocialAdapter);
+PWG.GoogleAdapter = (function() {
+	PWG.Utils.inherits(GoogleAdapter, PWG.SocialAdapter);
 	
 	var POLYWORKS_PLUS_ONE_URL = 'http://www.polyworksgames.com/games/keke2/';
 	
@@ -39,7 +39,7 @@ Polyworks.GoogleAdapter = (function() {
 	};
 
 	function GoogleAdapter(params) {
-		params = Polyworks.Utils.extend(_defaults, params);
+		params = PWG.Utils.extend(_defaults, params);
 		GoogleAdapter._super.constructor.call(this, params);
 		this.addElements();
 		this.loadApi(this.model.api.url, this.model.api.id);

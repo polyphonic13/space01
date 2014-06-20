@@ -1,4 +1,4 @@
-Polyworks.SocialManager = (function() {
+PWG.SocialManager = (function() {
 
 	var _model = {
 		adapters: {}
@@ -12,7 +12,7 @@ Polyworks.SocialManager = (function() {
 
 	var socialManager = {
 		init: function(params) {
-			_model = Polyworks.Utils.extend(_model, params);
+			_model = PWG.Utils.extend(_model, params);
 			trace('SocialManager/init, _model = ', _model);
 			_initParentEl();
 			_addListeners();
@@ -21,7 +21,7 @@ Polyworks.SocialManager = (function() {
 		},
 		show: function(elements) {
 			trace('SocialManager/show, elements = ' + elements);
-			Polyworks.Utils.each(elements,
+			PWG.Utils.each(elements,
 				function(element) {
 					trace('\telement = ' + element);
 					if(_model.elementMap[element]) {
@@ -34,7 +34,7 @@ Polyworks.SocialManager = (function() {
 		},
 		hide: function(elements) {
 			trace('SocialManager/hide, elements = ' + elements);
-			Polyworks.Utils.each(elements,
+			PWG.Utils.each(elements,
 				function(element) {
 					trace('\telement = ' + element);
 					if(_model.elementMap[element]) {
@@ -69,13 +69,13 @@ Polyworks.SocialManager = (function() {
 
 	function _addListeners() {
 		for(var key in _model.listeners) {
-			Polyworks.EventCenter.bind(key, _eventResponder, this);
+			PWG.EventCenter.bind(key, _eventResponder, this);
 		}
 	}
 
 	function _removeListeners() {
 		for(var key in _model.listeners) {
-			Polyworks.EventCenter.unbind(key, _eventResponder, this);
+			PWG.EventCenter.unbind(key, _eventResponder, this);
 		}
 	}
 
@@ -93,21 +93,21 @@ Polyworks.SocialManager = (function() {
 			trace('\tthere is a match');
 			if(match.value === event.value) {
 				trace('\t\tvalue matches the event value, calling: ' + match.action.method);
-				Polyworks.SocialManager[match.action.method](match.action.value);
+				PWG.SocialManager[match.action.method](match.action.value);
 			} else if(listener.nonmatch) {
 				trace('\t\tnonmatch calling: ' + listener.nonmatch.action.method);
-				Polyworks.SocialManager[listener.nonmatch.action.method](listener.nonmatch.action.value);
+				PWG.SocialManager[listener.nonmatch.action.method](listener.nonmatch.action.value);
 			}
 		} else {
-			Polyworks.SocialManager[listener.action.method](listener.action.value);
+			PWG.SocialManager[listener.action.method](listener.action.value);
 		}
 	}
 	
 	function _loadSocialScripts() {
-		var loader = new Polyworks.Loader();
+		var loader = new PWG.Loader();
 		var urls = {};
 
-		Polyworks.Utils.each(_model.apis,
+		PWG.Utils.each(_model.apis,
 			function(api, idx) {
 				if(_urls[api]) {
 					urls[api] = _urls[api];
@@ -123,7 +123,7 @@ Polyworks.SocialManager = (function() {
 	function _apiLoaded(url, success, key) {
 		trace('SocialManager/_adapterLoaded, key = ' + key + ', success = ' + success);
 		if(success) {
-			var adapter = new Polyworks[key]({
+			var adapter = new PWG[key]({
 				name: key,
 				parentEl: _model.parentEl
 			});
@@ -135,7 +135,7 @@ Polyworks.SocialManager = (function() {
 		trace('SocialManager/_allAdaptersLoaded, adapters = ', _model.adapters);
 		_initElementMap();
 		if(_model.initialElements) {
-			Polyworks.SocialManager.show(_model.initialElements);
+			PWG.SocialManager.show(_model.initialElements);
 		}
 	}
 	

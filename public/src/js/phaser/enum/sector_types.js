@@ -1,4 +1,4 @@
-Polyworks.SectorTypes = {
+PWG.SectorTypes = {
 	HORIZONTAL: 'horizontal',
 	VERTICAL: 'vertical'
 };

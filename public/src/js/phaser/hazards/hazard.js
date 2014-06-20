@@ -1,5 +1,5 @@
-Polyworks.Hazard = (function() {
-	Polyworks.Utils.inherits(Hazard, Polyworks.Sprite);
+PWG.Hazard = (function() {
+	PWG.Utils.inherits(Hazard, PWG.Sprite);
 	
 	function Hazard(params) {
 		Hazard._super.constructor.call(this, params);

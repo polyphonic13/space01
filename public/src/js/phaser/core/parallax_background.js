@@ -19,10 +19,10 @@
 		}
 	}
 */
-Polyworks.ParallaxBackground = (function() {
+PWG.ParallaxBackground = (function() {
 
 	function ParallaxBackground(params) {
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 	}
 	
 	ParallaxBackground.prototype.begin = function() {
@@ -36,7 +36,7 @@ Polyworks.ParallaxBackground = (function() {
 	    this.layer = game.add.tilemapLayer(attrs.start.x, attrs.start.y, attrs.width, attrs.height, this.tileset, this.tilemap, attrs.layerIndex);
 	
 		trace('\tadding map layer x/y: ' + attrs.start.x + '/' + attrs.start.y + ', w/h: ' + attrs.width + '/' + attrs.height, this.tilemap, this.tileset, this.layer);
-		Polyworks.Utils.each(attrs.layer,
+		PWG.Utils.each(attrs.layer,
 			function(attr, key) {
 				trace('\tsetting layer['+key+'] to: ' + attr);
 				this.layer[key] = attr;

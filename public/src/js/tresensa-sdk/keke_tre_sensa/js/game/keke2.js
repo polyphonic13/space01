@@ -40160,14 +40160,14 @@ function extend(a,b){var c=a.prototype,d=function(){};d.prototype=b.prototype,a.
 if(!TGS.LoggedIn())return void TGS.OverlayMessage({title:"Login Required",message:"You will now be asked to login. Once you are logged in you will be able to make in-app purchases.",buttonAction:TGS.LoginUser.bind(this,{onUserCancel:TGS.OverlayMessage.bind(this,{title:"Login Required",message:"You must be logged in to make in-app purchases."}),onFailure:TGS.OverlayMessage.bind(this,{title:"Login Error",message:"There was a problem logging you in."})})});var f=a.productID,g=a.onSuccess,h=b,i=a.gameDataUpdates,j=new TGS.Microtransactions.Item(f,e.title,e.description,e.price,e.iconUrl,e.partnerProductID);if(!TGS.IsReady())return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"tried to purchase product "+f+" but TGS was not ready"),void(h&&h.call(this,f,TGS.Microtransactions.DefaultPurchaseFailedMessage));var k=new TGS.Microtransactions.Request;k.item=j,k.onSuccess=g,k.onFailure=h,k.userErrorMessage=TGS.Microtransactions.DefaultPurchaseFailedMessage,k.gameDataUpdates=i,TGS.Microtransactions._BeginNewRequest(k),TGS._sPartnerBridge.logTransactionBeforePartnerRequest()?TGS.Microtransactions._LogPurchaseRequest(k):(TGS.Debug.Log(TGS.Debug.LOG_INFO,"requesting purchase from partner..."),TGS._sPartnerBridge.purchaseItem(k))},TGS.Microtransactions.PurchaseItem=function(a){TGS.Debug.Log(TGS.Debug.LOG_ERROR,"The TGS.Microtransactions.PurchaseItem IAP CALL IS NO LONGER SUPPORTED! USE TGS.Microtransactions.PurchaseProduct INSTEAD!!"),a&&a.onFailure&&a.onFailure.call(this,a.itemID,TGS.Microtransactions.DefaultPurchaseFailedMessage)},TGS.Microtransactions.RedirectToIAPPartner=function(){var a=null,b=null,c="In-app purchasing is not supported here.",d=!1;if(TGS.Microtransactions._sAppURLs.facebook_app_url&&(a=TGS.Microtransactions._sAppURLs.facebook_app_url,b=TGS._IMAGES_LOCATION+"redirects/facebook.png"),TGS.BrowserDetect.oniOS&&TGS.Microtransactions._sAppURLs.itunes_app_url){a=TGS.Microtransactions._sAppURLs.itunes_app_url,b=TGS._IMAGES_LOCATION+"redirects/itunes.png";var d=!0}else if(TGS.BrowserDetect.onAndroid&&TGS.Microtransactions._sAppURLs.googleplay_app_url){a=TGS.Microtransactions._sAppURLs.googleplay_app_url,b=TGS._IMAGES_LOCATION+"redirects/googleplay.png";var d=!0}else if("Kindle Fire"===TGS.BrowserDetect.platform&&TGS.Microtransactions._sAppURLs.amazon_app_url){a=TGS.Microtransactions._sAppURLs.amazon_app_url,b=TGS._IMAGES_LOCATION+"redirects/amazon.png";var d=!0}else if(TGS.BrowserDetect.onWindowsMobile&&TGS.Microtransactions._sAppURLs.windows_app_url){a=TGS.Microtransactions._sAppURLs.windows_app_url,b=TGS._IMAGES_LOCATION+"redirects/windows.png";var d=!0}a&&(c+=" You can buy items by "+(d?"downloading the app:":"playing the game on:")),TGS.Debug.Log(TGS.Debug.LOG_INFO,"IAP is not available on this partner, suggesting redirect to "+a),TGS.OverlayMessage({title:"Sorry!",message:c,buttonText:"",button2Image:b,button2Callback:function(){window.open(a,"_blank")}})},TGS.Microtransactions._PurchaseFailedMessage=function(a,b,c){"string"==typeof c&&c.length>0?TGS.OverlayMessage({title:"Purchase Failed",message:c}):"object"==typeof c&&TGS.OverlayMessage(c),a&&a.call(this,b,c)},TGS.Microtransactions._LogPurchaseRequest=function(a){TGS.Debug.Log(TGS.Debug.LOG_INFO,"user request to purchase item "+a.item.id+"...");var b='{"game":"'+TGS._sGameID+'","partner":"'+TGS._sPartnerID+'","user":"'+TGS._sUserID+'","item":"'+a.item.id+'"}';TGS.SendMessage("mtx/mtx_data","add",b,TGS.Microtransactions._InitiatePurchase.bind(this,a),TGS.Microtransactions._LoggingPurchaseFailed.bind(this,a))},TGS.Microtransactions._InitiatePurchase=function(a,b){if(TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"purchase request id received: "+JSON.stringify(b)),!b||"undefined"==typeof b.code)return TGS.Debug.Log(TGS.Debug.LOG_INFO,"purchase request response was corrupt"),void TGS.Microtransactions._LoggingPurchaseFailed(a);if(0!==b.code)return TGS.Debug.Log(TGS.Debug.LOG_INFO,"purchase request response contained error code: "+b.code),void TGS.Microtransactions._LoggingPurchaseFailed(a);var c=parseInt(b.id);return isNaN(c)||0>=c?(TGS.Debug.Log(TGS.Debug.LOG_INFO,"transaction id is invalid: "+c.toString()),void TGS.Microtransactions._LoggingPurchaseFailed(a)):(TGS.Debug.Log(TGS.Debug.LOG_INFO,"transaction id is: "+c),a.transactionID=c,TGS.Debug.Log(TGS.Debug.LOG_INFO,"requesting purchase from partner..."),void TGS._sPartnerBridge.purchaseItem(a))},TGS.Microtransactions._LoggingPurchaseFailed=function(a,b,c){var d=TGS.Microtransactions.DefaultPurchaseFailedMessage,e="could not record IAP request";c&&12===c.code&&(d="You already own this item.",e="IAP was already purchased by user"),TGS.Debug.Log(TGS.Debug.LOG_ERROR,e),a.onFailure&&a.onFailure.call(this,a.item.id,d),TGS.Microtransactions._ClosePendingRequest()},TGS.Microtransactions._PartnerPurchaseSuccessful=function(a){if(console.log(JSON.stringify(a)),TGS.Debug.Log(TGS.Debug.LOG_INFO,"purchase successful for item "+a.item.id),TGS.Microtransactions._SavePurchaseLocally(a.gameDataUpdates),TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"local game data has now been updated"),TGS._sPartnerBridge.serverHandlesMicrotransactionResponse())TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"server has already logged transaction"),a.onSuccess&&a.onSuccess.call(this,a.item.id);else if(TGS._sPartnerBridge.logTransactionBeforePartnerRequest()){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"sending transaction response and game data updates to server...");var b='{"id":'+a.transactionID+',"state":1,"partner_transaction_id":"'+a.partnerTransactionID+'","credits":'+(a.usingCredits?"true":"false")+',"notes":null,"game_data_changes":'+JSON.stringify(a.gameDataUpdates)+"}";TGS.SendMessage("mtx/mtx_data","update",b,TGS.Microtransactions._TransactionFinalized.bind(this,a,!0),TGS.Microtransactions._FinalizationFailed.bind(this,a,!0))}else{TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"sending full transaction info to server...");var b='{"game":"'+TGS._sGameID+'","partner":"'+TGS._sPartnerID+'","user":"'+TGS._sUserID+'","item":"'+a.item.id+'","credits":'+(a.usingCredits?"true":"false")+',"state":1,"partner_transaction_id":"'+a.partnerTransactionID+'","notes":null,"game_data_changes":'+JSON.stringify(a.gameDataUpdates)+"}";TGS.SendMessage("mtx/mtx_data","add",b,TGS.Microtransactions._TransactionFinalized.bind(this,a,!0),TGS.Microtransactions._FinalizationFailed.bind(this,a,!0))}TGS.Microtransactions._ClosePendingRequest(),TGS._sPartnerBridge.purchaseComplete(a),TGS.Analytics._logPurchase(a)},TGS.Microtransactions._PartnerPurchaseFailed=function(a){if(TGS.Debug.Log(TGS.Debug.LOG_ERROR,"purchase failed for item "+a.item.id+", reason: "+a.internalErrorMessage),TGS._sPartnerBridge.serverHandlesMicrotransactionResponse())TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"server has already logged transaction"),a.onFailure&&a.onFailure.call(this,a.item.id,a.userErrorMessage);else if(TGS._sPartnerBridge.logTransactionBeforePartnerRequest()){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"sending transaction response to server...");var b='{"id":'+a.transactionID+',"state":2,"partner_transaction_id":"'+a.partnerTransactionID+'","credits":'+(a.usingCredits?"true":"false")+',"notes":"'+a.internalErrorMessage+'","game_data_changes":null}';TGS.SendMessage("mtx/mtx_data","update",b,TGS.Microtransactions._TransactionFinalized.bind(this,a,!1),TGS.Microtransactions._FinalizationFailed.bind(this,a,!1))}else{TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"sending full transaction info to server...");var b='{"game":"'+TGS._sGameID+'","partner":"'+TGS._sPartnerID+'","user":"'+TGS._sUserID+'","item":"'+a.item.id+'","credits":'+(a.usingCredits?"true":"false")+',"state":2,"partner_transaction_id":"'+a.partnerTransactionID+'","notes":"'+a.internalErrorMessage+'","game_data_changes":null}';TGS.SendMessage("mtx/mtx_data","add",b,TGS.Microtransactions._TransactionFinalized.bind(this,a,!1),TGS.Microtransactions._FinalizationFailed.bind(this,a,!1))}TGS.Microtransactions._ClosePendingRequest()},TGS.Microtransactions._TransactionFinalized=function(a,b){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,(b?"successful":"failed")+" transaction "+a.transactionID+" has been logged"),b&&a.onSuccess?a.onSuccess.call(this,a.item.id):!b&&a.onFailure&&a.onFailure.call(this,a.item.id,a.userErrorMessage)},TGS.Microtransactions._SavePurchaseLocally=function(a){TGS.DataStore.SaveValuesLocally(a,TGS.DataStore._sSaveToLocalStorage)},TGS.Microtransactions._FinalizationFailed=function(a,b){if(TGS.Debug.Log(TGS.Debug.LOG_ERROR,(b?"successful":"failed")+" transaction "+a.transactionID+" could not be logged"),b&&(a.internalErrorMessage="partner transaction was successful but could not be logged to server"),a.onFailure){var c=""===a.userErrorMessage?TGS.Microtransactions.DefaultPurchaseFailedMessage:a.userErrorMessage;a.onFailure.call(this,a.item.id,c)}},TGS.Microtransactions._BeginNewRequest=function(a){TGS.Microtransactions._PendingRequest=a,TGS.Microtransactions._PurchaseOverlay=TGS.LoadingOverlay()},TGS.Microtransactions._ClosePendingRequest=function(){TGS.Microtransactions._PendingRequest=null,TGS.Microtransactions._PurchaseOverlay&&(TGS.Microtransactions._PurchaseOverlay.parentNode.removeChild(TGS.Microtransactions._PurchaseOverlay),TGS.Microtransactions._PurchaseOverlay=null)},TGS.Microtransactions.GetCredits=function(){TGS.CloseMessageOverlay(),window.open("http://fortumo.com/mobile_payments/0d8f60636b898652b94ee978ee2fc43a?cuid="+TGS._sPartnerID+TGS._sUserID,"_self")},TGS.Microtransactions.Item=function(a,b,c,d,e,f){this.id=a,this.partnerProductID=f,this.title=b,this.description=c,this.price=d,this.image=e},TGS.Microtransactions.Request=function(){this.item=null,this.partnerProductID="",this.transactionID=-1,this.partnerTransactionID=-1,this.onSuccess=null,this.onFailure=null,this.internalErrorMessage="",this.userErrorMessage="",this.gameDataUpdates=null,this.usingCredits=!1},TGS.BrowserDetect={init:function(){this.browser=this.searchString(this.dataBrowser)||"an unknown browser",this.version=this.searchVersion(navigator.userAgent)||this.searchVersion(navigator.appVersion)||"an unknown version",this.platform=this.searchString(this.dataPlatform)||"an unknown OS or Device",this.OSversion=this.detectOSversion(this.platform),this.isMobileDevice=!("Windows"===this.platform||"Mac"===this.platform||"Linux"===this.platform),this.oniOS="iPhone"===this.platform||"iPad"===this.platform,this.onAndroid="Android"===this.platform,this.onWindowsMobile="Windows Phone"===this.platform||"Windows Tablet"===this.platform,this.usingPhoneGap=window.PhoneGap||window.cordova||window.Cordova,this.clickEvent=!this.isMobileDevice||this.onWindowsMobile?"click":"touchstart"},detectOSversion:function(a){var b="-1",c="",d=navigator.userAgent.toString();switch(a){case"Windows Phone":c=/Windows Phone OS\s+[\d\.]+/,b=String(d.match(c)).substring(17,20);break;case"iPhone":case"iPad":c=/OS\s+[\d\_]+/,b=String(d.match(c)).substring(3,6);break;case"Windows":c=/Windows NT\s+[\d\.]+/;var e=String(d.match(c)).substring(11,14);"6.1"==e?b="7":"5.1"==e?b="XP":"5.2"==e?b="XP":"6.0"==e?b="Vista":"5.01"==e?b="2000 SP1":"5.0"==e&&(b="2000");break;case"Mac":c=/Mac OS X\s+[\d\_]+/,b=String(d.match(c)).substring(9,13);break;case"Android":c=/ndroid\s+[\d\.]+/,b=String(d.match(c)).substring(7,10)}return b},searchString:function(a){for(var b=0;b<a.length;b++)if(null!=a[b]){var c=a[b].string,d=a[b].prop;if(this.versionSearchString=a[b].versionSearch||a[b].identity,c){if(-1!==c.indexOf(a[b].subString))return a[b].identity}else if(d)return a[b].identity}},searchVersion:function(a){var b=a.indexOf(this.versionSearchString);if(-1!==b)return parseFloat(a.substring(b+this.versionSearchString.length+1))},dataBrowser:[{string:navigator.userAgent,subString:"Chrome",identity:"Chrome"},{string:navigator.userAgent,subString:"MSIE",identity:"Explorer",versionSearch:"MSIE"},{string:navigator.userAgent,subString:"Explorer",identity:"Explorer",versionSearch:"Explorer"},{string:navigator.vendor,subString:"Apple",identity:"Safari",versionSearch:"Version"},{string:navigator.userAgent,subString:"Firefox",identity:"Firefox"},{prop:window.opera,identity:"Opera"},{string:navigator.userAgent,subString:"Silk",identity:"Silk",versionSearch:"Silk"},{string:navigator.userAgent,subString:"Kindle Fire",identity:"Amazon Web App",versionSearch:"AppleWebKit"},{string:navigator.userAgent,subString:"Gecko",identity:"Mozilla",versionSearch:"rv"},{string:navigator.userAgent,subString:"Mozilla",identity:"Netscape",versionSearch:"Mozilla"},{string:navigator.userAgent,subString:"OmniWeb",versionSearch:"OmniWeb/",identity:"OmniWeb"},{string:navigator.vendor,subString:"iCab",identity:"iCab"},{string:navigator.vendor,subString:"KDE",identity:"Konqueror"},{string:navigator.vendor,subString:"Camino",identity:"Camino"},{string:navigator.userAgent,subString:"Netscape",identity:"Netscape"},{string:navigator.vendor,subString:"BlackBerry",identity:"BlackBerry"}],dataPlatform:[{string:navigator.userAgent,subString:"Windows Phone",identity:"Windows Phone"},{string:navigator.userAgent,subString:"Tablet PC",identity:"Windows Tablet"},{string:navigator.platform,subString:"Win",identity:"Windows"},{string:navigator.platform,subString:"Mac",identity:"Mac"},{string:navigator.userAgent,subString:"iPhone",identity:"iPhone"},{string:navigator.userAgent,subString:"iPad",identity:"iPad"},{string:navigator.userAgent,subString:"iPod",identity:"iPod"},{string:navigator.userAgent,subString:"Silk",identity:"Kindle Fire"},{string:navigator.userAgent,subString:"Kindle Fire",identity:"Kindle Fire"},{string:navigator.userAgent,subString:"Android",identity:"Android"},{string:navigator.userAgent,subString:"webOS",identity:"webOS"},{string:navigator.userAgent,subString:"Mobile",identity:"Mobile"},{string:navigator.platform,subString:"Linux",identity:"Linux"}]},TGS.BrowserDetect.init(),TGS.Leaderboard=function(){},TGS.Leaderboard._sLeaderboardDescriptors=[],TGS.Leaderboard.UseTGSErrorMessages=!0,TGS.Leaderboard.RequestUserLocation=!0,TGS.Leaderboard.GetLeaderboardDescriptors=function(){return TGS.Leaderboard._sLeaderboardDescriptors},TGS.Leaderboard.isSupported=function(){return!TGS._sPartnerBridge._mDisableLeaderboard&&(TGS._sPartnerBridge.implementsLeaderboard()||TGS._sPartnerBridge._mFacebookServicesAllowed||TGS._sPartnerBridge._mUseUserInfoInSLB)},TGS.Leaderboard.getLabel=function(){return TGS._sPartnerBridge._leaderboardLabel},TGS.Leaderboard.GetLeaderboardDescriptor=function(a){for(var b=0;b<TGS.Leaderboard._sLeaderboardDescriptors.length;b++){var c=TGS.Leaderboard._sLeaderboardDescriptors[b];if(c.id===a)return c}return null},TGS.Leaderboard.ScoreFormatter=function(a){return a.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")},TGS.Leaderboard.Show=function(a){return TGS.LoggedIn()?void(TGS._sPartnerBridge.implementsLeaderboard()?TGS._sPartnerBridge.showLeaderboard(a):TGS.Leaderboard._ShowSLB(a)):void TGS.LoginUser({onSuccess:TGS.Leaderboard.Show.bind(this,a),onUserCancel:TGS.OverlayMessage.bind(this,{title:"Login Required",message:"You must be logged in to use the leaderboard."}),onFailure:TGS.OverlayMessage.bind(this,{title:"Login Error",message:"There was a problem logging you in."})})},TGS.Leaderboard.SubmitScore=function(a){return TGS.LoggedIn()?void(TGS._sPartnerBridge.implementsLeaderboard()?TGS._sPartnerBridge.submitScore(a):TGS.Leaderboard._SubmitScoreSLB(a)):void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"user is not logged in/authorized - silent score submit ignored")},TGS.Leaderboard.SubmitScoreAndShow=function(a){return TGS.LoggedIn()?void(TGS._sPartnerBridge.implementsLeaderboard()?TGS._sPartnerBridge.submitScoreAndShow(a):TGS.Leaderboard._SubmitScoreAndShowSLB(a)):void TGS.LoginUser({onSuccess:TGS.Leaderboard.SubmitScoreAndShow.bind(this,a),onUserCancel:TGS.OverlayMessage.bind(this,{title:"Login Required",message:"You must be logged in to use the leaderboard."}),onFailure:TGS.OverlayMessage.bind(this,{title:"Login Error",message:"There was a problem logging you in."})})},TGS.Leaderboard._SubmitScoreSLB=function(a,b){var c=TGS._sUserID,d=TGS._sPartnerID;if(!TGS._sPartnerBridge._mUseUserInfoInSLB){if(!TGS._sPartnerBridge.loggedIntoFacebook())return b?void TGS._sPartnerBridge.loginToFacebook(TGS._sPartnerBridge.promptForFacebookAuthorization.bind(TGS._sPartnerBridge),TGS.Leaderboard._SubmitScoreSLB.bind(this,a)):void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"user is not logged in/authorized on Facebook - silent score submit ignored");c=TGS._sPartnerBridge._mFacebookUserID,d="A0003"}var e=!0,f="";if("object"!=typeof a?(e=!1,f+="params "):"number"!=typeof a.score&&(e=!1,f+="score "),!e)return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"Invalid values sent to TGS.Leaderboard.SubmitScore for the following params: "+f),void(a&&a.onFailure&&a.onFailure.call(this,a.score,a.leaderboardID));a.leaderboardID="number"==typeof a.leaderboardID?a.leaderboardID:0;var g="function"==typeof a.onFailure?a.onFailure:null,h="",i="";TGS._sPartnerBridge._mUseUserInfoInSLB?(h+=',"name":'+(TGS._sPartnerBridge._mUsername?'"'+TGS._sPartnerBridge._mUsername+'"':"null"),h+=',"image_url":'+(TGS._sPartnerBridge._mAvatarURL?'"'+TGS._sPartnerBridge._mAvatarURL+'"':"null"),h+=',"location":'+(TGS._sPartnerBridge._mUserLocation?'"'+TGS._sPartnerBridge._mUserLocation+'"':"null")):i+=',"facebook_access_token":'+(TGS._sPartnerBridge._mFacebookAccessToken?'"'+TGS._sPartnerBridge._mFacebookAccessToken+'"':"null");var j='{"game":"'+TGS._sGameID+'","partner":"'+d+'","leaderboard":"'+a.leaderboardID+'","user":"'+c+'","score":'+a.score+i+h+"}",k=new TGS.LeaderboardRequest;k.type="add",k.params=a,k.onSuccess=a.onSuccess,k.onFailure=g,TGS.Debug.Log(TGS.Debug.LOG_INFO,"submitting new score of "+a.score+" to server..."),TGS.SendMessage("leaderboard/score","add",j,TGS.Leaderboard._SuccessCallback.bind(this,k),TGS.Leaderboard._ErrorCallback.bind(this,k))},TGS.Leaderboard._ShowSLB=function(a){var b,c=document.getElementsByTagName("base");b=c&&c.length?c[0].getAttribute("href"):location.href;var d={game:TGS._sGameID,partner:TGS._sPartnerID,leaderboard:a.leaderboardID,user:TGS._sUserID,score:a.score,orientation:a.orientation||TGS._sConfig.ORIENTATION,timePeriod:a.timePeriod,cssUrl:a.cssUrl,baseHref:b,server:TGS._SERVER_LOCATION};if(!TGS._sPartnerBridge._mUseUserInfoInSLB){if(!TGS._sPartnerBridge.loggedIntoFacebook())return void TGS._sPartnerBridge.loginToFacebook(TGS._sPartnerBridge.promptForFacebookAuthorization.bind(TGS._sPartnerBridge),TGS.Leaderboard._ShowSLB.bind(this,a));d.user=TGS._sPartnerBridge._mFacebookUserID,d.partner="A0003"}TGS._sPartnerBridge._mUseUserInfoInSLB?d.userInfo={name:TGS._sPartnerBridge._mUsername,image_url:TGS._sPartnerBridge._mAvatarURL,location:TGS._sPartnerBridge._mUserLocation}:d.fbToken=TGS._sPartnerBridge._mFacebookAccessToken;var e="//leaderboard.tresensa.com/?inGame=true&gameInfo="+encodeURIComponent(JSON.stringify(d)),f=document.createElement("div");f.id="tgs-leaderboard-container",f.innerHTML="<iframe scrolling='no' src='"+e+"'></iframe>";var g=a.gameCanvas;g.insertBefore(f,g.firstChild);var h=function(){window.removeEventListener("message",j),f.parentNode.removeChild(f),a.onClose&&a.onClose()},i=function(){var b=a.score,c="undefined"!=typeof window.GameConfig&&"string"==typeof window.GameConfig.TITLE?window.GameConfig.TITLE:null,d=c?c:"Check out this game!",e="See if you can beat me in this awesome game"+(c?" called "+c:"")+".";"undefined"!=typeof b&&(e+=" I just scored "+TGS.Leaderboard.ScoreFormatter(b)+"."),TGS.Social.Challenge({title:d,message:e})},j=function(a){if("http://leaderboard.tresensa.com"!==a.origin)return void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"Recieved window message: "+a.data+" from unexpected origin: "+a.origin);var b=JSON.parse(a.data);TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"Recieved window message: "+b),"leaderboard:done"==b?h():"leaderboard:challenge"==b&&i()};window.addEventListener("message",j,!1)},TGS.Leaderboard._SubmitScoreAndShowSLB=function(a){var b=a.onSuccess;a.onSuccess=function(){a.onSuccess=b,TGS.Leaderboard._ShowSLB(a)},TGS.Leaderboard._SubmitScoreSLB(a,!0)},TGS.Leaderboard._SuccessCallback=function(a,b){return b&&"undefined"!=typeof b.code?0!==b.code?void TGS.Leaderboard._ErrorCallback(a,"internal request error code: "+b.code,b):void(a.onSuccess?a.onSuccess.call(this,a,b):TGS.Debug.Log(TGS.Debug.LOG_INFO,"Leaderboard "+a.type+" request was successful")):void TGS.Leaderboard._ErrorCallback(a,"response object is malformed",b)},TGS.Leaderboard._ErrorCallback=function(a,b,c){a.onFailure?a.onFailure.call(this,b,c):TGS.Debug.Log(TGS.Debug.LOG_ERROR,"Leaderboard "+a.type+" request failed: "+b)},TGS.LeaderboardRequest=function(){this.type="",this.params=null,this.onSuccess=null,this.onFailure=null},function(){TGS.Advertisement=function(a,b){a=a||{},this.closeCallback=a.closeCallback,this.placement=b||0,this.width=b?336:300,this.height=b?280:250,this.x=a.x,this.y=a.y},TGS.Advertisement.prototype={_inject:function(a){return this.container=a,this._handleWindowMessageBound=this._handleWindowMessage.bind(this),window.addEventListener("message",this._handleWindowMessageBound,!1),TGS._sPartnerBridge.advertising_injectAd(this,a),this},_handleWindowMessage:function(a){if("http://adserver.adtechus.com"!==a.origin)return void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"Recieved window message: "+a.data+" from unexpected origin: "+a.origin);var b=JSON.parse(a.data);TGS.Debug.Log(TGS.Debug.LOG_INFO,"Recieved window message: "+b),"close"==b?this.close():"fullscreen"==b?this._fullscreen():b&&"resize"==b.action&&this._resize(b.width,b.height)},_resize:function(a,b){this.width=a,this.height=b,this._reposition(this.container)},_fullscreen:function(){this.placement&&(this.fullscreen=!0,this.width=100,this.height=100,this._reposition(this.container))},_reposition:function(a){var b=document.getElementById("tgs_display_ad_iframe"),c=document.getElementById("tgs-ad-frame");if(this.fullscreen){this.element.style.left=0,this.element.style.top=0,b.style.width="100%",b.style.height="100%",c.classList.add("fullscreen");var d=document.getElementById("tgs_display_ad");d.style.width="100%",d.style.height="100%";var e=document.getElementById("tgs-close");return e.style.display="none",this.showCloseTimeout&&clearTimeout(this.showCloseTimeout),this.element.style.webkitTransform="scale(1)",this.element.style.MozTransform="scale(1)",this.element.style.msTransform="scale(1)",this.element.style.OTransform="scale(1)",void(this.element.style.transform="scale(1)")}var f=a==document.body?window.innerHeight:a.clientHeight,g=a==document.body?window.innerWidth:a.clientWidth;if(f&&g){var h="undefined"==typeof this.x?(g-this.width)/2:this.x,i="undefined"==typeof this.y?(f-this.height)/2:this.y;b.style.width=this.width+"px",b.style.height=this.height+"px",c&&(c.style.width=this.width+"px",c.style.height=this.height+"px");var j=this.height,k=this.width;this.placement&&(j+=52,k+=52,h-=26,i-=26),this.scale=1,this.placement?this.scale=g>f?.75*f/j:.75*g/k:TGS.Utils.isTGEGame()&&(this.scale=TGE.Game.GetInstance()._mDivResized||1),this.element.style.left=h+"px",this.element.style.top=i+"px",this.element.style.webkitTransform="scale("+this.scale+")",this.element.style.MozTransform="scale("+this.scale+")",this.element.style.msTransform="scale("+this.scale+")",this.element.style.OTransform="scale("+this.scale+")",this.element.style.transform="scale("+this.scale+")"}},close:function(){window.removeEventListener("message",this._handleWindowMessageBound),TGS._sPartnerBridge.advertising_closeAd(this)!==!0&&this.closeCallback&&this.closeCallback.call()}};var a;TGS.Advertisement.DisplayAd=function(a){var b=new TGS.Advertisement(a||{});return("undefined"==typeof navigator.onLine||navigator.onLine)&&b._inject(a.parentDiv),b},TGS.Advertisement.DisplayInterstitialAd=function(b){b="undefined"==typeof b?{}:b;var c=(new Date).getTime(),d=1e3*(TGS._sConfig.ADS&&TGS._sConfig.ADS.INTERSTITIAL_INTERVAL||150);"undefined"==typeof navigator.onLine||navigator.onLine?!a||c>a+d?(a=c,TGS._sPartnerBridge.advertising_injectInterstitial(b||{})):(TGS.Debug.Log(TGS.Debug.LOG_INFO,"interstitial ad interval has not been reached ("+d/1e3+" seconds), suppressing ad request"),b.closeCallback&&b.closeCallback()):(TGS.Debug.Log(TGS.Debug.LOG_INFO,"device offline, interstitial ad skipped"),b.closeCallback&&b.closeCallback())}}(),function(){var a=function(a){return function(b,c,d){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"TGS.Analytics "+a+" event: "+b+", "+c),h(a,b,c,d)}},b=[/.+/i],c={game:["load","begin","pause","resume","end","adrequest"],level:[/^start( - .+)?$/i,/^complete( - .+)?$/i,/^fail( - .+)?$/i,/^replay( - .+)?$/i],achievement:b,share:["twitter","facebook"],clickthru:b,custom:b,error:b},d=function(a){return function(b){return b instanceof RegExp?b.test(a):a===b}},e=[],f={},g=!1,h=function(a,b,f,g){var h,i;try{if(a=(a||"").toLowerCase(),b=(b||"").toLowerCase(),h=c[a],!h)return void TGS.Debug.Log(TGS.Debug.LOG_ERROR,"TGS.Analytics.trackEvent called with invalid category '"+a);if(!h.some(d(b)))return void TGS.Debug.Log(TGS.Debug.LOG_ERROR,"TGS.Analytics.trackEvent called with invalid name '"+b+"' for category '"+a);for(i=0;i<e.length;i++)e[i].trackEvent(a,b,f,g||{})}catch(j){TGS.Debug.Log(TGS.Debug.LOG_ERROR,"TGS.Analytics.trackEvent error : "+j)}};TGS.Analytics={_init:function(a){var b,c,d,h;if(!g){for(TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"TGS.Analytics.init called with conifg: "+JSON.stringify(a)),f=a,b=TGS._sPartnerBridge.analytics_getProviders()||[],TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"TGS.Analytics.init got "+b.length+" providers from partner bridge"),c=0;c<b.length;c++)try{if(d=b[c],h=new d,!f[h.configName]||!f[h.configName].ENABLED){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"TGS.Analytics.init skipping provider (not ENABLED): "+h.name);continue}TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"TGS.Analytics.init initializing provider: "+h.name),h.init(f[h.configName]||{})!==!1?e.push(h):TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"TGS.Analytics.init "+h.name+" returned false from init, not using")}catch(i){TGS.Debug.Log(TGS.Debug.LOG_ERROR,"TGS.Analytics.init error while initializing "+h.name+": "+i)}g=!0,TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"TGS.Analytics.init done. Loaded providers: "+e.map(TGS.Utils.Func.prop("name")))}},logScreen:function(a,b){var c;for(c=0;c<e.length;c++)e[c].trackScreen(a,b||{})},_logPurchase:function(a,b){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"TGS.Analytics._logPurchase "+JSON.stringify(a));var c;for(c=0;c<e.length;c++)e[c].trackPurchase(a,b||{})},logGameEvent:a("game"),logShareEvent:a("share"),logLevelEvent:function(a,b,c){b>0&&(a+=" - level "+b);var d;("complete"==a||"fail"==a&&null!==c)&&(d=c),h("level",a,d)},logAchievementEvent:a("achievement"),logCustomEvent:a("custom"),_logErrorEvent:a("error"),_logClickThruEvent:a("clickthru"),_logMoreGamesEvent:a("moregames")}}(),function(){TGS.Analytics.BaseAnalyticsProvider=function(){},TGS.Analytics.BaseAnalyticsProvider.prototype={name:"Base Provider",configName:"BaseProvider",init:function(){},trackEvent:function(){},trackScreen:function(){},trackPurchase:function(){}}}(),function(){TGS.Analytics.GoogleAnalyticsProvider=function(){},TGS.Analytics.GoogleAnalyticsProvider.prototype={name:"Google Analytics",configName:"GoogleAnalytics",init:function(a){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"GoogleAnalyticsProvider.init called: "+JSON.stringify(a)),this._mConfig=a,this._mConfig.STUDIO_ONLY||(_gaTreSensa("create",TGS._sConfig.PROD_ENV?"UA-29301358-4":"UA-29301358-8","auto",{name:"TGSTracker"}),_gaTreSensa("TGSTracker.set",{dimension1:TGS._sPartnerID,dimension2:TGS._sGameVersion,dimension3:TGS._sGameID}),TGS.MicrotransactionsSupported()&&_gaTreSensa("TGSTracker.require","ecommerce","ecommerce.js")),this._mConfig.STUDIO_ID&&""!==this._mConfig.STUDIO_ID&&(_gaTreSensa("create",GameConfig.GoogleAnalytics.STUDIO_ID,"auto",{name:"TGSStudioTracker"}),_gaTreSensa("TGSStudioTracker.set",{location:TGS._sConfig.HOST+"/index.html",hostname:TGS._sConfig.HOST,page:TGS._sConfig.PATH,title:this._mConfig.LABEL||TGS._sGameID,referrer:"http://games.tresensa.com",dimension1:TGS._sGameID,dimension2:TGS._sGameVersion}),this._studioTrackerEnabled=!0)},trackEvent:function(a,b,c){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"GoogleAnalyticsProvider.trackEvent called: "+JSON.stringify(arguments)),this._mConfig.STUDIO_ONLY||_gaTreSensa("TGSTracker.send","event",a,b,this._mConfig.LABEL||TGS._sGameID,c),this._studioTrackerEnabled&&("moregames"==a&&(b="URL launched"),_gaTreSensa("TGSStudioTracker.send","event",a,b,this._mConfig.LABEL||TGS._sGameID,c))},trackScreen:function(a){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"GoogleAnalyticsProvider.trackPageView called: "+JSON.stringify(arguments)),this._mConfig.STUDIO_ONLY||_gaTreSensa("TGSTracker.send","pageview",TGS._sConfig.PATH+a),this._studioTrackerEnabled&&_gaTreSensa("TGSStudioTracker.send","pageview",TGS._sConfig.PATH+a)},trackPurchase:function(a){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"GoogleAnalyticsProvider.trackPurchase called: "+JSON.stringify(arguments));var b={id:a.transactionID,affiliation:TGS.Microtransactions.PaymentProviderName(),revenue:TGS.Microtransactions.PriceAsUSD(a.item.price)},c={id:a.transactionID,name:a.item.title,sku:a.item.id,price:TGS.Microtransactions.PriceAsUSD(a.item.price),quantity:"1"};this._mConfig.STUDIO_ONLY||(_gaTreSensa("TGSTracker.ecommerce:addTransaction",b),_gaTreSensa("TGSTracker.ecommerce:addItem",c),_gaTreSensa("TGSTracker.ecommerce:send"))}},extend(TGS.Analytics.GoogleAnalyticsProvider,TGS.Analytics.BaseAnalyticsProvider)}(),function(){TGS.Analytics.NativeGoogleAnalyticsProvider=function(){},TGS.Analytics.NativeGoogleAnalyticsProvider.prototype={name:"Native Google Analytics",configName:"GoogleAnalytics",init:function(a){if(TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"NativeGoogleAnalyticsProvider.init called: "+JSON.stringify(a)),this._mConfig=a,this._gaPlugin=window.plugins.gaPlugin,!a.NATIVE_ID)return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"CordovaConfig.GoogleAnalytics.NATIVE_ID not set, disabling analytics"),!1;window.plugins&&window.plugins.gaPlugin||TGS.Debug.Log(TGS.Debug.LOG_ERROR,"PhoneGap GoogleAnalytics plugin was not found, disabling analytics");var b=this;this._gaPlugin.init(function(){b._gaPlugin.setVariable(null,null,1,TGS._sPartnerID),b._gaPlugin.setVariable(null,null,2,TGS._sGameVersion),b._gaPlugin.setVariable(null,null,3,TGS._sGameID)},this._logError,a.NATIVE_ID,10)},trackEvent:function(a,b,c){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"NativeGoogleAnalyticsProvider.trackEvent called: "+JSON.stringify(arguments)),"number"!=typeof c&&(c=-1),this._gaPlugin.trackEvent(this._logResult,this._logError,a,b,this._mConfig.LABEL||TGS._sGameID,c)},trackScreen:function(a){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"NativeGoogleAnalyticsProvider.trackPageView called: "+JSON.stringify(arguments)),this._gaPlugin.trackPage(this._logResult,this._logError,a)},trackPurchase:function(a){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"NativeGoogleAnalyticsProvider.trackPurchase called: "+JSON.stringify(arguments)),this._gaPlugin.trackPurchase(this._logResult,this._logError,a.transactionID,TGS.Microtransactions.PaymentProviderName(),a.item.id,a.item.title,TGS.Microtransactions.PriceAsUSD(a.item.price),1)},_logError:function(a){TGS.Debug.Log(TGS.Debug.LOG_ERROR,"NativeGoogleAnalyticsProvider - "+a)},_logResult:function(a){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"NativeGoogleAnalyticsProvider - "+a)}},extend(TGS.Analytics.GoogleAnalyticsProvider,TGS.Analytics.BaseAnalyticsProvider)}(),function(){TGS.Social={ChallengeIcon:function(){return TGS._sPartnerBridge.challengeIcon()},Challenge:function(a){TGS._sPartnerBridge.challenge(a)},Share:function(a,b){b=b||{};var c;c=b.url?b.url:TGS._sConfig.HOST?TGS._sConfig.HOST:window.location.href,TGS._sPartnerBridge.share(a,{title:b.title||TGS._sConfig.TITLE,msg:b.msg||"I am playing "+TGS._sConfig.TITLE,url:c,image:b.image}),TGS.Analytics.logShareEvent(a)},GetShareServices:function(a){var b=TGS._sPartnerBridge.getShareServices();return a&&b.length>a&&(b.length=a),b},_services:{twitter:{id:"twitter",title:"Twitter",label:"Tweet"},fb:{id:"fb",title:"Facebook",label:"Share on FB"}}}}(),function(){var a=function(a,b,c,d){var e=document.createElement("div");
 if(e.classList.add("tgs-btn"),c)for(var f=c.split(" "),g=f.length-1;g>=0;g--)e.classList.add(f[g]);var h="",i=!1;return("login"==c||"logout"==c)&&(i="login"==d?TGS.LoggedIn()?TGS.LogoutIcon():TGS.LoginIcon():TGS.LoggedIn()?TGS.WidgetLogoutIcon():TGS.WidgetLoginIcon()),i&&(h+="<img src='"+i+"'/>"),h+="<span>"+a+"</span>",e.innerHTML=h,b&&e.addEventListener(TGS.BrowserDetect.clickEvent,b),e};TGS.Widget=function(b){b=b||{},this.pos={top:b.y||0,left:b.x||0},this.size={width:b.width||300,height:0},this.closeCallback=b.closeCallback,this.element=document.createElement("div"),this.element.id="tgs-widget",this.element.style.top=this.pos.top+"px",this.element.style.left=this.pos.left+"px",this.element.style.width=this.size.width+"px",this.element.style.height=this.size.height?this.size.height+"px":"auto";var c=b.disableAd?0:300,d=b.disableAd?0:10,e=b.minColumnWidth||130,f=this.size.width>=c+d+e,g=this.size.width-c-d,h=b.columnPaddingPercent||2,i=g*h/100;b.widgetClass&&this.element.classList.add(b.widgetClass),f&&this.element.classList.add("horizontal");var j=1;if(b.disableAd&&this.size.width>=4*e+3*i?(this.element.classList.add("four-column"),j=4):(!f||b.disableAd)&&this.size.width>=e+i+e&&(this.element.classList.add("two-column"),j=2),b.disableAd||(this.ad=new TGS.Advertisement({}),this.ad._inject(this.element),this.ad.element&&(this.ad.element.style.position="static")),this.buttonContainer=document.createElement("div"),this.buttonContainer.classList.add("btn-container"),f&&(this.buttonContainer.style.width=g+"px"),b.showLogin){var k=TGS.GetLoginButtonText();if(k&&("Restore Purchases"!=k||!b.disableRestore)){var l=TGS.GetLoginButtonAction(function(){if(m&&m.parentNode){var c=TGS.GetLoginButtonText();if(c){var d=a(c,l,c.toLowerCase().replace(/ /g,"-"),b.widgetClass);s.buttonContainer.insertBefore(d,m)}m.parentNode.removeChild(m),m=d,t()}}),m=a(k,l,k.toLowerCase().replace(/ /g,"-"),b.widgetClass);this.buttonContainer.appendChild(m)}}if(!b.disableShare)for(var n={title:b.shareTitle,msg:b.shareMessage,url:b.shareUrl,image:b.shareImageUrl},o=TGS.Social.GetShareServices(2),p=0;p<o.length;p++){var q=o[p];this.buttonContainer.appendChild(a(q.label,TGS.Social.Share.bind(null,q.id,n),q.id))}if(!b.disableMoreGames&&TGS.MoreGamesURL()&&this.buttonContainer.appendChild(a("More Games",TGS.ShowMoreGames,"moregames")),!b.disableLeaderboard&&TGS.Leaderboard.isSupported()&&Object.keys(TGS.Leaderboard.GetLeaderboardDescriptors()).length>0){var r=TGS.Leaderboard.Show.bind(this,{timePeriod:"week",page:1,gameCanvas:TGE.Game.GameDiv()});this.buttonContainer.appendChild(a(TGS.Leaderboard.getLabel(),r,"leaderboard"))}var s=this,t=function(){if(j>1){s.buttonContainer.style.marginBottom=-h+"%";for(var a=s.buttonContainer.childNodes,b=a.length-1;b>=0;b--){var c=b==a.length-1;a[b].style.marginBottom=h+"%",2==j&&a.length%2!=0&&c?a[b].style.width="100%":((4==j&&!c||b%2===0)&&(a[b].style.marginRight=h+"%"),a[b].style.width=(100-(j-1)*h)/j+"%")}}};t(),this.element.appendChild(this.buttonContainer)},TGS.Widget.prototype={appendTo:function(a){return a.insertBefore(this.element,a.firstChild),this},close:function(){return this.ad&&this.ad.close(),this.element&&this.element.parentNode&&this.element.parentNode.removeChild(this.element),this.closeCallback&&this.closeCallback(this),this}},TGS.Widget.CreateWidget=function(a){var b;a=a||{},a.disableMoreGames=!1,b=TGS.Utils.isTGEGame()?a.parentDiv||TGE.Game.GameDiv():a.parentDiv||document.body;var c=new TGS.Widget(a);return c.appendTo(b)},TGS.Widget.CreateLoginWidget=function(a){var b;a=a||{},a.disableAd=!0,a.disableLeaderboard=!0,a.disableShare=!0,a.disableMoreGames=!0,a.showLogin=!0,a.width=a.width||200,a.widgetClass="login",b=TGS.Utils.isTGEGame()?a.parentDiv||TGE.Game.GameDiv():a.parentDiv||document.body;var c=new TGS.Widget(a);return c.appendTo(b)}}(),TGS.Adapters={};var hostLocation="stg-tgs.tresensa.com";"undefined"!=typeof window.GameConfig&&GameConfig.TGS&&GameConfig.TGS.HOST&&(hostLocation=GameConfig.TGS.HOST);var serverLocation=hostLocation+"/server/";serverLocation+="0.3.9/",TGS._SERVER_LOCATION=("https:"===document.location.protocol?"https:":"http:")+"//"+serverLocation,TGS._IMAGES_LOCATION=("https:"===document.location.protocol?"https:":"http:")+"//sdk.tresensa.com/tgs/images/",TGS._sOn=!1,TGS._sFakeConnections=!1,TGS._sPartnerID=null,TGS._sGameID=null,TGS._sUserID=null,TGS._sPartnerBridge=null,TGS._sGamePartnerInfo=null,TGS._sLSKeys={},TGS._sOnline=!0,TGS._sMessageOverlay=null,TGS.OverlayRed=.6,TGS.OverlayGreen=.6,TGS.OverlayBlue=.6,TGS.OverlayOpacity=.6,TGS.onReady=null,TGS.Debug=TGS.Debug||{},TGS.Debug.LOG_NONE=0,TGS.Debug.LOG_ERROR=1,TGS.Debug.LOG_WARNING=2,TGS.Debug.LOG_INFO=3,TGS.Debug.LOG_VERBOSE=4,TGS.Debug.LogLevel="undefined"!=typeof GameConfig&&"number"==typeof GameConfig.LOG_LEVEL?GameConfig.LOG_LEVEL:TGS.Debug.LOG_INFO,TGS.Debug.Log=function(a){if(window.console&&a<=TGS.Debug.LogLevel){var b="TGS: ",c="log";a===TGS.Debug.LOG_ERROR?(b+="**ERROR** ",c="error"):a===TGS.Debug.LOG_WARNING&&(b+="**WARNING** ",c="warn"),window.console[c](b+Array.prototype.slice.call(arguments,1))}},TGS.UseServer=function(a){TGS._SERVER_LOCATION=("https:"===document.location.protocol?"https:":"http:")+"//"+a},TGS.localStorage=window.localStorage,TGS._TestLocalStorage=function(){TGS.localStorage=window.localStorage;try{localStorage.setItem("storage",""),localStorage.removeItem("storage")}catch(a){TGS.Debug.Log(TGS.Debug.LOG_WARNING,"localStorage is not supported"),TGS.localStorage={setItem:function(){},removeItem:function(){},getItem:function(){}}}},TGS.IsOn=function(){return TGS._sOn},TGS.IsReady=function(){return TGS._sPartnerID&&TGS._sGameID&&TGS._sPartnerBridge&&(!TGS._sPartnerBridge.supportsDatastore()||TGS._sUserID&&TGS.DataStore.GameData)?TGS._sPartnerBridge.isReady():!1},TGS.MicrotransactionsSupported=function(){return TGS._sPartnerBridge.supportsMicrotransactions()&&TGS._sPartnerBridge.supportsDatastore()},TGS.MicrotransactionsAllowed=function(){return TGS._sPartnerBridge.allowsMicrotransactions()},TGS.DatastoreSupported=function(){return TGS._sPartnerBridge.supportsDatastore()},TGS.LeaderboardSupported=function(){return TGS.Leaderboard.isSupported()},TGS.AutoLogin=function(){return TGS._sPartnerBridge.autoLogin()},TGS.LoginIcon=function(){return TGS._sPartnerBridge.loginIcon()},TGS.LogoutIcon=function(){return TGS._sPartnerBridge.logoutIcon()},TGS.WidgetLoginIcon=function(){return TGS._sPartnerBridge.widgetLoginIcon()},TGS.WidgetLogoutIcon=function(){return TGS._sPartnerBridge.widgetLogoutIcon()},TGS.ChallengesSupported=function(){return TGS._sPartnerBridge.supportsChallenges()},TGS.LoggedIn=function(){return TGS._sPartnerBridge.loggedIn()},TGS.LoginUser=function(a){a="undefined"==typeof a?{}:a,TGS._sLoginOverlay=TGS.LoadingOverlay();var b=new TGS.LoginRequest;b.onSuccess=a.onSuccess,b.onFailure=a.onFailure,b.onUserCancel=a.onUserCancel,TGS._sPartnerBridge.loginUser(b)},TGS.LogoutUser=function(a){a="undefined"==typeof a?{}:a,TGS._sLoginOverlay=TGS.LoadingOverlay();var b=new TGS.LoginRequest;b.onSuccess=a.onSuccess,b.onFailure=a.onFailure,b.onUserCancel=a.onUserCancel,TGS._sPartnerBridge.logoutUser(b)},TGS.ToggleUserLogin=function(a){TGS.AutoLogin()||(TGS.LoggedIn()?TGS.LogoutUser(a):TGS.LoginUser(a))},TGS._LoginSucceeded=function(a){TGS.Debug.Log(TGS.Debug.LOG_INFO,"user login/logout process was successful"),a&&a.onSuccess&&a.onSuccess.call(),TGS._sLoginOverlay&&(TGS._sLoginOverlay.parentNode.removeChild(TGS._sLoginOverlay),TGS._sLoginOverlay=null),window.TGE&&TGE.Game.GetInstance()&&TGE.Game.GetInstance().stage.dispatchEvent({type:"tgs_login_changed"})},TGS._LoginFailed=function(a){TGS.Debug.Log(TGS.Debug.LOG_ERROR,"there was an error during the login/logout process"),a&&a.onFailure&&a.onFailure.call(),TGS._sLoginOverlay&&(TGS._sLoginOverlay.parentNode.removeChild(TGS._sLoginOverlay),TGS._sLoginOverlay=null)},TGS._LoginCanceled=function(a){TGS.Debug.Log(TGS.Debug.LOG_INFO,"user cancelled login"),a.onUserCancel&&a.onUserCancel.call(),TGS._sLoginOverlay&&(TGS._sLoginOverlay.parentNode.removeChild(TGS._sLoginOverlay),TGS._sLoginOverlay=null)},TGS.GetDateTime=function(a,b){var c=null;return TGS.IsReady()||(c="Tried to request the server date/time before TGS was ready"),a||(c="Date/time request was made without specifying a success callback"),null!==c?void(b?b.call(this,c,null):TGS.Debug.Log(TGS.Debug.LOG_ERROR,c)):(TGS.Debug.Log(TGS.Debug.LOG_INFO,"requesting date/time from the server..."),void TGS.SendMessage("time","get",null,TGS._GetDateTimeCallback.bind(this,a),b))},TGS._GetDateTimeCallback=function(a,b){a.call(this,new Date(b.time))},TGS.GameLaunched=function(){TGS._sPartnerBridge&&TGS._sPartnerBridge.gameWasLaunched()},TGS.EnablePartnerUI=function(a){null!==TGS._sPartnerBridge&&TGS._sPartnerBridge.enablePartnerUI(a)},TGS.GenericSuccessCallback=function(a){TGS.Debug.Log(TGS.Debug.LOG_INFO,"	server request was successful"),TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"	response obj: "+JSON.stringify(a))},TGS.GenericErrorCallback=function(a,b){TGS.Debug.Log(TGS.Debug.LOG_WARNING,"	GenericErrorCallback "+a),TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"	GenericErrorCallback response obj: "+JSON.stringify(b))},TGS.SendMessage=function(a,b,c,d,e){if(!TGS._sOnline)return void(e&&e("TGS is offline"));d=d?d:TGS.GenericSuccessCallback,e=e?e:TGS.GenericErrorCallback;var f=TGS._SERVER_LOCATION+a+".php";f+="?gid="+TGS._sGameID+"&tgs="+(window.GameConfig?GameConfig.TGS.VERSION:"unknown")+"&dst="+TGS._sPartnerID;var g="string"==typeof b?"type="+b+"&":"",h=g+"data="+c;TGS.CORSRequest(f,h,!0,!0,d,e)},TGS.CORSRequest=function(a,b,c,d,e,f){var g=null,h="POST",i=null,j=!1;try{if(window.XMLHttpRequest){if(g=new XMLHttpRequest,"withCredentials"in g)g.open(h,a,!0),g.setRequestHeader("Content-type","application/x-www-form-urlencoded"),g.send(b);else if("undefined"!=typeof XDomainRequest){j=!0,g=new XDomainRequest;var k=Math.floor(99999999999*Math.random()),l=-1===a.indexOf("?")?"?":"&";a=a+l+b+"&cb="+k,g.open(h,a),g.send()}}else g=new ActiveXObject("Microsoft.XMLHTTP"),g.open(h,a,!0),g.setRequestHeader("Content-type","application/x-www-form-urlencoded"),g.send(b)}catch(m){f&&f("server failed to respond",m)}try{j?(g.timeout=1e4,g.onerror=function(){},g.ontimeout=function(){},g.onprogress=function(){},g.onload=function(){if(!d)return void e(g.responseText);try{i=JSON.parse(g.responseText)}catch(a){TGS.Debug.Log(TGS.Debug.LOG_WARNING,"server response could not be parsed: "+g.responseText),i=null}if(i){if(c&&0!==i.code&&f){var b="the TGS server returned error code "+i.code;return"string"==typeof i.message&&(b+=" "+i.message),TGS.Debug.Log(TGS.Debug.LOG_WARNING,b),void f(b,i)}e(i)}else f&&(TGS.Debug.Log(TGS.Debug.LOG_WARNING,"server request returned bad data"),f("server request returned bad data",null))}):g.onreadystatechange=function(){if(4==g.readyState)if(200!=g.status)f&&(TGS.Debug.Log(TGS.Debug.LOG_WARNING,"the page returned error code "+g.status+" message: "+g.statusText),f("the page returned error code "+g.status,g));else{if(!d)return void e(g.responseText);try{i=JSON.parse(g.responseText)}catch(a){TGS.Debug.Log(TGS.Debug.LOG_WARNING,"server response could not be parsed: "+g.responseText),i=null}if(i){if(c&&0!==i.code&&f){var b="the TGS server returned error code "+i.code;return"string"==typeof i.message&&(b+=" "+i.message),TGS.Debug.Log(TGS.Debug.LOG_WARNING,b),void f(b,i)}e(i)}else f&&(TGS.Debug.Log(TGS.Debug.LOG_WARNING,"server request returned bad data"),f("server request returned bad data",null))}}}catch(n){f&&f("server error",n)}},TGS.Init=function(a,b){if(1==arguments.length?(TGS._sConfig=a,a=TGS._sConfig.GAME_ID,b=TGS._sConfig.DST_ID):(window.GameConfig.DST_ID=TGL.getDistributionPartner(),TGS._sConfig=window.GameConfig),TGS._TestLocalStorage(),"string"!=typeof a||a.length<1)return void TGS.Debug.Log(TGS.Debug.LOG_ERROR,"a valid game id was not specified");TGS._sGameID=a;var c=this._sConfig.VERSION||"none";TGS._sGameVersion=c,"string"!=typeof b||b.length<1?(TGS.Debug.Log(TGS.Debug.LOG_INFO,"no partner id specified - using generic adapter"),TGS._sPartnerID="0000"):TGS._sPartnerID=b,TGS._sOn=!0;var d="_"+TGS._sPartnerID+"_"+TGS._sGameID;TGS._sLSKeys.TGS_datastore="TGS_datastore"+d,TGS._sLSKeys.TGS_userid="TGS_userid"+d,TGS._sLSKeys.TGS_loggedin_user="TGS_loggedin_user"+d,TGS._sLSKeys.TGS_username="TGS_username"+d,TGS._sLSKeys.TGS_avatar="TGS_avatar"+d,TGS._sLSKeys.TGS_location="TGS_location"+d,TGS._sLSKeys.TGS_gameinfo="TGS_gameinfo"+d,"undefined"==typeof TGS.AdapterDefinitions&&TGS.Debug.Log(TGS.Debug.LOG_INFO,"the TGS adapter definitions library was not loaded, only the generic adapter and Q0000 will be available"),TGS._injectCSS(),TGS._LoadAdapterLibraries()},TGS._injectCSS=function(){var a=window.TGL?TGL.SDKBaseURL+"tgs/":"//sdk.tresensa.com/tgs/",b=document.getElementsByTagName("head")[0],c=document.createElement("link");c.type="text/css",c.href=a+"css/tgs-"+TGS.version+".css",c.rel="stylesheet",c.media="screen",b.appendChild(c)},TGS._LoadAdapterLibraries=function(){TGS.Debug.Log(TGS.Debug.LOG_INFO,"loading partner adapter and 3rd party libs...");var a=TGS.AdapterDefinitions?TGS.AdapterDefinitions[TGS._sPartnerID]:null,b=[],c=window.TGL?TGL.SDKBaseURL+"tgs/":"//sdk.tresensa.com/tgs/",d=window.TGL?TGL.MinifiedSuffix:".min";a&&(a.embedded!==!0&&b.push(c+TGS._sPartnerID+"/"+TGS._sPartnerID+"-"+a.version+d+".js"),"https:"===document.location.protocol&&a.httpslibs?b=b.concat(a.httpslibs):a.libs&&(b=b.concat(a.libs))),a&&a.fb!==!0||b.push(("https:"===document.location.protocol?"https:":"http:")+"//connect.facebook.net/en_US/all.js"),"undefined"!=typeof head&&b.length>0?(head.js.apply(this,b),head.ready(TGS._CreatePartnerBridge)):TGS._CreatePartnerBridge()},TGS._CreatePartnerBridge=function(){if(TGS.Adapters[TGS._sPartnerID])try{TGS.Debug.Log(TGS.Debug.LOG_INFO,"creating "+TGS._sPartnerID+" adapter..."),TGS._sPartnerBridge=new TGS.Adapters[TGS._sPartnerID]}catch(a){return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"error instantiating partner adapter"),void TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"   ("+a+")")}else TGS.Debug.Log(TGS.Debug.LOG_INFO,"creating generic adapter..."),TGS._sPartnerBridge=new TGS.Adapters.GenericAdapter;TGS._sPartnerBridge._mFacebookServicesAllowed="undefined"!=typeof FB,TGS._sPartnerBridge.onAdapterReady=TGS.onPartnerBridgeReady,TGS._sPartnerBridge.onUserInfoAvailable=TGS.onUserInfoAvailable,TGS._sPartnerBridge.masterInitialize(),TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"requesting game-partner info from server..."),TGS._sPartnerBridge.requestGameInfo(TGS._sGameID)},TGS.onGamePartnerInfoReceived=function(a){return TGS.Debug.Log(TGS.Debug.LOG_INFO,"game-partner info received"),TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"game-partner info: "+JSON.stringify(a)),a&&"undefined"!=typeof a.code?0!==a.code?void TGS.Debug.Log(TGS.Debug.LOG_ERROR,"game-partner info contained error code: "+a.code):(TGS._sGamePartnerInfo=a.partner_values,TGS.Microtransactions._sIAPProducts=a.iap_products,TGS.Microtransactions._sAppURLs=a.app_urls,TGS.Leaderboard._sLeaderboardDescriptors=a.leaderboards,TGS.localStorage.setItem(TGS._sLSKeys.TGS_gameinfo,JSON.stringify(a)),void(TGS._sPartnerBridge.isReady()?(TGS.Debug.Log(TGS.Debug.LOG_INFO,"initiating connection to partner..."),TGS._sPartnerBridge.masterConnect(TGS._sGamePartnerInfo)):TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"partner bridge not ready yet"))):void TGS.Debug.Log(TGS.Debug.LOG_ERROR,"game-partner info was corrupt")},TGS.onGamePartnerInfoError=function(a,b){TGS.Debug.Log(TGS.Debug.LOG_ERROR,"could not retrieve game-partner info: "+a),TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"	response obj: "+JSON.stringify(b));var c=TGS.localStorage.getItem(TGS._sLSKeys.TGS_gameinfo);c?(TGS.Debug.Log(TGS.Debug.LOG_INFO,"using a local copy of the game-partner info"),b=JSON.parse(c),TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"game-partner info: "+JSON.stringify(b)),TGS._sGamePartnerInfo=b.partner_values,TGS.Microtransactions._sIAPProducts=b.iap_products,TGS.Microtransactions._sAppURLs=b.app_urls,TGS.Leaderboard._sLeaderboardDescriptors=b.leaderboards):(TGS.Debug.Log(TGS.Debug.LOG_INFO,"no local copy of the game-partner info is available"),TGS.OverlayMessage({title:"Oops!",message:"Could not retrieve game info from the server. Some game features like in-app purchase and leaderboards may not be available."}),TGS._sGamePartnerInfo={},TGS.Microtransactions._sIAPProducts=[],TGS.Microtransactions._sAppURLs=[],TGS.Leaderboard._sLeaderboardDescriptors=[]),TGS._sPartnerBridge.masterConnect(TGS._sGamePartnerInfo)},TGS.onPartnerBridgeReady=function(){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"partner bridge is ready"),null!==TGS._sGamePartnerInfo&&(TGS.Debug.Log(TGS.Debug.LOG_INFO,"connecting to partner..."),TGS._sPartnerBridge.masterConnect(TGS._sGamePartnerInfo))},TGS.onUserInfoAvailable=function(a){return a?(TGS._sUserID=a.toString(),TGS.Debug.Log(TGS.Debug.LOG_INFO,"user id is: "+TGS._sUserID),void TGS.DataStore.ReloadGameData(TGS.onGameDataReceivedForUser)):void TGS.Debug.Log(TGS.Debug.LOG_INFO,"invalid user id")},TGS.onGameDataReceivedForUser=function(a){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"received game info for user "+JSON.stringify(a)),TGS.MakeTGSReady()},TGS.MakeTGSReady=function(){if(TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"MakeTGSReady called"),TGS.IsReady()){if(window.TGE){var a=TGE.Game.GetInstance();a&&a._onTGSReady&&a._onTGSReady()}"function"==typeof TGS.onReady&&(TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"Calling TGS.onReady"),TGS.onReady.call(this))}},TGS.AddRequiredImagesToAssetList=function(a){if(!window.TGE)return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"you must be using the TreSensa TGE library to use TGS.AddRequiredImagesToAssetList"),null;var b=TGE.Game.GetInstance();null!==TGS.LoginIcon()&&b.assetManager.addAsset(a,{id:"tgs_login_icon",url:TGS.LoginIcon(),absolutePath:!0}),null!==TGS.LogoutIcon()&&b.assetManager.addAsset(a,{id:"tgs_logout_icon",url:TGS.LogoutIcon(),absolutePath:!0}),null!==TGS.Microtransactions.CurrencyIcon()&&b.assetManager.addAsset(a,{id:"tgs_currency_icon",url:TGS.Microtransactions.CurrencyIcon(),absolutePath:!0}),TGS.MoreGamesURL()&&null!==TGS._sPartnerBridge._mMoreGamesImage&&b.assetManager.addAsset(a,{id:"tgs_more_games",url:TGS._sPartnerBridge._mMoreGamesImage,absolutePath:!0}),null!==TGS.Social.ChallengeIcon()&&b.assetManager.addAsset(a,{id:"tgs_challenge_icon",url:TGS.Social.ChallengeIcon(),absolutePath:!0})},TGS.GetLoginButtonText=function(){return"A0001"!==TGS._sPartnerID&&"A0002"!==TGS._sPartnerID&&"A0030"!==TGS._sPartnerID||!TGS.Microtransactions.HasNonConsumables()?TGS.AutoLogin()||!TGS._sPartnerBridge.supportsLogout()&&TGS.LoggedIn()||!TGS.LoginIcon()?void 0:TGS.LoggedIn()?"Logout":"Login":"Restore Purchases"},TGS.GetLoginButtonAction=function(a){return"A0001"!==TGS._sPartnerID&&"A0002"!==TGS._sPartnerID&&"A0030"!==TGS._sPartnerID||!TGS.Microtransactions.HasNonConsumables()?TGS.AutoLogin()||!TGS._sPartnerBridge.supportsLogout()&&TGS.LoggedIn()||!TGS.LoginIcon()?void 0:TGS.ToggleUserLogin.bind(TGS,{onSuccess:a}):TGS.Microtransactions.RestorePurchases.bind(TGS.Microtransactions)},TGS.CreateLoginWidget=function(a){if(!window.TGE)return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"you must be using the TreSensa TGE library to use TGS.CreateLoginWidget"),null;var b=new TGE.DisplayObjectContainer;if("A0001"!==TGS._sPartnerID&&"A0002"!==TGS._sPartnerID&&"A0030"!==TGS._sPartnerID||!TGS.Microtransactions.HasNonConsumables())if(TGS.AutoLogin()||!TGS._sPartnerBridge.supportsLogout()&&TGS.LoggedIn()||!TGS.LoginIcon());else{var c=(new TGE.Button).setup({image:TGS.LoggedIn()?"tgs_logout_icon":"tgs_login_icon",pressFunction:TGS.ToggleUserLogin.bind(null,a)});c.addEventListener("tgs_login_changed",function(a){var b=a.currentTarget,c=TGS.LoggedIn()?"tgs_logout_icon":"tgs_login_icon";!TGS._sPartnerBridge.supportsLogout()&&TGS.LoggedIn()&&(b.enabled=!1,b.visible=!1,c=null),b.setImage(c)}),b.addChild(c)}else b.addChild((new TGE.Button).setup({image:"tgs_login_icon",pressFunction:TGS.Microtransactions.RestorePurchases}));return b},TGS.CreateMoreGamesButton=function(a){if(!window.TGE)return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"you must be using the TreSensa TGE library to use TGS.CreateMoreGamesButton"),null;var b=new TGE.DisplayObjectContainer;if(TGS.MoreGamesURL()){var c=(new TGE.Button).setup({image:"tgs_more_games",pressFunction:TGS.ShowMoreGames}),d=0,e=0,f=1,g=TGE.Game.GetInstance().stage;-1!==a.indexOf("top")&&(e=40),-1!==a.indexOf("bottom")&&(e=g.height-40,f=-1),-1!==a.indexOf("left")&&(d=140),-1!==a.indexOf("right")&&(d=g.width-140),-1!==a.indexOf("center")&&(d=g.width/2,e-=19*f),b.x=d,b.y=e,b.addChild(c)}return b},TGS.MoreGamesURL=function(){return window.GameConfig&&GameConfig.MoreGames.ENABLED?GameConfig.MoreGames.URL:TGS._sPartnerBridge._mMoreGamesURL},TGS.ShowMoreGames=function(){TGS._sPartnerBridge.showMoreGames(),TGS.Analytics._logMoreGamesEvent(url)},TGS.OverlayMessage=function(a){if(!a||!a.message)return void TGS.Debug.Log(TGS.Debug.LOG_ERROR,"no message specified in TGS.OverlayMessage call");null!==TGS._sMessageOverlay&&TGS.CloseMessageOverlay();var b=TGS.BrowserDetect.onAndroid&&parseInt(TGS.BrowserDetect.OSversion.charAt(0))<4,c=TGS.BrowserDetect.isMobileDevice?window.TGE&&TGE.Game.GetInstance()?1.2*TGE.Game.GetInstance()._mViewportScale:.6:1,d=1;b&&(d=c,c=1);var e="undefined"==typeof a.overlayRed?TGS.OverlayRed:a.overlayRed,f="undefined"==typeof a.overlayGreen?TGS.OverlayGreen:a.overlayGreen,g="undefined"==typeof a.overlayBlue?TGS.OverlayBlue:a.overlayBlue,h="undefined"==typeof a.overlayOpacity?TGS.OverlayOpacity:a.overlayOpacity,i="string"!=typeof a.buttonText?"OK":a.buttonText,j="undefined"==typeof a.buttonAction?null:a.buttonAction,k="undefined"==typeof a.buttonSize?1:a.buttonSize,l=document.createElement("div");l.id="overlay",l.style.zIndex=10,l.style.position="fixed",l.style.width="100%",l.style.height="100%",l.style.top=0,l.style.left=0,l.style.backgroundColor="rgba("+Math.round(255*e).toString()+","+Math.round(255*f).toString()+","+Math.round(255*g).toString()+","+h.toString()+")",document.body.firstChild?document.body.insertBefore(l,document.body.firstChild):document.body.appendChild(l),TGS._sMessageOverlay=l;var m=300*d,n=0*d,o=20*d,p=document.createElement("div");p.id="box",p.style.position="absolute";var q=window.innerWidth/2-(m+2*o+2*n)*c/2;p.style.left=q.toString()+"px",p.style.width=m+"px",p.style.marginLeft="auto",p.style.marginRight="auto",p.style.textAlign="left",p.style.padding=o+"px",p.style.backgroundColor="#fff",p.style.borderRadius="5px",p.style.boxShadow="0px 0px 20px 4px #222",l.insertBefore(p,l.firstChild);var r=null,s=null,t=null;if(r=document.createElement("img"),r.id="close",r.src=TGS._IMAGES_LOCATION+"close-button.png",r.style.position="absolute",r.style.top="-"+o+"px",r.style.left=m+"px",r.style.padding="10px",r.style.cursor="pointer",p.insertBefore(r,p.firstChild),""!==i&&(s=document.createElement("div"),s.id="button",s.style.width=Math.round(.4*m*k*d)+"px",s.style.textAlign="center",s.style.padding=Math.round(10*k)+"px",s.style.backgroundColor="#ef2e24",s.style.color="#fff",s.style.fontSize=Math.round(20*k*d)+"px",s.style.fontWeight="bold",s.innerHTML=i,s.style.cursor="pointer",p.insertBefore(s,p.firstChild)),a.button2Image){var u=15,v=document.createElement("div");v.style.marginLeft="auto",v.style.marginRight="auto",v.style.textAlign="center",v.style.width="100%",v.style.height=90+2*u+"px",v.backgroundColor="#f00",p.insertBefore(v,p.firstChild),t=document.createElement("img"),t.id="button2",t.src=a.button2Image,t.style.marginLeft="auto",t.style.marginRight="auto",t.style.textAlign="center",t.style.padding=Math.round(u*d)+"px",t.height=Math.round(90*d),t.width=Math.round(256*d),t.style.cursor="pointer",v.insertBefore(t,v.firstChild)}else a.button2Text&&(t=document.createElement("div"),t.id="button2",t.style.width=Math.round(.4*m*k*d)+"px",t.style.textAlign="center",t.style.padding=Math.round(10*k)+"px",t.style.marginBottom="15px",t.style.backgroundColor="#ef2e24",t.style.color="#fff",t.style.fontSize=Math.round(20*k*d)+"px",t.style.fontWeight="bold",t.innerHTML=a.button2Text,t.style.cursor="pointer",p.insertBefore(t,p.firstChild));var w=document.createElement("div");if(w.id="text",w.style.textAlign="left",w.style.color="#000",w.style.fontSize=Math.round(18*d)+"px",w.style.paddingBottom=o+"px",w.innerHTML=a.message,p.insertBefore(w,p.firstChild),a.title){var x=document.createElement("div");x.id="title",x.style.textAlign="left",x.style.color="#000",x.style.fontSize=Math.round(26*((1+d)/2))+"px",x.style.fontWeight="bold",x.style.paddingBottom="10px",x.innerHTML=a.title,p.insertBefore(x,p.firstChild)}var y=Math.min(window.innerHeight,window.GameConfig&&"landscape"===GameConfig.ORIENTATION?536:832)/2-p.clientHeight*c/2;p.style.top=y.toString()+"px";var z=TGS.BrowserDetect.isMobileDevice&&"Windows Phone"!==TGS.BrowserDetect.platform?"touchstart":"click";if(null!==s&&s.addEventListener(z,TGS.CloseMessageOverlay.bind(this,j),!1),null!==r&&r.addEventListener(z,TGS.CloseMessageOverlay.bind(this,j),!1),null!==t&&t.addEventListener(z,a.button2Callback,!1),l.addEventListener("click",TGS._BlockEvent,!1),l.addEventListener("mousedown",TGS._BlockEvent,!1),l.addEventListener("mouseup",TGS._BlockEvent,!1),l.addEventListener("mousemove",TGS._BlockEvent,!1),l.addEventListener("touchstart",TGS._BlockEvent,!1),!b){var A=p.getAttribute("style")||"";p.setAttribute("style",A+" -ms-transform-origin: 0% 0%; -webkit-transform-origin: 0% 0%; -moz-transform-origin: 0% 0%; -o-transform-origin: 0% 0%; transform-origin: 0% 0%; -ms-transform: scale("+c+"); -webkit-transform: scale("+c+"); -moz-transform: scale("+c+"); -o-transform: scale("+c+"); transform: scale("+c+");")}},TGS.CloseMessageOverlay=function(a){null!==TGS._sMessageOverlay&&(TGS._sMessageOverlay.parentNode&&TGS._sMessageOverlay.parentNode.removeChild(TGS._sMessageOverlay),a&&a.call(),TGS._sMessageOverlay=null)},TGS.OpenURL=function(a,b,c){TGS._sPartnerBridge.openURL(a,b,c)},TGS.LoadingOverlay=function(){var a=TGS.OverlayRed,b=TGS.OverlayGreen,c=TGS.OverlayBlue,d=TGS.OverlayOpacity,e=document.createElement("div");e.id="overlay",e.style.zIndex=9,e.style.position="fixed",e.style.width="100%",e.style.height="100%",e.style.top=0,e.style.left=0,e.style.backgroundColor="rgba("+Math.round(255*a).toString()+","+Math.round(255*b).toString()+","+Math.round(255*c).toString()+","+d.toString()+")",document.body.firstChild?document.body.insertBefore(e,document.body.firstChild):document.body.appendChild(e);var f=document.createElement("img");f.id="gif",f.src=TGS._IMAGES_LOCATION+"processing.gif";var g=.45*window.innerHeight;return f.style.display="block",f.style.marginLeft="auto",f.style.marginRight="auto",f.style.marginTop=g.toString()+"px",f.style.align="center",e.insertBefore(f,e.firstChild),e.addEventListener("click",TGS._BlockEvent,!1),e.addEventListener("mousedown",TGS._BlockEvent,!1),e.addEventListener("mouseup",TGS._BlockEvent,!1),e.addEventListener("mousemove",TGS._BlockEvent,!1),e.addEventListener("touchstart",TGS._BlockEvent,!1),e},TGS._BlockEvent=function(a){return a.stopPropagation(),a.preventDefault(),a.stopImmediatePropagation&&a.stopImmediatePropagation(),!1},TGS.noop=function(){},TGS.LoginRequest=function(){this.onSuccess=null,this.onFailure=null,this.onUserCancel=null},TGS.Adapters.GenericAdapter=function(){TGS.Adapters.GenericAdapter.superclass.constructor.call(this),TGS.DataStore._sSaveToLocalStorage=!0,TGS.DataStore._sSaveToTGSServer=!1,this._mMoreGamesURL="http://www.mobilewebarcade.com/"},TGS.Adapters.GenericAdapter.prototype={},extend(TGS.Adapters.GenericAdapter,TGS.PartnerBridge),TGS.Adapters.Q0000=function(){TGS.Adapters.Q0000.superclass.constructor.call(this),this._mLoggedIn=!1,this._mMoreGamesURL="http://www.mobilewebarcade.com/","false"===getQueryString().fb&&(this._mFacebookServicesAllowed=!1,this._mUseUserInfoInSLB=!0),TGS.DataStore._sSaveToLocalStorage=!0,TGS.DataStore._sSaveToTGSServer=!1},TGS.Adapters.Q0000.prototype={supportsMicrotransactions:function(){return!0},autoLogin:function(){return!1},costFactor:function(){return 10},priceAsFormattedString:function(a){return"$"+(a*this.costFactor()/100-.01).toFixed(2)},currencyIcon:function(){return TGS._IMAGES_LOCATION+"testicon.png"},connect:function(){this.getLoginStatus()},loginUser:function(a){TGS.Debug.Log(TGS.Debug.LOG_INFO,"prompting user to login...");var b=window.prompt("LOGIN (enter your username):","");return b?"string"!=typeof b||b.length<1?void TGS._LoginFailed(a):(this._mUsername=b,void this.userLoggedIn(a,b)):void TGS._LoginCanceled(a)},purchaseItem:function(a){a.partnerTransactionID=~~(2147483648*Math.random()),setTimeout(this.openPurchase.bind(this,a),2e3)},openPurchase:function(a){var b="Do you agree to pay "+this.priceAsFormattedString(a.item.price)+" to buy "+a.item.title+"?",c=confirm(b);setTimeout(this.closePurchase.bind(this,c,a),1e3)},closePurchase:function(a,b){a?window.GameConfig&&GameConfig.PROD_ENV===!0?(b.internalErrorMessage="PROD_ENV=true",b.userErrorMessage="IAP purchases are not allowed in production.",TGS.Microtransactions._PartnerPurchaseFailed(b)):(TGS.Debug.Log(TGS.Debug.LOG_INFO,"TestAdapter approved purchase of transaction "+b.transactionID),TGS.Microtransactions._PartnerPurchaseSuccessful(b)):(b.internalErrorMessage="user cancelled",b.userErrorMessage="",TGS.Microtransactions._PartnerPurchaseFailed(b))}},extend(TGS.Adapters.Q0000,TGS.PartnerBridge);TGS.version = '0.3.7';
 
-var Polyworks = {};
+var PWG = {};
 
 // LOGGING
 function trace(message, level) {
 	if (typeof console === "undefined" || typeof console.log === "undefined") {
 		console = { log:function(){} };
 	} else {
-		Polyworks.Utils.each(arguments,
+		PWG.Utils.each(arguments,
 			function(a) {
 				console.log(a);
 			},
@@ -40177,7 +40177,7 @@ function trace(message, level) {
 }
 
 
-Polyworks.Utils = (function() {
+PWG.Utils = (function() {
 	var utils = {};
 
 	utils.each = function(list, callback, context) {
@@ -40208,7 +40208,7 @@ Polyworks.Utils = (function() {
 	    if (obj instanceof Array) {
 	        var copy = [];
 	        for (var i = 0, len = obj.length; i < len; i++) {
-	            copy[i] = Polyworks.Utils.clone(obj[i]);
+	            copy[i] = PWG.Utils.clone(obj[i]);
 	        }
 	        return copy;
 	    }
@@ -40217,7 +40217,7 @@ Polyworks.Utils = (function() {
 	    if (obj instanceof Object) {
 	        var copy = {};
 	        for (var attr in obj) {
-	            if (obj.hasOwnProperty(attr)) copy[attr] = Polyworks.Utils.clone(obj[attr]);
+	            if (obj.hasOwnProperty(attr)) copy[attr] = PWG.Utils.clone(obj[attr]);
 	        }
 	        return copy;
 	    }
@@ -40358,7 +40358,7 @@ Polyworks.Utils = (function() {
 	};
 	
 	utils.addSpriteToGame = function(params) {
-		return PolyworksGame.phaser.add.sprite(params.start.x, params.start.y, params.img);
+		return PWGGame.phaser.add.sprite(params.start.x, params.start.y, params.img);
 	};
 	
 	utils.addSpriteToGroup = function(params) {
@@ -40369,23 +40369,23 @@ Polyworks.Utils = (function() {
 		// 
 		var type = params.type || movement.type;
 		switch(type) {
-			case Polyworks.MovementTypes.HORIZONTAL_BY_SPEED:
-			case Polyworks.MovementTypes.VERTICAL_BY_SPEED:
+			case PWG.MovementTypes.HORIZONTAL_BY_SPEED:
+			case PWG.MovementTypes.VERTICAL_BY_SPEED:
 				this.moveDirectionalBySpeed(sprite, movement, params);
 			break;
 
-			case Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED:
+			case PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED:
 				// 
 				if(sprite.body.touching.down) {
 					this.moveDirectionalBySpeed(sprite, movement, params);
 				}
 			break;
 
-			case Polyworks.MovementTypes.JUMP:
+			case PWG.MovementTypes.JUMP:
 				this.moveDirectionalBySpeed(sprite, movement, params);
 			break; 
 			
-			case Polyworks.MovementTypes.TWEEN_PROPERTY:
+			case PWG.MovementTypes.TWEEN_PROPERTY:
 				this.tweenProperty(sprite, movement, params);
 			break;
 			
@@ -40398,27 +40398,27 @@ Polyworks.Utils = (function() {
 	utils.moveDirectionalBySpeed = function(sprite, movement, params) {
 		// 
 		switch(params.direction) {
-			case Polyworks.Directions.LEFT: 
+			case PWG.Directions.LEFT: 
 			sprite.x -= movement.speed;
 			break;
 
-			case Polyworks.Directions.RIGHT:
+			case PWG.Directions.RIGHT:
 			sprite.x += movement.speed;
 			break;
 
-			case Polyworks.Directions.JUMP:
+			case PWG.Directions.JUMP:
 			// sprite.x -= movement.speed;
 			sprite.body.velocity.y = -(movement.speed * sprite.model.attrs.jumpMultiplier);
 			// 
 			// sprite.body.velocity.y = -(movement.speed * 1000);
 			break;
 
-			case Polyworks.Directions.UP: 
+			case PWG.Directions.UP: 
 			// 
 			sprite.y -= movement.speed;
 			break;
 			
-			case Polyworks.Directions.DOWN: 
+			case PWG.Directions.DOWN: 
 			// 
 			sprite.y += movement.speed;
 			break;
@@ -40441,13 +40441,13 @@ Polyworks.Utils = (function() {
             scriptTag.onreadystatechange = function() {
                 if(scriptTag.readyState == 'loaded' || scriptTag.readyState == 'complete') {
                     // callback.call(evt);
-					Polyworks.EventCenter.trigger(evt);
+					PWG.EventCenter.trigger(evt);
                 }
             };
         } else {
             scriptTag.onload = function() {
                 // callback.call(evt);
-				Polyworks.EventCenter.trigger(evt);
+				PWG.EventCenter.trigger(evt);
             };
         }
         scriptTag.setAttribute('src', url);
@@ -40458,13 +40458,13 @@ Polyworks.Utils = (function() {
 }());
 
 
-Polyworks.DOMManager = (function() {
+PWG.DOMManager = (function() {
 	var bodyEl = document.getElementsByTagName('body')[0];
 	
 	var dom_manager = {
 		addElements: function(elements, parentEl, callback, context) {
 			var pops = parentEl || bodyEl;
-			Polyworks.Utils.each(
+			PWG.Utils.each(
 				elements,
 				function(element) {
 					// 
@@ -40487,7 +40487,7 @@ Polyworks.DOMManager = (function() {
 		},
 
 		addAttributes: function(attributes, el) {
-			Polyworks.Utils.each(
+			PWG.Utils.each(
 				attributes,
 				function(attribute, key) {
 					el.setAttribute(key, attribute);
@@ -40498,7 +40498,7 @@ Polyworks.DOMManager = (function() {
 		},
 
 		addStyle: function(styles, el) {
-			Polyworks.Utils.each(
+			PWG.Utils.each(
 				styles,
 				function(style, key) {
 					el.style[key] = style;
@@ -40512,7 +40512,7 @@ Polyworks.DOMManager = (function() {
 	return dom_manager;
 }());
 
-Polyworks.DeviceUtils = function() {
+PWG.DeviceUtils = function() {
 	var ua = navigator.userAgent.toLowerCase();
 	var operatingSystem = '';
 	
@@ -40609,7 +40609,7 @@ if (window.DeviceOrientationEvent) {
 // compass: 
 // http://stackoverflow.com/questions/16317599/android-compass-that-can-compensate-for-tilt-and-pitch
 
-Polyworks.Storage = (function() {
+PWG.Storage = (function() {
 	var _listeners = [];
 	
 	var storage = {
@@ -40768,11 +40768,11 @@ Polyworks.Storage = (function() {
 	
 
 
-Polyworks.WebFontManager = (function() {
+PWG.WebFontManager = (function() {
 	
 	var webFontManager = {
 		init: function(webFonts) {
-			Polyworks.Utils.each(
+			PWG.Utils.each(
 				webFonts,
 				function(webFont, key) {
 					switch(key) {
@@ -40811,7 +40811,7 @@ Polyworks.WebFontManager = (function() {
 	return webFontManager;
 }());
 
-Polyworks.Events = {
+PWG.Events = {
 	STAGE_INITIALIZED: 'stageInitialized',
 	CONFIG_LOADED: 'configLoaded',
 	AD_STARTED: 'adStarted',
@@ -40846,7 +40846,7 @@ Polyworks.Events = {
 	UPDATE_OG_DESCRIPTION: 'updateOGDescription'
 };
 
-Polyworks.EventCenter = (function() {
+PWG.EventCenter = (function() {
 
 	var eventCenter = {};
 	var _listeners; 
@@ -40871,7 +40871,7 @@ Polyworks.EventCenter = (function() {
 		var list = _listeners[params.type];
 		// 
 		if(list) {
-			Polyworks.Utils.each(list,
+			PWG.Utils.each(list,
 				function(l) {
 					// 
 					if(l && l.callback) { // in case callback is destroyed during course of trigger
@@ -40886,7 +40886,7 @@ Polyworks.EventCenter = (function() {
 	eventCenter.unbind = function(type, callback) {
 		var listeners = _listeners[type];
 		if(listeners) {
-			Polyworks.Utils.each(listeners,
+			PWG.Utils.each(listeners,
 				function(l, i) {
 					if(l && l.callback === callback) {
 						listeners.splice(i, 1);
@@ -40901,7 +40901,7 @@ Polyworks.EventCenter = (function() {
 		// iterate thru _listeners object
 		// for each type, remove all array elements
 		// then delete type from _listeners
-		Polyworks.Utils.each(_listeners,
+		PWG.Utils.each(_listeners,
 			function(l, key) {
 				l = [];
 				delete _listeners[key];
@@ -40915,7 +40915,7 @@ Polyworks.EventCenter = (function() {
 	return eventCenter;
 }());
 
-Polyworks.Stage = (function() {
+PWG.Stage = (function() {
 	var stage = {};
 	
 	stage.winW = 0;
@@ -40951,7 +40951,7 @@ Polyworks.Stage = (function() {
 		// 	// _calculateSizes();
 		// });
 
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.STAGE_INITIALIZED });
+		PWG.EventCenter.trigger({ type: PWG.Events.STAGE_INITIALIZED });
 	};
 
 	function _calculateSizes() {
@@ -41005,7 +41005,7 @@ Polyworks.Stage = (function() {
 	return stage;
 }());
 
-Polyworks.Loader = (function() {
+PWG.Loader = (function() {
 	
 	var _head = document.getElementsByTagName('head')[0];
 	var _defaultScriptAttributes = {
@@ -41037,7 +41037,7 @@ Polyworks.Loader = (function() {
 		this.numToLoad++;
 
 		var label = key || url;
-		var scriptAttrs = Polyworks.Utils.extend(_defaultScriptAttributes, scriptAttributes);
+		var scriptAttrs = PWG.Utils.extend(_defaultScriptAttributes, scriptAttributes);
 		var script = document.createElement('script');
 
 		for(var attr in scriptAttrs) {
@@ -41079,14 +41079,14 @@ Polyworks.Loader = (function() {
 	return Loader;
 })();
 
-Polyworks.SocialPanel = (function() {
+PWG.SocialPanel = (function() {
 
 	var _model = {};
 
 	var module = {
 		init: function(params) {
 			// // 
-			_model = Polyworks.Utils.extend(_model, params);
+			_model = PWG.Utils.extend(_model, params);
 			_initViews();
 			_addListeners();
 		},
@@ -41095,7 +41095,7 @@ Polyworks.SocialPanel = (function() {
 			// 
 			var elements = params.value;
 			_model.parentEl.style.display = 'block';
-			Polyworks.Utils.each(elements,
+			PWG.Utils.each(elements,
 				function(element) {
 					if(_model.buttons.hasOwnProperty(element)) {
 						_model.buttons[element].style.visibility = 'visible';
@@ -41129,13 +41129,13 @@ Polyworks.SocialPanel = (function() {
 					// 
 					var url;
 					if(socialAction['params']) {
-						url = socialAction['url'] + Polyworks.Utils.parseMarkup(socialAction['params'], _model, true);
+						url = socialAction['url'] + PWG.Utils.parseMarkup(socialAction['params'], _model, true);
 					} else {
 						url = socialAction['url'];
 					}
 					// 
 					if(url.indexOf('mailto') > -1) {
-						if(Polyworks.DeviceUtils.isIphone() || Polyworks.DeviceUtils.isAndroid()) {
+						if(PWG.DeviceUtils.isIphone() || PWG.DeviceUtils.isAndroid()) {
 							window.location.href = url;
 						} else {
 							window.open(url, '_blank');
@@ -41177,7 +41177,7 @@ Polyworks.SocialPanel = (function() {
 		var style; 
 		var length = _model.networks.length; 
 
-		Polyworks.Utils.each(_model.networks,
+		PWG.Utils.each(_model.networks,
 			function(network, idx) {
 				style = _calculateButtonStyle(buttonStyle, idx, length);
 				button = {
@@ -41186,20 +41186,20 @@ Polyworks.SocialPanel = (function() {
 					el: 'img',
 					attrs: {
 						src: _model.imagePath + network + '.png',
-						onclick: 'Polyworks.SocialPanel.buttonClick("'+network+'");'
+						onclick: 'PWG.SocialPanel.buttonClick("'+network+'");'
 					},
 					className: buttonClass,
 					style: style
 				};
-				_model.buttons[network] = Polyworks.Utils.addElement(button);
+				_model.buttons[network] = PWG.Utils.addElement(button);
 			},
 			this
 		);
 	}
 
 	function _calculateButtonStyle(attrs, idx, length) {
-		var winW = Polyworks.Stage.winW;
-		var winH = Polyworks.Stage.winH;
+		var winW = PWG.Stage.winW;
+		var winH = PWG.Stage.winH;
 		var horizontal = attrs.position.horizontal;
 		var vertical = attrs.position.vertical;
 		var spacer = attrs.spacer; 
@@ -41259,18 +41259,18 @@ Polyworks.SocialPanel = (function() {
 	}
 
 	function _addListeners() {
-		Polyworks.Utils.each(_model.listeners,
+		PWG.Utils.each(_model.listeners,
 			function(listener) {
-				Polyworks.EventCenter.bind(listener.type, _eventHandler, this);
+				PWG.EventCenter.bind(listener.type, _eventHandler, this);
 			},
 			this
 		);
 	}
 
 	function _removeListeners() {
-		Polyworks.Utils.each(_model.listeners,
+		PWG.Utils.each(_model.listeners,
 			function(listener) {
-				Polyworks.EventCenter.unbind(listener.type, _eventHandler, this);
+				PWG.EventCenter.unbind(listener.type, _eventHandler, this);
 			},
 			this
 		);
@@ -41279,7 +41279,7 @@ Polyworks.SocialPanel = (function() {
 	function _eventHandler(event) {
 		// 
 		var listener;
-		Polyworks.Utils.each(_model.listeners,
+		PWG.Utils.each(_model.listeners,
 			function(l) {
 				if(l.type === event.type) {
 					listener = l;
@@ -41304,10 +41304,10 @@ Polyworks.SocialPanel = (function() {
 	
 	function _executeActions(actions) {
 		// 
-		Polyworks.Utils.each(actions,
+		PWG.Utils.each(actions,
 			function(action) {
 				// 
-				Polyworks.SocialPanel[action.method](action.data);
+				PWG.SocialPanel[action.method](action.data);
 			},
 			this
 		);
@@ -41316,7 +41316,7 @@ Polyworks.SocialPanel = (function() {
 	return module;
 }());
 
-Polyworks.TGSAdapter = (function() {
+PWG.TGSAdapter = (function() {
 	var LEVEL_PLAYS_PER_AD = 1;
 	var WIDGET_WIDTH = 300;
 
@@ -41420,15 +41420,15 @@ Polyworks.TGSAdapter = (function() {
 		displayInterstitial: function() {
 			
 			
-			PolyworksGame.adPlaying = true;
-			Polyworks.EventCenter.trigger({ type: Polyworks.Events.AD_STARTED });
+			PWGGame.adPlaying = true;
+			PWG.EventCenter.trigger({ type: PWG.Events.AD_STARTED });
 			TGS.Advertisement.DisplayInterstitialAd(_displayConfig);		
 		},
 		
 		addGameOverWidget: function() {
 			
-			var winW = Polyworks.Stage.winW; 
-			var winH = Polyworks.Stage.winH;
+			var winW = PWG.Stage.winW; 
+			var winH = PWG.Stage.winH;
 			var widgetW = WIDGET_WIDTH;
 			var widgetX = winW/4 - widgetW/2;
 			var widgetY = '0';
@@ -41462,14 +41462,14 @@ Polyworks.TGSAdapter = (function() {
 	
 	function _finishAdSession() {
 		
-		PolyworksGame.adPlaying = false;
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.AD_COMPLETED });
+		PWGGame.adPlaying = false;
+		PWG.EventCenter.trigger({ type: PWG.Events.AD_COMPLETED });
 	}
 	
 	return module;
 }());
 
-Polyworks.InputCodes = {
+PWG.InputCodes = {
 	PLAY: 1,
 	LEVEL: 76,		// l
 	NEXT: 78,		// n
@@ -41488,7 +41488,7 @@ Polyworks.InputCodes = {
 }
 
 
-Polyworks.Directions = {
+PWG.Directions = {
 	LEFT: 'Left',
 	RIGHT: 'Right',
 	UP: 'Up',
@@ -41498,7 +41498,7 @@ Polyworks.Directions = {
 	JUMP: 'Jump'
 };
 
-Polyworks.MovementTypes = {
+PWG.MovementTypes = {
 	INCREMENTAL: 'increment',
 	HORIZONTAL_BY_SPEED: 'horizontalBySpeed',
 	GROUNDED_HORIZONTAL_BY_SPEED: 'groundedHorizontalBySpeed',
@@ -41509,7 +41509,7 @@ Polyworks.MovementTypes = {
 	FORMULA: 'formula'
 };
 
-Polyworks.SectorTypes = {
+PWG.SectorTypes = {
 	HORIZONTAL: 'horizontal',
 	VERTICAL: 'vertical'
 };
@@ -41535,7 +41535,7 @@ var AnimationTypes = {
 	FALLING_R: 'fallingR'
 };
 
-Polyworks.TerrainReactions = {
+PWG.TerrainReactions = {
 	ADD_GRAVITY: 'addGravity',
 	ADD_GRAVITY_AFTER_X_SECONDS: 'addGravityAfterXSeconds',
 	DESTROY_AFTER_X_SECONDS: 'destroyAfterXSeconds',
@@ -41809,7 +41809,7 @@ var domConfig = {
 			type: 'meta',
 			attrs: {
 				property: 'og:site_name',
-				content: 'Polyworks Games' 
+				content: 'PWG Games' 
 			}
 		},
 		{
@@ -41900,7 +41900,7 @@ var domConfig = {
 
 
 
-Polyworks.Config = (function() {
+PWG.Config = (function() {
 	function Config() {}
 	
 	Config.prototype.init = function(stage) {
@@ -42460,7 +42460,7 @@ Polyworks.Config = (function() {
 				},
 				listeners: [
 				{
-					type: Polyworks.Events.CHANGE_STATE,
+					type: PWG.Events.CHANGE_STATE,
 					match: {
 						value: 'menu',
 						actions: [
@@ -42531,9 +42531,9 @@ Polyworks.Config = (function() {
 						y: (stageUnit * 10.4)
 					},
 					controls: {
-						left: Polyworks.InputCodes.LEFT,
-						right: Polyworks.InputCodes.RIGHT,
-						jump: Polyworks.InputCodes.UP
+						left: PWG.InputCodes.LEFT,
+						right: PWG.InputCodes.RIGHT,
+						jump: PWG.InputCodes.UP
 					},
 					attack: 5,
 					jumping: false,
@@ -42558,10 +42558,10 @@ Polyworks.Config = (function() {
 					// 	name: 'quit', // q
 					// 	cl: 'ControlKey',
 					// 	attrs: {
-					// 		inputCode: Polyworks.InputCodes.QUIT,
+					// 		inputCode: PWG.InputCodes.QUIT,
 					// 		events: {
 					// 			pressed: {
-					// 				type: Polyworks.Events.CHANGE_STATE,
+					// 				type: PWG.Events.CHANGE_STATE,
 					// 				value: 'quit'
 					// 			}
 					// 		}
@@ -42571,17 +42571,17 @@ Polyworks.Config = (function() {
 						name: 'clearData', // c
 						cl: 'ControlKey',
 						attrs: {
-							inputCode: Polyworks.InputCodes.CLEAR_DATA
+							inputCode: PWG.InputCodes.CLEAR_DATA
 						}
 					},
 					// {
 					// 	name: 'start', // s
 					// 	cl: 'ControlKey',
 					// 	attrs: {
-					// 		inputCode: Polyworks.InputCodes.START,
+					// 		inputCode: PWG.InputCodes.START,
 					// 		events: {
 					// 			pressed: {
-					// 				type: Polyworks.Events.CHANGE_STATE,
+					// 				type: PWG.Events.CHANGE_STATE,
 					// 				value: 'map'
 					// 			}
 					// 		}
@@ -42591,10 +42591,10 @@ Polyworks.Config = (function() {
 					// 	name: 'next', // n
 					// 	cl: 'ControlKey',
 					// 	attrs: {
-					// 		inputCode: Polyworks.InputCodes.NEXT,
+					// 		inputCode: PWG.InputCodes.NEXT,
 					// 		events: {
 					// 			pressed: {
-					// 				type: Polyworks.Events.NEXT_LEVEL
+					// 				type: PWG.Events.NEXT_LEVEL
 					// 			}
 					// 		}
 					// 	}
@@ -42603,11 +42603,11 @@ Polyworks.Config = (function() {
 					// 	name: 'level', // l
 					// 	cl: 'ControlKey',
 					// 	attrs: {
-					// 		inputCode: Polyworks.InputCodes.LEVEL,
+					// 		inputCode: PWG.InputCodes.LEVEL,
 					// 		events: {
 					// 			pressed: {
-					// 				type: Polyworks.Events.START_LEVEL,
-					// 				value: PolyworksGame.currentLevel
+					// 				type: PWG.Events.START_LEVEL,
+					// 				value: PWGGame.currentLevel
 					// 			}
 					// 		}
 					// 	}
@@ -42616,10 +42616,10 @@ Polyworks.Config = (function() {
 						name: 'pause', // p
 						cl: 'ControlKey',
 						attrs: {
-							inputCode: Polyworks.InputCodes.PAUSE,
+							inputCode: PWG.InputCodes.PAUSE,
 							events: {
 								pressed: {
- 									type: Polyworks.Events.PAUSE_STATE
+ 									type: PWG.Events.PAUSE_STATE
 								}
 							}
 						}
@@ -42628,10 +42628,10 @@ Polyworks.Config = (function() {
 						name: 'menu', // m
 						cl: 'ControlKey',
 						attrs: {
-							inputCode: Polyworks.InputCodes.MENU,
+							inputCode: PWG.InputCodes.MENU,
 							events: {
 								pressed: {
- 									type: Polyworks.Events.CHANGE_STATE,
+ 									type: PWG.Events.CHANGE_STATE,
 									value: 'menu'
 								}
 							}
@@ -42641,28 +42641,28 @@ Polyworks.Config = (function() {
 						name: 'left',
 						cl: 'ControlKey',
 						attrs: {
-							inputCode: Polyworks.InputCodes.LEFT
+							inputCode: PWG.InputCodes.LEFT
 						}
 					},
 					{
 						name: 'right',
 						cl: 'ControlKey',
 						attrs: {
-							inputCode: Polyworks.InputCodes.RIGHT
+							inputCode: PWG.InputCodes.RIGHT
 						}
 					},
 					{
 						name: 'up',
 						cl: 'ControlKey',
 						attrs: {
-							inputCode: Polyworks.InputCodes.UP
+							inputCode: PWG.InputCodes.UP
 						}
 					},
 					{
 						name: 'space',
 						cl: 'ControlKey',
 						attrs: {
-							inputCode: Polyworks.InputCodes.SPACE
+							inputCode: PWG.InputCodes.SPACE
 						}
 					}
 					]
@@ -42678,10 +42678,10 @@ Polyworks.Config = (function() {
 								x: winW/2 - 50,
 								y: winH/2
 							},
-							inputCode: Polyworks.InputCodes.START,
+							inputCode: PWG.InputCodes.START,
 							events: {
 								pressed: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'map'
 								}
 							}
@@ -42702,7 +42702,7 @@ Polyworks.Config = (function() {
 							},
 							events: {
 								released: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'credits'
 								}
 							}
@@ -42726,7 +42726,7 @@ Polyworks.Config = (function() {
 							frames: [0, 0, 1],
 							events: {
 								released: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'menu'
 								}
 							}
@@ -42748,10 +42748,10 @@ Polyworks.Config = (function() {
 								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
 							},
 							frames: [0, 0, 1],
-							// inputCode: Polyworks.InputCodes.MENU,
+							// inputCode: PWG.InputCodes.MENU,
 							events: {
 								released: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'menu'
 								}
 							}
@@ -42775,7 +42775,7 @@ Polyworks.Config = (function() {
 							},
 							events: {
 								released: {
-									type: Polyworks.Events.START_LEVEL
+									type: PWG.Events.START_LEVEL
 								}
 							}
 						}
@@ -42797,7 +42797,7 @@ Polyworks.Config = (function() {
 							frames: [0, 0, 1],
 							events: {
 								released: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'map'
 								}
 							}
@@ -42821,7 +42821,7 @@ Polyworks.Config = (function() {
 							frames: [0, 0, 1],
 							events: {
 								released: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'map'
 								}
 							}
@@ -42843,7 +42843,7 @@ Polyworks.Config = (function() {
 							frames: [0, 0, 1],
 							events: {
 								released: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'menu'
 								}
 							}
@@ -42867,7 +42867,7 @@ Polyworks.Config = (function() {
 							frames: [0, 0, 1],
 							events: {
 								released: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'menu'
 								}
 							}
@@ -42888,7 +42888,7 @@ Polyworks.Config = (function() {
 							},
 							events: {
 								released: {
-									type: Polyworks.Events.START_LEVEL
+									type: PWG.Events.START_LEVEL
 								}
 							}
 						}
@@ -42906,7 +42906,7 @@ Polyworks.Config = (function() {
 							},
 							width: winW, 
 							height: winH,
-							inputCode: Polyworks.InputCodes.RESET
+							inputCode: PWG.InputCodes.RESET
 						}
 					},
 					{
@@ -42923,7 +42923,7 @@ Polyworks.Config = (function() {
 								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
 							},
 							frames: [0, 0, 1],
-							inputCode: Polyworks.InputCodes.LEFT
+							inputCode: PWG.InputCodes.LEFT
 						}
 					},
 					{
@@ -42940,7 +42940,7 @@ Polyworks.Config = (function() {
 								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
 							},
 							frames: [0, 0, 1],
-							inputCode: Polyworks.InputCodes.RIGHT
+							inputCode: PWG.InputCodes.RIGHT
 						}
 					},
 					{
@@ -42957,7 +42957,7 @@ Polyworks.Config = (function() {
 								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
 							},
 							frames: [0, 0, 1],
-							inputCode: Polyworks.InputCodes.UP
+							inputCode: PWG.InputCodes.UP
 						}
 					},
 					{
@@ -42976,7 +42976,7 @@ Polyworks.Config = (function() {
 							frames: [0, 0, 1],
 							events: {
 								released: {
- 									type: Polyworks.Events.PAUSE_STATE
+ 									type: PWG.Events.PAUSE_STATE
 								}
 							}
 						}
@@ -43019,7 +43019,7 @@ Polyworks.Config = (function() {
 							fill: '#ffffff' 
 						},
 						listeners: [
-							Polyworks.Events.HEALTH_UPDATED
+							PWG.Events.HEALTH_UPDATED
 						]
 					}
 				}
@@ -43090,7 +43090,7 @@ Polyworks.Config = (function() {
 						},
 						defaultContent: 'score: ~{levelScore}~',
 						listeners: [
-							Polyworks.Events.LEVEL_SCORE_UPDATED
+							PWG.Events.LEVEL_SCORE_UPDATED
 						]
 					}
 				},
@@ -43127,7 +43127,7 @@ Polyworks.Config = (function() {
 						frames: [0, 0, 1],
 						events: {
 							released: {
-								type: Polyworks.Events.RESUME_STATE
+								type: PWG.Events.RESUME_STATE
 							}
 						}
 					}
@@ -43149,7 +43149,7 @@ Polyworks.Config = (function() {
 						frames: [0, 0, 1],
 						events: {
 							released: {
-								type: Polyworks.Events.CHANGE_STATE,
+								type: PWG.Events.CHANGE_STATE,
 								value: 'map'
 							}
 						}
@@ -43171,7 +43171,7 @@ Polyworks.Config = (function() {
 						},
 						events: {
 							released: {
-								type: Polyworks.Events.START_LEVEL
+								type: PWG.Events.START_LEVEL
 							}
 						}
 					}
@@ -43224,7 +43224,7 @@ Polyworks.Config = (function() {
 						},
 						defaultContent: 'score: ~{levelScore}~',
 						listeners: [
-							Polyworks.Events.LEVEL_CLEARED
+							PWG.Events.LEVEL_CLEARED
 						]
 					}
 				},
@@ -43242,7 +43242,7 @@ Polyworks.Config = (function() {
 						},
 						defaultContent: '~{currentLevelHighScore}~',
 						listeners: [
-							Polyworks.Events.LEVEL_CLEARED
+							PWG.Events.LEVEL_CLEARED
 						]
 					}
 				},
@@ -43263,7 +43263,7 @@ Polyworks.Config = (function() {
 						frames: [0, 0, 1],
 						events: {
 							released: {
-								type: Polyworks.Events.NEXT_LEVEL
+								type: PWG.Events.NEXT_LEVEL
 							}
 						}
 					}
@@ -43285,7 +43285,7 @@ Polyworks.Config = (function() {
 						frames: [0, 0, 1],
 						events: {
 							released: {
-								type: Polyworks.Events.CHANGE_STATE,
+								type: PWG.Events.CHANGE_STATE,
 								value: 'map'
 							}
 						}
@@ -43429,7 +43429,7 @@ Polyworks.Config = (function() {
 							},
 							events: {
 								released: {
-									type: Polyworks.Events.START_LEVEL
+									type: PWG.Events.START_LEVEL
 								}
 							}
 						}
@@ -43451,7 +43451,7 @@ Polyworks.Config = (function() {
 							frames: [0, 0, 1],
 							events: {
 								released: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'map'
 								}
 							}
@@ -44266,7 +44266,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.HORIZONTAL,
+					type: PWG.SectorTypes.HORIZONTAL,
 					attrs: [
 					{
 						name: 'sector1',
@@ -44316,7 +44316,7 @@ Polyworks.Config = (function() {
 									score: 2500,
 									movement: {
 										speed: 0.5,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -44477,7 +44477,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -44643,7 +44643,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -44691,7 +44691,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -45217,7 +45217,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.HORIZONTAL,
+					type: PWG.SectorTypes.HORIZONTAL,
 					attrs: [
 					{
 						name: 'sector1',
@@ -45524,7 +45524,7 @@ Polyworks.Config = (function() {
 									score: 2500,
 									movement: {
 										speed: 0.5,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -45846,7 +45846,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -46022,7 +46022,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -46055,7 +46055,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 2,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -46118,7 +46118,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -46857,7 +46857,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.HORIZONTAL,
+					type: PWG.SectorTypes.HORIZONTAL,
 					attrs: [
 					// sector 1
 					{
@@ -47096,7 +47096,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -47181,7 +47181,7 @@ Polyworks.Config = (function() {
 									score: 1000,
 									movement: {
 										speed: 0.25,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -47303,7 +47303,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -47336,7 +47336,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -47415,7 +47415,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -47493,7 +47493,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1.5,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -47528,7 +47528,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 500,
 									movement: {
 										speed: 1.25,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -47609,7 +47609,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -47659,7 +47659,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -47679,7 +47679,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -47734,7 +47734,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 500,
 									movement: {
 										speed: 1.25,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -47813,7 +47813,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -47895,7 +47895,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -48052,7 +48052,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -48135,7 +48135,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -48198,7 +48198,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -48218,7 +48218,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -48273,7 +48273,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 500,
 									movement: {
 										speed: 1.25,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -48308,7 +48308,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 500,
 									movement: {
 										speed: 1.25,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -48343,7 +48343,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 500,
 									movement: {
 										speed: 1.25,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -48935,7 +48935,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.HORIZONTAL,
+					type: PWG.SectorTypes.HORIZONTAL,
 					attrs: [
 					// sector1
 					{
@@ -49096,7 +49096,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1.5,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -49171,7 +49171,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -49259,7 +49259,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -49292,7 +49292,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -49400,7 +49400,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -49503,7 +49503,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -49538,7 +49538,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -49743,7 +49743,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -49778,7 +49778,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -49813,7 +49813,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -49991,7 +49991,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -50024,7 +50024,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -50057,7 +50057,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -50138,7 +50138,7 @@ Polyworks.Config = (function() {
 									score: 1000,
 									movement: {
 										speed: 0.25,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -50841,7 +50841,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.HORIZONTAL,
+					type: PWG.SectorTypes.HORIZONTAL,
 					attrs: [
 					// sector1
 					{
@@ -51021,7 +51021,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -51153,7 +51153,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -51186,7 +51186,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -51218,7 +51218,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -51238,7 +51238,7 @@ Polyworks.Config = (function() {
 								name: 'tree02-branch03',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -51258,7 +51258,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -51308,7 +51308,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -51396,7 +51396,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -51660,7 +51660,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -51696,7 +51696,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -51888,7 +51888,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -51969,7 +51969,7 @@ Polyworks.Config = (function() {
 									score: 1000,
 									movement: {
 										speed: 0.25,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -52550,7 +52550,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.HORIZONTAL,
+					type: PWG.SectorTypes.HORIZONTAL,
 					attrs: [
 					{
 						name: 'sector1',
@@ -52727,7 +52727,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform04',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -52873,7 +52873,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform6',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -52965,7 +52965,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform8',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -53006,7 +53006,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform040',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -53098,7 +53098,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform042',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -53139,7 +53139,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform044',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -53266,7 +53266,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform046',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -53289,7 +53289,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform047',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -53312,7 +53312,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform048',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -53335,7 +53335,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform049',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -54004,7 +54004,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.VERTICAL,
+					type: PWG.SectorTypes.VERTICAL,
 					attrs: [
 					// sector 1
 					{
@@ -54060,7 +54060,7 @@ Polyworks.Config = (function() {
 								name: 'sector1-platform03',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -54271,7 +54271,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform05',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -54391,7 +54391,7 @@ Polyworks.Config = (function() {
 								name: 'sector3-platform03',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -54498,7 +54498,7 @@ Polyworks.Config = (function() {
 									score: 1500,
 									movement: {
 										speed: spider01.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -54920,7 +54920,7 @@ Polyworks.Config = (function() {
 									score: 1500,
 									movement: {
 										speed: spider01.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -55468,7 +55468,7 @@ Polyworks.Config = (function() {
 									score: 1500,
 									movement: {
 										speed: spider01.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -56351,7 +56351,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.VERTICAL,
+					type: PWG.SectorTypes.VERTICAL,
 					attrs: [
 					// sector 1
 					{
@@ -56626,7 +56626,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -56856,7 +56856,7 @@ Polyworks.Config = (function() {
 								name: 'sector3-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -56958,7 +56958,7 @@ Polyworks.Config = (function() {
 									score: 1500,
 									movement: {
 										speed: spider01.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -57030,7 +57030,7 @@ Polyworks.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -57369,7 +57369,7 @@ Polyworks.Config = (function() {
 									score: 1500,
 									movement: {
 										speed: spider01.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -57668,7 +57668,7 @@ Polyworks.Config = (function() {
 									score: 1500,
 									movement: {
 										speed: spider01.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -57719,7 +57719,7 @@ Polyworks.Config = (function() {
 								name: 'sector7-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -57778,7 +57778,7 @@ Polyworks.Config = (function() {
 								name: 'sector7-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -57921,7 +57921,7 @@ Polyworks.Config = (function() {
 									score: 1500,
 									movement: {
 										speed: spider01.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -58873,7 +58873,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.VERTICAL,
+					type: PWG.SectorTypes.VERTICAL,
 					attrs: [
 					// sector 1
 					{
@@ -58985,7 +58985,7 @@ Polyworks.Config = (function() {
 								name: 'sector1-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -59172,7 +59172,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -59195,7 +59195,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -59250,7 +59250,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 150,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -59501,7 +59501,7 @@ Polyworks.Config = (function() {
 								name: 'sector3-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -59524,7 +59524,7 @@ Polyworks.Config = (function() {
 								name: 'sector3-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -59579,7 +59579,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 150,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -59653,7 +59653,7 @@ Polyworks.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -59694,7 +59694,7 @@ Polyworks.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -59772,7 +59772,7 @@ Polyworks.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -59795,7 +59795,7 @@ Polyworks.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -59818,7 +59818,7 @@ Polyworks.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -59873,7 +59873,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 150,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -60053,7 +60053,7 @@ Polyworks.Config = (function() {
 								name: 'sector5-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -60076,7 +60076,7 @@ Polyworks.Config = (function() {
 								name: 'sector5-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -60099,7 +60099,7 @@ Polyworks.Config = (function() {
 								name: 'sector5-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -60152,7 +60152,7 @@ Polyworks.Config = (function() {
 									score: 2500,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -60371,7 +60371,7 @@ Polyworks.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -60444,7 +60444,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 150,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -60606,7 +60606,7 @@ Polyworks.Config = (function() {
 								name: 'sector7-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -60661,7 +60661,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 150,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -61467,7 +61467,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.VERTICAL,
+					type: PWG.SectorTypes.VERTICAL,
 					attrs: [
 					// sector 1
 					{
@@ -61618,7 +61618,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -61863,7 +61863,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -61896,7 +61896,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 150,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -62120,7 +62120,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -62151,7 +62151,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 150,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -62486,7 +62486,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -62517,7 +62517,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 150,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -62834,7 +62834,7 @@ Polyworks.Config = (function() {
 									score: 2500,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -62863,7 +62863,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -63141,7 +63141,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -63170,7 +63170,7 @@ Polyworks.Config = (function() {
 									score: 2500,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -64188,7 +64188,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.VERTICAL,
+					type: PWG.SectorTypes.VERTICAL,
 					attrs: [
 					// sector 1
 					{
@@ -64353,7 +64353,7 @@ Polyworks.Config = (function() {
 									// first spider
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -64610,7 +64610,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -64639,7 +64639,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -64668,7 +64668,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -64966,7 +64966,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -64995,7 +64995,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -65024,7 +65024,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -65311,7 +65311,7 @@ Polyworks.Config = (function() {
 								name: 'sector5-platform05',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -65334,7 +65334,7 @@ Polyworks.Config = (function() {
 								name: 'sector5-platform05',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -66147,7 +66147,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.HORIZONTAL,
+					type: PWG.SectorTypes.HORIZONTAL,
 					attrs: [
 					// sector 1
 					{
@@ -66177,7 +66177,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -66200,7 +66200,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -66223,7 +66223,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -66290,7 +66290,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -66313,7 +66313,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -66336,7 +66336,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -66403,7 +66403,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -66426,7 +66426,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -66493,7 +66493,7 @@ Polyworks.Config = (function() {
 								name: 'sector5-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -66516,7 +66516,7 @@ Polyworks.Config = (function() {
 								name: 'sector5-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -66583,7 +66583,7 @@ Polyworks.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01',
@@ -66606,7 +66606,7 @@ Polyworks.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -66629,7 +66629,7 @@ Polyworks.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -66652,7 +66652,7 @@ Polyworks.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -66675,7 +66675,7 @@ Polyworks.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -67042,7 +67042,7 @@ Polyworks.Config = (function() {
 })();
 
 
-Polyworks.Model = (function() {
+PWG.Model = (function() {
 	
 	var _this;
 	function Model(params) {
@@ -67050,7 +67050,7 @@ Polyworks.Model = (function() {
 		// 
 		_this = this;
 		this.active = true;
-		Polyworks.Utils.each(params,
+		PWG.Utils.each(params,
 			function(p, key) {
 				this[key] = p;
 			},
@@ -67069,7 +67069,7 @@ Polyworks.Model = (function() {
 	};
 	
 	Model.prototype.set = function(params) {
-		Polyworks.Utils.each(params,
+		PWG.Utils.each(params,
 			function(p, key) {
 				this[key] = p;
 			},
@@ -67080,17 +67080,17 @@ Polyworks.Model = (function() {
 	return Model;
 })();
 
-Polyworks.Text = (function() {
-	Polyworks.Utils.inherits(Text, Phaser.Text);
+PWG.Text = (function() {
+	PWG.Utils.inherits(Text, Phaser.Text);
 	var _this; 
 	
 	function Text(params) {
 		_this = this;
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 		var attrs = this.model.attrs;
 		// 
-		var context = (attrs.dynamicContentContext) ? attrs.dynamicContentContext : PolyworksGame;
-		var content = Polyworks.Utils.parseMarkup(attrs.defaultContent, context);
+		var context = (attrs.dynamicContentContext) ? attrs.dynamicContentContext : PWGGame;
+		var content = PWG.Utils.parseMarkup(attrs.defaultContent, context);
 		Text._super.constructor.call(this, params.game, attrs.x, attrs.y, content, attrs.style);
 
 	}
@@ -67104,9 +67104,9 @@ Polyworks.Text = (function() {
 		var listeners = attrs.listeners;
 		if(listeners) {
 			var _this = this;
-			Polyworks.Utils.each(listeners,
+			PWG.Utils.each(listeners,
 				function(listener) {
-					Polyworks.EventCenter.bind(listener, _this.onUpdate, _this);
+					PWG.EventCenter.bind(listener, _this.onUpdate, _this);
 				},
 				_this
 			);
@@ -67120,18 +67120,18 @@ Polyworks.Text = (function() {
 		if(attrs.alignX) {
 			switch(attrs.alignX) {
 				case 'center':
-				this.x = Polyworks.Stage.winW/2 - this.width/2;
+				this.x = PWG.Stage.winW/2 - this.width/2;
 				break;
 				
 				case 'windowRight':
 				// 
-				this.x = Polyworks.Stage.winW - this.width;
+				this.x = PWG.Stage.winW - this.width;
 				// 
 				break;
 				
 				case 'stageRight':
 				// 
-				this.x = Polyworks.Stage.width - this.width;
+				this.x = PWG.Stage.width - this.width;
 				// 
 				break;
 				
@@ -67142,7 +67142,7 @@ Polyworks.Text = (function() {
 		if(attrs.alignY) {
 			switch(attrs.alignY) {
 				case 'center':
-				this.y = Polyworks.Stage.winH/2 - this.height/2;
+				this.y = PWG.Stage.winH/2 - this.height/2;
 				break;
 				
 				default:
@@ -67160,10 +67160,10 @@ Polyworks.Text = (function() {
 		} else if(this.model.attrs.dynamicContentContext) {
 			context = this.model.attrs.dynamicContentContext;
 		} else {
-			context = PolyworksGame;
+			context = PWGGame;
 		}
 
-		this.content = Polyworks.Utils.parseMarkup(this.model.attrs.defaultContent, context);
+		this.content = PWG.Utils.parseMarkup(this.model.attrs.defaultContent, context);
 		// 
 		// this.alignAndPosition();
 	};
@@ -67175,9 +67175,9 @@ Polyworks.Text = (function() {
 		var _this = this;
 
 		if(listeners) {
-			Polyworks.Utils.each(listners,
+			PWG.Utils.each(listners,
 				function(listener) {
-					Polyworks.EventCenter.unbind(listener, _this.onUpdate, _this);
+					PWG.EventCenter.unbind(listener, _this.onUpdate, _this);
 				},
 				_this
 			);
@@ -67187,11 +67187,11 @@ Polyworks.Text = (function() {
 	return Text;
 })();
 
-Polyworks.Sprite = (function() {
-	Polyworks.Utils.inherits(Sprite, Phaser.Sprite);
+PWG.Sprite = (function() {
+	PWG.Utils.inherits(Sprite, Phaser.Sprite);
 
 	function Sprite(params) {
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 		// 
 		var attrs = this.model.attrs;
 		var start = attrs.start;
@@ -67261,7 +67261,7 @@ Polyworks.Sprite = (function() {
 
 		if(!physics.deferredGravity && !physics.immovable) {
 			if(!physics.gravity) {
-				this.body.gravity = PolyworksGame.get('gravity');
+				this.body.gravity = PWGGame.get('gravity');
 			}
 		}
 	};
@@ -67278,7 +67278,7 @@ Polyworks.Sprite = (function() {
 		// 
 		var physics = this.model.attrs.physics;
 		if(physics && physics.deferredGravity) {
-			var gravity = (physics.gravity) ? physics.gravity : PolyworksGame.get('gravity');
+			var gravity = (physics.gravity) ? physics.gravity : PWGGame.get('gravity');
 			// 
 			// 
 			this.body.gravity = gravity;
@@ -67291,14 +67291,14 @@ Polyworks.Sprite = (function() {
 		// 
 		// 
 		// 
-		PolyworksGame.phaser.physics.collide(this, terrain);
+		PWGGame.phaser.physics.collide(this, terrain);
 	};
 	
 	Sprite.prototype.checkDynamicTerrainCollision = function(dynamicTerrain) {
-		var physics = PolyworksGame.phaser.physics;
+		var physics = PWGGame.phaser.physics;
 		var _this = this;
 
-		Polyworks.Utils.each(dynamicTerrain,
+		PWG.Utils.each(dynamicTerrain,
 			function(c) {
 				physics.overlap(this, c, _this.onDynamicTerrainCollision, null, _this);
 			},
@@ -67322,7 +67322,7 @@ Polyworks.Sprite = (function() {
 	
 	Sprite.prototype.beginAnimations = function(animations) {
 		// 
-		Polyworks.Utils.each(animations,
+		PWG.Utils.each(animations,
 			function(a, key) {
 				// 
 				this.animations.add(key, a.keyFrames, a.frameRate);
@@ -67361,7 +67361,7 @@ Polyworks.Sprite = (function() {
 		var movement = this.model.attrs.movement;
 		if(movement) {
 			// 
-			Polyworks.Utils.moveView(this, movement, params);
+			PWG.Utils.moveView(this, movement, params);
 		}
 	};
 
@@ -67384,10 +67384,10 @@ Polyworks.Sprite = (function() {
 
 
 
-Polyworks.ParallaxBackground = (function() {
+PWG.ParallaxBackground = (function() {
 
 	function ParallaxBackground(params) {
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 	}
 	
 	ParallaxBackground.prototype.begin = function() {
@@ -67401,7 +67401,7 @@ Polyworks.ParallaxBackground = (function() {
 	    this.layer = game.add.tilemapLayer(attrs.start.x, attrs.start.y, attrs.width, attrs.height, this.tileset, this.tilemap, attrs.layerIndex);
 	
 		
-		Polyworks.Utils.each(attrs.layer,
+		PWG.Utils.each(attrs.layer,
 			function(attr, key) {
 				
 				this.layer[key] = attr;
@@ -67413,16 +67413,16 @@ Polyworks.ParallaxBackground = (function() {
 	return ParallaxBackground;
 })();
 
-Polyworks.Emitter = (function() {
+PWG.Emitter = (function() {
 	
 	function Emitter(params) {
 		
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 	}
 	
 	
 	Emitter.prototype.begin = function() {
-		var game = PolyworksGame.phaser;
+		var game = PWGGame.phaser;
 		var attrs = this.model.attrs;
 		var bounds = (attrs.bounds) ? attrs.bounds : game.world.bounds;
 
@@ -67471,8 +67471,8 @@ Polyworks.Emitter = (function() {
 	return Emitter;
 })();
 
-Polyworks.Snow = (function() {
-	Polyworks.Utils.inherits(Snow, Polyworks.Emitter);
+PWG.Snow = (function() {
+	PWG.Utils.inherits(Snow, PWG.Emitter);
 	
 	function Snow(params) {
 		
@@ -67514,7 +67514,7 @@ Polyworks.Snow = (function() {
 				}
 		};
 
-		params.attrs = Polyworks.Utils.extend(params.attrs, defaults);
+		params.attrs = PWG.Utils.extend(params.attrs, defaults);
 		
 		Snow._super.constructor.call(this, params);
 	}
@@ -67522,8 +67522,8 @@ Polyworks.Snow = (function() {
 	return Snow;
 })();
 
-Polyworks.Enemy = (function() {
-	Polyworks.Utils.inherits(Enemy, Polyworks.Sprite);
+PWG.Enemy = (function() {
+	PWG.Utils.inherits(Enemy, PWG.Sprite);
 	
 	var _this;
 	function Enemy(params) {
@@ -67542,22 +67542,22 @@ Polyworks.Enemy = (function() {
 			this.relationToPlayer = 'near';
 			var movementType = this.model.attrs.movement.type;
 			switch(movementType) {
-				case Polyworks.MovementTypes.HORIZONTAL_BY_SPEED:
-				case Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED:
+				case PWG.MovementTypes.HORIZONTAL_BY_SPEED:
+				case PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED:
 					this.calculateHorizontalMovement(params.player, movementType, false);
 				break;
 				
-				case Polyworks.MovementTypes.VERTICAL_BY_SPEED:
+				case PWG.MovementTypes.VERTICAL_BY_SPEED:
 					this.calculateVerticalMovement(params.player, movementType);
 				break;
 				
-				case Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED:
-					this.calculateHorizontalMovement(params.player, Polyworks.MovementTypes.HORIZONTAL_BY_SPEED);
+				case PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED:
+					this.calculateHorizontalMovement(params.player, PWG.MovementTypes.HORIZONTAL_BY_SPEED);
 					var invert = false;
 					if(this.relationToPlayer == 'below') {
 						invert = true;
 					}
-					this.calculateVerticalMovement(params.player, Polyworks.MovementTypes.VERTICAL_BY_SPEED, invert);
+					this.calculateVerticalMovement(params.player, PWG.MovementTypes.VERTICAL_BY_SPEED, invert);
 				break;
 
 				default: 
@@ -67579,7 +67579,7 @@ Polyworks.Enemy = (function() {
 		var playerY = player.body.screenY;
 
 		if(this.model.attrs.testInView) {
-			if(enemyX < (playerX + Polyworks.Stage.width/2) && enemyX > (playerX - Polyworks.Stage.width/2)) {
+			if(enemyX < (playerX + PWG.Stage.width/2) && enemyX > (playerX - PWG.Stage.width/2)) {
 				this.isInView = true;
 			} else {
 				this.isInView = false;
@@ -67591,18 +67591,18 @@ Polyworks.Enemy = (function() {
 			if(enemyX < (playerX - 10)) {
 				// 
 				this.relationToPlayer = 'right';
-				direction = (reverse) ? Polyworks.Directions.LEFT : Polyworks.Directions.RIGHT;
+				direction = (reverse) ? PWG.Directions.LEFT : PWG.Directions.RIGHT;
 				this.move({ direction: direction, type: movementType });
 			} else if(enemyX > (playerX + 10)) {
 				// 
 				this.relationToPlayer = 'left';
-				direction = (reverse) ? Polyworks.Directions.RIGHT : Polyworks.Directions.LEFT;
+				direction = (reverse) ? PWG.Directions.RIGHT : PWG.Directions.LEFT;
 				this.move({ direction: direction, type: movementType });
 			} else if(this.model.attrs.jumps && (enemyY > playerY)) {
 				this.relationToPlayer = 'jumping';
 				if(!this.justJumped) {
 					this.justJumped = true;
-					this.move({ direction: Polyworks.Directions.UP, type: Polyworks.MovementTypes.JUMP });
+					this.move({ direction: PWG.Directions.UP, type: PWG.MovementTypes.JUMP });
 				}
 			}
 		}
@@ -67614,7 +67614,7 @@ Polyworks.Enemy = (function() {
 		var playerHeight = player.body.height;
 		
 		if(this.model.attrs.testInView) {
-			if(enemyX < (playerX + Polyworks.Stage.width/2) && enemyX > (playerX - Polyworks.Stage.width/2)) {
+			if(enemyX < (playerX + PWG.Stage.width/2) && enemyX > (playerX - PWG.Stage.width/2)) {
 				this.isInView = true;
 			} else {
 				this.isInView = false;
@@ -67625,11 +67625,11 @@ Polyworks.Enemy = (function() {
 			if(enemyY < (playerY - playerHeight)) {
 				// 
 				this.relationToPlayer = 'above';
-				this.move({ direction: Polyworks.Directions.DOWN, type: movementType });
+				this.move({ direction: PWG.Directions.DOWN, type: movementType });
 			} else if(enemyY > (playerY + playerHeight)) {
 				// 
 				this.relationToPlayer = 'below';
-				this.move({ direction: Polyworks.Directions.UP, type: movementType });
+				this.move({ direction: PWG.Directions.UP, type: movementType });
 			}
 		}
 	};
@@ -67645,7 +67645,7 @@ Polyworks.Enemy = (function() {
 	Enemy.prototype.kill = function() {
 		
 		// 
-		PolyworksGame.setLevelScore(this.model.attrs.score);
+		PWGGame.setLevelScore(this.model.attrs.score);
 		this.model.ancestor.removeChild.call(this.model.ancestor, this.model.name);
 		Enemy._super.kill.call(this);
 	};
@@ -67659,8 +67659,8 @@ Polyworks.Enemy = (function() {
 	return Enemy;
 })();
 
-Polyworks.AnimatedEnemy = (function() {
-	Polyworks.Utils.inherits(AnimatedEnemy, Polyworks.Enemy);
+PWG.AnimatedEnemy = (function() {
+	PWG.Utils.inherits(AnimatedEnemy, PWG.Enemy);
 	
 	var _this;
 	function AnimatedEnemy(params) {
@@ -67678,7 +67678,7 @@ Polyworks.AnimatedEnemy = (function() {
 				// 
 				var animations = this.model.attrs.animations; 
 
-				if(!this.body.touching.down && (this.model.attrs.movement.type === Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED)) {
+				if(!this.body.touching.down && (this.model.attrs.movement.type === PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED)) {
 					if(this.relationToPlayer == 'left') {
 						if(this.currentAnimation !== AnimationTypes.FALLING_L) {
 							this.play(AnimationTypes.FALLING_L, animations[AnimationTypes.FALLING_L].frameRate, animations[AnimationTypes.FALLING_L].loop);
@@ -67721,8 +67721,8 @@ Polyworks.AnimatedEnemy = (function() {
 	return AnimatedEnemy;
 })();
 
-Polyworks.Bonus = (function() {
-	Polyworks.Utils.inherits(Bonus, Polyworks.Sprite);
+PWG.Bonus = (function() {
+	PWG.Utils.inherits(Bonus, PWG.Sprite);
 	
 	function Bonus(params) {
 		Bonus._super.constructor.call(this, params);
@@ -67735,7 +67735,7 @@ Polyworks.Bonus = (function() {
 	Bonus.prototype.collect = function() {
 		
 		if(this.model.attrs.score) {
-		    PolyworksGame.setLevelScore(this.model.attrs.score);
+		    PWGGame.setLevelScore(this.model.attrs.score);
 		}
 		this.model.ancestor.removeChild.call(this.model.ancestor, this.model.name);
 		Bonus._super.kill.call(this);
@@ -67744,8 +67744,8 @@ Polyworks.Bonus = (function() {
 	return Bonus;
 })();
 
-Polyworks.HeartIcon = (function() {
-	Polyworks.Utils.inherits(HeartIcon, Polyworks.Sprite);
+PWG.HeartIcon = (function() {
+	PWG.Utils.inherits(HeartIcon, PWG.Sprite);
 	
 	function HeartIcon(params) {
 		HeartIcon._super.constructor.call(this, params);
@@ -67760,11 +67760,11 @@ Polyworks.HeartIcon = (function() {
 	};
 	
 	HeartIcon.prototype.addListeners = function() {
-		Polyworks.EventCenter.bind(Polyworks.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
+		PWG.EventCenter.bind(PWG.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
 	};
 	
 	HeartIcon.prototype.removeListeners = function() {
-		Polyworks.EventCenter.unbind(Polyworks.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
+		PWG.EventCenter.unbind(PWG.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
 	};
 	
 	HeartIcon.prototype.onAnimationComplete = function() {
@@ -67772,7 +67772,7 @@ Polyworks.HeartIcon = (function() {
 	}
 	
 	HeartIcon.prototype.onHealthUpdated = function(params) {
-		var newHealth = PolyworksGame.health;
+		var newHealth = PWGGame.health;
 		// 
 		if(this.healthSet) {
 			var animations = this.model.attrs.animations;
@@ -67802,8 +67802,8 @@ Polyworks.HeartIcon = (function() {
 	return HeartIcon;
 })();
 
-Polyworks.Hazard = (function() {
-	Polyworks.Utils.inherits(Hazard, Polyworks.Sprite);
+PWG.Hazard = (function() {
+	PWG.Utils.inherits(Hazard, PWG.Sprite);
 	
 	function Hazard(params) {
 		Hazard._super.constructor.call(this, params);
@@ -67816,8 +67816,8 @@ Polyworks.Hazard = (function() {
 	return Hazard;
 })();
 
-Polyworks.MovingHazard = (function() {
-	Polyworks.Utils.inherits(MovingHazard, Polyworks.Hazard);
+PWG.MovingHazard = (function() {
+	PWG.Utils.inherits(MovingHazard, PWG.Hazard);
 	
 	function MovingHazard(params) {
 		MovingHazard._super.constructor.call(this, params);
@@ -67830,8 +67830,8 @@ Polyworks.MovingHazard = (function() {
 	return MovingHazard;
 })();
 
-Polyworks.ReactingTerrain = (function() {
-	Polyworks.Utils.inherits(ReactingTerrain, Polyworks.Sprite); 
+PWG.ReactingTerrain = (function() {
+	PWG.Utils.inherits(ReactingTerrain, PWG.Sprite); 
 	
 	ReactingTerrain.DEACTIVATED = 'deactivated';
 	ReactingTerrain.IDLE = 'idle';
@@ -67863,19 +67863,19 @@ Polyworks.ReactingTerrain = (function() {
 					var reaction = this.model.reaction;
 					// 
 					switch(reaction.type) {
-						case Polyworks.TerrainReactions.ADD_GRAVITY:
+						case PWG.TerrainReactions.ADD_GRAVITY:
 							this.addGravity(this);
 						break;
 
-						case Polyworks.TerrainReactions.ADD_GRAVITY_AFTER_X_SECONDS: 
+						case PWG.TerrainReactions.ADD_GRAVITY_AFTER_X_SECONDS: 
 							this.callMethodAfterXSeconds('addGravity');
 						break; 
 
-						case Polyworks.TerrainReactions.DESTROY_AFTER_X_SECONDS: 
+						case PWG.TerrainReactions.DESTROY_AFTER_X_SECONDS: 
 							this.callMethodAfterXSeconds('removeTerrain');
 						break;
 
-						case Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION:
+						case PWG.TerrainReactions.DESTROY_AFTER_ANIMATION:
 							this.destroyAfterAnimation();
 						break; 
 
@@ -67914,7 +67914,7 @@ Polyworks.ReactingTerrain = (function() {
 		if(animation) {
 			// 
 			var kill = false;
-			if(this.model.reaction.type === Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION) {
+			if(this.model.reaction.type === PWG.TerrainReactions.DESTROY_AFTER_ANIMATION) {
 				// 
 				kill = true;
 			}
@@ -67963,23 +67963,23 @@ Polyworks.ReactingTerrain = (function() {
 	return ReactingTerrain;
 })();
 
-Polyworks.Collection = (function() {
+PWG.Collection = (function() {
 	
 	function Collection(params) {
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 		// 
 	}
 	
 	Collection.prototype.begin = function() {
 		// 
-		var game = PolyworksGame.phaser;
+		var game = PWGGame.phaser;
 		var collection = [];
 		var nameIndex = {};
 		var children = this.model.attrs;
 		var child;
 		var params;
 		// 
-		Polyworks.Utils.each(children,
+		PWG.Utils.each(children,
 			function(c, i) {
 				// 
 				if(typeof(c) !== 'undefined') {
@@ -67988,7 +67988,7 @@ Polyworks.Collection = (function() {
 					c.idx = i;
 
 					// 
-					child = new Polyworks[c.cl](c);
+					child = new PWG[c.cl](c);
 					child.begin();
 
 					collection.push(child);
@@ -68007,7 +68007,7 @@ Polyworks.Collection = (function() {
 	
 	Collection.prototype.setChildrenExists = function(exists) {
 		// 
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(child) {
 				if(child.setChildrenExists) {
 					// 
@@ -68061,7 +68061,7 @@ Polyworks.Collection = (function() {
 	Collection.prototype.destroy = function() {
 		var collection = this.model.collection;
 		// 
-		Polyworks.Utils.each(collection,
+		PWG.Utils.each(collection,
 			function(child) {
 				// 
 				if(child.destroy) {
@@ -68084,17 +68084,17 @@ Polyworks.Collection = (function() {
 })();
 
 // collection of Phaser group objects
-Polyworks.GroupCollection = (function() {
-	Polyworks.Utils.inherits(GroupCollection, Polyworks.Collection);
+PWG.GroupCollection = (function() {
+	PWG.Utils.inherits(GroupCollection, PWG.Collection);
 	
 	function GroupCollection(params, groupContext) {
 		// 
 		GroupCollection._super.constructor.call(this, params);
 		// if(groupContext === 'null') {
 		// 	// 
-		// 	this.group = PolyworksGame.phaser.add.group(null);
+		// 	this.group = PWGGame.phaser.add.group(null);
 		// } else {
-		// 	this.group = PolyworksGame.phaser.add.group();
+		// 	this.group = PWGGame.phaser.add.group();
 		// }
 	}
 	
@@ -68102,7 +68102,7 @@ Polyworks.GroupCollection = (function() {
 		// 
 		GroupCollection._super.begin.call(this);
 
-		var game = PolyworksGame.phaser;
+		var game = PWGGame.phaser;
 		var collection = this.model.collection;
 		var group;
 
@@ -68121,7 +68121,7 @@ Polyworks.GroupCollection = (function() {
 			group = game.add.group();
 		}
 
-		Polyworks.Utils.each(collection,
+		PWG.Utils.each(collection,
 			function(c) {
 				// 
 				group.add(c);
@@ -68169,8 +68169,8 @@ Polyworks.GroupCollection = (function() {
 	return GroupCollection;
 })();
 
-Polyworks.SharedGroupCollection = (function() {
-	Polyworks.Utils.inherits(SharedGroupCollection, Polyworks.GroupCollection);
+PWG.SharedGroupCollection = (function() {
+	PWG.Utils.inherits(SharedGroupCollection, PWG.GroupCollection);
 
 	function SharedGroupCollection(params) {
 		SharedGroupCollection._super.constructor.call(this, params);
@@ -68178,7 +68178,7 @@ Polyworks.SharedGroupCollection = (function() {
 	
 	SharedGroupCollection.prototype.begin = function() {
 		// 
-		var sharedGroups = PolyworksGame.get('sharedGroups');
+		var sharedGroups = PWGGame.get('sharedGroups');
 		this.model.attrs = sharedGroups[this.model.type];
 		// 
 		SharedGroupCollection._super.begin.call(this);
@@ -68190,8 +68190,8 @@ Polyworks.SharedGroupCollection = (function() {
 	return SharedGroupCollection;
 })();
 
-Polyworks.PhysicalGroupCollection = (function() {
-	Polyworks.Utils.inherits(PhysicalGroupCollection, Polyworks.GroupCollection);
+PWG.PhysicalGroupCollection = (function() {
+	PWG.Utils.inherits(PhysicalGroupCollection, PWG.GroupCollection);
 	
 	function PhysicalGroupCollection(params) {
 		PhysicalGroupCollection._super.constructor.call(this, params);
@@ -68201,7 +68201,7 @@ Polyworks.PhysicalGroupCollection = (function() {
 		// 
 		// 
 		// 
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(c) {
 				c.checkTerrainCollision(terrain);
 			},
@@ -68210,7 +68210,7 @@ Polyworks.PhysicalGroupCollection = (function() {
 	};
 	
 	PhysicalGroupCollection.prototype.deactivateGravity = function() {
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(c) {
 				c.deactivateGravity();
 			},
@@ -68220,7 +68220,7 @@ Polyworks.PhysicalGroupCollection = (function() {
 	
 	PhysicalGroupCollection.prototype.activateGravity = function() {
 		// 
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(c) {
 				c.activateGravity();
 			},
@@ -68231,7 +68231,7 @@ Polyworks.PhysicalGroupCollection = (function() {
 	PhysicalGroupCollection.prototype.getActive = function() {
 		// 
 		var activeElements = [];
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(c) {
 				// 
 				if(c.active) {
@@ -68256,8 +68256,8 @@ Polyworks.PhysicalGroupCollection = (function() {
 	return PhysicalGroupCollection;
 })();
 
-Polyworks.GUIConsole = (function() {
-	Polyworks.Utils.inherits(GUIConsole, Polyworks.GroupCollection);
+PWG.GUIConsole = (function() {
+	PWG.Utils.inherits(GUIConsole, PWG.GroupCollection);
 	
 	function GUIConsole(params) {
 		GUIConsole._super.constructor.call(this, params);
@@ -68267,7 +68267,7 @@ Polyworks.GUIConsole = (function() {
 		GUIConsole._super.begin.call(this);
 		// 
 
-		Polyworks.Utils.each(this.collection,
+		PWG.Utils.each(this.collection,
 			function(c) {
 				if(c.text) {
 					this.parseAndSetContent(c.name);
@@ -68281,8 +68281,8 @@ Polyworks.GUIConsole = (function() {
 	
 	GUIConsole.prototype.addListeners = function() {
 		// 
-		// Polyworks.EventCenter.bind(Polyworks.Events.SCORE_UPDATED, this.onScoreUpdated, this);
-		Polyworks.EventCenter.bind(Polyworks.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
+		// PWG.EventCenter.bind(PWG.Events.SCORE_UPDATED, this.onScoreUpdated, this);
+		PWG.EventCenter.bind(PWG.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
 	};
 	
 	GUIConsole.prototype.onScoreUpdated = function() {
@@ -68299,22 +68299,22 @@ Polyworks.GUIConsole = (function() {
 		var text = this.getChildByName(field);
 		// 
 		if(text) {
-			var context = (context) ? context : PolyworksGame;
-			text.content = Polyworks.Utils.parseMarkup(text.model.attrs.defaultContent, context);
+			var context = (context) ? context : PWGGame;
+			text.content = PWG.Utils.parseMarkup(text.model.attrs.defaultContent, context);
 		}
 	};
 	
 	GUIConsole.prototype.destroy = function() {
-		// Polyworks.EventCenter.unbind(Polyworks.Events.SCORE_UPDATED, this.onScoreUpdated, this);
-		Polyworks.EventCenter.unbind(Polyworks.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
+		// PWG.EventCenter.unbind(PWG.Events.SCORE_UPDATED, this.onScoreUpdated, this);
+		PWG.EventCenter.unbind(PWG.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
 		GUIConsole._super.destroy.call(this);
 	};
 	
 	return GUIConsole;
 })();
 
-Polyworks.CrystalsWheel = (function() {
-	Polyworks.Utils.inherits(CrystalsWheel, Polyworks.Sprite); 
+PWG.CrystalsWheel = (function() {
+	PWG.Utils.inherits(CrystalsWheel, PWG.Sprite); 
 	
 	function CrystalsWheel(params) {
 		CrystalsWheel._super.constructor.call(this, params);
@@ -68322,16 +68322,16 @@ Polyworks.CrystalsWheel = (function() {
 	
 	CrystalsWheel.prototype.begin = function() {
 		CrystalsWheel._super.begin.call(this);
-		if(PolyworksGame.currentLevel > -1) {
-			this.frame = (PolyworksGame.currentLevel);
+		if(PWGGame.currentLevel > -1) {
+			this.frame = (PWGGame.currentLevel);
 		}
 	};
 	
 	return CrystalsWheel;
 })();
 
-Polyworks.PlayerIcon = (function() {
-	Polyworks.Utils.inherits(PlayerIcon, Polyworks.Sprite);
+PWG.PlayerIcon = (function() {
+	PWG.Utils.inherits(PlayerIcon, PWG.Sprite);
 	
 	function PlayerIcon(params) {
 		params.attrs.start = this.initPosition(params.positions);
@@ -68340,7 +68340,7 @@ Polyworks.PlayerIcon = (function() {
 	
 	PlayerIcon.prototype.initPosition = function(positions) {
 		
-		return positions[PolyworksGame.currentLevel];
+		return positions[PWGGame.currentLevel];
 	};
 	
 	PlayerIcon.prototype.begin = function() {
@@ -68357,7 +68357,7 @@ Polyworks.PlayerIcon = (function() {
 			var levels = pages[i].levels;
 			var levelsLength = levels.length;
 			for(var j = 0; j < levelsLength; j++) {
-				if(levels[j] === PolyworksGame.currentLevel) {
+				if(levels[j] === PWGGame.currentLevel) {
 					this.pageIndex = i;
 					break;
 				}
@@ -68367,7 +68367,7 @@ Polyworks.PlayerIcon = (function() {
 	};
 	
 	PlayerIcon.prototype.addListeners = function() {
-		Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_MAP_PAGE, this.onChangeMapPage, this);
+		PWG.EventCenter.bind(PWG.Events.CHANGE_MAP_PAGE, this.onChangeMapPage, this);
 		var ctx = this;
 		this.events.onInputDown.add(function(event, pointer) {
 			this.inputDown(event, pointer, ctx);
@@ -68385,7 +68385,7 @@ Polyworks.PlayerIcon = (function() {
 	PlayerIcon.prototype.inputUp = function(event, pointer, ctx) {
 		// 
 		ctx.pressed = false;
-		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.START_LEVEL, value: PolyworksGame.currentLevel });
+		// PWG.EventCenter.trigger({ type: PWG.Events.START_LEVEL, value: PWGGame.currentLevel });
 	};
 	
 	PlayerIcon.prototype.onChangeMapPage = function(event) {
@@ -68398,15 +68398,15 @@ Polyworks.PlayerIcon = (function() {
 	};
 	
 	PlayerIcon.prototype.destroy = function() {
-		Polyworks.EventCenter.unbind(Polyworks.Events.CHANGE_MAP_PAGE, this.onChangeMapPage, this);
+		PWG.EventCenter.unbind(PWG.Events.CHANGE_MAP_PAGE, this.onChangeMapPage, this);
 		PlayerIcon._super.destroy.call(this);
 	};
 	
 	return PlayerIcon;
 })();
 
-Polyworks.LevelInfo = (function() {
-	Polyworks.Utils.inherits(LevelInfo, Polyworks.GroupCollection);
+PWG.LevelInfo = (function() {
+	PWG.Utils.inherits(LevelInfo, PWG.GroupCollection);
 	
 	function LevelInfo(params) {
 		LevelInfo._super.constructor.call(this, params);
@@ -68421,8 +68421,8 @@ Polyworks.LevelInfo = (function() {
 	return LevelInfo;
 })();
 
-Polyworks.MapMarker = (function() {
-	Polyworks.Utils.inherits(MapMarker, Polyworks.Sprite);
+PWG.MapMarker = (function() {
+	PWG.Utils.inherits(MapMarker, PWG.Sprite);
 	
 	function MapMarker(params) {
 		MapMarker._super.constructor.call(this, params);
@@ -68434,8 +68434,8 @@ Polyworks.MapMarker = (function() {
 
 		var name = this.model.name;
 		this.model.level = parseInt(name.replace('mapLevelMarker', ''));
-		var currentLevel = PolyworksGame.currentLevel;
-		var levelStatus = PolyworksGame.levelStatus[this.model.level];
+		var currentLevel = PWGGame.currentLevel;
+		var levelStatus = PWGGame.levelStatus[this.model.level];
 
 		if(levelStatus === 'l') {
 			this.frame = 14;
@@ -68472,14 +68472,14 @@ Polyworks.MapMarker = (function() {
 	MapMarker.prototype.inputUp = function(event, pointer, ctx) {
 		// 
 		ctx.pressed = false;
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.SHOW_LEVEL_INFO, value: this.model.level });
+		PWG.EventCenter.trigger({ type: PWG.Events.SHOW_LEVEL_INFO, value: this.model.level });
 	};
 	
 	return MapMarker;
 })();
 
-Polyworks.MapPage = (function() {
-	Polyworks.Utils.inherits(MapPage, Polyworks.Collection);
+PWG.MapPage = (function() {
+	PWG.Utils.inherits(MapPage, PWG.Collection);
 	
 	function MapPage(params) {
 		MapPage._super.constructor.call(this, params);
@@ -68491,19 +68491,19 @@ Polyworks.MapPage = (function() {
 		this.addListeners();
 
 		var pageStartX = this.model.start.x;
-		var stageWidth = Polyworks.Stage.width;
+		var stageWidth = PWG.Stage.width;
 		var stageSeventh = stageWidth/7;
 
 		var stateGroup = this.model.stateGroup;
-		this.pageGroup = PolyworksGame.phaser.add.group();
+		this.pageGroup = PWGGame.phaser.add.group();
 		stateGroup.add(this.pageGroup._container);
 
 		var levels = this.model.levels;
 
-		Polyworks.Utils.each(levels,
+		PWG.Utils.each(levels,
 			function(level) {
 				// 
-				if(level === PolyworksGame.currentLevel) {
+				if(level === PWGGame.currentLevel) {
 					this.model.selected = true;
 				}
 			},
@@ -68531,7 +68531,7 @@ Polyworks.MapPage = (function() {
 		// 
 		// 
 		var _this = this;
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(child) {
 				// 
 				_this.pageGroup.add(child);
@@ -68541,7 +68541,7 @@ Polyworks.MapPage = (function() {
 	};
 	
 	MapPage.prototype.addListeners = function() {
-		Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_MAP_PAGE, this.onChangeMapPage, this);
+		PWG.EventCenter.bind(PWG.Events.CHANGE_MAP_PAGE, this.onChangeMapPage, this);
 	};
 	
 	MapPage.prototype.onChangeMapPage = function(event) {
@@ -68562,13 +68562,13 @@ Polyworks.MapPage = (function() {
 	
 	MapPage.prototype.addArrowButton = function(direction, pageStartX, stageSeventh) {
 		// 
-		var stageUnit = Polyworks.Stage.unit;
+		var stageUnit = PWG.Stage.unit;
 		var img;
 		var eventValue;
 		var buttonX; 
-		var levelIconWidth = (Polyworks.Stage.unit * 1.6);
+		var levelIconWidth = (PWG.Stage.unit * 1.6);
 		var levelIconXOffset = (stageSeventh/2) - (levelIconWidth/2);
-		var levelIconHeight = (Polyworks.Stage.unit * 2);
+		var levelIconHeight = (PWG.Stage.unit * 2);
 
 		if(direction === 'left') {
 			img = 'pageLeftArrow';
@@ -68597,7 +68597,7 @@ Polyworks.MapPage = (function() {
 				},
 				events: {
 					pressed: {
-						type: Polyworks.Events.CHANGE_MAP_PAGE,
+						type: PWG.Events.CHANGE_MAP_PAGE,
 						value: eventValue
 					}
 				}
@@ -68610,13 +68610,13 @@ Polyworks.MapPage = (function() {
 	return MapPage;
 })();
 
-Polyworks.Control = (function() {
+PWG.Control = (function() {
 	
 	var _this;
 	
 	function Control(params) {
 		_this = this;
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 	}
 	
 	Control.prototype.inputPressed = function(params) {
@@ -68647,20 +68647,20 @@ Polyworks.Control = (function() {
 	Control.prototype.trigger = function(event) {
 		// 
 		// 
-		Polyworks.EventCenter.trigger(event);
+		PWG.EventCenter.trigger(event);
 	};
 	
 	return Control;
 })();
 
-Polyworks.InputButton = (function() {
-	Polyworks.Utils.inherits(InputButton, Phaser.Button);
+PWG.InputButton = (function() {
+	PWG.Utils.inherits(InputButton, Phaser.Button);
 	
 	var _this;
 	function InputButton(params) {
 		// 
 		_this = this;
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 		// 
 		var attrs = this.model.attrs;
 		var frames = attrs.frames;
@@ -68688,7 +68688,7 @@ Polyworks.InputButton = (function() {
 		var phaser = this.model.attrs.phaser;
 		if(phaser) {
 			var _this = this;
-			Polyworks.Utils.each(phaser,
+			PWG.Utils.each(phaser,
 				function(prop, key) {
 					_this[key] = prop;
 				},
@@ -68715,13 +68715,13 @@ Polyworks.InputButton = (function() {
 	
 	InputButton.prototype.inputDown = function(event, pointer, ctx) {
 		// 
-		ctx.inputPressed.call(ctx, { type: Polyworks.Events.CONTROL_PRESSED, value: ctx.model.attrs.inputCode });
+		ctx.inputPressed.call(ctx, { type: PWG.Events.CONTROL_PRESSED, value: ctx.model.attrs.inputCode });
 		ctx.pressed = true;
 	};
 	
 	InputButton.prototype.inputUp = function(event, pointer, ctx) {
 		// 
-		ctx.inputReleased.call(ctx, { type: Polyworks.Events.CONTROL_RELEASED, value: ctx.model.attrs.inputCode });
+		ctx.inputReleased.call(ctx, { type: PWG.Events.CONTROL_RELEASED, value: ctx.model.attrs.inputCode });
 		ctx.pressed = false;
 	};
 	
@@ -68753,14 +68753,14 @@ Polyworks.InputButton = (function() {
 	_trigger = function(event) {
 		// 
 		// 
-		Polyworks.EventCenter.trigger(event);
+		PWG.EventCenter.trigger(event);
 	};
 	
 	return InputButton;
 })();
 
-Polyworks.MenuButton = (function() {
-	Polyworks.Utils.inherits(MenuButton, Polyworks.InputButton);
+PWG.MenuButton = (function() {
+	PWG.Utils.inherits(MenuButton, PWG.InputButton);
 	
 	var _this;
 	function MenuButton(params) {
@@ -68772,19 +68772,19 @@ Polyworks.MenuButton = (function() {
 	
 	MenuButton.prototype.inputDown = function(event, pointer) {
 		// 
-		this.inputPressed.call(this, { type: Polyworks.Events.BUTTON_PRESSED, value: this.model.inputCode });
+		this.inputPressed.call(this, { type: PWG.Events.BUTTON_PRESSED, value: this.model.inputCode });
 	};
 	
 	MenuButton.prototype.inputUp = function(event, pointer) {
 		// 
-		this.inputReleased.call(this, { type: Polyworks.Events.BUTTON_RELEASED, value: this.model.inputCode });
+		this.inputReleased.call(this, { type: PWG.Events.BUTTON_RELEASED, value: this.model.inputCode });
 	};
 	
 	return MenuButton;
 })();
 
-Polyworks.ControlKey = (function() {
-	Polyworks.Utils.inherits(ControlKey, Polyworks.Control);
+PWG.ControlKey = (function() {
+	PWG.Utils.inherits(ControlKey, PWG.Control);
 	
 	function ControlKey(params) {
 		// 
@@ -68795,26 +68795,26 @@ Polyworks.ControlKey = (function() {
 	ControlKey.prototype.begin = function() {
 		// 
 		// 
-		this.key = PolyworksGame.phaser.input.keyboard.addKey(this.model.attrs.inputCode);
+		this.key = PWGGame.phaser.input.keyboard.addKey(this.model.attrs.inputCode);
 		this.key.onDown.add(this.inputDown, this);
 		this.key.onUp.add(this.inputUp, this);
 	};
 	
 	ControlKey.prototype.inputDown = function(params) {
 		// 
-		this.inputPressed.call(this, { type: Polyworks.Events.CONTROL_PRESSED, value: params.keyCode });
+		this.inputPressed.call(this, { type: PWG.Events.CONTROL_PRESSED, value: params.keyCode });
 	};
 	
 	ControlKey.prototype.inputUp = function(params) {
 		// 
-		this.inputReleased.call(this, { type: Polyworks.Events.CONTROL_RELEASED, value: params.keyCode });
+		this.inputReleased.call(this, { type: PWG.Events.CONTROL_RELEASED, value: params.keyCode });
 	};
 
 	return ControlKey;
 })();
 
-Polyworks.ControlButton = (function() {
-	Polyworks.Utils.inherits(ControlButton, Polyworks.InputButton);
+PWG.ControlButton = (function() {
+	PWG.Utils.inherits(ControlButton, PWG.InputButton);
 	
 	var _this;
 	function ControlButton(params) {
@@ -68827,14 +68827,14 @@ Polyworks.ControlButton = (function() {
 	ControlButton.prototype.inputDown = function(event, pointer) {
 		
 		if(this.model.inputCode) {
-			this.inputPressed.call(this, { type: Polyworks.Events.CONTROL_PRESSED, value: this.model.inputCode });
+			this.inputPressed.call(this, { type: PWG.Events.CONTROL_PRESSED, value: this.model.inputCode });
 		}
 	};
 	
 	ControlButton.prototype.inputUp = function(event, pointer) {
 		// 
 		if(this.model.inputCode) {
-			this.inputReleased.call(this, { type: Polyworks.Events.CONTROL_RELEASED, value: this.model.inputCode });
+			this.inputReleased.call(this, { type: PWG.Events.CONTROL_RELEASED, value: this.model.inputCode });
 		}
 	};
 	
@@ -68846,19 +68846,19 @@ Polyworks.ControlButton = (function() {
 	return ControlButton;
 })();
 
-Polyworks.ControlButtons = (function() {
-	Polyworks.Utils.inherits(ControlButtons, Polyworks.GroupCollection);
+PWG.ControlButtons = (function() {
+	PWG.Utils.inherits(ControlButtons, PWG.GroupCollection);
 	
 	function ControlButtons(params) {
 		// params.collection = this;
 		// this.name = params.name;
-		// this.model = new Polyworks.Model(params);
+		// this.model = new PWG.Model(params);
 		ControlButtons._super.constructor.call(this, params);
 	}
 	
 	ControlButtons.prototype.begin = function() {
 		// 
-		var ctrls = PolyworksGame.get('controls');
+		var ctrls = PWGGame.get('controls');
 		this.model.attrs = ctrls.buttons[this.model.type];
 		// 
 		// 
@@ -68871,7 +68871,7 @@ Polyworks.ControlButtons = (function() {
 		// 
 		// 
 //		ControlButtons._super.destroy.call(this);
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(c) {
 				c.destroy();
 			},
@@ -68882,8 +68882,8 @@ Polyworks.ControlButtons = (function() {
 	return ControlButtons;
 })();
 
-Polyworks.Enemies = (function() {
-	Polyworks.Utils.inherits(Enemies, Polyworks.PhysicalGroupCollection);
+PWG.Enemies = (function() {
+	PWG.Utils.inherits(Enemies, PWG.PhysicalGroupCollection);
 	
 	function Enemies(params) {
 		// 
@@ -68891,7 +68891,7 @@ Polyworks.Enemies = (function() {
 	}
 	
 	Enemies.prototype.pwUpdate = function(params) {
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(c) {
 				if(c.alive) {
 					c.pwUpdate(params);
@@ -68909,8 +68909,8 @@ Polyworks.Enemies = (function() {
 	return Enemies;
 })();
 
-Polyworks.GroupEnemy = (function() {
-	Polyworks.Utils.inherits(GroupEnemy, Polyworks.Enemies);
+PWG.GroupEnemy = (function() {
+	PWG.Utils.inherits(GroupEnemy, PWG.Enemies);
 	
 	function GroupEnemy(params) {
 		GroupEnemy._super.constructor.call(this, params);
@@ -68918,7 +68918,7 @@ Polyworks.GroupEnemy = (function() {
 	
 	GroupEnemy.prototype.pwUpdate = function(params) {
 		// 
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(child) {
 				child.pwUpdate(params);
 			},
@@ -68929,8 +68929,8 @@ Polyworks.GroupEnemy = (function() {
 	return GroupEnemy;
 })();
 
-Polyworks.Requirement = (function() {
-	Polyworks.Utils.inherits(Requirement, Polyworks.Sprite);
+PWG.Requirement = (function() {
+	PWG.Utils.inherits(Requirement, PWG.Sprite);
 	
 	function Requirement(params) {
 		Requirement._super.constructor.call(this, params);
@@ -68939,15 +68939,15 @@ Polyworks.Requirement = (function() {
 	Requirement.prototype.begin = function() {
 		// 
 		Requirement._super.begin.call(this);
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.REQUIREMENT_INITIALIZED, value: this.model });
+		PWG.EventCenter.trigger({ type: PWG.Events.REQUIREMENT_INITIALIZED, value: this.model });
 	};
 	
 	Requirement.prototype.collect = function() {
 		// 
 		if(this.model.attrs.score) {
-		    PolyworksGame.setLevelScore(this.model.attrs.score);
+		    PWGGame.setLevelScore(this.model.attrs.score);
 		}
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.REQUIREMENT_MET, value: this.model.name });
+		PWG.EventCenter.trigger({ type: PWG.Events.REQUIREMENT_MET, value: this.model.name });
 		this.model.ancestor.killChild.call(this.model.ancestor, this.model.name);
 		Requirement._super.kill.call(this);
 	};
@@ -68955,8 +68955,8 @@ Polyworks.Requirement = (function() {
 	return Requirement;
 })();
 
-Polyworks.Requirements = (function() {
-	Polyworks.Utils.inherits(Requirements, Polyworks.PhysicalGroupCollection);
+PWG.Requirements = (function() {
+	PWG.Utils.inherits(Requirements, PWG.PhysicalGroupCollection);
 	
 	function Requirements(params) {
 
@@ -68969,36 +68969,36 @@ Polyworks.Requirements = (function() {
 		this.requirementsMet = 0;
 		this.requirementsCount = this.model.collection.length;
 		// 
-		PolyworksGame.setRequirements(this.requirementsMet, this.requirementsCount);
-		Polyworks.EventCenter.bind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet, this);
+		PWGGame.setRequirements(this.requirementsMet, this.requirementsCount);
+		PWG.EventCenter.bind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet, this);
 	};
 	
 	Requirements.prototype.onRequirementMet = function() {
 		this.requirementsMet++;
 		// 
-		PolyworksGame.setRequirements(this.requirementsMet, this.requirementsCount);
+		PWGGame.setRequirements(this.requirementsMet, this.requirementsCount);
 		if(this.requirementsMet >= this.requirementsCount) {
-			Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet, this);
-			Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_REQUIREMENTS_MET });
+			PWG.EventCenter.unbind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet, this);
+			PWG.EventCenter.trigger({ type: PWG.Events.LEVEL_REQUIREMENTS_MET });
 		}
 	};
 	
 	Requirements.prototype.destroy = function() {
-		Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet, this);
+		PWG.EventCenter.unbind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet, this);
 		Requirements._super.destroy.call(this);
 	};
 
 	return Requirements;
 })();
 
-Polyworks.RequirementPlaceHolder = (function() {
-	Polyworks.Utils.inherits(RequirementPlaceHolder, Polyworks.Sprite); 
+PWG.RequirementPlaceHolder = (function() {
+	PWG.Utils.inherits(RequirementPlaceHolder, PWG.Sprite); 
 	
 	function RequirementPlaceHolder(params) {
 		// 
 		RequirementPlaceHolder._super.constructor.call(this, params);
-		Polyworks.EventCenter.bind(Polyworks.Events.REQUIREMENT_INITIALIZED, this.onRequirementsInitialized, this);
-		Polyworks.EventCenter.bind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet, this);
+		PWG.EventCenter.bind(PWG.Events.REQUIREMENT_INITIALIZED, this.onRequirementsInitialized, this);
+		PWG.EventCenter.bind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet, this);
 	}
 	
 	RequirementPlaceHolder.prototype.begin = function() {
@@ -69012,7 +69012,7 @@ Polyworks.RequirementPlaceHolder = (function() {
 		// 
 		var phaserAttrs = this.model.attrs.phaser;
 		// phaserAttrs.visible = false;
-		this.requirement = new Polyworks.Sprite({
+		this.requirement = new PWG.Sprite({
 			game: this.model.game,
 			attrs: {
 				img: requirementImg,
@@ -69022,12 +69022,12 @@ Polyworks.RequirementPlaceHolder = (function() {
 		});
 		this.requirement.visible = false;
 		this.requirement.begin();
-		Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_INITIALIZED, this.onRequirementsInitialized);
+		PWG.EventCenter.unbind(PWG.Events.REQUIREMENT_INITIALIZED, this.onRequirementsInitialized);
 	};
 	
 	RequirementPlaceHolder.prototype.onRequirementMet = function(params) {
 		// 
-		// Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet);
+		// PWG.EventCenter.unbind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet);
 		this.model.ancestor.group.add(this.requirement);
 		this.requirement.alpha = 1;
 		this.requirement.visible = true;
@@ -69035,15 +69035,15 @@ Polyworks.RequirementPlaceHolder = (function() {
 
 	RequirementPlaceHolder.prototype.destroy = function() {
 		// 
-		Polyworks.EventCenter.unbind(Polyworks.Events.REQUIREMENT_MET, this.onRequirementMet);
+		PWG.EventCenter.unbind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet);
 		RequirementPlaceHolder._super.destroy.call(this);
 	};
 	
 	return RequirementPlaceHolder;
 })();
 
-Polyworks.Sector = (function() {
-	Polyworks.Utils.inherits(Sector, Polyworks.Collection);
+PWG.Sector = (function() {
+	PWG.Utils.inherits(Sector, PWG.Collection);
 	
 	function Sector(params) {
 		// 
@@ -69124,15 +69124,15 @@ Polyworks.Sector = (function() {
 	return Sector;
 })();
 
-Polyworks.SectorManager = (function() {
-	Polyworks.Utils.inherits(SectorManager, Polyworks.Collection);
+PWG.SectorManager = (function() {
+	PWG.Utils.inherits(SectorManager, PWG.Collection);
 	
 	function SectorManager(params) {
 		// 
 		// 
 		SectorManager._super.constructor.call(this, params);
 		// this.setActiveSector(0);
-		this.positionAxis = (this.model.type === Polyworks.SectorTypes.HORIZONTAL) ? 'x' : 'y';
+		this.positionAxis = (this.model.type === PWG.SectorTypes.HORIZONTAL) ? 'x' : 'y';
 		
 	}
 
@@ -69156,7 +69156,7 @@ Polyworks.SectorManager = (function() {
 	SectorManager.prototype.checkTerrainCollision = function(terrain) {
 		this.model.collection[this.activeSectorId].checkTerrainCollision(terrain);
 		/*
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(c) {
 				c.checkTerrainCollision(terrain);
 			},
@@ -69196,7 +69196,7 @@ Polyworks.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.deactivateAll = function() {
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(c) {
 				c.setActive(false);
 			},
@@ -69205,7 +69205,7 @@ Polyworks.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.destroy = function() {
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(c) {
 				c.destroy();
 			},
@@ -69216,15 +69216,15 @@ Polyworks.SectorManager = (function() {
 	return SectorManager;
 })();
 
-Polyworks.State = (function() {
-	Polyworks.Utils.inherits(State, Polyworks.Collection);
-	// Polyworks.Utils.inherits(State, Phaser.State); 
+PWG.State = (function() {
+	PWG.Utils.inherits(State, PWG.Collection);
+	// PWG.Utils.inherits(State, Phaser.State); 
 	
 	function State(params) {
 		// 
 		State._super.constructor.call(this);
 
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 		this.model.set({
 			isLandscape: true,
 			loaded: false,
@@ -69256,7 +69256,7 @@ Polyworks.State = (function() {
 	State.prototype.preload = function() {
 		this.toLoad = 0;
 		this.loaded = 0;
-		var phaser = PolyworksGame.phaser;
+		var phaser = PWGGame.phaser;
 		var loaded = {
 			images: {},
 			sprites: {}
@@ -69267,11 +69267,11 @@ Polyworks.State = (function() {
 			// 
 			// 
 			if(this.model.images.length > 0) {
-				var images = PolyworksGame.get('images');
-				Polyworks.Utils.each(this.model.images,
+				var images = PWGGame.get('images');
+				PWG.Utils.each(this.model.images,
 					function(img) {
 						// 
-						if(!PolyworksGame.loaded.images[img]) {
+						if(!PWGGame.loaded.images[img]) {
 							this.toLoad++;
 							phaser.load.image(img, images[img]);
 							loaded.images[img] = true;
@@ -69281,11 +69281,11 @@ Polyworks.State = (function() {
 				);
 			}
 			if(this.model.sprites.length > 0) {
-				var sprites = PolyworksGame.get('sprites');
-				Polyworks.Utils.each(this.model.sprites,
+				var sprites = PWGGame.get('sprites');
+				PWG.Utils.each(this.model.sprites,
 					function(spr) {
 						// 
-						if(!PolyworksGame.loaded.sprites[spr]) {
+						if(!PWGGame.loaded.sprites[spr]) {
 							var sprite = sprites[spr];
 							// 
 							this.toLoad++;
@@ -69296,16 +69296,16 @@ Polyworks.State = (function() {
 					this
 				);
 			}
-			PolyworksGame.loaded = Polyworks.Utils.extend(PolyworksGame.loaded, loaded);
+			PWGGame.loaded = PWG.Utils.extend(PWGGame.loaded, loaded);
 			this.model.loaded = true;
 		}
 	};
 	
 	State.prototype.create = function() {
 		
-		PolyworksGame.phaser.stage.backgroundColor = this.model.backgroundColor;
-		PolyworksGame.removeLoadingDiv();
-		if(PolyworksGame.isLandscape) {
+		PWGGame.phaser.stage.backgroundColor = this.model.backgroundColor;
+		PWGGame.removeLoadingDiv();
+		if(PWGGame.isLandscape) {
 			this.createState();
 		} else {
 			
@@ -69316,12 +69316,12 @@ Polyworks.State = (function() {
 	State.prototype.createState = function() {
 		// 
 		if(!this.model.get('created')) {
-			this.gameOver = PolyworksGame.gameOver; 
+			this.gameOver = PWGGame.gameOver; 
 			this.createWorld();
 
 			if(this.model.pausable) {
-				Polyworks.EventCenter.bind(Polyworks.Events.PAUSE_STATE, this.onPauseState, this);
-				Polyworks.EventCenter.bind(Polyworks.Events.RESUME_STATE, this.onResumeState, this);
+				PWG.EventCenter.bind(PWG.Events.PAUSE_STATE, this.onPauseState, this);
+				PWG.EventCenter.bind(PWG.Events.RESUME_STATE, this.onResumeState, this);
 			}
 			this.begin();
 			this.model.set({ created: true });
@@ -69347,7 +69347,7 @@ Polyworks.State = (function() {
 	State.prototype.createWorld = function() {
 		var world = this.model.world;
 		// 
-		PolyworksGame.phaser.world.setBounds(world.x, world.y, world.width, world.height);
+		PWGGame.phaser.world.setBounds(world.x, world.y, world.width, world.height);
 	};
 
 	State.prototype.update = function() {
@@ -69358,8 +69358,8 @@ Polyworks.State = (function() {
 	
 	State.prototype.shutdown = function() {
 		// 
-		Polyworks.EventCenter.unbind(Polyworks.Events.PAUSE_STATE, this.onPauseState);
-		Polyworks.EventCenter.unbind(Polyworks.Events.RESUME_STATE, this.onResumeState);
+		PWG.EventCenter.unbind(PWG.Events.PAUSE_STATE, this.onPauseState);
+		PWG.EventCenter.unbind(PWG.Events.RESUME_STATE, this.onResumeState);
 
 		this.paused = false;
 		this.model.set({
@@ -69376,8 +69376,8 @@ Polyworks.State = (function() {
 	return State;
 })();
 
-Polyworks.MenuState = (function() {
-	Polyworks.Utils.inherits(MenuState, Polyworks.State);
+PWG.MenuState = (function() {
+	PWG.Utils.inherits(MenuState, PWG.State);
 	
 	function MenuState(params) {
 		MenuState._super.constructor.call(this, params);
@@ -69389,40 +69389,40 @@ Polyworks.MenuState = (function() {
 	};
 	
 	MenuState.prototype.addListeners = function() {
-		Polyworks.EventCenter.bind(Polyworks.Events.BUTTON_PRESSED, this.onButtonPressed, this);
+		PWG.EventCenter.bind(PWG.Events.BUTTON_PRESSED, this.onButtonPressed, this);
 	};
 	
 	MenuState.prototype.onButtonPressed = function(event) {
 		// 
-		if(event.value === Polyworks.InputCodes.PLAY || event.value === Polyworks.InputCodes.NEXT) {
-			PolyworksGame.changeState('level'); 
+		if(event.value === PWG.InputCodes.PLAY || event.value === PWG.InputCodes.NEXT) {
+			PWGGame.changeState('level'); 
 			this.changingState = true;
 		}
 	};
 	
 	MenuState.prototype.shutdown = function() {
-		Polyworks.EventCenter.unbind(Polyworks.Events.BUTTON_PRESSED, this.onButtonPressed, this);
+		PWG.EventCenter.unbind(PWG.Events.BUTTON_PRESSED, this.onButtonPressed, this);
 		MenuState._super.shutdown.call(this);
 	};
 	
 	return MenuState;
 })();
 
-Polyworks.MapState = (function() {
-	Polyworks.Utils.inherits(MapState, Polyworks.MenuState); 
+PWG.MapState = (function() {
+	PWG.Utils.inherits(MapState, PWG.MenuState); 
 	
 	function MapState(params) {
 		MapState._super.constructor.call(this, params);
 	}
 
 	MapState.prototype.createState = function() {
-		var stateGroup = PolyworksGame.phaser.add.group();
+		var stateGroup = PWGGame.phaser.add.group();
 		this.model.stateGroup = stateGroup;
 
 		MapState._super.createState.call(this);
 
-		var winW = Polyworks.Stage.winW;
-		var stageWidth = Polyworks.Stage.width;
+		var winW = PWG.Stage.winW;
+		var stageWidth = PWG.Stage.width;
 
 		this.createPages(winW, stageWidth, stateGroup);
 	};
@@ -69432,7 +69432,7 @@ Polyworks.MapState = (function() {
 		var pages = this.model.pages;
 		var mapPage;
 
-		Polyworks.Utils.each(pages,
+		PWG.Utils.each(pages,
 			function(page, idx) {
 				page.addTo = 'stateGroup';
 				page.stateGroup = stateGroup;
@@ -69447,7 +69447,7 @@ Polyworks.MapState = (function() {
 				if(idx < (pages.length - 1)) {
 					page.rightArrow = true;
 				}
-				mapPage = new Polyworks.MapPage(page);
+				mapPage = new PWG.MapPage(page);
 				mapPage.begin();
 				this.model.pageCollection.push(mapPage);
 			},
@@ -69458,8 +69458,8 @@ Polyworks.MapState = (function() {
 	return MapState;
 })();
 
-Polyworks.LevelState = (function() {
-	Polyworks.Utils.inherits(LevelState, Polyworks.State); 
+PWG.LevelState = (function() {
+	PWG.Utils.inherits(LevelState, PWG.State); 
 	
 	var _this;
 	function LevelState(params) {
@@ -69493,13 +69493,13 @@ Polyworks.LevelState = (function() {
 		// create views and controls with super
 		LevelState._super.createState.call(this);
 
-		// Polyworks.EventCenter.bind(Polyworks.Events.AD_STARTED, this.onPauseState, this);
-		// Polyworks.EventCenter.bind(Polyworks.Events.AD_COMPLETED, this.onResumeState, this);
+		// PWG.EventCenter.bind(PWG.Events.AD_STARTED, this.onPauseState, this);
+		// PWG.EventCenter.bind(PWG.Events.AD_COMPLETED, this.onResumeState, this);
 
 		this.requirements = this.getChildByName('requirements');
 		// 
 		if(this.requirements) {
-			Polyworks.EventCenter.bind(Polyworks.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
+			PWG.EventCenter.bind(PWG.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
 		} else {
 			// no requirements; allow level completion at end bounds
 			this.requirementsMet = true;
@@ -69511,33 +69511,33 @@ Polyworks.LevelState = (function() {
 		this.goalsReached = 0;
 		this.totalGoals = this.goals.getLength(); 
 		this.allGoalsReached = false;
-		Polyworks.EventCenter.bind(Polyworks.Events.GOAL_REACHED, this.onGoalReached, this);
+		PWG.EventCenter.bind(PWG.Events.GOAL_REACHED, this.onGoalReached, this);
 		
 		
 		this.sectorManager = this.getChildByName('sectors');
 		this.sectorManager.setState(this);
 		this.sectorManager.setActiveSector(0);
 
-		var playerStart = Polyworks.Utils.clone(PolyworksGame.get('player').attrs.start);
+		var playerStart = PWG.Utils.clone(PWGGame.get('player').attrs.start);
 		// 
-		this.createPlayer(playerStart, PolyworksGame.startingHealth);
+		this.createPlayer(playerStart, PWGGame.startingHealth);
 		
-		// if(PolyworksGame.adPlaying) {
+		// if(PWGGame.adPlaying) {
 		// 	this.onPauseState();
 		// }
 	};
 
 	LevelState.prototype.createPlayer = function(start, health) {
-		var playerConfig = Polyworks.Utils.clone(PolyworksGame.get('player'));
+		var playerConfig = PWG.Utils.clone(PWGGame.get('player'));
 		playerConfig.attrs.attack = 10;
 		playerConfig.attrs.start = start;
 		// 
 
-		playerConfig.game = PolyworksGame.phaser;
+		playerConfig.game = PWGGame.phaser;
 		playerConfig.sectorManager = this.sectorManager;
 
-		this.playerGroup = PolyworksGame.phaser.add.group();
-		this.player = new Polyworks[playerConfig.cl](playerConfig);
+		this.playerGroup = PWGGame.phaser.add.group();
+		this.player = new PWG[playerConfig.cl](playerConfig);
 		this.player.begin(health);
 		this.playerGroup.add(this.player);
 		this.playerPresent = true;
@@ -69558,7 +69558,7 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.update = function() {
-		if(!this.paused && !PolyworksGame.adPlaying) {
+		if(!this.paused && !PWGGame.adPlaying) {
 			// 
 			// if(this.requirementsMet && (this.player.body.x >= this.model.bounds.end)) {
 			if(this.requirementsMet && this.allGoalsReached) {
@@ -69577,8 +69577,8 @@ Polyworks.LevelState = (function() {
 					terrain: this.terrain.group,
 					dynamicTerrain: (sector.dynamicTerrain) ? sector.dynamicTerrain.getActive() : null,
 					position: {
-						x: this.game.camera.x + (Polyworks.Stage.winW/2),
-						y: this.game.camera.y + (Polyworks.Stage.winH/2)
+						x: this.game.camera.x + (PWG.Stage.winW/2),
+						y: this.game.camera.y + (PWG.Stage.winH/2)
 					}
 				};
 				this.sectorManager.pwUpdate(updateParams);
@@ -69641,7 +69641,7 @@ Polyworks.LevelState = (function() {
 	
 	LevelState.prototype.onResumeState = function() {
 		// 
-		if(!PolyworksGame.adPlaying) {
+		if(!PWGGame.adPlaying) {
 			LevelState._super.onResumeState.call(this);
 			this.resumeState();
 		}
@@ -69662,7 +69662,7 @@ Polyworks.LevelState = (function() {
 	
 	LevelState.prototype.resumeState = function() {
 		this.sectorManager.setActiveSector(this.sectorManager.activeSectorId);
-		this.createPlayer(this.playerPosition, PolyworksGame.health);
+		this.createPlayer(this.playerPosition, PWGGame.health);
 		this.playerGroup.visible = true; 
 		this.showPauseGUI(false);
 	};
@@ -69698,7 +69698,7 @@ Polyworks.LevelState = (function() {
 	};
 	
 	LevelState.prototype.levelCleared = function() {
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_CLEARED, value: PolyworksGame.currentLevel });
+		PWG.EventCenter.trigger({ type: PWG.Events.LEVEL_CLEARED, value: PWGGame.currentLevel });
 
 		this.sectorManager.deactivateAll();
 
@@ -69707,9 +69707,9 @@ Polyworks.LevelState = (function() {
 	
 	LevelState.prototype.shutdown = function() {
 		// 
-		Polyworks.EventCenter.unbind(Polyworks.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
-		Polyworks.EventCenter.unbind(Polyworks.Events.AD_STARTED, this.onPauseState, this);
-		Polyworks.EventCenter.unbind(Polyworks.Events.AD_COMPLETED, this.onResumeState, this);
+		PWG.EventCenter.unbind(PWG.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
+		PWG.EventCenter.unbind(PWG.Events.AD_STARTED, this.onPauseState, this);
+		PWG.EventCenter.unbind(PWG.Events.AD_COMPLETED, this.onResumeState, this);
 
 		this.destroyPlayer();
 		LevelState._super.shutdown.call(this);
@@ -69719,8 +69719,8 @@ Polyworks.LevelState = (function() {
 })();
 
 
-Polyworks.GameOverState = (function() {
-	Polyworks.Utils.inherits(GameOverState, Polyworks.MenuState);
+PWG.GameOverState = (function() {
+	PWG.Utils.inherits(GameOverState, PWG.MenuState);
 
 	function GameOverState(params) {
 		GameOverState._super.constructor.call(this, params);
@@ -69730,27 +69730,27 @@ Polyworks.GameOverState = (function() {
 		// 
 		GameOverState._super.createState.call(this);
 
-		Polyworks.TGSAdapter.addGameOverWidget();
+		PWG.TGSAdapter.addGameOverWidget();
 	};
 	
 	GameOverState.prototype.shutdown = function(event) {
 		// 
-		Polyworks.TGSAdapter.hideGameOverWidget();
+		PWG.TGSAdapter.hideGameOverWidget();
 		GameOverState._super.shutdown.call(this);
 	};
 
 	return GameOverState;
 }());
 
-Polyworks.Player = (function() {
-	// Polyworks.Utils.inherits(Player, Polyworks.AnimatedSprite);
-	Polyworks.Utils.inherits(Player, Polyworks.Sprite);
+PWG.Player = (function() {
+	// PWG.Utils.inherits(Player, PWG.AnimatedSprite);
+	PWG.Utils.inherits(Player, PWG.Sprite);
 
 	var _this;
 	function Player(params) {
 		// 
 		_this = this;
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 		this.initialPosition = true;
 		this.oneUpdate = false;
 		Player._super.constructor.call(this, params);
@@ -69760,7 +69760,7 @@ Polyworks.Player = (function() {
 	Player.prototype.begin = function(health) {
 		Player._super.begin.call(this);
 
-		// this.health = PolyworksGame.startingHealth;
+		// this.health = PWGGame.startingHealth;
 		this.health = health;
 
 		this.velX = 0;
@@ -69774,7 +69774,7 @@ Polyworks.Player = (function() {
 		this.beginEvents();
 		this.beginControls();
 
-		PolyworksGame.setHealth(this.health);
+		PWGGame.setHealth(this.health);
 		
 	};
 
@@ -69794,22 +69794,22 @@ Polyworks.Player = (function() {
 			this.anchor.setTo(attrs.anchor.x, attrs.anchor.y);
 		}
 		if(attrs.followStyle) {
-			PolyworksGame.phaser.camera.follow(this, attrs.followStyle);
+			PWGGame.phaser.camera.follow(this, attrs.followStyle);
 		}
 	};
 	
 	Player.prototype.beginEvents = function() {
-		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_PRESSED, this.onControlButtonPressed, this);
-		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_RELEASED, this.onControlButtonReleased, this);
+		PWG.EventCenter.bind(PWG.Events.CONTROL_PRESSED, this.onControlButtonPressed, this);
+		PWG.EventCenter.bind(PWG.Events.CONTROL_RELEASED, this.onControlButtonReleased, this);
 	};
 	
 	Player.prototype.beginControls = function() {
 		this.activeControls = {};
-		this.activeControls[Polyworks.InputCodes.LEFT] = false;
-		this.activeControls[Polyworks.InputCodes.RIGHT] = false;
-		this.activeControls[Polyworks.InputCodes.UP] = false;
-		this.activeControls[Polyworks.InputCodes.SPACE] = false;
-		this.activeControls[Polyworks.InputCodes.DOWN] = false;
+		this.activeControls[PWG.InputCodes.LEFT] = false;
+		this.activeControls[PWG.InputCodes.RIGHT] = false;
+		this.activeControls[PWG.InputCodes.UP] = false;
+		this.activeControls[PWG.InputCodes.SPACE] = false;
+		this.activeControls[PWG.InputCodes.DOWN] = false;
 		// 
 		// 
 	};
@@ -69818,13 +69818,13 @@ Polyworks.Player = (function() {
 		this.activeControls[event.value] = true;
 		// 
 		// 
-		if(event.value === Polyworks.InputCodes.RESET) {
-			this.activeControls[Polyworks.InputCodes.LEFT] = false;
-			this.activeControls[Polyworks.InputCodes.RIGHT] = false;
-		} else if(event.value === Polyworks.InputCodes.LEFT) {
-			this.activeControls[Polyworks.InputCodes.RIGHT] = false;
-		} else if(event.value === Polyworks.InputCodes.RIGHT) {
-			this.activeControls[Polyworks.InputCodes.LEFT] = false;
+		if(event.value === PWG.InputCodes.RESET) {
+			this.activeControls[PWG.InputCodes.LEFT] = false;
+			this.activeControls[PWG.InputCodes.RIGHT] = false;
+		} else if(event.value === PWG.InputCodes.LEFT) {
+			this.activeControls[PWG.InputCodes.RIGHT] = false;
+		} else if(event.value === PWG.InputCodes.RIGHT) {
+			this.activeControls[PWG.InputCodes.LEFT] = false;
 		}
 		this.updatePosition();
 	};
@@ -69833,20 +69833,20 @@ Polyworks.Player = (function() {
 		this.activeControls[event.value] = false;
 		// 
 		// 
-		if(event.value === Polyworks.InputCodes.RESET) {
-			this.activeControls[Polyworks.InputCodes.LEFT] = false;
-			this.activeControls[Polyworks.InputCodes.RIGHT] = false;
-		} else if(event.value === Polyworks.InputCodes.LEFT) {
-			this.activeControls[Polyworks.InputCodes.RIGHT] = false;
-		} else if(event.value === Polyworks.InputCodes.RIGHT) {
-			this.activeControls[Polyworks.InputCodes.LEFT] = false;
+		if(event.value === PWG.InputCodes.RESET) {
+			this.activeControls[PWG.InputCodes.LEFT] = false;
+			this.activeControls[PWG.InputCodes.RIGHT] = false;
+		} else if(event.value === PWG.InputCodes.LEFT) {
+			this.activeControls[PWG.InputCodes.RIGHT] = false;
+		} else if(event.value === PWG.InputCodes.RIGHT) {
+			this.activeControls[PWG.InputCodes.LEFT] = false;
 		}
 		this.updatePosition();
 	};
 	
 	Player.prototype.updatePosition = function() {
 		// 
-		if(!PolyworksGame.adPlaying) {
+		if(!PWGGame.adPlaying) {
 			if(this.initialPosition) {
 				this.initialPosition = false;
 				this.activateGravity();
@@ -69856,18 +69856,18 @@ Polyworks.Player = (function() {
 			this.velY = 0;
 			var attrs = this.model.attrs;
 
-			if (this.activeControls[Polyworks.InputCodes.LEFT]) {
+			if (this.activeControls[PWG.InputCodes.LEFT]) {
 				this.velX = -attrs.speed.x;
 				attrs.facingForward = false;
 			}
-			else if (this.activeControls[Polyworks.InputCodes.RIGHT]) {
+			else if (this.activeControls[PWG.InputCodes.RIGHT]) {
 				this.velX = attrs.speed.x;
 				attrs.facingForward = true;
 			}
 
 			this.body.velocity.x = this.velX;
 
-			if(this.activeControls[Polyworks.InputCodes.UP] || this.activeControls[Polyworks.InputCodes.SPACE]) {
+			if(this.activeControls[PWG.InputCodes.UP] || this.activeControls[PWG.InputCodes.SPACE]) {
 				if(attrs.grounded && !attrs.justJumped) {
 					this.velY = -attrs.speed.y;
 					this.body.velocity.y = this.velY;
@@ -69877,7 +69877,7 @@ Polyworks.Player = (function() {
 				} else {
 					this.velY = 0;
 				}
-			} else if(this.activeControls[Polyworks.InputCodes.DOWN]) {
+			} else if(this.activeControls[PWG.InputCodes.DOWN]) {
 				// 
 			}
 		}
@@ -69898,7 +69898,7 @@ Polyworks.Player = (function() {
 		// 
 		if(this.alive) {
 			this.collided = false;
-			var physics = PolyworksGame.phaser.physics;
+			var physics = PWGGame.phaser.physics;
 			var attrs = this.model.attrs;
 			var physicalItems = params.physicalItems; 
 
@@ -69946,7 +69946,7 @@ Polyworks.Player = (function() {
 	Player.prototype.checkCollision = function(collection, callback, physics, context) {
 		// 
 		// physics.overlap(this, collection, callback, null, context);
-		Polyworks.Utils.each(collection,
+		PWG.Utils.each(collection,
 			function(c) {
 				physics.overlap(this, c, callback, null, context);
 			},
@@ -69966,10 +69966,10 @@ Polyworks.Player = (function() {
 		var health = bonus.model.attrs.health;
 		if(health) {
 			this.health += health;
-			PolyworksGame.setHealth(this.health);
+			PWGGame.setHealth(this.health);
 		}
 		if(bonus.model.attrs.score) {
-		    PolyworksGame.setLevelScore(bonus.model.attrs.score);
+		    PWGGame.setLevelScore(bonus.model.attrs.score);
 		}
 		bonus.active = false; 
 		bonus.destroy();
@@ -70029,7 +70029,7 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.onGoalCollision = function(player, goal) {
 		// 
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.GOAL_REACHED, value: goal.model.name });
+		PWG.EventCenter.trigger({ type: PWG.Events.GOAL_REACHED, value: goal.model.name });
 		goal.destroy();
 	};
 
@@ -70037,10 +70037,10 @@ Polyworks.Player = (function() {
 		// 
 		if(!this.justDamaged) {
 			this.health -= damage;
-			PolyworksGame.setHealth(this.health);
+			PWGGame.setHealth(this.health);
 			if(this.health <= 0) {
-				PolyworksGame.levelScore = 0;
-				PolyworksGame.changeState('gameOver');
+				PWGGame.levelScore = 0;
+				PWGGame.changeState('gameOver');
 			} else {
 				_this.justDamaged = true;
 				_this.damageTimer = setTimeout(_this.resetJustDamaged, _this.damageInterval);
@@ -70055,8 +70055,8 @@ Polyworks.Player = (function() {
 	
 	Player.prototype.destroy = function() {
 		// 
-		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_PRESSED, this.onControlButtonPressed);
-		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_RELEASED, this.onControlButtonReleased);
+		PWG.EventCenter.unbind(PWG.Events.CONTROL_PRESSED, this.onControlButtonPressed);
+		PWG.EventCenter.unbind(PWG.Events.CONTROL_RELEASED, this.onControlButtonReleased);
 
 		this.alive = false;
 		this.update = null;
@@ -70067,8 +70067,8 @@ Polyworks.Player = (function() {
 	return Player;
 })();
 
-Polyworks.AnimatedPlayer = (function() {
-	Polyworks.Utils.inherits(AnimatedPlayer, Polyworks.Player);
+PWG.AnimatedPlayer = (function() {
+	PWG.Utils.inherits(AnimatedPlayer, PWG.Player);
 	
 	function AnimatedPlayer(params) {
 		// 
@@ -70145,10 +70145,10 @@ Polyworks.AnimatedPlayer = (function() {
 	return AnimatedPlayer;
 })();
 
-Polyworks.Empty = (function() {
+PWG.Empty = (function() {
 	function Empty(params) {
 		// 
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 	}
 	
 	Empty.prototype.begin = function() {
@@ -70160,7 +70160,7 @@ Polyworks.Empty = (function() {
 	return Empty;
 })();
 
-PolyworksGame = (function() {
+PWGGame = (function() {
 	var _model = {};
 	var _player = {};
 	var _controls = {};
@@ -70169,7 +70169,7 @@ PolyworksGame = (function() {
 	var _levelInfoStates = [];
 	var _socialManager; 
 
-	var _adapter = Polyworks.TGSAdapter;
+	var _adapter = PWG.TGSAdapter;
 	
 	var _gameTitle = '';
 	var _gameStarted = false;
@@ -70207,8 +70207,8 @@ PolyworksGame = (function() {
 		isQuit: false,
 
 		begin: function(params) {
-			PolyworksGame.name = params.name;
-			PolyworksGame.aspectRatio = params.aspectRatio;
+			PWGGame.name = params.name;
+			PWGGame.aspectRatio = params.aspectRatio;
 			// _model = params;
 			// window.scrollTo(0,0);
 			window.addEventListener("load", 
@@ -70228,19 +70228,19 @@ PolyworksGame = (function() {
 			// );
 			// window.addEventListener("blur",
 			// 	function() {
-			// 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.PAUSE_STATE });
+			// 		PWG.EventCenter.trigger({ type: PWG.Events.PAUSE_STATE });
 			// 	}
 			// );
 			// window.addEventListener("pagehide",
 			// 	function() {
-			// 		Polyworks.EventCenter.trigger({ type: Polyworks.Events.PAUSE_STATE });
+			// 		PWG.EventCenter.trigger({ type: PWG.Events.PAUSE_STATE });
 			// 	}
 			// );
-			PolyworksGame.browser = Polyworks.DeviceUtils.getBrowser();
-			PolyworksGame.os = Polyworks.DeviceUtils.getOs();
+			PWGGame.browser = PWG.DeviceUtils.getBrowser();
+			PWGGame.os = PWG.DeviceUtils.getOs();
 			
 			// CHECK FOR FIREFOX ON MAC, AND BLOCK -- IT CRASHES WITH WEB GL RENDERING AND IS TOO SLOW FOR CANVAS RENDERING
-			if(PolyworksGame.browser === Polyworks.DeviceUtils.browsers.FIREFOX && PolyworksGame.os === Polyworks.DeviceUtils.operatingSystems.MAC) {
+			if(PWGGame.browser === PWG.DeviceUtils.browsers.FIREFOX && PWGGame.os === PWG.DeviceUtils.operatingSystems.MAC) {
 				var ffmsg = document.createElement('div');
 				ffmsg.setAttribute('id', 'firefoxMessage');
 				ffmsg.innerHTML = "we're sorry, but firefox is not supported.<br />please switch to a different browser.";
@@ -70251,7 +70251,7 @@ PolyworksGame = (function() {
 				_checkOrientation();
 				_getSavedData();
 
-				if(Polyworks.DeviceUtils.isIphone()) {
+				if(PWG.DeviceUtils.isIphone()) {
 					document.getElementById('iphoneTip').style.display = 'block';
 					this.tipDisplayed = true;
 				}
@@ -70264,7 +70264,7 @@ PolyworksGame = (function() {
 
 		get: function(prop) {
 			// if(_model.hasOwnProperty(prop)) {
-			if(Polyworks.Utils.has(_model, prop)) {
+			if(PWG.Utils.has(_model, prop)) {
 				return _model[prop];
 			} else {
 				return null;
@@ -70275,9 +70275,9 @@ PolyworksGame = (function() {
 			// 
 			var levelInfo = {
 				levelText: _levels[idx].model.text,
-				highScore: PolyworksGame.highScores[idx],
-				status: PolyworksGame.levelStatus[idx],
-				statusText: _model.levelStatusText[PolyworksGame.levelStatus[idx]]
+				highScore: PWGGame.highScores[idx],
+				status: PWGGame.levelStatus[idx],
+				statusText: _model.levelStatusText[PWGGame.levelStatus[idx]]
 			};
 			return levelInfo;
 		},
@@ -70289,16 +70289,16 @@ PolyworksGame = (function() {
 				tipDisplayed = false;
 			}
 			if(id === 'quit') {
-				PolyworksGame.quit();
+				PWGGame.quit();
 			} else {
 				var state = _states[id];
 				if(state) {
-					PolyworksGame.previousState = PolyworksGame.currentState;
-					PolyworksGame.currentState = id;
+					PWGGame.previousState = PWGGame.currentState;
+					PWGGame.currentState = id;
 					
 					// 
-					PolyworksGame.addLoadingDiv();
-					PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
+					PWGGame.addLoadingDiv();
+					PWGGame.phaser.state.start(id, state.clearWorld, state.clearCache);
 				} else {
 					
 				}
@@ -70307,26 +70307,26 @@ PolyworksGame = (function() {
 		},
 
 		setScore: function(val) {
-			PolyworksGame.score += val;
-			Polyworks.EventCenter.trigger({ type: Polyworks.Events.SCORE_UPDATED });
+			PWGGame.score += val;
+			PWG.EventCenter.trigger({ type: PWG.Events.SCORE_UPDATED });
 		},
 
 		setLevelScore: function(val) {
-			PolyworksGame.levelScore += val;
-			Polyworks.EventCenter.trigger({ type: Polyworks.Events.LEVEL_SCORE_UPDATED });
+			PWGGame.levelScore += val;
+			PWG.EventCenter.trigger({ type: PWG.Events.LEVEL_SCORE_UPDATED });
 		},
 
 		setHealth: function(val) {
-			PolyworksGame.health = val;
-			Polyworks.EventCenter.trigger({ type: Polyworks.Events.HEALTH_UPDATED });
+			PWGGame.health = val;
+			PWG.EventCenter.trigger({ type: PWG.Events.HEALTH_UPDATED });
 		},
 
 		setRequirements: function(met, total) {
-			PolyworksGame.requirementsMet = met;
-			PolyworksGame.requirementsCount = total;
+			PWGGame.requirementsMet = met;
+			PWGGame.requirementsCount = total;
 			
 			if(total > 0) {
-				Polyworks.EventCenter.trigger({ type: Polyworks.Events.REQUIREMENTS_UPDATED });
+				PWG.EventCenter.trigger({ type: PWG.Events.REQUIREMENTS_UPDATED });
 			}
 		},
 
@@ -70356,14 +70356,14 @@ PolyworksGame = (function() {
 
 		quit: function() {
 			// 
-			if(!PolyworksGame.isQuit) {
+			if(!PWGGame.isQuit) {
 				_quit();
 			}
 		}
 	};
 
 	function _addWebFonts(webFonts) {
-		Polyworks.WebFontManager.init(webFonts);
+		PWG.WebFontManager.init(webFonts);
 	}
 	
 	function _addGoogleAnalytics() {
@@ -70394,21 +70394,21 @@ PolyworksGame = (function() {
 			// }
 		};
 		window.onblur = function(event) {
-			Polyworks.EventCenter.trigger({ type: Polyworks.Events.PAUSE_STATE });
+			PWG.EventCenter.trigger({ type: PWG.Events.PAUSE_STATE });
 		};
 		window.onpagehide = function(event) {
-			Polyworks.EventCenter.trigger({ type: Polyworks.Events.PAUSE_STATE });
+			PWG.EventCenter.trigger({ type: PWG.Events.PAUSE_STATE });
 		};
 
-		Polyworks.EventCenter.begin();
-		Polyworks.EventCenter.bind(Polyworks.Events.STAGE_INITIALIZED, _onStageInitialized, this);
-		Polyworks.EventCenter.bind(Polyworks.Events.BUTTON_PRESSED, _onControlPressed, this);
-		Polyworks.EventCenter.bind(Polyworks.Events.CONTROL_PRESSED, _onControlPressed, this);
-		Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_STATE, _onChangeState, this);
-		Polyworks.EventCenter.bind(Polyworks.Events.SHOW_LEVEL_INFO, _onShowLevelInfo, this);
-		Polyworks.EventCenter.bind(Polyworks.Events.START_LEVEL, _onStartLevel, this);
-		Polyworks.EventCenter.bind(Polyworks.Events.NEXT_LEVEL, _onNextLevel, this);
-		Polyworks.EventCenter.bind(Polyworks.Events.LEVEL_CLEARED, _onLevelCleared, this);
+		PWG.EventCenter.begin();
+		PWG.EventCenter.bind(PWG.Events.STAGE_INITIALIZED, _onStageInitialized, this);
+		PWG.EventCenter.bind(PWG.Events.BUTTON_PRESSED, _onControlPressed, this);
+		PWG.EventCenter.bind(PWG.Events.CONTROL_PRESSED, _onControlPressed, this);
+		PWG.EventCenter.bind(PWG.Events.CHANGE_STATE, _onChangeState, this);
+		PWG.EventCenter.bind(PWG.Events.SHOW_LEVEL_INFO, _onShowLevelInfo, this);
+		PWG.EventCenter.bind(PWG.Events.START_LEVEL, _onStartLevel, this);
+		PWG.EventCenter.bind(PWG.Events.NEXT_LEVEL, _onNextLevel, this);
+		PWG.EventCenter.bind(PWG.Events.LEVEL_CLEARED, _onLevelCleared, this);
 	}
 
 	function _removeListeners() {
@@ -70416,13 +70416,13 @@ PolyworksGame = (function() {
 		window.onresize = null;
 		window.onblur = null;
 		window.onpagehide = null;
-		Polyworks.EventCenter.unbind(Polyworks.Events.STAGE_INITIALIZED, _onStageInitialized, this);
-		Polyworks.EventCenter.unbind(Polyworks.Events.BUTTON_PRESSED, _onControlPressed, this);
-		Polyworks.EventCenter.unbind(Polyworks.Events.CONTROL_PRESSED, _onControlPressed, this);
-		Polyworks.EventCenter.unbind(Polyworks.Events.CHANGE_STATE, _onChangeState, this);
-		Polyworks.EventCenter.unbind(Polyworks.Events.START_LEVEL, _onStartLevel, this);
-		Polyworks.EventCenter.unbind(Polyworks.Events.NEXT_LEVEL, _onNextLevel, this);
-		Polyworks.EventCenter.unbind(Polyworks.Events.LEVEL_CLEARED, _onLevelCleared, this);
+		PWG.EventCenter.unbind(PWG.Events.STAGE_INITIALIZED, _onStageInitialized, this);
+		PWG.EventCenter.unbind(PWG.Events.BUTTON_PRESSED, _onControlPressed, this);
+		PWG.EventCenter.unbind(PWG.Events.CONTROL_PRESSED, _onControlPressed, this);
+		PWG.EventCenter.unbind(PWG.Events.CHANGE_STATE, _onChangeState, this);
+		PWG.EventCenter.unbind(PWG.Events.START_LEVEL, _onStartLevel, this);
+		PWG.EventCenter.unbind(PWG.Events.NEXT_LEVEL, _onNextLevel, this);
+		PWG.EventCenter.unbind(PWG.Events.LEVEL_CLEARED, _onLevelCleared, this);
 	}
 
 	function _hideAddressBar() {
@@ -70445,36 +70445,36 @@ PolyworksGame = (function() {
 	function _checkOrientation() {
 		var w = window.innerWidth;
 		var h = window.innerHeight;
-		PolyworksGame.isLandscape = (w > h) ? true : false;
+		PWGGame.isLandscape = (w > h) ? true : false;
 		// 
-		if(PolyworksGame.isLandscape) {
-			PolyworksGame.hideOrientationMessage();
+		if(PWGGame.isLandscape) {
+			PWGGame.hideOrientationMessage();
 			if(!_stageInitialized) {
-				Polyworks.Stage.init(PolyworksGame.aspectRatio);
+				PWG.Stage.init(PWGGame.aspectRatio);
 			}
 		} else {
-			PolyworksGame.showOrientationMessage();
+			PWGGame.showOrientationMessage();
 		}
 	}
 	
 	function _orientationChange() {
 		_checkOrientation();
 		//  
-		if(PolyworksGame.currentState !== '') {
-			_states[PolyworksGame.currentState].orientationSet(PolyworksGame.isLandscape);
+		if(PWGGame.currentState !== '') {
+			_states[PWGGame.currentState].orientationSet(PWGGame.isLandscape);
 		}
 	}
 	
 	function _getSavedData() {
 		// Polywork.Storage.destroy();
-		var savedData = Polyworks.Storage.get(PolyworksGame.name);
+		var savedData = PWG.Storage.get(PWGGame.name);
 		
 		if(typeof(savedData) !== 'undefined') {
 			if(savedData.indexOf('{') > -1) {
 				// 
 				savedData = JSON.parse(savedData);
 				for(var key in savedData) {
-					PolyworksGame[key] = savedData[key];
+					PWGGame[key] = savedData[key];
 				}
 			}
 		}
@@ -70482,20 +70482,20 @@ PolyworksGame = (function() {
 
 	function _setSavedData() {
 		var params = {};
-		params[PolyworksGame.name] = {
-			score: PolyworksGame.score,
-			currentLevel: PolyworksGame.currentLevel,
-			savedState: PolyworksGame.currentState,
-			savedStatus: PolyworksGame.levelStatus,
-			highScores: PolyworksGame.highScores,
+		params[PWGGame.name] = {
+			score: PWGGame.score,
+			currentLevel: PWGGame.currentLevel,
+			savedState: PWGGame.currentState,
+			savedStatus: PWGGame.levelStatus,
+			highScores: PWGGame.highScores,
 			viewedOnce: '1'
 		};
 
-		Polyworks.Storage.set(params);
+		PWG.Storage.set(params);
 	}
 	
 	function _preload() {
-		var phaser = PolyworksGame.phaser;
+		var phaser = PWGGame.phaser;
 		var images = _model.images;
 		var sprites = _model.sprites;
 		var loaded = {
@@ -70503,7 +70503,7 @@ PolyworksGame = (function() {
 			sprites: {}
 		};
 
-		Polyworks.Utils.each(images,
+		PWG.Utils.each(images,
 			function(image, key) {
 				if(_model.preloadAll) {
 					phaser.load.image(key, image);
@@ -70514,7 +70514,7 @@ PolyworksGame = (function() {
 		);
 
 		// 
-		Polyworks.Utils.each(sprites,
+		PWG.Utils.each(sprites,
 			function(sprite, key) {
 				// 
 				if(_model.preloadAll) {
@@ -70525,7 +70525,7 @@ PolyworksGame = (function() {
 			this
 		);
 
-		PolyworksGame.loaded = loaded;
+		PWGGame.loaded = loaded;
 	}
 	
 	function _create() {
@@ -70540,31 +70540,31 @@ PolyworksGame = (function() {
 		_isTouchDevice = (navigator.userAgent.match(/ipad|iphone|android/i) !== null);
 		// 
 
-		var config = new Polyworks.Config();
+		var config = new PWG.Config();
 
-		_model = config.init(Polyworks.Stage);
+		_model = config.init(PWG.Stage);
 		
 		if(_model.webFonts) {
 			_addWebFonts(_model.webFonts);
 		}
-		PolyworksGame.startingHealth = _model.player.attrs.phaser.health;
+		PWGGame.startingHealth = _model.player.attrs.phaser.health;
 
 		var renderType = Phaser.AUTO;
-		// if(Polyworks.DeviceUtils.isFirefox()) {
+		// if(PWG.DeviceUtils.isFirefox()) {
 		// 	renderType = Phaser.CANVAS;
 		// }
 		// 
-		PolyworksGame.phaser = new Phaser.Game(Polyworks.Stage.winW, Polyworks.Stage.winH, renderType, 'gameContainer', { preload: _preload, create: _create });
+		PWGGame.phaser = new Phaser.Game(PWG.Stage.winW, PWG.Stage.winH, renderType, 'gameContainer', { preload: _preload, create: _create });
 	}
 
 	function _onControlPressed(event) {
 		switch(event.value) {
-			case Polyworks.InputCodes.QUIT:
-				PolyworksGame.changeState('quit');
+			case PWG.InputCodes.QUIT:
+				PWGGame.changeState('quit');
 			break;
 
-			case Polyworks.InputCodes.CLEAR_DATA: 
-				Polyworks.Storage.destroy();
+			case PWG.InputCodes.CLEAR_DATA: 
+				PWG.Storage.destroy();
 			break;
 
 			default: 
@@ -70579,19 +70579,19 @@ PolyworksGame = (function() {
 				_adapter.logEvent(_adapter.logEvents.GAME_EVENT, [_adapter.gameEvents.BEGIN]);
 			}
 		}
-		PolyworksGame.changeState(event.value);
+		PWGGame.changeState(event.value);
 	}
 	
 	function _onShowLevelInfo(event) {
 		
 		var levelIdx = (event.value < 9) ? ('0' + (event.value+1)) : (event.value+1);
 		var stateId = 'level' + levelIdx + 'Info';
-		PolyworksGame.changeState(stateId);
+		PWGGame.changeState(stateId);
 	}
 
 	function _onStartLevel(event) {
 
-		idx = PolyworksGame.currentLevel;
+		idx = PWGGame.currentLevel;
 		for(var key in event) {
 			if(key === 'value' && typeof(event[key]) !== 'undefined') {
 				idx = event[key];
@@ -70600,50 +70600,50 @@ PolyworksGame = (function() {
 		}
 		// 
 		var stateId = _levels[idx].model.name;
-		PolyworksGame.currentLevel = idx;
+		PWGGame.currentLevel = idx;
 		// 
-		PolyworksGame.levelText = _levels[idx].model.text;
-		PolyworksGame.levelScore = 0;
-		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
-		PolyworksGame.changeState(stateId);
+		PWGGame.levelText = _levels[idx].model.text;
+		PWGGame.levelScore = 0;
+		PWGGame.currentLevelHighScore = 'high score: ' + PWGGame.highScores[idx];
+		PWGGame.changeState(stateId);
 
 		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.START, (idx+1)]);
-		_adapter.adCheck(PolyworksGame.currentLevel);
+		_adapter.adCheck(PWGGame.currentLevel);
 	}
 	
 	function _onNextLevel(event) {
 		
 		var stateId;
-		if(PolyworksGame.currentLevel === PolyworksGame.levelCount) {
-			PolyworksGame.currentLevel = 0;
-			PolyworksGame.levelText = '';
+		if(PWGGame.currentLevel === PWGGame.levelCount) {
+			PWGGame.currentLevel = 0;
+			PWGGame.levelText = '';
 			stateId = 'completed';
 
 			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.GAME_COMPLETED]);
 
 		} else {
-			var idx = PolyworksGame.currentLevel;
+			var idx = PWGGame.currentLevel;
 			var levelIdx = (idx < 9) ? ('0' + (idx+1)) : (idx+1);
 			stateId = 'level' + levelIdx + 'Info';
 		}
-		PolyworksGame.changeState(stateId);
+		PWGGame.changeState(stateId);
 
 	}
 	
 	function _onLevelCleared(event) {
 		
 		var idx = event.value;
-		PolyworksGame.levelStatus[idx] = 'c';
+		PWGGame.levelStatus[idx] = 'c';
 
-		if(PolyworksGame.levelScore > PolyworksGame.highScores[idx]) {
-			PolyworksGame.highScores[idx] = PolyworksGame.levelScore;
-			PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.levelScore + ' NEW';
-			Polyworks.EventCenter.trigger(Polyworks.Events.HIGH_SCORE_UPDATED);
-			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.NEW_HIGH_SCORE, PolyworksGame.levelScore]);
+		if(PWGGame.levelScore > PWGGame.highScores[idx]) {
+			PWGGame.highScores[idx] = PWGGame.levelScore;
+			PWGGame.currentLevelHighScore = 'high score: ' + PWGGame.levelScore + ' NEW';
+			PWG.EventCenter.trigger(PWG.Events.HIGH_SCORE_UPDATED);
+			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.NEW_HIGH_SCORE, PWGGame.levelScore]);
 
 			var totalScore = 0;
-			Polyworks.Utils.each(
-				PolyworksGame.highScores,
+			PWG.Utils.each(
+				PWGGame.highScores,
 				function(highScore) {
 					totalScore += highScore;
 				},
@@ -70655,40 +70655,40 @@ PolyworksGame = (function() {
 		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.COMPLETE, (idx+1)]);
 		idx++;
 		
-		if(PolyworksGame.levelStatus[idx] === 'l') {
-			PolyworksGame.levelStatus[idx] = 'u';
+		if(PWGGame.levelStatus[idx] === 'l') {
+			PWGGame.levelStatus[idx] = 'u';
 		}
-		PolyworksGame.currentLevel = idx;
+		PWGGame.currentLevel = idx;
 	}
 
 	function _initControls() {
 	
-		_controls = new Polyworks.Collection(_model.controls.keys);
+		_controls = new PWG.Collection(_model.controls.keys);
 		_controls.begin();
 	}
 
 	function _initStates() {
 		
-		PolyworksGame.levelStatus = [];
+		PWGGame.levelStatus = [];
 
 		var states = _model.states;
 		var state;
 		var levelCount = 0;
 
-		Polyworks.Utils.each(states,
+		PWG.Utils.each(states,
 			function(s, idx) {
 				// 
-				state = new Polyworks[s.cl](s, s.name);
+				state = new PWG[s.cl](s, s.name);
 				_states[s.name] = state;
-				PolyworksGame.phaser.state.add(s.name, state, false);
+				PWGGame.phaser.state.add(s.name, state, false);
 				if(s.name.indexOf('level') > -1) {
 					// 
-					if(PolyworksGame.savedStatus) {
-						PolyworksGame.levelStatus[levelCount] = PolyworksGame.savedStatus[levelCount];
-						PolyworksGame.highScores[levelCount] = PolyworksGame.highScores[levelCount] || 0;
+					if(PWGGame.savedStatus) {
+						PWGGame.levelStatus[levelCount] = PWGGame.savedStatus[levelCount];
+						PWGGame.highScores[levelCount] = PWGGame.highScores[levelCount] || 0;
 					} else {
-						PolyworksGame.levelStatus[levelCount] = (levelCount === 0) ? 'u' : 'l';
-						PolyworksGame.highScores[levelCount] = 0;
+						PWGGame.levelStatus[levelCount] = (levelCount === 0) ? 'u' : 'l';
+						PWGGame.highScores[levelCount] = 0;
 					}
 					levelCount++;
 					_levels.push(state);
@@ -70697,32 +70697,32 @@ PolyworksGame = (function() {
 			},
 			this
 		);
-		PolyworksGame.levelCount = levelCount;
+		PWGGame.levelCount = levelCount;
 		_initLevelInfoStates();
 		_adapter.init(levelCount);
 		
 		if(_stageInitialized) {
-			PolyworksGame.changeState(_model.initialState);
+			PWGGame.changeState(_model.initialState);
 		}
 		_statesInialized = true;
 	}
 
 	function _initLevelInfoStates() {
-		var template = PolyworksGame.get('levelInfoStateTemplate');
-		var controls = PolyworksGame.get('controls').levelInfo;
+		var template = PWGGame.get('levelInfoStateTemplate');
+		var controls = PWGGame.get('controls').levelInfo;
 		
-		Polyworks.Utils.each(
+		PWG.Utils.each(
 			_levels,
 			function(level, idx) {
-				var levelInfoConfig = Polyworks.Utils.clone(template.state);
-				var groupCollection = Polyworks.Utils.clone(template.groupCollection);
+				var levelInfoConfig = PWG.Utils.clone(template.state);
+				var groupCollection = PWG.Utils.clone(template.groupCollection);
 				var levelInfoState;
 				var levelIdx;
 				var levelInfo; 
 				var background;
 				var title;
 
-				levelInfo = PolyworksGame.getLevelInfo(idx);
+				levelInfo = PWGGame.getLevelInfo(idx);
 				levelIdx = (idx < 9) ? ('0' + (idx+1)) : (idx+1);
 
 				stateName = 'level' + levelIdx + 'Info';
@@ -70740,7 +70740,7 @@ PolyworksGame = (function() {
 				groupCollection.status.attrs.defaultContent = levelInfo.statusText;
 				groupCollection.playButton.attrs.events.released.value = idx;
 				
-				Polyworks.Utils.each(
+				PWG.Utils.each(
 					groupCollection,
 					function(item, key) {
 						// 
@@ -70750,8 +70750,8 @@ PolyworksGame = (function() {
 				);
 
 				
-				levelInfoState = new Polyworks.MenuState(levelInfoConfig);
-				PolyworksGame.phaser.state.add(stateName, levelInfoState, false);
+				levelInfoState = new PWG.MenuState(levelInfoConfig);
+				PWGGame.phaser.state.add(stateName, levelInfoState, false);
 				_states[stateName] = levelInfoState;
 			},
 			this
@@ -70759,39 +70759,39 @@ PolyworksGame = (function() {
 	}
 	
 	function _initSocial() {
-		// Polyworks.SocialManager.init(_model.social);
-		Polyworks.SocialPanel.init(_model.social);
+		// PWG.SocialManager.init(_model.social);
+		PWG.SocialPanel.init(_model.social);
 	}
 	
 	function _quit() {
 		_adapter.logEvent(_adapter.logEvents.GAME_EVENT, [_adapter.gameEvents.END]);
 		_removeListeners();
-		PolyworksGame.isQuit = true;
+		PWGGame.isQuit = true;
 		// _killStates();
-		// Polyworks.EventCenter.reset();
+		// PWG.EventCenter.reset();
 
-		_states[PolyworksGame.currentState].shutdown();
-		PolyworksGame.gameOver = true;
-		if(PolyworksGame.player) {
-			PolyworksGame.player.destroy();
+		_states[PWGGame.currentState].shutdown();
+		PWGGame.gameOver = true;
+		if(PWGGame.player) {
+			PWGGame.player.destroy();
 		}
-		Polyworks.SocialPanel.destroy();
-		PolyworksGame.phaser.destroy();
+		PWG.SocialPanel.destroy();
+		PWGGame.phaser.destroy();
 
 		var gameContainer = document.getElementById('gameContainer');
 		gameContainer.parentNode.removeChild(gameContainer);
 
-		PolyworksGame.phaser = null;
-		Polyworks.Stage.destroy();
-		Polyworks.Stage = null;
-		Polyworks = null;
+		PWGGame.phaser = null;
+		PWG.Stage.destroy();
+		PWG.Stage = null;
+		PWG = null;
 		Phaser = null;
-		window.PolyworksGame = null;
+		window.PWGGame = null;
 	}
 	
 	function _killStates() {
 		// 
-		Polyworks.Utils.each(_states,
+		PWG.Utils.each(_states,
 			function(s) {
 				s.shutdown();
 			},
@@ -70803,11 +70803,11 @@ PolyworksGame = (function() {
 	return module;
 }());
 
-Polyworks.DOMManager.addElements(domConfig.head.elements, document.getElementsByTagName('head')[0]);
-Polyworks.DOMManager.addElements(domConfig.body.elements, document.getElementsByTagName('body')[0], onElementsAdded);
+PWG.DOMManager.addElements(domConfig.head.elements, document.getElementsByTagName('head')[0]);
+PWG.DOMManager.addElements(domConfig.body.elements, document.getElementsByTagName('body')[0], onElementsAdded);
 
 function onElementsAdded() {
-	PolyworksGame.begin({
+	PWGGame.begin({
 		name: 'kekeAndTheGreyExpanse',
 		aspectRatio: [16, 9]
 	});

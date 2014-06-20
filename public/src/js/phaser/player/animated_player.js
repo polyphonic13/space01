@@ -1,5 +1,5 @@
-Polyworks.AnimatedPlayer = (function() {
-	Polyworks.Utils.inherits(AnimatedPlayer, Polyworks.Player);
+PWG.AnimatedPlayer = (function() {
+	PWG.Utils.inherits(AnimatedPlayer, PWG.Player);
 	
 	function AnimatedPlayer(params) {
 		// trace('AnimatedPlayer, params = ');

@@ -1,11 +1,12 @@
-Polyworks.Enemy = (function() {
-	Polyworks.Utils.inherits(Enemy, Polyworks.Sprite);
+PWG.Enemy = (function() {
+	PWG.Utils.inherits(Enemy, PWG.Sprite);
 	
 	var _this;
 	function Enemy(params) {
 		Enemy._super.constructor.call(this, params);
 		this.reactivated = false; 
 		this.isInView = true;
+		this.isInProximity = false;
 		this.justJumped = false;
 		this.relationToPlayer = '';
 	}
@@ -18,22 +19,22 @@ Polyworks.Enemy = (function() {
 			this.relationToPlayer = 'near';
 			var movementType = this.model.attrs.movement.type;
 			switch(movementType) {
-				case Polyworks.MovementTypes.HORIZONTAL_BY_SPEED:
-				case Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED:
+				case PWG.MovementTypes.HORIZONTAL_BY_SPEED:
+				case PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED:
 					this.calculateHorizontalMovement(params.player, movementType, false);
 				break;
 				
-				case Polyworks.MovementTypes.VERTICAL_BY_SPEED:
+				case PWG.MovementTypes.VERTICAL_BY_SPEED:
 					this.calculateVerticalMovement(params.player, movementType);
 				break;
 				
-				case Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED:
-					this.calculateHorizontalMovement(params.player, Polyworks.MovementTypes.HORIZONTAL_BY_SPEED);
+				case PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED:
+					this.calculateHorizontalMovement(params.player, PWG.MovementTypes.HORIZONTAL_BY_SPEED);
 					var invert = false;
 					if(this.relationToPlayer == 'below') {
 						invert = true;
 					}
-					this.calculateVerticalMovement(params.player, Polyworks.MovementTypes.VERTICAL_BY_SPEED, invert);
+					this.calculateVerticalMovement(params.player, PWG.MovementTypes.VERTICAL_BY_SPEED, invert);
 				break;
 
 				default: 
@@ -55,10 +56,13 @@ Polyworks.Enemy = (function() {
 		var playerY = player.body.screenY;
 
 		if(this.model.attrs.testInView) {
-			if(enemyX < (playerX + Polyworks.Stage.width/2) && enemyX > (playerX - Polyworks.Stage.width/2)) {
+			var name = this.model.name;
+			if(enemyX < (playerX + PWG.Stage.width/2) && enemyX > (playerX - PWG.Stage.width/2)) {
 				this.isInView = true;
+				PWG.EventCenter.trigger({ type: PWG.Events.ADD_ACTIVE_ENEMY, enemy: this });
 			} else {
 				this.isInView = false;
+				PWG.EventCenter.trigger({ type: PWG.Events.REMOVE_ACTIVE_ENEMY, enemy: this });
 			}
 		}
 
@@ -67,18 +71,18 @@ Polyworks.Enemy = (function() {
 			if(enemyX < (playerX - 10)) {
 				// trace('move right');
 				this.relationToPlayer = 'right';
-				direction = (reverse) ? Polyworks.Directions.LEFT : Polyworks.Directions.RIGHT;
+				direction = (reverse) ? PWG.Directions.LEFT : PWG.Directions.RIGHT;
 				this.move({ direction: direction, type: movementType });
 			} else if(enemyX > (playerX + 10)) {
 				// trace('move left');
 				this.relationToPlayer = 'left';
-				direction = (reverse) ? Polyworks.Directions.RIGHT : Polyworks.Directions.LEFT;
+				direction = (reverse) ? PWG.Directions.RIGHT : PWG.Directions.LEFT;
 				this.move({ direction: direction, type: movementType });
 			} else if(this.model.attrs.jumps && (enemyY > playerY)) {
 				this.relationToPlayer = 'jumping';
 				if(!this.justJumped) {
 					this.justJumped = true;
-					this.move({ direction: Polyworks.Directions.UP, type: Polyworks.MovementTypes.JUMP });
+					this.move({ direction: PWG.Directions.UP, type: PWG.MovementTypes.JUMP });
 				}
 			}
 		}
@@ -90,7 +94,7 @@ Polyworks.Enemy = (function() {
 		var playerHeight = player.body.height;
 		
 		if(this.model.attrs.testInView) {
-			if(enemyX < (playerX + Polyworks.Stage.width/2) && enemyX > (playerX - Polyworks.Stage.width/2)) {
+			if(enemyX < (playerX + PWG.Stage.width/2) && enemyX > (playerX - PWG.Stage.width/2)) {
 				this.isInView = true;
 			} else {
 				this.isInView = false;
@@ -101,11 +105,11 @@ Polyworks.Enemy = (function() {
 			if(enemyY < (playerY - playerHeight)) {
 				// trace('move right');
 				this.relationToPlayer = 'above';
-				this.move({ direction: Polyworks.Directions.DOWN, type: movementType });
+				this.move({ direction: PWG.Directions.DOWN, type: movementType });
 			} else if(enemyY > (playerY + playerHeight)) {
 				// trace('move left');
 				this.relationToPlayer = 'below';
-				this.move({ direction: Polyworks.Directions.UP, type: movementType });
+				this.move({ direction: PWG.Directions.UP, type: movementType });
 			}
 		}
 	};
@@ -121,7 +125,7 @@ Polyworks.Enemy = (function() {
 	Enemy.prototype.kill = function() {
 		trace('Enemy['+this.model.name+']/kill, ancestor = ');
 		// trace(this.model);
-		PolyworksGame.setLevelScore(this.model.attrs.score);
+		PWGGame.setLevelScore(this.model.attrs.score);
 		this.model.ancestor.removeChild.call(this.model.ancestor, this.model.name);
 		Enemy._super.kill.call(this);
 	};

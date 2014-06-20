@@ -1,4 +1,4 @@
-Polyworks.ControlButtonTypes = {
+PWG.ControlButtonTypes = {
 	LEFT: 'leftButton',
 	RIGHT: 'rightButton',
 	UP: 'upButton',

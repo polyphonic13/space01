@@ -1,4 +1,4 @@
-Polyworks.Events = {
+PWG.Events = {
 	STAGE_INITIALIZED: 'stageInitialized',
 	CONFIG_LOADED: 'configLoaded',
 	AD_STARTED: 'adStarted',
@@ -20,6 +20,10 @@ Polyworks.Events = {
 	REQUIREMENT_MET: 'requirementMet',
 	LEVEL_REQUIREMENTS_MET: 'levelRequirementsMet',
 	LEVEL_CLEARED: 'levelCleared',
+	ADD_ACTIVE_ENEMY: 'addActiveEnemy',
+	ADD_ACTIVE_ENEMIES: 'addActiveEnemies',
+	REMOVE_ACTIVE_ENEMY: 'removeActiveEnemy',
+	REMOVE_ACTIVE_ENEMIES: 'removeActiveEnemies',
 	ENEMY_COLLISION: 'enemyCollision',
 	ENEMY_DESTROYED: 'enemyDestroyed',
 	BONUS_COLLISION: 'bonusCollision',

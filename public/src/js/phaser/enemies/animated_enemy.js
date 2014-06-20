@@ -1,5 +1,5 @@
-Polyworks.AnimatedEnemy = (function() {
-	Polyworks.Utils.inherits(AnimatedEnemy, Polyworks.Enemy);
+PWG.AnimatedEnemy = (function() {
+	PWG.Utils.inherits(AnimatedEnemy, PWG.Enemy);
 	
 	var _this;
 	function AnimatedEnemy(params) {
@@ -17,7 +17,7 @@ Polyworks.AnimatedEnemy = (function() {
 				// trace('\tenemy['+this.name+'] in range');
 				var animations = this.model.attrs.animations; 
 
-				if(!this.body.touching.down && (this.model.attrs.movement.type === Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED)) {
+				if(!this.body.touching.down && (this.model.attrs.movement.type === PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED)) {
 					if(this.relationToPlayer == 'left') {
 						if(this.currentAnimation !== AnimationTypes.FALLING_L) {
 							this.play(AnimationTypes.FALLING_L, animations[AnimationTypes.FALLING_L].frameRate, animations[AnimationTypes.FALLING_L].loop);

@@ -47,16 +47,45 @@ var Enemies = (function() {
 	};
 	
 	Enemies.prototype.move = function(x, y) {
-		for(var key in this.collection) {
-			this.collection[key].move(x, y);
-		}
+		PWG.Utils.each(
+			this.collection,
+			function(child) {
+				child.move(x, y);
+			},
+			this
+		);
+
 	};
 	
 	Enemies.prototype.moveByVelocity = function(velX, velY) {
 		// trace('Enemies/moveByVelocity');
-		for(var key in this.collection) {
-			this.collection[key].moveByVelocity(velX, velY);
-		}
+		PWG.Utils.each(
+			this.collection,
+			function(child) {
+				child.moveByVelocity(velX, velY);
+			},
+			this
+		);
+	};
+	
+	Enemies.prototype.activateGravity = function() {
+		PWG.Utils.each(
+			this.collection,
+			function(child) {
+				child.activateGravity();
+			},
+			this
+		);
+	};
+	
+	Enemies.prototype.deactivateGravity = function() {
+		PWG.Utils.each(
+			this.collection,
+			function(child) {
+				if(!child.isInView) {
+					child.deactivateGravity();
+				}
+			})
 	};
 	
 	Enemies.prototype.remove = function() {

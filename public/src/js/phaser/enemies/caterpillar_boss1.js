@@ -1,5 +1,5 @@
-Polyworks.CaterpillarBoss1 = (function() {
-	Polyworks.Utils.inherits(CaterpillarBoss1, Polyworks.GroupEnemy);
+PWG.CaterpillarBoss1 = (function() {
+	PWG.Utils.inherits(CaterpillarBoss1, PWG.GroupEnemy);
 	
 	function CaterpillarBoss1(params) {
 		

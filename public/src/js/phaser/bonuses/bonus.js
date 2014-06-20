@@ -1,5 +1,5 @@
-Polyworks.Bonus = (function() {
-	Polyworks.Utils.inherits(Bonus, Polyworks.Sprite);
+PWG.Bonus = (function() {
+	PWG.Utils.inherits(Bonus, PWG.Sprite);
 	
 	function Bonus(params) {
 		Bonus._super.constructor.call(this, params);
@@ -12,7 +12,7 @@ Polyworks.Bonus = (function() {
 	Bonus.prototype.collect = function() {
 		trace('Bonus['+this.model.name+']/collect, score = ' + this.model.attrs.score,  this.model);
 		if(this.model.attrs.score) {
-		    PolyworksGame.setLevelScore(this.model.attrs.score);
+		    PWGGame.setLevelScore(this.model.attrs.score);
 		}
 		this.model.ancestor.removeChild.call(this.model.ancestor, this.model.name);
 		Bonus._super.kill.call(this);

@@ -1,8 +1,8 @@
-Polyworks.Sprite = (function() {
-	Polyworks.Utils.inherits(Sprite, Phaser.Sprite);
+PWG.Sprite = (function() {
+	PWG.Utils.inherits(Sprite, Phaser.Sprite);
 
 	function Sprite(params) {
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 		// trace('Sprite['+this.model.name+']/constructor, model = ', this.model);
 		var attrs = this.model.attrs;
 		var start = attrs.start;
@@ -72,7 +72,7 @@ Polyworks.Sprite = (function() {
 
 		if(!physics.deferredGravity && !physics.immovable) {
 			if(!physics.gravity) {
-				this.body.gravity = PolyworksGame.get('gravity');
+				this.body.gravity = PWGGame.get('gravity');
 			}
 		}
 	};
@@ -89,7 +89,7 @@ Polyworks.Sprite = (function() {
 		// trace('Sprite['+this.model.name+']/activateGravity, y = ' + this.body.screenY);
 		var physics = this.model.attrs.physics;
 		if(physics && physics.deferredGravity) {
-			var gravity = (physics.gravity) ? physics.gravity : PolyworksGame.get('gravity');
+			var gravity = (physics.gravity) ? physics.gravity : PWGGame.get('gravity');
 			// trace('gravity = ');
 			// trace(gravity);
 			this.body.gravity = gravity;
@@ -102,14 +102,14 @@ Polyworks.Sprite = (function() {
 		// trace('Sprite['+this.model.name+']/checkTerrainCollision, terrain = ');
 		// trace(terrain);
 		// trace(this);
-		PolyworksGame.phaser.physics.collide(this, terrain);
+		PWGGame.phaser.physics.collide(this, terrain);
 	};
 	
 	Sprite.prototype.checkDynamicTerrainCollision = function(dynamicTerrain) {
-		var physics = PolyworksGame.phaser.physics;
+		var physics = PWGGame.phaser.physics;
 		var _this = this;
 
-		Polyworks.Utils.each(dynamicTerrain,
+		PWG.Utils.each(dynamicTerrain,
 			function(c) {
 				physics.overlap(this, c, _this.onDynamicTerrainCollision, null, _this);
 			},
@@ -133,7 +133,7 @@ Polyworks.Sprite = (function() {
 	
 	Sprite.prototype.beginAnimations = function(animations) {
 		// trace('Sprite['+this.model.name+']/beginAnimations, animations = ', animations);
-		Polyworks.Utils.each(animations,
+		PWG.Utils.each(animations,
 			function(a, key) {
 				// trace('\ta['+key+'] = ', a);
 				this.animations.add(key, a.keyFrames, a.frameRate);
@@ -172,7 +172,7 @@ Polyworks.Sprite = (function() {
 		var movement = this.model.attrs.movement;
 		if(movement) {
 			// trace('Sprite['+this.model.name+']/move, movement = ', movement);
-			Polyworks.Utils.moveView(this, movement, params);
+			PWG.Utils.moveView(this, movement, params);
 		}
 	};
 

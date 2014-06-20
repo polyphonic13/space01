@@ -1,7 +1,7 @@
 /*
 http://atlchris.com/1665/how-to-create-custom-share-buttons-for-all-the-popular-social-services/
 */
-Polyworks.SocialAdapter = (function() {
+PWG.SocialAdapter = (function() {
 	var SOCIAL_ELEMENT_CONTAINER = 'buttonContainer';
 	
 	function SocialAdapter(params) {

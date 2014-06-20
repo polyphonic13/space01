@@ -1,5 +1,5 @@
-Polyworks.PhysicalGroupCollection = (function() {
-	Polyworks.Utils.inherits(PhysicalGroupCollection, Polyworks.GroupCollection);
+PWG.PhysicalGroupCollection = (function() {
+	PWG.Utils.inherits(PhysicalGroupCollection, PWG.GroupCollection);
 	
 	function PhysicalGroupCollection(params) {
 		PhysicalGroupCollection._super.constructor.call(this, params);
@@ -9,7 +9,7 @@ Polyworks.PhysicalGroupCollection = (function() {
 		// trace('PhysicalGroupCollection['+this.model.name+']/checkTerrainCollsion');
 		// trace(terrain);
 		// trace(this);
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(c) {
 				c.checkTerrainCollision(terrain);
 			},
@@ -18,7 +18,7 @@ Polyworks.PhysicalGroupCollection = (function() {
 	};
 	
 	PhysicalGroupCollection.prototype.deactivateGravity = function() {
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(c) {
 				c.deactivateGravity();
 			},
@@ -28,7 +28,7 @@ Polyworks.PhysicalGroupCollection = (function() {
 	
 	PhysicalGroupCollection.prototype.activateGravity = function() {
 		// trace('PhysicalGroupCollection['+this.model.name+']/activateGravity, collection length = ' + collection.length);
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(c) {
 				c.activateGravity();
 			},
@@ -39,7 +39,7 @@ Polyworks.PhysicalGroupCollection = (function() {
 	PhysicalGroupCollection.prototype.getActive = function() {
 		// trace('PhysicalGroupCollection['+this.model.name+']/getActive, collection length = ' + this.model.collection.length);
 		var activeElements = [];
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(c) {
 				// trace('c['+c.model.name+'].active = ' + c.active);
 				if(c.active) {

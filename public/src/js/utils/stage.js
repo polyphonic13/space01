@@ -25,7 +25,7 @@ nexus 5:
 2940x940 = 3x2
 5880x940 = 6x2 (level)
 */
-Polyworks.Stage = (function() {
+PWG.Stage = (function() {
 	var stage = {};
 	
 	stage.winW = 0;
@@ -61,7 +61,7 @@ Polyworks.Stage = (function() {
 		// 	// _calculateSizes();
 		// });
 
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.STAGE_INITIALIZED });
+		PWG.EventCenter.trigger({ type: PWG.Events.STAGE_INITIALIZED });
 	};
 
 	function _calculateSizes() {

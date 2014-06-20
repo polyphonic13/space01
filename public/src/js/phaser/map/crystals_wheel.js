@@ -1,5 +1,5 @@
-Polyworks.CrystalsWheel = (function() {
-	Polyworks.Utils.inherits(CrystalsWheel, Polyworks.Sprite); 
+PWG.CrystalsWheel = (function() {
+	PWG.Utils.inherits(CrystalsWheel, PWG.Sprite); 
 	
 	function CrystalsWheel(params) {
 		CrystalsWheel._super.constructor.call(this, params);
@@ -7,8 +7,8 @@ Polyworks.CrystalsWheel = (function() {
 	
 	CrystalsWheel.prototype.begin = function() {
 		CrystalsWheel._super.begin.call(this);
-		if(PolyworksGame.currentLevel > -1) {
-			this.frame = (PolyworksGame.currentLevel);
+		if(PWGGame.currentLevel > -1) {
+			this.frame = (PWGGame.currentLevel);
 		}
 	};
 	

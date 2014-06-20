@@ -1,5 +1,5 @@
-Polyworks.ReactingTerrain = (function() {
-	Polyworks.Utils.inherits(ReactingTerrain, Polyworks.Sprite); 
+PWG.ReactingTerrain = (function() {
+	PWG.Utils.inherits(ReactingTerrain, PWG.Sprite); 
 	
 	ReactingTerrain.DEACTIVATED = 'deactivated';
 	ReactingTerrain.IDLE = 'idle';
@@ -31,19 +31,19 @@ Polyworks.ReactingTerrain = (function() {
 					var reaction = this.model.reaction;
 					// trace('\treaction = ', reaction.type);
 					switch(reaction.type) {
-						case Polyworks.TerrainReactions.ADD_GRAVITY:
+						case PWG.TerrainReactions.ADD_GRAVITY:
 							this.addGravity(this);
 						break;
 
-						case Polyworks.TerrainReactions.ADD_GRAVITY_AFTER_X_SECONDS: 
+						case PWG.TerrainReactions.ADD_GRAVITY_AFTER_X_SECONDS: 
 							this.callMethodAfterXSeconds('addGravity');
 						break; 
 
-						case Polyworks.TerrainReactions.DESTROY_AFTER_X_SECONDS: 
+						case PWG.TerrainReactions.DESTROY_AFTER_X_SECONDS: 
 							this.callMethodAfterXSeconds('removeTerrain');
 						break;
 
-						case Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION:
+						case PWG.TerrainReactions.DESTROY_AFTER_ANIMATION:
 							this.destroyAfterAnimation();
 						break; 
 
@@ -82,7 +82,7 @@ Polyworks.ReactingTerrain = (function() {
 		if(animation) {
 			// trace('\tgoing to call play on', animation);
 			var kill = false;
-			if(this.model.reaction.type === Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION) {
+			if(this.model.reaction.type === PWG.TerrainReactions.DESTROY_AFTER_ANIMATION) {
 				// trace('\t\tit\'s a destroy after animation, set kill to true');
 				kill = true;
 			}
@@ -102,7 +102,7 @@ Polyworks.ReactingTerrain = (function() {
 		if(this.model.attrs.animations) {
 			this.stop();
 		}
-		this.destroy();
+		// this.destroy();
 	};
 	
 	ReactingTerrain.prototype.callMethodAfterXSeconds = function(method) {

@@ -1,4 +1,4 @@
-Polyworks.Utils = (function() {
+PWG.Utils = (function() {
 	var utils = {};
 
 	utils.each = function(list, callback, context) {
@@ -29,7 +29,7 @@ Polyworks.Utils = (function() {
 	    if (obj instanceof Array) {
 	        var copy = [];
 	        for (var i = 0, len = obj.length; i < len; i++) {
-	            copy[i] = Polyworks.Utils.clone(obj[i]);
+	            copy[i] = PWG.Utils.clone(obj[i]);
 	        }
 	        return copy;
 	    }
@@ -38,7 +38,7 @@ Polyworks.Utils = (function() {
 	    if (obj instanceof Object) {
 	        var copy = {};
 	        for (var attr in obj) {
-	            if (obj.hasOwnProperty(attr)) copy[attr] = Polyworks.Utils.clone(obj[attr]);
+	            if (obj.hasOwnProperty(attr)) copy[attr] = PWG.Utils.clone(obj[attr]);
 	        }
 	        return copy;
 	    }
@@ -179,7 +179,7 @@ Polyworks.Utils = (function() {
 	};
 	
 	utils.addSpriteToGame = function(params) {
-		return PolyworksGame.phaser.add.sprite(params.start.x, params.start.y, params.img);
+		return PWGGame.phaser.add.sprite(params.start.x, params.start.y, params.img);
 	};
 	
 	utils.addSpriteToGroup = function(params) {
@@ -190,23 +190,23 @@ Polyworks.Utils = (function() {
 		// trace('Utils/moveView, '+ sprite.model.name);
 		var type = params.type || movement.type;
 		switch(type) {
-			case Polyworks.MovementTypes.HORIZONTAL_BY_SPEED:
-			case Polyworks.MovementTypes.VERTICAL_BY_SPEED:
+			case PWG.MovementTypes.HORIZONTAL_BY_SPEED:
+			case PWG.MovementTypes.VERTICAL_BY_SPEED:
 				this.moveDirectionalBySpeed(sprite, movement, params);
 			break;
 
-			case Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED:
+			case PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED:
 				// trace('groundedDirectionBySpeed, touching.down = ' + sprite.body.touching.down);
 				if(sprite.body.touching.down) {
 					this.moveDirectionalBySpeed(sprite, movement, params);
 				}
 			break;
 
-			case Polyworks.MovementTypes.JUMP:
+			case PWG.MovementTypes.JUMP:
 				this.moveDirectionalBySpeed(sprite, movement, params);
 			break; 
 			
-			case Polyworks.MovementTypes.TWEEN_PROPERTY:
+			case PWG.MovementTypes.TWEEN_PROPERTY:
 				this.tweenProperty(sprite, movement, params);
 			break;
 			
@@ -219,27 +219,27 @@ Polyworks.Utils = (function() {
 	utils.moveDirectionalBySpeed = function(sprite, movement, params) {
 		// trace('moveDirectionBySpeed: ' + sprite.model.name + ', direction = ' + params.direction + ', speed = ' + movement.speed);
 		switch(params.direction) {
-			case Polyworks.Directions.LEFT: 
+			case PWG.Directions.LEFT: 
 			sprite.x -= movement.speed;
 			break;
 
-			case Polyworks.Directions.RIGHT:
+			case PWG.Directions.RIGHT:
 			sprite.x += movement.speed;
 			break;
 
-			case Polyworks.Directions.JUMP:
+			case PWG.Directions.JUMP:
 			// sprite.x -= movement.speed;
 			sprite.body.velocity.y = -(movement.speed * sprite.model.attrs.jumpMultiplier);
 			// trace('going to jump: ' + (movement.speed * 1000));
 			// sprite.body.velocity.y = -(movement.speed * 1000);
 			break;
 
-			case Polyworks.Directions.UP: 
+			case PWG.Directions.UP: 
 			// trace('moving up: ' + movement.speed);
 			sprite.y -= movement.speed;
 			break;
 			
-			case Polyworks.Directions.DOWN: 
+			case PWG.Directions.DOWN: 
 			// trace('moving down: ' + movement.speed);
 			sprite.y += movement.speed;
 			break;
@@ -262,13 +262,13 @@ Polyworks.Utils = (function() {
             scriptTag.onreadystatechange = function() {
                 if(scriptTag.readyState == 'loaded' || scriptTag.readyState == 'complete') {
                     // callback.call(evt);
-					Polyworks.EventCenter.trigger(evt);
+					PWG.EventCenter.trigger(evt);
                 }
             };
         } else {
             scriptTag.onload = function() {
                 // callback.call(evt);
-				Polyworks.EventCenter.trigger(evt);
+				PWG.EventCenter.trigger(evt);
             };
         }
         scriptTag.setAttribute('src', url);

@@ -1,14 +1,14 @@
-Polyworks.Text = (function() {
-	Polyworks.Utils.inherits(Text, Phaser.Text);
+PWG.Text = (function() {
+	PWG.Utils.inherits(Text, Phaser.Text);
 	var _this; 
 	
 	function Text(params) {
 		_this = this;
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 		var attrs = this.model.attrs;
 		// trace('Text['+this.model.name+']/constructor, this = ', this);
-		var context = (attrs.dynamicContentContext) ? attrs.dynamicContentContext : PolyworksGame;
-		var content = Polyworks.Utils.parseMarkup(attrs.defaultContent, context);
+		var context = (attrs.dynamicContentContext) ? attrs.dynamicContentContext : PWGGame;
+		var content = PWG.Utils.parseMarkup(attrs.defaultContent, context);
 		Text._super.constructor.call(this, params.game, attrs.x, attrs.y, content, attrs.style);
 
 	}
@@ -22,9 +22,9 @@ Polyworks.Text = (function() {
 		var listeners = attrs.listeners;
 		if(listeners) {
 			var _this = this;
-			Polyworks.Utils.each(listeners,
+			PWG.Utils.each(listeners,
 				function(listener) {
-					Polyworks.EventCenter.bind(listener, _this.onUpdate, _this);
+					PWG.EventCenter.bind(listener, _this.onUpdate, _this);
 				},
 				_this
 			);
@@ -38,19 +38,19 @@ Polyworks.Text = (function() {
 		if(attrs.alignX) {
 			switch(attrs.alignX) {
 				case 'center':
-				var centerX = (Polyworks.Stage.winW/2 - this.width/2);
+				var centerX = (PWG.Stage.winW/2 - this.width/2);
 				this.x =  (attrs.x) ? centerX + attrs.x : centerX;
 				break;
 				
 				case 'windowRight':
 				// trace('\taligning right to window, x = ' + this.x + ', width = ' + this.width);
-				this.x = Polyworks.Stage.winW - this.width;
+				this.x = PWG.Stage.winW - this.width;
 				// trace('\tx now = ' + this.x);
 				break;
 				
 				case 'stageRight':
 				// trace('\taligning right to stage, x = ' + this.x + ', width = ' + this.width);
-				this.x = Polyworks.Stage.width - this.width;
+				this.x = PWG.Stage.width - this.width;
 				// trace('\tx now = ' + this.x);
 				break;
 				
@@ -61,7 +61,7 @@ Polyworks.Text = (function() {
 		if(attrs.alignY) {
 			switch(attrs.alignY) {
 				case 'center':
-				this.y = Polyworks.Stage.winH/2 - this.height/2;
+				this.y = PWG.Stage.winH/2 - this.height/2;
 				break;
 				
 				default:
@@ -79,10 +79,10 @@ Polyworks.Text = (function() {
 		} else if(this.model.attrs.dynamicContentContext) {
 			context = this.model.attrs.dynamicContentContext;
 		} else {
-			context = PolyworksGame;
+			context = PWGGame;
 		}
 
-		this.content = Polyworks.Utils.parseMarkup(this.model.attrs.defaultContent, context);
+		this.content = PWG.Utils.parseMarkup(this.model.attrs.defaultContent, context);
 		// trace('\twidth now = ' + this.width);
 		// this.alignAndPosition();
 	};
@@ -94,9 +94,9 @@ Polyworks.Text = (function() {
 		var _this = this;
 
 		if(listeners) {
-			Polyworks.Utils.each(listners,
+			PWG.Utils.each(listners,
 				function(listener) {
-					Polyworks.EventCenter.unbind(listener, _this.onUpdate, _this);
+					PWG.EventCenter.unbind(listener, _this.onUpdate, _this);
 				},
 				_this
 			);

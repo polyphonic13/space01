@@ -48,7 +48,7 @@ var domConfig = {
 			type: 'meta',
 			attrs: {
 				property: 'og:site_name',
-				content: 'Polyworks Games' 
+				content: 'PWG Games' 
 			}
 		},
 		{

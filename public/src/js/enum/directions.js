@@ -1,4 +1,4 @@
-Polyworks.Directions = {
+PWG.Directions = {
 	LEFT: 'Left',
 	RIGHT: 'Right',
 	UP: 'Up',

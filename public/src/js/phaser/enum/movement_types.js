@@ -1,4 +1,4 @@
-Polyworks.MovementTypes = {
+PWG.MovementTypes = {
 	INCREMENTAL: 'increment',
 	HORIZONTAL_BY_SPEED: 'horizontalBySpeed',
 	GROUNDED_HORIZONTAL_BY_SPEED: 'groundedHorizontalBySpeed',

@@ -1,5 +1,5 @@
-Polyworks.MapMarker = (function() {
-	Polyworks.Utils.inherits(MapMarker, Polyworks.Sprite);
+PWG.MapMarker = (function() {
+	PWG.Utils.inherits(MapMarker, PWG.Sprite);
 	
 	function MapMarker(params) {
 		MapMarker._super.constructor.call(this, params);
@@ -11,8 +11,8 @@ Polyworks.MapMarker = (function() {
 
 		var name = this.model.name;
 		this.model.level = parseInt(name.replace('mapLevelMarker', ''));
-		var currentLevel = PolyworksGame.currentLevel;
-		var levelStatus = PolyworksGame.levelStatus[this.model.level];
+		var currentLevel = PWGGame.currentLevel;
+		var levelStatus = PWGGame.levelStatus[this.model.level];
 
 		if(levelStatus === 'l') {
 			this.frame = 14;
@@ -49,7 +49,7 @@ Polyworks.MapMarker = (function() {
 	MapMarker.prototype.inputUp = function(event, pointer, ctx) {
 		// trace('MapMarker['+this.model.name+']/inputUp');
 		ctx.pressed = false;
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.SHOW_LEVEL_INFO, value: this.model.level });
+		PWG.EventCenter.trigger({ type: PWG.Events.SHOW_LEVEL_INFO, value: this.model.level });
 	};
 	
 	return MapMarker;

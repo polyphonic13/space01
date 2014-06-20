@@ -1,5 +1,5 @@
-Polyworks.MenuButton = (function() {
-	Polyworks.Utils.inherits(MenuButton, Polyworks.InputButton);
+PWG.MenuButton = (function() {
+	PWG.Utils.inherits(MenuButton, PWG.InputButton);
 	
 	var _this;
 	function MenuButton(params) {
@@ -11,12 +11,12 @@ Polyworks.MenuButton = (function() {
 	
 	MenuButton.prototype.inputDown = function(event, pointer) {
 		// trace('MenuButton['+this.model.inputCode+']/inputDown');
-		this.inputPressed.call(this, { type: Polyworks.Events.BUTTON_PRESSED, value: this.model.inputCode });
+		this.inputPressed.call(this, { type: PWG.Events.BUTTON_PRESSED, value: this.model.inputCode });
 	};
 	
 	MenuButton.prototype.inputUp = function(event, pointer) {
 		// trace('MenuButton['+this.model.inputCode+']/inputUp');
-		this.inputReleased.call(this, { type: Polyworks.Events.BUTTON_RELEASED, value: this.model.inputCode });
+		this.inputReleased.call(this, { type: PWG.Events.BUTTON_RELEASED, value: this.model.inputCode });
 	};
 	
 	return MenuButton;

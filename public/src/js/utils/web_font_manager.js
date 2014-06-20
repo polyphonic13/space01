@@ -1,8 +1,8 @@
-Polyworks.WebFontManager = (function() {
+PWG.WebFontManager = (function() {
 	
 	var webFontManager = {
 		init: function(webFonts) {
-			Polyworks.Utils.each(
+			PWG.Utils.each(
 				webFonts,
 				function(webFont, key) {
 					switch(key) {

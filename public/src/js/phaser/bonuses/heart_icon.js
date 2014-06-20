@@ -1,5 +1,5 @@
-Polyworks.HeartIcon = (function() {
-	Polyworks.Utils.inherits(HeartIcon, Polyworks.Sprite);
+PWG.HeartIcon = (function() {
+	PWG.Utils.inherits(HeartIcon, PWG.Sprite);
 	
 	function HeartIcon(params) {
 		HeartIcon._super.constructor.call(this, params);
@@ -14,11 +14,11 @@ Polyworks.HeartIcon = (function() {
 	};
 	
 	HeartIcon.prototype.addListeners = function() {
-		Polyworks.EventCenter.bind(Polyworks.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
+		PWG.EventCenter.bind(PWG.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
 	};
 	
 	HeartIcon.prototype.removeListeners = function() {
-		Polyworks.EventCenter.unbind(Polyworks.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
+		PWG.EventCenter.unbind(PWG.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
 	};
 	
 	HeartIcon.prototype.onAnimationComplete = function() {
@@ -26,7 +26,7 @@ Polyworks.HeartIcon = (function() {
 	}
 	
 	HeartIcon.prototype.onHealthUpdated = function(params) {
-		var newHealth = PolyworksGame.health;
+		var newHealth = PWGGame.health;
 		// trace('HeartIcon/onHealthUpdate, this.model.health = ' + this.model.health + ', health = ', newHealth);
 		if(this.healthSet) {
 			var animations = this.model.attrs.animations;

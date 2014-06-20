@@ -1,11 +1,11 @@
-Polyworks.InputButton = (function() {
-	Polyworks.Utils.inherits(InputButton, Phaser.Button);
+PWG.InputButton = (function() {
+	PWG.Utils.inherits(InputButton, Phaser.Button);
 	
 	var _this;
 	function InputButton(params) {
 		// trace('InputButton/constructor, params = ', params);
 		_this = this;
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 		// trace('\tinput button model = ', this.model);
 		var attrs = this.model.attrs;
 		var frames = attrs.frames;
@@ -33,7 +33,7 @@ Polyworks.InputButton = (function() {
 		var phaser = this.model.attrs.phaser;
 		if(phaser) {
 			var _this = this;
-			Polyworks.Utils.each(phaser,
+			PWG.Utils.each(phaser,
 				function(prop, key) {
 					_this[key] = prop;
 				},
@@ -60,13 +60,13 @@ Polyworks.InputButton = (function() {
 	
 	InputButton.prototype.inputDown = function(event, pointer, ctx) {
 		// trace('InputButton['+this.model.name+']/inputDown');
-		ctx.inputPressed.call(ctx, { type: Polyworks.Events.CONTROL_PRESSED, value: ctx.model.attrs.inputCode });
+		ctx.inputPressed.call(ctx, { type: PWG.Events.CONTROL_PRESSED, value: ctx.model.attrs.inputCode });
 		ctx.pressed = true;
 	};
 	
 	InputButton.prototype.inputUp = function(event, pointer, ctx) {
 		// trace('InputButton['+this.model.name+']/inputUp');
-		ctx.inputReleased.call(ctx, { type: Polyworks.Events.CONTROL_RELEASED, value: ctx.model.attrs.inputCode });
+		ctx.inputReleased.call(ctx, { type: PWG.Events.CONTROL_RELEASED, value: ctx.model.attrs.inputCode });
 		ctx.pressed = false;
 	};
 	
@@ -98,7 +98,7 @@ Polyworks.InputButton = (function() {
 	_trigger = function(event) {
 		// trace('InputButton/trigger, event = ');
 		// trace(event);
-		Polyworks.EventCenter.trigger(event);
+		PWG.EventCenter.trigger(event);
 	};
 	
 	return InputButton;

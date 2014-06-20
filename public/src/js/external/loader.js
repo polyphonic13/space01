@@ -1,4 +1,4 @@
-Polyworks.Loader = (function() {
+PWG.Loader = (function() {
 	
 	var _head = document.getElementsByTagName('head')[0];
 	var _defaultScriptAttributes = {
@@ -30,7 +30,7 @@ Polyworks.Loader = (function() {
 		this.numToLoad++;
 
 		var label = key || url;
-		var scriptAttrs = Polyworks.Utils.extend(_defaultScriptAttributes, scriptAttributes);
+		var scriptAttrs = PWG.Utils.extend(_defaultScriptAttributes, scriptAttributes);
 		var script = document.createElement('script');
 
 		for(var attr in scriptAttrs) {

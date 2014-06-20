@@ -1,5 +1,5 @@
-Polyworks.MapPage = (function() {
-	Polyworks.Utils.inherits(MapPage, Polyworks.Collection);
+PWG.MapPage = (function() {
+	PWG.Utils.inherits(MapPage, PWG.Collection);
 	
 	function MapPage(params) {
 		MapPage._super.constructor.call(this, params);
@@ -11,19 +11,19 @@ Polyworks.MapPage = (function() {
 		this.addListeners();
 
 		var pageStartX = this.model.start.x;
-		var stageWidth = Polyworks.Stage.width;
+		var stageWidth = PWG.Stage.width;
 		var stageSeventh = stageWidth/7;
 
 		var stateGroup = this.model.stateGroup;
-		this.pageGroup = PolyworksGame.phaser.add.group();
+		this.pageGroup = PWGGame.phaser.add.group();
 		stateGroup.add(this.pageGroup._container);
 
 		var levels = this.model.levels;
 
-		Polyworks.Utils.each(levels,
+		PWG.Utils.each(levels,
 			function(level) {
 				// trace('\tlevel = ' + level + ', currentLevelString = ' + currentLevelString);
-				if(level === PolyworksGame.currentLevel) {
+				if(level === PWGGame.currentLevel) {
 					this.model.selected = true;
 				}
 			},
@@ -51,7 +51,7 @@ Polyworks.MapPage = (function() {
 		// trace(this);
 		// trace('end of MapPage super begin, collection = ', this.model.collection);
 		var _this = this;
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(child) {
 				// trace('\tadding child['+child.model.name+'] to group');
 				_this.pageGroup.add(child);
@@ -61,7 +61,7 @@ Polyworks.MapPage = (function() {
 	};
 	
 	MapPage.prototype.addListeners = function() {
-		Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_MAP_PAGE, this.onChangeMapPage, this);
+		PWG.EventCenter.bind(PWG.Events.CHANGE_MAP_PAGE, this.onChangeMapPage, this);
 	};
 	
 	MapPage.prototype.onChangeMapPage = function(event) {
@@ -82,13 +82,13 @@ Polyworks.MapPage = (function() {
 	
 	MapPage.prototype.addArrowButton = function(direction, pageStartX, stageSeventh) {
 		// trace('MapPage['+this.model.name+']/addArrow, direction = ' + direction + ', start x = ' + pageStartX);
-		var stageUnit = Polyworks.Stage.unit;
+		var stageUnit = PWG.Stage.unit;
 		var img;
 		var eventValue;
 		var buttonX; 
-		var levelIconWidth = (Polyworks.Stage.unit * 1.6);
+		var levelIconWidth = (PWG.Stage.unit * 1.6);
 		var levelIconXOffset = (stageSeventh/2) - (levelIconWidth/2);
-		var levelIconHeight = (Polyworks.Stage.unit * 2);
+		var levelIconHeight = (PWG.Stage.unit * 2);
 
 		if(direction === 'left') {
 			img = 'pageLeftArrow';
@@ -117,7 +117,7 @@ Polyworks.MapPage = (function() {
 				},
 				events: {
 					pressed: {
-						type: Polyworks.Events.CHANGE_MAP_PAGE,
+						type: PWG.Events.CHANGE_MAP_PAGE,
 						value: eventValue
 					}
 				}

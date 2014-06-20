@@ -1,5 +1,5 @@
-Polyworks.LevelInfo = (function() {
-	Polyworks.Utils.inherits(LevelInfo, Polyworks.GroupCollection);
+PWG.LevelInfo = (function() {
+	PWG.Utils.inherits(LevelInfo, PWG.GroupCollection);
 	
 	function LevelInfo(params) {
 		LevelInfo._super.constructor.call(this, params);

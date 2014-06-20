@@ -1,4 +1,4 @@
-Polyworks.Rectangle = (function() {
+PWG.Rectangle = (function() {
 	
 	function Rectangle(params) {
 		// trace('Rectangle, params = ');

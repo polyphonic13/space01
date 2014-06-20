@@ -1,5 +1,5 @@
-Polyworks.PlayerIcon = (function() {
-	Polyworks.Utils.inherits(PlayerIcon, Polyworks.Sprite);
+PWG.PlayerIcon = (function() {
+	PWG.Utils.inherits(PlayerIcon, PWG.Sprite);
 	
 	function PlayerIcon(params) {
 		params.attrs.start = this.initPosition(params.positions);
@@ -7,8 +7,8 @@ Polyworks.PlayerIcon = (function() {
 	}
 	
 	PlayerIcon.prototype.initPosition = function(positions) {
-		trace('PlayerIcon/initPosition, position = ', positions, '\tcurrentLevel = ' + PolyworksGame.currentLevel);
-		return positions[PolyworksGame.currentLevel];
+		trace('PlayerIcon/initPosition, position = ', positions, '\tcurrentLevel = ' + PWGGame.currentLevel);
+		return positions[PWGGame.currentLevel];
 	};
 	
 	PlayerIcon.prototype.begin = function() {
@@ -25,7 +25,7 @@ Polyworks.PlayerIcon = (function() {
 			var levels = pages[i].levels;
 			var levelsLength = levels.length;
 			for(var j = 0; j < levelsLength; j++) {
-				if(levels[j] === PolyworksGame.currentLevel) {
+				if(levels[j] === PWGGame.currentLevel) {
 					this.pageIndex = i;
 					break;
 				}
@@ -35,7 +35,7 @@ Polyworks.PlayerIcon = (function() {
 	};
 	
 	PlayerIcon.prototype.addListeners = function() {
-		Polyworks.EventCenter.bind(Polyworks.Events.CHANGE_MAP_PAGE, this.onChangeMapPage, this);
+		PWG.EventCenter.bind(PWG.Events.CHANGE_MAP_PAGE, this.onChangeMapPage, this);
 		var ctx = this;
 		this.events.onInputDown.add(function(event, pointer) {
 			this.inputDown(event, pointer, ctx);
@@ -53,7 +53,7 @@ Polyworks.PlayerIcon = (function() {
 	PlayerIcon.prototype.inputUp = function(event, pointer, ctx) {
 		// trace('PlayerIcon['+this.model.name+']/inputUp');
 		ctx.pressed = false;
-		// Polyworks.EventCenter.trigger({ type: Polyworks.Events.START_LEVEL, value: PolyworksGame.currentLevel });
+		// PWG.EventCenter.trigger({ type: PWG.Events.START_LEVEL, value: PWGGame.currentLevel });
 	};
 	
 	PlayerIcon.prototype.onChangeMapPage = function(event) {
@@ -66,7 +66,7 @@ Polyworks.PlayerIcon = (function() {
 	};
 	
 	PlayerIcon.prototype.destroy = function() {
-		Polyworks.EventCenter.unbind(Polyworks.Events.CHANGE_MAP_PAGE, this.onChangeMapPage, this);
+		PWG.EventCenter.unbind(PWG.Events.CHANGE_MAP_PAGE, this.onChangeMapPage, this);
 		PlayerIcon._super.destroy.call(this);
 	};
 	

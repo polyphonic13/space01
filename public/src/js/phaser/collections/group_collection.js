@@ -1,15 +1,15 @@
 // collection of Phaser group objects
-Polyworks.GroupCollection = (function() {
-	Polyworks.Utils.inherits(GroupCollection, Polyworks.Collection);
+PWG.GroupCollection = (function() {
+	PWG.Utils.inherits(GroupCollection, PWG.Collection);
 	
 	function GroupCollection(params, groupContext) {
 		// trace('GroupCollection['+params.name+']/constructor, groupContext = ' + groupContext);
 		GroupCollection._super.constructor.call(this, params);
 		// if(groupContext === 'null') {
 		// 	// trace('GroupCollection['+params.name+'], adding group with context of null');
-		// 	this.group = PolyworksGame.phaser.add.group(null);
+		// 	this.group = PWGGame.phaser.add.group(null);
 		// } else {
-		// 	this.group = PolyworksGame.phaser.add.group();
+		// 	this.group = PWGGame.phaser.add.group();
 		// }
 	}
 	
@@ -17,7 +17,7 @@ Polyworks.GroupCollection = (function() {
 		// trace('GroupCollection['+this.model.name+']/begin, this = ', this);
 		GroupCollection._super.begin.call(this);
 
-		var game = PolyworksGame.phaser;
+		var game = PWGGame.phaser;
 		var collection = this.model.collection;
 		var group;
 
@@ -36,7 +36,7 @@ Polyworks.GroupCollection = (function() {
 			group = game.add.group();
 		}
 
-		Polyworks.Utils.each(collection,
+		PWG.Utils.each(collection,
 			function(c) {
 				// trace('\t\tc = ', c);
 				group.add(c);

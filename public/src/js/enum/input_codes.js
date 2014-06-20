@@ -1,4 +1,4 @@
-Polyworks.InputCodes = {
+PWG.InputCodes = {
 	PLAY: 1,
 	LEVEL: 76,		// l
 	NEXT: 78,		// n

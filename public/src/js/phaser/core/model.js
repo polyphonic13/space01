@@ -1,4 +1,4 @@
-Polyworks.Model = (function() {
+PWG.Model = (function() {
 	
 	var _this;
 	function Model(params) {
@@ -6,7 +6,7 @@ Polyworks.Model = (function() {
 		// trace(params);
 		_this = this;
 		this.active = true;
-		Polyworks.Utils.each(params,
+		PWG.Utils.each(params,
 			function(p, key) {
 				this[key] = p;
 			},
@@ -25,7 +25,7 @@ Polyworks.Model = (function() {
 	};
 	
 	Model.prototype.set = function(params) {
-		Polyworks.Utils.each(params,
+		PWG.Utils.each(params,
 			function(p, key) {
 				this[key] = p;
 			},

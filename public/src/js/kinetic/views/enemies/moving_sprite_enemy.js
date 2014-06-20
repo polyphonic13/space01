@@ -54,9 +54,9 @@ var MovingSpriteEnemy = (function() {
 	MovingSpriteEnemy.prototype.directionChange = function(direction) {
 		// trace('MovingSpriteEnemy['+this.model.id+']/animationChange');
 		if(direction === 'descending') {
-			this.setDirection(Polyworks.Directions.LEFT);
+			this.setDirection(PWG.Directions.LEFT);
 		} else if(direction === 'ascending') {
-			this.setDirection(Polyworks.Directions.RIGHT);
+			this.setDirection(PWG.Directions.RIGHT);
 		}
 	};
 	

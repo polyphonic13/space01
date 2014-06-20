@@ -1,9 +1,9 @@
 /* local storage override
-Polyworks.Storage.destroy();
-Polyworks.Storage.set({kekeAndTheGreyExpanse: {"currentLevel":9,"savedState":"menu","score":0, "savedStatus":["c","c","c","c","c","c","c","c","c","u","u","l"],"highScores":[0,0,0,0,0,0,0,0,0,0,0,0]}}); 
+PWG.Storage.destroy();
+PWG.Storage.set({kekeAndTheGreyExpanse: {"currentLevel":9,"savedState":"menu","score":0, "savedStatus":["c","c","c","c","c","c","c","c","c","u","u","l"],"highScores":[0,0,0,0,0,0,0,0,0,0,0,0]}}); 
 */
 
-Polyworks.Config = (function() {
+PWG.Config = (function() {
 	function Config() {}
 	
 	Config.prototype.init = function(stage) {
@@ -563,7 +563,7 @@ Polyworks.Config = (function() {
 				},
 				listeners: [
 				{
-					type: Polyworks.Events.CHANGE_STATE,
+					type: PWG.Events.CHANGE_STATE,
 					match: {
 						value: 'menu',
 						actions: [
@@ -634,9 +634,9 @@ Polyworks.Config = (function() {
 						y: (stageUnit * 10.4)
 					},
 					controls: {
-						left: Polyworks.InputCodes.LEFT,
-						right: Polyworks.InputCodes.RIGHT,
-						jump: Polyworks.InputCodes.UP
+						left: PWG.InputCodes.LEFT,
+						right: PWG.InputCodes.RIGHT,
+						jump: PWG.InputCodes.UP
 					},
 					attack: 5,
 					jumping: false,
@@ -661,10 +661,10 @@ Polyworks.Config = (function() {
 					// 	name: 'quit', // q
 					// 	cl: 'ControlKey',
 					// 	attrs: {
-					// 		inputCode: Polyworks.InputCodes.QUIT,
+					// 		inputCode: PWG.InputCodes.QUIT,
 					// 		events: {
 					// 			pressed: {
-					// 				type: Polyworks.Events.CHANGE_STATE,
+					// 				type: PWG.Events.CHANGE_STATE,
 					// 				value: 'quit'
 					// 			}
 					// 		}
@@ -674,17 +674,17 @@ Polyworks.Config = (function() {
 						name: 'clearData', // c
 						cl: 'ControlKey',
 						attrs: {
-							inputCode: Polyworks.InputCodes.CLEAR_DATA
+							inputCode: PWG.InputCodes.CLEAR_DATA
 						}
 					},
 					// {
 					// 	name: 'start', // s
 					// 	cl: 'ControlKey',
 					// 	attrs: {
-					// 		inputCode: Polyworks.InputCodes.START,
+					// 		inputCode: PWG.InputCodes.START,
 					// 		events: {
 					// 			pressed: {
-					// 				type: Polyworks.Events.CHANGE_STATE,
+					// 				type: PWG.Events.CHANGE_STATE,
 					// 				value: 'map'
 					// 			}
 					// 		}
@@ -694,10 +694,10 @@ Polyworks.Config = (function() {
 					// 	name: 'next', // n
 					// 	cl: 'ControlKey',
 					// 	attrs: {
-					// 		inputCode: Polyworks.InputCodes.NEXT,
+					// 		inputCode: PWG.InputCodes.NEXT,
 					// 		events: {
 					// 			pressed: {
-					// 				type: Polyworks.Events.NEXT_LEVEL
+					// 				type: PWG.Events.NEXT_LEVEL
 					// 			}
 					// 		}
 					// 	}
@@ -706,11 +706,11 @@ Polyworks.Config = (function() {
 					// 	name: 'level', // l
 					// 	cl: 'ControlKey',
 					// 	attrs: {
-					// 		inputCode: Polyworks.InputCodes.LEVEL,
+					// 		inputCode: PWG.InputCodes.LEVEL,
 					// 		events: {
 					// 			pressed: {
-					// 				type: Polyworks.Events.START_LEVEL,
-					// 				value: PolyworksGame.currentLevel
+					// 				type: PWG.Events.START_LEVEL,
+					// 				value: PWGGame.currentLevel
 					// 			}
 					// 		}
 					// 	}
@@ -719,10 +719,10 @@ Polyworks.Config = (function() {
 						name: 'pause', // p
 						cl: 'ControlKey',
 						attrs: {
-							inputCode: Polyworks.InputCodes.PAUSE,
+							inputCode: PWG.InputCodes.PAUSE,
 							events: {
 								pressed: {
- 									type: Polyworks.Events.PAUSE_STATE
+ 									type: PWG.Events.PAUSE_STATE
 								}
 							}
 						}
@@ -731,10 +731,10 @@ Polyworks.Config = (function() {
 						name: 'menu', // m
 						cl: 'ControlKey',
 						attrs: {
-							inputCode: Polyworks.InputCodes.MENU,
+							inputCode: PWG.InputCodes.MENU,
 							events: {
 								pressed: {
- 									type: Polyworks.Events.CHANGE_STATE,
+ 									type: PWG.Events.CHANGE_STATE,
 									value: 'menu'
 								}
 							}
@@ -744,28 +744,28 @@ Polyworks.Config = (function() {
 						name: 'left',
 						cl: 'ControlKey',
 						attrs: {
-							inputCode: Polyworks.InputCodes.LEFT
+							inputCode: PWG.InputCodes.LEFT
 						}
 					},
 					{
 						name: 'right',
 						cl: 'ControlKey',
 						attrs: {
-							inputCode: Polyworks.InputCodes.RIGHT
+							inputCode: PWG.InputCodes.RIGHT
 						}
 					},
 					{
 						name: 'up',
 						cl: 'ControlKey',
 						attrs: {
-							inputCode: Polyworks.InputCodes.UP
+							inputCode: PWG.InputCodes.UP
 						}
 					},
 					{
 						name: 'space',
 						cl: 'ControlKey',
 						attrs: {
-							inputCode: Polyworks.InputCodes.SPACE
+							inputCode: PWG.InputCodes.SPACE
 						}
 					}
 					]
@@ -781,10 +781,10 @@ Polyworks.Config = (function() {
 								x: winW/2 - 50,
 								y: winH/2
 							},
-							inputCode: Polyworks.InputCodes.START,
+							inputCode: PWG.InputCodes.START,
 							events: {
 								pressed: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'map'
 								}
 							}
@@ -805,7 +805,7 @@ Polyworks.Config = (function() {
 							},
 							events: {
 								released: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'credits'
 								}
 							}
@@ -829,7 +829,7 @@ Polyworks.Config = (function() {
 							frames: [0, 0, 1],
 							events: {
 								released: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'menu'
 								}
 							}
@@ -851,10 +851,10 @@ Polyworks.Config = (function() {
 								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
 							},
 							frames: [0, 0, 1],
-							// inputCode: Polyworks.InputCodes.MENU,
+							// inputCode: PWG.InputCodes.MENU,
 							events: {
 								released: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'menu'
 								}
 							}
@@ -878,7 +878,7 @@ Polyworks.Config = (function() {
 							},
 							events: {
 								released: {
-									type: Polyworks.Events.START_LEVEL
+									type: PWG.Events.START_LEVEL
 								}
 							}
 						}
@@ -900,7 +900,7 @@ Polyworks.Config = (function() {
 							frames: [0, 0, 1],
 							events: {
 								released: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'map'
 								}
 							}
@@ -924,7 +924,7 @@ Polyworks.Config = (function() {
 							frames: [0, 0, 1],
 							events: {
 								released: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'map'
 								}
 							}
@@ -946,7 +946,7 @@ Polyworks.Config = (function() {
 							frames: [0, 0, 1],
 							events: {
 								released: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'menu'
 								}
 							}
@@ -970,7 +970,7 @@ Polyworks.Config = (function() {
 							frames: [0, 0, 1],
 							events: {
 								released: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'menu'
 								}
 							}
@@ -991,7 +991,7 @@ Polyworks.Config = (function() {
 							},
 							events: {
 								released: {
-									type: Polyworks.Events.START_LEVEL
+									type: PWG.Events.START_LEVEL
 								}
 							}
 						}
@@ -1009,7 +1009,7 @@ Polyworks.Config = (function() {
 							},
 							width: winW, 
 							height: winH,
-							inputCode: Polyworks.InputCodes.RESET
+							inputCode: PWG.InputCodes.RESET
 						}
 					},
 					{
@@ -1026,7 +1026,7 @@ Polyworks.Config = (function() {
 								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
 							},
 							frames: [0, 0, 1],
-							inputCode: Polyworks.InputCodes.LEFT
+							inputCode: PWG.InputCodes.LEFT
 						}
 					},
 					{
@@ -1043,7 +1043,7 @@ Polyworks.Config = (function() {
 								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
 							},
 							frames: [0, 0, 1],
-							inputCode: Polyworks.InputCodes.RIGHT
+							inputCode: PWG.InputCodes.RIGHT
 						}
 					},
 					{
@@ -1060,7 +1060,7 @@ Polyworks.Config = (function() {
 								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
 							},
 							frames: [0, 0, 1],
-							inputCode: Polyworks.InputCodes.UP
+							inputCode: PWG.InputCodes.UP
 						}
 					},
 					{
@@ -1079,7 +1079,7 @@ Polyworks.Config = (function() {
 							frames: [0, 0, 1],
 							events: {
 								released: {
- 									type: Polyworks.Events.PAUSE_STATE
+ 									type: PWG.Events.PAUSE_STATE
 								}
 							}
 						}
@@ -1122,7 +1122,7 @@ Polyworks.Config = (function() {
 							fill: '#ffffff' 
 						},
 						listeners: [
-							Polyworks.Events.HEALTH_UPDATED
+							PWG.Events.HEALTH_UPDATED
 						]
 					}
 				}
@@ -1193,7 +1193,7 @@ Polyworks.Config = (function() {
 						},
 						defaultContent: 'score: ~{levelScore}~',
 						listeners: [
-							Polyworks.Events.LEVEL_SCORE_UPDATED
+							PWG.Events.LEVEL_SCORE_UPDATED
 						]
 					}
 				},
@@ -1230,7 +1230,7 @@ Polyworks.Config = (function() {
 						frames: [0, 0, 1],
 						events: {
 							released: {
-								type: Polyworks.Events.RESUME_STATE
+								type: PWG.Events.RESUME_STATE
 							}
 						}
 					}
@@ -1252,7 +1252,7 @@ Polyworks.Config = (function() {
 						frames: [0, 0, 1],
 						events: {
 							released: {
-								type: Polyworks.Events.CHANGE_STATE,
+								type: PWG.Events.CHANGE_STATE,
 								value: 'map'
 							}
 						}
@@ -1274,7 +1274,7 @@ Polyworks.Config = (function() {
 						},
 						events: {
 							released: {
-								type: Polyworks.Events.START_LEVEL
+								type: PWG.Events.START_LEVEL
 							}
 						}
 					}
@@ -1327,7 +1327,7 @@ Polyworks.Config = (function() {
 						},
 						defaultContent: 'score: ~{levelScore}~',
 						listeners: [
-							Polyworks.Events.LEVEL_CLEARED
+							PWG.Events.LEVEL_CLEARED
 						]
 					}
 				},
@@ -1345,7 +1345,7 @@ Polyworks.Config = (function() {
 						},
 						defaultContent: '~{currentLevelHighScore}~',
 						listeners: [
-							Polyworks.Events.LEVEL_CLEARED
+							PWG.Events.LEVEL_CLEARED
 						]
 					}
 				},
@@ -1366,7 +1366,7 @@ Polyworks.Config = (function() {
 						frames: [0, 0, 1],
 						events: {
 							released: {
-								type: Polyworks.Events.NEXT_LEVEL
+								type: PWG.Events.NEXT_LEVEL
 							}
 						}
 					}
@@ -1388,7 +1388,7 @@ Polyworks.Config = (function() {
 						frames: [0, 0, 1],
 						events: {
 							released: {
-								type: Polyworks.Events.CHANGE_STATE,
+								type: PWG.Events.CHANGE_STATE,
 								value: 'map'
 							}
 						}
@@ -1532,7 +1532,7 @@ Polyworks.Config = (function() {
 							},
 							events: {
 								released: {
-									type: Polyworks.Events.START_LEVEL
+									type: PWG.Events.START_LEVEL
 								}
 							}
 						}
@@ -1554,7 +1554,7 @@ Polyworks.Config = (function() {
 							frames: [0, 0, 1],
 							events: {
 								released: {
-									type: Polyworks.Events.CHANGE_STATE,
+									type: PWG.Events.CHANGE_STATE,
 									value: 'map'
 								}
 							}
@@ -2449,7 +2449,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.HORIZONTAL,
+					type: PWG.SectorTypes.HORIZONTAL,
 					attrs: [
 					{
 						name: 'sector1',
@@ -2499,7 +2499,7 @@ Polyworks.Config = (function() {
 									score: 2500,
 									movement: {
 										speed: 0.5,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -2660,7 +2660,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -2826,7 +2826,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -2874,7 +2874,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -3400,7 +3400,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.HORIZONTAL,
+					type: PWG.SectorTypes.HORIZONTAL,
 					attrs: [
 					{
 						name: 'sector1',
@@ -3707,7 +3707,7 @@ Polyworks.Config = (function() {
 									score: 2500,
 									movement: {
 										speed: 0.5,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -4029,7 +4029,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -4205,7 +4205,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -4238,7 +4238,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 2,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -4301,7 +4301,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -5040,7 +5040,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.HORIZONTAL,
+					type: PWG.SectorTypes.HORIZONTAL,
 					attrs: [
 					// sector 1
 					{
@@ -5279,7 +5279,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -5364,7 +5364,7 @@ Polyworks.Config = (function() {
 									score: 1000,
 									movement: {
 										speed: 0.25,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -5486,7 +5486,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -5519,7 +5519,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -5598,7 +5598,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -5676,7 +5676,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1.5,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -5711,7 +5711,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 500,
 									movement: {
 										speed: 1.25,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -5792,7 +5792,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -5842,7 +5842,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -5862,7 +5862,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -5917,7 +5917,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 500,
 									movement: {
 										speed: 1.25,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -5996,7 +5996,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -6078,7 +6078,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -6235,7 +6235,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -6318,7 +6318,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -6381,7 +6381,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -6401,7 +6401,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -6456,7 +6456,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 500,
 									movement: {
 										speed: 1.25,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -6491,7 +6491,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 500,
 									movement: {
 										speed: 1.25,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -6526,7 +6526,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 500,
 									movement: {
 										speed: 1.25,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -7118,7 +7118,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.HORIZONTAL,
+					type: PWG.SectorTypes.HORIZONTAL,
 					attrs: [
 					// sector1
 					{
@@ -7279,7 +7279,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1.5,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -7354,7 +7354,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -7442,7 +7442,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -7475,7 +7475,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -7583,7 +7583,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -7686,7 +7686,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -7721,7 +7721,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -7926,7 +7926,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -7961,7 +7961,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -7996,7 +7996,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -8174,7 +8174,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -8207,7 +8207,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -8240,7 +8240,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -8321,7 +8321,7 @@ Polyworks.Config = (function() {
 									score: 1000,
 									movement: {
 										speed: 0.25,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -9024,7 +9024,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.HORIZONTAL,
+					type: PWG.SectorTypes.HORIZONTAL,
 					attrs: [
 					// sector1
 					{
@@ -9204,7 +9204,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -9336,7 +9336,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -9369,7 +9369,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -9401,7 +9401,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -9421,7 +9421,7 @@ Polyworks.Config = (function() {
 								name: 'tree02-branch03',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -9441,7 +9441,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -9491,7 +9491,7 @@ Polyworks.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -9579,7 +9579,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -9843,7 +9843,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -9879,7 +9879,7 @@ Polyworks.Config = (function() {
 									score: 2000,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -10071,7 +10071,7 @@ Polyworks.Config = (function() {
 									score: 500,
 									movement: {
 										speed: 1,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -10152,7 +10152,7 @@ Polyworks.Config = (function() {
 									score: 1000,
 									movement: {
 										speed: 0.25,
-										type: Polyworks.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -10733,7 +10733,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.HORIZONTAL,
+					type: PWG.SectorTypes.HORIZONTAL,
 					attrs: [
 					{
 						name: 'sector1',
@@ -10910,7 +10910,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform04',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11056,7 +11056,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform6',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11148,7 +11148,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform8',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11189,7 +11189,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform040',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11281,7 +11281,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform042',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11322,7 +11322,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform044',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11449,7 +11449,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform046',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11472,7 +11472,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform047',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11495,7 +11495,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform048',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11518,7 +11518,7 @@ Polyworks.Config = (function() {
 								name: 'rockPlatform049',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -12187,7 +12187,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.VERTICAL,
+					type: PWG.SectorTypes.VERTICAL,
 					attrs: [
 					// sector 1
 					{
@@ -12243,7 +12243,7 @@ Polyworks.Config = (function() {
 								name: 'sector1-platform03',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -12454,7 +12454,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform05',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -12574,7 +12574,7 @@ Polyworks.Config = (function() {
 								name: 'sector3-platform03',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -12681,7 +12681,7 @@ Polyworks.Config = (function() {
 									score: 1500,
 									movement: {
 										speed: spider01.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -13103,7 +13103,7 @@ Polyworks.Config = (function() {
 									score: 1500,
 									movement: {
 										speed: spider01.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -13651,7 +13651,7 @@ Polyworks.Config = (function() {
 									score: 1500,
 									movement: {
 										speed: spider01.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -14534,7 +14534,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.VERTICAL,
+					type: PWG.SectorTypes.VERTICAL,
 					attrs: [
 					// sector 1
 					{
@@ -14809,7 +14809,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -15039,7 +15039,7 @@ Polyworks.Config = (function() {
 								name: 'sector3-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -15141,7 +15141,7 @@ Polyworks.Config = (function() {
 									score: 1500,
 									movement: {
 										speed: spider01.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -15213,7 +15213,7 @@ Polyworks.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -15552,7 +15552,7 @@ Polyworks.Config = (function() {
 									score: 1500,
 									movement: {
 										speed: spider01.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -15851,7 +15851,7 @@ Polyworks.Config = (function() {
 									score: 1500,
 									movement: {
 										speed: spider01.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -15902,7 +15902,7 @@ Polyworks.Config = (function() {
 								name: 'sector7-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -15961,7 +15961,7 @@ Polyworks.Config = (function() {
 								name: 'sector7-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -16104,7 +16104,7 @@ Polyworks.Config = (function() {
 									score: 1500,
 									movement: {
 										speed: spider01.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -17056,7 +17056,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.VERTICAL,
+					type: PWG.SectorTypes.VERTICAL,
 					attrs: [
 					// sector 1
 					{
@@ -17168,7 +17168,7 @@ Polyworks.Config = (function() {
 								name: 'sector1-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -17355,7 +17355,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -17378,7 +17378,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -17433,7 +17433,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 150,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -17684,7 +17684,7 @@ Polyworks.Config = (function() {
 								name: 'sector3-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -17707,7 +17707,7 @@ Polyworks.Config = (function() {
 								name: 'sector3-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -17762,7 +17762,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 150,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -17836,7 +17836,7 @@ Polyworks.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -17877,7 +17877,7 @@ Polyworks.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -17955,7 +17955,7 @@ Polyworks.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -17978,7 +17978,7 @@ Polyworks.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -18001,7 +18001,7 @@ Polyworks.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -18056,7 +18056,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 150,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -18236,7 +18236,7 @@ Polyworks.Config = (function() {
 								name: 'sector5-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -18259,7 +18259,7 @@ Polyworks.Config = (function() {
 								name: 'sector5-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -18282,7 +18282,7 @@ Polyworks.Config = (function() {
 								name: 'sector5-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -18335,7 +18335,7 @@ Polyworks.Config = (function() {
 									score: 2500,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -18554,7 +18554,7 @@ Polyworks.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -18627,7 +18627,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 150,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -18789,7 +18789,7 @@ Polyworks.Config = (function() {
 								name: 'sector7-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -18844,7 +18844,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 150,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -19650,7 +19650,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.VERTICAL,
+					type: PWG.SectorTypes.VERTICAL,
 					attrs: [
 					// sector 1
 					{
@@ -19801,7 +19801,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -20046,7 +20046,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -20079,7 +20079,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 150,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -20303,7 +20303,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -20334,7 +20334,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 150,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -20669,7 +20669,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -20700,7 +20700,7 @@ Polyworks.Config = (function() {
 									jumpMultiplier: 150,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -21017,7 +21017,7 @@ Polyworks.Config = (function() {
 									score: 2500,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -21046,7 +21046,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -21324,7 +21324,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -21353,7 +21353,7 @@ Polyworks.Config = (function() {
 									score: 2500,
 									movement: {
 										speed: spider02.speed,
-										type: Polyworks.MovementTypes.HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -22371,7 +22371,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.VERTICAL,
+					type: PWG.SectorTypes.VERTICAL,
 					attrs: [
 					// sector 1
 					{
@@ -22536,7 +22536,7 @@ Polyworks.Config = (function() {
 									// first spider
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -22793,7 +22793,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -22822,7 +22822,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -22851,7 +22851,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -23149,7 +23149,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -23178,7 +23178,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -23207,7 +23207,7 @@ Polyworks.Config = (function() {
 									score: 3000,
 									movement: {
 										speed: spider03.speed,
-										type: Polyworks.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 										formula: null
 									},
 									defaultAnimation: '',
@@ -23494,7 +23494,7 @@ Polyworks.Config = (function() {
 								name: 'sector5-platform05',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -23517,7 +23517,7 @@ Polyworks.Config = (function() {
 								name: 'sector5-platform05',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24330,7 +24330,7 @@ Polyworks.Config = (function() {
 				{
 					name: 'sectors',
 					cl: 'SectorManager',
-					type: Polyworks.SectorTypes.HORIZONTAL,
+					type: PWG.SectorTypes.HORIZONTAL,
 					attrs: [
 					// sector 1
 					{
@@ -24360,7 +24360,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24383,7 +24383,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24406,7 +24406,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24473,7 +24473,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24496,7 +24496,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24519,7 +24519,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24586,7 +24586,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24609,7 +24609,7 @@ Polyworks.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24676,7 +24676,7 @@ Polyworks.Config = (function() {
 								name: 'sector5-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24699,7 +24699,7 @@ Polyworks.Config = (function() {
 								name: 'sector5-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24766,7 +24766,7 @@ Polyworks.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01',
@@ -24789,7 +24789,7 @@ Polyworks.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24812,7 +24812,7 @@ Polyworks.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24835,7 +24835,7 @@ Polyworks.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24858,7 +24858,7 @@ Polyworks.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: Polyworks.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',

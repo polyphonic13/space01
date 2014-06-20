@@ -1,20 +1,20 @@
-Polyworks.Collection = (function() {
+PWG.Collection = (function() {
 	
 	function Collection(params) {
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 		// trace('Collection['+params.name+']/constructor', params);
 	}
 	
 	Collection.prototype.begin = function() {
 		// trace('Collection['+this.model.name+']/begin', this);
-		var game = PolyworksGame.phaser;
+		var game = PWGGame.phaser;
 		var collection = [];
 		var nameIndex = {};
 		var children = this.model.attrs;
 		var child;
 		var params;
 		// trace('children.length = ' + children.length);
-		Polyworks.Utils.each(children,
+		PWG.Utils.each(children,
 			function(c, i) {
 				// trace('\t\ti = ' + i + ', c = ', c);
 				if(typeof(c) !== 'undefined') {
@@ -23,7 +23,7 @@ Polyworks.Collection = (function() {
 					c.idx = i;
 
 					// trace('\tc['+c.name+'] cl = ' + c.cl);
-					child = new Polyworks[c.cl](c);
+					child = new PWG[c.cl](c);
 					child.begin();
 
 					collection.push(child);
@@ -42,7 +42,7 @@ Polyworks.Collection = (function() {
 	
 	Collection.prototype.setChildrenExists = function(exists) {
 		// trace('Collection['+this.model.name+']/setChildrenExists, exists = ' + exists);
-		Polyworks.Utils.each(this.model.collection,
+		PWG.Utils.each(this.model.collection,
 			function(child) {
 				if(child.setChildrenExists) {
 					// trace('\tcalling setChildExists on: '+child.model.name);
@@ -96,7 +96,7 @@ Polyworks.Collection = (function() {
 	Collection.prototype.destroy = function() {
 		var collection = this.model.collection;
 		// trace('Collection['+this.model.name+']/destroy, collection = ', collection);
-		Polyworks.Utils.each(collection,
+		PWG.Utils.each(collection,
 			function(child) {
 				// trace('\tattempting to call destroy on child['+child.model.name+']');
 				if(child.destroy) {

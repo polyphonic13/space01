@@ -1,5 +1,5 @@
-Polyworks.BossPiece = (function() {
-	Polyworks.Utils.inherits(BossPiece, Polyworks.Enemy); 
+PWG.BossPiece = (function() {
+	PWG.Utils.inherits(BossPiece, PWG.Enemy); 
 	
 	function BossPiece(params) {
 		BossPiece._super.constructor.call(this, params);

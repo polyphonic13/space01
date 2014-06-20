@@ -1,10 +1,10 @@
-Polyworks.Control = (function() {
+PWG.Control = (function() {
 	
 	var _this;
 	
 	function Control(params) {
 		_this = this;
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 	}
 	
 	Control.prototype.inputPressed = function(params) {
@@ -35,7 +35,7 @@ Polyworks.Control = (function() {
 	Control.prototype.trigger = function(event) {
 		// trace('Control/trigger, event = ');
 		// trace(event);
-		Polyworks.EventCenter.trigger(event);
+		PWG.EventCenter.trigger(event);
 	};
 	
 	return Control;

@@ -1,5 +1,5 @@
-Polyworks.GameOverState = (function() {
-	Polyworks.Utils.inherits(GameOverState, Polyworks.MenuState);
+PWG.GameOverState = (function() {
+	PWG.Utils.inherits(GameOverState, PWG.MenuState);
 
 	function GameOverState(params) {
 		GameOverState._super.constructor.call(this, params);
@@ -9,12 +9,12 @@ Polyworks.GameOverState = (function() {
 		// trace('GameOverState/createState, TGS = ', TGS);
 		GameOverState._super.createState.call(this);
 
-		Polyworks.TGSAdapter.addGameOverWidget();
+		PWG.TGSAdapter.addGameOverWidget();
 	};
 	
 	GameOverState.prototype.shutdown = function(event) {
 		// trace('GameOverState/shutdown');
-		Polyworks.TGSAdapter.hideGameOverWidget();
+		PWG.TGSAdapter.hideGameOverWidget();
 		GameOverState._super.shutdown.call(this);
 	};
 

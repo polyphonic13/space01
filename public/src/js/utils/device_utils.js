@@ -1,4 +1,4 @@
-Polyworks.DeviceUtils = function() {
+PWG.DeviceUtils = function() {
 	var ua = navigator.userAgent.toLowerCase();
 	var operatingSystem = '';
 	

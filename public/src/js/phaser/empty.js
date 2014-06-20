@@ -1,7 +1,7 @@
-Polyworks.Empty = (function() {
+PWG.Empty = (function() {
 	function Empty(params) {
 		// trace('Empty/constructor');
-		this.model = new Polyworks.Model(params);
+		this.model = new PWG.Model(params);
 	}
 	
 	Empty.prototype.begin = function() {

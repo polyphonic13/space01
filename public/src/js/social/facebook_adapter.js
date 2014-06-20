@@ -18,8 +18,8 @@ alertnate like button: http://stackoverflow.com/questions/4920945/facebook-how-t
 		<div id='fbShare' class='fb-share-button' data-href='http://www.polyworksgames.com/games/keke2/' data-type='button_count'></div>	
 -->
 */
-Polyworks.FacebookAdapter = (function() {
-	Polyworks.Utils.inherits(FacebookAdapter, Polyworks.SocialAdapter);
+PWG.FacebookAdapter = (function() {
+	PWG.Utils.inherits(FacebookAdapter, PWG.SocialAdapter);
 
 	var POLYWORKS_APP_ID = '371443576332187';
 	var POLYWORKS_SHARE_URL = 'http://www.polyworksgames.com/games/keke2/';
@@ -68,7 +68,7 @@ Polyworks.FacebookAdapter = (function() {
 	};
 	
 	function FacebookAdapter(params) {
-		params = Polyworks.Utils.extend(_defaults, params);
+		params = PWG.Utils.extend(_defaults, params);
 		FacebookAdapter._super.constructor.call(this, params);
 		this.addElements();
 		this.addMethodToWindow();

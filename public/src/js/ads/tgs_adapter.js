@@ -1,4 +1,4 @@
-Polyworks.TGSAdapter = (function() {
+PWG.TGSAdapter = (function() {
 	var LEVEL_PLAYS_PER_AD = 1;
 	var WIDGET_WIDTH = 300;
 
@@ -102,15 +102,15 @@ Polyworks.TGSAdapter = (function() {
 		displayInterstitial: function() {
 			
 			trace('TGSAdapter/displayInterstitial');
-			PolyworksGame.adPlaying = true;
-			Polyworks.EventCenter.trigger({ type: Polyworks.Events.AD_STARTED });
+			PWGGame.adPlaying = true;
+			PWG.EventCenter.trigger({ type: PWG.Events.AD_STARTED });
 			TGS.Advertisement.DisplayInterstitialAd(_displayConfig);		
 		},
 		
 		addGameOverWidget: function() {
 			trace('TGSAdapter/addGameOverWidget');
-			var winW = Polyworks.Stage.winW; 
-			var winH = Polyworks.Stage.winH;
+			var winW = PWG.Stage.winW; 
+			var winH = PWG.Stage.winH;
 			var widgetW = WIDGET_WIDTH;
 			var widgetX = winW/4 - widgetW/2;
 			var widgetY = '0';
@@ -144,8 +144,8 @@ Polyworks.TGSAdapter = (function() {
 	
 	function _finishAdSession() {
 		trace('TGSAdapter/_finishAdSession');
-		PolyworksGame.adPlaying = false;
-		Polyworks.EventCenter.trigger({ type: Polyworks.Events.AD_COMPLETED });
+		PWGGame.adPlaying = false;
+		PWG.EventCenter.trigger({ type: PWG.Events.AD_COMPLETED });
 	}
 	
 	return module;

@@ -1,5 +1,5 @@
-Polyworks.MovingHazard = (function() {
-	Polyworks.Utils.inherits(MovingHazard, Polyworks.Hazard);
+PWG.MovingHazard = (function() {
+	PWG.Utils.inherits(MovingHazard, PWG.Hazard);
 	
 	function MovingHazard(params) {
 		MovingHazard._super.constructor.call(this, params);

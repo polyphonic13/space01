@@ -1,4 +1,4 @@
-Polyworks.TerrainReactions = {
+PWG.TerrainReactions = {
 	ADD_GRAVITY: 'addGravity',
 	ADD_GRAVITY_AFTER_X_SECONDS: 'addGravityAfterXSeconds',
 	DESTROY_AFTER_X_SECONDS: 'destroyAfterXSeconds',

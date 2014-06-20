@@ -1,5 +1,5 @@
-Polyworks.ControlButton = (function() {
-	Polyworks.Utils.inherits(ControlButton, Polyworks.InputButton);
+PWG.ControlButton = (function() {
+	PWG.Utils.inherits(ControlButton, PWG.InputButton);
 	
 	var _this;
 	function ControlButton(params) {
@@ -12,14 +12,14 @@ Polyworks.ControlButton = (function() {
 	ControlButton.prototype.inputDown = function(event, pointer) {
 		trace('ControlButton['+this.model.inputCode+']/inputDown');
 		if(this.model.inputCode) {
-			this.inputPressed.call(this, { type: Polyworks.Events.CONTROL_PRESSED, value: this.model.inputCode });
+			this.inputPressed.call(this, { type: PWG.Events.CONTROL_PRESSED, value: this.model.inputCode });
 		}
 	};
 	
 	ControlButton.prototype.inputUp = function(event, pointer) {
 		// trace('ControlButton['+this.model.inputCode+']/inputUp');
 		if(this.model.inputCode) {
-			this.inputReleased.call(this, { type: Polyworks.Events.CONTROL_RELEASED, value: this.model.inputCode });
+			this.inputReleased.call(this, { type: PWG.Events.CONTROL_RELEASED, value: this.model.inputCode });
 		}
 	};
 	

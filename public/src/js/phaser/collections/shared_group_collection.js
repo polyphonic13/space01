@@ -1,5 +1,5 @@
-Polyworks.SharedGroupCollection = (function() {
-	Polyworks.Utils.inherits(SharedGroupCollection, Polyworks.GroupCollection);
+PWG.SharedGroupCollection = (function() {
+	PWG.Utils.inherits(SharedGroupCollection, PWG.GroupCollection);
 
 	function SharedGroupCollection(params) {
 		SharedGroupCollection._super.constructor.call(this, params);
@@ -7,7 +7,7 @@ Polyworks.SharedGroupCollection = (function() {
 	
 	SharedGroupCollection.prototype.begin = function() {
 		// trace('SharedGroupCollection['+this.model.name+']/begin');
-		var sharedGroups = PolyworksGame.get('sharedGroups');
+		var sharedGroups = PWGGame.get('sharedGroups');
 		this.model.attrs = sharedGroups[this.model.type];
 		// trace('\tsharedGroups = ', sharedGroups, '\tmodel = ', this.model);
 		SharedGroupCollection._super.begin.call(this);

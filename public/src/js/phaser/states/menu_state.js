@@ -1,5 +1,5 @@
-Polyworks.MenuState = (function() {
-	Polyworks.Utils.inherits(MenuState, Polyworks.State);
+PWG.MenuState = (function() {
+	PWG.Utils.inherits(MenuState, PWG.State);
 	
 	function MenuState(params) {
 		MenuState._super.constructor.call(this, params);
@@ -11,19 +11,19 @@ Polyworks.MenuState = (function() {
 	};
 	
 	MenuState.prototype.addListeners = function() {
-		Polyworks.EventCenter.bind(Polyworks.Events.BUTTON_PRESSED, this.onButtonPressed, this);
+		PWG.EventCenter.bind(PWG.Events.BUTTON_PRESSED, this.onButtonPressed, this);
 	};
 	
 	MenuState.prototype.onButtonPressed = function(event) {
 		// trace('MenuState/onButtonPressed, changingState = ' + this.changingState + ', event = ', event);
-		if(event.value === Polyworks.InputCodes.PLAY || event.value === Polyworks.InputCodes.NEXT) {
-			PolyworksGame.changeState('level'); 
+		if(event.value === PWG.InputCodes.PLAY || event.value === PWG.InputCodes.NEXT) {
+			PWGGame.changeState('level'); 
 			this.changingState = true;
 		}
 	};
 	
 	MenuState.prototype.shutdown = function() {
-		Polyworks.EventCenter.unbind(Polyworks.Events.BUTTON_PRESSED, this.onButtonPressed, this);
+		PWG.EventCenter.unbind(PWG.Events.BUTTON_PRESSED, this.onButtonPressed, this);
 		MenuState._super.shutdown.call(this);
 	};
 	
