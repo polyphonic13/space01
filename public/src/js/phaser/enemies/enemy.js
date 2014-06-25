@@ -6,7 +6,7 @@ PWG.Enemy = (function() {
 		Enemy._super.constructor.call(this, params);
 		this.reactivated = false; 
 		this.isInView = true;
-		this.isInProximity = false;
+		this.isActive = false;
 		this.justJumped = false;
 		this.relationToPlayer = '';
 	}
@@ -48,6 +48,12 @@ PWG.Enemy = (function() {
 		}
 	};
 	
+	Enemy.prototype.getSector = function() {
+		var sector = this.ancestor.ancestor;
+		trace('Enemy['+this.model.name+']/getSector, sector = ' + sector);
+		return sector;
+	};
+	
 	Enemy.prototype.calculateHorizontalMovement = function(player, movementType, invert) {
 		var reverse = invert || false;
 		var enemyX = this.body.screenX;
@@ -59,10 +65,16 @@ PWG.Enemy = (function() {
 			var name = this.model.name;
 			if(enemyX < (playerX + PWG.Stage.width/2) && enemyX > (playerX - PWG.Stage.width/2)) {
 				this.isInView = true;
-				PWG.EventCenter.trigger({ type: PWG.Events.ADD_ACTIVE_ENEMY, enemy: this });
+				if(!this.isActive) {
+					PWG.EventCenter.trigger({ type: PWG.Events.ADD_ACTIVE_ENEMY, enemy: this });
+					this.isActive = true;
+				}
 			} else {
 				this.isInView = false;
-				PWG.EventCenter.trigger({ type: PWG.Events.REMOVE_ACTIVE_ENEMY, enemy: this });
+				if(this.isActive) {
+					PWG.EventCenter.trigger({ type: PWG.Events.REMOVE_ACTIVE_ENEMY, enemy: this });
+					this.isActive = false;
+				}
 			}
 		}
 

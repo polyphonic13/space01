@@ -8,9 +8,9 @@ PWG.Enemies = (function() {
 	
 	Enemies.prototype.pwUpdate = function(params) {
 		PWG.Utils.each(this.model.collection,
-			function(c) {
-				if(c.alive) {
-					c.pwUpdate(params);
+			function(child) {
+				if(child.alive) {
+					child.pwUpdate(params);
 				}
 			},
 			this
@@ -22,5 +22,18 @@ PWG.Enemies = (function() {
 		Enemies._super.activateGravity.call(this);
 	};
 
+	Enemies.prototype.deactivateGravity = function() {
+		PWG.Utils.each(
+			this.model.collection,
+			function(child) {
+				trace('Enemies/deactivateGravity, child['+child.model.name+'].isActive = ' + child.isActive);
+				if(!child.isActive) {
+					child.deactivateGravity();
+				}
+			},
+			this
+		);
+	};
+	
 	return Enemies;
 })();

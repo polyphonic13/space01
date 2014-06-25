@@ -12,6 +12,8 @@ PWG.Sector = (function() {
 		Sector._super.begin.call(this);
 		this.setChildrenExists(false);
 
+		this.enemiesActivated = false;
+
 		this.dynamicTerrain = this.getChildByName('dynamicTerrain');
 		this.groupEnemies = this.getChildByName('groupEnemies');
 		this.enemies = this.getChildByName('enemies');
@@ -27,19 +29,25 @@ PWG.Sector = (function() {
 
 		this.active = active;
 		if(active) {
-			// trace('Sector['+this.model.name+']/setActive: active = ' + active + ', activatedOnce = ' + this.activatedOnce);
-			// if(!this.activatedOnce) {
+			// trace('Sector['+this.model.name+']/setActive: active = ' + active + ', activatedOnce = ' + this.activatedOnce + ', enemies = ', this.enemies);
 				this.activateOnce = true;
 				if(this.enemies) {
 					this.enemies.activateGravity();
+					if(!this.enemiesActivated) {
+						PWG.EventCenter.trigger({ type: PWG.Events.ADD_ACTIVE_ENEMIES, enemies: this.enemies });
+						this.enemiesActivated = true;
+					}
 				}
-			// }
 			this.deactivated = false;
 
 		} else if(!this.deactivated) {
 
 			if(this.enemies) {
-				PWG.EventCenter.trigger({ type: PWG.Events.REMOVE_ACTIVE_ENEMIES, enemies: this.enemies });
+				if(this.enemiesActivated) {
+					PWG.EventCenter.trigger({ type: PWG.Events.REMOVE_ACTIVE_ENEMIES, enemies: this.enemies });
+					this.enemiesActivated = false;
+				}
+				trace('Sector['+this.model.name+'] going to call enemies.deactivateGravity');
 				this.enemies.deactivateGravity();
 			} 
 			this.deactivated = true;
@@ -48,12 +56,12 @@ PWG.Sector = (function() {
 	
 	Sector.prototype.pwUpdate = function(params) {
 		// this.checkTerrainCollision(params.terrain);
-		if(this.enemies) {
-			this.enemies.pwUpdate(params);
-		}
-		if(this.groupEnemies) {
-			this.groupEnemies.pwUpdate(params);
-		}
+		// if(this.enemies) {
+		// 	this.enemies.pwUpdate(params);
+		// }
+		// if(this.groupEnemies) {
+		// 	this.groupEnemies.pwUpdate(params);
+		// }
 	};
 	
 	Sector.prototype.checkTerrainCollision = function(terrain) {

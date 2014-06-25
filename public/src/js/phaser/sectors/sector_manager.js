@@ -28,22 +28,22 @@ PWG.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.onAddActiveEnemy = function(event) {
-		trace('SectorManager/onRemoveActiveEnemy, event = ', event);
+		// trace('SectorManager/onAddActiveEnemy, event = ', event);
 		this.addActiveEnemy(event.enemy);
 	};
 	
-	SectorManager.prototype.onAddActiveEnemeies = function(event) {
-		trace('SectorManager/onAddActiveEnemies, event = ', event, '\tthis = ', this);
+	SectorManager.prototype.onAddActiveEnemies = function(event) {
+		// trace('SectorManager/onAddActiveEnemies, event = ', event, '\tthis = ', this);
 		this.addActiveEnemies(event.enemies);
 	};
 	
 	SectorManager.prototype.onRemoveActiveEnemy = function(event) {
-		trace('SectorManager/onRemoveActiveEnemy, event = ', event, '\tthis = ', this);
+		// trace('SectorManager/onRemoveActiveEnemy, event = ', event, '\tthis = ', this);
 		this.removeActiveEnemy(event.enemy);
 	};
 	
 	SectorManager.prototype.onRemoveActiveEnemies = function(event) {
-		trace('SectorManager/onRemoveActiveEnemies, event = ', event);
+		// trace('SectorManager/onRemoveActiveEnemies, event = ', event);
 		this.removeActiveEnemies(event.enemies);
 	};
 	
@@ -57,7 +57,9 @@ PWG.SectorManager = (function() {
 	
 	SectorManager.prototype.setActiveSector = function(id) {
 		// this.deactivateAll();
-		this.model.collection[this.activeSectorId]
+		if(this.activeSectorId) {
+			this.model.collection[this.activeSectorId].setActive(false);
+		}
 		this.activeSectorId = id;
 		this.model.collection[id].setActive(true);
 
@@ -76,8 +78,9 @@ PWG.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.addActiveEnemies = function(enemies) {
+		// trace('SectorManager/addActiveEnemies, enemies = ', enemies);
 		PWG.Utils.each(
-			enemies,
+			enemies.model.collection,
 			function(enemy) {
 				if(!this.activeEnemies.hasOwnProperty(enemy)) {
 					this.activeEnemies[enemy.model.name] = enemy
@@ -95,7 +98,7 @@ PWG.SectorManager = (function() {
 	
 	SectorManager.prototype.removeActiveEnemies = function(enemies) {
 		PWG.Utils.each(
-			event.enemies,
+			enemies,
 			function(enemy) {
 				if(!enemy.isInView) {
 					if(this.activeEnemies.hasOwnProperty(enemy)) {
@@ -124,9 +127,20 @@ PWG.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.pwUpdate = function(params) {
+		// trace('SectorManager/pwUpdate, activeEnemies = ', this.activeEnemies);
 		this.checkTerrainCollision(params.terrain);
 		this.findActiveSector(params.position);
 		this.model.collection[this.activeSectorId].pwUpdate(params);
+		
+		PWG.Utils.each(
+			this.activeEnemies,
+			function(enemy) {
+				if(enemy.alive) {
+					enemy.pwUpdate(params);
+				}
+			},
+			this
+		);
 	};
 	
 	SectorManager.prototype.findActiveSector = function(position) {
