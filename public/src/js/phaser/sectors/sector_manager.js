@@ -10,7 +10,6 @@ PWG.SectorManager = (function() {
 		this.activeEnemies = {};
 		trace('SectorManager/constructor, positionAxis = ' + this.positionAxis);
 		
-		this.addListeners();
 	}
 
 	SectorManager.prototype.addListeners = function() {
@@ -133,18 +132,6 @@ PWG.SectorManager = (function() {
 		var activeSector = this.model.collection[this.activeSectorId];
 		// activeSector.pwUpdate(params);
 		
-		PWG.Utils.each(
-			this.activeEnemies,
-			function(enemy) {
-				if(enemy.alive) {
-					if(enemy.body.allowGravity) {
-						this.updateEnemyPhysics(enemy, params.terrain);
-					}
-					enemy.pwUpdate(params);
-				}
-			},
-			this
-		);
 	};
 	
 	SectorManager.prototype.updateEnemyPhysics = function(enemy, terrain) {
