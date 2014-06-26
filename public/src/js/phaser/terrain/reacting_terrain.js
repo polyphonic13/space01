@@ -1,6 +1,8 @@
 PWG.ReactingTerrain = (function() {
 	PWG.Utils.inherits(ReactingTerrain, PWG.Sprite); 
 	
+	ReactingTerrain.DEATH_ANIMATION_TIME = 1500;
+	ReactingTerrain.RESPAWN_TIME = 5000;
 	ReactingTerrain.DEACTIVATED = 'deactivated';
 	ReactingTerrain.IDLE = 'idle';
 	ReactingTerrain.COLLIDED = 'collided';
@@ -10,13 +12,19 @@ PWG.ReactingTerrain = (function() {
 	
 	function ReactingTerrain(params) {
 		ReactingTerrain._super.constructor.call(this, params);
-		this.state = ReactingTerrain.IDLE;
-		this.hasCollided = false;
+		this.activate();
 	}
 	
 	ReactingTerrain.prototype.begin = function() {
 		// trace('ReactingTerrain['+this.model.name+']/begin');
 		ReactingTerrain._super.begin.call(this);
+	};
+	
+	ReactingTerrain.prototype.activate = function() {
+		trace('ReactionTerrain/activate, this = ', this);
+		this.state = ReactingTerrain.IDLE;
+		this.hasCollided = false;
+		this.active = true;
 	};
 	
 	ReactingTerrain.prototype.collidedWithSprite = function(sprite) {
@@ -72,24 +80,42 @@ PWG.ReactingTerrain = (function() {
 	};
 
 	ReactingTerrain.prototype.animationCompleted = function() {
-		// trace('ReactingTerrain['+this.model.name+']/animationCompleted');
+		trace('ReactingTerrain['+this.model.name+']/animationCompleted');
 		this.removeTerrain();
 	};
 	
 	ReactingTerrain.prototype.playAnimation = function() {
-		// trace('ReactingTerrain['+this.model.name+']/playAnimation: ' + this.state);
+		trace('ReactingTerrain['+this.model.name+']/playAnimation: ', this);
 		var animation = this.model.attrs.animations[this.state];
 		if(animation) {
 			// trace('\tgoing to call play on', animation);
 			var kill = false;
 			if(this.model.reaction.type === PWG.TerrainReactions.DESTROY_AFTER_ANIMATION) {
-				// trace('\t\tit\'s a destroy after animation, set kill to true');
+				trace('\t\tit\'s a destroy after animation, set kill to true');
 				kill = true;
 			}
-			this.play(this.state, animation.frameRate, animation.looped, kill);
+			this.play(this.state, animation.frameRate, animation.looped, false);
+			setTimeout(this.deactivate, ReactingTerrain.DEATH_ANIMATION_TIME, this);
+			
+			if(this.model.reaction.respawn) {
+				setTimeout(this.respawn, ReactingTerrain.RESPAWN_TIME, this)
+			}
 		}
 	};
 
+	ReactingTerrain.prototype.deactivate = function(self) {
+		trace('ReactiongTerrain['+self.model.name+']/deactivate');
+		self.active = false;
+	};
+	
+	ReactingTerrain.prototype.respawn = function(self) {
+		trace('ReactingTerrain['+self.model.name+']/respawn, self = ', self);
+		// self.animations.frame = 0;
+		var animation = self.model.attrs.animations['respawn'];
+		self.play('respawn', animation.frameRate, animation.looped, false);
+		self.activate();
+	};
+	
 	ReactingTerrain.prototype.addGravity = function() {
 		// trace('ReactingTerrain['+_this.model.name+']/addGravity, _this = ', _this);
 		_this.changeState(ReactingTerrain.DEACTIVATED);

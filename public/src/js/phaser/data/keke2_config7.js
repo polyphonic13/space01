@@ -5279,7 +5279,8 @@ PWG.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -5598,7 +5599,8 @@ PWG.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -5792,7 +5794,8 @@ PWG.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -5842,7 +5845,8 @@ PWG.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -5862,7 +5866,8 @@ PWG.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -5996,7 +6001,8 @@ PWG.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -6235,7 +6241,8 @@ PWG.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -6381,7 +6388,8 @@ PWG.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -6401,7 +6409,8 @@ PWG.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -7354,7 +7363,8 @@ PWG.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -7583,7 +7593,8 @@ PWG.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -9204,7 +9215,8 @@ PWG.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -9401,7 +9413,8 @@ PWG.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'branch03LeftAnimated',
@@ -9421,7 +9434,8 @@ PWG.Config = (function() {
 								name: 'tree02-branch03',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -9441,7 +9455,8 @@ PWG.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -9491,7 +9506,8 @@ PWG.Config = (function() {
 								name: 'tree01-branch01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'branch03RightAnimated',
@@ -10910,7 +10926,8 @@ PWG.Config = (function() {
 								name: 'rockPlatform04',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11056,7 +11073,8 @@ PWG.Config = (function() {
 								name: 'rockPlatform6',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11148,7 +11166,8 @@ PWG.Config = (function() {
 								name: 'rockPlatform8',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11189,7 +11208,8 @@ PWG.Config = (function() {
 								name: 'rockPlatform040',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11281,7 +11301,8 @@ PWG.Config = (function() {
 								name: 'rockPlatform042',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11322,7 +11343,8 @@ PWG.Config = (function() {
 								name: 'rockPlatform044',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11449,7 +11471,8 @@ PWG.Config = (function() {
 								name: 'rockPlatform046',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11472,7 +11495,8 @@ PWG.Config = (function() {
 								name: 'rockPlatform047',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11495,7 +11519,8 @@ PWG.Config = (function() {
 								name: 'rockPlatform048',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -11518,7 +11543,8 @@ PWG.Config = (function() {
 								name: 'rockPlatform049',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -12243,7 +12269,8 @@ PWG.Config = (function() {
 								name: 'sector1-platform03',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform04Animated',
@@ -12454,7 +12481,8 @@ PWG.Config = (function() {
 								name: 'sector2-platform05',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -12574,7 +12602,8 @@ PWG.Config = (function() {
 								name: 'sector3-platform03',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -14809,7 +14838,8 @@ PWG.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -15039,7 +15069,8 @@ PWG.Config = (function() {
 								name: 'sector3-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -15213,7 +15244,8 @@ PWG.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -15902,7 +15934,8 @@ PWG.Config = (function() {
 								name: 'sector7-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -15961,7 +15994,8 @@ PWG.Config = (function() {
 								name: 'sector7-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -17168,7 +17202,8 @@ PWG.Config = (function() {
 								name: 'sector1-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -17355,7 +17390,8 @@ PWG.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -17378,7 +17414,8 @@ PWG.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -17684,7 +17721,8 @@ PWG.Config = (function() {
 								name: 'sector3-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -17707,7 +17745,8 @@ PWG.Config = (function() {
 								name: 'sector3-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -17836,7 +17875,8 @@ PWG.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -17877,7 +17917,8 @@ PWG.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -17955,7 +17996,8 @@ PWG.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -17978,7 +18020,8 @@ PWG.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -18001,7 +18044,8 @@ PWG.Config = (function() {
 								name: 'sector4-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -18236,7 +18280,8 @@ PWG.Config = (function() {
 								name: 'sector5-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -18259,7 +18304,8 @@ PWG.Config = (function() {
 								name: 'sector5-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -18282,7 +18328,8 @@ PWG.Config = (function() {
 								name: 'sector5-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -18554,7 +18601,8 @@ PWG.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -18789,7 +18837,8 @@ PWG.Config = (function() {
 								name: 'sector7-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -23494,7 +23543,8 @@ PWG.Config = (function() {
 								name: 'sector5-platform05',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -23517,7 +23567,8 @@ PWG.Config = (function() {
 								name: 'sector5-platform05',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24360,7 +24411,8 @@ PWG.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24383,7 +24435,8 @@ PWG.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24406,7 +24459,8 @@ PWG.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24473,7 +24527,8 @@ PWG.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24496,7 +24551,8 @@ PWG.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24519,7 +24575,8 @@ PWG.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24586,7 +24643,8 @@ PWG.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24609,7 +24667,8 @@ PWG.Config = (function() {
 								name: 'sector2-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24676,7 +24735,8 @@ PWG.Config = (function() {
 								name: 'sector5-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24699,7 +24759,8 @@ PWG.Config = (function() {
 								name: 'sector5-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24766,7 +24827,8 @@ PWG.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01',
@@ -24789,7 +24851,8 @@ PWG.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24812,7 +24875,8 @@ PWG.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24835,7 +24899,8 @@ PWG.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
@@ -24858,7 +24923,8 @@ PWG.Config = (function() {
 								name: 'sector6-platform01',
 								cl: 'ReactingTerrain',
 								reaction: {
-									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION
+									type: PWG.TerrainReactions.DESTROY_AFTER_ANIMATION,
+									respawn: true
 								},
 								attrs: {
 									img: 'rockPlatform01Animated',
