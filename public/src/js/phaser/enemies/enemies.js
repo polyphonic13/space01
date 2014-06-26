@@ -7,7 +7,8 @@ PWG.Enemies = (function() {
 	}
 	
 	Enemies.prototype.pwUpdate = function(params) {
-		PWG.Utils.each(this.model.collection,
+		PWG.Utils.each(
+			this.model.collection,
 			function(child) {
 				if(child.alive) {
 					child.pwUpdate(params);

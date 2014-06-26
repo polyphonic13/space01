@@ -37,7 +37,7 @@
 		// PWG.EventCenter.bind(PWG.Events.AD_COMPLETED, this.onResumeState, this);
 
 		this.requirements = this.getChildByName('requirements');
-		// trace('\n\n\trequirements = ', this.requirements, '\tgroup = ', this.requirements.group);
+		trace('\n\n\trequirements = ', this.requirements, '\tgroup = ', this.requirements.group);
 		if(this.requirements) {
 			PWG.EventCenter.bind(PWG.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
 		} else {
@@ -57,6 +57,10 @@
 		this.sectorManager = this.getChildByName('sectors');
 		this.sectorManager.setState(this);
 		this.sectorManager.setActiveSector(0);
+
+		this.enemyManager = this.getChildByName('enemies');
+		trace('about to call enemyManager createSectors on: ', this.enemyManager);
+		this.enemyManager.createSectors(this.sectorManager);
 
 		var playerStart = PWG.Utils.clone(PWGGame.get('player').attrs.start);
 		// trace('LevelState['+this.model.name+']/createState\n\tplayerStart = ', playerStart);
