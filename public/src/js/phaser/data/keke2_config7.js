@@ -7256,47 +7256,47 @@ PWG.Config = (function() {
 							}
 							]
 						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level03-sector4-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar02',
-									phaser: {
-										width: caterpillar02.width,
-										height: caterpillar02.height,
-										health: 20
-									},
-									start: {
-										x: (stageUnit * 2),
-										y: winH - (stageHeight + (stageUnit * 2))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 15,
-									jumps: true,
-									jumpMultiplier: 500,
-									testInView: true,
-									score: 500,
-									movement: {
-										speed: 1.5,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}
-							]
-						}
+						// {
+						// 	name: 'enemies',
+						// 	cl: 'Enemies',
+						// 	attrs: [
+						// 	{
+						// 		name: 'level03-sector1-enemy1',
+						// 		cl: 'AnimatedEnemy',
+						// 		attrs: {
+						// 			img: 'caterpillar02',
+						// 			phaser: {
+						// 				width: caterpillar02.width,
+						// 				height: caterpillar02.height,
+						// 				health: 20
+						// 			},
+						// 			start: {
+						// 				x: (stageUnit * 2),
+						// 				y: winH - (stageHeight + (stageUnit * 2))
+						// 			},
+						// 			physics: {
+						// 				deferredGravity: true,
+						// 				bounce: {
+						// 					x: 0,
+						// 					y: 0.2
+						// 				}
+						// 			},
+						// 			attack: 15,
+						// 			jumps: true,
+						// 			jumpMultiplier: 500,
+						// 			testInView: true,
+						// 			score: 500,
+						// 			movement: {
+						// 				speed: 1.5,
+						// 				type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+						// 				formula: null
+						// 			},
+						// 			defaultAnimation: '',
+						// 			animations: caterpillarAnimations
+						// 		}
+						// 	}
+						// 	]
+						// }
 						]
 					},
 					// sector2

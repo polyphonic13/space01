@@ -1,4 +1,4 @@
-PWG.LevelState = (function() {
+	PWG.LevelState = (function() {
 	PWG.Utils.inherits(LevelState, PWG.State); 
 	
 	var _this;

@@ -17,10 +17,10 @@ PWG.Enemies = (function() {
 		);
 	};
 	
-	Enemies.prototype.activateGravity = function() {
-		// trace('Enemies['+this.model.name+']/activateGravity, collection', this.model.collection);
-		Enemies._super.activateGravity.call(this);
-	};
+	// Enemies.prototype.activateGravity = function() {
+	// 	// trace('Enemies['+this.model.name+']/activateGravity, collection', this.model.collection);
+	// 	Enemies._super.activateGravity.call(this);
+	// };
 
 	Enemies.prototype.deactivateGravity = function() {
 		PWG.Utils.each(
@@ -28,6 +28,7 @@ PWG.Enemies = (function() {
 			function(child) {
 				trace('Enemies/deactivateGravity, child['+child.model.name+'].isActive = ' + child.isActive);
 				if(!child.isActive) {
+					trace('\tdeactivating gravity');
 					child.deactivateGravity();
 				}
 			},

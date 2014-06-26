@@ -73,7 +73,8 @@ PWG.SectorManager = (function() {
 	
 	SectorManager.prototype.addActiveEnemy = function(enemy) {
 		if(!this.activeEnemies.hasOwnProperty(enemy)) {
-			this.activeEnemies[enemy.model.name] = enemy
+			enemy.getSector();
+			this.activeEnemies[enemy.model.name] = enemy;
 		}
 	};
 	
@@ -82,9 +83,7 @@ PWG.SectorManager = (function() {
 		PWG.Utils.each(
 			enemies.model.collection,
 			function(enemy) {
-				if(!this.activeEnemies.hasOwnProperty(enemy)) {
-					this.activeEnemies[enemy.model.name] = enemy
-				}
+				this.addActiveEnemy(enemy);
 			},
 			this
 		);
@@ -92,18 +91,18 @@ PWG.SectorManager = (function() {
 	
 	SectorManager.prototype.removeActiveEnemy = function(enemy) {
 		if(this.activeEnemies.hasOwnProperty(enemy)) {
+			trace('\tremoving ' + enemy.model.name);
 			delete this.activeEnemies[enemy.model.name];
 		}
 	};
 	
 	SectorManager.prototype.removeActiveEnemies = function(enemies) {
+		trace('SectorManager/removeActiveEnemies, enemies = ', enemies, '\tactiveEnemies = ', this.activeEnemies);
 		PWG.Utils.each(
-			enemies,
+			enemies.model.collection,
 			function(enemy) {
 				if(!enemy.isInView) {
-					if(this.activeEnemies.hasOwnProperty(enemy)) {
-						delete this.activeEnemies[enemy.model.name];
-					}
+					this.removeActiveEnemy(enemy);
 				}
 			},
 			this
@@ -136,6 +135,8 @@ PWG.SectorManager = (function() {
 			this.activeEnemies,
 			function(enemy) {
 				if(enemy.alive) {
+					enemy.checkTerrainCollision(params.terrain);
+					enemy.checkTerrainCollision(enemy.getDynamicTerrain);
 					enemy.pwUpdate(params);
 				}
 			},
