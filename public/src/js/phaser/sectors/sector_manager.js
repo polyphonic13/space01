@@ -171,6 +171,22 @@ PWG.SectorManager = (function() {
 		}
 	};
 	
+	SectorManager.prototype.getSectorBounds = function() {
+		var bounds = [];
+		trace('SectorManager/getSectorBounds, collection = ', this.model.collection);
+		PWG.Utils.each(
+			this.model.collection,
+			function(sector) {
+				bounds.push({
+					start: sector.model.bounds.start,
+					end: sector.model.bounds.end
+				});
+			},
+			this
+		);
+		return bounds;
+	};
+	
 	SectorManager.prototype.deactivateAll = function() {
 		PWG.Utils.each(this.model.collection,
 			function(child) {
