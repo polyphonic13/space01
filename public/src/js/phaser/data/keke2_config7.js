@@ -1726,7 +1726,7 @@ PWG.Config = (function() {
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							x: -(stageUnit * 2.5),
+							x: -(stageUnit * 2.75),
 							y: (stageUnit * 3.5),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
@@ -1816,7 +1816,7 @@ PWG.Config = (function() {
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							x: -(stageUnit * 5),
+							x: -(stageUnit * 5.25),
 							y: (stageUnit * 6.5),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
@@ -1827,7 +1827,7 @@ PWG.Config = (function() {
 						}
 					},
 					{
-						name: 'share1',
+						name: 'share2',
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',

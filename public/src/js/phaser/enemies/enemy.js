@@ -13,7 +13,7 @@ PWG.Enemy = (function() {
 
 	Enemy.prototype.pwUpdate = function(params) {
 		if(this.alive) {
-			// trace('Enemy['+this.model.name+']/pwUpdate, relationToPlayer = ' + this.relationToPlayer);
+			trace('Enemy['+this.model.name+']/pwUpdate, relationToPlayer = ' + this.relationToPlayer);
 			this.checkDynamicTerrainCollision(params.dynamicTerrain);
 
 			this.relationToPlayer = 'near';
@@ -49,15 +49,10 @@ PWG.Enemy = (function() {
 	};
 	
 	Enemy.prototype.getSector = function() {
-		trace('Enemy['+this.model.name+']/getSector, this = ', this);
+		// trace('Enemy['+this.model.name+']/getSector, this = ', this);
 		var sector = this.model.ancestor.model.ancestor;
-		trace('\tsector = ', sector);
+		// trace('\tsector = ', sector);
 		return sector;
-	};
-	
-	Enemy.prototype.getDynamicTerrain = function() {
-		var dynamicTerrain = this.model.ancestor.model.ancestor.dynamicTerrain;
-		return dynamicTerrain;
 	};
 	
 	Enemy.prototype.calculateHorizontalMovement = function(player, movementType, invert) {
@@ -87,12 +82,12 @@ PWG.Enemy = (function() {
 		if(this.isInView) {
 			var direction; 
 			if(enemyX < (playerX - 10)) {
-				// trace(this.model.name + ': move right');
+				// trace(this.model.name + ': move right, x = ' + enemyX + ', playerX = ' + playerX);
 				this.relationToPlayer = 'right';
 				direction = (reverse) ? PWG.Directions.LEFT : PWG.Directions.RIGHT;
 				this.move({ direction: direction, type: movementType });
 			} else if(enemyX > (playerX + 10)) {
-				// trace(this.model.name + ': move left');
+				// trace(this.model.name + ': move left, x = ' + enemyX + ', playerX = ' + playerX);
 				this.relationToPlayer = 'left';
 				direction = (reverse) ? PWG.Directions.RIGHT : PWG.Directions.LEFT;
 				this.move({ direction: direction, type: movementType });

@@ -129,19 +129,35 @@ PWG.SectorManager = (function() {
 		// trace('SectorManager/pwUpdate, activeEnemies = ', this.activeEnemies);
 		this.checkTerrainCollision(params.terrain);
 		this.findActiveSector(params.position);
-		this.model.collection[this.activeSectorId].pwUpdate(params);
+		
+		var activeSector = this.model.collection[this.activeSectorId];
+		// activeSector.pwUpdate(params);
 		
 		PWG.Utils.each(
 			this.activeEnemies,
 			function(enemy) {
 				if(enemy.alive) {
-					enemy.checkTerrainCollision(params.terrain);
-					enemy.checkTerrainCollision(enemy.getDynamicTerrain);
+					if(enemy.body.allowGravity) {
+						this.updateEnemyPhysics(enemy, params.terrain);
+					}
 					enemy.pwUpdate(params);
 				}
 			},
 			this
 		);
+	};
+	
+	SectorManager.prototype.updateEnemyPhysics = function(enemy, terrain) {
+		var enemySector = enemy.getSector();
+		var activeSector = this.model.collection[this.activeSectorId];
+
+		if(enemySector.dynamicTerrain) {
+			enemy.checkTerrainCollision(enemySector.dynamicTerrain);
+		}
+		if(activeSector.dynamicTerrain) {
+			enemy.checkTerrainCollision(activeSector.dynamicTerrain);
+		}
+		enemy.checkTerrainCollision(terrain);
 	};
 	
 	SectorManager.prototype.findActiveSector = function(position) {

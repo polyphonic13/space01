@@ -9,6 +9,7 @@ PWG.Sector = (function() {
 	}
 	
 	Sector.prototype.begin = function() {
+		
 		Sector._super.begin.call(this);
 		this.setChildrenExists(false);
 
