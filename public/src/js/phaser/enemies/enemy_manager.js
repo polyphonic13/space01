@@ -110,7 +110,7 @@ PWG.EnemyManager = function() {
 		PWG.Utils.each(
 			enemies.model.collection,
 			function(enemy) {
-				if(!enemy.isInView) {
+				if(!enemy.isActive) {
 					this.removeActiveEnemy(enemy);
 				}
 			},
@@ -119,6 +119,7 @@ PWG.EnemyManager = function() {
 	};
 	
 	EnemyManager.prototype.removeActiveEnemy = function(enemy) {
+		trace('EnemyManager/removeActiveEnemies, enemy = ' + enemy.model.name);
 		if(this.activeEnemies.hasOwnProperty(enemy)) {
 			trace('\tremoving ' + enemy.model.name);
 			delete this.activeEnemies[enemy.model.name];

@@ -58,7 +58,9 @@
 		this.sectorManager.setState(this);
 		this.sectorManager.setActiveSector(0);
 
-		this.enemyManager = new PWG.EnemyManager(this.model.enemies, this.sectorManager);
+		if(this.model.enemies) {
+			this.enemyManager = new PWG.EnemyManager(this.model.enemies, this.sectorManager);
+		}
 
 		var playerStart = PWG.Utils.clone(PWGGame.get('player').attrs.start);
 		// trace('LevelState['+this.model.name+']/createState\n\tplayerStart = ', playerStart);
@@ -124,7 +126,10 @@
 					}
 				};
 				this.sectorManager.pwUpdate(updateParams);
-				this.enemyManager.pwUpdate(updateParams);
+				
+				if(this.enemyManager) {
+					this.enemyManager.pwUpdate(updateParams);
+				}
 				
 				// update player with active sector members & terrain
 				var terrainGroup = this.terrain.group;
@@ -134,7 +139,9 @@
 				var dynamicTerrainGroup = (sector.dynamicTerrain) ? sector.dynamicTerrain.getActive() : null;
 				var groupEnemies = (sector.groupEnemies) ? sector.groupEnemies.getActive() : null;
 				// var enemies = (sector.enemies) ? sector.enemies.getActive() : null;
-				var enemies = this.enemyManager.getActiveEnemies();
+				if(this.enemyManager) {
+					var enemies = this.enemyManager.getActiveEnemies();
+				}
 				var hazards = (sector.hazards) ? sector.hazards.getActive() : null;
 				var bonuses = (sector.bonuses) ? sector.bonuses.getActive() : null;
 
