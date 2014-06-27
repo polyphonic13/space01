@@ -23,6 +23,10 @@ PWG.Enemies = (function() {
 	// 	Enemies._super.activateGravity.call(this);
 	// };
 
+	Enemies.prototype.getEnemies = function() {
+		return this.model.collection;
+	};
+	
 	Enemies.prototype.deactivateGravity = function() {
 		PWG.Utils.each(
 			this.model.collection,
