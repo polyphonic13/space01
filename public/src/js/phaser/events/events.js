@@ -15,6 +15,7 @@ PWG.Events = {
 	HIDE_LEVEL_INFO: 'hideLevelInfo',
 	START_LEVEL: 'startLevel',
 	NEXT_LEVEL: 'nextLevel',
+	SECTOR_CHANGED: 'sectorChanged',
 	GOAL_REACHED: 'goalReached',
 	REQUIREMENT_INITIALIZED: 'requirementInitialized',
 	REQUIREMENT_MET: 'requirementMet',

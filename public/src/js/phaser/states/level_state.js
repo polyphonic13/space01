@@ -58,9 +58,7 @@
 		this.sectorManager.setState(this);
 		this.sectorManager.setActiveSector(0);
 
-		this.enemyManager = this.getChildByName('enemies');
-		trace('about to call enemyManager createSectors on: ', this.enemyManager);
-		this.enemyManager.createSectors(this.sectorManager);
+		this.enemyManager = new PWG.EnemyManager(this.model.enemies, this.sectorManager);
 
 		var playerStart = PWG.Utils.clone(PWGGame.get('player').attrs.start);
 		// trace('LevelState['+this.model.name+']/createState\n\tplayerStart = ', playerStart);
@@ -135,7 +133,7 @@
 				var dynamicTerrainGroup = (sector.dynamicTerrain) ? sector.dynamicTerrain.getActive() : null;
 				var groupEnemies = (sector.groupEnemies) ? sector.groupEnemies.getActive() : null;
 				// var enemies = (sector.enemies) ? sector.enemies.getActive() : null;
-				var enemies = this.sectorManager.getActiveEnemies();
+				var enemies = this.enemyManager.getActiveEnemies();
 				var hazards = (sector.hazards) ? sector.hazards.getActive() : null;
 				var bonuses = (sector.bonuses) ? sector.bonuses.getActive() : null;
 
@@ -255,8 +253,9 @@
 		PWG.EventCenter.unbind(PWG.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
 		PWG.EventCenter.unbind(PWG.Events.AD_STARTED, this.onPauseState, this);
 		PWG.EventCenter.unbind(PWG.Events.AD_COMPLETED, this.onResumeState, this);
-
+		
 		this.destroyPlayer();
+		this.enemyManager.destroy();
 		LevelState._super.shutdown.call(this);
 	};
 
