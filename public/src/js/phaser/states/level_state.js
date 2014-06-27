@@ -201,6 +201,9 @@
 	LevelState.prototype.pauseState = function() {
 		this.destroyPlayer();
 
+		if(this.enemyManager) {
+			this.enemyManager.pause();
+		}
 		this.sectorManager.deactivateAll();
 		this.playerPosition = {
 			x: this.player.x,
@@ -212,10 +215,13 @@
 	};
 	
 	LevelState.prototype.resumeState = function() {
-		this.sectorManager.setActiveSector(this.sectorManager.activeSectorId);
+		this.sectorManager.setActiveSector(this.sectorManager.activeSectorIdx);
 		this.createPlayer(this.playerPosition, PWGGame.health);
 		this.playerGroup.visible = true; 
 		this.showPauseGUI(false);
+		if(this.enemyManager) {
+			this.enemyManager.resume();
+		}
 	};
 	
 	LevelState.prototype.showPauseGUI = function(show) {

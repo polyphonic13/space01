@@ -92,7 +92,7 @@ PWG.Enemy = (function() {
 			}
 		}
 
-		if((enemyX < (playerX + PWG.Stage.width/4) && enemyX > (playerX - PWG.Stage.width/4)) && (enemyY < (playerY + PWG.Stage.height/4) && enemyY > (playerY - PWG.Stage.height/4))) {
+		if((enemyX < (playerX + PWG.Stage.width/4) && enemyX > (playerX - PWG.Stage.width/4)) || (enemyY < (playerY + PWG.Stage.height/4) && enemyY > (playerY - PWG.Stage.height/4))) {
 			if(!this.isInProximity) {
 				this.isInProximity = true;
 				PWG.EventCenter.trigger({ type: PWG.Events.ADD_ACTIVE_ENEMY, enemy: this });
@@ -100,7 +100,7 @@ PWG.Enemy = (function() {
 		} else {
 			if(this.isInProximity) {
 				this.isInProximity = false;
-				PWG.EventCenter.trigger({ type: PWG.Events.REMOVE_ACTIVE_ENEMY, enemy: this });
+				// PWG.EventCenter.trigger({ type: PWG.Events.REMOVE_ACTIVE_ENEMY, enemy: this });
 			}
 		}
 	};

@@ -16,17 +16,17 @@ PWG.SectorManager = (function() {
 		this.model.set({ state: state });
 	};
 	
-	SectorManager.prototype.setActiveSector = function(id) {
+	SectorManager.prototype.setActiveSector = function(idx) {
 		// this.deactivateAll();
-		if(this.activeSectorId) {
-			this.model.collection[this.activeSectorId].setActive(false);
+		if(this.activeSectorIdx) {
+			this.model.collection[this.activeSectorIdx].setActive(false);
 		}
-		this.activeSectorId = id;
-		this.model.collection[id].setActive(true);
+		this.activeSectorIdx = idx;
+		this.model.collection[idx].setActive(true);
 
 		var state = this.model.get('state');
-		state.activeSector = this.model.collection[id];
-		PWG.EventCenter.trigger({ type: PWG.Events.SECTOR_CHANGED, id: id });
+		state.activeSector = this.model.collection[idx];
+		PWG.EventCenter.trigger({ type: PWG.Events.SECTOR_CHANGED, idx: idx });
 	};
 	
 	SectorManager.prototype.getSector = function(idx) {
@@ -34,11 +34,11 @@ PWG.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.getActiveSector = function() {
-		return this.model.collection[this.activeSectorId];
+		return this.model.collection[this.activeSectorIdx];
 	};
 	
 	SectorManager.prototype.checkTerrainCollision = function(terrain) {
-		this.model.collection[this.activeSectorId].checkTerrainCollision(terrain);
+		this.model.collection[this.activeSectorIdx].checkTerrainCollision(terrain);
 		/*
 		PWG.Utils.each(this.model.collection,
 			function(c) {
@@ -54,7 +54,7 @@ PWG.SectorManager = (function() {
 		this.checkTerrainCollision(params.terrain);
 		this.findActiveSector(params.position);
 		
-		var activeSector = this.model.collection[this.activeSectorId];
+		var activeSector = this.model.collection[this.activeSectorIdx];
 		// activeSector.pwUpdate(params);
 		
 	};
@@ -74,7 +74,7 @@ PWG.SectorManager = (function() {
 			bounds = child[i].model.bounds;
 			// trace('\tc['+i+'] start/end = ' + bounds.start + '/' + bounds.end);
 			if(pos > bounds.start && pos < bounds.end) {
-				if(this.activeSectorId !== i) {
+				if(this.activeSectorIdx !== i) {
 					trace('new sector id = ' + i + ', name = ' + child[i].model.name + ', pos = ' + pos);
 					this.setActiveSector(i);
 					break;
