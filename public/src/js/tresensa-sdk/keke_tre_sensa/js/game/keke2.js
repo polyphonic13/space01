@@ -69142,7 +69142,7 @@ PWG.SectorManager = (function() {
 	
 	SectorManager.prototype.setActiveSector = function(idx) {
 		this.deactivateAll();
-		this.activeSectorId = idx;
+		this.activeSectorIdx = idx;
 		this.model.collection[idx].setActive(true);
 
 		var state = this.model.get('state');
@@ -69150,11 +69150,11 @@ PWG.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.getActiveSector = function() {
-		return this.model.collection[this.activeSectorId];
+		return this.model.collection[this.activeSectorIdx];
 	};
 	
 	SectorManager.prototype.checkTerrainCollision = function(terrain) {
-		this.model.collection[this.activeSectorId].checkTerrainCollision(terrain);
+		this.model.collection[this.activeSectorIdx].checkTerrainCollision(terrain);
 		/*
 		PWG.Utils.each(this.model.collection,
 			function(c) {
@@ -69168,7 +69168,7 @@ PWG.SectorManager = (function() {
 	SectorManager.prototype.pwUpdate = function(params) {
 		this.checkTerrainCollision(params.terrain);
 		this.findActiveSector(params.position);
-		this.model.collection[this.activeSectorId].pwUpdate(params);
+		this.model.collection[this.activeSectorIdx].pwUpdate(params);
 	};
 	
 	SectorManager.prototype.findActiveSector = function(position) {
@@ -69186,7 +69186,7 @@ PWG.SectorManager = (function() {
 			bounds = c[i].model.bounds;
 			// 
 			if(pos > bounds.start && pos < bounds.end) {
-				if(this.activeSectorId !== i) {
+				if(this.activeSectorIdx !== i) {
 					
 					this.setActiveSector(i);
 					break;
@@ -69661,7 +69661,7 @@ PWG.LevelState = (function() {
 	};
 	
 	LevelState.prototype.resumeState = function() {
-		this.sectorManager.setActiveSector(this.sectorManager.activeSectorId);
+		this.sectorManager.setActiveSector(this.sectorManager.activeSectorIdx);
 		this.createPlayer(this.playerPosition, PWGGame.health);
 		this.playerGroup.visible = true; 
 		this.showPauseGUI(false);

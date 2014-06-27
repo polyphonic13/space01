@@ -7,7 +7,7 @@ PWG.Enemies = (function() {
 	}
 	
 	Enemies.prototype.begin = function() {
-		trace('Enemies/begin, this = ', this);
+		// trace('Enemies/begin, this = ', this);
 		PWG.Utils.each(
 			this.model.attrs,
 			function(child) {
@@ -30,11 +30,6 @@ PWG.Enemies = (function() {
 		);
 	};
 	
-	// Enemies.prototype.activateGravity = function() {
-	// 	// trace('Enemies['+this.model.name+']/activateGravity, collection', this.model.collection);
-	// 	Enemies._super.activateGravity.call(this);
-	// };
-
 	Enemies.prototype.getEnemies = function() {
 		return this.model.collection;
 	};
