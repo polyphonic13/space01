@@ -597,496 +597,6 @@ PWG.Config = (function() {
 				}
 				]
 			},
-			// PLAYER
-			player: {
-				name: 'player',
-				cl: 'AnimatedPlayer',
-				attrs: {
-					img: 'keke',
-					phaser: {
-						health: 100,
-						width: (stageUnit * 2.3) * 0.84,
-						height: (stageUnit * 2.3)
-					},
-					setSize: [((stageUnit * 3) * 0.3), 220],
-					start: {
-						// x: winW/2 - ((stageUnit * 3) * 0.84)/2,
-						// y: winH - 300
-						// y: winH - (226)
-						x: winW/2,
-						y: winH - (stageUnit * 1.8)
-					},
-					physics: {
-						// bounce: {
-						// 	x: 0,
-						// 	y: 0.2
-						// },
-						deferredGravity: true,
-						collideWorldBounds: false
-					},
-					anchor: {
-						x: 0.5,
-						y: 0.5
-					},
-					followStyle: Phaser.Camera.FOLLOW_TOPDOWN,
-					speed: {
-						x: (stageUnit * 4),
-						y: (stageUnit * 10.4)
-					},
-					controls: {
-						left: PWG.InputCodes.LEFT,
-						right: PWG.InputCodes.RIGHT,
-						jump: PWG.InputCodes.UP
-					},
-					attack: 5,
-					jumping: false,
-					justJumped: false,
-					defaultAnimation: AnimationTypes.IDLE_L,
-					animations: kekeAnimations,
-					facingForward: true
-				}
-			},
-			// PHYSICS
-			gravity: {
-				x: 0,
-				y: stageUnit/2.5
-			},
-			// CONTROLS
-			controls: {
-				keys: {
-					name: 'controlKeys',
-					cl: 'ControlKey',
-					attrs: [
-					// {
-					// 	name: 'quit', // q
-					// 	cl: 'ControlKey',
-					// 	attrs: {
-					// 		inputCode: PWG.InputCodes.QUIT,
-					// 		events: {
-					// 			pressed: {
-					// 				type: PWG.Events.CHANGE_STATE,
-					// 				value: 'quit'
-					// 			}
-					// 		}
-					// 	}
-					// },
-					{
-						name: 'clearData', // c
-						cl: 'ControlKey',
-						attrs: {
-							inputCode: PWG.InputCodes.CLEAR_DATA
-						}
-					},
-					// {
-					// 	name: 'start', // s
-					// 	cl: 'ControlKey',
-					// 	attrs: {
-					// 		inputCode: PWG.InputCodes.START,
-					// 		events: {
-					// 			pressed: {
-					// 				type: PWG.Events.CHANGE_STATE,
-					// 				value: 'map'
-					// 			}
-					// 		}
-					// 	}
-					// },
-					// {
-					// 	name: 'next', // n
-					// 	cl: 'ControlKey',
-					// 	attrs: {
-					// 		inputCode: PWG.InputCodes.NEXT,
-					// 		events: {
-					// 			pressed: {
-					// 				type: PWG.Events.NEXT_LEVEL
-					// 			}
-					// 		}
-					// 	}
-					// },
-					// {
-					// 	name: 'level', // l
-					// 	cl: 'ControlKey',
-					// 	attrs: {
-					// 		inputCode: PWG.InputCodes.LEVEL,
-					// 		events: {
-					// 			pressed: {
-					// 				type: PWG.Events.START_LEVEL,
-					// 				value: PWGGame.currentLevel
-					// 			}
-					// 		}
-					// 	}
-					// },
-					{
-						name: 'pause', // p
-						cl: 'ControlKey',
-						attrs: {
-							inputCode: PWG.InputCodes.PAUSE,
-							events: {
-								pressed: {
- 									type: PWG.Events.PAUSE_STATE
-								}
-							}
-						}
-					},
-					{
-						name: 'menu', // m
-						cl: 'ControlKey',
-						attrs: {
-							inputCode: PWG.InputCodes.MENU,
-							events: {
-								pressed: {
- 									type: PWG.Events.CHANGE_STATE,
-									value: 'menu'
-								}
-							}
-						}
-					},
-					{
-						name: 'left',
-						cl: 'ControlKey',
-						attrs: {
-							inputCode: PWG.InputCodes.LEFT
-						}
-					},
-					{
-						name: 'right',
-						cl: 'ControlKey',
-						attrs: {
-							inputCode: PWG.InputCodes.RIGHT
-						}
-					},
-					{
-						name: 'up',
-						cl: 'ControlKey',
-						attrs: {
-							inputCode: PWG.InputCodes.UP
-						}
-					},
-					{
-						name: 'space',
-						cl: 'ControlKey',
-						attrs: {
-							inputCode: PWG.InputCodes.SPACE
-						}
-					}
-					]
-				},
-				buttons: {
-					menu: [
-					{
-						name: 'start',
-						cl: 'InputButton',
-						attrs: {
-							img: 'playButton',
-							start: {
-								x: winW/2 - 50,
-								y: winH/2
-							},
-							inputCode: PWG.InputCodes.START,
-							events: {
-								pressed: {
-									type: PWG.Events.CHANGE_STATE,
-									value: 'map'
-								}
-							}
-						}
-					},
-					{
-						name: 'creditsBtn',
-						cl: 'InputButton',
-						attrs: {
-							img: 'creditsButton',
-							phaser: {
-								width: (stageUnit * 4),
-								height: (stageUnit * 1)
-							},
-							start: {
-								x: winW/2 - (stageUnit * 2),
-								y: winH - (stageUnit * 1.5)
-							},
-							events: {
-								released: {
-									type: PWG.Events.CHANGE_STATE,
-									value: 'credits'
-								}
-							}
-						}
-					}
-					],
-					credits: [
-					{
-						name: 'closeBtn',
-						cl: 'InputButton',
-						attrs: {
-							img: 'closeButton',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 1.5)
-							},
-							start: {
-								x: (stageUnit * 0.5),
-								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
-							},
-							frames: [0, 0, 1],
-							events: {
-								released: {
-									type: PWG.Events.CHANGE_STATE,
-									value: 'menu'
-								}
-							}
-						}
-					}
-					],
-					map: [
-					{
-						name: 'menuBtn',
-						cl: 'InputButton',
-						attrs: {
-							img: 'menuButton',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 1.5)
-							},
-							start: {
-								x: (stageUnit * 0.5),
-								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
-							},
-							frames: [0, 0, 1],
-							// inputCode: PWG.InputCodes.MENU,
-							events: {
-								released: {
-									type: PWG.Events.CHANGE_STATE,
-									value: 'menu'
-								}
-							}
-						}
-					}
-					],
-					levelInfo: [
-					// play button
-					{
-						name: 'playButtonSmall',
-						cl: 'InputButton',
-						attrs: {
-							img: 'playButtonSmall',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 1.5)
-							},
-							start: {
-								x: (stageUnit * 0.5),
-								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
-							},
-							events: {
-								released: {
-									type: PWG.Events.START_LEVEL
-								}
-							}
-						}
-					},
-					// map button
-					{
-						name: 'mapButton',
-						cl: 'InputButton',
-						attrs: {
-							img: 'mapButton',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 1.5)
-							},
-							start: {
-								x: (stageUnit * 0.5),
-								y: (winH/2) - ((stageUnit * 1.5)/2)
-							},
-							frames: [0, 0, 1],
-							events: {
-								released: {
-									type: PWG.Events.CHANGE_STATE,
-									value: 'map'
-								}
-							}
-						}
-					}
-					],
-					completed: [
-					{
-						name: 'mapButton',
-						cl: 'InputButton',
-						attrs: {
-							img: 'mapButton',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 1.5)
-							},
-							start: {
-								x: (stageUnit * 0.5),
-								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
-							},
-							frames: [0, 0, 1],
-							events: {
-								released: {
-									type: PWG.Events.CHANGE_STATE,
-									value: 'map'
-								}
-							}
-						}
-					},
-					{
-						name: 'menuBtn',
-						cl: 'InputButton',
-						attrs: {
-							img: 'menuButton',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 1.5)
-							},
-							start: {
-								x: (stageUnit * 0.5),
-								y: (winH/2) - ((stageUnit * 1.5)/2)
-							},
-							frames: [0, 0, 1],
-							events: {
-								released: {
-									type: PWG.Events.CHANGE_STATE,
-									value: 'menu'
-								}
-							}
-						}
-					}
-					],
-					gameOver: [
-					{
-						name: 'menuBtn',
-						cl: 'InputButton',
-						attrs: {
-							img: 'menuButton',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 1.5)
-							},
-							start: {
-								x: (stageUnit * 0.5),
-								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
-							},
-							frames: [0, 0, 1],
-							events: {
-								released: {
-									type: PWG.Events.CHANGE_STATE,
-									value: 'menu'
-								}
-							}
-						}
-					},
-					{
-						name: 'restart',
-						cl: 'InputButton',
-						attrs: {
-							img: 'restartButton',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 1.5)
-							},
-							start: {
-								x: (stageUnit * 0.5),
-								y: (winH/2) - ((stageUnit * 1.5)/2)
-							},
-							events: {
-								released: {
-									type: PWG.Events.START_LEVEL
-								}
-							}
-						}
-					}
-					],
-					level: [
-					{
-						name: 'invisBtn',
-						cl: 'InputButton',
-						attrs: {
-							img: 'invisibleRect',
-							start: {
-								x: 0,
-								y: 0
-							},
-							width: winW, 
-							height: winH,
-							inputCode: PWG.InputCodes.RESET
-						}
-					},
-					{
-						name: 'leftBtn',
-						cl: 'InputButton',
-						attrs: {
-							img: 'leftButton',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 8)
-							},
-							start: {
-								x: (stageUnit * 0.5),
-								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
-							},
-							frames: [0, 0, 1],
-							inputCode: PWG.InputCodes.LEFT
-						}
-					},
-					{
-						name: 'rightBtn',
-						cl: 'InputButton',
-						attrs: {
-							img: 'rightButton',
-							phaser: {
-								width: (stageUnit * 4),
-								height: (stageUnit * 8)
-							},
-							start: {
-								x: (stageUnit * 2.5),
-								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
-							},
-							frames: [0, 0, 1],
-							inputCode: PWG.InputCodes.RIGHT
-						}
-					},
-					{
-						name: 'upBtn',
-						cl: 'InputButton',
-						attrs: {
-							img: 'upButton',
-							phaser: { 
-								width: (stageUnit * 4),
-								height: (stageUnit * 8)
-							},
-							start: {
-								x: winW - (stageUnit * 4.5),
-								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
-							},
-							frames: [0, 0, 1],
-							inputCode: PWG.InputCodes.UP
-						}
-					},
-					{
-						name: 'pauseButton',
-						cl: 'InputButton',
-						attrs: {
-							img: 'pauseButton',
-							phaser: {
-								width: (stageUnit * 1.5),
-								height: (stageUnit * 1.5)
-							},
-							start: {
-								x: (stageUnit * 0.5),
-								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
-							},
-							frames: [0, 0, 1],
-							events: {
-								released: {
- 									type: PWG.Events.PAUSE_STATE
-								}
-							}
-						}
-					}
-					]
-				}
-			},
 			// SHARED GROUPS
 			sharedGroups: {
 				levelGUI: [
@@ -2219,18 +1729,151 @@ PWG.Config = (function() {
 						],
 						// sector 2
 						[
+						{
+							name: 'level01-sector2-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: caterpillar01.width,
+									height: caterpillar01.height,
+									health: 3
+								},
+								start: {
+									x: (stageWidth) + (stageUnit * 12),
+									y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								speed: 0.5,
+								attack: 5,
+								testInView: true,
+								score: 2500,
+								movement: {
+									speed: 0.5,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						],
 						// sector 3
 						[
 						],
 						// sector 4
 						[
+						{
+							name: 'level01-sector4-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: caterpillar01.width,
+									height: caterpillar01.height,
+									health: 3
+								},
+								start: {
+									x: (stageWidth * 3) + (stageUnit),
+									y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 5,
+								testInView: true,
+								score: 500,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						],
 						// sector 5
 						[
+						{
+							name: 'level01-sector5-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: caterpillar01.width,
+									height: caterpillar01.height,
+									health: 3
+								},
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 4),
+									y: -(stageHeight/4) 
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 5,
+								testInView: true,
+								score: 2000,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						],
 						// sector 6
 						[
+						{
+							name: 'level01-sector6-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: caterpillar01.width,
+									height: caterpillar01.height,
+									health: 3
+								},
+								start: {
+									x: (stageWidth * 5) + (stageUnit),
+									y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 5,
+								testInView: true,
+								score: 500,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						]
 					]
 				},
@@ -2475,6 +2118,7 @@ PWG.Config = (function() {
 					cl: 'SectorManager',
 					type: PWG.SectorTypes.HORIZONTAL,
 					attrs: [
+					// sector 1
 					{
 						name: 'sector1',
 						cl: 'Sector',
@@ -2484,6 +2128,7 @@ PWG.Config = (function() {
 						},
 						attrs: []
 					},
+					// sector 2
 					{
 						name: 'sector2',
 						cl: 'Sector',
@@ -2491,49 +2136,9 @@ PWG.Config = (function() {
 							start: stageWidth,
 							end: stageWidth * 2
 						},
-						attrs: [
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level01-sector2-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 3
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 12),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									speed: 0.5,
-									attack: 5,
-									testInView: true,
-									score: 2500,
-									movement: {
-										speed: 0.5,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}
-							]
-						}
-						]
+						attrs: []
 					},
+					// sector 3
 					{
 						name: 'sector3',
 						cl: 'Sector',
@@ -2646,6 +2251,7 @@ PWG.Config = (function() {
 						}
 						]
 					},
+					// sector 4
 					{
 						name: 'sector4',
 						cl: 'Sector',
@@ -2653,48 +2259,9 @@ PWG.Config = (function() {
 							start: stageWidth * 3,
 							end: stageWidth * 4
 						},
-						attrs: [
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level01-sector4-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 3
-									},
-									start: {
-										x: (stageWidth * 3) + (stageUnit),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 5,
-									testInView: true,
-									score: 500,
-									movement: {
-										speed: 1,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}
-							]
-						}
-						]
+						attrs: []
 					},
+					// sector 5
 					{
 						name: 'sector5',
 						cl: 'Sector',
@@ -2820,46 +2387,10 @@ PWG.Config = (function() {
 								}
 							}
 							]
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [{
-								name: 'level01-sector5-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 3
-									},
-									start: {
-										x: (stageWidth * 4) + (stageUnit * 4),
-										y: -(stageHeight/4) 
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 5,
-									testInView: true,
-									score: 2000,
-									movement: {
-										speed: 1,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}]
 						}
 						]
 					},
+					// sector 6
 					{
 						name: 'sector6',
 						cl: 'Sector',
@@ -2868,45 +2399,6 @@ PWG.Config = (function() {
 							end: stageWidth * 6
 						},
 						attrs: [
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level01-sector6-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 3
-									},
-									start: {
-										x: (stageWidth * 5) + (stageUnit),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 5,
-									testInView: true,
-									score: 500,
-									movement: {
-										speed: 1,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}
-							]
-						},
 						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
@@ -3164,18 +2656,184 @@ PWG.Config = (function() {
 						],
 						// sector 2
 						[
+						{
+							name: 'level02-sector2-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: caterpillar01.width,
+									height: caterpillar01.height,
+									health: 3
+								},
+								start: {
+									x: (stageWidth) + (stageUnit * 12),
+									y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								speed: 0.5,
+								attack: 5,
+								testInView: true,
+								score: 2500,
+								movement: {
+									speed: 0.5,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						],
 						// sector 3
 						[
 						],
 						// sector 4
 						[
+						{
+							name: 'level02-sector4-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: caterpillar01.width,
+									height: caterpillar01.height,
+									health: 3
+								},
+								start: {
+									x: (stageWidth * 3) + (stageUnit),
+									y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 5,
+								testInView: true,
+								score: 500,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						],
 						// sector 5
 						[
+						{
+							name: 'level02-sector5-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: caterpillar01.width,
+									height: caterpillar01.height,
+									health: 3
+								},
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 4),
+									y: -(stageHeight/4) 
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 5,
+								testInView: true,
+								score: 2000,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						},
+						{
+							name: 'level02-sector5-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: caterpillar01.width,
+									height: caterpillar01.height,
+									health: 3
+								},
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 8),
+									y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 15,
+								testInView: true,
+								score: 2000,
+								movement: {
+									speed: 2,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						],
 						// sector 6
 						[
+						{
+							name: 'level02-sector6-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: caterpillar01.width,
+									height: caterpillar01.height,
+									health: 3
+								},
+								start: {
+									x: (stageWidth * 5) + (stageUnit),
+									y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 5,
+								testInView: true,
+								score: 500,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						]
 					]
 				},
@@ -3725,46 +3383,6 @@ PWG.Config = (function() {
 							attrs: []
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level02-sector2-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 3
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 12),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									speed: 0.5,
-									attack: 5,
-									testInView: true,
-									score: 2500,
-									movement: {
-										speed: 0.5,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}
-							]
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -3884,11 +3502,6 @@ PWG.Config = (function() {
 						{
 							name: 'hazards',
 							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
 							attrs: []
 						},
 						{
@@ -4048,45 +3661,6 @@ PWG.Config = (function() {
 							attrs: []
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level02-sector4-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 3
-									},
-									start: {
-										x: (stageWidth * 3) + (stageUnit),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 5,
-									testInView: true,
-									score: 500,
-									movement: {
-										speed: 1,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}
-							]
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -4225,76 +3799,6 @@ PWG.Config = (function() {
 							attrs: []
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [{
-								name: 'level02-sector5-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 3
-									},
-									start: {
-										x: (stageWidth * 4) + (stageUnit * 4),
-										y: -(stageHeight/4) 
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 5,
-									testInView: true,
-									score: 2000,
-									movement: {
-										speed: 1,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							},
-							{
-								name: 'level02-sector5-enemy2',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 3
-									},
-									start: {
-										x: (stageWidth * 4) + (stageUnit * 8),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 15,
-									testInView: true,
-									score: 2000,
-									movement: {
-										speed: 2,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}]
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -4318,45 +3822,6 @@ PWG.Config = (function() {
 							name: 'hazards',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level02-sector6-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 3
-									},
-									start: {
-										x: (stageWidth * 5) + (stageUnit),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 5,
-									testInView: true,
-									score: 500,
-									movement: {
-										speed: 1,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}
-							]
 						},
 						{
 							name: 'bonuses',
@@ -4602,18 +4067,401 @@ PWG.Config = (function() {
 						],
 						// sector 2
 						[
+						{
+							name: 'level03-sector2-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: caterpillar01.width,
+									height: caterpillar01.height,
+									health: 6
+								},
+								start: {
+									x: (stageWidth) + (stageUnit * 4),
+									y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								speed: 0.5,
+								attack: 10,
+								testInView: true,
+								score: 1000,
+								movement: {
+									speed: 0.25,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						],
 						// sector 3
 						[
+						{
+							name: 'level03-sector3-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: caterpillar01.width,
+									height: caterpillar01.height,
+									health: 4
+								},
+								start: {
+									x: (stageWidth * 2) + (stageUnit),
+									y: 0
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 10,
+								testInView: true,
+								score: 2000,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						},
+						{
+							name: 'level03-sector3-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: caterpillar01.width,
+									height: caterpillar01.height,
+									health: 10
+								},
+								start: {
+								x: (stageWidth * 2) + (stageUnit * 7),
+									y: 0
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 10,
+								testInView: true,
+								score: 2000,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						],
 						// sector 4
 						[
+						{
+							name: 'level03-sector4-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02',
+								phaser: {
+									width: caterpillar03.width,
+									height: caterpillar03.height,
+									health: 20
+								},
+								start: {
+									x: (stageWidth * 3) + (stageUnit * 5),
+									y: winH - (caterpillar03.imgHeight + (stageUnit * 1.5))
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 15,
+								testInView: true,
+								score: 500,
+								movement: {
+									speed: 1.5,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						},
+						{
+							name: 'level03-sector4-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02',
+								phaser: {
+									width: caterpillar02.width,
+									height: caterpillar02.height,
+									health: 20
+								},
+								start: {
+									x: (stageWidth * 3) + (stageUnit * 15),
+									y: winH - (caterpillar02.imgHeight + (stageUnit * 0.5))
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 15,
+								testInView: true,
+								score: 5000,
+								jumps: true,
+								jumpMultiplier: 500,
+								movement: {
+									speed: 1.25,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						],
 						// sector 5
 						[
+						{
+							name: 'level03-sector5-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02',
+								phaser: {
+									width: caterpillar02.width,
+									height: caterpillar02.height,
+									health: 20
+								},
+								start: {
+									x: (stageWidth * 4) + (stageUnit * 8),
+									y: winH - (caterpillar02.imgHeight + (stageUnit * 0.5))
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 5,
+								testInView: true,
+								score: 2000,
+								jumps: true,
+								jumpMultiplier: 500,
+								movement: {
+									speed: 1.25,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						],
 						// sector 6
 						[
+						{
+							name: 'level03-sector4-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: caterpillar01.width,
+									height: caterpillar01.height,
+									health: 6
+								},
+								start: {
+									x: (stageWidth * 5),
+									y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 10,
+								testInView: true,
+								score: 500,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
+						],
+						// sector 7
+						[
+						],
+						// sector 8
+						[
+						{
+							name: 'level03-sector4-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: caterpillar01.width,
+									height: caterpillar01.height,
+									health: 6
+								},
+								start: {
+									x: (stageWidth * 7),
+									y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 10,
+								testInView: true,
+								score: 500,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
+						],
+						// sector 9
+						[
+						{
+							name: 'level03-sector9-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02',
+								phaser: {
+									width: caterpillar02.width,
+									height: caterpillar02.height,
+									health: 20
+								},
+								start: {
+									x: (stageWidth * 8),
+									y: winH - (stageHeight * 2)
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 25,
+								testInView: true,
+								score: 10000,
+								jumps: true,
+								jumpMultiplier: 500,
+								movement: {
+									speed: 1.25,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						},
+						{
+							name: 'level03-sector9-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02',
+								phaser: {
+									width: caterpillar02.width,
+									height: caterpillar02.height,
+									health: 20
+								},
+								start: {
+									x: (stageWidth * 8),
+									y: winH - (caterpillar02.imgHeight + (stageUnit * 0.5))
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 25,
+								testInView: true,
+								score: 10000,
+								jumps: true,
+								jumpMultiplier: 500,
+								movement: {
+									speed: 1.25,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						},
+						{
+							name: 'level03-sector9-enemy3',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02',
+								phaser: {
+									width: caterpillar02.width,
+									height: caterpillar02.height,
+									health: 20
+								},
+								start: {
+									x: (stageWidth * 8) + (stageUnit * 8),
+									y: winH - (caterpillar02.imgHeight + (stageUnit * 0.5))
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 25,
+								testInView: true,
+								score: 10000,
+								jumps: true,
+								jumpMultiplier: 500,
+								movement: {
+									speed: 1.25,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						]
 					]
 				},
@@ -5242,11 +5090,6 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
@@ -5408,44 +5251,6 @@ PWG.Config = (function() {
 							attrs: []
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [{
-								name: 'level03-sector2-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 6
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 4),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									speed: 0.5,
-									attack: 10,
-									testInView: true,
-									score: 1000,
-									movement: {
-										speed: 0.25,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}]
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -5528,77 +5333,6 @@ PWG.Config = (function() {
 								}
 							}
 							]
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level03-sector3-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 4
-									},
-									start: {
-										x: (stageWidth * 2) + (stageUnit),
-										y: 0
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 10,
-									testInView: true,
-									score: 2000,
-									movement: {
-										speed: 1,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							},
-							{
-								name: 'level03-sector3-enemy2',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 10
-									},
-									start: {
-									x: (stageWidth * 2) + (stageUnit * 7),
-										y: 0
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 10,
-									testInView: true,
-									score: 2000,
-									movement: {
-										speed: 1,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}]
 						},
 						{
 							name: 'bonuses',
@@ -5716,80 +5450,6 @@ PWG.Config = (function() {
 									physics: {
 										immovable: true
 									}
-								}
-							}
-							]
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level03-sector4-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar02',
-									phaser: {
-										width: caterpillar03.width,
-										height: caterpillar03.height,
-										health: 20
-									},
-									start: {
-										x: (stageWidth * 3) + (stageUnit * 5),
-										y: winH - (caterpillar03.imgHeight + (stageUnit * 1.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 15,
-									testInView: true,
-									score: 500,
-									movement: {
-										speed: 1.5,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							},
-							{
-								name: 'level03-sector4-enemy2',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar02',
-									phaser: {
-										width: caterpillar02.width,
-										height: caterpillar02.height,
-										health: 20
-									},
-									start: {
-										x: (stageWidth * 3) + (stageUnit * 15),
-										y: winH - (caterpillar02.imgHeight + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 15,
-									testInView: true,
-									score: 5000,
-									jumps: true,
-									jumpMultiplier: 500,
-									movement: {
-										speed: 1.25,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
 								}
 							}
 							]
@@ -5963,46 +5623,6 @@ PWG.Config = (function() {
 							attrs: []
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level03-sector5-enemy2',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar02',
-									phaser: {
-										width: caterpillar02.width,
-										height: caterpillar02.height,
-										health: 20
-									},
-									start: {
-										x: (stageWidth * 4) + (stageUnit * 8),
-										y: winH - (caterpillar02.imgHeight + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 5,
-									testInView: true,
-									score: 2000,
-									jumps: true,
-									jumpMultiplier: 500,
-									movement: {
-										speed: 1.25,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}]
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
@@ -6128,43 +5748,6 @@ PWG.Config = (function() {
 							attrs: []
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [{
-								name: 'level03-sector4-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 6
-									},
-									start: {
-										x: (stageWidth * 5),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 10,
-									testInView: true,
-									score: 500,
-									movement: {
-										speed: 1,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}]
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -6252,12 +5835,6 @@ PWG.Config = (function() {
 							name: 'hazards',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							]
 						},
 						{
 							name: 'bonuses',
@@ -6368,45 +5945,6 @@ PWG.Config = (function() {
 							attrs: []
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level03-sector4-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar01',
-									phaser: {
-										width: caterpillar01.width,
-										height: caterpillar01.height,
-										health: 6
-									},
-									start: {
-										x: (stageWidth * 7),
-										y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 10,
-									testInView: true,
-									score: 500,
-									movement: {
-										speed: 1,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}
-							]
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -6504,117 +6042,6 @@ PWG.Config = (function() {
 							name: 'hazards',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level03-sector9-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar02',
-									phaser: {
-										width: caterpillar02.width,
-										height: caterpillar02.height,
-										health: 20
-									},
-									start: {
-										x: (stageWidth * 8),
-										y: winH - (stageHeight * 2)
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 25,
-									testInView: true,
-									score: 10000,
-									jumps: true,
-									jumpMultiplier: 500,
-									movement: {
-										speed: 1.25,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							},
-							{
-								name: 'level03-sector9-enemy2',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar02',
-									phaser: {
-										width: caterpillar02.width,
-										height: caterpillar02.height,
-										health: 20
-									},
-									start: {
-										x: (stageWidth * 8),
-										y: winH - (caterpillar02.imgHeight + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 25,
-									testInView: true,
-									score: 10000,
-									jumps: true,
-									jumpMultiplier: 500,
-									movement: {
-										speed: 1.25,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							},
-							{
-								name: 'level03-sector9-enemy3',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar02',
-									phaser: {
-										width: caterpillar02.width,
-										height: caterpillar02.height,
-										health: 20
-									},
-									start: {
-										x: (stageWidth * 8) + (stageUnit * 8),
-										y: winH - (caterpillar02.imgHeight + (stageUnit * 0.5))
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 25,
-									testInView: true,
-									score: 10000,
-									jumps: true,
-									jumpMultiplier: 500,
-									movement: {
-										speed: 1.25,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}
-							]
 						},
 						{
 							name: 'bonuses',
@@ -8637,18 +8064,263 @@ PWG.Config = (function() {
 						],
 						// sector 2
 						[
+						{
+							name: 'level05-sector2-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02',
+								phaser: {
+									width: caterpillar02.width,
+									height: caterpillar02.height,
+									health: 20
+								},
+								start: {
+									x: (stageWidth) + (stageUnit),
+									y: -(stageHeight * 2)
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 15,
+								jumps: true,
+								jumpMultiplier: 500,
+								testInView: true,
+								score: 2000,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						},
+						{
+							name: 'level05-sector2-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar03',
+								phaser: {
+									width: caterpillar03.width,
+									height: caterpillar03.height,
+									health: 30
+								},
+								start: {
+									x: (stageWidth) + (stageUnit * 7),
+									y: -(stageHeight * 2)
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 25,
+								testInView: true,
+								score: 2000,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						],
 						// sector 3
 						[
+						{
+							name: 'level05-sector3-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02',
+								phaser: {
+									width: caterpillar02.width,
+									height: caterpillar02.height,
+									health: 20
+								},
+								start: {
+									x: (stageWidth * 2),
+									// y: winH - ((stageUnit * 4) + 32)
+									y: -(stageHeight * 2)
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 15,
+								jumps: true,
+								jumpMultiplier: 500,
+								testInView: true,
+								score: 500,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						],
 						// sector 4
 						[
+						{
+							name: 'level05-sector4-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar03',
+								phaser: {
+									width: caterpillar03.width,
+									height: caterpillar03.height,
+									health: 30
+								},
+								start: {
+									x: (stageWidth * 3) + (stageUnit),
+									// y: 0
+									y: -(stageHeight * 2)
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 25,
+								testInView: true,
+								score: 2000,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						},
+						{
+							name: 'level05-sector4-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02',
+								phaser: {
+									width: caterpillar02.width,
+									height: caterpillar02.height,
+									health: 20
+								},
+								start: {
+									x: (stageWidth * 3) + (stageUnit * 4),
+									// y: 0
+									y: -(stageHeight * 2)
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 15,
+								jumps: true,
+								jumpMultiplier: 500,
+								testInView: true,
+								score: 2000,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						],
 						// sector 5
 						[
+						{
+							name: 'level05-sector5-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02',
+								phaser: {
+									width: caterpillar02.width,
+									height: caterpillar02.height,
+									health: 20
+								},
+								start: {
+									x: (stageWidth * 4) + (stageUnit),
+									// y: winH - ((stageUnit * 6) + 32)
+									y: -(stageHeight * 2)
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 15,
+								jumps: true,
+								jumpMultiplier: 500,
+								testInView: true,
+								score: 500,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						],
 						// sector 6
 						[
+						{
+							name: 'level05-sector6-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar03',
+								phaser: {
+									width: caterpillar03.width,
+									height: caterpillar03.height,
+									health: 30
+								},
+								start: {
+									x: (stageWidth * 5) + (stageUnit * 4),
+									// y: winH - ((stageUnit * 6) + 32)
+									y: -(stageHeight * 2)
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								speed: 0.5,
+								attack: 25,
+								testInView: true,
+								score: 1000,
+								movement: {
+									speed: 0.25,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						]
 					]
 				},
@@ -9390,78 +9062,6 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [{
-								name: 'level05-sector2-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar02',
-									phaser: {
-										width: caterpillar02.width,
-										height: caterpillar02.height,
-										health: 20
-									},
-									start: {
-										x: (stageWidth) + (stageUnit),
-										y: -(stageHeight * 2)
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 15,
-									jumps: true,
-									jumpMultiplier: 500,
-									testInView: true,
-									score: 2000,
-									movement: {
-										speed: 1,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							},
-							{
-								name: 'level05-sector2-enemy2',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar03',
-									phaser: {
-										width: caterpillar03.width,
-										height: caterpillar03.height,
-										health: 30
-									},
-									start: {
-										x: (stageWidth) + (stageUnit * 7),
-										y: -(stageHeight * 2)
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 25,
-									testInView: true,
-									score: 2000,
-									movement: {
-										speed: 1,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}]
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -9634,46 +9234,6 @@ PWG.Config = (function() {
 								}
 							}	
 							]
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [{
-								name: 'level05-sector3-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar02',
-									phaser: {
-										width: caterpillar02.width,
-										height: caterpillar02.height,
-										health: 20
-									},
-									start: {
-										x: (stageWidth * 2),
-										// y: winH - ((stageUnit * 4) + 32)
-										y: -(stageHeight * 2)
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 15,
-									jumps: true,
-									jumpMultiplier: 500,
-									testInView: true,
-									score: 500,
-									movement: {
-										speed: 1,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}]
 						},
 						{
 							name: 'bonuses',
@@ -9902,80 +9462,6 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [{
-								name: 'level05-sector4-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar03',
-									phaser: {
-										width: caterpillar03.width,
-										height: caterpillar03.height,
-										health: 30
-									},
-									start: {
-										x: (stageWidth * 3) + (stageUnit),
-										// y: 0
-										y: -(stageHeight * 2)
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 25,
-									testInView: true,
-									score: 2000,
-									movement: {
-										speed: 1,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							},
-							{
-								name: 'level05-sector4-enemy2',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar02',
-									phaser: {
-										width: caterpillar02.width,
-										height: caterpillar02.height,
-										health: 20
-									},
-									start: {
-										x: (stageWidth * 3) + (stageUnit * 4),
-										// y: 0
-										y: -(stageHeight * 2)
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 15,
-									jumps: true,
-									jumpMultiplier: 500,
-									testInView: true,
-									score: 2000,
-									movement: {
-										speed: 1,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}]
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
@@ -10128,46 +9614,6 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [{
-								name: 'level05-sector5-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar02',
-									phaser: {
-										width: caterpillar02.width,
-										height: caterpillar02.height,
-										health: 20
-									},
-									start: {
-										x: (stageWidth * 4) + (stageUnit),
-										// y: winH - ((stageUnit * 6) + 32)
-										y: -(stageHeight * 2)
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									attack: 15,
-									jumps: true,
-									jumpMultiplier: 500,
-									testInView: true,
-									score: 500,
-									movement: {
-										speed: 1,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}]
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
@@ -10208,45 +9654,6 @@ PWG.Config = (function() {
 							name: 'hazards',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [{
-								name: 'level05-sector6-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'caterpillar03',
-									phaser: {
-										width: caterpillar03.width,
-										height: caterpillar03.height,
-										health: 30
-									},
-									start: {
-										x: (stageWidth * 5) + (stageUnit * 4),
-										// y: winH - ((stageUnit * 6) + 32)
-										y: -(stageHeight * 2)
-									},
-									physics: {
-										deferredGravity: true,
-										bounce: {
-											x: 0,
-											y: 0.2
-										}
-									},
-									speed: 0.5,
-									attack: 25,
-									testInView: true,
-									score: 1000,
-									movement: {
-										speed: 0.25,
-										type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: caterpillarAnimations
-								}
-							}]
 						},
 						{
 							name: 'bonuses',
@@ -11955,18 +11362,105 @@ PWG.Config = (function() {
 						],
 						// sector 3
 						[
+						{
+							name: 'level08-sector3-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider01',
+								phaser: {
+									width: spider01.width,
+									height: spider01.height,
+									health: 5
+								},
+								start: {
+									x: (stageUnit * 20),
+									y: winH - (stageUnit * 26)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 5,
+								score: 1500,
+								movement: {
+									speed: spider01.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
 						],
 						// sector 4
 						[
 						],
 						// sector 5
 						[
+						{
+							name: 'level08-sector3-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider01',
+								phaser: {
+									width: spider01.width,
+									height: spider01.height,
+									health: 5
+								},
+								start: {
+									x: (stageUnit * 30),
+									y: winH - (stageUnit * 39)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 5,
+								score: 1500,
+								movement: {
+									speed: spider01.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
 						],
 						// sector 6
 						[
 						],
 						// sector 7
 						[
+						{
+							name: 'level08-sector3-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider01',
+								phaser: {
+									width: spider01.width,
+									height: spider01.height,
+									health: 5
+								},
+								start: {
+									x: (stageUnit * 20),
+									y: winH - (stageUnit * 59)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 5,
+								score: 1500,
+								movement: {
+									speed: spider01.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
 						],
 						// sector 8
 						[
@@ -12641,12 +12135,6 @@ PWG.Config = (function() {
 							}
 							// end sector 2 terrain
 							]
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							] 
 						}
 						]
 					},
@@ -12787,41 +12275,6 @@ PWG.Config = (function() {
 							attrs: []
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level08-sector3-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider01',
-									phaser: {
-										width: spider01.width,
-										height: spider01.height,
-										health: 5
-									},
-									start: {
-										x: (stageUnit * 20),
-										y: winH - (stageUnit * 26)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 5,
-									score: 1500,
-									movement: {
-										speed: spider01.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -12957,11 +12410,6 @@ PWG.Config = (function() {
 							name: 'hazards',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
 						},
 						{
 							name: 'bonuses',
@@ -13207,41 +12655,6 @@ PWG.Config = (function() {
 							name: 'hazards',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level08-sector3-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider01',
-									phaser: {
-										width: spider01.width,
-										height: spider01.height,
-										health: 5
-									},
-									start: {
-										x: (stageUnit * 30),
-										y: winH - (stageUnit * 39)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 5,
-									score: 1500,
-									movement: {
-										speed: spider01.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
 						},
 						{
 							name: 'bonuses',
@@ -13507,11 +12920,6 @@ PWG.Config = (function() {
 							attrs: []
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -13757,41 +13165,6 @@ PWG.Config = (function() {
 							attrs: []
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level08-sector3-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider01',
-									phaser: {
-										width: spider01.width,
-										height: spider01.height,
-										health: 5
-									},
-									start: {
-										x: (stageUnit * 20),
-										y: winH - (stageUnit * 59)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 5,
-									score: 1500,
-									movement: {
-										speed: spider01.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -13927,11 +13300,6 @@ PWG.Config = (function() {
 							name: 'hazards',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
 						},
 						{
 							name: 'bonuses',
@@ -14183,18 +13551,134 @@ PWG.Config = (function() {
 						],
 						// sector 3
 						[
+						{
+							name: 'level08-sector3-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider01',
+								phaser: {
+									width: spider01.width,
+									height: spider01.height,
+									health: 5
+								},
+								start: {
+									x: (stageUnit * 13),
+									y: winH - (stageUnit * 24)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 5,
+								score: 1500,
+								movement: {
+									speed: spider01.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
 						],
 						// sector 4
 						[
 						],
 						// sector 5
 						[
+						{
+							name: 'level08-sector5-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider01',
+								phaser: {
+									width: spider01.width,
+									height: spider01.height,
+									health: 5
+								},
+								start: {
+									x: (stageUnit * 17),
+									y: winH - (stageUnit * 40)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 5,
+								score: 1500,
+								movement: {
+									speed: spider01.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
 						],
 						// sector 6
 						[
+						{
+							name: 'level08-sector6-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider01',
+								phaser: {
+									width: spider01.width,
+									height: spider01.height,
+									health: 5
+								},
+								start: {
+									x: (stageUnit * 21),
+									y: winH - (stageUnit * 51)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 5,
+								score: 1500,
+								movement: {
+									speed: spider01.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
 						],
 						// sector 7
 						[
+						{
+							name: 'level08-sector5-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider01',
+								phaser: {
+									width: spider01.width,
+									height: spider01.height,
+									health: 5
+								},
+								start: {
+									x: (stageUnit * 42),
+									y: winH - (stageUnit * 61)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 5,
+								score: 1500,
+								movement: {
+									speed: spider01.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+								}
+						}
 						],
 						// sector 8
 						[
@@ -14904,11 +14388,6 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -15085,8 +14564,8 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
+							name: 'bonuses',
+							cl: 'Bonuses',
 							attrs: [] 
 						}
 						]
@@ -15279,41 +14758,6 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level08-sector3-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider01',
-									phaser: {
-										width: spider01.width,
-										height: spider01.height,
-										health: 5
-									},
-									start: {
-										x: (stageUnit * 13),
-										y: winH - (stageUnit * 24)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 5,
-									score: 1500,
-									movement: {
-										speed: spider01.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -15329,7 +14773,7 @@ PWG.Config = (function() {
 							end: winH - (stageHeight * 3)
 						},
 						attrs: [
-						{	
+						{
 							name: 'dynamicTerrain',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
@@ -15457,11 +14901,6 @@ PWG.Config = (function() {
 							name: 'hazards',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
 						},
 						{
 							name: 'bonuses',
@@ -15689,41 +15128,6 @@ PWG.Config = (function() {
 							name: 'hazards',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level08-sector5-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider01',
-									phaser: {
-										width: spider01.width,
-										height: spider01.height,
-										health: 5
-									},
-									start: {
-										x: (stageUnit * 17),
-										y: winH - (stageUnit * 40)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 5,
-									score: 1500,
-									movement: {
-										speed: spider01.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
 						},
 						{
 							name: 'bonuses',
@@ -15990,41 +15394,6 @@ PWG.Config = (function() {
 							attrs: []
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level08-sector6-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider01',
-									phaser: {
-										width: spider01.width,
-										height: spider01.height,
-										health: 5
-									},
-									start: {
-										x: (stageUnit * 21),
-										y: winH - (stageUnit * 51)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 5,
-									score: 1500,
-									movement: {
-										speed: spider01.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -16245,41 +15614,6 @@ PWG.Config = (function() {
 							attrs: []
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level08-sector5-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider01',
-									phaser: {
-										width: spider01.width,
-										height: spider01.height,
-										health: 5
-									},
-									start: {
-										x: (stageUnit * 42),
-										y: winH - (stageUnit * 61)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 5,
-									score: 1500,
-									movement: {
-										speed: spider01.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-									}
-							}
-							] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -16374,16 +15708,6 @@ PWG.Config = (function() {
 							}
 							// end sector 8 terrain
 							]
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
 						},
 						{
 							name: 'bonuses',
@@ -25275,7 +24599,497 @@ PWG.Config = (function() {
 					}
 				}
 				]
-			}]
+			}],
+			// PLAYER
+			player: {
+				name: 'player',
+				cl: 'AnimatedPlayer',
+				attrs: {
+					img: 'keke',
+					phaser: {
+						health: 100,
+						width: (stageUnit * 2.3) * 0.84,
+						height: (stageUnit * 2.3)
+					},
+					setSize: [((stageUnit * 3) * 0.3), 220],
+					start: {
+						// x: winW/2 - ((stageUnit * 3) * 0.84)/2,
+						// y: winH - 300
+						// y: winH - (226)
+						x: winW/2,
+						y: winH - (stageUnit * 1.8)
+					},
+					physics: {
+						// bounce: {
+						// 	x: 0,
+						// 	y: 0.2
+						// },
+						deferredGravity: true,
+						collideWorldBounds: false
+					},
+					anchor: {
+						x: 0.5,
+						y: 0.5
+					},
+					followStyle: Phaser.Camera.FOLLOW_TOPDOWN,
+					speed: {
+						x: (stageUnit * 4),
+						y: (stageUnit * 10.4)
+					},
+					controls: {
+						left: PWG.InputCodes.LEFT,
+						right: PWG.InputCodes.RIGHT,
+						jump: PWG.InputCodes.UP
+					},
+					attack: 5,
+					jumping: false,
+					justJumped: false,
+					defaultAnimation: AnimationTypes.IDLE_L,
+					animations: kekeAnimations,
+					facingForward: true
+				}
+			},
+			// PHYSICS
+			gravity: {
+				x: 0,
+				y: stageUnit/2.5
+			},
+			// CONTROLS
+			controls: {
+				keys: {
+					name: 'controlKeys',
+					cl: 'ControlKey',
+					attrs: [
+					// {
+					// 	name: 'quit', // q
+					// 	cl: 'ControlKey',
+					// 	attrs: {
+					// 		inputCode: PWG.InputCodes.QUIT,
+					// 		events: {
+					// 			pressed: {
+					// 				type: PWG.Events.CHANGE_STATE,
+					// 				value: 'quit'
+					// 			}
+					// 		}
+					// 	}
+					// },
+					{
+						name: 'clearData', // c
+						cl: 'ControlKey',
+						attrs: {
+							inputCode: PWG.InputCodes.CLEAR_DATA
+						}
+					},
+					// {
+					// 	name: 'start', // s
+					// 	cl: 'ControlKey',
+					// 	attrs: {
+					// 		inputCode: PWG.InputCodes.START,
+					// 		events: {
+					// 			pressed: {
+					// 				type: PWG.Events.CHANGE_STATE,
+					// 				value: 'map'
+					// 			}
+					// 		}
+					// 	}
+					// },
+					// {
+					// 	name: 'next', // n
+					// 	cl: 'ControlKey',
+					// 	attrs: {
+					// 		inputCode: PWG.InputCodes.NEXT,
+					// 		events: {
+					// 			pressed: {
+					// 				type: PWG.Events.NEXT_LEVEL
+					// 			}
+					// 		}
+					// 	}
+					// },
+					// {
+					// 	name: 'level', // l
+					// 	cl: 'ControlKey',
+					// 	attrs: {
+					// 		inputCode: PWG.InputCodes.LEVEL,
+					// 		events: {
+					// 			pressed: {
+					// 				type: PWG.Events.START_LEVEL,
+					// 				value: PWGGame.currentLevel
+					// 			}
+					// 		}
+					// 	}
+					// },
+					{
+						name: 'pause', // p
+						cl: 'ControlKey',
+						attrs: {
+							inputCode: PWG.InputCodes.PAUSE,
+							events: {
+								pressed: {
+ 									type: PWG.Events.PAUSE_STATE
+								}
+							}
+						}
+					},
+					{
+						name: 'menu', // m
+						cl: 'ControlKey',
+						attrs: {
+							inputCode: PWG.InputCodes.MENU,
+							events: {
+								pressed: {
+ 									type: PWG.Events.CHANGE_STATE,
+									value: 'menu'
+								}
+							}
+						}
+					},
+					{
+						name: 'left',
+						cl: 'ControlKey',
+						attrs: {
+							inputCode: PWG.InputCodes.LEFT
+						}
+					},
+					{
+						name: 'right',
+						cl: 'ControlKey',
+						attrs: {
+							inputCode: PWG.InputCodes.RIGHT
+						}
+					},
+					{
+						name: 'up',
+						cl: 'ControlKey',
+						attrs: {
+							inputCode: PWG.InputCodes.UP
+						}
+					},
+					{
+						name: 'space',
+						cl: 'ControlKey',
+						attrs: {
+							inputCode: PWG.InputCodes.SPACE
+						}
+					}
+					]
+				},
+				buttons: {
+					menu: [
+					{
+						name: 'start',
+						cl: 'InputButton',
+						attrs: {
+							img: 'playButton',
+							start: {
+								x: winW/2 - 50,
+								y: winH/2
+							},
+							inputCode: PWG.InputCodes.START,
+							events: {
+								pressed: {
+									type: PWG.Events.CHANGE_STATE,
+									value: 'map'
+								}
+							}
+						}
+					},
+					{
+						name: 'creditsBtn',
+						cl: 'InputButton',
+						attrs: {
+							img: 'creditsButton',
+							phaser: {
+								width: (stageUnit * 4),
+								height: (stageUnit * 1)
+							},
+							start: {
+								x: winW/2 - (stageUnit * 2),
+								y: winH - (stageUnit * 1.5)
+							},
+							events: {
+								released: {
+									type: PWG.Events.CHANGE_STATE,
+									value: 'credits'
+								}
+							}
+						}
+					}
+					],
+					credits: [
+					{
+						name: 'closeBtn',
+						cl: 'InputButton',
+						attrs: {
+							img: 'closeButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageUnit * 0.5),
+								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
+							},
+							frames: [0, 0, 1],
+							events: {
+								released: {
+									type: PWG.Events.CHANGE_STATE,
+									value: 'menu'
+								}
+							}
+						}
+					}
+					],
+					map: [
+					{
+						name: 'menuBtn',
+						cl: 'InputButton',
+						attrs: {
+							img: 'menuButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageUnit * 0.5),
+								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
+							},
+							frames: [0, 0, 1],
+							// inputCode: PWG.InputCodes.MENU,
+							events: {
+								released: {
+									type: PWG.Events.CHANGE_STATE,
+									value: 'menu'
+								}
+							}
+						}
+					}
+					],
+					levelInfo: [
+					// play button
+					{
+						name: 'playButtonSmall',
+						cl: 'InputButton',
+						attrs: {
+							img: 'playButtonSmall',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageUnit * 0.5),
+								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
+							},
+							events: {
+								released: {
+									type: PWG.Events.START_LEVEL
+								}
+							}
+						}
+					},
+					// map button
+					{
+						name: 'mapButton',
+						cl: 'InputButton',
+						attrs: {
+							img: 'mapButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageUnit * 0.5),
+								y: (winH/2) - ((stageUnit * 1.5)/2)
+							},
+							frames: [0, 0, 1],
+							events: {
+								released: {
+									type: PWG.Events.CHANGE_STATE,
+									value: 'map'
+								}
+							}
+						}
+					}
+					],
+					completed: [
+					{
+						name: 'mapButton',
+						cl: 'InputButton',
+						attrs: {
+							img: 'mapButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageUnit * 0.5),
+								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
+							},
+							frames: [0, 0, 1],
+							events: {
+								released: {
+									type: PWG.Events.CHANGE_STATE,
+									value: 'map'
+								}
+							}
+						}
+					},
+					{
+						name: 'menuBtn',
+						cl: 'InputButton',
+						attrs: {
+							img: 'menuButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageUnit * 0.5),
+								y: (winH/2) - ((stageUnit * 1.5)/2)
+							},
+							frames: [0, 0, 1],
+							events: {
+								released: {
+									type: PWG.Events.CHANGE_STATE,
+									value: 'menu'
+								}
+							}
+						}
+					}
+					],
+					gameOver: [
+					{
+						name: 'menuBtn',
+						cl: 'InputButton',
+						attrs: {
+							img: 'menuButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageUnit * 0.5),
+								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
+							},
+							frames: [0, 0, 1],
+							events: {
+								released: {
+									type: PWG.Events.CHANGE_STATE,
+									value: 'menu'
+								}
+							}
+						}
+					},
+					{
+						name: 'restart',
+						cl: 'InputButton',
+						attrs: {
+							img: 'restartButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageUnit * 0.5),
+								y: (winH/2) - ((stageUnit * 1.5)/2)
+							},
+							events: {
+								released: {
+									type: PWG.Events.START_LEVEL
+								}
+							}
+						}
+					}
+					],
+					level: [
+					{
+						name: 'invisBtn',
+						cl: 'InputButton',
+						attrs: {
+							img: 'invisibleRect',
+							start: {
+								x: 0,
+								y: 0
+							},
+							width: winW, 
+							height: winH,
+							inputCode: PWG.InputCodes.RESET
+						}
+					},
+					{
+						name: 'leftBtn',
+						cl: 'InputButton',
+						attrs: {
+							img: 'leftButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 8)
+							},
+							start: {
+								x: (stageUnit * 0.5),
+								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
+							},
+							frames: [0, 0, 1],
+							inputCode: PWG.InputCodes.LEFT
+						}
+					},
+					{
+						name: 'rightBtn',
+						cl: 'InputButton',
+						attrs: {
+							img: 'rightButton',
+							phaser: {
+								width: (stageUnit * 4),
+								height: (stageUnit * 8)
+							},
+							start: {
+								x: (stageUnit * 2.5),
+								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
+							},
+							frames: [0, 0, 1],
+							inputCode: PWG.InputCodes.RIGHT
+						}
+					},
+					{
+						name: 'upBtn',
+						cl: 'InputButton',
+						attrs: {
+							img: 'upButton',
+							phaser: { 
+								width: (stageUnit * 4),
+								height: (stageUnit * 8)
+							},
+							start: {
+								x: winW - (stageUnit * 4.5),
+								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
+							},
+							frames: [0, 0, 1],
+							inputCode: PWG.InputCodes.UP
+						}
+					},
+					{
+						name: 'pauseButton',
+						cl: 'InputButton',
+						attrs: {
+							img: 'pauseButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageUnit * 0.5),
+								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
+							},
+							frames: [0, 0, 1],
+							events: {
+								released: {
+ 									type: PWG.Events.PAUSE_STATE
+								}
+							}
+						}
+					}
+					]
+				}
+			}
 		};
 
 		return c;
