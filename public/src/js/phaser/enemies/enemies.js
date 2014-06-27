@@ -6,6 +6,18 @@ PWG.Enemies = (function() {
 		Enemies._super.constructor.call(this, params);
 	}
 	
+	Enemies.prototype.begin = function() {
+		trace('Enemies/begin, this = ', this);
+		PWG.Utils.each(
+			this.model.attrs,
+			function(child) {
+				child.sector = this.model.sector;
+			},
+			this
+		);
+		Enemies._super.begin.call(this);
+	};
+	
 	Enemies.prototype.pwUpdate = function(params) {
 		PWG.Utils.each(
 			this.model.collection,
