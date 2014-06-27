@@ -1,6 +1,6 @@
 /* local storage override
 PWG.Storage.destroy();
-PWG.Storage.set({kekeAndTheGreyExpanse: {"currentLevel":9,"savedState":"menu","score":0, "savedStatus":["c","c","c","c","c","c","c","c","c","u","u","l"],"highScores":[0,0,0,0,0,0,0,0,0,0,0,0]}}); 
+PWG.Storage.set({kekeAndTheGreyExpanse: {"currentLevel":9,"savedState":"menu","score":0, "savedStatus":["c","c","c","c","c","c","c","c","c","u","u","u"],"highScores":[0,0,0,0,0,0,0,0,0,0,0,0]}}); 
 */
 
 PWG.Config = (function() {
@@ -2210,6 +2210,30 @@ PWG.Config = (function() {
 					// 'caterpillarBoss1Body',
 					'caterpillar01'
 				],
+				enemies: {
+					name: 'enemies',
+					cl: 'EnemyManager',
+					attrs: [
+						// sector 1
+						[
+						],
+						// sector 2
+						[
+						],
+						// sector 3
+						[
+						],
+						// sector 4
+						[
+						],
+						// sector 5
+						[
+						],
+						// sector 6
+						[
+						]
+					]
+				},
 				attrs: [
 				// scenery
 				{
@@ -3131,6 +3155,30 @@ PWG.Config = (function() {
 					'keke',
 					'caterpillar01'
 				],
+				enemies: {
+					name: 'enemies',
+					cl: 'EnemyManager',
+					attrs: [
+						// sector 1
+						[
+						],
+						// sector 2
+						[
+						],
+						// sector 3
+						[
+						],
+						// sector 4
+						[
+						],
+						// sector 5
+						[
+						],
+						// sector 6
+						[
+						]
+					]
+				},
 				attrs: [
 				// scenery
 				{
@@ -4545,6 +4593,30 @@ PWG.Config = (function() {
 					'branch03LeftAnimated',
 					'branch03RightAnimated'
 				],
+				enemies: {
+					name: 'enemies',
+					cl: 'EnemyManager',
+					attrs: [
+						// sector 1
+						[
+						],
+						// sector 2
+						[
+						],
+						// sector 3
+						[
+						],
+						// sector 4
+						[
+						],
+						// sector 5
+						[
+						],
+						// sector 6
+						[
+						]
+					]
+				},
 				attrs: [
 				// scenery
 				{
@@ -8556,6 +8628,30 @@ PWG.Config = (function() {
 					'branch03LeftAnimated',
 					'branch03RightAnimated'
 				],
+				enemies: {
+					name: 'enemies',
+					cl: 'EnemyManager',
+					attrs: [
+						// sector 1
+						[
+						],
+						// sector 2
+						[
+						],
+						// sector 3
+						[
+						],
+						// sector 4
+						[
+						],
+						// sector 5
+						[
+						],
+						// sector 6
+						[
+						]
+					]
+				},
 				attrs: [
 				// scenery
 				{
@@ -11847,6 +11943,36 @@ PWG.Config = (function() {
 					'heartSprite',
 					'keke'
 				],
+				enemies: {
+					name: 'enemies',
+					cl: 'EnemyManager',
+					attrs: [
+						// sector 1
+						[
+						],
+						// sector 2
+						[
+						],
+						// sector 3
+						[
+						],
+						// sector 4
+						[
+						],
+						// sector 5
+						[
+						],
+						// sector 6
+						[
+						],
+						// sector 7
+						[
+						],
+						// sector 8
+						[
+						]
+					]
+				},
 				attrs: [
 				// scenery
 				{
@@ -14045,6 +14171,36 @@ PWG.Config = (function() {
 					'heartSprite',
 					'keke'
 				],
+				enemies: {
+					name: 'enemies',
+					cl: 'EnemyManager',
+					attrs: [
+						// sector 1
+						[
+						],
+						// sector 2
+						[
+						],
+						// sector 3
+						[
+						],
+						// sector 4
+						[
+						],
+						// sector 5
+						[
+						],
+						// sector 6
+						[
+						],
+						// sector 7
+						[
+						],
+						// sector 8
+						[
+						]
+					]
+				},
 				attrs: [
 				// scenery
 				{
@@ -16471,6 +16627,221 @@ PWG.Config = (function() {
 					'heartSprite',
 					'keke'
 				],
+				// enemies
+				enemies: {
+					name: 'enemies',
+					cl: 'EnemyManager',
+					attrs: [
+						// sector 1
+						[
+						],
+						// sector 2
+						[
+						{
+							name: 'level09-sector2-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider02',
+								phaser: {
+									width: spider02.width,
+									height: spider02.height,
+									health: 30
+								},
+								start: {
+									x: (stageUnit * 16),
+									y: winH - (stageUnit * 16)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 10,
+								score: 2500,
+								jumps: true,
+								jumpMultiplier: 150,
+								movement: {
+									speed: spider02.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
+						],
+						// sector 3
+						[
+						{
+							name: 'level09-sector3-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider02',
+								phaser: {
+									width: spider02.width,
+									height: spider02.height,
+									health: 30
+								},
+								start: {
+									x: (stageUnit * 2),
+									y: winH - (stageUnit * 23)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 10,
+								score: 2500,
+								jumps: true,
+								jumpMultiplier: 150,
+								movement: {
+									speed: spider02.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
+						],
+						// sector 4
+						[
+						{
+							name: 'level09-sector4-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider02',
+								phaser: {
+									width: spider02.width,
+									height: spider02.height,
+									health: 30
+								},
+								start: {
+									x: (stageUnit * 20),
+									y: winH - (stageUnit * 33)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 10,
+								score: 2500,
+								jumps: true,
+								jumpMultiplier: 150,
+								movement: {
+									speed: spider02.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
+						],
+						// sector 5
+						[
+						{
+							name: 'level09-sector5-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider02',
+								phaser: {
+									width: spider02.width,
+									height: spider02.height,
+									health: 30
+								},
+								start: {
+									x: (stageUnit * 19),
+									y: winH - (stageUnit * 41)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 15,
+								score: 2500,
+								movement: {
+									speed: spider02.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
+						],
+						// sector 6
+						[
+						{
+							name: 'level09-sector6-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider02',
+								phaser: {
+									width: spider02.width,
+									height: spider02.height,
+									health: 30
+								},
+								start: {
+									x: (stageUnit * 10),
+									y: winH - (stageUnit * 53)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 15,
+								score: 2500,
+								jumps: true,
+								jumpMultiplier: 150,
+								movement: {
+									speed: spider02.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
+						],
+						// sector 7
+						[
+						{
+							name: 'level09-sector7-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider02',
+								phaser: {
+									width: spider02.width,
+									height: spider02.height,
+									health: 30
+								},
+								start: {
+									x: (stageUnit * 31),
+									y: winH - (stageUnit * 59)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 15,
+								score: 2500,
+								jumps: true,
+								jumpMultiplier: 150,
+								movement: {
+									speed: spider02.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
+						],
+						// sector 8
+						[
+						]
+					]
+				},
 				attrs: [
 				// scenery
 				{
@@ -17243,16 +17614,6 @@ PWG.Config = (function() {
 								}
 							}
 							]
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						}
 						]
 					},
@@ -17412,48 +17773,6 @@ PWG.Config = (function() {
 							}
 							// end sector 2 terrain
 							]
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level09-sector2-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider02',
-									phaser: {
-										width: spider02.width,
-										height: spider02.height,
-										health: 30
-									},
-									start: {
-										x: (stageUnit * 16),
-										y: winH - (stageUnit * 16)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 10,
-									score: 2500,
-									jumps: true,
-									jumpMultiplier: 150,
-									movement: {
-										speed: spider02.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
 						},
 						{
 							name: 'bonuses',
@@ -17745,48 +18064,6 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level09-sector3-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider02',
-									phaser: {
-										width: spider02.width,
-										height: spider02.height,
-										health: 30
-									},
-									start: {
-										x: (stageUnit * 2),
-										y: winH - (stageUnit * 23)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 10,
-									score: 2500,
-									jumps: true,
-									jumpMultiplier: 150,
-									movement: {
-										speed: spider02.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
@@ -18044,48 +18321,6 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level09-sector4-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider02',
-									phaser: {
-										width: spider02.width,
-										height: spider02.height,
-										health: 30
-									},
-									start: {
-										x: (stageUnit * 20),
-										y: winH - (stageUnit * 33)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 10,
-									score: 2500,
-									jumps: true,
-									jumpMultiplier: 150,
-									movement: {
-										speed: spider02.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -18326,46 +18561,6 @@ PWG.Config = (function() {
 							}
 							// end sector 5 terrain
 							]
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level09-sector5-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider02',
-									phaser: {
-										width: spider02.width,
-										height: spider02.height,
-										health: 30
-									},
-									start: {
-										x: (stageUnit * 19),
-										y: winH - (stageUnit * 41)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 15,
-									score: 2500,
-									movement: {
-										speed: spider02.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
 						},
 						{
 							name: 'bonuses',
@@ -18619,48 +18814,6 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level09-sector6-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider02',
-									phaser: {
-										width: spider02.width,
-										height: spider02.height,
-										health: 30
-									},
-									start: {
-										x: (stageUnit * 10),
-										y: winH - (stageUnit * 53)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 15,
-									score: 2500,
-									jumps: true,
-									jumpMultiplier: 150,
-									movement: {
-										speed: spider02.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -18842,43 +18995,6 @@ PWG.Config = (function() {
 							attrs: []
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level09-sector7-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider02',
-									phaser: {
-										width: spider02.width,
-										height: spider02.height,
-										health: 30
-									},
-									start: {
-										x: (stageUnit * 31),
-										y: winH - (stageUnit * 59)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 15,
-									score: 2500,
-									jumps: true,
-									jumpMultiplier: 150,
-									movement: {
-										speed: spider02.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -19009,21 +19125,6 @@ PWG.Config = (function() {
 							}
 							// end sector 8 terrain
 							]
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						}
 						]
 					}
@@ -19257,6 +19358,363 @@ PWG.Config = (function() {
 					'heartSprite',
 					'keke'
 				],
+				enemies: {
+					name: 'enemies',
+					cl: 'EnemyManager',
+					attrs: [
+						// sector 1
+						[
+						{
+							name: 'level10-sector1-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider03',
+								phaser: {
+									width: spider03.width,
+									height: spider03.height,
+									health: 50
+								},
+								start: {
+									x: (stageUnit * 16),
+									y: winH - (stageUnit * 6)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 25,
+								score: 3000,
+								movement: {
+									speed: spider03.speed,
+									type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
+						],
+						// sector 2
+						[
+						{
+							name: 'level10-sector2-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider03',
+								phaser: {
+									width: spider03.width,
+									height: spider03.height,
+									health: 50
+								},
+								start: {
+									x: (stageUnit * 16),
+									y: winH + (stageUnit * 3)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 25,
+								score: 3000,
+								movement: {
+									speed: spider03.speed,
+									type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						},
+						{
+							name: 'level10-sector2-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider02',
+								phaser: {
+									width: spider02.width,
+									height: spider02.height,
+									health: 30
+								},
+								start: {
+									x: (stageUnit * 40),
+									y: winH + (stageUnit * 8)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 15,
+								score: 2500,
+								jumps: true,
+								jumpMultiplier: 150,
+								jumps: true,
+								jumpMultiplier: 150,
+								movement: {
+									speed: spider02.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
+						],
+						// sector 3
+						[
+						{
+							name: 'level10-sector3-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider03',
+								phaser: {
+									width: spider03.width,
+									height: spider03.height,
+									health: 50
+								},
+								start: {
+									x: (stageUnit * 4),
+									y: winH + (stageUnit * 10)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 25,
+								score: 3000,
+								movement: {
+									speed: spider03.speed,
+									type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						},
+						{
+							name: 'level10-sector3-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider02',
+								phaser: {
+									width: spider02.width,
+									height: spider02.height,
+									health: 30
+								},
+								start: {
+									x: (stageUnit * 40),
+									y: winH + (stageUnit * 15)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 15,
+								score: 2500,
+								jumps: true,
+								jumpMultiplier: 150,
+								movement: {
+									speed: spider02.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
+						],
+						// sector 4
+						[
+						{
+							name: 'level10-sector3-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider03',
+								phaser: {
+									width: spider03.width,
+									height: spider03.height,
+									health: 50
+								},
+								start: {
+									x: (stageUnit * 4),
+									y: winH + (stageUnit * 18)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 25,
+								score: 3000,
+								movement: {
+									speed: spider03.speed,
+									type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						},
+						{
+							name: 'level10-sector3-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider02',
+								phaser: {
+									width: spider02.width,
+									height: spider02.height,
+									health: 30
+								},
+								start: {
+									x: (stageUnit * 40),
+									y: winH + (stageUnit * 25)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 15,
+								score: 2500,
+								jumps: true,
+								jumpMultiplier: 150,
+								movement: {
+									speed: spider02.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
+						],
+						// sector 5
+						[
+						{
+							name: 'level10-sector5-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider02',
+								phaser: {
+									width: spider02.width,
+									height: spider02.height,
+									health: 30
+								},
+								start: {
+									x: (stageUnit * 4),
+									y: winH + (stageUnit * 29)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 15,
+								score: 2500,
+								movement: {
+									speed: spider02.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						},
+						{
+							name: 'level10-sector5-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider03',
+								phaser: {
+									width: spider03.width,
+									height: spider03.height,
+									health: 50
+								},
+								start: {
+									x: (stageUnit * 40),
+									y: winH + (stageUnit * 33)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 25,
+								score: 3000,
+								movement: {
+									speed: spider03.speed,
+									type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
+						],
+						// sector 6
+						[
+						{
+							name: 'level10-sector5-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider03',
+								phaser: {
+									width: spider03.width,
+									height: spider03.height,
+									health: 50
+								},
+								start: {
+									x: (stageUnit * 4),
+									y: winH + (stageUnit * 38)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 25,
+								score: 3000,
+								movement: {
+									speed: spider03.speed,
+									type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						},
+						{
+							name: 'level10-sector5-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider02',
+								phaser: {
+									width: spider02.width,
+									height: spider02.height,
+									health: 30
+								},
+								start: {
+									x: (stageUnit * 40),
+									y: winH + (stageUnit * 43)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 15,
+								score: 2500,
+								movement: {
+									speed: spider02.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
+						],
+						// sector 7
+						[
+						],
+						// sector 8
+						[
+						]
+					]
+				},
 				attrs: [
 				// scenery
 				{
@@ -19801,41 +20259,6 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level10-sector1-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider03',
-									phaser: {
-										width: spider03.width,
-										height: spider03.height,
-										health: 50
-									},
-									start: {
-										x: (stageUnit * 16),
-										y: winH - (stageUnit * 6)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 25,
-									score: 3000,
-									movement: {
-										speed: spider03.speed,
-										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
@@ -19856,7 +20279,7 @@ PWG.Config = (function() {
 										immovable: true
 									},
 									score: 100,
-									health: 10
+									health: 25
 								}
 							}
 							]
@@ -20039,84 +20462,6 @@ PWG.Config = (function() {
 								}
 							}
 							]
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level10-sector2-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider03',
-									phaser: {
-										width: spider03.width,
-										height: spider03.height,
-										health: 50
-									},
-									start: {
-										x: (stageUnit * 16),
-										y: winH + (stageUnit * 3)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 25,
-									score: 3000,
-									movement: {
-										speed: spider03.speed,
-										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							},
-							{
-								name: 'level10-sector2-enemy2',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider02',
-									phaser: {
-										width: spider02.width,
-										height: spider02.height,
-										health: 30
-									},
-									start: {
-										x: (stageUnit * 40),
-										y: winH + (stageUnit * 8)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 15,
-									score: 2500,
-									jumps: true,
-									jumpMultiplier: 150,
-									jumps: true,
-									jumpMultiplier: 150,
-									movement: {
-										speed: spider02.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						}
 						]
 					},
@@ -20298,77 +20643,6 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level10-sector3-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider03',
-									phaser: {
-										width: spider03.width,
-										height: spider03.height,
-										health: 50
-									},
-									start: {
-										x: (stageUnit * 4),
-										y: winH + (stageUnit * 10)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 25,
-									score: 3000,
-									movement: {
-										speed: spider03.speed,
-										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							},
-							{
-								name: 'level10-sector3-enemy2',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider02',
-									phaser: {
-										width: spider02.width,
-										height: spider02.height,
-										health: 30
-									},
-									start: {
-										x: (stageUnit * 40),
-										y: winH + (stageUnit * 15)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 15,
-									score: 2500,
-									jumps: true,
-									jumpMultiplier: 150,
-									movement: {
-										speed: spider02.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
@@ -20389,7 +20663,7 @@ PWG.Config = (function() {
 										immovable: true
 									},
 									score: 100,
-									health: 10
+									health: 25
 								}
 							}
 							]
@@ -20664,77 +20938,6 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level10-sector3-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider03',
-									phaser: {
-										width: spider03.width,
-										height: spider03.height,
-										health: 50
-									},
-									start: {
-										x: (stageUnit * 4),
-										y: winH + (stageUnit * 18)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 25,
-									score: 3000,
-									movement: {
-										speed: spider03.speed,
-										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							},
-							{
-								name: 'level10-sector3-enemy2',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider02',
-									phaser: {
-										width: spider02.width,
-										height: spider02.height,
-										health: 30
-									},
-									start: {
-										x: (stageUnit * 40),
-										y: winH + (stageUnit * 25)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 15,
-									score: 2500,
-									jumps: true,
-									jumpMultiplier: 150,
-									movement: {
-										speed: spider02.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
@@ -20755,7 +20958,7 @@ PWG.Config = (function() {
 										immovable: true
 									},
 									score: 100,
-									health: 10
+									health: 25
 								}
 							}
 							]
@@ -20955,24 +21158,6 @@ PWG.Config = (function() {
 									}
 								}
 							},
-							// {
-							// 	name: 'sector5-platform01',
-							// 	cl: 'Sprite',
-							// 	attrs: {
-							// 		img: 'rockPlatform01',
-							// 		phaser: {
-							// 			width: (stageUnit * 1.5),
-							// 			height: (stageUnit * 0.5)
-							// 		},
-							// 		start: {
-							// 			x: (stageUnit * 16),
-							// 			y: winH + (stageUnit * 35)
-							// 		},
-							// 		physics: {
-							// 			immovable: true
-							// 		}
-							// 	}
-							// },
 							{
 								name: 'sector5-platform01',
 								cl: 'Sprite',
@@ -21010,75 +21195,6 @@ PWG.Config = (function() {
 								}
 							}
 							]
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level10-sector5-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider02',
-									phaser: {
-										width: spider02.width,
-										height: spider02.height,
-										health: 30
-									},
-									start: {
-										x: (stageUnit * 4),
-										y: winH + (stageUnit * 29)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 15,
-									score: 2500,
-									movement: {
-										speed: spider02.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							},
-							{
-								name: 'level10-sector5-enemy2',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider03',
-									phaser: {
-										width: spider03.width,
-										height: spider03.height,
-										health: 50
-									},
-									start: {
-										x: (stageUnit * 40),
-										y: winH + (stageUnit * 33)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 25,
-									score: 3000,
-									movement: {
-										speed: spider03.speed,
-										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
 						},
 						{
 							name: 'bonuses',
@@ -21319,75 +21435,6 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level10-sector5-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider03',
-									phaser: {
-										width: spider03.width,
-										height: spider03.height,
-										health: 50
-									},
-									start: {
-										x: (stageUnit * 4),
-										y: winH + (stageUnit * 38)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 25,
-									score: 3000,
-									movement: {
-										speed: spider03.speed,
-										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							},
-							{
-								name: 'level10-sector5-enemy2',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider02',
-									phaser: {
-										width: spider02.width,
-										height: spider02.height,
-										health: 30
-									},
-									start: {
-										x: (stageUnit * 40),
-										y: winH + (stageUnit * 43)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 15,
-									score: 2500,
-									movement: {
-										speed: spider02.speed,
-										type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
@@ -21408,7 +21455,7 @@ PWG.Config = (function() {
 										immovable: true
 									},
 									score: 100,
-									health: 10
+									health: 25
 								}
 							}
 							]
@@ -21501,16 +21548,6 @@ PWG.Config = (function() {
 								}
 							}
 							]
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
 						},
 						{
 							name: 'bonuses',
@@ -21630,16 +21667,6 @@ PWG.Config = (function() {
 								}
 							}
 							]
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
-							name: 'bonuses',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
 						}
 						]
 					}
@@ -21877,6 +21904,240 @@ PWG.Config = (function() {
 					'spider03',
 					'keke'
 				],
+				enemies: {
+					name: 'enemies',
+					cl: 'EnemyManager',
+					attrs: [
+						// sector 1
+						[
+						],
+						// sector 2
+						[
+						{
+							name: 'level10-sector2-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider03',
+								phaser: {
+									width: spider03.width,
+									height: spider03.height,
+									health: 50
+								},
+								start: {
+									x: (stageUnit * 18),
+									y: winH + (stageUnit * 6)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 25,
+								score: 3000,
+								// first spider
+								movement: {
+									speed: spider03.speed,
+									type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
+						],
+						// sector 3
+						[
+						{
+							name: 'level10-sector3-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider03',
+								phaser: {
+									width: spider03.width,
+									height: spider03.height,
+									health: 50
+								},
+								start: {
+									x: (stageUnit * 14),
+									y: winH + (stageUnit * 10)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 25,
+								score: 3000,
+								movement: {
+									speed: spider03.speed,
+									type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						},
+						{
+							name: 'level10-sector3-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider03',
+								phaser: {
+									width: spider03.width,
+									height: spider03.height,
+									health: 50
+								},
+								start: {
+									x: (stageUnit * 30),
+									y: winH + (stageUnit * 10)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 25,
+								score: 3000,
+								movement: {
+									speed: spider03.speed,
+									type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						},
+						{
+							name: 'level10-sector3-enemy3',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider03',
+								phaser: {
+									width: spider03.width,
+									height: spider03.height,
+									health: 50
+								},
+								start: {
+									x: (stageUnit * 60),
+									y: winH + (stageUnit * 10)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 25,
+								score: 3000,
+								movement: {
+									speed: spider03.speed,
+									type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
+						],
+						// sector 4
+						[
+						{
+							name: 'level10-sector4-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider03',
+								phaser: {
+									width: spider03.width,
+									height: spider03.height,
+									health: 50
+								},
+								start: {
+									x: (stageUnit * 14),
+									y: winH + (stageUnit * 19)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 25,
+								score: 3000,
+								movement: {
+									speed: spider03.speed,
+									type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						},
+						{
+							name: 'level10-sector4-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider03',
+								phaser: {
+									width: spider03.width,
+									height: spider03.height,
+									health: 50
+								},
+								start: {
+									x: (stageUnit * 30),
+									y: winH + (stageUnit * 22)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 25,
+								score: 3000,
+								movement: {
+									speed: spider03.speed,
+									type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						},
+						{
+							name: 'level10-sector4-enemy3',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider03',
+								phaser: {
+									width: spider03.width,
+									height: spider03.height,
+									health: 50
+								},
+								start: {
+									x: (stageUnit * 60),
+									y: winH + (stageUnit * 24)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 25,
+								score: 3000,
+								movement: {
+									speed: spider03.speed,
+									type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+							}
+						}
+						],
+						// sector 5
+						[
+						],
+						// sector 6
+						[
+						],
+						// sector 7
+						[
+						],
+						// sector 8
+						[
+						]
+					]
+				},
 				attrs: [
 				// scenery
 				{
@@ -22535,42 +22796,6 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level10-sector2-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider03',
-									phaser: {
-										width: spider03.width,
-										height: spider03.height,
-										health: 50
-									},
-									start: {
-										x: (stageUnit * 18),
-										y: winH + (stageUnit * 6)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 25,
-									score: 3000,
-									// first spider
-									movement: {
-										speed: spider03.speed,
-										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: []
@@ -22793,99 +23018,6 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level10-sector3-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider03',
-									phaser: {
-										width: spider03.width,
-										height: spider03.height,
-										health: 50
-									},
-									start: {
-										x: (stageUnit * 14),
-										y: winH + (stageUnit * 10)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 25,
-									score: 3000,
-									movement: {
-										speed: spider03.speed,
-										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							},
-							{
-								name: 'level10-sector3-enemy2',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider03',
-									phaser: {
-										width: spider03.width,
-										height: spider03.height,
-										health: 50
-									},
-									start: {
-										x: (stageUnit * 30),
-										y: winH + (stageUnit * 10)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 25,
-									score: 3000,
-									movement: {
-										speed: spider03.speed,
-										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							},
-							{
-								name: 'level10-sector3-enemy3',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider03',
-									phaser: {
-										width: spider03.width,
-										height: spider03.height,
-										health: 50
-									},
-									start: {
-										x: (stageUnit * 60),
-										y: winH + (stageUnit * 10)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 25,
-									score: 3000,
-									movement: {
-										speed: spider03.speed,
-										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
@@ -22906,7 +23038,7 @@ PWG.Config = (function() {
 										immovable: true
 									},
 									score: 100,
-									health: 10
+									health: 25
 								}
 							},
 							{
@@ -22926,7 +23058,7 @@ PWG.Config = (function() {
 										immovable: true
 									},
 									score: 100,
-									health: 10
+									health: 25
 								}
 							}
 							]
@@ -23149,99 +23281,6 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [
-							{
-								name: 'level10-sector4-enemy1',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider03',
-									phaser: {
-										width: spider03.width,
-										height: spider03.height,
-										health: 50
-									},
-									start: {
-										x: (stageUnit * 14),
-										y: winH + (stageUnit * 19)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 25,
-									score: 3000,
-									movement: {
-										speed: spider03.speed,
-										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							},
-							{
-								name: 'level10-sector4-enemy2',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider03',
-									phaser: {
-										width: spider03.width,
-										height: spider03.height,
-										health: 50
-									},
-									start: {
-										x: (stageUnit * 30),
-										y: winH + (stageUnit * 22)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 25,
-									score: 3000,
-									movement: {
-										speed: spider03.speed,
-										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							},
-							{
-								name: 'level10-sector4-enemy3',
-								cl: 'AnimatedEnemy',
-								attrs: {
-									img: 'spider03',
-									phaser: {
-										width: spider03.width,
-										height: spider03.height,
-										health: 50
-									},
-									start: {
-										x: (stageUnit * 60),
-										y: winH + (stageUnit * 24)
-									},
-									physics: {
-										allowGravity: false
-									},
-									speed: 0.5,
-									attack: 25,
-									score: 3000,
-									movement: {
-										speed: spider03.speed,
-										type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
-										formula: null
-									},
-									defaultAnimation: '',
-									animations: spiderAnimations
-								}
-							}
-							] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
@@ -23262,7 +23301,7 @@ PWG.Config = (function() {
 										immovable: true
 									},
 									score: 100,
-									health: 10
+									health: 25
 								}
 							}
 							]
@@ -23620,16 +23659,6 @@ PWG.Config = (function() {
 							]
 						},
 						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
-						},
-						{
 							name: 'bonuses',
 							cl: 'PhysicalGroupCollection',
 							attrs: [
@@ -23650,7 +23679,7 @@ PWG.Config = (function() {
 										immovable: true
 									},
 									score: 100,
-									health: 10
+									health: 25
 								}
 							}
 							]
@@ -23707,16 +23736,6 @@ PWG.Config = (function() {
 								}
 							}
 							]
-						},
-						{
-							name: 'hazards',
-							cl: 'PhysicalGroupCollection',
-							attrs: []
-						},
-						{
-							name: 'enemies',
-							cl: 'Enemies',
-							attrs: [] 
 						},
 						{
 							name: 'bonuses',

@@ -57,13 +57,14 @@ PWG.Enemy = (function() {
 
 		if(this.model.attrs.testInView) {
 			var name = this.model.name;
-			if(enemyX < (playerX + PWG.Stage.width/2) && enemyX > (playerX - PWG.Stage.width/2)) {
+			if((enemyX < (playerX + PWG.Stage.width/2) && enemyX > (playerX - PWG.Stage.width/2)) && (enemyY < (playerY + PWG.Stage.height/2) && enemyY > (playerY - PWG.Stage.height/2))) {
 				this.isInView = true;
 				if(!this.isActive) {
 					PWG.EventCenter.trigger({ type: PWG.Events.ADD_ACTIVE_ENEMY, enemy: this });
 					this.isActive = true;
 				}
 			} else {
+				trace('enemy['+this.model.name+'] is not in view');
 				this.isInView = false;
 				if(this.isActive) {
 					PWG.EventCenter.trigger({ type: PWG.Events.REMOVE_ACTIVE_ENEMY, enemy: this });
