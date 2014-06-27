@@ -29,6 +29,10 @@ PWG.SectorManager = (function() {
 		PWG.EventCenter.trigger({ type: PWG.Events.SECTOR_CHANGED, id: id });
 	};
 	
+	SectorManager.prototype.getSector = function(idx) {
+		return this.model.collection[idx];
+	};
+	
 	SectorManager.prototype.getActiveSector = function() {
 		return this.model.collection[this.activeSectorId];
 	};

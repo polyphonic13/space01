@@ -43,6 +43,7 @@ PWG.EnemyManager = function() {
 				var enemies = new PWG.Enemies({
 					name: 'sector' + idx + '-enemies',
 					type: 'Enemies',
+					sector: idx,
 					attrs: this.model.attrs[idx]
 				});
 				enemies.begin();
@@ -56,14 +57,7 @@ PWG.EnemyManager = function() {
 				
 				// first sector, add any enemies as active
 				if(idx === 0) {
-					var sectorEnemies = enemies.getEnemies();
-					PWG.Utils.each(
-						sectorEnemies,
-						function(enemy) {
-							this.activeEnemies[enemy.model.name] = enemy;
-						},
-						this
-					);
+					this.addActiveEnemies(enemies)
 				}
 			},
 			this
@@ -94,7 +88,6 @@ PWG.EnemyManager = function() {
 	
 	EnemyManager.prototype.addActiveEnemies = function(enemies) {
 		// trace('EnemyManager/addActiveEnemies, enemies = ', enemies);
-		enemies.activateGravity();
 		PWG.Utils.each(
 			enemies.model.collection,
 			function(enemy) {
@@ -106,6 +99,8 @@ PWG.EnemyManager = function() {
 	
 	EnemyManager.prototype.addActiveEnemy = function(enemy) {
 		if(!this.activeEnemies.hasOwnProperty(enemy)) {
+			trace('EnemyManager/addActiveEnemy, enemy = ', enemy);
+			enemy.activateGravity();
 			this.activeEnemies[enemy.model.name] = enemy;
 		}
 	};
@@ -141,7 +136,7 @@ PWG.EnemyManager = function() {
 			function(enemy) {
 				if(enemy.alive) {
 					if(enemy.body.allowGravity) {
-						// this.updateEnemyPhysics(enemy, params.terrain);
+						this.updateEnemyPhysics(enemy, params);
 					}
 					enemy.pwUpdate(params);
 				}
@@ -150,15 +145,15 @@ PWG.EnemyManager = function() {
 		);
 	}
 
-	EnemyManager.prototype.updateEnemyPhysics = function(enemy, terrain) {
-		
+	EnemyManager.prototype.updateEnemyPhysics = function(enemy, params) {
+		var enemySector = this.sectorManager.getSector(enemy.model.sector);
 		if(enemySector.dynamicTerrain) {
 			enemy.checkTerrainCollision(enemySector.dynamicTerrain);
 		}
-		if(activeSector.dynamicTerrain) {
-			enemy.checkTerrainCollision(activeSector.dynamicTerrain);
+		if(params.dynamicTerrain) {
+			enemy.checkTerrainCollision(params.dynamicTerrain);
 		}
-		enemy.checkTerrainCollision(terrain);
+		enemy.checkTerrainCollision(params.terrain);
 	};
 	
 	EnemyManager.prototype.destroy = function() {
