@@ -124,7 +124,8 @@
 					}
 				};
 				this.sectorManager.pwUpdate(updateParams);
-
+				this.enemyManager.pwUpdate(updateParams);
+				
 				// update player with active sector members & terrain
 				var terrainGroup = this.terrain.group;
 				var goalGroup = this.goals.group;

@@ -6,6 +6,8 @@ PWG.EnemyManager = function() {
 		this.sectors = [];
 		this.activeEnemies = {};
 		this.addListeners();
+		this.sectorManager = sectorManager;
+		this.sectorIdx = 0;
 		this.createSectors(sectorManager);
 	}
 	
@@ -26,7 +28,10 @@ PWG.EnemyManager = function() {
 	};
 	
 	EnemyManager.prototype.onSectorChanged = function(event) {
-		
+		trace('EnemyManager/onSectorChanged, event = ', event);
+		this.removeActiveEnemies(this.sectors[this.sectorIdx].enemies);
+		this.sectorIdx = event.id;
+		this.addActiveEnemies(this.sectors[this.sectorIdx].enemies);
 	};
 	
 	EnemyManager.prototype.createSectors = function(sectorManager) {
@@ -67,19 +72,14 @@ PWG.EnemyManager = function() {
 		trace('EnemyManager/createSectors completed, sectors = ', this.sectors);
 	};
 	
-	EnemyManager.prototype.onAddActiveEnemy = function(event) {
-		// trace('EnemyManager/onAddActiveEnemy, event = ', event);
-		this.addActiveEnemy(event.enemy);
-	};
-	
 	EnemyManager.prototype.onAddActiveEnemies = function(event) {
 		// trace('EnemyManager/onAddActiveEnemies, event = ', event, '\tthis = ', this);
 		this.addActiveEnemies(event.enemies);
 	};
 	
-	EnemyManager.prototype.onRemoveActiveEnemy = function(event) {
-		// trace('EnemyManager/onRemoveActiveEnemy, event = ', event, '\tthis = ', this);
-		this.removeActiveEnemy(event.enemy);
+	EnemyManager.prototype.onAddActiveEnemy = function(event) {
+		// trace('EnemyManager/onAddActiveEnemy, event = ', event);
+		this.addActiveEnemy(event.enemy);
 	};
 	
 	EnemyManager.prototype.onRemoveActiveEnemies = function(event) {
@@ -87,15 +87,14 @@ PWG.EnemyManager = function() {
 		this.removeActiveEnemies(event.enemies);
 	};
 	
-	EnemyManager.prototype.addActiveEnemy = function(enemy) {
-		if(!this.activeEnemies.hasOwnProperty(enemy)) {
-			enemy.getSector();
-			this.activeEnemies[enemy.model.name] = enemy;
-		}
+	EnemyManager.prototype.onRemoveActiveEnemy = function(event) {
+		// trace('EnemyManager/onRemoveActiveEnemy, event = ', event, '\tthis = ', this);
+		this.removeActiveEnemy(event.enemy);
 	};
 	
 	EnemyManager.prototype.addActiveEnemies = function(enemies) {
 		// trace('EnemyManager/addActiveEnemies, enemies = ', enemies);
+		enemies.activateGravity();
 		PWG.Utils.each(
 			enemies.model.collection,
 			function(enemy) {
@@ -105,10 +104,9 @@ PWG.EnemyManager = function() {
 		);
 	};
 	
-	EnemyManager.prototype.removeActiveEnemy = function(enemy) {
-		if(this.activeEnemies.hasOwnProperty(enemy)) {
-			trace('\tremoving ' + enemy.model.name);
-			delete this.activeEnemies[enemy.model.name];
+	EnemyManager.prototype.addActiveEnemy = function(enemy) {
+		if(!this.activeEnemies.hasOwnProperty(enemy)) {
+			this.activeEnemies[enemy.model.name] = enemy;
 		}
 	};
 	
@@ -125,6 +123,14 @@ PWG.EnemyManager = function() {
 		);
 	};
 	
+	EnemyManager.prototype.removeActiveEnemy = function(enemy) {
+		if(this.activeEnemies.hasOwnProperty(enemy)) {
+			trace('\tremoving ' + enemy.model.name);
+			delete this.activeEnemies[enemy.model.name];
+			// enemy.deactivateGravity();
+		}
+	};
+	
 	EnemyManager.prototype.getActiveEnemies = function() {
 		return this.activeEnemies;
 	}
@@ -135,7 +141,7 @@ PWG.EnemyManager = function() {
 			function(enemy) {
 				if(enemy.alive) {
 					if(enemy.body.allowGravity) {
-						this.updateEnemyPhysics(enemy, params.terrain);
+						// this.updateEnemyPhysics(enemy, params.terrain);
 					}
 					enemy.pwUpdate(params);
 				}
@@ -144,6 +150,17 @@ PWG.EnemyManager = function() {
 		);
 	}
 
+	EnemyManager.prototype.updateEnemyPhysics = function(enemy, terrain) {
+		
+		if(enemySector.dynamicTerrain) {
+			enemy.checkTerrainCollision(enemySector.dynamicTerrain);
+		}
+		if(activeSector.dynamicTerrain) {
+			enemy.checkTerrainCollision(activeSector.dynamicTerrain);
+		}
+		enemy.checkTerrainCollision(terrain);
+	};
+	
 	EnemyManager.prototype.destroy = function() {
 		PWG.Utils.each(
 			this.sectors,

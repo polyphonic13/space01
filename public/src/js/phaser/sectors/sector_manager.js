@@ -55,19 +55,6 @@ PWG.SectorManager = (function() {
 		
 	};
 	
-	SectorManager.prototype.updateEnemyPhysics = function(enemy, terrain) {
-		var enemySector = enemy.getSector();
-		var activeSector = this.model.collection[this.activeSectorId];
-
-		if(enemySector.dynamicTerrain) {
-			enemy.checkTerrainCollision(enemySector.dynamicTerrain);
-		}
-		if(activeSector.dynamicTerrain) {
-			enemy.checkTerrainCollision(activeSector.dynamicTerrain);
-		}
-		enemy.checkTerrainCollision(terrain);
-	};
-	
 	SectorManager.prototype.findActiveSector = function(position) {
 		// trace('SectorManager/findActiveSector, this = ');
 		// trace(this);

@@ -13,7 +13,7 @@ PWG.Enemy = (function() {
 
 	Enemy.prototype.pwUpdate = function(params) {
 		if(this.alive) {
-			trace('Enemy['+this.model.name+']/pwUpdate, relationToPlayer = ' + this.relationToPlayer);
+			// trace('Enemy['+this.model.name+']/pwUpdate, relationToPlayer = ' + this.relationToPlayer);
 			this.checkDynamicTerrainCollision(params.dynamicTerrain);
 
 			this.relationToPlayer = 'near';
@@ -46,13 +46,6 @@ PWG.Enemy = (function() {
 				this.justJumped = false;
 			}
 		}
-	};
-	
-	Enemy.prototype.getSector = function() {
-		// trace('Enemy['+this.model.name+']/getSector, this = ', this);
-		var sector = this.model.ancestor.model.ancestor;
-		// trace('\tsector = ', sector);
-		return sector;
 	};
 	
 	Enemy.prototype.calculateHorizontalMovement = function(player, movementType, invert) {
