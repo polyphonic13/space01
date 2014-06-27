@@ -6,6 +6,7 @@ PWG.Enemy = (function() {
 		Enemy._super.constructor.call(this, params);
 		this.reactivated = false; 
 		this.isInView = true;
+		this.isInProximity = false;
 		this.isActive = false;
 		this.justJumped = false;
 		this.relationToPlayer = '';
@@ -60,14 +61,11 @@ PWG.Enemy = (function() {
 			if((enemyX < (playerX + PWG.Stage.width/2) && enemyX > (playerX - PWG.Stage.width/2)) && (enemyY < (playerY + PWG.Stage.height/2) && enemyY > (playerY - PWG.Stage.height/2))) {
 				this.isInView = true;
 				if(!this.isActive) {
-					PWG.EventCenter.trigger({ type: PWG.Events.ADD_ACTIVE_ENEMY, enemy: this });
 					this.isActive = true;
 				}
 			} else {
-				trace('enemy['+this.model.name+'] is not in view');
 				this.isInView = false;
 				if(this.isActive) {
-					PWG.EventCenter.trigger({ type: PWG.Events.REMOVE_ACTIVE_ENEMY, enemy: this });
 					this.isActive = false;
 				}
 			}
@@ -91,6 +89,18 @@ PWG.Enemy = (function() {
 					this.justJumped = true;
 					this.move({ direction: PWG.Directions.UP, type: PWG.MovementTypes.JUMP });
 				}
+			}
+		}
+
+		if((enemyX < (playerX + PWG.Stage.width/4) && enemyX > (playerX - PWG.Stage.width/4)) && (enemyY < (playerY + PWG.Stage.height/4) && enemyY > (playerY - PWG.Stage.height/4))) {
+			if(!this.isInProximity) {
+				this.isInProximity = true;
+				PWG.EventCenter.trigger({ type: PWG.Events.ADD_ACTIVE_ENEMY, enemy: this });
+			}
+		} else {
+			if(this.isInProximity) {
+				this.isInProximity = false;
+				PWG.EventCenter.trigger({ type: PWG.Events.REMOVE_ACTIVE_ENEMY, enemy: this });
 			}
 		}
 	};

@@ -110,7 +110,7 @@ PWG.EnemyManager = function() {
 		PWG.Utils.each(
 			enemies.model.collection,
 			function(enemy) {
-				if(!enemy.isActive) {
+				if(!enemy.isInProximity) {
 					this.removeActiveEnemy(enemy);
 				}
 			},
