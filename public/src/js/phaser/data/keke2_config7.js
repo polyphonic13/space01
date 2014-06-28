@@ -1,6 +1,6 @@
 /* local storage override
 PWG.Storage.destroy();
-PWG.Storage.set({kekeAndTheGreyExpanse: {"currentLevel":9,"savedState":"menu","score":0, "savedStatus":["c","c","c","c","c","c","c","c","c","u","u","l"],"highScores":[0,0,0,0,0,0,0,0,0,0,0,0]}}); 
+PWG.Storage.set({kekeAndTheGreyExpanse: {"currentLevel":9,"savedState":"menu","score":0, "savedStatus":["u","u","u","u","u","u","u","u","u","u","u","u"],"highScores":[0,0,0,0,0,0,0,0,0,0,0,0]}}); 
 */
 
 PWG.Config = (function() {
