@@ -269,7 +269,9 @@
 		PWG.EventCenter.unbind(PWG.Events.AD_COMPLETED, this.onResumeState, this);
 		
 		this.destroyPlayer();
-		this.enemyManager.destroy();
+		if(this.enemyManager) {
+			this.enemyManager.destroy();
+		}
 		LevelState._super.shutdown.call(this);
 	};
 
