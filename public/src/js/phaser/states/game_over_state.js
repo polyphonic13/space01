@@ -9,7 +9,7 @@ PWG.GameOverState = (function() {
 		// trace('GameOverState/createState, TGS = ', TGS);
 		GameOverState._super.createState.call(this);
 
-		PWG.TGSAdapter.addGameOverWidget();
+		PWG.TGSAdapter.addWidget();
 	};
 	
 	GameOverState.prototype.shutdown = function(event) {

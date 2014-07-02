@@ -1,6 +1,6 @@
 PWG.TGSAdapter = (function() {
 	var LEVEL_PLAYS_PER_AD = 1;
-	var WIDGET_WIDTH = 300;
+	var WIDGET_WIDTH = 100;
 
 	
 	var _levels = [];
@@ -107,13 +107,30 @@ PWG.TGSAdapter = (function() {
 			TGS.Advertisement.DisplayInterstitialAd(_displayConfig);		
 		},
 		
-		addGameOverWidget: function() {
-			trace('TGSAdapter/addGameOverWidget');
+		addWidget: function() {
+			trace('TGSAdapter/addWidget');
 			var winW = PWG.Stage.winW; 
 			var winH = PWG.Stage.winH;
+			var stageUnit = PWG.Stage.unit; 
+			var widgetX = (stageUnit * 3);
+			var widgetY = 0;
+			trace('\twidget x/y = ' + widgetX + '/' + widgetY);
+
+			if(_tgsExists) {
+				this.widget = PWGGame.Tresensa.createWidget({
+					x: widgetX,
+					y: widgetY,
+					scale: 0.25,
+					shareUrl: 'https://www.facebook.com/kekevscaterpillars',
+					shareImage: 'http://www.polyworksgames.com/games/keke2/assets/images/keke_grey_expanse_title.png',
+					shareTitle: 'keke and the grey expanse',
+					shareMessage: 'i love playing keke and the grey expanse!'
+				});
+			}
+/*
 			var widgetW = WIDGET_WIDTH;
 			var widgetX = winW/4 - widgetW/2;
-			var widgetY = '0';
+			var widgetY = 0;
 
 			_endScreenContainer.style.display = 'block';
 			
@@ -122,6 +139,7 @@ PWG.TGSAdapter = (function() {
 					width: widgetW,
 					x: widgetX,
 					y: widgetY,
+					scale: 0.5,
 					shareUrl: 'https://www.facebook.com/kekevscaterpillars',
 					shareImage: 'http://www.polyworksgames.com/games/keke2/assets/images/keke_grey_expanse_title.png',
 					shareTitle: 'keke and the grey expanse',
@@ -129,7 +147,7 @@ PWG.TGSAdapter = (function() {
 					parentDiv: _endScreenContainer
 				});
 			}
-
+*/
 		},
 
 		hideGameOverWidget: function() {
