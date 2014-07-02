@@ -813,8 +813,8 @@ PWG.Config = (function() {
 					name: 'completed',
 					cl: 'Text',
 					attrs: {
-						alignX: 'center',
-						alignY: 'center',
+						x: winW - (stageUnit * 6),
+						y: winH - (stageUnit * 2.25),
 						style: { 
 							font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',

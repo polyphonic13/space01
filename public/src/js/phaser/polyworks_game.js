@@ -43,6 +43,7 @@ PWGGame = (function() {
 		isLandscape: false,
 		gameOver: false,
 		isQuit: false,
+		Tresensa: null,
 
 		begin: function(params) {
 			PWGGame.name = params.name;
@@ -370,7 +371,9 @@ PWGGame = (function() {
 		// trace('PWGGame/_create');
 		_initControls();
 		_initStates();
-		_initSocial();
+		// _initSocial();
+
+		PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
 	}
 	
 	function _onStageInitialized(event) {
@@ -414,7 +417,7 @@ PWGGame = (function() {
 		if(event.value === 'map') {
 			if(!_gameStarted) {
 				_gameStarted = true;
-				// _adapter.logEvent(_adapter.logEvents.GAME_EVENT, [_adapter.gameEvents.BEGIN]);
+				_adapter.logEvent(_adapter.logEvents.GAME_EVENT, [_adapter.gameEvents.BEGIN]);
 			}
 		}
 		PWGGame.changeState(event.value);
@@ -445,8 +448,8 @@ PWGGame = (function() {
 		PWGGame.currentLevelHighScore = 'high score: ' + PWGGame.highScores[idx];
 		PWGGame.changeState(stateId);
 
-		// _adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.START, (idx+1)]);
-		// _adapter.adCheck(PWGGame.currentLevel);
+		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.START, (idx+1)]);
+		_adapter.adCheck(PWGGame.currentLevel);
 	}
 	
 	function _onNextLevel(event) {
@@ -457,7 +460,7 @@ PWGGame = (function() {
 			PWGGame.levelText = '';
 			stateId = 'completed';
 
-			// _adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.GAME_COMPLETED]);
+			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.GAME_COMPLETED]);
 
 		} else {
 			var idx = PWGGame.currentLevel;
@@ -477,7 +480,7 @@ PWGGame = (function() {
 			PWGGame.highScores[idx] = PWGGame.levelScore;
 			PWGGame.currentLevelHighScore = 'high score: ' + PWGGame.levelScore + ' NEW';
 			PWG.EventCenter.trigger(PWG.Events.HIGH_SCORE_UPDATED);
-			// _adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.NEW_HIGH_SCORE, PWGGame.levelScore]);
+			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.NEW_HIGH_SCORE, PWGGame.levelScore]);
 
 			var totalScore = 0;
 			PWG.Utils.each(
@@ -487,10 +490,10 @@ PWGGame = (function() {
 				},
 				this
 			);
-			// _adapter.submitScore({ score: totalScore });
+			_adapter.submitScore({ score: totalScore });
 		}
 
-		// _adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.COMPLETE, (idx+1)]);
+		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.COMPLETE, (idx+1)]);
 		idx++;
 		trace('THE NEW LEVEL STATUS IS: ' + PWGGame.levelStatus[idx]);
 		if(PWGGame.levelStatus[idx] === 'l') {
@@ -602,7 +605,7 @@ PWGGame = (function() {
 	}
 	
 	function _quit() {
-		// _adapter.logEvent(_adapter.logEvents.GAME_EVENT, [_adapter.gameEvents.END]);
+		_adapter.logEvent(_adapter.logEvents.GAME_EVENT, [_adapter.gameEvents.END]);
 		_removeListeners();
 		PWGGame.isQuit = true;
 		// _killStates();

@@ -252,6 +252,8 @@
 		this.getChildByName('levelControls').hide();
 		this.getChildByName('completedGUI').show();
 		this.getChildByName('title').show();
+
+		PWG.TGSAdapter.addWidget();
 	};
 	
 	LevelState.prototype.levelCleared = function() {

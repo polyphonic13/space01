@@ -21,7 +21,7 @@ PWG.ReactingTerrain = (function() {
 	};
 	
 	ReactingTerrain.prototype.activate = function() {
-		trace('ReactionTerrain/activate, this = ', this);
+		// trace('ReactionTerrain/activate, this = ', this);
 		this.state = ReactingTerrain.IDLE;
 		this.hasCollided = false;
 		this.active = true;
@@ -80,18 +80,18 @@ PWG.ReactingTerrain = (function() {
 	};
 
 	ReactingTerrain.prototype.animationCompleted = function() {
-		trace('ReactingTerrain['+this.model.name+']/animationCompleted');
+		// trace('ReactingTerrain['+this.model.name+']/animationCompleted');
 		this.removeTerrain();
 	};
 	
 	ReactingTerrain.prototype.playAnimation = function() {
-		trace('ReactingTerrain['+this.model.name+']/playAnimation: ', this);
+		// trace('ReactingTerrain['+this.model.name+']/playAnimation: ', this);
 		var animation = this.model.attrs.animations[this.state];
 		if(animation) {
 			// trace('\tgoing to call play on', animation);
 			var kill = false;
 			if(this.model.reaction.type === PWG.TerrainReactions.DESTROY_AFTER_ANIMATION) {
-				trace('\t\tit\'s a destroy after animation, set kill to true');
+				// trace('\t\tit\'s a destroy after animation, set kill to true');
 				kill = true;
 			}
 			this.play(this.state, animation.frameRate, animation.looped, false);
@@ -104,12 +104,12 @@ PWG.ReactingTerrain = (function() {
 	};
 
 	ReactingTerrain.prototype.deactivate = function(self) {
-		trace('ReactiongTerrain['+self.model.name+']/deactivate');
+		// trace('ReactiongTerrain['+self.model.name+']/deactivate');
 		self.active = false;
 	};
 	
 	ReactingTerrain.prototype.respawn = function(self) {
-		trace('ReactingTerrain['+self.model.name+']/respawn, self = ', self);
+		// trace('ReactingTerrain['+self.model.name+']/respawn, self = ', self);
 		// self.animations.frame = 0;
 		var animation = self.model.attrs.animations['respawn'];
 		self.play('respawn', animation.frameRate, animation.looped, false);
