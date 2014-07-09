@@ -40,6 +40,7 @@ PWG.State = (function() {
 		this.loaded = 0;
 		var phaser = PWGGame.phaser;
 		var loaded = {
+			audio: {},
 			images: {},
 			sprites: {}
 		};
@@ -48,7 +49,21 @@ PWG.State = (function() {
 		if(!this.model.loaded) {
 			// trace('\tstate images = ');
 			// trace(this.model.images);
-			if(this.model.images.length > 0) {
+			// if(this.model.audio && this.model.audio.length > 0) {
+			// 	var audio = PWGGame.get('audio');
+			// 	PWG.Utils.each(
+			// 		this.model.audio,
+			// 		function(audio) {
+			// 			if(!PWGGame.loaded.audio[audio]) {
+			// 				this.toLoad++;
+			// 				phaser.load.audio(audio, audio[audio]);
+			// 				loaded.audio[audio] = true;
+			// 			}
+			// 		},
+			// 		this
+			// 	);
+			// }
+			if(this.model.images && this.model.images.length > 0) {
 				var images = PWGGame.get('images');
 				PWG.Utils.each(this.model.images,
 					function(img) {
@@ -62,7 +77,7 @@ PWG.State = (function() {
 					this
 				);
 			}
-			if(this.model.sprites.length > 0) {
+			if(this.model.sprites && this.model.sprites.length > 0) {
 				var sprites = PWGGame.get('sprites');
 				PWG.Utils.each(this.model.sprites,
 					function(spr) {
@@ -93,6 +108,14 @@ PWG.State = (function() {
 			trace('WARNING: not in landscape orientation, can not create state');
 		}
 		this.model.set({ createCalled: true });
+		
+		// if(this.model.audio && this.model.audio.length > 0) {
+		// 	var audio = this.model.audio[0];
+		// 	trace('audio = ', audio);
+		// 	var sound = PWGGame.phaser.add.audio(audio);
+		// 	trace('sound = ', sound);
+		// 	sound.play('', 0, 1, true);
+		// }
 	};
 
 	State.prototype.createState = function() {

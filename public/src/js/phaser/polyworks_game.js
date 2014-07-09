@@ -97,6 +97,15 @@ PWGGame = (function() {
 			}
 		},
 
+		startGame: function() {
+			trace('PWGGame/startGame');
+			if(_stageInitialized) {
+				_adapter.init(_levels.length);
+				PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
+				PWGGame.changeState(_model.initialState);
+			}
+		},
+		
 		getModel: function() {
 			return _model;
 		},
@@ -335,17 +344,32 @@ PWGGame = (function() {
 	
 	function _preload() {
 		var phaser = PWGGame.phaser;
+		var audio = _model.audio;
 		var images = _model.images;
 		var sprites = _model.sprites;
 		var loaded = {
+			audio: {},
 			images: {},
 			sprites: {}
 		};
 
+		PWG.Utils.each(
+			audio,
+			function(audio, key) {
+				if(_model.preloadAll) {
+					phaser.load.audio(key, audio);
+					loaded.audio[key] = true;
+				}
+				loaded.audio[key] = false;
+			},
+			this
+		);
+		
 		PWG.Utils.each(images,
 			function(image, key) {
 				if(_model.preloadAll) {
 					phaser.load.image(key, image);
+					loaded.image[key] = true;
 				}
 				loaded.images[key] = false;
 			},
@@ -358,6 +382,7 @@ PWGGame = (function() {
 				// trace('PWGGame setting sprite['+key+'] loaded to false');
 				if(_model.preloadAll) {
 					phaser.load.spritesheet(key, sprite.url, sprite.width, sprite.height, sprite.frames);
+					loaded.sprites[key] = true;
 				}
 				loaded.sprites[key] = false;
 			},
@@ -373,7 +398,6 @@ PWGGame = (function() {
 		_initStates();
 		// _initSocial();
 
-		PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
 	}
 	
 	function _onStageInitialized(event) {
@@ -449,7 +473,7 @@ PWGGame = (function() {
 		PWGGame.changeState(stateId);
 
 		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.START, (idx+1)]);
-		_adapter.adCheck(PWGGame.currentLevel);
+		// _adapter.adCheck(PWGGame.currentLevel);
 	}
 	
 	function _onNextLevel(event) {
@@ -459,7 +483,7 @@ PWGGame = (function() {
 			PWGGame.currentLevel = 0;
 			PWGGame.levelText = '';
 			stateId = 'completed';
-
+			
 			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.GAME_COMPLETED]);
 
 		} else {
@@ -467,6 +491,7 @@ PWGGame = (function() {
 			var levelIdx = (idx < 9) ? ('0' + (idx+1)) : (idx+1);
 			stateId = 'level' + levelIdx + 'Info';
 		}
+		_adapter.closeWidget();
 		PWGGame.changeState(stateId);
 
 	}
@@ -540,14 +565,33 @@ PWGGame = (function() {
 		);
 		PWGGame.levelCount = levelCount;
 		_initLevelInfoStates();
-		_adapter.init(levelCount);
+
 		trace('PWGGame/_initStates, _stageInitialized = ' + _stageInitialized + ', _states = ', _states, '\t_levels = ', _levels);
-		if(_stageInitialized) {
-			PWGGame.changeState(_model.initialState);
-		}
 		_statesInialized = true;
+
+		if(typeof(TGS) !== 'undefined') {
+			if(TGS.IsReady()) {
+				trace('\ttgs is ready');
+				_startGame();
+			} else {
+				trace('\ttgs is defined, but not ready');
+				TGS.onReady = PWGGame.startGame();
+			}
+		} else {
+			trace('\ttgs is not defined');
+			_startGame();
+		}
 	}
 
+	// function _startGame() {
+	// 	trace('START GAME');
+	// 	if(_stageInitialized) {
+	// 		_adapter.init(_levels.length);
+	// 		PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
+	// 		PWGGame.changeState(_model.initialState);
+	// 	}
+	// }
+	
 	function _initLevelInfoStates() {
 		var template = PWGGame.get('levelInfoStateTemplate');
 		var controls = PWGGame.get('controls').levelInfo;
@@ -590,7 +634,7 @@ PWGGame = (function() {
 					this
 				);
 
-				trace('levelInfo['+levelIdx+'] levelInfoConfig = ', levelInfoConfig);
+				// trace('levelInfo['+levelIdx+'] levelInfoConfig = ', levelInfoConfig);
 				levelInfoState = new PWG.MenuState(levelInfoConfig);
 				PWGGame.phaser.state.add(stateName, levelInfoState, false);
 				_states[stateName] = levelInfoState;
@@ -644,10 +688,30 @@ PWGGame = (function() {
 	return module;
 }());
 
+var scriptsLoaded = false;
+var elementsAdded = false;
+
+// PWG.DOMManager.addScripts(domConfig.scripts, onScriptsLoaded);
 PWG.DOMManager.addElements(domConfig.head.elements, document.getElementsByTagName('head')[0]);
 PWG.DOMManager.addElements(domConfig.body.elements, document.getElementsByTagName('body')[0], onElementsAdded);
 
 function onElementsAdded() {
+	// trace('onElementsAdded, scriptsLoaded = ' + scriptsLoaded);
+	elementsAdded = true;
+	// if(scriptsLoaded) {
+		beginGame();
+	// }
+}
+
+function onScriptsLoaded() {
+	trace('onScriptsAdded, elementsAdded = ' + elementsAdded);
+	scriptsLoaded = true;
+	if(elementsAdded) {
+		beginGame();
+	}
+}
+
+function beginGame() {
 	PWGGame.begin({
 		name: 'kekeAndTheGreyExpanse',
 		aspectRatio: [16, 9]

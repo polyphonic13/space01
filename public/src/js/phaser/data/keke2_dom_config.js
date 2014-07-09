@@ -1,4 +1,10 @@
 var domConfig = {
+	scripts: [
+	{
+		name: 'phaser',
+		url: '//polyworksgames.com/games/js/lib/phaser-1.1.3.js'
+	}
+	],
 	head: {
 		parentEl: 'head',
 		elements: [

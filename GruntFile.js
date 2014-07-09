@@ -75,6 +75,11 @@ module.exports = function(grunt) {
 			project: {
 				src: [ '<%= buildDir %>/js/<%= project %>.js' ],
 				dest: '<%= buildDir %>/js/<%= project %>.min.js'
+			},
+			
+			file: {
+				src: [ '<%= srcDir %>/js/<%= project %>.js' ],
+				dest: '<%= buildDir %>/js/<%= project %>.min.js'
 			}
 			
 		},
@@ -134,5 +139,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-connect');
 	grunt.loadTasks('grunt/tasks');
 	
-	grunt.registerTask('default', ['projectDeploySetup', 'concat:project', 'stripTraceStatements', 'uglify', 'copy:project', /*'cssmin',*/ 'createProjectHtml']);
+	grunt.registerTask('default', ['projectDeploySetup', 'concat:project', /*'stripTraceStatements',*/ 'uglify', 'copy:project', /*'cssmin',*/ 'createProjectHtml']);
 };

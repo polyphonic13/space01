@@ -83,6 +83,10 @@ PWG.Config = (function() {
 		};
 
 		var c = {
+			// AUDIO
+			audio: {
+				secrets: 'assets/audio/music/secrets3.mp3'
+			},
 			// IMAGES
 			images: {
 				// gameTitle: 'assets/images/keke_title.png',
@@ -1677,6 +1681,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -24575,8 +24582,8 @@ PWG.Config = (function() {
 						name: 'gameOver',
 						cl: 'Text',
 						attrs: {
-							alignX: 'center',
-							y: 0,
+							x: winW - (stageUnit * 6),
+							y: winH - (stageUnit * 2.25),
 							style: { 
 								font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',

@@ -1,6 +1,6 @@
 PWG.TGSAdapter = (function() {
 	var LEVEL_PLAYS_PER_AD = 1;
-	var WIDGET_WIDTH = 100;
+	var WIDGET_WIDTH = 300;
 
 	
 	var _levels = [];
@@ -70,7 +70,7 @@ PWG.TGSAdapter = (function() {
 		logEvent: function(type, args) {
 			if(_tgsExists) {
 				trace('TGSAdapter/logEvent, type = ' + type + ', args = ', args);
-				TGS.Analytics[type](args);
+				TGS.Analytics[type].apply(this, args);
 			}
 		},
 		
@@ -111,45 +111,32 @@ PWG.TGSAdapter = (function() {
 			trace('TGSAdapter/addWidget');
 			var winW = PWG.Stage.winW; 
 			var winH = PWG.Stage.winH;
-			var stageUnit = PWG.Stage.unit; 
-			var widgetX = (stageUnit * 3);
-			var widgetY = 0;
-			trace('\twidget x/y = ' + widgetX + '/' + widgetY);
+			var unit = PWG.Stage.unit; 
+			var widgetX = (unit * 3);
+			var widgetY = (unit * 1);
+			var widgetScale = (unit * 5) / WIDGET_WIDTH;
+			trace('\twidget x/y = ' + widgetX + '/' + widgetY + ', scale = ' + widgetScale + ', widget w should be = ' + (unit * 5));
 
 			if(_tgsExists) {
 				this.widget = PWGGame.Tresensa.createWidget({
 					x: widgetX,
 					y: widgetY,
-					scale: 0.25,
+					scale: widgetScale,
 					shareUrl: 'https://www.facebook.com/kekevscaterpillars',
 					shareImage: 'http://www.polyworksgames.com/games/keke2/assets/images/keke_grey_expanse_title.png',
 					shareTitle: 'keke and the grey expanse',
 					shareMessage: 'i love playing keke and the grey expanse!'
 				});
 			}
-/*
-			var widgetW = WIDGET_WIDTH;
-			var widgetX = winW/4 - widgetW/2;
-			var widgetY = 0;
-
-			_endScreenContainer.style.display = 'block';
-			
-			if(_tgsExists) {
-				this.widget = TGS.Widget.CreateWidget({
-					width: widgetW,
-					x: widgetX,
-					y: widgetY,
-					scale: 0.5,
-					shareUrl: 'https://www.facebook.com/kekevscaterpillars',
-					shareImage: 'http://www.polyworksgames.com/games/keke2/assets/images/keke_grey_expanse_title.png',
-					shareTitle: 'keke and the grey expanse',
-					shareMessage: 'i love playing keke and the grey expanse!',
-					parentDiv: _endScreenContainer
-				});
-			}
-*/
 		},
 
+		closeWidget: function() {
+			trace('TGSAdapter/closeWidget, this.widget = ', this.widget);
+			if(this.widget) {
+				this.widget.close();
+			}
+		},
+		
 		hideGameOverWidget: function() {
 			trace('TGSAdapter/hideGameOverWidget');
 			if(this.widget) {
