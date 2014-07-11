@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-08T09:48:08')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-09T09:31:08')})();
 !function(root, factory) {
   if (typeof define === "function" && define.amd) {
     define(factory);
@@ -12406,7 +12406,7 @@ Object.defineProperty(Phaser.Group.prototype, "visible", {
 		// try {
 	        return this._container.visible;
 		// } catch(e) {
-		// 	
+		// 	trace('this = ', this);
 		// }
     },
 
@@ -19225,7 +19225,7 @@ Phaser.Sprite.prototype.preUpdate = function() {
 
     if (!this.exists || (this.group && !this.group.exists))
     {
-		// 
+		// trace('Phaser/Sprite skipping update for ', this);
         this.renderOrderID = -1;
         
         // Skip children if not exists
@@ -35522,7 +35522,7 @@ Phaser.Physics.Arcade.prototype = {
     * @private
     */
     collideSpriteVsSprite: function (sprite1, sprite2, collideCallback, processCallback, callbackContext) {
-		// 
+		// trace('phaser collide sprite vs. sprite', sprite1, sprite2, collideCallback, processCallback, callbackContext);
         this.separate(sprite1.body, sprite2.body);
 
         if (this._result)
@@ -40155,14 +40155,6 @@ PIXI.WebGLBatch.prototype.update = function()
   return Phaser;
 });
 
-var TGS=TGS||{};TGS.AdapterDefinitions={Q0000:{name:"TestAdapter",version:"1.0.0",fb:!0,preloader:!0,embedded:!0},Q0001:{name:"LudeiAdapter",version:"1.0.0",fb:!1},A0000:{name:"MobileWebArcadeAdapter",version:"1.1.2"},A0001:{name:"iOSAppStoreAdapter",version:"1.0.2"},A0002:{name:"GooglePlayAdapter",version:"1.0.1"},A0003:{name:"FacebookAdapter",version:"1.0.0",fb:!0},A0005:{name:"GamesDotComAdapter",version:"1.0.2",libs:["http://o.aolcdn.com/gamesdevcenter/sdk/v2/GamesSDK.js"],httpslibs:["https://s.aolcdn.com/gamesdevcenter/sdk/v2/GamesSDK.js"],fb:!0},A0006:{name:"MocospaceAdapter",version:"1.0.0",libs:["http://img.mocospace.com.edgesuite.net/wk/js/opensocial/opensocial.js"]},A0009:{name:"KongregateAdapter",version:"1.0.1",fb:!0},A0011:{name:"AmazonWebAppStoreAdapter",version:"1.0.0",libs:["https://amazon-web-app-resources.s3.amazonaws.com/v0/latest/Amazon-Web-App-API.min.js"]},A0014:{name:"PlayPhoneAdapter",version:"1.0.1"},A0015:{name:"SaudiTelecom",version:"1.0.0"},A0018:{name:"BoosterMedia",version:"1.0.0"},A0020:{name:"KikAdapter",version:"1.0.5"},A0021:{name:"WindowsStoreAdapter",version:"1.0.1"},A0022:{name:"SpilAdapter",version:"1.0.0",libs:["//cdn.gameplayer.io/api/js/game.js"]},A0027:{name:"JooistAdapter",version:"1.0.0"},A0028:{name:"SanookAdapter",version:"1.0.0"},A0030:{name:"WindowsPhoneAdapter",version:"1.0.0"},A0031:{name:"SmartMediaAdapter",version:"1.0.0",libs:["http://m.hopy.com/api.js"]},A0032:{name:"TizenAdapter",version:"1.0.1"},A0050:{name:"WildTangentAdapter",version:"1.0.0"},A0056:{name:"Gamester",version:"1.0.0"},A0058:{name:"KaiserGamesAdapter",version:"1.1.0",libs:["http://cdn.kaisergames.de/public/files/games/api/v1.js?e="+("undefined"!=typeof document&&encodeURIComponent(document.location.href))],fb:!0},A0063:{name:"PCHAdapter",version:"1.0.3",fb:!0},A0065:{name:"CliqAdapter",version:"1.0.1"},A0067:{name:"iWinAdapter",version:"1.0.2",fb:!1,libs:["http://games.iwin.com/m/utils/iwin_utils_v"+("undefined"!=typeof getQueryString&&getQueryString().menu||"15")+".js"]},A0071:{name:"AdsMetricAdapter",version:"1.0.1"},A0075:{name:"RauxaAdapter",version:"1.0.0",fb:!0},A0077:{name:"IMLeagues",version:"1.0.1"},A0079:{name:"SwagbucksAdapter",version:"1.0.0"},A0080:{name:"GamexAdapter",version:"1.0.0"},A0084:{name:"GameHouseAdapter",version:"1.0.0"},C0000:{name:"RadarAdapter",version:"1.0.0"}};
-
-/* Copyright (c) 2014 TreSensa, Inc. All Rights Reserved. */
-function extend(a,b){var c=a.prototype,d=function(){};d.prototype=b.prototype,a.prototype=new d,a.prototype.constructor=a,a.superclass=b.prototype,b.prototype.constructor===Object.prototype.constructor&&(b.prototype.constructor=b);for(var e in c)c.hasOwnProperty(e)&&(a.prototype[e]=c[e])}function getQueryString(){for(var a,b={},c=location.search.substring(1),d=/([^&=]+)=([^&]*)/g;a=d.exec(c);)b[decodeURIComponent(a[1])]=decodeURIComponent(a[2]);return b}function getDistributionPartner(){if("undefined"==typeof CordovaConfig){var a=getQueryString().dst;return"string"==typeof a?a:null}return"string"==typeof CordovaConfig.DST_ID?CordovaConfig.DST_ID:null}function loadScript(a,b){var c=document.getElementsByTagName("head")[0],d=document.createElement("script");d.type="text/javascript",d.src=a,d.onreadystatechange=b,d.onload=b,c.appendChild(d)}"document"in self&&!("classList"in document.createElement("_")&&"classList"in document.createElementNS("http://www.w3.org/2000/svg","svg"))&&!function(a){"use strict";if("Element"in a){var b="classList",c="prototype",d=a.Element[c],e=Object,f=String[c].trim||function(){return this.replace(/^\s+|\s+$/g,"")},g=Array[c].indexOf||function(a){for(var b=0,c=this.length;c>b;b++)if(b in this&&this[b]===a)return b;return-1},h=function(a,b){this.name=a,this.code=DOMException[a],this.message=b},i=function(a,b){if(""===b)throw new h("SYNTAX_ERR","An invalid or illegal string was specified");if(/\s/.test(b))throw new h("INVALID_CHARACTER_ERR","String contains an invalid character");return g.call(a,b)},j=function(a){for(var b=f.call(a.getAttribute("class")||""),c=b?b.split(/\s+/):[],d=0,e=c.length;e>d;d++)this.push(c[d]);this._updateClassName=function(){a.setAttribute("class",this.toString())}},k=j[c]=[],l=function(){return new j(this)};if(h[c]=Error[c],k.item=function(a){return this[a]||null},k.contains=function(a){return a+="",-1!==i(this,a)},k.add=function(){var a,b=arguments,c=0,d=b.length,e=!1;do a=b[c]+"",-1===i(this,a)&&(this.push(a),e=!0);while(++c<d);e&&this._updateClassName()},k.remove=function(){var a,b=arguments,c=0,d=b.length,e=!1;do{a=b[c]+"";var f=i(this,a);-1!==f&&(this.splice(f,1),e=!0)}while(++c<d);e&&this._updateClassName()},k.toggle=function(a,b){a+="";var c=this.contains(a),d=c?b!==!0&&"remove":b!==!1&&"add";return d&&this[d](a),!c},k.toString=function(){return this.join(" ")},e.defineProperty){var m={get:l,enumerable:!0,configurable:!0};try{e.defineProperty(d,b,m)}catch(n){-2146823252===n.number&&(m.enumerable=!1,e.defineProperty(d,b,m))}}else e[c].__defineGetter__&&d.__defineGetter__(b,l)}}(self);var TGS=TGS||{};Function.prototype.bind||(Function.prototype.bind=function(a){if("function"!=typeof this)throw new TypeError("Function.prototype.bind - what is trying to be bound is not callable");var b=Array.prototype.slice.call(arguments,1),c=this,d=function(){},e=function(){return c.apply(this instanceof d&&a?this:a,b.concat(Array.prototype.slice.call(arguments)))};return d.prototype=this.prototype,e.prototype=new d,e}),Array.prototype.some||(Array.prototype.some=function(a){"use strict";if(void 0===this||null===this)throw new TypeError;var b=Object(this),c=b.length>>>0;if("function"!=typeof a)throw new TypeError;for(var d=arguments.length>=2?arguments[1]:void 0,e=0;c>e;e++)if(e in b&&a.call(d,b[e],e,b))return!0;return!1}),function(){TGS.Utils={isTGEGame:function(){return!(!window.TGE||!window.TGE.Game.GetInstance())},Func:{prop:function(a){return function(b){return b[a]}}}}}(),TGS.PartnerBridge=function(){this._mIsReady=!1,this._mLoggedIn=!0,this._mUsername=null,this._mAvatarURL=null,this._mUserLocation=null,this._mUseUserInfoInSLB=!1,this._mFacebookServicesAllowed=!0,this._mFacebookLibLoaded=!1,this._mFacebookInitialized=!1,this._mFacebookAppID=null,this._mFacebookUserID=null,this._mFacebookAccessToken=null,this._mFacebookLoginRequiredCallback=null,this._mFacebookLoggedInCallback=null,this._mMoreGamesURL=null,this._mMoreGamesImage=TGS._IMAGES_LOCATION+"more_games.png",this.onAdapterReady=null,this.onUserInfoAvailable=null},TGS.PartnerBridge.prototype={supportsMicrotransactions:function(){return!1},allowsMicrotransactions:function(){return this.supportsMicrotransactions()},supportsDatastore:function(){return TGS.DataStore._sSaveToLocalStorage||TGS.DataStore._sSaveToTGSServer},autoLogin:function(){return!0},supportsLogout:function(){return!0},loginIcon:function(){return TGS._IMAGES_LOCATION+"test_login.png"},logoutIcon:function(){return TGS._IMAGES_LOCATION+"logout.png"},widgetLoginIcon:function(){return this.loginIcon()},widgetLogoutIcon:function(){return this.logoutIcon()},loggedIn:function(){return this._mLoggedIn},loginUser:function(a){this.autoLogin()?(TGS.Debug.Log(TGS.Debug.LOG_INFO,"loginUser: user is already logged in"),TGS._LoginSucceeded(a)):(TGS.Debug.Log(TGS.Debug.LOG_ERROR,"this adapter does not do auto-login, but has not defined its own loginUser method"),TGS._LoginFailed(a))},logoutUser:function(a){return TGS.Debug.Log(TGS.Debug.LOG_INFO,"logging out user..."),TGS.AutoLogin()?(TGS.Debug.Log(TGS.Debug.LOG_ERROR,"logoutUser: user cannot be logged out on this partner"),void TGS._LoginFailed(a)):(this._mLoggedIn=!1,TGS.localStorage.removeItem(TGS._sLSKeys.TGS_loggedin_user),TGS.localStorage.removeItem(TGS._sLSKeys.TGS_username),TGS.localStorage.removeItem(TGS._sLSKeys.TGS_avatar),TGS.localStorage.removeItem(TGS._sLSKeys.TGS_location),this._mUsername=this._mAvatarURL=this._mUserLocation=null,this.generateGuestUserID(),TGS.DataStore._sSaveToTGSServer=!1,TGS.DataStore.ClearLocalData(),void TGS._LoginSucceeded(a))},implementsLeaderboard:function(){return!1},showLeaderboard:function(){},leaderboardLabel:function(a){return a?"Submit Score":"Leaderboard"},submitScore:function(){},submitScoreAndShow:function(){},supportsChallenges:function(){return!1},challengeIcon:function(){return null},challenge:function(a){FB.ui({show_error:!0,method:"apprequests",title:a.title,message:a.message},function(){})},share:function(a,b){var c="scrollbars=yes,resizable=yes,toolbar=no,location=yes",d=550,e=420,f=screen.height,g=screen.width,h=Math.round(g/2-d/2),i=0;if(f>e&&(i=Math.round(f/2-e/2)),"twitter"==a){var j="https://twitter.com/intent/tweet?text="+encodeURIComponent(b.msg)+"&url="+encodeURIComponent(b.url);TGS.OpenURL(j,"intent",c+",width="+d+",height="+e+",left="+h+",top="+i,!0)}else if("fb"==a)if("string"!=typeof window.location.host||-1===window.location.host.indexOf("tresensa.com")){var j=["https://www.facebook.com/dialog/feed?","app_id=",this._mFacebookAppID,"&display=popup&caption=",encodeURIComponent(b.msg),"&link=",encodeURIComponent(b.url),"&redirect_uri=",encodeURIComponent("http://tgs.tresensa.com/close .html")].join("");TGS.OpenURL(j,"intent",c+",width="+d+",height="+e+",left="+h+",top="+i)}else FB.ui({method:"feed",caption:b.msg,link:b.url},function(a){console.log(a)})},getShareServices:function(){var a=[TGS.Social._services.twitter];return"undefined"!=typeof FB&&a.push(TGS.Social._services.fb),a},adsAllowed:function(){return!0},showMoreGames:function(){var a=TGS.MoreGamesURL();if("string"==typeof a){TGS.Analytics._logMoreGamesEvent(a);var b=window.self===window.top?"_self":"_blank";return TGS.Debug.Log(TGS.Debug.LOG_INFO,"directing to more games (target "+b+"): "+a),window.open(a,b),a}return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"more games URL is invalid"),"error"},costFactor:function(){return 10},priceAsFormattedString:function(a){return"$"+(a*this.costFactor()/100-.01).toFixed(2)},formattedPriceForItem:function(){return"$"+(aPrice*this.costFactor()/100-.01).toFixed(2)},currencyIcon:function(){return null},paymentProviderName:function(){return TGS._sPartnerID},purchaseItem:function(){},restorePurchases:function(){},serverHandlesMicrotransactionResponse:function(){return!1},logTransactionBeforePartnerRequest:function(){return!0},purchaseComplete:function(){},gameWasLaunched:function(){},isReady:function(){return this._mIsReady},isFacebookReady:function(){return this._mFacebookInitialized},loggedIntoFacebook:function(){return this.isFacebookReady()&&null!==this._mFacebookUserID},enablePartnerUI:function(){},masterInitialize:function(){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"PartnerBridge.masterInitialize called"),this._mFacebookServicesAllowed&&("undefined"!=typeof FB?(TGS.Debug.Log(TGS.Debug.LOG_INFO,"detected Facebook library..."),this.onFacebookLibraryLoaded()):(TGS.Debug.Log(TGS.Debug.LOG_INFO,"loading Facebook library..."),head.js(("https:"===document.location.protocol?"https:":"http:")+"//connect.facebook.net/en_US/all.js",this.onFacebookLibraryLoaded.bind(this)))),this.initialize()},initialize:function(){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"PartnerBridge.initialize called"),this._mIsReady=!0,null!==this.onAdapterReady&&this.onAdapterReady.call()},onFacebookLibraryLoaded:function(){TGS.Debug.Log(TGS.Debug.LOG_INFO,"PartnerBridge.onFacebookLibraryLoaded called, Facebook library loaded successfully"),this._mFacebookLibLoaded=!0,this._mFacebookInitialized||this.initFacebook()},requiredPartnerProperties:function(){return""},requestGameInfo:function(a){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"PartnerBridge.requestGameInfo called");var b=this.requiredPartnerProperties();this._mFacebookServicesAllowed&&(b+=b.length>0?",":"",b+='"facebook_app_id"');var c='{"game":"'+a+'","partner":"'+TGS._sPartnerID+'","keys":['+b+"]}";TGS.SendMessage("partner_data","get",c,TGS.onGamePartnerInfoReceived,TGS.onGamePartnerInfoError)},masterConnect:function(a){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"PartnerBridge.masterConnect called"),this._mFacebookServicesAllowed&&(this._mFacebookAppID=a.facebook_app_id,this._mFacebookLibLoaded&&this._mFacebookAppID&&"undefined"!=typeof FB&&this.initFacebook()),this.connect(a),TGS.Analytics._init(TGS._sConfig||{}),TGS._sUserID||TGS.Debug.Log(TGS.Debug.LOG_INFO,"waiting on user id from partner... (TGS.onUserInfoAvailable has not been fired)")},connect:function(){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"PartnerBridge.connect called"),this.getLoginStatus()},initFacebook:function(){if(TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"PartnerBridge.initFacebook called"),!this._mFacebookInitialized){if(!this._mFacebookAppID)return void(null!==TGS._sGamePartnerInfo&&TGS.Debug.Log(TGS.Debug.LOG_ERROR,"cannot initialize Facebook without a Facebook app id (connection problem or the id was not defined in the TGS db)"));TGS.Debug.Log(TGS.Debug.LOG_INFO,"Calling FB.init, appId = "+this._mFacebookAppID),FB.init({appId:this._mFacebookAppID,channelUrl:"//channel.html",status:!0,cookie:!0,xfbml:!0});var a=this;FB.Event.subscribe("auth.authResponseChange",function(b){TGS.Debug.Log(TGS.Debug.LOG_INFO,"the Facebook session status changed to "+b.status),a.onGetFBLoginStatus(b)}),this._mFacebookInitialized=!0}},loginToFacebook:function(a,b){this._mFacebookLoginRequiredCallback=a,this._mFacebookLoggedInCallback=b,this._mFacebookInitialized||this.initFacebook(),TGS.Debug.Log(TGS.Debug.LOG_INFO,"calling FB.getLoginStatus..."),("string"!=typeof window.location.host||-1===window.location.host.indexOf("tresensa.com"))&&TGS.Debug.Log(TGS.Debug.LOG_WARNING,"FB.getLoginStatus will only work if the game is hosted on an approved domain (typically tresensa.com)"),FB.getLoginStatus(this.onGetFBLoginStatus.bind(this))},onGetFBLoginStatus:function(a){"connected"===a.status?(TGS.Debug.Log(TGS.Debug.LOG_INFO,"user is logged into Facebook and authorized the app"),this._mFacebookUserID=a.authResponse.userID,this._mFacebookAccessToken=a.authResponse.accessToken,null!==this._mFacebookLoggedInCallback&&this._mFacebookLoggedInCallback.call(this,this._mFacebookUserID)):"not_authorized"===a.status?(TGS.Debug.Log(TGS.Debug.LOG_INFO,"user is logged into Facebook but has not authorized the app"),null!==this._mFacebookLoginRequiredCallback&&this._mFacebookLoginRequiredCallback.call(this)):(TGS.Debug.Log(TGS.Debug.LOG_INFO,"user is not logged into Facebook"),null!==this._mFacebookLoginRequiredCallback&&this._mFacebookLoginRequiredCallback.call(this))},promptForFacebookAuthorization:function(a){this._mFacebookLoginRequiredCallback=a?a:null,TGS.Debug.Log(TGS.Debug.LOG_INFO,"prompting user for Facebook login and/or app authorization...");var b="publish_actions,user_games_activity";TGS.Leaderboard.RequestUserLocation&&(b+=",user_location"),FB.login(this.onGetFBLoginStatus.bind(this),{scope:b})},getLoginStatus:function(){var a=TGS.localStorage.getItem(TGS._sLSKeys.TGS_userid);a?(TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"userID retrieved from local storage: "+a),this._mUsername=TGS.localStorage.getItem(TGS._sLSKeys.TGS_username),this._mAvatarURL=TGS.localStorage.getItem(TGS._sLSKeys.TGS_avatar),this._mUserLocation=TGS.localStorage.getItem(TGS._sLSKeys.TGS_location)):(TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"userID was not available in local storage"),a=this.generateGuestUserID()),a===TGS.localStorage.getItem(TGS._sLSKeys.TGS_loggedin_user)&&this.verifyLocalLogin(a),null!==this.onUserInfoAvailable&&(a=TGS.localStorage.getItem(TGS._sLSKeys.TGS_userid),this.onUserInfoAvailable.call(this,a))},generateGuestUserID:function(){var a="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(a){var b=16*Math.random()|0,c="x"==a?b:3&b|8;return c.toString(16)});return TGS.Debug.Log(TGS.Debug.LOG_INFO,"generated GUID for guest: "+a),TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"saving userID to local storage: "+a),TGS.localStorage.setItem(TGS._sLSKeys.TGS_userid,a),a},verifyLocalLogin:function(a){this.userLoggedIn(null,a)},userLoggedIn:function(a,b){var c=TGS.localStorage.getItem(TGS._sLSKeys.TGS_loggedin_user);if(c&&this._mLoggedIn)return void(b===c?TGS.Debug.Log(TGS.Debug.LOG_WARNING,"PartnerBridge.userLoggedIn: user "+b+" is already logged in"):(TGS.Debug.Log(TGS.Debug.LOG_ERROR,"PartnerBridge.userLoggedIn: there is already a logged in user"),TGS._LoginFailed(a)));TGS.Debug.Log(TGS.Debug.LOG_INFO,"user '"+b+"' is logging in...");var d=c===b.toString();TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"(user was "+(d?"":"NOT")+" previously logged in)"),TGS.Debug.Log(TGS.Debug.LOG_INFO,"user name: "+this._mUsername),TGS.Debug.Log(TGS.Debug.LOG_INFO,"user avatar: "+this._mAvatarURL),TGS.Debug.Log(TGS.Debug.LOG_INFO,"user location: "+this._mUserLocation),this._mUsername&&TGS.localStorage.setItem(TGS._sLSKeys.TGS_username,this._mUsername),this._mAvatarURL&&TGS.localStorage.setItem(TGS._sLSKeys.TGS_avatar,this._mAvatarURL),this._mUserLocation&&TGS.localStorage.setItem(TGS._sLSKeys.TGS_location,this._mUserLocation);var e=null==c;TGS.localStorage.setItem(TGS._sLSKeys.TGS_loggedin_user,b.toString()),TGS.localStorage.setItem(TGS._sLSKeys.TGS_userid,b),TGS._sUserID=b.toString(),this._mLoggedIn=!0,TGS.DataStore._sSaveToTGSServer=!0,a?TGS.DataStore.ReloadData({location:d?"local":"remote",useLocalIfEmpty:e,onSuccess:TGS._LoginSucceeded.bind(null,a)}):TGS._LoginSucceeded()},updateLocalStorageData:function(){var a=TGS.localStorage.getItem("TGS_userid");a&&(TGS.localStorage.setItem(TGS._sLSKeys.TGS_userid,a),TGS.localStorage.removeItem("TGS_userid"));var b=TGS.localStorage.getItem("TGS_datastore");b&&(TGS.localStorage.setItem(TGS._sLSKeys.TGS_datastore,b),TGS.localStorage.removeItem("TGS_datastore"))},getImageURL:function(a){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"PartnerBridge.getImageURL called");var b=a.item.image;if("undefined"!=typeof window.TGE){var c=window.TGE.AssetManager,d=c.GetImage(a.item.image);d&&(b=d.src,TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"full image url is "+b))}return b},openURL:function(a,b,c){window.open(a,b||"_blank",c)},advertising_injectAd:function(a,b){var c;c=2==a.placement?TGS._sConfig.ADS.PRELOADER_PLACEMENT_ID||TGS._sConfig.ADS.INTERSTITIAL_PLACEMENT_ID:1==a.placement?TGS._sConfig.ADS.INTERSTITIAL_PLACEMENT_ID:TGS._sConfig.ADS.DISPLAY_PLACEMENT_ID;var d=this.advertising_getAdServerURL(c,a.placement?0:170);a.element=document.createElement("div"),a.element.id="tgs_display_ad",a.element.style.position="absolute",a.element.style.zIndex=3,a.element.style.webkitTransformOrigin="center center",a.element.style.MozTransformOrigin="center center",a.element.style.msTransformOrigin="center center",a.element.style.OTransformOrigin="center center",a.element.style.transformOrigin="center center";var e=a.fullscreen?"%":"px",f="<iframe id='tgs_display_ad_iframe' width='"+a.width+e+"' height='"+a.height+e+"' style='border: none; overflow: hidden;' scroll='no' src='"+d+"'></iframe>";a.placement&&(f="<div width='"+a.width+e+"' height='"+a.height+e+"' id='tgs-ad-frame' class='tgs-ad-frame'><span>Advertisement</span>"+f+"</div>"),a.element.innerHTML=f,b.insertBefore(a.element,b.firstChild),a._reposition(b)},advertising_injectInterstitial:function(a){var b=a.parentDiv,c=a.blurDiv,d="undefined"==typeof a.skipDelay?3:a.skipDelay,e="undefined"==typeof a.overlayRed?1:a.overlayRed,f="undefined"==typeof a.overlayGreen?1:a.overlayGreen,g="undefined"==typeof a.overlayBlue?1:a.overlayBlue,h="undefined"==typeof a.overlayOpacity?.6:a.overlayOpacity;TGS.Utils.isTGEGame()&&TGE.Game.GameDiv()?(b||(b=TGE.Game.GameDiv()),c||(c=b.getElementsByTagName("canvas")[0])):b||(b=document.body);var i,j=function(){q._reposition(p),TGS.BrowserDetect.onAndroid?(clearTimeout(i),i=setTimeout(function(){q._reposition(p)},550)):q._reposition(p)},k=function(){r.style.visibility="visible",r.style.cursor="pointer",r.addEventListener("click",l,!0),r.addEventListener("touchstart",l,!0)},l=function(){q.closeCallback=a.closeCallback,q.close(),p.parentNode.removeChild(p),r.removeEventListener("click",l),r.removeEventListener("touchstart",l),s.forEach(function(a){p.removeEventListener(a,m)}),window.removeEventListener("resize",j),c&&c.classList.remove("tgs-blur")},m=function(a){return a.stopPropagation(),a.preventDefault(),a.stopImmediatePropagation(),!1},n=b.clientWidth,o=b.clientHeight,p=document.createElement("div");p.id="tgs_ad_overlay",p.style.zIndex=1e3,p.style.backgroundColor="rgba("+Math.round(255*e).toString()+","+Math.round(255*f).toString()+","+Math.round(255*g).toString()+","+h.toString()+")",p.style.top=0,p.style.left=0,b!=document.body&&n&&o?(p.style.position="absolute",p.style.width=n+"px",p.style.height=o+"px"):(TGS.Debug.Log(TGS.Debug.LOG_WARNING,"PartnerBridge.advertising_injectInterstitial: Could not determine width/height of parentDiv, going fullscreen with overlay"),p.style.position="fixed",p.style.width="100%",p.style.height="100%"),b.insertBefore(p,b.firstChild);var q=new TGS.Advertisement(a||{},a.placement);q.closeCallback=l,q._inject(p);var r=document.createElement("img");r.id="tgs-close",r.src=TGS._IMAGES_LOCATION+"close-button.png",r.style.position="absolute",r.style.zIndex="100",r.style.cursor="pointer",r.style.visibility="hidden",r.style.padding="10px",r.style.top="-30px",r.style.right="-30px",q.element.appendChild(r),d>0?q.showCloseTimeout=setTimeout(k,1e3*d):k();var s=["click","mousedown","mouseup","mousemove","touchstart","touchend","touchmove"];s.forEach(function(a){p.addEventListener(a,m,!1)}),window.addEventListener("resize",j,!1),c&&c.classList.add("tgs-blur")},advertising_getAdServerURL:function(a,b){var c=TGS._sConfig.NATIVE_APP||TGS._sConfig.TIZEN_APP?"http:":"";return c=["//adserver.adtechus.com/adiframe/3.0/5421.1/",a,"/0/",b,"/ADTECH;target=_blank",";key=",TGS._sConfig.DST_ID,";kvenv=",encodeURIComponent(TGS.BrowserDetect.platform)].join("")},advertising_closeAd:function(a){a.element&&a.element.parentNode&&a.element.parentNode.removeChild(a.element)},analytics_getProviders:function(){return[TGS.Analytics.GoogleAnalyticsProvider]}},TGS.DataStore=function(){},TGS.DataStore.onDataChanged=null,TGS.DataStore.GameData=null,TGS.DataStore._sSaveToTGSServer=!0,TGS.DataStore._sSaveToLocalStorage=!1,TGS.DataStore.ReloadGameData=function(a,b){if(!TGS._sPartnerBridge.supportsDatastore())return void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"datastore operations are not available on this distribution partner");if(!(TGS._sPartnerID&&TGS._sGameID&&TGS._sUserID&&TGS._sPartnerBridge&&TGS._sPartnerBridge.isReady()))return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"TGS.DataStore.ReloadGameData - TGS is not ready yet"),void(b&&b.call(this,"TGS was not ready"));var c=TGS._sPartnerID;TGS.Debug.Log(TGS.Debug.LOG_INFO,"fetching complete game state...");var d=!1;if(TGS.DataStore._sSaveToLocalStorage){var e=TGS.localStorage.getItem(TGS._sLSKeys.TGS_datastore);e||(e="{}",TGS.Debug.Log(TGS.Debug.LOG_INFO,"there was no local TGS.DataStore data"),d=!0);var f=TGS.DataStore.GameData=JSON.parse(e);a&&(!d||d&&!TGS.DataStore._sSaveToTGSServer)&&(a.call(this,f),a=null,b=null)}if(TGS.DataStore._sSaveToTGSServer){var g='{"game":"'+TGS._sGameID+'","partner":"'+c+'","user":"'+TGS._sUserID+'","keys":[]}',h=new TGS.DataStoreRequest;h.type="reload",h.onSuccess=a,h.onFailure=b,h.params=g,h.noLocalData=d,TGS.SendMessage("game_data","get",g,TGS.DataStore._SuccessCallback.bind(this,h),TGS.DataStore._ErrorCallback.bind(this,h))}},TGS.DataStore.ReloadData=function(a){if(!TGS._sPartnerBridge.supportsDatastore())return void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"datastore operations are not available on this distribution partner");if(!(TGS._sPartnerID&&TGS._sGameID&&TGS._sUserID&&TGS._sPartnerBridge&&TGS._sPartnerBridge.isReady()))return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"TGS.DataStore.ReloadGameData - TGS is not ready yet"),void(a.onFailure&&a.onFailure.call(this,"TGS was not ready"));var b=TGS._sPartnerID;if(TGS.Debug.Log(TGS.Debug.LOG_INFO,"fetching complete game state ("+a.location+")..."),"local"===a.location){var c=TGS.localStorage.getItem(TGS._sLSKeys.TGS_datastore);c||(c="{}",TGS.Debug.Log(TGS.Debug.LOG_INFO,"there was no local TGS.DataStore data"));var d=TGS.DataStore.GameData=JSON.parse(c);return void(a.onSuccess&&a.onSuccess.call(this,d))}if("remote"===a.location){var e='{"game":"'+TGS._sGameID+'","partner":"'+b+'","user":"'+TGS._sUserID+'","keys":[]}',f=new TGS.DataStoreRequest;f.type="reload",f.useLocalIfEmpty=a.useLocalIfEmpty,f.onSuccess=a.onSuccess,f.onFailure=a.onFailure,TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"requesting game data with params: "+e),TGS.SendMessage("game_data","get",e,TGS.DataStore._ReloadSuccessCallback.bind(this,f),TGS.DataStore._ErrorCallback.bind(this,f))}},TGS.DataStore._ReloadSuccessCallback=function(a,b){if(!b||"undefined"==typeof b.code)return void TGS.DataStore._ErrorCallback(a,"response object is malformed",b);if(0!==b.code)return void TGS.DataStore._ErrorCallback(a,"internal request error code: "+b.code,b);TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"received game data: "+JSON.stringify(b.values));var c=b.values;"[object Array]"===Object.prototype.toString.call(c)&&(c={});var d=!0;for(var e in c)if(c.hasOwnProperty(e)){d=!1;break}if(d&&a.useLocalIfEmpty){TGS.Debug.Log(TGS.Debug.LOG_INFO,"there was no remote game data for this user, falling back to local storage...");var f=TGS.localStorage.getItem(TGS._sLSKeys.TGS_datastore);f||(f="{}"),c=JSON.parse(f),d=!1}if(TGS.DataStore.GameData=c,d)TGS.localStorage.removeItem(TGS._sLSKeys.TGS_datastore);else{var f=JSON.stringify(TGS.DataStore.GameData);TGS.localStorage.setItem(TGS._sLSKeys.TGS_datastore,f)}TGS.DataStore._DataUpdated(),a.onSuccess?a.onSuccess.call(this,c):TGS.Debug.Log(TGS.Debug.LOG_INFO,"remote DataStore request was successful")},TGS.DataStore.ClearLocalData=function(){TGS.DataStore.GameData={},TGS.localStorage.removeItem(TGS._sLSKeys.TGS_datastore),TGS.DataStore._DataUpdated()},TGS.DataStore._DataUpdated=function(){if(window.TGE){var a=TGE.Game.GetInstance();a&&a._onTGSDatastoreUpdated&&a._onTGSDatastoreUpdated()}TGS.DataStore.onDataChanged&&TGS.DataStore.onDataChanged.call(this)},TGS.DataStore.ImportGameData=function(a,b,c,d){if(!TGS._sPartnerBridge.supportsDatastore())return void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"datastore operations are not available on this distribution partner");if(!(TGS._sPartnerID&&TGS._sGameID&&TGS._sUserID&&TGS._sPartnerBridge&&TGS._sPartnerBridge.isReady()))return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"TGS.DataStore.ReloadGameData - TGS is not ready yet"),void(d&&d.call(this,"TGS was not ready"));TGS.Debug.Log(TGS.Debug.LOG_INFO,"importing complete game state...");var e='{"game":"'+TGS._sGameID+'","partner":"'+a+'","user":"'+b+'","keys":[]}',f=new TGS.DataStoreRequest;f.type="reload",f.onSuccess=c,f.onFailure=d,f.params=e,TGS.SendMessage("game_data","get",e,TGS.DataStore._SuccessCallback.bind(this,f),TGS.DataStore._ErrorCallback.bind(this,f))},TGS.DataStore._SuccessCallback=function(a,b){if(!b||"undefined"==typeof b.code)return void TGS.DataStore._ErrorCallback(a,"response object is malformed",b);if(0!==b.code)return void TGS.DataStore._ErrorCallback(a,"internal request error code: "+b.code,b);if(!a.noLocalData&&TGS.DataStore._sSaveToLocalStorage)return void TGS.Debug.Log(TGS.Debug.LOG_INFO,"remote DataStore request was successful");var c=null;"reload"===a.type&&(c=b.values,"[object Array]"===Object.prototype.toString.call(c)&&(c={}),TGS.DataStore.GameData=c),a.onSuccess?a.onSuccess.call(this,c):TGS.Debug.Log(TGS.Debug.LOG_INFO,"remote DataStore request was successful")},TGS.DataStore._ErrorCallback=function(a,b,c){a.onFailure?a.onFailure.call(this,b,c):TGS.Debug.Log(TGS.Debug.LOG_ERROR,"remote DataStore request failed: "+b)},TGS.DataStore.FetchStringValue=function(a,b){return TGS._sPartnerBridge.supportsDatastore()?TGS.IsReady()?"undefined"==typeof TGS.DataStore.GameData[a]?(TGS.Debug.Log(TGS.Debug.LOG_WARNING,"no value stored for '"+a+"', using default"),b):TGS.DataStore.GameData[a]:(TGS.Debug.Log(TGS.Debug.LOG_WARNING,"DataStore tried to fetch value '"+a+"' before TGS was ready"),b):(TGS.Debug.Log(TGS.Debug.LOG_WARNING,"datastore operations are not available on this distribution partner"),b)},TGS.DataStore.FetchIntValue=function(a,b){return parseInt(TGS.DataStore.FetchStringValue(a,b))},TGS.DataStore.FetchFloatValue=function(a,b){return parseFloat(TGS.DataStore.FetchStringValue(a,b))},TGS.DataStore.SaveValue=function(a,b,c,d){if(!TGS._sPartnerBridge.supportsDatastore())return void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"datastore operations are not available on this distribution partner");if(!TGS.IsReady())return void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"DataStore tried to save value for '"+a+"' before TGS was ready");var e=TGS._sPartnerID;TGS.Debug.Log(TGS.Debug.LOG_INFO,"saving new value for '"+a+"' to datastore...");var f={};f[a]=b;var g='"values":'+JSON.stringify(f);if(TGS.DataStore.GameData[a]=b.toString(),TGS.DataStore._sSaveToLocalStorage){var h=JSON.stringify(TGS.DataStore.GameData);TGS.localStorage.setItem(TGS._sLSKeys.TGS_datastore,h),c&&c.call(this,null)}if(TGS.DataStore._sSaveToTGSServer){TGS.DataStore._sSaveToLocalStorage&&(c=null,d=null);var i='{"game":"'+TGS._sGameID+'","partner":"'+e+'","user":"'+TGS._sUserID+'",'+g+"}",j=new TGS.DataStoreRequest;j.type="save",j.onSuccess=c,j.onFailure=d,j.params=i,TGS.SendMessage("game_data","set",i,TGS.DataStore._SuccessCallback.bind(this,j),TGS.DataStore._ErrorCallback.bind(this,j))}TGS.DataStore._DataUpdated()},TGS.DataStore.SaveValues=function(a,b,c){if(!TGS._sPartnerBridge.supportsDatastore())return void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"datastore operations are not available on this distribution partner");if(!TGS.IsReady())return void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"DataStore tried to save values before TGS was ready");var d=TGS._sPartnerID;if(TGS.DataStore.SaveValuesLocally(a),TGS.DataStore._sSaveToLocalStorage){var e=JSON.stringify(TGS.DataStore.GameData);TGS.localStorage.setItem(TGS._sLSKeys.TGS_datastore,e),b&&b.call(this,null)}if(TGS.DataStore._sSaveToTGSServer){TGS.DataStore._sSaveToLocalStorage&&(b=null,c=null);var f='"values":'+JSON.stringify(a);TGS.Debug.Log(TGS.Debug.LOG_INFO,"saving new values to server "+f+"...");var g='{"game":"'+TGS._sGameID+'","partner":"'+d+'","user":"'+TGS._sUserID+'",'+f+"}",h=new TGS.DataStoreRequest;h.type="save",h.onSuccess=b,h.onFailure=c,h.params=g,TGS.SendMessage("game_data","set",g,TGS.DataStore._SuccessCallback.bind(this,h),TGS.DataStore._ErrorCallback.bind(this,h))}},TGS.DataStore.SaveValuesLocally=function(a,b){if(b="undefined"==typeof b?!1:b,!TGS._sPartnerBridge.supportsDatastore())return void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"datastore operations are not available on this distribution partner");if(!TGS.IsReady())return void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"DataStore tried to save values before TGS was ready");for(var c in a)a.hasOwnProperty(c)&&(TGS.DataStore.GameData[c]=a[c].toString());if(b){var d=JSON.stringify(TGS.DataStore.GameData);TGS.localStorage.setItem(TGS._sLSKeys.TGS_datastore,d)}TGS.DataStore._DataUpdated()},TGS.DataStoreRequest=function(){this.type="",this.onSuccess=null,this.onFailure=null,this.noLocalData=!1},TGS.Microtransactions=function(){},TGS.Microtransactions.DefaultPurchaseFailedMessage="The purchase was not completed.",TGS.Microtransactions.UseTGSErrorMessages=!0,TGS.Microtransactions._PendingRequest=null,TGS.Microtransactions._PurchaseOverlay=null,TGS.Microtransactions._sIAPProducts=[],TGS.Microtransactions._sAppURLs=[],TGS.Microtransactions._sNumRestoredPurchases=0,TGS.Microtransactions.RestorePurchaseCallback=null,TGS.Microtransactions.RestorePurchases=function(){TGS.Debug.Log(TGS.Debug.LOG_INFO,"restore purchases requested..."),TGS.Microtransactions._PurchaseOverlay=TGS.LoadingOverlay(),TGS.Microtransactions._sNumRestoredPurchases=0,TGS._sPartnerBridge.restorePurchases()},TGS.Microtransactions._RestorePurchaseCallback=function(a){return null===TGS.Microtransactions.RestorePurchaseCallback?void TGS.Debug.Log(TGS.Debug.LOG_ERROR,"no TGS.Microtransactions.RestorePurchaseCallback defined, cannot restore "+a):(TGS.Debug.Log(TGS.Debug.LOG_INFO,"calling RestorePurchaseCallback for TGS item "+a),TGS.Microtransactions.RestorePurchaseCallback(a),void TGS.Microtransactions._sNumRestoredPurchases++)},TGS.Microtransactions._RestorePurchasesDone=function(a){TGS.Debug.Log(TGS.Debug.LOG_INFO,"restoring purchases "+(a?"successful":"failed")+" ("+TGS.Microtransactions._sNumRestoredPurchases+" total)"),TGS.Microtransactions._PurchaseOverlay&&(TGS.Microtransactions._PurchaseOverlay.parentNode.removeChild(TGS.Microtransactions._PurchaseOverlay),TGS.Microtransactions._PurchaseOverlay=null),a&&TGS.Microtransactions._sNumRestoredPurchases>0?(TGS.OverlayMessage({title:"Done!",message:"Your non-consumable purchases have been successfully restored."}),TGS.DataStore._DataUpdated()):TGS.OverlayMessage(a&&0===TGS.Microtransactions._sNumRestoredPurchases?{title:"Sorry...",message:"We did not find any previous non-consumable purchases associated with your account."}:{title:"Sorry...",message:"Unable to restore purchases."})},TGS.Microtransactions.PriceAsFormattedString=function(a){return TGS._sPartnerBridge.priceAsFormattedString(a)},TGS.Microtransactions.FormattedPriceForItem=function(a){return TGS._sPartnerBridge.formattedPriceForItem(a)},TGS.Microtransactions.CurrencyIcon=function(){return TGS._sPartnerBridge.supportsMicrotransactions()?TGS._sPartnerBridge.currencyIcon():null},TGS.Microtransactions.PriceAsUSD=function(a){return(10*a/100-.01).toFixed(2)},TGS.Microtransactions.PaymentProviderName=function(){return TGS._sPartnerBridge.paymentProviderName()},TGS.Microtransactions.GetIAPProducts=function(){return TGS.Microtransactions._sIAPProducts},TGS.Microtransactions.GetIAPProduct=function(a,b){b=b||"id";for(var c=0;c<TGS.Microtransactions._sIAPProducts.length;c++){var d=TGS.Microtransactions._sIAPProducts[c];if(d[b]===a)return d}return null},TGS.Microtransactions.HasNonConsumables=function(){for(var a=0;a<TGS.Microtransactions._sIAPProducts.length;a++)if(!TGS.Microtransactions._sIAPProducts[a].consumable)return!0;return!1},TGS.Microtransactions.PurchaseProduct=function(a){if(!TGS._sPartnerBridge.supportsMicrotransactions())return void TGS.Microtransactions.RedirectToIAPPartner();if(null!==TGS.Microtransactions._PendingRequest)return void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"purchase request ignored - one is already pending");var b=a.onFailure;TGS.Microtransactions.UseTGSErrorMessages&&(b=TGS.Microtransactions._PurchaseFailedMessage.bind(this,a.onFailure));var c=!0,d="";if("object"!=typeof a?(c=!1,d+="params "):("undefined"==typeof a.productID&&(c=!1,d+="productID "),"object"!=typeof a.gameDataUpdates&&(c=!1,d+="gameDataUpdates ")),!c)return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"Invalid values sent to TGS.Microtransactions.PurchaseProduct for the following params: "+d),void(a&&a.onFailure&&b.call(this,a.productID,TGS.Microtransactions.DefaultPurchaseFailedMessage));
-var e=TGS.Microtransactions.GetIAPProduct(a.productID);if(!e)return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"Unknown IAP product: "+a.productID),void(a.onFailure&&b.call(this,a.productID,TGS.Microtransactions.DefaultPurchaseFailedMessage));if(!e.consumable&&null===TGS.Microtransactions.RestorePurchaseCallback)return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"Attempt to purchase non-consumable item "+a.productID+" without defining a TGS.Microtransactions.RestorePurchaseCallback (TGE games can also implement onTGSPurchaseRestored in their game class)"),void(a.onFailure&&b.call(this,a.productID,TGS.Microtransactions.DefaultPurchaseFailedMessage));if(!TGS.LoggedIn())return void TGS.OverlayMessage({title:"Login Required",message:"You will now be asked to login. Once you are logged in you will be able to make in-app purchases.",buttonAction:TGS.LoginUser.bind(this,{onUserCancel:TGS.OverlayMessage.bind(this,{title:"Login Required",message:"You must be logged in to make in-app purchases."}),onFailure:TGS.OverlayMessage.bind(this,{title:"Login Error",message:"There was a problem logging you in."})})});var f=a.productID,g=a.onSuccess,h=b,i=a.gameDataUpdates,j=new TGS.Microtransactions.Item(f,e.title,e.description,e.price,e.iconUrl,e.partnerProductID);if(!TGS.IsReady())return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"tried to purchase product "+f+" but TGS was not ready"),void(h&&h.call(this,f,TGS.Microtransactions.DefaultPurchaseFailedMessage));var k=new TGS.Microtransactions.Request;k.item=j,k.onSuccess=g,k.onFailure=h,k.userErrorMessage=TGS.Microtransactions.DefaultPurchaseFailedMessage,k.gameDataUpdates=i,TGS.Microtransactions._BeginNewRequest(k),TGS._sPartnerBridge.logTransactionBeforePartnerRequest()?TGS.Microtransactions._LogPurchaseRequest(k):(TGS.Debug.Log(TGS.Debug.LOG_INFO,"requesting purchase from partner..."),TGS._sPartnerBridge.purchaseItem(k))},TGS.Microtransactions.PurchaseItem=function(a){TGS.Debug.Log(TGS.Debug.LOG_ERROR,"The TGS.Microtransactions.PurchaseItem IAP CALL IS NO LONGER SUPPORTED! USE TGS.Microtransactions.PurchaseProduct INSTEAD!!"),a&&a.onFailure&&a.onFailure.call(this,a.itemID,TGS.Microtransactions.DefaultPurchaseFailedMessage)},TGS.Microtransactions.RedirectToIAPPartner=function(){var a=null,b=null,c="In-app purchasing is not supported here.",d=!1;if(TGS.Microtransactions._sAppURLs.facebook_app_url&&(a=TGS.Microtransactions._sAppURLs.facebook_app_url,b=TGS._IMAGES_LOCATION+"redirects/facebook.png"),TGS.BrowserDetect.oniOS&&TGS.Microtransactions._sAppURLs.itunes_app_url){a=TGS.Microtransactions._sAppURLs.itunes_app_url,b=TGS._IMAGES_LOCATION+"redirects/itunes.png";var d=!0}else if(TGS.BrowserDetect.onAndroid&&TGS.Microtransactions._sAppURLs.googleplay_app_url){a=TGS.Microtransactions._sAppURLs.googleplay_app_url,b=TGS._IMAGES_LOCATION+"redirects/googleplay.png";var d=!0}else if("Kindle Fire"===TGS.BrowserDetect.platform&&TGS.Microtransactions._sAppURLs.amazon_app_url){a=TGS.Microtransactions._sAppURLs.amazon_app_url,b=TGS._IMAGES_LOCATION+"redirects/amazon.png";var d=!0}else if(TGS.BrowserDetect.onWindowsMobile&&TGS.Microtransactions._sAppURLs.windows_app_url){a=TGS.Microtransactions._sAppURLs.windows_app_url,b=TGS._IMAGES_LOCATION+"redirects/windows.png";var d=!0}a&&(c+=" You can buy items by "+(d?"downloading the app:":"playing the game on:")),TGS.Debug.Log(TGS.Debug.LOG_INFO,"IAP is not available on this partner, suggesting redirect to "+a),TGS.OverlayMessage({title:"Sorry!",message:c,buttonText:"",button2Image:b,button2Callback:function(){window.open(a,"_blank")}})},TGS.Microtransactions._PurchaseFailedMessage=function(a,b,c){"string"==typeof c&&c.length>0?TGS.OverlayMessage({title:"Purchase Failed",message:c}):"object"==typeof c&&TGS.OverlayMessage(c),a&&a.call(this,b,c)},TGS.Microtransactions._LogPurchaseRequest=function(a){TGS.Debug.Log(TGS.Debug.LOG_INFO,"user request to purchase item "+a.item.id+"...");var b='{"game":"'+TGS._sGameID+'","partner":"'+TGS._sPartnerID+'","user":"'+TGS._sUserID+'","item":"'+a.item.id+'"}';TGS.SendMessage("mtx/mtx_data","add",b,TGS.Microtransactions._InitiatePurchase.bind(this,a),TGS.Microtransactions._LoggingPurchaseFailed.bind(this,a))},TGS.Microtransactions._InitiatePurchase=function(a,b){if(TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"purchase request id received: "+JSON.stringify(b)),!b||"undefined"==typeof b.code)return TGS.Debug.Log(TGS.Debug.LOG_INFO,"purchase request response was corrupt"),void TGS.Microtransactions._LoggingPurchaseFailed(a);if(0!==b.code)return TGS.Debug.Log(TGS.Debug.LOG_INFO,"purchase request response contained error code: "+b.code),void TGS.Microtransactions._LoggingPurchaseFailed(a);var c=parseInt(b.id);return isNaN(c)||0>=c?(TGS.Debug.Log(TGS.Debug.LOG_INFO,"transaction id is invalid: "+c.toString()),void TGS.Microtransactions._LoggingPurchaseFailed(a)):(TGS.Debug.Log(TGS.Debug.LOG_INFO,"transaction id is: "+c),a.transactionID=c,TGS.Debug.Log(TGS.Debug.LOG_INFO,"requesting purchase from partner..."),void TGS._sPartnerBridge.purchaseItem(a))},TGS.Microtransactions._LoggingPurchaseFailed=function(a,b,c){var d=TGS.Microtransactions.DefaultPurchaseFailedMessage,e="could not record IAP request";c&&12===c.code&&(d="You already own this item.",e="IAP was already purchased by user"),TGS.Debug.Log(TGS.Debug.LOG_ERROR,e),a.onFailure&&a.onFailure.call(this,a.item.id,d),TGS.Microtransactions._ClosePendingRequest()},TGS.Microtransactions._PartnerPurchaseSuccessful=function(a){if(console.log(JSON.stringify(a)),TGS.Debug.Log(TGS.Debug.LOG_INFO,"purchase successful for item "+a.item.id),TGS.Microtransactions._SavePurchaseLocally(a.gameDataUpdates),TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"local game data has now been updated"),TGS._sPartnerBridge.serverHandlesMicrotransactionResponse())TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"server has already logged transaction"),a.onSuccess&&a.onSuccess.call(this,a.item.id);else if(TGS._sPartnerBridge.logTransactionBeforePartnerRequest()){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"sending transaction response and game data updates to server...");var b='{"id":'+a.transactionID+',"state":1,"partner_transaction_id":"'+a.partnerTransactionID+'","credits":'+(a.usingCredits?"true":"false")+',"notes":null,"game_data_changes":'+JSON.stringify(a.gameDataUpdates)+"}";TGS.SendMessage("mtx/mtx_data","update",b,TGS.Microtransactions._TransactionFinalized.bind(this,a,!0),TGS.Microtransactions._FinalizationFailed.bind(this,a,!0))}else{TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"sending full transaction info to server...");var b='{"game":"'+TGS._sGameID+'","partner":"'+TGS._sPartnerID+'","user":"'+TGS._sUserID+'","item":"'+a.item.id+'","credits":'+(a.usingCredits?"true":"false")+',"state":1,"partner_transaction_id":"'+a.partnerTransactionID+'","notes":null,"game_data_changes":'+JSON.stringify(a.gameDataUpdates)+"}";TGS.SendMessage("mtx/mtx_data","add",b,TGS.Microtransactions._TransactionFinalized.bind(this,a,!0),TGS.Microtransactions._FinalizationFailed.bind(this,a,!0))}TGS.Microtransactions._ClosePendingRequest(),TGS._sPartnerBridge.purchaseComplete(a),TGS.Analytics._logPurchase(a)},TGS.Microtransactions._PartnerPurchaseFailed=function(a){if(TGS.Debug.Log(TGS.Debug.LOG_ERROR,"purchase failed for item "+a.item.id+", reason: "+a.internalErrorMessage),TGS._sPartnerBridge.serverHandlesMicrotransactionResponse())TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"server has already logged transaction"),a.onFailure&&a.onFailure.call(this,a.item.id,a.userErrorMessage);else if(TGS._sPartnerBridge.logTransactionBeforePartnerRequest()){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"sending transaction response to server...");var b='{"id":'+a.transactionID+',"state":2,"partner_transaction_id":"'+a.partnerTransactionID+'","credits":'+(a.usingCredits?"true":"false")+',"notes":"'+a.internalErrorMessage+'","game_data_changes":null}';TGS.SendMessage("mtx/mtx_data","update",b,TGS.Microtransactions._TransactionFinalized.bind(this,a,!1),TGS.Microtransactions._FinalizationFailed.bind(this,a,!1))}else{TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"sending full transaction info to server...");var b='{"game":"'+TGS._sGameID+'","partner":"'+TGS._sPartnerID+'","user":"'+TGS._sUserID+'","item":"'+a.item.id+'","credits":'+(a.usingCredits?"true":"false")+',"state":2,"partner_transaction_id":"'+a.partnerTransactionID+'","notes":"'+a.internalErrorMessage+'","game_data_changes":null}';TGS.SendMessage("mtx/mtx_data","add",b,TGS.Microtransactions._TransactionFinalized.bind(this,a,!1),TGS.Microtransactions._FinalizationFailed.bind(this,a,!1))}TGS.Microtransactions._ClosePendingRequest()},TGS.Microtransactions._TransactionFinalized=function(a,b){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,(b?"successful":"failed")+" transaction "+a.transactionID+" has been logged"),b&&a.onSuccess?a.onSuccess.call(this,a.item.id):!b&&a.onFailure&&a.onFailure.call(this,a.item.id,a.userErrorMessage)},TGS.Microtransactions._SavePurchaseLocally=function(a){TGS.DataStore.SaveValuesLocally(a,TGS.DataStore._sSaveToLocalStorage)},TGS.Microtransactions._FinalizationFailed=function(a,b){if(TGS.Debug.Log(TGS.Debug.LOG_ERROR,(b?"successful":"failed")+" transaction "+a.transactionID+" could not be logged"),b&&(a.internalErrorMessage="partner transaction was successful but could not be logged to server"),a.onFailure){var c=""===a.userErrorMessage?TGS.Microtransactions.DefaultPurchaseFailedMessage:a.userErrorMessage;a.onFailure.call(this,a.item.id,c)}},TGS.Microtransactions._BeginNewRequest=function(a){TGS.Microtransactions._PendingRequest=a,TGS.Microtransactions._PurchaseOverlay=TGS.LoadingOverlay()},TGS.Microtransactions._ClosePendingRequest=function(){TGS.Microtransactions._PendingRequest=null,TGS.Microtransactions._PurchaseOverlay&&(TGS.Microtransactions._PurchaseOverlay.parentNode.removeChild(TGS.Microtransactions._PurchaseOverlay),TGS.Microtransactions._PurchaseOverlay=null)},TGS.Microtransactions.GetCredits=function(){TGS.CloseMessageOverlay(),window.open("http://fortumo.com/mobile_payments/0d8f60636b898652b94ee978ee2fc43a?cuid="+TGS._sPartnerID+TGS._sUserID,"_self")},TGS.Microtransactions.Item=function(a,b,c,d,e,f){this.id=a,this.partnerProductID=f,this.title=b,this.description=c,this.price=d,this.image=e},TGS.Microtransactions.Request=function(){this.item=null,this.partnerProductID="",this.transactionID=-1,this.partnerTransactionID=-1,this.onSuccess=null,this.onFailure=null,this.internalErrorMessage="",this.userErrorMessage="",this.gameDataUpdates=null,this.usingCredits=!1},TGS.BrowserDetect={init:function(){this.browser=this.searchString(this.dataBrowser)||"an unknown browser",this.version=this.searchVersion(navigator.userAgent)||this.searchVersion(navigator.appVersion)||"an unknown version",this.platform=this.searchString(this.dataPlatform)||"an unknown OS or Device",this.OSversion=this.detectOSversion(this.platform),this.isMobileDevice=!("Windows"===this.platform||"Mac"===this.platform||"Linux"===this.platform),this.oniOS="iPhone"===this.platform||"iPad"===this.platform,this.onAndroid="Android"===this.platform,this.onWindowsMobile="Windows Phone"===this.platform||"Windows Tablet"===this.platform,this.usingPhoneGap=window.PhoneGap||window.cordova||window.Cordova,this.clickEvent=!this.isMobileDevice||this.onWindowsMobile?"click":"touchstart"},detectOSversion:function(a){var b="-1",c="",d=navigator.userAgent.toString();switch(a){case"Windows Phone":c=/Windows Phone OS\s+[\d\.]+/,b=String(d.match(c)).substring(17,20);break;case"iPhone":case"iPad":c=/OS\s+[\d\_]+/,b=String(d.match(c)).substring(3,6);break;case"Windows":c=/Windows NT\s+[\d\.]+/;var e=String(d.match(c)).substring(11,14);"6.1"==e?b="7":"5.1"==e?b="XP":"5.2"==e?b="XP":"6.0"==e?b="Vista":"5.01"==e?b="2000 SP1":"5.0"==e&&(b="2000");break;case"Mac":c=/Mac OS X\s+[\d\_]+/,b=String(d.match(c)).substring(9,13);break;case"Android":c=/ndroid\s+[\d\.]+/,b=String(d.match(c)).substring(7,10)}return b},searchString:function(a){for(var b=0;b<a.length;b++)if(null!=a[b]){var c=a[b].string,d=a[b].prop;if(this.versionSearchString=a[b].versionSearch||a[b].identity,c){if(-1!==c.indexOf(a[b].subString))return a[b].identity}else if(d)return a[b].identity}},searchVersion:function(a){var b=a.indexOf(this.versionSearchString);if(-1!==b)return parseFloat(a.substring(b+this.versionSearchString.length+1))},dataBrowser:[{string:navigator.userAgent,subString:"Chrome",identity:"Chrome"},{string:navigator.userAgent,subString:"MSIE",identity:"Explorer",versionSearch:"MSIE"},{string:navigator.userAgent,subString:"Explorer",identity:"Explorer",versionSearch:"Explorer"},{string:navigator.vendor,subString:"Apple",identity:"Safari",versionSearch:"Version"},{string:navigator.userAgent,subString:"Firefox",identity:"Firefox"},{prop:window.opera,identity:"Opera"},{string:navigator.userAgent,subString:"Silk",identity:"Silk",versionSearch:"Silk"},{string:navigator.userAgent,subString:"Kindle Fire",identity:"Amazon Web App",versionSearch:"AppleWebKit"},{string:navigator.userAgent,subString:"Gecko",identity:"Mozilla",versionSearch:"rv"},{string:navigator.userAgent,subString:"Mozilla",identity:"Netscape",versionSearch:"Mozilla"},{string:navigator.userAgent,subString:"OmniWeb",versionSearch:"OmniWeb/",identity:"OmniWeb"},{string:navigator.vendor,subString:"iCab",identity:"iCab"},{string:navigator.vendor,subString:"KDE",identity:"Konqueror"},{string:navigator.vendor,subString:"Camino",identity:"Camino"},{string:navigator.userAgent,subString:"Netscape",identity:"Netscape"},{string:navigator.vendor,subString:"BlackBerry",identity:"BlackBerry"}],dataPlatform:[{string:navigator.userAgent,subString:"Windows Phone",identity:"Windows Phone"},{string:navigator.userAgent,subString:"Tablet PC",identity:"Windows Tablet"},{string:navigator.platform,subString:"Win",identity:"Windows"},{string:navigator.platform,subString:"Mac",identity:"Mac"},{string:navigator.userAgent,subString:"iPhone",identity:"iPhone"},{string:navigator.userAgent,subString:"iPad",identity:"iPad"},{string:navigator.userAgent,subString:"iPod",identity:"iPod"},{string:navigator.userAgent,subString:"Silk",identity:"Kindle Fire"},{string:navigator.userAgent,subString:"Kindle Fire",identity:"Kindle Fire"},{string:navigator.userAgent,subString:"Android",identity:"Android"},{string:navigator.userAgent,subString:"webOS",identity:"webOS"},{string:navigator.userAgent,subString:"Mobile",identity:"Mobile"},{string:navigator.platform,subString:"Linux",identity:"Linux"}]},TGS.BrowserDetect.init(),function(){TGS.Leaderboard=function(){},TGS.Leaderboard._sLeaderboardDescriptors=[],TGS.Leaderboard.UseTGSErrorMessages=!0,TGS.Leaderboard.RequestUserLocation=!0,TGS.Leaderboard.GetLeaderboardDescriptors=function(){return TGS.Leaderboard._sLeaderboardDescriptors},TGS.Leaderboard.isSupported=function(){return!TGS._sPartnerBridge._mDisableLeaderboard&&(TGS._sPartnerBridge.implementsLeaderboard()||TGS._sPartnerBridge._mFacebookServicesAllowed||TGS._sPartnerBridge._mUseUserInfoInSLB)},TGS.Leaderboard.getLabel=function(){var a=!!parseInt(TGS._sPartnerBridge._mUseUserInfoInSLB||-1!==window.location.host.indexOf("tresensa.com")&&TGS._sPartnerBridge.loggedIntoFacebook()?0:TGS.localStorage.getItem(TGS._sLSKeys.TGS_pending_score));return TGS._sPartnerBridge.leaderboardLabel(a)},TGS.Leaderboard.GetLeaderboardDescriptor=function(a){for(var b=0;b<TGS.Leaderboard._sLeaderboardDescriptors.length;b++){var c=TGS.Leaderboard._sLeaderboardDescriptors[b];if(c.id===a)return c}return null};var a={number:function(a,b){var c=a.toString(),d=!1;return b.decimal&&(d=c.substr(-b.decimal),c=c.substr(0,c.length-b.decimal)),c.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")+(b.decimal?"."+d:"")},time:function(a,b){for(var c=a/1e3,d=0;c>=60;)d+=1,c-=60;var e=Math.floor(c),f=Math.round(100*(c-e)),g=d;return b.decimal>=1&&(g+=":"+(e>9?e:"0"+e)),b.decimal>=2&&(g+=":"+(f>9?f:"0"+f)),g}},b=function(b,c){var d=TGS.Leaderboard.GetLeaderboardDescriptor(c)||{},e=d.scoreFormat||{};e.type=(e.type||"number").toLowerCase(),e.decimal=e.decimal||("time"==e.type?2:0),e.prefix=e.prefix||"",e.suffix=e.suffix||"";var f=a[e.type]||a.number;return e.prefix+f(b,e)+e.suffix};TGS.Leaderboard.Show=function(a){return TGS.LoggedIn()?void(TGS._sPartnerBridge.implementsLeaderboard()?TGS._sPartnerBridge.showLeaderboard(a):TGS.Leaderboard._ShowSLB(a)):void TGS.LoginUser({onSuccess:TGS.Leaderboard.Show.bind(this,a),onUserCancel:TGS.OverlayMessage.bind(this,{title:"Login Required",message:"You must be logged in to use the leaderboard."}),onFailure:TGS.OverlayMessage.bind(this,{title:"Login Error",message:"There was a problem logging you in."})})},TGS.Leaderboard.SubmitScore=function(a){return TGS.LoggedIn()?void(TGS._sPartnerBridge.implementsLeaderboard()?TGS._sPartnerBridge.submitScore(a):TGS.Leaderboard._SubmitScoreSLB(a)):void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"user is not logged in/authorized - silent score submit ignored")},TGS.Leaderboard.SubmitScoreAndShow=function(a){return TGS.LoggedIn()?void(TGS._sPartnerBridge.implementsLeaderboard()?TGS._sPartnerBridge.submitScoreAndShow(a):TGS.Leaderboard._SubmitScoreAndShowSLB(a)):void TGS.LoginUser({onSuccess:TGS.Leaderboard.SubmitScoreAndShow.bind(this,a),onUserCancel:TGS.OverlayMessage.bind(this,{title:"Login Required",message:"You must be logged in to use the leaderboard."}),onFailure:TGS.OverlayMessage.bind(this,{title:"Login Error",message:"There was a problem logging you in."})})},TGS.Leaderboard._SubmitScoreSLB=function(a,b){var c=TGS._sUserID,d=TGS._sPartnerID;if(!TGS._sPartnerBridge._mUseUserInfoInSLB){if(-1===window.location.host.indexOf("tresensa.com"))return a.score>TGS.localStorage.getItem(TGS._sLSKeys.TGS_pending_score)&&TGS.localStorage.setItem(TGS._sLSKeys.TGS_pending_score,a.score),TGS.Debug.Log(TGS.Debug.LOG_WARNING,"user is not logged in/authorized on Facebook - saving score"),void(a.onSuccess&&a.onSuccess.call(this,a.score,a.leaderboardID));if(!TGS._sPartnerBridge.loggedIntoFacebook())return b?void TGS._sPartnerBridge.loginToFacebook(TGS._sPartnerBridge.promptForFacebookAuthorization.bind(TGS._sPartnerBridge),TGS.Leaderboard._SubmitScoreSLB.bind(this,a)):(a.score>TGS.localStorage.getItem(TGS._sLSKeys.TGS_pending_score)&&TGS.localStorage.setItem(TGS._sLSKeys.TGS_pending_score,a.score),void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"user is not logged in/authorized on Facebook - saving score"));c=TGS._sPartnerBridge._mFacebookUserID,d="A0003"}var e=!0,f="";if("object"!=typeof a?(e=!1,f+="params "):"number"!=typeof a.score&&(e=!1,f+="score "),!e)return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"Invalid values sent to TGS.Leaderboard.SubmitScore for the following params: "+f),void(a&&a.onFailure&&a.onFailure.call(this,a.score,a.leaderboardID));a.leaderboardID="number"==typeof a.leaderboardID?a.leaderboardID:0;var g="function"==typeof a.onFailure?a.onFailure:null,h="",i="";TGS._sPartnerBridge._mUseUserInfoInSLB?(h+=',"name":'+(TGS._sPartnerBridge._mUsername?'"'+TGS._sPartnerBridge._mUsername+'"':"null"),h+=',"image_url":'+(TGS._sPartnerBridge._mAvatarURL?'"'+TGS._sPartnerBridge._mAvatarURL+'"':"null"),h+=',"location":'+(TGS._sPartnerBridge._mUserLocation?'"'+TGS._sPartnerBridge._mUserLocation+'"':"null")):i+=',"facebook_access_token":'+(TGS._sPartnerBridge._mFacebookAccessToken?'"'+TGS._sPartnerBridge._mFacebookAccessToken+'"':"null");var j='{"game":"'+TGS._sGameID+'","partner":"'+d+'","leaderboard":"'+a.leaderboardID+'","user":"'+c+'","score":'+a.score+i+h+"}",k=new TGS.LeaderboardRequest;k.type="add",k.params=a,k.onSuccess=a.onSuccess,k.onFailure=g,TGS.Debug.Log(TGS.Debug.LOG_INFO,"submitting new score of "+a.score+" to server..."),TGS.SendMessage("leaderboard/score","add",j,TGS.Leaderboard._SuccessCallback.bind(this,k),TGS.Leaderboard._ErrorCallback.bind(this,k))},TGS.Leaderboard._ShowSLB=function(a){var c,d=document.getElementsByTagName("base");c=d&&d.length?d[0].getAttribute("href"):location.href;var e=a.score,f="undefined"!=typeof window.GameConfig&&"string"==typeof window.GameConfig.TITLE?window.GameConfig.TITLE:null,g=f?f:"Check out this game!",h="See if you can beat me in this awesome game"+(f?" called "+f:"")+".";"undefined"!=typeof e&&(h+=" I just scored "+b(e,a.leaderboardID)+".");var i={shareTitle:g,shareMsg:h,game:TGS._sGameID,partner:TGS._sPartnerID,leaderboard:a.leaderboardID,score:a.score||parseInt(TGS.localStorage.getItem(TGS._sLSKeys.TGS_pending_score)||0),orientation:a.orientation||TGS._sConfig.ORIENTATION,timePeriod:a.timePeriod,cssUrl:a.cssUrl,baseHref:c,server:TGS._SERVER_LOCATION};if(TGS.localStorage.setItem(TGS._sLSKeys.TGS_pending_score,0),TGS._sPartnerBridge._mUseUserInfoInSLB)i.userInfo={id:TGS._sUserID,name:TGS._sPartnerBridge._mUsername,image_url:decodeURIComponent(TGS._sPartnerBridge._mAvatarURL),location:TGS._sPartnerBridge._mUserLocation};else if(-1===window.location.host.indexOf("tresensa.com"))i.partner="A0003";else{if(!TGS._sPartnerBridge.loggedIntoFacebook())return void TGS._sPartnerBridge.loginToFacebook(TGS._sPartnerBridge.promptForFacebookAuthorization.bind(TGS._sPartnerBridge),TGS.Leaderboard._ShowSLB.bind(this,a));i.partner="A0003",i.userInfo={id:TGS._sPartnerBridge._mFacebookUserID,fbToken:TGS._sPartnerBridge._mFacebookAccessToken}}var j;j=TGS._sConfig.PROD_ENV?"//leaderboard.tresensa.com/?inGame=true&gameInfo="+encodeURIComponent(JSON.stringify(i)):"//qa-leaderboard.tresensa.com/?inGame=true&gameInfo="+encodeURIComponent(JSON.stringify(i));var k=document.createElement("div");k.id="tgs-leaderboard-container";var l=document.createElement("iframe");l.setAttribute("scrolling","no"),l.setAttribute("src",j),k.appendChild(l);var m=a.gameCanvas;m.insertBefore(k,m.firstChild);var n=function(){window.removeEventListener("message",p),k.parentNode.removeChild(k),a.onClose&&a.onClose()},o=function(){TGS.Social.Challenge({title:g,message:h})},p=function(a){if(!a.origin.match("^https?://(qa-)?leaderboard.tresensa.com$"))return void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"Recieved window message: "+a.data+" from unexpected origin: "+a.origin);var b=JSON.parse(a.data);TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"Recieved window message: "+b),"leaderboard:done"==b?n():"leaderboard:challenge"==b&&o()};window.addEventListener("message",p,!1)},TGS.Leaderboard._SubmitScoreAndShowSLB=function(a){var b=a.onSuccess;a.onSuccess=function(){a.onSuccess=b,TGS.Leaderboard._ShowSLB(a)},TGS.Leaderboard._SubmitScoreSLB(a,!0)},TGS.Leaderboard._SuccessCallback=function(a,b){return b&&"undefined"!=typeof b.code?0!==b.code?void TGS.Leaderboard._ErrorCallback(a,"internal request error code: "+b.code,b):(TGS.localStorage.getItem(TGS._sLSKeys.TGS_pending_score),void(a.onSuccess?a.onSuccess.call(this,a,b):TGS.Debug.Log(TGS.Debug.LOG_INFO,"Leaderboard "+a.type+" request was successful"))):void TGS.Leaderboard._ErrorCallback(a,"response object is malformed",b)},TGS.Leaderboard._ErrorCallback=function(a,b,c){a.onFailure?a.onFailure.call(this,b,c):TGS.Debug.Log(TGS.Debug.LOG_ERROR,"Leaderboard "+a.type+" request failed: "+b)},TGS.LeaderboardRequest=function(){this.type="",this.params=null,this.onSuccess=null,this.onFailure=null}}(),function(){TGS.Advertisement=function(a,b){a=a||{},this.closeCallback=a.closeCallback,this.placement=b||0,this.width=b?336:300,this.height=b?280:250,this.x=a.x,this.y=a.y},TGS.Advertisement.prototype={_inject:function(a){return this.container=a,this._handleWindowMessageBound=this._handleWindowMessage.bind(this),window.addEventListener("message",this._handleWindowMessageBound,!1),TGS._sPartnerBridge.advertising_injectAd(this,a),this},_handleWindowMessage:function(a){if(!a.origin.match("^https?://adserver.adtechus.com$"))return void TGS.Debug.Log(TGS.Debug.LOG_WARNING,"Recieved window message: "+a.data+" from unexpected origin: "+a.origin);var b=JSON.parse(a.data);TGS.Debug.Log(TGS.Debug.LOG_INFO,"Recieved window message: "+b),"close"==b?this.close():"fullscreen"==b?this._fullscreen():"disable-close"==b?this._disableClose():b&&"resize"==b.action&&this._resize(b.width,b.height)},_disableClose:function(){var a=document.getElementById("tgs-close");a.style.display="none",this.showCloseTimeout&&clearTimeout(this.showCloseTimeout)},_resize:function(a,b){this.width=a,this.height=b,this._reposition(this.container)},_fullscreen:function(){this.placement&&(this.fullscreen=!0,this.width=100,this.height=100,this._reposition(this.container))},_reposition:function(a){var b=document.getElementById("tgs_display_ad_iframe"),c=document.getElementById("tgs-ad-frame");if(this.fullscreen){this.element.style.left=0,this.element.style.top=0,b.style.width="100%",b.style.height="100%",c.classList.add("fullscreen");var d=document.getElementById("tgs_display_ad");return d.style.width="100%",d.style.height="100%",this._disableClose(),this.element.style.webkitTransform="scale(1)",this.element.style.MozTransform="scale(1)",this.element.style.msTransform="scale(1)",this.element.style.OTransform="scale(1)",void(this.element.style.transform="scale(1)")}var e=a==document.body?window.innerHeight:a.clientHeight,f=a==document.body?window.innerWidth:a.clientWidth;if(e&&f){var g="undefined"==typeof this.x?(f-this.width)/2:this.x,h="undefined"==typeof this.y?(e-this.height)/2:this.y;b.style.width=this.width+"px",b.style.height=this.height+"px",c&&(c.style.width=this.width+"px",c.style.height=this.height+"px");var i=this.height,j=this.width;this.placement&&(i+=52,j+=52,g-=26,h-=26),this.scale=1,this.placement?this.scale=f>e?.75*e/i:.75*f/j:TGS.Utils.isTGEGame()&&(this.scale=TGE.Game.GetInstance()._mDivResized||1),this.element.style.left=g+"px",this.element.style.top=h+"px",this.element.style.webkitTransform="scale("+this.scale+")",this.element.style.MozTransform="scale("+this.scale+")",this.element.style.msTransform="scale("+this.scale+")",this.element.style.OTransform="scale("+this.scale+")",this.element.style.transform="scale("+this.scale+")"}},close:function(){window.removeEventListener("message",this._handleWindowMessageBound),TGS._sPartnerBridge.advertising_closeAd(this)!==!0&&this.closeCallback&&this.closeCallback.call()}};var a;TGS.Advertisement.DisplayAd=function(a){var b=new TGS.Advertisement(a||{});return("undefined"==typeof navigator.onLine||navigator.onLine)&&b._inject(a.parentDiv),b},TGS.Advertisement.DisplayInterstitialAd=function(b){b="undefined"==typeof b?{}:b,b.placement=1;var c=(new Date).getTime(),d=1e3*(TGS._sConfig.ADS&&TGS._sConfig.ADS.INTERSTITIAL_INTERVAL||150);"undefined"==typeof navigator.onLine||navigator.onLine?!a||c>a+d?(a=c,TGS._sPartnerBridge.advertising_injectInterstitial(b||{})):(TGS.Debug.Log(TGS.Debug.LOG_INFO,"interstitial ad interval has not been reached ("+d/1e3+" seconds), suppressing ad request"),b.closeCallback&&b.closeCallback()):(TGS.Debug.Log(TGS.Debug.LOG_INFO,"device offline, interstitial ad skipped"),b.closeCallback&&b.closeCallback())},TGS.Advertisement._DisplayPreloaderAd=function(a){var b=TGS.AdapterDefinitions[TGS._sPartnerID];a="undefined"==typeof a?{}:a,a.placement=2,b&&b.preloader&&("undefined"==typeof navigator.onLine||navigator.onLine)?TGS._sPartnerBridge.advertising_injectInterstitial(a||{}):a.closeCallback&&a.closeCallback()}}(),function(){var a=function(a){return function(b,c,d){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"TGS.Analytics "+a+" event: "+b+", "+c),h(a,b,c,d)}},b=[/.+/i],c={game:["load","begin","pause","resume","end","adrequest"],level:[/^start( - .+)?$/i,/^complete( - .+)?$/i,/^fail( - .+)?$/i,/^replay( - .+)?$/i],achievement:b,share:["twitter","facebook","fb","kik"],clickthru:b,custom:b,error:b,moregames:b},d=function(a){return function(b){return b instanceof RegExp?b.test(a):a===b}},e=[],f={},g=!1,h=function(a,b,f,g){var h,i;try{if(a=(a||"").toLowerCase(),b=(b||"").toLowerCase(),h=c[a],!h)return void TGS.Debug.Log(TGS.Debug.LOG_ERROR,"TGS.Analytics.trackEvent called with invalid category '"+a);if(!h.some(d(b)))return void TGS.Debug.Log(TGS.Debug.LOG_ERROR,"TGS.Analytics.trackEvent called with invalid name '"+b+"' for category '"+a);for(i=0;i<e.length;i++)e[i].trackEvent(a,b,f,g||{})}catch(j){TGS.Debug.Log(TGS.Debug.LOG_ERROR,"TGS.Analytics.trackEvent error : "+j)}};TGS.Analytics={_init:function(a){var b,c,d,h;if(!g){for(TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"TGS.Analytics.init called with conifg: "+JSON.stringify(a)),f=a,b=TGS._sPartnerBridge.analytics_getProviders()||[],TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"TGS.Analytics.init got "+b.length+" providers from partner bridge"),c=0;c<b.length;c++)try{if(d=b[c],h=new d,!f[h.configName]||!f[h.configName].ENABLED){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"TGS.Analytics.init skipping provider (not ENABLED): "+h.name);continue}TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"TGS.Analytics.init initializing provider: "+h.name),h.init(f[h.configName]||{})!==!1?e.push(h):TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"TGS.Analytics.init "+h.name+" returned false from init, not using")}catch(i){TGS.Debug.Log(TGS.Debug.LOG_ERROR,"TGS.Analytics.init error while initializing "+h.name+": "+i)}g=!0,TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"TGS.Analytics.init done. Loaded providers: "+e.map(TGS.Utils.Func.prop("name")))}},logScreen:function(a,b){var c;for(c=0;c<e.length;c++)e[c].trackScreen(a,b||{})},_logPurchase:function(a,b){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"TGS.Analytics._logPurchase "+JSON.stringify(a));var c;for(c=0;c<e.length;c++)e[c].trackPurchase(a,b||{})},logGameEvent:a("game"),logShareEvent:a("share"),logLevelEvent:function(a,b,c){b>0&&(a+=" - level "+b);var d;("complete"==a||"fail"==a&&null!==c)&&(d=c),h("level",a,d)},logAchievementEvent:a("achievement"),logCustomEvent:a("custom"),_logErrorEvent:a("error"),_logClickThruEvent:a("clickthru"),_logMoreGamesEvent:a("moregames")}}(),function(){TGS.Analytics.BaseAnalyticsProvider=function(){},TGS.Analytics.BaseAnalyticsProvider.prototype={name:"Base Provider",configName:"BaseProvider",init:function(){},trackEvent:function(){},trackScreen:function(){},trackPurchase:function(){}}}(),function(){TGS.Analytics.GoogleAnalyticsProvider=function(){},TGS.Analytics.GoogleAnalyticsProvider.prototype={name:"Google Analytics",configName:"GoogleAnalytics",init:function(a){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"GoogleAnalyticsProvider.init called: "+JSON.stringify(a)),this._mConfig=a,this._mConfig.STUDIO_ONLY||(_gaTreSensa("create",TGS._sConfig.PROD_ENV?"UA-29301358-4":"UA-29301358-8","auto",{name:"TGSTracker"}),_gaTreSensa("TGSTracker.set",{dimension1:TGS._sPartnerID,dimension2:TGS._sGameVersion,dimension3:TGS._sGameID}),TGS.MicrotransactionsSupported()&&_gaTreSensa("TGSTracker.require","ecommerce","ecommerce.js")),this._mConfig.STUDIO_ID&&""!==this._mConfig.STUDIO_ID&&(_gaTreSensa("create",GameConfig.GoogleAnalytics.STUDIO_ID,"auto",{name:"TGSStudioTracker"}),_gaTreSensa("TGSStudioTracker.set",{location:TGS._sConfig.HOST+"/index.html",hostname:TGS._sConfig.HOST,page:TGS._sConfig.PATH,title:this._mConfig.LABEL||TGS._sGameID,referrer:"http://games.tresensa.com",dimension1:TGS._sGameID,dimension2:TGS._sGameVersion}),this._studioTrackerEnabled=!0,_gaTreSensa("TGSStudioTracker.send","pageview")),!this._mConfig.STUDIO_ONLY&&TGS._sConfig.PROD_ENV&&TGS._sPartnerBridge._GoogleAnalyticsId&&(_gaTreSensa("create",TGS._sPartnerBridge._GoogleAnalyticsId,"auto",{name:"TGSPartnerTracker"}),_gaTreSensa("TGSPartnerTracker.set",{location:TGS._sConfig.HOST+"/index.html",hostname:TGS._sConfig.HOST,page:TGS._sConfig.PATH,title:this._mConfig.LABEL||TGS._sGameID,referrer:"http://games.tresensa.com",dimension1:TGS._sGameID,dimension2:TGS._sGameVersion}),this._partnerTrackerEnabled=!0,_gaTreSensa("TGSPartnerTracker.send","pageview"))},trackEvent:function(a,b,c,d){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"GoogleAnalyticsProvider.trackEvent called: "+JSON.stringify(arguments)),this._mConfig.STUDIO_ONLY||"custom"==a||_gaTreSensa("TGSTracker.send","event",a,b,this._mConfig.LABEL||TGS._sGameID,c),"moregames"==a&&(b="URL launched"),this._studioTrackerEnabled&&!d._tresensaOnly&&_gaTreSensa("TGSStudioTracker.send","event",a,b,this._mConfig.LABEL||TGS._sGameID,c),this._partnerTrackerEnabled&&"custom"!=a&&!d._tresensaOnly&&_gaTreSensa("TGSPartnerTracker.send","event",a,b,this._mConfig.LABEL||TGS._sGameID,c)},trackScreen:function(a,b){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"GoogleAnalyticsProvider.trackPageView called: "+JSON.stringify(arguments)),this._mConfig.STUDIO_ONLY||_gaTreSensa("TGSTracker.send","pageview",TGS._sConfig.PATH+a),this._studioTrackerEnabled&&!b._tresensaOnly&&_gaTreSensa("TGSStudioTracker.send","pageview",TGS._sConfig.PATH+a),this._partnerTrackerEnabled&&!b._tresensaOnly&&_gaTreSensa("TGSPartnerTracker.send","pageview",TGS._sConfig.PATH+a)
-},trackPurchase:function(a){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"GoogleAnalyticsProvider.trackPurchase called: "+JSON.stringify(arguments));var b={id:a.transactionID,affiliation:TGS.Microtransactions.PaymentProviderName(),revenue:TGS.Microtransactions.PriceAsUSD(a.item.price)},c={id:a.transactionID,name:a.item.title,sku:a.item.id,price:TGS.Microtransactions.PriceAsUSD(a.item.price),quantity:"1"};this._mConfig.STUDIO_ONLY||(_gaTreSensa("TGSTracker.ecommerce:addTransaction",b),_gaTreSensa("TGSTracker.ecommerce:addItem",c),_gaTreSensa("TGSTracker.ecommerce:send"))}},extend(TGS.Analytics.GoogleAnalyticsProvider,TGS.Analytics.BaseAnalyticsProvider)}(),function(){TGS.Analytics.NativeGoogleAnalyticsProvider=function(){},TGS.Analytics.NativeGoogleAnalyticsProvider.prototype={name:"Native Google Analytics",configName:"GoogleAnalytics",init:function(a){if(TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"NativeGoogleAnalyticsProvider.init called: "+JSON.stringify(a)),this._mConfig=a,this._gaPlugin=window.plugins.gaPlugin,!a.NATIVE_ID)return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"CordovaConfig.GoogleAnalytics.NATIVE_ID not set, disabling analytics"),!1;window.plugins&&window.plugins.gaPlugin||TGS.Debug.Log(TGS.Debug.LOG_ERROR,"PhoneGap GoogleAnalytics plugin was not found, disabling analytics");var b=this;this._gaPlugin.init(function(){b._gaPlugin.setVariable(null,null,1,TGS._sPartnerID),b._gaPlugin.setVariable(null,null,2,TGS._sGameVersion),b._gaPlugin.setVariable(null,null,3,TGS._sGameID)},this._logError,a.NATIVE_ID,10)},trackEvent:function(a,b,c){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"NativeGoogleAnalyticsProvider.trackEvent called: "+JSON.stringify(arguments)),"number"!=typeof c&&(c=-1),this._gaPlugin.trackEvent(this._logResult,this._logError,a,b,this._mConfig.LABEL||TGS._sGameID,c)},trackScreen:function(a){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"NativeGoogleAnalyticsProvider.trackPageView called: "+JSON.stringify(arguments)),this._gaPlugin.trackPage(this._logResult,this._logError,a)},trackPurchase:function(a){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"NativeGoogleAnalyticsProvider.trackPurchase called: "+JSON.stringify(arguments)),this._gaPlugin.trackPurchase(this._logResult,this._logError,a.transactionID,TGS.Microtransactions.PaymentProviderName(),a.item.id,a.item.title,TGS.Microtransactions.PriceAsUSD(a.item.price),1)},_logError:function(a){TGS.Debug.Log(TGS.Debug.LOG_ERROR,"NativeGoogleAnalyticsProvider - "+a)},_logResult:function(a){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"NativeGoogleAnalyticsProvider - "+a)}},extend(TGS.Analytics.GoogleAnalyticsProvider,TGS.Analytics.BaseAnalyticsProvider)}(),function(){TGS.Social={ChallengeIcon:function(){return TGS._sPartnerBridge.challengeIcon()},Challenge:function(a){TGS._sPartnerBridge.challenge(a)},Share:function(a,b){b=b||{};var c;c=b.url?b.url:TGS._sConfig.HOST?TGS._sConfig.HOST:window.location.href,TGS._sPartnerBridge.share(a,{title:b.title||TGS._sConfig.TITLE,msg:b.msg||"I am playing "+TGS._sConfig.TITLE,url:c,image:b.image});var d=TGS.Social._services[a];TGS.Analytics.logShareEvent(d&&d.analyticsId||a)},GetShareServices:function(a){var b=TGS._sPartnerBridge.getShareServices();return a&&b.length>a&&(b.length=a),b},_services:{twitter:{id:"twitter",title:"Twitter",label:"Tweet"},fb:{id:"fb",title:"Facebook",label:"Share on FB",analyticsId:"facebook"}}}}(),function(){var a=function(a,b,c,d){var e=document.createElement("div");if(e.classList.add("tgs-btn"),c)for(var f=c.split(" "),g=f.length-1;g>=0;g--)e.classList.add(f[g]);var h="",i=!1;return("login"==c||"logout"==c)&&(i="login"==d?TGS.LoggedIn()?TGS.LogoutIcon():TGS.LoginIcon():TGS.LoggedIn()?TGS.WidgetLogoutIcon():TGS.WidgetLoginIcon()),i&&(h+="<img src='"+i+"'/>"),h+="<span>"+a+"</span>",e.innerHTML=h,b&&e.addEventListener(TGS.BrowserDetect.clickEvent,b),e},b=function(){return TGE.Game.GetInstance().stage._mScale};TGS.Widget=function(c){c=c||{},this.opts=c,this.pos={top:c.y||0,left:c.x||0},this.size={width:c.width||300,height:0},this.closeCallback=c.closeCallback,this.element=document.createElement("div"),this.element.id="tgs-widget",this.element.style.top=this.pos.top+"px",this.element.style.left=this.pos.left+"px",this.element.style.width=this.size.width+"px",this.element.style.height=this.size.height?this.size.height+"px":"auto";var d,e=this;this.updateScale=function(){var a=d()||1;e.element.style.webkitTransform="scale("+a+")",e.element.style.MozTransform="scale("+a+")",e.element.style.msTransform="scale("+a+")",e.element.style.OTransform="scale("+a+")",e.element.style.transform="scale("+a+")"},c.scalingFunc?d=c.scalingFunc:TGS.Utils.isTGEGame()&&TGE.Game.GetInstance()._mDivResized&&(d=b),d&&(this.element.style.webkitTransformOrigin="top left",this.element.style.MozTransformOrigin="top left",this.element.style.msTransformOrigin="top left",this.element.style.OTransformOrigin="top left",this.element.style.transformOrigin="top left",window.addEventListener("resize",this.updateScale),this.updateScale());var f=c.disableAd?0:300,g=c.disableAd?0:10,h=c.minColumnWidth||130,i=this.size.width>=f+g+h,j=this.size.width-f-g,k=c.columnPaddingPercent||2,l=j*k/100;c.widgetClass&&this.element.classList.add(c.widgetClass),i&&this.element.classList.add("horizontal");var m=1;if(c.disableAd&&this.size.width>=4*h+3*l?(this.element.classList.add("four-column"),m=4):(!i||c.disableAd)&&this.size.width>=h+l+h&&(this.element.classList.add("two-column"),m=2),c.disableAd||(this.ad=new TGS.Advertisement({}),this.ad._inject(this.element),this.ad.element&&(this.ad.element.style.position="static")),this.buttonContainer=document.createElement("div"),this.buttonContainer.classList.add("btn-container"),i&&(this.buttonContainer.style.width=j+"px"),c.showLogin){var n=TGS.GetLoginButtonText();if(n&&("Restore Purchases"!=n||!c.disableRestore)){var o=TGS.GetLoginButtonAction(function(){if(p&&p.parentNode){var b=TGS.GetLoginButtonText();if(b){var d=a(b,o,b.toLowerCase().replace(/ /g,"-"),c.widgetClass);e.buttonContainer.insertBefore(d,p)}p.parentNode.removeChild(p),p=d,v()}}),p=a(n,o,n.toLowerCase().replace(/ /g,"-"),c.widgetClass);this.buttonContainer.appendChild(p)}}if(!c.disableShare)for(var q={title:c.shareTitle,msg:c.shareMessage,url:c.shareUrl,image:c.shareImageUrl},r=TGS.Social.GetShareServices(2),s=0;s<r.length;s++){var t=r[s];this.buttonContainer.appendChild(a(t.label,TGS.Social.Share.bind(null,t.id,q),t.id))}if(!c.disableMoreGames&&TGS.MoreGamesURL()&&this.buttonContainer.appendChild(a("More Games",TGS.ShowMoreGames,"moregames")),!c.disableLeaderboard&&TGS.Leaderboard.isSupported()&&Object.keys(TGS.Leaderboard.GetLeaderboardDescriptors()).length>0){var u=TGS.Leaderboard.Show.bind(this,{leaderboardID:c.leaderboardID||0,timePeriod:c.leaderboardTimePeriod||"week",page:1,gameCanvas:c.parentDiv});this.buttonContainer.appendChild(a(TGS.Leaderboard.getLabel(),u,"leaderboard"))}var v=function(){if(m>1){e.buttonContainer.style.marginBottom=-k+"%";for(var a=e.buttonContainer.childNodes,b=a.length-1;b>=0;b--){var c=b==a.length-1;a[b].style.marginBottom=k+"%",2==m&&a.length%2!=0&&c?a[b].style.width="100%":((4==m&&!c||b%2===0)&&(a[b].style.marginRight=k+"%"),a[b].style.width=(100-(m-1)*k)/m+"%")}}};v(),this.element.appendChild(this.buttonContainer)},TGS.Widget.prototype={appendTo:function(a){return a.insertBefore(this.element,a.firstChild),this},close:function(a){this.ad&&this.ad.close(),this.element&&this.element.parentNode&&this.element.parentNode.removeChild(this.element),window.removeEventListener("resize",this.updateScale);var b=this.closeCallback,c=function(){b&&b(this),a&&a(this)};return this.opts.disableAd?c():TGS.Advertisement.DisplayInterstitialAd({closeCallback:c,parentDiv:this.opts.parentDiv}),this}},TGS.Widget.CreateWidget=function(a){var b;a=a||{},a.disableMoreGames=!1,b=TGS.Utils.isTGEGame()?a.parentDiv||TGE.Game.GameDiv():a.parentDiv||document.body,a.parentDiv=b;var c=new TGS.Widget(a);return c.appendTo(b)},TGS.Widget.CreateLoginWidget=function(a){var b;a=a||{},a.disableAd=!0,a.disableLeaderboard=!0,a.disableShare=!0,a.disableMoreGames=!0,a.showLogin=!0,a.width=a.width||200,a.widgetClass="login",b=TGS.Utils.isTGEGame()?a.parentDiv||TGE.Game.GameDiv():a.parentDiv||document.body;var c=new TGS.Widget(a);return c.appendTo(b)}}(),TGS.Adapters={};var hostLocation="stg-tgs.tresensa.com";"undefined"!=typeof window.GameConfig&&GameConfig.TGS&&GameConfig.TGS.HOST&&(hostLocation=GameConfig.TGS.HOST);var serverLocation=hostLocation+"/server/";serverLocation+="0.3.9/",TGS._SERVER_LOCATION=("https:"===document.location.protocol?"https:":"http:")+"//"+serverLocation,TGS._IMAGES_LOCATION=("https:"===document.location.protocol?"https:":"http:")+"//sdk.tresensa.com/tgs/images/",TGS._sOn=!1,TGS._sFakeConnections=!1,TGS._sPartnerID=null,TGS._sGameID=null,TGS._sUserID=null,TGS._sPartnerBridge=null,TGS._sGamePartnerInfo=null,TGS._sLSKeys={},TGS._sOnline=!0,TGS._sMessageOverlay=null,TGS.OverlayRed=.6,TGS.OverlayGreen=.6,TGS.OverlayBlue=.6,TGS.OverlayOpacity=.6,TGS.onReady=null,TGS.Debug=TGS.Debug||{},TGS.Debug.LOG_NONE=0,TGS.Debug.LOG_ERROR=1,TGS.Debug.LOG_WARNING=2,TGS.Debug.LOG_INFO=3,TGS.Debug.LOG_VERBOSE=4,TGS.Debug.LogLevel="undefined"!=typeof GameConfig&&"number"==typeof GameConfig.LOG_LEVEL?GameConfig.LOG_LEVEL:TGS.Debug.LOG_INFO,TGS.Debug.Log=function(a){if(window.console&&a<=TGS.Debug.LogLevel){var b="TGS: ",c="log";a===TGS.Debug.LOG_ERROR?(b+="**ERROR** ",c="error"):a===TGS.Debug.LOG_WARNING&&(b+="**WARNING** ",c="warn"),window.console[c](b+Array.prototype.slice.call(arguments,1))}},TGS.UseServer=function(a){TGS._SERVER_LOCATION=("https:"===document.location.protocol?"https:":"http:")+"//"+a},TGS.localStorage=window.localStorage,TGS._TestLocalStorage=function(){TGS.localStorage=window.localStorage;try{localStorage.setItem("storage",""),localStorage.removeItem("storage")}catch(a){TGS.Debug.Log(TGS.Debug.LOG_WARNING,"localStorage is not supported");var b={};TGS.localStorage={setItem:function(a,c){b[a]=c},removeItem:function(a){delete b[a]},getItem:function(a){return b[a]}}}},TGS.IsOn=function(){return TGS._sOn},TGS.IsReady=function(){return TGS._sPartnerID&&TGS._sGameID&&TGS._sPartnerBridge&&(!TGS._sPartnerBridge.supportsDatastore()||TGS._sUserID&&TGS.DataStore.GameData)?TGS._sPartnerBridge.isReady():!1},TGS.MicrotransactionsSupported=function(){return TGS._sPartnerBridge.supportsMicrotransactions()&&TGS._sPartnerBridge.supportsDatastore()},TGS.MicrotransactionsAllowed=function(){return TGS._sPartnerBridge.allowsMicrotransactions()},TGS.DatastoreSupported=function(){return TGS._sPartnerBridge.supportsDatastore()},TGS.LeaderboardSupported=function(){return TGS.Leaderboard.isSupported()},TGS.AutoLogin=function(){return TGS._sPartnerBridge.autoLogin()},TGS.LoginIcon=function(){return TGS._sPartnerBridge.loginIcon()},TGS.LogoutIcon=function(){return TGS._sPartnerBridge.logoutIcon()},TGS.WidgetLoginIcon=function(){return TGS._sPartnerBridge.widgetLoginIcon()},TGS.WidgetLogoutIcon=function(){return TGS._sPartnerBridge.widgetLogoutIcon()},TGS.ChallengesSupported=function(){return TGS._sPartnerBridge.supportsChallenges()},TGS.LoggedIn=function(){return TGS._sPartnerBridge.loggedIn()},TGS.LoginUser=function(a){a="undefined"==typeof a?{}:a,TGS._sLoginOverlay=TGS.LoadingOverlay();var b=new TGS.LoginRequest;b.onSuccess=a.onSuccess,b.onFailure=a.onFailure,b.onUserCancel=a.onUserCancel,TGS._sPartnerBridge.loginUser(b)},TGS.LogoutUser=function(a){a="undefined"==typeof a?{}:a,TGS._sLoginOverlay=TGS.LoadingOverlay();var b=new TGS.LoginRequest;b.onSuccess=a.onSuccess,b.onFailure=a.onFailure,b.onUserCancel=a.onUserCancel,TGS._sPartnerBridge.logoutUser(b)},TGS.ToggleUserLogin=function(a){TGS.AutoLogin()||(TGS.LoggedIn()?TGS.LogoutUser(a):TGS.LoginUser(a))},TGS._LoginSucceeded=function(a){TGS.Debug.Log(TGS.Debug.LOG_INFO,"user login/logout process was successful"),a&&a.onSuccess&&a.onSuccess.call(),TGS._sLoginOverlay&&(TGS._sLoginOverlay.parentNode.removeChild(TGS._sLoginOverlay),TGS._sLoginOverlay=null),window.TGE&&TGE.Game.GetInstance()&&TGE.Game.GetInstance().stage.dispatchEvent({type:"tgs_login_changed"})},TGS._LoginFailed=function(a){TGS.Debug.Log(TGS.Debug.LOG_ERROR,"there was an error during the login/logout process"),a&&a.onFailure&&a.onFailure.call(),TGS._sLoginOverlay&&(TGS._sLoginOverlay.parentNode.removeChild(TGS._sLoginOverlay),TGS._sLoginOverlay=null)},TGS._LoginCanceled=function(a){TGS.Debug.Log(TGS.Debug.LOG_INFO,"user cancelled login"),a.onUserCancel&&a.onUserCancel.call(),TGS._sLoginOverlay&&(TGS._sLoginOverlay.parentNode.removeChild(TGS._sLoginOverlay),TGS._sLoginOverlay=null)},TGS.GetDateTime=function(a,b){var c=null;return TGS.IsReady()||(c="Tried to request the server date/time before TGS was ready"),a||(c="Date/time request was made without specifying a success callback"),null!==c?void(b?b.call(this,c,null):TGS.Debug.Log(TGS.Debug.LOG_ERROR,c)):(TGS.Debug.Log(TGS.Debug.LOG_INFO,"requesting date/time from the server..."),void TGS.SendMessage("time","get",null,TGS._GetDateTimeCallback.bind(this,a),b))},TGS._GetDateTimeCallback=function(a,b){a.call(this,new Date(b.time))},TGS.GameLaunched=function(){TGS._sPartnerBridge&&TGS._sPartnerBridge.gameWasLaunched()},TGS.EnablePartnerUI=function(a){null!==TGS._sPartnerBridge&&TGS._sPartnerBridge.enablePartnerUI(a)},TGS.GenericSuccessCallback=function(a){TGS.Debug.Log(TGS.Debug.LOG_INFO,"	server request was successful"),TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"	response obj: "+JSON.stringify(a))},TGS.GenericErrorCallback=function(a,b){TGS.Debug.Log(TGS.Debug.LOG_WARNING,"	GenericErrorCallback "+a),TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"	GenericErrorCallback response obj: "+JSON.stringify(b))},TGS.SendMessage=function(a,b,c,d,e){if(!TGS._sOnline)return void(e&&e("TGS is offline"));d=d?d:TGS.GenericSuccessCallback,e=e?e:TGS.GenericErrorCallback;var f=TGS._SERVER_LOCATION+a+".php";f+="?gid="+TGS._sGameID+"&tgs="+(window.GameConfig?GameConfig.TGS.VERSION:"unknown")+"&dst="+TGS._sPartnerID;var g="string"==typeof b?"type="+b+"&":"",h=g+"data="+c;TGS.CORSRequest(f,h,!0,!0,d,e)},TGS.CORSRequest=function(a,b,c,d,e,f){var g=null,h="POST",i=null,j=!1;try{if(window.XMLHttpRequest){if(g=new XMLHttpRequest,"withCredentials"in g)g.open(h,a,!0),g.setRequestHeader("Content-type","application/x-www-form-urlencoded"),g.send(b);else if("undefined"!=typeof XDomainRequest){j=!0,g=new XDomainRequest;var k=Math.floor(99999999999*Math.random()),l=-1===a.indexOf("?")?"?":"&";a=a+l+b+"&cb="+k,g.open(h,a),g.send()}}else g=new ActiveXObject("Microsoft.XMLHTTP"),g.open(h,a,!0),g.setRequestHeader("Content-type","application/x-www-form-urlencoded"),g.send(b)}catch(m){f&&f("server failed to respond",m)}try{j?(g.timeout=1e4,g.onerror=function(){},g.ontimeout=function(){},g.onprogress=function(){},g.onload=function(){if(!d)return void e(g.responseText);try{i=JSON.parse(g.responseText)}catch(a){TGS.Debug.Log(TGS.Debug.LOG_WARNING,"server response could not be parsed: "+g.responseText),i=null}if(i){if(c&&0!==i.code&&f){var b="the TGS server returned error code "+i.code;return"string"==typeof i.message&&(b+=" "+i.message),TGS.Debug.Log(TGS.Debug.LOG_WARNING,b),void f(b,i)}e(i)}else f&&(TGS.Debug.Log(TGS.Debug.LOG_WARNING,"server request returned bad data"),f("server request returned bad data",null))}):g.onreadystatechange=function(){if(4==g.readyState)if(200!=g.status)f&&(TGS.Debug.Log(TGS.Debug.LOG_WARNING,"the page returned error code "+g.status+" message: "+g.statusText),f("the page returned error code "+g.status,g));else{if(!d)return void e(g.responseText);try{i=JSON.parse(g.responseText)}catch(a){TGS.Debug.Log(TGS.Debug.LOG_WARNING,"server response could not be parsed: "+g.responseText),i=null}if(i){if(c&&0!==i.code&&f){var b="the TGS server returned error code "+i.code;return"string"==typeof i.message&&(b+=" "+i.message),TGS.Debug.Log(TGS.Debug.LOG_WARNING,b),void f(b,i)}e(i)}else f&&(TGS.Debug.Log(TGS.Debug.LOG_WARNING,"server request returned bad data"),f("server request returned bad data",null))}}}catch(n){f&&f("server error",n)}},TGS.Init=function(a,b){if(1==arguments.length?(TGS._sConfig=a,a=TGS._sConfig.GAME_ID,b=TGS._sConfig.DST_ID):(window.GameConfig.DST_ID=TGL.getDistributionPartner(),TGS._sConfig=window.GameConfig),TGS._TestLocalStorage(),"string"!=typeof a||a.length<1)return void TGS.Debug.Log(TGS.Debug.LOG_ERROR,"a valid game id was not specified");TGS._sGameID=a;var c=this._sConfig.VERSION||"none";TGS._sGameVersion=c,"string"!=typeof b||b.length<1?(TGS.Debug.Log(TGS.Debug.LOG_INFO,"no partner id specified - using generic adapter"),TGS._sPartnerID="0000"):TGS._sPartnerID=b,TGS._sOn=!0;var d="_"+TGS._sPartnerID+"_"+TGS._sGameID;TGS._sLSKeys.TGS_datastore="TGS_datastore"+d,TGS._sLSKeys.TGS_userid="TGS_userid"+d,TGS._sLSKeys.TGS_loggedin_user="TGS_loggedin_user"+d,TGS._sLSKeys.TGS_username="TGS_username"+d,TGS._sLSKeys.TGS_avatar="TGS_avatar"+d,TGS._sLSKeys.TGS_location="TGS_location"+d,TGS._sLSKeys.TGS_gameinfo="TGS_gameinfo"+d,TGS._sLSKeys.TGS_pending_score="TGS_pending_score"+d,"undefined"==typeof TGS.AdapterDefinitions&&TGS.Debug.Log(TGS.Debug.LOG_INFO,"the TGS adapter definitions library was not loaded, only the generic adapter and Q0000 will be available"),TGS._injectCSS(),TGS._LoadAdapterLibraries()},TGS._injectCSS=function(){var a=window.TGL?TGL.SDKBaseURL+"tgs/":"//sdk.tresensa.com/tgs/",b=document.getElementsByTagName("head")[0],c=document.createElement("link");c.type="text/css",c.href=a+"css/tgs-"+TGS.version+".css",c.rel="stylesheet",c.media="screen",b.appendChild(c)},TGS._LoadAdapterLibraries=function(){TGS.Debug.Log(TGS.Debug.LOG_INFO,"loading partner adapter and 3rd party libs...");var a=TGS.AdapterDefinitions?TGS.AdapterDefinitions[TGS._sPartnerID]:null,b=[],c=window.TGL?TGL.SDKBaseURL+"tgs/":"//sdk.tresensa.com/tgs/",d=window.TGL?TGL.MinifiedSuffix:".min";a&&(a.embedded!==!0&&b.push(c+TGS._sPartnerID+"/"+TGS._sPartnerID+"-"+a.version+d+".js"),"https:"===document.location.protocol&&a.httpslibs?b=b.concat(a.httpslibs):a.libs&&(b=b.concat(a.libs))),a&&a.fb!==!0||b.push(("https:"===document.location.protocol?"https:":"http:")+"//connect.facebook.net/en_US/all.js"),"undefined"!=typeof head&&b.length>0?(head.js.apply(this,b),head.ready(TGS._CreatePartnerBridge)):TGS._CreatePartnerBridge()},TGS._CreatePartnerBridge=function(){if(TGS.Adapters[TGS._sPartnerID])try{TGS.Debug.Log(TGS.Debug.LOG_INFO,"creating "+TGS._sPartnerID+" adapter..."),TGS._sPartnerBridge=new TGS.Adapters[TGS._sPartnerID]}catch(a){return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"error instantiating partner adapter"),void TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"   ("+a+")")}else TGS.Debug.Log(TGS.Debug.LOG_INFO,"creating generic adapter..."),TGS._sPartnerBridge=new TGS.Adapters.GenericAdapter;TGS._sPartnerBridge._mFacebookServicesAllowed="undefined"!=typeof FB,TGS._sPartnerBridge.onAdapterReady=TGS.onPartnerBridgeReady,TGS._sPartnerBridge.onUserInfoAvailable=TGS.onUserInfoAvailable,TGS._sPartnerBridge.masterInitialize(),TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"requesting game-partner info from server..."),TGS._sPartnerBridge.requestGameInfo(TGS._sGameID)},TGS.onGamePartnerInfoReceived=function(a){return TGS.Debug.Log(TGS.Debug.LOG_INFO,"game-partner info received"),TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"game-partner info: "+JSON.stringify(a)),a&&"undefined"!=typeof a.code?0!==a.code?void TGS.Debug.Log(TGS.Debug.LOG_ERROR,"game-partner info contained error code: "+a.code):(TGS._sGamePartnerInfo=a.partner_values,TGS.Microtransactions._sIAPProducts=a.iap_products,TGS.Microtransactions._sAppURLs=a.app_urls,TGS.Leaderboard._sLeaderboardDescriptors=a.leaderboards,TGS.localStorage.setItem(TGS._sLSKeys.TGS_gameinfo,JSON.stringify(a)),void(TGS._sPartnerBridge.isReady()?(TGS.Debug.Log(TGS.Debug.LOG_INFO,"initiating connection to partner..."),TGS._sPartnerBridge.masterConnect(TGS._sGamePartnerInfo)):TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"partner bridge not ready yet"))):void TGS.Debug.Log(TGS.Debug.LOG_ERROR,"game-partner info was corrupt")},TGS.onGamePartnerInfoError=function(a,b){TGS.Debug.Log(TGS.Debug.LOG_ERROR,"could not retrieve game-partner info: "+a),TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"	response obj: "+JSON.stringify(b));var c=TGS.localStorage.getItem(TGS._sLSKeys.TGS_gameinfo);c?(TGS.Debug.Log(TGS.Debug.LOG_INFO,"using a local copy of the game-partner info"),b=JSON.parse(c),TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"game-partner info: "+JSON.stringify(b)),TGS._sGamePartnerInfo=b.partner_values,TGS.Microtransactions._sIAPProducts=b.iap_products,TGS.Microtransactions._sAppURLs=b.app_urls,TGS.Leaderboard._sLeaderboardDescriptors=b.leaderboards):(TGS.Debug.Log(TGS.Debug.LOG_INFO,"no local copy of the game-partner info is available"),TGS.OverlayMessage({title:"Oops!",message:"Could not retrieve game info from the server. Some game features like in-app purchase and leaderboards may not be available."}),TGS._sGamePartnerInfo={},TGS.Microtransactions._sIAPProducts=[],TGS.Microtransactions._sAppURLs=[],TGS.Leaderboard._sLeaderboardDescriptors=[]),TGS._sPartnerBridge.masterConnect(TGS._sGamePartnerInfo)},TGS.onPartnerBridgeReady=function(){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"partner bridge is ready"),null!==TGS._sGamePartnerInfo&&(TGS.Debug.Log(TGS.Debug.LOG_INFO,"connecting to partner..."),TGS._sPartnerBridge.masterConnect(TGS._sGamePartnerInfo))},TGS.onUserInfoAvailable=function(a){return a?(TGS._sUserID=a.toString(),TGS.Debug.Log(TGS.Debug.LOG_INFO,"user id is: "+TGS._sUserID),void TGS.DataStore.ReloadGameData(TGS.onGameDataReceivedForUser)):void TGS.Debug.Log(TGS.Debug.LOG_INFO,"invalid user id")},TGS.onGameDataReceivedForUser=function(a){TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"received game info for user "+JSON.stringify(a)),TGS.MakeTGSReady()},TGS.MakeTGSReady=function(){if(TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"MakeTGSReady called"),TGS.IsReady()){if(window.TGE){var a=TGE.Game.GetInstance();a&&a._onTGSReady&&a._onTGSReady()}"function"==typeof TGS.onReady&&(TGS.Debug.Log(TGS.Debug.LOG_VERBOSE,"Calling TGS.onReady"),TGS.onReady.call(this))}},TGS.AddRequiredImagesToAssetList=function(a){if(!window.TGE)return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"you must be using the TreSensa TGE library to use TGS.AddRequiredImagesToAssetList"),null;var b=TGE.Game.GetInstance();null!==TGS.LoginIcon()&&b.assetManager.addAsset(a,{id:"tgs_login_icon",url:TGS.LoginIcon(),absolutePath:!0}),null!==TGS.LogoutIcon()&&b.assetManager.addAsset(a,{id:"tgs_logout_icon",url:TGS.LogoutIcon(),absolutePath:!0}),null!==TGS.Microtransactions.CurrencyIcon()&&b.assetManager.addAsset(a,{id:"tgs_currency_icon",url:TGS.Microtransactions.CurrencyIcon(),absolutePath:!0}),TGS.MoreGamesURL()&&null!==TGS._sPartnerBridge._mMoreGamesImage&&b.assetManager.addAsset(a,{id:"tgs_more_games",url:TGS._sPartnerBridge._mMoreGamesImage,absolutePath:!0}),null!==TGS.Social.ChallengeIcon()&&b.assetManager.addAsset(a,{id:"tgs_challenge_icon",url:TGS.Social.ChallengeIcon(),absolutePath:!0})},TGS.GetLoginButtonText=function(){return"A0001"!==TGS._sPartnerID&&"A0002"!==TGS._sPartnerID&&"A0030"!==TGS._sPartnerID||!TGS.Microtransactions.HasNonConsumables()?TGS.AutoLogin()||!TGS._sPartnerBridge.supportsLogout()&&TGS.LoggedIn()||!TGS.LoginIcon()?void 0:TGS.LoggedIn()?"Logout":"Login":"Restore Purchases"},TGS.GetLoginButtonAction=function(a){return"A0001"!==TGS._sPartnerID&&"A0002"!==TGS._sPartnerID&&"A0030"!==TGS._sPartnerID||!TGS.Microtransactions.HasNonConsumables()?TGS.AutoLogin()||!TGS._sPartnerBridge.supportsLogout()&&TGS.LoggedIn()||!TGS.LoginIcon()?void 0:TGS.ToggleUserLogin.bind(TGS,{onSuccess:a}):TGS.Microtransactions.RestorePurchases.bind(TGS.Microtransactions)},TGS.CreateLoginWidget=function(a){if(!window.TGE)return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"you must be using the TreSensa TGE library to use TGS.CreateLoginWidget"),null;var b=new TGE.DisplayObjectContainer;if("A0001"!==TGS._sPartnerID&&"A0002"!==TGS._sPartnerID&&"A0030"!==TGS._sPartnerID||!TGS.Microtransactions.HasNonConsumables())if(TGS.AutoLogin()||!TGS._sPartnerBridge.supportsLogout()&&TGS.LoggedIn()||!TGS.LoginIcon());else{var c=(new TGE.Button).setup({image:TGS.LoggedIn()?"tgs_logout_icon":"tgs_login_icon",pressFunction:TGS.ToggleUserLogin.bind(null,a)});c.addEventListener("tgs_login_changed",function(a){var b=a.currentTarget,c=TGS.LoggedIn()?"tgs_logout_icon":"tgs_login_icon";!TGS._sPartnerBridge.supportsLogout()&&TGS.LoggedIn()&&(b.enabled=!1,b.visible=!1,c=null),b.setImage(c)}),b.addChild(c)}else b.addChild((new TGE.Button).setup({image:"tgs_login_icon",pressFunction:TGS.Microtransactions.RestorePurchases}));return b},TGS.CreateMoreGamesButton=function(a){if(!window.TGE)return TGS.Debug.Log(TGS.Debug.LOG_ERROR,"you must be using the TreSensa TGE library to use TGS.CreateMoreGamesButton"),null;var b=new TGE.DisplayObjectContainer;if(TGS.MoreGamesURL()){var c=(new TGE.Button).setup({image:"tgs_more_games",pressFunction:TGS.ShowMoreGames}),d=0,e=0,f=1,g=TGE.Game.GetInstance().stage;-1!==a.indexOf("top")&&(e=40),-1!==a.indexOf("bottom")&&(e=g.height-40,f=-1),-1!==a.indexOf("left")&&(d=140),-1!==a.indexOf("right")&&(d=g.width-140),-1!==a.indexOf("center")&&(d=g.width/2,e-=19*f),b.x=d,b.y=e,b.addChild(c)}return b},TGS.MoreGamesURL=function(){return window.GameConfig&&GameConfig.MoreGames&&GameConfig.MoreGames.ENABLED?GameConfig.MoreGames.URL:TGS._sPartnerBridge._mMoreGamesURL},TGS.ShowMoreGames=function(){TGS._sPartnerBridge.showMoreGames()},TGS.OverlayMessage=function(a){if(!a||!a.message)return void TGS.Debug.Log(TGS.Debug.LOG_ERROR,"no message specified in TGS.OverlayMessage call");null!==TGS._sMessageOverlay&&TGS.CloseMessageOverlay();var b=TGS.BrowserDetect.onAndroid&&parseInt(TGS.BrowserDetect.OSversion.charAt(0))<4,c=TGS.BrowserDetect.isMobileDevice?window.TGE&&TGE.Game.GetInstance()?1.2*TGE.Game.GetInstance()._mViewportScale:.6:1,d=1;b&&(d=c,c=1);var e="undefined"==typeof a.overlayRed?TGS.OverlayRed:a.overlayRed,f="undefined"==typeof a.overlayGreen?TGS.OverlayGreen:a.overlayGreen,g="undefined"==typeof a.overlayBlue?TGS.OverlayBlue:a.overlayBlue,h="undefined"==typeof a.overlayOpacity?TGS.OverlayOpacity:a.overlayOpacity,i="string"!=typeof a.buttonText?"OK":a.buttonText,j="undefined"==typeof a.buttonAction?null:a.buttonAction,k="undefined"==typeof a.buttonSize?1:a.buttonSize,l=document.createElement("div");l.id="overlay",l.style.zIndex=10,l.style.position="fixed",l.style.width="100%",l.style.height="100%",l.style.top=0,l.style.left=0,l.style.backgroundColor="rgba("+Math.round(255*e).toString()+","+Math.round(255*f).toString()+","+Math.round(255*g).toString()+","+h.toString()+")",document.body.firstChild?document.body.insertBefore(l,document.body.firstChild):document.body.appendChild(l),TGS._sMessageOverlay=l;var m=300*d,n=0*d,o=20*d,p=document.createElement("div");p.id="box",p.style.position="absolute";var q=window.innerWidth/2-(m+2*o+2*n)*c/2;p.style.left=q.toString()+"px",p.style.width=m+"px",p.style.marginLeft="auto",p.style.marginRight="auto",p.style.textAlign="left",p.style.padding=o+"px",p.style.backgroundColor="#fff",p.style.borderRadius="5px",p.style.boxShadow="0px 0px 20px 4px #222",l.insertBefore(p,l.firstChild);var r=null,s=null,t=null;if(r=document.createElement("img"),r.id="close",r.src=TGS._IMAGES_LOCATION+"close-button.png",r.style.position="absolute",r.style.top="-"+o+"px",r.style.left=m+"px",r.style.padding="10px",r.style.cursor="pointer",p.insertBefore(r,p.firstChild),""!==i&&(s=document.createElement("div"),s.id="button",s.style.width=Math.round(.4*m*k*d)+"px",s.style.textAlign="center",s.style.padding=Math.round(10*k)+"px",s.style.backgroundColor="#ef2e24",s.style.color="#fff",s.style.fontSize=Math.round(20*k*d)+"px",s.style.fontWeight="bold",s.innerHTML=i,s.style.cursor="pointer",p.insertBefore(s,p.firstChild)),a.button2Image){var u=15,v=document.createElement("div");v.style.marginLeft="auto",v.style.marginRight="auto",v.style.textAlign="center",v.style.width="100%",v.style.height=90+2*u+"px",v.backgroundColor="#f00",p.insertBefore(v,p.firstChild),t=document.createElement("img"),t.id="button2",t.src=a.button2Image,t.style.marginLeft="auto",t.style.marginRight="auto",t.style.textAlign="center",t.style.padding=Math.round(u*d)+"px",t.height=Math.round(90*d),t.width=Math.round(256*d),t.style.cursor="pointer",v.insertBefore(t,v.firstChild)}else a.button2Text&&(t=document.createElement("div"),t.id="button2",t.style.width=Math.round(.4*m*k*d)+"px",t.style.textAlign="center",t.style.padding=Math.round(10*k)+"px",t.style.marginBottom="15px",t.style.backgroundColor="#ef2e24",t.style.color="#fff",t.style.fontSize=Math.round(20*k*d)+"px",t.style.fontWeight="bold",t.innerHTML=a.button2Text,t.style.cursor="pointer",p.insertBefore(t,p.firstChild));var w=document.createElement("div");if(w.id="text",w.style.textAlign="left",w.style.color="#000",w.style.fontSize=Math.round(18*d)+"px",w.style.paddingBottom=o+"px",w.innerHTML=a.message,p.insertBefore(w,p.firstChild),a.title){var x=document.createElement("div");x.id="title",x.style.textAlign="left",x.style.color="#000",x.style.fontSize=Math.round(26*((1+d)/2))+"px",x.style.fontWeight="bold",x.style.paddingBottom="10px",x.innerHTML=a.title,p.insertBefore(x,p.firstChild)}var y=Math.min(window.innerHeight,window.GameConfig&&"landscape"===GameConfig.ORIENTATION?536:832)/2-p.clientHeight*c/2;p.style.top=y.toString()+"px";var z=TGS.BrowserDetect.isMobileDevice&&"Windows Phone"!==TGS.BrowserDetect.platform?"touchstart":"click";if(null!==s&&s.addEventListener(z,TGS.CloseMessageOverlay.bind(this,j),!1),null!==r&&r.addEventListener(z,TGS.CloseMessageOverlay.bind(this,j),!1),null!==t&&t.addEventListener(z,a.button2Callback,!1),l.addEventListener("click",TGS._BlockEvent,!1),l.addEventListener("mousedown",TGS._BlockEvent,!1),l.addEventListener("mouseup",TGS._BlockEvent,!1),l.addEventListener("mousemove",TGS._BlockEvent,!1),l.addEventListener("touchstart",TGS._BlockEvent,!1),!b){var A=p.getAttribute("style")||"";p.setAttribute("style",A+" -ms-transform-origin: 0% 0%; -webkit-transform-origin: 0% 0%; -moz-transform-origin: 0% 0%; -o-transform-origin: 0% 0%; transform-origin: 0% 0%; -ms-transform: scale("+c+"); -webkit-transform: scale("+c+"); -moz-transform: scale("+c+"); -o-transform: scale("+c+"); transform: scale("+c+");")}},TGS.CloseMessageOverlay=function(a){null!==TGS._sMessageOverlay&&(TGS._sMessageOverlay.parentNode&&TGS._sMessageOverlay.parentNode.removeChild(TGS._sMessageOverlay),a&&a.call(),TGS._sMessageOverlay=null)},TGS.OpenURL=function(a,b,c,d){TGS._sPartnerBridge.openURL(a,b,c),d||TGS.Analytics._logClickThruEvent(a)},TGS.LoadingOverlay=function(){var a=TGS.OverlayRed,b=TGS.OverlayGreen,c=TGS.OverlayBlue,d=TGS.OverlayOpacity,e=document.createElement("div");e.id="overlay",e.style.zIndex=9,e.style.position="fixed",e.style.width="100%",e.style.height="100%",e.style.top=0,e.style.left=0,e.style.backgroundColor="rgba("+Math.round(255*a).toString()+","+Math.round(255*b).toString()+","+Math.round(255*c).toString()+","+d.toString()+")",document.body.firstChild?document.body.insertBefore(e,document.body.firstChild):document.body.appendChild(e);var f=document.createElement("img");f.id="gif",f.src=TGS._IMAGES_LOCATION+"processing.gif";var g=.45*window.innerHeight;return f.style.display="block",f.style.marginLeft="auto",f.style.marginRight="auto",f.style.marginTop=g.toString()+"px",f.style.align="center",e.insertBefore(f,e.firstChild),e.addEventListener("click",TGS._BlockEvent,!1),e.addEventListener("mousedown",TGS._BlockEvent,!1),e.addEventListener("mouseup",TGS._BlockEvent,!1),e.addEventListener("mousemove",TGS._BlockEvent,!1),e.addEventListener("touchstart",TGS._BlockEvent,!1),e},TGS._BlockEvent=function(a){return a.stopPropagation(),a.preventDefault(),a.stopImmediatePropagation&&a.stopImmediatePropagation(),!1},TGS.noop=function(){},TGS.LoginRequest=function(){this.onSuccess=null,this.onFailure=null,this.onUserCancel=null},TGS.Adapters.GenericAdapter=function(){TGS.Adapters.GenericAdapter.superclass.constructor.call(this),TGS.DataStore._sSaveToLocalStorage=!0,TGS.DataStore._sSaveToTGSServer=!1,this._mMoreGamesURL="http://www.mobilewebarcade.com/"},TGS.Adapters.GenericAdapter.prototype={},extend(TGS.Adapters.GenericAdapter,TGS.PartnerBridge),TGS.Adapters.Q0000=function(){TGS.Adapters.Q0000.superclass.constructor.call(this),this._mLoggedIn=!1,this._mMoreGamesURL="http://www.mobilewebarcade.com/","false"===getQueryString().fb&&(this._mFacebookServicesAllowed=!1,this._mUseUserInfoInSLB=!0),TGS.DataStore._sSaveToLocalStorage=!0,TGS.DataStore._sSaveToTGSServer=!1,this._GoogleAnalyticsId="UA-47801335-3"
-},TGS.Adapters.Q0000.prototype={supportsMicrotransactions:function(){return!0},autoLogin:function(){return!1},costFactor:function(){return 10},priceAsFormattedString:function(a){return"$"+(a*this.costFactor()/100-.01).toFixed(2)},currencyIcon:function(){return TGS._IMAGES_LOCATION+"testicon.png"},connect:function(){this.getLoginStatus()},loginUser:function(a){TGS.Debug.Log(TGS.Debug.LOG_INFO,"prompting user to login...");var b=window.prompt("LOGIN (enter your username):","");return b?"string"!=typeof b||b.length<1?void TGS._LoginFailed(a):(this._mUsername=b,void this.userLoggedIn(a,b)):void TGS._LoginCanceled(a)},purchaseItem:function(a){a.partnerTransactionID=~~(2147483648*Math.random()),setTimeout(this.openPurchase.bind(this,a),2e3)},openPurchase:function(a){var b="Do you agree to pay "+this.priceAsFormattedString(a.item.price)+" to buy "+a.item.title+"?",c=confirm(b);setTimeout(this.closePurchase.bind(this,c,a),1e3)},closePurchase:function(a,b){a?window.GameConfig&&GameConfig.PROD_ENV===!0?(b.internalErrorMessage="PROD_ENV=true",b.userErrorMessage="IAP purchases are not allowed in production.",TGS.Microtransactions._PartnerPurchaseFailed(b)):(TGS.Debug.Log(TGS.Debug.LOG_INFO,"TestAdapter approved purchase of transaction "+b.transactionID),TGS.Microtransactions._PartnerPurchaseSuccessful(b)):(b.internalErrorMessage="user cancelled",b.userErrorMessage="",TGS.Microtransactions._PartnerPurchaseFailed(b))}},extend(TGS.Adapters.Q0000,TGS.PartnerBridge);TGS.version = '0.3.11';
-
 var PWG = {};
 
 // LOGGING
@@ -40297,7 +40289,7 @@ PWG.Utils = (function() {
 	
 	utils.parseMarkup = function(str, reference, encodeMarkup) {
 		var parsedString = str;
-		// 
+		// trace('Utils/parseMarkup, str = ' + str + ', reference = ', reference);
 
 		if(str.indexOf('~{') > -1) {
 			var pattern = /~\{[A-Z]*\}~/gi;
@@ -40312,7 +40304,7 @@ PWG.Utils = (function() {
 					if(encodeMarkup) {
 						output = encodeURIComponent(output);
 					}
-					// 
+					// trace('output = ' + output);
 					if(output === undefined || output === null) {
 						output = match;
 					} else {
@@ -40320,7 +40312,7 @@ PWG.Utils = (function() {
 					}
 					parsedString = parsedString.replace(match, output);
 				}
-				//
+				//trace(parsedString);
 			} else {
 				parsedString = null;
 			}
@@ -40330,7 +40322,7 @@ PWG.Utils = (function() {
 	};
 	
 	utils.addElement = function(params) {
-		
+		trace('\tutils/addElement, params = ', params);
 		var attrs = params.attrs;
 		var el = document.createElement(params.el);
 		for (var key in attrs) {
@@ -40369,7 +40361,7 @@ PWG.Utils = (function() {
 	};
 	
 	utils.moveView = function(sprite, movement, params) {
-		// 
+		// trace('Utils/moveView, '+ sprite.model.name);
 		var type = params.type || movement.type;
 		switch(type) {
 			case PWG.MovementTypes.HORIZONTAL_BY_SPEED:
@@ -40378,7 +40370,7 @@ PWG.Utils = (function() {
 			break;
 
 			case PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED:
-				// 
+				// trace('groundedDirectionBySpeed, touching.down = ' + sprite.body.touching.down);
 				if(sprite.body.touching.down) {
 					this.moveDirectionalBySpeed(sprite, movement, params);
 				}
@@ -40399,7 +40391,7 @@ PWG.Utils = (function() {
 	};
 	
 	utils.moveDirectionalBySpeed = function(sprite, movement, params) {
-		// 
+		// trace('moveDirectionBySpeed: ' + sprite.model.name + ', direction = ' + params.direction + ', speed = ' + movement.speed);
 		switch(params.direction) {
 			case PWG.Directions.LEFT: 
 			sprite.x -= movement.speed;
@@ -40412,22 +40404,22 @@ PWG.Utils = (function() {
 			case PWG.Directions.JUMP:
 			// sprite.x -= movement.speed;
 			sprite.body.velocity.y = -(movement.speed * sprite.model.attrs.jumpMultiplier);
-			// 
+			// trace('going to jump: ' + (movement.speed * 1000));
 			// sprite.body.velocity.y = -(movement.speed * 1000);
 			break;
 
 			case PWG.Directions.UP: 
-			// 
+			// trace('moving up: ' + movement.speed);
 			sprite.y -= movement.speed;
 			break;
 			
 			case PWG.Directions.DOWN: 
-			// 
+			// trace('moving down: ' + movement.speed);
 			sprite.y += movement.speed;
 			break;
 
 			default: 
-			
+			trace('WARNING: unknown movement direction: ' + direction);
 			break;
 		}
 	};
@@ -40461,59 +40453,116 @@ PWG.Utils = (function() {
 }());
 
 
-PWG.DOMManager = (function() {
+PWG.DOMManager = function() {
 	var bodyEl = document.getElementsByTagName('body')[0];
 	
-	var dom_manager = {
-		addElements: function(elements, parentEl, callback, context) {
-			var pops = parentEl || bodyEl;
-			PWG.Utils.each(
-				elements,
-				function(element) {
-					// 
-					var el = document.createElement(element.type);
-
-					if(element.attrs) { el = this.addAttributes(element.attrs, el); }
-					if(element.css) { el = this.addStyle(element.css, el); }
-					if(element.className) { el.className = element.className; }
-					if(element.html) { el.innerHTML = element.html; }
-
-					pops.appendChild(el);
-				},
-			this
-			);
-			
-			if(callback) {
-				var ctx = context || window;
-				callback.call(ctx);
-			}
-		},
-
-		addAttributes: function(attributes, el) {
-			PWG.Utils.each(
-				attributes,
-				function(attribute, key) {
-					el.setAttribute(key, attribute);
-				},
-				this
-			);
-			return el;
-		},
-
-		addStyle: function(styles, el) {
-			PWG.Utils.each(
-				styles,
-				function(style, key) {
-					el.style[key] = style;
-				},
-				this
-			);
-			return el;
-		}
-	};
+	var module = {};
 	
-	return dom_manager;
-}());
+	function ScriptLoader(config, callback, context) {
+		this.url = config.url;
+		this.name = config.name;
+		
+		var ctx = context || window;
+		var script = document.createElement('script');
+		
+		script.setAttribute('type', 'text/javascript');
+		
+		if (script.readyState) { 
+			script.onreadystatechange = function() {
+				if(script.readyState == 'loaded' || script.readyState == 'complete') {
+					callback.call(ctx, config.name);
+				}
+			};
+		} else {
+			script.onload = function() {
+				callback.call(ctx, config.name);
+			};
+		}
+		
+		script.setAttribute('src', config.url);
+		document.getElementsByTagName('head')[0].appendChild(script);
+	}
+	
+	module.ScriptLoader = ScriptLoader;
+	
+	module.loaders = {};
+	module.activeCallback;
+	module.activeContext;
+	
+	module.addScripts = function(scripts, callback, context) {
+		module.activeCallback = callback;
+		module.activeContext = context; 
+		
+		PWG.Utils.each(
+			scripts,
+			function(script) {
+				script.idx = module.loaders.length;
+				module.loaders[script.name] = new ScriptLoader(script, module.scriptLoaded, module);
+			},
+			this
+		);
+	},
+	
+	module.scriptLoaded = function(name) {
+		trace('DOMManager/scriptLoaded, name = ' + name + ', loaders = ', module.loaders);
+		delete module.loaders[name];
+		
+		if(PWG.Utils.objLength(module.loaders) === 0) {
+			if(module.activeCallback) {
+				var ctx = module.activeContext || window;
+				module.activeCallback.call(ctx);
+			}
+		}
+	},
+	
+	module.addElements = function(elements, parentEl, callback, context) {
+		var pops = parentEl || bodyEl;
+		PWG.Utils.each(
+			elements,
+			function(element) {
+				// trace('DOMManager/addElements, type = ' + element.type + ', element = ', element);
+				var el = document.createElement(element.type);
+
+				if(element.attrs) { el = this.addAttributes(element.attrs, el); }
+				if(element.css) { el = this.addStyle(element.css, el); }
+				if(element.className) { el.className = element.className; }
+				if(element.html) { el.innerHTML = element.html; }
+
+				pops.appendChild(el);
+			},
+		this
+		);
+		
+		if(callback) {
+			var ctx = context || window;
+			callback.call(ctx);
+		}
+	},
+
+	module.addAttributes = function(attributes, el) {
+		PWG.Utils.each(
+			attributes,
+			function(attribute, key) {
+				el.setAttribute(key, attribute);
+			},
+			this
+		);
+		return el;
+	},
+
+	module.addStyle = function(styles, el) {
+		PWG.Utils.each(
+			styles,
+			function(style, key) {
+				el.style[key] = style;
+			},
+			this
+		);
+		return el;
+	}
+	
+	return module;
+}();
 
 PWG.DeviceUtils = function() {
 	var ua = navigator.userAgent.toLowerCase();
@@ -40627,7 +40676,7 @@ PWG.Storage = (function() {
 					if(params[key] instanceof Object || params[key] instanceof Array) {
 						params[key] = JSON.stringify(params[key]);
 					}
-					// 
+					// trace('Storage, about to set ' + key + ', to value ' + params[key]);
 					localStorage[key] = params[key];
 				}
 			}
@@ -40638,7 +40687,7 @@ PWG.Storage = (function() {
 			}
 		},
 		destroy: function() {
-			
+			trace('Storage/destroy');
 			localStorage.clear();
 		},
 		addListener: function(listener) {
@@ -40683,10 +40732,10 @@ PWG.Storage = (function() {
 	
 	function _supportsLocalStorage() {
 		try {
-			
+			trace('STORAGE AVAILABLE');
 			return 'localStorage' in window && window['localStorage'] !== null;
 		} catch(e) {
-			
+			trace('STORAGE NOT AVAILABLE');
 			return false;
 		}
 	}
@@ -40784,7 +40833,7 @@ PWG.WebFontManager = (function() {
 						break;
 						
 						default: 
-						
+						trace('WARNING: unknown webFont = ' + webFont);
 						break;
 					}
 				},
@@ -40793,7 +40842,7 @@ PWG.WebFontManager = (function() {
 		},
 		
 		initGoogle: function(families) {
-			
+			trace('WebFontManager/initGoogle, families: ', families);
 			WebFontConfig = {
 		    // google: { families: [ 'Sue+Ellen+Francisco::latin', 'Smythe::latin', 'Waiting+for+the+Sunrise::latin' ] }
 		    google: { families: families }
@@ -40865,23 +40914,23 @@ PWG.EventCenter = (function() {
 	
 	eventCenter.bind = function(type, callback, context) {
 		var ctx = context || this;
-		// 
-		// 
+		// trace('EventCenter/bind, type = ' + type);
+		// trace(callback);
 		if(!_listeners[type]) {
 			_listeners[type] = [];
 		}
 		_listeners[type].push({ callback: callback, context: ctx });
-		// 
-		// 
+		// trace('_listeners['+type+'] now = ');
+		// trace(_listeners[type]);
 	};
 	
 	eventCenter.trigger = function(params) {
 		var list = _listeners[params.type];
-		// 
+		// trace('----- EventCenter/trigger, type = ' + params.type + ', list = ', list);
 		if(list) {
 			PWG.Utils.each(list,
 				function(l) {
-					// 
+					// trace('\t\tl = ', l);
 					if(l && l.callback) { // in case callback is destroyed during course of trigger
 						l.callback.call(l.context, params);
 					}
@@ -40978,7 +41027,7 @@ PWG.Stage = (function() {
 		var left = (document.documentElement.clientWidth/2) - (stage.width/2);
 		var top = (document.documentElement.clientHeight/2) - (stage.height/2);
 
-		
+		trace('\nwinW = ' + stage.winW + ', winH = ' + stage.winH + '\nstage.width = ' + stage.width + ', stage.height = ' + stage.height + '\nunit = ' + stage.unit + '\nleft = ' + left + ', top = ' + top);
 
 		var loadingWidth = stage.winW - 80;
 		var loadingHeight = stage.winH - 80;
@@ -41021,7 +41070,7 @@ PWG.Loader = (function() {
 	};
 	
 	function Loader() {
-		
+		trace('Loader/constructor');
 		this.numToLoad = 0;
 		this.numLoaded = 0;
 		this.fileCallback;
@@ -41030,7 +41079,7 @@ PWG.Loader = (function() {
 	}
 	
 	Loader.prototype.batchLoadJS = function(files, fileCallback, batchCallback, context, scriptAttributes) {
-		
+		trace('Loader/batchLoadJS, files = ', files, '\tcontext = ', context);
 		this.fileCallback = fileCallback || null;
 		this.batchCallback = batchCallback || null;
 		this.context = context || window;
@@ -41093,14 +41142,14 @@ PWG.SocialPanel = (function() {
 
 	var module = {
 		init: function(params) {
-			// // 
+			// // trace('SocialPanel/init, params = ', params);
 			_model = PWG.Utils.extend(_model, params);
 			_initViews();
 			_addListeners();
 		},
 
 		show: function(params) {
-			// 
+			// trace('SocialPanel/show, params = ', params);
 			var elements = params.value;
 			_model.parentEl.style.display = 'block';
 			PWG.Utils.each(elements,
@@ -41128,20 +41177,20 @@ PWG.SocialPanel = (function() {
 		},
 
 		buttonClick: function(network) {
-			// 
+			// trace('SocialPanel/buttonClick, network = ' + network + '\n\tcurrentActionType = ' + _model.currentActionType);
 			var networkActions = _model.socialActions[network];
 			if(networkActions) {
-				// 
+				// trace('\tnetworkActions = ', networkActions);
 				var socialAction = networkActions[_model.currentActionType];
 				if(socialAction) {
-					// 
+					// trace('\tsocialAction = ', socialAction);
 					var url;
 					if(socialAction['params']) {
 						url = socialAction['url'] + PWG.Utils.parseMarkup(socialAction['params'], _model, true);
 					} else {
 						url = socialAction['url'];
 					}
-					// 
+					// trace('\turl = ' + url);
 					if(url.indexOf('mailto') > -1) {
 						if(PWG.DeviceUtils.isIphone() || PWG.DeviceUtils.isAndroid()) {
 							window.location.href = url;
@@ -41242,7 +41291,7 @@ PWG.SocialPanel = (function() {
 				}
 				verticalTotal += attrs.size.height;
 			}
-			// 
+			// trace('\tVERTICAL TOTal = ' + verticalTotal);
 			var btnOffset = (idx * attrs.size.height) +  (idx * attrs.spacer) + offset;
 			style.top = ((winH/2) - (verticalTotal/2) + (btnOffset)) + 'px';
 		} else if(vertical < 0) {
@@ -41250,7 +41299,7 @@ PWG.SocialPanel = (function() {
 		} else {
 			style.top = vertical + 'px';
 		}
-		// 
+		// trace('RETURNING: ', style);
 		return style;
 	}
 	
@@ -41285,7 +41334,7 @@ PWG.SocialPanel = (function() {
 	}
 
 	function _eventHandler(event) {
-		// 
+		// trace('SocialPanel/_eventHandler event = ', event);
 		var listener;
 		PWG.Utils.each(_model.listeners,
 			function(l) {
@@ -41297,12 +41346,12 @@ PWG.SocialPanel = (function() {
 		);
 		var match = listener.match;
 		if(match) {
-			// 
+			// trace('\tthere is a match');
 			if(match.value === event.value) {
-				// 
+				// trace('\t\tvalue matches the event value');
 				_executeActions(match.actions);
 			} else if(listener.nonmatch) {
-				// 
+				// trace('\t\tnonmatch');
 				_executeActions(listener.nonmatch.actions);
 			}
 		} else {
@@ -41311,10 +41360,10 @@ PWG.SocialPanel = (function() {
 	}
 	
 	function _executeActions(actions) {
-		// 
+		// trace('SocialPanel/_executeActions');
 		PWG.Utils.each(actions,
 			function(action) {
-				// 
+				// trace('\tcalling: ' + action.method + ', passing: ', action.data);
 				PWG.SocialPanel[action.method](action.data);
 			},
 			this
@@ -41326,7 +41375,7 @@ PWG.SocialPanel = (function() {
 
 PWG.TGSAdapter = (function() {
 	var LEVEL_PLAYS_PER_AD = 1;
-	var WIDGET_WIDTH = 100;
+	var WIDGET_WIDTH = 300;
 
 	
 	var _levels = [];
@@ -41389,26 +41438,26 @@ PWG.TGSAdapter = (function() {
 				_tgsExists = true;
 				TGS.Init(_tgsConfig);
 			}
-			
+			trace('TGSAdapter/init, _levels = ', _levels);
 		},
 		
 		// http://developer.tresensa.com/docs/tgs/symbols/TGS.Analytics.html#.logGameEvent
 		logEvent: function(type, args) {
 			if(_tgsExists) {
-				
-				TGS.Analytics[type](args);
+				trace('TGSAdapter/logEvent, type = ' + type + ', args = ', args);
+				TGS.Analytics[type].apply(this, args);
 			}
 		},
 		
 		submitScore: function(params) {
 			if(_tgsExists) {
-				
+				trace('submitting score: ', params);
 				TGS.Leaderboard.SubmitScore(params);
 			}
 		},
 		
 		adCheck: function(idx) {
-			
+			trace('TGSAdapter/adCheck, _levels[' + idx + '] = ' + _levels[idx] + ', LEVELS_PLAYS_PER_AD = ' + LEVEL_PLAYS_PER_AD);
 			// if(_tgsExists) {
 			if(_needAd) {
 				// if(_levels[idx] === 0) {
@@ -41427,57 +41476,44 @@ PWG.TGSAdapter = (function() {
 		
 		displayInterstitial: function() {
 			
-			
+			trace('TGSAdapter/displayInterstitial');
 			PWGGame.adPlaying = true;
 			PWG.EventCenter.trigger({ type: PWG.Events.AD_STARTED });
 			TGS.Advertisement.DisplayInterstitialAd(_displayConfig);		
 		},
 		
 		addWidget: function() {
-			
+			trace('TGSAdapter/addWidget');
 			var winW = PWG.Stage.winW; 
 			var winH = PWG.Stage.winH;
-			var stageUnit = PWG.Stage.unit; 
-			var widgetX = (stageUnit * 3);
-			var widgetY = 0;
-			
+			var unit = PWG.Stage.unit; 
+			var widgetX = (unit * 3);
+			var widgetY = (unit * 1);
+			var widgetScale = (unit * 5) / WIDGET_WIDTH;
+			trace('\twidget x/y = ' + widgetX + '/' + widgetY + ', scale = ' + widgetScale + ', widget w should be = ' + (unit * 5));
 
 			if(_tgsExists) {
 				this.widget = PWGGame.Tresensa.createWidget({
 					x: widgetX,
 					y: widgetY,
-					scale: 0.25,
+					scale: widgetScale,
 					shareUrl: 'https://www.facebook.com/kekevscaterpillars',
 					shareImage: 'http://www.polyworksgames.com/games/keke2/assets/images/keke_grey_expanse_title.png',
 					shareTitle: 'keke and the grey expanse',
 					shareMessage: 'i love playing keke and the grey expanse!'
 				});
 			}
-/*
-			var widgetW = WIDGET_WIDTH;
-			var widgetX = winW/4 - widgetW/2;
-			var widgetY = 0;
-
-			_endScreenContainer.style.display = 'block';
-			
-			if(_tgsExists) {
-				this.widget = TGS.Widget.CreateWidget({
-					width: widgetW,
-					x: widgetX,
-					y: widgetY,
-					scale: 0.5,
-					shareUrl: 'https://www.facebook.com/kekevscaterpillars',
-					shareImage: 'http://www.polyworksgames.com/games/keke2/assets/images/keke_grey_expanse_title.png',
-					shareTitle: 'keke and the grey expanse',
-					shareMessage: 'i love playing keke and the grey expanse!',
-					parentDiv: _endScreenContainer
-				});
-			}
-*/
 		},
 
+		closeWidget: function() {
+			trace('TGSAdapter/closeWidget, this.widget = ', this.widget);
+			if(this.widget) {
+				this.widget.close();
+			}
+		},
+		
 		hideGameOverWidget: function() {
-			
+			trace('TGSAdapter/hideGameOverWidget');
 			if(this.widget) {
 				this.widget.close();
 			}
@@ -41487,7 +41523,7 @@ PWG.TGSAdapter = (function() {
 	
 	
 	function _finishAdSession() {
-		
+		trace('TGSAdapter/_finishAdSession');
 		PWGGame.adPlaying = false;
 		PWG.EventCenter.trigger({ type: PWG.Events.AD_COMPLETED });
 	}
@@ -41802,6 +41838,12 @@ var rockPlatformDisintegrating02 = {
 
 
 var domConfig = {
+	scripts: [
+	{
+		name: 'phaser',
+		url: '//polyworksgames.com/games/js/lib/phaser-1.1.3.js'
+	}
+	],
 	head: {
 		parentEl: 'head',
 		elements: [
@@ -42022,6 +42064,10 @@ PWG.Config = (function() {
 		};
 
 		var c = {
+			// AUDIO
+			audio: {
+				secrets: 'assets/audio/music/secrets3.mp3'
+			},
 			// IMAGES
 			images: {
 				// gameTitle: 'assets/images/keke_title.png',
@@ -43616,6 +43662,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -66514,8 +66563,8 @@ PWG.Config = (function() {
 						name: 'gameOver',
 						cl: 'Text',
 						attrs: {
-							alignX: 'center',
-							y: 0,
+							x: winW - (stageUnit * 6),
+							y: winH - (stageUnit * 2.25),
 							style: { 
 								font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
@@ -67043,8 +67092,8 @@ PWG.Model = (function() {
 	
 	var _this;
 	function Model(params) {
-		// 
-		// 
+		// trace('Model['+params.name+']/constructor, params = ');
+		// trace(params);
 		_this = this;
 		this.active = true;
 		PWG.Utils.each(params,
@@ -67056,8 +67105,8 @@ PWG.Model = (function() {
 	}
 	
 	Model.prototype.get = function(prop) {
-		// 
-		// 
+		// trace('Model/get, prop = ' + prop + ', this = ');
+		// trace(this);
 		if(this[prop]) {
 			return this[prop];
 		} else {
@@ -67085,7 +67134,7 @@ PWG.Text = (function() {
 		_this = this;
 		this.model = new PWG.Model(params);
 		var attrs = this.model.attrs;
-		// 
+		// trace('Text['+this.model.name+']/constructor, this = ', this);
 		var context = (attrs.dynamicContentContext) ? attrs.dynamicContentContext : PWGGame;
 		var content = PWG.Utils.parseMarkup(attrs.defaultContent, context);
 		Text._super.constructor.call(this, params.game, attrs.x, attrs.y, content, attrs.style);
@@ -67093,7 +67142,7 @@ PWG.Text = (function() {
 	}
 	
 	Text.prototype.begin = function() {
-		// 
+		// trace('Text['+this.model.name+']/begin, listeners = ', this.model.attrs.listeners);
 		var attrs = this.model.attrs;
 		var content = attrs.defaultContent;
 		this.alignAndPosition();;
@@ -67111,8 +67160,8 @@ PWG.Text = (function() {
 	};
 
 	Text.prototype.alignAndPosition = function() {
-		// 
-		// 
+		// trace('============= Text['+this.model.name+']/position');
+		// trace('\ttext width = ' + this.width);
 		var attrs = this.model.attrs;
 		if(attrs.alignX) {
 			switch(attrs.alignX) {
@@ -67122,15 +67171,15 @@ PWG.Text = (function() {
 				break;
 				
 				case 'windowRight':
-				// 
+				// trace('\taligning right to window, x = ' + this.x + ', width = ' + this.width);
 				this.x = PWG.Stage.winW - this.width;
-				// 
+				// trace('\tx now = ' + this.x);
 				break;
 				
 				case 'stageRight':
-				// 
+				// trace('\taligning right to stage, x = ' + this.x + ', width = ' + this.width);
 				this.x = PWG.Stage.width - this.width;
-				// 
+				// trace('\tx now = ' + this.x);
 				break;
 				
 				default: 
@@ -67151,7 +67200,7 @@ PWG.Text = (function() {
 	};
 	
 	Text.prototype.onUpdate = function(event) {
-		// 
+		// trace('Text['+this.model.name+']/onUpdate, width = ' + this.width + ', event = ', event);
 		var context;
 		if(event.context) {
 			context = event.context;
@@ -67162,12 +67211,12 @@ PWG.Text = (function() {
 		}
 
 		this.content = PWG.Utils.parseMarkup(this.model.attrs.defaultContent, context);
-		// 
+		// trace('\twidth now = ' + this.width);
 		// this.alignAndPosition();
 	};
 	
 	Text.prototype.destroy = function() {
-		// 
+		// trace('Text['+this.model.name+']/destroy, this = ', this, '\tlisteners = ', this.model.attrs.listeners);
 		// Text._super.destroy();
 		var listeners = this.model.listeners;
 		var _this = this;
@@ -67190,10 +67239,10 @@ PWG.Sprite = (function() {
 
 	function Sprite(params) {
 		this.model = new PWG.Model(params);
-		// 
+		// trace('Sprite['+this.model.name+']/constructor, model = ', this.model);
 		var attrs = this.model.attrs;
 		var start = attrs.start;
-		// 
+		// trace('\t\t\tstart = x: ' + start.x + ', y: ' + start.y + ', img = ' + attrs.img);
 		Sprite._super.constructor.call(this, params.game, start.x, start.y, attrs.img);
 		this.active = true;
 		// this.active = false;
@@ -67202,7 +67251,7 @@ PWG.Sprite = (function() {
 	}
 	
 	Sprite.prototype.begin = function() {
-		// 
+		// trace('Sprite['+this.model.name+']/begin, this = ', this);
 
 		var attrs = this.model.attrs;
 		var phaser = attrs.phaser; 
@@ -67222,18 +67271,18 @@ PWG.Sprite = (function() {
 		}
 		var setSize = attrs.setSize;
 		if(setSize) {
-			// 
-			// 
+			// trace('Sprite['+this.model.name+'] setSize = ' + setSize.length);
+			// trace(setSize);
 			if(setSize.length === 4) {
-				// 
+				// trace('\tsetting w, h, x, y size');
 				this.body.setSize(setSize[0], setSize[1], setSize[2], setSize[3]);
 			} else {
-				// 
+				// trace('\tsetting w, h size');
 				this.body.setSize(setSize[0], setSize[1]);
 			}
 			// if(setSize.x && setSize.y) {
-			// 	// 
-			// 	// 
+			// 	// trace('setting ['+this.model.name+'] size to: ');
+			// 	// trace(setSize);
 			// 	this.body.setSize(setSize.width, setSize.height, setSize.x, setSize.y);
 			// } else {
 			// 	this.body.setSize(setSize.width, setSize.height);
@@ -67252,7 +67301,7 @@ PWG.Sprite = (function() {
 	};
 	
 	Sprite.prototype.beginPhysics = function(physics) {
-		// 
+		// trace('\n\nSprite['+this.model.name+']/beginPhysics');
 		for(var key in physics) {
 			this.body[key] = physics[key];
 		}
@@ -67265,20 +67314,20 @@ PWG.Sprite = (function() {
 	};
 
 	Sprite.prototype.deactivateGravity = function() {
-		// 
+		// trace('Sprte['+this.model.name+']/deactivateGravity');
 		this.exists = false;
 		this.allowGravity = false;
 		this.body.gravity = 0;
 	};
 	
 	Sprite.prototype.activateGravity = function() {
-		// 
-		// 
+		// trace(this);
+		// trace('Sprite['+this.model.name+']/activateGravity, y = ' + this.body.screenY);
 		var physics = this.model.attrs.physics;
 		if(physics && physics.deferredGravity) {
 			var gravity = (physics.gravity) ? physics.gravity : PWGGame.get('gravity');
-			// 
-			// 
+			// trace('gravity = ');
+			// trace(gravity);
 			this.body.gravity = gravity;
 		}
 		this.allowGravity = true;
@@ -67286,9 +67335,9 @@ PWG.Sprite = (function() {
 	};
 	
 	Sprite.prototype.checkTerrainCollision = function(terrain) {
-		// 
-		// 
-		// 
+		// trace('Sprite['+this.model.name+']/checkTerrainCollision, terrain = ');
+		// trace(terrain);
+		// trace(this);
 		PWGGame.phaser.physics.collide(this, terrain);
 	};
 	
@@ -67305,9 +67354,9 @@ PWG.Sprite = (function() {
 	};
 	
 	Sprite.prototype.onDynamicTerrainCollision = function(sprite, terrain) {
-		// 
+		// trace('Sprite['+this.model.name+']/onDynamicTerrainCollision, terrain = ' + terrain.model.name);
 		if(terrain.collidedWithSprite) {
-			// 
+			// trace('Sprite['+this.model.name+']/onDynamicTerrainCollision, calling collidedWithSprite on ', terrain);
 			terrain.collidedWithSprite(sprite);
 		}
 		var terrainY = terrain.body.y + terrain.body.height;
@@ -67319,23 +67368,23 @@ PWG.Sprite = (function() {
 	};
 	
 	Sprite.prototype.beginAnimations = function(animations) {
-		// 
+		// trace('Sprite['+this.model.name+']/beginAnimations, animations = ', animations);
 		PWG.Utils.each(animations,
 			function(a, key) {
-				// 
+				// trace('\ta['+key+'] = ', a);
 				this.animations.add(key, a.keyFrames, a.frameRate);
 			},
 			this
 		);
 
 		var defaultAnimation = this.model.attrs.defaultAnimation;
-		// 
+		// trace('------------- Sprite['+this.model.name+']/beginAnimations, defaultAnimation = ' + defaultAnimation);
 		if(defaultAnimation) {
-			// 
+			// trace('\tgoing to be defaultAnimation: ' + defaultAnimation);
 			this.play(defaultAnimation, animations[defaultAnimation].frameRate, animations[defaultAnimation].loop);
 			this.model.currentAnimation = defaultAnimation;
 		} else {
-			// 
+			// trace('\tgoing to frame 0');
 			this.animations.frame = 0;
 			this.model.currentAnimation = '';
 		}
@@ -67344,7 +67393,7 @@ PWG.Sprite = (function() {
 	Sprite.prototype.play = function(name, frameRate, loop, killOnComplete) {
 		// var kill = (typeof(killOnCompleted) === 'undefined') ? false : killOnComplete;
 		// if(this.model.name !== 'keke') {
-		// 	// 
+		// 	// trace('KILL = ' + kill + ', killOnComplete = ' + killOnComplete);
 		// }
 		this.animations.play(name, frameRate, loop, killOnComplete);
 		this.model.currentAnimation = name;
@@ -67358,18 +67407,18 @@ PWG.Sprite = (function() {
 	Sprite.prototype.move = function(params) {
 		var movement = this.model.attrs.movement;
 		if(movement) {
-			// 
+			// trace('Sprite['+this.model.name+']/move, movement = ', movement);
 			PWG.Utils.moveView(this, movement, params);
 		}
 	};
 
 	Sprite.prototype.destroy = function() {
-		// 
+		// trace('Sprite['+this.model.name+']/destroy, alive = ' + this.alive + ', exists = ' + this.exits);
 		this.exists = false; // keeps phaser update core from running on this sprite;
 
 		if(this.alive) {
 			if(this.animations) {
-				// 
+				// trace('\tdestroying animations');
 				this.animations.stop();
 				this.animations.destroy();
 			}
@@ -67389,7 +67438,7 @@ PWG.ParallaxBackground = (function() {
 	}
 	
 	ParallaxBackground.prototype.begin = function() {
-		
+		trace('ParallaxBackground['+this.model.name+']/begin', this);
 		var attrs = this.model.attrs;
 		var game = this.model.game;
 
@@ -67398,10 +67447,10 @@ PWG.ParallaxBackground = (function() {
 	    this.tileset = game.add.tileset(attrs.tileset);
 	    this.layer = game.add.tilemapLayer(attrs.start.x, attrs.start.y, attrs.width, attrs.height, this.tileset, this.tilemap, attrs.layerIndex);
 	
-		
+		trace('\tadding map layer x/y: ' + attrs.start.x + '/' + attrs.start.y + ', w/h: ' + attrs.width + '/' + attrs.height, this.tilemap, this.tileset, this.layer);
 		PWG.Utils.each(attrs.layer,
 			function(attr, key) {
-				
+				trace('\tsetting layer['+key+'] to: ' + attr);
 				this.layer[key] = attr;
 			},
 			this
@@ -67414,7 +67463,7 @@ PWG.ParallaxBackground = (function() {
 PWG.Emitter = (function() {
 	
 	function Emitter(params) {
-		
+		trace('Emitter/constructor, params = ', params);
 		this.model = new PWG.Model(params);
 	}
 	
@@ -67424,7 +67473,7 @@ PWG.Emitter = (function() {
 		var attrs = this.model.attrs;
 		var bounds = (attrs.bounds) ? attrs.bounds : game.world.bounds;
 
-		
+		trace('------------------ Emitter/begin, attrs = ', attrs, '\tbounds = ', bounds);
 	    this.emitter = game.add.emitter(bounds.x, bounds.y, attrs.maxParticles);
 		this.emitter.width = bounds.width;
 		this.emitter.height = bounds.height;
@@ -67473,7 +67522,7 @@ PWG.Snow = (function() {
 	PWG.Utils.inherits(Snow, PWG.Emitter);
 	
 	function Snow(params) {
-		
+		trace('Snow/constructor, params = ', params);
 		var defaults = {
 				maxParticles: 400,
 				particles: {
@@ -67513,7 +67562,7 @@ PWG.Snow = (function() {
 		};
 
 		params.attrs = PWG.Utils.extend(params.attrs, defaults);
-		
+		trace('\tparams now = ', params);
 		Snow._super.constructor.call(this, params);
 	}
 	
@@ -67536,7 +67585,7 @@ PWG.Enemy = (function() {
 
 	Enemy.prototype.pwUpdate = function(params) {
 		if(this.alive) {
-			// 
+			// trace('Enemy['+this.model.name+']/pwUpdate, relationToPlayer = ' + this.relationToPlayer);
 			this.checkDynamicTerrainCollision(params.dynamicTerrain);
 
 			this.relationToPlayer = 'near';
@@ -67561,7 +67610,7 @@ PWG.Enemy = (function() {
 				break;
 
 				default: 
-					
+					trace('ERROR: (enemy) unknown movement type: ' + movementType);
 				break;
 			}
 
@@ -67596,12 +67645,12 @@ PWG.Enemy = (function() {
 		if(this.isInView) {
 			var direction; 
 			if(enemyX < (playerX - 10)) {
-				// 
+				// trace(this.model.name + ': move right, x = ' + enemyX + ', playerX = ' + playerX);
 				this.relationToPlayer = 'right';
 				direction = (reverse) ? PWG.Directions.LEFT : PWG.Directions.RIGHT;
 				this.move({ direction: direction, type: movementType });
 			} else if(enemyX > (playerX + 10)) {
-				// 
+				// trace(this.model.name + ': move left, x = ' + enemyX + ', playerX = ' + playerX);
 				this.relationToPlayer = 'left';
 				direction = (reverse) ? PWG.Directions.RIGHT : PWG.Directions.LEFT;
 				this.move({ direction: direction, type: movementType });
@@ -67642,11 +67691,11 @@ PWG.Enemy = (function() {
 
 		if(this.isInView) {
 			if(enemyY < (playerY - playerHeight)) {
-				// 
+				// trace('move right');
 				this.relationToPlayer = 'above';
 				this.move({ direction: PWG.Directions.DOWN, type: movementType });
 			} else if(enemyY > (playerY + playerHeight)) {
-				// 
+				// trace('move left');
 				this.relationToPlayer = 'below';
 				this.move({ direction: PWG.Directions.UP, type: movementType });
 			}
@@ -67654,7 +67703,7 @@ PWG.Enemy = (function() {
 	};
 	
 	Enemy.prototype.damage = function(damage) {
-		// 
+		// trace('Enemy['+this.model.name+']/damage, damage = ' + damage + ', health = ' + this.health);
 		this.health -= damage;
 		if(this.health <= 0) {
 			this.kill();
@@ -67662,15 +67711,15 @@ PWG.Enemy = (function() {
 	};
 	
 	Enemy.prototype.kill = function() {
-		
-		// 
+		trace('Enemy['+this.model.name+']/kill, ancestor = ');
+		// trace(this.model);
 		PWGGame.setLevelScore(this.model.attrs.score);
 		this.model.ancestor.removeChild.call(this.model.ancestor, this.model.name);
 		Enemy._super.kill.call(this);
 	};
 	
 	Enemy.prototype.destroy = function() {
-		
+		trace('Enemy['+this.model.name+']/destroy');
 		this.alive = false;
 		Enemy._super.destroy.call(this);
 	};
@@ -67683,18 +67732,18 @@ PWG.AnimatedEnemy = (function() {
 	
 	var _this;
 	function AnimatedEnemy(params) {
-		// 
+		// trace('AnimatedEnemy/constructor');
 		AnimatedEnemy._super.constructor.call(this, params);
 	}
 	
 	AnimatedEnemy.prototype.pwUpdate = function(params) {
 		if(this.alive) {
-			// 
-			// 
+			// trace('AnimatedEnemy['+this.model.name+']/pwUpdate');
+			// trace(this);
 			AnimatedEnemy._super.pwUpdate.call(this, params);
 
 			if(this.isInView) {
-				// 
+				// trace('\tenemy['+this.name+'] in range');
 				var animations = this.model.attrs.animations; 
 
 				if(!this.body.touching.down && (this.model.attrs.movement.type === PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED)) {
@@ -67752,7 +67801,7 @@ PWG.Bonus = (function() {
 	};
 	
 	Bonus.prototype.collect = function() {
-		
+		trace('Bonus['+this.model.name+']/collect, score = ' + this.model.attrs.score,  this.model);
 		if(this.model.attrs.score) {
 		    PWGGame.setLevelScore(this.model.attrs.score);
 		}
@@ -67771,7 +67820,7 @@ PWG.HeartIcon = (function() {
 	}
 	
 	HeartIcon.prototype.begin = function() {
-		// 
+		// trace('HeartIcon/begin');
 		HeartIcon._super.begin.call(this);
 		this.healthSet = false;
 		this.currentAnimation = this.model.attrs.defaultAnimation;
@@ -67787,12 +67836,12 @@ PWG.HeartIcon = (function() {
 	};
 	
 	HeartIcon.prototype.onAnimationComplete = function() {
-		
+		trace('HEART ICON ON ANIMATION COMPLETE');
 	}
 	
 	HeartIcon.prototype.onHealthUpdated = function(params) {
 		var newHealth = PWGGame.health;
-		// 
+		// trace('HeartIcon/onHealthUpdate, this.model.health = ' + this.model.health + ', health = ', newHealth);
 		if(this.healthSet) {
 			var animations = this.model.attrs.animations;
 			if(newHealth < this.model.lowHealth) {
@@ -67867,12 +67916,12 @@ PWG.ReactingTerrain = (function() {
 	}
 	
 	ReactingTerrain.prototype.begin = function() {
-		// 
+		// trace('ReactingTerrain['+this.model.name+']/begin');
 		ReactingTerrain._super.begin.call(this);
 	};
 	
 	ReactingTerrain.prototype.activate = function() {
-		// 
+		// trace('ReactionTerrain/activate, this = ', this);
 		this.state = ReactingTerrain.IDLE;
 		this.hasCollided = false;
 		this.active = true;
@@ -67880,15 +67929,15 @@ PWG.ReactingTerrain = (function() {
 	
 	ReactingTerrain.prototype.collidedWithSprite = function(sprite) {
 		if(!this.hasCollided && sprite.model.name === 'player') {
-			// 
+			// trace('ReactingTerrain['+this.model.name+']/collidedWithSprite, hasCollided = ' + this.hasCollided + ', sprite.model.name = ' + sprite.model.name + '\n\tsprite.height = ' + sprite.body.height + '\n\tsprite.y = ' + sprite.body.y + '\n\tsprite bottom = ' + (sprite.body.y + sprite.body.height - 1) + '\n\tthis.y = ', this.body.y);
 			if((sprite.body.y + sprite.body.height - 1) <= this.body.y) {
 				this.hasCollided = true;
 
 				if(this.state === ReactingTerrain.IDLE) {
-					// 
+					// trace('\tsomething collided with terrain, switching state');
 
 					var reaction = this.model.reaction;
-					// 
+					// trace('\treaction = ', reaction.type);
 					switch(reaction.type) {
 						case PWG.TerrainReactions.ADD_GRAVITY:
 							this.addGravity(this);
@@ -67907,12 +67956,12 @@ PWG.ReactingTerrain = (function() {
 						break; 
 
 						default:
-							// 
+							// trace('\tunknown reaction type');
 						break;
 					}
 
 				// } else if(this.state === ReactingTerrain.ACTIVATED) {
-				// 	// 
+				// 	// trace('\treacting terrain collided with something, destroy it');
 				// 	this.state = ReactingTerrain.DEACTIVATED;
 				// 	if(this.model.attrs.animations) {
 				// 		this.playAnimation();
@@ -67931,18 +67980,18 @@ PWG.ReactingTerrain = (function() {
 	};
 
 	ReactingTerrain.prototype.animationCompleted = function() {
-		// 
+		// trace('ReactingTerrain['+this.model.name+']/animationCompleted');
 		this.removeTerrain();
 	};
 	
 	ReactingTerrain.prototype.playAnimation = function() {
-		// 
+		// trace('ReactingTerrain['+this.model.name+']/playAnimation: ', this);
 		var animation = this.model.attrs.animations[this.state];
 		if(animation) {
-			// 
+			// trace('\tgoing to call play on', animation);
 			var kill = false;
 			if(this.model.reaction.type === PWG.TerrainReactions.DESTROY_AFTER_ANIMATION) {
-				// 
+				// trace('\t\tit\'s a destroy after animation, set kill to true');
 				kill = true;
 			}
 			this.play(this.state, animation.frameRate, animation.looped, false);
@@ -67955,12 +68004,12 @@ PWG.ReactingTerrain = (function() {
 	};
 
 	ReactingTerrain.prototype.deactivate = function(self) {
-		// 
+		// trace('ReactiongTerrain['+self.model.name+']/deactivate');
 		self.active = false;
 	};
 	
 	ReactingTerrain.prototype.respawn = function(self) {
-		// 
+		// trace('ReactingTerrain['+self.model.name+']/respawn, self = ', self);
 		// self.animations.frame = 0;
 		var animation = self.model.attrs.animations['respawn'];
 		self.play('respawn', animation.frameRate, animation.looped, false);
@@ -67968,14 +68017,14 @@ PWG.ReactingTerrain = (function() {
 	};
 	
 	ReactingTerrain.prototype.addGravity = function() {
-		// 
+		// trace('ReactingTerrain['+_this.model.name+']/addGravity, _this = ', _this);
 		_this.changeState(ReactingTerrain.DEACTIVATED);
 		_this.immovable = false; 
 		_this.activateGravity();
 	};
 	
 	ReactingTerrain.prototype.removeTerrain = function() {
-		// 
+		// trace('ReactingTerrain['+this.model.name+']/removeTerrain, _this = ', this);
 		if(this.model.attrs.animations) {
 			this.stop();
 		}
@@ -67983,7 +68032,7 @@ PWG.ReactingTerrain = (function() {
 	};
 	
 	ReactingTerrain.prototype.callMethodAfterXSeconds = function(method) {
-		// 
+		// trace('ReactingTerrain['+this.model.name+']/callMethodAfterXSeconds, time = ' + this.model.reaction.time + ', method = ' + method);
 		this.changeState(ReactingTerrain.COLLIDED);
 		_this = this;
 		this.timer = setTimeout(
@@ -67993,10 +68042,10 @@ PWG.ReactingTerrain = (function() {
 	};
 	
 	ReactingTerrain.prototype.destroyAfterAnimation = function() {
-		// 
+		// trace('ReactingTerrain['+this.model.name+']/destroyAfterAnimation');
 		this.changeState(ReactingTerrain.COLLIDED);
 		// this.events.onAnimationComplete.add(function() {
-		// 	// 
+		// 	// trace('\tadding call to animation completed method');
 		// 	this.animationCompleted();
 		// }, this);
 	};
@@ -68012,27 +68061,27 @@ PWG.Collection = (function() {
 	
 	function Collection(params) {
 		this.model = new PWG.Model(params);
-		// 
+		// trace('Collection['+params.name+']/constructor', params);
 	}
 	
 	Collection.prototype.begin = function() {
-		// 
+		// trace('Collection['+this.model.name+']/begin', this);
 		var game = PWGGame.phaser;
 		var collection = [];
 		var nameIndex = {};
 		var children = this.model.attrs;
 		var child;
 		var params;
-		// 
+		// trace('children.length = ' + children.length);
 		PWG.Utils.each(children,
 			function(c, i) {
-				// 
+				// trace('\t\ti = ' + i + ', c = ', c);
 				if(typeof(c) !== 'undefined') {
 					c.game = game;
 					c.ancestor = this;
 					c.idx = i;
 
-					// 
+					// trace('\tc['+c.name+'] cl = ' + c.cl);
 					child = new PWG[c.cl](c);
 					child.begin();
 
@@ -68051,14 +68100,14 @@ PWG.Collection = (function() {
 	};
 	
 	Collection.prototype.setChildrenExists = function(exists) {
-		// 
+		// trace('Collection['+this.model.name+']/setChildrenExists, exists = ' + exists);
 		PWG.Utils.each(this.model.collection,
 			function(child) {
 				if(child.setChildrenExists) {
-					// 
+					// trace('\tcalling setChildExists on: '+child.model.name);
 					child.setChildrenExists(exists);
 				} else {
-					// 
+					// trace('\tchild['+child.model.name+'].exists = ' + child.exists);
 					child.exists = exists;
 				}
 			},
@@ -68067,7 +68116,7 @@ PWG.Collection = (function() {
 	};
 	
 	Collection.prototype.getChildByName = function(name) {
-		// 
+		// trace('Collection/getChildByName, name = ' + name + 'model = ', this.model);
 		var child; 
 
 		var collection = this.model.collection;
@@ -68082,21 +68131,21 @@ PWG.Collection = (function() {
 	};
 	
 	Collection.prototype.removeChild = function(name) {
-		// 
-		
+		// trace('Collection/removeChild, name = ' + name + ', pre splice collection: ');
+		trace(this.model.collection);
 
 		var collection = this.model.collection;
 		var length = collection.length;
 		for(var i = 0; i < length; i++) {
 			if(collection[i].model.name === name) {
-				// 
+				// trace('\tfound name at index: ' + i);
 				this.model.collection.splice(i, 1);
 				break;
 			}
 		}
 
-		// 
-		// 
+		// trace('\tpost splice collection: ');
+		// trace(this.model.collection);
 	};
 	
 	Collection.prototype.removeAll = function() {
@@ -68105,23 +68154,23 @@ PWG.Collection = (function() {
 	
 	Collection.prototype.destroy = function() {
 		var collection = this.model.collection;
-		// 
+		// trace('Collection['+this.model.name+']/destroy, collection = ', collection);
 		PWG.Utils.each(collection,
 			function(child) {
-				// 
+				// trace('\tattempting to call destroy on child['+child.model.name+']');
 				if(child.destroy) {
 					child.destroy();
 				}
 			},
 			this
 		);
-		// 
+		// trace('\tthis.model.name children destroyed, collection = ', collection);
 		if(collection) {
 			while(collection.length > 0) {
 				collection.pop();
 			}
 		}
-		// 
+		// trace('\tpost pop, collection = ', collection);
 		this.destroyed = true;
 	};
 	
@@ -68133,10 +68182,10 @@ PWG.GroupCollection = (function() {
 	PWG.Utils.inherits(GroupCollection, PWG.Collection);
 	
 	function GroupCollection(params, groupContext) {
-		// 
+		// trace('GroupCollection['+params.name+']/constructor, groupContext = ' + groupContext);
 		GroupCollection._super.constructor.call(this, params);
 		// if(groupContext === 'null') {
-		// 	// 
+		// 	// trace('GroupCollection['+params.name+'], adding group with context of null');
 		// 	this.group = PWGGame.phaser.add.group(null);
 		// } else {
 		// 	this.group = PWGGame.phaser.add.group();
@@ -68144,7 +68193,7 @@ PWG.GroupCollection = (function() {
 	}
 	
 	GroupCollection.prototype.begin = function() {
-		// 
+		// trace('GroupCollection['+this.model.name+']/begin, this = ', this);
 		GroupCollection._super.begin.call(this);
 
 		var game = PWGGame.phaser;
@@ -68159,7 +68208,7 @@ PWG.GroupCollection = (function() {
 			} else {
 				group = game.add.group();
 				// retrieve parent group from model based on addTo value
-				// 
+				// trace('----------------- finding parent group: ' + addTo + ' on ', this.model);
 				this.model[addTo].add(group._container);
 			}
 		} else {
@@ -68168,7 +68217,7 @@ PWG.GroupCollection = (function() {
 
 		PWG.Utils.each(collection,
 			function(c) {
-				// 
+				// trace('\t\tc = ', c);
 				group.add(c);
 			},
 			this
@@ -68179,8 +68228,8 @@ PWG.GroupCollection = (function() {
 		}
 		this.group = group;
 
-		// 
-		// 
+		// trace('group now = ');
+		// trace(this.group);
 	};
 
 	GroupCollection.prototype.hide = function() {
@@ -68197,8 +68246,8 @@ PWG.GroupCollection = (function() {
 	};
 	
 	GroupCollection.prototype.removeAll = function() {
-		// 
-		// 
+		// trace('GroupCollection['+this.model.name+']/remove, collection = ');
+		// trace(this.collection);
 		this.group.removeAll();
 		while(this.model.collection.length > 0) {
 			this.model.collection.pop();
@@ -68206,7 +68255,7 @@ PWG.GroupCollection = (function() {
 	};
 
 	GroupCollection.prototype.destroy = function() {
-		// 
+		// trace('GroupCollection['+this.model.name+']/destroy');
 		this.group.destroy(true);
 		GroupCollection._super.destroy.call(this);
 	};
@@ -68222,12 +68271,12 @@ PWG.SharedGroupCollection = (function() {
 	}
 	
 	SharedGroupCollection.prototype.begin = function() {
-		// 
+		// trace('SharedGroupCollection['+this.model.name+']/begin');
 		var sharedGroups = PWGGame.get('sharedGroups');
 		this.model.attrs = sharedGroups[this.model.type];
-		// 
+		// trace('\tsharedGroups = ', sharedGroups, '\tmodel = ', this.model);
 		SharedGroupCollection._super.begin.call(this);
-		// 
+		// trace('\tpost super call, model.visible = ' + this.model.visible);
 
 		// this.group.visible = this.model.visible;
 	};
@@ -68243,9 +68292,9 @@ PWG.PhysicalGroupCollection = (function() {
 	}
 	
 	PhysicalGroupCollection.prototype.checkTerrainCollision = function(terrain) {
-		// 
-		// 
-		// 
+		// trace('PhysicalGroupCollection['+this.model.name+']/checkTerrainCollsion');
+		// trace(terrain);
+		// trace(this);
 		PWG.Utils.each(this.model.collection,
 			function(c) {
 				c.checkTerrainCollision(terrain);
@@ -68264,7 +68313,7 @@ PWG.PhysicalGroupCollection = (function() {
 	};
 	
 	PhysicalGroupCollection.prototype.activateGravity = function() {
-		// 
+		// trace('PhysicalGroupCollection['+this.model.name+']/activateGravity, collection length = ' + collection.length);
 		PWG.Utils.each(this.model.collection,
 			function(c) {
 				c.activateGravity();
@@ -68274,11 +68323,11 @@ PWG.PhysicalGroupCollection = (function() {
 	};
 	
 	PhysicalGroupCollection.prototype.getActive = function() {
-		// 
+		// trace('PhysicalGroupCollection['+this.model.name+']/getActive, collection length = ' + this.model.collection.length);
 		var activeElements = [];
 		PWG.Utils.each(this.model.collection,
 			function(c) {
-				// 
+				// trace('c['+c.model.name+'].active = ' + c.active);
 				if(c.active) {
 					activeElements.push(c);
 				}
@@ -68286,13 +68335,13 @@ PWG.PhysicalGroupCollection = (function() {
 			this
 		);
 
-		// 
+		// trace('PhysicalGroupCollection['+this.model.name+']/getActive, activeElements = ', activeElements);
 		return activeElements;
 		// return this.group;
 	};
 	
 	PhysicalGroupCollection.prototype.killChild = function(name) {
-		
+		trace('PhysicalGroupCollection['+this.model.name+']/killChild, name = ' + name);
 		var child = this.getChildByName(name); 
 		child.exists = child.alive = false;
 		this.removeChild(name);
@@ -68310,7 +68359,7 @@ PWG.GUIConsole = (function() {
 
 	GUIConsole.prototype.begin = function() {
 		GUIConsole._super.begin.call(this);
-		// 
+		// trace('GUIConsole/begin');
 
 		PWG.Utils.each(this.collection,
 			function(c) {
@@ -68325,13 +68374,13 @@ PWG.GUIConsole = (function() {
 	};
 	
 	GUIConsole.prototype.addListeners = function() {
-		// 
+		// trace('GUIConsole/addListeners');
 		// PWG.EventCenter.bind(PWG.Events.SCORE_UPDATED, this.onScoreUpdated, this);
 		PWG.EventCenter.bind(PWG.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
 	};
 	
 	GUIConsole.prototype.onScoreUpdated = function() {
-		// 
+		// trace('GUIConsole/onScoreUpdated');
 		this.parseAndSetContent('score');
 	};
 	
@@ -68340,9 +68389,9 @@ PWG.GUIConsole = (function() {
 	};
 	
 	GUIConsole.prototype.parseAndSetContent = function(field, context) {
-		// 
+		// trace('GUIConsole/parseAndSetContent, field = ' + field);
 		var text = this.getChildByName(field);
-		// 
+		// trace(text);
 		if(text) {
 			var context = (context) ? context : PWGGame;
 			text.content = PWG.Utils.parseMarkup(text.model.attrs.defaultContent, context);
@@ -68384,7 +68433,7 @@ PWG.PlayerIcon = (function() {
 	}
 	
 	PlayerIcon.prototype.initPosition = function(positions) {
-		
+		trace('PlayerIcon/initPosition, position = ', positions, '\tcurrentLevel = ' + PWGGame.currentLevel);
 		return positions[PWGGame.currentLevel];
 	};
 	
@@ -68394,9 +68443,9 @@ PWG.PlayerIcon = (function() {
 		PlayerIcon._super.begin.call(this);
 
 		var grandfather = this.model.ancestor.model.ancestor;
-		// 
+		// trace('\tgrandfather = ', grandfather);
 		var pages = grandfather.model.pages;
-		// 
+		// trace('\tpages = ', pages);
 		var pagesLength = pages.length;
 		for(var i = 0; i < pagesLength; i++) {
 			var levels = pages[i].levels;
@@ -68408,7 +68457,7 @@ PWG.PlayerIcon = (function() {
 				}
 			}
 		}
-		// 
+		// trace('\tpageIndex = ' + this.pageIndex);
 	};
 	
 	PlayerIcon.prototype.addListeners = function() {
@@ -68423,18 +68472,18 @@ PWG.PlayerIcon = (function() {
 	};
 	
 	PlayerIcon.prototype.inputDown = function(event, pointer, ctx) {
-		// 
+		// trace('PlayerIcon['+this.model.name+']/inputDown');
 		ctx.pressed = true;
 	};
 	
 	PlayerIcon.prototype.inputUp = function(event, pointer, ctx) {
-		// 
+		// trace('PlayerIcon['+this.model.name+']/inputUp');
 		ctx.pressed = false;
 		// PWG.EventCenter.trigger({ type: PWG.Events.START_LEVEL, value: PWGGame.currentLevel });
 	};
 	
 	PlayerIcon.prototype.onChangeMapPage = function(event) {
-		// 
+		// trace('PlayerIcon/onChangeMapPage, event = ', event);
 		if(event.value === this.pageIndex) {
 			this.visible = true;
 		} else {
@@ -68458,7 +68507,7 @@ PWG.LevelInfo = (function() {
 	}
 	
 	LevelInfo.prototype.begin = function() {
-		// 
+		// trace('LevelInfo['+this.model.name+']/begin');
 		LevelInfo._super.begin.call(this);
 		this.hide();
 	};
@@ -68474,7 +68523,7 @@ PWG.MapMarker = (function() {
 	}
 	
 	MapMarker.prototype.begin = function() {
-		// 
+		// trace('MapMarker['+this.model.name+']/begin, level = ' + this.model.level);
 		MapMarker._super.begin.call(this);
 
 		var name = this.model.name;
@@ -68510,12 +68559,12 @@ PWG.MapMarker = (function() {
 	};
 	
 	MapMarker.prototype.inputDown = function(event, pointer, ctx) {
-		// 
+		// trace('MapMarker['+this.model.name+']/inputDown');
 		ctx.pressed = true;
 	};
 	
 	MapMarker.prototype.inputUp = function(event, pointer, ctx) {
-		// 
+		// trace('MapMarker['+this.model.name+']/inputUp');
 		ctx.pressed = false;
 		PWG.EventCenter.trigger({ type: PWG.Events.SHOW_LEVEL_INFO, value: this.model.level });
 	};
@@ -68528,11 +68577,11 @@ PWG.MapPage = (function() {
 	
 	function MapPage(params) {
 		MapPage._super.constructor.call(this, params);
-		// 
+		// trace('MapPage['+this.model.name+']/constructor');
 	}
 	
 	MapPage.prototype.begin = function() {
-		// 
+		// trace('MapPage['+this.model.name+']/begin, model = ', this.model);
 		this.addListeners();
 
 		var pageStartX = this.model.start.x;
@@ -68547,7 +68596,7 @@ PWG.MapPage = (function() {
 
 		PWG.Utils.each(levels,
 			function(level) {
-				// 
+				// trace('\tlevel = ' + level + ', currentLevelString = ' + currentLevelString);
 				if(level === PWGGame.currentLevel) {
 					this.model.selected = true;
 				}
@@ -68563,22 +68612,22 @@ PWG.MapPage = (function() {
 
 		if(this.model.leftArrow) {
 			var lBtn = this.addArrowButton('left', pageStartX, stageSeventh);
-			// 
+			// trace('\t\tlBtn', lBtn);
 			this.model.attrs.push(lBtn);
 		}
 		if(this.model.rightArrow) {
 			var rBtn = this.addArrowButton('right', pageStartX, stageSeventh);
-			// 
+			// trace('\t\trBtn', rBtn);
 			this.model.attrs.push(rBtn);
 		}
 
 		MapPage._super.begin.call(this);
-		// 
-		// 
+		// trace(this);
+		// trace('end of MapPage super begin, collection = ', this.model.collection);
 		var _this = this;
 		PWG.Utils.each(this.model.collection,
 			function(child) {
-				// 
+				// trace('\tadding child['+child.model.name+'] to group');
 				_this.pageGroup.add(child);
 			},
 			this
@@ -68590,7 +68639,7 @@ PWG.MapPage = (function() {
 	};
 	
 	MapPage.prototype.onChangeMapPage = function(event) {
-		// 
+		// trace('MapPage['+this.model.name+']/onChangeMapPage, event = ', event);
 		if(event.value === this.model.idx) {
 			this.pageGroup.visible = true;
 		} else {
@@ -68606,7 +68655,7 @@ PWG.MapPage = (function() {
 	};
 	
 	MapPage.prototype.addArrowButton = function(direction, pageStartX, stageSeventh) {
-		// 
+		// trace('MapPage['+this.model.name+']/addArrow, direction = ' + direction + ', start x = ' + pageStartX);
 		var stageUnit = PWG.Stage.unit;
 		var img;
 		var eventValue;
@@ -68665,13 +68714,13 @@ PWG.Control = (function() {
 	}
 	
 	Control.prototype.inputPressed = function(params) {
-		// 
-		// 
+		// trace('Control/inputPressed, value = ' + params.value + ', type = ' + params.type);
+		// trace(this);
 		var event;
 		var events = this.model.attrs.events;
-		// 
+		// trace(events);
 		if(events && events.pressed) {
-			// 
+			// trace('\tabout to dispatch ' + events.pressed.type);
 			event = { type: events.pressed.type, value: events.pressed.value };
 		} else {
 			event = { type: params.type, value: params.value }
@@ -68680,7 +68729,7 @@ PWG.Control = (function() {
 	};
 	
 	Control.prototype.inputReleased = function(params) {
-		// 
+		// trace('Control/inputReleased, value = ' + params.value + ', type = ' + params.type);
 		var events = this.model.attrs.events;
 		if(events && events.released) {
 			this.trigger({ type: events.released.type, value: events.released.value });
@@ -68690,8 +68739,8 @@ PWG.Control = (function() {
 	};
 	
 	Control.prototype.trigger = function(event) {
-		// 
-		// 
+		// trace('Control/trigger, event = ');
+		// trace(event);
 		PWG.EventCenter.trigger(event);
 	};
 	
@@ -68703,14 +68752,14 @@ PWG.InputButton = (function() {
 	
 	var _this;
 	function InputButton(params) {
-		// 
+		// trace('InputButton/constructor, params = ', params);
 		_this = this;
 		this.model = new PWG.Model(params);
-		// 
+		// trace('\tinput button model = ', this.model);
 		var attrs = this.model.attrs;
 		var frames = attrs.frames;
 		if(frames) {
-			// 
+			// trace('InputButton['+this.model.name+'] has frames: ' + frames);
 			InputButton._super.constructor.call(this, params.game, attrs.x, attrs.y, attrs.img, null, this, frames[0], frames[1], frames[2]);
 		} else {
 			InputButton._super.constructor.call(this, params.game, attrs.x, attrs.y, attrs.img, null, this);
@@ -68721,7 +68770,7 @@ PWG.InputButton = (function() {
 		var start = this.model.attrs.start;
 		this.x = start.x;
 		this.y = start.y;
-		// 
+		// trace('InputButton['+this.model.name+']/begin, start x/y = ' + start.x + '/' + start.y, this.model);
 		/*
 		if(this.model.width) {
 			this.width = this.model.width;
@@ -68742,13 +68791,13 @@ PWG.InputButton = (function() {
 		}
 		this.pressed = false;
 		this.addListeners();
-		// 
-		// 
+		// trace('InputButton, end of begin');
+		// trace(this);
 	};
 	
 	InputButton.prototype.addListeners = function() {
-		// 
-		// 
+		// trace('InputButton['+this.model.img+']/addListeners, button = ');
+		// trace(this);
 		var ctx = this;
 		this.events.onInputDown.add(function(event, pointer) {
 			this.inputDown(event, pointer, ctx);
@@ -68759,23 +68808,23 @@ PWG.InputButton = (function() {
 	};
 	
 	InputButton.prototype.inputDown = function(event, pointer, ctx) {
-		// 
+		// trace('InputButton['+this.model.name+']/inputDown');
 		ctx.inputPressed.call(ctx, { type: PWG.Events.CONTROL_PRESSED, value: ctx.model.attrs.inputCode });
 		ctx.pressed = true;
 	};
 	
 	InputButton.prototype.inputUp = function(event, pointer, ctx) {
-		// 
+		// trace('InputButton['+this.model.name+']/inputUp');
 		ctx.inputReleased.call(ctx, { type: PWG.Events.CONTROL_RELEASED, value: ctx.model.attrs.inputCode });
 		ctx.pressed = false;
 	};
 	
 	InputButton.prototype.inputPressed = function(params) {
 		var events = this.model.attrs.events;
-		// 
+		// trace('InputButton/inputPressed\n\tvalue = ' + params.value + ', type = ' + params.type + ', events = ', events);
 		if(events) {
 			if(events.pressed) {
-				// 
+				// trace('\tabout to dispatch ' + events.pressed.type);
 				_trigger({ type: events.pressed.type, value: events.pressed.value });
 			}
 		} else {
@@ -68785,7 +68834,7 @@ PWG.InputButton = (function() {
 	
 	InputButton.prototype.inputReleased = function(params) {
 		var events = this.model.attrs.events;
-		// 
+		// trace('InputButton/inputReleased\n\tvalue = ' + params.value + ', type = ' + params.type + ', events = ', events);
 		if(events) {
 			if(events.released) {
 				_trigger({ type: events.released.type, value: events.released.value });
@@ -68796,8 +68845,8 @@ PWG.InputButton = (function() {
 	};
 	
 	_trigger = function(event) {
-		// 
-		// 
+		// trace('InputButton/trigger, event = ');
+		// trace(event);
 		PWG.EventCenter.trigger(event);
 	};
 	
@@ -68809,19 +68858,19 @@ PWG.MenuButton = (function() {
 	
 	var _this;
 	function MenuButton(params) {
-		// 
-		// 
+		// trace('MenuButton/constructor, params = ');
+		// trace(params);
 		_this = this;
 		MenuButton._super.constructor.call(this, params);
 	};
 	
 	MenuButton.prototype.inputDown = function(event, pointer) {
-		// 
+		// trace('MenuButton['+this.model.inputCode+']/inputDown');
 		this.inputPressed.call(this, { type: PWG.Events.BUTTON_PRESSED, value: this.model.inputCode });
 	};
 	
 	MenuButton.prototype.inputUp = function(event, pointer) {
-		// 
+		// trace('MenuButton['+this.model.inputCode+']/inputUp');
 		this.inputReleased.call(this, { type: PWG.Events.BUTTON_RELEASED, value: this.model.inputCode });
 	};
 	
@@ -68832,26 +68881,26 @@ PWG.ControlKey = (function() {
 	PWG.Utils.inherits(ControlKey, PWG.Control);
 	
 	function ControlKey(params) {
-		// 
-		// 
+		// trace('ControlKey/constructor, params = ');
+		// trace(params);
 		ControlKey._super.constructor.call(this, params);
 	}
 	
 	ControlKey.prototype.begin = function() {
-		// 
-		// 
+		// trace('ControlKey['+this.model.name+']/begin');
+		// trace(this);
 		this.key = PWGGame.phaser.input.keyboard.addKey(this.model.attrs.inputCode);
 		this.key.onDown.add(this.inputDown, this);
 		this.key.onUp.add(this.inputUp, this);
 	};
 	
 	ControlKey.prototype.inputDown = function(params) {
-		// 
+		// trace('ControlKey['+this.model.inputCode+']/inputDown');
 		this.inputPressed.call(this, { type: PWG.Events.CONTROL_PRESSED, value: params.keyCode });
 	};
 	
 	ControlKey.prototype.inputUp = function(params) {
-		// 
+		// trace('ControlKey['+this.model.inputCode+']/inputUp');
 		this.inputReleased.call(this, { type: PWG.Events.CONTROL_RELEASED, value: params.keyCode });
 	};
 
@@ -68863,29 +68912,29 @@ PWG.ControlButton = (function() {
 	
 	var _this;
 	function ControlButton(params) {
-		// 
-		// 
+		// trace('ControlButton/constructor, params = ');
+		// trace(params);
 		_this = this;
 		ControlButton._super.constructor.call(this, params);
 	};
 	
 	ControlButton.prototype.inputDown = function(event, pointer) {
-		
+		trace('ControlButton['+this.model.inputCode+']/inputDown');
 		if(this.model.inputCode) {
 			this.inputPressed.call(this, { type: PWG.Events.CONTROL_PRESSED, value: this.model.inputCode });
 		}
 	};
 	
 	ControlButton.prototype.inputUp = function(event, pointer) {
-		// 
+		// trace('ControlButton['+this.model.inputCode+']/inputUp');
 		if(this.model.inputCode) {
 			this.inputReleased.call(this, { type: PWG.Events.CONTROL_RELEASED, value: this.model.inputCode });
 		}
 	};
 	
 	ControlButton.prototype.destroy = function() {
-		// 
-		// 
+		// trace('ControlButton['+this.model.name+']/destroy');
+		// trace(this);
 	};
 	
 	return ControlButton;
@@ -68902,19 +68951,19 @@ PWG.ControlButtons = (function() {
 	}
 	
 	ControlButtons.prototype.begin = function() {
-		// 
+		// trace('ControlButtons/begin');
 		var ctrls = PWGGame.get('controls');
 		this.model.attrs = ctrls.buttons[this.model.type];
-		// 
-		// 
+		// trace(ctrls);
+		// trace(this.model.attrs);
 		ControlButtons._super.begin.call(this);
-		// 
-		// 
+		// trace('control buttons post begin, collection = ');
+		// trace(this.model.collection);
 	};
 	
 	ControlButtons.prototype.destroy = function() {
-		// 
-		// 
+		// trace('ControlButtons['+this.model.name+']/destroy');
+		// trace(this);
 //		ControlButtons._super.destroy.call(this);
 		PWG.Utils.each(this.model.collection,
 			function(c) {
@@ -68931,12 +68980,12 @@ PWG.Enemies = (function() {
 	PWG.Utils.inherits(Enemies, PWG.PhysicalGroupCollection);
 	
 	function Enemies(params) {
-		// 
+		// trace('Enemies['+params.name+']/constructor, params = ', params);
 		Enemies._super.constructor.call(this, params);
 	}
 	
 	Enemies.prototype.begin = function() {
-		// 
+		// trace('Enemies/begin, this = ', this);
 		PWG.Utils.each(
 			this.model.attrs,
 			function(child) {
@@ -68967,9 +69016,9 @@ PWG.Enemies = (function() {
 		PWG.Utils.each(
 			this.model.collection,
 			function(child) {
-				
+				trace('Enemies/deactivateGravity, child['+child.model.name+'].isActive = ' + child.isActive);
 				if(!child.isActive) {
-					
+					trace('\tdeactivating gravity');
 					child.deactivateGravity();
 				}
 			},
@@ -68988,7 +69037,7 @@ PWG.GroupEnemy = (function() {
 	}
 	
 	GroupEnemy.prototype.pwUpdate = function(params) {
-		// 
+		// trace('GroupEnemy['+this.model.name+']/pwUpdate, this.collection = ', this.model.collection);
 		PWG.Utils.each(this.model.collection,
 			function(child) {
 				child.pwUpdate(params);
@@ -69030,7 +69079,7 @@ PWG.EnemyManager = function() {
 	};
 	
 	EnemyManager.prototype.onSectorChanged = function(event) {
-		
+		trace('EnemyManager/onSectorChanged, event = ', event);
 		this.removeActiveEnemies(this.sectors[this.sectorIdx].enemies);
 		this.sectorIdx = event.idx;
 		this.addActiveEnemies(this.sectors[this.sectorIdx].enemies);
@@ -69038,7 +69087,7 @@ PWG.EnemyManager = function() {
 	
 	EnemyManager.prototype.createSectors = function(sectorManager) {
 		var sectorBounds = sectorManager.getSectorBounds();
-		// 
+		// trace('bounds = ', sectorBounds);
 		PWG.Utils.each(
 			sectorBounds,
 			function(bounds, idx) {
@@ -69050,7 +69099,7 @@ PWG.EnemyManager = function() {
 				});
 				enemies.begin();
 
-				// 
+				// trace('------ enemies = ', enemies);
 				var sector = {
 					enemies: enemies,
 					bounds: bounds
@@ -69065,31 +69114,31 @@ PWG.EnemyManager = function() {
 			this
 		);
 
-		
+		trace('EnemyManager/createSectors completed, sectors = ', this.sectors);
 	};
 	
 	EnemyManager.prototype.onAddActiveEnemies = function(event) {
-		// 
+		// trace('EnemyManager/onAddActiveEnemies, event = ', event, '\tthis = ', this);
 		this.addActiveEnemies(event.enemies);
 	};
 	
 	EnemyManager.prototype.onAddActiveEnemy = function(event) {
-		// 
+		// trace('EnemyManager/onAddActiveEnemy, event = ', event);
 		this.addActiveEnemy(event.enemy);
 	};
 	
 	EnemyManager.prototype.onRemoveActiveEnemies = function(event) {
-		// 
+		// trace('EnemyManager/onRemoveActiveEnemies, event = ', event);
 		this.removeActiveEnemies(event.enemies);
 	};
 	
 	EnemyManager.prototype.onRemoveActiveEnemy = function(event) {
-		
+		trace('EnemyManager/onRemoveActiveEnemy, event = ', event, '\tthis = ', this);
 		this.removeActiveEnemy(event.enemy);
 	};
 	
 	EnemyManager.prototype.addActiveEnemies = function(enemies) {
-		// 
+		// trace('EnemyManager/addActiveEnemies, enemies = ', enemies);
 		PWG.Utils.each(
 			enemies.model.collection,
 			function(enemy) {
@@ -69100,16 +69149,16 @@ PWG.EnemyManager = function() {
 	};
 	
 	EnemyManager.prototype.addActiveEnemy = function(enemy) {
-		
+		trace('EnemyManager/addActiveEnemy, enemy = ' + enemy.model.name);
 		if(!this.activeEnemies.hasOwnProperty(enemy.model.name)) {
-			
+			trace('\tdoes not exist yet; adding');
 			enemy.activateGravity();
 			this.activeEnemies[enemy.model.name] = enemy;
 		}
 	};
 	
 	EnemyManager.prototype.removeActiveEnemies = function(enemies) {
-		
+		trace('EnemyManager/removeActiveEnemies, enemies = ', enemies, '\tactiveEnemies = ', this.activeEnemies);
 		PWG.Utils.each(
 			enemies.model.collection,
 			function(enemy) {
@@ -69122,10 +69171,10 @@ PWG.EnemyManager = function() {
 	};
 	
 	EnemyManager.prototype.removeActiveEnemy = function(enemy) {
-		
+		trace('EnemyManager/removeActiveEnemy, enemy = ' + enemy.model.name);
 		if(this.activeEnemies.hasOwnProperty(enemy.model.name)) {
 			enemy.deactivateGravity();
-			
+			trace('\texists; removing');
 			delete this.activeEnemies[enemy.model.name];
 		}
 	};
@@ -69204,13 +69253,13 @@ PWG.Requirement = (function() {
 	}
 	
 	Requirement.prototype.begin = function() {
-		// 
+		// trace('Requirement['+this.model.name+']/begin, model = ', this.model);
 		Requirement._super.begin.call(this);
 		PWG.EventCenter.trigger({ type: PWG.Events.REQUIREMENT_INITIALIZED, value: this.model });
 	};
 	
 	Requirement.prototype.collect = function() {
-		// 
+		// trace('Requirement['+this.model.name+']/collect');
 		if(this.model.attrs.score) {
 		    PWGGame.setLevelScore(this.model.attrs.score);
 		}
@@ -69235,14 +69284,14 @@ PWG.Requirements = (function() {
 
 		this.requirementsMet = 0;
 		this.requirementsCount = this.model.collection.length;
-		// 
+		// trace('Requirements/begin, about to set on pw game, total = ' + this.requirementsCount);
 		PWGGame.setRequirements(this.requirementsMet, this.requirementsCount);
 		PWG.EventCenter.bind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet, this);
 	};
 	
 	Requirements.prototype.onRequirementMet = function() {
 		this.requirementsMet++;
-		// 
+		// trace('Requirements/onRequirementMet, requirementsFill = ' + this.requirementsMet + ', total = ' + this.requirementsCount);
 		PWGGame.setRequirements(this.requirementsMet, this.requirementsCount);
 		if(this.requirementsMet >= this.requirementsCount) {
 			PWG.EventCenter.unbind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet, this);
@@ -69262,21 +69311,21 @@ PWG.RequirementPlaceHolder = (function() {
 	PWG.Utils.inherits(RequirementPlaceHolder, PWG.Sprite); 
 	
 	function RequirementPlaceHolder(params) {
-		// 
+		// trace('RequirementPlaceHolder/constructor, this = ', this);
 		RequirementPlaceHolder._super.constructor.call(this, params);
 		PWG.EventCenter.bind(PWG.Events.REQUIREMENT_INITIALIZED, this.onRequirementsInitialized, this);
 		PWG.EventCenter.bind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet, this);
 	}
 	
 	RequirementPlaceHolder.prototype.begin = function() {
-		// 
+		// trace('RequirementPlaceHolder/begin, this = ', this);
 		RequirementPlaceHolder._super.begin.call(this);
 	};
 
 	RequirementPlaceHolder.prototype.onRequirementsInitialized = function(params) {
-		// 
+		// trace('RequirementPlaceHolder/onRequirementsInitialized, params = ', params);
 		var requirementImg = params.value.attrs.img;
-		// 
+		// trace('\trequirementImg = ' + requirementImg);
 		var phaserAttrs = this.model.attrs.phaser;
 		// phaserAttrs.visible = false;
 		this.requirement = new PWG.Sprite({
@@ -69293,7 +69342,7 @@ PWG.RequirementPlaceHolder = (function() {
 	};
 	
 	RequirementPlaceHolder.prototype.onRequirementMet = function(params) {
-		// 
+		// trace('RequirementPlaceHolder/onRequirementMet, params = ', params, '\tthis = ', this);
 		// PWG.EventCenter.unbind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet);
 		this.model.ancestor.group.add(this.requirement);
 		this.requirement.alpha = 1;
@@ -69301,7 +69350,7 @@ PWG.RequirementPlaceHolder = (function() {
 	};
 
 	RequirementPlaceHolder.prototype.destroy = function() {
-		// 
+		// trace('RequirementPlaceHolder['+this.model.name+']/destroy');
 		PWG.EventCenter.unbind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet);
 		RequirementPlaceHolder._super.destroy.call(this);
 	};
@@ -69313,8 +69362,8 @@ PWG.Sector = (function() {
 	PWG.Utils.inherits(Sector, PWG.Collection);
 	
 	function Sector(params) {
-		// 
-		// 
+		// trace('Sector['+params.name+']/constructor, params = ');
+		// trace(params);
 		Sector._super.constructor.call(this, params);
 
 	}
@@ -69334,14 +69383,14 @@ PWG.Sector = (function() {
 	};
 
 	Sector.prototype.setActive = function(active) {
-		// 
+		// trace('Sector['+this.model.name+']/setActive: active = ' + active + ', activatedOnce = ' + this.activatedOnce);
 		if(this.active || active) {
 			this.setChildrenExists(active);
 		}
 
 		this.active = active;
 		if(active) {
-			// 
+			// trace('Sector['+this.model.name+']/setActive: active = ' + active + ', activatedOnce = ' + this.activatedOnce + ', enemies = ', this.enemies);
 				this.activateOnce = true;
 				if(this.enemies) {
 					this.enemies.activateGravity();
@@ -69359,7 +69408,7 @@ PWG.Sector = (function() {
 					PWG.EventCenter.trigger({ type: PWG.Events.REMOVE_ACTIVE_ENEMIES, enemies: this.enemies });
 					this.enemiesActivated = false;
 				}
-				
+				trace('Sector['+this.model.name+'] going to call enemies.deactivateGravity');
 				this.enemies.deactivateGravity();
 			} 
 			this.deactivated = true;
@@ -69377,10 +69426,10 @@ PWG.Sector = (function() {
 	};
 	
 	Sector.prototype.checkTerrainCollision = function(terrain) {
-		// 
-		// 
-		// 
-		// 
+		// trace('Sector['+this.model.name+']/checkTerrainCollision, terrain = ');
+		// trace(terrain);
+		// trace('enemies = ');
+		// trace(this.enemies);
 		if(this.enemies) {
 			this.enemies.checkTerrainCollision(terrain);
 		}
@@ -69405,13 +69454,13 @@ PWG.SectorManager = (function() {
 	PWG.Utils.inherits(SectorManager, PWG.Collection);
 	
 	function SectorManager(params) {
-		// 
-		// 
+		// trace('SectorManager['+params.name+']/constructor, params = ');
+		// trace(params);
 		SectorManager._super.constructor.call(this, params);
 		// this.setActiveSector(0);
 		this.positionAxis = (this.model.type === PWG.SectorTypes.HORIZONTAL) ? 'x' : 'y';
 		this.activeEnemies = {};
-		
+		trace('SectorManager/constructor, positionAxis = ' + this.positionAxis);
 		
 	}
 
@@ -69453,7 +69502,7 @@ PWG.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.pwUpdate = function(params) {
-		// 
+		// trace('SectorManager/pwUpdate, activeEnemies = ', this.activeEnemies);
 		this.checkTerrainCollision(params.terrain);
 		this.findActiveSector(params.position);
 		
@@ -69463,8 +69512,8 @@ PWG.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.findActiveSector = function(position) {
-		// 
-		// 
+		// trace('SectorManager/findActiveSector, this = ');
+		// trace(this);
 		// reset all sectors to off
 		// this.deactivateAll();
 
@@ -69472,13 +69521,13 @@ PWG.SectorManager = (function() {
 		var length = child.length;
 		var bounds;
 		var pos = position[this.positionAxis];
-		// 
+		// trace('pos = ' + pos);
 		for(var i = 0; i < length; i++) {
 			bounds = child[i].model.bounds;
-			// 
+			// trace('\tc['+i+'] start/end = ' + bounds.start + '/' + bounds.end);
 			if(pos > bounds.start && pos < bounds.end) {
 				if(this.activeSectorIdx !== i) {
-					
+					trace('new sector id = ' + i + ', name = ' + child[i].model.name + ', pos = ' + pos);
 					this.setActiveSector(i);
 					break;
 				}
@@ -69488,7 +69537,7 @@ PWG.SectorManager = (function() {
 	
 	SectorManager.prototype.getSectorBounds = function() {
 		var bounds = [];
-		
+		trace('SectorManager/getSectorBounds, collection = ', this.model.collection);
 		PWG.Utils.each(
 			this.model.collection,
 			function(sector) {
@@ -69528,7 +69577,7 @@ PWG.State = (function() {
 	// PWG.Utils.inherits(State, Phaser.State); 
 	
 	function State(params) {
-		// 
+		// trace('State['+params.name+']/constructor');
 		State._super.constructor.call(this);
 
 		this.model = new PWG.Model(params);
@@ -69545,7 +69594,7 @@ PWG.State = (function() {
 	}
 	
 	State.prototype.start = function() {
-		
+		trace('State['+this.model.name+']/start');
 	};
 	
 	State.prototype.orientationSet = function(isLandscape) {
@@ -69565,19 +69614,34 @@ PWG.State = (function() {
 		this.loaded = 0;
 		var phaser = PWGGame.phaser;
 		var loaded = {
+			audio: {},
 			images: {},
 			sprites: {}
 		};
 		
-		// 
+		// trace('State['+this.model.name+']/preLoad, loaded = ' + this.model.loaded);
 		if(!this.model.loaded) {
-			// 
-			// 
-			if(this.model.images.length > 0) {
+			// trace('\tstate images = ');
+			// trace(this.model.images);
+			// if(this.model.audio && this.model.audio.length > 0) {
+			// 	var audio = PWGGame.get('audio');
+			// 	PWG.Utils.each(
+			// 		this.model.audio,
+			// 		function(audio) {
+			// 			if(!PWGGame.loaded.audio[audio]) {
+			// 				this.toLoad++;
+			// 				phaser.load.audio(audio, audio[audio]);
+			// 				loaded.audio[audio] = true;
+			// 			}
+			// 		},
+			// 		this
+			// 	);
+			// }
+			if(this.model.images && this.model.images.length > 0) {
 				var images = PWGGame.get('images');
 				PWG.Utils.each(this.model.images,
 					function(img) {
-						// 
+						// trace('\t\timage['+img+'] loaded = ' + PWGGame.loaded.images[img]);
 						if(!PWGGame.loaded.images[img]) {
 							this.toLoad++;
 							phaser.load.image(img, images[img]);
@@ -69587,14 +69651,14 @@ PWG.State = (function() {
 					this
 				);
 			}
-			if(this.model.sprites.length > 0) {
+			if(this.model.sprites && this.model.sprites.length > 0) {
 				var sprites = PWGGame.get('sprites');
 				PWG.Utils.each(this.model.sprites,
 					function(spr) {
-						// 
+						// trace('\t\tsprite['+spr+'] loaded = ' + PWGGame.loaded.sprites[spr]);
 						if(!PWGGame.loaded.sprites[spr]) {
 							var sprite = sprites[spr];
-							// 
+							// trace('\t\t\tsprite = ', sprite);
 							this.toLoad++;
 							phaser.load.spritesheet(spr, sprite.url, sprite.width, sprite.height, sprite.frames);
 							loaded.sprites[spr] = true;
@@ -69609,19 +69673,27 @@ PWG.State = (function() {
 	};
 	
 	State.prototype.create = function() {
-		
+		trace('State['+this.model.name+']/create');
 		PWGGame.phaser.stage.backgroundColor = this.model.backgroundColor;
 		PWGGame.removeLoadingDiv();
 		if(PWGGame.isLandscape) {
 			this.createState();
 		} else {
-			
+			trace('WARNING: not in landscape orientation, can not create state');
 		}
 		this.model.set({ createCalled: true });
+		
+		// if(this.model.audio && this.model.audio.length > 0) {
+		// 	var audio = this.model.audio[0];
+		// 	trace('audio = ', audio);
+		// 	var sound = PWGGame.phaser.add.audio(audio);
+		// 	trace('sound = ', sound);
+		// 	sound.play('', 0, 1, true);
+		// }
 	};
 
 	State.prototype.createState = function() {
-		// 
+		// trace('State['+this.model.name+']/createState, created = ' + (this.model.get('created')));
 		if(!this.model.get('created')) {
 			this.gameOver = PWGGame.gameOver; 
 			this.createWorld();
@@ -69633,12 +69705,12 @@ PWG.State = (function() {
 			this.begin();
 			this.model.set({ created: true });
 		} else {
-			
+			trace('WARNING: state already created');
 		}
 	};
 	
 	State.prototype.onPauseState = function() {
-		// 
+		// trace('State['+this.model.name+']/onPauseState');
 		if(this.paused) {
 			this.paused = false;
 		} else {
@@ -69647,13 +69719,13 @@ PWG.State = (function() {
 	};
 	
 	State.prototype.onResumeState = function() {
-		// 
+		// trace('State['+this.model.name+']/onResumeState');
 		this.paused = false;
 	};
 	
 	State.prototype.createWorld = function() {
 		var world = this.model.world;
-		// 
+		// trace('State['+this.model.name+']/createWorld, x = ' + world.x + ', world.y = ' + world.y + ', width = ' + world.width + ', height = ' + world.height);
 		PWGGame.phaser.world.setBounds(world.x, world.y, world.width, world.height);
 	};
 
@@ -69664,7 +69736,7 @@ PWG.State = (function() {
 	};
 	
 	State.prototype.shutdown = function() {
-		// 
+		// trace('State['+this.model.name+']/shutdown');
 		PWG.EventCenter.unbind(PWG.Events.PAUSE_STATE, this.onPauseState);
 		PWG.EventCenter.unbind(PWG.Events.RESUME_STATE, this.onResumeState);
 
@@ -69700,7 +69772,7 @@ PWG.MenuState = (function() {
 	};
 	
 	MenuState.prototype.onButtonPressed = function(event) {
-		// 
+		// trace('MenuState/onButtonPressed, changingState = ' + this.changingState + ', event = ', event);
 		if(event.value === PWG.InputCodes.PLAY || event.value === PWG.InputCodes.NEXT) {
 			PWGGame.changeState('level'); 
 			this.changingState = true;
@@ -69770,7 +69842,7 @@ PWG.MapState = (function() {
 	
 	var _this;
 	function LevelState(params) {
-		// 
+		// trace('LevelState/constructor, phaser = ');
 		_this = this;
 		LevelState._super.constructor.call(this, params);
 
@@ -69788,12 +69860,12 @@ PWG.MapState = (function() {
 	};
 	
 	LevelState.prototype.create =  function() {
-		// 
+		// trace('LevelState['+this.model.name+']/create, adCompleted = ' + this.adCompleted);
 		LevelState._super.create.call(this);
 	};
 	
 	LevelState.prototype.createState = function() {
-		// 
+		// trace('LevelState['+this.model.name+']/createState');
 		this.triggeredCleared = false;
 		this.requirementsMet = false; 
 
@@ -69804,7 +69876,7 @@ PWG.MapState = (function() {
 		// PWG.EventCenter.bind(PWG.Events.AD_COMPLETED, this.onResumeState, this);
 
 		this.requirements = this.getChildByName('requirements');
-		
+		trace('\n\n\trequirements = ', this.requirements, '\tgroup = ', this.requirements.group);
 		if(this.requirements) {
 			PWG.EventCenter.bind(PWG.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
 		} else {
@@ -69820,7 +69892,7 @@ PWG.MapState = (function() {
 		this.allGoalsReached = false;
 		PWG.EventCenter.bind(PWG.Events.GOAL_REACHED, this.onGoalReached, this);
 		
-		
+		trace('LevelState['+this.model.name+']/createState, totalGoals = ' + this.totalGoals);
 		this.sectorManager = this.getChildByName('sectors');
 		this.sectorManager.setState(this);
 		this.sectorManager.setActiveSector(0);
@@ -69830,9 +69902,9 @@ PWG.MapState = (function() {
 		}
 
 		var playerStart = PWG.Utils.clone(PWGGame.get('player').attrs.start);
-		// 
+		// trace('LevelState['+this.model.name+']/createState\n\tplayerStart = ', playerStart);
 		this.createPlayer(playerStart, PWGGame.startingHealth);
-		
+		trace('end of create state');
 		// if(PWGGame.adPlaying) {
 		// 	this.onPauseState();
 		// }
@@ -69842,7 +69914,7 @@ PWG.MapState = (function() {
 		var playerConfig = PWG.Utils.clone(PWGGame.get('player'));
 		playerConfig.attrs.attack = 10;
 		playerConfig.attrs.start = start;
-		// 
+		// trace('Level['+this.model.name+']/createPlayer, playerConfig = ', playerConfig, '\n\tstart = ', start);
 
 		playerConfig.game = PWGGame.phaser;
 		playerConfig.sectorManager = this.sectorManager;
@@ -69854,7 +69926,7 @@ PWG.MapState = (function() {
 		this.playerPresent = true;
 		this.playerGroupPresent = true;
 		// this.player.activateGravity();
-		// 
+		// trace('LevelState['+this.model.name+']/player created, jump = ' + playerConfig.attrs.speed.y, playerConfig);
 	};
 
 	LevelState.prototype.destroyPlayer = function() {
@@ -69870,7 +69942,7 @@ PWG.MapState = (function() {
 	
 	LevelState.prototype.update = function() {
 		if(!this.paused && !PWGGame.adPlaying) {
-			// 
+			// trace('LevelState['+this.model.name+']/update');
 			// if(this.requirementsMet && (this.player.body.x >= this.model.bounds.end)) {
 			if(this.requirementsMet && this.allGoalsReached) {
 				if(!this.triggeredCleared) {
@@ -69934,7 +70006,7 @@ PWG.MapState = (function() {
 	};
 
 	LevelState.prototype.onLevelRequirementsMet = function() {
-		// 
+		// trace('LevelState['+this.model.name+']/onLevelRequirementsMet');
 		this.requirementsMet = true;
 	};
 	
@@ -69946,7 +70018,7 @@ PWG.MapState = (function() {
 	};
 
 	LevelState.prototype.onPauseState = function() {
-		// 
+		// trace('LevelState['+this.model.name+']/onPauseState');
 		if(!this.triggeredCleared) {
 			LevelState._super.onPauseState.call(this);
 			if(this.paused) {
@@ -69958,7 +70030,7 @@ PWG.MapState = (function() {
 	};
 	
 	LevelState.prototype.onResumeState = function() {
-		// 
+		// trace('LevelState['+this.model.name+']/onResumeState');
 		if(!PWGGame.adPlaying) {
 			LevelState._super.onResumeState.call(this);
 			this.resumeState();
@@ -69976,7 +70048,7 @@ PWG.MapState = (function() {
 			x: this.player.x,
 			y: this.player.y
 		};
-		// 
+		// trace('LevelState/pauseState, playerPosition = ', this.playerPosition, this.player);
 		// this.playerGroup.visible = false;
 		this.showPauseGUI(true);
 	};
@@ -69992,7 +70064,7 @@ PWG.MapState = (function() {
 	};
 	
 	LevelState.prototype.showPauseGUI = function(show) {
-		
+		trace('LevelState['+this.model.name+']/showPauseGUI, show = ' + show, this);
 		if(show) {
 			this.getChildByName('levelGUI').hide();
 			this.getChildByName('requirementsGUI').hide();
@@ -70011,7 +70083,7 @@ PWG.MapState = (function() {
 	};
 	
 	LevelState.prototype.showCompletedGUI = function() {
-		// 
+		// trace('LevelState['+this.model.name+']/showCompletedGUI');
 
 		this.getChildByName('levelGUI').hide();
 		this.getChildByName('requirementsGUI').hide();
@@ -70032,7 +70104,7 @@ PWG.MapState = (function() {
 	};
 	
 	LevelState.prototype.shutdown = function() {
-		// 
+		// trace('LevelState['+this.model.name+']/shutdown');
 		PWG.EventCenter.unbind(PWG.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
 		PWG.EventCenter.unbind(PWG.Events.AD_STARTED, this.onPauseState, this);
 		PWG.EventCenter.unbind(PWG.Events.AD_COMPLETED, this.onResumeState, this);
@@ -70056,14 +70128,14 @@ PWG.GameOverState = (function() {
 	}
 	
 	GameOverState.prototype.createState = function() {
-		// 
+		// trace('GameOverState/createState, TGS = ', TGS);
 		GameOverState._super.createState.call(this);
 
 		PWG.TGSAdapter.addWidget();
 	};
 	
 	GameOverState.prototype.shutdown = function(event) {
-		// 
+		// trace('GameOverState/shutdown');
 		PWG.TGSAdapter.hideGameOverWidget();
 		GameOverState._super.shutdown.call(this);
 	};
@@ -70077,13 +70149,13 @@ PWG.Player = (function() {
 
 	var _this;
 	function Player(params) {
-		// 
+		// trace('Player/constructor');
 		_this = this;
 		this.model = new PWG.Model(params);
 		this.initialPosition = true;
 		this.oneUpdate = false;
 		Player._super.constructor.call(this, params);
-		// 
+		// trace('player body size = ' + this.body.width + '/' + this.body.height);
 	}
 	
 	Player.prototype.begin = function(health) {
@@ -70104,11 +70176,11 @@ PWG.Player = (function() {
 		this.beginControls();
 
 		PWGGame.setHealth(this.health);
-		
+		trace('PLAYER:', this);
 	};
 
 	Player.prototype.collided = function(a, b, c) {
-		
+		trace('Player/collided', a, b, c);
 	};
 	
 	Player.prototype.setGroup = function(group) {
@@ -70116,8 +70188,8 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.beginWorld = function() {
-		// 
-		// 
+		// trace('Player/beginWorld');
+		// trace(this);
 		var attrs = this.model.attrs;
 		if(attrs.anchor) {
 			this.anchor.setTo(attrs.anchor.x, attrs.anchor.y);
@@ -70139,14 +70211,14 @@ PWG.Player = (function() {
 		this.activeControls[PWG.InputCodes.UP] = false;
 		this.activeControls[PWG.InputCodes.SPACE] = false;
 		this.activeControls[PWG.InputCodes.DOWN] = false;
-		// 
-		// 
+		// trace('activeControls');
+		// trace(this.activeControls);
 	};
 	
 	Player.prototype.onControlButtonPressed = function(event) {
 		this.activeControls[event.value] = true;
-		// 
-		// 
+		// trace('Player.prototype.onControlButtonPressed, event.value = ' + event.value);
+		// trace(this.activeControls);
 		if(event.value === PWG.InputCodes.RESET) {
 			this.activeControls[PWG.InputCodes.LEFT] = false;
 			this.activeControls[PWG.InputCodes.RIGHT] = false;
@@ -70160,8 +70232,8 @@ PWG.Player = (function() {
 	
 	Player.prototype.onControlButtonReleased = function(event) {
 		this.activeControls[event.value] = false;
-		// 
-		// 
+		// trace('Player.prototype.onControlButtonReleased, event.value = ' + event.value);
+		// trace(this.activeControls);
 		if(event.value === PWG.InputCodes.RESET) {
 			this.activeControls[PWG.InputCodes.LEFT] = false;
 			this.activeControls[PWG.InputCodes.RIGHT] = false;
@@ -70174,7 +70246,7 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.updatePosition = function() {
-		// 
+		// trace('Player/updatePosition, x = ' + this.body.x);
 		if(!PWGGame.adPlaying) {
 			if(this.initialPosition) {
 				this.initialPosition = false;
@@ -70207,7 +70279,7 @@ PWG.Player = (function() {
 					this.velY = 0;
 				}
 			} else if(this.activeControls[PWG.InputCodes.DOWN]) {
-				// 
+				// trace('Player/updatePosition, down is active');
 			}
 		}
 	};
@@ -70218,13 +70290,13 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.activateGravity = function() {
-		// 
+		// trace('Player/activateGravity');
 		Player._super.activateGravity.call(this);
 	};
 
 	Player.prototype.pwUpdate = function(params) {
-		// 
-		// 
+		// trace('Player/update, health = ' + this.health);
+		// trace(params);
 		if(this.alive) {
 			this.collided = false;
 			var physics = PWGGame.phaser.physics;
@@ -70232,7 +70304,7 @@ PWG.Player = (function() {
 			var physicalItems = params.physicalItems; 
 
 			for(var key in physicalItems) {
-				// 
+				// trace('physicalItems['+key+'] = ', physicalItems[key]);
 				this[('check' + key + 'Collision')](physicalItems[key], physics);
 			}
 
@@ -70259,7 +70331,7 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.checkGroupEnemiesCollision = function(group, physics) {
-		// 
+		// trace('Player/checkGroupEnemiesCollision, group = ', group);
 		// this.checkGroupCollision(group, this.onGroupEnemyCollision, physics, this);
 		this.checkCollision(group, this.onGroupEnemyCollision, physics, this);
 	};
@@ -70273,7 +70345,7 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.checkCollision = function(collection, callback, physics, context) {
-		// 
+		// trace('Player/checkCollision, health = ' + this.health);
 		// physics.overlap(this, collection, callback, null, context);
 		PWG.Utils.each(collection,
 			function(child) {
@@ -70288,8 +70360,8 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.onBonusCollision = function(player, bonus) {
-		// 
-		// 
+		// trace('Player/onBonusCollision, bonus = ');
+		// trace(bonus);
 		this.collided = true;
 
 		var health = bonus.model.attrs.health;
@@ -70305,7 +70377,7 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.onHazardCollision = function(player, hazard) {
-		// 
+		// trace('Player/onHazardCollision, hazard = ', hazard);
 		this.collided = true;
 		this.receiveDamage(hazard.model.attrs.attack);
 	};
@@ -70316,9 +70388,9 @@ PWG.Player = (function() {
 		var playerY = player.body.y + (player.body.height) - 10; // need a little bit of "wiggle room" to get the collision to take
 		var enemyX = enemy.body.x + (enemy.body.width);
 		var enemyY = enemy.body.y + (enemy.body.height);
-		// 
-		// 
-// 
+		// trace('Player/onEnemyCollision['+enemy.model.name+'], player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
+		// trace(enemy);
+// trace('enemy collision\n\tplayerY = ' + playerY + ', enemy.body.y = ' + enemy.body.y + '\n\tenemy.overlapY = ' + enemy.body.overlapY + ', enemy touching = ', enemy.body.touching);
 		// if(playerY < (enemyY)) { // player is above enemy
 		if(playerY <= enemy.body.y) {
 			this.updatePositionFromCollision();
@@ -70329,15 +70401,15 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.onGroupEnemyCollision = function(player, enemy) {
-		// 
+		// trace('Player/onGroupEnemyCollision, enemy = ' + enemy.model.name);
 		this.collided = true;
 		var playerX = player.body.x + (player.body.width);
 		var playerY = player.body.y + (player.body.height) - 10; // need a little bit of "wiggle room" to get the collision to take
 		var enemyX = enemy.body.x + (enemy.body.width);
 		var enemyY = enemy.body.y + (enemy.body.height);
-		// 
-		// 
-		// 
+		// trace('Player/onGroupEnemyCollision['+enemy.model.name+'], player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
+		// trace(enemy);
+		// trace('enemy collision\n\tplayerY = ' + playerY + ', enemy.body.y = ' + enemy.body.y + '\n\tenemy.overlapY = ' + enemy.body.overlapY + ', enemy touching = ', enemy.body.touching);
 		// if(playerY < (enemyY)) { // player is above enemy
 		if(playerY <= enemy.body.y) {
 			this.updatePositionFromCollision();
@@ -70350,20 +70422,20 @@ PWG.Player = (function() {
 	};
 
 	Player.prototype.onRequirementCollision = function(player, requirement) {
-		// 
+		// trace('Player/onRequirementCollision, requirement = ', requirement);
 
 		this.collided = true;
 		requirement.collect();
 	};
 	
 	Player.prototype.onGoalCollision = function(player, goal) {
-		// 
+		// trace('Player/onGoalCollision, goal = ' + goal.model.name);
 		PWG.EventCenter.trigger({ type: PWG.Events.GOAL_REACHED, value: goal.model.name });
 		goal.destroy();
 	};
 
 	Player.prototype.receiveDamage = function(damage) {
-		// 
+		// trace('Player/receiveDamage, justDamaged = ' + this.justDamaged);
 		if(!this.justDamaged) {
 			this.health -= damage;
 			PWGGame.setHealth(this.health);
@@ -70383,7 +70455,7 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.destroy = function() {
-		// 
+		// trace('Player/destroy');
 		PWG.EventCenter.unbind(PWG.Events.CONTROL_PRESSED, this.onControlButtonPressed);
 		PWG.EventCenter.unbind(PWG.Events.CONTROL_RELEASED, this.onControlButtonReleased);
 
@@ -70400,8 +70472,8 @@ PWG.AnimatedPlayer = (function() {
 	PWG.Utils.inherits(AnimatedPlayer, PWG.Player);
 	
 	function AnimatedPlayer(params) {
-		// 
-		// 
+		// trace('AnimatedPlayer, params = ');
+		// trace(params);
 		AnimatedPlayer._super.constructor.call(this, params);
 	}
 	
@@ -70416,20 +70488,20 @@ PWG.AnimatedPlayer = (function() {
 	AnimatedPlayer.prototype.updateAnimations = function() {
 		var attrs = this.model.attrs;
 		var animations = attrs.animations; 
-		// 
+		// trace('AnimatedPlayer/updateAnimations, justDamaged = ' + this.justDamaged);
 		if(this.justDamaged) {											// DAMAGED
 			if(attrs.facingForward) {
-				// 
-				// 
+				// trace('Player/updateAnimations, AnimationTypes.DAMAGED_R = ' + AnimationTypes.DAMAGED_R + ', animations = ');
+				// trace(animations);
 				this.play(AnimationTypes.DAMAGED_R, animations[AnimationTypes.DAMAGED_R].frameRate, animations[AnimationTypes.DAMAGED_R].loop);
 			} else {
 				this.play(AnimationTypes.DAMAGED_L, animations[AnimationTypes.DAMAGED_L].frameRate, animations[AnimationTypes.DAMAGED_L].loop);
 			}
 		} else {
 			if(attrs.jumping) {										// JUMPING
-				// 
+				// trace('player jumping');
 				if(attrs.facingForward) {
-					// 
+					// trace('playing jump r animation');
 					this.stop();
 					this.play(AnimationTypes.JUMP_R, animations[AnimationTypes.JUMP_R].frameRate, animations[AnimationTypes.JUMP_R].loop);
 				} else {
@@ -70438,7 +70510,7 @@ PWG.AnimatedPlayer = (function() {
 				}
 			} else {
 				if(!attrs.grounded && (this.body.y > this.previousY) && !this.collided) {
-					// 
+					// trace('player grounded = ' + attrs.grounded + ', collided = ' + this.collided);
 					if(attrs.facingForward) {
 						this.play(AnimationTypes.FALLING_R, animations[AnimationTypes.FALLING_R].frameRate, animations[AnimationTypes.FALLING_R].loop);
 					} else {
@@ -70455,12 +70527,12 @@ PWG.AnimatedPlayer = (function() {
 					} else {
 						if(this.velX > 0) {
 							if(this.currentAnimation !== 'runR') {			// MOVING RIGHT
-						 		// 
+						 		// trace('play run right');
 								this.play(AnimationTypes.RUN_R, animations[AnimationTypes.RUN_R].frameRate, animations[AnimationTypes.RUN_R].loop);
 							}
 						} else if(this.velX < 0) {									// MOVING LEFT
 							if(this.currentAnimation !== 'runL') {
-						 		// 
+						 		// trace('play run left');
 								this.play(AnimationTypes.RUN_L, animations[AnimationTypes.RUN_L].frameRate, animations[AnimationTypes.RUN_L].loop);
 							}
 						}
@@ -70476,14 +70548,14 @@ PWG.AnimatedPlayer = (function() {
 
 PWG.Empty = (function() {
 	function Empty(params) {
-		// 
+		// trace('Empty/constructor');
 		this.model = new PWG.Model(params);
 	}
 	
 	Empty.prototype.begin = function() {
-		// 
+		// trace('Empty/begin');
 		this.name = this.model.name;
-		// 
+		// trace(this);
 	};
 	
 	return Empty;
@@ -70543,7 +70615,7 @@ PWGGame = (function() {
 			// window.scrollTo(0,0);
 			window.addEventListener("load", 
 				function() { 
-					
+					trace('window.load');
 					if(!window.pageYOffset) { 
 						_hideAddressBar(); 
 					} 
@@ -70552,7 +70624,7 @@ PWGGame = (function() {
 			
 			// window.addEventListener("orientationchange", 
 			// 	function() {
-			// 		
+			// 		trace('window.orientationchange');
 			// 		_hideAddressBar();
 			// 	}
 			// );
@@ -70568,7 +70640,7 @@ PWGGame = (function() {
 			// );
 			PWGGame.browser = PWG.DeviceUtils.getBrowser();
 			PWGGame.os = PWG.DeviceUtils.getOs();
-			
+			trace('browser = ' + PWGGame.browser + ', os = ' + PWGGame.os);
 			// CHECK FOR FIREFOX ON MAC, AND BLOCK -- IT CRASHES WITH WEB GL RENDERING AND IS TOO SLOW FOR CANVAS RENDERING
 			if(PWGGame.browser === PWG.DeviceUtils.browsers.FIREFOX && PWGGame.os === PWG.DeviceUtils.operatingSystems.MAC) {
 				var ffmsg = document.createElement('div');
@@ -70588,6 +70660,15 @@ PWGGame = (function() {
 			}
 		},
 
+		startGame: function() {
+			trace('PWGGame/startGame');
+			if(_stageInitialized) {
+				_adapter.init(_levels.length);
+				PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
+				PWGGame.changeState(_model.initialState);
+			}
+		},
+		
 		getModel: function() {
 			return _model;
 		},
@@ -70602,7 +70683,7 @@ PWGGame = (function() {
 		},
 
 		getLevelInfo: function(idx) {
-			// 
+			// trace('polyworks game/getLevelInfo, idx = ' + idx);
 			var levelInfo = {
 				levelText: _levels[idx].model.text,
 				highScore: PWGGame.highScores[idx],
@@ -70613,7 +70694,7 @@ PWGGame = (function() {
 		},
 
 		changeState: function(id) {
-			
+			trace('change state, id = ' + id + ', tipDisplayed = ' + this.tipDisplayed);
 			if(this.tipDisplayed && id !== 'menu') {
 				document.getElementById('iphoneTip').style.display = 'none';
 				tipDisplayed = false;
@@ -70625,12 +70706,12 @@ PWGGame = (function() {
 				if(state) {
 					PWGGame.previousState = PWGGame.currentState;
 					PWGGame.currentState = id;
-					
-					// 
+					trace('PWGGame/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
+					// trace(_states);
 					PWGGame.addLoadingDiv();
 					PWGGame.phaser.state.start(id, state.clearWorld, state.clearCache);
 				} else {
-					
+					trace('ERROR: state['+id+'] not found');
 				}
 				_setSavedData();
 			}
@@ -70654,7 +70735,7 @@ PWGGame = (function() {
 		setRequirements: function(met, total) {
 			PWGGame.requirementsMet = met;
 			PWGGame.requirementsCount = total;
-			
+			trace('PWGGame.setRequirements, requirementsMet = ' + PWGGame.requirementsMet + ', total = ' + PWGGame.requirementsCount);
 			if(total > 0) {
 				PWG.EventCenter.trigger({ type: PWG.Events.REQUIREMENTS_UPDATED });
 			}
@@ -70685,7 +70766,7 @@ PWGGame = (function() {
 		},
 
 		quit: function() {
-			// 
+			// trace('PWGGame/quit');
 			if(!PWGGame.isQuit) {
 				_quit();
 			}
@@ -70756,15 +70837,15 @@ PWGGame = (function() {
 	}
 
 	function _hideAddressBar() {
-		// 
+		// trace('------------ PWGGame/_hideAddressBar, window.location.hash = ', window.location.hash);
 		if(!window.location.hash) {
-			
+			trace('\tdocument.height = ' + document.height + ', window.outerHeight = ' + window.outerHeight);
 			if(document.height < window.outerHeight) {
 				document.body.style.height = (window.outerHeight + 50) + 'px';
 			}
 			setTimeout(
 				function() {
-					
+					trace('\tabout to scrollTo 0/1');
 					window.scrollTo(0, 1); 
 				}, 
 				50 
@@ -70776,7 +70857,7 @@ PWGGame = (function() {
 		var w = window.innerWidth;
 		var h = window.innerHeight;
 		PWGGame.isLandscape = (w > h) ? true : false;
-		// 
+		// trace('PWGGame/_checkOrientation, isLandscape = ' + PWGGame.isLandscape, '\t_stageInitialized = ' + _stageInitialized);
 		if(PWGGame.isLandscape) {
 			PWGGame.hideOrientationMessage();
 			if(!_stageInitialized) {
@@ -70789,7 +70870,7 @@ PWGGame = (function() {
 	
 	function _orientationChange() {
 		_checkOrientation();
-		//  
+		// trace('PWGGame/_orientationChange, isLandscape = ' + PWGGame.isLandscape + ', currentState' + PWGGame.currentState); 
 		if(PWGGame.currentState !== '') {
 			_states[PWGGame.currentState].orientationSet(PWGGame.isLandscape);
 		}
@@ -70798,10 +70879,10 @@ PWGGame = (function() {
 	function _getSavedData() {
 		// Polywork.Storage.destroy();
 		var savedData = PWG.Storage.get(PWGGame.name);
-		
+		trace('PWGGame/_getSavedData, savedData = ', savedData);
 		if(typeof(savedData) !== 'undefined') {
 			if(savedData.indexOf('{') > -1) {
-				// 
+				// trace('\tdata saved was an object, parsing...');
 				savedData = JSON.parse(savedData);
 				for(var key in savedData) {
 					PWGGame[key] = savedData[key];
@@ -70826,29 +70907,45 @@ PWGGame = (function() {
 	
 	function _preload() {
 		var phaser = PWGGame.phaser;
+		var audio = _model.audio;
 		var images = _model.images;
 		var sprites = _model.sprites;
 		var loaded = {
+			audio: {},
 			images: {},
 			sprites: {}
 		};
 
+		PWG.Utils.each(
+			audio,
+			function(audio, key) {
+				if(_model.preloadAll) {
+					phaser.load.audio(key, audio);
+					loaded.audio[key] = true;
+				}
+				loaded.audio[key] = false;
+			},
+			this
+		);
+		
 		PWG.Utils.each(images,
 			function(image, key) {
 				if(_model.preloadAll) {
 					phaser.load.image(key, image);
+					loaded.image[key] = true;
 				}
 				loaded.images[key] = false;
 			},
 			this
 		);
 
-		// 
+		// trace('preload sprites');
 		PWG.Utils.each(sprites,
 			function(sprite, key) {
-				// 
+				// trace('PWGGame setting sprite['+key+'] loaded to false');
 				if(_model.preloadAll) {
 					phaser.load.spritesheet(key, sprite.url, sprite.width, sprite.height, sprite.frames);
+					loaded.sprites[key] = true;
 				}
 				loaded.sprites[key] = false;
 			},
@@ -70859,23 +70956,22 @@ PWGGame = (function() {
 	}
 	
 	function _create() {
-		// 
+		// trace('PWGGame/_create');
 		_initControls();
 		_initStates();
 		// _initSocial();
 
-		PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
 	}
 	
 	function _onStageInitialized(event) {
 		_stageInitialized = true;
 		_isTouchDevice = (navigator.userAgent.match(/ipad|iphone|android/i) !== null);
-		// 
+		// trace('PWGGame/_onStageInitialized, _isTouchDevice = ' + _isTouchDevice);
 
 		var config = new PWG.Config();
 
 		_model = config.init(PWG.Stage);
-		
+		trace(_model);
 		if(_model.webFonts) {
 			_addWebFonts(_model.webFonts);
 		}
@@ -70885,7 +70981,7 @@ PWGGame = (function() {
 		// if(PWG.DeviceUtils.isFirefox()) {
 		// 	renderType = Phaser.CANVAS;
 		// }
-		// 
+		// trace('---------- renderType = ' + renderType);
 		PWGGame.phaser = new Phaser.Game(PWG.Stage.winW, PWG.Stage.winH, renderType, 'gameContainer', { preload: _preload, create: _create });
 	}
 
@@ -70915,7 +71011,7 @@ PWGGame = (function() {
 	}
 	
 	function _onShowLevelInfo(event) {
-		
+		trace('PWGGame/_onShowLevelInfo, event = ', event);
 		var levelIdx = (event.value < 9) ? ('0' + (event.value+1)) : (event.value+1);
 		var stateId = 'level' + levelIdx + 'Info';
 		PWGGame.changeState(stateId);
@@ -70930,27 +71026,27 @@ PWGGame = (function() {
 				break;
 			}
 		}
-		// 
+		// trace('\tidx = ' + idx);
 		var stateId = _levels[idx].model.name;
 		PWGGame.currentLevel = idx;
-		// 
+		// trace('\tstateId = ' + stateId);
 		PWGGame.levelText = _levels[idx].model.text;
 		PWGGame.levelScore = 0;
 		PWGGame.currentLevelHighScore = 'high score: ' + PWGGame.highScores[idx];
 		PWGGame.changeState(stateId);
 
 		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.START, (idx+1)]);
-		_adapter.adCheck(PWGGame.currentLevel);
+		// _adapter.adCheck(PWGGame.currentLevel);
 	}
 	
 	function _onNextLevel(event) {
-		
+		trace('PWGGame/_onNextLevel, currentLevel = ', PWGGame.currentLevel);
 		var stateId;
 		if(PWGGame.currentLevel === PWGGame.levelCount) {
 			PWGGame.currentLevel = 0;
 			PWGGame.levelText = '';
 			stateId = 'completed';
-
+			
 			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.GAME_COMPLETED]);
 
 		} else {
@@ -70958,12 +71054,13 @@ PWGGame = (function() {
 			var levelIdx = (idx < 9) ? ('0' + (idx+1)) : (idx+1);
 			stateId = 'level' + levelIdx + 'Info';
 		}
+		_adapter.closeWidget();
 		PWGGame.changeState(stateId);
 
 	}
 	
 	function _onLevelCleared(event) {
-		
+		trace('PWGGame/_onLevelCleared, event = ', event);
 		var idx = event.value;
 		PWGGame.levelStatus[idx] = 'c';
 
@@ -70986,7 +71083,7 @@ PWGGame = (function() {
 
 		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.COMPLETE, (idx+1)]);
 		idx++;
-		
+		trace('THE NEW LEVEL STATUS IS: ' + PWGGame.levelStatus[idx]);
 		if(PWGGame.levelStatus[idx] === 'l') {
 			PWGGame.levelStatus[idx] = 'u';
 		}
@@ -71000,7 +71097,7 @@ PWGGame = (function() {
 	}
 
 	function _initStates() {
-		
+		trace('currentLevel = ' + PWGGame.currentLevel);
 		PWGGame.levelStatus = [];
 
 		var states = _model.states;
@@ -71009,12 +71106,12 @@ PWGGame = (function() {
 
 		PWG.Utils.each(states,
 			function(s, idx) {
-				// 
+				// trace(s);
 				state = new PWG[s.cl](s, s.name);
 				_states[s.name] = state;
 				PWGGame.phaser.state.add(s.name, state, false);
 				if(s.name.indexOf('level') > -1) {
-					// 
+					// trace('\tstate['+s.name+'] levelCount = ' + levelCount);
 					if(PWGGame.savedStatus) {
 						PWGGame.levelStatus[levelCount] = PWGGame.savedStatus[levelCount];
 						PWGGame.highScores[levelCount] = PWGGame.highScores[levelCount] || 0;
@@ -71031,14 +71128,33 @@ PWGGame = (function() {
 		);
 		PWGGame.levelCount = levelCount;
 		_initLevelInfoStates();
-		_adapter.init(levelCount);
-		
-		if(_stageInitialized) {
-			PWGGame.changeState(_model.initialState);
-		}
+
+		trace('PWGGame/_initStates, _stageInitialized = ' + _stageInitialized + ', _states = ', _states, '\t_levels = ', _levels);
 		_statesInialized = true;
+
+		if(typeof(TGS) !== 'undefined') {
+			if(TGS.IsReady()) {
+				trace('\ttgs is ready');
+				_startGame();
+			} else {
+				trace('\ttgs is defined, but not ready');
+				TGS.onReady = PWGGame.startGame();
+			}
+		} else {
+			trace('\ttgs is not defined');
+			_startGame();
+		}
 	}
 
+	// function _startGame() {
+	// 	trace('START GAME');
+	// 	if(_stageInitialized) {
+	// 		_adapter.init(_levels.length);
+	// 		PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
+	// 		PWGGame.changeState(_model.initialState);
+	// 	}
+	// }
+	
 	function _initLevelInfoStates() {
 		var template = PWGGame.get('levelInfoStateTemplate');
 		var controls = PWGGame.get('controls').levelInfo;
@@ -71075,13 +71191,13 @@ PWGGame = (function() {
 				PWG.Utils.each(
 					groupCollection,
 					function(item, key) {
-						// 
+						// trace('\titem['+key+'] = ', item);
 						levelInfoConfig.attrs[0].attrs.push(item);
 					},
 					this
 				);
 
-				
+				// trace('levelInfo['+levelIdx+'] levelInfoConfig = ', levelInfoConfig);
 				levelInfoState = new PWG.MenuState(levelInfoConfig);
 				PWGGame.phaser.state.add(stateName, levelInfoState, false);
 				_states[stateName] = levelInfoState;
@@ -71122,7 +71238,7 @@ PWGGame = (function() {
 	}
 	
 	function _killStates() {
-		// 
+		// trace('PWGGame/_killStates');
 		PWG.Utils.each(_states,
 			function(s) {
 				s.shutdown();
@@ -71135,10 +71251,30 @@ PWGGame = (function() {
 	return module;
 }());
 
+var scriptsLoaded = false;
+var elementsAdded = false;
+
+// PWG.DOMManager.addScripts(domConfig.scripts, onScriptsLoaded);
 PWG.DOMManager.addElements(domConfig.head.elements, document.getElementsByTagName('head')[0]);
 PWG.DOMManager.addElements(domConfig.body.elements, document.getElementsByTagName('body')[0], onElementsAdded);
 
 function onElementsAdded() {
+	// trace('onElementsAdded, scriptsLoaded = ' + scriptsLoaded);
+	elementsAdded = true;
+	// if(scriptsLoaded) {
+		beginGame();
+	// }
+}
+
+function onScriptsLoaded() {
+	trace('onScriptsAdded, elementsAdded = ' + elementsAdded);
+	scriptsLoaded = true;
+	if(elementsAdded) {
+		beginGame();
+	}
+}
+
+function beginGame() {
 	PWGGame.begin({
 		name: 'kekeAndTheGreyExpanse',
 		aspectRatio: [16, 9]

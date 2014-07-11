@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-08T23:15:54')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-09T10:15:00')})();
 !function(root, factory) {
   if (typeof define === "function" && define.amd) {
     define(factory);
@@ -41375,8 +41375,8 @@ PWG.SocialPanel = (function() {
 
 PWG.TGSAdapter = (function() {
 	var LEVEL_PLAYS_PER_AD = 1;
-	var WIDGET_WIDTH = 300;
-
+	var TRE_SENSA_WIDGET_WIDTH = 300;
+	var PWG_WIDGET_UNITS = 5;
 	
 	var _levels = [];
 
@@ -41488,9 +41488,9 @@ PWG.TGSAdapter = (function() {
 			var winH = PWG.Stage.winH;
 			var unit = PWG.Stage.unit; 
 			var widgetX = (unit * 3);
-			var widgetY = (unit * 1);
-			var widgetScale = (unit * 5) / WIDGET_WIDTH;
-			trace('\twidget x/y = ' + widgetX + '/' + widgetY + ', scale = ' + widgetScale + ', widget w should be = ' + (unit * 5));
+			var widgetY = (unit * 0.5);
+			var widgetScale = (unit * PWG_WIDGET_UNITS) / TRE_SENSA_WIDGET_WIDTH;
+			trace('\twidget x/y = ' + widgetX + '/' + widgetY + ', scale = ' + widgetScale + ', widget w should be = ' + (unit * PWG_WIDGET_UNITS));
 
 			if(_tgsExists) {
 				this.widget = PWGGame.Tresensa.createWidget({
@@ -69623,20 +69623,20 @@ PWG.State = (function() {
 		if(!this.model.loaded) {
 			// trace('\tstate images = ');
 			// trace(this.model.images);
-			if(this.model.audio && this.model.audio.length > 0) {
-				var audio = PWGGame.get('audio');
-				PWG.Utils.each(
-					this.model.audio,
-					function(audio) {
-						if(!PWGGame.loaded.audio[audio]) {
-							this.toLoad++;
-							phaser.load.audio(audio, audio[audio]);
-							loaded.audio[audio] = true;
-						}
-					},
-					this
-				);
-			}
+			// if(this.model.audio && this.model.audio.length > 0) {
+			// 	var audio = PWGGame.get('audio');
+			// 	PWG.Utils.each(
+			// 		this.model.audio,
+			// 		function(audio) {
+			// 			if(!PWGGame.loaded.audio[audio]) {
+			// 				this.toLoad++;
+			// 				phaser.load.audio(audio, audio[audio]);
+			// 				loaded.audio[audio] = true;
+			// 			}
+			// 		},
+			// 		this
+			// 	);
+			// }
 			if(this.model.images && this.model.images.length > 0) {
 				var images = PWGGame.get('images');
 				PWG.Utils.each(this.model.images,
@@ -69683,13 +69683,13 @@ PWG.State = (function() {
 		}
 		this.model.set({ createCalled: true });
 		
-		if(this.model.audio && this.model.audio.length > 0) {
-			var audio = this.model.audio[0];
-			trace('audio = ', audio);
-			var sound = PWGGame.phaser.add.audio(audio);
-			trace('sound = ', sound);
-			sound.play('', 0, 1, true);
-		}
+		// if(this.model.audio && this.model.audio.length > 0) {
+		// 	var audio = this.model.audio[0];
+		// 	trace('audio = ', audio);
+		// 	var sound = PWGGame.phaser.add.audio(audio);
+		// 	trace('sound = ', sound);
+		// 	sound.play('', 0, 1, true);
+		// }
 	};
 
 	State.prototype.createState = function() {

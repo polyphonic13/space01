@@ -1,7 +1,7 @@
 PWG.TGSAdapter = (function() {
 	var LEVEL_PLAYS_PER_AD = 1;
-	var WIDGET_WIDTH = 300;
-
+	var TRE_SENSA_WIDGET_WIDTH = 300;
+	var PWG_WIDGET_UNITS = 5;
 	
 	var _levels = [];
 
@@ -113,9 +113,9 @@ PWG.TGSAdapter = (function() {
 			var winH = PWG.Stage.winH;
 			var unit = PWG.Stage.unit; 
 			var widgetX = (unit * 3);
-			var widgetY = (unit * 1);
-			var widgetScale = (unit * 5) / WIDGET_WIDTH;
-			trace('\twidget x/y = ' + widgetX + '/' + widgetY + ', scale = ' + widgetScale + ', widget w should be = ' + (unit * 5));
+			var widgetY = (unit * 0.5);
+			var widgetScale = (unit * PWG_WIDGET_UNITS) / TRE_SENSA_WIDGET_WIDTH;
+			trace('\twidget x/y = ' + widgetX + '/' + widgetY + ', scale = ' + widgetScale + ', widget w should be = ' + (unit * PWG_WIDGET_UNITS));
 
 			if(_tgsExists) {
 				this.widget = PWGGame.Tresensa.createWidget({
