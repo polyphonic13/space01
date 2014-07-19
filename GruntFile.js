@@ -131,14 +131,7 @@ module.exports = function(grunt) {
 					cwd: '<%= buildDir %>/js/',
 					src: [ '**/*.js' ],
 					filter: 'isFile',
-					dest: '<%= tresensaDir %>/js/'
-				},
-				{
-					expand: true,
-					cwd: '<%= buildDir %>/',
-					src: [ '**/*.html' ],
-					filter: 'isFile',
-					dest: '<%= tresensaDir %>/'
+					dest: '<%= tresensaDir %>/js/game/'
 				}
 				]
 			}

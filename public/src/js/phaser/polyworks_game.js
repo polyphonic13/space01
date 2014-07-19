@@ -583,14 +583,16 @@ PWGGame = (function() {
 		}
 	}
 
-	function _startGame() {
-		trace('START GAME');
-		if(_stageInitialized) {
-			_adapter.init(_levels.length);
-			// PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
-			PWGGame.changeState(_model.initialState);
-		}
-	}
+	// function _startGame() {
+	// 	trace('START GAME');
+	// 	if(_stageInitialized) {
+	// 		_adapter.init(_levels.length);
+	// 		// if(typeof(inTGS) !== 'undefined' && inTGS) {
+	// 			PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
+	// 		// }
+	// 		PWGGame.changeState(_model.initialState);
+	// 	}
+	// }
 	
 	function _initLevelInfoStates() {
 		var template = PWGGame.get('levelInfoStateTemplate');
