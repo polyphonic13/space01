@@ -7062,6 +7062,23 @@ PWG.Config = (function() {
 								immovable: true
 							}
 						}
+					},
+					{
+						name: 'crystalBranch',
+						cl: 'Sprite',
+						attrs: {
+							img: 'branch03aRight',
+							phaser: { 
+								width: (stageUnit * 3), 
+								height: (stageUnit * 0.5) },
+							start: {
+								x: (stageWidth * 2) + (stageUnit * 12),
+								y: winH - (stageUnit * 5.5)
+							},
+							physics: {
+								immovable: true
+							}
+						}
 					}
 					]
 				},
@@ -7396,21 +7413,6 @@ PWG.Config = (function() {
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 4.5),
 										y: winH - (stageUnit * 12)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							},
-							{
-								name: 'tree03-branch01',
-								cl: 'Sprite',
-								attrs: {
-									img: 'branch03aRight',
-									phaser: { width: (stageUnit * 3), height: (stageUnit * 0.5) },
-									start: {
-										x: (stageWidth * 2) + (stageUnit * 13),
-										y: winH - (stageUnit * 5.5)
 									},
 									physics: {
 										immovable: true
@@ -10525,11 +10527,11 @@ PWG.Config = (function() {
 								attrs: {
 									img: 'rockPlatform04',
 									phaser: {
-										width: (stageUnit * 3) + (stageUnit * 0.5),
+										width: (stageUnit * 2.5),
 										height: (stageUnit * 1)
 									},
 									start: {
-										x: (stageWidth * 2),
+										x: (stageWidth * 2) + (stageUnit * 0.5),
 										y: winH - (stageUnit * 2.5)
 									},
 									physics: {
@@ -11405,7 +11407,7 @@ PWG.Config = (function() {
 						// sector 5
 						[
 						{
-							name: 'level08-sector3-enemy1',
+							name: 'level08-sector5-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'spider01',
@@ -11416,7 +11418,7 @@ PWG.Config = (function() {
 								},
 								start: {
 									x: (stageUnit * 30),
-									y: winH - (stageUnit * 39)
+									y: winH - (stageUnit * 40)
 								},
 								physics: {
 									allowGravity: false
@@ -11440,7 +11442,7 @@ PWG.Config = (function() {
 						// sector 7
 						[
 						{
-							name: 'level08-sector3-enemy1',
+							name: 'level08-sector7-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'spider01',
@@ -11450,7 +11452,7 @@ PWG.Config = (function() {
 									health: 5
 								},
 								start: {
-									x: (stageUnit * 20),
+									x: (stageUnit * 35),
 									y: winH - (stageUnit * 59)
 								},
 								physics: {
@@ -14569,11 +14571,6 @@ PWG.Config = (function() {
 							}
 							// end sector 2 terrain
 							]
-						},
-						{
-							name: 'bonuses',
-							cl: 'Bonuses',
-							attrs: [] 
 						}
 						]
 					},

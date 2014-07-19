@@ -1,8 +1,10 @@
 module.exports = function(grunt) {
 
-	var project = grunt.option('pjt');
+	var project = 'keke2';
 	var srcDir = 'public/src';
 	var buildDir = 'public/build';
+	var tresensaDir = 'public/tresensa_build/keke_tre_sensa';
+	
 	var projectSrcDir;
 	
 	if(typeof(project) !== 'undefined') {
@@ -20,13 +22,15 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 
 		pkg: grunt.file.readJSON('package.json'),
+		meta: grunt.file.readJSON('grunt/data/meta.json'),
 
 		project: project,
 		srcDir: srcDir,
 		buildDir: buildDir,
+		tresensaDir: tresensaDir,
 		projectSrcDir: projectSrcDir,
 
-/////// CONCAT 
+		// CONCAT 
 		concat: {
 			// task docs: https://github.com/gruntjs/grunt-contrib-concat
 
@@ -58,7 +62,8 @@ module.exports = function(grunt) {
 			}
 
 		},
-/////// MINIFICATION
+
+		// MINIFICATION
 		uglify: {
 			// task docs: https://github.com/gruntjs/grunt-contrib-uglify
 
@@ -83,7 +88,8 @@ module.exports = function(grunt) {
 			}
 			
 		},
-/////// COPYING
+
+		// COPYING
 		copy: {
 			// task docs: https://github.com/gruntjs/grunt-contrib-copy
 
@@ -102,19 +108,72 @@ module.exports = function(grunt) {
 					dest: '<%= buildDir %>/css/'
 				}
 				]
+			},
+			
+			tresensa: {
+				files: [
+				{
+					expand: true,
+					cwd: '<%= buildDir %>/assets/',
+					src: [ '**/*' ],
+					filter: 'isFile',
+					dest: '<%= tresensaDir %>/assets/'
+				},
+				{
+					expand: true,
+					cwd: '<%= buildDir %>/css/',
+					src: [ '**/*.css' ],
+					filter: 'isFile',
+					dest: '<%= tresensaDir %>/css/'
+				},
+				{
+					expand: true,
+					cwd: '<%= buildDir %>/js/',
+					src: [ '**/*.js' ],
+					filter: 'isFile',
+					dest: '<%= tresensaDir %>/js/'
+				},
+				{
+					expand: true,
+					cwd: '<%= buildDir %>/',
+					src: [ '**/*.html' ],
+					filter: 'isFile',
+					dest: '<%= tresensaDir %>/'
+				}
+				]
 			}
 
 		},
-/////// CSS MINIFICATION
-		// cssmin: {
-		// 	project: {
-		// 		expand: true,
-		// 		cwd: '<%= buildDir %>/css/',
-		// 		src: ['*.css', '!*.min.css'],
-		// 		dest: '<%= buildDir %>/css/'
-		// 	}
-		// },
-/////// LOCAL SERVER
+		
+		// CSS MINIFICATION
+		cssmin: {
+			project: {
+				expand: true,
+				cwd: '<%= buildDir %>/css/',
+				src: ['*.css', '!*.min.css'],
+				dest: '<%= buildDir %>/css/'
+			}
+		},
+
+		// SCP
+		// docs: https://www.npmjs.org/package/grunt-scp
+		scp: {
+			options: {
+				host: '<%= meta.server.host %>',
+				username: '<%= meta.server.user %>',
+				password: '<%= meta.server.pass%>'
+			},
+			game: {
+				files: [{
+					cwd: '<%= tresensaDir %>',
+					src: '**/*',
+					filter: 'isFile',
+					dest: '<%= meta.server.path %>'
+				}]
+			}
+		},
+
+		// LOCAL SERVER
 		connect: {
 			/*
 			// docs: https://github.com/iammerrick/grunt-connect
@@ -134,10 +193,38 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	// grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-scp');
 	grunt.loadNpmTasks('grunt-connect');
 	grunt.loadTasks('grunt/tasks');
 	
-	grunt.registerTask('default', ['projectDeploySetup', 'concat:project', /*'stripTraceStatements',*/ 'uglify', 'copy:project', /*'cssmin',*/ 'createProjectHtml']);
+	grunt.registerTask(
+		'default', 
+		[
+			'projectDeploySetup', 
+			'concat:project', 
+			/*'stripTraceStatements',*/ 
+			'uglify', 
+			'copy:project', 
+			'cssmin', 
+			'createProjectHtml'
+		]
+	);
+	
+	grunt.registerTask(
+		'tresensa',
+		[
+			'default',
+			'copy:tresensa'
+		]
+	);		
+			
+	grunt.registerTask(
+		'deploy',
+		[
+			'tresensa',
+			'scp'
+		]
+	);
 };
