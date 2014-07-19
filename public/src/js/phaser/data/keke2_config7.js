@@ -85,7 +85,15 @@ PWG.Config = (function() {
 		var c = {
 			// AUDIO
 			audio: {
-				secrets: 'assets/audio/music/secrets3.mp3'
+				secrets: 'assets/audio/music/secrets3.mp3',
+				rxMinus1: 'assets/audio/music/rx-1.mp3',
+				b016: 'assets/audio/music/b016.mp3',
+				twentyThree: 'assets/audio/music/23.mp3',
+				laDespedida: 'assets/audio/music/la_despedida.mp3',
+				theMadonna: 'assets/audio/music/the_madonna.mp3',
+				yesterday: 'assets/audio/music/yesterday_edit.mp3',
+				ololo: 'assets/audio/music/ololo.mp3',
+				tinkles: 'assets/audio/music/tinkles.mp3'
 			},
 			// IMAGES
 			images: {
@@ -277,6 +285,7 @@ PWG.Config = (function() {
 
 				// buttons
 				startButton: 'assets/images/controls/start_button.png',
+				muteButton: 'assets/images/controls/mute_button.png',
 				creditsButton: 'assets/images/controls/credits_button.png',
 				
 				// boss
@@ -369,6 +378,13 @@ PWG.Config = (function() {
 				menuButton: 
 				{
 					url: 'assets/images/controls/menu_button3.png',
+					width: 50,
+					height: 50,
+					frames: 2
+				},
+				muteButton: 
+				{
+					url: 'assets/images/controls/mute_button.png',
 					width: 50,
 					height: 50,
 					frames: 2
@@ -1124,6 +1140,7 @@ PWG.Config = (function() {
 				],
 				sprites: [
 					'pauseButton',
+					'muteButton',
 					'menuButton',
 					'mapButton',
 					'nextButton',
@@ -1266,12 +1283,42 @@ PWG.Config = (function() {
 						}
 					},
 					{
+						name: 'music',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							x: -(stageUnit * 0.66),
+							y: (stageUnit * 4.5),
+							style: { 
+								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'music: '
+						}
+					},
+					{
+						name: 'music',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							x: (stageUnit * 0.85),
+							y: (stageUnit * 4.65),
+							style: { 
+								font: 'bold ' + fontSizes.xs + 'px "Smythe"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'factor13'
+						}
+					},
+					{
 						name: 'marketing1',
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
 							x: -(stageUnit * 1.25),
-							y: (stageUnit * 4.5),
+							y: (stageUnit * 5.5),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
@@ -1286,7 +1333,7 @@ PWG.Config = (function() {
 						attrs: {
 							alignX: 'center',
 							x: (stageUnit * 1.25),
-							y: (stageUnit * 4.65),
+							y: (stageUnit * 5.65),
 							style: { 
 								font: 'bold ' + fontSizes.xs + 'px "Smythe"', 
 								fill: '#000000',
@@ -1301,7 +1348,7 @@ PWG.Config = (function() {
 						attrs: {
 							alignX: 'center',
 							x: -(stageUnit * 2.7),
-							y: (stageUnit * 5.5),
+							y: (stageUnit * 6.5),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
@@ -1316,7 +1363,7 @@ PWG.Config = (function() {
 						attrs: {
 							alignX: 'center',
 							x: (stageUnit * 0.9),
-							y: (stageUnit * 5.65),
+							y: (stageUnit * 6.65),
 							style: { 
 								font: 'bold ' + fontSizes.xs + 'px "Smythe"', 
 								fill: '#000000',
@@ -1331,7 +1378,7 @@ PWG.Config = (function() {
 						attrs: {
 							alignX: 'center',
 							x: -(stageUnit * 5.25),
-							y: (stageUnit * 6.5),
+							y: (stageUnit * 7.5),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
@@ -1346,7 +1393,7 @@ PWG.Config = (function() {
 						attrs: {
 							alignX: 'center',
 							x: (stageUnit * 0.75),
-							y: (stageUnit * 6.65),
+							y: (stageUnit * 7.65),
 							style: { 
 								font: 'bold ' + fontSizes.xs + 'px "Smythe"', 
 								fill: '#000000',
@@ -2618,6 +2665,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'rxMinus1'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -4023,6 +4073,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'b016'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -6261,6 +6314,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'twentyThree'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -8018,6 +8074,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'yesterday'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -9858,6 +9917,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'theMadonna'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -11312,6 +11374,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'tinkles'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -13504,6 +13569,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'ololo'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -15907,6 +15975,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -18643,6 +18714,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -21185,6 +21259,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -23295,6 +23372,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -24793,6 +24873,27 @@ PWG.Config = (function() {
 								pressed: {
 									type: PWG.Events.CHANGE_STATE,
 									value: 'map'
+								}
+							}
+						}
+					},
+					{
+						name: 'muteButton',
+						cl: 'InputButton',
+						attrs: {
+							img: 'muteButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageUnit * 0.5),
+								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
+							},
+							events: {
+								released: {
+									type: PWG.Events.MUTE_UNMUTE,
+									value: 'menu'
 								}
 							}
 						}

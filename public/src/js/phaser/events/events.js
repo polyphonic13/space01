@@ -7,6 +7,7 @@ PWG.Events = {
 	BUTTON_RELEASED: 'buttonReleased',
 	CONTROL_PRESSED: 'controlPressed',
 	CONTROL_RELEASED: 'controlReleased',
+	MUTE_UNMUTE: 'muteUnmute',
 	CHANGE_STATE: 'changeState',
 	PAUSE_STATE: 'pauseState',
 	RESUME_STATE: 'resumeState',

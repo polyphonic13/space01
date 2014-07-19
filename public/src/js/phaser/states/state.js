@@ -47,22 +47,23 @@ PWG.State = (function() {
 		
 		// trace('State['+this.model.name+']/preLoad, loaded = ' + this.model.loaded);
 		if(!this.model.loaded) {
-			// trace('\tstate images = ');
-			// trace(this.model.images);
-			// if(this.model.audio && this.model.audio.length > 0) {
-			// 	var audio = PWGGame.get('audio');
-			// 	PWG.Utils.each(
-			// 		this.model.audio,
-			// 		function(audio) {
-			// 			if(!PWGGame.loaded.audio[audio]) {
-			// 				this.toLoad++;
-			// 				phaser.load.audio(audio, audio[audio]);
-			// 				loaded.audio[audio] = true;
-			// 			}
-			// 		},
-			// 		this
-			// 	);
-			// }
+			trace('\tstate audio = ');
+			trace(this.model.audio);
+			if(this.model.audio && this.model.audio.length > 0) {
+				var audio = PWGGame.get('audio');
+				PWG.Utils.each(
+					this.model.audio,
+					function(a) {
+						if(!PWGGame.loaded.audio[audio]) {
+							trace('loading audio['+a+']: ', audio[a]);
+							this.toLoad++;
+							phaser.load.audio(a, audio[a]);
+							loaded.audio[a] = true;
+						}
+					},
+					this
+				);
+			}
 			if(this.model.images && this.model.images.length > 0) {
 				var images = PWGGame.get('images');
 				PWG.Utils.each(this.model.images,
@@ -109,13 +110,34 @@ PWG.State = (function() {
 		}
 		this.model.set({ createCalled: true });
 		
-		// if(this.model.audio && this.model.audio.length > 0) {
-		// 	var audio = this.model.audio[0];
-		// 	trace('audio = ', audio);
-		// 	var sound = PWGGame.phaser.add.audio(audio);
-		// 	trace('sound = ', sound);
-		// 	sound.play('', 0, 1, true);
-		// }
+		if(this.model.audio && this.model.audio.length > 0) {
+			trace('\tisMuted = ' + PWGGame.isMuted);
+			if(!PWGGame.isMuted) {
+				var audio = this.model.audio[0];
+				if(PWGGame.currentAudioName !== audio) {
+					if(PWGGame.currentAudio) {
+						PWGGame.currentAudio.stop();
+						PWGGame.currentAudio = null;
+					}
+					trace('audio = ', audio);
+					// key, volume loop
+					var sound = PWGGame.phaser.add.audio(audio, 1, false);
+					trace('sound = ', sound);
+					// marker, position, volume, loop
+					sound.play('', 0, 1, false);
+					PWGGame.currentAudio = sound;
+					PWGGame.currentAudioName = audio;
+				}
+			}
+		}
+		
+		if(this.model.name === 'menu') {
+			var frame = 0;
+			if(PWGGame.isMuted) {
+				frame = 1;
+			}
+			this.model.collection[1].model.collection[1].frame = frame;
+		}
 	};
 
 	State.prototype.createState = function() {
@@ -175,6 +197,10 @@ PWG.State = (function() {
 			active: false
 		});
 
+		if(PWGGame.currentAudio) {
+			// PWGGame.currentAudio.stop();
+			// PWGGame.currentAudio = null;
+		}
 		this.destroy();
 	};
 

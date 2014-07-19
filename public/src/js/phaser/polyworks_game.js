@@ -25,6 +25,7 @@ PWGGame = (function() {
 		name: '',
 		phaser: null,
 		player: null,
+		currentAudio: null,
 		highScores: [],
 		levelScore: 0,
 		currentLevelHighScore: 0,
@@ -38,6 +39,7 @@ PWGGame = (function() {
 		previousState: '',
 		savedState: '',
 		viewedOnce: '0',
+		isMuted: false,
 		adPlaying: false,
 		tipDisplayed: false,
 		isLandscape: false,
@@ -101,7 +103,9 @@ PWGGame = (function() {
 			trace('PWGGame/startGame');
 			if(_stageInitialized) {
 				_adapter.init(_levels.length);
-				PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
+				if(typeof(inTGS) !== 'undefined' && inTGS) {
+					PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
+				}
 				PWGGame.changeState(_model.initialState);
 			}
 		},
@@ -253,6 +257,7 @@ PWGGame = (function() {
 		PWG.EventCenter.bind(PWG.Events.BUTTON_PRESSED, _onControlPressed, this);
 		PWG.EventCenter.bind(PWG.Events.CONTROL_PRESSED, _onControlPressed, this);
 		PWG.EventCenter.bind(PWG.Events.CHANGE_STATE, _onChangeState, this);
+		PWG.EventCenter.bind(PWG.Events.MUTE_UNMUTE, _onMuteUnmute, this);
 		PWG.EventCenter.bind(PWG.Events.SHOW_LEVEL_INFO, _onShowLevelInfo, this);
 		PWG.EventCenter.bind(PWG.Events.START_LEVEL, _onStartLevel, this);
 		PWG.EventCenter.bind(PWG.Events.NEXT_LEVEL, _onNextLevel, this);
@@ -268,6 +273,7 @@ PWGGame = (function() {
 		PWG.EventCenter.unbind(PWG.Events.BUTTON_PRESSED, _onControlPressed, this);
 		PWG.EventCenter.unbind(PWG.Events.CONTROL_PRESSED, _onControlPressed, this);
 		PWG.EventCenter.unbind(PWG.Events.CHANGE_STATE, _onChangeState, this);
+		PWG.EventCenter.unbind(PWG.Events.MUTE_UNMUTE, _onMuteUnmute, this);
 		PWG.EventCenter.unbind(PWG.Events.START_LEVEL, _onStartLevel, this);
 		PWG.EventCenter.unbind(PWG.Events.NEXT_LEVEL, _onNextLevel, this);
 		PWG.EventCenter.unbind(PWG.Events.LEVEL_CLEARED, _onLevelCleared, this);
@@ -436,7 +442,21 @@ PWGGame = (function() {
 			break;
 		}
 	}
-	
+
+	function _onMuteUnmute(event) {
+		PWGGame.isMuted = !PWGGame.isMuted;
+		var frame = 0;
+		if(PWGGame.isMuted) {
+			frame = 1;
+			if(PWGGame.currentAudio) {
+				PWGGame.currentAudio.stop();
+				PWGGame.currentAudio = null;
+				PWGGame.currentAudioName = '';
+			}
+		}
+		_states['menu'].model.collection[1].model.collection[1].frame = frame;
+		trace('post mute unmute, isMuted = ' + PWGGame.isMuted + ', _states = ', _states['menu'].model.collection[1].model.collection[1]);
+	}
 	function _onChangeState(event) {
 		if(event.value === 'map') {
 			if(!_gameStarted) {
@@ -579,7 +599,7 @@ PWGGame = (function() {
 			}
 		} else {
 			trace('\ttgs is not defined');
-			_startGame();
+			PWGGame.startGame();
 		}
 	}
 
