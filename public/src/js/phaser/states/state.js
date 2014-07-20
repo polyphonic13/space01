@@ -121,10 +121,10 @@ PWG.State = (function() {
 					}
 					trace('audio = ', audio);
 					// key, volume loop
-					var sound = PWGGame.phaser.add.audio(audio, 1, false);
+					var sound = PWGGame.phaser.add.audio(audio, 1, true);
 					trace('sound = ', sound);
 					// marker, position, volume, loop
-					sound.play('', 0, 1, false);
+					sound.play('', 0, 1, true);
 					PWGGame.currentAudio = sound;
 					PWGGame.currentAudioName = audio;
 				}
@@ -137,6 +137,12 @@ PWG.State = (function() {
 				frame = 1;
 			}
 			this.model.collection[1].model.collection[1].frame = frame;
+		} else if(this.model.name === 'gameOver') {
+			if(PWGGame.currentAudio) {
+				PWGGame.currentAudio.stop();
+				PWGGame.currentAudio = null;
+				PWG.currentAudioName = '';
+			}
 		}
 	};
 

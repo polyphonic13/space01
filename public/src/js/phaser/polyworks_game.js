@@ -449,14 +449,16 @@ PWGGame = (function() {
 		if(PWGGame.isMuted) {
 			frame = 1;
 			if(PWGGame.currentAudio) {
-				PWGGame.currentAudio.stop();
-				PWGGame.currentAudio = null;
+				PWGGame.currentAudio.pause();
 				PWGGame.currentAudioName = '';
 			}
+		} else if(PWGGame.currentAudio) {
+			PWGGame.resume();
 		}
 		_states['menu'].model.collection[1].model.collection[1].frame = frame;
 		trace('post mute unmute, isMuted = ' + PWGGame.isMuted + ', _states = ', _states['menu'].model.collection[1].model.collection[1]);
 	}
+
 	function _onChangeState(event) {
 		if(event.value === 'map') {
 			if(!_gameStarted) {
@@ -603,16 +605,16 @@ PWGGame = (function() {
 		}
 	}
 
-	// function _startGame() {
-	// 	trace('START GAME');
-	// 	if(_stageInitialized) {
-	// 		_adapter.init(_levels.length);
-	// 		// if(typeof(inTGS) !== 'undefined' && inTGS) {
-	// 			PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
-	// 		// }
-	// 		PWGGame.changeState(_model.initialState);
-	// 	}
-	// }
+	function _startGame() {
+		trace('START GAME');
+		if(_stageInitialized) {
+			_adapter.init(_levels.length);
+			// if(typeof(inTGS) !== 'undefined' && inTGS) {
+				PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
+			// }
+			PWGGame.changeState(_model.initialState);
+		}
+	}
 	
 	function _initLevelInfoStates() {
 		var template = PWGGame.get('levelInfoStateTemplate');
@@ -639,7 +641,8 @@ PWGGame = (function() {
 				levelInfoConfig.name = stateName;
 				levelInfoConfig.images.push(background);
 				levelInfoConfig.images.push(title);
-
+				levelInfoConfig.audio = [template.audio[idx]];
+				
 				groupCollection.background.attrs.img = background;
 				groupCollection.title.attrs.img = title;
 				groupCollection.description.attrs.defaultContent = template.descriptions[idx];

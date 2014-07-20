@@ -92,8 +92,9 @@ PWG.Config = (function() {
 				laDespedida: 'assets/audio/music/la_despedida.mp3',
 				theMadonna: 'assets/audio/music/the_madonna.mp3',
 				yesterday: 'assets/audio/music/yesterday_edit.mp3',
+				tinkles: 'assets/audio/music/tinkles.mp3',
 				ololo: 'assets/audio/music/ololo.mp3',
-				tinkles: 'assets/audio/music/tinkles.mp3'
+				whisperingWinterWindows: 'assets/audio/music/whispering_winter_windows.mp3'
 			},
 			// IMAGES
 			images: {
@@ -788,12 +789,12 @@ PWG.Config = (function() {
 						}
 					}
 				},
-				// restart button
+				// mute button
 				{
-					name: 'restart',
+					name: 'muteButton',
 					cl: 'InputButton',
 					attrs: {
-						img: 'restartButton',
+						img: 'muteButton',
 						phaser: {
 							width: (stageUnit * 1.5),
 							height: (stageUnit * 1.5)
@@ -804,11 +805,33 @@ PWG.Config = (function() {
 						},
 						events: {
 							released: {
-								type: PWG.Events.START_LEVEL
+								type: PWG.Events.MUTE_UNMUTE,
+								value: 'menu'
 							}
 						}
 					}
-				}
+				}//,
+				// restart button
+				// {
+				// 	name: 'restart',
+				// 	cl: 'InputButton',
+				// 	attrs: {
+				// 		img: 'restartButton',
+				// 		phaser: {
+				// 			width: (stageUnit * 1.5),
+				// 			height: (stageUnit * 1.5)
+				// 		},
+				// 		start: {
+				// 			x: (stageUnit * 0.5),
+				// 			y: (winH/2) + ((stageUnit * 1.5)/2) + (stageUnit * 0.5)
+				// 		},
+				// 		events: {
+				// 			released: {
+				// 				type: PWG.Events.START_LEVEL
+				// 			}
+				// 		}
+				// 	}
+				// }
 				],
 				completedGUI: [
 				// background
@@ -1105,6 +1128,22 @@ PWG.Config = (function() {
 				'climbing down the mountain is so scary...',
 				'the rocks are crumbling!\ni hope i don\'t fall off...',
 				'a cave! let me see what\'s inside...'
+				],
+				
+				audio: [
+				'secrets',
+				'rxMinus1',
+				'b016',
+				'twentyThree',
+				'yesterday',
+				'theMadonna',
+				'tinkles',
+				'',
+				'ololo',
+				'twentyThree',
+				'whisperingWinterWindows',
+				'secrets'
+				
 				]
 			},
 
@@ -13570,7 +13609,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'ololo'
+					''
 				],
 				images: [
 					'whiteRect',
@@ -15976,7 +16015,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'secrets'
+					'ololo'
 				],
 				images: [
 					'whiteRect',
@@ -18715,7 +18754,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'secrets'
+					'twentyThree'
 				],
 				images: [
 					'whiteRect',
@@ -21260,7 +21299,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'secrets'
+					'whisperingWinterWindows'
 				],
 				images: [
 					'whiteRect',

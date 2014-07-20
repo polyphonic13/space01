@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-19T17:03:52')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-19T20:00:58')})();
 !function(root, factory) {
   if (typeof define === "function" && define.amd) {
     define(factory);
@@ -40872,6 +40872,7 @@ PWG.Events = {
 	BUTTON_RELEASED: 'buttonReleased',
 	CONTROL_PRESSED: 'controlPressed',
 	CONTROL_RELEASED: 'controlReleased',
+	MUTE_UNMUTE: 'muteUnmute',
 	CHANGE_STATE: 'changeState',
 	PAUSE_STATE: 'pauseState',
 	RESUME_STATE: 'resumeState',
@@ -42066,7 +42067,15 @@ PWG.Config = (function() {
 		var c = {
 			// AUDIO
 			audio: {
-				secrets: 'assets/audio/music/secrets3.mp3'
+				secrets: 'assets/audio/music/secrets3.mp3',
+				rxMinus1: 'assets/audio/music/rx-1.mp3',
+				b016: 'assets/audio/music/b016.mp3',
+				twentyThree: 'assets/audio/music/23.mp3',
+				laDespedida: 'assets/audio/music/la_despedida.mp3',
+				theMadonna: 'assets/audio/music/the_madonna.mp3',
+				yesterday: 'assets/audio/music/yesterday_edit.mp3',
+				ololo: 'assets/audio/music/ololo.mp3',
+				tinkles: 'assets/audio/music/tinkles.mp3'
 			},
 			// IMAGES
 			images: {
@@ -42258,6 +42267,7 @@ PWG.Config = (function() {
 
 				// buttons
 				startButton: 'assets/images/controls/start_button.png',
+				muteButton: 'assets/images/controls/mute_button.png',
 				creditsButton: 'assets/images/controls/credits_button.png',
 				
 				// boss
@@ -42350,6 +42360,13 @@ PWG.Config = (function() {
 				menuButton: 
 				{
 					url: 'assets/images/controls/menu_button3.png',
+					width: 50,
+					height: 50,
+					frames: 2
+				},
+				muteButton: 
+				{
+					url: 'assets/images/controls/mute_button.png',
 					width: 50,
 					height: 50,
 					frames: 2
@@ -43105,6 +43122,7 @@ PWG.Config = (function() {
 				],
 				sprites: [
 					'pauseButton',
+					'muteButton',
 					'menuButton',
 					'mapButton',
 					'nextButton',
@@ -43247,12 +43265,42 @@ PWG.Config = (function() {
 						}
 					},
 					{
+						name: 'music',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							x: -(stageUnit * 0.66),
+							y: (stageUnit * 4.5),
+							style: { 
+								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'music: '
+						}
+					},
+					{
+						name: 'music',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							x: (stageUnit * 0.85),
+							y: (stageUnit * 4.65),
+							style: { 
+								font: 'bold ' + fontSizes.xs + 'px "Smythe"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'factor13'
+						}
+					},
+					{
 						name: 'marketing1',
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
 							x: -(stageUnit * 1.25),
-							y: (stageUnit * 4.5),
+							y: (stageUnit * 5.5),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
@@ -43267,7 +43315,7 @@ PWG.Config = (function() {
 						attrs: {
 							alignX: 'center',
 							x: (stageUnit * 1.25),
-							y: (stageUnit * 4.65),
+							y: (stageUnit * 5.65),
 							style: { 
 								font: 'bold ' + fontSizes.xs + 'px "Smythe"', 
 								fill: '#000000',
@@ -43282,7 +43330,7 @@ PWG.Config = (function() {
 						attrs: {
 							alignX: 'center',
 							x: -(stageUnit * 2.7),
-							y: (stageUnit * 5.5),
+							y: (stageUnit * 6.5),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
@@ -43297,7 +43345,7 @@ PWG.Config = (function() {
 						attrs: {
 							alignX: 'center',
 							x: (stageUnit * 0.9),
-							y: (stageUnit * 5.65),
+							y: (stageUnit * 6.65),
 							style: { 
 								font: 'bold ' + fontSizes.xs + 'px "Smythe"', 
 								fill: '#000000',
@@ -43312,7 +43360,7 @@ PWG.Config = (function() {
 						attrs: {
 							alignX: 'center',
 							x: -(stageUnit * 5.25),
-							y: (stageUnit * 6.5),
+							y: (stageUnit * 7.5),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
@@ -43327,7 +43375,7 @@ PWG.Config = (function() {
 						attrs: {
 							alignX: 'center',
 							x: (stageUnit * 0.75),
-							y: (stageUnit * 6.65),
+							y: (stageUnit * 7.65),
 							style: { 
 								font: 'bold ' + fontSizes.xs + 'px "Smythe"', 
 								fill: '#000000',
@@ -44599,6 +44647,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'rxMinus1'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -46004,6 +46055,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'b016'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -48242,6 +48296,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'twentyThree'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -49999,6 +50056,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'yesterday'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -51839,6 +51899,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'theMadonna'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -53293,6 +53356,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'tinkles'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -55485,6 +55551,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					''
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -57888,6 +57957,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'ololo'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -60624,6 +60696,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'twentyThree'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -63166,6 +63241,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -65276,6 +65354,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -66774,6 +66855,27 @@ PWG.Config = (function() {
 								pressed: {
 									type: PWG.Events.CHANGE_STATE,
 									value: 'map'
+								}
+							}
+						}
+					},
+					{
+						name: 'muteButton',
+						cl: 'InputButton',
+						attrs: {
+							img: 'muteButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageUnit * 0.5),
+								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
+							},
+							events: {
+								released: {
+									type: PWG.Events.MUTE_UNMUTE,
+									value: 'menu'
 								}
 							}
 						}
@@ -69618,22 +69720,23 @@ PWG.State = (function() {
 		
 		// trace('State['+this.model.name+']/preLoad, loaded = ' + this.model.loaded);
 		if(!this.model.loaded) {
-			// trace('\tstate images = ');
-			// trace(this.model.images);
-			// if(this.model.audio && this.model.audio.length > 0) {
-			// 	var audio = PWGGame.get('audio');
-			// 	PWG.Utils.each(
-			// 		this.model.audio,
-			// 		function(audio) {
-			// 			if(!PWGGame.loaded.audio[audio]) {
-			// 				this.toLoad++;
-			// 				phaser.load.audio(audio, audio[audio]);
-			// 				loaded.audio[audio] = true;
-			// 			}
-			// 		},
-			// 		this
-			// 	);
-			// }
+			trace('\tstate audio = ');
+			trace(this.model.audio);
+			if(this.model.audio && this.model.audio.length > 0) {
+				var audio = PWGGame.get('audio');
+				PWG.Utils.each(
+					this.model.audio,
+					function(a) {
+						if(!PWGGame.loaded.audio[audio]) {
+							trace('loading audio['+a+']: ', audio[a]);
+							this.toLoad++;
+							phaser.load.audio(a, audio[a]);
+							loaded.audio[a] = true;
+						}
+					},
+					this
+				);
+			}
 			if(this.model.images && this.model.images.length > 0) {
 				var images = PWGGame.get('images');
 				PWG.Utils.each(this.model.images,
@@ -69680,13 +69783,34 @@ PWG.State = (function() {
 		}
 		this.model.set({ createCalled: true });
 		
-		// if(this.model.audio && this.model.audio.length > 0) {
-		// 	var audio = this.model.audio[0];
-		// 	trace('audio = ', audio);
-		// 	var sound = PWGGame.phaser.add.audio(audio);
-		// 	trace('sound = ', sound);
-		// 	sound.play('', 0, 1, true);
-		// }
+		if(this.model.audio && this.model.audio.length > 0) {
+			trace('\tisMuted = ' + PWGGame.isMuted);
+			if(!PWGGame.isMuted) {
+				var audio = this.model.audio[0];
+				if(PWGGame.currentAudioName !== audio) {
+					if(PWGGame.currentAudio) {
+						PWGGame.currentAudio.stop();
+						PWGGame.currentAudio = null;
+					}
+					trace('audio = ', audio);
+					// key, volume loop
+					var sound = PWGGame.phaser.add.audio(audio, 1, true);
+					trace('sound = ', sound);
+					// marker, position, volume, loop
+					sound.play('', 0, 1, true);
+					PWGGame.currentAudio = sound;
+					PWGGame.currentAudioName = audio;
+				}
+			}
+		}
+		
+		if(this.model.name === 'menu') {
+			var frame = 0;
+			if(PWGGame.isMuted) {
+				frame = 1;
+			}
+			this.model.collection[1].model.collection[1].frame = frame;
+		}
 	};
 
 	State.prototype.createState = function() {
@@ -69746,6 +69870,10 @@ PWG.State = (function() {
 			active: false
 		});
 
+		if(PWGGame.currentAudio) {
+			// PWGGame.currentAudio.stop();
+			// PWGGame.currentAudio = null;
+		}
 		this.destroy();
 	};
 
@@ -70585,6 +70713,7 @@ PWGGame = (function() {
 		name: '',
 		phaser: null,
 		player: null,
+		currentAudio: null,
 		highScores: [],
 		levelScore: 0,
 		currentLevelHighScore: 0,
@@ -70598,6 +70727,7 @@ PWGGame = (function() {
 		previousState: '',
 		savedState: '',
 		viewedOnce: '0',
+		isMuted: false,
 		adPlaying: false,
 		tipDisplayed: false,
 		isLandscape: false,
@@ -70661,7 +70791,9 @@ PWGGame = (function() {
 			trace('PWGGame/startGame');
 			if(_stageInitialized) {
 				_adapter.init(_levels.length);
-				PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
+				if(typeof(inTGS) !== 'undefined' && inTGS) {
+					PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
+				}
 				PWGGame.changeState(_model.initialState);
 			}
 		},
@@ -70813,6 +70945,7 @@ PWGGame = (function() {
 		PWG.EventCenter.bind(PWG.Events.BUTTON_PRESSED, _onControlPressed, this);
 		PWG.EventCenter.bind(PWG.Events.CONTROL_PRESSED, _onControlPressed, this);
 		PWG.EventCenter.bind(PWG.Events.CHANGE_STATE, _onChangeState, this);
+		PWG.EventCenter.bind(PWG.Events.MUTE_UNMUTE, _onMuteUnmute, this);
 		PWG.EventCenter.bind(PWG.Events.SHOW_LEVEL_INFO, _onShowLevelInfo, this);
 		PWG.EventCenter.bind(PWG.Events.START_LEVEL, _onStartLevel, this);
 		PWG.EventCenter.bind(PWG.Events.NEXT_LEVEL, _onNextLevel, this);
@@ -70828,6 +70961,7 @@ PWGGame = (function() {
 		PWG.EventCenter.unbind(PWG.Events.BUTTON_PRESSED, _onControlPressed, this);
 		PWG.EventCenter.unbind(PWG.Events.CONTROL_PRESSED, _onControlPressed, this);
 		PWG.EventCenter.unbind(PWG.Events.CHANGE_STATE, _onChangeState, this);
+		PWG.EventCenter.unbind(PWG.Events.MUTE_UNMUTE, _onMuteUnmute, this);
 		PWG.EventCenter.unbind(PWG.Events.START_LEVEL, _onStartLevel, this);
 		PWG.EventCenter.unbind(PWG.Events.NEXT_LEVEL, _onNextLevel, this);
 		PWG.EventCenter.unbind(PWG.Events.LEVEL_CLEARED, _onLevelCleared, this);
@@ -70996,7 +71130,21 @@ PWGGame = (function() {
 			break;
 		}
 	}
-	
+
+	function _onMuteUnmute(event) {
+		PWGGame.isMuted = !PWGGame.isMuted;
+		var frame = 0;
+		if(PWGGame.isMuted) {
+			frame = 1;
+			if(PWGGame.currentAudio) {
+				PWGGame.currentAudio.stop();
+				PWGGame.currentAudio = null;
+				PWGGame.currentAudioName = '';
+			}
+		}
+		_states['menu'].model.collection[1].model.collection[1].frame = frame;
+		trace('post mute unmute, isMuted = ' + PWGGame.isMuted + ', _states = ', _states['menu'].model.collection[1].model.collection[1]);
+	}
 	function _onChangeState(event) {
 		if(event.value === 'map') {
 			if(!_gameStarted) {
@@ -71139,20 +71287,20 @@ PWGGame = (function() {
 			}
 		} else {
 			trace('\ttgs is not defined');
-			_startGame();
+			PWGGame.startGame();
 		}
 	}
 
-	// function _startGame() {
-	// 	trace('START GAME');
-	// 	if(_stageInitialized) {
-	// 		_adapter.init(_levels.length);
-	// 		// if(typeof(inTGS) !== 'undefined' && inTGS) {
-	// 			PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
-	// 		// }
-	// 		PWGGame.changeState(_model.initialState);
-	// 	}
-	// }
+	function _startGame() {
+		trace('START GAME');
+		if(_stageInitialized) {
+			_adapter.init(_levels.length);
+			// if(typeof(inTGS) !== 'undefined' && inTGS) {
+				PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
+			// }
+			PWGGame.changeState(_model.initialState);
+		}
+	}
 	
 	function _initLevelInfoStates() {
 		var template = PWGGame.get('levelInfoStateTemplate');
