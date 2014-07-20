@@ -241,7 +241,7 @@ module.exports = function(grunt) {
 		[
 			'projectDeploySetup', 
 			'concat:project', 
-			/*'stripTraceStatements',*/ 
+			'stripTraceStatements', 
 			'uglify', 
 			'copy:project', 
 			'cssmin', 

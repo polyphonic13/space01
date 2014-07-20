@@ -700,8 +700,8 @@ PWG.Config = (function() {
 					name: 'paused',
 					cl: 'Text',
 					attrs: {
-						alignX: 'center',
-						alignY: 'center',
+						x: winW - (stageUnit * 6),
+						y: winH - (stageUnit * 2.25),
 						style: { 
 							font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -715,9 +715,10 @@ PWG.Config = (function() {
 					name: 'score',
 					cl: 'Text',
 					attrs: {
-						// alignX: 'stageRight',
-						x: (stageUnit * 3),
+						x: winW - (stageUnit * 6),
 						y: winH - (stageUnit * 2.75),
+						// x: (stageUnit * 3),
+						// y: winH - (stageUnit * 2.75),
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -734,9 +735,10 @@ PWG.Config = (function() {
 					name: 'highScore',
 					cl: 'Text',
 					attrs: {
-						// alignX: 'stageRight',
-						x: (stageUnit * 3),
-						y: winH - (stageUnit * 1.75),
+						x: winW - (stageUnit * 6),
+						y: winH - (stageUnit * 3.5),
+						// x: (stageUnit * 3),
+						// y: winH - (stageUnit * 1.75),
 						style: { 
 							font: 'bold ' + fontSizes.xs + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -888,8 +890,10 @@ PWG.Config = (function() {
 					name: 'score',
 					cl: 'Text',
 					attrs: {
-						x: (stageUnit * 3),
+						x: winW - (stageUnit * 6),
 						y: winH - (stageUnit * 2.75),
+						// x: (stageUnit * 3),
+						// y: winH - (stageUnit * 2.75),
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -906,8 +910,10 @@ PWG.Config = (function() {
 					name: 'highScore',
 					cl: 'Text',
 					attrs: {
-						x: (stageUnit * 3),
-						y: winH - (stageUnit * 1.75),
+						x: winW - (stageUnit * 6),
+						y: winH - (stageUnit * 3.5),
+						// x: (stageUnit * 3),
+						// y: winH - (stageUnit * 1.75),
 						style: { 
 							font: 'bold ' + fontSizes.xs + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -1053,12 +1059,14 @@ PWG.Config = (function() {
 						name: 'levelDescription',
 						cl: 'Text',
 						attrs: {
-							alignX: 'center',
-							alignY: 'center',
+							// alignX: 'center',
+							// alignY: 'center',
+							x: (stageUnit * 3),
+							y: (stageUnit * 2.25),
 							style: { 
 								font: 'bold ' + fontSizes.md + 'px "Sue Ellen Francisco"', 
-								fill: '#000000',
-								align: 'center'
+								fill: '#000000'//,
+								// align: 'center'
 							},
 							defaultContent: ''
 						}
@@ -1068,14 +1076,15 @@ PWG.Config = (function() {
 						name: 'highScore',
 						cl: 'Text',
 						attrs: {
-							x: (stageUnit * 3),
-							y: winH - (stageUnit * 2.25),
-							defaultContent: '',
+							x: winW - (stageUnit * 6),
+							y: winH - (stageUnit * 2.75),
+							// x: (stageUnit * 3),
+							// y: winH - (stageUnit * 2.75),
 							style: { 
 								font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
-								align: 'left'
-							}
+								align: 'right'
+							},
 						}
 					},
 					// level status
@@ -1083,14 +1092,14 @@ PWG.Config = (function() {
 						name: 'levelStatus',
 						cl: 'Text',
 						attrs: {
-							x: (stageUnit * 3),
-							y: winH - (stageUnit * 1.2),
-							defaultContent: '',
+							x: winW - (stageUnit * 6),
+							y: winH - (stageUnit * 2.25),
 							style: { 
-								font: 'bold ' + fontSizes.xs + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
-								align: 'left'
-							}
+								align: 'center'
+							},
+							defaultContent: ''
 						}
 					},
 					// oval mask
@@ -1172,7 +1181,7 @@ PWG.Config = (function() {
 				'this is a big forest.\ni think i see thorns ahead.\ni better avoid those.',
 				'i hope this forest ends soon.',
 				'this river looks fast.\ni don\'t want to get swept away.\ni\'ll have to jump across the rocks.',
-				'wow! look at this mountain.\ni am going to have to climb it.',
+				'wow! this mountain is huge.\ni guess i\'m going to have to climb it.',
 				'SPIDERS?!\ni hate spiders!',
 				'i think i see the top of the mountain.\njust a little bit further...',
 				'climbing down the mountain is so scary...',
