@@ -33,7 +33,7 @@ PWG.Config = (function() {
 				},
 				start: {
 					x: winW - (stageUnit * 6) * 1.5,
-					y: (stageUnit * 1.5)
+					y: (stageUnit * 1)
 				}
 			}
 		};
@@ -85,16 +85,16 @@ PWG.Config = (function() {
 		var c = {
 			// AUDIO
 			audio: {
-				secrets: 'assets/audio/music/secrets3.mp3',
-				rxMinus1: 'assets/audio/music/rx-1.mp3',
-				b016: 'assets/audio/music/b016.mp3',
-				twentyThree: 'assets/audio/music/23.mp3',
-				laDespedida: 'assets/audio/music/la_despedida.mp3',
-				theMadonna: 'assets/audio/music/the_madonna.mp3',
+				secrets: 'assets/audio/music/secrets3_edit.mp3',
+				intro: 'assets/audio/music/intro_edit.mp3',
+				rxMinus1: 'assets/audio/music/rx_minus_one_edit.mp3',
+				b016: 'assets/audio/music/b016_edit.mp3',
+				twentyThree: 'assets/audio/music/twenty_three_edit.mp3',
+				laDespedida: 'assets/audio/music/la_despedida_edit.mp3',
+				theMadonna: 'assets/audio/music/the_madonna_edit.mp3',
 				yesterday: 'assets/audio/music/yesterday_edit.mp3',
-				tinkles: 'assets/audio/music/tinkles.mp3',
-				ololo: 'assets/audio/music/ololo.mp3',
-				whisperingWinterWindows: 'assets/audio/music/whispering_winter_windows.mp3'
+				tinkles: 'assets/audio/music/tinkles_edit.mp3',
+				ololo: 'assets/audio/music/ololo_edit.mp3'
 			},
 			// IMAGES
 			images: {
@@ -1032,7 +1032,7 @@ PWG.Config = (function() {
 							alignX: 'center',
 							alignY: 'center',
 							style: { 
-								font: 'bold ' + fontSizes.sm + 'px "Sue Ellen Francisco"', 
+								font: 'bold ' + fontSizes.md + 'px "Sue Ellen Francisco"', 
 								fill: '#000000',
 								align: 'center'
 							},
@@ -1132,17 +1132,17 @@ PWG.Config = (function() {
 				
 				audio: [
 				'secrets',
+				'intro',
 				'rxMinus1',
+				'twentyThree',
+				'laDespedida',
+				'theMadonna',
+				'secrets',
+				'tinkles',
 				'b016',
 				'twentyThree',
 				'yesterday',
-				'theMadonna',
-				'tinkles',
-				'',
-				'ololo',
-				'twentyThree',
-				'whisperingWinterWindows',
-				'secrets'
+				'ololo'
 				
 				]
 			},
@@ -2705,7 +2705,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'rxMinus1'
+					'intro'
 				],
 				images: [
 					'whiteRect',
@@ -4113,7 +4113,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'b016'
+					'rxMinus1'
 				],
 				images: [
 					'whiteRect',
@@ -8114,7 +8114,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'yesterday'
+					'laDespedida'
 				],
 				images: [
 					'whiteRect',
@@ -11414,7 +11414,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'tinkles'
+					'secrets'
 				],
 				images: [
 					'whiteRect',
@@ -13609,7 +13609,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					''
+					'tinkles'
 				],
 				images: [
 					'whiteRect',
@@ -16015,7 +16015,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'ololo'
+					'b016'
 				],
 				images: [
 					'whiteRect',
@@ -21299,7 +21299,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'whisperingWinterWindows'
+					'yesterday'
 				],
 				images: [
 					'whiteRect',
@@ -23412,7 +23412,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'secrets'
+					'ololo'
 				],
 				images: [
 					'whiteRect',

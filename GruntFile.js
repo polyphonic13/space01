@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 	var srcDir = 'public/src';
 	var buildDir = 'public/build';
 	var tresensaDir = 'public/tresensa_build/keke_tre_sensa';
-	
+
 	var projectSrcDir;
 	
 	if(typeof(project) !== 'undefined') {
@@ -157,8 +157,52 @@ module.exports = function(grunt) {
 				password: '<%= meta.server.pass%>'
 			},
 			game: {
-				files: [{
+				files: [
+				{
+					cwd: '<%= tresensaDir %>/css/',
+					src: '**/*',
+					filter: 'isFile',
+					dest: '<%= meta.server.path %>/css/'
+				},
+				{
+					cwd: '<%= tresensaDir %>/js/',
+					src: '**/*',
+					filter: 'isFile',
+					dest: '<%= meta.server.path %>/js/'
+				},
+				{
+					cwd: '<%= tresensaDir %>/leaderboard/',
+					src: '**/*',
+					filter: 'isFile',
+					dest: '<%= meta.server.path %>'
+				},
+				{
 					cwd: '<%= tresensaDir %>',
+					src: '**/*.html',
+					filter: 'isFile',
+					dest: '<%= meta.server.path %>'
+				},
+				{
+					cwd: '<%= tresensaDir %>/leaderboard/',
+					src: '**/*.css',
+					filter: 'isFile',
+					dest: '<%= meta.server.path %>'
+				}
+				]
+			},
+			
+			audio: {
+				files: [{
+					cwd: '<%= tresensaDir %>/assets/audio/',
+					src: '**/*',
+					filter: 'isFile',
+					dest: '<%= meta.server.path %>'
+				}]
+			},
+			
+			images: {
+				files: [{
+					cwd: '<%= tresensaDir %>/assets/images/',
 					src: '**/*',
 					filter: 'isFile',
 					dest: '<%= meta.server.path %>'
@@ -217,7 +261,7 @@ module.exports = function(grunt) {
 		'deploy',
 		[
 			'tresensa',
-			'scp'
+			'copyFilesToServer'
 		]
 	);
 };

@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-19T16:58:29')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-20T12:00:32')})();
 !function(root, factory) {
   if (typeof define === "function" && define.amd) {
     define(factory);
@@ -40872,6 +40872,7 @@ PWG.Events = {
 	BUTTON_RELEASED: 'buttonReleased',
 	CONTROL_PRESSED: 'controlPressed',
 	CONTROL_RELEASED: 'controlReleased',
+	MUTE_UNMUTE: 'muteUnmute',
 	CHANGE_STATE: 'changeState',
 	PAUSE_STATE: 'pauseState',
 	RESUME_STATE: 'resumeState',
@@ -41946,12 +41947,12 @@ var domConfig = {
 				id: 'gameContainer'
 			}
 		},
-		{
-			type: 'div', 
-			attrs: {
-				id: 'socialButtons'
-			}
-		},
+		// {
+		// 	type: 'div', 
+		// 	attrs: {
+		// 		id: 'socialButtons'
+		// 	}
+		// },
 		{
 			type: 'div', 
 			attrs: {
@@ -42014,7 +42015,7 @@ PWG.Config = (function() {
 				},
 				start: {
 					x: winW - (stageUnit * 6) * 1.5,
-					y: (stageUnit * 1.5)
+					y: (stageUnit * 1)
 				}
 			}
 		};
@@ -42066,7 +42067,16 @@ PWG.Config = (function() {
 		var c = {
 			// AUDIO
 			audio: {
-				secrets: 'assets/audio/music/secrets3.mp3'
+				secrets: 'assets/audio/music/secrets3.mp3',
+				intro: 'assets/audio/music/intro.mp3',
+				rxMinus1: 'assets/audio/music/rx-1.mp3',
+				b016: 'assets/audio/music/b016.mp3',
+				twentyThree: 'assets/audio/music/23.mp3',
+				laDespedida: 'assets/audio/music/la_despedida.mp3',
+				theMadonna: 'assets/audio/music/the_madonna.mp3',
+				yesterday: 'assets/audio/music/yesterday_edit.mp3',
+				tinkles: 'assets/audio/music/tinkles.mp3',
+				ololo: 'assets/audio/music/ololo.mp3'
 			},
 			// IMAGES
 			images: {
@@ -42258,6 +42268,7 @@ PWG.Config = (function() {
 
 				// buttons
 				startButton: 'assets/images/controls/start_button.png',
+				muteButton: 'assets/images/controls/mute_button.png',
 				creditsButton: 'assets/images/controls/credits_button.png',
 				
 				// boss
@@ -42350,6 +42361,13 @@ PWG.Config = (function() {
 				menuButton: 
 				{
 					url: 'assets/images/controls/menu_button3.png',
+					width: 50,
+					height: 50,
+					frames: 2
+				},
+				muteButton: 
+				{
+					url: 'assets/images/controls/mute_button.png',
 					width: 50,
 					height: 50,
 					frames: 2
@@ -42753,12 +42771,12 @@ PWG.Config = (function() {
 						}
 					}
 				},
-				// restart button
+				// mute button
 				{
-					name: 'restart',
+					name: 'muteButton',
 					cl: 'InputButton',
 					attrs: {
-						img: 'restartButton',
+						img: 'muteButton',
 						phaser: {
 							width: (stageUnit * 1.5),
 							height: (stageUnit * 1.5)
@@ -42769,11 +42787,33 @@ PWG.Config = (function() {
 						},
 						events: {
 							released: {
-								type: PWG.Events.START_LEVEL
+								type: PWG.Events.MUTE_UNMUTE,
+								value: 'menu'
 							}
 						}
 					}
-				}
+				}//,
+				// restart button
+				// {
+				// 	name: 'restart',
+				// 	cl: 'InputButton',
+				// 	attrs: {
+				// 		img: 'restartButton',
+				// 		phaser: {
+				// 			width: (stageUnit * 1.5),
+				// 			height: (stageUnit * 1.5)
+				// 		},
+				// 		start: {
+				// 			x: (stageUnit * 0.5),
+				// 			y: (winH/2) + ((stageUnit * 1.5)/2) + (stageUnit * 0.5)
+				// 		},
+				// 		events: {
+				// 			released: {
+				// 				type: PWG.Events.START_LEVEL
+				// 			}
+				// 		}
+				// 	}
+				// }
 				],
 				completedGUI: [
 				// background
@@ -42974,7 +43014,7 @@ PWG.Config = (function() {
 							alignX: 'center',
 							alignY: 'center',
 							style: { 
-								font: 'bold ' + fontSizes.sm + 'px "Sue Ellen Francisco"', 
+								font: 'bold ' + fontSizes.md + 'px "Sue Ellen Francisco"', 
 								fill: '#000000',
 								align: 'center'
 							},
@@ -43070,6 +43110,22 @@ PWG.Config = (function() {
 				'climbing down the mountain is so scary...',
 				'the rocks are crumbling!\ni hope i don\'t fall off...',
 				'a cave! let me see what\'s inside...'
+				],
+				
+				audio: [
+				'secrets',
+				'intro',
+				'rxMinus1',
+				'twentyThree',
+				'laDespedida',
+				'theMadonna',
+				'secrets',
+				'tinkles',
+				'b016',
+				'twentyThree',
+				'yesterday',
+				'ololo'
+				
 				]
 			},
 
@@ -43105,6 +43161,7 @@ PWG.Config = (function() {
 				],
 				sprites: [
 					'pauseButton',
+					'muteButton',
 					'menuButton',
 					'mapButton',
 					'nextButton',
@@ -43247,12 +43304,42 @@ PWG.Config = (function() {
 						}
 					},
 					{
+						name: 'music',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							x: -(stageUnit * 0.66),
+							y: (stageUnit * 4.5),
+							style: { 
+								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'music: '
+						}
+					},
+					{
+						name: 'music',
+						cl: 'Text',
+						attrs: {
+							alignX: 'center',
+							x: (stageUnit * 0.85),
+							y: (stageUnit * 4.65),
+							style: { 
+								font: 'bold ' + fontSizes.xs + 'px "Smythe"', 
+								fill: '#000000',
+								align: 'center'
+							},
+							defaultContent: 'factor13'
+						}
+					},
+					{
 						name: 'marketing1',
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
 							x: -(stageUnit * 1.25),
-							y: (stageUnit * 4.5),
+							y: (stageUnit * 5.5),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
@@ -43267,7 +43354,7 @@ PWG.Config = (function() {
 						attrs: {
 							alignX: 'center',
 							x: (stageUnit * 1.25),
-							y: (stageUnit * 4.65),
+							y: (stageUnit * 5.65),
 							style: { 
 								font: 'bold ' + fontSizes.xs + 'px "Smythe"', 
 								fill: '#000000',
@@ -43282,7 +43369,7 @@ PWG.Config = (function() {
 						attrs: {
 							alignX: 'center',
 							x: -(stageUnit * 2.7),
-							y: (stageUnit * 5.5),
+							y: (stageUnit * 6.5),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
@@ -43297,7 +43384,7 @@ PWG.Config = (function() {
 						attrs: {
 							alignX: 'center',
 							x: (stageUnit * 0.9),
-							y: (stageUnit * 5.65),
+							y: (stageUnit * 6.65),
 							style: { 
 								font: 'bold ' + fontSizes.xs + 'px "Smythe"', 
 								fill: '#000000',
@@ -43312,7 +43399,7 @@ PWG.Config = (function() {
 						attrs: {
 							alignX: 'center',
 							x: -(stageUnit * 5.25),
-							y: (stageUnit * 6.5),
+							y: (stageUnit * 7.5),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
@@ -43327,7 +43414,7 @@ PWG.Config = (function() {
 						attrs: {
 							alignX: 'center',
 							x: (stageUnit * 0.75),
-							y: (stageUnit * 6.65),
+							y: (stageUnit * 7.65),
 							style: { 
 								font: 'bold ' + fontSizes.xs + 'px "Smythe"', 
 								fill: '#000000',
@@ -44436,19 +44523,6 @@ PWG.Config = (function() {
 					}
 					]
 				},
-				// controls
-				{
-					name: 'levelControls',
-					cl: 'ControlButtons',
-					type: 'level',
-					addTo: 'null',
-					attrs: {
-						start: {
-							x: 0,
-							y: 0
-						}
-					}
-				},
 				// level gui
 				{
 					name: 'levelGUI',
@@ -44576,6 +44650,19 @@ PWG.Config = (function() {
 						}
 					}
 					]
+				},
+				// controls
+				{
+					name: 'levelControls',
+					cl: 'ControlButtons',
+					type: 'level',
+					addTo: 'null',
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
 				}
 				]
 			},
@@ -44599,6 +44686,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'intro'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -46004,6 +46094,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'rxMinus1'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -48242,6 +48335,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'twentyThree'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -49999,6 +50095,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'laDespedida'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -51839,6 +51938,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'theMadonna'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -53293,6 +53395,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -55485,6 +55590,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'tinkles'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -57888,6 +57996,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'b016'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -60624,6 +60735,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'twentyThree'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -63166,6 +63280,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'yesterday'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -65276,6 +65393,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
+				audio: [
+					'ololo'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -66779,6 +66899,27 @@ PWG.Config = (function() {
 						}
 					},
 					{
+						name: 'muteButton',
+						cl: 'InputButton',
+						attrs: {
+							img: 'muteButton',
+							phaser: {
+								width: (stageUnit * 1.5),
+								height: (stageUnit * 1.5)
+							},
+							start: {
+								x: (stageUnit * 0.5),
+								y: (winH/2) - ((stageUnit * 1.5)/2) - (stageUnit * 2)
+							},
+							events: {
+								released: {
+									type: PWG.Events.MUTE_UNMUTE,
+									value: 'menu'
+								}
+							}
+						}
+					},
+					{
 						name: 'creditsBtn',
 						cl: 'InputButton',
 						attrs: {
@@ -67035,23 +67176,6 @@ PWG.Config = (function() {
 						}
 					},
 					{
-						name: 'upBtn',
-						cl: 'InputButton',
-						attrs: {
-							img: 'upButton',
-							phaser: { 
-								width: (stageUnit * 4),
-								height: (stageUnit * 8)
-							},
-							start: {
-								x: winW - (stageUnit * 4.5),
-								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
-							},
-							frames: [0, 0, 1],
-							inputCode: PWG.InputCodes.UP
-						}
-					},
-					{
 						name: 'pauseButton',
 						cl: 'InputButton',
 						attrs: {
@@ -67070,6 +67194,23 @@ PWG.Config = (function() {
  									type: PWG.Events.PAUSE_STATE
 								}
 							}
+						}
+					},
+					{
+						name: 'upBtn',
+						cl: 'InputButton',
+						attrs: {
+							img: 'upButton',
+							phaser: { 
+								width: (stageUnit * 4),
+								height: (stageUnit * 8)
+							},
+							start: {
+								x: winW - (stageUnit * 4.5),
+								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
+							},
+							frames: [0, 0, 1],
+							inputCode: PWG.InputCodes.UP
 						}
 					}
 					]
@@ -68790,6 +68931,14 @@ PWG.InputButton = (function() {
 		this.addListeners();
 		// trace('InputButton, end of begin');
 		// trace(this);
+		// HACK
+		if(this.model.name === 'muteButton') {
+			var frame = 0; 
+			if(PolyworksGame.isMuted) {
+				frame = 1;
+			}
+			this.frame = frame;
+		}
 	};
 	
 	InputButton.prototype.addListeners = function() {
@@ -69618,22 +69767,23 @@ PWG.State = (function() {
 		
 		// trace('State['+this.model.name+']/preLoad, loaded = ' + this.model.loaded);
 		if(!this.model.loaded) {
-			// trace('\tstate images = ');
-			// trace(this.model.images);
-			// if(this.model.audio && this.model.audio.length > 0) {
-			// 	var audio = PolyworksGame.get('audio');
-			// 	PWG.Utils.each(
-			// 		this.model.audio,
-			// 		function(audio) {
-			// 			if(!PolyworksGame.loaded.audio[audio]) {
-			// 				this.toLoad++;
-			// 				phaser.load.audio(audio, audio[audio]);
-			// 				loaded.audio[audio] = true;
-			// 			}
-			// 		},
-			// 		this
-			// 	);
-			// }
+			trace('\tstate audio = ');
+			trace(this.model.audio);
+			if(this.model.audio && this.model.audio.length > 0) {
+				var audio = PolyworksGame.get('audio');
+				PWG.Utils.each(
+					this.model.audio,
+					function(a) {
+						if(!PolyworksGame.loaded.audio[audio]) {
+							trace('loading audio['+a+']: ', audio[a]);
+							this.toLoad++;
+							phaser.load.audio(a, audio[a]);
+							loaded.audio[a] = true;
+						}
+					},
+					this
+				);
+			}
 			if(this.model.images && this.model.images.length > 0) {
 				var images = PolyworksGame.get('images');
 				PWG.Utils.each(this.model.images,
@@ -69680,13 +69830,40 @@ PWG.State = (function() {
 		}
 		this.model.set({ createCalled: true });
 		
-		// if(this.model.audio && this.model.audio.length > 0) {
-		// 	var audio = this.model.audio[0];
-		// 	trace('audio = ', audio);
-		// 	var sound = PolyworksGame.phaser.add.audio(audio);
-		// 	trace('sound = ', sound);
-		// 	sound.play('', 0, 1, true);
-		// }
+		if(this.model.audio && this.model.audio.length > 0) {
+			trace('\tisMuted = ' + PolyworksGame.isMuted);
+			if(!PolyworksGame.isMuted) {
+				var audio = this.model.audio[0];
+				if(PolyworksGame.currentAudioName !== audio) {
+					if(PolyworksGame.currentAudio) {
+						PolyworksGame.currentAudio.stop();
+						PolyworksGame.currentAudio = null;
+					}
+					trace('audio = ', audio);
+					// key, volume loop
+					var sound = PolyworksGame.phaser.add.audio(audio, 1, true);
+					trace('sound = ', sound);
+					// marker, position, volume, loop
+					sound.play('', 0, 1, true);
+					PolyworksGame.currentAudio = sound;
+					PolyworksGame.currentAudioName = audio;
+				}
+			}
+		}
+		
+		if(this.model.name === 'menu') {
+			var frame = 0;
+			if(PolyworksGame.isMuted) {
+				frame = 1;
+			}
+			this.model.collection[1].model.collection[1].frame = frame;
+		} else if(this.model.name === 'gameOver') {
+			if(PolyworksGame.currentAudio) {
+				PolyworksGame.currentAudio.stop();
+				PolyworksGame.currentAudio = null;
+				PWG.currentAudioName = '';
+			}
+		}
 	};
 
 	State.prototype.createState = function() {
@@ -69746,6 +69923,10 @@ PWG.State = (function() {
 			active: false
 		});
 
+		if(PolyworksGame.currentAudio) {
+			// PolyworksGame.currentAudio.stop();
+			// PolyworksGame.currentAudio = null;
+		}
 		this.destroy();
 	};
 
@@ -70585,6 +70766,7 @@ PolyworksGame = (function() {
 		name: '',
 		phaser: null,
 		player: null,
+		currentAudio: null,
 		highScores: [],
 		levelScore: 0,
 		currentLevelHighScore: 0,
@@ -70598,6 +70780,7 @@ PolyworksGame = (function() {
 		previousState: '',
 		savedState: '',
 		viewedOnce: '0',
+		isMuted: false,
 		adPlaying: false,
 		tipDisplayed: false,
 		isLandscape: false,
@@ -70661,7 +70844,9 @@ PolyworksGame = (function() {
 			trace('PolyworksGame/startGame');
 			if(_stageInitialized) {
 				_adapter.init(_levels.length);
-				PolyworksGame.Tresensa = PolyworksGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
+				if(typeof(inTGS) !== 'undefined' && inTGS) {
+					PolyworksGame.Tresensa = PolyworksGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
+				}
 				PolyworksGame.changeState(_model.initialState);
 			}
 		},
@@ -70813,6 +70998,7 @@ PolyworksGame = (function() {
 		PWG.EventCenter.bind(PWG.Events.BUTTON_PRESSED, _onControlPressed, this);
 		PWG.EventCenter.bind(PWG.Events.CONTROL_PRESSED, _onControlPressed, this);
 		PWG.EventCenter.bind(PWG.Events.CHANGE_STATE, _onChangeState, this);
+		PWG.EventCenter.bind(PWG.Events.MUTE_UNMUTE, _onMuteUnmute, this);
 		PWG.EventCenter.bind(PWG.Events.SHOW_LEVEL_INFO, _onShowLevelInfo, this);
 		PWG.EventCenter.bind(PWG.Events.START_LEVEL, _onStartLevel, this);
 		PWG.EventCenter.bind(PWG.Events.NEXT_LEVEL, _onNextLevel, this);
@@ -70828,6 +71014,7 @@ PolyworksGame = (function() {
 		PWG.EventCenter.unbind(PWG.Events.BUTTON_PRESSED, _onControlPressed, this);
 		PWG.EventCenter.unbind(PWG.Events.CONTROL_PRESSED, _onControlPressed, this);
 		PWG.EventCenter.unbind(PWG.Events.CHANGE_STATE, _onChangeState, this);
+		PWG.EventCenter.unbind(PWG.Events.MUTE_UNMUTE, _onMuteUnmute, this);
 		PWG.EventCenter.unbind(PWG.Events.START_LEVEL, _onStartLevel, this);
 		PWG.EventCenter.unbind(PWG.Events.NEXT_LEVEL, _onNextLevel, this);
 		PWG.EventCenter.unbind(PWG.Events.LEVEL_CLEARED, _onLevelCleared, this);
@@ -70996,7 +71183,40 @@ PolyworksGame = (function() {
 			break;
 		}
 	}
+
+	function _changeHomeStateMute(frame) {
+		_states[PolyworksGame.currentState].model.collection[1].model.collection[1].frame = frame;
+	}
 	
+	function _changePlayStateMute(frame) {
+		var state = _states[PolyworksGame.currentState];
+		var pauseGUI = state.getChildByName('pauseGUI');
+		var muteButton = pauseGUI.getChildByName('muteButton');
+		trace('_changePlayStateMute, pauseGUI = ', pauseGUI, '\tmuteButton = ', muteButton);
+		muteButton.frame = frame;
+		// _states[PolyworksGame.currentState].model.collection[6].model.collection[6].frame = frame;
+	}
+	
+	function _onMuteUnmute(event) {
+		PolyworksGame.isMuted = !PolyworksGame.isMuted;
+		var frame = 0;
+		if(PolyworksGame.isMuted) {
+			frame = 1;
+			if(PolyworksGame.currentAudio) {
+				PolyworksGame.currentAudio.pause();
+				PolyworksGame.currentAudioName = '';
+			}
+		} else if(PolyworksGame.currentAudio) {
+			PolyworksGame.currentAudio.resume();
+		}
+		if(PolyworksGame.currentState === 'menu') {
+			_changeHomeStateMute(frame);
+		} else {
+			_changePlayStateMute(frame);
+		}
+		// trace('post mute unmute, isMuted = ' + PolyworksGame.isMuted + ', _states = ', _states[PolyworksGame.currentState]);
+	}
+
 	function _onChangeState(event) {
 		if(event.value === 'map') {
 			if(!_gameStarted) {
@@ -71139,7 +71359,7 @@ PolyworksGame = (function() {
 			}
 		} else {
 			trace('\ttgs is not defined');
-			_startGame();
+			PolyworksGame.startGame();
 		}
 	}
 
@@ -71179,7 +71399,8 @@ PolyworksGame = (function() {
 				levelInfoConfig.name = stateName;
 				levelInfoConfig.images.push(background);
 				levelInfoConfig.images.push(title);
-
+				levelInfoConfig.audio = [template.audio[idx]];
+				
 				groupCollection.background.attrs.img = background;
 				groupCollection.title.attrs.img = title;
 				groupCollection.description.attrs.defaultContent = template.descriptions[idx];

@@ -44,6 +44,14 @@ PWG.InputButton = (function() {
 		this.addListeners();
 		// trace('InputButton, end of begin');
 		// trace(this);
+		// HACK
+		if(this.model.name === 'muteButton') {
+			var frame = 0; 
+			if(PolyworksGame.isMuted) {
+				frame = 1;
+			}
+			this.frame = frame;
+		}
 	};
 	
 	InputButton.prototype.addListeners = function() {
