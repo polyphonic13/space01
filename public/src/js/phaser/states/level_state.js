@@ -231,6 +231,7 @@
 			this.getChildByName('requirementsGUI').hide();
 			this.getChildByName('requirements').hide();
 			this.getChildByName('levelControls').hide();
+			this.getChildByName('foreground').hide();
 			this.getChildByName('pauseGUI').show();
 			this.getChildByName('title').show();
 		} else {
@@ -238,6 +239,7 @@
 			this.getChildByName('requirementsGUI').show();
 			this.getChildByName('requirements').show();
 			this.getChildByName('levelControls').show();
+			this.getChildByName('foreground').show();
 			this.getChildByName('pauseGUI').hide();
 			this.getChildByName('title').hide();
 		}

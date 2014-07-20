@@ -85,6 +85,7 @@ PWG.Config = (function() {
 		var c = {
 			// AUDIO
 			audio: {
+				kekeInterval: 'assets/audio/music/keke_interval_edit.mp3',
 				secrets: 'assets/audio/music/secrets3_edit.mp3',
 				intro: 'assets/audio/music/intro_edit.mp3',
 				rxMinus1: 'assets/audio/music/rx_minus_one_edit.mp3',
@@ -716,7 +717,7 @@ PWG.Config = (function() {
 					attrs: {
 						// alignX: 'stageRight',
 						x: (stageUnit * 3),
-						y: winH - (stageUnit * 2.25),
+						y: winH - (stageUnit * 2.75),
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -735,13 +736,29 @@ PWG.Config = (function() {
 					attrs: {
 						// alignX: 'stageRight',
 						x: (stageUnit * 3),
-						y: winH - (stageUnit * 1.2),
+						y: winH - (stageUnit * 1.75),
 						style: { 
 							font: 'bold ' + fontSizes.xs + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
 							align: 'left'
 						},
 						defaultContent: '~{currentLevelHighScore}~'
+					}
+				},
+				// oval mask
+				{
+					name: 'pauseOvalMask',
+					cl: 'Sprite',
+					attrs: {
+						img: 'ovalMask',
+						start: {
+							x: -50,
+							y: -50
+						},
+						phaser: {
+							width: winW + 100,
+							height: winH + 100
+						}
 					}
 				},
 				// play button
@@ -872,7 +889,7 @@ PWG.Config = (function() {
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
-						y: winH - (stageUnit * 2.25),
+						y: winH - (stageUnit * 2.75),
 						style: { 
 							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -890,7 +907,7 @@ PWG.Config = (function() {
 					cl: 'Text',
 					attrs: {
 						x: (stageUnit * 3),
-						y: winH - (stageUnit * 1.2),
+						y: winH - (stageUnit * 1.75),
 						style: { 
 							font: 'bold ' + fontSizes.xs + 'px "Waiting for the Sunrise"', 
 							fill: '#000000',
@@ -900,6 +917,22 @@ PWG.Config = (function() {
 						listeners: [
 							PWG.Events.LEVEL_CLEARED
 						]
+					}
+				},
+				// oval mask
+				{
+					name: 'pauseOvalMask',
+					cl: 'Sprite',
+					attrs: {
+						img: 'ovalMask',
+						start: {
+							x: -50,
+							y: -50
+						},
+						phaser: {
+							width: winW + 100,
+							height: winH + 100
+						}
 					}
 				},
 				// next button
@@ -971,7 +1004,8 @@ PWG.Config = (function() {
 					clearCache: false,
 					backgroundColor: '#ffffff',
 					images: [
-						'greyExpanseTitle'
+						'greyExpanseTitle',
+						'ovalMask'
 					],
 					sprites: [
 						'playButtonSmall',
@@ -1012,16 +1046,6 @@ PWG.Config = (function() {
 								x: (winW/2 - (stageUnit * 6)),
 								y: (stageUnit * 0.1)
 							}
-						}
-					},
-					// level title
-					title: {
-						name: 'levelInfoTitle',
-						cl: 'Sprite',
-						attrs: {
-							img: '',
-							phaser: levelInfoAttrs.title.phaser,
-							start: levelInfoAttrs.title.start
 						}
 					},
 					// description
@@ -1067,6 +1091,32 @@ PWG.Config = (function() {
 								fill: '#000000',
 								align: 'left'
 							}
+						}
+					},
+					// oval mask
+					ovalMask: {
+						name: 'ovalMask',
+						cl: 'Sprite',
+						attrs: {
+							img: 'ovalMask',
+							start: {
+								x: -50,
+								y: -50
+							},
+							phaser: {
+								width: winW + 100,
+								height: winH + 100
+							}
+						}
+					},
+					// level title
+					title: {
+						name: 'levelInfoTitle',
+						cl: 'Sprite',
+						attrs: {
+							img: '',
+							phaser: levelInfoAttrs.title.phaser,
+							start: levelInfoAttrs.title.start
 						}
 					},
 					// play button
@@ -1132,8 +1182,8 @@ PWG.Config = (function() {
 				
 				audio: [
 				'secrets',
-				'intro',
 				'rxMinus1',
+				'intro',
 				'twentyThree',
 				'laDespedida',
 				'theMadonna',
@@ -1166,6 +1216,9 @@ PWG.Config = (function() {
 				clearWorld: true,
 				clearCache: false,
 				backgroundColor: '#ffffff',
+				audio: [
+					'kekeInterval'
+				],
 				images: [
 					'blackRect',
 					'greyRect',
@@ -2601,10 +2654,7 @@ PWG.Config = (function() {
 								height: (stageUnit * 1) * 1.5,
 								alpha: 0.75
 							},
-							start: {
-								x: winW - (stageUnit * 6) * 1.5,
-								y: (stageUnit * 1.5)
-							}
+							start: levelInfoAttrs.title.start
 						}
 					}
 					]
@@ -4023,10 +4073,7 @@ PWG.Config = (function() {
 								height: (stageUnit * 1) * 1.5,
 								alpha: 0.75
 							},
-							start: {
-								x: winW - (stageUnit * 6) * 1.5,
-								y: (stageUnit * 1)
-							}
+							start: levelInfoAttrs.title.start
 						}
 					}
 					]
@@ -6264,10 +6311,7 @@ PWG.Config = (function() {
 								height: (stageUnit * 1) * 1.5,
 								alpha: 0.75
 							},
-							start: {
-								x: winW - (stageUnit * 6) * 1.5,
-								y: (stageUnit * 1)
-							}
+							start: levelInfoAttrs.title.start
 						}
 					}
 					]
@@ -8024,10 +8068,7 @@ PWG.Config = (function() {
 								height: (stageUnit * 1) * 1.5,
 								alpha: 0.75
 							},
-							start: {
-								x: winW - (stageUnit * 6) * 1.5,
-								y: (stageUnit * 1)
-							}
+							start: levelInfoAttrs.title.start
 						}
 					}
 					]
@@ -9867,10 +9908,7 @@ PWG.Config = (function() {
 								height: (stageUnit * 1) * 1.5,
 								alpha: 0.75
 							},
-							start: {
-								x: winW - (stageUnit * 6) * 1.5,
-								y: (stageUnit * 1)
-							}
+							start: levelInfoAttrs.title.start
 						}
 					}
 					]
@@ -11324,10 +11362,7 @@ PWG.Config = (function() {
 								height: (stageUnit * 1) * 1.5,
 								alpha: 0.75
 							},
-							start: {
-								x: winW - (stageUnit * 6) * 1.5,
-								y: (stageUnit * 1)
-							}
+							start: levelInfoAttrs.title.start
 						}
 					}
 					]
@@ -13519,10 +13554,7 @@ PWG.Config = (function() {
 								height: (stageUnit * 1) * 1.5,
 								alpha: 0.75
 							},
-							start: {
-								x: winW - (stageUnit * 6) * 1.5,
-								y: (stageUnit * 1)
-							}
+							start: levelInfoAttrs.title.start
 						}
 					}
 					]
@@ -15925,10 +15957,7 @@ PWG.Config = (function() {
 								height: (stageUnit * 1) * 1.5,
 								alpha: 0.75
 							},
-							start: {
-								x: winW - (stageUnit * 6) * 1.5,
-								y: (stageUnit * 1)
-							}
+							start: levelInfoAttrs.title.start
 						}
 					}
 					]
@@ -18664,10 +18693,7 @@ PWG.Config = (function() {
 								height: (stageUnit * 1) * 1.5,
 								alpha: 0.75
 							},
-							start: {
-								x: winW - (stageUnit * 6) * 1.5,
-								y: (stageUnit * 1)
-							}
+							start: levelInfoAttrs.title.start
 						}
 					}
 					]
@@ -21209,10 +21235,7 @@ PWG.Config = (function() {
 								height: (stageUnit * 1) * 1.5,
 								alpha: 0.75
 							},
-							start: {
-								x: winW - (stageUnit * 6) * 1.5,
-								y: (stageUnit * 1)
-							}
+							start: levelInfoAttrs.title.start
 						}
 					}
 					]
@@ -23322,10 +23345,7 @@ PWG.Config = (function() {
 								height: (stageUnit * 1) * 1.5,
 								alpha: 0.75
 							},
-							start: {
-								x: winW - (stageUnit * 6) * 1.5,
-								y: (stageUnit * 1)
-							}
+							start: levelInfoAttrs.title.start
 						}
 					}
 					]
@@ -24535,10 +24555,7 @@ PWG.Config = (function() {
 								height: (stageUnit * 1) * 1.5,
 								alpha: 0.75
 							},
-							start: {
-								x: winW - (stageUnit * 6) * 1.5,
-								y: (stageUnit * 1)
-							}
+							start: levelInfoAttrs.title.start
 						}
 					}
 					]
