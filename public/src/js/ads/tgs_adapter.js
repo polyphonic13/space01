@@ -102,7 +102,7 @@ PWG.TGSAdapter = (function() {
 		displayInterstitial: function() {
 			
 			trace('TGSAdapter/displayInterstitial');
-			PWGGame.adPlaying = true;
+			PolyworksGame.adPlaying = true;
 			PWG.EventCenter.trigger({ type: PWG.Events.AD_STARTED });
 			TGS.Advertisement.DisplayInterstitialAd(_displayConfig);		
 		},
@@ -118,7 +118,7 @@ PWG.TGSAdapter = (function() {
 			trace('\twidget x/y = ' + widgetX + '/' + widgetY + ', scale = ' + widgetScale + ', widget w should be = ' + (unit * PWG_WIDGET_UNITS));
 
 			if(_tgsExists) {
-				this.widget = PWGGame.Tresensa.createWidget({
+				this.widget = PolyworksGame.Tresensa.createWidget({
 					x: widgetX,
 					y: widgetY,
 					scale: widgetScale,
@@ -149,7 +149,7 @@ PWG.TGSAdapter = (function() {
 	
 	function _finishAdSession() {
 		trace('TGSAdapter/_finishAdSession');
-		PWGGame.adPlaying = false;
+		PolyworksGame.adPlaying = false;
 		PWG.EventCenter.trigger({ type: PWG.Events.AD_COMPLETED });
 	}
 	

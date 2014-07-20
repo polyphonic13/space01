@@ -72,7 +72,7 @@ PWG.Sprite = (function() {
 
 		if(!physics.deferredGravity && !physics.immovable) {
 			if(!physics.gravity) {
-				this.body.gravity = PWGGame.get('gravity');
+				this.body.gravity = PolyworksGame.get('gravity');
 			}
 		}
 	};
@@ -89,7 +89,7 @@ PWG.Sprite = (function() {
 		// trace('Sprite['+this.model.name+']/activateGravity, y = ' + this.body.screenY);
 		var physics = this.model.attrs.physics;
 		if(physics && physics.deferredGravity) {
-			var gravity = (physics.gravity) ? physics.gravity : PWGGame.get('gravity');
+			var gravity = (physics.gravity) ? physics.gravity : PolyworksGame.get('gravity');
 			// trace('gravity = ');
 			// trace(gravity);
 			this.body.gravity = gravity;
@@ -102,11 +102,11 @@ PWG.Sprite = (function() {
 		// trace('Sprite['+this.model.name+']/checkTerrainCollision, terrain = ');
 		// trace(terrain);
 		// trace(this);
-		PWGGame.phaser.physics.collide(this, terrain);
+		PolyworksGame.phaser.physics.collide(this, terrain);
 	};
 	
 	Sprite.prototype.checkDynamicTerrainCollision = function(dynamicTerrain) {
-		var physics = PWGGame.phaser.physics;
+		var physics = PolyworksGame.phaser.physics;
 		var _this = this;
 
 		PWG.Utils.each(dynamicTerrain,

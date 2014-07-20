@@ -14,7 +14,7 @@ PWG.Requirement = (function() {
 	Requirement.prototype.collect = function() {
 		// trace('Requirement['+this.model.name+']/collect');
 		if(this.model.attrs.score) {
-		    PWGGame.setLevelScore(this.model.attrs.score);
+		    PolyworksGame.setLevelScore(this.model.attrs.score);
 		}
 		PWG.EventCenter.trigger({ type: PWG.Events.REQUIREMENT_MET, value: this.model.name });
 		this.model.ancestor.killChild.call(this.model.ancestor, this.model.name);

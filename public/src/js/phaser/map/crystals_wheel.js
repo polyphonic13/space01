@@ -7,8 +7,8 @@ PWG.CrystalsWheel = (function() {
 	
 	CrystalsWheel.prototype.begin = function() {
 		CrystalsWheel._super.begin.call(this);
-		if(PWGGame.currentLevel > -1) {
-			this.frame = (PWGGame.currentLevel);
+		if(PolyworksGame.currentLevel > -1) {
+			this.frame = (PolyworksGame.currentLevel);
 		}
 	};
 	

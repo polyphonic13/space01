@@ -26,7 +26,7 @@ PWG.HeartIcon = (function() {
 	}
 	
 	HeartIcon.prototype.onHealthUpdated = function(params) {
-		var newHealth = PWGGame.health;
+		var newHealth = PolyworksGame.health;
 		// trace('HeartIcon/onHealthUpdate, this.model.health = ' + this.model.health + ', health = ', newHealth);
 		if(this.healthSet) {
 			var animations = this.model.attrs.animations;

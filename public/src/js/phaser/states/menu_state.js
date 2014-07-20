@@ -17,7 +17,7 @@ PWG.MenuState = (function() {
 	MenuState.prototype.onButtonPressed = function(event) {
 		// trace('MenuState/onButtonPressed, changingState = ' + this.changingState + ', event = ', event);
 		if(event.value === PWG.InputCodes.PLAY || event.value === PWG.InputCodes.NEXT) {
-			PWGGame.changeState('level'); 
+			PolyworksGame.changeState('level'); 
 			this.changingState = true;
 		}
 	};

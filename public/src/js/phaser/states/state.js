@@ -38,7 +38,7 @@ PWG.State = (function() {
 	State.prototype.preload = function() {
 		this.toLoad = 0;
 		this.loaded = 0;
-		var phaser = PWGGame.phaser;
+		var phaser = PolyworksGame.phaser;
 		var loaded = {
 			audio: {},
 			images: {},
@@ -50,11 +50,11 @@ PWG.State = (function() {
 			trace('\tstate audio = ');
 			trace(this.model.audio);
 			if(this.model.audio && this.model.audio.length > 0) {
-				var audio = PWGGame.get('audio');
+				var audio = PolyworksGame.get('audio');
 				PWG.Utils.each(
 					this.model.audio,
 					function(a) {
-						if(!PWGGame.loaded.audio[audio]) {
+						if(!PolyworksGame.loaded.audio[audio]) {
 							trace('loading audio['+a+']: ', audio[a]);
 							this.toLoad++;
 							phaser.load.audio(a, audio[a]);
@@ -65,11 +65,11 @@ PWG.State = (function() {
 				);
 			}
 			if(this.model.images && this.model.images.length > 0) {
-				var images = PWGGame.get('images');
+				var images = PolyworksGame.get('images');
 				PWG.Utils.each(this.model.images,
 					function(img) {
-						// trace('\t\timage['+img+'] loaded = ' + PWGGame.loaded.images[img]);
-						if(!PWGGame.loaded.images[img]) {
+						// trace('\t\timage['+img+'] loaded = ' + PolyworksGame.loaded.images[img]);
+						if(!PolyworksGame.loaded.images[img]) {
 							this.toLoad++;
 							phaser.load.image(img, images[img]);
 							loaded.images[img] = true;
@@ -79,11 +79,11 @@ PWG.State = (function() {
 				);
 			}
 			if(this.model.sprites && this.model.sprites.length > 0) {
-				var sprites = PWGGame.get('sprites');
+				var sprites = PolyworksGame.get('sprites');
 				PWG.Utils.each(this.model.sprites,
 					function(spr) {
-						// trace('\t\tsprite['+spr+'] loaded = ' + PWGGame.loaded.sprites[spr]);
-						if(!PWGGame.loaded.sprites[spr]) {
+						// trace('\t\tsprite['+spr+'] loaded = ' + PolyworksGame.loaded.sprites[spr]);
+						if(!PolyworksGame.loaded.sprites[spr]) {
 							var sprite = sprites[spr];
 							// trace('\t\t\tsprite = ', sprite);
 							this.toLoad++;
@@ -94,16 +94,16 @@ PWG.State = (function() {
 					this
 				);
 			}
-			PWGGame.loaded = PWG.Utils.extend(PWGGame.loaded, loaded);
+			PolyworksGame.loaded = PWG.Utils.extend(PolyworksGame.loaded, loaded);
 			this.model.loaded = true;
 		}
 	};
 	
 	State.prototype.create = function() {
 		trace('State['+this.model.name+']/create');
-		PWGGame.phaser.stage.backgroundColor = this.model.backgroundColor;
-		PWGGame.removeLoadingDiv();
-		if(PWGGame.isLandscape) {
+		PolyworksGame.phaser.stage.backgroundColor = this.model.backgroundColor;
+		PolyworksGame.removeLoadingDiv();
+		if(PolyworksGame.isLandscape) {
 			this.createState();
 		} else {
 			trace('WARNING: not in landscape orientation, can not create state');
@@ -111,36 +111,36 @@ PWG.State = (function() {
 		this.model.set({ createCalled: true });
 		
 		if(this.model.audio && this.model.audio.length > 0) {
-			trace('\tisMuted = ' + PWGGame.isMuted);
-			if(!PWGGame.isMuted) {
+			trace('\tisMuted = ' + PolyworksGame.isMuted);
+			if(!PolyworksGame.isMuted) {
 				var audio = this.model.audio[0];
-				if(PWGGame.currentAudioName !== audio) {
-					if(PWGGame.currentAudio) {
-						PWGGame.currentAudio.stop();
-						PWGGame.currentAudio = null;
+				if(PolyworksGame.currentAudioName !== audio) {
+					if(PolyworksGame.currentAudio) {
+						PolyworksGame.currentAudio.stop();
+						PolyworksGame.currentAudio = null;
 					}
 					trace('audio = ', audio);
 					// key, volume loop
-					var sound = PWGGame.phaser.add.audio(audio, 1, true);
+					var sound = PolyworksGame.phaser.add.audio(audio, 1, true);
 					trace('sound = ', sound);
 					// marker, position, volume, loop
 					sound.play('', 0, 1, true);
-					PWGGame.currentAudio = sound;
-					PWGGame.currentAudioName = audio;
+					PolyworksGame.currentAudio = sound;
+					PolyworksGame.currentAudioName = audio;
 				}
 			}
 		}
 		
 		if(this.model.name === 'menu') {
 			var frame = 0;
-			if(PWGGame.isMuted) {
+			if(PolyworksGame.isMuted) {
 				frame = 1;
 			}
 			this.model.collection[1].model.collection[1].frame = frame;
 		} else if(this.model.name === 'gameOver') {
-			if(PWGGame.currentAudio) {
-				PWGGame.currentAudio.stop();
-				PWGGame.currentAudio = null;
+			if(PolyworksGame.currentAudio) {
+				PolyworksGame.currentAudio.stop();
+				PolyworksGame.currentAudio = null;
 				PWG.currentAudioName = '';
 			}
 		}
@@ -149,7 +149,7 @@ PWG.State = (function() {
 	State.prototype.createState = function() {
 		// trace('State['+this.model.name+']/createState, created = ' + (this.model.get('created')));
 		if(!this.model.get('created')) {
-			this.gameOver = PWGGame.gameOver; 
+			this.gameOver = PolyworksGame.gameOver; 
 			this.createWorld();
 
 			if(this.model.pausable) {
@@ -180,7 +180,7 @@ PWG.State = (function() {
 	State.prototype.createWorld = function() {
 		var world = this.model.world;
 		// trace('State['+this.model.name+']/createWorld, x = ' + world.x + ', world.y = ' + world.y + ', width = ' + world.width + ', height = ' + world.height);
-		PWGGame.phaser.world.setBounds(world.x, world.y, world.width, world.height);
+		PolyworksGame.phaser.world.setBounds(world.x, world.y, world.width, world.height);
 	};
 
 	State.prototype.update = function() {
@@ -203,9 +203,9 @@ PWG.State = (function() {
 			active: false
 		});
 
-		if(PWGGame.currentAudio) {
-			// PWGGame.currentAudio.stop();
-			// PWGGame.currentAudio = null;
+		if(PolyworksGame.currentAudio) {
+			// PolyworksGame.currentAudio.stop();
+			// PolyworksGame.currentAudio = null;
 		}
 		this.destroy();
 	};

@@ -7,7 +7,7 @@ PWG.Collection = (function() {
 	
 	Collection.prototype.begin = function() {
 		// trace('Collection['+this.model.name+']/begin', this);
-		var game = PWGGame.phaser;
+		var game = PolyworksGame.phaser;
 		var collection = [];
 		var nameIndex = {};
 		var children = this.model.attrs;

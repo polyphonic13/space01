@@ -2541,19 +2541,6 @@ PWG.Config = (function() {
 					}
 					]
 				},
-				// controls
-				{
-					name: 'levelControls',
-					cl: 'ControlButtons',
-					type: 'level',
-					addTo: 'null',
-					attrs: {
-						start: {
-							x: 0,
-							y: 0
-						}
-					}
-				},
 				// level gui
 				{
 					name: 'levelGUI',
@@ -2681,6 +2668,19 @@ PWG.Config = (function() {
 						}
 					}
 					]
+				},
+				// controls
+				{
+					name: 'levelControls',
+					cl: 'ControlButtons',
+					type: 'level',
+					addTo: 'null',
+					attrs: {
+						start: {
+							x: 0,
+							y: 0
+						}
+					}
 				}
 				]
 			},
@@ -24836,7 +24836,7 @@ PWG.Config = (function() {
 					// 		events: {
 					// 			pressed: {
 					// 				type: PWG.Events.START_LEVEL,
-					// 				value: PWGGame.currentLevel
+					// 				value: PolyworksGame.currentLevel
 					// 			}
 					// 		}
 					// 	}
@@ -25194,23 +25194,6 @@ PWG.Config = (function() {
 						}
 					},
 					{
-						name: 'upBtn',
-						cl: 'InputButton',
-						attrs: {
-							img: 'upButton',
-							phaser: { 
-								width: (stageUnit * 4),
-								height: (stageUnit * 8)
-							},
-							start: {
-								x: winW - (stageUnit * 4.5),
-								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
-							},
-							frames: [0, 0, 1],
-							inputCode: PWG.InputCodes.UP
-						}
-					},
-					{
 						name: 'pauseButton',
 						cl: 'InputButton',
 						attrs: {
@@ -25229,6 +25212,23 @@ PWG.Config = (function() {
  									type: PWG.Events.PAUSE_STATE
 								}
 							}
+						}
+					},
+					{
+						name: 'upBtn',
+						cl: 'InputButton',
+						attrs: {
+							img: 'upButton',
+							phaser: { 
+								width: (stageUnit * 4),
+								height: (stageUnit * 8)
+							},
+							start: {
+								x: winW - (stageUnit * 4.5),
+								y: (winH/2) - (stageHeight/2) + (stageUnit * 0.5)
+							},
+							frames: [0, 0, 1],
+							inputCode: PWG.InputCodes.UP
 						}
 					}
 					]

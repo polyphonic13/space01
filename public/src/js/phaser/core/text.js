@@ -7,7 +7,7 @@ PWG.Text = (function() {
 		this.model = new PWG.Model(params);
 		var attrs = this.model.attrs;
 		// trace('Text['+this.model.name+']/constructor, this = ', this);
-		var context = (attrs.dynamicContentContext) ? attrs.dynamicContentContext : PWGGame;
+		var context = (attrs.dynamicContentContext) ? attrs.dynamicContentContext : PolyworksGame;
 		var content = PWG.Utils.parseMarkup(attrs.defaultContent, context);
 		Text._super.constructor.call(this, params.game, attrs.x, attrs.y, content, attrs.style);
 
@@ -79,7 +79,7 @@ PWG.Text = (function() {
 		} else if(this.model.attrs.dynamicContentContext) {
 			context = this.model.attrs.dynamicContentContext;
 		} else {
-			context = PWGGame;
+			context = PolyworksGame;
 		}
 
 		this.content = PWG.Utils.parseMarkup(this.model.attrs.defaultContent, context);

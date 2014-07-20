@@ -7,7 +7,7 @@ PWG.Emitter = (function() {
 	
 	
 	Emitter.prototype.begin = function() {
-		var game = PWGGame.phaser;
+		var game = PolyworksGame.phaser;
 		var attrs = this.model.attrs;
 		var bounds = (attrs.bounds) ? attrs.bounds : game.world.bounds;
 

@@ -11,8 +11,8 @@ PWG.MapMarker = (function() {
 
 		var name = this.model.name;
 		this.model.level = parseInt(name.replace('mapLevelMarker', ''));
-		var currentLevel = PWGGame.currentLevel;
-		var levelStatus = PWGGame.levelStatus[this.model.level];
+		var currentLevel = PolyworksGame.currentLevel;
+		var levelStatus = PolyworksGame.levelStatus[this.model.level];
 
 		if(levelStatus === 'l') {
 			this.frame = 14;

@@ -62,25 +62,25 @@
 			this.enemyManager = new PWG.EnemyManager(this.model.enemies, this.sectorManager);
 		}
 
-		var playerStart = PWG.Utils.clone(PWGGame.get('player').attrs.start);
+		var playerStart = PWG.Utils.clone(PolyworksGame.get('player').attrs.start);
 		// trace('LevelState['+this.model.name+']/createState\n\tplayerStart = ', playerStart);
-		this.createPlayer(playerStart, PWGGame.startingHealth);
+		this.createPlayer(playerStart, PolyworksGame.startingHealth);
 		trace('end of create state');
-		// if(PWGGame.adPlaying) {
+		// if(PolyworksGame.adPlaying) {
 		// 	this.onPauseState();
 		// }
 	};
 
 	LevelState.prototype.createPlayer = function(start, health) {
-		var playerConfig = PWG.Utils.clone(PWGGame.get('player'));
+		var playerConfig = PWG.Utils.clone(PolyworksGame.get('player'));
 		playerConfig.attrs.attack = 10;
 		playerConfig.attrs.start = start;
 		// trace('Level['+this.model.name+']/createPlayer, playerConfig = ', playerConfig, '\n\tstart = ', start);
 
-		playerConfig.game = PWGGame.phaser;
+		playerConfig.game = PolyworksGame.phaser;
 		playerConfig.sectorManager = this.sectorManager;
 
-		this.playerGroup = PWGGame.phaser.add.group();
+		this.playerGroup = PolyworksGame.phaser.add.group();
 		this.player = new PWG[playerConfig.cl](playerConfig);
 		this.player.begin(health);
 		this.playerGroup.add(this.player);
@@ -102,7 +102,7 @@
 	};
 	
 	LevelState.prototype.update = function() {
-		if(!this.paused && !PWGGame.adPlaying) {
+		if(!this.paused && !PolyworksGame.adPlaying) {
 			// trace('LevelState['+this.model.name+']/update');
 			// if(this.requirementsMet && (this.player.body.x >= this.model.bounds.end)) {
 			if(this.requirementsMet && this.allGoalsReached) {
@@ -192,7 +192,7 @@
 	
 	LevelState.prototype.onResumeState = function() {
 		// trace('LevelState['+this.model.name+']/onResumeState');
-		if(!PWGGame.adPlaying) {
+		if(!PolyworksGame.adPlaying) {
 			LevelState._super.onResumeState.call(this);
 			this.resumeState();
 		}
@@ -216,7 +216,7 @@
 	
 	LevelState.prototype.resumeState = function() {
 		this.sectorManager.setActiveSector(this.sectorManager.activeSectorIdx);
-		this.createPlayer(this.playerPosition, PWGGame.health);
+		this.createPlayer(this.playerPosition, PolyworksGame.health);
 		this.playerGroup.visible = true; 
 		this.showPauseGUI(false);
 		if(this.enemyManager) {
@@ -257,7 +257,7 @@
 	};
 	
 	LevelState.prototype.levelCleared = function() {
-		PWG.EventCenter.trigger({ type: PWG.Events.LEVEL_CLEARED, value: PWGGame.currentLevel });
+		PWG.EventCenter.trigger({ type: PWG.Events.LEVEL_CLEARED, value: PolyworksGame.currentLevel });
 
 		this.sectorManager.deactivateAll();
 

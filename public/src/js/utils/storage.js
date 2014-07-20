@@ -1,6 +1,6 @@
 /*
 PWG.Storage.set({ currentLevel: 9, savedStatus: ["u","u","u","u","u","u","u","u","u","u"] });
-PWGGame.currentLevel = 9;
+PolyworksGame.currentLevel = 9;
 */
 PWG.Storage = (function() {
 	var _listeners = [];

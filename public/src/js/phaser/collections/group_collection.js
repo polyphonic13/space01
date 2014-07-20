@@ -7,9 +7,9 @@ PWG.GroupCollection = (function() {
 		GroupCollection._super.constructor.call(this, params);
 		// if(groupContext === 'null') {
 		// 	// trace('GroupCollection['+params.name+'], adding group with context of null');
-		// 	this.group = PWGGame.phaser.add.group(null);
+		// 	this.group = PolyworksGame.phaser.add.group(null);
 		// } else {
-		// 	this.group = PWGGame.phaser.add.group();
+		// 	this.group = PolyworksGame.phaser.add.group();
 		// }
 	}
 	
@@ -17,7 +17,7 @@ PWG.GroupCollection = (function() {
 		// trace('GroupCollection['+this.model.name+']/begin, this = ', this);
 		GroupCollection._super.begin.call(this);
 
-		var game = PWGGame.phaser;
+		var game = PolyworksGame.phaser;
 		var collection = this.model.collection;
 		var group;
 

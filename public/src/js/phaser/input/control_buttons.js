@@ -10,7 +10,7 @@ PWG.ControlButtons = (function() {
 	
 	ControlButtons.prototype.begin = function() {
 		// trace('ControlButtons/begin');
-		var ctrls = PWGGame.get('controls');
+		var ctrls = PolyworksGame.get('controls');
 		this.model.attrs = ctrls.buttons[this.model.type];
 		// trace(ctrls);
 		// trace(this.model.attrs);

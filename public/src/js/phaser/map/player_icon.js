@@ -7,8 +7,8 @@ PWG.PlayerIcon = (function() {
 	}
 	
 	PlayerIcon.prototype.initPosition = function(positions) {
-		trace('PlayerIcon/initPosition, position = ', positions, '\tcurrentLevel = ' + PWGGame.currentLevel);
-		return positions[PWGGame.currentLevel];
+		trace('PlayerIcon/initPosition, position = ', positions, '\tcurrentLevel = ' + PolyworksGame.currentLevel);
+		return positions[PolyworksGame.currentLevel];
 	};
 	
 	PlayerIcon.prototype.begin = function() {
@@ -25,7 +25,7 @@ PWG.PlayerIcon = (function() {
 			var levels = pages[i].levels;
 			var levelsLength = levels.length;
 			for(var j = 0; j < levelsLength; j++) {
-				if(levels[j] === PWGGame.currentLevel) {
+				if(levels[j] === PolyworksGame.currentLevel) {
 					this.pageIndex = i;
 					break;
 				}
@@ -53,7 +53,7 @@ PWG.PlayerIcon = (function() {
 	PlayerIcon.prototype.inputUp = function(event, pointer, ctx) {
 		// trace('PlayerIcon['+this.model.name+']/inputUp');
 		ctx.pressed = false;
-		// PWG.EventCenter.trigger({ type: PWG.Events.START_LEVEL, value: PWGGame.currentLevel });
+		// PWG.EventCenter.trigger({ type: PWG.Events.START_LEVEL, value: PolyworksGame.currentLevel });
 	};
 	
 	PlayerIcon.prototype.onChangeMapPage = function(event) {

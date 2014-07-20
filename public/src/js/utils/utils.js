@@ -179,7 +179,7 @@ PWG.Utils = (function() {
 	};
 	
 	utils.addSpriteToGame = function(params) {
-		return PWGGame.phaser.add.sprite(params.start.x, params.start.y, params.img);
+		return PolyworksGame.phaser.add.sprite(params.start.x, params.start.y, params.img);
 	};
 	
 	utils.addSpriteToGroup = function(params) {

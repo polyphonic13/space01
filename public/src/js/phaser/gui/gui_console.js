@@ -41,7 +41,7 @@ PWG.GUIConsole = (function() {
 		var text = this.getChildByName(field);
 		// trace(text);
 		if(text) {
-			var context = (context) ? context : PWGGame;
+			var context = (context) ? context : PolyworksGame;
 			text.content = PWG.Utils.parseMarkup(text.model.attrs.defaultContent, context);
 		}
 	};

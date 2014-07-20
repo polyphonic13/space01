@@ -1,4 +1,4 @@
-PWGGame = (function() {
+PolyworksGame = (function() {
 	var _model = {};
 	var _player = {};
 	var _controls = {};
@@ -48,8 +48,8 @@ PWGGame = (function() {
 		Tresensa: null,
 
 		begin: function(params) {
-			PWGGame.name = params.name;
-			PWGGame.aspectRatio = params.aspectRatio;
+			PolyworksGame.name = params.name;
+			PolyworksGame.aspectRatio = params.aspectRatio;
 			// _model = params;
 			// window.scrollTo(0,0);
 			window.addEventListener("load", 
@@ -77,11 +77,11 @@ PWGGame = (function() {
 			// 		PWG.EventCenter.trigger({ type: PWG.Events.PAUSE_STATE });
 			// 	}
 			// );
-			PWGGame.browser = PWG.DeviceUtils.getBrowser();
-			PWGGame.os = PWG.DeviceUtils.getOs();
-			trace('browser = ' + PWGGame.browser + ', os = ' + PWGGame.os);
+			PolyworksGame.browser = PWG.DeviceUtils.getBrowser();
+			PolyworksGame.os = PWG.DeviceUtils.getOs();
+			trace('browser = ' + PolyworksGame.browser + ', os = ' + PolyworksGame.os);
 			// CHECK FOR FIREFOX ON MAC, AND BLOCK -- IT CRASHES WITH WEB GL RENDERING AND IS TOO SLOW FOR CANVAS RENDERING
-			if(PWGGame.browser === PWG.DeviceUtils.browsers.FIREFOX && PWGGame.os === PWG.DeviceUtils.operatingSystems.MAC) {
+			if(PolyworksGame.browser === PWG.DeviceUtils.browsers.FIREFOX && PolyworksGame.os === PWG.DeviceUtils.operatingSystems.MAC) {
 				var ffmsg = document.createElement('div');
 				ffmsg.setAttribute('id', 'firefoxMessage');
 				ffmsg.innerHTML = "we're sorry, but firefox is not supported.<br />please switch to a different browser.";
@@ -100,13 +100,13 @@ PWGGame = (function() {
 		},
 
 		startGame: function() {
-			trace('PWGGame/startGame');
+			trace('PolyworksGame/startGame');
 			if(_stageInitialized) {
 				_adapter.init(_levels.length);
 				if(typeof(inTGS) !== 'undefined' && inTGS) {
-					PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
+					PolyworksGame.Tresensa = PolyworksGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
 				}
-				PWGGame.changeState(_model.initialState);
+				PolyworksGame.changeState(_model.initialState);
 			}
 		},
 		
@@ -127,9 +127,9 @@ PWGGame = (function() {
 			// trace('polyworks game/getLevelInfo, idx = ' + idx);
 			var levelInfo = {
 				levelText: _levels[idx].model.text,
-				highScore: PWGGame.highScores[idx],
-				status: PWGGame.levelStatus[idx],
-				statusText: _model.levelStatusText[PWGGame.levelStatus[idx]]
+				highScore: PolyworksGame.highScores[idx],
+				status: PolyworksGame.levelStatus[idx],
+				statusText: _model.levelStatusText[PolyworksGame.levelStatus[idx]]
 			};
 			return levelInfo;
 		},
@@ -141,16 +141,16 @@ PWGGame = (function() {
 				tipDisplayed = false;
 			}
 			if(id === 'quit') {
-				PWGGame.quit();
+				PolyworksGame.quit();
 			} else {
 				var state = _states[id];
 				if(state) {
-					PWGGame.previousState = PWGGame.currentState;
-					PWGGame.currentState = id;
-					trace('PWGGame/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
+					PolyworksGame.previousState = PolyworksGame.currentState;
+					PolyworksGame.currentState = id;
+					trace('PolyworksGame/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
 					// trace(_states);
-					PWGGame.addLoadingDiv();
-					PWGGame.phaser.state.start(id, state.clearWorld, state.clearCache);
+					PolyworksGame.addLoadingDiv();
+					PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
 				} else {
 					trace('ERROR: state['+id+'] not found');
 				}
@@ -159,24 +159,24 @@ PWGGame = (function() {
 		},
 
 		setScore: function(val) {
-			PWGGame.score += val;
+			PolyworksGame.score += val;
 			PWG.EventCenter.trigger({ type: PWG.Events.SCORE_UPDATED });
 		},
 
 		setLevelScore: function(val) {
-			PWGGame.levelScore += val;
+			PolyworksGame.levelScore += val;
 			PWG.EventCenter.trigger({ type: PWG.Events.LEVEL_SCORE_UPDATED });
 		},
 
 		setHealth: function(val) {
-			PWGGame.health = val;
+			PolyworksGame.health = val;
 			PWG.EventCenter.trigger({ type: PWG.Events.HEALTH_UPDATED });
 		},
 
 		setRequirements: function(met, total) {
-			PWGGame.requirementsMet = met;
-			PWGGame.requirementsCount = total;
-			trace('PWGGame.setRequirements, requirementsMet = ' + PWGGame.requirementsMet + ', total = ' + PWGGame.requirementsCount);
+			PolyworksGame.requirementsMet = met;
+			PolyworksGame.requirementsCount = total;
+			trace('PolyworksGame.setRequirements, requirementsMet = ' + PolyworksGame.requirementsMet + ', total = ' + PolyworksGame.requirementsCount);
 			if(total > 0) {
 				PWG.EventCenter.trigger({ type: PWG.Events.REQUIREMENTS_UPDATED });
 			}
@@ -207,8 +207,8 @@ PWGGame = (function() {
 		},
 
 		quit: function() {
-			// trace('PWGGame/quit');
-			if(!PWGGame.isQuit) {
+			// trace('PolyworksGame/quit');
+			if(!PolyworksGame.isQuit) {
 				_quit();
 			}
 		}
@@ -280,7 +280,7 @@ PWGGame = (function() {
 	}
 
 	function _hideAddressBar() {
-		// trace('------------ PWGGame/_hideAddressBar, window.location.hash = ', window.location.hash);
+		// trace('------------ PolyworksGame/_hideAddressBar, window.location.hash = ', window.location.hash);
 		if(!window.location.hash) {
 			trace('\tdocument.height = ' + document.height + ', window.outerHeight = ' + window.outerHeight);
 			if(document.height < window.outerHeight) {
@@ -299,36 +299,36 @@ PWGGame = (function() {
 	function _checkOrientation() {
 		var w = window.innerWidth;
 		var h = window.innerHeight;
-		PWGGame.isLandscape = (w > h) ? true : false;
-		// trace('PWGGame/_checkOrientation, isLandscape = ' + PWGGame.isLandscape, '\t_stageInitialized = ' + _stageInitialized);
-		if(PWGGame.isLandscape) {
-			PWGGame.hideOrientationMessage();
+		PolyworksGame.isLandscape = (w > h) ? true : false;
+		// trace('PolyworksGame/_checkOrientation, isLandscape = ' + PolyworksGame.isLandscape, '\t_stageInitialized = ' + _stageInitialized);
+		if(PolyworksGame.isLandscape) {
+			PolyworksGame.hideOrientationMessage();
 			if(!_stageInitialized) {
-				PWG.Stage.init(PWGGame.aspectRatio);
+				PWG.Stage.init(PolyworksGame.aspectRatio);
 			}
 		} else {
-			PWGGame.showOrientationMessage();
+			PolyworksGame.showOrientationMessage();
 		}
 	}
 	
 	function _orientationChange() {
 		_checkOrientation();
-		// trace('PWGGame/_orientationChange, isLandscape = ' + PWGGame.isLandscape + ', currentState' + PWGGame.currentState); 
-		if(PWGGame.currentState !== '') {
-			_states[PWGGame.currentState].orientationSet(PWGGame.isLandscape);
+		// trace('PolyworksGame/_orientationChange, isLandscape = ' + PolyworksGame.isLandscape + ', currentState' + PolyworksGame.currentState); 
+		if(PolyworksGame.currentState !== '') {
+			_states[PolyworksGame.currentState].orientationSet(PolyworksGame.isLandscape);
 		}
 	}
 	
 	function _getSavedData() {
 		// Polywork.Storage.destroy();
-		var savedData = PWG.Storage.get(PWGGame.name);
-		trace('PWGGame/_getSavedData, savedData = ', savedData);
+		var savedData = PWG.Storage.get(PolyworksGame.name);
+		trace('PolyworksGame/_getSavedData, savedData = ', savedData);
 		if(typeof(savedData) !== 'undefined') {
 			if(savedData.indexOf('{') > -1) {
 				// trace('\tdata saved was an object, parsing...');
 				savedData = JSON.parse(savedData);
 				for(var key in savedData) {
-					PWGGame[key] = savedData[key];
+					PolyworksGame[key] = savedData[key];
 				}
 			}
 		}
@@ -336,12 +336,12 @@ PWGGame = (function() {
 
 	function _setSavedData() {
 		var params = {};
-		params[PWGGame.name] = {
-			score: PWGGame.score,
-			currentLevel: PWGGame.currentLevel,
-			savedState: PWGGame.currentState,
-			savedStatus: PWGGame.levelStatus,
-			highScores: PWGGame.highScores,
+		params[PolyworksGame.name] = {
+			score: PolyworksGame.score,
+			currentLevel: PolyworksGame.currentLevel,
+			savedState: PolyworksGame.currentState,
+			savedStatus: PolyworksGame.levelStatus,
+			highScores: PolyworksGame.highScores,
 			viewedOnce: '1'
 		};
 
@@ -349,7 +349,7 @@ PWGGame = (function() {
 	}
 	
 	function _preload() {
-		var phaser = PWGGame.phaser;
+		var phaser = PolyworksGame.phaser;
 		var audio = _model.audio;
 		var images = _model.images;
 		var sprites = _model.sprites;
@@ -385,7 +385,7 @@ PWGGame = (function() {
 		// trace('preload sprites');
 		PWG.Utils.each(sprites,
 			function(sprite, key) {
-				// trace('PWGGame setting sprite['+key+'] loaded to false');
+				// trace('PolyworksGame setting sprite['+key+'] loaded to false');
 				if(_model.preloadAll) {
 					phaser.load.spritesheet(key, sprite.url, sprite.width, sprite.height, sprite.frames);
 					loaded.sprites[key] = true;
@@ -395,11 +395,11 @@ PWGGame = (function() {
 			this
 		);
 
-		PWGGame.loaded = loaded;
+		PolyworksGame.loaded = loaded;
 	}
 	
 	function _create() {
-		// trace('PWGGame/_create');
+		// trace('PolyworksGame/_create');
 		_initControls();
 		_initStates();
 		// _initSocial();
@@ -409,7 +409,7 @@ PWGGame = (function() {
 	function _onStageInitialized(event) {
 		_stageInitialized = true;
 		_isTouchDevice = (navigator.userAgent.match(/ipad|iphone|android/i) !== null);
-		// trace('PWGGame/_onStageInitialized, _isTouchDevice = ' + _isTouchDevice);
+		// trace('PolyworksGame/_onStageInitialized, _isTouchDevice = ' + _isTouchDevice);
 
 		var config = new PWG.Config();
 
@@ -418,20 +418,20 @@ PWGGame = (function() {
 		if(_model.webFonts) {
 			_addWebFonts(_model.webFonts);
 		}
-		PWGGame.startingHealth = _model.player.attrs.phaser.health;
+		PolyworksGame.startingHealth = _model.player.attrs.phaser.health;
 
 		var renderType = Phaser.AUTO;
 		// if(PWG.DeviceUtils.isFirefox()) {
 		// 	renderType = Phaser.CANVAS;
 		// }
 		// trace('---------- renderType = ' + renderType);
-		PWGGame.phaser = new Phaser.Game(PWG.Stage.winW, PWG.Stage.winH, renderType, 'gameContainer', { preload: _preload, create: _create });
+		PolyworksGame.phaser = new Phaser.Game(PWG.Stage.winW, PWG.Stage.winH, renderType, 'gameContainer', { preload: _preload, create: _create });
 	}
 
 	function _onControlPressed(event) {
 		switch(event.value) {
 			case PWG.InputCodes.QUIT:
-				PWGGame.changeState('quit');
+				PolyworksGame.changeState('quit');
 			break;
 
 			case PWG.InputCodes.CLEAR_DATA: 
@@ -444,32 +444,36 @@ PWGGame = (function() {
 	}
 
 	function _changeHomeStateMute(frame) {
-		_states[PWGGame.currentState].model.collection[1].model.collection[1].frame = frame;
+		_states[PolyworksGame.currentState].model.collection[1].model.collection[1].frame = frame;
 	}
 	
 	function _changePlayStateMute(frame) {
-		trace('_changePlayStateMute, view = ', _states[PWGGame.currentState].model.collection[6].model.collection[6]);
-		_states[PWGGame.currentState].model.collection[6].model.collection[6].frame = frame;
+		var state = _states[PolyworksGame.currentState];
+		var pauseGUI = state.getChildByName('pauseGUI');
+		var muteButton = pauseGUI.getChildByName('muteButton');
+		trace('_changePlayStateMute, pauseGUI = ', pauseGUI, '\tmuteButton = ', muteButton);
+		muteButton.frame = frame;
+		// _states[PolyworksGame.currentState].model.collection[6].model.collection[6].frame = frame;
 	}
 	
 	function _onMuteUnmute(event) {
-		PWGGame.isMuted = !PWGGame.isMuted;
+		PolyworksGame.isMuted = !PolyworksGame.isMuted;
 		var frame = 0;
-		if(PWGGame.isMuted) {
+		if(PolyworksGame.isMuted) {
 			frame = 1;
-			if(PWGGame.currentAudio) {
-				PWGGame.currentAudio.pause();
-				PWGGame.currentAudioName = '';
+			if(PolyworksGame.currentAudio) {
+				PolyworksGame.currentAudio.pause();
+				PolyworksGame.currentAudioName = '';
 			}
-		} else if(PWGGame.currentAudio) {
-			PWGGame.currentAudio.resume();
+		} else if(PolyworksGame.currentAudio) {
+			PolyworksGame.currentAudio.resume();
 		}
-		if(PWGGame.currentState === 'menu') {
+		if(PolyworksGame.currentState === 'menu') {
 			_changeHomeStateMute(frame);
 		} else {
 			_changePlayStateMute(frame);
 		}
-		trace('post mute unmute, isMuted = ' + PWGGame.isMuted + ', _states = ', _states[PWGGame.currentState]);
+		// trace('post mute unmute, isMuted = ' + PolyworksGame.isMuted + ', _states = ', _states[PolyworksGame.currentState]);
 	}
 
 	function _onChangeState(event) {
@@ -479,19 +483,19 @@ PWGGame = (function() {
 				_adapter.logEvent(_adapter.logEvents.GAME_EVENT, [_adapter.gameEvents.BEGIN]);
 			}
 		}
-		PWGGame.changeState(event.value);
+		PolyworksGame.changeState(event.value);
 	}
 	
 	function _onShowLevelInfo(event) {
-		trace('PWGGame/_onShowLevelInfo, event = ', event);
+		trace('PolyworksGame/_onShowLevelInfo, event = ', event);
 		var levelIdx = (event.value < 9) ? ('0' + (event.value+1)) : (event.value+1);
 		var stateId = 'level' + levelIdx + 'Info';
-		PWGGame.changeState(stateId);
+		PolyworksGame.changeState(stateId);
 	}
 
 	function _onStartLevel(event) {
 
-		idx = PWGGame.currentLevel;
+		idx = PolyworksGame.currentLevel;
 		for(var key in event) {
 			if(key === 'value' && typeof(event[key]) !== 'undefined') {
 				idx = event[key];
@@ -500,51 +504,51 @@ PWGGame = (function() {
 		}
 		// trace('\tidx = ' + idx);
 		var stateId = _levels[idx].model.name;
-		PWGGame.currentLevel = idx;
+		PolyworksGame.currentLevel = idx;
 		// trace('\tstateId = ' + stateId);
-		PWGGame.levelText = _levels[idx].model.text;
-		PWGGame.levelScore = 0;
-		PWGGame.currentLevelHighScore = 'high score: ' + PWGGame.highScores[idx];
-		PWGGame.changeState(stateId);
+		PolyworksGame.levelText = _levels[idx].model.text;
+		PolyworksGame.levelScore = 0;
+		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
+		PolyworksGame.changeState(stateId);
 
 		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.START, (idx+1)]);
-		// _adapter.adCheck(PWGGame.currentLevel);
+		// _adapter.adCheck(PolyworksGame.currentLevel);
 	}
 	
 	function _onNextLevel(event) {
-		trace('PWGGame/_onNextLevel, currentLevel = ', PWGGame.currentLevel);
+		trace('PolyworksGame/_onNextLevel, currentLevel = ', PolyworksGame.currentLevel);
 		var stateId;
-		if(PWGGame.currentLevel === PWGGame.levelCount) {
-			PWGGame.currentLevel = 0;
-			PWGGame.levelText = '';
+		if(PolyworksGame.currentLevel === PolyworksGame.levelCount) {
+			PolyworksGame.currentLevel = 0;
+			PolyworksGame.levelText = '';
 			stateId = 'completed';
 			
 			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.GAME_COMPLETED]);
 
 		} else {
-			var idx = PWGGame.currentLevel;
+			var idx = PolyworksGame.currentLevel;
 			var levelIdx = (idx < 9) ? ('0' + (idx+1)) : (idx+1);
 			stateId = 'level' + levelIdx + 'Info';
 		}
 		_adapter.closeWidget();
-		PWGGame.changeState(stateId);
+		PolyworksGame.changeState(stateId);
 
 	}
 	
 	function _onLevelCleared(event) {
-		trace('PWGGame/_onLevelCleared, event = ', event);
+		trace('PolyworksGame/_onLevelCleared, event = ', event);
 		var idx = event.value;
-		PWGGame.levelStatus[idx] = 'c';
+		PolyworksGame.levelStatus[idx] = 'c';
 
-		if(PWGGame.levelScore > PWGGame.highScores[idx]) {
-			PWGGame.highScores[idx] = PWGGame.levelScore;
-			PWGGame.currentLevelHighScore = 'high score: ' + PWGGame.levelScore + ' NEW';
+		if(PolyworksGame.levelScore > PolyworksGame.highScores[idx]) {
+			PolyworksGame.highScores[idx] = PolyworksGame.levelScore;
+			PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.levelScore + ' NEW';
 			PWG.EventCenter.trigger(PWG.Events.HIGH_SCORE_UPDATED);
-			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.NEW_HIGH_SCORE, PWGGame.levelScore]);
+			_adapter.logEvent(_adapter.logEvents.ACHIEVEMENT_EVENT, [_adapter.achievementEvents.NEW_HIGH_SCORE, PolyworksGame.levelScore]);
 
 			var totalScore = 0;
 			PWG.Utils.each(
-				PWGGame.highScores,
+				PolyworksGame.highScores,
 				function(highScore) {
 					totalScore += highScore;
 				},
@@ -555,11 +559,11 @@ PWGGame = (function() {
 
 		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.COMPLETE, (idx+1)]);
 		idx++;
-		trace('THE NEW LEVEL STATUS IS: ' + PWGGame.levelStatus[idx]);
-		if(PWGGame.levelStatus[idx] === 'l') {
-			PWGGame.levelStatus[idx] = 'u';
+		trace('THE NEW LEVEL STATUS IS: ' + PolyworksGame.levelStatus[idx]);
+		if(PolyworksGame.levelStatus[idx] === 'l') {
+			PolyworksGame.levelStatus[idx] = 'u';
 		}
-		PWGGame.currentLevel = idx;
+		PolyworksGame.currentLevel = idx;
 	}
 
 	function _initControls() {
@@ -569,8 +573,8 @@ PWGGame = (function() {
 	}
 
 	function _initStates() {
-		trace('currentLevel = ' + PWGGame.currentLevel);
-		PWGGame.levelStatus = [];
+		trace('currentLevel = ' + PolyworksGame.currentLevel);
+		PolyworksGame.levelStatus = [];
 
 		var states = _model.states;
 		var state;
@@ -581,15 +585,15 @@ PWGGame = (function() {
 				// trace(s);
 				state = new PWG[s.cl](s, s.name);
 				_states[s.name] = state;
-				PWGGame.phaser.state.add(s.name, state, false);
+				PolyworksGame.phaser.state.add(s.name, state, false);
 				if(s.name.indexOf('level') > -1) {
 					// trace('\tstate['+s.name+'] levelCount = ' + levelCount);
-					if(PWGGame.savedStatus) {
-						PWGGame.levelStatus[levelCount] = PWGGame.savedStatus[levelCount];
-						PWGGame.highScores[levelCount] = PWGGame.highScores[levelCount] || 0;
+					if(PolyworksGame.savedStatus) {
+						PolyworksGame.levelStatus[levelCount] = PolyworksGame.savedStatus[levelCount];
+						PolyworksGame.highScores[levelCount] = PolyworksGame.highScores[levelCount] || 0;
 					} else {
-						PWGGame.levelStatus[levelCount] = (levelCount === 0) ? 'u' : 'l';
-						PWGGame.highScores[levelCount] = 0;
+						PolyworksGame.levelStatus[levelCount] = (levelCount === 0) ? 'u' : 'l';
+						PolyworksGame.highScores[levelCount] = 0;
 					}
 					levelCount++;
 					_levels.push(state);
@@ -598,10 +602,10 @@ PWGGame = (function() {
 			},
 			this
 		);
-		PWGGame.levelCount = levelCount;
+		PolyworksGame.levelCount = levelCount;
 		_initLevelInfoStates();
 
-		trace('PWGGame/_initStates, _stageInitialized = ' + _stageInitialized + ', _states = ', _states, '\t_levels = ', _levels);
+		trace('PolyworksGame/_initStates, _stageInitialized = ' + _stageInitialized + ', _states = ', _states, '\t_levels = ', _levels);
 		_statesInialized = true;
 
 		if(typeof(TGS) !== 'undefined') {
@@ -610,11 +614,11 @@ PWGGame = (function() {
 				_startGame();
 			} else {
 				trace('\ttgs is defined, but not ready');
-				TGS.onReady = PWGGame.startGame();
+				TGS.onReady = PolyworksGame.startGame();
 			}
 		} else {
 			trace('\ttgs is not defined');
-			PWGGame.startGame();
+			PolyworksGame.startGame();
 		}
 	}
 
@@ -623,15 +627,15 @@ PWGGame = (function() {
 		if(_stageInitialized) {
 			_adapter.init(_levels.length);
 			// if(typeof(inTGS) !== 'undefined' && inTGS) {
-				PWGGame.Tresensa = PWGGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
+				PolyworksGame.Tresensa = PolyworksGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
 			// }
-			PWGGame.changeState(_model.initialState);
+			PolyworksGame.changeState(_model.initialState);
 		}
 	}
 	
 	function _initLevelInfoStates() {
-		var template = PWGGame.get('levelInfoStateTemplate');
-		var controls = PWGGame.get('controls').levelInfo;
+		var template = PolyworksGame.get('levelInfoStateTemplate');
+		var controls = PolyworksGame.get('controls').levelInfo;
 		
 		PWG.Utils.each(
 			_levels,
@@ -644,7 +648,7 @@ PWGGame = (function() {
 				var background;
 				var title;
 
-				levelInfo = PWGGame.getLevelInfo(idx);
+				levelInfo = PolyworksGame.getLevelInfo(idx);
 				levelIdx = (idx < 9) ? ('0' + (idx+1)) : (idx+1);
 
 				stateName = 'level' + levelIdx + 'Info';
@@ -674,7 +678,7 @@ PWGGame = (function() {
 
 				// trace('levelInfo['+levelIdx+'] levelInfoConfig = ', levelInfoConfig);
 				levelInfoState = new PWG.MenuState(levelInfoConfig);
-				PWGGame.phaser.state.add(stateName, levelInfoState, false);
+				PolyworksGame.phaser.state.add(stateName, levelInfoState, false);
 				_states[stateName] = levelInfoState;
 			},
 			this
@@ -689,31 +693,31 @@ PWGGame = (function() {
 	function _quit() {
 		_adapter.logEvent(_adapter.logEvents.GAME_EVENT, [_adapter.gameEvents.END]);
 		_removeListeners();
-		PWGGame.isQuit = true;
+		PolyworksGame.isQuit = true;
 		// _killStates();
 		// PWG.EventCenter.reset();
 
-		_states[PWGGame.currentState].shutdown();
-		PWGGame.gameOver = true;
-		if(PWGGame.player) {
-			PWGGame.player.destroy();
+		_states[PolyworksGame.currentState].shutdown();
+		PolyworksGame.gameOver = true;
+		if(PolyworksGame.player) {
+			PolyworksGame.player.destroy();
 		}
 		PWG.SocialPanel.destroy();
-		PWGGame.phaser.destroy();
+		PolyworksGame.phaser.destroy();
 
 		var gameContainer = document.getElementById('gameContainer');
 		gameContainer.parentNode.removeChild(gameContainer);
 
-		PWGGame.phaser = null;
+		PolyworksGame.phaser = null;
 		PWG.Stage.destroy();
 		PWG.Stage = null;
 		PWG = null;
 		Phaser = null;
-		window.PWGGame = null;
+		window.PolyworksGame = null;
 	}
 	
 	function _killStates() {
-		// trace('PWGGame/_killStates');
+		// trace('PolyworksGame/_killStates');
 		PWG.Utils.each(_states,
 			function(s) {
 				s.shutdown();
@@ -750,7 +754,7 @@ function onScriptsLoaded() {
 }
 
 function beginGame() {
-	PWGGame.begin({
+	PolyworksGame.begin({
 		name: 'kekeAndTheGreyExpanse',
 		aspectRatio: [16, 9]
 	});

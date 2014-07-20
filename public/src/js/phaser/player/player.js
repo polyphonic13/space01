@@ -16,7 +16,7 @@ PWG.Player = (function() {
 	Player.prototype.begin = function(health) {
 		Player._super.begin.call(this);
 
-		// this.health = PWGGame.startingHealth;
+		// this.health = PolyworksGame.startingHealth;
 		this.health = health;
 
 		this.velX = 0;
@@ -30,7 +30,7 @@ PWG.Player = (function() {
 		this.beginEvents();
 		this.beginControls();
 
-		PWGGame.setHealth(this.health);
+		PolyworksGame.setHealth(this.health);
 		trace('PLAYER:', this);
 	};
 
@@ -50,7 +50,7 @@ PWG.Player = (function() {
 			this.anchor.setTo(attrs.anchor.x, attrs.anchor.y);
 		}
 		if(attrs.followStyle) {
-			PWGGame.phaser.camera.follow(this, attrs.followStyle);
+			PolyworksGame.phaser.camera.follow(this, attrs.followStyle);
 		}
 	};
 	
@@ -102,7 +102,7 @@ PWG.Player = (function() {
 	
 	Player.prototype.updatePosition = function() {
 		// trace('Player/updatePosition, x = ' + this.body.x);
-		if(!PWGGame.adPlaying) {
+		if(!PolyworksGame.adPlaying) {
 			if(this.initialPosition) {
 				this.initialPosition = false;
 				this.activateGravity();
@@ -154,7 +154,7 @@ PWG.Player = (function() {
 		// trace(params);
 		if(this.alive) {
 			this.collided = false;
-			var physics = PWGGame.phaser.physics;
+			var physics = PolyworksGame.phaser.physics;
 			var attrs = this.model.attrs;
 			var physicalItems = params.physicalItems; 
 
@@ -222,10 +222,10 @@ PWG.Player = (function() {
 		var health = bonus.model.attrs.health;
 		if(health) {
 			this.health += health;
-			PWGGame.setHealth(this.health);
+			PolyworksGame.setHealth(this.health);
 		}
 		if(bonus.model.attrs.score) {
-		    PWGGame.setLevelScore(bonus.model.attrs.score);
+		    PolyworksGame.setLevelScore(bonus.model.attrs.score);
 		}
 		bonus.active = false; 
 		bonus.destroy();
@@ -293,10 +293,10 @@ PWG.Player = (function() {
 		// trace('Player/receiveDamage, justDamaged = ' + this.justDamaged);
 		if(!this.justDamaged) {
 			this.health -= damage;
-			PWGGame.setHealth(this.health);
+			PolyworksGame.setHealth(this.health);
 			if(this.health <= 0) {
-				PWGGame.levelScore = 0;
-				PWGGame.changeState('gameOver');
+				PolyworksGame.levelScore = 0;
+				PolyworksGame.changeState('gameOver');
 			} else {
 				_this.justDamaged = true;
 				_this.damageTimer = setTimeout(_this.resetJustDamaged, _this.damageInterval);

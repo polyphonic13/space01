@@ -15,7 +15,7 @@ PWG.MapPage = (function() {
 		var stageSeventh = stageWidth/7;
 
 		var stateGroup = this.model.stateGroup;
-		this.pageGroup = PWGGame.phaser.add.group();
+		this.pageGroup = PolyworksGame.phaser.add.group();
 		stateGroup.add(this.pageGroup._container);
 
 		var levels = this.model.levels;
@@ -23,7 +23,7 @@ PWG.MapPage = (function() {
 		PWG.Utils.each(levels,
 			function(level) {
 				// trace('\tlevel = ' + level + ', currentLevelString = ' + currentLevelString);
-				if(level === PWGGame.currentLevel) {
+				if(level === PolyworksGame.currentLevel) {
 					this.model.selected = true;
 				}
 			},

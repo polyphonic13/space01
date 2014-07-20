@@ -107,12 +107,12 @@ var domConfig = {
 				id: 'gameContainer'
 			}
 		},
-		{
-			type: 'div', 
-			attrs: {
-				id: 'socialButtons'
-			}
-		},
+		// {
+		// 	type: 'div', 
+		// 	attrs: {
+		// 		id: 'socialButtons'
+		// 	}
+		// },
 		{
 			type: 'div', 
 			attrs: {

@@ -6,7 +6,7 @@ PWG.MapState = (function() {
 	}
 
 	MapState.prototype.createState = function() {
-		var stateGroup = PWGGame.phaser.add.group();
+		var stateGroup = PolyworksGame.phaser.add.group();
 		this.model.stateGroup = stateGroup;
 
 		MapState._super.createState.call(this);

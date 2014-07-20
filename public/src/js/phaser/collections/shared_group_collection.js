@@ -7,7 +7,7 @@ PWG.SharedGroupCollection = (function() {
 	
 	SharedGroupCollection.prototype.begin = function() {
 		// trace('SharedGroupCollection['+this.model.name+']/begin');
-		var sharedGroups = PWGGame.get('sharedGroups');
+		var sharedGroups = PolyworksGame.get('sharedGroups');
 		this.model.attrs = sharedGroups[this.model.type];
 		// trace('\tsharedGroups = ', sharedGroups, '\tmodel = ', this.model);
 		SharedGroupCollection._super.begin.call(this);
