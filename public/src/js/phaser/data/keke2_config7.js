@@ -85,7 +85,7 @@ PWG.Config = (function() {
 		var c = {
 			// AUDIO
 			audio: {
-				kekeInterval: 'assets/audio/music/keke_interval_edit.mp3',
+				kekeInterval: 'assets/audio/music/keke_grey_interval_edit.mp3',
 				secrets: 'assets/audio/music/secrets3_edit.mp3',
 				intro: 'assets/audio/music/intro_edit.mp3',
 				rxMinus1: 'assets/audio/music/rx_minus_one_edit.mp3',
@@ -1183,17 +1183,16 @@ PWG.Config = (function() {
 				audio: [
 				'secrets',
 				'rxMinus1',
-				'intro',
 				'twentyThree',
 				'laDespedida',
-				'theMadonna',
-				'secrets',
 				'tinkles',
+				'theMadonna',
+				'intro',
 				'b016',
 				'twentyThree',
 				'yesterday',
-				'ololo'
-				
+				'ololo',
+				'secrets'
 				]
 			},
 
@@ -1379,7 +1378,7 @@ PWG.Config = (function() {
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							x: -(stageUnit * 0.66),
+							x: -(stageUnit * 1.25),
 							y: (stageUnit * 4.5),
 							style: { 
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
@@ -1401,7 +1400,7 @@ PWG.Config = (function() {
 								fill: '#000000',
 								align: 'center'
 							},
-							defaultContent: 'factor13'
+							defaultContent: 'factor13 | ioioio'
 						}
 					},
 					{
@@ -1522,6 +1521,9 @@ PWG.Config = (function() {
 				clearWorld: true,
 				clearCache: false,
 				backgroundColor: '#ffffff',
+				audio: [
+					'kekeInterval'
+				],
 				images: [
 					'kekeSmall',
 					'greyExpanseTitle',
@@ -2755,7 +2757,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'intro'
+					'rxMinus1'
 				],
 				images: [
 					'whiteRect',
@@ -4160,7 +4162,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'rxMinus1'
+					'twentyThree'
 				],
 				images: [
 					'whiteRect',
@@ -6398,7 +6400,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'twentyThree'
+					'laDespedida'
 				],
 				images: [
 					'whiteRect',
@@ -8155,7 +8157,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'laDespedida'
+					'tinkles'
 				],
 				images: [
 					'whiteRect',
@@ -11449,7 +11451,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'secrets'
+					'intro'
 				],
 				images: [
 					'whiteRect',
@@ -13641,7 +13643,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'tinkles'
+					'b016'
 				],
 				images: [
 					'whiteRect',
@@ -16044,7 +16046,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'b016'
+					'twentyThree'
 				],
 				images: [
 					'whiteRect',
@@ -18780,7 +18782,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'twentyThree'
+					'yesterday'
 				],
 				images: [
 					'whiteRect',
@@ -21322,7 +21324,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'yesterday'
+					'ololo'
 				],
 				images: [
 					'whiteRect',
@@ -23432,7 +23434,7 @@ PWG.Config = (function() {
 				pausable: true,
 				backgroundColor: '#000000',
 				audio: [
-					'ololo'
+					'secrets'
 				],
 				images: [
 					'whiteRect',

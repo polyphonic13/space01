@@ -26,18 +26,19 @@
 	};
 	
 	LevelState.prototype.createState = function() {
-		// trace('LevelState['+this.model.name+']/createState');
+		trace('LevelState['+this.model.name+']/createState, this = ', this);
 		this.triggeredCleared = false;
 		this.requirementsMet = false; 
 
 		// create views and controls with super
 		LevelState._super.createState.call(this);
 
+
 		// PWG.EventCenter.bind(PWG.Events.AD_STARTED, this.onPauseState, this);
 		// PWG.EventCenter.bind(PWG.Events.AD_COMPLETED, this.onResumeState, this);
 
 		this.requirements = this.getChildByName('requirements');
-		trace('\n\n\trequirements = ', this.requirements, '\tgroup = ', this.requirements.group);
+		// trace('\n\n\trequirements = ', this.requirements, '\tgroup = ', this.requirements.group);
 		if(this.requirements) {
 			PWG.EventCenter.bind(PWG.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
 		} else {
@@ -65,6 +66,24 @@
 		var playerStart = PWG.Utils.clone(PolyworksGame.get('player').attrs.start);
 		// trace('LevelState['+this.model.name+']/createState\n\tplayerStart = ', playerStart);
 		this.createPlayer(playerStart, PolyworksGame.startingHealth);
+
+		var blackBg = PolyworksGame.phaser.add.sprite(0, 0, 'blackRect');
+		blackBg.width = this.model.world.width;
+		blackBg.height = this.model.world.height;
+	    blackBg.anchor.setTo(0.5, 0.5);
+	    blackBg.alpha = 1;
+		
+		trace('PWG.Stage.winW = ' + PWG.Stage.winW);
+		
+		this.blackBg = blackBg;
+		
+	    var tween = PolyworksGame.phaser.add.tween(blackBg)
+		tween.onComplete.add(function() {
+			blackBg.destroy();
+		});
+		
+		tween.to( { alpha: 0 }, 2000, Phaser.Easing.Exponential.In, true, 0, 0, false);
+
 		trace('end of create state');
 		// if(PolyworksGame.adPlaying) {
 		// 	this.onPauseState();

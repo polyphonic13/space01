@@ -109,7 +109,10 @@ PWG.State = (function() {
 			trace('WARNING: not in landscape orientation, can not create state');
 		}
 		this.model.set({ createCalled: true });
-		
+		this.createAudio();
+	};
+	
+	State.prototype.createAudio = function() {
 		if(this.model.audio && this.model.audio.length > 0) {
 			trace('\tisMuted = ' + PolyworksGame.isMuted);
 			if(!PolyworksGame.isMuted) {
