@@ -443,6 +443,15 @@ PWGGame = (function() {
 		}
 	}
 
+	function _changeHomeStateMute(frame) {
+		_states[PWGGame.currentState].model.collection[1].model.collection[1].frame = frame;
+	}
+	
+	function _changePlayStateMute(frame) {
+		trace('_changePlayStateMute, view = ', _states[PWGGame.currentState].model.collection[6].model.collection[6]);
+		_states[PWGGame.currentState].model.collection[6].model.collection[6].frame = frame;
+	}
+	
 	function _onMuteUnmute(event) {
 		PWGGame.isMuted = !PWGGame.isMuted;
 		var frame = 0;
@@ -453,10 +462,14 @@ PWGGame = (function() {
 				PWGGame.currentAudioName = '';
 			}
 		} else if(PWGGame.currentAudio) {
-			PWGGame.resume();
+			PWGGame.currentAudio.resume();
 		}
-		_states['menu'].model.collection[1].model.collection[1].frame = frame;
-		trace('post mute unmute, isMuted = ' + PWGGame.isMuted + ', _states = ', _states['menu'].model.collection[1].model.collection[1]);
+		if(PWGGame.currentState === 'menu') {
+			_changeHomeStateMute(frame);
+		} else {
+			_changePlayStateMute(frame);
+		}
+		trace('post mute unmute, isMuted = ' + PWGGame.isMuted + ', _states = ', _states[PWGGame.currentState]);
 	}
 
 	function _onChangeState(event) {
