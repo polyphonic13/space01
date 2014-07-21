@@ -56,7 +56,7 @@ body, canvas {
 	left: 0px;
 	top: 0px;
 
-	background: #ffffff url("../assets/images/loading_white.gif") no-repeat center;
+	background: #000000 url("../assets/images/loading_black.gif") no-repeat center;
 	background-size: 50px;
 
 	position: absolute;

@@ -288,8 +288,8 @@
 	LevelState.prototype.shutdown = function() {
 		// trace('LevelState['+this.model.name+']/shutdown');
 		PWG.EventCenter.unbind(PWG.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
-		PWG.EventCenter.unbind(PWG.Events.AD_STARTED, this.onPauseState, this);
-		PWG.EventCenter.unbind(PWG.Events.AD_COMPLETED, this.onResumeState, this);
+		// PWG.EventCenter.unbind(PWG.Events.AD_STARTED, this.onPauseState, this);
+		// PWG.EventCenter.unbind(PWG.Events.AD_COMPLETED, this.onResumeState, this);
 		
 		this.destroyPlayer();
 		if(this.enemyManager) {
