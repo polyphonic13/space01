@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-21T10:06:07')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-21T11:19:48')})();
 !function(root, factory) {
   if (typeof define === "function" && define.amd) {
     define(factory);
@@ -70512,8 +70512,8 @@ PWG.MapState = (function() {
 	LevelState.prototype.shutdown = function() {
 		// 
 		PWG.EventCenter.unbind(PWG.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
-		PWG.EventCenter.unbind(PWG.Events.AD_STARTED, this.onPauseState, this);
-		PWG.EventCenter.unbind(PWG.Events.AD_COMPLETED, this.onResumeState, this);
+		// PWG.EventCenter.unbind(PWG.Events.AD_STARTED, this.onPauseState, this);
+		// PWG.EventCenter.unbind(PWG.Events.AD_COMPLETED, this.onResumeState, this);
 		
 		this.destroyPlayer();
 		if(this.enemyManager) {
@@ -71276,6 +71276,7 @@ PolyworksGame = (function() {
 				PWG.Stage.init(PolyworksGame.aspectRatio);
 			}
 		} else {
+			PWG.EventCenter.trigger({ type: PWG.Events.PAUSE_STATE });
 			PolyworksGame.showOrientationMessage();
 		}
 	}

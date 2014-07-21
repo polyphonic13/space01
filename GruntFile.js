@@ -3,7 +3,8 @@ module.exports = function(grunt) {
 	var project = 'keke2';
 	var srcDir = 'public/src';
 	var buildDir = 'public/build';
-	var tresensaDir = 'public/tresensa_build/keke_tre_sensa';
+	var tresensaDir = 'public/tresensa_build';
+	var tresensaBuild = tresensaDir + '/keke_tre_sensa';
 
 	var projectSrcDir;
 	
@@ -28,7 +29,14 @@ module.exports = function(grunt) {
 		srcDir: srcDir,
 		buildDir: buildDir,
 		tresensaDir: tresensaDir,
+		tresensaBuild: tresensaBuild,
 		projectSrcDir: projectSrcDir,
+
+		// CLEAN
+		// docs: https://github.com/gruntjs/grunt-contrib-clean
+		clean: {
+			removeDeployDir: ['<%= buildDir %>']
+		},
 
 		// CONCAT 
 		concat: {
@@ -109,7 +117,7 @@ module.exports = function(grunt) {
 				}
 				]
 			},
-			
+
 			tresensa: {
 				files: [
 				{
@@ -117,27 +125,27 @@ module.exports = function(grunt) {
 					cwd: '<%= buildDir %>/assets/',
 					src: [ '**/*' ],
 					filter: 'isFile',
-					dest: '<%= tresensaDir %>/assets/'
+					dest: '<%= tresensaBuild %>/assets/'
 				},
 				{
 					expand: true,
 					cwd: '<%= buildDir %>/css/',
 					src: [ '**/*.css' ],
 					filter: 'isFile',
-					dest: '<%= tresensaDir %>/css/'
+					dest: '<%= tresensaBuild %>/css/'
 				},
 				{
 					expand: true,
 					cwd: '<%= buildDir %>/js/',
 					src: [ '**/*.js' ],
 					filter: 'isFile',
-					dest: '<%= tresensaDir %>/js/game/'
+					dest: '<%= tresensaBuild %>/js/game/'
 				}
 				]
 			}
 
 		},
-		
+
 		// CSS MINIFICATION
 		cssmin: {
 			project: {
@@ -145,6 +153,24 @@ module.exports = function(grunt) {
 				cwd: '<%= buildDir %>/css/',
 				src: ['*.css', '!*.min.css'],
 				dest: '<%= buildDir %>/css/'
+			}
+		},
+
+		// COMPRESS
+		// docs: https://github.com/gruntjs/grunt-contrib-compress
+		compress: {
+			main: {
+				options: {
+					archive: '<%= tresensaDir %>/<%= archiveName %>'
+				},
+				files: [
+				{
+					expand: true,
+					cwd: '<%= tresensaBuild %>',
+					src: [ '**/*' ],
+					dest: '<%= tresensaDir %>'
+				}
+				]
 			}
 		},
 
@@ -159,31 +185,31 @@ module.exports = function(grunt) {
 			game: {
 				files: [
 				{
-					cwd: '<%= tresensaDir %>/css/',
+					cwd: '<%= tresensaBuild %>/css/',
 					src: '**/*',
 					filter: 'isFile',
 					dest: '<%= meta.server.path %>/css/'
 				},
 				{
-					cwd: '<%= tresensaDir %>/js/',
+					cwd: '<%= tresensaBuild %>/js/',
 					src: '**/*',
 					filter: 'isFile',
 					dest: '<%= meta.server.path %>/js/'
 				},
 				{
-					cwd: '<%= tresensaDir %>/leaderboard/',
+					cwd: '<%= tresensaBuild %>/leaderboard/',
 					src: '**/*',
 					filter: 'isFile',
 					dest: '<%= meta.server.path %>'
 				},
 				{
-					cwd: '<%= tresensaDir %>',
+					cwd: '<%= tresensaBuild %>',
 					src: '**/*.html',
 					filter: 'isFile',
 					dest: '<%= meta.server.path %>'
 				},
 				{
-					cwd: '<%= tresensaDir %>/leaderboard/',
+					cwd: '<%= tresensaBuild %>/leaderboard/',
 					src: '**/*.css',
 					filter: 'isFile',
 					dest: '<%= meta.server.path %>'
@@ -193,7 +219,7 @@ module.exports = function(grunt) {
 			
 			audio: {
 				files: [{
-					cwd: '<%= tresensaDir %>/assets/audio/',
+					cwd: '<%= tresensaBuild %>/assets/audio/',
 					src: '**/*',
 					filter: 'isFile',
 					dest: '<%= meta.server.path %>/assets/audio/'
@@ -202,7 +228,7 @@ module.exports = function(grunt) {
 			
 			images: {
 				files: [{
-					cwd: '<%= tresensaDir %>/assets/images/',
+					cwd: '<%= tresensaBuild %>/assets/images/',
 					src: '**/*',
 					filter: 'isFile',
 					dest: '<%= meta.server.path %>/assets/images/'
@@ -228,18 +254,22 @@ module.exports = function(grunt) {
 		}
 	});
 
+	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-compress');
 	grunt.loadNpmTasks('grunt-scp');
 	grunt.loadNpmTasks('grunt-connect');
+
 	grunt.loadTasks('grunt/tasks');
 	
 	grunt.registerTask(
 		'default', 
 		[
-			'projectDeploySetup', 
+			'clean',
+			'projectBuildSetup', 
 			'concat:project', 
 			'stripTraceStatements', 
 			'uglify', 
@@ -253,10 +283,11 @@ module.exports = function(grunt) {
 		'tresensa',
 		[
 			'default',
-			'copy:tresensa'
+			'copy:tresensa',
+			'compressTresensaFiles'
 		]
-	);		
-			
+	);
+
 	grunt.registerTask(
 		'deploy',
 		[
