@@ -658,13 +658,13 @@ PolyworksGame = (function() {
 				levelInfoConfig.name = stateName;
 				levelInfoConfig.images.push(background);
 				levelInfoConfig.images.push(title);
-				levelInfoConfig.audio = [template.audio[idx]];
+				// levelInfoConfig.audio = [template.audio[idx]];
 				
 				groupCollection.background.attrs.img = background;
 				groupCollection.title.attrs.img = title;
 				groupCollection.description.attrs.defaultContent = template.descriptions[idx];
-				groupCollection.highScore.attrs.defaultContent = 'high score: ' + levelInfo.highScore;
-				groupCollection.status.attrs.defaultContent = levelInfo.statusText;
+				// groupCollection.highScore.attrs.defaultContent = 'high score: ' + levelInfo.highScore;
+				// groupCollection.status.attrs.defaultContent = levelInfo.statusText;
 				groupCollection.playButton.attrs.events.released.value = idx;
 				
 				PWG.Utils.each(

@@ -649,7 +649,7 @@ PWG.Config = (function() {
 						y: 0,
 						defaultContent: '~{health}~',
 						style: { 
-							font: fontSizes.sm + 'px "Waiting for the Sunrise"',
+							font: fontSizes.sm + 'px "Waiting for the Sunrise" Arial sans-serif',
 							align: 'right', 
 							fill: '#ffffff' 
 						},
@@ -703,7 +703,7 @@ PWG.Config = (function() {
 						x: winW - (stageUnit * 6),
 						y: winH - (stageUnit * 2.25),
 						style: { 
-							font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise"', 
+							font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise" Arial sans-serif', 
 							fill: '#000000',
 							align: 'center'
 						},
@@ -720,7 +720,7 @@ PWG.Config = (function() {
 						// x: (stageUnit * 3),
 						// y: winH - (stageUnit * 2.75),
 						style: { 
-							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
+							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise" Arial sans-serif', 
 							fill: '#000000',
 							align: 'right'
 						},
@@ -740,7 +740,7 @@ PWG.Config = (function() {
 						// x: (stageUnit * 3),
 						// y: winH - (stageUnit * 1.75),
 						style: { 
-							font: 'bold ' + fontSizes.xs + 'px "Waiting for the Sunrise"', 
+							font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise" Arial sans-serif', 
 							fill: '#000000',
 							align: 'left'
 						},
@@ -829,7 +829,7 @@ PWG.Config = (function() {
 							}
 						}
 					}
-				}//,
+				} //,
 				// restart button
 				// {
 				// 	name: 'restart',
@@ -878,7 +878,7 @@ PWG.Config = (function() {
 						x: winW - (stageUnit * 6),
 						y: winH - (stageUnit * 2.25),
 						style: { 
-							font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise"', 
+							font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise" Arial sans-serif', 
 							fill: '#000000',
 							align: 'center'
 						},
@@ -895,7 +895,7 @@ PWG.Config = (function() {
 						// x: (stageUnit * 3),
 						// y: winH - (stageUnit * 2.75),
 						style: { 
-							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
+							font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise" Arial sans-serif', 
 							fill: '#000000',
 							align: 'right'
 						},
@@ -915,7 +915,7 @@ PWG.Config = (function() {
 						// x: (stageUnit * 3),
 						// y: winH - (stageUnit * 1.75),
 						style: { 
-							font: 'bold ' + fontSizes.xs + 'px "Waiting for the Sunrise"', 
+							font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise" Arial sans-serif', 
 							fill: '#000000',
 							align: 'left'
 						},
@@ -1072,36 +1072,36 @@ PWG.Config = (function() {
 						}
 					},
 					// high score
-					highScore: {
-						name: 'highScore',
-						cl: 'Text',
-						attrs: {
-							x: winW - (stageUnit * 6),
-							y: winH - (stageUnit * 2.75),
-							// x: (stageUnit * 3),
-							// y: winH - (stageUnit * 2.75),
-							style: { 
-								font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
-								fill: '#000000',
-								align: 'right'
-							},
-						}
-					},
+					// highScore: {
+					// 	name: 'highScore',
+					// 	cl: 'Text',
+					// 	attrs: {
+					// 		x: winW - (stageUnit * 6),
+					// 		y: winH - (stageUnit * 2.75),
+					// 		// x: (stageUnit * 3),
+					// 		// y: winH - (stageUnit * 2.75),
+					// 		style: { 
+					// 			font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise" Arial sans-serif', 
+					// 			fill: '#000000',
+					// 			align: 'right'
+					// 		},
+					// 	}
+					// },
 					// level status
-					status: {
-						name: 'levelStatus',
-						cl: 'Text',
-						attrs: {
-							x: winW - (stageUnit * 6),
-							y: winH - (stageUnit * 2.25),
-							style: { 
-								font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise"', 
-								fill: '#000000',
-								align: 'center'
-							},
-							defaultContent: ''
-						}
-					},
+					// status: {
+					// 	name: 'levelStatus',
+					// 	cl: 'Text',
+					// 	attrs: {
+					// 		x: winW - (stageUnit * 6),
+					// 		y: winH - (stageUnit * 2.25),
+					// 		style: { 
+					// 			font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise" Arial sans-serif', 
+					// 			fill: '#000000',
+					// 			align: 'center'
+					// 		},
+					// 		defaultContent: ''
+					// 	}
+					// },
 					// oval mask
 					ovalMask: {
 						name: 'ovalMask',
@@ -1189,20 +1189,20 @@ PWG.Config = (function() {
 				'a cave! let me see what\'s inside...'
 				],
 				
-				audio: [
-				'secrets',
-				'rxMinus1',
-				'twentyThree',
-				'laDespedida',
-				'tinkles',
-				'theMadonna',
-				'intro',
-				'b016',
-				'twentyThree',
-				'yesterday',
-				'ololo',
-				'secrets'
-				]
+				// audio: [
+				// 'secrets',
+				// 'rxMinus1',
+				// 'twentyThree',
+				// 'laDespedida',
+				// 'tinkles',
+				// 'theMadonna',
+				// 'intro',
+				// 'b016',
+				// 'twentyThree',
+				// 'yesterday',
+				// 'ololo',
+				// 'secrets'
+				// ]
 			},
 
 			// USE FOR LOCAL TESTING:
@@ -1224,9 +1224,9 @@ PWG.Config = (function() {
 				clearWorld: true,
 				clearCache: false,
 				backgroundColor: '#ffffff',
-				// audio: [
-				// 	'kekeInterval'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: [
 					'blackRect',
 					'greyRect',
@@ -1315,7 +1315,7 @@ PWG.Config = (function() {
 							alignX: 'center',
 							y: 0,
 							style: { 
-								font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise" Arial sans-serif', 
 								fill: '#000000',
 								align: 'center'
 							},
@@ -1330,7 +1330,7 @@ PWG.Config = (function() {
 							x: -(stageUnit * 1.25),
 							y: (stageUnit * 2.5),
 							style: { 
-								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise" Arial sans-serif', 
 								fill: '#000000',
 								align: 'center'
 							},
@@ -1360,7 +1360,7 @@ PWG.Config = (function() {
 							x: -(stageUnit * 2.75),
 							y: (stageUnit * 3.5),
 							style: { 
-								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise" Arial sans-serif', 
 								fill: '#000000',
 								align: 'center'
 							},
@@ -1390,7 +1390,7 @@ PWG.Config = (function() {
 							x: -(stageUnit * 1.25),
 							y: (stageUnit * 4.5),
 							style: { 
-								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise" Arial sans-serif', 
 								fill: '#000000',
 								align: 'center'
 							},
@@ -1420,7 +1420,7 @@ PWG.Config = (function() {
 							x: -(stageUnit * 1.25),
 							y: (stageUnit * 5.5),
 							style: { 
-								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise" Arial sans-serif', 
 								fill: '#000000',
 								align: 'center'
 							},
@@ -1450,7 +1450,7 @@ PWG.Config = (function() {
 							x: -(stageUnit * 2.7),
 							y: (stageUnit * 6.5),
 							style: { 
-								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise" Arial sans-serif', 
 								fill: '#000000',
 								align: 'center'
 							},
@@ -1480,7 +1480,7 @@ PWG.Config = (function() {
 							x: -(stageUnit * 5.25),
 							y: (stageUnit * 7.5),
 							style: { 
-								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise" Arial sans-serif', 
 								fill: '#000000',
 								align: 'center'
 							},
@@ -1530,9 +1530,9 @@ PWG.Config = (function() {
 				clearWorld: true,
 				clearCache: false,
 				backgroundColor: '#ffffff',
-				audio: [
-					'kekeInterval'
-				],
+				// audio: [
+				// 	'kekeInterval'
+				// ],
 				images: [
 					'kekeSmall',
 					'greyExpanseTitle',
@@ -1831,9 +1831,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				audio: [
-					'secrets'
-				],
+				// audio: [
+				// 	'secrets'
+				// ],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -2765,9 +2765,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				audio: [
-					'rxMinus1'
-				],
+				// audio: [
+				// 	'rxMinus1'
+				// ],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -4170,9 +4170,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				audio: [
-					'twentyThree'
-				],
+				// audio: [
+				// 	'twentyThree'
+				// ],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -4471,10 +4471,149 @@ PWG.Config = (function() {
 								defaultAnimation: '',
 								animations: caterpillarAnimations
 							}
+						},
+						{
+							name: 'level03-sector4-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: caterpillar01.width,
+									height: caterpillar01.height,
+									health: 6
+								},
+								start: {
+									x: (stageWidth * 5),
+									y: -(winH)
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 10,
+								testInView: true,
+								score: 500,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
 						}
+						
 						],
 						// sector 7
 						[
+						{
+							name: 'level03-sector7-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02',
+								phaser: {
+									width: caterpillar02.width,
+									height: caterpillar02.height,
+									health: 20
+								},
+								start: {
+									x: (stageWidth * 6) + (stageUnit * 5),
+									y: -(stageUnit * 3)
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 25,
+								testInView: true,
+								score: 10000,
+								jumps: true,
+								jumpMultiplier: 500,
+								movement: {
+									speed: 1.25,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						},
+						{
+							name: 'level03-sector7-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: caterpillar01.width,
+									height: caterpillar01.height,
+									health: 20
+								},
+								start: {
+									x: (stageWidth * 6) + (stageUnit * 8),
+									y: -(stageUnit * 2)
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 25,
+								testInView: true,
+								score: 10000,
+								jumps: true,
+								jumpMultiplier: 500,
+								movement: {
+									speed: 1.25,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						},
+						{
+							name: 'level03-sector7-enemy3',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar02',
+								phaser: {
+									width: caterpillar02.width,
+									height: caterpillar02.height,
+									health: 20
+								},
+								start: {
+									x: (stageWidth * 6) + (stageUnit * 10),
+									y: -(winH)
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 25,
+								testInView: true,
+								score: 10000,
+								jumps: true,
+								jumpMultiplier: 500,
+								movement: {
+									speed: 1.25,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						}
 						],
 						// sector 8
 						[
@@ -4491,6 +4630,39 @@ PWG.Config = (function() {
 								start: {
 									x: (stageWidth * 7),
 									y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
+								},
+								physics: {
+									deferredGravity: true,
+									bounce: {
+										x: 0,
+										y: 0.2
+									}
+								},
+								attack: 10,
+								testInView: true,
+								score: 500,
+								movement: {
+									speed: 1,
+									type: PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: caterpillarAnimations
+							}
+						},
+						{
+							name: 'level03-sector4-enemy2',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'caterpillar01',
+								phaser: {
+									width: caterpillar01.width,
+									height: caterpillar01.height,
+									health: 6
+								},
+								start: {
+									x: (stageWidth * 7) + (stageUnit * 5),
+									y: -(winH)
 								},
 								physics: {
 									deferredGravity: true,
@@ -5433,7 +5605,7 @@ PWG.Config = (function() {
 								attrs: {
 									img: 'vine01Left',
 									phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
-									setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
+									setSize: [(stageUnit * 3.5), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 									start: {
 										x: (stageWidth * 2) + (stageUnit),
 										y: winH - (stageUnit * 3.5)
@@ -5449,7 +5621,7 @@ PWG.Config = (function() {
 								attrs: {
 									img: 'vine01Right',
 									phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
-									setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
+									setSize: [(stageUnit * 3.5), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 									start: {
 										x: (stageWidth * 2) + (stageUnit * 5),
 										y: winH - (stageUnit * 5)
@@ -5930,7 +6102,7 @@ PWG.Config = (function() {
 								attrs: {
 									img: 'vine01Left',
 									phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
-									setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
+									setSize: [(stageUnit * 3.5), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 									start: {
 										x: (stageWidth * 6) + (stageUnit * 1),
 										y: winH - (stageUnit * 3.5)
@@ -5946,7 +6118,7 @@ PWG.Config = (function() {
 								attrs: {
 									img: 'vine01Right',
 									phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
-									setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
+									setSize: [(stageUnit * 3.5), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 									start: {
 										x: (stageWidth * 6) + (stageUnit * 5.5),
 										y: winH - (stageUnit * 5)
@@ -6408,9 +6580,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				audio: [
-					'laDespedida'
-				],
+				// audio: [
+				// 	'laDespedida'
+				// ],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -7386,7 +7558,7 @@ PWG.Config = (function() {
 								attrs: {
 									img: 'vine01Left',
 									phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
-									setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
+									setSize: [(stageUnit * 3.5), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 									start: {
 										x: (stageWidth) + (stageUnit * 0.2),
 										y: winH - (stageUnit * 3)
@@ -7402,9 +7574,9 @@ PWG.Config = (function() {
 								attrs: {
 									img: 'vine01Right',
 									phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
-									setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
+									setSize: [(stageUnit * 3.5), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 									start: {
-										x: (stageWidth) + (stageUnit * 4.3),
+										x: (stageWidth) + (stageUnit * 4),
 										y: winH - (stageUnit * 5)
 									},
 									physics: {
@@ -8165,9 +8337,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				audio: [
-					'tinkles'
-				],
+				// audio: [
+				// 	'tinkles'
+				// ],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -9088,7 +9260,7 @@ PWG.Config = (function() {
 								attrs: {
 									img: 'vine01Left',
 									phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
-									setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
+									setSize: [(stageUnit * 3.5), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 									start: {
 										x: (stageWidth) + (stageUnit * 0.2),
 										y: winH - (stageUnit * 3)
@@ -9104,7 +9276,7 @@ PWG.Config = (function() {
 								attrs: {
 									img: 'vine01Right',
 									phaser: { width: (stageUnit * 3), height: (stageUnit * 2) },
-									setSize: [(stageUnit * 3), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
+									setSize: [(stageUnit * 3.5), (stageUnit * 0.5), 0, (stageUnit * 1.5)],
 									start: {
 										x: (stageWidth) + (stageUnit * 4.3),
 										y: winH - (stageUnit * 5)
@@ -10005,9 +10177,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				audio: [
-					'theMadonna'
-				],
+				// audio: [
+				// 	'theMadonna'
+				// ],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -11459,9 +11631,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				audio: [
-					'intro'
-				],
+				// audio: [
+				// 	'intro'
+				// ],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -13651,9 +13823,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				audio: [
-					'b016'
-				],
+				// audio: [
+				// 	'b016'
+				// ],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -16054,9 +16226,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				audio: [
-					'twentyThree'
-				],
+				// audio: [
+				// 	'twentyThree'
+				// ],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -18790,9 +18962,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				audio: [
-					'yesterday'
-				],
+				// audio: [
+				// 	'yesterday'
+				// ],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -21332,9 +21504,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				audio: [
-					'ololo'
-				],
+				// audio: [
+				// 	'ololo'
+				// ],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -23442,9 +23614,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				audio: [
-					'secrets'
-				],
+				// audio: [
+				// 	'secrets'
+				// ],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -24663,7 +24835,7 @@ PWG.Config = (function() {
 							alignX: 'center',
 							alignY: 'center',
 							style: { 
-								font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise" Arial sans-serif', 
 								fill: '#000000',
 								align: 'center'
 							},
@@ -24677,7 +24849,7 @@ PWG.Config = (function() {
 							alignX: 'center',
 							y: winH - (stageUnit * 3),
 							style: { 
-								font: 'bold ' + fontSizes.xs + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.xs + 'px "Waiting for the Sunrise" Arial sans-serif', 
 								fill: '#000000',
 								align: 'center'
 							},
@@ -24729,7 +24901,7 @@ PWG.Config = (function() {
 							x: winW - (stageUnit * 6),
 							y: winH - (stageUnit * 2.25),
 							style: { 
-								font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.lg + 'px "Waiting for the Sunrise" Arial sans-serif', 
 								fill: '#000000',
 								align: 'center'
 							},
