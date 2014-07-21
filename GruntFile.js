@@ -196,7 +196,7 @@ module.exports = function(grunt) {
 					cwd: '<%= tresensaDir %>/assets/audio/',
 					src: '**/*',
 					filter: 'isFile',
-					dest: '<%= meta.server.path %>'
+					dest: '<%= meta.server.path %>/assets/audio/'
 				}]
 			},
 			
@@ -205,7 +205,7 @@ module.exports = function(grunt) {
 					cwd: '<%= tresensaDir %>/assets/images/',
 					src: '**/*',
 					filter: 'isFile',
-					dest: '<%= meta.server.path %>'
+					dest: '<%= meta.server.path %>/assets/images/'
 				}]
 			}
 		},

@@ -85,17 +85,17 @@ PWG.Config = (function() {
 		var c = {
 			// AUDIO
 			audio: {
-				kekeInterval: 'assets/audio/music/keke_grey_interval_edit.mp3',
-				secrets: 'assets/audio/music/secrets3_edit.mp3',
-				intro: 'assets/audio/music/intro_edit.mp3',
-				rxMinus1: 'assets/audio/music/rx_minus_one_edit.mp3',
-				b016: 'assets/audio/music/b016_edit.mp3',
-				twentyThree: 'assets/audio/music/twenty_three_edit.mp3',
-				laDespedida: 'assets/audio/music/la_despedida_edit.mp3',
-				theMadonna: 'assets/audio/music/the_madonna_edit.mp3',
-				yesterday: 'assets/audio/music/yesterday_edit.mp3',
-				tinkles: 'assets/audio/music/tinkles_edit.mp3',
-				ololo: 'assets/audio/music/ololo_edit.mp3'
+				kekeInterval: 'assets/audio/music/keke_grey_interval_edit_01.mp3',
+				secrets: 'assets/audio/music/secrets3_edit_01.mp3',
+				intro: 'assets/audio/music/intro_edit_01.mp3',
+				rxMinus1: 'assets/audio/music/rx_minus_one_edit_01.mp3',
+				b016: 'assets/audio/music/b016_edit_01.mp3',
+				twentyThree: 'assets/audio/music/twenty_three_edit_01.mp3',
+				laDespedida: 'assets/audio/music/la_despedida_edit_01.mp3',
+				theMadonna: 'assets/audio/music/the_madonna_edit_01.mp3',
+				yesterday: 'assets/audio/music/yesterday_edit_01.mp3',
+				tinkles: 'assets/audio/music/tinkles_edit_01.mp3',
+				ololo: 'assets/audio/music/ololo_edit_01.mp3'
 			},
 			// IMAGES
 			images: {
@@ -1224,9 +1224,9 @@ PWG.Config = (function() {
 				clearWorld: true,
 				clearCache: false,
 				backgroundColor: '#ffffff',
-				audio: [
-					'kekeInterval'
-				],
+				// audio: [
+				// 	'kekeInterval'
+				// ],
 				images: [
 					'blackRect',
 					'greyRect',

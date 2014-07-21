@@ -49,21 +49,21 @@ PWG.State = (function() {
 		if(!this.model.loaded) {
 			trace('\tstate audio = ');
 			trace(this.model.audio);
-			if(this.model.audio && this.model.audio.length > 0) {
-				var audio = PolyworksGame.get('audio');
-				PWG.Utils.each(
-					this.model.audio,
-					function(a) {
-						if(!PolyworksGame.loaded.audio[audio]) {
-							trace('loading audio['+a+']: ', audio[a]);
-							this.toLoad++;
-							phaser.load.audio(a, audio[a]);
-							loaded.audio[a] = true;
-						}
-					},
-					this
-				);
-			}
+			// if(this.model.audio && this.model.audio.length > 0) {
+			// 	var audio = PolyworksGame.get('audio');
+			// 	PWG.Utils.each(
+			// 		this.model.audio,
+			// 		function(a) {
+			// 			if(!PolyworksGame.loaded.audio[audio]) {
+			// 				trace('loading audio['+a+']: ', audio[a]);
+			// 				this.toLoad++;
+			// 				phaser.load.audio(a, audio[a]);
+			// 				loaded.audio[a] = true;
+			// 			}
+			// 		},
+			// 		this
+			// 	);
+			// }
 			if(this.model.images && this.model.images.length > 0) {
 				var images = PolyworksGame.get('images');
 				PWG.Utils.each(this.model.images,
@@ -109,7 +109,7 @@ PWG.State = (function() {
 			trace('WARNING: not in landscape orientation, can not create state');
 		}
 		this.model.set({ createCalled: true });
-		this.createAudio();
+		// this.createAudio();
 	};
 	
 	State.prototype.createAudio = function() {
@@ -124,11 +124,9 @@ PWG.State = (function() {
 					}
 					trace('audio = ', audio);
 					// key, volume loop
-					var sound = PolyworksGame.phaser.add.audio(audio, 1, true);
-					trace('sound = ', sound);
+					PolyworksGame.currentAudio = PolyworksGame.phaser.add.audio(audio, 1, false);
 					// marker, position, volume, loop
-					sound.play('', 0, 1, true);
-					PolyworksGame.currentAudio = sound;
+					PolyworksGame.currentAudio.play('', 0, 1, false);
 					PolyworksGame.currentAudioName = audio;
 				}
 			}
@@ -144,7 +142,7 @@ PWG.State = (function() {
 			if(PolyworksGame.currentAudio) {
 				PolyworksGame.currentAudio.stop();
 				PolyworksGame.currentAudio = null;
-				PWG.currentAudioName = '';
+				PolyworksGame.currentAudioName = '';
 			}
 		}
 	};

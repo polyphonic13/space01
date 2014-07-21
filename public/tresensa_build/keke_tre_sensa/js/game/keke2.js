@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-20T16:30:08')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-20T19:37:14')})();
 !function(root, factory) {
   if (typeof define === "function" && define.amd) {
     define(factory);
@@ -33037,16 +33037,22 @@ Phaser.Sound.prototype = {
             {
                 if (typeof this._sound.stop === 'undefined')
                 {
-                    this._sound.noteOff(0);
+					try {
+	                    this._sound.noteOff(0);
+					} catch(e) {}
                 }
                 else
                 {
-                    this._sound.stop(0);
+					try {
+	                    this._sound.stop(0);
+					} catch(e) {}
                 }
             }
             else if (this.usingAudioTag)
             {
-                this._sound.pause();
+				try {
+	                this._sound.pause();
+				} catch(e) {}
                 this._sound.currentTime = 0;
             }
         }
@@ -42067,17 +42073,17 @@ PWG.Config = (function() {
 		var c = {
 			// AUDIO
 			audio: {
-				kekeInterval: 'assets/audio/music/keke_grey_interval_edit.mp3',
-				secrets: 'assets/audio/music/secrets3_edit.mp3',
-				intro: 'assets/audio/music/intro_edit.mp3',
-				rxMinus1: 'assets/audio/music/rx_minus_one_edit.mp3',
-				b016: 'assets/audio/music/b016_edit.mp3',
-				twentyThree: 'assets/audio/music/twenty_three_edit.mp3',
-				laDespedida: 'assets/audio/music/la_despedida_edit.mp3',
-				theMadonna: 'assets/audio/music/the_madonna_edit.mp3',
-				yesterday: 'assets/audio/music/yesterday_edit.mp3',
-				tinkles: 'assets/audio/music/tinkles_edit.mp3',
-				ololo: 'assets/audio/music/ololo_edit.mp3'
+				kekeInterval: 'assets/audio/music/keke_grey_interval_edit_01.mp3',
+				secrets: 'assets/audio/music/secrets3_edit_01.mp3',
+				intro: 'assets/audio/music/intro_edit_01.mp3',
+				rxMinus1: 'assets/audio/music/rx_minus_one_edit_01.mp3',
+				b016: 'assets/audio/music/b016_edit_01.mp3',
+				twentyThree: 'assets/audio/music/twenty_three_edit_01.mp3',
+				laDespedida: 'assets/audio/music/la_despedida_edit_01.mp3',
+				theMadonna: 'assets/audio/music/the_madonna_edit_01.mp3',
+				yesterday: 'assets/audio/music/yesterday_edit_01.mp3',
+				tinkles: 'assets/audio/music/tinkles_edit_01.mp3',
+				ololo: 'assets/audio/music/ololo_edit_01.mp3'
 			},
 			// IMAGES
 			images: {
@@ -43041,12 +43047,14 @@ PWG.Config = (function() {
 						name: 'levelDescription',
 						cl: 'Text',
 						attrs: {
-							alignX: 'center',
-							alignY: 'center',
+							// alignX: 'center',
+							// alignY: 'center',
+							x: (stageUnit * 3),
+							y: (stageUnit * 2.25),
 							style: { 
 								font: 'bold ' + fontSizes.md + 'px "Sue Ellen Francisco"', 
-								fill: '#000000',
-								align: 'center'
+								fill: '#000000'//,
+								// align: 'center'
 							},
 							defaultContent: ''
 						}
@@ -43056,14 +43064,15 @@ PWG.Config = (function() {
 						name: 'highScore',
 						cl: 'Text',
 						attrs: {
-							x: (stageUnit * 3),
-							y: winH - (stageUnit * 2.25),
-							defaultContent: '',
+							x: winW - (stageUnit * 6),
+							y: winH - (stageUnit * 2.75),
+							// x: (stageUnit * 3),
+							// y: winH - (stageUnit * 2.75),
 							style: { 
 								font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
-								align: 'left'
-							}
+								align: 'right'
+							},
 						}
 					},
 					// level status
@@ -43071,14 +43080,14 @@ PWG.Config = (function() {
 						name: 'levelStatus',
 						cl: 'Text',
 						attrs: {
-							x: (stageUnit * 3),
-							y: winH - (stageUnit * 1.2),
-							defaultContent: '',
+							x: winW - (stageUnit * 6),
+							y: winH - (stageUnit * 2.25),
 							style: { 
-								font: 'bold ' + fontSizes.xs + 'px "Waiting for the Sunrise"', 
+								font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise"', 
 								fill: '#000000',
-								align: 'left'
-							}
+								align: 'center'
+							},
+							defaultContent: ''
 						}
 					},
 					// oval mask
@@ -43160,7 +43169,7 @@ PWG.Config = (function() {
 				'this is a big forest.\ni think i see thorns ahead.\ni better avoid those.',
 				'i hope this forest ends soon.',
 				'this river looks fast.\ni don\'t want to get swept away.\ni\'ll have to jump across the rocks.',
-				'wow! look at this mountain.\ni am going to have to climb it.',
+				'wow! this mountain is huge.\ni guess i\'m going to have to climb it.',
 				'SPIDERS?!\ni hate spiders!',
 				'i think i see the top of the mountain.\njust a little bit further...',
 				'climbing down the mountain is so scary...',
@@ -43203,9 +43212,9 @@ PWG.Config = (function() {
 				clearWorld: true,
 				clearCache: false,
 				backgroundColor: '#ffffff',
-				audio: [
-					'kekeInterval'
-				],
+				// audio: [
+				// 	'kekeInterval'
+				// ],
 				images: [
 					'blackRect',
 					'greyRect',
@@ -69794,21 +69803,21 @@ PWG.State = (function() {
 		if(!this.model.loaded) {
 			
 			
-			if(this.model.audio && this.model.audio.length > 0) {
-				var audio = PolyworksGame.get('audio');
-				PWG.Utils.each(
-					this.model.audio,
-					function(a) {
-						if(!PolyworksGame.loaded.audio[audio]) {
-							
-							this.toLoad++;
-							phaser.load.audio(a, audio[a]);
-							loaded.audio[a] = true;
-						}
-					},
-					this
-				);
-			}
+			// if(this.model.audio && this.model.audio.length > 0) {
+			// 	var audio = PolyworksGame.get('audio');
+			// 	PWG.Utils.each(
+			// 		this.model.audio,
+			// 		function(a) {
+			// 			if(!PolyworksGame.loaded.audio[audio]) {
+			// 				
+			// 				this.toLoad++;
+			// 				phaser.load.audio(a, audio[a]);
+			// 				loaded.audio[a] = true;
+			// 			}
+			// 		},
+			// 		this
+			// 	);
+			// }
 			if(this.model.images && this.model.images.length > 0) {
 				var images = PolyworksGame.get('images');
 				PWG.Utils.each(this.model.images,
@@ -69854,7 +69863,7 @@ PWG.State = (function() {
 			
 		}
 		this.model.set({ createCalled: true });
-		this.createAudio();
+		// this.createAudio();
 	};
 	
 	State.prototype.createAudio = function() {
@@ -69869,11 +69878,9 @@ PWG.State = (function() {
 					}
 					
 					// key, volume loop
-					var sound = PolyworksGame.phaser.add.audio(audio, 1, true);
-					
+					PolyworksGame.currentAudio = PolyworksGame.phaser.add.audio(audio, 1, false);
 					// marker, position, volume, loop
-					sound.play('', 0, 1, true);
-					PolyworksGame.currentAudio = sound;
+					PolyworksGame.currentAudio.play('', 0, 1, false);
 					PolyworksGame.currentAudioName = audio;
 				}
 			}
@@ -69889,7 +69896,7 @@ PWG.State = (function() {
 			if(PolyworksGame.currentAudio) {
 				PolyworksGame.currentAudio.stop();
 				PolyworksGame.currentAudio = null;
-				PWG.currentAudioName = '';
+				PolyworksGame.currentAudioName = '';
 			}
 		}
 	};

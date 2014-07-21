@@ -33036,16 +33036,22 @@ Phaser.Sound.prototype = {
             {
                 if (typeof this._sound.stop === 'undefined')
                 {
-                    this._sound.noteOff(0);
+					try {
+	                    this._sound.noteOff(0);
+					} catch(e) {}
                 }
                 else
                 {
-                    this._sound.stop(0);
+					try {
+	                    this._sound.stop(0);
+					} catch(e) {}
                 }
             }
             else if (this.usingAudioTag)
             {
-                this._sound.pause();
+				try {
+	                this._sound.pause();
+				} catch(e) {}
                 this._sound.currentTime = 0;
             }
         }
