@@ -36,6 +36,7 @@
 
 		// PWG.EventCenter.bind(PWG.Events.AD_STARTED, this.onPauseState, this);
 		// PWG.EventCenter.bind(PWG.Events.AD_COMPLETED, this.onResumeState, this);
+		PWG.EventCenter.bind(PWG.Events.PAUSE_STATE, this.onPauseState, this);
 
 		this.requirements = this.getChildByName('requirements');
 		// trace('\n\n\trequirements = ', this.requirements, '\tgroup = ', this.requirements.group);
@@ -198,10 +199,10 @@
 	};
 
 	LevelState.prototype.onPauseState = function() {
-		// trace('LevelState['+this.model.name+']/onPauseState');
+		trace('LevelState['+this.model.name+']/onPauseState');
 		if(!this.triggeredCleared) {
 			LevelState._super.onPauseState.call(this);
-			if(this.paused) {
+			if(!this.paused) {
 				this.pauseState();
 			} else {
 				this.resumeState();

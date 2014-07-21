@@ -307,7 +307,8 @@ PolyworksGame = (function() {
 				PWG.Stage.init(PolyworksGame.aspectRatio);
 			}
 		} else {
-			PWG.EventCenter.trigger({ type: PWG.Events.PAUSE_STATE });
+			// trace('in portrait; triggering pause state');
+			// PWG.EventCenter.trigger({ type: PWG.Events.PAUSE_STATE });
 			PolyworksGame.showOrientationMessage();
 		}
 	}
