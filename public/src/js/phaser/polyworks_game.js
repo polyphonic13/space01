@@ -631,6 +631,9 @@ PolyworksGame = (function() {
 			// if(typeof(inTGS) !== 'undefined' && inTGS) {
 				PolyworksGame.Tresensa = PolyworksGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
 			// }
+			// try to get to full screen
+			PolyworksGame.phaser.scale.startFullScreen(false);
+			// switch to first state
 			PolyworksGame.changeState(_model.initialState);
 		}
 	}

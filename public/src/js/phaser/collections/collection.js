@@ -22,7 +22,7 @@ PWG.Collection = (function() {
 					c.ancestor = this;
 					c.idx = i;
 
-					trace('\tc['+c.name+'] cl = ' + c.cl);
+					// trace('\tc['+c.name+'] cl = ' + c.cl);
 					child = new PWG[c.cl](c);
 					child.begin();
 
