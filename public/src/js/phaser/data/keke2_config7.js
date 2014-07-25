@@ -1224,9 +1224,6 @@ PWG.Config = (function() {
 				clearWorld: true,
 				clearCache: false,
 				backgroundColor: '#ffffff',
-				audio: [
-					'secrets'
-				],
 				images: [
 					'blackRect',
 					'greyRect',
@@ -1530,9 +1527,9 @@ PWG.Config = (function() {
 				clearWorld: true,
 				clearCache: false,
 				backgroundColor: '#ffffff',
-				// audio: [
-				// 	'kekeInterval'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: [
 					'kekeSmall',
 					'greyExpanseTitle',
@@ -1831,9 +1828,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'secrets'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -2765,9 +2762,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'rxMinus1'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -4170,9 +4167,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'twentyThree'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -6580,9 +6577,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'laDespedida'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -8337,9 +8334,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'tinkles'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -10177,9 +10174,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'theMadonna'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -11631,9 +11628,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'intro'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -13823,9 +13820,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'b016'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -13982,7 +13979,7 @@ PWG.Config = (function() {
 						// sector 7
 						[
 						{
-							name: 'level08-sector5-enemy1',
+							name: 'level08-sector7-enemy1',
 							cl: 'AnimatedEnemy',
 							attrs: {
 								img: 'spider01',
@@ -13993,7 +13990,7 @@ PWG.Config = (function() {
 								},
 								start: {
 									x: (stageUnit * 42),
-									y: winH - (stageUnit * 61)
+									y: winH - (stageUnit * 64)
 								},
 								physics: {
 									allowGravity: false
@@ -14013,6 +14010,35 @@ PWG.Config = (function() {
 						],
 						// sector 8
 						[
+						{
+							name: 'level08-sector8-enemy1',
+							cl: 'AnimatedEnemy',
+							attrs: {
+								img: 'spider01',
+								phaser: {
+									width: spider01.width,
+									height: spider01.height,
+									health: 5
+								},
+								start: {
+									x: (stageUnit * 42),
+									y: winH - (stageUnit * 73)
+								},
+								physics: {
+									allowGravity: false
+								},
+								speed: 0.5,
+								attack: 5,
+								score: 1500,
+								movement: {
+									speed: spider01.speed,
+									type: PWG.MovementTypes.HORIZONTAL_BY_SPEED,
+									formula: null
+								},
+								defaultAnimation: '',
+								animations: spiderAnimations
+								}
+						}
 						]
 					]
 				},
@@ -16226,9 +16252,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'twentyThree'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -18962,9 +18988,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'yesterday'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -21504,9 +21530,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'ololo'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
@@ -23614,9 +23640,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'secrets'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: [
 					'whiteRect',
 					'ovalMask',
