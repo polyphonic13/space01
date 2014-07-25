@@ -154,7 +154,7 @@ PWG.Player = (function() {
 		// trace(params);
 		if(this.alive) {
 			this.collided = false;
-			var physics = PolyworksGame.phaser.physics;
+			var physics = PolyworksGame.phaser.physics.arcade;
 			var attrs = this.model.attrs;
 			var physicalItems = params.physicalItems; 
 

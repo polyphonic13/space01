@@ -29,10 +29,23 @@ PWG.Sprite = (function() {
 		}
 
 		// call phaser.sprite methods on other attributes
+		// SCALE
 		var scale = attrs.scale;
 		if(scale) {
 			this.scale.setTo(scale[0], scale[1]);
 		}
+
+		// PHYSICS
+		if(attrs.physics) {
+			if(attrs.physicsType) {
+				PolyworksGame.phaser.physics.enable(this, attrs.physicsType);
+			} else {
+				PolyworksGame.phaser.physics.enable(this, Phaser.Physics.ARCADE);
+			}
+			this.beginPhysics(attrs.physics);
+		}
+
+		// SIZE
 		var setSize = attrs.setSize;
 		if(setSize) {
 			// trace('Sprite['+this.model.name+'] setSize = ' + setSize.length);
@@ -44,17 +57,9 @@ PWG.Sprite = (function() {
 				// trace('\tsetting w, h size');
 				this.body.setSize(setSize[0], setSize[1]);
 			}
-			// if(setSize.x && setSize.y) {
-			// 	// trace('setting ['+this.model.name+'] size to: ');
-			// 	// trace(setSize);
-			// 	this.body.setSize(setSize.width, setSize.height, setSize.x, setSize.y);
-			// } else {
-			// 	this.body.setSize(setSize.width, setSize.height);
-			// }
 		}
-		if(attrs.physics) {
-			this.beginPhysics(attrs.physics);
-		}
+
+		// ANIMATIONS
 		if(attrs.animations) {
 			this.beginAnimations(attrs.animations);
 		}
@@ -65,7 +70,7 @@ PWG.Sprite = (function() {
 	};
 	
 	Sprite.prototype.beginPhysics = function(physics) {
-		// trace('\n\nSprite['+this.model.name+']/beginPhysics');
+		// trace('\n\nSprite['+this.model.name+']/beginPhysics, this = ', this, '\tphysics = ', physics);
 		for(var key in physics) {
 			this.body[key] = physics[key];
 		}
@@ -102,7 +107,7 @@ PWG.Sprite = (function() {
 		// trace('Sprite['+this.model.name+']/checkTerrainCollision, terrain = ');
 		// trace(terrain);
 		// trace(this);
-		PolyworksGame.phaser.physics.collide(this, terrain);
+		PolyworksGame.phaser.physics.arcade.collide(this, terrain);
 	};
 	
 	Sprite.prototype.checkDynamicTerrainCollision = function(dynamicTerrain) {
@@ -111,7 +116,7 @@ PWG.Sprite = (function() {
 
 		PWG.Utils.each(dynamicTerrain,
 			function(c) {
-				physics.overlap(this, c, _this.onDynamicTerrainCollision, null, _this);
+				physics.arcade.overlap(this, c, _this.onDynamicTerrainCollision, null, _this);
 			},
 			_this
 		);
