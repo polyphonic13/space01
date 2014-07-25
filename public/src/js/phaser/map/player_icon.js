@@ -12,6 +12,7 @@ PWG.PlayerIcon = (function() {
 	};
 	
 	PlayerIcon.prototype.begin = function() {
+		this.inputEnabled = true;
 		this.input.start();
 		this.addListeners();
 		PlayerIcon._super.begin.call(this);

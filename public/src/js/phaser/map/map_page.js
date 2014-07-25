@@ -16,7 +16,8 @@ PWG.MapPage = (function() {
 
 		var stateGroup = this.model.stateGroup;
 		this.pageGroup = PolyworksGame.phaser.add.group();
-		stateGroup.add(this.pageGroup._container);
+		// stateGroup.add(this.pageGroup._container);
+		stateGroup.add(this.pageGroup);
 
 		var levels = this.model.levels;
 

@@ -22,6 +22,7 @@ PWG.MapMarker = (function() {
 			} else {
 				this.frame = 15; // u (cleared)
 			}
+			this.inputEnabled = true;
 			this.input.start();
 			this.addListeners();
 		}
