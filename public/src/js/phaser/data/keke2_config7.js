@@ -2702,7 +2702,8 @@ PWG.Config = (function() {
 							start: {
 								x: (stageWidth * 2) + (stageUnit * 13),
 								y: winH - (stageUnit * 13.5)
-							}
+							},
+							physics: {}
 						}
 					}
 					]
@@ -2725,6 +2726,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageWidth * 6) - (stageUnit * 4),
 								y: winH - (stageUnit * 3.5)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -4121,7 +4125,8 @@ PWG.Config = (function() {
 							start: {
 								x: (stageWidth * 4) + (stageUnit * 2),
 								y: winH - (stageUnit * 13)
-							}
+							},
+							physics: {}
 						}
 					}
 					]
@@ -4144,6 +4149,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageWidth * 6) - (stageUnit * 4),
 								y: winH - (stageUnit * 3.5)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -6531,6 +6539,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageWidth * 5) + (stageUnit * 14),
 								y: -(stageUnit * 3)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -6554,6 +6565,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageWidth * 8) + (stageUnit * 14),
 								y: winH - (stageUnit * 15)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -8288,6 +8302,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageWidth * 2) + (stageUnit * 14),
 								y: winH - (stageUnit * 7)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -8311,6 +8328,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageWidth * 6) - (stageUnit * 4),
 								y: winH - (stageUnit * 3.5)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -10128,6 +10148,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageUnit * 6.5),
 								y: winH - (stageUnit * 13.5)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -10151,6 +10174,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageWidth * 6) - (stageUnit * 4),
 								y: winH - (stageUnit * 7.5)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -11582,6 +11608,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageWidth * 4) + (stageUnit * 13),
 								y: winH - (stageUnit * 11)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -11605,6 +11634,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageWidth * 6) - (stageUnit * 2),
 								y: winH - (stageUnit * 11)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -13774,6 +13806,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageWidth * 2) + (stageUnit * 11.5),
 								y: winH - (stageUnit * 47)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -13797,6 +13832,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageWidth * 2) + (stageUnit * 15),
 								y: winH - (stageUnit * 72)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -16177,6 +16215,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageUnit * 1.5),
 								y: winH - (stageUnit * 37)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -16200,6 +16241,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageWidth * 2) + (stageUnit * 15),
 								y: winH - (stageUnit * 72)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -18913,6 +18957,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageUnit * 27),
 								y: winH - (stageUnit * 42)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -18936,6 +18983,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageUnit * 62),
 								y: winH - (stageUnit * 10)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -21455,6 +21505,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageUnit * 25),
 								y: winH + (stageUnit * 39)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -21478,6 +21531,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageUnit * 38),
 								y: winH + (stageUnit * 59)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -23565,6 +23621,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageUnit * 40),
 								y: winH + (stageUnit * 2)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -23588,6 +23647,9 @@ PWG.Config = (function() {
 							start: {
 								x: (stageUnit * 32),
 								y: winH + (stageUnit * 43)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -24775,6 +24837,9 @@ PWG.Config = (function() {
 							start: {
 								x: -(stageUnit * 42),
 								y: winH - (stageUnit * 4.5)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}
@@ -24798,6 +24863,9 @@ PWG.Config = (function() {
 							start: {
 								x: -(stageUnit * 80	),
 								y: winH - (stageUnit * 13)
+							},
+							physics: {
+								allowGravity: false
 							}
 						}
 					}

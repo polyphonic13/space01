@@ -111,7 +111,7 @@ PolyworksGame = (function() {
 					PolyworksGame.Tresensa = PolyworksGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
 				}
 
-				PolyworksGame.initControls();
+				// PolyworksGame.initControls();
 
 				PolyworksGame.phaser.scale.startFullScreen(false);
 
@@ -183,32 +183,32 @@ PolyworksGame = (function() {
 		},
 		
 		onLeftDown: function() {
-			trace('PolyworksGame/_onLeftDown');
+			// trace('PolyworksGame/_onLeftDown');
 			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_PRESSED, value: Phaser.Keyboard.LEFT })
 		},
 
 		onLeftUp: function() {
-			trace('PolyworksGame/_onLeftDown');
+			// trace('PolyworksGame/_onLeftDown');
 			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_RELEASED, value: Phaser.Keyboard.LEFT })
 		},
 
 		onRightDown: function() {
-			trace('PolyworksGame/_onRightDown');
+			// trace('PolyworksGame/_onRightDown');
 			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_PRESSED, value: Phaser.Keyboard.RIGHT })
 		},
 
 		onRightUp: function() {
-			trace('PolyworksGame/_onRightDown');
+			// trace('PolyworksGame/_onRightDown');
 			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_RELEASED, value: Phaser.Keyboard.RIGHT })
 		},
 
 		onUpDown: function() {
-			trace('PolyworksGame/_onUpDown');
+			// trace('PolyworksGame/_onUpDown');
 			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_PRESSED, value: Phaser.Keyboard.UP })
 		},
 
 		onUpUp: function() {
-			trace('PolyworksGame/_onUpDown');
+			// trace('PolyworksGame/_onUpDown');
 			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_RELEASED, value: Phaser.Keyboard.UP })
 		},
 

@@ -277,7 +277,7 @@ PWG.Player = (function() {
 	};
 
 	Player.prototype.onRequirementCollision = function(player, requirement) {
-		// trace('Player/onRequirementCollision, requirement = ', requirement);
+		trace('Player/onRequirementCollision, requirement = ', requirement);
 
 		this.collided = true;
 		requirement.collect();

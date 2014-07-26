@@ -18,9 +18,9 @@ PWG.SectorManager = (function() {
 	
 	SectorManager.prototype.setActiveSector = function(idx) {
 		// this.deactivateAll();
-		if(this.activeSectorIdx) {
-			this.model.collection[this.activeSectorIdx].setActive(false);
-		}
+		// if(this.activeSectorIdx) {
+		// 	this.model.collection[this.activeSectorIdx].setActive(false);
+		// }
 		this.activeSectorIdx = idx;
 		this.model.collection[idx].setActive(true);
 

@@ -11,9 +11,9 @@ PWG.Sector = (function() {
 	Sector.prototype.begin = function() {
 		
 		Sector._super.begin.call(this);
-		this.setChildrenExists(false);
+		// this.setChildrenExists(false);
 
-		this.enemiesActivated = false;
+		// this.enemiesActivated = false;
 
 		this.dynamicTerrain = this.getChildByName('dynamicTerrain');
 		this.groupEnemies = this.getChildByName('groupEnemies');
@@ -23,7 +23,7 @@ PWG.Sector = (function() {
 	};
 
 	Sector.prototype.setActive = function(active) {
-		// trace('Sector['+this.model.name+']/setActive: active = ' + active + ', activatedOnce = ' + this.activatedOnce);
+		trace('Sector['+this.model.name+']/setActive: active = ' + active + ', activatedOnce = ' + this.activatedOnce);
 		if(this.active || active) {
 			this.setChildrenExists(active);
 		}
@@ -41,17 +41,17 @@ PWG.Sector = (function() {
 				}
 			this.deactivated = false;
 
-		} else if(!this.deactivated) {
-
-			if(this.enemies) {
-				if(this.enemiesActivated) {
-					PWG.EventCenter.trigger({ type: PWG.Events.REMOVE_ACTIVE_ENEMIES, enemies: this.enemies });
-					this.enemiesActivated = false;
-				}
-				trace('Sector['+this.model.name+'] going to call enemies.deactivateGravity');
-				this.enemies.deactivateGravity();
-			} 
-			this.deactivated = true;
+		// } else if(!this.deactivated) {
+		// 
+		// 	if(this.enemies) {
+		// 		if(this.enemiesActivated) {
+		// 			PWG.EventCenter.trigger({ type: PWG.Events.REMOVE_ACTIVE_ENEMIES, enemies: this.enemies });
+		// 			this.enemiesActivated = false;
+		// 		}
+		// 		trace('Sector['+this.model.name+'] going to call enemies.deactivateGravity');
+		// 		this.enemies.deactivateGravity();
+		// 	} 
+		// 	this.deactivated = true;
 		}
 	};
 	
@@ -70,18 +70,18 @@ PWG.Sector = (function() {
 		// trace(terrain);
 		// trace('enemies = ');
 		// trace(this.enemies);
-		if(this.enemies) {
-			this.enemies.checkTerrainCollision(terrain);
-		}
-		if(this.bonuses) {
-			this.bonuses.checkTerrainCollision(terrain);
-		}
+		// if(this.enemies) {
+		// 	this.enemies.checkTerrainCollision(terrain);
+		// }
+		// if(this.bonuses) {
+		// 	this.bonuses.checkTerrainCollision(terrain);
+		// }
 	};
 	
 	Sector.prototype.destroy = function() {
-		if(this.enemies) {
-			this.enemies.destroy();
-		}
+		// if(this.enemies) {
+		// 	this.enemies.destroy();
+		// }
 		if(this.bonuses) {
 			this.bonuses.destroy();
 		}
