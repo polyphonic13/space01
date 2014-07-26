@@ -1,3 +1,7 @@
+var left;
+var right;
+var up;
+
 PolyworksGame = (function() {
 	var _model = {};
 	var _player = {};
@@ -106,6 +110,11 @@ PolyworksGame = (function() {
 				if(typeof(inTGS) !== 'undefined' && inTGS) {
 					PolyworksGame.Tresensa = PolyworksGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
 				}
+
+				PolyworksGame.initControls();
+
+				PolyworksGame.phaser.scale.startFullScreen(false);
+
 				PolyworksGame.changeState(_model.initialState);
 			}
 		},
@@ -156,6 +165,51 @@ PolyworksGame = (function() {
 				}
 				_setSavedData();
 			}
+		},
+
+		initControls: function() {
+			trace('PolyworksGame/initControls');
+		    left = PolyworksGame.phaser.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+		    left.onDown.add(PolyworksGame.onLeftDown, this);
+		    left.onUp.add(PolyworksGame.onLeftUp, this);
+
+		    right = PolyworksGame.phaser.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+		    right.onDown.add(PolyworksGame.onRightDown, this);
+		    right.onUp.add(PolyworksGame.onRightUp, this);
+
+		    up = PolyworksGame.phaser.input.keyboard.addKey(Phaser.Keyboard.UP);
+		    up.onDown.add(PolyworksGame.onUpDown, this);
+		    up.onUp.add(PolyworksGame.onUpUp, this);
+		},
+		
+		onLeftDown: function() {
+			trace('PolyworksGame/_onLeftDown');
+			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_PRESSED, value: Phaser.Keyboard.LEFT })
+		},
+
+		onLeftUp: function() {
+			trace('PolyworksGame/_onLeftDown');
+			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_RELEASED, value: Phaser.Keyboard.LEFT })
+		},
+
+		onRightDown: function() {
+			trace('PolyworksGame/_onRightDown');
+			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_PRESSED, value: Phaser.Keyboard.RIGHT })
+		},
+
+		onRightUp: function() {
+			trace('PolyworksGame/_onRightDown');
+			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_RELEASED, value: Phaser.Keyboard.RIGHT })
+		},
+
+		onUpDown: function() {
+			trace('PolyworksGame/_onUpDown');
+			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_PRESSED, value: Phaser.Keyboard.UP })
+		},
+
+		onUpUp: function() {
+			trace('PolyworksGame/_onUpDown');
+			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_RELEASED, value: Phaser.Keyboard.UP })
 		},
 
 		setScore: function(val) {
@@ -350,6 +404,28 @@ PolyworksGame = (function() {
 		PWG.Storage.set(params);
 	}
 	
+	function _onStageInitialized(event) {
+		_stageInitialized = true;
+		_isTouchDevice = (navigator.userAgent.match(/ipad|iphone|android/i) !== null);
+		// trace('PolyworksGame/_onStageInitialized, _isTouchDevice = ' + _isTouchDevice);
+
+		var config = new PWG.Config();
+
+		_model = config.init(PWG.Stage);
+		trace(_model);
+		if(_model.webFonts) {
+			_addWebFonts(_model.webFonts);
+		}
+		PolyworksGame.startingHealth = _model.player.attrs.phaser.health;
+
+		var renderType = Phaser.AUTO;
+		// if(PWG.DeviceUtils.isFirefox()) {
+		// 	renderType = Phaser.CANVAS;
+		// }
+		// trace('---------- renderType = ' + renderType);
+		PolyworksGame.phaser = new Phaser.Game(PWG.Stage.winW, PWG.Stage.winH, renderType, 'gameContainer', { preload: _preload, create: _create });
+	}
+
 	function _preload() {
 		var phaser = PolyworksGame.phaser;
 		var audio = _model.audio;
@@ -402,34 +478,13 @@ PolyworksGame = (function() {
 	
 	function _create() {
 		// trace('PolyworksGame/_create');
-		_initControls();
+		PolyworksGame.phaser.physics.startSystem(Phaser.Physics.ARCADE);
+		// _initControls();
 		_initStates();
 		// _initSocial();
 
 	}
 	
-	function _onStageInitialized(event) {
-		_stageInitialized = true;
-		_isTouchDevice = (navigator.userAgent.match(/ipad|iphone|android/i) !== null);
-		// trace('PolyworksGame/_onStageInitialized, _isTouchDevice = ' + _isTouchDevice);
-
-		var config = new PWG.Config();
-
-		_model = config.init(PWG.Stage);
-		trace(_model);
-		if(_model.webFonts) {
-			_addWebFonts(_model.webFonts);
-		}
-		PolyworksGame.startingHealth = _model.player.attrs.phaser.health;
-
-		var renderType = Phaser.AUTO;
-		// if(PWG.DeviceUtils.isFirefox()) {
-		// 	renderType = Phaser.CANVAS;
-		// }
-		// trace('---------- renderType = ' + renderType);
-		PolyworksGame.phaser = new Phaser.Game(PWG.Stage.winW, PWG.Stage.winH, renderType, 'gameContainer', { preload: _preload, create: _create });
-	}
-
 	function _onControlPressed(event) {
 		switch(event.value) {
 			case PWG.InputCodes.QUIT:
@@ -570,8 +625,17 @@ PolyworksGame = (function() {
 
 	function _initControls() {
 	
-		_controls = new PWG.Collection(_model.controls.keys);
-		_controls.begin();
+		// _controls = new PWG.Collection(_model.controls.keys);
+		// _controls.begin();
+		
+	    left = PolyworksGame.phaser.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+	    left.onDown.add(PolyworksGame.onLeftDown, this);
+
+	    right = PolyworksGame.phaser.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+	    right.onDown.add(PolyworksGame.onRightDown, this);
+
+	    up = PolyworksGame.phaser.input.keyboard.addKey(Phaser.Keyboard.UP);
+	    up.onDown.add(PolyworksGame.onUpDown, this);
 	}
 
 	function _initStates() {
@@ -632,6 +696,8 @@ PolyworksGame = (function() {
 				PolyworksGame.Tresensa = PolyworksGame.phaser.plugins.add(Phaser.Plugin.TreSensaPlugin);
 			// }
 			// try to get to full screen
+			PolyworksGame.initControls();
+			
 			PolyworksGame.phaser.scale.startFullScreen(false);
 			// switch to first state
 			PolyworksGame.changeState(_model.initialState);

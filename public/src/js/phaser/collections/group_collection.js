@@ -25,12 +25,14 @@ PWG.GroupCollection = (function() {
 
 		if(addTo) {
 			if(addTo === 'null') {
-				group = game.add.group(null);
+				// group = game.add.group(null);
+				group = game.add.group();
+				group.fixedToCamera = true;
 			} else {
 				group = game.add.group();
 				// retrieve parent group from model based on addTo value
 				// trace('----------------- finding parent group: ' + addTo + ' on ', this.model);
-				this.model[addTo].add(group._container);
+				this.model[addTo].add(group);
 			}
 		} else {
 			group = game.add.group();

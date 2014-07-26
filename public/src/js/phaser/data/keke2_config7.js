@@ -24975,7 +24975,8 @@ PWG.Config = (function() {
 			// PHYSICS
 			gravity: {
 				x: 0,
-				y: stageUnit/2.5
+				// y: stageUnit/2.5
+				y: 1000
 			},
 			// CONTROLS
 			controls: {
@@ -25066,27 +25067,27 @@ PWG.Config = (function() {
 							}
 						}
 					},
-					{
-						name: 'left',
-						cl: 'ControlKey',
-						attrs: {
-							inputCode: PWG.InputCodes.LEFT
-						}
-					},
-					{
-						name: 'right',
-						cl: 'ControlKey',
-						attrs: {
-							inputCode: PWG.InputCodes.RIGHT
-						}
-					},
-					{
-						name: 'up',
-						cl: 'ControlKey',
-						attrs: {
-							inputCode: PWG.InputCodes.UP
-						}
-					},
+					// {
+					// 	name: 'left',
+					// 	cl: 'ControlKey',
+					// 	attrs: {
+					// 		inputCode: PWG.InputCodes.LEFT
+					// 	}
+					// },
+					// {
+					// 	name: 'right',
+					// 	cl: 'ControlKey',
+					// 	attrs: {
+					// 		inputCode: PWG.InputCodes.RIGHT
+					// 	}
+					// },
+					// {
+					// 	name: 'up',
+					// 	cl: 'ControlKey',
+					// 	attrs: {
+					// 		inputCode: PWG.InputCodes.UP
+					// 	}
+					// },
 					{
 						name: 'space',
 						cl: 'ControlKey',

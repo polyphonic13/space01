@@ -11,6 +11,7 @@ PWG.ControlKey = (function() {
 		trace('ControlKey['+this.model.name+']/begin');
 		trace(this);
 		this.key = PolyworksGame.phaser.input.keyboard.addKey(this.model.attrs.inputCode);
+		var _this = this;
 		this.key.onDown.add(this.inputDown, this);
 		this.key.onUp.add(this.inputUp, this);
 	};

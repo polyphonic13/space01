@@ -40,6 +40,7 @@ PWG.Sprite = (function() {
 			if(attrs.physicsType) {
 				PolyworksGame.phaser.physics.enable(this, attrs.physicsType);
 			} else {
+				trace('------ enabling physics for: ' + this.model.name);
 				PolyworksGame.phaser.physics.enable(this, Phaser.Physics.ARCADE);
 			}
 			this.beginPhysics(attrs.physics);
