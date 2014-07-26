@@ -50,14 +50,15 @@ PWG.Enemy = (function() {
 	};
 	
 	Enemy.prototype.calculateHorizontalMovement = function(player, movementType, invert) {
+		// trace('Enemy['+this.model.name+']/calculateHorizontalMovement');
 		var reverse = invert || false;
-		var enemyX = this.body.screenX;
-		var enemyY = this.body.screenY;
-		var playerX = player.body.screenX;
-		var playerY = player.body.screenY;
+		var enemyX = this.body.x;
+		var enemyY = this.body.y;
+		var playerX = player.body.x;
+		var playerY = player.body.y;
 
 		if(this.model.attrs.testInView) {
-			var name = this.model.name;
+			// trace('testing in view, enemyX = ' + enemyX + ', playerX = ' + playerX);
 			if((enemyX < (playerX + PWG.Stage.width/2) && enemyX > (playerX - PWG.Stage.width/2)) && (enemyY < (playerY + PWG.Stage.height/2) && enemyY > (playerY - PWG.Stage.height/2))) {
 				this.isInView = true;
 				if(!this.isActive) {
@@ -72,6 +73,7 @@ PWG.Enemy = (function() {
 		}
 
 		if(this.isInView) {
+				// trace('is in view, x = ' + enemyX + ', playerX = ' + playerX);
 			var direction; 
 			if(enemyX < (playerX - 10)) {
 				// trace(this.model.name + ': move right, x = ' + enemyX + ', playerX = ' + playerX);

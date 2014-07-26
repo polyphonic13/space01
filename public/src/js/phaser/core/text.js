@@ -10,6 +10,7 @@ PWG.Text = (function() {
 		var context = (attrs.dynamicContentContext) ? attrs.dynamicContentContext : PolyworksGame;
 		var content = PWG.Utils.parseMarkup(attrs.defaultContent, context);
 		Text._super.constructor.call(this, params.game, attrs.x, attrs.y, content, attrs.style);
+		this.setText(content);
 
 	}
 	
@@ -72,7 +73,7 @@ PWG.Text = (function() {
 	};
 	
 	Text.prototype.onUpdate = function(event) {
-		// trace('Text['+this.model.name+']/onUpdate, width = ' + this.width + ', event = ', event);
+		trace('Text['+this.model.name+']/onUpdate, width = ' + this.width + ', event = ', event);
 		var context;
 		if(event.context) {
 			context = event.context;
@@ -85,6 +86,7 @@ PWG.Text = (function() {
 		this.content = PWG.Utils.parseMarkup(this.model.attrs.defaultContent, context);
 		// trace('\twidth now = ' + this.width);
 		// this.alignAndPosition();
+		this.setText(this.content);
 	};
 	
 	Text.prototype.destroy = function() {
