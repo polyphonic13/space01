@@ -11,6 +11,11 @@ PWG.SectorManager = (function() {
 		trace('SectorManager/constructor, positionAxis = ' + this.positionAxis);
 		
 	}
+	
+	SectorManager.prototype.begin = function() {
+		SectorManager._super.begin.call(this);
+		trace('SectorManager/begin, collection = ', this.model.collection);
+	}
 
 	SectorManager.prototype.setState = function(state) {
 		this.model.set({ state: state });

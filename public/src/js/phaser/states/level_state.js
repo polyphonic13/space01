@@ -179,6 +179,7 @@
 				if(hazards) physicalItems.Hazards = hazards;
 				if(bonuses) physicalItems.Bonuses = bonuses;
 
+				// trace('dynamic terrain = ', physicalItems.DynamicTerrain);
 				this.player.pwUpdate({
 					physicalItems: physicalItems,
 					context: this
