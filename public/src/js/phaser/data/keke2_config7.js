@@ -4940,6 +4940,40 @@ PWG.Config = (function() {
 								immovable: true
 							}
 						}
+					}, {
+						name: 'sector04-branch01',
+						cl: 'Sprite',
+						attrs: {
+							img: 'branch03aLeft',
+							phaser: {
+								width: (stageUnit * 3),
+								height: (stageUnit * 0.5)
+							},
+							start: {
+								x: (stageWidth * 3) + (stageUnit),
+								y: winH - (stageUnit * 7.5)
+							},
+							physics: {
+								immovable: true
+							}
+						}
+					}, {
+						name: 'sector08-branch01',
+						cl: 'Sprite',
+						attrs: {
+							img: 'branch03aLeft',
+							phaser: {
+								width: (stageUnit * 3),
+								height: (stageUnit * 0.5)
+							},
+							start: {
+								x: (stageWidth * 7) + (stageUnit),
+								y: winH - (stageUnit * 7.5)
+							},
+							physics: {
+								immovable: true
+							}
+						}
 					}]
 				},
 				// sectors
@@ -5381,23 +5415,6 @@ PWG.Config = (function() {
 							name: 'dynamicTerrain',
 							cl: 'PhysicalGroupCollection',
 							attrs: [{
-								name: 'platform6',
-								cl: 'Sprite',
-								attrs: {
-									img: 'branch03aLeft',
-									phaser: {
-										width: (stageUnit * 3),
-										height: (stageUnit * 0.5)
-									},
-									start: {
-										x: (stageWidth * 3) + (stageUnit),
-										y: winH - (stageUnit * 7.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							}, {
 								name: 'platform7',
 								cl: 'Sprite',
 								attrs: {
@@ -5892,23 +5909,6 @@ PWG.Config = (function() {
 							name: 'dynamicTerrain',
 							cl: 'PhysicalGroupCollection',
 							attrs: [{
-								name: 'platform6',
-								cl: 'Sprite',
-								attrs: {
-									img: 'branch03aLeft',
-									phaser: {
-										width: (stageUnit * 3),
-										height: (stageUnit * 0.5)
-									},
-									start: {
-										x: (stageWidth * 7) + (stageUnit),
-										y: winH - (stageUnit * 7.5)
-									},
-									physics: {
-										immovable: true
-									}
-								}
-							}, {
 								name: 'platform7',
 								cl: 'Sprite',
 								attrs: {

@@ -26,6 +26,7 @@ PWG.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.setActiveSector = function(idx) {
+		trace('SectorManager/setActiveSector, idx = ' + idx + ', sector = ' + this.model.collection[idx].model.name);
 		var sector;
 		var oldIdx = this.activeSectorIdx;
 		this.activeSectorIdx = idx;

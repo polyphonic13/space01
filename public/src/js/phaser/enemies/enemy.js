@@ -39,7 +39,7 @@ PWG.Enemy = (function() {
 				break;
 
 				default: 
-					trace('ERROR: (enemy) unknown movement type: ' + movementType);
+					// trace('ERROR: (enemy) unknown movement type: ' + movementType);
 				break;
 			}
 
@@ -142,7 +142,7 @@ PWG.Enemy = (function() {
 	};
 	
 	Enemy.prototype.kill = function() {
-		trace('Enemy['+this.model.name+']/kill, ancestor = ');
+		// trace('Enemy['+this.model.name+']/kill, ancestor = ');
 		// trace(this.model);
 		PolyworksGame.setLevelScore(this.model.attrs.score);
 		this.model.ancestor.removeChild.call(this.model.ancestor, this.model.name);
@@ -150,7 +150,7 @@ PWG.Enemy = (function() {
 	};
 	
 	Enemy.prototype.destroy = function() {
-		trace('Enemy['+this.model.name+']/destroy');
+		// trace('Enemy['+this.model.name+']/destroy');
 		this.alive = false;
 		Enemy._super.destroy.call(this);
 	};

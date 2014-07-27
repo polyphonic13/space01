@@ -6,10 +6,10 @@ PWG.Text = (function() {
 		_this = this;
 		this.model = new PWG.Model(params);
 		var attrs = this.model.attrs;
-		trace('~~~~~~~~~ Text['+this.model.name+']/constructor, this = ', this);
+		// trace('~~~~~~~~~ Text['+this.model.name+']/constructor, this = ', this);
 		var context = (attrs.dynamicContentContext) ? attrs.dynamicContentContext : PolyworksGame;
 		var content = PWG.Utils.parseMarkup(attrs.defaultContent, context);
-		trace('\t['+this.model.name+'] content = ' + content);
+		// trace('\t['+this.model.name+'] content = ' + content);
 		Text._super.constructor.call(this, params.game, attrs.x, attrs.y, content.toString(), attrs.style);
 		// this.setText(content);
 
@@ -87,12 +87,12 @@ PWG.Text = (function() {
 		// trace('\twidth now = ' + this.width);
 		// this.alignAndPosition();
 		// this.setText(this.content.toString());
-		trace('Text['+this.model.name+']/onUpdate, content = ' + content + ', event = ', event);
+		// trace('Text['+this.model.name+']/onUpdate, content = ' + content + ', event = ', event);
 		this.text = content.toString();
 	};
 	
 	Text.prototype.destroy = function() {
-		trace('Text['+this.model.name+']/destroy, this = ', this, '\tlisteners = ', this.model.attrs.listeners);
+		// trace('Text['+this.model.name+']/destroy, this = ', this, '\tlisteners = ', this.model.attrs.listeners);
 		var listeners = this.model.listeners;
 		var _this = this;
 
@@ -104,7 +104,7 @@ PWG.Text = (function() {
 				_this
 			);
 		}
-		// Text._super.destroy();
+// trace		// Text._super.destroy();
 	};
 	
 	return Text;

@@ -117,7 +117,12 @@ PWG.Sprite = (function() {
 
 		PWG.Utils.each(dynamicTerrain,
 			function(c) {
-				physics.arcade.overlap(this, c, _this.onDynamicTerrainCollision, null, _this);
+				// trace('c['+c.model.name+'].active = ' + c.active);
+				if(c.active) {
+					physics.arcade.overlap(this, c, _this.onDynamicTerrainCollision, null, _this);
+				// } else {
+				// 	trace('c['+c.model.name+'].active = ' + c.active);
+				}
 			},
 			_this
 		);
