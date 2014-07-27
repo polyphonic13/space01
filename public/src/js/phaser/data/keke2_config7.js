@@ -600,7 +600,7 @@ PWG.Config = (function() {
 						animations: heartIconAnimations
 					}
 				}, {
-					name: 'health',
+					name: 'levelHealth',
 					cl: 'Text',
 					attrs: {
 						x: winW - (stageUnit * 2.1),
@@ -654,7 +654,7 @@ PWG.Config = (function() {
 				},
 				// paused text
 				{
-					name: 'paused',
+					name: 'pausedTitle',
 					cl: 'Text',
 					attrs: {
 						x: winW - (stageUnit * 6),
@@ -669,7 +669,7 @@ PWG.Config = (function() {
 				},
 				// score
 				{
-					name: 'score',
+					name: 'pausedScore',
 					cl: 'Text',
 					attrs: {
 						x: winW - (stageUnit * 6),
@@ -688,7 +688,7 @@ PWG.Config = (function() {
 				},
 				// high score
 				{
-					name: 'highScore',
+					name: 'pausedHighScore',
 					cl: 'Text',
 					attrs: {
 						x: winW - (stageUnit * 6),
@@ -828,7 +828,7 @@ PWG.Config = (function() {
 				},
 				// completed title
 				{
-					name: 'completed',
+					name: 'completedTitle',
 					cl: 'Text',
 					attrs: {
 						x: winW - (stageUnit * 6),
@@ -843,7 +843,7 @@ PWG.Config = (function() {
 				},
 				// score
 				{
-					name: 'score',
+					name: 'completedScore',
 					cl: 'Text',
 					attrs: {
 						x: winW - (stageUnit * 6),
@@ -862,7 +862,7 @@ PWG.Config = (function() {
 				},
 				// high score
 				{
-					name: 'highScore',
+					name: 'completedHighScore',
 					cl: 'Text',
 					attrs: {
 						x: winW - (stageUnit * 6),

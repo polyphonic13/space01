@@ -7,7 +7,6 @@
 		_this = this;
 		LevelState._super.constructor.call(this, params);
 
-		this.gameOver = false;
 		this.terrain;
 		this.controls;
 		this.cursors;
@@ -27,16 +26,18 @@
 	
 	LevelState.prototype.createState = function() {
 		trace('LevelState['+this.model.name+']/createState, this = ', this);
-		this.triggeredCleared = false;
-		this.requirementsMet = false; 
 
 		// create views and controls with super
 		LevelState._super.createState.call(this);
 
+		this.paused = false;
+		this.gameOver = false;
+		this.triggeredCleared = false;
+		this.requirementsMet = false; 
 
 		// PWG.EventCenter.bind(PWG.Events.AD_STARTED, this.onPauseState, this);
 		// PWG.EventCenter.bind(PWG.Events.AD_COMPLETED, this.onResumeState, this);
-		PWG.EventCenter.bind(PWG.Events.PAUSE_STATE, this.onPauseState, this);
+		// PWG.EventCenter.bind(PWG.Events.PAUSE_STATE, this.onPauseState, this);
 
 		this.requirements = this.getChildByName('requirements');
 		// trace('\n\n\trequirements = ', this.requirements, '\tgroup = ', this.requirements.group);
@@ -200,17 +201,18 @@
 		}
 	};
 
-	LevelState.prototype.onPauseState = function() {
-		trace('LevelState['+this.model.name+']/onPauseState');
-		if(!this.triggeredCleared) {
-			LevelState._super.onPauseState.call(this);
-			if(!this.paused) {
-				this.pauseState();
-			} else {
-				this.resumeState();
-			}
-		}
-	};
+	// LevelState.prototype.onPauseState = function() {
+	// 	trace('LevelState['+this.model.name+']/onPauseState, paused = ' + this.paused);
+	// 	if(!this.triggeredCleared) {
+	// 		LevelState._super.onPauseState.call(this);
+	// 		if(!this.paused) {
+	// 			trace('\tgoing to call pauseState');
+	// 			this.pauseState();
+	// 		} else {
+	// 			this.resumeState();
+	// 		}
+	// 	}
+	// };
 	
 	LevelState.prototype.onResumeState = function() {
 		// trace('LevelState['+this.model.name+']/onResumeState');
@@ -221,6 +223,7 @@
 	};
 	
 	LevelState.prototype.pauseState = function() {
+		trace('LevelState['+this.model.name+']/pauseState');
 		this.destroyPlayer();
 
 		if(this.enemyManager) {

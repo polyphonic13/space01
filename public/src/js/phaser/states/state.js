@@ -165,7 +165,7 @@ PWG.State = (function() {
 	};
 	
 	State.prototype.onPauseState = function() {
-		// trace('State['+this.model.name+']/onPauseState');
+		trace('State['+this.model.name+']/onPauseState');
 		if(this.paused) {
 			this.paused = false;
 		} else {

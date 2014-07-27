@@ -7,7 +7,7 @@ PWG.SectorManager = (function() {
 		SectorManager._super.constructor.call(this, params);
 
 		this.positionAxis = (this.model.type === PWG.SectorTypes.HORIZONTAL) ? 'x' : 'y';
-		trace('SectorManager/constructor, positionAxis = ' + this.positionAxis);
+		// trace('SectorManager/constructor, positionAxis = ' + this.positionAxis);
 		this.activeSectorIdx = -1;
 
 		this.localSectors = [];
@@ -18,7 +18,7 @@ PWG.SectorManager = (function() {
 	
 	SectorManager.prototype.begin = function() {
 		SectorManager._super.begin.call(this);
-		trace('SectorManager/begin, collection = ', this.model.collection);
+		// trace('SectorManager/begin, collection = ', this.model.collection);
 	}
 
 	SectorManager.prototype.setState = function(state) {
@@ -99,7 +99,7 @@ PWG.SectorManager = (function() {
 			// trace('\tc['+i+'] start/end = ' + bounds.start + '/' + bounds.end);
 			if(pos > bounds.start && pos < bounds.end) {
 				if(this.activeSectorIdx !== i) {
-					trace('new sector id = ' + i + ', name = ' + children[i].model.name + ', pos = ' + pos);
+					// trace('new sector id = ' + i + ', name = ' + children[i].model.name + ', pos = ' + pos);
 					this.setActiveSector(i);
 					break;
 					// this.addLocalSector(i);
@@ -110,7 +110,7 @@ PWG.SectorManager = (function() {
 	
 	SectorManager.prototype.getSectorBounds = function() {
 		var bounds = [];
-		trace('SectorManager/getSectorBounds, collection = ', this.model.collection);
+		// trace('SectorManager/getSectorBounds, collection = ', this.model.collection);
 		PWG.Utils.each(
 			this.model.collection,
 			function(sector) {

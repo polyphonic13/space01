@@ -3,7 +3,7 @@ PWG.Sprite = (function() {
 
 	function Sprite(params) {
 		this.model = new PWG.Model(params);
-		// trace('Sprite['+this.model.name+']/constructor, model = ', this.model);
+		trace('Sprite['+this.model.name+']/constructor, model = ', this.model);
 		var attrs = this.model.attrs;
 		var start = attrs.start;
 		// trace('\t\t\tstart = x: ' + start.x + ', y: ' + start.y + ', img = ' + attrs.img);
@@ -40,7 +40,7 @@ PWG.Sprite = (function() {
 			if(attrs.physicsType) {
 				PolyworksGame.phaser.physics.enable(this, attrs.physicsType);
 			} else {
-				trace('------ enabling physics for: ' + this.model.name);
+				// trace('------ enabling physics for: ' + this.model.name);
 				PolyworksGame.phaser.physics.enable(this, Phaser.Physics.ARCADE);
 			}
 			this.beginPhysics(attrs.physics);
