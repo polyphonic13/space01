@@ -92,7 +92,7 @@ PWG.Sprite = (function() {
 	
 	Sprite.prototype.activateGravity = function() {
 		// trace(this);
-		// trace('Sprite['+this.model.name+']/activateGravity, y = ' + this.body.screenY);
+		// trace('Sprite['+this.model.name+']/activateGravity, y = ' + this.body.y);
 		var physics = this.model.attrs.physics;
 		if(physics && physics.deferredGravity) {
 			var gravity = (physics.gravity) ? physics.gravity : PolyworksGame.get('gravity');

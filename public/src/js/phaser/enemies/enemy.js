@@ -108,8 +108,8 @@ PWG.Enemy = (function() {
 	};
 	
 	Enemy.prototype.calculateVerticalMovement = function(player, movementType) {
-		var enemyY = this.body.screenY;
-		var playerY = player.body.screenY;
+		var enemyY = this.body.y;
+		var playerY = player.body.y;
 		var playerHeight = player.body.height;
 		
 		if(this.model.attrs.testInView) {
@@ -125,6 +125,7 @@ PWG.Enemy = (function() {
 				// trace('move right');
 				this.relationToPlayer = 'above';
 				this.move({ direction: PWG.Directions.DOWN, type: movementType });
+			// } else if(enemyY > (playerY + playerHeight)) {
 			} else if(enemyY > (playerY + playerHeight)) {
 				// trace('move left');
 				this.relationToPlayer = 'below';
