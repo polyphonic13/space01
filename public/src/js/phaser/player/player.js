@@ -23,7 +23,7 @@ PWG.Player = (function() {
 		this.velY = 0;
 		this.previousY = this.body.y;
 		this.damageTimer = 0;
-		this.damageInterval = 250;
+		this.damageInterval = 1000;
 		this.justDamaged = false;
 
 		this.beginWorld();

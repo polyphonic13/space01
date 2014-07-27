@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-27T15:07:59')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-27T17:41:50')})();
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
  */
@@ -83142,20 +83142,20 @@ PWG.Config = (function() {
 		};
 
 		var spider01 = {
-			width: (stageUnit * 2),
-			height: (stageUnit * 2),
+			width: (stageUnit * 1.5),
+			height: (stageUnit * 1.5),
 			speed: 1.5
 		};
 
 		var spider02 = {
-			width: (stageUnit * 2.5),
-			height: (stageUnit * 2.5),
+			width: (stageUnit * 2),
+			height: (stageUnit * 2),
 			speed: 2
 		};
 
 		var spider03 = {
-			width: (stageUnit * 1.5),
-			height: (stageUnit * 1.5),
+			width: (stageUnit * 2.5),
+			height: (stageUnit * 2.5),
 			speed: 1
 		};
 
@@ -83339,6 +83339,8 @@ PWG.Config = (function() {
 
 				woodenArrowSign01Left: 'assets/images/scenery/wooden_arrow_sign01_left.png',
 				woodenArrowSign01Right: 'assets/images/scenery/wooden_arrow_sign01_right.png',
+				woodenArrowSignDownLeft: 'assets/images/scenery/wooden_arrow_down_left.png',
+				woodenArrowSignDownRight: 'assets/images/scenery/wooden_arrow_down_right.png',
 				woodenXSign01: 'assets/images/scenery/wooden_x_sign01.png',
 
 				branch03Left: 'assets/images/scenery/branch03_left.png',
@@ -83524,7 +83526,7 @@ PWG.Config = (function() {
 					frames: 16
 				},
 				spider01: {
-					url: 'assets/images/enemies/spider01a.png',
+					url: 'assets/images/enemies/spider01c.png',
 					width: 128,
 					height: 128,
 					frames: 16
@@ -83536,7 +83538,7 @@ PWG.Config = (function() {
 					frames: 16
 				},
 				spider03: {
-					url: 'assets/images/enemies/spider01c.png',
+					url: 'assets/images/enemies/spider01a.png',
 					width: 128,
 					height: 128,
 					frames: 16
@@ -104088,7 +104090,8 @@ PWG.Config = (function() {
 										immovable: true
 									}
 								}
-							}, {
+							}, 
+							{
 								name: 'sector2-platform01',
 								cl: 'Sprite',
 								attrs: {
@@ -106473,7 +106476,10 @@ PWG.Config = (function() {
 						// y: winH - 300
 						// y: winH - (226)
 						x: winW / 2,
-						y: winH - (stageUnit * 1.8)
+						// y: winH - (stageUnit * 1.8)
+						y: winH - (stageUnit * 3)
+						// y: winH
+						// y: 0
 					},
 					physics: {
 						// bounce: {
@@ -106485,9 +106491,12 @@ PWG.Config = (function() {
 					},
 					anchor: {
 						x: 0.5,
-						y: 0.5
+						// y: 1.3
+						y: 1
 					},
-					followStyle: Phaser.Camera.FOLLOW_TOPDOWN,
+					// followStyle: Phaser.Camera.FOLLOW_TOPDOWN,
+					// followStyle: Phaser.Camera.FOLLOW_PLATFORMER,
+					followStyle: Phaser.Camera.FOLLOW_TOPDOWN_TIGHT,
 					speed: {
 						x: (stageUnit * 4),
 						y: (stageUnit * 10.4)
@@ -108931,9 +108940,9 @@ PWG.Enemies = (function() {
 		PWG.Utils.each(
 			this.model.collection,
 			function(child) {
-				
+				// 
 				if(!child.isActive) {
-					
+					// 
 					child.deactivateGravity();
 				}
 			},
@@ -109054,9 +109063,9 @@ PWG.EnemyManager = function() {
 	};
 	
 	EnemyManager.prototype.onEnemyDestroyed = function(event) {
-		
+		// 
 		if(this.activeEnemies.hasOwnProperty(event.value)) {
-			
+			// 
 			delete this.activeEnemies[event.value];
 		}
 	};
@@ -109341,10 +109350,7 @@ PWG.SectorManager = (function() {
 		// 
 		this.activeSectorIdx = -1;
 
-		this.localSectors = [];
 		this.localDynamicTerrains = [];
-		this.localHazards = [];
-		this.localBonuses = [];
 	}
 	
 	SectorManager.prototype.begin = function() {
@@ -109365,18 +109371,24 @@ PWG.SectorManager = (function() {
 
 		sector = this.model.collection[idx];
 		this.localDynamicTerrains = sector.dynamicTerrain.getActive();
-		this.localHazards = sector.hazards.getActive();
-		this.localBonuses = sector.bonuses.getActive();
 
 		// moving forward
 		if(idx > oldIdx) {
 			// there's a sector after this, activate it
 			if(idx < this.model.collection.length - 1) {
+				// 
 				this.model.collection[(idx + 1)].setActive(true);
 				this.localDynamicTerrains = this.localDynamicTerrains.concat(this.model.collection[(idx + 1)].dynamicTerrain.getActive());
 			}
+
+			// keep previous sector's dynamic terrain for testing (quick return to previous sector)
+			if(idx > 0) {
+				this.localDynamicTerrains = this.localDynamicTerrains.concat(this.model.collection[(idx - 1)].dynamicTerrain.getActive());
+			}
+
 			// there's a sector 2 spaces back, deactivate it
 			if(idx > 1) {
+				// 
 				this.model.collection[(idx - 2)].setActive(false);
 			}
 		}
@@ -109384,11 +109396,19 @@ PWG.SectorManager = (function() {
 		if(idx < oldIdx) {
 			// there's one behind this, active it
 			if(idx > 0) {
+				// 
 				this.model.collection[(idx - 1)].setActive(true);
 				this.localDynamicTerrains = this.localDynamicTerrains.concat(this.model.collection[(idx - 1)].dynamicTerrain.getActive());
 			}
+
+			// keep next sector's dynamic terrain for testing (quick return to next sector)
+			if(idx < this.model.collection.length) {
+				this.localDynamicTerrains = this.localDynamicTerrains.concat(this.model.collection[(idx + 1)].dynamicTerrain.getActive());
+			}
+
 			// there's a sector 2 spaces forward, deactivate it
 			if(idx < this.model.collection.length - 2) {
+				// 
 				this.model.collection[(idx + 2)].setActive(false);
 			}
 		}
@@ -109890,6 +109910,8 @@ PWG.MapState = (function() {
 
 		this.playerGroup = PolyworksGame.phaser.add.group();
 		this.player = new PWG[playerConfig.cl](playerConfig);
+
+		// PolyworksGame.phaser.camera.focusOnXY(this.player.x + PWG.Stage.winW, /*(this.player.y + this.player.height) + */(PWG.Stage.winH * 2));
 		this.player.begin(health);
 		this.playerGroup.add(this.player);
 		this.playerPresent = true;

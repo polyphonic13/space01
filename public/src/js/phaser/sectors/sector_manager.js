@@ -36,7 +36,7 @@ PWG.SectorManager = (function() {
 		if(idx > oldIdx) {
 			// there's a sector after this, activate it
 			if(idx < this.model.collection.length - 1) {
-				trace('\tadding next sector dynamic terrain: ' + (idx + 1));
+				// trace('\tadding next sector dynamic terrain: ' + (idx + 1));
 				this.model.collection[(idx + 1)].setActive(true);
 				this.localDynamicTerrains = this.localDynamicTerrains.concat(this.model.collection[(idx + 1)].dynamicTerrain.getActive());
 			}
@@ -48,7 +48,7 @@ PWG.SectorManager = (function() {
 
 			// there's a sector 2 spaces back, deactivate it
 			if(idx > 1) {
-				trace('\tremoving 2 sectors backward: ' + (idx - 2));
+				// trace('\tremoving 2 sectors backward: ' + (idx - 2));
 				this.model.collection[(idx - 2)].setActive(false);
 			}
 		}
@@ -56,7 +56,7 @@ PWG.SectorManager = (function() {
 		if(idx < oldIdx) {
 			// there's one behind this, active it
 			if(idx > 0) {
-				trace('\tadding previous sector dynamic terrain: ' + (idx - 1));
+				// trace('\tadding previous sector dynamic terrain: ' + (idx - 1));
 				this.model.collection[(idx - 1)].setActive(true);
 				this.localDynamicTerrains = this.localDynamicTerrains.concat(this.model.collection[(idx - 1)].dynamicTerrain.getActive());
 			}
@@ -68,7 +68,7 @@ PWG.SectorManager = (function() {
 
 			// there's a sector 2 spaces forward, deactivate it
 			if(idx < this.model.collection.length - 2) {
-				trace('\tremoving 2 sectors forward: ' + (idx + 2));
+				// trace('\tremoving 2 sectors forward: ' + (idx + 2));
 				this.model.collection[(idx + 2)].setActive(false);
 			}
 		}

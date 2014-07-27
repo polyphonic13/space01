@@ -254,6 +254,8 @@ PWG.Config = (function() {
 
 				woodenArrowSign01Left: 'assets/images/scenery/wooden_arrow_sign01_left.png',
 				woodenArrowSign01Right: 'assets/images/scenery/wooden_arrow_sign01_right.png',
+				woodenArrowSignDownLeft: 'assets/images/scenery/wooden_arrow_down_left.png',
+				woodenArrowSignDownRight: 'assets/images/scenery/wooden_arrow_down_right.png',
 				woodenXSign01: 'assets/images/scenery/wooden_x_sign01.png',
 
 				branch03Left: 'assets/images/scenery/branch03_left.png',
@@ -1110,7 +1112,7 @@ PWG.Config = (function() {
 					}
 				},
 
-				descriptions: ['where am i?\nwhat happened to the colors?\ni see something blue in the tree over there.', 'CATERPILLARS?!\nthey are so gross.\ni want more lollipops.', 'climbing trees is so much fun!\ni wonder how many\ndifferent crystal colors i can find...', 'this is a big forest.\ni think i see thorns ahead.\ni better avoid those.', 'i hope this forest ends soon.', 'this river looks fast.\ni don\'t want to get swept away.\ni\'ll have to jump across the rocks.', 'wow! this mountain is huge.\ni guess i\'m going to have to climb it.', 'SPIDERS?!\ni hate spiders!', 'i think i see the top of the mountain.\njust a little bit further...', 'climbing down the mountain is so scary...', 'the rocks are crumbling!\ni hope i don\'t fall off...', 'a cave! let me see what\'s inside...'],
+				descriptions: ['where am i?\nwhat happened to the colors?\ni see something blue in the tree over there.', 'CATERPILLARS?!\nthey are so gross.\ni want more lollipops.', 'climbing trees is so much fun!\ni wonder how many\ndifferent crystal colors i can find...', 'this is a big forest.\ni think i see thorns ahead.\ni better avoid those.', 'i hope this forest ends soon.', 'this river looks fast.\ni don\'t want to get swept away.\ni\'ll have to jump across the rocks.', 'wow! this mountain is huge.\ni guess i\'m going to have to climb it.', 'SPIDERS?!\ni hate spiders!', 'i think i see the top of the mountain.\njust a little bit further...', 'climbing down the mountain is so scary...', 'those fire spiders are terrible.\ni will have to lure them to me\nso that i don\'t get under them.', 'a cave! let me see what\'s inside...'],
 
 				// audio: [
 				// 'secrets',
@@ -21003,7 +21005,8 @@ PWG.Config = (function() {
 										immovable: true
 									}
 								}
-							}, {
+							}, 
+							{
 								name: 'sector2-platform01',
 								cl: 'Sprite',
 								attrs: {
@@ -23388,7 +23391,10 @@ PWG.Config = (function() {
 						// y: winH - 300
 						// y: winH - (226)
 						x: winW / 2,
-						y: winH - (stageUnit * 1.8)
+						// y: winH - (stageUnit * 1.8)
+						y: winH - (stageUnit * 1)
+						// y: winH
+						// y: 0
 					},
 					physics: {
 						// bounce: {
@@ -23400,9 +23406,12 @@ PWG.Config = (function() {
 					},
 					anchor: {
 						x: 0.5,
-						y: 0.5
+						// y: 1.3
+						y: 1
 					},
-					followStyle: Phaser.Camera.FOLLOW_TOPDOWN,
+					// followStyle: Phaser.Camera.FOLLOW_TOPDOWN,
+					// followStyle: Phaser.Camera.FOLLOW_PLATFORMER,
+					followStyle: Phaser.Camera.FOLLOW_TOPDOWN_TIGHT,
 					speed: {
 						x: (stageUnit * 4),
 						y: (stageUnit * 10.4)

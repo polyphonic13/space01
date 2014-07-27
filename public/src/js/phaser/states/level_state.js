@@ -94,6 +94,8 @@
 
 		this.playerGroup = PolyworksGame.phaser.add.group();
 		this.player = new PWG[playerConfig.cl](playerConfig);
+
+		// PolyworksGame.phaser.camera.focusOnXY(this.player.x + PWG.Stage.winW, /*(this.player.y + this.player.height) + */(PWG.Stage.winH * 2));
 		this.player.begin(health);
 		this.playerGroup.add(this.player);
 		this.playerPresent = true;
