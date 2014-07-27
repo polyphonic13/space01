@@ -120,7 +120,7 @@
 	LevelState.prototype.addListeners = function() {
 		PWG.EventCenter.bind(PWG.Events.AD_COMPLETED, this.onAdCompleted, this);
 		PWG.EventCenter.bind(PWG.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
-		PWG.EventCenter.bind(PWG.Events.SCORE_UPDATED, this.onScoreUpdated, this);
+		PWG.EventCenter.bind(PWG.Events.LEVEL_SCORE_UPDATED, this.onLevelScoreUpdated, this);
 		PWG.EventCenter.bind(PWG.Events.HIGH_SCORE_UPDATED, this.onHighScoreUpdated, this);
 		PWG.EventCenter.bind(PWG.Events.GOAL_REACHED, this.onGoalReached, this);
 	};
@@ -128,7 +128,7 @@
 	LevelState.prototype.removeListeners = function() {
 		PWG.EventCenter.unbind(PWG.Events.AD_COMPLETED, this.onAdCompleted, this);
 		PWG.EventCenter.unbind(PWG.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
-		PWG.EventCenter.unbind(PWG.Events.SCORE_UPDATED, this.onScoreUpdated, this);
+		PWG.EventCenter.unbind(PWG.Events.LEVEL_SCORE_UPDATED, this.onLevelScoreUpdated, this);
 		PWG.EventCenter.unbind(PWG.Events.HIGH_SCORE_UPDATED, this.onHighScoreUpdated, this);
 		PWG.EventCenter.unbind(PWG.Events.GOAL_REACHED, this.onGoalReached, this);
 	};
@@ -218,7 +218,7 @@
 		this.healthText.text = this.player.health.toString();
 	};
 	
-	LevelState.prototype.onScoreUpdated = function() {
+	LevelState.prototype.onLevelScoreUpdated = function() {
 		this.pausedScoreText.text = PolyworksGame.levelScore;
 		this.completedScoreText.text = PolyworksGame.levelScore;
 	};
