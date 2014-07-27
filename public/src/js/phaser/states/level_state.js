@@ -201,18 +201,18 @@
 		}
 	};
 
-	// LevelState.prototype.onPauseState = function() {
-	// 	trace('LevelState['+this.model.name+']/onPauseState, paused = ' + this.paused);
-	// 	if(!this.triggeredCleared) {
-	// 		LevelState._super.onPauseState.call(this);
-	// 		if(!this.paused) {
-	// 			trace('\tgoing to call pauseState');
-	// 			this.pauseState();
-	// 		} else {
-	// 			this.resumeState();
-	// 		}
-	// 	}
-	// };
+	LevelState.prototype.onPauseState = function() {
+		trace('LevelState['+this.model.name+']/onPauseState, paused = ' + this.paused);
+		if(!this.triggeredCleared) {
+			LevelState._super.onPauseState.call(this);
+			if(this.paused) {
+				trace('\tgoing to call pauseState');
+				this.pauseState();
+			} else {
+				this.resumeState();
+			}
+		}
+	};
 	
 	LevelState.prototype.onResumeState = function() {
 		// trace('LevelState['+this.model.name+']/onResumeState');
