@@ -10,11 +10,10 @@ PWG.SectorManager = (function() {
 		trace('SectorManager/constructor, positionAxis = ' + this.positionAxis);
 		this.activeSectorIdx = -1;
 
-		this.activeSectorData = {
-			dynamicTerrain: {},
-			hazards: {},
-			bonuses: {}
-		}
+		this.localSectors = [];
+		this.localDynamicTerrains = [];
+		this.localHazards = [];
+		this.localBonuses = [];
 	}
 	
 	SectorManager.prototype.begin = function() {
@@ -27,22 +26,26 @@ PWG.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.setActiveSector = function(idx) {
+		var sector;
 		var oldIdx = this.activeSectorIdx;
 		this.activeSectorIdx = idx;
 		this.model.collection[idx].setActive(true);
-		this.addActiveSectorData(idx);
-		
+
+		sector = this.model.collection[idx];
+		this.localDynamicTerrains = sector.dynamicTerrain.getActive();
+		this.localHazards = sector.hazards.getActive();
+		this.localBonuses = sector.bonuses.getActive();
+
 		// moving forward
 		if(idx > oldIdx) {
 			// there's a sector after this, activate it
 			if(idx < this.model.collection.length - 1) {
 				this.model.collection[(idx + 1)].setActive(true);
-				this.addActiveSectorData(idx + 1);
+				this.localDynamicTerrains = this.localDynamicTerrains.concat(this.model.collection[(idx + 1)].dynamicTerrain.getActive());
 			}
 			// there's a sector 2 spaces back, deactivate it
 			if(idx > 1) {
 				this.model.collection[(idx - 2)].setActive(false);
-				this.removeActiveSectorData(idx - 2);
 			}
 		}
 		// moving back
@@ -50,30 +53,17 @@ PWG.SectorManager = (function() {
 			// there's one behind this, active it
 			if(idx > 0) {
 				this.model.collection[(idx - 1)].setActive(true);
-				this.addActiveSectorData(idx - 1);
+				this.localDynamicTerrains = this.localDynamicTerrains.concat(this.model.collection[(idx - 1)].dynamicTerrain.getActive());
 			}
 			// there's a sector 2 spaces forward, deactivate it
 			if(idx < this.model.collection.length - 2) {
 				this.model.collection[(idx + 2)].setActive(false);
-				this.removeActiveSectorData(idx + 2);
 			}
 		}
 
 		var state = this.model.get('state');
 		state.activeSector = this.model.collection[idx];
 		PWG.EventCenter.trigger({ type: PWG.Events.SECTOR_CHANGED, idx: idx });
-		
-	};
-	
-	SectorManager.prototype.addActiveSectorData = function(idx) {
-		var sector = this.model.collection[idx];
-		var dynamicTerrain = this.activeSectorData.dynamicTerrain || [];
-		if(sector.dynamicTerrain) {
-			this.activeSectorData.dynamicTerrain = dynamicTerrain.concat(sector.dynamicTerrain.getActive());
-		}
-	};
-	
-	SectorManager.prototype.removeActiveSectorData = function(idx) {
 		
 	};
 	

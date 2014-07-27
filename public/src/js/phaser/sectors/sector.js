@@ -13,13 +13,13 @@ PWG.Sector = (function() {
 		Sector._super.begin.call(this);
 		this.setChildrenExists(false);
 
-		this.dynamicTerrain = this.getChildByName('dynamicTerrain');
-		this.hazards = this.getChildByName('hazards');
-		this.bonuses = this.getChildByName('bonuses');
+		this.dynamicTerrain = this.getChildByName('dynamicTerrain') || { getActive: function() { return []; }};
+		this.hazards = this.getChildByName('hazards') || { getActive: function() { return []; }};
+		this.bonuses = this.getChildByName('bonuses') || { getActive: function() { return []; }};
 	};
 
 	Sector.prototype.setActive = function(active) {
-		trace('Sector['+this.model.name+']/setActive: active = ' + active + ', activatedOnce = ' + this.activatedOnce);
+		// trace('Sector['+this.model.name+']/setActive: active = ' + active + ', activatedOnce = ' + this.activatedOnce);
 		if(this.active || active) {
 			this.setChildrenExists(active);
 		}

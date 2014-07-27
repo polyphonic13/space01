@@ -159,7 +159,7 @@
 				var requirementsGroup = (this.requirements) ? this.requirements.group : null;
 
 				// var dynamicTerrainGroup = (sector.dynamicTerrain) ? sector.dynamicTerrain.getActive() : null;
-				var dynamicTerrainGroup = this.sectorManager.getActive('dynamicTerrain');
+				var dynamicTerrainGroup = this.sectorManager.localDynamicTerrains;
 
 				if(this.enemyManager) {
 					var enemies = this.enemyManager.getActiveEnemies();
@@ -173,7 +173,7 @@
 				physicalItems.Goals = goalGroup;
 				physicalItems.Requirements = requirementsGroup;
 				
-				if(dynamicTerrainGroup) physicalItems.DynamicTerrain = dynamicTerrainGroup;
+				if(dynamicTerrainGroup.length > 0) physicalItems.DynamicTerrain = dynamicTerrainGroup;
 				if(enemies) physicalItems.Enemies = enemies;
 				if(hazards) physicalItems.Hazards = hazards;
 				if(bonuses) physicalItems.Bonuses = bonuses;
