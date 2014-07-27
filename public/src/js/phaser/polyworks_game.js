@@ -570,7 +570,6 @@ PolyworksGame = (function() {
 		PolyworksGame.changeState(stateId);
 
 		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.START, (idx+1)]);
-		// _adapter.adCheck(PolyworksGame.currentLevel);
 	}
 	
 	function _onNextLevel(event) {

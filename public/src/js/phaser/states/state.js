@@ -163,6 +163,25 @@ PWG.State = (function() {
 			trace('WARNING: state already created');
 		}
 	};
+
+	State.prototype.createBlackBox = function() {
+		var blackBg = PolyworksGame.phaser.add.sprite(0, 0, 'blackRect');
+		blackBg.width = this.model.world.width;
+		blackBg.height = this.model.world.height;
+	    blackBg.anchor.setTo(0.5, 0.5);
+	    blackBg.alpha = 1;
+		
+		this.blackBg = blackBg;
+		
+	    this.blackBoxTween = PolyworksGame.phaser.add.tween(blackBg)
+		this.blackBoxTween.onComplete.add(function() {
+			blackBg.destroy();
+		});
+	};
+	
+	State.prototype.tweenBlackBox = function() {
+		this.blackBoxTween.to( { alpha: 0 }, 2000, Phaser.Easing.Exponential.In, true, 0, 0, false);
+	};
 	
 	State.prototype.onPauseState = function() {
 		trace('State['+this.model.name+']/onPauseState');

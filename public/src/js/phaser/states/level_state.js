@@ -35,10 +35,6 @@
 		this.triggeredCleared = false;
 		this.requirementsMet = false; 
 
-		// PWG.EventCenter.bind(PWG.Events.AD_STARTED, this.onPauseState, this);
-		// PWG.EventCenter.bind(PWG.Events.AD_COMPLETED, this.onResumeState, this);
-		// PWG.EventCenter.bind(PWG.Events.PAUSE_STATE, this.onPauseState, this);
-
 		this.requirements = this.getChildByName('requirements');
 		// trace('\n\n\trequirements = ', this.requirements, '\tgroup = ', this.requirements.group);
 		if(this.requirements) {
@@ -54,7 +50,6 @@
 		this.goalsReached = 0;
 		this.totalGoals = this.goals.getLength(); 
 		this.allGoalsReached = false;
-		PWG.EventCenter.bind(PWG.Events.GOAL_REACHED, this.onGoalReached, this);
 		
 		trace('LevelState['+this.model.name+']/createState, totalGoals = ' + this.totalGoals);
 		this.sectorManager = this.getChildByName('sectors');
@@ -69,27 +64,23 @@
 		// trace('LevelState['+this.model.name+']/createState\n\tplayerStart = ', playerStart);
 		this.createPlayer(playerStart, PolyworksGame.startingHealth);
 
-		var blackBg = PolyworksGame.phaser.add.sprite(0, 0, 'blackRect');
-		blackBg.width = this.model.world.width;
-		blackBg.height = this.model.world.height;
-	    blackBg.anchor.setTo(0.5, 0.5);
-	    blackBg.alpha = 1;
-		
-		trace('PWG.Stage.winW = ' + PWG.Stage.winW);
-		
-		this.blackBg = blackBg;
-		
-	    var tween = PolyworksGame.phaser.add.tween(blackBg)
-		tween.onComplete.add(function() {
-			blackBg.destroy();
-		});
-		
-		tween.to( { alpha: 0 }, 2000, Phaser.Easing.Exponential.In, true, 0, 0, false);
+		var levelGUI = this.getChildByName('levelGUI');
+		var pauseGUI = this.getChildByName('pauseGUI');
+		var completedGUI = this.getChildByName('completedGUI');
 
-		trace('end of create state');
-		// if(PolyworksGame.adPlaying) {
-		// 	this.onPauseState();
-		// }
+		this.pausedScoreText = pauseGUI.getChildByName('pausedScore');
+		this.pausedHighScoreText = pauseGUI.getChildByName('pausedHighScore');
+		this.completedScoreText = completedGUI.getChildByName('completedScore');
+		this.completedHighScoreText = completedGUI.getChildByName('completedHighScore');
+		this.healthText = levelGUI.getChildByName('levelHealth');
+
+		this.healthText.text = this.player.health;
+
+		this.addListeners();
+		
+		this.createBlackBox();
+		this.tweenBlackBox();
+
 	};
 
 	LevelState.prototype.createPlayer = function(start, health) {
@@ -122,6 +113,22 @@
 			this.player.destroy();
 			this.playerPresent = false;
 		} 
+	};
+	
+	LevelState.prototype.addListeners = function() {
+		PWG.EventCenter.bind(PWG.Events.AD_COMPLETED, this.onAdCompleted, this);
+		PWG.EventCenter.bind(PWG.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
+		PWG.EventCenter.bind(PWG.Events.SCORE_UPDATED, this.onScoreUpdated, this);
+		PWG.EventCenter.bind(PWG.Events.HIGH_SCORE_UPDATED, this.onHighScoreUpdated, this);
+		PWG.EventCenter.bind(PWG.Events.GOAL_REACHED, this.onGoalReached, this);
+	};
+	
+	LevelState.prototype.removeListeners = function() {
+		PWG.EventCenter.unbind(PWG.Events.AD_COMPLETED, this.onAdCompleted, this);
+		PWG.EventCenter.unbind(PWG.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
+		PWG.EventCenter.unbind(PWG.Events.SCORE_UPDATED, this.onScoreUpdated, this);
+		PWG.EventCenter.unbind(PWG.Events.HIGH_SCORE_UPDATED, this.onHighScoreUpdated, this);
+		PWG.EventCenter.unbind(PWG.Events.GOAL_REACHED, this.onGoalReached, this);
 	};
 	
 	LevelState.prototype.update = function() {
@@ -201,6 +208,24 @@
 		}
 	};
 
+	LevelState.prototype.onAdCompleted = function() {
+		this.tweenBlackBox();
+	};
+	
+	LevelState.prototype.onHealthUpdated = function() {
+		this.healthText.text = this.player.health.toString();
+	};
+	
+	LevelState.prototype.onScoreUpdated = function() {
+		this.pausedScoreText.text = PolyworksGame.levelScore;
+		this.completedScoreText.text = PolyworksGame.levelScore;
+	};
+	
+	LevelState.prototype.onHighScoreUpdated = function() {
+		this.pausedHighScoreText.text = PolyworksGame.currentLevelHighScore;
+		this.completedHighScoreText.text = PolyworksGame.currentLevelHighScore;
+	};
+	
 	LevelState.prototype.onPauseState = function() {
 		trace('LevelState['+this.model.name+']/onPauseState, paused = ' + this.paused);
 		if(!this.triggeredCleared) {
@@ -294,9 +319,8 @@
 	LevelState.prototype.shutdown = function() {
 		// trace('LevelState['+this.model.name+']/shutdown');
 		PWG.EventCenter.unbind(PWG.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
-		// PWG.EventCenter.unbind(PWG.Events.AD_STARTED, this.onPauseState, this);
-		// PWG.EventCenter.unbind(PWG.Events.AD_COMPLETED, this.onResumeState, this);
-		
+
+		this.removeListeners();
 		this.destroyPlayer();
 		if(this.enemyManager) {
 			this.enemyManager.destroy();

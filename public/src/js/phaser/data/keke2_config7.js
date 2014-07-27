@@ -610,9 +610,7 @@ PWG.Config = (function() {
 							font: fontSizes.sm + 'px "Waiting for the Sunrise" Arial sans-serif',
 							align: 'right',
 							fill: '#ffffff'
-						},
-						listeners: [
-						PWG.Events.HEALTH_UPDATED]
+						}
 					}
 				}],
 				requirementsGUI: [{
@@ -681,9 +679,7 @@ PWG.Config = (function() {
 							fill: '#000000',
 							align: 'right'
 						},
-						defaultContent: 'score: ~{levelScore}~',
-						listeners: [
-						PWG.Events.LEVEL_SCORE_UPDATED]
+						defaultContent: 'score: ~{levelScore}~'
 					}
 				},
 				// high score
@@ -856,8 +852,6 @@ PWG.Config = (function() {
 							align: 'right'
 						},
 						defaultContent: 'score: ~{levelScore}~',
-						listeners: [
-						PWG.Events.LEVEL_CLEARED]
 					}
 				},
 				// high score
@@ -875,8 +869,6 @@ PWG.Config = (function() {
 							align: 'left'
 						},
 						defaultContent: '~{currentLevelHighScore}~',
-						listeners: [
-						PWG.Events.LEVEL_CLEARED]
 					}
 				},
 				// oval mask
