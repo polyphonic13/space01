@@ -114,6 +114,8 @@ PolyworksGame = (function() {
 
 				// PolyworksGame.initControls();
 
+			    PolyworksGame.phaser.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+			    PolyworksGame.phaser.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
 				PolyworksGame.phaser.scale.startFullScreen(false);
 
 				PolyworksGame.changeState(_model.initialState);

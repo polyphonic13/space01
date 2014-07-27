@@ -17,7 +17,7 @@ var GameConfig = {
 
     CONSTRUCTOR: 'EmptyGame',
     SOURCE: [
-	    "js/game/keke2.js",
+	    "js/game/keke2.min.js",
 		"http://sdk.tresensa.com/plugins/phaser/tgshelper.min.js"
     ],
 

@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-27T13:05:42')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-27T13:39:44')})();
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
  */
@@ -82490,7 +82490,7 @@ PWG.TGSAdapter = (function() {
 	var _tgsConfig = {
 		GAME_ID: 'kekeandthegreyexpanse',
 		ADS: {
-			INTERSTITIAL_INTERVAL: 5
+			INTERSTITIAL_INTERVAL: 150
 		}
 	};
 	
@@ -110753,6 +110753,8 @@ PolyworksGame = (function() {
 
 				// PolyworksGame.initControls();
 
+			    PolyworksGame.phaser.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+			    PolyworksGame.phaser.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
 				PolyworksGame.phaser.scale.startFullScreen(false);
 
 				PolyworksGame.changeState(_model.initialState);

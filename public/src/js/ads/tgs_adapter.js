@@ -11,7 +11,7 @@ PWG.TGSAdapter = (function() {
 	var _tgsConfig = {
 		GAME_ID: 'kekeandthegreyexpanse',
 		ADS: {
-			INTERSTITIAL_INTERVAL: 5
+			INTERSTITIAL_INTERVAL: 150
 		}
 	};
 	
