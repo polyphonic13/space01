@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-27T17:41:50')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-27T18:30:48')})();
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
  */
@@ -84197,7 +84197,7 @@ PWG.Config = (function() {
 					}
 				},
 
-				descriptions: ['where am i?\nwhat happened to the colors?\ni see something blue in the tree over there.', 'CATERPILLARS?!\nthey are so gross.\ni want more lollipops.', 'climbing trees is so much fun!\ni wonder how many\ndifferent crystal colors i can find...', 'this is a big forest.\ni think i see thorns ahead.\ni better avoid those.', 'i hope this forest ends soon.', 'this river looks fast.\ni don\'t want to get swept away.\ni\'ll have to jump across the rocks.', 'wow! this mountain is huge.\ni guess i\'m going to have to climb it.', 'SPIDERS?!\ni hate spiders!', 'i think i see the top of the mountain.\njust a little bit further...', 'climbing down the mountain is so scary...', 'the rocks are crumbling!\ni hope i don\'t fall off...', 'a cave! let me see what\'s inside...'],
+				descriptions: ['where am i?\nwhat happened to the colors?\ni see something blue in the tree over there.', 'CATERPILLARS?!\nthey are so gross.\ni want more lollipops.', 'climbing trees is so much fun!\ni wonder how many\ndifferent crystal colors i can find...', 'this is a big forest.\ni think i see thorns ahead.\ni better avoid those.', 'i hope this forest ends soon.', 'this river looks fast.\ni don\'t want to get swept away.\ni\'ll have to jump across the rocks.', 'wow! this mountain is huge.\ni guess i\'m going to have to climb it.', 'SPIDERS?!\ni hate spiders!', 'i think i see the top of the mountain.\njust a little bit further...', 'climbing down the mountain is SO scary!', 'those fire spiders are terrible.\ni will have to lure them to me\nso that i don\'t get under them.', 'wow! i just escaped them.\nlook: a cave! let me see what\'s inside...'],
 
 				// audio: [
 				// 'secrets',
@@ -106477,7 +106477,7 @@ PWG.Config = (function() {
 						// y: winH - (226)
 						x: winW / 2,
 						// y: winH - (stageUnit * 1.8)
-						y: winH - (stageUnit * 3)
+						y: winH - (stageUnit * 1)
 						// y: winH
 						// y: 0
 					},
@@ -107578,8 +107578,8 @@ PWG.Enemy = (function() {
 	};
 	
 	Enemy.prototype.calculateVerticalMovement = function(player, movementType) {
-		var enemyY = this.body.screenY;
-		var playerY = player.body.screenY;
+		var enemyY = this.body.y;
+		var playerY = player.body.y;
 		var playerHeight = player.body.height;
 		
 		if(this.model.attrs.testInView) {
@@ -107595,6 +107595,7 @@ PWG.Enemy = (function() {
 				// 
 				this.relationToPlayer = 'above';
 				this.move({ direction: PWG.Directions.DOWN, type: movementType });
+			// } else if(enemyY > (playerY + playerHeight)) {
 			} else if(enemyY > (playerY + playerHeight)) {
 				// 
 				this.relationToPlayer = 'below';
@@ -110202,7 +110203,7 @@ PWG.Player = (function() {
 		this.velY = 0;
 		this.previousY = this.body.y;
 		this.damageTimer = 0;
-		this.damageInterval = 250;
+		this.damageInterval = 1000;
 		this.justDamaged = false;
 
 		this.beginWorld();
