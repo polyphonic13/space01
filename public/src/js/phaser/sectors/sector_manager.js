@@ -5,11 +5,16 @@ PWG.SectorManager = (function() {
 		// trace('SectorManager['+params.name+']/constructor, params = ');
 		// trace(params);
 		SectorManager._super.constructor.call(this, params);
-		// this.setActiveSector(0);
+
 		this.positionAxis = (this.model.type === PWG.SectorTypes.HORIZONTAL) ? 'x' : 'y';
-		this.activeEnemies = {};
 		trace('SectorManager/constructor, positionAxis = ' + this.positionAxis);
-		
+		this.activeSectorIdx = -1;
+
+		this.activeSectorData = {
+			dynamicTerrain: {},
+			hazards: {},
+			bonuses: {}
+		}
 	}
 	
 	SectorManager.prototype.begin = function() {
@@ -22,16 +27,61 @@ PWG.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.setActiveSector = function(idx) {
-		// this.deactivateAll();
-		// if(this.activeSectorIdx) {
-		// 	this.model.collection[this.activeSectorIdx].setActive(false);
-		// }
+		var oldIdx = this.activeSectorIdx;
 		this.activeSectorIdx = idx;
 		this.model.collection[idx].setActive(true);
+		this.addActiveSectorData(idx);
+		
+		// moving forward
+		if(idx > oldIdx) {
+			// there's a sector after this, activate it
+			if(idx < this.model.collection.length - 1) {
+				this.model.collection[(idx + 1)].setActive(true);
+				this.addActiveSectorData(idx + 1);
+			}
+			// there's a sector 2 spaces back, deactivate it
+			if(idx > 1) {
+				this.model.collection[(idx - 2)].setActive(false);
+				this.removeActiveSectorData(idx - 2);
+			}
+		}
+		// moving back
+		if(idx < oldIdx) {
+			// there's one behind this, active it
+			if(idx > 0) {
+				this.model.collection[(idx - 1)].setActive(true);
+				this.addActiveSectorData(idx - 1);
+			}
+			// there's a sector 2 spaces forward, deactivate it
+			if(idx < this.model.collection.length - 2) {
+				this.model.collection[(idx + 2)].setActive(false);
+				this.removeActiveSectorData(idx + 2);
+			}
+		}
 
 		var state = this.model.get('state');
 		state.activeSector = this.model.collection[idx];
 		PWG.EventCenter.trigger({ type: PWG.Events.SECTOR_CHANGED, idx: idx });
+		
+	};
+	
+	SectorManager.prototype.addActiveSectorData = function(idx) {
+		var sector = this.model.collection[idx];
+		var dynamicTerrain = this.activeSectorData.dynamicTerrain || [];
+		if(sector.dynamicTerrain) {
+			this.activeSectorData.dynamicTerrain = dynamicTerrain.concat(sector.dynamicTerrain.getActive());
+		}
+	};
+	
+	SectorManager.prototype.removeActiveSectorData = function(idx) {
+		
+	};
+	
+	SectorManager.prototype.getActive = function(key) {
+		if(!this.activeSectorData.hasOwnProperty(key)) {
+			return null;
+		}
+		return this.activeSectorData[key];
 	};
 	
 	SectorManager.prototype.getSector = function(idx) {
@@ -42,47 +92,27 @@ PWG.SectorManager = (function() {
 		return this.model.collection[this.activeSectorIdx];
 	};
 	
-	SectorManager.prototype.checkTerrainCollision = function(terrain) {
-		this.model.collection[this.activeSectorIdx].checkTerrainCollision(terrain);
-		/*
-		PWG.Utils.each(this.model.collection,
-			function(c) {
-				c.checkTerrainCollision(terrain);
-			},
-			this
-		);
-		*/
-	};
-	
 	SectorManager.prototype.pwUpdate = function(params) {
-		// trace('SectorManager/pwUpdate, activeEnemies = ', this.activeEnemies);
-		this.checkTerrainCollision(params.terrain);
-		this.findActiveSector(params.position);
-		
-		var activeSector = this.model.collection[this.activeSectorIdx];
-		// activeSector.pwUpdate(params);
-		
+		this.updateActiveSector(params.position);
 	};
 	
-	SectorManager.prototype.findActiveSector = function(position) {
-		// trace('SectorManager/findActiveSector, this = ');
+	SectorManager.prototype.updateActiveSector = function(position) {
+		// trace('SectorManager/updateActiveSector, this = ');
 		// trace(this);
-		// reset all sectors to off
-		// this.deactivateAll();
-
-		var child = this.model.collection;
-		var length = child.length;
+		var children = this.model.collection;
+		var length = children.length;
 		var bounds;
 		var pos = position[this.positionAxis];
 		// trace('pos = ' + pos);
 		for(var i = 0; i < length; i++) {
-			bounds = child[i].model.bounds;
+			bounds = children[i].model.bounds;
 			// trace('\tc['+i+'] start/end = ' + bounds.start + '/' + bounds.end);
 			if(pos > bounds.start && pos < bounds.end) {
 				if(this.activeSectorIdx !== i) {
-					trace('new sector id = ' + i + ', name = ' + child[i].model.name + ', pos = ' + pos);
+					trace('new sector id = ' + i + ', name = ' + children[i].model.name + ', pos = ' + pos);
 					this.setActiveSector(i);
 					break;
+					// this.addLocalSector(i);
 				}
 			}
 		}

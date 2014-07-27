@@ -10,7 +10,7 @@ PWG.Text = (function() {
 		var context = (attrs.dynamicContentContext) ? attrs.dynamicContentContext : PolyworksGame;
 		var content = PWG.Utils.parseMarkup(attrs.defaultContent, context);
 		Text._super.constructor.call(this, params.game, attrs.x, attrs.y, content, attrs.style);
-		this.setText(content);
+		// this.setText(content);
 
 	}
 	
@@ -86,7 +86,7 @@ PWG.Text = (function() {
 		this.content = PWG.Utils.parseMarkup(this.model.attrs.defaultContent, context);
 		// trace('\twidth now = ' + this.width);
 		// this.alignAndPosition();
-		this.setText(this.content);
+		// this.setText(this.content);
 	};
 	
 	Text.prototype.destroy = function() {

@@ -2499,7 +2499,9 @@ PWG.Config = (function() {
 								x: (stageWidth * 2) + (stageUnit * 13),
 								y: winH - (stageUnit * 13.5)
 							},
-							physics: {}
+							physics: {
+								allowGravity: false
+							}
 						}
 					}]
 				},
@@ -3880,7 +3882,9 @@ PWG.Config = (function() {
 								x: (stageWidth * 4) + (stageUnit * 2),
 								y: winH - (stageUnit * 13)
 							},
-							physics: {}
+							physics: {
+								allowGravity: false
+							}
 						}
 					}]
 				},
@@ -4958,7 +4962,7 @@ PWG.Config = (function() {
 						cl: 'Sector',
 						bounds: {
 							start: 0,
-							end: stageWidth
+							end: stageWidth// + (gameUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -5119,8 +5123,8 @@ PWG.Config = (function() {
 						name: 'sector2',
 						cl: 'Sector',
 						bounds: {
-							start: stageWidth,
-							end: stageWidth * 2
+							start: (stageWidth),// - (gameUnit * 2),
+							end: (stageWidth * 2)// + (gameUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -5272,8 +5276,8 @@ PWG.Config = (function() {
 						name: 'sector3',
 						cl: 'Sector',
 						bounds: {
-							start: stageWidth * 2,
-							end: stageWidth * 3
+							start: (stageWidth * 2),// - (gameUnit * 2),
+							end: (stageWidth * 3)// + (gameUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -5378,8 +5382,8 @@ PWG.Config = (function() {
 						name: 'sector4',
 						cl: 'Sector',
 						bounds: {
-							start: stageWidth * 3,
-							end: stageWidth * 4
+							start: (stageWidth * 3),// - (gameUnit * 2),
+							end: (stageWidth * 4)// + (gameUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -5505,8 +5509,8 @@ PWG.Config = (function() {
 						name: 'sector5',
 						cl: 'Sector',
 						bounds: {
-							start: stageWidth * 4,
-							end: stageWidth * 5
+							start: (stageWidth * 4),// - (gameUnit * 2),
+							end: (stageWidth * 5)// + (gameUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -5684,8 +5688,8 @@ PWG.Config = (function() {
 						name: 'sector6',
 						cl: 'Sector',
 						bounds: {
-							start: stageWidth * 5,
-							end: stageWidth * 6
+							start: (stageWidth * 5),// - (gameUnit * 2),
+							end: (stageWidth * 6)// + (gameUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -5797,8 +5801,8 @@ PWG.Config = (function() {
 						name: 'sector7',
 						cl: 'Sector',
 						bounds: {
-							start: stageWidth * 6,
-							end: stageWidth * 7
+							start: (stageWidth * 6),// - (gameUnit * 2),
+							end: (stageWidth * 7)// + (gameUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -5889,8 +5893,8 @@ PWG.Config = (function() {
 						name: 'sector8',
 						cl: 'Sector',
 						bounds: {
-							start: stageWidth * 7,
-							end: stageWidth * 8
+							start: (stageWidth * 7),// - (gameUnit * 2),
+							end: (stageWidth * 8)// + (gameUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -6002,8 +6006,8 @@ PWG.Config = (function() {
 						name: 'sector9',
 						cl: 'Sector',
 						bounds: {
-							start: stageWidth * 8,
-							end: stageWidth * 9
+							start: (stageWidth * 8),// - (gameUnit * 2),
+							end: (stageWidth * 9)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',

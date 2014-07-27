@@ -28,7 +28,7 @@ PWG.EnemyManager = function() {
 	};
 	
 	EnemyManager.prototype.onSectorChanged = function(event) {
-		trace('EnemyManager/onSectorChanged, event = ', event);
+		// trace('EnemyManager/onSectorChanged, event = ', event);
 		this.removeActiveEnemies(this.sectors[this.sectorIdx].enemies);
 		this.sectorIdx = event.idx;
 		this.addActiveEnemies(this.sectors[this.sectorIdx].enemies);
@@ -63,7 +63,7 @@ PWG.EnemyManager = function() {
 			this
 		);
 
-		trace('EnemyManager/createSectors completed, sectors = ', this.sectors);
+		// trace('EnemyManager/createSectors completed, sectors = ', this.sectors);
 	};
 	
 	EnemyManager.prototype.onAddActiveEnemies = function(event) {
@@ -82,7 +82,7 @@ PWG.EnemyManager = function() {
 	};
 	
 	EnemyManager.prototype.onRemoveActiveEnemy = function(event) {
-		trace('EnemyManager/onRemoveActiveEnemy, event = ', event, '\tthis = ', this);
+		// trace('EnemyManager/onRemoveActiveEnemy, event = ', event, '\tthis = ', this);
 		this.removeActiveEnemy(event.enemy);
 	};
 	
@@ -98,16 +98,16 @@ PWG.EnemyManager = function() {
 	};
 	
 	EnemyManager.prototype.addActiveEnemy = function(enemy) {
-		trace('EnemyManager/addActiveEnemy, enemy = ' + enemy.model.name);
+		// trace('EnemyManager/addActiveEnemy, enemy = ' + enemy.model.name);
 		if(!this.activeEnemies.hasOwnProperty(enemy.model.name)) {
-			trace('\tdoes not exist yet; adding');
+			// trace('\tdoes not exist yet; adding');
 			enemy.activateGravity();
 			this.activeEnemies[enemy.model.name] = enemy;
 		}
 	};
 	
 	EnemyManager.prototype.removeActiveEnemies = function(enemies) {
-		trace('EnemyManager/removeActiveEnemies, enemies = ', enemies, '\tactiveEnemies = ', this.activeEnemies);
+		// trace('EnemyManager/removeActiveEnemies, enemies = ', enemies, '\tactiveEnemies = ', this.activeEnemies);
 		PWG.Utils.each(
 			enemies.model.collection,
 			function(enemy) {
@@ -120,10 +120,10 @@ PWG.EnemyManager = function() {
 	};
 	
 	EnemyManager.prototype.removeActiveEnemy = function(enemy) {
-		trace('EnemyManager/removeActiveEnemy, enemy = ' + enemy.model.name);
+		// trace('EnemyManager/removeActiveEnemy, enemy = ' + enemy.model.name);
 		if(this.activeEnemies.hasOwnProperty(enemy.model.name)) {
 			enemy.deactivateGravity();
-			trace('\texists; removing');
+			// trace('\texists; removing');
 			delete this.activeEnemies[enemy.model.name];
 		}
 	};

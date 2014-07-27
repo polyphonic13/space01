@@ -27,7 +27,6 @@ PWG.PhysicalGroupCollection = (function() {
 	};
 	
 	PhysicalGroupCollection.prototype.activateGravity = function() {
-		// trace('PhysicalGroupCollection['+this.model.name+']/activateGravity, collection length = ' + collection.length);
 		PWG.Utils.each(this.model.collection,
 			function(c) {
 				c.activateGravity();
@@ -37,7 +36,6 @@ PWG.PhysicalGroupCollection = (function() {
 	};
 	
 	PhysicalGroupCollection.prototype.getActive = function() {
-		// trace('PhysicalGroupCollection['+this.model.name+']/getActive, collection length = ' + this.model.collection.length);
 		var activeElements = [];
 		PWG.Utils.each(this.model.collection,
 			function(c) {

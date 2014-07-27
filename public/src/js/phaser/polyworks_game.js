@@ -39,6 +39,7 @@ PolyworksGame = (function() {
 		levelCount: 0,
 		requirementsMet: 0,
 		requirementsCount: 0,
+		states: _states,
 		currentState: '',
 		previousState: '',
 		savedState: '',
