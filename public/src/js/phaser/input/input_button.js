@@ -67,7 +67,16 @@ PWG.InputButton = (function() {
 	};
 	
 	InputButton.prototype.inputDown = function(event, pointer, ctx) {
-		// trace('InputButton['+this.model.name+']/inputDown');
+		trace('InputButton['+this.model.name+']/inputDown');
+		// hack
+		if(PWG.DeviceUtils.isMobile()) {
+			if(this.model.name === 'start' || this.model.name === 'restart' || this.model.name === 'playButtonSmall') {
+				// if(!PolyworksGame.isFullscreen) {
+					trace('attempting fullscreen');
+					PolyworksGame.phaser.scale.startFullScreen(false);
+				// }
+			}
+		}
 		ctx.inputPressed.call(ctx, { type: PWG.Events.CONTROL_PRESSED, value: ctx.model.attrs.inputCode });
 		ctx.pressed = true;
 	};

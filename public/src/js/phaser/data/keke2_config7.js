@@ -57,20 +57,20 @@ PWG.Config = (function() {
 		};
 
 		var spider01 = {
-			width: (stageUnit * 2),
-			height: (stageUnit * 2),
+			width: (stageUnit * 1.5),
+			height: (stageUnit * 1.5),
 			speed: 1.5
 		};
 
 		var spider02 = {
-			width: (stageUnit * 2.5),
-			height: (stageUnit * 2.5),
+			width: (stageUnit * 2),
+			height: (stageUnit * 2),
 			speed: 2
 		};
 
 		var spider03 = {
-			width: (stageUnit * 1.5),
-			height: (stageUnit * 1.5),
+			width: (stageUnit * 2.5),
+			height: (stageUnit * 2.5),
 			speed: 1
 		};
 
@@ -439,7 +439,7 @@ PWG.Config = (function() {
 					frames: 16
 				},
 				spider01: {
-					url: 'assets/images/enemies/spider01a.png',
+					url: 'assets/images/enemies/spider01c.png',
 					width: 128,
 					height: 128,
 					frames: 16
@@ -451,7 +451,7 @@ PWG.Config = (function() {
 					frames: 16
 				},
 				spider03: {
-					url: 'assets/images/enemies/spider01c.png',
+					url: 'assets/images/enemies/spider01a.png',
 					width: 128,
 					height: 128,
 					frames: 16

@@ -126,7 +126,7 @@ PWG.State = (function() {
 					// key, volume loop
 					PolyworksGame.currentAudio = PolyworksGame.phaser.add.audio(audio, 1, true);
 					// marker, position, volume, loop
-					// PolyworksGame.currentAudio.play('', 0, 1, true);
+					PolyworksGame.currentAudio.play('', 0, 1, true);
 					PolyworksGame.currentAudioName = audio;
 				}
 			}

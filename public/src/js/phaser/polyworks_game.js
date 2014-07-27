@@ -44,6 +44,7 @@ PolyworksGame = (function() {
 		previousState: '',
 		savedState: '',
 		viewedOnce: '0',
+		isFullscreen: false,
 		isMuted: false,
 		adPlaying: false,
 		tipDisplayed: false,
@@ -115,8 +116,9 @@ PolyworksGame = (function() {
 				// PolyworksGame.initControls();
 
 			    PolyworksGame.phaser.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-			    PolyworksGame.phaser.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-				PolyworksGame.phaser.scale.startFullScreen(false);
+			    // PolyworksGame.phaser.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+			    PolyworksGame.phaser.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+				// PolyworksGame.phaser.scale.startFullScreen(false);
 
 				PolyworksGame.changeState(_model.initialState);
 			}

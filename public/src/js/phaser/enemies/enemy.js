@@ -144,8 +144,10 @@ PWG.Enemy = (function() {
 	Enemy.prototype.kill = function() {
 		// trace('Enemy['+this.model.name+']/kill, ancestor = ');
 		// trace(this.model);
+		this.active = false;
 		PolyworksGame.setLevelScore(this.model.attrs.score);
 		this.model.ancestor.removeChild.call(this.model.ancestor, this.model.name);
+		PWG.EventCenter.trigger({ type: PWG.Events.ENEMY_DESTROYED, value: this.model.name });
 		Enemy._super.kill.call(this);
 	};
 	

@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-27T13:39:44')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-27T15:07:59')})();
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
  */
@@ -84302,168 +84302,80 @@ PWG.Config = (function() {
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							x: -(stageUnit * 1.25),
 							y: (stageUnit * 2.5),
 							style: {
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise" Arial sans-serif',
 								fill: '#000000',
 								align: 'center'
 							},
-							defaultContent: 'code & art: '
+							defaultContent: 'code & art: paul hoover'
 						}
-					}, {
-						name: 'code2',
-						cl: 'Text',
-						attrs: {
-							alignX: 'center',
-							x: (stageUnit * 1.25),
-							y: (stageUnit * 2.65),
-							style: {
-								font: 'bold ' + fontSizes.xs + 'px "Smythe"',
-								fill: '#000000',
-								align: 'center'
-							},
-							defaultContent: 'paul hoover'
-						}
-					}, {
+					}, 
+					{
 						name: 'design1',
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							x: -(stageUnit * 2.75),
 							y: (stageUnit * 3.5),
 							style: {
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise" Arial sans-serif',
 								fill: '#000000',
 								align: 'center'
 							},
-							defaultContent: 'design: '
+							defaultContent: 'design: paul hoover & seema sharia'
 						}
-					}, {
-						name: 'design1',
-						cl: 'Text',
-						attrs: {
-							alignX: 'center',
-							x: (stageUnit * 0.85),
-							y: (stageUnit * 3.65),
-							style: {
-								font: 'bold ' + fontSizes.xs + 'px "Smythe"',
-								fill: '#000000',
-								align: 'center'
-							},
-							defaultContent: 'paul hoover and seema shariat'
-						}
-					}, {
+					}, 
+					{
 						name: 'music',
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							x: -(stageUnit * 1.25),
 							y: (stageUnit * 4.5),
 							style: {
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise" Arial sans-serif',
 								fill: '#000000',
 								align: 'center'
 							},
-							defaultContent: 'music: '
-						}
-					}, {
-						name: 'music',
-						cl: 'Text',
-						attrs: {
-							alignX: 'center',
-							x: (stageUnit * 0.85),
-							y: (stageUnit * 4.65),
-							style: {
-								font: 'bold ' + fontSizes.xs + 'px "Smythe"',
-								fill: '#000000',
-								align: 'center'
-							},
-							defaultContent: 'factor13 | ioioio'
+							defaultContent: 'music: factor13'
 						}
 					}, {
 						name: 'marketing1',
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							x: -(stageUnit * 1.25),
 							y: (stageUnit * 5.5),
 							style: {
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise" Arial sans-serif',
 								fill: '#000000',
 								align: 'center'
 							},
-							defaultContent: 'marketing: '
-						}
-					}, {
-						name: 'marketing1',
-						cl: 'Text',
-						attrs: {
-							alignX: 'center',
-							x: (stageUnit * 1.25),
-							y: (stageUnit * 5.65),
-							style: {
-								font: 'bold ' + fontSizes.xs + 'px "Smythe"',
-								fill: '#000000',
-								align: 'center'
-							},
-							defaultContent: 'seema shariat'
+							defaultContent: 'marketing: seema shariat'
 						}
 					}, {
 						name: 'contact1',
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							x: -(stageUnit * 2.7),
 							y: (stageUnit * 6.5),
 							style: {
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise" Arial sans-serif',
 								fill: '#000000',
 								align: 'center'
 							},
-							defaultContent: 'contact:'
-						}
-					}, {
-						name: 'contact1',
-						cl: 'Text',
-						attrs: {
-							alignX: 'center',
-							x: (stageUnit * 0.9),
-							y: (stageUnit * 6.65),
-							style: {
-								font: 'bold ' + fontSizes.xs + 'px "Smythe"',
-								fill: '#000000',
-								align: 'center'
-							},
-							defaultContent: 'keke@polyworksgames.com'
+							defaultContent: 'contact: keke@polyworksgames.com'
 						}
 					}, {
 						name: 'share1',
 						cl: 'Text',
 						attrs: {
 							alignX: 'center',
-							x: -(stageUnit * 5.25),
 							y: (stageUnit * 7.5),
 							style: {
 								font: 'bold ' + fontSizes.sm + 'px "Waiting for the Sunrise" Arial sans-serif',
 								fill: '#000000',
 								align: 'center'
 							},
-							defaultContent: 'follow:'
-						}
-					}, {
-						name: 'share2',
-						cl: 'Text',
-						attrs: {
-							alignX: 'center',
-							x: (stageUnit * 0.75),
-							y: (stageUnit * 7.65),
-							style: {
-								font: 'bold ' + fontSizes.xs + 'px "Smythe"',
-								fill: '#000000',
-								align: 'center'
-							},
-							defaultContent: 'facebook.com/kekevscaterpillars | twitter.com/kekenews'
+							defaultContent: 'follow: facebook.com/kekevscaterpillars | twitter.com/kekenews'
 						}
 					}]
 				}, {
@@ -107693,8 +107605,10 @@ PWG.Enemy = (function() {
 	Enemy.prototype.kill = function() {
 		// 
 		// 
+		this.active = false;
 		PolyworksGame.setLevelScore(this.model.attrs.score);
 		this.model.ancestor.removeChild.call(this.model.ancestor, this.model.name);
+		PWG.EventCenter.trigger({ type: PWG.Events.ENEMY_DESTROYED, value: this.model.name });
 		Enemy._super.kill.call(this);
 	};
 	
@@ -108799,7 +108713,16 @@ PWG.InputButton = (function() {
 	};
 	
 	InputButton.prototype.inputDown = function(event, pointer, ctx) {
-		// 
+		
+		// hack
+		if(PWG.DeviceUtils.isMobile()) {
+			if(this.model.name === 'start' || this.model.name === 'restart' || this.model.name === 'playButtonSmall') {
+				// if(!PolyworksGame.isFullscreen) {
+					
+					PolyworksGame.phaser.scale.startFullScreen(false);
+				// }
+			}
+		}
 		ctx.inputPressed.call(ctx, { type: PWG.Events.CONTROL_PRESSED, value: ctx.model.attrs.inputCode });
 		ctx.pressed = true;
 	};
@@ -109060,6 +108983,7 @@ PWG.EnemyManager = function() {
 		PWG.EventCenter.bind(PWG.Events.ADD_ACTIVE_ENEMIES, this.onAddActiveEnemies, this);
 		PWG.EventCenter.bind(PWG.Events.REMOVE_ACTIVE_ENEMY, this.onRemoveActiveEnemy, this);
 		PWG.EventCenter.bind(PWG.Events.REMOVE_ACTIVE_ENEMIES, this.onRemoveActiveEnemies, this);
+		PWG.EventCenter.bind(PWG.Events.ENEMY_DESTROYED, this.onEnemyDestroyed, this);
 	};
 	
 	EnemyManager.prototype.removeListeners = function() {
@@ -109127,6 +109051,14 @@ PWG.EnemyManager = function() {
 	EnemyManager.prototype.onRemoveActiveEnemy = function(event) {
 		// 
 		this.removeActiveEnemy(event.enemy);
+	};
+	
+	EnemyManager.prototype.onEnemyDestroyed = function(event) {
+		
+		if(this.activeEnemies.hasOwnProperty(event.value)) {
+			
+			delete this.activeEnemies[event.value];
+		}
 	};
 	
 	EnemyManager.prototype.addActiveEnemies = function(enemies) {
@@ -109673,7 +109605,7 @@ PWG.State = (function() {
 					// key, volume loop
 					PolyworksGame.currentAudio = PolyworksGame.phaser.add.audio(audio, 1, true);
 					// marker, position, volume, loop
-					// PolyworksGame.currentAudio.play('', 0, 1, true);
+					PolyworksGame.currentAudio.play('', 0, 1, true);
 					PolyworksGame.currentAudioName = audio;
 				}
 			}
@@ -110113,8 +110045,10 @@ PWG.MapState = (function() {
 	
 	LevelState.prototype.pauseState = function() {
 		
-		this.destroyPlayer();
-
+		// this.destroyPlayer();
+		this.player.deactivateGravity();
+		this.player.active = false;
+		
 		if(this.enemyManager) {
 			this.enemyManager.pause();
 		}
@@ -110130,8 +110064,10 @@ PWG.MapState = (function() {
 	
 	LevelState.prototype.resumeState = function() {
 		this.sectorManager.setActiveSector(this.sectorManager.activeSectorIdx);
-		this.createPlayer(this.playerPosition, PolyworksGame.health);
-		this.playerGroup.visible = true; 
+		// this.createPlayer(this.playerPosition, PolyworksGame.health);
+		// this.playerGroup.visible = true; 
+		this.player.activateGravity();
+		this.player.active = true;
 		this.showPauseGUI(false);
 		if(this.enemyManager) {
 			this.enemyManager.resume();
@@ -110683,6 +110619,7 @@ PolyworksGame = (function() {
 		previousState: '',
 		savedState: '',
 		viewedOnce: '0',
+		isFullscreen: false,
 		isMuted: false,
 		adPlaying: false,
 		tipDisplayed: false,
@@ -110754,8 +110691,9 @@ PolyworksGame = (function() {
 				// PolyworksGame.initControls();
 
 			    PolyworksGame.phaser.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-			    PolyworksGame.phaser.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
-				PolyworksGame.phaser.scale.startFullScreen(false);
+			    // PolyworksGame.phaser.scale.fullScreenScaleMode = Phaser.ScaleManager.EXACT_FIT;
+			    PolyworksGame.phaser.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+				// PolyworksGame.phaser.scale.startFullScreen(false);
 
 				PolyworksGame.changeState(_model.initialState);
 			}

@@ -249,8 +249,10 @@
 	
 	LevelState.prototype.pauseState = function() {
 		trace('LevelState['+this.model.name+']/pauseState');
-		this.destroyPlayer();
-
+		// this.destroyPlayer();
+		this.player.deactivateGravity();
+		this.player.active = false;
+		
 		if(this.enemyManager) {
 			this.enemyManager.pause();
 		}
@@ -266,8 +268,10 @@
 	
 	LevelState.prototype.resumeState = function() {
 		this.sectorManager.setActiveSector(this.sectorManager.activeSectorIdx);
-		this.createPlayer(this.playerPosition, PolyworksGame.health);
-		this.playerGroup.visible = true; 
+		// this.createPlayer(this.playerPosition, PolyworksGame.health);
+		// this.playerGroup.visible = true; 
+		this.player.activateGravity();
+		this.player.active = true;
 		this.showPauseGUI(false);
 		if(this.enemyManager) {
 			this.enemyManager.resume();

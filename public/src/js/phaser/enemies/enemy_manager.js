@@ -17,6 +17,7 @@ PWG.EnemyManager = function() {
 		PWG.EventCenter.bind(PWG.Events.ADD_ACTIVE_ENEMIES, this.onAddActiveEnemies, this);
 		PWG.EventCenter.bind(PWG.Events.REMOVE_ACTIVE_ENEMY, this.onRemoveActiveEnemy, this);
 		PWG.EventCenter.bind(PWG.Events.REMOVE_ACTIVE_ENEMIES, this.onRemoveActiveEnemies, this);
+		PWG.EventCenter.bind(PWG.Events.ENEMY_DESTROYED, this.onEnemyDestroyed, this);
 	};
 	
 	EnemyManager.prototype.removeListeners = function() {
@@ -84,6 +85,14 @@ PWG.EnemyManager = function() {
 	EnemyManager.prototype.onRemoveActiveEnemy = function(event) {
 		// trace('EnemyManager/onRemoveActiveEnemy, event = ', event, '\tthis = ', this);
 		this.removeActiveEnemy(event.enemy);
+	};
+	
+	EnemyManager.prototype.onEnemyDestroyed = function(event) {
+		// trace('EnemyManager/onEnemyDestroyed, event = ', event);
+		if(this.activeEnemies.hasOwnProperty(event.value)) {
+			// trace('\tremoving active enemy: ' + event.value);
+			delete this.activeEnemies[event.value];
+		}
 	};
 	
 	EnemyManager.prototype.addActiveEnemies = function(enemies) {

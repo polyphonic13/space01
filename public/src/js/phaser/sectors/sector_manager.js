@@ -10,10 +10,7 @@ PWG.SectorManager = (function() {
 		// trace('SectorManager/constructor, positionAxis = ' + this.positionAxis);
 		this.activeSectorIdx = -1;
 
-		this.localSectors = [];
 		this.localDynamicTerrains = [];
-		this.localHazards = [];
-		this.localBonuses = [];
 	}
 	
 	SectorManager.prototype.begin = function() {
@@ -34,18 +31,24 @@ PWG.SectorManager = (function() {
 
 		sector = this.model.collection[idx];
 		this.localDynamicTerrains = sector.dynamicTerrain.getActive();
-		this.localHazards = sector.hazards.getActive();
-		this.localBonuses = sector.bonuses.getActive();
 
 		// moving forward
 		if(idx > oldIdx) {
 			// there's a sector after this, activate it
 			if(idx < this.model.collection.length - 1) {
+				trace('\tadding next sector dynamic terrain: ' + (idx + 1));
 				this.model.collection[(idx + 1)].setActive(true);
 				this.localDynamicTerrains = this.localDynamicTerrains.concat(this.model.collection[(idx + 1)].dynamicTerrain.getActive());
 			}
+
+			// keep previous sector's dynamic terrain for testing (quick return to previous sector)
+			if(idx > 0) {
+				this.localDynamicTerrains = this.localDynamicTerrains.concat(this.model.collection[(idx - 1)].dynamicTerrain.getActive());
+			}
+
 			// there's a sector 2 spaces back, deactivate it
 			if(idx > 1) {
+				trace('\tremoving 2 sectors backward: ' + (idx - 2));
 				this.model.collection[(idx - 2)].setActive(false);
 			}
 		}
@@ -53,11 +56,19 @@ PWG.SectorManager = (function() {
 		if(idx < oldIdx) {
 			// there's one behind this, active it
 			if(idx > 0) {
+				trace('\tadding previous sector dynamic terrain: ' + (idx - 1));
 				this.model.collection[(idx - 1)].setActive(true);
 				this.localDynamicTerrains = this.localDynamicTerrains.concat(this.model.collection[(idx - 1)].dynamicTerrain.getActive());
 			}
+
+			// keep next sector's dynamic terrain for testing (quick return to next sector)
+			if(idx < this.model.collection.length) {
+				this.localDynamicTerrains = this.localDynamicTerrains.concat(this.model.collection[(idx + 1)].dynamicTerrain.getActive());
+			}
+
 			// there's a sector 2 spaces forward, deactivate it
 			if(idx < this.model.collection.length - 2) {
+				trace('\tremoving 2 sectors forward: ' + (idx + 2));
 				this.model.collection[(idx + 2)].setActive(false);
 			}
 		}

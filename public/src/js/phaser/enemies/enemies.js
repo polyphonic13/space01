@@ -38,9 +38,9 @@ PWG.Enemies = (function() {
 		PWG.Utils.each(
 			this.model.collection,
 			function(child) {
-				trace('Enemies/deactivateGravity, child['+child.model.name+'].isActive = ' + child.isActive);
+				// trace('Enemies/deactivateGravity, child['+child.model.name+'].isActive = ' + child.isActive);
 				if(!child.isActive) {
-					trace('\tdeactivating gravity');
+					// trace('\tdeactivating gravity');
 					child.deactivateGravity();
 				}
 			},
