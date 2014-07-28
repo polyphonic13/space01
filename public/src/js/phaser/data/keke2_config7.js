@@ -4050,7 +4050,7 @@ PWG.Config = (function() {
 								health: 6
 							},
 							start: {
-								x: (stageWidth * 5),
+								x: (stageWidth * 5) + (stageUnit),
 								y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 							},
 							physics: {
@@ -4082,7 +4082,7 @@ PWG.Config = (function() {
 								health: 6
 							},
 							start: {
-								x: (stageWidth * 5),
+								x: (stageWidth * 5) + (stageUnit),
 								y: -(winH)
 							},
 							physics: {
@@ -4222,7 +4222,7 @@ PWG.Config = (function() {
 								health: 6
 							},
 							start: {
-								x: (stageWidth * 7),
+								x: (stageWidth * 7) + (stageUnit),
 								y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 							},
 							physics: {
@@ -4288,7 +4288,7 @@ PWG.Config = (function() {
 								health: 20
 							},
 							start: {
-								x: (stageWidth * 8),
+								x: (stageWidth * 8) + (stageUnit),
 								y: winH - (stageHeight * 2)
 							},
 							physics: {
@@ -4322,7 +4322,7 @@ PWG.Config = (function() {
 								health: 20
 							},
 							start: {
-								x: (stageWidth * 8),
+								x: (stageWidth * 8) + (stageUnit),
 								y: winH - (caterpillar02.imgHeight + (stageUnit * 0.5))
 							},
 							physics: {
@@ -6316,7 +6316,7 @@ PWG.Config = (function() {
 								health: 20
 							},
 							start: {
-								x: (stageWidth * 2),
+								x: (stageWidth * 2) + (stageUnit),
 								y: winH - (caterpillar02.imgHeight + (stageUnit * 0.5))
 							},
 							physics: {
@@ -8000,7 +8000,7 @@ PWG.Config = (function() {
 								health: 20
 							},
 							start: {
-								x: (stageWidth * 2),
+								x: (stageWidth * 2) + (stageUnit),
 								// y: winH - ((stageUnit * 4) + 32)
 								y: -(stageHeight * 2)
 							},
