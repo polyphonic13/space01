@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-28T09:52:40')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-28T10:07:00')})();
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
  */
@@ -82505,6 +82505,7 @@ PWG.TGSAdapter = (function() {
 	var _endScreenContainer;
 
 	var module = {
+		isOpen: false,
 		logEvents: {
 			GAME_EVENT: 'logGameEvent',
 			LEVEL_EVENT: 'logLevelEvent',
@@ -82606,14 +82607,16 @@ PWG.TGSAdapter = (function() {
 					shareTitle: 'keke and the grey expanse',
 					shareMessage: 'i love playing keke and the grey expanse!'
 				});
+				this.isOpen = true;
 			}
 		},
 
-		closeWidget: function() {
-			trace('TGSAdapter/closeWidget, this.widget = ', this.widget);
+		removeWidget: function() {
+			trace('TGSAdapter/removeWidget, this.widget = ', this.widget);
 			if(this.widget) {
 				this.widget.close();
 			}
+			this.isClosed = true;
 		},
 		
 		hideGameOverWidget: function() {
@@ -110886,6 +110889,9 @@ PolyworksGame = (function() {
 			if(id === 'quit') {
 				PolyworksGame.quit();
 			} else {
+				if(_adapter && _adaper.isOpen) {
+					_adapter.removeWidget();
+				}
 				var state = _states[id];
 				if(state) {
 					PolyworksGame.previousState = PolyworksGame.currentState;
@@ -111322,7 +111328,7 @@ PolyworksGame = (function() {
 			var levelIdx = (idx < 9) ? ('0' + (idx+1)) : (idx+1);
 			stateId = 'level' + levelIdx + 'Info';
 		}
-		_adapter.closeWidget();
+		// _adapter.removeWidget();
 		PolyworksGame.changeState(stateId);
 
 	}

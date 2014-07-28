@@ -26,6 +26,7 @@ PWG.TGSAdapter = (function() {
 	var _endScreenContainer;
 
 	var module = {
+		isOpen: false,
 		logEvents: {
 			GAME_EVENT: 'logGameEvent',
 			LEVEL_EVENT: 'logLevelEvent',
@@ -127,14 +128,16 @@ PWG.TGSAdapter = (function() {
 					shareTitle: 'keke and the grey expanse',
 					shareMessage: 'i love playing keke and the grey expanse!'
 				});
+				this.isOpen = true;
 			}
 		},
 
-		closeWidget: function() {
-			trace('TGSAdapter/closeWidget, this.widget = ', this.widget);
+		removeWidget: function() {
+			trace('TGSAdapter/removeWidget, this.widget = ', this.widget);
 			if(this.widget) {
 				this.widget.close();
 			}
+			this.isClosed = true;
 		},
 		
 		hideGameOverWidget: function() {

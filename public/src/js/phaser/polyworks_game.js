@@ -157,6 +157,9 @@ PolyworksGame = (function() {
 			if(id === 'quit') {
 				PolyworksGame.quit();
 			} else {
+				if(_adapter && _adaper.isOpen) {
+					_adapter.removeWidget();
+				}
 				var state = _states[id];
 				if(state) {
 					PolyworksGame.previousState = PolyworksGame.currentState;
@@ -593,7 +596,7 @@ PolyworksGame = (function() {
 			var levelIdx = (idx < 9) ? ('0' + (idx+1)) : (idx+1);
 			stateId = 'level' + levelIdx + 'Info';
 		}
-		_adapter.closeWidget();
+		// _adapter.removeWidget();
 		PolyworksGame.changeState(stateId);
 
 	}
