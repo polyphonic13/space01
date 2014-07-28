@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-28T09:42:06')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-28T09:52:40')})();
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
  */
@@ -84662,6 +84662,7 @@ PWG.Config = (function() {
 				// 'caterpillarBoss1Head',
 				// 'caterpillarBoss1Body',
 				'caterpillar01'],
+				// enemies
 				enemies: {
 					name: 'enemies',
 					cl: 'EnemyManager',
@@ -84785,7 +84786,7 @@ PWG.Config = (function() {
 								health: 3
 							},
 							start: {
-								x: (stageWidth * 5) + (stageUnit),
+								x: (stageWidth * 5) + (stageUnit * 2),
 								y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 							},
 							physics: {
@@ -85543,6 +85544,8 @@ PWG.Config = (function() {
 				],
 				images: ['whiteRect', 'ovalMask', 'level02Title', 'goalFlag', 'forestBackground01a', 'forestBackground01b', 'forestBackground01c', 'grass03', 'tree01', 'platformV', 'platform', 'branch03Left', 'branch03Right', 'branch03aLeft', 'branch03aRight', 'crystals02Green', 'crystals02Grey', 'lollipop', 'invisibleRect', 'greyRect'],
 				sprites: ['leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'heartSprite', 'keke', 'caterpillar01'],
+
+				// enemies
 				enemies: {
 					name: 'enemies',
 					cl: 'EnemyManager',
