@@ -5,11 +5,18 @@ body, canvas {
 	font-family: 'Arial', sans-serif;
 	color: #000000;
 }
+.xxsFont {
+	font-size: 0.25em;
+}
+.xsFont {
+	font-size: 0.3em;
+}
 .smallFont {
 	font-size: 0.5em;
 }
 .mediumFont {
-	font-size: 1.25em;
+/*	font-size: 1.25em;*/
+	font-size: 2vw;
 }
 .largeFont {
 	font-size: 2em;
@@ -33,7 +40,6 @@ body, canvas {
 
 .gameText1 {
 	text-align: center;
-	font-size: 2em;
 	font-family: 'Waiting for the Sunrise', sans-serif;
 	color: #000000;
 	margin: 0;
@@ -42,7 +48,6 @@ body, canvas {
 
 .gameText2 {
 	text-align: center;
-	font-size: 2.5em;
 	font-family: 'Smythe' cursive;
 	color: #505050;
 	margin: 0;
@@ -103,11 +108,14 @@ body, canvas {
 }
 
 #iphoneTip {
-	width: 100%;
+	width: 25%;
 	height: 10%;
 	bottom: 4%;
+	left: 70%;
 	
-	text-align: center;
+	padding: 1%;
+	
+	text-align: right;
 	
 	display: none;
 

@@ -289,7 +289,7 @@ module.exports = function(grunt) {
 			'clean',
 			'projectBuildSetup', 
 			'concat:project', 
-			'stripTraceStatements', 
+			// 'stripTraceStatements', 
 			'uglify', 
 			'copy:project', 
 			'cssmin', 

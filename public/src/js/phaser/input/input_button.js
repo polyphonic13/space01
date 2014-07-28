@@ -68,12 +68,13 @@ PWG.InputButton = (function() {
 	
 	InputButton.prototype.inputDown = function(event, pointer, ctx) {
 		trace('InputButton['+this.model.name+']/inputDown');
-		// hack
+		// hack for fullscreen
 		if(PWG.DeviceUtils.isMobile()) {
 			if(this.model.name === 'start' || this.model.name === 'restart' || this.model.name === 'playButtonSmall') {
 				// if(!PolyworksGame.isFullscreen) {
 					trace('attempting fullscreen');
 					PolyworksGame.phaser.scale.startFullScreen(false);
+					PolyworksGame.isFullscreen = true;
 				// }
 			}
 		}

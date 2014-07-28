@@ -166,8 +166,10 @@ PWG.State = (function() {
 
 	State.prototype.createBlackBox = function() {
 		var blackBg = PolyworksGame.phaser.add.sprite(0, 0, 'blackRect');
-		blackBg.width = this.model.world.width;
-		blackBg.height = this.model.world.height;
+		// blackBg.width = this.model.world.width;
+		// blackBg.height = this.model.world.height;
+		blackBg.width = 5000;
+		blackBg.height = 5000;
 	    blackBg.anchor.setTo(0.5, 0.5);
 	    blackBg.alpha = 1;
 		

@@ -98,10 +98,10 @@ PolyworksGame = (function() {
 				_checkOrientation();
 				_getSavedData();
 
-				// if(PWG.DeviceUtils.isIphone()) {
-				// 	document.getElementById('iphoneTip').style.display = 'block';
-				// 	this.tipDisplayed = true;
-				// }
+				if(PWG.DeviceUtils.isIphone()) {
+					document.getElementById('iphoneTip').style.display = 'block';
+					this.tipDisplayed = true;
+				}
 			}
 		},
 

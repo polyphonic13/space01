@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-27T21:18:52')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-28T09:42:06')})();
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
  */
@@ -81392,7 +81392,7 @@ PWG.Utils = (function() {
 	
 	utils.parseMarkup = function(str, reference, encodeMarkup) {
 		var parsedString = str;
-		// 
+		// trace('Utils/parseMarkup, str = ' + str + ', reference = ', reference);
 
 		if(str.indexOf('~{') > -1) {
 			var pattern = /~\{[A-Z]*\}~/gi;
@@ -81407,7 +81407,7 @@ PWG.Utils = (function() {
 					if(encodeMarkup) {
 						output = encodeURIComponent(output);
 					}
-					// 
+					// trace('output = ' + output);
 					if(output === undefined || output === null) {
 						output = match;
 					} else {
@@ -81415,7 +81415,7 @@ PWG.Utils = (function() {
 					}
 					parsedString = parsedString.replace(match, output);
 				}
-				//
+				//trace(parsedString);
 			} else {
 				parsedString = null;
 			}
@@ -81425,7 +81425,7 @@ PWG.Utils = (function() {
 	};
 	
 	utils.addElement = function(params) {
-		
+		trace('\tutils/addElement, params = ', params);
 		var attrs = params.attrs;
 		var el = document.createElement(params.el);
 		for (var key in attrs) {
@@ -81464,7 +81464,7 @@ PWG.Utils = (function() {
 	};
 	
 	utils.moveView = function(sprite, movement, params) {
-		// 
+		// trace('Utils/moveView, '+ sprite.model.name);
 		var type = params.type || movement.type;
 		switch(type) {
 			case PWG.MovementTypes.HORIZONTAL_BY_SPEED:
@@ -81473,7 +81473,7 @@ PWG.Utils = (function() {
 			break;
 
 			case PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED:
-				// 
+				// trace('groundedDirectionBySpeed, touching.down = ' + sprite.body.touching.down);
 				if(sprite.body.touching.down) {
 					this.moveDirectionalBySpeed(sprite, movement, params);
 				}
@@ -81494,7 +81494,7 @@ PWG.Utils = (function() {
 	};
 	
 	utils.moveDirectionalBySpeed = function(sprite, movement, params) {
-		// 
+		// trace('moveDirectionBySpeed: ' + sprite.model.name + ', direction = ' + params.direction + ', speed = ' + movement.speed);
 		switch(params.direction) {
 			case PWG.Directions.LEFT: 
 			sprite.x -= movement.speed;
@@ -81507,22 +81507,22 @@ PWG.Utils = (function() {
 			case PWG.Directions.JUMP:
 			// sprite.x -= movement.speed;
 			sprite.body.velocity.y = -(movement.speed * sprite.model.attrs.jumpMultiplier);
-			// 
+			// trace('going to jump: ' + (movement.speed * 1000));
 			// sprite.body.velocity.y = -(movement.speed * 1000);
 			break;
 
 			case PWG.Directions.UP: 
-			// 
+			// trace('moving up: ' + movement.speed);
 			sprite.y -= movement.speed;
 			break;
 			
 			case PWG.Directions.DOWN: 
-			// 
+			// trace('moving down: ' + movement.speed);
 			sprite.y += movement.speed;
 			break;
 
 			default: 
-			
+			trace('WARNING: unknown movement direction: ' + direction);
 			break;
 		}
 	};
@@ -81607,7 +81607,7 @@ PWG.DOMManager = function() {
 	},
 	
 	module.scriptLoaded = function(name) {
-		
+		trace('DOMManager/scriptLoaded, name = ' + name + ', loaders = ', module.loaders);
 		delete module.loaders[name];
 		
 		if(PWG.Utils.objLength(module.loaders) === 0) {
@@ -81623,7 +81623,7 @@ PWG.DOMManager = function() {
 		PWG.Utils.each(
 			elements,
 			function(element) {
-				// 
+				// trace('DOMManager/addElements, type = ' + element.type + ', element = ', element);
 				var el = document.createElement(element.type);
 
 				if(element.attrs) { el = this.addAttributes(element.attrs, el); }
@@ -81779,7 +81779,7 @@ PWG.Storage = (function() {
 					if(params[key] instanceof Object || params[key] instanceof Array) {
 						params[key] = JSON.stringify(params[key]);
 					}
-					// 
+					// trace('Storage, about to set ' + key + ', to value ' + params[key]);
 					localStorage[key] = params[key];
 				}
 			}
@@ -81790,7 +81790,7 @@ PWG.Storage = (function() {
 			}
 		},
 		destroy: function() {
-			
+			trace('Storage/destroy');
 			localStorage.clear();
 		},
 		addListener: function(listener) {
@@ -81835,10 +81835,10 @@ PWG.Storage = (function() {
 	
 	function _supportsLocalStorage() {
 		try {
-			
+			trace('STORAGE AVAILABLE');
 			return 'localStorage' in window && window['localStorage'] !== null;
 		} catch(e) {
-			
+			trace('STORAGE NOT AVAILABLE');
 			return false;
 		}
 	}
@@ -81936,7 +81936,7 @@ PWG.WebFontManager = (function() {
 						break;
 						
 						default: 
-						
+						trace('WARNING: unknown webFont = ' + webFont);
 						break;
 					}
 				},
@@ -81945,7 +81945,7 @@ PWG.WebFontManager = (function() {
 		},
 		
 		initGoogle: function(families) {
-			
+			trace('WebFontManager/initGoogle, families: ', families);
 			WebFontConfig = {
 		    // google: { families: [ 'Sue+Ellen+Francisco::latin', 'Smythe::latin', 'Waiting+for+the+Sunrise::latin' ] }
 		    google: { families: families }
@@ -82018,23 +82018,23 @@ PWG.EventCenter = (function() {
 	
 	eventCenter.bind = function(type, callback, context) {
 		var ctx = context || this;
-		// 
-		// 
+		// trace('EventCenter/bind, type = ' + type);
+		// trace(callback);
 		if(!_listeners[type]) {
 			_listeners[type] = [];
 		}
 		_listeners[type].push({ callback: callback, context: ctx });
-		// 
-		// 
+		// trace('_listeners['+type+'] now = ');
+		// trace(_listeners[type]);
 	};
 	
 	eventCenter.trigger = function(params) {
 		var list = _listeners[params.type];
-		// 
+		// trace('----- EventCenter/trigger, type = ' + params.type + ', list = ', list);
 		if(list) {
 			PWG.Utils.each(list,
 				function(l) {
-					// 
+					// trace('\t\tl = ', l);
 					if(l && l.callback) { // in case callback is destroyed during course of trigger
 						l.callback.call(l.context, params);
 					}
@@ -82131,7 +82131,7 @@ PWG.Stage = (function() {
 		var left = (document.documentElement.clientWidth/2) - (stage.width/2);
 		var top = (document.documentElement.clientHeight/2) - (stage.height/2);
 
-		
+		trace('\nwinW = ' + stage.winW + ', winH = ' + stage.winH + '\nstage.width = ' + stage.width + ', stage.height = ' + stage.height + '\nunit = ' + stage.unit + '\nleft = ' + left + ', top = ' + top);
 
 		var loadingWidth = stage.winW - 80;
 		var loadingHeight = stage.winH - 80;
@@ -82174,7 +82174,7 @@ PWG.Loader = (function() {
 	};
 	
 	function Loader() {
-		
+		trace('Loader/constructor');
 		this.numToLoad = 0;
 		this.numLoaded = 0;
 		this.fileCallback;
@@ -82183,7 +82183,7 @@ PWG.Loader = (function() {
 	}
 	
 	Loader.prototype.batchLoadJS = function(files, fileCallback, batchCallback, context, scriptAttributes) {
-		
+		trace('Loader/batchLoadJS, files = ', files, '\tcontext = ', context);
 		this.fileCallback = fileCallback || null;
 		this.batchCallback = batchCallback || null;
 		this.context = context || window;
@@ -82246,14 +82246,14 @@ PWG.SocialPanel = (function() {
 
 	var module = {
 		init: function(params) {
-			// // 
+			// // trace('SocialPanel/init, params = ', params);
 			_model = PWG.Utils.extend(_model, params);
 			_initViews();
 			_addListeners();
 		},
 
 		show: function(params) {
-			// 
+			// trace('SocialPanel/show, params = ', params);
 			var elements = params.value;
 			_model.parentEl.style.display = 'block';
 			PWG.Utils.each(elements,
@@ -82281,20 +82281,20 @@ PWG.SocialPanel = (function() {
 		},
 
 		buttonClick: function(network) {
-			// 
+			// trace('SocialPanel/buttonClick, network = ' + network + '\n\tcurrentActionType = ' + _model.currentActionType);
 			var networkActions = _model.socialActions[network];
 			if(networkActions) {
-				// 
+				// trace('\tnetworkActions = ', networkActions);
 				var socialAction = networkActions[_model.currentActionType];
 				if(socialAction) {
-					// 
+					// trace('\tsocialAction = ', socialAction);
 					var url;
 					if(socialAction['params']) {
 						url = socialAction['url'] + PWG.Utils.parseMarkup(socialAction['params'], _model, true);
 					} else {
 						url = socialAction['url'];
 					}
-					// 
+					// trace('\turl = ' + url);
 					if(url.indexOf('mailto') > -1) {
 						if(PWG.DeviceUtils.isIphone() || PWG.DeviceUtils.isAndroid()) {
 							window.location.href = url;
@@ -82395,7 +82395,7 @@ PWG.SocialPanel = (function() {
 				}
 				verticalTotal += attrs.size.height;
 			}
-			// 
+			// trace('\tVERTICAL TOTal = ' + verticalTotal);
 			var btnOffset = (idx * attrs.size.height) +  (idx * attrs.spacer) + offset;
 			style.top = ((winH/2) - (verticalTotal/2) + (btnOffset)) + 'px';
 		} else if(vertical < 0) {
@@ -82403,7 +82403,7 @@ PWG.SocialPanel = (function() {
 		} else {
 			style.top = vertical + 'px';
 		}
-		// 
+		// trace('RETURNING: ', style);
 		return style;
 	}
 	
@@ -82438,7 +82438,7 @@ PWG.SocialPanel = (function() {
 	}
 
 	function _eventHandler(event) {
-		// 
+		// trace('SocialPanel/_eventHandler event = ', event);
 		var listener;
 		PWG.Utils.each(_model.listeners,
 			function(l) {
@@ -82450,12 +82450,12 @@ PWG.SocialPanel = (function() {
 		);
 		var match = listener.match;
 		if(match) {
-			// 
+			// trace('\tthere is a match');
 			if(match.value === event.value) {
-				// 
+				// trace('\t\tvalue matches the event value');
 				_executeActions(match.actions);
 			} else if(listener.nonmatch) {
-				// 
+				// trace('\t\tnonmatch');
 				_executeActions(listener.nonmatch.actions);
 			}
 		} else {
@@ -82464,10 +82464,10 @@ PWG.SocialPanel = (function() {
 	}
 	
 	function _executeActions(actions) {
-		// 
+		// trace('SocialPanel/_executeActions');
 		PWG.Utils.each(actions,
 			function(action) {
-				// 
+				// trace('\tcalling: ' + action.method + ', passing: ', action.data);
 				PWG.SocialPanel[action.method](action.data);
 			},
 			this
@@ -82542,26 +82542,26 @@ PWG.TGSAdapter = (function() {
 				_tgsExists = true;
 				TGS.Init(_tgsConfig);
 			}
-			
+			trace('TGSAdapter/init, _levels = ', _levels);
 		},
 		
 		// http://developer.tresensa.com/docs/tgs/symbols/TGS.Analytics.html#.logGameEvent
 		logEvent: function(type, args) {
 			if(_tgsExists) {
-				
+				trace('TGSAdapter/logEvent, type = ' + type + ', args = ', args);
 				TGS.Analytics[type].apply(this, args);
 			}
 		},
 		
 		submitScore: function(params) {
 			if(_tgsExists) {
-				
+				trace('submitting score: ', params);
 				TGS.Leaderboard.SubmitScore(params);
 			}
 		},
 		
 		adCheck: function(idx) {
-			
+			trace('TGSAdapter/adCheck, _levels[' + idx + '] = ' + _levels[idx] + ', LEVELS_PLAYS_PER_AD = ' + LEVEL_PLAYS_PER_AD);
 			// if(_tgsExists) {
 			if(_needAd) {
 				// if(_levels[idx] === 0) {
@@ -82580,21 +82580,21 @@ PWG.TGSAdapter = (function() {
 		
 		displayInterstitial: function() {
 			
-			
+			trace('TGSAdapter/displayInterstitial');
 			PolyworksGame.adPlaying = true;
 			PWG.EventCenter.trigger({ type: PWG.Events.AD_STARTED });
 			TGS.Advertisement.DisplayInterstitialAd(_displayConfig);		
 		},
 		
 		addWidget: function() {
-			
+			trace('TGSAdapter/addWidget');
 			var winW = PWG.Stage.winW; 
 			var winH = PWG.Stage.winH;
 			var unit = PWG.Stage.unit; 
 			var widgetX = (unit * 3);
 			var widgetY = (unit * 0.5);
 			var widgetScale = (unit * PWG_WIDGET_UNITS) / TRE_SENSA_WIDGET_WIDTH;
-			
+			trace('\twidget x/y = ' + widgetX + '/' + widgetY + ', scale = ' + widgetScale + ', widget w should be = ' + (unit * PWG_WIDGET_UNITS));
 
 			if(_tgsExists) {
 				this.widget = PolyworksGame.Tresensa.createWidget({
@@ -82610,14 +82610,14 @@ PWG.TGSAdapter = (function() {
 		},
 
 		closeWidget: function() {
-			
+			trace('TGSAdapter/closeWidget, this.widget = ', this.widget);
 			if(this.widget) {
 				this.widget.close();
 			}
 		},
 		
 		hideGameOverWidget: function() {
-			
+			trace('TGSAdapter/hideGameOverWidget');
 			if(this.widget) {
 				this.widget.close();
 			}
@@ -82627,7 +82627,7 @@ PWG.TGSAdapter = (function() {
 	
 	
 	function _finishAdSession() {
-		
+		trace('TGSAdapter/_finishAdSession');
 		PolyworksGame.adPlaying = false;
 		PWG.EventCenter.trigger({ type: PWG.Events.AD_COMPLETED });
 	}
@@ -93485,7 +93485,27 @@ PWG.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 2) - (stageUnit),
-										y: winH + 100
+										y: winH + (stageUnit * 3)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 1000
+								}
+							},
+							// secondary in case the first does not trigger
+							{
+								name: 'death',
+								cl: 'Sprite',
+								attrs: {
+									img: 'invisibleRect',
+									phaser: {
+										width: stageWidth + (stageUnit * 2),
+										height: 32
+									},
+									start: {
+										x: (stageWidth * 2) - (stageUnit),
+										y: winH + (stageUnit * 6)
 									},
 									physics: {
 										immovable: true
@@ -93607,7 +93627,27 @@ PWG.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 3) - (stageUnit),
-										y: winH + 100
+										y: winH + (stageUnit * 3)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 1000
+								}
+							},
+							// secondary in case the first does not trigger
+							{
+								name: 'death',
+								cl: 'Sprite',
+								attrs: {
+									img: 'invisibleRect',
+									phaser: {
+										width: stageWidth + (stageUnit * 2),
+										height: 32
+									},
+									start: {
+										x: (stageWidth * 3) - (stageUnit),
+										y: winH + (stageUnit * 6)
 									},
 									physics: {
 										immovable: true
@@ -94739,7 +94779,27 @@ PWG.Config = (function() {
 									},
 									start: {
 										x: 0,
-										y: winH + 100
+										y: winH + (stageUnit * 3)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 1000
+								}
+							},
+							// secondary in case the first does not trigger
+							{
+								name: 'death',
+								cl: 'Sprite',
+								attrs: {
+									img: 'invisibleRect',
+									phaser: {
+										width: (stageWidth * 3),
+										height: 32
+									},
+									start: {
+										x: 0,
+										y: winH + (stageUnit * 6)
 									},
 									physics: {
 										immovable: true
@@ -96971,7 +97031,27 @@ PWG.Config = (function() {
 									},
 									start: {
 										x: 0,
-										y: winH + 100
+										y: winH + (stageUnit * 3)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 1000
+								}
+							},
+							// secondary, in case the first does not trigger
+							{
+								name: 'death',
+								cl: 'Sprite',
+								attrs: {
+									img: 'invisibleRect',
+									phaser: {
+										width: (stageWidth * 3),
+										height: 32
+									},
+									start: {
+										x: 0,
+										y: winH + (stageUnit * 6)
 									},
 									physics: {
 										immovable: true
@@ -99344,7 +99424,27 @@ PWG.Config = (function() {
 									},
 									start: {
 										x: 0,
-										y: winH + 100
+										y: winH + (stageUnit * 3)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 1000
+								}
+							},
+							// secondary, in case the first does not trigger
+							{
+								name: 'death',
+								cl: 'Sprite',
+								attrs: {
+									img: 'invisibleRect',
+									phaser: {
+										width: (stageWidth * 4),
+										height: 32
+									},
+									start: {
+										x: 0,
+										y: winH + (stageUnit * 6)
 									},
 									physics: {
 										immovable: true
@@ -103131,6 +103231,26 @@ PWG.Config = (function() {
 									},
 									attack: 1000
 								}
+							},
+							// secondary, in case the frist does not trigger
+							{
+								name: 'death',
+								cl: 'Sprite',
+								attrs: {
+									img: 'invisibleRect',
+									phaser: {
+										width: (stageWidth * 3),
+										height: 32
+									},
+									start: {
+										x: 0,
+										y: winH + (stageHeight * 10)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 1000
+								}
 							}]
 						}]
 					}]
@@ -105079,6 +105199,26 @@ PWG.Config = (function() {
 									},
 									attack: 1000
 								}
+							},
+							// secondary, in case the first does not trigger
+							{
+								name: 'death',
+								cl: 'Sprite',
+								attrs: {
+									img: 'invisibleRect',
+									phaser: {
+										width: (stageWidth * 3),
+										height: 32
+									},
+									start: {
+										x: 0,
+										y: winH + (stageHeight * 10)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 1000
+								}
 							}]
 						}]
 					}]
@@ -106961,8 +107101,8 @@ PWG.Model = (function() {
 	
 	var _this;
 	function Model(params) {
-		// 
-		// 
+		// trace('Model['+params.name+']/constructor, params = ');
+		// trace(params);
 		_this = this;
 		this.active = true;
 		PWG.Utils.each(params,
@@ -106974,8 +107114,8 @@ PWG.Model = (function() {
 	}
 	
 	Model.prototype.get = function(prop) {
-		// 
-		// 
+		// trace('Model/get, prop = ' + prop + ', this = ');
+		// trace(this);
 		if(this[prop]) {
 			return this[prop];
 		} else {
@@ -107003,17 +107143,17 @@ PWG.Text = (function() {
 		_this = this;
 		this.model = new PWG.Model(params);
 		var attrs = this.model.attrs;
-		// 
+		// trace('~~~~~~~~~ Text['+this.model.name+']/constructor, this = ', this);
 		var context = (attrs.dynamicContentContext) ? attrs.dynamicContentContext : PolyworksGame;
 		var content = PWG.Utils.parseMarkup(attrs.defaultContent, context);
-		// 
+		// trace('\t['+this.model.name+'] content = ' + content);
 		Text._super.constructor.call(this, params.game, attrs.x, attrs.y, content.toString(), attrs.style);
 		// this.setText(content);
 
 	}
 	
 	Text.prototype.begin = function() {
-		// 
+		// trace('Text['+this.model.name+']/begin, listeners = ', this.model.attrs.listeners);
 		var attrs = this.model.attrs;
 		var content = attrs.defaultContent;
 		this.alignAndPosition();;
@@ -107031,8 +107171,8 @@ PWG.Text = (function() {
 	};
 
 	Text.prototype.alignAndPosition = function() {
-		// 
-		// 
+		// trace('============= Text['+this.model.name+']/position');
+		// trace('\ttext width = ' + this.width);
 		var attrs = this.model.attrs;
 		if(attrs.alignX) {
 			switch(attrs.alignX) {
@@ -107042,15 +107182,15 @@ PWG.Text = (function() {
 				break;
 				
 				case 'windowRight':
-				// 
+				// trace('\taligning right to window, x = ' + this.x + ', width = ' + this.width);
 				this.x = PWG.Stage.winW - this.width;
-				// 
+				// trace('\tx now = ' + this.x);
 				break;
 				
 				case 'stageRight':
-				// 
+				// trace('\taligning right to stage, x = ' + this.x + ', width = ' + this.width);
 				this.x = PWG.Stage.width - this.width;
-				// 
+				// trace('\tx now = ' + this.x);
 				break;
 				
 				default: 
@@ -107081,15 +107221,15 @@ PWG.Text = (function() {
 		}
 
 		var content = PWG.Utils.parseMarkup(this.model.attrs.defaultContent, context);
-		// 
+		// trace('\twidth now = ' + this.width);
 		// this.alignAndPosition();
 		// this.setText(this.content.toString());
-		// 
+		// trace('Text['+this.model.name+']/onUpdate, content = ' + content + ', event = ', event);
 		this.text = content.toString();
 	};
 	
 	Text.prototype.destroy = function() {
-		// 
+		// trace('Text['+this.model.name+']/destroy, this = ', this, '\tlisteners = ', this.model.attrs.listeners);
 		var listeners = this.model.listeners;
 		var _this = this;
 
@@ -107112,10 +107252,10 @@ PWG.Sprite = (function() {
 
 	function Sprite(params) {
 		this.model = new PWG.Model(params);
-		// 
+		// trace('Sprite['+this.model.name+']/constructor, model = ', this.model);
 		var attrs = this.model.attrs;
 		var start = attrs.start;
-		// 
+		// trace('\t\t\tstart = x: ' + start.x + ', y: ' + start.y + ', img = ' + attrs.img);
 		Sprite._super.constructor.call(this, params.game, start.x, start.y, attrs.img);
 		this.active = true;
 		// this.active = false;
@@ -107124,7 +107264,7 @@ PWG.Sprite = (function() {
 	}
 	
 	Sprite.prototype.begin = function() {
-		// 
+		// trace('Sprite['+this.model.name+']/begin, this = ', this);
 
 		var attrs = this.model.attrs;
 		var phaser = attrs.phaser; 
@@ -107149,7 +107289,7 @@ PWG.Sprite = (function() {
 			if(attrs.physicsType) {
 				PolyworksGame.phaser.physics.enable(this, attrs.physicsType);
 			} else {
-				// 
+				// trace('------ enabling physics for: ' + this.model.name);
 				PolyworksGame.phaser.physics.enable(this, Phaser.Physics.ARCADE);
 			}
 			this.beginPhysics(attrs.physics);
@@ -107158,13 +107298,13 @@ PWG.Sprite = (function() {
 		// SIZE
 		var setSize = attrs.setSize;
 		if(setSize) {
-			// 
-			// 
+			// trace('Sprite['+this.model.name+'] setSize = ' + setSize.length);
+			// trace(setSize);
 			if(setSize.length === 4) {
-				// 
+				// trace('\tsetting w, h, x, y size');
 				this.body.setSize(setSize[0], setSize[1], setSize[2], setSize[3]);
 			} else {
-				// 
+				// trace('\tsetting w, h size');
 				this.body.setSize(setSize[0], setSize[1]);
 			}
 		}
@@ -107180,7 +107320,7 @@ PWG.Sprite = (function() {
 	};
 	
 	Sprite.prototype.beginPhysics = function(physics) {
-		// 
+		// trace('\n\nSprite['+this.model.name+']/beginPhysics, this = ', this, '\tphysics = ', physics);
 		for(var key in physics) {
 			this.body[key] = physics[key];
 		}
@@ -107193,20 +107333,20 @@ PWG.Sprite = (function() {
 	};
 
 	Sprite.prototype.deactivateGravity = function() {
-		// 
+		// trace('Sprte['+this.model.name+']/deactivateGravity');
 		this.exists = false;
 		this.allowGravity = false;
 		this.body.gravity = 0;
 	};
 	
 	Sprite.prototype.activateGravity = function() {
-		// 
-		// 
+		// trace(this);
+		// trace('Sprite['+this.model.name+']/activateGravity, y = ' + this.body.y);
 		var physics = this.model.attrs.physics;
 		if(physics && physics.deferredGravity) {
 			var gravity = (physics.gravity) ? physics.gravity : PolyworksGame.get('gravity');
-			// 
-			// 
+			// trace('gravity = ');
+			// trace(gravity);
 			this.body.gravity = gravity;
 		}
 		this.allowGravity = true;
@@ -107214,9 +107354,9 @@ PWG.Sprite = (function() {
 	};
 	
 	Sprite.prototype.checkTerrainCollision = function(terrain) {
-		// 
-		// 
-		// 
+		// trace('Sprite['+this.model.name+']/checkTerrainCollision, terrain = ');
+		// trace(terrain);
+		// trace(this);
 		PolyworksGame.phaser.physics.arcade.collide(this, terrain);
 	};
 	
@@ -107226,11 +107366,11 @@ PWG.Sprite = (function() {
 
 		PWG.Utils.each(dynamicTerrain,
 			function(c) {
-				// 
+				// trace('c['+c.model.name+'].active = ' + c.active);
 				if(c.active) {
 					physics.arcade.overlap(this, c, _this.onDynamicTerrainCollision, null, _this);
 				// } else {
-				// 	
+				// 	trace('c['+c.model.name+'].active = ' + c.active);
 				}
 			},
 			_this
@@ -107238,9 +107378,9 @@ PWG.Sprite = (function() {
 	};
 	
 	Sprite.prototype.onDynamicTerrainCollision = function(sprite, terrain) {
-		// 
+		// trace('Sprite['+this.model.name+']/onDynamicTerrainCollision, terrain = ' + terrain.model.name);
 		if(terrain.collidedWithSprite) {
-			// 
+			// trace('Sprite['+this.model.name+']/onDynamicTerrainCollision, calling collidedWithSprite on ', terrain);
 			terrain.collidedWithSprite(sprite);
 		}
 		var terrainY = terrain.body.y + terrain.body.height;
@@ -107252,23 +107392,23 @@ PWG.Sprite = (function() {
 	};
 	
 	Sprite.prototype.beginAnimations = function(animations) {
-		// 
+		// trace('Sprite['+this.model.name+']/beginAnimations, animations = ', animations);
 		PWG.Utils.each(animations,
 			function(a, key) {
-				// 
+				// trace('\ta['+key+'] = ', a);
 				this.animations.add(key, a.keyFrames, a.frameRate);
 			},
 			this
 		);
 
 		var defaultAnimation = this.model.attrs.defaultAnimation;
-		// 
+		// trace('------------- Sprite['+this.model.name+']/beginAnimations, defaultAnimation = ' + defaultAnimation);
 		if(defaultAnimation) {
-			// 
+			// trace('\tgoing to be defaultAnimation: ' + defaultAnimation);
 			this.play(defaultAnimation, animations[defaultAnimation].frameRate, animations[defaultAnimation].loop);
 			this.model.currentAnimation = defaultAnimation;
 		} else {
-			// 
+			// trace('\tgoing to frame 0');
 			this.animations.frame = 0;
 			this.model.currentAnimation = '';
 		}
@@ -107277,7 +107417,7 @@ PWG.Sprite = (function() {
 	Sprite.prototype.play = function(name, frameRate, loop, killOnComplete) {
 		// var kill = (typeof(killOnCompleted) === 'undefined') ? false : killOnComplete;
 		// if(this.model.name !== 'keke') {
-		// 	// 
+		// 	// trace('KILL = ' + kill + ', killOnComplete = ' + killOnComplete);
 		// }
 		this.animations.play(name, frameRate, loop, killOnComplete);
 		this.model.currentAnimation = name;
@@ -107291,18 +107431,18 @@ PWG.Sprite = (function() {
 	Sprite.prototype.move = function(params) {
 		var movement = this.model.attrs.movement;
 		if(movement) {
-			// 
+			// trace('Sprite['+this.model.name+']/move, movement = ', movement);
 			PWG.Utils.moveView(this, movement, params);
 		}
 	};
 
 	Sprite.prototype.destroy = function() {
-		// 
+		// trace('Sprite['+this.model.name+']/destroy, alive = ' + this.alive + ', exists = ' + this.exits);
 		this.exists = false; // keeps phaser update core from running on this sprite;
 
 		if(this.alive) {
 			if(this.animations) {
-				// 
+				// trace('\tdestroying animations');
 				this.animations.stop();
 				this.animations.destroy();
 			}
@@ -107322,7 +107462,7 @@ PWG.ParallaxBackground = (function() {
 	}
 	
 	ParallaxBackground.prototype.begin = function() {
-		
+		trace('ParallaxBackground['+this.model.name+']/begin', this);
 		var attrs = this.model.attrs;
 		var game = this.model.game;
 
@@ -107331,10 +107471,10 @@ PWG.ParallaxBackground = (function() {
 	    this.tileset = game.add.tileset(attrs.tileset);
 	    this.layer = game.add.tilemapLayer(attrs.start.x, attrs.start.y, attrs.width, attrs.height, this.tileset, this.tilemap, attrs.layerIndex);
 	
-		
+		trace('\tadding map layer x/y: ' + attrs.start.x + '/' + attrs.start.y + ', w/h: ' + attrs.width + '/' + attrs.height, this.tilemap, this.tileset, this.layer);
 		PWG.Utils.each(attrs.layer,
 			function(attr, key) {
-				
+				trace('\tsetting layer['+key+'] to: ' + attr);
 				this.layer[key] = attr;
 			},
 			this
@@ -107347,7 +107487,7 @@ PWG.ParallaxBackground = (function() {
 PWG.Emitter = (function() {
 	
 	function Emitter(params) {
-		
+		trace('Emitter/constructor, params = ', params);
 		this.model = new PWG.Model(params);
 	}
 	
@@ -107357,7 +107497,7 @@ PWG.Emitter = (function() {
 		var attrs = this.model.attrs;
 		var bounds = (attrs.bounds) ? attrs.bounds : game.world.bounds;
 
-		
+		trace('------------------ Emitter/begin, attrs = ', attrs, '\tbounds = ', bounds);
 	    this.emitter = game.add.emitter(bounds.x, bounds.y, attrs.maxParticles);
 		this.emitter.width = bounds.width;
 		this.emitter.height = bounds.height;
@@ -107406,7 +107546,7 @@ PWG.Snow = (function() {
 	PWG.Utils.inherits(Snow, PWG.Emitter);
 	
 	function Snow(params) {
-		
+		trace('Snow/constructor, params = ', params);
 		var defaults = {
 				maxParticles: 400,
 				particles: {
@@ -107446,7 +107586,7 @@ PWG.Snow = (function() {
 		};
 
 		params.attrs = PWG.Utils.extend(params.attrs, defaults);
-		
+		trace('\tparams now = ', params);
 		Snow._super.constructor.call(this, params);
 	}
 	
@@ -107469,7 +107609,7 @@ PWG.Enemy = (function() {
 
 	Enemy.prototype.pwUpdate = function(params) {
 		if(this.alive) {
-			// 
+			// trace('Enemy['+this.model.name+']/pwUpdate, relationToPlayer = ' + this.relationToPlayer);
 			this.checkDynamicTerrainCollision(params.dynamicTerrain);
 
 			this.relationToPlayer = 'near';
@@ -107494,7 +107634,7 @@ PWG.Enemy = (function() {
 				break;
 
 				default: 
-					// 
+					// trace('ERROR: (enemy) unknown movement type: ' + movementType);
 				break;
 			}
 
@@ -107505,7 +107645,7 @@ PWG.Enemy = (function() {
 	};
 	
 	Enemy.prototype.calculateHorizontalMovement = function(player, movementType, invert) {
-		// 
+		// trace('Enemy['+this.model.name+']/calculateHorizontalMovement');
 		var reverse = invert || false;
 		var enemyX = this.body.x;
 		var enemyY = this.body.y;
@@ -107513,7 +107653,7 @@ PWG.Enemy = (function() {
 		var playerY = player.body.y;
 
 		if(this.model.attrs.testInView) {
-			// 
+			// trace('testing in view, enemyX = ' + enemyX + ', playerX = ' + playerX);
 			if((enemyX < (playerX + PWG.Stage.width/2) && enemyX > (playerX - PWG.Stage.width/2)) && (enemyY < (playerY + PWG.Stage.height/2) && enemyY > (playerY - PWG.Stage.height/2))) {
 				this.isInView = true;
 				if(!this.isActive) {
@@ -107528,15 +107668,15 @@ PWG.Enemy = (function() {
 		}
 
 		if(this.isInView) {
-				// 
+				// trace('is in view, x = ' + enemyX + ', playerX = ' + playerX);
 			var direction; 
 			if(enemyX < (playerX - 10)) {
-				// 
+				// trace(this.model.name + ': move right, x = ' + enemyX + ', playerX = ' + playerX);
 				this.relationToPlayer = 'right';
 				direction = (reverse) ? PWG.Directions.LEFT : PWG.Directions.RIGHT;
 				this.move({ direction: direction, type: movementType });
 			} else if(enemyX > (playerX + 10)) {
-				// 
+				// trace(this.model.name + ': move left, x = ' + enemyX + ', playerX = ' + playerX);
 				this.relationToPlayer = 'left';
 				direction = (reverse) ? PWG.Directions.RIGHT : PWG.Directions.LEFT;
 				this.move({ direction: direction, type: movementType });
@@ -107577,12 +107717,12 @@ PWG.Enemy = (function() {
 
 		if(this.isInView) {
 			if(enemyY < (playerY - playerHeight)) {
-				// 
+				// trace('move right');
 				this.relationToPlayer = 'above';
 				this.move({ direction: PWG.Directions.DOWN, type: movementType });
 			// } else if(enemyY > (playerY + playerHeight)) {
 			} else if(enemyY > (playerY + playerHeight)) {
-				// 
+				// trace('move left');
 				this.relationToPlayer = 'below';
 				this.move({ direction: PWG.Directions.UP, type: movementType });
 			}
@@ -107590,7 +107730,7 @@ PWG.Enemy = (function() {
 	};
 	
 	Enemy.prototype.damage = function(damage) {
-		// 
+		// trace('Enemy['+this.model.name+']/damage, damage = ' + damage + ', health = ' + this.health);
 		this.health -= damage;
 		if(this.health <= 0) {
 			this.kill();
@@ -107598,8 +107738,8 @@ PWG.Enemy = (function() {
 	};
 	
 	Enemy.prototype.kill = function() {
-		// 
-		// 
+		// trace('Enemy['+this.model.name+']/kill, ancestor = ');
+		// trace(this.model);
 		this.active = false;
 		PolyworksGame.setLevelScore(this.model.attrs.score);
 		this.model.ancestor.removeChild.call(this.model.ancestor, this.model.name);
@@ -107608,7 +107748,7 @@ PWG.Enemy = (function() {
 	};
 	
 	Enemy.prototype.destroy = function() {
-		// 
+		// trace('Enemy['+this.model.name+']/destroy');
 		this.alive = false;
 		Enemy._super.destroy.call(this);
 	};
@@ -107621,18 +107761,18 @@ PWG.AnimatedEnemy = (function() {
 	
 	var _this;
 	function AnimatedEnemy(params) {
-		// 
+		// trace('AnimatedEnemy/constructor');
 		AnimatedEnemy._super.constructor.call(this, params);
 	}
 	
 	AnimatedEnemy.prototype.pwUpdate = function(params) {
 		if(this.alive) {
-			// 
-			// 
+			// trace('AnimatedEnemy['+this.model.name+']/pwUpdate');
+			// trace(this);
 			AnimatedEnemy._super.pwUpdate.call(this, params);
 
 			if(this.isInView) {
-				// 
+				// trace('\tenemy['+this.name+'] in range');
 				var animations = this.model.attrs.animations; 
 
 				if(!this.body.touching.down && (this.model.attrs.movement.type === PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED)) {
@@ -107690,7 +107830,7 @@ PWG.Bonus = (function() {
 	};
 	
 	Bonus.prototype.collect = function() {
-		
+		trace('Bonus['+this.model.name+']/collect, score = ' + this.model.attrs.score,  this.model);
 		if(this.model.attrs.score) {
 		    PolyworksGame.setLevelScore(this.model.attrs.score);
 		}
@@ -107709,7 +107849,7 @@ PWG.HeartIcon = (function() {
 	}
 	
 	HeartIcon.prototype.begin = function() {
-		// 
+		// trace('HeartIcon/begin');
 		HeartIcon._super.begin.call(this);
 		this.healthSet = false;
 		this.currentAnimation = this.model.attrs.defaultAnimation;
@@ -107725,12 +107865,12 @@ PWG.HeartIcon = (function() {
 	};
 	
 	HeartIcon.prototype.onAnimationComplete = function() {
-		
+		trace('HEART ICON ON ANIMATION COMPLETE');
 	}
 	
 	HeartIcon.prototype.onHealthUpdated = function(params) {
 		var newHealth = PolyworksGame.health;
-		// 
+		// trace('HeartIcon/onHealthUpdate, this.model.health = ' + this.model.health + ', health = ', newHealth);
 		if(this.healthSet) {
 			var animations = this.model.attrs.animations;
 			if(newHealth < this.model.lowHealth) {
@@ -107805,12 +107945,12 @@ PWG.ReactingTerrain = (function() {
 	}
 	
 	ReactingTerrain.prototype.begin = function() {
-		// 
+		// trace('ReactingTerrain['+this.model.name+']/begin');
 		ReactingTerrain._super.begin.call(this);
 	};
 	
 	ReactingTerrain.prototype.activate = function() {
-		// 
+		// trace('ReactionTerrain/activate, this = ', this);
 		this.state = ReactingTerrain.IDLE;
 		this.hasCollided = false;
 		this.active = true;
@@ -107818,15 +107958,15 @@ PWG.ReactingTerrain = (function() {
 	
 	ReactingTerrain.prototype.collidedWithSprite = function(sprite) {
 		if(!this.hasCollided && sprite.model.name === 'player') {
-			// 
+			// trace('ReactingTerrain['+this.model.name+']/collidedWithSprite, hasCollided = ' + this.hasCollided + ', sprite.model.name = ' + sprite.model.name + '\n\tsprite.height = ' + sprite.body.height + '\n\tsprite.y = ' + sprite.body.y + '\n\tsprite bottom = ' + (sprite.body.y + sprite.body.height - 1) + '\n\tthis.y = ', this.body.y);
 			if((sprite.body.y + sprite.body.height - 1) <= this.body.y) {
 				this.hasCollided = true;
 
 				if(this.state === ReactingTerrain.IDLE) {
-					// 
+					// trace('\tsomething collided with terrain, switching state');
 
 					var reaction = this.model.reaction;
-					// 
+					// trace('\treaction = ', reaction.type);
 					switch(reaction.type) {
 						case PWG.TerrainReactions.ADD_GRAVITY:
 							this.addGravity(this);
@@ -107845,12 +107985,12 @@ PWG.ReactingTerrain = (function() {
 						break; 
 
 						default:
-							// 
+							// trace('\tunknown reaction type');
 						break;
 					}
 
 				// } else if(this.state === ReactingTerrain.ACTIVATED) {
-				// 	// 
+				// 	// trace('\treacting terrain collided with something, destroy it');
 				// 	this.state = ReactingTerrain.DEACTIVATED;
 				// 	if(this.model.attrs.animations) {
 				// 		this.playAnimation();
@@ -107869,18 +108009,18 @@ PWG.ReactingTerrain = (function() {
 	};
 
 	ReactingTerrain.prototype.animationCompleted = function() {
-		// 
+		// trace('ReactingTerrain['+this.model.name+']/animationCompleted');
 		this.removeTerrain();
 	};
 	
 	ReactingTerrain.prototype.playAnimation = function() {
-		// 
+		// trace('ReactingTerrain['+this.model.name+']/playAnimation: ', this);
 		var animation = this.model.attrs.animations[this.state];
 		if(animation) {
-			// 
+			// trace('\tgoing to call play on', animation);
 			var kill = false;
 			if(this.model.reaction.type === PWG.TerrainReactions.DESTROY_AFTER_ANIMATION) {
-				// 
+				// trace('\t\tit\'s a destroy after animation, set kill to true');
 				kill = true;
 			}
 			this.play(this.state, animation.frameRate, animation.looped, false);
@@ -107893,12 +108033,12 @@ PWG.ReactingTerrain = (function() {
 	};
 
 	ReactingTerrain.prototype.deactivate = function(self) {
-		// 
+		// trace('ReactiongTerrain['+self.model.name+']/deactivate');
 		self.active = false;
 	};
 	
 	ReactingTerrain.prototype.respawn = function(self) {
-		// 
+		// trace('ReactingTerrain['+self.model.name+']/respawn, self = ', self);
 		// self.animations.frame = 0;
 		var animation = self.model.attrs.animations['respawn'];
 		self.play('respawn', animation.frameRate, animation.looped, false);
@@ -107906,14 +108046,14 @@ PWG.ReactingTerrain = (function() {
 	};
 	
 	ReactingTerrain.prototype.addGravity = function() {
-		// 
+		// trace('ReactingTerrain['+_this.model.name+']/addGravity, _this = ', _this);
 		_this.changeState(ReactingTerrain.DEACTIVATED);
 		_this.immovable = false; 
 		_this.activateGravity();
 	};
 	
 	ReactingTerrain.prototype.removeTerrain = function() {
-		// 
+		// trace('ReactingTerrain['+this.model.name+']/removeTerrain, _this = ', this);
 		if(this.model.attrs.animations) {
 			this.stop();
 		}
@@ -107921,7 +108061,7 @@ PWG.ReactingTerrain = (function() {
 	};
 	
 	ReactingTerrain.prototype.callMethodAfterXSeconds = function(method) {
-		// 
+		// trace('ReactingTerrain['+this.model.name+']/callMethodAfterXSeconds, time = ' + this.model.reaction.time + ', method = ' + method);
 		this.changeState(ReactingTerrain.COLLIDED);
 		_this = this;
 		this.timer = setTimeout(
@@ -107931,10 +108071,10 @@ PWG.ReactingTerrain = (function() {
 	};
 	
 	ReactingTerrain.prototype.destroyAfterAnimation = function() {
-		// 
+		// trace('ReactingTerrain['+this.model.name+']/destroyAfterAnimation');
 		this.changeState(ReactingTerrain.COLLIDED);
 		// this.events.onAnimationComplete.add(function() {
-		// 	// 
+		// 	// trace('\tadding call to animation completed method');
 		// 	this.animationCompleted();
 		// }, this);
 	};
@@ -107950,27 +108090,27 @@ PWG.Collection = (function() {
 	
 	function Collection(params) {
 		this.model = new PWG.Model(params);
-		// 
+		// trace('Collection['+params.name+']/constructor', params);
 	}
 	
 	Collection.prototype.begin = function() {
-		// 
+		// trace('Collection['+this.model.name+']/begin', this);
 		var game = PolyworksGame.phaser;
 		var collection = [];
 		var nameIndex = {};
 		var children = this.model.attrs;
 		var child;
 		var params;
-		// 
+		// trace('children.length = ' + children.length);
 		PWG.Utils.each(children,
 			function(c, i) {
-				// 
+				// trace('\t\ti = ' + i + ', c = ', c);
 				if(typeof(c) !== 'undefined') {
 					c.game = game;
 					c.ancestor = this;
 					c.idx = i;
 
-					// 
+					// trace('\tc['+c.name+'] cl = ' + c.cl);
 					child = new PWG[c.cl](c);
 					child.begin();
 
@@ -107989,14 +108129,14 @@ PWG.Collection = (function() {
 	};
 	
 	Collection.prototype.setChildrenExists = function(exists) {
-		// 
+		// trace('Collection['+this.model.name+']/setChildrenExists, exists = ' + exists);
 		PWG.Utils.each(this.model.collection,
 			function(child) {
 				if(child.setChildrenExists) {
-					// 
+					// trace('\tcalling setChildExists on: '+child.model.name);
 					child.setChildrenExists(exists);
 				} else {
-					// 
+					// trace('\tchild['+child.model.name+'].exists = ' + child.exists);
 					child.exists = exists;
 				}
 			},
@@ -108005,7 +108145,7 @@ PWG.Collection = (function() {
 	};
 	
 	Collection.prototype.getChildByName = function(name) {
-		// 
+		// trace('Collection/getChildByName, name = ' + name + 'model = ', this.model);
 		var child; 
 
 		var collection = this.model.collection;
@@ -108020,21 +108160,21 @@ PWG.Collection = (function() {
 	};
 	
 	Collection.prototype.removeChild = function(name) {
-		// 
-		
+		// trace('Collection/removeChild, name = ' + name + ', pre splice collection: ');
+		trace(this.model.collection);
 
 		var collection = this.model.collection;
 		var length = collection.length;
 		for(var i = 0; i < length; i++) {
 			if(collection[i].model.name === name) {
-				// 
+				// trace('\tfound name at index: ' + i);
 				this.model.collection.splice(i, 1);
 				break;
 			}
 		}
 
-		// 
-		// 
+		// trace('\tpost splice collection: ');
+		// trace(this.model.collection);
 	};
 	
 	Collection.prototype.removeAll = function() {
@@ -108043,23 +108183,23 @@ PWG.Collection = (function() {
 	
 	Collection.prototype.destroy = function() {
 		var collection = this.model.collection;
-		// 
+		// trace('Collection['+this.model.name+']/destroy, collection = ', collection);
 		PWG.Utils.each(collection,
 			function(child) {
-				// 
+				// trace('\tattempting to call destroy on child['+child.model.name+']');
 				if(child.destroy) {
 					child.destroy();
 				}
 			},
 			this
 		);
-		// 
+		// trace('\tthis.model.name children destroyed, collection = ', collection);
 		if(collection) {
 			while(collection.length > 0) {
 				collection.pop();
 			}
 		}
-		// 
+		// trace('\tpost pop, collection = ', collection);
 		this.destroyed = true;
 	};
 	
@@ -108071,10 +108211,10 @@ PWG.GroupCollection = (function() {
 	PWG.Utils.inherits(GroupCollection, PWG.Collection);
 	
 	function GroupCollection(params, groupContext) {
-		// 
+		// trace('GroupCollection['+params.name+']/constructor, groupContext = ' + groupContext);
 		GroupCollection._super.constructor.call(this, params);
 		// if(groupContext === 'null') {
-		// 	// 
+		// 	// trace('GroupCollection['+params.name+'], adding group with context of null');
 		// 	this.group = PolyworksGame.phaser.add.group(null);
 		// } else {
 		// 	this.group = PolyworksGame.phaser.add.group();
@@ -108082,7 +108222,7 @@ PWG.GroupCollection = (function() {
 	}
 	
 	GroupCollection.prototype.begin = function() {
-		// 
+		// trace('GroupCollection['+this.model.name+']/begin, this = ', this);
 		GroupCollection._super.begin.call(this);
 
 		var game = PolyworksGame.phaser;
@@ -108099,7 +108239,7 @@ PWG.GroupCollection = (function() {
 			} else {
 				group = game.add.group();
 				// retrieve parent group from model based on addTo value
-				// 
+				// trace('----------------- finding parent group: ' + addTo + ' on ', this.model);
 				this.model[addTo].add(group);
 			}
 		} else {
@@ -108108,7 +108248,7 @@ PWG.GroupCollection = (function() {
 
 		PWG.Utils.each(collection,
 			function(c) {
-				// 
+				// trace('\t\tc = ', c);
 				group.add(c);
 			},
 			this
@@ -108119,8 +108259,8 @@ PWG.GroupCollection = (function() {
 		}
 		this.group = group;
 
-		// 
-		// 
+		// trace('group now = ');
+		// trace(this.group);
 	};
 
 	GroupCollection.prototype.hide = function() {
@@ -108137,8 +108277,8 @@ PWG.GroupCollection = (function() {
 	};
 	
 	GroupCollection.prototype.removeAll = function() {
-		// 
-		// 
+		// trace('GroupCollection['+this.model.name+']/remove, collection = ');
+		// trace(this.collection);
 		this.group.removeAll();
 		while(this.model.collection.length > 0) {
 			this.model.collection.pop();
@@ -108146,7 +108286,7 @@ PWG.GroupCollection = (function() {
 	};
 
 	GroupCollection.prototype.destroy = function() {
-		// 
+		// trace('GroupCollection['+this.model.name+']/destroy');
 		this.group.destroy(true);
 		GroupCollection._super.destroy.call(this);
 	};
@@ -108162,12 +108302,12 @@ PWG.SharedGroupCollection = (function() {
 	}
 	
 	SharedGroupCollection.prototype.begin = function() {
-		// 
+		// trace('SharedGroupCollection['+this.model.name+']/begin');
 		var sharedGroups = PolyworksGame.get('sharedGroups');
 		this.model.attrs = PWG.Utils.clone(sharedGroups[this.model.type]);
-		// 
+		// trace('\tsharedGroups = ', sharedGroups, '\tmodel = ', this.model);
 		SharedGroupCollection._super.begin.call(this);
-		// 
+		// trace('\tpost super call, model.visible = ' + this.model.visible);
 
 		// this.group.visible = this.model.visible;
 	};
@@ -108183,9 +108323,9 @@ PWG.PhysicalGroupCollection = (function() {
 	}
 	
 	PhysicalGroupCollection.prototype.checkTerrainCollision = function(terrain) {
-		// 
-		// 
-		// 
+		// trace('PhysicalGroupCollection['+this.model.name+']/checkTerrainCollsion');
+		// trace(terrain);
+		// trace(this);
 		PWG.Utils.each(this.model.collection,
 			function(c) {
 				c.checkTerrainCollision(terrain);
@@ -108216,7 +108356,7 @@ PWG.PhysicalGroupCollection = (function() {
 		var activeElements = [];
 		PWG.Utils.each(this.model.collection,
 			function(c) {
-				// 
+				// trace('c['+c.model.name+'].active = ' + c.active);
 				if(c.active) {
 					activeElements.push(c);
 				}
@@ -108224,13 +108364,13 @@ PWG.PhysicalGroupCollection = (function() {
 			this
 		);
 
-		// 
+		// trace('PhysicalGroupCollection['+this.model.name+']/getActive, activeElements = ', activeElements);
 		return activeElements;
 		// return this.group;
 	};
 	
 	PhysicalGroupCollection.prototype.killChild = function(name) {
-		
+		trace('PhysicalGroupCollection['+this.model.name+']/killChild, name = ' + name);
 		var child = this.getChildByName(name); 
 		child.exists = child.alive = false;
 		this.removeChild(name);
@@ -108248,7 +108388,7 @@ PWG.GUIConsole = (function() {
 
 	GUIConsole.prototype.begin = function() {
 		GUIConsole._super.begin.call(this);
-		// 
+		// trace('GUIConsole/begin');
 
 		PWG.Utils.each(this.collection,
 			function(c) {
@@ -108263,13 +108403,13 @@ PWG.GUIConsole = (function() {
 	};
 	
 	GUIConsole.prototype.addListeners = function() {
-		// 
+		// trace('GUIConsole/addListeners');
 		// PWG.EventCenter.bind(PWG.Events.SCORE_UPDATED, this.onScoreUpdated, this);
 		PWG.EventCenter.bind(PWG.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
 	};
 	
 	GUIConsole.prototype.onScoreUpdated = function() {
-		// 
+		// trace('GUIConsole/onScoreUpdated');
 		this.parseAndSetContent('score');
 	};
 	
@@ -108278,9 +108418,9 @@ PWG.GUIConsole = (function() {
 	};
 	
 	GUIConsole.prototype.parseAndSetContent = function(field, context) {
-		// 
+		// trace('GUIConsole/parseAndSetContent, field = ' + field);
 		var text = this.getChildByName(field);
-		// 
+		// trace(text);
 		if(text) {
 			var context = (context) ? context : PolyworksGame;
 			text.content = PWG.Utils.parseMarkup(text.model.attrs.defaultContent, context);
@@ -108322,7 +108462,7 @@ PWG.PlayerIcon = (function() {
 	}
 	
 	PlayerIcon.prototype.initPosition = function(positions) {
-		
+		trace('PlayerIcon/initPosition, position = ', positions, '\tcurrentLevel = ' + PolyworksGame.currentLevel);
 		return positions[PolyworksGame.currentLevel];
 	};
 	
@@ -108333,9 +108473,9 @@ PWG.PlayerIcon = (function() {
 		PlayerIcon._super.begin.call(this);
 
 		var grandfather = this.model.ancestor.model.ancestor;
-		// 
+		// trace('\tgrandfather = ', grandfather);
 		var pages = grandfather.model.pages;
-		// 
+		// trace('\tpages = ', pages);
 		var pagesLength = pages.length;
 		for(var i = 0; i < pagesLength; i++) {
 			var levels = pages[i].levels;
@@ -108347,7 +108487,7 @@ PWG.PlayerIcon = (function() {
 				}
 			}
 		}
-		// 
+		// trace('\tpageIndex = ' + this.pageIndex);
 	};
 	
 	PlayerIcon.prototype.addListeners = function() {
@@ -108362,18 +108502,18 @@ PWG.PlayerIcon = (function() {
 	};
 	
 	PlayerIcon.prototype.inputDown = function(event, pointer, ctx) {
-		// 
+		// trace('PlayerIcon['+this.model.name+']/inputDown');
 		ctx.pressed = true;
 	};
 	
 	PlayerIcon.prototype.inputUp = function(event, pointer, ctx) {
-		// 
+		// trace('PlayerIcon['+this.model.name+']/inputUp');
 		ctx.pressed = false;
 		// PWG.EventCenter.trigger({ type: PWG.Events.START_LEVEL, value: PolyworksGame.currentLevel });
 	};
 	
 	PlayerIcon.prototype.onChangeMapPage = function(event) {
-		// 
+		// trace('PlayerIcon/onChangeMapPage, event = ', event);
 		if(event.value === this.pageIndex) {
 			this.visible = true;
 		} else {
@@ -108397,7 +108537,7 @@ PWG.LevelInfo = (function() {
 	}
 	
 	LevelInfo.prototype.begin = function() {
-		// 
+		// trace('LevelInfo['+this.model.name+']/begin');
 		LevelInfo._super.begin.call(this);
 		this.hide();
 	};
@@ -108413,7 +108553,7 @@ PWG.MapMarker = (function() {
 	}
 	
 	MapMarker.prototype.begin = function() {
-		// 
+		// trace('MapMarker['+this.model.name+']/begin, level = ' + this.model.level);
 		MapMarker._super.begin.call(this);
 
 		var name = this.model.name;
@@ -108450,12 +108590,12 @@ PWG.MapMarker = (function() {
 	};
 	
 	MapMarker.prototype.inputDown = function(event, pointer, ctx) {
-		// 
+		// trace('MapMarker['+this.model.name+']/inputDown');
 		ctx.pressed = true;
 	};
 	
 	MapMarker.prototype.inputUp = function(event, pointer, ctx) {
-		// 
+		// trace('MapMarker['+this.model.name+']/inputUp');
 		ctx.pressed = false;
 		PWG.EventCenter.trigger({ type: PWG.Events.SHOW_LEVEL_INFO, value: this.model.level });
 	};
@@ -108468,11 +108608,11 @@ PWG.MapPage = (function() {
 	
 	function MapPage(params) {
 		MapPage._super.constructor.call(this, params);
-		// 
+		// trace('MapPage['+this.model.name+']/constructor');
 	}
 	
 	MapPage.prototype.begin = function() {
-		// 
+		// trace('MapPage['+this.model.name+']/begin, model = ', this.model);
 		this.addListeners();
 
 		var pageStartX = this.model.start.x;
@@ -108488,7 +108628,7 @@ PWG.MapPage = (function() {
 
 		PWG.Utils.each(levels,
 			function(level) {
-				// 
+				// trace('\tlevel = ' + level + ', currentLevelString = ' + currentLevelString);
 				if(level === PolyworksGame.currentLevel) {
 					this.model.selected = true;
 				}
@@ -108504,22 +108644,22 @@ PWG.MapPage = (function() {
 
 		if(this.model.leftArrow) {
 			var lBtn = this.addArrowButton('left', pageStartX, stageSeventh);
-			// 
+			// trace('\t\tlBtn', lBtn);
 			this.model.attrs.push(lBtn);
 		}
 		if(this.model.rightArrow) {
 			var rBtn = this.addArrowButton('right', pageStartX, stageSeventh);
-			// 
+			// trace('\t\trBtn', rBtn);
 			this.model.attrs.push(rBtn);
 		}
 
 		MapPage._super.begin.call(this);
-		// 
-		// 
+		// trace(this);
+		// trace('end of MapPage super begin, collection = ', this.model.collection);
 		var _this = this;
 		PWG.Utils.each(this.model.collection,
 			function(child) {
-				// 
+				// trace('\tadding child['+child.model.name+'] to group');
 				_this.pageGroup.add(child);
 			},
 			this
@@ -108531,7 +108671,7 @@ PWG.MapPage = (function() {
 	};
 	
 	MapPage.prototype.onChangeMapPage = function(event) {
-		// 
+		// trace('MapPage['+this.model.name+']/onChangeMapPage, event = ', event);
 		if(event.value === this.model.idx) {
 			this.pageGroup.visible = true;
 		} else {
@@ -108547,7 +108687,7 @@ PWG.MapPage = (function() {
 	};
 	
 	MapPage.prototype.addArrowButton = function(direction, pageStartX, stageSeventh) {
-		// 
+		// trace('MapPage['+this.model.name+']/addArrow, direction = ' + direction + ', start x = ' + pageStartX);
 		var stageUnit = PWG.Stage.unit;
 		var img;
 		var eventValue;
@@ -108606,13 +108746,13 @@ PWG.Control = (function() {
 	}
 	
 	Control.prototype.inputPressed = function(params) {
-		// 
-		// 
+		// trace('Control/inputPressed, value = ' + params.value + ', type = ' + params.type);
+		// trace(this);
 		var event;
 		var events = this.model.attrs.events;
-		// 
+		// trace(events);
 		if(events && events.pressed) {
-			// 
+			// trace('\tabout to dispatch ' + events.pressed.type);
 			event = { type: events.pressed.type, value: events.pressed.value };
 		} else {
 			event = { type: params.type, value: params.value }
@@ -108621,7 +108761,7 @@ PWG.Control = (function() {
 	};
 	
 	Control.prototype.inputReleased = function(params) {
-		// 
+		// trace('Control/inputReleased, value = ' + params.value + ', type = ' + params.type);
 		var events = this.model.attrs.events;
 		if(events && events.released) {
 			this.trigger({ type: events.released.type, value: events.released.value });
@@ -108631,8 +108771,8 @@ PWG.Control = (function() {
 	};
 	
 	Control.prototype.trigger = function(event) {
-		// 
-		// 
+		// trace('Control/trigger, event = ');
+		// trace(event);
 		PWG.EventCenter.trigger(event);
 	};
 	
@@ -108644,14 +108784,14 @@ PWG.InputButton = (function() {
 	
 	var _this;
 	function InputButton(params) {
-		// 
+		// trace('InputButton/constructor, params = ', params);
 		_this = this;
 		this.model = new PWG.Model(params);
-		// 
+		// trace('\tinput button model = ', this.model);
 		var attrs = this.model.attrs;
 		var frames = attrs.frames;
 		if(frames) {
-			// 
+			// trace('InputButton['+this.model.name+'] has frames: ' + frames);
 			InputButton._super.constructor.call(this, params.game, attrs.x, attrs.y, attrs.img, null, this, frames[0], frames[1], frames[2]);
 		} else {
 			InputButton._super.constructor.call(this, params.game, attrs.x, attrs.y, attrs.img, null, this);
@@ -108662,7 +108802,7 @@ PWG.InputButton = (function() {
 		var start = this.model.attrs.start;
 		this.x = start.x;
 		this.y = start.y;
-		// 
+		// trace('InputButton['+this.model.name+']/begin, start x/y = ' + start.x + '/' + start.y, this.model);
 		/*
 		if(this.model.width) {
 			this.width = this.model.width;
@@ -108683,8 +108823,8 @@ PWG.InputButton = (function() {
 		}
 		this.pressed = false;
 		this.addListeners();
-		// 
-		// 
+		// trace('InputButton, end of begin');
+		// trace(this);
 		// HACK
 		if(this.model.name === 'muteButton') {
 			var frame = 0; 
@@ -108696,8 +108836,8 @@ PWG.InputButton = (function() {
 	};
 	
 	InputButton.prototype.addListeners = function() {
-		// 
-		// 
+		// trace('InputButton['+this.model.img+']/addListeners, button = ');
+		// trace(this);
 		var ctx = this;
 		this.events.onInputDown.add(function(event, pointer) {
 			this.inputDown(event, pointer, ctx);
@@ -108708,13 +108848,14 @@ PWG.InputButton = (function() {
 	};
 	
 	InputButton.prototype.inputDown = function(event, pointer, ctx) {
-		
-		// hack
+		trace('InputButton['+this.model.name+']/inputDown');
+		// hack for fullscreen
 		if(PWG.DeviceUtils.isMobile()) {
 			if(this.model.name === 'start' || this.model.name === 'restart' || this.model.name === 'playButtonSmall') {
 				// if(!PolyworksGame.isFullscreen) {
-					
+					trace('attempting fullscreen');
 					PolyworksGame.phaser.scale.startFullScreen(false);
+					PolyworksGame.isFullscreen = true;
 				// }
 			}
 		}
@@ -108723,17 +108864,17 @@ PWG.InputButton = (function() {
 	};
 	
 	InputButton.prototype.inputUp = function(event, pointer, ctx) {
-		// 
+		// trace('InputButton['+this.model.name+']/inputUp');
 		ctx.inputReleased.call(ctx, { type: PWG.Events.CONTROL_RELEASED, value: ctx.model.attrs.inputCode });
 		ctx.pressed = false;
 	};
 	
 	InputButton.prototype.inputPressed = function(params) {
 		var events = this.model.attrs.events;
-		// 
+		// trace('InputButton/inputPressed\n\tvalue = ' + params.value + ', type = ' + params.type + ', events = ', events);
 		if(events) {
 			if(events.pressed) {
-				// 
+				// trace('\tabout to dispatch ' + events.pressed.type);
 				_trigger({ type: events.pressed.type, value: events.pressed.value });
 			}
 		} else {
@@ -108743,7 +108884,7 @@ PWG.InputButton = (function() {
 	
 	InputButton.prototype.inputReleased = function(params) {
 		var events = this.model.attrs.events;
-		// 
+		// trace('InputButton/inputReleased\n\tvalue = ' + params.value + ', type = ' + params.type + ', events = ', events);
 		if(events) {
 			if(events.released) {
 				_trigger({ type: events.released.type, value: events.released.value });
@@ -108754,8 +108895,8 @@ PWG.InputButton = (function() {
 	};
 	
 	_trigger = function(event) {
-		// 
-		// 
+		// trace('InputButton/trigger, event = ');
+		// trace(event);
 		PWG.EventCenter.trigger(event);
 	};
 	
@@ -108767,19 +108908,19 @@ PWG.MenuButton = (function() {
 	
 	var _this;
 	function MenuButton(params) {
-		// 
-		// 
+		// trace('MenuButton/constructor, params = ');
+		// trace(params);
 		_this = this;
 		MenuButton._super.constructor.call(this, params);
 	};
 	
 	MenuButton.prototype.inputDown = function(event, pointer) {
-		// 
+		// trace('MenuButton['+this.model.inputCode+']/inputDown');
 		this.inputPressed.call(this, { type: PWG.Events.BUTTON_PRESSED, value: this.model.inputCode });
 	};
 	
 	MenuButton.prototype.inputUp = function(event, pointer) {
-		// 
+		// trace('MenuButton['+this.model.inputCode+']/inputUp');
 		this.inputReleased.call(this, { type: PWG.Events.BUTTON_RELEASED, value: this.model.inputCode });
 	};
 	
@@ -108790,14 +108931,14 @@ PWG.ControlKey = (function() {
 	PWG.Utils.inherits(ControlKey, PWG.Control);
 	
 	function ControlKey(params) {
-		// 
-		// 
+		// trace('ControlKey/constructor, params = ');
+		// trace(params);
 		ControlKey._super.constructor.call(this, params);
 	}
 	
 	ControlKey.prototype.begin = function() {
-		
-		
+		trace('ControlKey['+this.model.name+']/begin');
+		trace(this);
 		this.key = PolyworksGame.phaser.input.keyboard.addKey(this.model.attrs.inputCode);
 		var _this = this;
 		this.key.onDown.add(this.inputDown, this);
@@ -108805,12 +108946,12 @@ PWG.ControlKey = (function() {
 	};
 	
 	ControlKey.prototype.inputDown = function(params) {
-		
+		trace('ControlKey['+this.model.inputCode+']/inputDown');
 		this.inputPressed.call(this, { type: PWG.Events.CONTROL_PRESSED, value: params.keyCode });
 	};
 	
 	ControlKey.prototype.inputUp = function(params) {
-		
+		trace('ControlKey['+this.model.inputCode+']/inputUp');
 		this.inputReleased.call(this, { type: PWG.Events.CONTROL_RELEASED, value: params.keyCode });
 	};
 
@@ -108822,29 +108963,29 @@ PWG.ControlButton = (function() {
 	
 	var _this;
 	function ControlButton(params) {
-		// 
-		// 
+		// trace('ControlButton/constructor, params = ');
+		// trace(params);
 		_this = this;
 		ControlButton._super.constructor.call(this, params);
 	};
 	
 	ControlButton.prototype.inputDown = function(event, pointer) {
-		
+		trace('ControlButton['+this.model.inputCode+']/inputDown');
 		if(this.model.inputCode) {
 			this.inputPressed.call(this, { type: PWG.Events.CONTROL_PRESSED, value: this.model.inputCode });
 		}
 	};
 	
 	ControlButton.prototype.inputUp = function(event, pointer) {
-		// 
+		// trace('ControlButton['+this.model.inputCode+']/inputUp');
 		if(this.model.inputCode) {
 			this.inputReleased.call(this, { type: PWG.Events.CONTROL_RELEASED, value: this.model.inputCode });
 		}
 	};
 	
 	ControlButton.prototype.destroy = function() {
-		// 
-		// 
+		// trace('ControlButton['+this.model.name+']/destroy');
+		// trace(this);
 	};
 	
 	return ControlButton;
@@ -108861,19 +109002,19 @@ PWG.ControlButtons = (function() {
 	}
 	
 	ControlButtons.prototype.begin = function() {
-		// 
+		// trace('ControlButtons/begin');
 		var ctrls = PolyworksGame.get('controls');
 		this.model.attrs = ctrls.buttons[this.model.type];
-		// 
-		// 
+		// trace(ctrls);
+		// trace(this.model.attrs);
 		ControlButtons._super.begin.call(this);
-		// 
-		// 
+		// trace('control buttons post begin, collection = ');
+		// trace(this.model.collection);
 	};
 	
 	ControlButtons.prototype.destroy = function() {
-		// 
-		// 
+		// trace('ControlButtons['+this.model.name+']/destroy');
+		// trace(this);
 //		ControlButtons._super.destroy.call(this);
 		PWG.Utils.each(this.model.collection,
 			function(c) {
@@ -108890,12 +109031,12 @@ PWG.Enemies = (function() {
 	PWG.Utils.inherits(Enemies, PWG.PhysicalGroupCollection);
 	
 	function Enemies(params) {
-		// 
+		// trace('Enemies['+params.name+']/constructor, params = ', params);
 		Enemies._super.constructor.call(this, params);
 	}
 	
 	Enemies.prototype.begin = function() {
-		// 
+		// trace('Enemies/begin, this = ', this);
 		PWG.Utils.each(
 			this.model.attrs,
 			function(child) {
@@ -108926,9 +109067,9 @@ PWG.Enemies = (function() {
 		PWG.Utils.each(
 			this.model.collection,
 			function(child) {
-				// 
+				// trace('Enemies/deactivateGravity, child['+child.model.name+'].isActive = ' + child.isActive);
 				if(!child.isActive) {
-					// 
+					// trace('\tdeactivating gravity');
 					child.deactivateGravity();
 				}
 			},
@@ -108947,7 +109088,7 @@ PWG.GroupEnemy = (function() {
 	}
 	
 	GroupEnemy.prototype.pwUpdate = function(params) {
-		// 
+		// trace('GroupEnemy['+this.model.name+']/pwUpdate, this.collection = ', this.model.collection);
 		PWG.Utils.each(this.model.collection,
 			function(child) {
 				child.pwUpdate(params);
@@ -108990,7 +109131,7 @@ PWG.EnemyManager = function() {
 	};
 	
 	EnemyManager.prototype.onSectorChanged = function(event) {
-		// 
+		// trace('EnemyManager/onSectorChanged, event = ', event);
 		this.removeActiveEnemies(this.sectors[this.sectorIdx].enemies);
 		this.sectorIdx = event.idx;
 		this.addActiveEnemies(this.sectors[this.sectorIdx].enemies);
@@ -108998,7 +109139,7 @@ PWG.EnemyManager = function() {
 	
 	EnemyManager.prototype.createSectors = function(sectorManager) {
 		var sectorBounds = sectorManager.getSectorBounds();
-		// 
+		// trace('bounds = ', sectorBounds);
 		PWG.Utils.each(
 			sectorBounds,
 			function(bounds, idx) {
@@ -109010,7 +109151,7 @@ PWG.EnemyManager = function() {
 				});
 				enemies.begin();
 
-				// 
+				// trace('------ enemies = ', enemies);
 				var sector = {
 					enemies: enemies,
 					bounds: bounds
@@ -109025,39 +109166,39 @@ PWG.EnemyManager = function() {
 			this
 		);
 
-		// 
+		// trace('EnemyManager/createSectors completed, sectors = ', this.sectors);
 	};
 	
 	EnemyManager.prototype.onAddActiveEnemies = function(event) {
-		// 
+		// trace('EnemyManager/onAddActiveEnemies, event = ', event, '\tthis = ', this);
 		this.addActiveEnemies(event.enemies);
 	};
 	
 	EnemyManager.prototype.onAddActiveEnemy = function(event) {
-		// 
+		// trace('EnemyManager/onAddActiveEnemy, event = ', event);
 		this.addActiveEnemy(event.enemy);
 	};
 	
 	EnemyManager.prototype.onRemoveActiveEnemies = function(event) {
-		// 
+		// trace('EnemyManager/onRemoveActiveEnemies, event = ', event);
 		this.removeActiveEnemies(event.enemies);
 	};
 	
 	EnemyManager.prototype.onRemoveActiveEnemy = function(event) {
-		// 
+		// trace('EnemyManager/onRemoveActiveEnemy, event = ', event, '\tthis = ', this);
 		this.removeActiveEnemy(event.enemy);
 	};
 	
 	EnemyManager.prototype.onEnemyDestroyed = function(event) {
-		// 
+		// trace('EnemyManager/onEnemyDestroyed, event = ', event);
 		if(this.activeEnemies.hasOwnProperty(event.value)) {
-			// 
+			// trace('\tremoving active enemy: ' + event.value);
 			delete this.activeEnemies[event.value];
 		}
 	};
 	
 	EnemyManager.prototype.addActiveEnemies = function(enemies) {
-		// 
+		// trace('EnemyManager/addActiveEnemies, enemies = ', enemies);
 		PWG.Utils.each(
 			enemies.model.collection,
 			function(enemy) {
@@ -109068,16 +109209,16 @@ PWG.EnemyManager = function() {
 	};
 	
 	EnemyManager.prototype.addActiveEnemy = function(enemy) {
-		// 
+		// trace('EnemyManager/addActiveEnemy, enemy = ' + enemy.model.name);
 		if(!this.activeEnemies.hasOwnProperty(enemy.model.name)) {
-			// 
+			// trace('\tdoes not exist yet; adding');
 			enemy.activateGravity();
 			this.activeEnemies[enemy.model.name] = enemy;
 		}
 	};
 	
 	EnemyManager.prototype.removeActiveEnemies = function(enemies) {
-		// 
+		// trace('EnemyManager/removeActiveEnemies, enemies = ', enemies, '\tactiveEnemies = ', this.activeEnemies);
 		PWG.Utils.each(
 			enemies.model.collection,
 			function(enemy) {
@@ -109090,10 +109231,10 @@ PWG.EnemyManager = function() {
 	};
 	
 	EnemyManager.prototype.removeActiveEnemy = function(enemy) {
-		// 
+		// trace('EnemyManager/removeActiveEnemy, enemy = ' + enemy.model.name);
 		if(this.activeEnemies.hasOwnProperty(enemy.model.name)) {
 			enemy.deactivateGravity();
-			// 
+			// trace('\texists; removing');
 			delete this.activeEnemies[enemy.model.name];
 		}
 	};
@@ -109172,13 +109313,13 @@ PWG.Requirement = (function() {
 	}
 	
 	Requirement.prototype.begin = function() {
-		// 
+		// trace('Requirement['+this.model.name+']/begin, model = ', this.model);
 		Requirement._super.begin.call(this);
 		PWG.EventCenter.trigger({ type: PWG.Events.REQUIREMENT_INITIALIZED, value: this.model });
 	};
 	
 	Requirement.prototype.collect = function() {
-		// 
+		// trace('Requirement['+this.model.name+']/collect');
 		if(this.model.attrs.score) {
 		    PolyworksGame.setLevelScore(this.model.attrs.score);
 		}
@@ -109203,14 +109344,14 @@ PWG.Requirements = (function() {
 
 		this.requirementsMet = 0;
 		this.requirementsCount = this.model.collection.length;
-		// 
+		// trace('Requirements/begin, about to set on pw game, total = ' + this.requirementsCount);
 		PolyworksGame.setRequirements(this.requirementsMet, this.requirementsCount);
 		PWG.EventCenter.bind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet, this);
 	};
 	
 	Requirements.prototype.onRequirementMet = function() {
 		this.requirementsMet++;
-		// 
+		// trace('Requirements/onRequirementMet, requirementsFill = ' + this.requirementsMet + ', total = ' + this.requirementsCount);
 		PolyworksGame.setRequirements(this.requirementsMet, this.requirementsCount);
 		if(this.requirementsMet >= this.requirementsCount) {
 			PWG.EventCenter.unbind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet, this);
@@ -109230,21 +109371,21 @@ PWG.RequirementPlaceHolder = (function() {
 	PWG.Utils.inherits(RequirementPlaceHolder, PWG.Sprite); 
 	
 	function RequirementPlaceHolder(params) {
-		// 
+		// trace('RequirementPlaceHolder/constructor, this = ', this);
 		RequirementPlaceHolder._super.constructor.call(this, params);
 		PWG.EventCenter.bind(PWG.Events.REQUIREMENT_INITIALIZED, this.onRequirementsInitialized, this);
 		PWG.EventCenter.bind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet, this);
 	}
 	
 	RequirementPlaceHolder.prototype.begin = function() {
-		// 
+		// trace('RequirementPlaceHolder/begin, this = ', this);
 		RequirementPlaceHolder._super.begin.call(this);
 	};
 
 	RequirementPlaceHolder.prototype.onRequirementsInitialized = function(params) {
-		// 
+		// trace('RequirementPlaceHolder/onRequirementsInitialized, params = ', params);
 		var requirementImg = params.value.attrs.img;
-		// 
+		// trace('\trequirementImg = ' + requirementImg);
 		var phaserAttrs = this.model.attrs.phaser;
 		// phaserAttrs.visible = false;
 		this.requirement = new PWG.Sprite({
@@ -109261,7 +109402,7 @@ PWG.RequirementPlaceHolder = (function() {
 	};
 	
 	RequirementPlaceHolder.prototype.onRequirementMet = function(params) {
-		// 
+		// trace('RequirementPlaceHolder/onRequirementMet, params = ', params, '\tthis = ', this);
 		// PWG.EventCenter.unbind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet);
 		this.model.ancestor.group.add(this.requirement);
 		this.requirement.alpha = 1;
@@ -109269,7 +109410,7 @@ PWG.RequirementPlaceHolder = (function() {
 	};
 
 	RequirementPlaceHolder.prototype.destroy = function() {
-		// 
+		// trace('RequirementPlaceHolder['+this.model.name+']/destroy');
 		PWG.EventCenter.unbind(PWG.Events.REQUIREMENT_MET, this.onRequirementMet);
 		RequirementPlaceHolder._super.destroy.call(this);
 	};
@@ -109281,8 +109422,8 @@ PWG.Sector = (function() {
 	PWG.Utils.inherits(Sector, PWG.Collection);
 	
 	function Sector(params) {
-		// 
-		// 
+		// trace('Sector['+params.name+']/constructor, params = ');
+		// trace(params);
 		Sector._super.constructor.call(this, params);
 
 	}
@@ -109298,14 +109439,14 @@ PWG.Sector = (function() {
 	};
 
 	Sector.prototype.setActive = function(active) {
-		// 
+		// trace('Sector['+this.model.name+']/setActive: active = ' + active + ', activatedOnce = ' + this.activatedOnce);
 		if(this.active || active) {
 			this.setChildrenExists(active);
 		}
 
 		this.active = active;
 		if(active) {
-			// 
+			// trace('Sector['+this.model.name+']/setActive: active = ' + active + ', activatedOnce = ' + this.activatedOnce);
 			this.activateOnce = true;
 			this.deactivated = false;
 
@@ -109328,12 +109469,12 @@ PWG.SectorManager = (function() {
 	PWG.Utils.inherits(SectorManager, PWG.Collection);
 	
 	function SectorManager(params) {
-		// 
-		// 
+		// trace('SectorManager['+params.name+']/constructor, params = ');
+		// trace(params);
 		SectorManager._super.constructor.call(this, params);
 
 		this.positionAxis = (this.model.type === PWG.SectorTypes.HORIZONTAL) ? 'x' : 'y';
-		// 
+		// trace('SectorManager/constructor, positionAxis = ' + this.positionAxis);
 		this.activeSectorIdx = -1;
 
 		this.localDynamicTerrains = [];
@@ -109341,7 +109482,7 @@ PWG.SectorManager = (function() {
 	
 	SectorManager.prototype.begin = function() {
 		SectorManager._super.begin.call(this);
-		// 
+		// trace('SectorManager/begin, collection = ', this.model.collection);
 	}
 
 	SectorManager.prototype.setState = function(state) {
@@ -109349,7 +109490,7 @@ PWG.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.setActiveSector = function(idx) {
-		
+		trace('SectorManager/setActiveSector, idx = ' + idx + ', sector = ' + this.model.collection[idx].model.name);
 		var sector;
 		var oldIdx = this.activeSectorIdx;
 		this.activeSectorIdx = idx;
@@ -109362,7 +109503,7 @@ PWG.SectorManager = (function() {
 		if(idx > oldIdx) {
 			// there's a sector after this, activate it
 			if(idx < this.model.collection.length - 1) {
-				// 
+				// trace('\tadding next sector dynamic terrain: ' + (idx + 1));
 				this.model.collection[(idx + 1)].setActive(true);
 				this.localDynamicTerrains = this.localDynamicTerrains.concat(this.model.collection[(idx + 1)].dynamicTerrain.getActive());
 			}
@@ -109374,7 +109515,7 @@ PWG.SectorManager = (function() {
 
 			// there's a sector 2 spaces back, deactivate it
 			if(idx > 1) {
-				// 
+				// trace('\tremoving 2 sectors backward: ' + (idx - 2));
 				this.model.collection[(idx - 2)].setActive(false);
 			}
 		}
@@ -109382,7 +109523,7 @@ PWG.SectorManager = (function() {
 		if(idx < oldIdx) {
 			// there's one behind this, active it
 			if(idx > 0) {
-				// 
+				// trace('\tadding previous sector dynamic terrain: ' + (idx - 1));
 				this.model.collection[(idx - 1)].setActive(true);
 				this.localDynamicTerrains = this.localDynamicTerrains.concat(this.model.collection[(idx - 1)].dynamicTerrain.getActive());
 			}
@@ -109394,7 +109535,7 @@ PWG.SectorManager = (function() {
 
 			// there's a sector 2 spaces forward, deactivate it
 			if(idx < this.model.collection.length - 2) {
-				// 
+				// trace('\tremoving 2 sectors forward: ' + (idx + 2));
 				this.model.collection[(idx + 2)].setActive(false);
 			}
 		}
@@ -109425,19 +109566,19 @@ PWG.SectorManager = (function() {
 	};
 	
 	SectorManager.prototype.updateActiveSector = function(position) {
-		// 
-		// 
+		// trace('SectorManager/updateActiveSector, this = ');
+		// trace(this);
 		var children = this.model.collection;
 		var length = children.length;
 		var bounds;
 		var pos = position[this.positionAxis];
-		// 
+		// trace('pos = ' + pos);
 		for(var i = 0; i < length; i++) {
 			bounds = children[i].model.bounds;
-			// 
+			// trace('\tc['+i+'] start/end = ' + bounds.start + '/' + bounds.end);
 			if(pos > bounds.start && pos < bounds.end) {
 				if(this.activeSectorIdx !== i) {
-					// 
+					// trace('new sector id = ' + i + ', name = ' + children[i].model.name + ', pos = ' + pos);
 					this.setActiveSector(i);
 					break;
 					// this.addLocalSector(i);
@@ -109448,7 +109589,7 @@ PWG.SectorManager = (function() {
 	
 	SectorManager.prototype.getSectorBounds = function() {
 		var bounds = [];
-		// 
+		// trace('SectorManager/getSectorBounds, collection = ', this.model.collection);
 		PWG.Utils.each(
 			this.model.collection,
 			function(sector) {
@@ -109488,7 +109629,7 @@ PWG.State = (function() {
 	// PWG.Utils.inherits(State, Phaser.State); 
 	
 	function State(params) {
-		// 
+		// trace('State['+params.name+']/constructor');
 		State._super.constructor.call(this);
 
 		this.model = new PWG.Model(params);
@@ -109505,7 +109646,7 @@ PWG.State = (function() {
 	}
 	
 	State.prototype.start = function() {
-		
+		trace('State['+this.model.name+']/start');
 	};
 	
 	State.prototype.orientationSet = function(isLandscape) {
@@ -109530,17 +109671,17 @@ PWG.State = (function() {
 			sprites: {}
 		};
 		
-		// 
+		// trace('State['+this.model.name+']/preLoad, loaded = ' + this.model.loaded);
 		if(!this.model.loaded) {
-			
-			
+			trace('\tstate audio = ');
+			trace(this.model.audio);
 			if(this.model.audio && this.model.audio.length > 0) {
 				var audio = PolyworksGame.get('audio');
 				PWG.Utils.each(
 					this.model.audio,
 					function(a) {
 						if(!PolyworksGame.loaded.audio[audio]) {
-							
+							trace('loading audio['+a+']: ', audio[a]);
 							this.toLoad++;
 							phaser.load.audio(a, audio[a]);
 							loaded.audio[a] = true;
@@ -109553,7 +109694,7 @@ PWG.State = (function() {
 				var images = PolyworksGame.get('images');
 				PWG.Utils.each(this.model.images,
 					function(img) {
-						// 
+						// trace('\t\timage['+img+'] loaded = ' + PolyworksGame.loaded.images[img]);
 						if(!PolyworksGame.loaded.images[img]) {
 							this.toLoad++;
 							phaser.load.image(img, images[img]);
@@ -109567,10 +109708,10 @@ PWG.State = (function() {
 				var sprites = PolyworksGame.get('sprites');
 				PWG.Utils.each(this.model.sprites,
 					function(spr) {
-						// 
+						// trace('\t\tsprite['+spr+'] loaded = ' + PolyworksGame.loaded.sprites[spr]);
 						if(!PolyworksGame.loaded.sprites[spr]) {
 							var sprite = sprites[spr];
-							// 
+							// trace('\t\t\tsprite = ', sprite);
 							this.toLoad++;
 							phaser.load.spritesheet(spr, sprite.url, sprite.width, sprite.height, sprite.frames);
 							loaded.sprites[spr] = true;
@@ -109585,13 +109726,13 @@ PWG.State = (function() {
 	};
 	
 	State.prototype.create = function() {
-		
+		trace('State['+this.model.name+']/create');
 		PolyworksGame.phaser.stage.backgroundColor = this.model.backgroundColor;
 		PolyworksGame.removeLoadingDiv();
 		if(PolyworksGame.isLandscape) {
 			this.createState();
 		} else {
-			
+			trace('WARNING: not in landscape orientation, can not create state');
 		}
 		this.model.set({ createCalled: true });
 		this.createAudio();
@@ -109599,7 +109740,7 @@ PWG.State = (function() {
 	
 	State.prototype.createAudio = function() {
 		if(this.model.audio && this.model.audio.length > 0) {
-			
+			trace('\tisMuted = ' + PolyworksGame.isMuted);
 			if(!PolyworksGame.isMuted) {
 				var audio = this.model.audio[0];
 				if(PolyworksGame.currentAudioName !== audio) {
@@ -109607,7 +109748,7 @@ PWG.State = (function() {
 						PolyworksGame.currentAudio.stop();
 						PolyworksGame.currentAudio = null;
 					}
-					
+					trace('audio = ', audio);
 					// key, volume loop
 					PolyworksGame.currentAudio = PolyworksGame.phaser.add.audio(audio, 1, true);
 					// marker, position, volume, loop
@@ -109633,7 +109774,7 @@ PWG.State = (function() {
 	};
 
 	State.prototype.createState = function() {
-		// 
+		// trace('State['+this.model.name+']/createState, created = ' + (this.model.get('created')));
 		if(!this.model.get('created')) {
 			this.gameOver = PolyworksGame.gameOver; 
 			this.createWorld();
@@ -109645,14 +109786,16 @@ PWG.State = (function() {
 			this.begin();
 			this.model.set({ created: true });
 		} else {
-			
+			trace('WARNING: state already created');
 		}
 	};
 
 	State.prototype.createBlackBox = function() {
 		var blackBg = PolyworksGame.phaser.add.sprite(0, 0, 'blackRect');
-		blackBg.width = this.model.world.width;
-		blackBg.height = this.model.world.height;
+		// blackBg.width = this.model.world.width;
+		// blackBg.height = this.model.world.height;
+		blackBg.width = 5000;
+		blackBg.height = 5000;
 	    blackBg.anchor.setTo(0.5, 0.5);
 	    blackBg.alpha = 1;
 		
@@ -109669,7 +109812,7 @@ PWG.State = (function() {
 	};
 	
 	State.prototype.onPauseState = function() {
-		
+		trace('State['+this.model.name+']/onPauseState');
 		if(this.paused) {
 			this.paused = false;
 		} else {
@@ -109678,13 +109821,13 @@ PWG.State = (function() {
 	};
 	
 	State.prototype.onResumeState = function() {
-		// 
+		// trace('State['+this.model.name+']/onResumeState');
 		this.paused = false;
 	};
 	
 	State.prototype.createWorld = function() {
 		var world = this.model.world;
-		// 
+		// trace('State['+this.model.name+']/createWorld, x = ' + world.x + ', world.y = ' + world.y + ', width = ' + world.width + ', height = ' + world.height);
 		PolyworksGame.phaser.world.setBounds(world.x, world.y, world.width, world.height);
 	};
 
@@ -109695,7 +109838,7 @@ PWG.State = (function() {
 	};
 	
 	State.prototype.shutdown = function() {
-		// 
+		// trace('State['+this.model.name+']/shutdown');
 		PWG.EventCenter.unbind(PWG.Events.PAUSE_STATE, this.onPauseState);
 		PWG.EventCenter.unbind(PWG.Events.RESUME_STATE, this.onResumeState);
 
@@ -109735,7 +109878,7 @@ PWG.MenuState = (function() {
 	};
 	
 	MenuState.prototype.onButtonPressed = function(event) {
-		// 
+		// trace('MenuState/onButtonPressed, changingState = ' + this.changingState + ', event = ', event);
 		if(event.value === PWG.InputCodes.PLAY || event.value === PWG.InputCodes.NEXT) {
 			PolyworksGame.changeState('level'); 
 			this.changingState = true;
@@ -109805,7 +109948,7 @@ PWG.MapState = (function() {
 	
 	var _this;
 	function LevelState(params) {
-		// 
+		// trace('LevelState/constructor, phaser = ');
 		_this = this;
 		LevelState._super.constructor.call(this, params);
 
@@ -109822,12 +109965,12 @@ PWG.MapState = (function() {
 	};
 	
 	LevelState.prototype.create =  function() {
-		// 
+		// trace('LevelState['+this.model.name+']/create, adCompleted = ' + this.adCompleted);
 		LevelState._super.create.call(this);
 	};
 	
 	LevelState.prototype.createState = function() {
-		
+		trace('LevelState['+this.model.name+']/createState, this = ', this);
 
 		// create views and controls with super
 		LevelState._super.createState.call(this);
@@ -109838,7 +109981,7 @@ PWG.MapState = (function() {
 		this.requirementsMet = false; 
 
 		this.requirements = this.getChildByName('requirements');
-		// 
+		// trace('\n\n\trequirements = ', this.requirements, '\tgroup = ', this.requirements.group);
 		if(this.requirements) {
 			PWG.EventCenter.bind(PWG.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
 		} else {
@@ -109853,7 +109996,7 @@ PWG.MapState = (function() {
 		this.totalGoals = this.goals.getLength(); 
 		this.allGoalsReached = false;
 		
-		
+		trace('LevelState['+this.model.name+']/createState, totalGoals = ' + this.totalGoals);
 		this.sectorManager = this.getChildByName('sectors');
 		this.sectorManager.setState(this);
 		this.sectorManager.setActiveSector(0);
@@ -109863,7 +110006,7 @@ PWG.MapState = (function() {
 		}
 
 		var playerStart = PWG.Utils.clone(PolyworksGame.get('player').attrs.start);
-		// 
+		// trace('LevelState['+this.model.name+']/createState\n\tplayerStart = ', playerStart);
 		this.createPlayer(playerStart, PolyworksGame.startingHealth);
 
 		var levelGUI = this.getChildByName('levelGUI');
@@ -109889,7 +110032,7 @@ PWG.MapState = (function() {
 		var playerConfig = PWG.Utils.clone(PolyworksGame.get('player'));
 		playerConfig.attrs.attack = 10;
 		playerConfig.attrs.start = start;
-		// 
+		// trace('Level['+this.model.name+']/createPlayer, playerConfig = ', playerConfig, '\n\tstart = ', start);
 
 		playerConfig.game = PolyworksGame.phaser;
 		playerConfig.sectorManager = this.sectorManager;
@@ -109905,7 +110048,7 @@ PWG.MapState = (function() {
 
 		PolyworksGame.initControls();
 		// this.player.activateGravity();
-		// 
+		// trace('LevelState['+this.model.name+']/player created, jump = ' + playerConfig.attrs.speed.y, playerConfig);
 	};
 
 	LevelState.prototype.destroyPlayer = function() {
@@ -109937,7 +110080,7 @@ PWG.MapState = (function() {
 	
 	LevelState.prototype.update = function() {
 		if(!this.paused && !PolyworksGame.adPlaying) {
-			// 
+			// trace('LevelState['+this.model.name+']/update');
 			// if(this.requirementsMet && (this.player.body.x >= this.model.bounds.end)) {
 			if(this.requirementsMet && this.allGoalsReached) {
 				if(!this.triggeredCleared) {
@@ -109990,7 +110133,7 @@ PWG.MapState = (function() {
 				if(hazards) physicalItems.Hazards = hazards;
 				if(bonuses) physicalItems.Bonuses = bonuses;
 
-				// 
+				// trace('dynamic terrain = ', physicalItems.DynamicTerrain);
 				this.player.pwUpdate({
 					physicalItems: physicalItems,
 					context: this
@@ -110001,7 +110144,7 @@ PWG.MapState = (function() {
 	};
 
 	LevelState.prototype.onLevelRequirementsMet = function() {
-		// 
+		// trace('LevelState['+this.model.name+']/onLevelRequirementsMet');
 		this.requirementsMet = true;
 	};
 	
@@ -110031,11 +110174,11 @@ PWG.MapState = (function() {
 	};
 	
 	LevelState.prototype.onPauseState = function() {
-		
+		trace('LevelState['+this.model.name+']/onPauseState, paused = ' + this.paused);
 		if(!this.triggeredCleared) {
 			LevelState._super.onPauseState.call(this);
 			if(this.paused) {
-				
+				trace('\tgoing to call pauseState');
 				this.pauseState();
 			} else {
 				this.resumeState();
@@ -110044,7 +110187,7 @@ PWG.MapState = (function() {
 	};
 	
 	LevelState.prototype.onResumeState = function() {
-		// 
+		// trace('LevelState['+this.model.name+']/onResumeState');
 		if(!PolyworksGame.adPlaying) {
 			LevelState._super.onResumeState.call(this);
 			this.resumeState();
@@ -110052,7 +110195,7 @@ PWG.MapState = (function() {
 	};
 	
 	LevelState.prototype.pauseState = function() {
-		
+		trace('LevelState['+this.model.name+']/pauseState');
 		// this.destroyPlayer();
 		this.player.deactivateGravity();
 		this.player.active = false;
@@ -110065,7 +110208,7 @@ PWG.MapState = (function() {
 			x: this.player.x,
 			y: this.player.y
 		};
-		// 
+		// trace('LevelState/pauseState, playerPosition = ', this.playerPosition, this.player);
 		// this.playerGroup.visible = false;
 		this.showPauseGUI(true);
 	};
@@ -110083,7 +110226,7 @@ PWG.MapState = (function() {
 	};
 	
 	LevelState.prototype.showPauseGUI = function(show) {
-		
+		trace('LevelState['+this.model.name+']/showPauseGUI, show = ' + show, this);
 		if(show) {
 			this.getChildByName('levelGUI').hide();
 			this.getChildByName('requirementsGUI').hide();
@@ -110104,7 +110247,7 @@ PWG.MapState = (function() {
 	};
 	
 	LevelState.prototype.showCompletedGUI = function() {
-		// 
+		// trace('LevelState['+this.model.name+']/showCompletedGUI');
 
 		this.getChildByName('levelGUI').hide();
 		this.getChildByName('requirementsGUI').hide();
@@ -110125,7 +110268,7 @@ PWG.MapState = (function() {
 	};
 	
 	LevelState.prototype.shutdown = function() {
-		// 
+		// trace('LevelState['+this.model.name+']/shutdown');
 		PWG.EventCenter.unbind(PWG.Events.LEVEL_REQUIREMENTS_MET, this.onLevelRequirementsMet, this);
 
 		this.removeListeners();
@@ -110148,14 +110291,14 @@ PWG.GameOverState = (function() {
 	}
 	
 	GameOverState.prototype.createState = function() {
-		// 
+		// trace('GameOverState/createState, TGS = ', TGS);
 		GameOverState._super.createState.call(this);
 
 		PWG.TGSAdapter.addWidget();
 	};
 	
 	GameOverState.prototype.shutdown = function(event) {
-		// 
+		// trace('GameOverState/shutdown');
 		PWG.TGSAdapter.hideGameOverWidget();
 		GameOverState._super.shutdown.call(this);
 	};
@@ -110169,13 +110312,13 @@ PWG.Player = (function() {
 
 	var _this;
 	function Player(params) {
-		// 
+		// trace('Player/constructor');
 		_this = this;
 		this.model = new PWG.Model(params);
 		this.initialPosition = true;
 		this.oneUpdate = false;
 		Player._super.constructor.call(this, params);
-		// 
+		// trace('player body size = ' + this.body.width + '/' + this.body.height);
 	}
 	
 	Player.prototype.begin = function(health) {
@@ -110196,11 +110339,11 @@ PWG.Player = (function() {
 		this.beginControls();
 
 		PolyworksGame.setHealth(this.health);
-		
+		trace('PLAYER:', this);
 	};
 
 	Player.prototype.collided = function(a, b, c) {
-		
+		trace('Player/collided', a, b, c);
 	};
 	
 	Player.prototype.setGroup = function(group) {
@@ -110208,8 +110351,8 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.beginWorld = function() {
-		// 
-		// 
+		// trace('Player/beginWorld');
+		// trace(this);
 		var attrs = this.model.attrs;
 		if(attrs.anchor) {
 			this.anchor.setTo(attrs.anchor.x, attrs.anchor.y);
@@ -110231,14 +110374,14 @@ PWG.Player = (function() {
 		this.activeControls[PWG.InputCodes.UP] = false;
 		this.activeControls[PWG.InputCodes.SPACE] = false;
 		this.activeControls[PWG.InputCodes.DOWN] = false;
-		// 
-		// 
+		// trace('activeControls');
+		// trace(this.activeControls);
 	};
 	
 	Player.prototype.onControlButtonPressed = function(event) {
 		this.activeControls[event.value] = true;
-		// 
-		// 
+		// trace('Player.prototype.onControlButtonPressed, event.value = ' + event.value);
+		// trace(this.activeControls);
 		if(event.value === PWG.InputCodes.RESET) {
 			this.activeControls[PWG.InputCodes.LEFT] = false;
 			this.activeControls[PWG.InputCodes.RIGHT] = false;
@@ -110252,8 +110395,8 @@ PWG.Player = (function() {
 	
 	Player.prototype.onControlButtonReleased = function(event) {
 		this.activeControls[event.value] = false;
-		// 
-		// 
+		// trace('Player.prototype.onControlButtonReleased, event.value = ' + event.value);
+		// trace(this.activeControls);
 		if(event.value === PWG.InputCodes.RESET) {
 			this.activeControls[PWG.InputCodes.LEFT] = false;
 			this.activeControls[PWG.InputCodes.RIGHT] = false;
@@ -110266,7 +110409,7 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.updatePosition = function() {
-		// 
+		// trace('Player/updatePosition, x = ' + this.body.x);
 		if(!PolyworksGame.adPlaying) {
 			if(this.initialPosition) {
 				this.initialPosition = false;
@@ -110299,7 +110442,7 @@ PWG.Player = (function() {
 					this.velY = 0;
 				}
 			} else if(this.activeControls[PWG.InputCodes.DOWN]) {
-				// 
+				// trace('Player/updatePosition, down is active');
 			}
 		}
 	};
@@ -110310,13 +110453,13 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.activateGravity = function() {
-		// 
+		// trace('Player/activateGravity');
 		Player._super.activateGravity.call(this);
 	};
 
 	Player.prototype.pwUpdate = function(params) {
-		// 
-		// 
+		// trace('Player/update, health = ' + this.health);
+		// trace(params);
 		if(this.alive) {
 			this.collided = false;
 			var physics = PolyworksGame.phaser.physics.arcade;
@@ -110324,7 +110467,7 @@ PWG.Player = (function() {
 			var physicalItems = params.physicalItems; 
 
 			for(var key in physicalItems) {
-				// 
+				// trace('physicalItems['+key+'] = ', physicalItems[key]);
 				this[('check' + key + 'Collision')](physicalItems[key], physics);
 			}
 
@@ -110351,7 +110494,7 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.checkGroupEnemiesCollision = function(group, physics) {
-		// 
+		// trace('Player/checkGroupEnemiesCollision, group = ', group);
 		// this.checkGroupCollision(group, this.onGroupEnemyCollision, physics, this);
 		this.checkCollision(group, this.onGroupEnemyCollision, physics, this);
 	};
@@ -110365,7 +110508,7 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.checkCollision = function(collection, callback, physics, context) {
-		// 
+		// trace('Player/checkCollision, health = ' + this.health);
 		// physics.overlap(this, collection, callback, null, context);
 		PWG.Utils.each(collection,
 			function(child) {
@@ -110380,8 +110523,8 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.onBonusCollision = function(player, bonus) {
-		// 
-		// 
+		// trace('Player/onBonusCollision, bonus = ');
+		// trace(bonus);
 		this.collided = true;
 
 		var health = bonus.model.attrs.health;
@@ -110397,7 +110540,7 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.onHazardCollision = function(player, hazard) {
-		// 
+		// trace('Player/onHazardCollision, hazard = ', hazard);
 		this.collided = true;
 		this.receiveDamage(hazard.model.attrs.attack);
 	};
@@ -110408,9 +110551,9 @@ PWG.Player = (function() {
 		var playerY = player.body.y + (player.body.height) - 10; // need a little bit of "wiggle room" to get the collision to take
 		var enemyX = enemy.body.x + (enemy.body.width);
 		var enemyY = enemy.body.y + (enemy.body.height);
-		// 
-		// 
-// 
+		// trace('Player/onEnemyCollision['+enemy.model.name+'], player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
+		// trace(enemy);
+// trace('enemy collision\n\tplayerY = ' + playerY + ', enemy.body.y = ' + enemy.body.y + '\n\tenemy.overlapY = ' + enemy.body.overlapY + ', enemy touching = ', enemy.body.touching);
 		// if(playerY < (enemyY)) { // player is above enemy
 		if(playerY <= enemy.body.y) {
 			this.updatePositionFromCollision();
@@ -110421,15 +110564,15 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.onGroupEnemyCollision = function(player, enemy) {
-		// 
+		// trace('Player/onGroupEnemyCollision, enemy = ' + enemy.model.name);
 		this.collided = true;
 		var playerX = player.body.x + (player.body.width);
 		var playerY = player.body.y + (player.body.height) - 10; // need a little bit of "wiggle room" to get the collision to take
 		var enemyX = enemy.body.x + (enemy.body.width);
 		var enemyY = enemy.body.y + (enemy.body.height);
-		// 
-		// 
-		// 
+		// trace('Player/onGroupEnemyCollision['+enemy.model.name+'], player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
+		// trace(enemy);
+		// trace('enemy collision\n\tplayerY = ' + playerY + ', enemy.body.y = ' + enemy.body.y + '\n\tenemy.overlapY = ' + enemy.body.overlapY + ', enemy touching = ', enemy.body.touching);
 		// if(playerY < (enemyY)) { // player is above enemy
 		if(playerY <= enemy.body.y) {
 			this.updatePositionFromCollision();
@@ -110442,20 +110585,20 @@ PWG.Player = (function() {
 	};
 
 	Player.prototype.onRequirementCollision = function(player, requirement) {
-		
+		trace('Player/onRequirementCollision, requirement = ', requirement);
 
 		this.collided = true;
 		requirement.collect();
 	};
 	
 	Player.prototype.onGoalCollision = function(player, goal) {
-		// 
+		// trace('Player/onGoalCollision, goal = ' + goal.model.name);
 		PWG.EventCenter.trigger({ type: PWG.Events.GOAL_REACHED, value: goal.model.name });
 		goal.destroy();
 	};
 
 	Player.prototype.receiveDamage = function(damage) {
-		// 
+		// trace('Player/receiveDamage, justDamaged = ' + this.justDamaged);
 		if(!this.justDamaged) {
 			this.health -= damage;
 			PolyworksGame.setHealth(this.health);
@@ -110475,7 +110618,7 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.destroy = function() {
-		// 
+		// trace('Player/destroy');
 		PWG.EventCenter.unbind(PWG.Events.CONTROL_PRESSED, this.onControlButtonPressed);
 		PWG.EventCenter.unbind(PWG.Events.CONTROL_RELEASED, this.onControlButtonReleased);
 
@@ -110492,8 +110635,8 @@ PWG.AnimatedPlayer = (function() {
 	PWG.Utils.inherits(AnimatedPlayer, PWG.Player);
 	
 	function AnimatedPlayer(params) {
-		// 
-		// 
+		// trace('AnimatedPlayer, params = ');
+		// trace(params);
 		AnimatedPlayer._super.constructor.call(this, params);
 	}
 	
@@ -110508,20 +110651,20 @@ PWG.AnimatedPlayer = (function() {
 	AnimatedPlayer.prototype.updateAnimations = function() {
 		var attrs = this.model.attrs;
 		var animations = attrs.animations; 
-		// 
+		// trace('AnimatedPlayer/updateAnimations, justDamaged = ' + this.justDamaged);
 		if(this.justDamaged) {											// DAMAGED
 			if(attrs.facingForward) {
-				// 
-				// 
+				// trace('Player/updateAnimations, AnimationTypes.DAMAGED_R = ' + AnimationTypes.DAMAGED_R + ', animations = ');
+				// trace(animations);
 				this.play(AnimationTypes.DAMAGED_R, animations[AnimationTypes.DAMAGED_R].frameRate, animations[AnimationTypes.DAMAGED_R].loop);
 			} else {
 				this.play(AnimationTypes.DAMAGED_L, animations[AnimationTypes.DAMAGED_L].frameRate, animations[AnimationTypes.DAMAGED_L].loop);
 			}
 		} else {
 			if(attrs.jumping) {										// JUMPING
-				// 
+				// trace('player jumping');
 				if(attrs.facingForward) {
-					// 
+					// trace('playing jump r animation');
 					this.stop();
 					this.play(AnimationTypes.JUMP_R, animations[AnimationTypes.JUMP_R].frameRate, animations[AnimationTypes.JUMP_R].loop);
 				} else {
@@ -110530,7 +110673,7 @@ PWG.AnimatedPlayer = (function() {
 				}
 			} else {
 				if(!attrs.grounded && (this.body.y > this.previousY) && !this.collided) {
-					// 
+					// trace('player grounded = ' + attrs.grounded + ', collided = ' + this.collided);
 					if(attrs.facingForward) {
 						this.play(AnimationTypes.FALLING_R, animations[AnimationTypes.FALLING_R].frameRate, animations[AnimationTypes.FALLING_R].loop);
 					} else {
@@ -110547,12 +110690,12 @@ PWG.AnimatedPlayer = (function() {
 					} else {
 						if(this.velX > 0) {
 							if(this.currentAnimation !== 'runR') {			// MOVING RIGHT
-						 		// 
+						 		// trace('play run right');
 								this.play(AnimationTypes.RUN_R, animations[AnimationTypes.RUN_R].frameRate, animations[AnimationTypes.RUN_R].loop);
 							}
 						} else if(this.velX < 0) {									// MOVING LEFT
 							if(this.currentAnimation !== 'runL') {
-						 		// 
+						 		// trace('play run left');
 								this.play(AnimationTypes.RUN_L, animations[AnimationTypes.RUN_L].frameRate, animations[AnimationTypes.RUN_L].loop);
 							}
 						}
@@ -110568,14 +110711,14 @@ PWG.AnimatedPlayer = (function() {
 
 PWG.Empty = (function() {
 	function Empty(params) {
-		// 
+		// trace('Empty/constructor');
 		this.model = new PWG.Model(params);
 	}
 	
 	Empty.prototype.begin = function() {
-		// 
+		// trace('Empty/begin');
 		this.name = this.model.name;
-		// 
+		// trace(this);
 	};
 	
 	return Empty;
@@ -110643,7 +110786,7 @@ PolyworksGame = (function() {
 			// window.scrollTo(0,0);
 			window.addEventListener("load", 
 				function() { 
-					
+					trace('window.load');
 					if(!window.pageYOffset) { 
 						_hideAddressBar(); 
 					} 
@@ -110652,7 +110795,7 @@ PolyworksGame = (function() {
 			
 			// window.addEventListener("orientationchange", 
 			// 	function() {
-			// 		
+			// 		trace('window.orientationchange');
 			// 		_hideAddressBar();
 			// 	}
 			// );
@@ -110668,7 +110811,7 @@ PolyworksGame = (function() {
 			// );
 			PolyworksGame.browser = PWG.DeviceUtils.getBrowser();
 			PolyworksGame.os = PWG.DeviceUtils.getOs();
-			
+			trace('browser = ' + PolyworksGame.browser + ', os = ' + PolyworksGame.os);
 			// CHECK FOR FIREFOX ON MAC, AND BLOCK -- IT CRASHES WITH WEB GL RENDERING AND IS TOO SLOW FOR CANVAS RENDERING
 			if(PolyworksGame.browser === PWG.DeviceUtils.browsers.FIREFOX && PolyworksGame.os === PWG.DeviceUtils.operatingSystems.MAC) {
 				var ffmsg = document.createElement('div');
@@ -110681,15 +110824,15 @@ PolyworksGame = (function() {
 				_checkOrientation();
 				_getSavedData();
 
-				// if(PWG.DeviceUtils.isIphone()) {
-				// 	document.getElementById('iphoneTip').style.display = 'block';
-				// 	this.tipDisplayed = true;
-				// }
+				if(PWG.DeviceUtils.isIphone()) {
+					document.getElementById('iphoneTip').style.display = 'block';
+					this.tipDisplayed = true;
+				}
 			}
 		},
 
 		startGame: function() {
-			
+			trace('PolyworksGame/startGame');
 			if(_stageInitialized) {
 				_adapter.init(_levels.length);
 				if(typeof(inTGS) !== 'undefined' && inTGS) {
@@ -110721,7 +110864,7 @@ PolyworksGame = (function() {
 		},
 
 		getLevelInfo: function(idx) {
-			// 
+			// trace('polyworks game/getLevelInfo, idx = ' + idx);
 			var levelInfo = {
 				levelText: _levels[idx].model.text,
 				highScore: PolyworksGame.highScores[idx],
@@ -110732,7 +110875,7 @@ PolyworksGame = (function() {
 		},
 
 		changeState: function(id) {
-			
+			trace('change state, id = ' + id + ', tipDisplayed = ' + this.tipDisplayed);
 			if(this.tipDisplayed && id !== 'menu') {
 				document.getElementById('iphoneTip').style.display = 'none';
 				tipDisplayed = false;
@@ -110744,19 +110887,19 @@ PolyworksGame = (function() {
 				if(state) {
 					PolyworksGame.previousState = PolyworksGame.currentState;
 					PolyworksGame.currentState = id;
-					
-					// 
+					trace('PolyworksGame/changeState, id = ' + id + ', clearWorld = ' + state.clearWorld + ', clearCache = ' + state.clearCache);
+					// trace(_states);
 					PolyworksGame.addLoadingDiv();
 					PolyworksGame.phaser.state.start(id, state.clearWorld, state.clearCache);
 				} else {
-					
+					trace('ERROR: state['+id+'] not found');
 				}
 				_setSavedData();
 			}
 		},
 
 		initControls: function() {
-			
+			trace('PolyworksGame/initControls');
 		    left = PolyworksGame.phaser.input.keyboard.addKey(Phaser.Keyboard.LEFT);
 		    left.onDown.add(PolyworksGame.onLeftDown, this);
 		    left.onUp.add(PolyworksGame.onLeftUp, this);
@@ -110771,32 +110914,32 @@ PolyworksGame = (function() {
 		},
 		
 		onLeftDown: function() {
-			// 
+			// trace('PolyworksGame/_onLeftDown');
 			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_PRESSED, value: Phaser.Keyboard.LEFT })
 		},
 
 		onLeftUp: function() {
-			// 
+			// trace('PolyworksGame/_onLeftDown');
 			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_RELEASED, value: Phaser.Keyboard.LEFT })
 		},
 
 		onRightDown: function() {
-			// 
+			// trace('PolyworksGame/_onRightDown');
 			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_PRESSED, value: Phaser.Keyboard.RIGHT })
 		},
 
 		onRightUp: function() {
-			// 
+			// trace('PolyworksGame/_onRightDown');
 			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_RELEASED, value: Phaser.Keyboard.RIGHT })
 		},
 
 		onUpDown: function() {
-			// 
+			// trace('PolyworksGame/_onUpDown');
 			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_PRESSED, value: Phaser.Keyboard.UP })
 		},
 
 		onUpUp: function() {
-			// 
+			// trace('PolyworksGame/_onUpDown');
 			PWG.EventCenter.trigger({ type: PWG.Events.CONTROL_RELEASED, value: Phaser.Keyboard.UP })
 		},
 
@@ -110818,7 +110961,7 @@ PolyworksGame = (function() {
 		setRequirements: function(met, total) {
 			PolyworksGame.requirementsMet = met;
 			PolyworksGame.requirementsCount = total;
-			
+			trace('PolyworksGame.setRequirements, requirementsMet = ' + PolyworksGame.requirementsMet + ', total = ' + PolyworksGame.requirementsCount);
 			if(total > 0) {
 				PWG.EventCenter.trigger({ type: PWG.Events.REQUIREMENTS_UPDATED });
 			}
@@ -110849,7 +110992,7 @@ PolyworksGame = (function() {
 		},
 
 		quit: function() {
-			// 
+			// trace('PolyworksGame/quit');
 			if(!PolyworksGame.isQuit) {
 				_quit();
 			}
@@ -110922,15 +111065,15 @@ PolyworksGame = (function() {
 	}
 
 	function _hideAddressBar() {
-		// 
+		// trace('------------ PolyworksGame/_hideAddressBar, window.location.hash = ', window.location.hash);
 		if(!window.location.hash) {
-			
+			trace('\tdocument.height = ' + document.height + ', window.outerHeight = ' + window.outerHeight);
 			if(document.height < window.outerHeight) {
 				document.body.style.height = (window.outerHeight + 50) + 'px';
 			}
 			setTimeout(
 				function() {
-					
+					trace('\tabout to scrollTo 0/1');
 					window.scrollTo(0, 1); 
 				}, 
 				50 
@@ -110942,7 +111085,7 @@ PolyworksGame = (function() {
 		var w = window.innerWidth;
 		var h = window.innerHeight;
 		PolyworksGame.isLandscape = (w > h) ? true : false;
-		// 
+		// trace('PolyworksGame/_checkOrientation, isLandscape = ' + PolyworksGame.isLandscape, '\t_stageInitialized = ' + _stageInitialized);
 		if(PolyworksGame.isLandscape) {
 			PolyworksGame.hideOrientationMessage();
 			if(!_stageInitialized) {
@@ -110950,7 +111093,7 @@ PolyworksGame = (function() {
 				// PolyworksGame.phaser.scale.startFullScreen(false);
 			}
 		} else {
-			// 
+			// trace('in portrait; triggering pause state');
 			// PWG.EventCenter.trigger({ type: PWG.Events.PAUSE_STATE });
 			// PolyworksGame.phaser.scale.stopFullScreen();
 			PolyworksGame.showOrientationMessage();
@@ -110959,7 +111102,7 @@ PolyworksGame = (function() {
 	
 	function _orientationChange() {
 		_checkOrientation();
-		//  
+		// trace('PolyworksGame/_orientationChange, isLandscape = ' + PolyworksGame.isLandscape + ', currentState' + PolyworksGame.currentState); 
 		if(PolyworksGame.currentState !== '') {
 			_states[PolyworksGame.currentState].orientationSet(PolyworksGame.isLandscape);
 		}
@@ -110968,10 +111111,10 @@ PolyworksGame = (function() {
 	function _getSavedData() {
 		// Polywork.Storage.destroy();
 		var savedData = PWG.Storage.get(PolyworksGame.name);
-		
+		trace('PolyworksGame/_getSavedData, savedData = ', savedData);
 		if(typeof(savedData) !== 'undefined') {
 			if(savedData.indexOf('{') > -1) {
-				// 
+				// trace('\tdata saved was an object, parsing...');
 				savedData = JSON.parse(savedData);
 				for(var key in savedData) {
 					PolyworksGame[key] = savedData[key];
@@ -110997,12 +111140,12 @@ PolyworksGame = (function() {
 	function _onStageInitialized(event) {
 		_stageInitialized = true;
 		_isTouchDevice = (navigator.userAgent.match(/ipad|iphone|android/i) !== null);
-		// 
+		// trace('PolyworksGame/_onStageInitialized, _isTouchDevice = ' + _isTouchDevice);
 
 		var config = new PWG.Config();
 
 		_model = config.init(PWG.Stage);
-		
+		trace(_model);
 		if(_model.webFonts) {
 			_addWebFonts(_model.webFonts);
 		}
@@ -111012,7 +111155,7 @@ PolyworksGame = (function() {
 		// if(PWG.DeviceUtils.isFirefox()) {
 		// 	renderType = Phaser.CANVAS;
 		// }
-		// 
+		// trace('---------- renderType = ' + renderType);
 		PolyworksGame.phaser = new Phaser.Game(PWG.Stage.winW, PWG.Stage.winH, renderType, 'gameContainer', { preload: _preload, create: _create });
 	}
 
@@ -111050,10 +111193,10 @@ PolyworksGame = (function() {
 			this
 		);
 
-		// 
+		// trace('preload sprites');
 		PWG.Utils.each(sprites,
 			function(sprite, key) {
-				// 
+				// trace('PolyworksGame setting sprite['+key+'] loaded to false');
 				if(_model.preloadAll) {
 					phaser.load.spritesheet(key, sprite.url, sprite.width, sprite.height, sprite.frames);
 					loaded.sprites[key] = true;
@@ -111067,7 +111210,7 @@ PolyworksGame = (function() {
 	}
 	
 	function _create() {
-		// 
+		// trace('PolyworksGame/_create');
 		PolyworksGame.phaser.physics.startSystem(Phaser.Physics.ARCADE);
 		// _initControls();
 		_initStates();
@@ -111098,7 +111241,7 @@ PolyworksGame = (function() {
 		var state = _states[PolyworksGame.currentState];
 		var pauseGUI = state.getChildByName('pauseGUI');
 		var muteButton = pauseGUI.getChildByName('muteButton');
-		
+		trace('_changePlayStateMute, pauseGUI = ', pauseGUI, '\tmuteButton = ', muteButton);
 		muteButton.frame = frame;
 		// _states[PolyworksGame.currentState].model.collection[6].model.collection[6].frame = frame;
 	}
@@ -111120,7 +111263,7 @@ PolyworksGame = (function() {
 		} else {
 			_changePlayStateMute(frame);
 		}
-		// 
+		// trace('post mute unmute, isMuted = ' + PolyworksGame.isMuted + ', _states = ', _states[PolyworksGame.currentState]);
 	}
 
 	function _onChangeState(event) {
@@ -111134,7 +111277,7 @@ PolyworksGame = (function() {
 	}
 	
 	function _onShowLevelInfo(event) {
-		
+		trace('PolyworksGame/_onShowLevelInfo, event = ', event);
 		var levelIdx = (event.value < 9) ? ('0' + (event.value+1)) : (event.value+1);
 		var stateId = 'level' + levelIdx + 'Info';
 		PolyworksGame.changeState(stateId);
@@ -111149,10 +111292,10 @@ PolyworksGame = (function() {
 				break;
 			}
 		}
-		// 
+		// trace('\tidx = ' + idx);
 		var stateId = _levels[idx].model.name;
 		PolyworksGame.currentLevel = idx;
-		// 
+		// trace('\tstateId = ' + stateId);
 		PolyworksGame.levelText = _levels[idx].model.text;
 		PolyworksGame.levelScore = 0;
 		PolyworksGame.currentLevelHighScore = 'high score: ' + PolyworksGame.highScores[idx];
@@ -111162,7 +111305,7 @@ PolyworksGame = (function() {
 	}
 	
 	function _onNextLevel(event) {
-		
+		trace('PolyworksGame/_onNextLevel, currentLevel = ', PolyworksGame.currentLevel);
 		var stateId;
 		if(PolyworksGame.currentLevel === PolyworksGame.levelCount) {
 			PolyworksGame.currentLevel = 0;
@@ -111182,7 +111325,7 @@ PolyworksGame = (function() {
 	}
 	
 	function _onLevelCleared(event) {
-		
+		trace('PolyworksGame/_onLevelCleared, event = ', event);
 		var idx = event.value;
 		PolyworksGame.levelStatus[idx] = 'c';
 
@@ -111205,7 +111348,7 @@ PolyworksGame = (function() {
 
 		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.COMPLETE, (idx+1)]);
 		idx++;
-		// 
+		// trace('new level status: ' + PolyworksGame.levelStatus[idx]);
 		if(PolyworksGame.levelStatus[idx] === 'l') {
 			PolyworksGame.levelStatus[idx] = 'u';
 		}
@@ -111228,7 +111371,7 @@ PolyworksGame = (function() {
 	}
 
 	function _initStates() {
-		
+		trace('currentLevel = ' + PolyworksGame.currentLevel);
 		PolyworksGame.levelStatus = [];
 
 		var states = _model.states;
@@ -111237,12 +111380,12 @@ PolyworksGame = (function() {
 
 		PWG.Utils.each(states,
 			function(s, idx) {
-				// 
+				// trace(s);
 				state = new PWG[s.cl](s, s.name);
 				_states[s.name] = state;
 				PolyworksGame.phaser.state.add(s.name, state, false);
 				if(s.name.indexOf('level') > -1) {
-					// 
+					// trace('\tstate['+s.name+'] levelCount = ' + levelCount);
 					if(PolyworksGame.savedStatus) {
 						PolyworksGame.levelStatus[levelCount] = PolyworksGame.savedStatus[levelCount];
 						PolyworksGame.highScores[levelCount] = PolyworksGame.highScores[levelCount] || 0;
@@ -111260,25 +111403,25 @@ PolyworksGame = (function() {
 		PolyworksGame.levelCount = levelCount;
 		_initLevelInfoStates();
 
-		
+		trace('PolyworksGame/_initStates, _stageInitialized = ' + _stageInitialized + ', _states = ', _states, '\t_levels = ', _levels);
 		_statesInialized = true;
 
 		if(typeof(TGS) !== 'undefined') {
 			if(TGS.IsReady()) {
-				
+				trace('\ttgs is ready');
 				_startGame();
 			} else {
-				
+				trace('\ttgs is defined, but not ready');
 				TGS.onReady = PolyworksGame.startGame();
 			}
 		} else {
-			
+			trace('\ttgs is not defined');
 			PolyworksGame.startGame();
 		}
 	}
 
 	function _startGame() {
-		
+		trace('START GAME');
 		if(_stageInitialized) {
 			_adapter.init(_levels.length);
 			// if(typeof(inTGS) !== 'undefined' && inTGS) {
@@ -111330,13 +111473,13 @@ PolyworksGame = (function() {
 				PWG.Utils.each(
 					groupCollection,
 					function(item, key) {
-						// 
+						// trace('\titem['+key+'] = ', item);
 						levelInfoConfig.attrs[0].attrs.push(item);
 					},
 					this
 				);
 
-				// 
+				// trace('levelInfo['+levelIdx+'] levelInfoConfig = ', levelInfoConfig);
 				levelInfoState = new PWG.MenuState(levelInfoConfig);
 				PolyworksGame.phaser.state.add(stateName, levelInfoState, false);
 				_states[stateName] = levelInfoState;
@@ -111377,7 +111520,7 @@ PolyworksGame = (function() {
 	}
 	
 	function _killStates() {
-		// 
+		// trace('PolyworksGame/_killStates');
 		PWG.Utils.each(_states,
 			function(s) {
 				s.shutdown();
@@ -111398,7 +111541,7 @@ PWG.DOMManager.addElements(domConfig.head.elements, document.getElementsByTagNam
 PWG.DOMManager.addElements(domConfig.body.elements, document.getElementsByTagName('body')[0], onElementsAdded);
 
 function onElementsAdded() {
-	// 
+	// trace('onElementsAdded, scriptsLoaded = ' + scriptsLoaded);
 	elementsAdded = true;
 	// if(scriptsLoaded) {
 		beginGame();
@@ -111406,7 +111549,7 @@ function onElementsAdded() {
 }
 
 function onScriptsLoaded() {
-	
+	trace('onScriptsAdded, elementsAdded = ' + elementsAdded);
 	scriptsLoaded = true;
 	if(elementsAdded) {
 		beginGame();

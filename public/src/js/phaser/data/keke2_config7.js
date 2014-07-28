@@ -1577,6 +1577,7 @@ PWG.Config = (function() {
 				// 'caterpillarBoss1Head',
 				// 'caterpillarBoss1Body',
 				'caterpillar01'],
+				// enemies
 				enemies: {
 					name: 'enemies',
 					cl: 'EnemyManager',
@@ -1700,7 +1701,7 @@ PWG.Config = (function() {
 								health: 3
 							},
 							start: {
-								x: (stageWidth * 5) + (stageUnit),
+								x: (stageWidth * 5) + (stageUnit * 2),
 								y: winH - (caterpillar01.imgHeight + (stageUnit * 0.5))
 							},
 							physics: {
@@ -2458,6 +2459,8 @@ PWG.Config = (function() {
 				],
 				images: ['whiteRect', 'ovalMask', 'level02Title', 'goalFlag', 'forestBackground01a', 'forestBackground01b', 'forestBackground01c', 'grass03', 'tree01', 'platformV', 'platform', 'branch03Left', 'branch03Right', 'branch03aLeft', 'branch03aRight', 'crystals02Green', 'crystals02Grey', 'lollipop', 'invisibleRect', 'greyRect'],
 				sprites: ['leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'heartSprite', 'keke', 'caterpillar01'],
+
+				// enemies
 				enemies: {
 					name: 'enemies',
 					cl: 'EnemyManager',
@@ -10400,7 +10403,27 @@ PWG.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 2) - (stageUnit),
-										y: winH + 100
+										y: winH + (stageUnit * 3)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 1000
+								}
+							},
+							// secondary in case the first does not trigger
+							{
+								name: 'death',
+								cl: 'Sprite',
+								attrs: {
+									img: 'invisibleRect',
+									phaser: {
+										width: stageWidth + (stageUnit * 2),
+										height: 32
+									},
+									start: {
+										x: (stageWidth * 2) - (stageUnit),
+										y: winH + (stageUnit * 6)
 									},
 									physics: {
 										immovable: true
@@ -10522,7 +10545,27 @@ PWG.Config = (function() {
 									},
 									start: {
 										x: (stageWidth * 3) - (stageUnit),
-										y: winH + 100
+										y: winH + (stageUnit * 3)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 1000
+								}
+							},
+							// secondary in case the first does not trigger
+							{
+								name: 'death',
+								cl: 'Sprite',
+								attrs: {
+									img: 'invisibleRect',
+									phaser: {
+										width: stageWidth + (stageUnit * 2),
+										height: 32
+									},
+									start: {
+										x: (stageWidth * 3) - (stageUnit),
+										y: winH + (stageUnit * 6)
 									},
 									physics: {
 										immovable: true
@@ -11654,7 +11697,27 @@ PWG.Config = (function() {
 									},
 									start: {
 										x: 0,
-										y: winH + 100
+										y: winH + (stageUnit * 3)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 1000
+								}
+							},
+							// secondary in case the first does not trigger
+							{
+								name: 'death',
+								cl: 'Sprite',
+								attrs: {
+									img: 'invisibleRect',
+									phaser: {
+										width: (stageWidth * 3),
+										height: 32
+									},
+									start: {
+										x: 0,
+										y: winH + (stageUnit * 6)
 									},
 									physics: {
 										immovable: true
@@ -13886,7 +13949,27 @@ PWG.Config = (function() {
 									},
 									start: {
 										x: 0,
-										y: winH + 100
+										y: winH + (stageUnit * 3)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 1000
+								}
+							},
+							// secondary, in case the first does not trigger
+							{
+								name: 'death',
+								cl: 'Sprite',
+								attrs: {
+									img: 'invisibleRect',
+									phaser: {
+										width: (stageWidth * 3),
+										height: 32
+									},
+									start: {
+										x: 0,
+										y: winH + (stageUnit * 6)
 									},
 									physics: {
 										immovable: true
@@ -16259,7 +16342,27 @@ PWG.Config = (function() {
 									},
 									start: {
 										x: 0,
-										y: winH + 100
+										y: winH + (stageUnit * 3)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 1000
+								}
+							},
+							// secondary, in case the first does not trigger
+							{
+								name: 'death',
+								cl: 'Sprite',
+								attrs: {
+									img: 'invisibleRect',
+									phaser: {
+										width: (stageWidth * 4),
+										height: 32
+									},
+									start: {
+										x: 0,
+										y: winH + (stageUnit * 6)
 									},
 									physics: {
 										immovable: true
@@ -20046,6 +20149,26 @@ PWG.Config = (function() {
 									},
 									attack: 1000
 								}
+							},
+							// secondary, in case the frist does not trigger
+							{
+								name: 'death',
+								cl: 'Sprite',
+								attrs: {
+									img: 'invisibleRect',
+									phaser: {
+										width: (stageWidth * 3),
+										height: 32
+									},
+									start: {
+										x: 0,
+										y: winH + (stageHeight * 10)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 1000
+								}
 							}]
 						}]
 					}]
@@ -21988,6 +22111,26 @@ PWG.Config = (function() {
 									start: {
 										x: 0,
 										y: winH + (stageHeight * 7)
+									},
+									physics: {
+										immovable: true
+									},
+									attack: 1000
+								}
+							},
+							// secondary, in case the first does not trigger
+							{
+								name: 'death',
+								cl: 'Sprite',
+								attrs: {
+									img: 'invisibleRect',
+									phaser: {
+										width: (stageWidth * 3),
+										height: 32
+									},
+									start: {
+										x: 0,
+										y: winH + (stageHeight * 10)
 									},
 									physics: {
 										immovable: true
