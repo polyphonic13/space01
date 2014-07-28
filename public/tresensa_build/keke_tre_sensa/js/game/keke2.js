@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-27T18:39:12')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-27T20:54:15')})();
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
  */
@@ -84198,21 +84198,6 @@ PWG.Config = (function() {
 				},
 
 				descriptions: ['where am i?\nwhat happened to the colors?\ni see something blue in the tree over there.', 'CATERPILLARS?!\nthey are so gross.\ni want more lollipops.', 'climbing trees is so much fun!\ni wonder how many\ndifferent crystal colors i can find...', 'this is a big forest.\ni think i see thorns ahead.\ni better avoid those.', 'i hope this forest ends soon.', 'this river looks fast.\ni don\'t want to get swept away.\ni\'ll have to jump across the rocks.', 'wow! this mountain is huge.\ni guess i\'m going to have to climb it.', 'SPIDERS?!\ni hate spiders!', 'i think i see the top of the mountain.\njust a little bit further...', 'climbing down the mountain is SO scary!', 'those fire spiders are terrible.\ni will have to lure them to me\nso that i don\'t get under them.', 'wow! i just escaped them.\nlook: a cave! let me see what\'s inside...'],
-
-				// audio: [
-				// 'secrets',
-				// 'rxMinus1',
-				// 'twentyThree',
-				// 'laDespedida',
-				// 'tinkles',
-				// 'theMadonna',
-				// 'intro',
-				// 'b016',
-				// 'twentyThree',
-				// 'yesterday',
-				// 'ololo',
-				// 'secrets'
-				// ]
 			},
 
 			// USE FOR LOCAL TESTING:
@@ -84669,9 +84654,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'secrets'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: ['whiteRect', 'ovalMask', 'level01Title', 'goalFlag', 'forestBackground02a', 'forestBackground02b', 'forestBackground02c', 'forestBackground02d', 'forestBackground02e', 'forestBackground02f', 'grass03', 'tree01', 'woodenArrowSign01Left', 'woodenArrowSign01Right', 'platformV', 'platform', 'branch03Left', 'branch03Right', 'branch03aLeft', 'branch03aRight', 'crystals02Blue', 'crystals02Grey', 'lollipop', 'invisibleRect', 'greyRect'],
 				sprites: ['leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'heartSprite', 'keke',
 				// 'caterpillarBoss1Head',
@@ -85553,9 +85538,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'rxMinus1'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: ['whiteRect', 'ovalMask', 'level02Title', 'goalFlag', 'forestBackground01a', 'forestBackground01b', 'forestBackground01c', 'grass03', 'tree01', 'platformV', 'platform', 'branch03Left', 'branch03Right', 'branch03aLeft', 'branch03aRight', 'crystals02Green', 'crystals02Grey', 'lollipop', 'invisibleRect', 'greyRect'],
 				sprites: ['leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'heartSprite', 'keke', 'caterpillar01'],
 				enemies: {
@@ -86922,9 +86907,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'twentyThree'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: ['whiteRect', 'ovalMask', 'level03Title', 'goalFlag', 'forestBackground01a', 'forestBackground01b', 'forestBackground01c', 'grass03', 'tree01', 'trunk01', 'platformV', 'platform', 'branch03Left', 'branch03Right', 'branch03aLeft', 'branch03aRight', 'vine01Left', 'vine01Right', 'crystals02Grey', 'crystals02Garnet', 'lollipop', 'invisibleRect'],
 				sprites: ['leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'heartSprite', 'keke', 'caterpillar01', 'caterpillar02', 'caterpillar03', 'branch03LeftAnimated', 'branch03RightAnimated'],
 				enemies: {
@@ -89290,9 +89275,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'laDespedida'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: ['whiteRect', 'ovalMask', 'level04Title', 'goalFlag', 'forestBackground01a', 'forestBackground01b', 'forestBackground01c', 'grass03', 'tree01', 'trunk01', 'platformV', 'platform', 'branch03Left', 'branch03Right', 'branch03aLeft', 'branch03aRight', 'vine01Left', 'vine01Right', 'thorns01', 'lollipop', 'crystals02Grey', 'crystals02Purple', 'invisibleRect'],
 				sprites: ['leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'heartSprite', 'keke', 'caterpillar03', 'caterpillar02', 'caterpillar03', 'branch03LeftAnimated', 'branch03RightAnimated'],
 				// enemies
@@ -91009,9 +90994,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'tinkles'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: ['whiteRect', 'ovalMask', 'level05Title', 'goalFlag', 'forestBackground01a', 'forestBackground01b', 'forestBackground01c', 'grass03', 'grass03a', 'grass03b', 'grass03c', 'grassClump01', 'trunk01', 'tree01', 'platformV', 'platform', 'branch03Left', 'branch03Right', 'branch03aLeft', 'branch03aRight', 'vine01Left', 'vine01Right', 'thorns01', 'lollipop', 'crystals02Grey', 'crystals02Aqua', 'invisibleRect'],
 				sprites: ['leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'heartSprite', 'keke', 'caterpillar03', 'caterpillar02', 'branch03LeftAnimated', 'branch03RightAnimated'],
 				enemies: {
@@ -92814,9 +92799,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'theMadonna'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: ['whiteRect', 'ovalMask', 'level06Title', 'goalFlag', 'riverBackground01a', 'riverBackground01b', 'riverBackground01c', 'riverBackground01d', 'riverBackground01e', 'riverBackground01f', 'tree01', 'woodenXSign01', 'platformV', 'platform', 'branch03Left', 'branch03Right', 'branch03aLeft', 'branch03aRight', 'rockPlatform04', 'grass03a', 'grass03b', 'grass03ci', 'grassClump01', 'river01', 'thorns01', 'invisibleRect', 'crystals02Grey', 'crystals02Silver'],
 				sprites: ['leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'rockPlatform04Animated', 'heartSprite', 'keke'],
 				attrs: [
@@ -94166,9 +94151,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'intro'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: ['whiteRect', 'ovalMask', 'level07Title', 'goalFlag', 'mountainBackgroundA5', 'mountainBackgroundA6', 'mountainBackgroundA7', 'mountainBackgroundA8', 'mountainBackgroundB5', 'mountainBackgroundB6', 'mountainBackgroundB7', 'mountainBackgroundB8', 'mountainBackgroundC5', 'mountainBackgroundC6', 'mountainBackgroundC7', 'mountainBackgroundC8', 'grass03a', 'woodenXSign01', 'woodenArrowSign01Right', 'tree01', 'platformV', 'platform', 'rockPlatform01', 'rockPlatform02', 'rockPlatform03', 'rockPlatform04', 'invisibleRect', 'crystals02Grey', 'crystals02Orange'],
 				sprites: ['rockPlatform01Animated', 'rockPlatform04Animated', 'leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'spider01', 'heartSprite', 'keke'],
 				enemies: {
@@ -96182,9 +96167,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'b016'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: ['whiteRect', 'ovalMask', 'level08Title', 'goalFlag', 'mountainBackgroundC3', 'mountainBackgroundC4', 'mountainBackgroundC5', 'mountainBackgroundC6', 'mountainBackgroundD3', 'mountainBackgroundD4', 'mountainBackgroundD5', 'mountainBackgroundD6', 'mountainBackgroundE3', 'mountainBackgroundE4', 'mountainBackgroundE5', 'mountainBackgroundE6', 'woodenArrowSign01Right', 'platformV', 'platform', 'rockPlatform01', 'rockPlatform02', 'rockPlatform03', 'rockPlatform04', 'invisibleRect', 'heart', 'crystals02Grey', 'crystals02Pink'],
 				sprites: ['leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'rockPlatform01Animated', 'spider01', 'heartSprite', 'keke'],
 				enemies: {
@@ -98420,9 +98405,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'twentyThree'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: ['whiteRect', 'ovalMask', 'level09Title', 'goalFlag', 'mountainBackgroundE1', 'mountainBackgroundE2', 'mountainBackgroundE3', 'mountainBackgroundE4', 'mountainBackgroundF1', 'mountainBackgroundF2', 'mountainBackgroundF3', 'mountainBackgroundF4', 'mountainBackgroundG1', 'mountainBackgroundG2', 'mountainBackgroundG3', 'mountainBackgroundG4', 'mountainBackgroundH1', 'mountainBackgroundH2', 'mountainBackgroundH3', 'mountainBackgroundH4', 'tree01', 'platformV', 'platform', 'rockPlatform01', 'rockPlatform02', 'rockPlatform03', 'rockPlatform04', 'invisibleRect', 'lollipop', 'crystals02Grey', 'crystals02Teal'],
 				sprites: ['leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'rockPlatform01Animated', 'spider02', 'heartSprite', 'keke'],
 				// enemies
@@ -100979,9 +100964,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'yesterday'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: ['whiteRect', 'ovalMask', 'level10Title', 'goalFlag', 'mountainBackgroundH3a', 'mountainBackgroundH4a', 'mountainBackgroundH5', 'mountainBackgroundH6', 'mountainBackgroundI3', 'mountainBackgroundI4', 'mountainBackgroundI5', 'mountainBackgroundI6', 'mountainBackgroundJ3', 'mountainBackgroundJ4', 'mountainBackgroundJ5', 'mountainBackgroundJ6', 'platformV', 'platform', 'rockPlatform01', 'rockPlatform02', 'rockPlatform03', 'rockPlatform04', 'invisibleRect', 'lollipop', 'crystals02Grey', 'crystals02Yellow'],
 				sprites: ['leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'spider02', 'spider03', 'heartSprite', 'keke'],
 				enemies: {
@@ -103327,9 +103312,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'ololo'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: ['whiteRect', 'ovalMask', 'level11Title', 'goalFlag', 'mountainBackgroundI5', 'mountainBackgroundI6', 'mountainBackgroundI7', 'mountainBackgroundI8', 'mountainBackgroundJ5', 'mountainBackgroundJ6', 'mountainBackgroundJ7', 'mountainBackgroundJ8', 'mountainBackgroundK5', 'mountainBackgroundK6', 'mountainBackgroundK7', 'mountainBackgroundK8', 'mountainBackgroundL5', 'mountainBackgroundL6', 'mountainBackgroundL7', 'mountainBackgroundL8', 'platformV', 'platform', 'rockPlatform01', 'rockPlatform02', 'rockPlatform03', 'rockPlatform04', 'invisibleRect', 'lollipop', 'crystals02Grey', 'crystals02Red'],
 				sprites: ['leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'heartSprite', 'rockPlatform01Animated', 'spider03', 'keke'],
 				enemies: {
@@ -105275,9 +105260,9 @@ PWG.Config = (function() {
 				},
 				pausable: true,
 				backgroundColor: '#000000',
-				// audio: [
-				// 	'secrets'
-				// ],
+				audio: [
+					'secrets'
+				],
 				images: ['whiteRect', 'ovalMask', 'level12Title', 'goalFlag', 'caveBackground02a', 'caveBackground02b', 'caveGround01a', 'caveGround01b', 'platformV', 'platform', 'rockPlatform01', 'grass03a', 'grass03b', 'grass03ci', 'grassClump01', 'river01', 'invisibleRect', 'crystals02Grey', 'crystals02Diamond'],
 				sprites: ['leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'lava01', 'rockPlatform01Animated', 'heartSprite', 'keke'],
 				attrs: [
@@ -110962,10 +110947,12 @@ PolyworksGame = (function() {
 			PolyworksGame.hideOrientationMessage();
 			if(!_stageInitialized) {
 				PWG.Stage.init(PolyworksGame.aspectRatio);
+				// PolyworksGame.phaser.scale.startFullScreen(false);
 			}
 		} else {
 			// 
 			// PWG.EventCenter.trigger({ type: PWG.Events.PAUSE_STATE });
+			// PolyworksGame.phaser.scale.stopFullScreen();
 			PolyworksGame.showOrientationMessage();
 		}
 	}

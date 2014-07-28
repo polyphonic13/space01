@@ -364,10 +364,12 @@ PolyworksGame = (function() {
 			PolyworksGame.hideOrientationMessage();
 			if(!_stageInitialized) {
 				PWG.Stage.init(PolyworksGame.aspectRatio);
+				// PolyworksGame.phaser.scale.startFullScreen(false);
 			}
 		} else {
 			// trace('in portrait; triggering pause state');
 			// PWG.EventCenter.trigger({ type: PWG.Events.PAUSE_STATE });
+			// PolyworksGame.phaser.scale.stopFullScreen();
 			PolyworksGame.showOrientationMessage();
 		}
 	}
