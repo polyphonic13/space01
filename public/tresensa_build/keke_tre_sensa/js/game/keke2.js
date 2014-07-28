@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-28T10:07:00')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-28T10:39:16')})();
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
  */
@@ -110889,7 +110889,7 @@ PolyworksGame = (function() {
 			if(id === 'quit') {
 				PolyworksGame.quit();
 			} else {
-				if(_adapter && _adaper.isOpen) {
+				if(_adapter && _adapter.isOpen) {
 					_adapter.removeWidget();
 				}
 				var state = _states[id];

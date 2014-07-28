@@ -157,7 +157,7 @@ PolyworksGame = (function() {
 			if(id === 'quit') {
 				PolyworksGame.quit();
 			} else {
-				if(_adapter && _adaper.isOpen) {
+				if(_adapter && _adapter.isOpen) {
 					_adapter.removeWidget();
 				}
 				var state = _states[id];
