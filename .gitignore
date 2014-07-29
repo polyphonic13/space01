@@ -1,4 +1,5 @@
 node_modules
+grunt/data/meta.json
 public/build/*
 public/deploy/*
 public/keke/*
