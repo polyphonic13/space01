@@ -300,6 +300,7 @@ PWG.Player = (function() {
 			} else {
 				_this.justDamaged = true;
 				_this.damageTimer = setTimeout(_this.resetJustDamaged, _this.damageInterval);
+				_this.alpha = 0.85;
 			}
 		}
 	};
@@ -307,6 +308,7 @@ PWG.Player = (function() {
 	Player.prototype.resetJustDamaged = function() {
 		clearTimeout(_this.damageTimer);
 		_this.justDamaged = false;
+		_this.alpha = 1;
 	};
 	
 	Player.prototype.destroy = function() {

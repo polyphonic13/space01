@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-28T10:39:16')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-28T19:38:59')})();
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
  */
@@ -82589,8 +82589,11 @@ PWG.TGSAdapter = (function() {
 		
 		addWidget: function() {
 			trace('TGSAdapter/addWidget');
-			var winW = PWG.Stage.winW; 
-			var winH = PWG.Stage.winH;
+			// var winW = PWG.Stage.winW; 
+			// var winH = PWG.Stage.winH;
+			var winW = document.documentElement.clientWidth; 
+			var winH = document.documentElement.clientHeight;
+			
 			var unit = PWG.Stage.unit; 
 			var widgetX = (unit * 3);
 			var widgetY = (unit * 0.5);
@@ -110614,6 +110617,7 @@ PWG.Player = (function() {
 			} else {
 				_this.justDamaged = true;
 				_this.damageTimer = setTimeout(_this.resetJustDamaged, _this.damageInterval);
+				_this.alpha = 0.5;
 			}
 		}
 	};
@@ -110621,6 +110625,7 @@ PWG.Player = (function() {
 	Player.prototype.resetJustDamaged = function() {
 		clearTimeout(_this.damageTimer);
 		_this.justDamaged = false;
+		_this.alpha = 1;
 	};
 	
 	Player.prototype.destroy = function() {

@@ -112,6 +112,7 @@ PWG.TGSAdapter = (function() {
 			trace('TGSAdapter/addWidget');
 			var winW = PWG.Stage.winW; 
 			var winH = PWG.Stage.winH;
+			
 			var unit = PWG.Stage.unit; 
 			var widgetX = (unit * 3);
 			var widgetY = (unit * 0.5);
