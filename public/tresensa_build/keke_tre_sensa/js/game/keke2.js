@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-28T19:38:59')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-28T20:22:17')})();
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
  */
@@ -82589,10 +82589,8 @@ PWG.TGSAdapter = (function() {
 		
 		addWidget: function() {
 			trace('TGSAdapter/addWidget');
-			// var winW = PWG.Stage.winW; 
-			// var winH = PWG.Stage.winH;
-			var winW = document.documentElement.clientWidth; 
-			var winH = document.documentElement.clientHeight;
+			var winW = PWG.Stage.winW; 
+			var winH = PWG.Stage.winH;
 			
 			var unit = PWG.Stage.unit; 
 			var widgetX = (unit * 3);
@@ -91008,6 +91006,7 @@ PWG.Config = (function() {
 				],
 				images: ['whiteRect', 'ovalMask', 'level05Title', 'goalFlag', 'forestBackground01a', 'forestBackground01b', 'forestBackground01c', 'grass03', 'grass03a', 'grass03b', 'grass03c', 'grassClump01', 'trunk01', 'tree01', 'platformV', 'platform', 'branch03Left', 'branch03Right', 'branch03aLeft', 'branch03aRight', 'vine01Left', 'vine01Right', 'thorns01', 'lollipop', 'crystals02Grey', 'crystals02Aqua', 'invisibleRect'],
 				sprites: ['leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'heartSprite', 'keke', 'caterpillar03', 'caterpillar02', 'branch03LeftAnimated', 'branch03RightAnimated'],
+				// enemies
 				enemies: {
 					name: 'enemies',
 					cl: 'EnemyManager',
@@ -91233,9 +91232,9 @@ PWG.Config = (function() {
 						attrs: {
 							img: 'caterpillar03',
 							phaser: {
-								width: caterpillar03.width,
-								height: caterpillar03.height,
-								health: 30
+								width: (caterpillar03.width) * 1.5,
+								height: (caterpillar03.height) * 1.5,
+								health: 50
 							},
 							start: {
 								x: (stageWidth * 5) + (stageUnit * 4),
@@ -91249,8 +91248,8 @@ PWG.Config = (function() {
 									y: 0.2
 								}
 							},
-							speed: 0.5,
-							attack: 25,
+							speed: 1,
+							attack: 50,
 							testInView: true,
 							score: 1000,
 							movement: {
@@ -96241,6 +96240,7 @@ PWG.Config = (function() {
 				],
 				images: ['whiteRect', 'ovalMask', 'level08Title', 'goalFlag', 'mountainBackgroundC3', 'mountainBackgroundC4', 'mountainBackgroundC5', 'mountainBackgroundC6', 'mountainBackgroundD3', 'mountainBackgroundD4', 'mountainBackgroundD5', 'mountainBackgroundD6', 'mountainBackgroundE3', 'mountainBackgroundE4', 'mountainBackgroundE5', 'mountainBackgroundE6', 'woodenArrowSign01Right', 'platformV', 'platform', 'rockPlatform01', 'rockPlatform02', 'rockPlatform03', 'rockPlatform04', 'invisibleRect', 'heart', 'crystals02Grey', 'crystals02Pink'],
 				sprites: ['leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'rockPlatform01Animated', 'spider01', 'heartSprite', 'keke'],
+				// enemies
 				enemies: {
 					name: 'enemies',
 					cl: 'EnemyManager',
@@ -103647,7 +103647,7 @@ PWG.Config = (function() {
 							attack: 25,
 							score: 3000,
 							movement: {
-								speed: spider03.speed,
+								speed: (spider03.speed),
 								type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
 								formula: null
 							},
@@ -103660,7 +103660,35 @@ PWG.Config = (function() {
 					// sector 6
 					[],
 					// sector 7
-					[],
+					[{
+						name: 'level10-sector7-enemy1',
+						cl: 'AnimatedEnemy',
+						attrs: {
+							img: 'spider03',
+							phaser: {
+								width: (spider03.width) * 1.5,
+								height: (spider03.height) * 1.5,
+								health: 75
+							},
+							start: {
+								x: (stageUnit * 33),
+								y: winH + (stageUnit * 43)
+							},
+							physics: {
+								allowGravity: false
+							},
+							speed: 1,
+							attack: 50,
+							score: 3000,
+							movement: {
+								speed: (spider03.speed) * 2,
+								type: PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED,
+								formula: null
+							},
+							defaultAnimation: '',
+							animations: spiderAnimations
+						}
+					}],
 					// sector 8
 					[]]
 				},
@@ -110617,7 +110645,7 @@ PWG.Player = (function() {
 			} else {
 				_this.justDamaged = true;
 				_this.damageTimer = setTimeout(_this.resetJustDamaged, _this.damageInterval);
-				_this.alpha = 0.5;
+				_this.alpha = 0.85;
 			}
 		}
 	};
