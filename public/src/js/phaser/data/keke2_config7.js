@@ -292,9 +292,11 @@ PWG.Config = (function() {
 				muteButton: 'assets/images/controls/mute_button.png',
 				creditsButton: 'assets/images/controls/credits_button.png',
 
+				// enemies
+				poisonBall: 'assets/images/enemies/poison_ball.png',
 				// boss
-				caterpillarBoss1Head: 'assets/images/enemies/caterpillar03b_head.png',
-				caterpillarBoss1Body: 'assets/images/enemies/caterpillar03b_body.png',
+				// caterpillarBoss1Head: 'assets/images/enemies/caterpillar03b_head.png',
+				// caterpillarBoss1Body: 'assets/images/enemies/caterpillar03b_body.png',
 
 				// misc
 				heart: 'assets/images/heart.png',
@@ -7901,7 +7903,7 @@ PWG.Config = (function() {
 				world: {
 					x: 0,
 					y: -(stageHeight * 2) + winH,
-					width: stageWidth * 6,
+					width: stageWidth * 7,
 					height: stageHeight * 2
 				},
 				clearWorld: true,
@@ -7915,7 +7917,7 @@ PWG.Config = (function() {
 				audio: [
 					'secrets'
 				],
-				images: ['whiteRect', 'ovalMask', 'level05Title', 'goalFlag', 'forestBackground01a', 'forestBackground01b', 'forestBackground01c', 'grass03', 'grass03a', 'grass03b', 'grass03c', 'grassClump01', 'trunk01', 'tree01', 'platformV', 'platform', 'branch03Left', 'branch03Right', 'branch03aLeft', 'branch03aRight', 'vine01Left', 'vine01Right', 'thorns01', 'lollipop', 'crystals02Grey', 'crystals02Aqua', 'invisibleRect'],
+				images: ['whiteRect', 'ovalMask', 'level05Title', 'goalFlag', 'forestBackground01a', 'forestBackground01b', 'forestBackground01c', 'grass03', 'grass03a', 'grass03b', 'grass03c', 'grassClump01', 'trunk01', 'tree01', 'platformV', 'platform', 'branch03Left', 'branch03Right', 'branch03aLeft', 'branch03aRight', 'vine01Left', 'vine01Right', 'thorns01', 'lollipop', 'crystals02Grey', 'crystals02Aqua', 'invisibleRect', 'poisonBall'],
 				sprites: ['leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'heartSprite', 'keke', 'caterpillar03', 'caterpillar02', 'branch03LeftAnimated', 'branch03RightAnimated'],
 				// enemies
 				enemies: {
@@ -8137,9 +8139,11 @@ PWG.Config = (function() {
 						}
 					}],
 					// sector 6
+					[],
+					// sector 7
 					[{
-						name: 'level05-sector6-enemy1',
-						cl: 'AnimatedEnemy',
+						name: 'level05-sector7-enemy1',
+						cl: 'BossEnemy',
 						attrs: {
 							img: 'caterpillar03',
 							phaser: {
@@ -8148,7 +8152,7 @@ PWG.Config = (function() {
 								health: 50
 							},
 							start: {
-								x: (stageWidth * 5) + (stageUnit * 4),
+								x: (stageWidth * 6) + (stageUnit * 4),
 								// y: winH - ((stageUnit * 6) + 32)
 								y: -(stageHeight * 2)
 							},
@@ -8169,9 +8173,40 @@ PWG.Config = (function() {
 								formula: null
 							},
 							defaultAnimation: '',
-							animations: caterpillarAnimations
+							animations: caterpillarAnimations,
+						},
+						poisonInterval: 3000,
+						maxDrops: 5000,
+						poisoning: false,
+						preUpdate: function(params) {
+							trace('BossEnemy['+this.model.name+']/preUpdate, poisoning = ' + this.model.poisoning);
+							if(!this.model.poisoning) {
+								_this = this;
+								setInterval(this.model.poison, this.model.positionInterval);
+								this.model.poisoning = true;
+							}
+						},
+						poison: function() {
+							trace('BossEnemy['+_this.model.name+']/poison');
+							_this.emitter = PolyworksGame.phaser.add.emitter(_this.body.x, _this.body.y, _this.model.maxDrops);
+							_this.emitter.width = _this.body.width;
+							_this.emitter.makeParticles('poisonBall');
+
+							// _this.emitter.minParticleSpeed.set(0, 300);
+							// _this.emitter.maxParticleSpeed.set(0, 600);
+
+							_this.emitter.setRotation(0, 0);
+							_this.emitter.setAlpha(0.1, 1, 3000);
+							_this.emitter.setScale(0.1, 1, 0.1, 1, 6000, Phaser.Easing.Quintic.Out);
+							_this.emitter.gravity = -200;
+
+							_this.emitter.start(false, 5000, 10);
+						},
+						destroy: function() {
+							this.emitter.kill();
 						}
-					}]]
+					}]
+				]
 				},
 				attrs: [
 				// scenery
@@ -8259,6 +8294,21 @@ PWG.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 5),
+								y: winH - (stageHeight * 2)
+							}
+						}
+					}, 
+					{
+						name: 'background07',
+						cl: 'Sprite',
+						attrs: {
+							img: 'forestBackground01c',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight * 2
+							},
+							start: {
+								x: (stageWidth * 6),
 								y: winH - (stageHeight * 2)
 							}
 						}
@@ -8371,6 +8421,21 @@ PWG.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 5),
+								y: winH - (stageUnit * 6.5)
+							}
+						}
+					},
+					{
+						name: 'grass07',
+						cl: 'Sprite',
+						attrs: {
+							img: 'grass03c',
+							phaser: {
+								width: (stageWidth),
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageWidth * 6),
 								y: winH - (stageUnit * 6.5)
 							}
 						}
@@ -8531,7 +8596,7 @@ PWG.Config = (function() {
 						attrs: {
 							img: 'platformV',
 							start: {
-								x: stageWidth * 6,
+								x: stageWidth * 7,
 								y: winH - (stageHeight * 2)
 							},
 							phaser: {
@@ -8582,7 +8647,7 @@ PWG.Config = (function() {
 						attrs: {
 							img: 'platform',
 							phaser: {
-								width: stageWidth * 2,
+								width: stageWidth * 3,
 								height: (stageUnit * 4.5)
 							},
 							start: {
@@ -9539,6 +9604,28 @@ PWG.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: []
 						}]
+					},
+					// sector7
+					{
+						name: 'sector6',
+						cl: 'Sector',
+						bounds: {
+							start: stageWidth * 6,
+							end: stageWidth * 7
+						},
+						attrs: [{
+							name: 'dynamicTerrain',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						}, {
+							name: 'hazards',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						}, {
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						}]
 					}]
 				},
 				// foreground
@@ -9689,7 +9776,7 @@ PWG.Config = (function() {
 								height: (stageUnit * 3)
 							},
 							start: {
-								x: (stageWidth * 6) - (stageUnit * 4),
+								x: (stageWidth * 7) - (stageUnit * 4),
 								y: winH - (stageUnit * 7.5)
 							},
 							physics: {

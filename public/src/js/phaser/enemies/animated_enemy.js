@@ -1,4 +1,4 @@
-PWG.AnimatedEnemy = (function() {
+PWG.AnimatedEnemy = function() {
 	PWG.Utils.inherits(AnimatedEnemy, PWG.Enemy);
 	
 	var _this;
@@ -58,4 +58,4 @@ PWG.AnimatedEnemy = (function() {
 	};
 	
 	return AnimatedEnemy;
-})();
+}();
