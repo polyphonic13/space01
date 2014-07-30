@@ -9,10 +9,10 @@ PWG.TGSAdapter = (function() {
 	var _needAd = false;
 	
 	var _tgsConfig = {
-		GAME_ID: 'kekeandthegreyexpanse',
-		ADS: {
-			INTERSTITIAL_INTERVAL: 150
-		}
+		GAME_ID: 'kekeandthegreyexpanse'//,
+		// ADS: {
+		// 	INTERSTITIAL_INTERVAL: 150
+		// }
 	};
 	
 	var _displayConfig = {

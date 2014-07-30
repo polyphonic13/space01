@@ -9,10 +9,10 @@ PWG.BossEnemy = function() {
 	}
 	
 	BossEnemy.prototype.pwUpdate = function(params) {
-		trace('BossEnemy/pwUpdate, alive = ' + this.alive, this);
+		// trace('BossEnemy/pwUpdate, alive = ' + this.alive, this);                                                           
 		if(this.alive) {
 			if(this.model.preUpdate) {
-				trace('there is a pre update, about to call');
+				// trace('there is a pre update, about to call');                                                  
 				this.model.preUpdate.call(this, params);
 			}
 			BossEnemy._super.pwUpdate.call(this, params);

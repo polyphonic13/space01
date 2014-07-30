@@ -4892,7 +4892,7 @@ PWG.Config = (function() {
 						cl: 'Sector',
 						bounds: {
 							start: 0,
-							end: stageWidth// + (gameUnit * 2)
+							end: stageWidth// + (stageUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -5053,8 +5053,8 @@ PWG.Config = (function() {
 						name: 'sector2',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth),// - (gameUnit * 2),
-							end: (stageWidth * 2)// + (gameUnit * 2)
+							start: (stageWidth),// - (stageUnit * 2),
+							end: (stageWidth * 2)// + (stageUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -5206,8 +5206,8 @@ PWG.Config = (function() {
 						name: 'sector3',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 2),// - (gameUnit * 2),
-							end: (stageWidth * 3)// + (gameUnit * 2)
+							start: (stageWidth * 2),// - (stageUnit * 2),
+							end: (stageWidth * 3)// + (stageUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -5312,8 +5312,8 @@ PWG.Config = (function() {
 						name: 'sector4',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 3),// - (gameUnit * 2),
-							end: (stageWidth * 4)// + (gameUnit * 2)
+							start: (stageWidth * 3),// - (stageUnit * 2),
+							end: (stageWidth * 4)// + (stageUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -5422,8 +5422,8 @@ PWG.Config = (function() {
 						name: 'sector5',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 4),// - (gameUnit * 2),
-							end: (stageWidth * 5)// + (gameUnit * 2)
+							start: (stageWidth * 4),// - (stageUnit * 2),
+							end: (stageWidth * 5)// + (stageUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -5601,8 +5601,8 @@ PWG.Config = (function() {
 						name: 'sector6',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 5),// - (gameUnit * 2),
-							end: (stageWidth * 6)// + (gameUnit * 2)
+							start: (stageWidth * 5),// - (stageUnit * 2),
+							end: (stageWidth * 6)// + (stageUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -5714,8 +5714,8 @@ PWG.Config = (function() {
 						name: 'sector7',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 6),// - (gameUnit * 2),
-							end: (stageWidth * 7)// + (gameUnit * 2)
+							start: (stageWidth * 6),// - (stageUnit * 2),
+							end: (stageWidth * 7)// + (stageUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -5806,8 +5806,8 @@ PWG.Config = (function() {
 						name: 'sector8',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 7),// - (gameUnit * 2),
-							end: (stageWidth * 8)// + (gameUnit * 2)
+							start: (stageWidth * 7),// - (stageUnit * 2),
+							end: (stageWidth * 8)// + (stageUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -5902,7 +5902,7 @@ PWG.Config = (function() {
 						name: 'sector9',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 8),// - (gameUnit * 2),
+							start: (stageWidth * 8),// - (stageUnit * 2),
 							end: (stageWidth * 9)
 						},
 						attrs: [{
@@ -8153,9 +8153,10 @@ PWG.Config = (function() {
 								health: 50
 							},
 							start: {
-								x: (stageWidth * 6) + (stageUnit * 4),
+								x: (stageWidth * 6) + (stageUnit * 6),
 								// y: winH - ((stageUnit * 6) + 32)
-								y: -(stageHeight * 2)
+								// y: -(stageHeight * 2)
+								y: winH - (stageUnit * 7)
 							},
 							physics: {
 								deferredGravity: true,
@@ -8177,34 +8178,44 @@ PWG.Config = (function() {
 							animations: caterpillarAnimations,
 						},
 						poisonInterval: 3000,
-						maxDrops: 5000,
+						maxDrops: 20,
+						dropLife: 1000,
 						poisoning: false,
 						preUpdate: function(params) {
-							trace('BossEnemy['+this.model.name+']/preUpdate, poisoning = ' + this.model.poisoning);
+							// trace('BossEnemy['+this.model.name+']/preUpdate, poisoning = ' + this.model.poisoning);
 							if(!this.model.poisoning) {
 								_this = this;
-								setTimeout(this.model.poison, this.model.positionInterval);
 								this.model.poisoning = true;
+								setTimeout(this.model.poison, this.model.positionInterval);
+							}
+							if(this.emitter) {
+								this.emitter.emitX = this.x;
+								this.emitter.emitY = this.y;
 							}
 						},
 						poison: function() {
 							trace('BossEnemy['+_this.model.name+']/poison');
-							_this.emitter = PolyworksGame.phaser.add.emitter(_this.body.x, _this.body.y, _this.model.maxDrops);
+							_this.emitter = PolyworksGame.phaser.add.emitter((_this.body.x + (_this.body.width/2)), (_this.body.y + (stageUnit * 0.5)), _this.model.maxDrops);
 							_this.emitter.width = _this.body.width;
 							_this.emitter.makeParticles('poisonBall');
 
 							// _this.emitter.minParticleSpeed.set(0, 300);
 							// _this.emitter.maxParticleSpeed.set(0, 600);
+							_this.emitter.maxParticleScale = 0.25;
+							_this.emitter.minParticleScale = 0.25;
+							
+							// _this.emitter.setRotation(0, 0);
+							// _this.emitter.setScale(0.05, 0.05, 0.05, 0.05, 0);
+							_this.emitter.gravity = 75;
 
-							_this.emitter.setRotation(0, 0);
-							_this.emitter.setAlpha(0.1, 1, 3000);
-							_this.emitter.setScale(0.1, 1, 0.1, 1, 6000, Phaser.Easing.Quintic.Out);
-							_this.emitter.gravity = -200;
-
-							_this.emitter.start(false, 5000, 10);
+							_this.emitter.start(true, _this.dropLife, null, _this.maxDrops);
 						},
 						destroy: function() {
-							this.emitter.kill();
+							if(this.emitter) {
+								this.emitter.kill();  
+
+							}
+
 						}
 					}]
 				]
