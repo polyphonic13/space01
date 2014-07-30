@@ -16,7 +16,7 @@ module.exports = function(grunt) {
 		buildDir += '/' + project;
 	}
 	grunt.log.writeln('Starting Grunt Processing');
-	grunt.log.writeln('\tproject = ' + project 
+	grunt.log.writeln('\ttgt = ' + tgt
 						+ '\n\tsrcDir = ' + srcDir 
 						+ '\n\tbuildDir = ' + buildDir 
 						+ '\n\tprojectSrcDir = ' + projectSrcDir);
