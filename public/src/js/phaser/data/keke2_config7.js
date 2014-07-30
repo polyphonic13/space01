@@ -9572,7 +9572,7 @@ PWG.Config = (function() {
 										height: (stageUnit)
 									},
 									start: {
-										x: (stageWidth * 4) + (stageUnit * 11),
+										x: (stageWidth * 4) + (stageUnit * 13),
 										y: winH - (stageUnit * 5.5)
 									},
 									physics: {
