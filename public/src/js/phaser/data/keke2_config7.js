@@ -8143,7 +8143,8 @@ PWG.Config = (function() {
 					// sector 7
 					[{
 						name: 'level05-sector7-enemy1',
-						cl: 'BossEnemy',
+						// cl: 'BossEnemy',
+						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar03',
 							phaser: {
@@ -8182,7 +8183,7 @@ PWG.Config = (function() {
 							trace('BossEnemy['+this.model.name+']/preUpdate, poisoning = ' + this.model.poisoning);
 							if(!this.model.poisoning) {
 								_this = this;
-								setInterval(this.model.poison, this.model.positionInterval);
+								setTimeout(this.model.poison, this.model.positionInterval);
 								this.model.poisoning = true;
 							}
 						},

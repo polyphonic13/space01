@@ -62,7 +62,7 @@ PWG.TGSAdapter = (function() {
 
 			if(typeof(TGS) !== 'undefined') {
 				_tgsExists = true;
-				TGS.Init(_tgsConfig);
+				// TGS.Init(_tgsConfig);
 			}
 			trace('TGSAdapter/init, _levels = ', _levels);
 		},

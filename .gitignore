@@ -3,9 +3,5 @@ grunt/data/meta.json
 public/build/*
 public/deploy/*
 public/keke/*
-*/.DS_Store
-*/*.DS_Store
-**/.DS_Store
-**/*.DS_Store
 .DS_Store
 *.zip

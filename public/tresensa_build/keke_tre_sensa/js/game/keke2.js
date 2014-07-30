@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-28T20:22:17')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-30T08:44:49')})();
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
  */
@@ -82541,7 +82541,7 @@ PWG.TGSAdapter = (function() {
 
 			if(typeof(TGS) !== 'undefined') {
 				_tgsExists = true;
-				TGS.Init(_tgsConfig);
+				// TGS.Init(_tgsConfig);
 			}
 			trace('TGSAdapter/init, _levels = ', _levels);
 		},
@@ -83381,9 +83381,11 @@ PWG.Config = (function() {
 				muteButton: 'assets/images/controls/mute_button.png',
 				creditsButton: 'assets/images/controls/credits_button.png',
 
+				// enemies
+				poisonBall: 'assets/images/enemies/poison_ball.png',
 				// boss
-				caterpillarBoss1Head: 'assets/images/enemies/caterpillar03b_head.png',
-				caterpillarBoss1Body: 'assets/images/enemies/caterpillar03b_body.png',
+				// caterpillarBoss1Head: 'assets/images/enemies/caterpillar03b_head.png',
+				// caterpillarBoss1Body: 'assets/images/enemies/caterpillar03b_body.png',
 
 				// misc
 				heart: 'assets/images/heart.png',
@@ -90990,7 +90992,7 @@ PWG.Config = (function() {
 				world: {
 					x: 0,
 					y: -(stageHeight * 2) + winH,
-					width: stageWidth * 6,
+					width: stageWidth * 7,
 					height: stageHeight * 2
 				},
 				clearWorld: true,
@@ -91004,7 +91006,7 @@ PWG.Config = (function() {
 				audio: [
 					'secrets'
 				],
-				images: ['whiteRect', 'ovalMask', 'level05Title', 'goalFlag', 'forestBackground01a', 'forestBackground01b', 'forestBackground01c', 'grass03', 'grass03a', 'grass03b', 'grass03c', 'grassClump01', 'trunk01', 'tree01', 'platformV', 'platform', 'branch03Left', 'branch03Right', 'branch03aLeft', 'branch03aRight', 'vine01Left', 'vine01Right', 'thorns01', 'lollipop', 'crystals02Grey', 'crystals02Aqua', 'invisibleRect'],
+				images: ['whiteRect', 'ovalMask', 'level05Title', 'goalFlag', 'forestBackground01a', 'forestBackground01b', 'forestBackground01c', 'grass03', 'grass03a', 'grass03b', 'grass03c', 'grassClump01', 'trunk01', 'tree01', 'platformV', 'platform', 'branch03Left', 'branch03Right', 'branch03aLeft', 'branch03aRight', 'vine01Left', 'vine01Right', 'thorns01', 'lollipop', 'crystals02Grey', 'crystals02Aqua', 'invisibleRect', 'poisonBall'],
 				sprites: ['leftButton', 'rightButton', 'upButton', 'pauseButton', 'playButton', 'playButtonSmall', 'restartButton', 'menuButton', 'mapButton', 'heartSprite', 'keke', 'caterpillar03', 'caterpillar02', 'branch03LeftAnimated', 'branch03RightAnimated'],
 				// enemies
 				enemies: {
@@ -91226,8 +91228,11 @@ PWG.Config = (function() {
 						}
 					}],
 					// sector 6
+					[],
+					// sector 7
 					[{
-						name: 'level05-sector6-enemy1',
+						name: 'level05-sector7-enemy1',
+						// cl: 'BossEnemy',
 						cl: 'AnimatedEnemy',
 						attrs: {
 							img: 'caterpillar03',
@@ -91237,7 +91242,7 @@ PWG.Config = (function() {
 								health: 50
 							},
 							start: {
-								x: (stageWidth * 5) + (stageUnit * 4),
+								x: (stageWidth * 6) + (stageUnit * 4),
 								// y: winH - ((stageUnit * 6) + 32)
 								y: -(stageHeight * 2)
 							},
@@ -91258,9 +91263,40 @@ PWG.Config = (function() {
 								formula: null
 							},
 							defaultAnimation: '',
-							animations: caterpillarAnimations
+							animations: caterpillarAnimations,
+						},
+						poisonInterval: 3000,
+						maxDrops: 5000,
+						poisoning: false,
+						preUpdate: function(params) {
+							trace('BossEnemy['+this.model.name+']/preUpdate, poisoning = ' + this.model.poisoning);
+							if(!this.model.poisoning) {
+								_this = this;
+								setTimeout(this.model.poison, this.model.positionInterval);
+								this.model.poisoning = true;
+							}
+						},
+						poison: function() {
+							trace('BossEnemy['+_this.model.name+']/poison');
+							_this.emitter = PolyworksGame.phaser.add.emitter(_this.body.x, _this.body.y, _this.model.maxDrops);
+							_this.emitter.width = _this.body.width;
+							_this.emitter.makeParticles('poisonBall');
+
+							// _this.emitter.minParticleSpeed.set(0, 300);
+							// _this.emitter.maxParticleSpeed.set(0, 600);
+
+							_this.emitter.setRotation(0, 0);
+							_this.emitter.setAlpha(0.1, 1, 3000);
+							_this.emitter.setScale(0.1, 1, 0.1, 1, 6000, Phaser.Easing.Quintic.Out);
+							_this.emitter.gravity = -200;
+
+							_this.emitter.start(false, 5000, 10);
+						},
+						destroy: function() {
+							this.emitter.kill();
 						}
-					}]]
+					}]
+				]
 				},
 				attrs: [
 				// scenery
@@ -91348,6 +91384,21 @@ PWG.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 5),
+								y: winH - (stageHeight * 2)
+							}
+						}
+					}, 
+					{
+						name: 'background07',
+						cl: 'Sprite',
+						attrs: {
+							img: 'forestBackground01c',
+							phaser: {
+								width: stageWidth,
+								height: stageHeight * 2
+							},
+							start: {
+								x: (stageWidth * 6),
 								y: winH - (stageHeight * 2)
 							}
 						}
@@ -91460,6 +91511,21 @@ PWG.Config = (function() {
 							},
 							start: {
 								x: (stageWidth * 5),
+								y: winH - (stageUnit * 6.5)
+							}
+						}
+					},
+					{
+						name: 'grass07',
+						cl: 'Sprite',
+						attrs: {
+							img: 'grass03c',
+							phaser: {
+								width: (stageWidth),
+								height: (stageUnit * 2)
+							},
+							start: {
+								x: (stageWidth * 6),
 								y: winH - (stageUnit * 6.5)
 							}
 						}
@@ -91620,7 +91686,7 @@ PWG.Config = (function() {
 						attrs: {
 							img: 'platformV',
 							start: {
-								x: stageWidth * 6,
+								x: stageWidth * 7,
 								y: winH - (stageHeight * 2)
 							},
 							phaser: {
@@ -91671,7 +91737,7 @@ PWG.Config = (function() {
 						attrs: {
 							img: 'platform',
 							phaser: {
-								width: stageWidth * 2,
+								width: stageWidth * 3,
 								height: (stageUnit * 4.5)
 							},
 							start: {
@@ -92628,6 +92694,28 @@ PWG.Config = (function() {
 							cl: 'PhysicalGroupCollection',
 							attrs: []
 						}]
+					},
+					// sector7
+					{
+						name: 'sector6',
+						cl: 'Sector',
+						bounds: {
+							start: stageWidth * 6,
+							end: stageWidth * 7
+						},
+						attrs: [{
+							name: 'dynamicTerrain',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						}, {
+							name: 'hazards',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						}, {
+							name: 'bonuses',
+							cl: 'PhysicalGroupCollection',
+							attrs: []
+						}]
 					}]
 				},
 				// foreground
@@ -92778,7 +92866,7 @@ PWG.Config = (function() {
 								height: (stageUnit * 3)
 							},
 							start: {
-								x: (stageWidth * 6) - (stageUnit * 4),
+								x: (stageWidth * 7) - (stageUnit * 4),
 								y: winH - (stageUnit * 7.5)
 							},
 							physics: {
@@ -107492,35 +107580,6 @@ PWG.Sprite = (function() {
 
 
 
-PWG.ParallaxBackground = (function() {
-
-	function ParallaxBackground(params) {
-		this.model = new PWG.Model(params);
-	}
-	
-	ParallaxBackground.prototype.begin = function() {
-		trace('ParallaxBackground['+this.model.name+']/begin', this);
-		var attrs = this.model.attrs;
-		var game = this.model.game;
-
-		this.tilemap = game.add.tilemap(attrs.tilemap);
-		// this.tilemap.addTilesetImage(attrs.tileset);
-	    this.tileset = game.add.tileset(attrs.tileset);
-	    this.layer = game.add.tilemapLayer(attrs.start.x, attrs.start.y, attrs.width, attrs.height, this.tileset, this.tilemap, attrs.layerIndex);
-	
-		trace('\tadding map layer x/y: ' + attrs.start.x + '/' + attrs.start.y + ', w/h: ' + attrs.width + '/' + attrs.height, this.tilemap, this.tileset, this.layer);
-		PWG.Utils.each(attrs.layer,
-			function(attr, key) {
-				trace('\tsetting layer['+key+'] to: ' + attr);
-				this.layer[key] = attr;
-			},
-			this
-		);
-	};
-	
-	return ParallaxBackground;
-})();
-
 PWG.Emitter = (function() {
 	
 	function Emitter(params) {
@@ -107577,282 +107636,6 @@ PWG.Emitter = (function() {
 	};
 	
 	return Emitter;
-})();
-
-PWG.Snow = (function() {
-	PWG.Utils.inherits(Snow, PWG.Emitter);
-	
-	function Snow(params) {
-		trace('Snow/constructor, params = ', params);
-		var defaults = {
-				maxParticles: 400,
-				particles: {
-					keys: 'snowFlake01',
-					frames: 0,
-					quantity: 0,
-					collide: '',
-					collideWorldBounds: false
-				},
-				scale: {
-					min: 0.1,
-					max: 0.5
-				},
-				speed: {
-					x: {
-						min: -100,
-						max: -90
-						// min: 0,
-						// max: 0
-					},
-					y: {
-						min: 50,
-						max: 100
-					}
-				},
-				rotation: {
-					min: 0,
-					max: 0
-				},
-				gravity: 0,
-				start: {
-					explode: false,
-					lifespan: 8000,
-					frequency: 10,
-					quantity: false
-				}
-		};
-
-		params.attrs = PWG.Utils.extend(params.attrs, defaults);
-		trace('\tparams now = ', params);
-		Snow._super.constructor.call(this, params);
-	}
-	
-	return Snow;
-})();
-
-PWG.Enemy = (function() {
-	PWG.Utils.inherits(Enemy, PWG.Sprite);
-	
-	var _this;
-	function Enemy(params) {
-		Enemy._super.constructor.call(this, params);
-		this.reactivated = false; 
-		this.isInView = true;
-		this.isInProximity = false;
-		this.isActive = false;
-		this.justJumped = false;
-		this.relationToPlayer = '';
-	}
-
-	Enemy.prototype.pwUpdate = function(params) {
-		if(this.alive) {
-			// trace('Enemy['+this.model.name+']/pwUpdate, relationToPlayer = ' + this.relationToPlayer);
-			this.checkDynamicTerrainCollision(params.dynamicTerrain);
-
-			this.relationToPlayer = 'near';
-			var movementType = this.model.attrs.movement.type;
-			switch(movementType) {
-				case PWG.MovementTypes.HORIZONTAL_BY_SPEED:
-				case PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED:
-					this.calculateHorizontalMovement(params.player, movementType, false);
-				break;
-				
-				case PWG.MovementTypes.VERTICAL_BY_SPEED:
-					this.calculateVerticalMovement(params.player, movementType);
-				break;
-				
-				case PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED:
-					this.calculateHorizontalMovement(params.player, PWG.MovementTypes.HORIZONTAL_BY_SPEED);
-					var invert = false;
-					if(this.relationToPlayer == 'below') {
-						invert = true;
-					}
-					this.calculateVerticalMovement(params.player, PWG.MovementTypes.VERTICAL_BY_SPEED, invert);
-				break;
-
-				default: 
-					// trace('ERROR: (enemy) unknown movement type: ' + movementType);
-				break;
-			}
-
-			if(this.body.touching.down) {
-				this.justJumped = false;
-			}
-		}
-	};
-	
-	Enemy.prototype.calculateHorizontalMovement = function(player, movementType, invert) {
-		// trace('Enemy['+this.model.name+']/calculateHorizontalMovement');
-		var reverse = invert || false;
-		var enemyX = this.body.x;
-		var enemyY = this.body.y;
-		var playerX = player.body.x;
-		var playerY = player.body.y;
-
-		if(this.model.attrs.testInView) {
-			// trace('testing in view, enemyX = ' + enemyX + ', playerX = ' + playerX);
-			if((enemyX < (playerX + PWG.Stage.width/2) && enemyX > (playerX - PWG.Stage.width/2)) && (enemyY < (playerY + PWG.Stage.height/2) && enemyY > (playerY - PWG.Stage.height/2))) {
-				this.isInView = true;
-				if(!this.isActive) {
-					this.isActive = true;
-				}
-			} else {
-				this.isInView = false;
-				if(this.isActive) {
-					this.isActive = false;
-				}
-			}
-		}
-
-		if(this.isInView) {
-				// trace('is in view, x = ' + enemyX + ', playerX = ' + playerX);
-			var direction; 
-			if(enemyX < (playerX - 10)) {
-				// trace(this.model.name + ': move right, x = ' + enemyX + ', playerX = ' + playerX);
-				this.relationToPlayer = 'right';
-				direction = (reverse) ? PWG.Directions.LEFT : PWG.Directions.RIGHT;
-				this.move({ direction: direction, type: movementType });
-			} else if(enemyX > (playerX + 10)) {
-				// trace(this.model.name + ': move left, x = ' + enemyX + ', playerX = ' + playerX);
-				this.relationToPlayer = 'left';
-				direction = (reverse) ? PWG.Directions.RIGHT : PWG.Directions.LEFT;
-				this.move({ direction: direction, type: movementType });
-			} else if(this.model.attrs.jumps && (enemyY > playerY)) {
-				this.relationToPlayer = 'jumping';
-				if(!this.justJumped) {
-					this.justJumped = true;
-					this.move({ direction: PWG.Directions.UP, type: PWG.MovementTypes.JUMP });
-				}
-			}
-		}
-
-		if((enemyX < (playerX + PWG.Stage.width/4) && enemyX > (playerX - PWG.Stage.width/4)) || (enemyY < (playerY + PWG.Stage.height/4) && enemyY > (playerY - PWG.Stage.height/4))) {
-			if(!this.isInProximity) {
-				this.isInProximity = true;
-				PWG.EventCenter.trigger({ type: PWG.Events.ADD_ACTIVE_ENEMY, enemy: this });
-			}
-		} else {
-			if(this.isInProximity) {
-				this.isInProximity = false;
-				// PWG.EventCenter.trigger({ type: PWG.Events.REMOVE_ACTIVE_ENEMY, enemy: this });
-			}
-		}
-	};
-	
-	Enemy.prototype.calculateVerticalMovement = function(player, movementType) {
-		var enemyY = this.body.y;
-		var playerY = player.body.y;
-		var playerHeight = player.body.height;
-		
-		if(this.model.attrs.testInView) {
-			if(enemyX < (playerX + PWG.Stage.width/2) && enemyX > (playerX - PWG.Stage.width/2)) {
-				this.isInView = true;
-			} else {
-				this.isInView = false;
-			}
-		}
-
-		if(this.isInView) {
-			if(enemyY < (playerY - playerHeight)) {
-				// trace('move right');
-				this.relationToPlayer = 'above';
-				this.move({ direction: PWG.Directions.DOWN, type: movementType });
-			// } else if(enemyY > (playerY + playerHeight)) {
-			} else if(enemyY > (playerY + playerHeight)) {
-				// trace('move left');
-				this.relationToPlayer = 'below';
-				this.move({ direction: PWG.Directions.UP, type: movementType });
-			}
-		}
-	};
-	
-	Enemy.prototype.damage = function(damage) {
-		// trace('Enemy['+this.model.name+']/damage, damage = ' + damage + ', health = ' + this.health);
-		this.health -= damage;
-		if(this.health <= 0) {
-			this.kill();
-		}
-	};
-	
-	Enemy.prototype.kill = function() {
-		// trace('Enemy['+this.model.name+']/kill, ancestor = ');
-		// trace(this.model);
-		this.active = false;
-		PolyworksGame.setLevelScore(this.model.attrs.score);
-		this.model.ancestor.removeChild.call(this.model.ancestor, this.model.name);
-		PWG.EventCenter.trigger({ type: PWG.Events.ENEMY_DESTROYED, value: this.model.name });
-		Enemy._super.kill.call(this);
-	};
-	
-	Enemy.prototype.destroy = function() {
-		// trace('Enemy['+this.model.name+']/destroy');
-		this.alive = false;
-		Enemy._super.destroy.call(this);
-	};
-	
-	return Enemy;
-})();
-
-PWG.AnimatedEnemy = (function() {
-	PWG.Utils.inherits(AnimatedEnemy, PWG.Enemy);
-	
-	var _this;
-	function AnimatedEnemy(params) {
-		// trace('AnimatedEnemy/constructor');
-		AnimatedEnemy._super.constructor.call(this, params);
-	}
-	
-	AnimatedEnemy.prototype.pwUpdate = function(params) {
-		if(this.alive) {
-			// trace('AnimatedEnemy['+this.model.name+']/pwUpdate');
-			// trace(this);
-			AnimatedEnemy._super.pwUpdate.call(this, params);
-
-			if(this.isInView) {
-				// trace('\tenemy['+this.name+'] in range');
-				var animations = this.model.attrs.animations; 
-
-				if(!this.body.touching.down && (this.model.attrs.movement.type === PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED)) {
-					if(this.relationToPlayer == 'left') {
-						if(this.currentAnimation !== AnimationTypes.FALLING_L) {
-							this.play(AnimationTypes.FALLING_L, animations[AnimationTypes.FALLING_L].frameRate, animations[AnimationTypes.FALLING_L].loop);
-						}
-					} else {
-						if(this.currentAnimation !== AnimationTypes.FALLING_R) {
-							this.play(AnimationTypes.FALLING_R, animations[AnimationTypes.FALLING_R].frameRate, animations[AnimationTypes.FALLING_R].loop);
-						}
-					}
-				} else {
-					switch(this.relationToPlayer) {
-						case 'near':
-							if(this.currentAnimation !== AnimationTypes.IDLE) {
-								this.play(AnimationTypes.IDLE, animations[AnimationTypes.IDLE].frameRate, animations[AnimationTypes.IDLE].loop);
-							}
-						break;
-
-						case 'left': 
-						case 'above':
-							if(this.currentAnimation !== AnimationTypes.WALK_L) {
-								this.play(AnimationTypes.WALK_L, animations[AnimationTypes.WALK_L].frameRate, animations[AnimationTypes.WALK_L].loop);
-							}
-						break;
-
-						case 'right': 
-						case 'below':
-							if(this.currentAnimation !== AnimationTypes.WALK_R) {
-								this.play(AnimationTypes.WALK_R, animations[AnimationTypes.WALK_R].frameRate, animations[AnimationTypes.WALK_R].loop);
-							}
-						break;
-
-						default:
-						break;
-					}
-				}
-			}
-		}
-	};
-	
-	return AnimatedEnemy;
 })();
 
 PWG.Bonus = (function() {
@@ -107948,20 +107731,6 @@ PWG.Hazard = (function() {
 	};
 	
 	return Hazard;
-})();
-
-PWG.MovingHazard = (function() {
-	PWG.Utils.inherits(MovingHazard, PWG.Hazard);
-	
-	function MovingHazard(params) {
-		MovingHazard._super.constructor.call(this, params);
-	}
-	
-	MovingHazard.prototype.begin = function() {
-		MovingHazard._super.begin.call(this);
-	};
-	
-	return MovingHazard;
 })();
 
 PWG.ReactingTerrain = (function() {
@@ -108490,82 +108259,6 @@ PWG.CrystalsWheel = (function() {
 	return CrystalsWheel;
 })();
 
-PWG.PlayerIcon = (function() {
-	PWG.Utils.inherits(PlayerIcon, PWG.Sprite);
-	
-	function PlayerIcon(params) {
-		params.attrs.start = this.initPosition(params.positions);
-		PlayerIcon._super.constructor.call(this, params);
-	}
-	
-	PlayerIcon.prototype.initPosition = function(positions) {
-		trace('PlayerIcon/initPosition, position = ', positions, '\tcurrentLevel = ' + PolyworksGame.currentLevel);
-		return positions[PolyworksGame.currentLevel];
-	};
-	
-	PlayerIcon.prototype.begin = function() {
-		this.inputEnabled = true;
-		this.input.start();
-		this.addListeners();
-		PlayerIcon._super.begin.call(this);
-
-		var grandfather = this.model.ancestor.model.ancestor;
-		// trace('\tgrandfather = ', grandfather);
-		var pages = grandfather.model.pages;
-		// trace('\tpages = ', pages);
-		var pagesLength = pages.length;
-		for(var i = 0; i < pagesLength; i++) {
-			var levels = pages[i].levels;
-			var levelsLength = levels.length;
-			for(var j = 0; j < levelsLength; j++) {
-				if(levels[j] === PolyworksGame.currentLevel) {
-					this.pageIndex = i;
-					break;
-				}
-			}
-		}
-		// trace('\tpageIndex = ' + this.pageIndex);
-	};
-	
-	PlayerIcon.prototype.addListeners = function() {
-		PWG.EventCenter.bind(PWG.Events.CHANGE_MAP_PAGE, this.onChangeMapPage, this);
-		var ctx = this;
-		this.events.onInputDown.add(function(event, pointer) {
-			this.inputDown(event, pointer, ctx);
-		}, this);
-		this.events.onInputUp.add(function(event, pointer) {
-			this.inputUp(event, pointer, ctx);
-		}, this);
-	};
-	
-	PlayerIcon.prototype.inputDown = function(event, pointer, ctx) {
-		// trace('PlayerIcon['+this.model.name+']/inputDown');
-		ctx.pressed = true;
-	};
-	
-	PlayerIcon.prototype.inputUp = function(event, pointer, ctx) {
-		// trace('PlayerIcon['+this.model.name+']/inputUp');
-		ctx.pressed = false;
-		// PWG.EventCenter.trigger({ type: PWG.Events.START_LEVEL, value: PolyworksGame.currentLevel });
-	};
-	
-	PlayerIcon.prototype.onChangeMapPage = function(event) {
-		// trace('PlayerIcon/onChangeMapPage, event = ', event);
-		if(event.value === this.pageIndex) {
-			this.visible = true;
-		} else {
-			this.visible = false;
-		}
-	};
-	
-	PlayerIcon.prototype.destroy = function() {
-		PWG.EventCenter.unbind(PWG.Events.CHANGE_MAP_PAGE, this.onChangeMapPage, this);
-		PlayerIcon._super.destroy.call(this);
-	};
-	
-	return PlayerIcon;
-})();
-
 PWG.LevelInfo = (function() {
 	PWG.Utils.inherits(LevelInfo, PWG.GroupCollection);
 	
@@ -109064,6 +108757,266 @@ PWG.ControlButtons = (function() {
 	return ControlButtons;
 })();
 
+PWG.Enemy = (function() {
+	PWG.Utils.inherits(Enemy, PWG.Sprite);
+	
+	var _this;
+	function Enemy(params) {
+		Enemy._super.constructor.call(this, params);
+		this.reactivated = false; 
+		this.isInView = true;
+		this.isInProximity = false;
+		this.isActive = false;
+		this.justJumped = false;
+		this.relationToPlayer = '';
+	}
+
+	Enemy.prototype.pwUpdate = function(params) {
+		if(this.alive) {
+			// trace('Enemy['+this.model.name+']/pwUpdate, relationToPlayer = ' + this.relationToPlayer);
+			this.checkDynamicTerrainCollision(params.dynamicTerrain);
+
+			this.relationToPlayer = 'near';
+			var movementType = this.model.attrs.movement.type;
+			switch(movementType) {
+				case PWG.MovementTypes.HORIZONTAL_BY_SPEED:
+				case PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED:
+					this.calculateHorizontalMovement(params.player, movementType, false);
+				break;
+				
+				case PWG.MovementTypes.VERTICAL_BY_SPEED:
+					this.calculateVerticalMovement(params.player, movementType);
+				break;
+				
+				case PWG.MovementTypes.VERTICAL_HORIZONTAL_BY_SPEED:
+					this.calculateHorizontalMovement(params.player, PWG.MovementTypes.HORIZONTAL_BY_SPEED);
+					var invert = false;
+					if(this.relationToPlayer == 'below') {
+						invert = true;
+					}
+					this.calculateVerticalMovement(params.player, PWG.MovementTypes.VERTICAL_BY_SPEED, invert);
+				break;
+
+				default: 
+					// trace('ERROR: (enemy) unknown movement type: ' + movementType);
+				break;
+			}
+
+			if(this.body.touching.down) {
+				this.justJumped = false;
+			}
+		}
+	};
+	
+	Enemy.prototype.calculateHorizontalMovement = function(player, movementType, invert) {
+		// trace('Enemy['+this.model.name+']/calculateHorizontalMovement');
+		var reverse = invert || false;
+		var enemyX = this.body.x;
+		var enemyY = this.body.y;
+		var playerX = player.body.x;
+		var playerY = player.body.y;
+
+		if(this.model.attrs.testInView) {
+			// trace('testing in view, enemyX = ' + enemyX + ', playerX = ' + playerX);
+			if((enemyX < (playerX + PWG.Stage.width/2) && enemyX > (playerX - PWG.Stage.width/2)) && (enemyY < (playerY + PWG.Stage.height/2) && enemyY > (playerY - PWG.Stage.height/2))) {
+				this.isInView = true;
+				if(!this.isActive) {
+					this.isActive = true;
+				}
+			} else {
+				this.isInView = false;
+				if(this.isActive) {
+					this.isActive = false;
+				}
+			}
+		}
+
+		if(this.isInView) {
+				// trace('is in view, x = ' + enemyX + ', playerX = ' + playerX);
+			var direction; 
+			if(enemyX < (playerX - 10)) {
+				// trace(this.model.name + ': move right, x = ' + enemyX + ', playerX = ' + playerX);
+				this.relationToPlayer = 'right';
+				direction = (reverse) ? PWG.Directions.LEFT : PWG.Directions.RIGHT;
+				this.move({ direction: direction, type: movementType });
+			} else if(enemyX > (playerX + 10)) {
+				// trace(this.model.name + ': move left, x = ' + enemyX + ', playerX = ' + playerX);
+				this.relationToPlayer = 'left';
+				direction = (reverse) ? PWG.Directions.RIGHT : PWG.Directions.LEFT;
+				this.move({ direction: direction, type: movementType });
+			} else if(this.model.attrs.jumps && (enemyY > playerY)) {
+				this.relationToPlayer = 'jumping';
+				if(!this.justJumped) {
+					this.justJumped = true;
+					this.move({ direction: PWG.Directions.UP, type: PWG.MovementTypes.JUMP });
+				}
+			}
+		}
+
+		if((enemyX < (playerX + PWG.Stage.width/4) && enemyX > (playerX - PWG.Stage.width/4)) || (enemyY < (playerY + PWG.Stage.height/4) && enemyY > (playerY - PWG.Stage.height/4))) {
+			if(!this.isInProximity) {
+				this.isInProximity = true;
+				PWG.EventCenter.trigger({ type: PWG.Events.ADD_ACTIVE_ENEMY, enemy: this });
+			}
+		} else {
+			if(this.isInProximity) {
+				this.isInProximity = false;
+				// PWG.EventCenter.trigger({ type: PWG.Events.REMOVE_ACTIVE_ENEMY, enemy: this });
+			}
+		}
+	};
+	
+	Enemy.prototype.calculateVerticalMovement = function(player, movementType) {
+		var enemyY = this.body.y;
+		var playerY = player.body.y;
+		var playerHeight = player.body.height;
+		
+		if(this.model.attrs.testInView) {
+			if(enemyX < (playerX + PWG.Stage.width/2) && enemyX > (playerX - PWG.Stage.width/2)) {
+				this.isInView = true;
+			} else {
+				this.isInView = false;
+			}
+		}
+
+		if(this.isInView) {
+			if(enemyY < (playerY - playerHeight)) {
+				// trace('move right');
+				this.relationToPlayer = 'above';
+				this.move({ direction: PWG.Directions.DOWN, type: movementType });
+			// } else if(enemyY > (playerY + playerHeight)) {
+			} else if(enemyY > (playerY + playerHeight)) {
+				// trace('move left');
+				this.relationToPlayer = 'below';
+				this.move({ direction: PWG.Directions.UP, type: movementType });
+			}
+		}
+	};
+	
+	Enemy.prototype.damage = function(damage) {
+		// trace('Enemy['+this.model.name+']/damage, damage = ' + damage + ', health = ' + this.health);
+		this.health -= damage;
+		if(this.health <= 0) {
+			this.kill();
+		}
+	};
+	
+	Enemy.prototype.kill = function() {
+		// trace('Enemy['+this.model.name+']/kill, ancestor = ');
+		// trace(this.model);
+		this.active = false;
+		PolyworksGame.setLevelScore(this.model.attrs.score);
+		this.model.ancestor.removeChild.call(this.model.ancestor, this.model.name);
+		PWG.EventCenter.trigger({ type: PWG.Events.ENEMY_DESTROYED, value: this.model.name });
+		Enemy._super.kill.call(this);
+	};
+	
+	Enemy.prototype.destroy = function() {
+		// trace('Enemy['+this.model.name+']/destroy');
+		this.alive = false;
+		Enemy._super.destroy.call(this);
+	};
+	
+	return Enemy;
+})();
+
+PWG.AnimatedEnemy = function() {
+	PWG.Utils.inherits(AnimatedEnemy, PWG.Enemy);
+	
+	var _this;
+	function AnimatedEnemy(params) {
+		// trace('AnimatedEnemy/constructor');
+		AnimatedEnemy._super.constructor.call(this, params);
+	}
+	
+	AnimatedEnemy.prototype.pwUpdate = function(params) {
+		if(this.alive) {
+			// trace('AnimatedEnemy['+this.model.name+']/pwUpdate');
+			// trace(this);
+			AnimatedEnemy._super.pwUpdate.call(this, params);
+
+			if(this.isInView) {
+				// trace('\tenemy['+this.name+'] in range');
+				var animations = this.model.attrs.animations; 
+
+				if(!this.body.touching.down && (this.model.attrs.movement.type === PWG.MovementTypes.GROUNDED_HORIZONTAL_BY_SPEED)) {
+					if(this.relationToPlayer == 'left') {
+						if(this.currentAnimation !== AnimationTypes.FALLING_L) {
+							this.play(AnimationTypes.FALLING_L, animations[AnimationTypes.FALLING_L].frameRate, animations[AnimationTypes.FALLING_L].loop);
+						}
+					} else {
+						if(this.currentAnimation !== AnimationTypes.FALLING_R) {
+							this.play(AnimationTypes.FALLING_R, animations[AnimationTypes.FALLING_R].frameRate, animations[AnimationTypes.FALLING_R].loop);
+						}
+					}
+				} else {
+					switch(this.relationToPlayer) {
+						case 'near':
+							if(this.currentAnimation !== AnimationTypes.IDLE) {
+								this.play(AnimationTypes.IDLE, animations[AnimationTypes.IDLE].frameRate, animations[AnimationTypes.IDLE].loop);
+							}
+						break;
+
+						case 'left': 
+						case 'above':
+							if(this.currentAnimation !== AnimationTypes.WALK_L) {
+								this.play(AnimationTypes.WALK_L, animations[AnimationTypes.WALK_L].frameRate, animations[AnimationTypes.WALK_L].loop);
+							}
+						break;
+
+						case 'right': 
+						case 'below':
+							if(this.currentAnimation !== AnimationTypes.WALK_R) {
+								this.play(AnimationTypes.WALK_R, animations[AnimationTypes.WALK_R].frameRate, animations[AnimationTypes.WALK_R].loop);
+							}
+						break;
+
+						default:
+						break;
+					}
+				}
+			}
+		}
+	};
+	
+	return AnimatedEnemy;
+}();
+
+PWG.BossEnemy = function() {
+	PWG.Utils.inherits(BossEnemy, PWG.Enemy);
+	
+	var _this;
+	
+	function BossEnemy(params) {
+		trace('BossEnemy/constructor');
+		BossEnemy._super.constructor.call(this, params);
+	}
+	
+	BossEnemy.prototype.pwUpdate = function(params) {
+		trace('BossEnemy/pwUpdate, alive = ' + this.alive, this);
+		if(this.alive) {
+			if(this.model.preUpdate) {
+				trace('there is a pre update, about to call');
+				this.model.preUpdate.call(this, params);
+			}
+			BossEnemy._super.pwUpdate.call(this, params);
+			if(this.model.postUpdate) {
+				trace('there is a post update, about to call');
+				this.model.postUpdate.call(this, params);
+			}
+		}
+	};
+	
+	BossEnemy.prototype.destroy = function() {
+		if(this.model.destroy) {
+			this.model.destroy.call(this);
+		}
+		BossEnemy._super.destroy.call(this);
+	};
+	
+	return BossEnemy;
+}();
+
 PWG.Enemies = (function() {
 	PWG.Utils.inherits(Enemies, PWG.PhysicalGroupCollection);
 	
@@ -109115,26 +109068,6 @@ PWG.Enemies = (function() {
 	};
 	
 	return Enemies;
-})();
-
-PWG.GroupEnemy = (function() {
-	PWG.Utils.inherits(GroupEnemy, PWG.Enemies);
-	
-	function GroupEnemy(params) {
-		GroupEnemy._super.constructor.call(this, params);
-	}
-	
-	GroupEnemy.prototype.pwUpdate = function(params) {
-		// trace('GroupEnemy['+this.model.name+']/pwUpdate, this.collection = ', this.model.collection);
-		PWG.Utils.each(this.model.collection,
-			function(child) {
-				child.pwUpdate(params);
-			},
-			this
-		);
-	};
-	
-	return GroupEnemy;
 })();
 
 PWG.EnemyManager = function() {
