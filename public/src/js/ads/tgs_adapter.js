@@ -124,10 +124,11 @@ PWG.TGSAdapter = (function() {
 					x: widgetX,
 					y: widgetY,
 					scale: widgetScale,
-					shareUrl: 'https://www.facebook.com/kekevscaterpillars',
+					shareUrl: 'https://keke.tresensa.com/',
 					shareImage: 'http://www.polyworksgames.com/games/keke2/assets/images/keke_grey_expanse_title.png',
 					shareTitle: 'keke and the grey expanse',
-					shareMessage: 'i love playing keke and the grey expanse!'
+					shareMessage: 'i love playing keke and the grey expanse!',
+					leaderboardID: 1
 				});
 				this.isOpen = true;
 			}
