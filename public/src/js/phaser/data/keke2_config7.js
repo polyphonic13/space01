@@ -1011,53 +1011,23 @@ PWG.Config = (function() {
 							defaultContent: ''
 						}
 					},
-					// high score
-					// highScore: {
-					// 	name: 'highScore',
-					// 	cl: 'Text',
-					// 	attrs: {
-					// 		x: winW - (stageUnit * 6),
-					// 		y: winH - (stageUnit * 2.75),
-					// 		// x: (stageUnit * 3),
-					// 		// y: winH - (stageUnit * 2.75),
-					// 		style: { 
-					// 			font: 'bold ' + fontSizes.md + 'px "Waiting for the Sunrise" Arial sans-serif', 
-					// 			fill: '#000000',
-					// 			align: 'right'
-					// 		},
-					// 	}
-					// },
-					// level status
-					// status: {
-					// 	name: 'levelStatus',
-					// 	cl: 'Text',
-					// 	attrs: {
-					// 		x: winW - (stageUnit * 6),
-					// 		y: winH - (stageUnit * 2.25),
-					// 		style: { 
-					// 			font: 'bold ' + fontSizes.xl + 'px "Waiting for the Sunrise" Arial sans-serif', 
-					// 			fill: '#000000',
-					// 			align: 'center'
-					// 		},
-					// 		defaultContent: ''
-					// 	}
-					// },
 					// oval mask
-					ovalMask: {
-						name: 'ovalMask',
-						cl: 'Sprite',
-						attrs: {
-							img: 'ovalMask',
-							start: {
-								x: -50,
-								y: -50
-							},
-							phaser: {
-								width: winW + 100,
-								height: winH + 100
-							}
-						}
-					},
+					// ovalMask: {
+					// 	name: 'ovalMask',
+					// 	cl: 'Sprite',
+					// 	attrs: {
+					// 		img: 'ovalMask',
+					// 		start: {
+					// 			x: -50,
+					// 			y: -50
+					// 		},
+					// 		phaser: {
+					// 			width: winW + 100,
+					// 			height: winH + 100,
+					// 			alpha: 0.3
+					// 		}
+					// 	}
+					// },
 					// level title
 					title: {
 						name: 'levelInfoTitle',
@@ -1212,7 +1182,7 @@ PWG.Config = (function() {
 								fill: '#000000',
 								align: 'center'
 							},
-							defaultContent: 'code & art: paul hoover'
+							defaultContent: 'code & art: paul hoover (built on phaser.io)'
 						}
 					}, 
 					{

@@ -620,9 +620,9 @@ PolyworksGame = (function() {
 				},
 				this
 			);
-			_adapter.submitScore({ score: totalScore });
 		}
 
+		_adapter.submitScore({ score: PolyworksGame.levelScore });
 		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.COMPLETE, (idx+1)]);
 		idx++;
 		// trace('new level status: ' + PolyworksGame.levelStatus[idx]);
@@ -689,7 +689,7 @@ PolyworksGame = (function() {
 				_startGame();
 			} else {
 				trace('\ttgs is defined, but not ready');
-				TGS.onReady = PolyworksGame.startGame();
+				TGS.onReady = PolyworksGame.startGame;
 			}
 		} else {
 			trace('\ttgs is not defined');

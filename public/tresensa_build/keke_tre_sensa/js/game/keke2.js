@@ -1,4 +1,4 @@
-(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-07-30T16:38:04')})();
+(function(){(typeof console === 'undefined' || typeof console.log === 'undefined')?console={log:function(){}}:console.log('----- keke2 created: 2014-08-08T17:29:11')})();
 /**
  * @author Mat Groves http://matgroves.com/ @Doormat23
  */
@@ -82481,6 +82481,7 @@ PWG.TGSAdapter = (function() {
 	var LEVEL_PLAYS_PER_AD = 1;
 	var TRE_SENSA_WIDGET_WIDTH = 300;
 	var PWG_WIDGET_UNITS = 5;
+	var LEADERBOARD_ID = 1;
 	
 	var _levels = [];
 
@@ -82488,10 +82489,10 @@ PWG.TGSAdapter = (function() {
 	var _needAd = false;
 	
 	var _tgsConfig = {
-		GAME_ID: 'kekeandthegreyexpanse',
-		ADS: {
-			INTERSTITIAL_INTERVAL: 150
-		}
+		GAME_ID: 'kekeandthegreyexpanse'//,
+		// ADS: {
+		// 	INTERSTITIAL_INTERVAL: 150
+		// }
 	};
 	
 	var _displayConfig = {
@@ -82555,7 +82556,9 @@ PWG.TGSAdapter = (function() {
 		},
 		
 		submitScore: function(params) {
+			trace('TGSAdaper/submitScore, _tgsExists = ' + _tgsExists);
 			if(_tgsExists) {
+				params.leaderboardID = LEADERBOARD_ID;
 				trace('submitting score: ', params);
 				TGS.Leaderboard.SubmitScore(params);
 			}
@@ -82603,10 +82606,11 @@ PWG.TGSAdapter = (function() {
 					x: widgetX,
 					y: widgetY,
 					scale: widgetScale,
-					shareUrl: 'https://www.facebook.com/kekevscaterpillars',
+					shareUrl: 'https://keke.tresensa.com/',
 					shareImage: 'http://www.polyworksgames.com/games/keke2/assets/images/keke_grey_expanse_title.png',
 					shareTitle: 'keke and the grey expanse',
-					shareMessage: 'i love playing keke and the grey expanse!'
+					shareMessage: 'i love playing keke and the grey expanse!',
+					leaderboardID: LEADERBOARD_ID
 				});
 				this.isOpen = true;
 			}
@@ -87981,7 +87985,7 @@ PWG.Config = (function() {
 						cl: 'Sector',
 						bounds: {
 							start: 0,
-							end: stageWidth// + (gameUnit * 2)
+							end: stageWidth// + (stageUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -88142,8 +88146,8 @@ PWG.Config = (function() {
 						name: 'sector2',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth),// - (gameUnit * 2),
-							end: (stageWidth * 2)// + (gameUnit * 2)
+							start: (stageWidth),// - (stageUnit * 2),
+							end: (stageWidth * 2)// + (stageUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -88295,8 +88299,8 @@ PWG.Config = (function() {
 						name: 'sector3',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 2),// - (gameUnit * 2),
-							end: (stageWidth * 3)// + (gameUnit * 2)
+							start: (stageWidth * 2),// - (stageUnit * 2),
+							end: (stageWidth * 3)// + (stageUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -88401,8 +88405,8 @@ PWG.Config = (function() {
 						name: 'sector4',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 3),// - (gameUnit * 2),
-							end: (stageWidth * 4)// + (gameUnit * 2)
+							start: (stageWidth * 3),// - (stageUnit * 2),
+							end: (stageWidth * 4)// + (stageUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -88511,8 +88515,8 @@ PWG.Config = (function() {
 						name: 'sector5',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 4),// - (gameUnit * 2),
-							end: (stageWidth * 5)// + (gameUnit * 2)
+							start: (stageWidth * 4),// - (stageUnit * 2),
+							end: (stageWidth * 5)// + (stageUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -88690,8 +88694,8 @@ PWG.Config = (function() {
 						name: 'sector6',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 5),// - (gameUnit * 2),
-							end: (stageWidth * 6)// + (gameUnit * 2)
+							start: (stageWidth * 5),// - (stageUnit * 2),
+							end: (stageWidth * 6)// + (stageUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -88803,8 +88807,8 @@ PWG.Config = (function() {
 						name: 'sector7',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 6),// - (gameUnit * 2),
-							end: (stageWidth * 7)// + (gameUnit * 2)
+							start: (stageWidth * 6),// - (stageUnit * 2),
+							end: (stageWidth * 7)// + (stageUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -88895,8 +88899,8 @@ PWG.Config = (function() {
 						name: 'sector8',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 7),// - (gameUnit * 2),
-							end: (stageWidth * 8)// + (gameUnit * 2)
+							start: (stageWidth * 7),// - (stageUnit * 2),
+							end: (stageWidth * 8)// + (stageUnit * 2)
 						},
 						attrs: [{
 							name: 'dynamicTerrain',
@@ -88991,7 +88995,7 @@ PWG.Config = (function() {
 						name: 'sector9',
 						cl: 'Sector',
 						bounds: {
-							start: (stageWidth * 8),// - (gameUnit * 2),
+							start: (stageWidth * 8),// - (stageUnit * 2),
 							end: (stageWidth * 9)
 						},
 						attrs: [{
@@ -91242,9 +91246,10 @@ PWG.Config = (function() {
 								health: 50
 							},
 							start: {
-								x: (stageWidth * 6) + (stageUnit * 4),
+								x: (stageWidth * 6) + (stageUnit * 6),
 								// y: winH - ((stageUnit * 6) + 32)
-								y: -(stageHeight * 2)
+								// y: -(stageHeight * 2)
+								y: winH - (stageUnit * 7)
 							},
 							physics: {
 								deferredGravity: true,
@@ -91266,34 +91271,44 @@ PWG.Config = (function() {
 							animations: caterpillarAnimations,
 						},
 						poisonInterval: 3000,
-						maxDrops: 5000,
+						maxDrops: 20,
+						dropLife: 1000,
 						poisoning: false,
 						preUpdate: function(params) {
-							trace('BossEnemy['+this.model.name+']/preUpdate, poisoning = ' + this.model.poisoning);
+							// trace('BossEnemy['+this.model.name+']/preUpdate, poisoning = ' + this.model.poisoning);
 							if(!this.model.poisoning) {
 								_this = this;
-								setTimeout(this.model.poison, this.model.positionInterval);
 								this.model.poisoning = true;
+								setTimeout(this.model.poison, this.model.positionInterval);
+							}
+							if(this.emitter) {
+								this.emitter.emitX = this.x;
+								this.emitter.emitY = this.y;
 							}
 						},
 						poison: function() {
 							trace('BossEnemy['+_this.model.name+']/poison');
-							_this.emitter = PolyworksGame.phaser.add.emitter(_this.body.x, _this.body.y, _this.model.maxDrops);
+							_this.emitter = PolyworksGame.phaser.add.emitter((_this.body.x + (_this.body.width/2)), (_this.body.y + (stageUnit * 0.5)), _this.model.maxDrops);
 							_this.emitter.width = _this.body.width;
 							_this.emitter.makeParticles('poisonBall');
 
 							// _this.emitter.minParticleSpeed.set(0, 300);
 							// _this.emitter.maxParticleSpeed.set(0, 600);
+							_this.emitter.maxParticleScale = 0.25;
+							_this.emitter.minParticleScale = 0.25;
+							
+							// _this.emitter.setRotation(0, 0);
+							// _this.emitter.setScale(0.05, 0.05, 0.05, 0.05, 0);
+							_this.emitter.gravity = 75;
 
-							_this.emitter.setRotation(0, 0);
-							_this.emitter.setAlpha(0.1, 1, 3000);
-							_this.emitter.setScale(0.1, 1, 0.1, 1, 6000, Phaser.Easing.Quintic.Out);
-							_this.emitter.gravity = -200;
-
-							_this.emitter.start(false, 5000, 10);
+							_this.emitter.start(true, _this.dropLife, null, _this.maxDrops);
 						},
 						destroy: function() {
-							this.emitter.kill();
+							if(this.emitter) {
+								this.emitter.kill();  
+
+							}
+
 						}
 					}]
 				]
@@ -107349,7 +107364,7 @@ PWG.Text = (function() {
 		// trace('\twidth now = ' + this.width);
 		// this.alignAndPosition();
 		// this.setText(this.content.toString());
-		// trace('Text['+this.model.name+']/onUpdate, content = ' + content + ', event = ', event);
+		trace('Text['+this.model.name+']/onUpdate, content = ' + content + ', event = ', event);
 		this.text = content.toString();
 	};
 	
@@ -108993,10 +109008,10 @@ PWG.BossEnemy = function() {
 	}
 	
 	BossEnemy.prototype.pwUpdate = function(params) {
-		trace('BossEnemy/pwUpdate, alive = ' + this.alive, this);
+		// trace('BossEnemy/pwUpdate, alive = ' + this.alive, this);                                                           
 		if(this.alive) {
 			if(this.model.preUpdate) {
-				trace('there is a pre update, about to call');
+				// trace('there is a pre update, about to call');                                                  
 				this.model.preUpdate.call(this, params);
 			}
 			BossEnemy._super.pwUpdate.call(this, params);
@@ -109722,7 +109737,7 @@ PWG.State = (function() {
 					// key, volume loop
 					PolyworksGame.currentAudio = PolyworksGame.phaser.add.audio(audio, 1, true);
 					// marker, position, volume, loop
-					PolyworksGame.currentAudio.play('', 0, 1, true);
+					// PolyworksGame.currentAudio.play('', 0, 1, true);
 					PolyworksGame.currentAudioName = audio;
 				}
 			}
@@ -110134,8 +110149,9 @@ PWG.MapState = (function() {
 	};
 	
 	LevelState.prototype.onLevelScoreUpdated = function() {
-		this.pausedScoreText.text = PolyworksGame.levelScore;
-		this.completedScoreText.text = PolyworksGame.levelScore;
+		this.pausedScoreText.text = 'score : ' + PolyworksGame.levelScore;
+		this.completedScoreText.text = 'score: ' + PolyworksGame.levelScore;
+		trace('LevelState['+this.model.name+']/onLevelScoreUpdated, this.completedScoreText = ' + this.completedScoreText.text);
 	};
 	
 	LevelState.prototype.onHighScoreUpdated = function() {
@@ -111318,9 +111334,9 @@ PolyworksGame = (function() {
 				},
 				this
 			);
-			_adapter.submitScore({ score: totalScore });
 		}
 
+		_adapter.submitScore({ score: PolyworksGame.levelScore });
 		_adapter.logEvent(_adapter.logEvents.LEVEL_EVENT, [_adapter.levelEvents.COMPLETE, (idx+1)]);
 		idx++;
 		// trace('new level status: ' + PolyworksGame.levelStatus[idx]);
@@ -111387,7 +111403,7 @@ PolyworksGame = (function() {
 				_startGame();
 			} else {
 				trace('\ttgs is defined, but not ready');
-				TGS.onReady = PolyworksGame.startGame();
+				TGS.onReady = PolyworksGame.startGame;
 			}
 		} else {
 			trace('\ttgs is not defined');

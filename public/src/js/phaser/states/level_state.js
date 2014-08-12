@@ -219,8 +219,9 @@
 	};
 	
 	LevelState.prototype.onLevelScoreUpdated = function() {
-		this.pausedScoreText.text = PolyworksGame.levelScore;
-		this.completedScoreText.text = PolyworksGame.levelScore;
+		this.pausedScoreText.text = 'score : ' + PolyworksGame.levelScore;
+		this.completedScoreText.text = 'score: ' + PolyworksGame.levelScore;
+		trace('LevelState['+this.model.name+']/onLevelScoreUpdated, this.completedScoreText = ' + this.completedScoreText.text);
 	};
 	
 	LevelState.prototype.onHighScoreUpdated = function() {

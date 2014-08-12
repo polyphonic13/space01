@@ -8,6 +8,8 @@ var GameConfig = {
                     // VERBOSE = 4
 
     GAME_ID: 'kekeandthegreyexpanse',
+	// GAME_ID: 'com.tresensa.test-game',
+	// GAME_ID: 'com.tresensa.keke',
     TITLE: 'keke and T H E  G R E Y  E X P A N S E',
     VERSION: '1.0.0',
 

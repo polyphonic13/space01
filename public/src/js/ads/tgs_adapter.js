@@ -2,6 +2,7 @@ PWG.TGSAdapter = (function() {
 	var LEVEL_PLAYS_PER_AD = 1;
 	var TRE_SENSA_WIDGET_WIDTH = 300;
 	var PWG_WIDGET_UNITS = 5;
+	var LEADERBOARD_ID = 1;
 	
 	var _levels = [];
 
@@ -76,7 +77,9 @@ PWG.TGSAdapter = (function() {
 		},
 		
 		submitScore: function(params) {
+			trace('TGSAdaper/submitScore, _tgsExists = ' + _tgsExists);
 			if(_tgsExists) {
+				params.leaderboardID = LEADERBOARD_ID;
 				trace('submitting score: ', params);
 				TGS.Leaderboard.SubmitScore(params);
 			}
@@ -128,7 +131,7 @@ PWG.TGSAdapter = (function() {
 					shareImage: 'http://www.polyworksgames.com/games/keke2/assets/images/keke_grey_expanse_title.png',
 					shareTitle: 'keke and the grey expanse',
 					shareMessage: 'i love playing keke and the grey expanse!',
-					leaderboardID: 1
+					leaderboardID: LEADERBOARD_ID
 				});
 				this.isOpen = true;
 			}

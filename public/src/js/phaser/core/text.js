@@ -87,7 +87,7 @@ PWG.Text = (function() {
 		// trace('\twidth now = ' + this.width);
 		// this.alignAndPosition();
 		// this.setText(this.content.toString());
-		// trace('Text['+this.model.name+']/onUpdate, content = ' + content + ', event = ', event);
+		trace('Text['+this.model.name+']/onUpdate, content = ' + content + ', event = ', event);
 		this.text = content.toString();
 	};
 	
