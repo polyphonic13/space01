@@ -6,7 +6,6 @@ PWG.MapMarker = (function() {
 	}
 	
 	MapMarker.prototype.begin = function() {
-		// trace('MapMarker['+this.model.name+']/begin, level = ' + this.model.level);
 		MapMarker._super.begin.call(this);
 
 		var name = this.model.name;
@@ -26,10 +25,7 @@ PWG.MapMarker = (function() {
 			this.input.start();
 			this.addListeners();
 		}
-		// TESTING
-		// this.frame = 15;
-		// this.input.start();
-		// this.addListeners();
+
 	};
 	
 	MapMarker.prototype.addListeners = function() {
@@ -43,12 +39,10 @@ PWG.MapMarker = (function() {
 	};
 	
 	MapMarker.prototype.inputDown = function(event, pointer, ctx) {
-		// trace('MapMarker['+this.model.name+']/inputDown');
 		ctx.pressed = true;
 	};
 	
 	MapMarker.prototype.inputUp = function(event, pointer, ctx) {
-		// trace('MapMarker['+this.model.name+']/inputUp');
 		ctx.pressed = false;
 		PWG.EventCenter.trigger({ type: PWG.Events.SHOW_LEVEL_INFO, value: this.model.level });
 	};

@@ -3,14 +3,11 @@ PWG.InputButton = (function() {
 	
 	var _this;
 	function InputButton(params) {
-		// trace('InputButton/constructor, params = ', params);
 		_this = this;
 		this.model = new PWG.Model(params);
-		// trace('\tinput button model = ', this.model);
 		var attrs = this.model.attrs;
 		var frames = attrs.frames;
 		if(frames) {
-			// trace('InputButton['+this.model.name+'] has frames: ' + frames);
 			InputButton._super.constructor.call(this, params.game, attrs.x, attrs.y, attrs.img, null, this, frames[0], frames[1], frames[2]);
 		} else {
 			InputButton._super.constructor.call(this, params.game, attrs.x, attrs.y, attrs.img, null, this);
@@ -21,15 +18,7 @@ PWG.InputButton = (function() {
 		var start = this.model.attrs.start;
 		this.x = start.x;
 		this.y = start.y;
-		// trace('InputButton['+this.model.name+']/begin, start x/y = ' + start.x + '/' + start.y, this.model);
-		/*
-		if(this.model.width) {
-			this.width = this.model.width;
-		}
-		if(this.model.height) {
-			this.height = this.model.height;
-		}
-		*/
+		
 		var phaser = this.model.attrs.phaser;
 		if(phaser) {
 			var _this = this;
@@ -55,8 +44,6 @@ PWG.InputButton = (function() {
 	};
 	
 	InputButton.prototype.addListeners = function() {
-		// trace('InputButton['+this.model.img+']/addListeners, button = ');
-		// trace(this);
 		var ctx = this;
 		this.events.onInputDown.add(function(event, pointer) {
 			this.inputDown(event, pointer, ctx);
@@ -83,17 +70,14 @@ PWG.InputButton = (function() {
 	};
 	
 	InputButton.prototype.inputUp = function(event, pointer, ctx) {
-		// trace('InputButton['+this.model.name+']/inputUp');
 		ctx.inputReleased.call(ctx, { type: PWG.Events.CONTROL_RELEASED, value: ctx.model.attrs.inputCode });
 		ctx.pressed = false;
 	};
 	
 	InputButton.prototype.inputPressed = function(params) {
 		var events = this.model.attrs.events;
-		// trace('InputButton/inputPressed\n\tvalue = ' + params.value + ', type = ' + params.type + ', events = ', events);
 		if(events) {
 			if(events.pressed) {
-				// trace('\tabout to dispatch ' + events.pressed.type);
 				_trigger({ type: events.pressed.type, value: events.pressed.value });
 			}
 		} else {
@@ -103,7 +87,6 @@ PWG.InputButton = (function() {
 	
 	InputButton.prototype.inputReleased = function(params) {
 		var events = this.model.attrs.events;
-		// trace('InputButton/inputReleased\n\tvalue = ' + params.value + ', type = ' + params.type + ', events = ', events);
 		if(events) {
 			if(events.released) {
 				_trigger({ type: events.released.type, value: events.released.value });
@@ -114,8 +97,6 @@ PWG.InputButton = (function() {
 	};
 	
 	_trigger = function(event) {
-		// trace('InputButton/trigger, event = ');
-		// trace(event);
 		PWG.EventCenter.trigger(event);
 	};
 	

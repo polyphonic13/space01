@@ -4,19 +4,16 @@ PWG.Player = (function() {
 
 	var _this;
 	function Player(params) {
-		// trace('Player/constructor');
 		_this = this;
 		this.model = new PWG.Model(params);
 		this.initialPosition = true;
 		this.oneUpdate = false;
 		Player._super.constructor.call(this, params);
-		// trace('player body size = ' + this.body.width + '/' + this.body.height);
 	}
 	
 	Player.prototype.begin = function(health) {
 		Player._super.begin.call(this);
 
-		// this.health = PolyworksGame.startingHealth;
 		this.health = health;
 
 		this.velX = 0;
@@ -43,8 +40,6 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.beginWorld = function() {
-		// trace('Player/beginWorld');
-		// trace(this);
 		var attrs = this.model.attrs;
 		if(attrs.anchor) {
 			this.anchor.setTo(attrs.anchor.x, attrs.anchor.y);
@@ -66,14 +61,10 @@ PWG.Player = (function() {
 		this.activeControls[PWG.InputCodes.UP] = false;
 		this.activeControls[PWG.InputCodes.SPACE] = false;
 		this.activeControls[PWG.InputCodes.DOWN] = false;
-		// trace('activeControls');
-		// trace(this.activeControls);
 	};
 	
 	Player.prototype.onControlButtonPressed = function(event) {
 		this.activeControls[event.value] = true;
-		// trace('Player.prototype.onControlButtonPressed, event.value = ' + event.value);
-		// trace(this.activeControls);
 		if(event.value === PWG.InputCodes.RESET) {
 			this.activeControls[PWG.InputCodes.LEFT] = false;
 			this.activeControls[PWG.InputCodes.RIGHT] = false;
@@ -87,8 +78,6 @@ PWG.Player = (function() {
 	
 	Player.prototype.onControlButtonReleased = function(event) {
 		this.activeControls[event.value] = false;
-		// trace('Player.prototype.onControlButtonReleased, event.value = ' + event.value);
-		// trace(this.activeControls);
 		if(event.value === PWG.InputCodes.RESET) {
 			this.activeControls[PWG.InputCodes.LEFT] = false;
 			this.activeControls[PWG.InputCodes.RIGHT] = false;
@@ -101,7 +90,6 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.updatePosition = function() {
-		// trace('Player/updatePosition, x = ' + this.body.x);
 		if(!PolyworksGame.adPlaying) {
 			if(this.initialPosition) {
 				this.initialPosition = false;
@@ -134,7 +122,6 @@ PWG.Player = (function() {
 					this.velY = 0;
 				}
 			} else if(this.activeControls[PWG.InputCodes.DOWN]) {
-				// trace('Player/updatePosition, down is active');
 			}
 		}
 	};
@@ -145,13 +132,10 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.activateGravity = function() {
-		// trace('Player/activateGravity');
 		Player._super.activateGravity.call(this);
 	};
 
 	Player.prototype.pwUpdate = function(params) {
-		// trace('Player/update, health = ' + this.health);
-		// trace(params);
 		if(this.alive) {
 			this.collided = false;
 			var physics = PolyworksGame.phaser.physics.arcade;
@@ -159,7 +143,6 @@ PWG.Player = (function() {
 			var physicalItems = params.physicalItems; 
 
 			for(var key in physicalItems) {
-				// trace('physicalItems['+key+'] = ', physicalItems[key]);
 				this[('check' + key + 'Collision')](physicalItems[key], physics);
 			}
 
@@ -186,8 +169,6 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.checkGroupEnemiesCollision = function(group, physics) {
-		// trace('Player/checkGroupEnemiesCollision, group = ', group);
-		// this.checkGroupCollision(group, this.onGroupEnemyCollision, physics, this);
 		this.checkCollision(group, this.onGroupEnemyCollision, physics, this);
 	};
 	
@@ -200,8 +181,6 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.checkCollision = function(collection, callback, physics, context) {
-		// trace('Player/checkCollision, health = ' + this.health);
-		// physics.overlap(this, collection, callback, null, context);
 		PWG.Utils.each(collection,
 			function(child) {
 				physics.overlap(this, child, callback, null, context);
@@ -215,8 +194,6 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.onBonusCollision = function(player, bonus) {
-		// trace('Player/onBonusCollision, bonus = ');
-		// trace(bonus);
 		this.collided = true;
 
 		var health = bonus.model.attrs.health;
@@ -232,7 +209,6 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.onHazardCollision = function(player, hazard) {
-		// trace('Player/onHazardCollision, hazard = ', hazard);
 		this.collided = true;
 		this.receiveDamage(hazard.model.attrs.attack);
 	};
@@ -243,10 +219,6 @@ PWG.Player = (function() {
 		var playerY = player.body.y + (player.body.height) - 10; // need a little bit of "wiggle room" to get the collision to take
 		var enemyX = enemy.body.x + (enemy.body.width);
 		var enemyY = enemy.body.y + (enemy.body.height);
-		// trace('Player/onEnemyCollision['+enemy.model.name+'], player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
-		// trace(enemy);
-// trace('enemy collision\n\tplayerY = ' + playerY + ', enemy.body.y = ' + enemy.body.y + '\n\tenemy.overlapY = ' + enemy.body.overlapY + ', enemy touching = ', enemy.body.touching);
-		// if(playerY < (enemyY)) { // player is above enemy
 		if(playerY <= enemy.body.y) {
 			this.updatePositionFromCollision();
 			enemy.damage(this.model.attrs.attack);
@@ -256,16 +228,11 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.onGroupEnemyCollision = function(player, enemy) {
-		// trace('Player/onGroupEnemyCollision, enemy = ' + enemy.model.name);
 		this.collided = true;
 		var playerX = player.body.x + (player.body.width);
 		var playerY = player.body.y + (player.body.height) - 10; // need a little bit of "wiggle room" to get the collision to take
 		var enemyX = enemy.body.x + (enemy.body.width);
 		var enemyY = enemy.body.y + (enemy.body.height);
-		// trace('Player/onGroupEnemyCollision['+enemy.model.name+'], player x/y = ' + Math.ceil(playerX) + '/' + Math.ceil(playerY) + ', enemy x/y = ' + Math.ceil(enemyX) + '/' + Math.ceil(enemyY));
-		// trace(enemy);
-		// trace('enemy collision\n\tplayerY = ' + playerY + ', enemy.body.y = ' + enemy.body.y + '\n\tenemy.overlapY = ' + enemy.body.overlapY + ', enemy touching = ', enemy.body.touching);
-		// if(playerY < (enemyY)) { // player is above enemy
 		if(playerY <= enemy.body.y) {
 			this.updatePositionFromCollision();
 			enemy.damage(this.model.attrs.attack);
@@ -284,13 +251,11 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.onGoalCollision = function(player, goal) {
-		// trace('Player/onGoalCollision, goal = ' + goal.model.name);
 		PWG.EventCenter.trigger({ type: PWG.Events.GOAL_REACHED, value: goal.model.name });
 		goal.destroy();
 	};
 
 	Player.prototype.receiveDamage = function(damage) {
-		// trace('Player/receiveDamage, justDamaged = ' + this.justDamaged);
 		if(!this.justDamaged) {
 			this.health -= damage;
 			PolyworksGame.setHealth(this.health);
@@ -312,7 +277,6 @@ PWG.Player = (function() {
 	};
 	
 	Player.prototype.destroy = function() {
-		// trace('Player/destroy');
 		PWG.EventCenter.unbind(PWG.Events.CONTROL_PRESSED, this.onControlButtonPressed);
 		PWG.EventCenter.unbind(PWG.Events.CONTROL_RELEASED, this.onControlButtonReleased);
 
