@@ -7,7 +7,6 @@ PWG.GUIConsole = (function() {
 
 	GUIConsole.prototype.begin = function() {
 		GUIConsole._super.begin.call(this);
-		// trace('GUIConsole/begin');
 
 		PWG.Utils.each(this.collection,
 			function(c) {
@@ -22,13 +21,11 @@ PWG.GUIConsole = (function() {
 	};
 	
 	GUIConsole.prototype.addListeners = function() {
-		// trace('GUIConsole/addListeners');
-		// PWG.EventCenter.bind(PWG.Events.SCORE_UPDATED, this.onScoreUpdated, this);
 		PWG.EventCenter.bind(PWG.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
 	};
 	
 	GUIConsole.prototype.onScoreUpdated = function() {
-		// trace('GUIConsole/onScoreUpdated');
+
 		this.parseAndSetContent('score');
 	};
 	
@@ -37,9 +34,9 @@ PWG.GUIConsole = (function() {
 	};
 	
 	GUIConsole.prototype.parseAndSetContent = function(field, context) {
-		// trace('GUIConsole/parseAndSetContent, field = ' + field);
+	
 		var text = this.getChildByName(field);
-		// trace(text);
+
 		if(text) {
 			var context = (context) ? context : PolyworksGame;
 			text.content = PWG.Utils.parseMarkup(text.model.attrs.defaultContent, context);
@@ -47,7 +44,7 @@ PWG.GUIConsole = (function() {
 	};
 	
 	GUIConsole.prototype.destroy = function() {
-		// PWG.EventCenter.unbind(PWG.Events.SCORE_UPDATED, this.onScoreUpdated, this);
+
 		PWG.EventCenter.unbind(PWG.Events.HEALTH_UPDATED, this.onHealthUpdated, this);
 		GUIConsole._super.destroy.call(this);
 	};
