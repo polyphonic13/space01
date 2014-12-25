@@ -18,9 +18,7 @@ PWG.PlayerIcon = (function() {
 		PlayerIcon._super.begin.call(this);
 
 		var grandfather = this.model.ancestor.model.ancestor;
-		// trace('\tgrandfather = ', grandfather);
 		var pages = grandfather.model.pages;
-		// trace('\tpages = ', pages);
 		var pagesLength = pages.length;
 		for(var i = 0; i < pagesLength; i++) {
 			var levels = pages[i].levels;
@@ -32,7 +30,6 @@ PWG.PlayerIcon = (function() {
 				}
 			}
 		}
-		// trace('\tpageIndex = ' + this.pageIndex);
 	};
 	
 	PlayerIcon.prototype.addListeners = function() {
@@ -47,18 +44,14 @@ PWG.PlayerIcon = (function() {
 	};
 	
 	PlayerIcon.prototype.inputDown = function(event, pointer, ctx) {
-		// trace('PlayerIcon['+this.model.name+']/inputDown');
 		ctx.pressed = true;
 	};
 	
 	PlayerIcon.prototype.inputUp = function(event, pointer, ctx) {
-		// trace('PlayerIcon['+this.model.name+']/inputUp');
 		ctx.pressed = false;
-		// PWG.EventCenter.trigger({ type: PWG.Events.START_LEVEL, value: PolyworksGame.currentLevel });
 	};
 	
 	PlayerIcon.prototype.onChangeMapPage = function(event) {
-		// trace('PlayerIcon/onChangeMapPage, event = ', event);
 		if(event.value === this.pageIndex) {
 			this.visible = true;
 		} else {

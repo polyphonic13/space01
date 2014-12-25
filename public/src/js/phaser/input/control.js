@@ -8,13 +8,9 @@ PWG.Control = (function() {
 	}
 	
 	Control.prototype.inputPressed = function(params) {
-		// trace('Control/inputPressed, value = ' + params.value + ', type = ' + params.type);
-		// trace(this);
 		var event;
 		var events = this.model.attrs.events;
-		// trace(events);
 		if(events && events.pressed) {
-			// trace('\tabout to dispatch ' + events.pressed.type);
 			event = { type: events.pressed.type, value: events.pressed.value };
 		} else {
 			event = { type: params.type, value: params.value }
@@ -23,7 +19,6 @@ PWG.Control = (function() {
 	};
 	
 	Control.prototype.inputReleased = function(params) {
-		// trace('Control/inputReleased, value = ' + params.value + ', type = ' + params.type);
 		var events = this.model.attrs.events;
 		if(events && events.released) {
 			this.trigger({ type: events.released.type, value: events.released.value });
@@ -33,8 +28,6 @@ PWG.Control = (function() {
 	};
 	
 	Control.prototype.trigger = function(event) {
-		// trace('Control/trigger, event = ');
-		// trace(event);
 		PWG.EventCenter.trigger(event);
 	};
 	

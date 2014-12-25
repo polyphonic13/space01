@@ -3,8 +3,6 @@ PWG.ControlButton = (function() {
 	
 	var _this;
 	function ControlButton(params) {
-		// trace('ControlButton/constructor, params = ');
-		// trace(params);
 		_this = this;
 		ControlButton._super.constructor.call(this, params);
 	};
@@ -17,15 +15,12 @@ PWG.ControlButton = (function() {
 	};
 	
 	ControlButton.prototype.inputUp = function(event, pointer) {
-		// trace('ControlButton['+this.model.inputCode+']/inputUp');
 		if(this.model.inputCode) {
 			this.inputReleased.call(this, { type: PWG.Events.CONTROL_RELEASED, value: this.model.inputCode });
 		}
 	};
 	
 	ControlButton.prototype.destroy = function() {
-		// trace('ControlButton['+this.model.name+']/destroy');
-		// trace(this);
 	};
 	
 	return ControlButton;
